@@ -303,7 +303,6 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 
 	remember_uri (wig, filename);
 	save_to_file (wig, filename);
-
 	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
 	wig->filesel = NULL;
 }
@@ -678,19 +677,21 @@ static void
 on_close_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
-	if (NULL == wig->prj) return;  /* avoid double-free */
+
+	if (NULL == wig->top) return;  /* avoid recursive double-free */
+	GtkWidget *topper = wig->top;   /* avoid recursion */
+	wig->top = NULL;
+	gtk_widget_destroy (topper);
 
 	/* close the main journal window ... everything */
 	if (wig->prj) gtt_project_remove_notifier (wig->prj, redraw, wig);
 	edit_interval_dialog_destroy (wig->edit_ivl);
 	wig->prj = NULL;
 
-	gtk_widget_destroy (wig->top);
 	gtt_ghtml_destroy (wig->gh);
 	g_free (wig->filepath);
 	
 	wig->gh = NULL;
-	wig->top = NULL;
 	wig->html = NULL;
 	g_free (wig);
 }
@@ -699,7 +700,6 @@ static void
 destroy_cb(GtkObject *ob, gpointer data)
 {
 }
-
 
 static void 
 on_refresh_clicked_cb (GtkWidget *w, gpointer data)
@@ -753,7 +753,9 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 	}
 	else
 	{
-		g_warning ("clicked on unknown link %s\n", url);
+		/* All other URL's are handed off to GnomeVFS, which will
+		 * deal with them more or less appropriately.  */
+		do_show_report (url, NULL, NULL, NULL, FALSE, NULL);
 	}
 }
 
