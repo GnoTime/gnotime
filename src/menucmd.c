@@ -72,10 +72,12 @@ about_box(GtkWidget *w, gpointer data)
 		  "Changwoo Ryu  <cwryu@adam.kaist.ac.kr>",
 		  "Pablo Saratxaga <srtxg@chanae.alphanet.ch>",
 		  "Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>",
+		  "Mark Stosberg <mark@summersault.com>",
 		  "Tom Tromey  <tromey@cygnus.com>",
 		  "Sebastian Wilhelmi  <wilhelmi@ira.uka.de>",
 		  NULL
 	};
+
 
 	const gchar *documentors[] = {
 		  "Eckehard Berns <eb@berns.i-s-o.net>",
