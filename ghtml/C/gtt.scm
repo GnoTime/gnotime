@@ -101,56 +101,67 @@
 ; The 'function list' should be either:
 ;  -- a function that takes a single gtt object as an argument
 ;  -- a double-quoted string
+; It returns a list of the result of applying each function
+; to the object, omitting null results from the list
 ; 
 (define (gtt-apply-func-list-to-obj func_list obj)
    (let ( (first_func (car func_list))
           (next_func  (cdr func_list)) 
         )
-        (list
-           ; if a list, then its an error
-           (if (list? obj) ())
-
-           ; if its not a function, but just a quoted string,
-           ; then output that string
-           (if (xquoted? first_func) 
-               (cdr first_func)
-               (first_func obj))
-               
-           (if (not (null? next_func))
-               (gtt-apply-func-list-to-obj next_func obj))
+   (let (
+        ; result is the result of the evaluation. 
+        ; We compute it here to make sure we apply only once;
+        ; we can use the result for tests.
+        (result (if (xquoted? first_func) 
+                      (cdr first_func) (first_func obj)))
         )
-))
+        
+        (if (null? next_func)
+           result
+           ; if result was null, do not put it into list! 
+           (if (null? result)
+              (gtt-apply-func-list-to-obj next_func obj)
+              (list 
+                result
+                (gtt-apply-func-list-to-obj next_func obj)))
+        )
+)))
            
 ; The gtt-apply-func-list-to-obj-list routine is a simple 
 ; utility to apply a list of functions to a list of gtt objects.
 ; The 'function list' should be either:
 ;  -- a function that takes a single object as an argument
 ;  -- a double-quoted string
+; It returns a list of the result of applying each function
+; to the object, omitting null results from the list
 ; 
 (define (gtt-apply-func-list-to-obj-list func_list obj_list) 
    (let ( (parent_obj (car obj_list))
           (next_obj   (cdr obj_list))
         )
-   
-        (list
-           ; If parent is a list, then tehcnically, its an error.
-			  ; but sometimes things seem to get oddly nested, so
-			  ; just handle this without blinking.  Although its
-			  ; probably hiding errors elsewhere.   XXX
-			  ; (maybe this should be fixed someday ?)
-           (if (list? parent_obj) 
-                (gtt-apply-func-list-to-obj-list func_list parent_obj))
-
-           ; if parent is a singleton, then its a obj 
-           ; apply the column functions to it
-           (if (not (pair? parent_obj))
-               (gtt-apply-func-list-to-obj func_list parent_obj)) 
-               
-           ; and if there are more objs, do them
-           (if (not (null? next_obj))
-                (gtt-apply-func-list-to-obj-list func_list next_obj))
+   (let (
+        ; appre is the result of the evaluation. 
+        ; We compute it here to make sure we apply only once;
+        ; we can use the result for tests.
+        (appres (if (list? parent_obj)
+                    ; if parent is a list, then technically its an error.
+                    ; however, sometimes things are oddly nested, so
+                    ; we go ahead and handle this case.  Although its
+                    ; probably hiding errors elsewhere.  (possibly
+                    ; errors in user-defined funcs XXX)
+                    (gtt-apply-func-list-to-obj-list func_list parent_obj)
+                    (gtt-apply-func-list-to-obj func_list parent_obj)) 
+                )
         )
-))
+        (if (null? next_obj)
+            appres
+            (if (null? appres)
+                (gtt-apply-func-list-to-obj-list func_list next_obj)
+                (list appres
+                     (gtt-apply-func-list-to-obj-list func_list next_obj))
+            )
+         )
+)))
 
 ;; ---------------------------------------------------------     
 ; The gtt-show-projects is syntatic sugar for displaying a 
