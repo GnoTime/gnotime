@@ -1,5 +1,5 @@
 /*   Generate gtt-parsed html output for GnoTime - a time tracker
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,6 +34,18 @@
 #include "query.h"
 #include "util.h"
 
+
+/* Design problems:
+ * The way this is currently defined, there is no type safety, and
+ * we could easily be slipping the wrong addresses to the wrong places.
+ * We really should add a type identifier to the the project,
+ * task and interval objects.  This type should be in the cdr
+ * part of the object, so that it will stop recursion and list-walking.
+ * (The utility routines in gtt.scm walk lists and trees; thus,
+ * putting a non-pointer in the cdr is an effective way to stop the 
+ * recursion.)  The 'daily-totals' object already follows this 
+ * convention.
+ */
 
 /* ============================================================== */
 /* Seems to me like guile screwed the pooch; we need a global! */
@@ -284,6 +296,18 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 			do_show_scm (ghtml, node);
 			node_list = gh_cdr (node_list);
 		}
+	}
+	else
+	if (SCM_BOOLP(node))
+	{
+		const char *str;
+		if (SCM_FALSEP(node)) str = _("False");
+		else str = _("True");
+		(ghtml->write_stream) (ghtml, str, strlen(str), ghtml->user_data);
+	}
+	else
+	{
+		g_warning ("Don't know how to gtt-show this type\n");
 	}
 
 	/* We could return the printed string, but I'm not sure why.. */
@@ -554,6 +578,10 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		print_date (buff, 100, rptdate);
 	   node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, rpt);
+
+		/* Put a data type in the cdr slot */
+		node = gh_str2scm ("daily", 5);
+		rpt = gh_cons (rpt, node);
 		
 		rc = gh_cons (rpt, rc);
 	}
