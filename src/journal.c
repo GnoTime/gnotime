@@ -465,9 +465,15 @@ on_close_clicked_cb (GtkWidget *w, gpointer data)
 	/* close the main journal window ... everything */
 	gtt_project_remove_notifier (wig->prj, redraw, wig);
 	edit_interval_dialog_destroy (wig->edit_ivl);
-	gtk_widget_destroy (wig->top);
+
+	/* XXX if we call destroy here, we get some insane hang
+	 * in mallopt deep in pango.  So don't destroy; although
+	 * this might leak memory?  Hide instead. */
+	// gtk_widget_destroy (wig->top);
+	gtk_widget_hide (wig->top);
 	gtt_ghtml_destroy (wig->gh);
 	g_free (wig->filepath);
+	
 	g_free (wig);
 }
 
