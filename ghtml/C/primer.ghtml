@@ -75,10 +75,10 @@ Some sample scheme forms, and their output:
      This allows good-looking to be created.
      Note that html markup does pass through transparently:
      <br><br> 
-     <tt>(gtt-show '(yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
-         duude&lt;/b&gt;)))</tt>  prints the following:
+     <tt>(gtt-show '"yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
+         duude&lt;/b&gt;)")</tt>  prints the following:
      <br>
-     <?scm (gtt-show '(yabba dabba <i>do</i> (<b>eh duude</b>))) ?>
+     <?scm (gtt-show '"yabba dabba <i>do</i> (<b>eh duude</b>)") ?>
      <br><br>
 
 <li> Scheme is a modern, advanced programming language, 
@@ -114,7 +114,6 @@ Some sample scheme forms, and their output:
      allowing data to be maniupulated.  The following show some of the
      available primitives:  (XXX this should be changed into a complete 
      list, for reference purposes).
-     
      <br><br>
      <tt>(gtt-projects)</tt> returns the tree of projects,
      which can be used with the getters: for example:
