@@ -702,238 +702,6 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 }
 
 /* ============================================================== */
-/* write out a list of projects */
-
-static SCM
-do_show_project_header (GttGhtml *ghtml)
-{
-	int i;
-	GString *p;
-	char * ps;
-	gboolean output_html = ghtml->show_html;
-	gboolean show_links = ghtml->show_links;
-
-	if (NULL == ghtml->write_stream) return;
-
-	p = g_string_new (NULL);
-	if (output_html) p = g_string_append (p, "<table border=1>");
-
-	/* write out the table header */
-	if (output_html && (0 < ghtml->nproj_cols))
-	{
-		p = g_string_append (p, "<tr>");
-	}
-	for (i=0; i<ghtml->nproj_cols; i++)
-	{
-		if (output_html) p = g_string_append (p, "<th>");
-		switch (ghtml->proj_cols[i]) 
-		{
-			case TITLE:
-				PROJ_COL_TITLE (_("Title"));
-				break;
-			case DESC:
-				PROJ_COL_TITLE (_("Description"));
-				break;
-			case PNOTES:
-				PROJ_COL_TITLE (_("Notes"));
-				break;
-			case EST_START:
-				PROJ_COL_TITLE (_("Estimated Start Date"));
-				break;
-			case EST_END:
-				PROJ_COL_TITLE (_("Estimated End Date"));
-				break;
-			case DUE_DATE:
-				PROJ_COL_TITLE (_("Due Date"));
-				break;
-			case SIZING:
-				PROJ_COL_TITLE (_("Sizing"));
-				break;
-			case PERCENT:
-				PROJ_COL_TITLE (_("Percent Complete"));
-				break;
-			case URGENCY:
-				PROJ_COL_TITLE (_("Urgency"));
-				break;
-			case IMPORTANCE:
-				PROJ_COL_TITLE (_("Importance"));
-				break;
-			case STATUS:
-				PROJ_COL_TITLE (_("Status"));
-				break;
-			default:
-				PROJ_COL_TITLE (_("No Default Value"));
-		}
-		p = g_string_append (p, ghtml->delim);	
-		if (output_html) p = g_string_append (p, "</th>");
-	}
-	p = g_string_append (p, "</tr>\r\n");
-
-	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
-
-	g_string_free (p, FALSE);
-	
-	return SCM_UNSPECIFIED;  
-}
-
-static SCM
-do_show_project_footer (GttGhtml *ghtml)
-{
-	gboolean output_html = ghtml->show_html;
-
-	if (NULL == ghtml->write_stream) return;
-	
-	if (output_html) 
-	{
-		char * ps = "</table>\n";
-		(ghtml->write_stream) (ghtml, ps, strlen(ps), ghtml->user_data);
-	}
-
-	return SCM_UNSPECIFIED;  
-}
-
-
-static SCM
-do_show_project (GttGhtml *ghtml, GttProject *prj)
-{
-	int i;
-	GList *node;
-	char buff [100];
-	GString *p;
-	char * ps;
-	gboolean output_html = ghtml->show_html;
-	gboolean show_links = ghtml->show_links;
-	SCM rc =  SCM_UNSPECIFIED;  
-	
-	if (NULL == ghtml->write_stream) return rc; 
-
-	/* A cheesy hack, but we don't show projects that are completed
-	 * or 100 % complete.  That's why this is called a todo list.
-	 * XXX hack alert -- this should be replaced by a generic query,
-	 * maybe/possibly/probably re-written in scheme. 
-	 */
-	if (100 <= gtt_project_get_percent_complete (prj)) return rc;
-	if (GTT_CANCELLED == gtt_project_get_status (prj)) return rc;
-	if (GTT_COMPLETED == gtt_project_get_status (prj)) return rc;
-
-	p = g_string_new (NULL);
-
-	/* write the project data */
-	if (output_html && (0 < ghtml->nproj_cols))
-	{
-		p = g_string_append (p, "<tr>");
-	}
-	for (i=0; i<ghtml->nproj_cols; i++)
-	{
-		const char *pp;
-		time_t start, end, due;
-		int ival;
-		char buff[100];
-		GttRank rank;
-		GttProjectStatus status;
-
-		if (output_html) p = g_string_append (p, "<td align=left>");
-		switch (ghtml->proj_cols[i]) 
-		{
-			case TITLE:
-				if (show_links) 
-				{
-					g_string_append_printf (p, "<a href=\"gtt:proj:0x%x\">", prj);
-				}
-				pp = gtt_project_get_title(prj);
-				if (!pp || !pp[0]) pp = _("(empty)");
-				p = g_string_append (p, pp);
-				if (show_links) p = g_string_append (p, "</a>");
-				break;
-
-			case DESC:
-				pp = gtt_project_get_desc(prj);
-				if (!pp || !pp[0]) pp = _("(empty)");
-				p = g_string_append (p, pp); 
-				break;
-
-			case PNOTES:
-				pp = gtt_project_get_notes(prj);
-				if (!pp || !pp[0]) pp = _("(empty)");
-				p = g_string_append (p, pp); 
-				break;
-				
-			case EST_START:
-				start = gtt_project_get_estimated_start (prj);
-				print_date_time (buff, 100, start);
-				p = g_string_append (p, buff);
-				break;
-
-			case EST_END:
-				end = gtt_project_get_estimated_end (prj);
-				print_date_time (buff, 100, end);
-				p = g_string_append (p, buff);
-				break;
-
-			case DUE_DATE:
-				due = gtt_project_get_due_date (prj);
-				print_date_time (buff, 100, due);
-				p = g_string_append (p, buff);
-				break;
-
-			case SIZING:
-				ival = gtt_project_get_sizing (prj);
-				g_string_append_printf (p, "%d", ival);
-				break;
-				
-			case PERCENT:
-				ival = gtt_project_get_percent_complete (prj);
-				g_string_append_printf (p, "%d", ival);
-				break;
-
-			case URGENCY:
-				rank = gtt_project_get_urgency (prj);
-				switch (rank) {
-					case GTT_UNDEFINED: p = g_string_append (p, _("Undefined")); break;
-					case GTT_LOW:       p = g_string_append (p, _("Low")); break;
-					case GTT_MEDIUM:    p = g_string_append (p, _("Normal")); break;
-					case GTT_HIGH:      p = g_string_append (p, _("Urgent")); break;
-				}
-				break;
-				
-			case IMPORTANCE:
-				rank = gtt_project_get_importance (prj);
-				switch (rank) {
-					case GTT_UNDEFINED: p = g_string_append (p, _("Undefined")); break;
-					case GTT_LOW:       p = g_string_append (p, _("Low")); break;
-					case GTT_MEDIUM:    p = g_string_append (p, _("Medium")); break;
-					case GTT_HIGH:      p = g_string_append (p, _("Important")); break;
-				}
-				break;
-				
-			case STATUS:
-				status = gtt_project_get_status (prj);
-				switch (status) {
-					case GTT_NOT_STARTED: p = g_string_append (p, _("Not Started")); break;
-					case GTT_IN_PROGRESS: p = g_string_append (p, _("In Progress")); break;
-					case GTT_ON_HOLD:     p = g_string_append (p, _("On Hold")); break;
-					case GTT_CANCELLED:   p = g_string_append (p, _("Cancelled")); break;
-					case GTT_COMPLETED:   p = g_string_append (p, _("Completed")); break;
-				}
-				break;
-
-			default:
-				break;
-		}
-		if (output_html) p = g_string_append (p, "</td>");
-	}
-
-	p = g_string_append (p, ghtml->delim);
-	if (output_html) p = g_string_append (p, "</tr>\n");
-	
-	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
-
-	g_string_free (p, FALSE);
-
-	return rc;
-}
-
-/* ============================================================== */
 
 static SCM 
 gtt_hello (void)
@@ -1196,22 +964,6 @@ show_export (SCM col_list)
 	return rc;
 }
 
-static SCM
-show_project (SCM proj_list, SCM col_list)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	SCM rc;
-	
-	SCM_ASSERT ( SCM_CONSP (proj_list), proj_list, SCM_ARG1, "gtt-show-project");
-	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG2, "gtt-show-project");
-	
-	rc = decode_scm_col_list (ghtml, col_list);
-	rc = do_show_project_header (ghtml);
-	rc = do_apply_on_project (ghtml, proj_list, do_show_project); 
-	rc = do_show_project_footer (ghtml);
-	return rc;
-}
-
 
 /* ============================================================== */
 /* This routine accepts an SCM node, and 'prints' it out.
@@ -1373,6 +1125,40 @@ RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
 RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
 RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
 
+
+/* ============================================================== */
+/* Handle re_project_title in the almost-standard way,
+ * i.e. as
+ * RET_PROJECT_STR (ret_project_title, gtt_project_get_title) 
+ * except that we need to handle url links as well. 
+ */
+static SCM
+get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
+{
+	if (ghtml->show_links)
+	{
+		GString *str;
+		str = g_string_new (NULL);
+		g_string_append_printf (str, "<a href=\"gtt:proj:0x%x\">", prj);
+		g_string_append (str, gtt_project_get_title (prj)); 
+		g_string_append (str, "</a>");
+		return gh_str2scm (str->str, str->len);
+	}
+	else 
+	{
+		const char * str = gtt_project_get_title (prj); 
+		return gh_str2scm (str, strlen (str));
+	}
+}
+
+static SCM
+ret_project_title_link (SCM proj_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_project (ghtml, proj_list, get_project_title_link_scm);
+}
+
+/* ============================================================== */
 
 static const char * 
 get_urgency (GttProject *prj) 
@@ -1578,11 +1364,11 @@ register_procs (void)
 	gh_new_procedure("gtt-show-table",         show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",       show_invoice,   1, 0, 0);
 	gh_new_procedure("gtt-show-export",        show_export,    1, 0, 0);
-	gh_new_procedure("gtt-show-project",       show_project,   2, 0, 0);
 	gh_new_procedure("gtt-show",               show_scm,       1, 0, 0);
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
+	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
 	gh_new_procedure("gtt-project-notes",      ret_project_notes,      1, 0, 0);
 	gh_new_procedure("gtt-project-urgency",    ret_project_urgency,    1, 0, 0);
