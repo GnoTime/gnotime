@@ -66,6 +66,9 @@ struct gtt_ghtml_s
 	/* Flag -- add html markup, or not */
 	gboolean show_html;
 
+	/* field delimiter, for tab/comma delim */
+	char * delim;
+
 	/* table layout info */
 	int ntask_cols;
 	TableCol task_cols[NCOL];
@@ -260,7 +263,9 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("No Default Value"));
 		}
+		p = g_stpcpy (p, ghtml->delim);	
 	}
+	p = g_stpcpy (p, "\r\n");
 
 	if (output_html && (0 < ghtml->ninvl_cols))
 	{
@@ -291,6 +296,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 	{
 		p = g_stpcpy (p, "</th></tr>");
 	}
+	p = g_stpcpy (p, "\r\n");
 
 	(ghtml->write_stream) (ghtml, buff, p-buff, ghtml->user_data);
 
@@ -459,11 +465,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					if (output_html) p = g_stpcpy (p, "<td>");
 					p = g_stpcpy (p, _("Error - Unknown"));
 			}
+			p = g_stpcpy (p, ghtml->delim);
 		}
 
 		if (0 < ghtml->ntask_cols)
 		{
 			if (output_html) p = g_stpcpy (p, "</td></tr>");
+			p = g_stpcpy (p, "\r\n");
 			(ghtml->write_stream) (ghtml, buff, p-buff, ghtml->user_data);
 		}
 		
@@ -549,10 +557,12 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 			}
 
 			if (output_html) p = g_stpcpy (p, "</td></tr>");
+			p = g_stpcpy (p, ghtml->delim);
 			len = p - buff;
 			(ghtml->write_stream) (ghtml, buff, len, ghtml->user_data);
 		}
 
+		p = g_stpcpy (p, "\r\n");
 	}
 	
 	if (output_html) p = "</table>";
@@ -785,12 +795,20 @@ show_export (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_global_hack;
 	gboolean save_show_html = ghtml->show_html;
+	char *save_delim = ghtml->delim;
+	
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-export");
 	rc = decode_scm_col_list (ghtml, col_list);
+	
 	ghtml->show_html = FALSE;
+	ghtml->delim = "\t";
+	
 	do_show_table (ghtml, ghtml->prj, FALSE, FALSE);
+	
 	ghtml->show_html = save_show_html;
+	ghtml->delim = save_delim;
+	
 	return rc;
 }
 
@@ -1003,6 +1021,7 @@ gtt_ghtml_new (void)
 	p = g_new0 (GttGhtml, 1);
 
 	p->show_html = TRUE;
+	p->delim = "";
 
 	p->prj = NULL;
 	p->ninvl_cols = 0;
