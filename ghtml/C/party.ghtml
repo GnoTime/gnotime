@@ -2,76 +2,278 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Journal - <?scm (gtt-show-project-title) ?></title>
 <?scm (gtt-include "gtt-style.css") ?>
+<title>GnoTime: Hello World!</title>
 </head>
-<body bgcolor="#c8c8d3">
-<img "src=gnotime-logo.png" align="right">
-<center>
-<h1>Journal for 
+<body>
+<a href="http://gttr.sourceforge.net/">
+<img src="gnotime-logo.png" align="right" border="0" width="155" height="28"></a>
+<h1>Custom Report Primer</h1>
+
+<p>
+You can design and use custom reports with GnoTime 
+rather easily if you know a bit of basic HTML.   
+If you also know scheme, then the world is at 
+your feet, since the report generator uses guile 
+to interpret the embedded scheme in a report template.
+</p>
+<p>
+After designing your own report template, you can add it to 
+GnoTime by picking the menu entry 
+<b>'Reports' ... 'New Report'</b>
+and entering the filename for the  template.
+</p>
+<p>
+The report template consists of standard HTML markup
+(including newer HTML features, such as CSS), with 
+embedded scheme markup to provide project and diary display. 
+GnoTime includes some built-in scheme primitives
+for generating HTML tables for projects and diary entries. 
+This page shows some examples; you can view the HTML source for
+this example primer by viewing 'primer.ghtml' (probably installed
+at <tt>/usr/share/gnotime/ghtml/C/primer.ghtml</tt>)
+</p>
+<p>
+<a href="http://gttr.sourceforge.net/">
+<img src="gnotime-logo.png" align="right" border="0" width="155" height="28"></a>
+Yes, images using standard HTML markup are now supported.
+You should see a GnoTime PNG logo on your right.
+</p>
+<p>
+Some sample scheme forms, and their output:
+</p>
+
+<ul>
+<li> <tt>(gtt-hello)</tt>  prints the following:
+     <b><i><?scm  (gtt-hello) ?></i></b>
+     <br><br>
+
+<li> <tt>(gtt-show-project-title)</tt>  prints the following:
+     <b><i><?scm  (gtt-show-project-title) ?></i></b>
+     <br><br>
+
+<li> <tt>(gtt-show-project-desc)</tt>  prints the following:
+     <b><i><?scm  (gtt-show-project-desc) ?></i></b>
+     <br><br>
+
+<li> <tt>(gtt-show (gtt-project-notes (gtt-selected-project)))</tt>  
+     prints the notes for the selected project, which are:
+     <br><b><i>
+     <?scm  (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+     </i></b><br>
+     Note the slightly more complicated form of the above: 
+     <tt>gtt-selected-project</tt> denotes the project that is currently
+     selected in the GnoTime main window.  <tt>gtt-project-notes</tt>
+     is a function that takes a project as an argument, and returns the
+     notes on that project.  <tt>gtt-show</tt> is a kind of 'print'
+     statement (see below for more examples of <tt>gtt-show</tt>).
+     <br><br>
+
+<li> Tables showing lists of projects, tasks and intervals can be
+     created and displayed.  The file <tt>todo.ghtml</tt> shows a 
+     working example of a list of projects, while <tt>journal.ghtml</tt>
+     and <tt>bigtable.ghtml</tt> show lists of tasks and intervals.
+     The file <tt>invoice.ghtml</tt> shows how lists of tasks can be 
+     selectively filtered, so that only certain tasks meeting certain
+     criteria are displayed.
+     <br><br>
+
+<li> The primitive <tt>gtt-show</tt> acts as the ghtml analog of the 
+     scheme primitive <tt>display</tt>, in that it merely prints 
+     the result of evaluating an expression. 
+     It differs, however, in one important way: it omits parenthesis.
+     This allows good-looking to be created.
+     Note that html markup does pass through transparently:
+     <br><br> 
+     <tt>(gtt-show '"yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
+         duude&lt;/b&gt;)")</tt>  prints the following:
+     <br>
+     <?scm (gtt-show '"yabba dabba <i>do</i> (<b>eh duude</b>)") ?>
+     <br><br>
+
+<li> Scheme is a modern, advanced programming language, 
+     based on the newest and most advanced programming principles 
+     today.  Scheme resembles LISP, somewhat.  For example,
+     <tt>(gtt-show (+ 2 2))</tt>  prints the following:
+     <?scm (gtt-show (+ 2 2)) ?>
+     <br><br>
+
+<li> The primitive <tt>gtt-show</tt> can be used anywhere,
+     such as this (slowly converging) Leibniz series expression 
+     for Pi:
+     <br><br>
+     <tt>(define (pi-sum a b) (if (> a b) 0 
+     <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
+     <br>
+     <?scm (define (pi-sum a b) (if (> a b) 0 (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) )) ?>
+   
+     (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) ))
+     <br>
+     <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) )) ?>
+     (pi-approx)
+     </tt>
+     <br> <br>
+
+     prints the following:
+     <?scm (pi-approx) ?>
+     <br><br>
+
+<li> You can get access to the raw project/task/interval data 
+     from scheme.  Currently, you can only have read-only access to the
+     data from scheme, allowing reports to be generated, but not
+     allowing data to be maniupulated.  The following show some of the
+     available primitives:  (XXX this should be changed into a complete 
+     list, for reference purposes).
+     <br><br>
+     <tt>(gtt-projects)</tt> returns the tree of projects,
+     which can be used with the getters: for example:
+     <tt>(gtt-show (gtt-project-title (gtt-projects)))</tt>
+     shows:
+     <br><br>
+     <b><i>
+     <?scm (gtt-show (gtt-project-title (gtt-projects))) ?>
+     </i></b>
+
+     <br><br>
+     We've already mentioned <tt>(gtt-selected-project)</tt>
+     before; it returns the project that is currently selected
+     in the main window.  There is also the <tt>(gtt-linked-project)</tt>
+     primitive, which returns the project that was linked to create
+     this report.  The are frequently the same, but need not be.
+     For example, select a different project, and then hit the 
+     refresh button on this page:
+     <br><br>
+     This is the linked project:
+         <b><?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?></b>
+     
+     <br>
+     This is the selected project:
+         <b><?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?></b>
+     <br><br>
+
+     <br><br>
+     The following project attributes are supported:
+     <ul>
+     <li><tt>(gtt-project-title prj)</tt>:
+         <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-title-link prj)</tt>:
+         <?scm (gtt-show (gtt-project-title-link (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-desc prj)</tt>:
+         <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-notes prj)</tt>:
+         <?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-urgency prj)</tt>:
+         <?scm (gtt-show (gtt-project-urgency (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-importance prj)</tt>:
+         <?scm (gtt-show (gtt-project-importance (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-status prj)</tt>:
+         <?scm (gtt-show (gtt-project-status (gtt-selected-project))) ?>
+         
+     <li><tt>(gtt-project-estimated-start prj)</tt>:
+         <?scm (gtt-show (gtt-project-estimated-start (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
+     <li><tt>(gtt-project-estimated-end prj)</tt>:
+         <?scm (gtt-show (gtt-project-estimated-end (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
+     <li><tt>(gtt-project-due-date prj)</tt>:
+         <?scm (gtt-show (gtt-project-due-date (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
+
+     <li><tt>(gtt-project-sizing prj)</tt>:
+         <?scm (gtt-show (gtt-project-sizing (gtt-selected-project))) ?>
+         <i>(seconds)</i>
+     <li><tt>(gtt-project-percent-complete prj)</tt>:
+         <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
+         <i>(percentage)</i>
+     </ul>
+
+     Subprojects of a project can be obtained with the 
+     <tt>(gtt-project-subprojects prj)</tt> routine.
+     For example, here is a listing of the subprojects of the currently
+     selected project:
+     <ul>
+     <?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
+               (list ''"<li><b>"  gtt-project-title   ''"</b> -- \n"
+                        gtt-project-desc   ''" --\n"
+                        gtt-project-notes   ''"</li>\n"
+                 ))
+     ?>
+     </ul>
+
+     <p>
+     Tasks (aka 'diary entries') can be obtained with the 
+     <tt>(gtt-tasks prj)</tt> routine.
+     The various task attributes can be obtained with getters that take
+     a task (or a task list) as an argument:
+     <ul>
+     <li><tt>(gtt-task-memo tsk)</tt>:
+         <?scm (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) ?>
+     <li><tt>(gtt-links-off)(gtt-task-memo tsk)(gtt-links-on)</tt>:
+         <?scm (gtt-links-off) (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) (gtt-links-on) ?>
+     <li><tt>(gtt-task-notes tsk)</tt>:
+         <?scm (gtt-show (gtt-task-notes (gtt-tasks (gtt-selected-project)))) ?>
+     </ul>
+
+
+
+</ul>
+<h1>Hints and Tips</h1>
+<ul>
+<li>wrong-type-arg: this scheme error message can occur if you quoted 
+    a string literal incorrectly: be sure to use two single quotes, 
+    followed by a double-quoted string: for example: ''"some string" 
+</ul>
+
+<p>
+
+<h1>More Examples</h1>
+Here's an axample table for <b>
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
-</h1>
-</center>
+</b>
+showing some of the different task getters 
+that can be used to build a report.  
+<br><br>
 
-<!-- If you do not like how this table is laid out, please feel 
-     free to modify it.  The markup below may seem a little confusing,
-     but hopefully not too confusing.  Just remember to start string
-     literals with ''" and end them with ".  \n is the usual new-line
-     escape character; other C-langauage escapes apply: \t for tab,
-     \r for carriage return, etc.
-
-     Note also you can get pure-ascii output by removing all the html
-     markup! Or you can get other file formats by inserting appropriate 
-     markup.
--->
-
+<table border=1>
+<tr>
+<th>Diary Entry</th>
+<th>Notes</th>
+<th>Billing Status</th>
+<th>Billable</th>
+<th>Bill Rate</th>
+<th>Total Time</th>
+<th>Value</th>
+<th>Billable Value</th>
+</tr>
 <?scm
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
-        ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=500 border=0 cellpadding=4><tr><td>\n"
-        ''"<div class=gnotime-diary-memo>"
-        ''"<b><big>"
-               gtt-task-memo 
-        ''"</big></b>"
-        ''"</div>\n"
-        ''"<div class=gnotime-diary-notes>\n"
-               gtt-task-notes 
-        ''"\n</div>\n"
-        ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=490 border=0 cellpadding=4>\n"
-        ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
-        ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
-        ''"</tr>\n"
-         (lambda (task) (gtt-ivls task
-         (list
-               ''"<tr>\n"
-               ; the first html table column shows the start date/time
-               ''"<td class=gnotime-start-stop-table-start>"  
-                     gtt-interval-start-str 
-               ''"</td>\n"
-               
-               ; the second html table column shows the stop date/time
-               ''"<td class=gnotime-start-stop-table-stop>"  
-                     gtt-interval-stop-str 
-               ''"</td>\n"
-               
-               ; the third html table column shows the elapsed time
-               ''"<td class=gnotime-start-stop-table-elapsed>"  
-                   gtt-interval-elapsed-str  
-               ''"</td>\n</tr>\n"
-         )))
-        ''"</table>"
-        ''"</td></tr></table><br><br>\n"
+        ''"<tr>"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-notes      ''"</td>\n"
+        ''"<td>"  gtt-task-billstatus ''"</td>\n"
+        ''"<td>"  gtt-task-billable   ''"</td>\n"
+        ''"<td>"  gtt-task-billrate   ''"</td>\n"
+        ''"<td>"  gtt-task-time-str   ''"</td>\n"
+        ''"<td>"  gtt-task-value-str  ''"</td>\n"
+        ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
+        ''</tr>
     )
 )
 
-?>
 
-<br><br>
-That's all Folks!
+?>
+</table>
+
+<div align=right>
+Brought to you by ...  <br>
+<a href="http://gttr.sourceforge.net/">
+<img src="gnotime-logo.png" border="0" width="155" height="28">
+</a>
+</div>
 </body>
 </html>
+
