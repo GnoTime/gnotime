@@ -25,6 +25,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <gnc-date.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "gtt.h"
@@ -365,7 +367,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		if ((INT_MAX > x) && (-INT_MAX < x) &&
 			 ((x-(double)ix) < 4.0*x*DBL_EPSILON) )
 		{
-			sprintf (buf, "%d", ix);
+			sprintf (buf, "%ld", ix);
 		}
 		else
 		{
@@ -757,7 +759,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
-		print_date (buff, 100, rptdate);
+		qof_print_date_buff (buff, 100, rptdate);
 		node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, rpt);
 
@@ -855,7 +857,7 @@ get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
 	{
 		GString *str;
 		str = g_string_new (NULL);
-		g_string_append_printf (str, "<a href=\"gtt:proj:0x%x\">", prj);
+		g_string_append_printf (str, "<a href=\"gtt:proj:0x%lx\">", (long) prj);
 		g_string_append (str, gtt_project_get_title (prj)); 
 		g_string_append (str, "</a>");
 		return gh_str2scm (str->str, str->len);
@@ -880,6 +882,7 @@ get_urgency (GttProject *prj)
 		case GTT_LOW:       return _("Low"); 
 		case GTT_MEDIUM:    return _("Normal");
 		case GTT_HIGH:      return _("Urgent"); 
+		case GTT_UNDEFINED: return _("Undefined");
 	}
 	return _("Undefined");
 }
@@ -893,6 +896,7 @@ get_importance (GttProject *prj)
 		case GTT_LOW:       return _("Low"); 
 		case GTT_MEDIUM:    return _("Medium");
 		case GTT_HIGH:      return _("Important"); 
+		case GTT_UNDEFINED: return _("Undefined");
 	}
 	return _("Undefined");
 }
@@ -964,7 +968,7 @@ get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 	{
 		GString *str;
 		str = g_string_new (NULL);
-		g_string_append_printf (str, "<a href=\"gtt:task:0x%x\">", tsk);
+		g_string_append_printf (str, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
 		g_string_append (str, gtt_task_get_memo (tsk)); 
 		g_string_append (str, "</a>");
 		return gh_str2scm (str->str, str->len);
@@ -1150,7 +1154,7 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	{
 		GString *str;
 		str = g_string_new (NULL);
-		g_string_append_printf (str, "<a href=\"gtt:interval:0x%x\">", ivl);
+		g_string_append_printf (str, "<a href=\"gtt:interval:0x%lx\">", (long) ivl);
 		g_string_append (str, buff); 
 		g_string_append (str, "</a>");
 		return gh_str2scm (str->str, str->len);
@@ -1167,8 +1171,6 @@ static SCM
 get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
-	
-	char buff[100];
 	time_t start, prev_stop;
 	
 	/* Caution! use of the last_ivl_time thing makes this 
@@ -1190,8 +1192,6 @@ static SCM
 get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
-	
-	char buff[100];
 	time_t stop, prev_start;
 	
 	/* Caution! use of the last_ivl_time thing makes this 
@@ -1214,7 +1214,7 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	char buff[100];
 
-	print_hours_elapsed (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
+	qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
 	return gh_str2scm (buff, strlen (buff));
 }
 
@@ -1416,7 +1416,6 @@ GttGhtml *
 gtt_ghtml_new (void)
 {
 	GttGhtml *p;
-	int i;
 
 	if (!is_inited)
 	{

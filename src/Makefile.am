@@ -80,7 +80,7 @@ noinst_HEADERS = 	\
 #	-DGTK_DISABLE_DEPRECATED	
 #	-DGNOME_DISABLE_DEPRECATED	
 
-AM_CFLAGS = -g           \
+AM_CFLAGS = -g -Wall     \
 	@CFLAGS@              \
 	${GNOTIME_CFLAGS}     \
 	${GCONF_CFLAGS}       \
