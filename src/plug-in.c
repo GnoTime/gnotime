@@ -28,13 +28,12 @@
 
 struct NewPluginDialog_s
 {
-	GladeXML *gtxml;
-	GnomeDialog *dialog;
-	GtkEntry *plugin_name;
-	GtkEntry *plugin_path;
-	GtkEntry *plugin_tooltip;
-	GnomeApp *app;
-
+	GladeXML  *gtxml;
+	GtkDialog *dialog;
+	GtkEntry  *plugin_name;
+	GtkEntry  *plugin_path;
+	GtkEntry  *plugin_tooltip;
+	GnomeApp  *app;
 };
 
 /* ============================================================ */
@@ -75,7 +74,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	NewPluginDialog *dlg = data;
 	GttPlugin *plg;
 
-	/* get the dialog contents */
+	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
 	path = gtk_entry_get_text (dlg->plugin_path);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
@@ -152,7 +151,7 @@ new_plugin_dialog_new (void)
 	gtxml = gtt_glade_xml_new ("glade/plugin.glade", "Plugin New");
 	dlg->gtxml = gtxml;
 
-	dlg->dialog = GNOME_DIALOG (glade_xml_get_widget (gtxml,  "Plugin New"));
+	dlg->dialog = GTK_DIALOG (glade_xml_get_widget (gtxml,  "Plugin New"));
 
 	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
 		GTK_SIGNAL_FUNC (new_plugin_create_cb), dlg);
@@ -171,7 +170,7 @@ new_plugin_dialog_new (void)
 	e = glade_xml_get_widget (gtxml, "plugin tooltip");
 	dlg->plugin_tooltip = GTK_ENTRY(e);
 
-	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dialog), TRUE);
+	gtk_widget_hide_on_delete (GTK_WIDGET(dlg->dialog));
 
 	return dlg;
 }
