@@ -1,11 +1,16 @@
-This template file defines a sample tab-delimited export for
 <?scm (gtt-show-project-title) ?>	<?scm (gtt-show-project-desc) ?>
 
-This is pretty broken, and really needs to be replaced by something
-along the lines of todo-export.ghtml, whicch works a *lot* better
-
-<?scm (gtt-show-export '($memo $task_time $billable 
-$billrate "Sample Column Title for the Billing Rate" 
-$value $bill_value))  ?>
-
-
+"Memo"	"Notes"	Billstatus	Billable	Billrate	Time	Value	Billvalue
+<?scm 
+      (gtt-show-tasks (gtt-tasks (gtt-linked-project)) 
+      (list 
+           ''"\""  gtt-task-memo               ''"\"\t"
+           ''"\""  gtt-task-notes              ''"\"\t"
+                   gtt-task-billstatus         ''"\t"
+                   gtt-task-billable           ''"\t"
+                   gtt-task-billrate           ''"\t"
+                   gtt-task-time-str           ''"\t"
+                   gtt-task-value-str          ''"\t"
+                   gtt-task-billable-value-str ''"\n"
+            ))
+?>
