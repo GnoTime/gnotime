@@ -638,13 +638,13 @@ printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(cti
 	/* Set the object type to be searched for */
 	qof_query_search_for (q, GTT_PROJECT_ID);
 
-	/* Describe the query to be performed.
-	 * We want to find all proejcts start date is later than x
-	 * and whose end date is less than y.
+	/* Describe the query to be performed.  We want to find all projects 
+	 * that had activity before the interval end, 
+	 * and had activity later than the interval start.
 	 */
 	 
 	/* Activity must preceed the 'latest end' */
-	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
+	param_list = qof_query_build_param_list (GTT_PROJECT_EARLIEST, 
 	                                            NULL);
 	pred_data = qof_query_int32_predicate (
 	                   QOF_COMPARE_LTE,         /* comparison to make */
