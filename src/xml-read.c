@@ -20,12 +20,14 @@
 
 #include <glib.h>
 #include <libxml/parser.h>
+#include <qof.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "err-throw.h"
 #include "gtt.h"
 #include "proj.h"
+#include "proj_p.h"
 #include "xml-gtt.h"
 
 
@@ -42,106 +44,116 @@
 /* =========================================================== */
 
 
-#define GET_TEXT(node)  ({					\
-	char * sstr = NULL;					\
-	xmlNodePtr text;					\
-	text = node->xmlChildrenNode;					\
-	if (!text) { 						\
-		gtt_err_set_code (GTT_FILE_CORRUPT);		\
-	}							\
-	else if (strcmp ("text", text->name)) {			\
-                gtt_err_set_code (GTT_FILE_CORRUPT);		\
-	} 							\
-	else sstr = text->content;				\
-	sstr;							\
+#define GET_TEXT(node)  ({                                   \
+   char * sstr = NULL;                                       \
+   xmlNodePtr text;                                          \
+   text = node->xmlChildrenNode;                             \
+   if (!text) {                                              \
+      gtt_err_set_code (GTT_FILE_CORRUPT);                   \
+   }                                                         \
+   else if (strcmp ("text", text->name)) {                   \
+      gtt_err_set_code (GTT_FILE_CORRUPT);                   \
+   }                                                         \
+   else sstr = text->content;                                \
+   sstr;                                                     \
 })
 
-#define GET_STR(SELF,FN,TOK)				\
-	if (0 == strcmp (TOK, node->name))		\
-	{						\
-		const char *str = GET_TEXT (node);	\
-		FN (SELF, str);				\
-	} 						\
-	else
+#define GET_STR(SELF,FN,TOK)                                 \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      FN (SELF, str);                                        \
+   }                                                         \
+   else
 
 
-#define GET_DBL(SELF,FN,TOK)				\
-	if (0 == strcmp (TOK, node->name))		\
-	{						\
-		const char *str = GET_TEXT (node);	\
-		double rate = atof (str);		\
-		FN (SELF, rate);			\
-	} 						\
-	else
+#define GET_DBL(SELF,FN,TOK)                                 \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      double rate = atof (str);                              \
+      FN (SELF, rate);                                       \
+   }                                                         \
+   else
 
-#define GET_INT(SELF,FN,TOK)				\
-	if (0 == strcmp (TOK, node->name))		\
-	{						\
-		const char *str = GET_TEXT (node);	\
-		int ival = atoi (str);			\
-		FN (SELF, ival);			\
-	} 						\
-	else
+#define GET_INT(SELF,FN,TOK)                                 \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      int ival = atoi (str);                                 \
+      FN (SELF, ival);                                       \
+   }                                                         \
+   else
 
-#define GET_TIM(SELF,FN,TOK)				\
-	if (0 == strcmp (TOK, node->name))		\
-	{						\
-		const char *str = GET_TEXT (node);	\
-		time_t tval = atol (str);		\
-		FN (SELF, tval);			\
-	} 						\
-	else
+#define GET_TIM(SELF,FN,TOK)                                 \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      time_t tval = atol (str);                              \
+      FN (SELF, tval);                                       \
+   }                                                         \
+   else
 
-#define GET_BOL(SELF,FN,TOK)				\
-	if (0 == strcmp (TOK, node->name))		\
-	{						\
-		const char *str = GET_TEXT (node);	\
-		gboolean bval = atol (str);		\
-		FN (SELF, bval);			\
-	} 						\
-	else
+#define GET_BOL(SELF,FN,TOK)                                 \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      gboolean bval = atol (str);                            \
+      FN (SELF, bval);                                       \
+   }                                                         \
+   else
 
-#define GET_ENUM_3(SELF,FN,TOK,A,B,C)				\
-	if (0 == strcmp (TOK, node->name))			\
-	{							\
-		const char *str = GET_TEXT (node);		\
-		int ival = GTT_##A;				\
-		if (!strcmp (#A, str)) ival = GTT_##A;		\
-		else if (!strcmp (#B, str)) ival = GTT_##B;	\
-		else if (!strcmp (#C, str)) ival = GTT_##C;	\
-                else gtt_err_set_code (GTT_UNKNOWN_VALUE);	\
-		FN (SELF, ival);				\
-	} 							\
-	else
+#define GET_GUID(SELF,FN,TOK)                                \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      GUID guid;                                             \
+      string_to_guid (str, &guid);                           \
+      FN (SELF, &guid);                                      \
+   }                                                         \
+   else
 
-#define GET_ENUM_4(SELF,FN,TOK,A,B,C,D)				\
-	if (0 == strcmp (TOK, node->name))			\
-	{							\
-		const char *str = GET_TEXT (node);		\
-		int ival = GTT_##A;				\
-		if (!strcmp (#A, str)) ival = GTT_##A;		\
-		else if (!strcmp (#B, str)) ival = GTT_##B;	\
-		else if (!strcmp (#C, str)) ival = GTT_##C;	\
-		else if (!strcmp (#D, str)) ival = GTT_##D;	\
-                else gtt_err_set_code (GTT_UNKNOWN_VALUE);	\
-		FN (SELF, ival);				\
-	} 							\
-	else
+#define GET_ENUM_3(SELF,FN,TOK,A,B,C)                        \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      int ival = GTT_##A;                                    \
+      if (!strcmp (#A, str)) ival = GTT_##A;                 \
+      else if (!strcmp (#B, str)) ival = GTT_##B;            \
+      else if (!strcmp (#C, str)) ival = GTT_##C;            \
+      else gtt_err_set_code (GTT_UNKNOWN_VALUE);             \
+      FN (SELF, ival);                                       \
+   }                                                         \
+   else
 
-#define GET_ENUM_5(SELF,FN,TOK,A,B,C,D,E)			\
-	if (0 == strcmp (TOK, node->name))			\
-	{							\
-		const char *str = GET_TEXT (node);		\
-		int ival = GTT_##A;				\
-		if (!strcmp (#A, str)) ival = GTT_##A;		\
-		else if (!strcmp (#B, str)) ival = GTT_##B;	\
-		else if (!strcmp (#C, str)) ival = GTT_##C;	\
-		else if (!strcmp (#D, str)) ival = GTT_##D;	\
-		else if (!strcmp (#E, str)) ival = GTT_##E;	\
-                else gtt_err_set_code (GTT_UNKNOWN_VALUE);	\
-		FN (SELF, ival);				\
-	} 							\
-	else
+#define GET_ENUM_4(SELF,FN,TOK,A,B,C,D)                      \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      int ival = GTT_##A;                                    \
+      if (!strcmp (#A, str)) ival = GTT_##A;                 \
+      else if (!strcmp (#B, str)) ival = GTT_##B;            \
+      else if (!strcmp (#C, str)) ival = GTT_##C;            \
+      else if (!strcmp (#D, str)) ival = GTT_##D;            \
+      else gtt_err_set_code (GTT_UNKNOWN_VALUE);             \
+      FN (SELF, ival);                                       \
+   }                                                         \
+   else
+
+#define GET_ENUM_5(SELF,FN,TOK,A,B,C,D,E)                    \
+   if (0 == strcmp (TOK, node->name))                        \
+   {                                                         \
+      const char *str = GET_TEXT (node);                     \
+      int ival = GTT_##A;                                    \
+      if (!strcmp (#A, str)) ival = GTT_##A;                 \
+      else if (!strcmp (#B, str)) ival = GTT_##B;            \
+      else if (!strcmp (#C, str)) ival = GTT_##C;            \
+      else if (!strcmp (#D, str)) ival = GTT_##D;            \
+      else if (!strcmp (#E, str)) ival = GTT_##E;            \
+      else gtt_err_set_code (GTT_UNKNOWN_VALUE);             \
+      FN (SELF, ival);                                       \
+   }                                                         \
+   else
 
 /* =========================================================== */
 
@@ -190,6 +202,7 @@ parse_task (xmlNodePtr task)
 	{
 		if (node->type != XML_ELEMENT_NODE) continue;
 
+		GET_GUID (tsk, gtt_task_set_guid, "guid")
 		GET_STR (tsk, gtt_task_set_memo, "memo")
 		GET_STR (tsk, gtt_task_set_notes, "notes")
 		GET_INT (tsk, gtt_task_set_bill_unit, "bill_unit")
@@ -240,6 +253,7 @@ parse_project (xmlNodePtr project)
 	{
 		if (node->type != XML_ELEMENT_NODE) continue;
 				
+		GET_GUID (prj, gtt_project_set_guid, "guid")
 		GET_STR (prj, gtt_project_set_title, "title")
 		GET_STR (prj, gtt_project_set_desc, "desc")
 		GET_STR (prj, gtt_project_set_notes, "notes")

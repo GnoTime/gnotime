@@ -22,12 +22,15 @@
 #include "config.h"
 
 #include <glib.h>
+#include <qof/qofinstance-p.h>   /* XXX this is wrong, must use public API */
 
 #include "proj.h"
 #include "timer.h"
 
 struct gtt_project_s 
 {
+	QofInstance inst;
+
 	/* State data, data that is saved/restored/transmitted */
 	/* 'protected' data, accessible through setters & getters */
 	/* This data defines the 'state' of the project. */
@@ -96,6 +99,8 @@ struct gtt_project_s
  */
 struct gtt_task_s 
 {
+	QofInstance inst;
+
 	GttProject *parent;       /* parent project */
 	char * memo;              /* invoiceable memo (customer sees this) */
 	char * notes;             /* internal notes (office private) */
@@ -117,5 +122,9 @@ struct gtt_interval_s
 	                       * seconds, typically 300, 3600 or 1/2 day */
 	int	running : 1;    /* boolean: is the timer running? */
 };
+
+/* Should not be used by outsiders; these are dangerous routines */
+void gtt_project_set_guid (GttProject *, const GUID *);
+void gtt_task_set_guid (GttTask *, const GUID *);
 
 #endif /* __GTT_PROJ_P_H__ */

@@ -21,6 +21,7 @@
 #define __GTT_PROJ_H__
 
 #include <glib.h>
+#include <qof.h>
 
 /* The data structures for GnoTime are written in a quasi-object-oriented
  * style.  All data is encapsulated in opaque structs, and can be accessed
@@ -88,6 +89,7 @@ typedef enum
 /* Query related things -- under construction */
 
 #define GTT_PROJECT_ID "GttProjectId"
+#define GTT_TASK_ID    "GttTaskId"
 
 #define GTT_PROJECT_EARLIEST "GttProjectEarliet"
 #define GTT_PROJECT_LATEST   "GttProjectLatest"
@@ -127,6 +129,8 @@ GttProject *	gtt_project_dup(GttProject *);
  *    project will dangle there -- don't loose it 
  */
 void 		gtt_project_remove(GttProject *p);
+
+const GUID * gtt_project_get_guid (GttProject *);
 
 void 		gtt_project_set_title(GttProject *, const char *);
 void 		gtt_project_set_desc(GttProject *, const char *);
@@ -489,6 +493,8 @@ int      gtt_project_list_total (void);
 GttTask *	gtt_task_new (void);
 GttTask *	gtt_task_copy (GttTask *);
 void 		gtt_task_destroy (GttTask *);
+
+const GUID * gtt_task_get_guid (GttTask *);
 
 void		gtt_task_set_memo (GttTask *, const char *);
 const char *	gtt_task_get_memo (GttTask *);

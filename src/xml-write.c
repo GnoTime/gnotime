@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <libxml/tree.h>
+#include <qof.h>
 #include <stdio.h>
 
 #include "err-throw.h"
@@ -70,6 +71,14 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 #define PUT_DBL(TOK,VAL)	{			\
 	char buff[80];					\
 	g_snprintf (buff, sizeof(buff), "%.18g", (VAL));\
+	node = xmlNewNode (NULL, TOK);			\
+	xmlNodeAddContent(node, buff);			\
+	xmlAddChild (topnode, node);			\
+}
+
+#define PUT_GUID(TOK,VAL)	{			\
+	char buff[80];					\
+	guid_to_string_buff ((VAL), buff);		\
 	node = xmlNewNode (NULL, TOK);			\
 	xmlNodeAddContent(node, buff);			\
 	xmlAddChild (topnode, node);			\
@@ -168,7 +177,7 @@ gtt_interval_list_to_dom_tree (GList *list)
 		xmlAddChild (topnode, node);
 	}
 
-   	return topnode;
+	return topnode;
 }
 
 /* ======================================================= */
@@ -185,6 +194,7 @@ gtt_xml_task_to_dom_tree (GttTask *task)
 
 	topnode = xmlNewNode (NULL, "gtt:task");
 
+	PUT_GUID ("guid", gtt_task_get_guid(task));
 	PUT_STR ("memo", gtt_task_get_memo(task));
 	PUT_STR ("notes", gtt_task_get_notes(task));
 	PUT_INT ("bill_unit", gtt_task_get_bill_unit(task));
@@ -244,6 +254,7 @@ gtt_xml_project_to_dom_tree (GttProject *prj)
 	xmlNodeAddContent(node, gtt_project_get_title(prj));
 	xmlAddChild (topnode, node);
 
+	PUT_GUID ("guid", gtt_project_get_guid(prj));
 	PUT_STR ("desc", gtt_project_get_desc(prj));
 	PUT_STR ("notes", gtt_project_get_notes(prj));
 	PUT_STR ("custid", gtt_project_get_custid(prj));

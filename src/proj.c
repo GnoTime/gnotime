@@ -20,13 +20,14 @@
 #include "config.h"
 
 #include <glib.h>
-#include <gnome.h>    /* only needed for definition of _() */
-/* #include <libintl.h> conflicts with <libgnome/gnome-i18n.h> on some systems */
+/* #include <gnome.h>  */  /* only needed for definition of _() */
+#include <libintl.h> /*conflicts with <libgnome/gnome-i18n.h> on some systems */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
 #include <qof.h>
+#include <qof/qofid-p.h>
 
 #include "err-throw.h"
 #include "log.h"
@@ -35,6 +36,9 @@
 #include "proj_p.h"
 #include "query.h"  /* temp hack for query */
 
+#define _(X) gettext(X)
+
+/* XXX replace this notifier by GObject signals someday */
 typedef struct notif_s 
 {
 	GttProjectChanged func;
@@ -43,6 +47,8 @@ typedef struct notif_s
 
 // hack alert -- plist should be made to belong to a book
 GList * plist = NULL;
+
+QofBook *global_book = NULL;
 
 static void proj_refresh_time (GttProject *proj);
 static void proj_modified (GttProject *proj);
@@ -102,6 +108,7 @@ gtt_project_new(void)
 	proj->id = next_free_id;
 	next_free_id ++;
 
+	qof_instance_init (&proj->inst, GTT_PROJECT_ID, global_book);
 	return proj;
 }
 
@@ -243,6 +250,18 @@ gtt_project_destroy(GttProject *proj)
 	g_free(proj);
 }
 
+void 
+gtt_project_set_guid (GttProject *prj, const GUID *guid)
+{
+	qof_entity_set_guid (&prj->inst.entity, guid);
+}
+
+ 
+const GUID *
+gtt_project_get_guid (GttProject *prj)
+{
+	return qof_entity_get_guid (&prj->inst.entity);
+}
 
 /* ========================================================= */
 /* set/get project titles and descriptions */
@@ -1562,8 +1581,8 @@ gtt_project_list_compute_secs (void)
 
 void
 gtt_project_add_notifier (GttProject *prj, 
-                          GttProjectChanged cb, 
-                          gpointer user_stuff)
+                       GttProjectChanged cb, 
+                       gpointer user_stuff)
 {
 	Notifier * ntf;
 
@@ -1577,8 +1596,8 @@ gtt_project_add_notifier (GttProject *prj,
 
 void
 gtt_project_remove_notifier (GttProject *prj, 
-                          GttProjectChanged cb, 
-                          gpointer user_stuff)
+                       GttProjectChanged cb, 
+                       gpointer user_stuff)
 {
 	Notifier * ntf;
 	GList *node;
@@ -1895,15 +1914,15 @@ prj_obj_order (GttProject *a, GttProject *b)
 
 static QofObject prj_object_def =
 {
-   interface_version: QOF_OBJECT_VERSION,
-   e_type:            GTT_PROJECT_ID,
-   type_label:        GTT_PROJECT_ID,
-   book_begin:        NULL,
-   book_end:          NULL,
-   is_dirty:          NULL,
-   mark_clean:        NULL,
-   foreach:           gtt_project_obj_foreach,
-   printable:         NULL,
+interface_version: QOF_OBJECT_VERSION,
+e_type:            GTT_PROJECT_ID,
+type_label:        GTT_PROJECT_ID,
+book_begin:        NULL,
+book_end:          NULL,
+is_dirty:          NULL,
+mark_clean:        NULL,
+foreach:           gtt_project_obj_foreach,
+printable:         NULL,
 };
 
 /* =========================================================== */
@@ -1927,8 +1946,10 @@ prj_obj_get_latest (GttProject *prj)
 gboolean 
 gtt_project_obj_register (void)
 {
-   /* Associate an ASCII name to each getter, as well as the return type */
-   static QofParam params[] = {
+	global_book = qof_book_new();
+
+/* Associate an ASCII name to each getter, as well as the return type */
+static QofParam params[] = {
 		{ GTT_PROJECT_EARLIEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_earliest, NULL},
 		{ GTT_PROJECT_LATEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_latest, NULL},
 		{ NULL },
@@ -1954,6 +1975,8 @@ gtt_task_new (void)
 	task->billstatus = GTT_BILL,
 	task->bill_unit = 900;
 	task->interval_list = NULL;
+
+	qof_instance_init (&task->inst, GTT_TASK_ID, global_book);
 	return task;
 }
 
@@ -1976,6 +1999,7 @@ gtt_task_copy (GttTask *old)
 	task->bill_unit = old->bill_unit;
 	task->interval_list = NULL;
 
+	qof_instance_init (&task->inst, GTT_TASK_ID, global_book);
 	return task;
 }
 
@@ -2086,11 +2110,9 @@ gtt_task_new_insert (GttTask *old)
 
 	if (!old) return NULL;
 
-	task = g_new0(GttTask, 1);
-	task->memo = g_strdup (_("New Diary Entry"));
-	task->notes = g_strdup ("");
+	task = gtt_task_new();
 
-	/* inherit the properties ... important for user */
+	/* Inherit the properties ... important for user */
 	task->billable = old->billable;
 	task->billrate = old->billrate;
 	task->billstatus = old->billstatus;
@@ -2111,6 +2133,18 @@ gtt_task_new_insert (GttTask *old)
 	if (is_running) gtt_project_timer_start (prj);
 	proj_refresh_time (prj);
 	return task;
+}
+
+void 
+gtt_task_set_guid (GttTask *tsk, const GUID *guid)
+{
+	qof_entity_set_guid (&tsk->inst.entity, guid);
+}
+
+const GUID *
+gtt_task_get_guid (GttTask *tsk)
+{
+	return qof_entity_get_guid (&tsk->inst.entity);
 }
 
 void
