@@ -18,14 +18,13 @@ Project Status</title>
 <?scm (gtt-show (gtt-project-notes (gtt-linked-project))) ?>
 </div>
 
-<h2>Project Status</h2>
-<p>
 <?scm 
    ;; print out a header showing the query status, 
    ;; but only if this report was invoked by the query generator.
 
    (if (gtt-did-query)
        (gtt-show (list
+          ''"<br><br>"
           ''"Results shown for projects that were active between dates"
                 (gtt-kvp-str '"earliest-end-date")
           ''"and"
@@ -36,20 +35,32 @@ Project Status</title>
 
 <br><br>
 
-<?scm (gtt-show-projects (gtt-linked-or-query-results)
+<?scm 
+    (define (do-show-status) 
+      (gtt-show-projects (gtt-linked-or-query-results)
       (list 
-            ''"<table class=gnotime-project-status bgcolor=#e0e0e0 width=98% border=0 cellpadding=4><tr><td>\n"
+            ''"<table class=gnotime-project-status 
+                    bgcolor=#e0e0e0 width=98% border=0 cellpadding=4><tr><td>\n"
             ''"<b>"       gtt-project-title   ''"</b>"
             ''" -- "      gtt-project-desc    ''"\n"
-            ''"<table class=gnotime-project-status-notes bgcolor=#f8f8f8 width=100% border=0 cellpadding=4><tr><td>\n"
+            ''"<table class=gnotime-project-status-notes 
+                   bgcolor=#f8f8f8 width=100% border=0 cellpadding=4><tr><td>\n"
                           gtt-project-notes   
             ''"</td></tr></table>\n\n"
             ''"</td></tr></table>\n\n"
             ''"<br><br>\n\n"
             ))
-?>
+    )
 
-<br><br>
+    (if (null? (gtt-linked-or-query-results)) 
+        (if (gtt-did-query)
+          (gtt-show '"<b><big>The query did not return any projects to be listed.</big></b>")
+          (gtt-show '"<b><big>There is no status to show, 
+                      the selected project has no sub-projects!</big></b>")
+    ))
+
+    (do-show-status)
+?>
 
 <div align=right>
 Brought to you by ...  <br>
