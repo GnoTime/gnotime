@@ -1373,6 +1373,54 @@ RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
 RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
 RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
 
+
+static const char * 
+get_urgency (GttProject *prj) 
+{
+	GttRank rank = gtt_project_get_urgency (prj);
+	switch (rank)
+	{
+		case GTT_LOW:       return _("Low"); 
+		case GTT_MEDIUM:    return _("Normal");
+		case GTT_HIGH:      return _("Urgent"); 
+		default:
+	}
+	return _("Undefined");
+}
+
+static const char * 
+get_importance (GttProject *prj) 
+{
+	GttRank rank = gtt_project_get_importance (prj);
+	switch (rank)
+	{
+		case GTT_LOW:       return _("Low"); 
+		case GTT_MEDIUM:    return _("Medium");
+		case GTT_HIGH:      return _("Important"); 
+		default:
+	}
+	return _("Undefined");
+}
+
+static const char * 
+get_status (GttProject *prj) 
+{
+	GttProjectStatus status = gtt_project_get_status (prj);
+	switch (status)
+	{
+		case GTT_NOT_STARTED:  return _("Not Started"); 
+		case GTT_IN_PROGRESS:  return _("In Progress"); 
+		case GTT_ON_HOLD:      return _("On Hold"); 
+		case GTT_CANCELLED:    return _("Cancelled"); 
+		case GTT_COMPLETED:    return _("Completed"); 
+		default:
+	}
+	return _("Undefined");
+}
+
+RET_PROJECT_STR (ret_project_urgency,    get_urgency)
+RET_PROJECT_STR (ret_project_importance, get_importance)
+RET_PROJECT_STR (ret_project_status,     get_status)
 		  
 #define RET_PROJECT_SIMPLE(RET_FUNC,DO_SIMPLE)                      \
 static SCM                                                          \
@@ -1525,18 +1573,21 @@ static int is_inited = 0;
 static void
 register_procs (void)
 {
-	gh_new_procedure("gtt-hello",                gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-journal",         show_journal,   1, 0, 0);
-	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
-	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
-	gh_new_procedure("gtt-show-export",          show_export,    1, 0, 0);
-	gh_new_procedure("gtt-show-project",         show_project,   2, 0, 0);
-	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
-	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
-	gh_new_procedure("gtt-projects",             ret_projects,   0, 0, 0);
-	gh_new_procedure("gtt-project-title",        ret_project_title, 1, 0, 0);
-	gh_new_procedure("gtt-project-desc",         ret_project_desc,  1, 0, 0);
-	gh_new_procedure("gtt-project-notes",        ret_project_notes, 1, 0, 0);
+	gh_new_procedure("gtt-hello",              gtt_hello,      0, 0, 0);
+	gh_new_procedure("gtt-show-journal",       show_journal,   1, 0, 0);
+	gh_new_procedure("gtt-show-table",         show_table,     1, 0, 0);
+	gh_new_procedure("gtt-show-invoice",       show_invoice,   1, 0, 0);
+	gh_new_procedure("gtt-show-export",        show_export,    1, 0, 0);
+	gh_new_procedure("gtt-show-project",       show_project,   2, 0, 0);
+	gh_new_procedure("gtt-show",               show_scm,       1, 0, 0);
+	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
+	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
+	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
+	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
+	gh_new_procedure("gtt-project-notes",      ret_project_notes,      1, 0, 0);
+	gh_new_procedure("gtt-project-urgency",    ret_project_urgency,    1, 0, 0);
+	gh_new_procedure("gtt-project-importance", ret_project_importance, 1, 0, 0);
+	gh_new_procedure("gtt-project-status",     ret_project_status,     1, 0, 0);
 }
 
 
