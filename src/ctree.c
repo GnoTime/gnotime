@@ -1747,7 +1747,7 @@ do_ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 void
 ctree_add (ProjTreeWindow *ptw, GttProject *p)
 {
-	do_ctree_add (ptw, p, NULL)
+	do_ctree_add (ptw, p, NULL);
 }
 
 /* ============================================================== */
