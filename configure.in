@@ -46,6 +46,8 @@ LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.3
 LIBGLADE_REQUIRED=2.0.0
 LIBGTKHTML_REQUIRED=3.0.0
+LIBXML2_REQUIRED=2.0.0
+SCROLLKEEPER_BUILD_REQUIRED=0.3.5
 
 dnl *******************************
 dnl Guile checks
@@ -112,11 +114,6 @@ dnl ********************
 dnl libxml2
 dnl The libxml2 library is required 
 dnl ********************
-dnl XXX this is the wrong macro
-
-dnl GNOME_XML_CHECK
-dnl AM_CONDITIONAL(HAVE_LIBXML, test "x$GNOME_XML_LIB" != "x")
-dnl AC_SUBST(HAVE_LIBXML)
 
 PKG_CHECK_MODULES(LIBXML2, libxml-2.0 >= $LIBXML2_REQUIRED)
 AC_SUBST(LIBXML2_CFLAGS)
