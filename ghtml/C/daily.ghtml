@@ -11,7 +11,9 @@
 <?scm (gtt-show-project-desc) ?>
 </h1>
 
-This is an example of a daily report.  This is stil under construction.
+This is an example of a daily report.  This is stil under construction
+and subject to change.
+
 Make a copy of this file, and edit it
 to create your own custom reports.
 
@@ -25,6 +27,7 @@ to create your own custom reports.
 </tr>
 
 <?scm
+   ;; XXX should be using srfi-19 to print the time values
 
    (gtt-show-daily (gtt-daily-totals (gtt-linked-project))
 
