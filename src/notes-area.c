@@ -44,28 +44,53 @@ struct NotesArea_s
 	GtkButton *close_task;
 
 	GttProject *proj;
+
+	/* The goal of 'ignore events' is to prevent an inifinite
+	 * loop of cascading events as we modify the project and the GUI.
+	 */
 	gboolean ignore_events;
+
+	/* The goal of the freezes is to prevent more than one update
+	 * of windows per second.  The problem is that without this,
+	 * there would be one event per keystroke, which could cause
+	 * a redraw of e.g. the journal window.  In sucha case, even
+	 * moderate typists on a slow CPU could saturate the CPU entirely.
+	 */
+	gboolean proj_freeze;
+	GttTask * task_freeze;
 };
 
 
 /* ============================================================== */
 
+#define TSK_SETUP                               \
+	GttTask *tsk;                                \
+	const char * str;                            \
+	if (NULL == na->proj) return;                \
+	if (na->ignore_events) return;               \
+	                                             \
+	na->ignore_events = TRUE;                    \
+	tsk = gtt_project_get_first_task (na->proj); \
+	if (NULL == tsk)                             \
+	{                                            \
+		tsk = gtt_task_new();                     \
+		gtt_project_prepend_task (na->proj, tsk); \
+	}                                            \
+	if (tsk != na->task_freeze)                  \
+	{                                            \
+		/* Try to avoid race condition if another task */  \
+		/* is created while this task is frozen. */        \
+		if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze); \
+		gtt_task_freeze (tsk);                    \
+		na->task_freeze = tsk;                    \
+	}                                            \
+
+
 static void
 task_memo_changed (GtkEntry *entry, NotesArea *na)
 {
-	GttTask *tsk;
-	const char * str;
-	if (NULL == na->proj) return;
-	if (na->ignore_events) return;
-	
-	na->ignore_events = TRUE;
+	TSK_SETUP;
 	str = gtk_entry_get_text (entry);
-	tsk = gtt_project_get_first_task (na->proj);
-	if (NULL == tsk)
-	{
-		tsk = gtt_task_new();
-		gtt_project_prepend_task (na->proj, tsk);
-	}
 	gtt_task_set_memo (tsk, str);
 	na->ignore_events = FALSE;
 }
@@ -75,33 +100,31 @@ task_memo_changed (GtkEntry *entry, NotesArea *na)
 static void
 task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 {
-	GttTask *tsk;
-	const char * str;
-	if (NULL == na->proj) return;
-	if (na->ignore_events) return;
-	
-	na->ignore_events = TRUE;
+	TSK_SETUP;
 	str = xxxgtk_textview_get_text (na->task_notes);
-	tsk = gtt_project_get_first_task (na->proj);
-	if (NULL == tsk)
-	{
-		tsk = gtt_task_new();
-		gtt_project_prepend_task (na->proj, tsk);
-	}
 	gtt_task_set_notes (tsk, str);
 	na->ignore_events = FALSE;
 }
 
 /* ============================================================== */
 
+#define PRJ_SETUP                        \
+	const char * str;                     \
+	if (NULL == na->proj) return;         \
+	if (na->ignore_events) return;        \
+	                                      \
+	if (FALSE == na->proj_freeze)         \
+	{                                     \
+		gtt_project_freeze( na->proj);     \
+		na->proj_freeze = TRUE;            \
+	}                                     \
+	na->ignore_events = TRUE;             \
+
+	
 static void
 proj_title_changed (GtkEntry *entry, NotesArea *na)
 {
-	const char * str;
-	if (NULL == na->proj) return;
-	if (na->ignore_events) return;
-	
-	na->ignore_events = TRUE;
+	PRJ_SETUP
 	str = gtk_entry_get_text (entry);
 	gtt_project_set_title (na->proj, str);
 	na->ignore_events = FALSE;
@@ -113,11 +136,7 @@ proj_title_changed (GtkEntry *entry, NotesArea *na)
 static void
 proj_desc_changed (GtkEntry *entry, NotesArea *na)
 {
-	const char * str;
-	if (NULL == na->proj) return;
-	if (na->ignore_events) return;
-	
-	na->ignore_events = TRUE;
+	PRJ_SETUP
 	str = gtk_entry_get_text (entry);
 	gtt_project_set_desc (na->proj, str);
 	na->ignore_events = FALSE;
@@ -129,14 +148,29 @@ proj_desc_changed (GtkEntry *entry, NotesArea *na)
 static void
 proj_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 {
-	const char * str;
-	if (NULL == na->proj) return;
-	if (na->ignore_events) return;
-	
-	na->ignore_events = TRUE;
+	PRJ_SETUP
 	str = xxxgtk_textview_get_text (na->proj_notes);
 	gtt_project_set_notes (na->proj, str);
 	na->ignore_events = FALSE;
+}
+
+/* ============================================================== */
+/* This routine will cause pending events to get delivered. */
+
+void 
+gtt_notes_timer_callback (NotesArea *na)
+{
+	if (!na) return;
+	if (na->task_freeze)
+	{
+		gtt_task_thaw (na->task_freeze);
+		na->task_freeze = NULL;
+	}
+	if (na->proj_freeze)
+	{
+		na->proj_freeze = FALSE;
+		gtt_project_thaw (na->proj);
+	}
 }
 
 /* ============================================================== */
@@ -248,6 +282,8 @@ notes_area_new (void)
 
 	dlg->proj = NULL;
 	dlg->ignore_events = FALSE;
+	dlg->proj_freeze = FALSE;
+	dlg->task_freeze = NULL;
 
 	return dlg;
 }
@@ -264,6 +300,7 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	GttTask *tsk;
 	
 	if (!na) return;
+	if (na->ignore_events) return;
 
 	/* Calling gtk_entry_set_text makes 'changed' events happen,
 	 * which causes us to get the entry text, which exposes a gtk

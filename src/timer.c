@@ -28,6 +28,7 @@
 #include "dialog.h"
 #include "idle-dialog.h"
 #include "log.h"
+#include "notes-area.h"
 #include "prefs.h"
 #include "proj.h"
 #include "timer.h"
@@ -103,6 +104,9 @@ timer_func(gpointer data)
 		save_properties ();
 	}
 
+	/* Wake up notes are gui if needed */
+	gtt_notes_timer_callback (global_na);
+	
 	if (!cur_proj) return 1;
 
 	/* Update the data in the data engine */

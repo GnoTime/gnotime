@@ -44,5 +44,9 @@ void notes_area_add_ctree (NotesArea *na, GtkWidget *ctree);
 void notes_area_get_pane_sizes (NotesArea *na, int *vp, int *hp);
 void notes_area_set_pane_sizes (NotesArea *na, int vp, int hp);
 
+/* The gtt_notes_timer_callback() routine is a 'private' routine, 
+ * a timeout callback that is called by the timer.
+ */
+void gtt_notes_timer_callback (NotesArea *na);
 
 #endif /* GTT_NOTES_AREA_H */
