@@ -17,22 +17,32 @@ add the new copy to your system by picking
 the menu item "Reports... New Report".
 <br><br>
 
-<!--
-This is commented out and not visible
-<?scm (gtt-show-project '($title  $desc $pnotes $est_start $est_end $due_date $sizing $percent $urgency $importance $status)) ?>
--->
-<?scm (gtt-show-project (gtt-projects) 
-                       '($importance $urgency $title  $desc $notes $status))
- ?>
+<table border=1>
+<tr><th>Importance</th>
+    <th>Urgency</th>
+	 <th>Title</th>
+	 <th>Description</th>
+	 <th>Status</th>
+	 </tr>
+
+<?scm (gtt-show-projects (gtt-projects) 
+      (list ''<tr><td>          gtt-project-importance ''</td>
+	         ''<td>              gtt-project-urgency    ''</td>
+	         ''<td>              gtt-project-title      ''</td>
+	         ''(<td align=left>) gtt-project-desc       ''</td>
+	         ''<td>              gtt-project-status     ''</td>
+			   ''</tr>
+			   ))
+?>
+</table>
 <br><br>
 
-
-<!--
-<?scm (gtt-show-journal (gtt-projects)) ?>
--->
 
 <br><br>
 That's all Folks!
 </center>
 </body>
 </html>
+
+
+                                         
