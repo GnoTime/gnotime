@@ -43,34 +43,44 @@ PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
 
+
+dnl *********************************************
+dnl for anything which calls gconftool-2 correctly
+dnl *********************************************
+
+
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+
+if test x"$GCONFTOOL" = xno; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+fi
+
+AM_GCONF_SOURCE_2
+
 dnl *******************************
 dnl Guile checks
 dnl *******************************
-GNOME_CHECK_GUILE
+
+# argh ... its in /usr/share/aclocal/gnome-macros/gnome-guile-checks.m4
+# but I can't get configure to find this ...
+# GNOME_CHECK_GUILE('fail')
 
 
 dnl *******************************
 dnl gtkhtml
 dnl gtkhtml is needed to build gtt
 dnl *******************************
-GTKHTML2_LIBS=`$GNOME_CONFIG --libs gtkhtml2`
-GTKHTML2_CFLAGS=`$GNOME_CONFIG --cflags gtkhtml2`
+# GTKHTML2_LIBS=`$GNOME_CONFIG --libs gtkhtml2`
+# GTKHTML2_CFLAGS=`$GNOME_CONFIG --cflags gtkhtml2`
+GTKHTML2_LIBS=`pkg-config --libs libgtkhtml-2.0`
+GTKHTML2_CFLAGS=`pkg-config --cflags libgtkhtml-2.0`
 
 AC_MSG_CHECKING(for GtkHTML2)
-if gnome-config --libs gtkhtml2 > /dev/null 2>&1; then
+if pkg-config --libs libgtkhtml-2.0 > /dev/null 2>&1; then
     AC_MSG_RESULT(found)
 else
-    AC_MSG_WARN([Cannot find gtkhtml. See config.log for more info.])
+    AC_MSG_WARN([Cannot find libgtkhtml-2.0. See config.log for more info.])
 fi
-
-# check for gtkhtml and enable it via HAVE_LIBGTKHTML
-# if found
-# AC_CHECK_LIB(gtkhtml, gtk_html_new,
-#             GNOMEBUILDLIBS="${GNOMEBUILDLIBS} gtkhtml"
-#             AC_DEFINE(HAVE_LIBGTKHTML),
-#             AC_MSG_WARN([Cannot find gtkhtml. See config.log for more info.])
-#       AC_MSG_WARN([*** gtt will not be built.]),
-#             $GTKHTML_LIBS)
 
 AC_SUBST(GTKHTML2_LIBS)
 AC_SUBST(GTKHTML2_CFLAGS)
@@ -104,18 +114,6 @@ dnl *****************************
 AC_CHECK_LIB(popt, poptHelpOptions,, AC_MSG_ERROR([popt is required to build gnome-utils. You can download the latest version from ftp://people.redhat.com/sopwith/popt/]))
 
 
-dnl *********************************************
-dnl for anything which calls gconftool-2 correctly
-dnl *********************************************
-
-
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-
-if test x"$GCONFTOOL" = xno; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-
-AM_GCONF_SOURCE_2
 
 dnl **************************************************************
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -181,9 +179,11 @@ AM_GLIB_GNU_GETTEXT
 gnomeutilslocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(gnomeutilslocaledir)
 
-# AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",
+		[Define the gettext package.])
 
-# AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps",
+		[Define a gnome pixmaps directory.])
 
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
