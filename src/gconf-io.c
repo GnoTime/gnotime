@@ -35,7 +35,7 @@ extern time_t last_timer;  /* XXX */
 extern int cur_proj_id;
 extern int run_timer;
 
-#define GTT_GCONF "/apps/GnoTimeDebug"
+#define GTT_GCONF "/apps/GnoTime"
 
 /* ======================================================= */
 /* XXX Should use changesets */
@@ -56,21 +56,25 @@ extern int run_timer;
    CHKERR (rc,err_ret,dir);                                            \
 }
 
-#define SETINT(dir,val) {                                              \
+#define F_SETINT(dir,val) {                                            \
    gboolean rc;                                                        \
    GError *err_ret= NULL;                                              \
                                                                        \
-   rc = gconf_client_set_int (client, GTT_GCONF dir, val, &err_ret);   \
+   rc = gconf_client_set_int (client, dir, val, &err_ret);             \
    CHKERR (rc,err_ret,dir);                                            \
 }
 
-#define SETSTR(dir,val) {                                              \
+#define SETINT(dir,val) F_SETINT (GTT_GCONF dir, val)
+
+#define F_SETSTR(dir,val) {                                            \
    gboolean rc;                                                        \
    GError *err_ret= NULL;                                              \
                                                                        \
-   rc = gconf_client_set_string (client, GTT_GCONF dir, val, &err_ret); \
+   rc = gconf_client_set_string (client, dir, val, &err_ret);          \
    CHKERR (rc,err_ret,dir);                                            \
 }
+
+#define SETSTR(dir,val) F_SETSTR (GTT_GCONF dir, val)
 
 #define UNSET(dir) {                                                   \
    gboolean rc;                                                        \
@@ -137,9 +141,12 @@ gtt_gconf_save (void)
 	int x, y, w, h;
 	const char *xpn;
 	
+	GConfEngine* gengine;
 	GConfClient *client;
 
-	client = gconf_client_get_default ();
+	gengine = gconf_engine_get_default ();
+	client = gconf_client_get_for_engine (gengine);
+	SETINT ("/dir_exists", 1);
 
 	/* ------------- */
 	/* save the window location and size */
@@ -219,9 +226,9 @@ gtt_gconf_save (void)
 	}
 		
 	if (config_logfile_start) {
-		SETSTR ("/LogFile/Entry", config_logfile_start);
+		SETSTR ("/LogFile/EntryStart", config_logfile_start);
 	} else {
-		SETSTR ("/LogFile/Entry", "");
+		SETSTR ("/LogFile/EntryStart", "");
 	}
 		
 	if (config_logfile_stop) {
@@ -240,17 +247,14 @@ gtt_gconf_save (void)
 	w = 0;
 	for (i = 0; -1< w; i++) 
 	{
-	   gboolean rc;
-		GError *err_ret= NULL;
-
 		g_snprintf(s, sizeof (s), GTT_GCONF"/CList/ColumnWidth%d", i);
 		w = ctree_get_col_width (global_ptw, i);
 		if (0 > w) break;
-		rc = gconf_client_set_int(client, s, w, &err_ret);
-		CHKERR(rc,err_ret,s);
+		F_SETINT (s,w);
 	}
 
 	/* ------------- */
+	/* Use string for time, to avoid integer conversion problems */
 	g_snprintf(s, sizeof (s), "%ld", time(0));
 	SETSTR ("/Misc/LastTimer", s);
 	SETINT ("/Misc/IdleTimeout", config_idle_timeout);
@@ -263,28 +267,22 @@ gtt_gconf_save (void)
 	i = 0;
 	for (node = gtt_plugin_get_list(); node; node=node->next)
 	{
-	   gboolean rc;
-		GError *err_ret= NULL;
-
 		GttPlugin *plg = node->data;
 	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
-		rc = gconf_client_set_string(client, s, plg->name, &err_ret);
-		CHKERR (rc,err_ret,s);
-
+		F_SETSTR (s, plg->name);
+		
 	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
-		rc = gconf_client_set_string(client, s, plg->path, &err_ret);
-		CHKERR (rc,err_ret,s);
+		F_SETSTR (s, plg->path);
 
 	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
-		rc = gconf_client_set_string(client, s, plg->tooltip, &err_ret);
-		CHKERR (rc,err_ret,s);
+		F_SETSTR (s, plg->tooltip);
 
 		i++;
 	}
 	SETINT ("/Misc/NumReports", i);
 
    /* Sync to file.
-	 * XXX if this fails, the error is serious, and tehre should be a 
+	 * XXX if this fails, the error is serious, and there should be a 
 	 * graphical popup.
 	 */
    {
@@ -294,6 +292,15 @@ gtt_gconf_save (void)
 		{
 			printf ("GTT: GConf: Sync Failed\n");
 		}
+
+		/* Try real hard to sync.  I was hoping this would fix the
+		 * dir_exists error, but it does not.  Keep this anyway
+		 * for paranoia reasons. */
+		gconf_synchronous_sync(gengine, &err_ret);
+		if (NULL != err_ret)
+		{
+			printf ("GTT: GConf: Sync Sync Failed\n");
+		}
 	}
 }
 
@@ -302,18 +309,31 @@ gtt_gconf_save (void)
 gboolean
 gtt_gconf_exists (void)
 {
-	gboolean rc;
-	GConfClient *client;
 	GError *err_ret= NULL;
+	GConfClient *client;
+   GConfValue *gcv;
+
+
+	/* Calling gconf_engine_dir_exists() on a non-existant directory
+	 * completely hoses that directory for future use. Its Badddd.
+	 * rc = gconf_engine_dir_exists (gengine, GTT_GCONF, &err_ret);
+	 * gconf_client_dir_exists() is no better.
+	 * Hack around it by trying to fetch a key.
+	 */
 
 	client = gconf_client_get_default ();
+   gcv = gconf_client_get (client, GTT_GCONF "/dir_exists", &err_ret);
+   if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) 
+	{
+		if (err_ret) printf ("GTT: Error: gconf_exists XXX err %s\n", err_ret->message);
+		return FALSE;
+	}
 
-	rc = gconf_client_dir_exists (client, GTT_GCONF, &err_ret);
-	if (err_ret) printf ("duude err %s\n", err_ret->message);
-
-	return rc;
+	return TRUE;
 }
-	
+
+/* ======================================================= */
+
 void
 gtt_gconf_load (void)
 {
@@ -325,9 +345,8 @@ gtt_gconf_load (void)
 	GError *err_ret= NULL;
 
 	client = gconf_client_get_default ();
-
-	rc = gconf_client_dir_exists (client, GTT_GCONF, &err_ret);
-	if (err_ret) printf ("duude err %s\n", err_ret->message);
+	gconf_client_add_dir (client, GTT_GCONF, 
+	                GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
 
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
@@ -458,11 +477,11 @@ gtt_gconf_load (void)
 			GttPlugin *plg;
 			const char * name, *path, *tip;
 
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Name", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
 			name = F_GETSTR (s, "");
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Path", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
 			path = F_GETSTR(s, "");
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Tooltip", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
 			tip = F_GETSTR(s, "");
 			plg = gtt_plugin_new (name, path);
 			plg->tooltip = g_strdup (tip);
@@ -470,7 +489,8 @@ gtt_gconf_load (void)
 	} 
 
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
-	last_timer = (time_t) GETINT ("/Misc/LastTimer", -1);
+	/* Use string for time, to avoid unsigned-long problems */
+	last_timer = (time_t) atol (GETSTR ("/Misc/LastTimer", "-1"));
 
 	/* redraw the GUI */
 	if (config_show_statusbar)
