@@ -1391,6 +1391,9 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
                    GttProject *prj)
 {
 	FILE *ph;
+	GString *template;
+	char *start, *end, *scmstart, *scmend, *comstart, *comend;
+	size_t nr;
 
 	if (!ghtml) return;
 
@@ -1403,7 +1406,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		return;
 	}
 
-	/* try to get the ghtml file ... */
+	/* Try to get the ghtml file ... */
 	ph = fopen (filepath, "r");
 	if (!ph)
 	{
@@ -1413,6 +1416,20 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		}
 		return;
 	}
+
+	/* Read in the whole file.  Hopefully its not huge */
+	template = g_string_new (NULL);
+	while (!feof (ph))
+	{
+#define BUFF_SIZE 4000
+		char buff[BUFF_SIZE+1];
+		nr = fread (buff, 1, BUFF_SIZE, ph);
+		if (0 >= nr) break;  /* EOF I presume */
+		buff[nr] = 0x0;
+		g_string_append (template, buff);
+	}
+	fclose (ph);
+		
 	
 	/* ugh. gag. choke. puke. */
 	ghtml_guile_global_hack = ghtml;
@@ -1426,66 +1443,29 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		(ghtml->open_stream) (ghtml, ghtml->user_data);
 	}
 
-	while (!feof (ph))
+	start = template->str;
+	while (start)
 	{
-#define BUFF_SIZE 4000
-		size_t nr;
-		char *start, *end, *scmstart, *scmend, *comstart, *comend;
-		char buff[BUFF_SIZE+1];
-		nr = fread (buff, 1, BUFF_SIZE, ph);
-		if (0 >= nr) break;  /* EOF I presume */
-		buff[nr] = 0x0;
+		scmstart = NULL;
+		scmend = NULL;
 		
-		start = buff;
-		while (start)
+		/* look for scheme markup */
+		end = strstr (start, "<?scm");
+
+		/* look for comments, and blow past them. */
+		comstart = strstr (start, "<!--");
+		if (comstart && comstart < end)
 		{
-			scmstart = NULL;
-			scmend = NULL;
-			
-			/* look for scheme markup */
-			end = strstr (start, "<?scm");
-
-			/* look for comments, and blow past them. */
-			comstart = strstr (start, "<!--");
-			if (comstart && comstart < end)
+			comend = strstr (comstart, "-->");
+			if (comend)
 			{
-				comend = strstr (comstart, "-->");
-				if (comend)
-				{
-					nr = comend - start;
-					end = comend;
-				}
-				else
-				{
-					nr = strlen (start);
-					end = NULL;
-				}
-				
-				/* write everything that we got before the markup */
-				if (ghtml->write_stream)
-				{
-					(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
-				}
-				start = end;
-				continue;
-			}
-
-			/* look for  termination of scm markup */
-			if (end)
-			{
-				nr = end - start;
-				*end = 0x0;
-				scmstart = end+5;
-				end = strstr (scmstart, "?>");
-				if (end)
-				{
-					*end = 0;
-					end += 2;
-				}
+				nr = comend - start;
+				end = comend;
 			}
 			else
 			{
 				nr = strlen (start);
+				end = NULL;
 			}
 			
 			/* write everything that we got before the markup */
@@ -1493,16 +1473,41 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 			{
 				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
 			}
-
-			/* if there is markup, then dispatch */
-			if (scmstart)
-			{
-				gh_eval_str_with_standard_handler (scmstart);
-			}
 			start = end;
+			continue;
 		}
+
+		/* look for  termination of scm markup */
+		if (end)
+		{
+			nr = end - start;
+			*end = 0x0;
+			scmstart = end+5;
+			end = strstr (scmstart, "?>");
+			if (end)
+			{
+				*end = 0;
+				end += 2;
+			}
+		}
+		else
+		{
+			nr = strlen (start);
+		}
+		
+		/* write everything that we got before the markup */
+		if (ghtml->write_stream)
+		{
+			(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+		}
+
+		/* if there is markup, then dispatch */
+		if (scmstart)
+		{
+			gh_eval_str_with_standard_handler (scmstart);
+		}
+		start = end;
 	}
-	fclose (ph);
 
 	if (ghtml->close_stream)
 	{
