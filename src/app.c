@@ -237,7 +237,9 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 
 	/* XXX hack alert: the timer box is not being correctly sized;
 	 * I suspect this is either a gtk bug or a usage bug.
-	 * this needs fixing */
+	 * So instead I set the width to 50 pixels, and hope the 
+	 * font size can live with this. */
+	gtk_widget_set_size_request (GTK_WIDGET(status_day_time), 50, -1);
 	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_day_time),
 			   FALSE, TRUE, 1);
 	
