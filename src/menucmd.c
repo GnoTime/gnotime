@@ -67,11 +67,42 @@ about_box(GtkWidget *w, gpointer data)
 		  "Eckehard Berns <eb@berns.i-s-o.net>",
 		  "George Lebl <jirka@5z.com>",
 		  "Linas Vepstas <linas@linas.org>",
-		  "and dozens of bug-fixers",
+		  " ",
+		  _("Bug-fixes from:"), 
+		  "Jonathan Blandford  <jrb@redhat.com>",
+		  "Miguel de Icaza  <miguel@nuclecu.unam.mx>",
+		  "Fatih Demir <kabalak@gmx.net>",
+		  "John Fleck <jfleck@inkstain.net>",
+		  "Nat Friedman  <nat@nat.org>",
+		  "Mark Galassi  <rosalia@cygnus.com>",
+		  "Jeff Garzik  <jgarzik@pobox.com>",
+		  "Raja R Harinath  <harinath@cs.umn.edu>",
+		  "Peter Hawkins <peterhawkins@ozemail.com.au>",
+		  "Chris Lahey  <clahey@umich.edu>",
+		  "Gregory McLean <gregm@comstar.net>"
+		  "Kjartan Maraas  <kmaraas@gnome.org>",
+		  "Federico Mena Quintero  <federico@nuclecu.unam.mx>",
+		  "Tomas Ogren  <stric@ing.umu.se>",
+		  "Gediminas Paulauskas <menesis@delfi.lt>",
+		  "Havoc Pennington  <hp@pobox.com>",
+		  "Ettore Perazzoli  <ettore@comm2000.it>",
+		  "Changwoo Ryu  <cwryu@adam.kaist.ac.kr>",
+		  "Pablo Saratxaga <srtxg@chanae.alphanet.ch>",
+		  "Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>",
+		  "Tom Tromey  <tromey@cygnus.com>",
+		  "Sebastian Wilhelmi  <wilhelmi@ira.uka.de>",
 		  NULL
 	};
 	const gchar *documentors[] = {
 		"many documentors...",
+		  NULL
+	};
+
+	const gchar *translators[] = {
+		"Manuel de Vega Barreiro <mbarreiro@red.madritel.es> - es",
+		"Abel Cheung  <maddog@linux.org.hk> - zh_TW.Big5",
+		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt>",
+		"many translators...",
 		  NULL
 	};
 
@@ -96,7 +127,7 @@ about_box(GtkWidget *w, gpointer data)
 #endif
 				    authors,
 				    documentors,
-				    "many translators",
+				    translators,
 				    NULL);
 	g_signal_connect(G_OBJECT(about), "destroy",
 		         G_CALLBACK(gtk_widget_destroyed), &about);
