@@ -1,5 +1,5 @@
-/*   Generate gtt-parsed html output for GTimeTracker - a time tracker
- *   Copyright (C) 2001 Linas Vepstas
+/*   Generate gtt-parsed html output for GnoTime - a time tracker
+ *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -93,13 +93,15 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 {
 	GList *node;
 	char *p;
-	char prn[2000];  /* XXX danger buffer overflow !! */
+	gboolean show_links = ghtml->show_links;
+	char prn[8000];  /* XXX danger buffer overflow !! */
 
 	if (NULL == ghtml->write_stream) return;
 
 	p = prn;
-	p += sprintf (p, "<table border=1><tr><th colspan=4>%s\n"
-		"<tr><th>&nbsp;<th>%s<th>%s<th>%s",
+	p += sprintf (p, "<table border=1>\n"
+		"<tr><th colspan=4>%s</th></tr>\n"
+		"<tr><th>&nbsp;</th><th>%s</th><th>%s</th><th>%s</th></tr>\n",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
 
 	(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
@@ -113,14 +115,17 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 		GttTask *tsk = node->data;
 		
 		p = prn;
-		p = g_stpcpy (p, "<tr><td colspan=4>"
-			"<a href=\"gtt:task:");
-		p += sprintf (p, "0x%x\">", tsk);
+		p = g_stpcpy (p, "<tr><td colspan=4>");
+		if (show_links) 
+		{
+			p += sprintf (p, "<a href=\"gtt:task:0x%x\">", tsk);
+		}
 
 		pp = gtt_task_get_memo(tsk);
 		if (!pp || !pp[0]) pp = _("(empty)");
 		p = g_stpcpy (p, pp);
-		p = g_stpcpy (p, "</a>");
+		if (show_links) p = g_stpcpy (p, "</a>");
+		p = g_stpcpy (p, "</td></tr>\n");
 
 		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
 
@@ -136,10 +141,12 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 			
 			p = prn;
 			p = g_stpcpy (p, 
-				"<tr><td>&nbsp;&nbsp;&nbsp;"
-				"<td align=right>&nbsp;&nbsp;"
-				"<a href=\"gtt:interval:");
-			p += sprintf (p, "0x%x\">", ivl);
+				"<tr><td>&nbsp;&nbsp;&nbsp;</td>"
+				"<td align=right>&nbsp;&nbsp;");
+			if (show_links) 
+			{
+				p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+			}
 
 			/* print hour only or date too? */
 			if (0 != prev_stop) {
@@ -153,11 +160,14 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 
 			/* print hour only or date too? */
 			prt_date = is_same_day(start, stop);
+			if (show_links) p = g_stpcpy (p, "</a>");
 			p = g_stpcpy (p, 
-				"</a>&nbsp;&nbsp;"
-				"<td>&nbsp;&nbsp;"
-				"<a href=\"gtt:interval:");
-			p += sprintf (p, "0x%x\">", ivl);
+				"&nbsp;&nbsp;</td>"
+				"<td>&nbsp;&nbsp;");
+			if (show_links)
+			{
+				p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+			}
 			if (prt_date) {
 				p = print_date_time (p, 70, stop);
 			} else {
@@ -166,16 +176,17 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 
 			prev_stop = stop;
 
-			p = g_stpcpy (p, "</a>&nbsp;&nbsp;<td>&nbsp;&nbsp;");
+			if (show_links) p = g_stpcpy (p, "</a>");
+			p = g_stpcpy (p, "&nbsp;&nbsp;</td><td>&nbsp;&nbsp;");
 			p = print_hours_elapsed (p, 40, elapsed, TRUE);
-			p = g_stpcpy (p, "&nbsp;&nbsp;");
+			p = g_stpcpy (p, "&nbsp;&nbsp;</td></tr>\n");
 			len = p - prn;
 			(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
 		}
 
 	}
 	
-	p = "</table>";
+	p = "</table>\n";
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 }
 
@@ -205,7 +216,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	int i;
 	GList *node;
 	char *p;
-	char buff[2000];  /* XXX danger buffer overflow !! */
+	char buff[8000];  /* XXX danger buffer overflow !! */
 	gboolean output_html = ghtml->show_html;
 	gboolean show_links = ghtml->show_links;
 

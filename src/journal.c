@@ -1,5 +1,5 @@
-/*   Display & Edit Journal of Timestamps for GTimeTracker - a time tracker
- *   Copyright (C) 2001 Linas Vepstas
+/*   Display & Edit Journal of Timestamps for GnoTime - a time tracker
+ *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -160,6 +160,21 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 
 	filename = gtk_file_selection_get_filename (wig->filesel);
 
+	/* Don't clobber the file, ask user for permission */
+	if (0 == access (filename, F_OK))
+	{
+		GtkWidget *dg;
+		char *s;
+
+		s = g_strdup_printf (_("File %s exists, overwrite?"), filename);
+		dg = gnome_question_dialog_parented (s, NULL, NULL, 
+		            GTK_WINDOW (wig->filesel));
+		g_free (s);
+
+		if (0 == gnome_dialog_run (GNOME_DIALOG (dg))) return;
+	}
+		
+	/* Try to open the file for writing */
 	wig->fh = fopen (filename, "w");
 	if (!wig->fh) 
 	{
@@ -177,7 +192,7 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	}
 	else
 	{
-		/* Cuase ghtml to output the html again, but this time
+		/* Cause ghtml to output the html again, but this time
 		 * using raw file-io handlers instead. */
 		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write, 
 			NULL, wiggy_error);
