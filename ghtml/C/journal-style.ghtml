@@ -3,8 +3,15 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Journal - <?scm (gtt-show-project-title) ?></title>
+<style type="text/css">
+   body
+   {
+   background: #666666;
+   font-color: #000000;
+   }
+</style>
 </head>
-<body>
+<body background="#e39880">
 <center>
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
@@ -36,7 +43,7 @@
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
         ''"\n</div>\n"
-        ''"<table class=gnotime-start-stop-table>\n"
+        ''"<table class=gnotime-start-stop-table border=1px cellpadding=4px>\n"
         ''"<tr class=gnotime-start-stop-table-header>\n"
         ''"<td class=gnotime-start-stop-table-header-start>Start</td>\n"
         ''"<td class=gnotime-start-stop-table-header-stop>Stop</td>\n"
