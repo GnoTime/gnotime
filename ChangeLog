@@ -1,6 +1,12 @@
 Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
 
 	* src/journal.c: fix the killer hang in mallopt; yahooo!
+	* src/ghtml.c: solaris fix as suggested by Derek Atkins (warlord@mit.edu)
+	* src/props-invl.c: stop using depricated function
+	* doc/eu: import this dir from gnome-1.4 branch
+	* doc/*: rename gtt to gnotime
+	* src/props-invl.c: fix hide-on-close buglet
+	* src/gtt.h, file-io.h: modernize the file names
 	
 Thu Nov  7 01:12:27 CST 2002 Linas Vepstas <linas@linas.org>
 
@@ -15,8 +21,8 @@ Fri Sep  6 19:46:12 CDT 2002 Linas Vepstas <linas@linas.org>
 2002-06-16  Pablo Saratxaga  <pablo@mandrakesoft.com>
 
 	* glade/journal.glade: added handling of signal "destroy"
-	so that closing by clicking on the "close" button or
-	by closing the windows trough the windows manager works the same
+	  so that closing by clicking on the "close" button or
+	  by closing the windows trough the windows manager works the same
 
 Mon Dec 17 22:18:17 CST 2001 Linas Vepstas <linas@linas.org>
 
