@@ -6,12 +6,44 @@
 <style type="text/css">
    body
    {
-   background: #666666;
+   background: #c8c8d3;
    font-color: #000000;
    }
+	.gnotime-diary-entry
+	{
+   background: #e0e0e0;
+	display: block;
+	width: 500px;
+	margin: 4px 2px 4px 8px;
+	border: solid 2px #000000;
+	margin: 4px 2px 4px 8px;
+	}
+	.gnotime-diary-memo
+	{
+	font-size: 120%;
+	font-weight: bold;
+	font-stretch: wider;
+	margin: 4px 2px 1px 6px;
+	}
+	.gnotime-diary-notes
+	{
+	margin: 4px 2px 1px 6px;
+	}
+	.gnotime-start-stop-table
+	{
+   background: #f8f8f0;
+	margin: 4px 4px 4px 4px;
+	border: solid 1px #9999a9
+	}
+	.gnotime-start-stop-table-header
+	{
+   background: #e8e8e8;
+	font-size: 105%;
+	font-weight: bold;
+	}
 </style>
 </head>
-<body background="#e39880">
+<body background="#c8c8d3">
 <center>
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
@@ -38,16 +70,18 @@
     (list   
         ''"<div class=gnotime-diary-entry>\n"
         ''"<div class=gnotime-diary-memo>"
+        ''"<b><big>"
                gtt-task-memo 
+        ''"</big></b>"
         ''"</div>\n"
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
         ''"\n</div>\n"
-        ''"<table class=gnotime-start-stop-table border=1px cellpadding=4px>\n"
-        ''"<tr class=gnotime-start-stop-table-header>\n"
-        ''"<td class=gnotime-start-stop-table-header-start>Start</td>\n"
-        ''"<td class=gnotime-start-stop-table-header-stop>Stop</td>\n"
-        ''"<td class=gnotime-start-stop-table-header-elapsed>Elapsed</td>\n"
+        ''"<table class=gnotime-start-stop-table width=490 border=1 cellpadding=4>\n"
+        ''"<tr class=gnotime-start-stop-table-header background=#f8f8f0>\n"
+        ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
+        ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
+        ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
         ''"</tr>\n"
          (lambda (task) (gtt-ivls task
          (list
