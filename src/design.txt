@@ -1,7 +1,8 @@
 
 Design Quickie Overview
 -----------------------
-by Linas Vepstas, August 2001
+by Linas Vepstas, January 2003
+
 
 Overall Structure
 -----------------
@@ -91,3 +92,21 @@ Custid
 ------
 Customer id.   Not used at the moment, future hook for customer
 name/address/vcard,etc. info for invoicing.
+
+Automatic Backup
+----------------
+Code in main.c performs automatic backup of the data files.
+
+It saves once a minute for the first 4 minutes, then once every 4 
+minutes for the first 16 minutes, then once every 16 minutes for 
+the first 64 minutes, etc., forever.  There is nothing to adjust,
+there is nothing to configure, and the old copies are pruned 
+automatically.  Because of the logarithmic distribution, it means that
+even if you run for years, you won't have more than 20 or so backup 
+copies (viz. every 4 months for the first 16 months, etc).
+
+The algorithm seems safe: the code never actually deletes files,
+it only renames them: The pruning works by copying a newer file on top
+of an older file.  Thus, even if the app goes totally wacko, it can't
+wack much: there's no chance of an 'rm *' happening by accident.
+
