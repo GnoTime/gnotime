@@ -69,8 +69,8 @@ noinst_HEADERS = 	\
 # disable depricated when we find work-around for ctree, property box.
 #
 #	-DGTT_CTREE_GNOME2 
-#	-DGTK_DISABLE_DEPRECATED	\
-#	-DGNOME_DISABLE_DEPRECATED	\
+#	-DGTK_DISABLE_DEPRECATED	
+#	-DGNOME_DISABLE_DEPRECATED	
 
 CFLAGS = -g \
 	@CFLAGS@ 		\
@@ -98,8 +98,8 @@ gnotime_LDADD = \
 	${GUILE_LIBS}		\
 	$(INTLLIBS)
 
-#	$(LIBGNOMEXML_LIBS)        	\
-#	$(GCONF_LIBS)	 	\
+#	$(LIBGNOMEXML_LIBS)        	
+#	$(GCONF_LIBS)	 	
 
 EXTRA_DIST = 			\
 	down.xpm		\
