@@ -1,5 +1,5 @@
 AC_INIT(src)
-AM_INIT_AUTOMAKE(gnotime, 2.1.4)
+AM_INIT_AUTOMAKE(gnotime, 2.1.5pre1)
 
 AC_PROG_INTLTOOL
 
@@ -220,9 +220,9 @@ echo ""
 
 dnl <= Prefixes =>
 echo "prefix : $prefix"
-echo "sysconf dir : "`eval echo $sysconfdir`
+# echo "sysconf dir : "`eval echo $sysconfdir`
 echo "bin dir : "`eval echo $bindir`
-echo "sbin dir : "`eval echo $sbindir`
+# echo "sbin dir : "`eval echo $sbindir`
 echo "data dir : "`eval echo $datadir`
 echo ""
 
