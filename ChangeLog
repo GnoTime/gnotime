@@ -1,3 +1,7 @@
+Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* src/journal.c: fix the killer hang in mallopt; yahooo!
+	
 Thu Nov  7 01:12:27 CST 2002 Linas Vepstas <linas@linas.org>
 
 	* glade/*.glade: convert to gnome2 from Egil Kvaleberg <egil@kvaleberg.no>
@@ -28,14 +32,14 @@ Fri Nov 30 12:26:23 CST 2001 Linas Vepstas <linas@linas.org>
 
 	* proj.h, proj.c, props-invl.c: bug fix for coredump
 	* props-task.c: fix redraw bug
-        * journal.c, task_opup.glade, interval_popup.glade:
-          add new popup menu entries.
+	* journal.c, task_opup.glade, interval_popup.glade:
+	  add new popup menu entries.
 	* gtt.sgml: add list of new features
 
 Wed Nov 28 12:12:44 CST 2001 Linas Vepstas <linas@linas.org>
 
 	* Makefile.am, src/journal.c: patch from Derek Atkins
-          to search 'unusual' install paths for data directories.
+	  to search 'unusual' install paths for data directories.
 
 	* proj.c: remove conflicting libintl.h; bugfix for 
 	  clear_daily_counter.
@@ -50,11 +54,11 @@ Tue Nov 27 15:59:57 2001  George Lebl <jirka@5z.com>
 
 Fri Nov 23 17:18:14 CST 2001 Linas Vepstas <linas@linas.org>
 
-        * doc/C/gtt.sgml: update maintainer list, add warning
-          about out-of-date documentation.
+	* doc/C/gtt.sgml: update maintainer list, add warning
+	  about out-of-date documentation.
 
-        * src/*.c, glade/*.glade: rename "Task" to the more 
-          correct "Diary Entry"
+	* src/*.c, glade/*.glade: rename "Task" to the more 
+	  correct "Diary Entry"
 
 Thu Nov 15 14:51:04 CST 2001  Linas Vepstas <linas@linas.org>
 
@@ -62,8 +66,8 @@ Thu Nov 15 14:51:04 CST 2001  Linas Vepstas <linas@linas.org>
 
 Mon Nov  5 13:23:02 CST 2001  Linas Vepstas <linas@linas.org>
 
-        * src/ghtml.c: replace obsolete guile macro with supported
-          function. (needed for guile-1.5 comaptibility).
+	* src/ghtml.c: replace obsolete guile macro with supported
+	  function. (needed for guile-1.5 comaptibility).
 
 Thu Oct 18 16:31:35 CDT 2001  Linas Vepstas <linas@linas.org>
 
@@ -77,8 +81,8 @@ Fri Oct 12 14:01:25 CDT 2001  Linas Vepstas <linas@linas.org>
 	  changing column visibility.
 
 	* ctree.c: bugfix: set rational default column widths.
-	           bugfix: print start, end, due dates correctly.
-	           bugfix: fix column titles, add tooltips.
+		   bugfix: print start, end, due dates correctly.
+		   bugfix: fix column titles, add tooltips.
 
 	* props-proj.c: bugfix: fix property box sensitivity.
 	  What's up with that anthrax shit?  That's some bad shit 
@@ -109,10 +113,10 @@ Wed Sep 26 18:45:32 CDT 2001  Linas Vepstas <linas@linas.org>
 	  add support for a to-do list.
 
 	* proj.[ch], file-io.c, prefs.[ch], ctree.c: add weekly, 
-          monthly time totals
+	  monthly time totals
 
 	* proj.[ch], xml-read.c, xml-write.c, ghtml.c: : add 
-          billing status field
+	  billing status field
 
 Sun Sep 23 15:17:30 CDT 2001  Linas Vepstas <linas@linas.org>
 
