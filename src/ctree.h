@@ -98,6 +98,12 @@ GtkWidget * ctree_get_widget(ProjTreeWindow *);
  */
 GttProject *ctree_get_focus_project (ProjTreeWindow *);
 
+/** Return true if the ctree widget has input focus. This can 
+ *  be used to test the validity of the ctree object as the
+ *  target of a cut & paste operation.
+ */
+gboolean ctree_has_focus (ProjTreeWindow *);
+
 /** The ctree_get_expander_state() routine returns the state of
  *    the row expanders as an ascii string.
  * The ctree_set_expander_state() routine takes this ascii string,

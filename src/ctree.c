@@ -215,6 +215,14 @@ ctree_stop_timer (GttProject *prj)
 
 /* ============================================================== */
 
+gboolean 
+ctree_has_focus (ProjTreeWindow *ptw)
+{
+	return GTK_WIDGET_HAS_FOCUS (GTK_WIDGET(ptw->ctree));
+}
+
+/* ============================================================== */
+
 static GtkCTreeNode *
 get_focus_row (GtkCTree *ctree)
 {

@@ -291,8 +291,12 @@ void
 cut_project(GtkWidget *w, gpointer data)
 {
 	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
 
+	/* Do NOT cut unless the ctree window actually has focus.
+	 * Otherwise, it will lead to cutting mayhem. */
+	if (0 == ctree_has_focus (global_ptw)) return;
+	
+	prj = ctree_get_focus_project (global_ptw);
 	if (!prj) return;
 	if (cutted_project)
 	{
