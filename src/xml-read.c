@@ -303,6 +303,10 @@ gtt_xml_read_projects (const char * filename)
 
 	if (!doc) { gtt_err_set_code (GTT_CANT_OPEN_FILE); return NULL; }
 	root = doc->root;
+
+	/* The doc may be null if the file is valid but empty */
+	if (!root) return NULL;
+	
 	if (strcmp ("gtt", root->name)) {
 		gtt_err_set_code (GTT_NOT_A_GTT_FILE); return NULL; }
 
