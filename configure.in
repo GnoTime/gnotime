@@ -25,7 +25,7 @@ dnl pkg-config check time
 dnl *****************************************
 
 LIBGNOME_REQUIRED=2.0.0
-LIBGNOMEUI_REQUIRED=2.0.0
+LIBGNOMEUI_REQUIRED=2.0.3
 LIBGLADE_REQUIRED=2.0.0
 LIBGTKHTML_REQUIRED=2.0.0
 
@@ -67,6 +67,7 @@ dnl *******************************
 
 # glurg really wrong ...
 # GUILE_LIBS='-lguile -lsocket -lnsl -ldl'
+# GUILE_LIBS='-lguile -lqthreads -lnsl -ldl'
 GUILE_LIBS='-lguile -lnsl -ldl'
 AC_SUBST(GUILE_LIBS)
 

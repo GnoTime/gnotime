@@ -157,6 +157,8 @@ parse_interval (xmlNodePtr interval)
 	ivl = gtt_interval_new ();
 	for (node=interval->xmlChildrenNode; node; node=node->next)
 	{
+		if (node->type != XML_ELEMENT_NODE) continue;
+
 		GET_TIM (ivl, gtt_interval_set_start, "start")
 		GET_TIM (ivl, gtt_interval_set_stop, "stop")
 		GET_TIM (ivl, gtt_interval_set_fuzz, "fuzz")
@@ -184,6 +186,8 @@ parse_task (xmlNodePtr task)
 	tsk = gtt_task_new ();
 	for (node=task->xmlChildrenNode; node; node=node->next)
 	{
+		if (node->type != XML_ELEMENT_NODE) continue;
+
 		GET_STR (tsk, gtt_task_set_memo, "memo")
 		GET_STR (tsk, gtt_task_set_notes, "notes")
 		GET_INT (tsk, gtt_task_set_bill_unit, "bill_unit")
@@ -200,6 +204,8 @@ parse_task (xmlNodePtr task)
 			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
 			{
 				GttInterval *ival;
+				if (tn->type != XML_ELEMENT_NODE) continue;
+
 				ival = parse_interval (tn);
 				gtt_task_append_interval (tsk, ival);
 			}
@@ -230,6 +236,8 @@ parse_project (xmlNodePtr project)
 	gtt_project_freeze (prj);
 	for (node=project->xmlChildrenNode; node; node=node->next)
 	{
+		if (node->type != XML_ELEMENT_NODE) continue;
+				
 		GET_STR (prj, gtt_project_set_title, "title")
 		GET_STR (prj, gtt_project_set_desc, "desc")
 		GET_STR (prj, gtt_project_set_notes, "notes")
@@ -276,6 +284,7 @@ parse_project (xmlNodePtr project)
 			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
 			{
 				GttProject *child;
+				if (tn->type != XML_ELEMENT_NODE) continue;
 				child = parse_project (tn);
 				gtt_project_append_project (prj, child);
 			}
@@ -336,6 +345,7 @@ gtt_xml_read_projects (const char * filename)
 	for (project=project_list->xmlChildrenNode; project; project=project->next)
 	{
 		GttProject *prj;
+		if (project->type != XML_ELEMENT_NODE) continue;
 		prj = parse_project (project);
 		prjs = g_list_append (prjs, prj);
 	}

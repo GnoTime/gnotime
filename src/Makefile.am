@@ -81,7 +81,7 @@ gtt_LDADD = \
 	${GUILE_LIBS}		\
 	$(INTLLIBS)
 
-#	$(LIBXML2_LIBS)        	\
+#	$(LIBGNOMEXML_LIBS)        	\
 #	$(GCONF_LIBS)	 	\
 
 EXTRA_DIST = 			\
