@@ -629,6 +629,22 @@ ret_project_subprjs(SCM proj_list)
 }
 
 /* ============================================================== */
+/* Return the parent of a project */
+static SCM
+get_proj_parent_scm (GttGhtml *ghtml, GttProject *prj)
+{
+	GttProject *parent = gtt_project_get_parent (prj);
+	return do_ret_project (ghtml, parent);
+}
+
+static SCM
+ret_project_parent (SCM proj_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_project (ghtml, proj_list, get_proj_parent_scm);
+}
+
+/* ============================================================== */
 /* Return a list of all of the tasks of a project */
 
 static SCM
@@ -1485,6 +1501,7 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-links-off",          0, 0, 0, set_links_off);
 	
 	scm_c_define_gsubr("gtt-project-subprojects", 1, 0, 0, ret_project_subprjs);
+	scm_c_define_gsubr("gtt-project-parent",     1, 0, 0, ret_project_parent);
 	scm_c_define_gsubr("gtt-project-title",      1, 0, 0, ret_project_title);
 	scm_c_define_gsubr("gtt-project-title-link", 1, 0, 0, ret_project_title_link);
 	scm_c_define_gsubr("gtt-project-desc",       1, 0, 0, ret_project_desc);
