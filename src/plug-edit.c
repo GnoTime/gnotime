@@ -23,7 +23,9 @@
 #include <gnome.h>
 
 #include "app.h"
+#include "dialog.h"
 #include "journal.h"
+#include "menus.h"
 #include "plug-in.h"
 #include "util.h"
 
@@ -36,15 +38,21 @@ struct PluginEditorDialog_s
 	GtkTreeStore *treestore;
 	GArray *menus;   /* array of GnomeUIInfo */
 
+	GtkTreeSelection *selection;
+	gboolean have_selection;
+	GtkTreeIter curr_selection;
+	
 	GtkEntry  *plugin_name;    /* AKA 'Label' */
 	GnomeFileEntry  *plugin_path;
 	GtkEntry  *plugin_tooltip;
 	GnomeApp  *app;
 };
 
-#define NCOLUMNS 3
+#define NCOLUMNS   4
+#define PTRCOL    (NCOLUMNS-1)
 
 /* ============================================================ */
+/* Redraw one row of the tree widget */
 
 static void
 edit_plugin_redraw_row (struct PluginEditorDialog_s *ped, 
@@ -52,6 +60,7 @@ edit_plugin_redraw_row (struct PluginEditorDialog_s *ped,
 {
 	GttPlugin *plg;
 	GValue val = {G_TYPE_INVALID};
+	GValue pval = {G_TYPE_INVALID};
 
 	if (!uientry || !uientry->user_data) return;
 	plg = uientry->user_data;
@@ -65,6 +74,10 @@ edit_plugin_redraw_row (struct PluginEditorDialog_s *ped,
 	
 	g_value_set_string (&val, plg->tooltip);
 	gtk_tree_store_set_value (ped->treestore, iter, 2, &val);
+	
+	g_value_init(&pval, G_TYPE_POINTER);
+	g_value_set_pointer (&pval, uientry);
+	gtk_tree_store_set_value (ped->treestore, iter, PTRCOL, &pval);
 }
 
 static void
@@ -91,6 +104,26 @@ printf ("duude redraw len=%d\n", ped->menus->len);
 
 /* ============================================================ */
 
+static void
+edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
+{
+	PluginEditorDialog *dlg = data;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	gboolean have_selection;
+
+	have_selection = gtk_tree_selection_get_selected (selection, &model, &iter);
+printf ("duude row selection changed\n");
+	if (have_selection)
+	{
+		GValue val = {G_TYPE_INVALID};
+		gtk_tree_model_get_value (model, &iter, PTRCOL, &val);
+printf ("duude selection got ptr=%x\n", g_value_get_pointer(&val));
+	}
+}
+
+/* ============================================================ */
+
 static void 
 edit_plugin_create_cb (GtkWidget * w, gpointer data)
 {
@@ -98,7 +131,6 @@ edit_plugin_create_cb (GtkWidget * w, gpointer data)
 
 #if 0
 	FILE *fh;
-	GnomeUIInfo entry[2];
 	const char *title, *path, *tip;
 	GttPlugin *plg;
 
@@ -126,35 +158,9 @@ edit_plugin_create_cb (GtkWidget * w, gpointer data)
 	else
 	{
 		fclose (fh);
-
-		/* create the plugin */
-		plg = gtt_plugin_new (title,path);
-		plg->tooltip = g_strdup (tip);
-	
-		/* add the thing to the Reports menu */
-		entry[0].type = GNOME_APP_UI_ITEM;
-		entry[0].label = plg->name;
-		entry[0].hint = plg->tooltip;
-		entry[0].moreinfo = invoke_report;
-		entry[0].user_data = plg->path;
-		entry[0].unused_data = NULL;
-		entry[0].pixmap_type = GNOME_APP_PIXMAP_STOCK;
-		entry[0].pixmap_info = GNOME_STOCK_MENU_BLANK;
-		entry[0].accelerator_key = 0;
-		entry[0].ac_mods = (GdkModifierType) 0;
-	
-		entry[1].type = GNOME_APP_UI_ENDOFINFO;
-	
-		gnome_app_insert_menus (dlg->app,  N_("Reports/<Separator>"), entry);
-	
-		/* zero-out entries, so next time user doesn't see them again */
-		/*
-		gtk_entry_set_text (dlg->plugin_name, "");
-		gtk_entry_set_text (dlg->plugin_path, "");
-		gtk_entry_set_text (dlg->plugin_tooltip, "");
-		*/
 	}
 #endif
+
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
 printf ("OK cleicked\n");
 }
@@ -186,14 +192,19 @@ edit_plugin_add_cb (GtkWidget * w, gpointer data)
 	GttPlugin *plg;
 printf ("add clicked dlg=%x\n",dlg);
 
-	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
-	/* gtk_entry_set_text (dlg->plugin_path, "");
-	gtk_entry_set_text (dlg->plugin_tooltip, ""); */
-
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
 	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
-printf ("duude plg=%x path=%s\n", dlg->plugin_path, path);
+
+	if (!path)
+	{
+		msgbox_ok(_("Warning"),
+	   	          _("You must specify a complete filepath to the report, "
+	   	            "including a leading slash."),
+	      	       GTK_STOCK_OK,
+	         	    NULL);
+	}
+
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
 	if (!path) path="";
 	if (!tip) path="";
@@ -210,7 +221,7 @@ printf ("duude plg=%x path=%s\n", dlg->plugin_path, path);
 	item.type = GNOME_APP_UI_ITEM;
 	item.label = title;
 	item.hint = tip;
-	item.moreinfo = NULL; /* XXX should be modified invoke_report */
+	item.moreinfo = invoke_report;
 	item.user_data = plg;
 	item.unused_data = NULL;
 	item.pixmap_type = GNOME_APP_PIXMAP_STOCK;
@@ -277,7 +288,8 @@ edit_plugin_dialog_new (void)
 
 	{
 		GType col_type[NCOLUMNS];
-		for (i=0;i<NCOLUMNS;i++) { col_type[i] = G_TYPE_STRING; }
+		for (i=0;i<NCOLUMNS-1;i++) { col_type[i] = G_TYPE_STRING; }
+		col_type[NCOLUMNS-1] = G_TYPE_POINTER;
       dlg->treestore = gtk_tree_store_newv (NCOLUMNS, col_type);
 	}
 	gtk_tree_view_set_model (dlg->treeview, GTK_TREE_MODEL(dlg->treestore));
@@ -286,7 +298,7 @@ edit_plugin_dialog_new (void)
 	col_titles[0] = "Name";
 	col_titles[1] = "Path";
 	col_titles[2] = "Tooltip";
-	for (i=0; i<NCOLUMNS; i++)
+	for (i=0; i<NCOLUMNS-1; i++)
 	{
 		GtkTreeViewColumn *col;
 		GtkCellRenderer *renderer;
@@ -298,14 +310,13 @@ edit_plugin_dialog_new (void)
 		                 renderer, "text", i, NULL);
 		
 		gtk_tree_view_insert_column (dlg->treeview, col, i);
-				
 	}
 
-	/* Copy-in from system */
+	/* Copy-in existing menus from the system */
 	{
 		int nitems;
-		
 		GnomeUIInfo *sysmenus;
+		
 		sysmenus = gtt_get_reports_menu ();
 		for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
 		nitems = i;
@@ -317,8 +328,15 @@ edit_plugin_dialog_new (void)
 	/* Redraw the tree */
 	edit_plugin_redraw_tree (dlg);
 
+	/* Hook up the row-selection callback */
+	dlg->have_selection = FALSE;
+	dlg->selection = gtk_tree_view_get_selection (dlg->treeview);
+	gtk_tree_selection_set_mode (dlg->selection, GTK_SELECTION_SINGLE);
+	g_signal_connect (G_OBJECT (dlg->selection), "changed",
+	            G_CALLBACK (edit_plugin_tree_selection_changed_cb), dlg);
+
 	/* ------------------------------------------------------ */
-	/* grab the various entry boxes and hook them up */
+	/* Grab the various entry boxes and hook them up */
 	e = glade_xml_get_widget (gtxml, "plugin name");
 	dlg->plugin_name = GTK_ENTRY(e);
 
@@ -327,6 +345,10 @@ edit_plugin_dialog_new (void)
 
 	e = glade_xml_get_widget (gtxml, "plugin tooltip");
 	dlg->plugin_tooltip = GTK_ENTRY(e);
+
+	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
+	gnome_file_entry_set_filename (dlg->plugin_path, "");
+	gtk_entry_set_text (dlg->plugin_tooltip, "");
 
 	gtk_widget_hide_on_delete (GTK_WIDGET(dlg->dialog));
 
