@@ -728,19 +728,19 @@ decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 		
 	while (FALSE == SCM_NULLP(col_list))
 	{
-		col_name = gh_car (col_list);
+		col_name = SCM_CAR (col_list);
 
 		/* either a 'symbol or a "quoted string" */
 		if (!SCM_SYMBOLP(col_name) && !SCM_STRINGP (col_name))
 		{
-			col_list = gh_cdr (col_list);
+			col_list = SCM_CDR (col_list);
 			continue;
 		}
 		tok = gh_scm2newstr (col_name, &len);
 		decode_column (ghtml, tok);
 
 		free (tok);
-		col_list = gh_cdr (col_list);
+		col_list = SCM_CDR (col_list);
 	}
 
 	return SCM_UNSPECIFIED;
@@ -805,11 +805,11 @@ static int depr_is_inited = 0;
 static void
 depr_register_procs (void)
 {
-	gh_new_procedure("gtt-hello",              gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-journal",       show_journal,   1, 0, 0);
-	gh_new_procedure("gtt-show-table",         show_table,     1, 0, 0);
-	gh_new_procedure("gtt-show-invoice",       show_invoice,   1, 0, 0);
-	gh_new_procedure("gtt-show-export",        show_export,    1, 0, 0);
+	scm_c_define_gsubr("gtt-hello",        0, 0, 0, gtt_hello);
+	scm_c_define_gsubr("gtt-show-journal", 1, 0, 0, show_journal);
+	scm_c_define_gsubr("gtt-show-table",   1, 0, 0, show_table);
+	scm_c_define_gsubr("gtt-show-invoice", 1, 0, 0, show_invoice);
+	scm_c_define_gsubr("gtt-show-export",  1, 0, 0, show_export);
 	
 }
 

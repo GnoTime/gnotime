@@ -127,17 +127,20 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		switch (cur_type)
 		{
 			case GTT_PRJ: {
-				GttProject *prj = (GttProject *) gh_scm2ulong (node);
+				GttProject *prj = (GttProject *) scm_num2ulong (node, 
+				             SCM_ARG1, "GnoTime::do-apply-based-on-type==project");
 				if (prj_func) rc = prj_func (ghtml, prj);
 				break;
 			}
 			case GTT_TASK: {
-				GttTask *tsk = (GttTask *) gh_scm2ulong (node);
+				GttTask *tsk = (GttTask *) scm_num2ulong (node, 
+				             SCM_ARG1, "GnoTime::do-apply-based-on-type==task");
 				if (tsk_func) rc = tsk_func (ghtml, tsk);
 				break;
 			}
 			case GTT_IVL: {
-				GttInterval *ivl = (GttInterval *) gh_scm2ulong (node);
+				GttInterval *ivl = (GttInterval *) scm_num2ulong (node, 
+				             SCM_ARG1, "GnoTime::do-apply-based-on-type==interval");
 				if (ivl_func) rc = ivl_func (ghtml, ivl);
 				break;
 			}
@@ -305,7 +308,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		double x;
 		long  ix;
 
-		x = gh_scm2double (node);
+		x = scm_num2dbl (node, "GnoTime::do_show_scm");
 		ix = (long) x;
 
 		/* If the number is representable in 32 bits,
@@ -389,7 +392,7 @@ static SCM
 do_ret_project (GttGhtml *ghtml, GttProject *prj)
 {
 	SCM node,rc;
-	rc = gh_ulong2scm ((unsigned long) prj);
+	rc = scm_ulong2num ((unsigned long) prj);
 
 	/* Label the pointer with a type identifier */
 	node = scm_mem2string ("gtt-project-ptr", 15);
@@ -486,7 +489,7 @@ g_list_to_scm (GList * gplist, const char * type)
 		/* Walk backwards, creating a scheme list */
 		for (n= gplist; n; n=n->prev)
 		{
-			node = gh_ulong2scm ((unsigned long) n->data);
+			node = scm_ulong2num ((unsigned long) n->data);
 			rc = scm_cons (node, rc);
 		}
 	}
@@ -533,7 +536,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 			rc = scm_cons (node, rc);
 		}
 #endif 
-		node = gh_ulong2scm ((unsigned long) prj);
+		node = scm_ulong2num ((unsigned long) prj);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -605,7 +608,7 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
 		GttTask *tsk = n->data;
       SCM node;
 		
-		node = gh_ulong2scm ((unsigned long) tsk);
+		node = scm_ulong2num ((unsigned long) tsk);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -648,7 +651,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 		GttInterval *ivl = n->data;
 		SCM node;
 		
-		node = gh_ulong2scm ((unsigned long) ivl);
+		node = scm_ulong2num ((unsigned long) ivl);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -764,7 +767,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
 	if (NULL == str) return SCM_EOL;                                 \
-	return scm_mem2string (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                       \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 		  
@@ -774,7 +777,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	long i = GTT_GETTER (prj);                                       \
-	return gh_long2scm (i);                                          \
+	return scm_long2num (i);                                         \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -784,7 +787,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	unsigned long i = GTT_GETTER (prj);                              \
-	return gh_ulong2scm (i);                                         \
+	return scm_ulong2num (i);                                        \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -1063,7 +1066,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
 {                                                                   \
 	const char * str = GTT_GETTER (ivl);                             \
-	return scm_mem2string (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                       \
 }                                                                   \
 RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
 
@@ -1073,7 +1076,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
 {                                                                   \
 	unsigned long i = GTT_GETTER (ivl);                              \
-	return gh_ulong2scm (i);                                         \
+	return scm_ulong2num (i);                                        \
 }                                                                   \
 RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
 
@@ -1243,7 +1246,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ghtml_guile_global_hack = ghtml;
 
 	/* Load predefined scheme forms */
-	gh_eval_file (gtt_ghtml_resolve_path("gtt.scm", NULL));
+	scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
 	
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream)
@@ -1315,6 +1318,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		{
 			// gh_eval_str_with_standard_handler (scmstart);
 			gh_eval_str_with_catch (scmstart, my_catch_handler);
+			// scm_c_eval_string (scmstart);
 			scmstart = NULL;
 		}
 		start = end;
@@ -1336,51 +1340,51 @@ static int is_inited = 0;
 static void
 register_procs (void)
 {
-	gh_new_procedure("gtt-show",               show_scm,               1, 0, 0);
-	gh_new_procedure("gtt-kvp-str",            ret_kvp_str,            1, 0, 0);
-	gh_new_procedure("gtt-linked-project",     ret_linked_project,     0, 0, 0);
-	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
-	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
-	gh_new_procedure("gtt-query-results",      ret_query_projects,     0, 0, 0);
-	gh_new_procedure("gtt-did-query",          ret_did_query,          0, 0, 0);
+	scm_c_define_gsubr("gtt-show",               1, 0, 0, show_scm);
+	scm_c_define_gsubr("gtt-kvp-str",            1, 0, 0, ret_kvp_str);
+	scm_c_define_gsubr("gtt-linked-project",     0, 0, 0, ret_linked_project);
+	scm_c_define_gsubr("gtt-selected-project",   0, 0, 0, ret_selected_project);
+	scm_c_define_gsubr("gtt-projects",           0, 0, 0, ret_projects);
+	scm_c_define_gsubr("gtt-query-results",      0, 0, 0, ret_query_projects);
+	scm_c_define_gsubr("gtt-did-query",          0, 0, 0, ret_did_query);
 
-	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
-	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
-	gh_new_procedure("gtt-daily-totals",       ret_daily_totals,       1, 0, 0);
+	scm_c_define_gsubr("gtt-tasks",              1, 0, 0, ret_tasks);
+	scm_c_define_gsubr("gtt-intervals",          1, 0, 0, ret_intervals);
+	scm_c_define_gsubr("gtt-daily-totals",       1, 0, 0, ret_daily_totals);
 	
-	gh_new_procedure("gtt-links-on",           set_links_on,           0, 0, 0);
-	gh_new_procedure("gtt-links-off",          set_links_off,          0, 0, 0);
+	scm_c_define_gsubr("gtt-links-on",           0, 0, 0, set_links_on);
+	scm_c_define_gsubr("gtt-links-off",          0, 0, 0, set_links_off);
 	
-	gh_new_procedure("gtt-project-subprojects", ret_project_subprjs,   1, 0, 0);
-	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
-	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
-	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
-	gh_new_procedure("gtt-project-notes",      ret_project_notes,      1, 0, 0);
-	gh_new_procedure("gtt-project-urgency",    ret_project_urgency,    1, 0, 0);
-	gh_new_procedure("gtt-project-importance", ret_project_importance, 1, 0, 0);
-	gh_new_procedure("gtt-project-status",     ret_project_status,     1, 0, 0);
-	gh_new_procedure("gtt-project-estimated-start", ret_project_est_start, 1, 0, 0);
-	gh_new_procedure("gtt-project-estimated-end", ret_project_est_end, 1, 0, 0);
-	gh_new_procedure("gtt-project-due-date",   ret_project_due_date, 1, 0, 0);
-	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
-	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
+	scm_c_define_gsubr("gtt-project-subprojects", 1, 0, 0, ret_project_subprjs);
+	scm_c_define_gsubr("gtt-project-title",      1, 0, 0, ret_project_title);
+	scm_c_define_gsubr("gtt-project-title-link", 1, 0, 0, ret_project_title_link);
+	scm_c_define_gsubr("gtt-project-desc",       1, 0, 0, ret_project_desc);
+	scm_c_define_gsubr("gtt-project-notes",      1, 0, 0, ret_project_notes);
+	scm_c_define_gsubr("gtt-project-urgency",    1, 0, 0, ret_project_urgency);
+	scm_c_define_gsubr("gtt-project-importance", 1, 0, 0, ret_project_importance);
+	scm_c_define_gsubr("gtt-project-status",     1, 0, 0, ret_project_status);
+	scm_c_define_gsubr("gtt-project-estimated-start", 1, 0, 0, ret_project_est_start);
+	scm_c_define_gsubr("gtt-project-estimated-end", 1, 0, 0, ret_project_est_end);
+	scm_c_define_gsubr("gtt-project-due-date",   1, 0, 0, ret_project_due_date);
+	scm_c_define_gsubr("gtt-project-sizing",     1, 0, 0, ret_project_sizing);
+	scm_c_define_gsubr("gtt-project-percent-complete", 1, 0, 0, ret_project_percent);
 	
-	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
-	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
-	gh_new_procedure("gtt-task-billstatus",    ret_task_billstatus,    1, 0, 0);
-	gh_new_procedure("gtt-task-billable",      ret_task_billable,      1, 0, 0);
-	gh_new_procedure("gtt-task-billrate",      ret_task_billrate,      1, 0, 0);
-	gh_new_procedure("gtt-task-time-str",      ret_task_time_str,      1, 0, 0);
-	gh_new_procedure("gtt-task-value-str",     ret_task_value_str,     1, 0, 0);
-	gh_new_procedure("gtt-task-parent",        ret_task_parent,        1, 0, 0);
+	scm_c_define_gsubr("gtt-task-memo",          1, 0, 0, ret_task_memo);
+	scm_c_define_gsubr("gtt-task-notes",         1, 0, 0, ret_task_notes);
+	scm_c_define_gsubr("gtt-task-billstatus",    1, 0, 0, ret_task_billstatus);
+	scm_c_define_gsubr("gtt-task-billable",      1, 0, 0, ret_task_billable);
+	scm_c_define_gsubr("gtt-task-billrate",      1, 0, 0, ret_task_billrate);
+	scm_c_define_gsubr("gtt-task-time-str",      1, 0, 0, ret_task_time_str);
+	scm_c_define_gsubr("gtt-task-value-str",     1, 0, 0, ret_task_value_str);
+	scm_c_define_gsubr("gtt-task-parent",        1, 0, 0, ret_task_parent);
 	
-	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
-	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
-	gh_new_procedure("gtt-interval-fuzz",      ret_ivl_fuzz,           1, 0, 0);
-	gh_new_procedure("gtt-interval-elapsed-str", ret_ivl_elapsed_str,  1, 0, 0);
-	gh_new_procedure("gtt-interval-start-str", ret_ivl_start_str,      1, 0, 0);
-	gh_new_procedure("gtt-interval-stop-str",  ret_ivl_stop_str,       1, 0, 0);
-	gh_new_procedure("gtt-interval-fuzz-str",  ret_ivl_fuzz_str,       1, 0, 0);
+	scm_c_define_gsubr("gtt-interval-start",     1, 0, 0, ret_ivl_start);
+	scm_c_define_gsubr("gtt-interval-stop",      1, 0, 0, ret_ivl_stop);
+	scm_c_define_gsubr("gtt-interval-fuzz",      1, 0, 0, ret_ivl_fuzz);
+	scm_c_define_gsubr("gtt-interval-elapsed-str", 1, 0, 0, ret_ivl_elapsed_str);
+	scm_c_define_gsubr("gtt-interval-start-str", 1, 0, 0, ret_ivl_start_str);
+	scm_c_define_gsubr("gtt-interval-stop-str",  1, 0, 0, ret_ivl_stop_str);
+	scm_c_define_gsubr("gtt-interval-fuzz-str",  1, 0, 0, ret_ivl_fuzz_str);
 	
 }
 
