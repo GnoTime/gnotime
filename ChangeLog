@@ -4,7 +4,8 @@ Thu Apr 17 00:22:26 CDT 2003 Linas Vepstas <linas@linas.org>
 	* ghtml.c: fix crash when new user runs report, sf.net bug 722190
 	* ctree.c: fix obscure bug when starting gnotime shortly after midnight
 	* query.c,query.h,ghtml.c: start implementation of new, improved diary
-	* gtt.scm,daily.ghtml: start implementation of new, improved diary
+	* gtt.scm,daily.ghtml: add project title, task notes to daily report
+	* ghtml.c: add support for typed objects in scheme
 
 Sat Apr 12 2003 Linas Vepstas <linas@linas.org>
 
