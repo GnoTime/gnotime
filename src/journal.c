@@ -718,11 +718,25 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		gtk_window_set_decorated (wino, FALSE);
 		gtk_window_set_destroy_with_parent (wino, TRUE);
 		gtk_window_set_transient_for (wino, GTK_WINDOW(wig->top));
-		gtk_window_set_type_hint (wino, GDK_WINDOW_TYPE_HINT_SPLASHSCREEN);
+		// gtk_window_set_type_hint (wino, GDK_WINDOW_TYPE_HINT_SPLASHSCREEN);
+		gtk_window_set_resizable (wino, FALSE);  /* FALSE to enable auto-resize */
 
+		/* There must be a better way to draw a line around the box ?? */
+		GtkWidget *frame = gtk_frame_new (NULL);
+		gtk_container_add(GTK_CONTAINER(wino), frame);
+		gtk_container_set_resize_mode (GTK_CONTAINER(frame), GTK_RESIZE_PARENT);
+		gtk_widget_show (frame);
+
+		/* There must be a better way to pad the text all around ?? */
+		GtkWidget *align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
+		// gtk_alignment_set_padding (GTK_ALIGNMENT(align), 6, 6, 6, 6);
+		gtk_container_add(GTK_CONTAINER(frame), align);
+		gtk_container_set_resize_mode (GTK_CONTAINER(align), GTK_RESIZE_PARENT);
+		gtk_widget_show (align);
+		
 		GtkWidget *label = gtk_label_new ("xxx");
 		wig->hover_label = GTK_LABEL (label);
-		gtk_container_add(GTK_CONTAINER(wino), label);
+		gtk_container_add(GTK_CONTAINER(align), label);
 		gtk_widget_show (label);
 
 		/* So that we can loose focus later */
@@ -740,6 +754,7 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		char * msg = get_hover_msg (url);
 		gtk_label_set_markup (wig->hover_label, msg);
 		gtk_container_resize_children (GTK_CONTAINER(wig->hover_help_window));
+		gtk_container_check_resize (GTK_CONTAINER(wig->hover_help_window));
 		g_free (msg);
 	}
 
