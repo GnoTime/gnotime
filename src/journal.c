@@ -114,7 +114,6 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		             (msg? (char*) msg : _("(null)")));
 		
 		p = g_stpcpy (p, "</body></html>");
-		// gtk_html_write (htmlw, han, buff, p-buff);
 		html_document_write_stream (doc, buff, p-buff);
 	}
 	else
@@ -123,11 +122,9 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		p = g_stpcpy (p, "<html><body><h1>");
 		p = g_stpcpy (p, _("Unkown Error"));
 		p = g_stpcpy (p, "</h1></body></html>");
-		// gtk_html_write (htmlw, han, buff, p-buff);
 		html_document_write_stream (doc, buff, p-buff);
 	}
 	
-	// gtk_html_end (htmlw, han, GTK_HTML_STREAM_OK);
 	html_document_close_stream (doc);
 
 }
@@ -542,25 +539,25 @@ do_show_report (const char * report, GttProject *prj)
 	jnl_top = glade_xml_get_widget (glxml, "Journal Window");
 	jnl_viewport = glade_xml_get_widget (glxml, "Journal ScrollWin");
 
-	/* create browser, plug it into the viewport */
-	wig->html_doc = html_document_new();
-	wig->html_view = HTML_VIEW(html_view_new());
-        html_view_set_document (wig->html_view, wig->html_doc);
-	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html_view));
-
-	/* ---------------------------------------------------- */
-	/* signals for the browser, and the journal window */
-
 	wig = g_new0 (Wiggy, 1);
 	wig->edit_ivl = NULL;
 	wig->filesel = NULL;
 
 	wig->top = jnl_top;
 
+	/* create browser, plug it into the viewport */
+	wig->html_doc = html_document_new();
+	wig->html_view = HTML_VIEW(html_view_new());
+	html_view_set_document (wig->html_view, wig->html_doc);
+	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html_view));
+
 	wig->gh = gtt_ghtml_new();
 	gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
 		wiggy_close, wiggy_error);
 	
+	/* ---------------------------------------------------- */
+	/* signals for the browser, and the journal window */
+
 	glade_xml_signal_connect_data (glxml, "on_close_clicked",
 	        GTK_SIGNAL_FUNC (on_close_clicked_cb), wig);
 	  
@@ -573,8 +570,12 @@ do_show_report (const char * report, GttProject *prj)
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
 	  
-	gtk_signal_connect(GTK_OBJECT(wig->html_doc), "link_clicked",
-		GTK_SIGNAL_FUNC(html_link_clicked_cb), wig);
+	/* XXX */
+	g_signal_connect (G_OBJECT(wig->html_doc), "link_clicked",
+			G_CALLBACK (html_link_clicked_cb), wig);
+	
+	// agtk_signal_connect(GTK_OBJECT(wig->html_doc), "link_clicked",
+	//	GTK_SIGNAL_FUNC(html_link_clicked_cb), wig);
 
 #if LATER
 	gtk_signal_connect(GTK_OBJECT(wig->html_doc), "on_url",
