@@ -95,6 +95,10 @@ typedef int (*GttProjectCB) (GttProject *, gpointer);
 typedef int (*GttIntervalCB) (GttInterval *, gpointer);
 
 /* -------------------------------------------------------- */
+/* system init */
+gboolean gtt_project_obj_register (void);
+
+/* -------------------------------------------------------- */
 /* project data */
 
 /* create, destroy a new project */

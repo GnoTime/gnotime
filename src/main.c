@@ -32,6 +32,8 @@
 #include <unistd.h>
 #include <utime.h>
 
+#include <qof.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
@@ -673,6 +675,12 @@ guile_inner_main(int argc, char **argv)
 	gtk_widget_destroy (app_window);
 	project_list_destroy ();
 #endif
+
+	/* Perform a clean shutdown of QOF subsystem. */
+	qof_query_shutdown ();
+	qof_object_shutdown ();
+	guid_shutdown ();
+	gnc_engine_string_cache_destroy ();
 }
 
 
@@ -722,6 +730,14 @@ main(int argc, char *argv[])
 
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			   G_CALLBACK(app_quit), NULL);
+
+	/* Perform QOF-specific initialization. */
+	gnc_engine_get_string_cache();
+	guid_init();
+	qof_object_initialize ();
+	qof_query_init ();
+	qof_book_register ();
+	gtt_project_obj_register();
 
 #if DEVEL_VERSION_WARNING
 	msgbox_ok_cancel(_("Warning"),
