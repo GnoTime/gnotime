@@ -34,7 +34,6 @@ dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 {
 	g_return_if_fail(dlg != NULL);
 
-printf ("duude its a gnome dialog??=%d\n", GNOME_IS_DIALOG(dlg));
 	gnome_dialog_set_parent(GNOME_DIALOG(dlg), GTK_WINDOW(window));
 
 	gnome_dialog_set_close(dlg, TRUE);
