@@ -24,6 +24,7 @@ to create your own custom reports.
 <tr>
 <th>Date</th>
 <th>Total Time</th>
+<th>Notes</th>
 </tr>
 
 <?scm
@@ -35,16 +36,25 @@ to create your own custom reports.
       ''"<tr>"
       ''"<td> &nbsp; " gtt-daily-day-str  ''" &nbsp; </td>"
       ''"<td align='right'> &nbsp; "     gtt-daily-time-str ''" &nbsp; </td>"
+      ''"<td align='left'> &nbsp; "
+      ''"<ul>"
+      (lambda (dobj) (gtt-show-daily-tasks dobj 
+                           (list
+                            ''"<li><b>" 
+                            gtt-task-memo 
+                            ''"</b> &nbsp;" 
+                            gtt-task-notes
+                            ''"&nbsp;" 
+                            )))
+
+      ''" </ul>&nbsp; </td>"
       
       ''"</tr>"
      ))
-
-
 ?>
 </table>
 
 
-                                         
 <br><br>
 That's all Folks!
 </body>

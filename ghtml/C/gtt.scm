@@ -6,7 +6,7 @@
 ; Miscellaneous definitions for generating reports
 ;
 ; HISTORY:
-; Copyright (c) 2002 Linas Vepstas <linas@linas.org>
+; Copyright (c) 2002,2003 Linas Vepstas <linas@linas.org>
 ;
 ; This file is covered by the GPL.  Please refer to the
 ; GPL license for details.
@@ -38,6 +38,11 @@
 (define (xquoted? exp)
   (xtagged-list? exp 'quote))
 
+;; ---------------------------------------------------------     
+;; prototype infrastructure for new, "type-safe" types...
+
+(define (gtt-is-task-list-type? x) (equal? (cdr x) "gtt-task-list") )
+(define (gtt-is-interval-list-type? x) (equal? (cdr x) "gtt-interval-list") )
 
 ;; ---------------------------------------------------------     
 ; The gtt-apply-func-list-to-obj routine is a simple utility 
@@ -180,8 +185,9 @@
 ; The second member is the amount of time spent on the project on that date.
 ; At this point, both members are strings; this may change someday.
 
-(define (gtt-is-daily-type? daily-obj)  (equal? (cdr daily-obj) "daily") )
+(define (gtt-is-daily-type? daily-obj)  (equal? (cdr daily-obj) "gtt-daily") )
 
+;; XXX should really be using srfi-19 to handle the date printing
 (define (gtt-daily-day-str  daily-obj)  
         (if (gtt-is-daily-type? daily-obj)
             (caar daily-obj) ))
@@ -192,6 +198,28 @@
 
 (define (gtt-show-daily dly_list func_list)
         (gtt-show  (gtt-apply-func-list-to-obj-list func_list dly_list)))
+
+;; ---------------------------------------------------------     
+;; Return the task list part of the daily report.
+;; Currently, it assumes that the object is in a fixed position
+;; in the list.  A better implementation would perform a search
+;; in the list for the right type.
+(define (gtt-daily-task-list daily-obj)
+        (if (gtt-is-daily-type? daily-obj)
+             (caddar daily-obj) ))
+
+(define (gtt-daily-interval-list daily-obj)
+        (if (gtt-is-daily-type? daily-obj)
+             (cadr (cddar daily-obj) )))
+
+;; ---------------------------------------------------------     
+; Syntactic sugar that allows various task attributes to 
+; be extracted next to each other ... see daily report for usage
+(define (gtt-show-daily-tasks  dailyobj tasklist)  
+        (gtt-apply-func-list-to-obj-list
+             tasklist
+             (car (gtt-daily-task-list dailyobj) )
+         ))
 
 ;; ---------------------------------------------------------     
 ;; --------------------- end of file -----------------------     
