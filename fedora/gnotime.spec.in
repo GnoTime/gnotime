@@ -7,23 +7,31 @@ Summary:        Tracks and reports time spent
 Group:          Applications/Productivity
 License:        GPL
 URL:            http://gttr.sourceforge.net/
-Source0:        http://umn.dl.sourceforge.net/sourceforge/gttr/%{name}-%{version}.tar.gz
+Source0:        http://dl.sf.net/gttr/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  gtkhtml2-devel >= 0:2.0 libgnome-devel >= 0:2.0 libgnomeui-devel >= 0:2.0.3 libglade2-devel >= 0:2.0 guile >= 0:1.3.4 GConf2 libxml2-devel popt pango-devel XFree86-devel gettext scrollkeeper >= 0:0.3.5 perl >= 0:5.0 esound-devel libgnomecanvas-devel >= 0:2.0 GConf2-devel gnome-vfs2-devel >= 0:2.0 gtk2-devel >= 0:2.0 libIDL-devel fontconfig-devel >= 0:2.0 glib2-devel >= 0:2.0 libbonobo-devel >= 0:2.0 libbonoboui-devel >= 0:2.0 atk-devel libart_lgpl-devel >= 0:2.0 ORBit2-devel >= 0:2.0 libxslt-devel audiofile-devel freetype-devel gail-devel >= 0:1.3 libtool gettext automake autoconf
-#Requires:
-#Conflicts:      
-#Obsoletes:      
-#BuildConflicts: 
-#Requires(pre,post): 
+BuildRequires:  gtkhtml3-devel
+BuildRequires:  guile-devel >= 0:1.6.0
+BuildRequires:  scrollkeeper
+BuildRequires:  gettext
+BuildRequires:  desktop-file-utils
+BuildConflicts: qof-devel
+
+Conflicts: qof
+Requires(post): scrollkeeper
+Requires(postun): scrollkeeper
+Requires(post): GConf2
+Requires(preun): GConf2
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 
 %description
 A combination of stop-watch, diary, consultant billing system, and project
 manager.  Gnotime allows you to track the amount of time you spend on a task,
-associate a memo with it, set a billing rate, print na invoice, as well as
+associate a memo with it, set a billing rate, print an invoice, as well as
 track the status of other projects.
 
-Some people may remember GnoTime in its previous incarnations as GTT
+Some people may remember Gnotime in its previous incarnations as GTT
 (Gnome Time Tracker) when it was part of the Gnome Utils package.  It has
 been split out, renamed, and greatly enhanced since then.
 
@@ -32,37 +40,46 @@ been split out, renamed, and greatly enhanced since then.
 
 %build
 %GNUconfigure
-make %{?_smp_mflags}
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
+export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %makeinstall
-%find_lang  %{name} --with-gnome
-# GnoTime puts it's locale translations into gnotime-2.0.mo but it's gnome
+unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
+
+# Gnotime puts it's locale translations into gnotime-2.0.mo but it's gnome
 # help files into html/gnotime....
+%find_lang  %{name} --with-gnome
 %find_lang  %{name}-2.0 --with-gnome
 cat %{name}-2.0.lang >> %{name}.lang
 
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+# Removing libtool generated files seems generally to be the thing to do.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
-# Gnotime uses scrollkeeper to track data.  Unfortunately, it installs itself
-# so we have to uninstall it
+
+# Gnotime uses scrollkeeper to track help data.  Unfortunately, it needs to
+# install at package install, not build install.  So uninstall it now.
 rm -rf $RPM_BUILD_ROOT%{_localstatedir}
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-# Scrollkeeper will update its own catalog if it's installed after this.
-# If it's already installed, then we need to explicitly ask it to update its
-# catalog.
-if which scrollkeeper-update >/dev/null 2>&1; then scrollkeeper-update -q -o %{_datadir}/omf/gnotime;fi
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/%{name}.schemas &>/dev/null || :
+unset GCONF_CONFIG_SOURCES
+scrollkeeper-update -q -o %{_datadir}/omf/gnotime || :
+/sbin/ldconfig
+
+%preun
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-uninstall-rule %{_sysconfdir}/gconf/schemas/%{name}.schemas &>/dev/null || :
+unset GCONF_CONFIG_SOURCE
 
 %postun
-# Scrollkeeper will update its own catalog if it's installed after this.
-# If it's already installed, then we need to explicitly ask it to update its
-# catalog.
-if which scrollkeeper-update >/dev/null 2>&1; then scrollkeeper-update -q;fi
+scrollkeeper-update -q || :
+/sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
@@ -70,12 +87,44 @@ if which scrollkeeper-update >/dev/null 2>&1; then scrollkeeper-update -q;fi
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/omf/*
-%{_datadir}/gnome/apps/Applications/%{name}.desktop
+%{_datadir}/applications/fedora-%{name}.desktop
 %{_mandir}/man[^3]/*
+%{_sysconfdir}/gconf/schemas/*
+%{_includedir}/gnotime
+%{_libdir}/libqof*
 
 %changelog
-* Mon Dec 15 2003 Toshio Kuratomi <toshio@tiki-lounge.com> - 0:2.1.7-0.fdr.1
+* Sun Jul 11 2004 Toshio Kuratomi <toshio[AT]tiki-lounge.com> - 0:2.2.1-0.fdr.1
+- Upgrade to 2.2.1.
+- Remove extraneous BuildRequires.
+- Remove doc patches as they've gone in upstream.
+- Removed smp flags as this version isn't smp-able.
+
+* Mon Feb 02 2004 Toshio Kuratomi <toshio[AT]tiki-lounge.com> - 0:2.1.7-0.fdr.4
+- Fix preun script which was calling gconftool on straw rather than gnotime.
+- Add desktop-file-utils Requires and use them to (re)install the .desktop
+  file so we can add --vendor and --add-category X-Fedora
+- Add StartupNotify to the desktop file
+
+* Wed Dec 31 2003 Toshio Kuratomi <toshio[AT]tiki-lounge.com> - 0:2.1.7-0.fdr.3
+- Change the build process back to patching as there is no consensus and I
+  agree with the patching argument rather than autogen-in-spec argument.
+- Make sure the gconf schema gets installed into the sysconfigdir
+- Use gconftool-2 in the post/postun scripts to install the schema into gconf.
+- Make scrollkeeper non-optional.  Since most other fedora packages using
+  scrollkeeper require it and not having scrollkeeper tends to make help
+  unusable.
+
+* Sun Dec 28 2003 Toshio Kuratomi <toshio[AT]tiki-lounge.com> - 0:2.1.7-0.fdr.2
+- Fix up the BuildRequires -- if one package will pull in another
+  automatically, then do not explicitly list it.
+- Change the build process.  Instead of generating a post-autogen patch and
+  patching the distributed source, run autogen.sh to regenerate the build
+  infrastructure.  (This is necessary in the first place because the doc
+  build structure needed to be modified.)
+
+* Mon Dec 15 2003 Toshio Kuratomi <toshio[AT]tiki-lounge.com> - 0:2.1.7-0.fdr.1
 - Initial Fedora RPM release.
 - Partially adapted from the gnotime.spec.in by Eric Anderson 
-  <eric.anderson@cordata.net> from the redhat directory in the gnotime
+  <eric.anderson[AT]cordata.net> from the Red Hat directory in the gnotime
   distribution.

@@ -1,9 +1,23 @@
-
 Fedora Package Build Directory
 ==============================
 
-If you have a Fedora box you can just
+If you have a Fedora box you should be able to build this package with::
+  rpmbuild -ba gnotime.spec
 
-rpmbuild -ba gnotime.spec
+using this spec file and the distributed tarball to get your own RPM.
 
-with the spec file to get your own RPM. 
+Please note that this spec is optimized to get you a working gnotime from
+the source package.  It doesn't, however, fix bugs discovered after the source
+tarball was released or address the issue of splitting the qof libraries
+out of the gnotime package.
+
+For a version of the package that addresses these issues, please look in the
+Fedora Extras Project currently hosted at http://www.fedora.us.  At the present
+time, the package in question is undergoing QA review at::
+  https://bugzilla.fedora.us/show_bug.cgi?id=1158
+
+When it passes QA it'll go into the yum repository at::
+  http://download.fedora.us/fedora/fedora/2/i386/RPMS.stable
+
+-Toshio Kuratomi <toshio ][ tiki-lounge.com>
+19 Jul, 2004
