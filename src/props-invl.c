@@ -51,8 +51,8 @@ interval_edit_apply_cb(GtkWidget * w, gpointer data)
 	time_t start, stop;
 	int fuzz, min_invl;
 
-	start = gnome_date_edit_get_date(GNOME_DATE_EDIT(dlg->start_widget));
-	stop = gnome_date_edit_get_date(GNOME_DATE_EDIT(dlg->stop_widget));
+	start = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->start_widget));
+	stop = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->stop_widget));
 
 	/* Caution: we must avoid setting very short time intervals
 	 * through this interface; otherwise the interval will get
