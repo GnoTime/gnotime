@@ -32,12 +32,15 @@ Here it is:
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
-        ''"<tr><td colspan=4>"  gtt-task-memo ''"</td></tr>\n"
+        ''"<tr><td colspan=4><br>"  
+		         gtt-task-memo 
+					''"<br><tt>" gtt-task-notes ''"</tt><br><br>"
+		  ''"</td></tr>\n"
          (lambda (task) (gtt-ivls task
          (list
 
                ; the first html table column is blank
-               ''"<tr><td> &nbsp; &nbsp; &nbsp; &nbsp; </td>\n"
+               ''"<tr><td> &nbsp; &nbsp; </td>\n"
 
 
                ; the second html table column shows the start date/time
