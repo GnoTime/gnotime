@@ -1896,16 +1896,20 @@ static QofObject prj_object_def =
 
 /* =========================================================== */
 /* bogus wrappers */
-static int 
+static Timespec 
 prj_obj_get_earliest (GttProject *prj)
 {
-	return gtt_project_get_earliest_start (prj, TRUE);
+	Timespec ts = {0,0};
+	ts.tv_sec = gtt_project_get_earliest_start (prj, TRUE);
+	return ts;
 }
 
-static int 
+static Timespec
 prj_obj_get_latest (GttProject *prj)
 {
-	return gtt_project_get_latest_stop (prj, TRUE);
+	Timespec ts = {0,0};
+	ts.tv_sec = gtt_project_get_latest_stop (prj, TRUE);
+	return ts;
 }
 
 gboolean 
@@ -1913,8 +1917,8 @@ gtt_project_obj_register (void)
 {
    /* Associate an ASCII name to each getter, as well as the return type */
    static QofParam params[] = {
-		{ GTT_PROJECT_EARLIEST, QOF_TYPE_INT32, (QofAccessFunc)prj_obj_get_earliest, NULL},
-		{ GTT_PROJECT_LATEST, QOF_TYPE_INT32, (QofAccessFunc)prj_obj_get_latest, NULL},
+		{ GTT_PROJECT_EARLIEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_earliest, NULL},
+		{ GTT_PROJECT_LATEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_latest, NULL},
 		{ NULL },
 	};
 

@@ -605,45 +605,10 @@ static GList *
 bogus_query (KvpFrame *kvpf)
 {
 	GList *results, *n;
-	KvpValue *val;
-	char *str;
-	time_t earliest_end, latest_start;
 
 	if (!kvpf) return NULL;
 printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
-#define DEPRECATED_REMOVE_ME
-#if DEPRECATED_REMOVE_ME
-	/* work around highly bogus locale setting */
- 	qof_date_format_set(QOF_DATE_FORMAT_US);
-
-	/* We expect the KVP to have some very particular values in it */
-	val = kvp_frame_get_slot (kvpf, "earliest-end-date");
-	str = kvp_value_get_string (val);
-printf ("duude got sttrig %s\n", str);
-	if (FALSE == qof_scan_date_secs (str, &earliest_end)) return NULL;
-	
-	val = kvp_frame_get_slot (kvpf, "latest-start-date");
-	str = kvp_value_get_string (val);
-printf ("duude got sttrig %s\n", str);
-	if (FALSE == qof_scan_date_secs (str, &latest_start)) return NULL;
-	
-printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(ctime (&latest_start)));
-	
-	QofSqlQuery *q = qof_sql_query_new();
-
-	if (!book) book = qof_book_new();
-	qof_sql_query_set_book (q, book);
-
-	char *p, qstr[2000];
-	p = qstr;
-	p = stpcpy (p, "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
-	                    GTT_PROJECT_EARLIEST " <= ");
-	p += sprintf (p, "%ld", latest_start);
-	p = stpcpy (p, ") AND (" GTT_PROJECT_LATEST " >= ");
-	p += sprintf (p, "%ld", earliest_end);
-	p = stpcpy (p, ");");
-#else 
 	QofSqlQuery *q = qof_sql_query_new();
 
 	if (!book) book = qof_book_new();
@@ -655,9 +620,8 @@ printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(cti
 	char qstr[2000];
 	strcpy (qstr, 
 	   "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
-	       GTT_PROJECT_EARLIEST " <= \'kvp://earliest-end-date\') AND ("
-	       GTT_PROJECT_LATEST " >= \'kvp://latest-start-date\');");
-#endif
+	       GTT_PROJECT_EARLIEST " >= \'kvp://earliest-end-date\') AND ("
+	       GTT_PROJECT_LATEST " <= \'kvp://latest-start-date\');");
 
 printf ("duude the query string is %s\n", qstr);
 	/* Run the query */
