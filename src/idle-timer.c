@@ -553,6 +553,9 @@ static Bool
 proc_interrupts_activity_p (IdleTimeout *si)
 {
   static FILE *f0 = 0;
+  static Bool need_dup = True;
+  static char *kbd_str = NULL;
+  static char *ptr_str = NULL;
   FILE *f1 = 0;
   int fd;
   static char last_kbd_line[255] = { 0, };
@@ -577,27 +580,32 @@ proc_interrupts_activity_p (IdleTimeout *si)
   if (f0 == (FILE *) -1)	    /* means we got an error initializing. */
     return False;
 
-  fd = dup (fileno (f0));
-  if (fd < 0)
+  if (need_dup)
     {
-      char buf[255];
-      sprintf(buf, "%s: could not dup() the %s fd", PACKAGE, PROC_INTERRUPTS);
-      perror (buf);
-      goto FAIL;
-    }
-
-  f1 = fdopen (fd, "r");
-  if (!f1)
+      fd = dup (fileno (f0));
+      if (fd < 0)
+        {
+          char buf[255];
+          sprintf(buf, "%s: could not dup() the %s fd", PACKAGE, PROC_INTERRUPTS);
+          perror (buf);
+          goto FAIL;
+        }
+    f1 = fdopen (fd, "r");
+    if (!f1)
+      {
+        char buf[255];
+        sprintf(buf, "%s: could not fdopen() the %s fd", PACKAGE,
+                PROC_INTERRUPTS);
+        perror (buf);
+        goto FAIL;
+      }
+    } 
+  else
     {
-      char buf[255];
-      sprintf(buf, "%s: could not fdopen() the %s fd", PACKAGE,
-              PROC_INTERRUPTS);
-      perror (buf);
-      goto FAIL;
+      f1 = f0;
     }
-
-  /* Actually, I'm unclear on why this fseek() is necessary, given the timing
-     of the dup() above, but it is. */
+  /* fseek() to the beginning of the file even if we did the above dup.
+     I'm unclear on why it's necessary in the dup case, but it is. */
   if (fseek (f1, 0, SEEK_SET) != 0)
     {
       char buf[255];
@@ -606,38 +614,107 @@ proc_interrupts_activity_p (IdleTimeout *si)
       goto FAIL;
     }
 
-  /* Now read through the pseudo-file until we find the "keyboard" line. */
-
-  while (fgets (new_line, sizeof(new_line)-1, f1))
+  if (kbd_str == NULL)
     {
-      if (!got_kbd && strstr (new_line, "keyboard"))
+      /* Initial run through */
+      /* Determine what our search string will be. */
+      while (fgets (new_line, sizeof(new_line)-1, f1))
         {
-          kbd_diff = (*last_kbd_line && !!strcmp (new_line, last_kbd_line));
-          strcpy (last_kbd_line, new_line);
-          got_kbd = True;
+          if (strchr (new_line, ','))
+            {
+              /* Ignore any line that has a comma on it: this is because
+               * a setup like this:
+               *
+               *      12:      930935        XT-PIC  usb-uhci, PS/2 Mouse
+               *
+               * is really bad news.  It *looks* like we can note mouse
+               * activity from that line, but really the interrupt gets
+               * fired any time a USB device has activity!  So we have to
+               * ignore any shared IRQs.
+               */
+            }
+          else if (!got_kbd && strstr(new_line, "keyboard"))
+            {
+              kbd_str = "keyboard";
+              need_dup = True;
+              got_kbd = True;
+              strcpy (last_kbd_line, new_line);
+            }
+          else if (!got_kbd && strstr(new_line, "PS/2 Mouse"))
+            {
+              ptr_str = "PS/2 Mouse";
+              need_dup = True;
+              got_ptr = True;
+              strcpy (last_ptr_line, new_line);
+            }
+          else if (!got_kbd && strstr(new_line, "i8042"))
+            {
+              if (strstr(new_line, " 1:"))
+                {
+                  kbd_str = " 1:";
+                  need_dup = False;
+                  got_kbd = True;
+                  strcpy (last_kbd_line, new_line);
+                }
+              else if (strstr(new_line, " 12:"))
+                {
+                  ptr_str = " 12:";
+                  need_dup = False;
+                  got_ptr = True;
+                  strcpy (last_ptr_line, new_line);
+                }
+            }
+          if (got_kbd && got_ptr)
+              break;
         }
-      else if (!got_ptr && strstr (new_line, "PS/2 Mouse"))
+      if (kbd_str == NULL && ptr_str == NULL)
         {
-          ptr_diff = (*last_ptr_line && !!strcmp (new_line, last_ptr_line));
-          strcpy (last_ptr_line, new_line);
-          got_ptr = True;
+          /* If we got here, we didn't find either an entry for keyboards or
+             mice in the file at all. */
+          fprintf (stderr, "%s: no keyboard or mouse data in %s?\n",
+                   PACKAGE, PROC_INTERRUPTS);
+          goto FAIL;
         }
-
-      if (got_kbd && got_ptr)
-        break;
+      if (kbd_str == NULL) {
+          kbd_str = "NoneNoneNone";
+      }
+      if (ptr_str == NULL) {
+          ptr_str = "NoneNoneNone";
+      }
+      if (need_dup == False) {
+          fclose(f1);
+      }
+    }
+  else
+    {
+      /* Regular */
+      while (fgets (new_line, sizeof(new_line)-1, f1))
+        {
+          if (!got_kbd && strstr (new_line, kbd_str))
+            {
+              kbd_diff = (*last_kbd_line && !!strcmp (new_line, last_kbd_line));
+              strcpy (last_kbd_line, new_line);
+              got_kbd = True;
+            }
+          else if (!got_ptr && strstr (new_line, ptr_str))
+            {
+              ptr_diff = (*last_ptr_line && !!strcmp (new_line, last_ptr_line));
+              strcpy (last_ptr_line, new_line);
+              got_ptr = True;
+            }
+    
+          if (got_kbd && got_ptr)
+            break;
+        }
     }
 
   if (got_kbd || got_ptr)
     {
-      fclose (f1);
+      if (need_dup)
+          fclose (f1);
       return (kbd_diff || ptr_diff);
     }
 
-
-  /* If we got here, we didn't find either a "keyboard" or a "PS/2 Mouse"
-     line in the file at all. */
-  fprintf (stderr, "%s: no keyboard or mouse data in %s?\n",
-           PACKAGE, PROC_INTERRUPTS);
 
  FAIL:
   if (f1)
