@@ -50,6 +50,7 @@
 /* FIXME: we should not extern plist; but for now its ok */
 extern GList * plist;
 
+static const char * gtt_config_filepath = NULL;
 
 int cur_proj_id = -1;
 int run_timer = FALSE;
@@ -66,6 +67,7 @@ int save_count = 0;
  * file format (currently, GConf-2).
  *
  * 1) Oldest format is data stuck into a ~/.gtimetrackerrc file
+ *    and is handled by the project_list_load_old() routine.
  * 2) Next is Gnome-1 Gnome-Config files in ~/.gnome/gtt
  * 3) Next is Gnome-2 Gnome-Config files in ~/.gnome2/GnoTime
  * 4) Current is GConf2 system.
@@ -79,7 +81,6 @@ build_rc_name_old(void)
 {
 	static char *buf = NULL;
 
-	if (buf != NULL) return buf;
 	if (g_getenv("HOME") != NULL) {
 		buf = g_concat_dir_and_file (g_getenv ("HOME"), RC_NAME);
 	} else {
@@ -110,9 +111,8 @@ read_tb_sects_old(char *s)
 	}
 }
 
-
 static void
-project_list_load_old(const char *fname)
+project_list_load_old(void)
 {
 	FILE *f;
 	const char *realname;
@@ -122,14 +122,8 @@ project_list_load_old(const char *fname)
 	int i;
 	int _n, _c, _p, _t, _o, _h, _e;
 
-	if (fname != NULL)
-	{
-		realname = fname;
-	}
-	else
-	{
-		realname = build_rc_name_old();
-	}
+	realname = build_rc_name_old();
+	gtt_config_filepath = realname;
 
 	if (NULL == (f = fopen(realname, "rt"))) 
 	{
@@ -274,23 +268,35 @@ err:
 
 /* ======================================================= */
 
+#define GET_INT(str) ({        \
+	strcpy (p, str);            \
+   gnome_config_get_int(s);    \
+	})
+
+#define GET_BOOL(str) ({       \
+	strcpy (p, str);            \
+   gnome_config_get_bool(s);   \
+	})
+
+#define GET_STR(str) ({        \
+	strcpy (p, str);            \
+   gnome_config_get_string(s); \
+	})
+
 static void
-gtt_load_gnome_config (const char *fname)
+gtt_load_gnome_config (const char *prefix)
 {
-	char s[256];
+	char *s, *p;
+	int prefix_len;
 	int i, num;
 	int _n, _c, _j, _p, _t, _o, _h, _e;
-	gboolean got_default = FALSE;
 
-	/* The old file type doesn't have numprojets in it */
-	gnome_config_get_int_with_default(GTT_CONF"/Misc/NumProjects=0", &got_default);
-	if (got_default) {
-		project_list_load_old(fname);
-		if (NULL == config_data_url) {
-			config_data_url = XML_DATA_FILENAME;
-		}
-		return;
-	}
+#define TOKLEN  120
+	prefix_len = 0;
+	if (prefix) prefix_len = strlen (prefix);
+	s = g_new (char, prefix_len + TOKLEN);
+	strcpy (s, prefix);
+	p = &s[prefix_len];
 
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
@@ -312,10 +318,10 @@ gtt_load_gnome_config (const char *fname)
 	_e = config_show_tb_exit;
 
 	/* get last running project */
-   cur_proj_id = gnome_config_get_int(GTT_CONF"/Misc/CurrProject=-1");
+   cur_proj_id = GET_INT("/Misc/CurrProject=-1");
 
-   config_idle_timeout = gnome_config_get_int(GTT_CONF"/Misc/IdleTimeout=300");
-   config_autosave_period = gnome_config_get_int(GTT_CONF"/Misc/AutosavePeriod=60");
+   config_idle_timeout = GET_INT("/Misc/IdleTimeout=300");
+   config_autosave_period = GET_INT("/Misc/AutosavePeriod=60");
 
 	/* Reset the main window width and height to the values 
 	 * last stored in the config file.  Note that if the user 
@@ -324,83 +330,83 @@ gtt_load_gnome_config (const char *fname)
 	if (!geom_place_override) 
 	{
 		int x, y;
-		x = gnome_config_get_int(GTT_CONF"/Geometry/X=10");
-		y = gnome_config_get_int(GTT_CONF"/Geometry/Y=10");
+		x = GET_INT("/Geometry/X=10");
+		y = GET_INT("/Geometry/Y=10");
 		gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
 	}
 	if (!geom_size_override)
 	{
 		int w, h;
-		w = gnome_config_get_int(GTT_CONF"/Geometry/Width=442");
-		h = gnome_config_get_int(GTT_CONF"/Geometry/Height=272");
+		w = GET_INT("/Geometry/Width=442");
+		h = GET_INT("/Geometry/Height=272");
 
 		gtk_window_set_default_size(GTK_WINDOW(app_window), w, h);
 	}
 
 	{
 		int vp, hp;
-		vp = gnome_config_get_int(GTT_CONF"/Geometry/VPaned=250");
-		hp = gnome_config_get_int(GTT_CONF"/Geometry/HPaned=220");
+		vp = GET_INT("/Geometry/VPaned=250");
+		hp = GET_INT("/Geometry/HPaned=220");
 		notes_area_set_pane_sizes (global_na, vp, hp);
 	}
 
-	config_show_secs = gnome_config_get_bool(GTT_CONF"/Display/ShowSecs=false");
-	config_show_clist_titles = gnome_config_get_bool(GTT_CONF"/Display/ShowTableHeader=false");
-	config_show_subprojects = gnome_config_get_bool(GTT_CONF"/Display/ShowSubProjects=true");
-	config_show_statusbar = gnome_config_get_bool(GTT_CONF"/Display/ShowStatusbar=true");
+	config_show_secs = GET_BOOL("/Display/ShowSecs=false");
+	config_show_clist_titles = GET_BOOL("/Display/ShowTableHeader=false");
+	config_show_subprojects = GET_BOOL("/Display/ShowSubProjects=true");
+	config_show_statusbar = GET_BOOL("/Display/ShowStatusbar=true");
 
-	config_show_title_ever = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeEver=true");
-	config_show_title_day = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeDay=true");
-	config_show_title_yesterday = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeYesterday=false");
-	config_show_title_week = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeWeek=false");
-	config_show_title_lastweek = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeLastWeek=false");
-	config_show_title_month = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeMonth=false");
-	config_show_title_year = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeYear=false");
-	config_show_title_current = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeCurrent=false");
-	config_show_title_desc = gnome_config_get_bool(GTT_CONF"/Display/ShowDesc=true");
-	config_show_title_task = gnome_config_get_bool(GTT_CONF"/Display/ShowTask=true");
-	config_show_title_estimated_start = gnome_config_get_bool(GTT_CONF"/Display/ShowEstimatedStart=false");
-	config_show_title_estimated_end = gnome_config_get_bool(GTT_CONF"/Display/ShowEstimatedEnd=false");
-	config_show_title_due_date = gnome_config_get_bool(GTT_CONF"/Display/ShowDueDate=false");
-	config_show_title_sizing = gnome_config_get_bool(GTT_CONF"/Display/ShowSizing=false");
-	config_show_title_percent_complete = gnome_config_get_bool(GTT_CONF"/Display/ShowPercentComplete=false");
-	config_show_title_urgency = gnome_config_get_bool(GTT_CONF"/Display/ShowUrgency=true");
-	config_show_title_importance = gnome_config_get_bool(GTT_CONF"/Display/ShowImportance=true");
-	config_show_title_status = gnome_config_get_bool(GTT_CONF"/Display/ShowStatus=false");
+	config_show_title_ever = GET_BOOL("/Display/ShowTimeEver=true");
+	config_show_title_day = GET_BOOL("/Display/ShowTimeDay=true");
+	config_show_title_yesterday = GET_BOOL("/Display/ShowTimeYesterday=false");
+	config_show_title_week = GET_BOOL("/Display/ShowTimeWeek=false");
+	config_show_title_lastweek = GET_BOOL("/Display/ShowTimeLastWeek=false");
+	config_show_title_month = GET_BOOL("/Display/ShowTimeMonth=false");
+	config_show_title_year = GET_BOOL("/Display/ShowTimeYear=false");
+	config_show_title_current = GET_BOOL("/Display/ShowTimeCurrent=false");
+	config_show_title_desc = GET_BOOL("/Display/ShowDesc=true");
+	config_show_title_task = GET_BOOL("/Display/ShowTask=true");
+	config_show_title_estimated_start = GET_BOOL("/Display/ShowEstimatedStart=false");
+	config_show_title_estimated_end = GET_BOOL("/Display/ShowEstimatedEnd=false");
+	config_show_title_due_date = GET_BOOL("/Display/ShowDueDate=false");
+	config_show_title_sizing = GET_BOOL("/Display/ShowSizing=false");
+	config_show_title_percent_complete = GET_BOOL("/Display/ShowPercentComplete=false");
+	config_show_title_urgency = GET_BOOL("/Display/ShowUrgency=true");
+	config_show_title_importance = GET_BOOL("/Display/ShowImportance=true");
+	config_show_title_status = GET_BOOL("/Display/ShowStatus=false");
 	ctree_update_column_visibility (global_ptw);
 
 
 	/* ------------ */
-	config_show_tb_icons = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowIcons=true");
-	config_show_tb_texts = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowTexts=true");
-	config_show_tb_tips = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowTips=true");
-	config_show_tb_new = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowNew=true");
-	config_show_tb_ccp = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowCCP=false");
-	config_show_tb_journal = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowJournal=true");
-	config_show_tb_prop = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowProp=true");
-	config_show_tb_timer = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowTimer=true");
-	config_show_tb_pref = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowPref=false");
-	config_show_tb_help = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowHelp=true");
-	config_show_tb_exit = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowExit=true");
+	config_show_tb_icons = GET_BOOL("/Toolbar/ShowIcons=true");
+	config_show_tb_texts = GET_BOOL("/Toolbar/ShowTexts=true");
+	config_show_tb_tips = GET_BOOL("/Toolbar/ShowTips=true");
+	config_show_tb_new = GET_BOOL("/Toolbar/ShowNew=true");
+	config_show_tb_ccp = GET_BOOL("/Toolbar/ShowCCP=false");
+	config_show_tb_journal = GET_BOOL("/Toolbar/ShowJournal=true");
+	config_show_tb_prop = GET_BOOL("/Toolbar/ShowProp=true");
+	config_show_tb_timer = GET_BOOL("/Toolbar/ShowTimer=true");
+	config_show_tb_pref = GET_BOOL("/Toolbar/ShowPref=false");
+	config_show_tb_help = GET_BOOL("/Toolbar/ShowHelp=true");
+	config_show_tb_exit = GET_BOOL("/Toolbar/ShowExit=true");
 
 	/* ------------ */
-	config_shell_start = gnome_config_get_string(GTT_CONF"/Actions/StartCommand=echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
-	config_shell_stop = gnome_config_get_string(GTT_CONF"/Actions/StopCommand=echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
+	config_shell_start = GET_STR("/Actions/StartCommand=echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
+	config_shell_stop = GET_STR("/Actions/StopCommand=echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
 
 	/* ------------ */
-	config_logfile_use = gnome_config_get_bool(GTT_CONF"/LogFile/Use=false");
-	config_logfile_name = gnome_config_get_string(GTT_CONF"/LogFile/Filename");
-	config_logfile_start = gnome_config_get_string(GTT_CONF"/LogFile/Entry");
+	config_logfile_use = GET_BOOL("/LogFile/Use=false");
+	config_logfile_name = GET_STR("/LogFile/Filename");
+	config_logfile_start = GET_STR("/LogFile/Entry");
 	if (!config_logfile_start)
 		config_logfile_start = g_strdup(_("project %t started"));
-	config_logfile_stop = gnome_config_get_string(GTT_CONF"/LogFile/EntryStop");
+	config_logfile_stop = GET_STR("/LogFile/EntryStop");
 	if (!config_logfile_stop)
 		config_logfile_stop = g_strdup(_("stopped project %t"));
-	config_logfile_min_secs = gnome_config_get_int(GTT_CONF"/LogFile/MinSecs");
+	config_logfile_min_secs = GET_INT("/LogFile/MinSecs");
 
 	/* ------------ */
-	save_count = gnome_config_get_int(GTT_CONF"/Data/SaveCount=0");
-	config_data_url = gnome_config_get_string(GTT_CONF"/Data/URL=" XML_DATA_FILENAME);
+	save_count = GET_INT("/Data/SaveCount=0");
+	config_data_url = GET_STR("/Data/URL=" XML_DATA_FILENAME);
 	if (NULL == config_data_url) 
 	{
 		config_data_url = XML_DATA_FILENAME;
@@ -409,8 +415,8 @@ gtt_load_gnome_config (const char *fname)
 	/* ------------ */
 	num = 0;
 	for (i = 0; -1 < num; i++) {
-		g_snprintf(s, sizeof (s), GTT_CONF"/CList/ColumnWidth%d=-1", i);
-		num = gnome_config_get_int(s);
+		g_snprintf(p, TOKLEN, "/CList/ColumnWidth%d=-1", i);
+		num = gnome_config_get_int(s);   
 		if (-1 < num) 
 		{
 			ctree_set_col_width (global_ptw, i, num);
@@ -418,18 +424,18 @@ gtt_load_gnome_config (const char *fname)
 	}
 
 	/* Read in the user-defined report locations */
-	num = gnome_config_get_int(GTT_CONF"/Misc/NumReports=0");
+	num = GET_INT("/Misc/NumReports=0");
 	if (0 < num)
 	{
 		for (i = num-1; i >= 0 ; i--) 
 		{
 			GttPlugin *plg;
 			char * name, *path, *tip;
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Name", i);
+			g_snprintf(p, TOKLEN, "/Report%d/Name", i);
 			name = gnome_config_get_string(s);
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Path", i);
+			g_snprintf(p, TOKLEN, "/Report%d/Path", i);
 			path = gnome_config_get_string(s);
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Tooltip", i);
+			g_snprintf(p, TOKLEN, "/Report%d/Tooltip", i);
 			tip = gnome_config_get_string(s);
 			plg = gtt_plugin_new (name, path);
 			plg->tooltip = g_strdup (tip);
@@ -440,9 +446,9 @@ gtt_load_gnome_config (const char *fname)
 	 * in it. Read this data, if present.  The new config file
 	 * format has num-projects set to -1.
 	 */
-	run_timer = gnome_config_get_int(GTT_CONF"/Misc/TimerRunning=0");
-	last_timer = atol(gnome_config_get_string(GTT_CONF"/Misc/LastTimer=-1"));
-	num = gnome_config_get_int(GTT_CONF"/Misc/NumProjects=0");
+	run_timer = GET_INT("/Misc/TimerRunning=0");
+	last_timer = atol(GET_STR("/Misc/LastTimer=-1"));
+	num = GET_INT("/Misc/NumProjects=0");
 	if (0 < num)
 	{
 		/* start with a clean slate */
@@ -455,7 +461,7 @@ gtt_load_gnome_config (const char *fname)
 
 			proj = gtt_project_new();
 			gtt_project_list_append(proj);
-			g_snprintf(s, sizeof (s), GTT_CONF"/Project%d/Title", i);
+			g_snprintf(p, TOKLEN, "/Project%d/Title", i);
 			gtt_project_set_title(proj, gnome_config_get_string(s));
 	
 			/* Match the last running project */
@@ -463,11 +469,11 @@ gtt_load_gnome_config (const char *fname)
 				cur_proj_set(proj);
 			}
 	
-			g_snprintf(s, sizeof (s), GTT_CONF"/Project%d/Desc", i);
+			g_snprintf(p, TOKLEN, "/Project%d/Desc", i);
 			gtt_project_set_desc(proj, gnome_config_get_string(s));
-			g_snprintf(s, sizeof (s), GTT_CONF"/Project%d/SecsEver=0", i);
+			g_snprintf(p, TOKLEN, "/Project%d/SecsEver=0", i);
 			ever_secs = gnome_config_get_int(s);
-			g_snprintf(s, sizeof (s), GTT_CONF"/Project%d/SecsDay=0", i);
+			g_snprintf(p, TOKLEN, "/Project%d/SecsDay=0", i);
 			day_secs = gnome_config_get_int(s);
 			gtt_project_compat_set_secs (proj, ever_secs, day_secs, last_timer);
 		}
@@ -496,23 +502,57 @@ gtt_load_gnome_config (const char *fname)
 	{
 		update_toolbar_sections();
 	}
+
+	g_free (s);
 }
 
 /* ======================================================= */
 
 void
-gtt_load_config (const char *fname)
+gtt_load_config (void)
 {
+	const char *h;
+	char * s;
+
+	/* Check for gconf2, and use that if it exists */
 	if (gtt_gconf_exists())
 	{
 		gtt_gconf_load ();
+		return;
 	}
-	else 
+			  
+	/* gnotime breifly used the gnome2 gnome_config file */
+	if (gnome_config_has_section (GTT_CONF"/Misc"))
 	{
-		/* Load config from ~/.gnome2/GnoTime using deprecated gnome_config */
-		printf ("GTT: Info: Importing older config file\n");
-		gtt_load_gnome_config (fname);
+		printf ("GTT: Info: Importing ~/.gnome2/" GTT_CONF " file\n");
+		gtt_load_gnome_config (GTT_CONF);
+		gtt_config_filepath = gnome_config_get_real_path (GTT_CONF);
+		return;
 	}
+			
+	/* Look for a gnome-1.4 era gnome_config file */
+	h = g_get_home_dir();
+	s = g_new (char, strlen (h) + 120);
+	strcpy (s, "=");
+	strcat (s, h);
+	strcat (s, "/gtt=/Misc");
+	if (gnome_config_has_section (s))
+	{
+		strcpy (s, "=");
+		strcat (s, h);
+		strcat (s, "/gtt=");
+		printf ("GTT: Info: Importing ~/.gnome/gtt file\n");
+		gtt_load_gnome_config (s);
+		gtt_config_filepath = s;
+		return;
+	}
+	g_free (s);
+	
+	/* OK, try to load the oldest file format */
+	printf ("GTT: Info: Importing .gtimetrackerrc config file\n");
+	project_list_load_old ();
+	config_data_url = XML_DATA_FILENAME;
+	return;
 }
 
 /* ======================================================= */
@@ -587,18 +627,17 @@ gtt_post_ctree_config (void)
 /* Save only the GUI configuration info, not the actual data */
 
 void
-gtt_save_config(const char *fname)
+gtt_save_config(void)
 {
    gtt_gconf_save(); 
 }
 
 /* ======================================================= */
-/* XXX yo this routine is obsolete XXX remove it ...  */
 
 const char * 
 gtt_get_config_filepath (void)
 {
-	return gnome_config_get_real_path (GTT_CONF);
+	return gtt_config_filepath;
 }
 
 /* =========================== END OF FILE ========================= */

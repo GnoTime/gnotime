@@ -327,7 +327,7 @@ read_config(void)
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
-	gtt_load_config (NULL);
+	gtt_load_config ();
 
 	/* Catch ... */
 	conf_errcode = gtt_err_get_code();
@@ -480,15 +480,13 @@ save_all (void)
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
-	gtt_save_config (NULL);
+	gtt_save_config ();
 
 	/* Catch */
 	errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != errcode)
 	{
-		const char *fp;
-		fp = gtt_get_config_filepath();
-		errmsg = gtt_err_to_string (errcode, fp);
+		errmsg = gtt_err_to_string (errcode, NULL);
 	}
 
 	return errmsg;
@@ -503,14 +501,13 @@ save_properties (void)
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
-	gtt_save_config (NULL);
+	gtt_save_config ();
 
 	/* Catch */
 	errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != errcode)
 	{
-		const char *fp = gtt_get_config_filepath();
-		char *errmsg = gtt_err_to_string (errcode, fp);
+		char *errmsg = gtt_err_to_string (errcode, NULL);
 
 		msgbox_ok(_("Warning"),
 		     errmsg,

@@ -27,18 +27,19 @@
 
 
 
-/* The routine gtt_save_config() will save configuration/user-preference data
- *    data to indicated file.  If none specified, then ~/.gnome/gtt is used.
- *    If an error occurs, a GttErrCode is set.
+/* The routine gtt_save_config() will save configuration/user-preference 
+ *    data using gconf2. If an error occurs, a GttErrCode is set.
  *
- * The routine gtt_load_config() will load GTT configuration data from 
- *    the indicated file.  If none specified, then ~/.gnome/gtt is used.
- *    This routine is 'backwards compatible', in that it will load old
- *    config files formats.
+ * The routine gtt_load_config() will load GTT configuration data
+ *    from either gconf2 or from gnome_config.  It will attempt to
+ *    load data from the latest storage mechanism first, and then
+ *    fallig back to older file formats.  This routine is 'backwards 
+ *    compatible', in that it will load old config files formats if
+ *    it can't find the newer ones first.
  *    If an error occurs, a GttErrCode is set.
  */
-void gtt_save_config (const char *fname);
-void gtt_load_config (const char *fname);
+void gtt_save_config (void);
+void gtt_load_config (void);
 
 /* The gtt_post_data_config() routine should be called *after* the 
  *    project data has been loaded. It performs some final configuration
@@ -53,7 +54,7 @@ void gtt_load_config (const char *fname);
 void gtt_post_data_config (void);
 void gtt_post_ctree_config (void);
 
-/* returns the 'real path' to the config file that was/would be used */
+/* Returns the 'real path' to the config file that was/would be used */
 const char * gtt_get_config_filepath (void);
 
 #endif /* __GTT_FILEIO_H__ */
