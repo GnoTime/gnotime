@@ -61,7 +61,7 @@ noinst_HEADERS = 	\
 # remove GTK_ENABLE_BROKEN when gnome-2.0 works for real
 CFLAGS = -DGTK_ENABLE_BROKEN	\
 	@CFLAGS@ 		\
-	${GNOME_UTILS_CFLAGS}	\
+	${GNOTIME_CFLAGS}	\
 	${GCONF_CFLAGS} 	\
 	${GTKHTML2_CFLAGS} 	\
 	${LIBGLADE_CFLAGS} 
@@ -69,20 +69,20 @@ CFLAGS = -DGTK_ENABLE_BROKEN	\
 INCLUDES = 			\
 	-I$(includedir)		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DGTTGLADEDIR=\""$(datadir)/gtt"\" \
-	-DGTTDATADIR=\""$(datadir)/gtt"\" \
+	-DGTTGLADEDIR=\""$(datadir)/gnotime"\" \
+	-DGTTDATADIR=\""$(datadir)/gnotime"\" \
 	${GNOME_INCLUDEDIR}	\
 	${GUILE_INCS}
 						 
 gtt_LDADD = \
-	$(GNOME_UTILS_LIBS)	\
+	$(GNOTIME_LIBS)	\
 	$(LIBGLADE_LIBS)        \
-	$(LIBXML_LIBS)        	\
 	$(GTKHTML2_LIBS)	\
-	$(GCONF_LIBS)	 	\
-	${GUILE_LIBS}		\
 	$(INTLLIBS)
 
+#	$(LIBXML2_LIBS)        	\
+#	$(GCONF_LIBS)	 	\
+#	${GUILE_LIBS}		\
 
 EXTRA_DIST = 			\
 	down.xpm		\

@@ -1,4 +1,4 @@
-AC_INIT(gnotime)
+AC_INIT(src)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(gnotime, 2.0.0)
 
@@ -32,9 +32,9 @@ dnl *****************************************
 dnl libgnome, libgnomeui needed for all utils
 dnl *****************************************
 
-PKG_CHECK_MODULES(GNOME_UTILS, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
-AC_SUBST(GNOME_UTILS_CFLAGS)
-AC_SUBST(GNOME_UTILS_LIBS)
+PKG_CHECK_MODULES(GNOTIME, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+AC_SUBST(GNOTIME_CFLAGS)
+AC_SUBST(GNOTIME_LIBS)
 
 dnl *****************************************
 dnl gtt needs libglade
@@ -43,12 +43,79 @@ PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
 
+dnl *******************************
+dnl Guile checks
+dnl *******************************
+GNOME_CHECK_GUILE
+
+
+dnl *******************************
+dnl gtkhtml
+dnl gtkhtml is needed to build gtt
+dnl *******************************
+GTKHTML2_LIBS=`$GNOME_CONFIG --libs gtkhtml2`
+GTKHTML2_CFLAGS=`$GNOME_CONFIG --cflags gtkhtml2`
+
+AC_MSG_CHECKING(for GtkHTML2)
+if gnome-config --libs gtkhtml2 > /dev/null 2>&1; then
+    AC_MSG_RESULT(found)
+else
+    AC_MSG_WARN([Cannot find gtkhtml. See config.log for more info.])
+fi
+
+# check for gtkhtml and enable it via HAVE_LIBGTKHTML
+# if found
+# AC_CHECK_LIB(gtkhtml, gtk_html_new,
+#             GNOMEBUILDLIBS="${GNOMEBUILDLIBS} gtkhtml"
+#             AC_DEFINE(HAVE_LIBGTKHTML),
+#             AC_MSG_WARN([Cannot find gtkhtml. See config.log for more info.])
+#       AC_MSG_WARN([*** gtt will not be built.]),
+#             $GTKHTML_LIBS)
+
+AC_SUBST(GTKHTML2_LIBS)
+AC_SUBST(GTKHTML2_CFLAGS)
+
+dnl *******************************
+dnl sched.h
+dnl sched.h is needed to build gtt
+dnl *******************************
+
+AC_CHECK_HEADER(sched.h,,
+                AC_MSG_WARN([*** gtt will not be built.]))
+
+
+dnl ********************
+dnl libxml
+dnl The gnome-xml library is required to build the stripchart and
+dnl gtt programs.
+dnl ********************
+
+GNOME_XML_CHECK
+AM_CONDITIONAL(HAVE_LIBXML, test "x$GNOME_XML_LIB" != "x")
+AC_SUBST(HAVE_LIBXML)
+
+					 
+
+					 
 dnl *****************************
 dnl popt is needed 
 dnl *****************************
 
 AC_CHECK_LIB(popt, poptHelpOptions,, AC_MSG_ERROR([popt is required to build gnome-utils. You can download the latest version from ftp://people.redhat.com/sopwith/popt/]))
 
+
+dnl *********************************************
+dnl for anything which calls gconftool-2 correctly
+dnl *********************************************
+
+
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+
+if test x"$GCONFTOOL" = xno; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+fi
+
+AM_GCONF_SOURCE_2
 
 dnl **************************************************************
 dnl Checks for typedefs, structures, and compiler characteristics.
