@@ -56,6 +56,12 @@
 (define (xquoted? exp)
   (xtagged-list? exp 'quote))
 
+; Hmm, basic guile is missing a 'string-tail' function, so add it here.
+; given a string and an integer offset, return copy of string
+; from the offset to the very end.
+(define (string-tail str off)
+   (substring str off (string-length str) ))
+
 ;; ---------------------------------------------------------     
 ;; prototype infrastructure for new, "type-safe" types...
 
@@ -242,6 +248,35 @@
              tasklist
              (car (gtt-daily-task-list dailyobj) )
          ))
+
+;; ---------------------------------------------------------     
+; plain-text to HTML beautification.  These filters can take
+; plain-text input strings, and mark them up so that the
+; formatting is preserved in html.
+
+; Convert newlines to <br>\n and return the result.
+; this routine is implemented tail-recursively
+(define (gtt-html-escape-newline str)
+   (define (tail-escape-newline accum str)
+      (let ((noff (string-index str #\newline))
+           )
+      (if (equal? #f noff) 
+           (string-append accum str)
+           (tail-escape-newline  
+                  (string-append accum (substring str 0 noff) "<br>\n")
+                  (string-tail str (+ noff 1))
+           )
+      )
+   ))
+
+  (tail-escape-newline "" str)
+)
+
+; For right now, all that this does is the newline thing.
+; Hopefully it will do the URL markup too soon.
+(define (gtt-html-markup str) 
+    (gtt-html-escape-newline str)
+)
 
 ;; ---------------------------------------------------------     
 ;; --------------------- end of file -----------------------     

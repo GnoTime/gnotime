@@ -34,11 +34,11 @@
         ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=100% border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-memo>"
         ''"<b><big>"
-               gtt-task-memo 
+               gtt-task-memo
         ''"</big></b>"
         ''"</div>\n"
         ''"<div class=gnotime-diary-notes>\n"
-               gtt-task-notes 
+              (lambda (task) (gtt-html-markup (gtt-task-notes task)))
         ''"\n</div>\n"
         ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=100% border=0 cellpadding=4>\n"
         ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
