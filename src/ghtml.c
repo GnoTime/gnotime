@@ -21,6 +21,7 @@
 #define _GNU_SOURCE
 #include <glib.h>
 #include <guile/gh.h>
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -218,8 +219,22 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	if (SCM_NUMBERP(node))
 	{
 		char buf[132];
-		double x = scm_num2dbl (node, "do_show_scm");
-		sprintf (buf, "%g", x);
+		double x = gh_scm2double (node);
+		long  ix = gh_scm2long (node);
+
+		/* If the number is representable in 32 bits,
+		 * and if the fractional part is so small its
+		 * not representable as a double, then print it
+		 * as an integer. */
+		if ((INT_MAX > x) && (-INT_MAX < x) &&
+			 ((x-(double)ix) < 4.0*x*DBL_EPSILON) )
+		{
+			sprintf (buf, "%d", ix);
+		}
+		else
+		{
+			sprintf (buf, "%26.18g", x);
+		}
 		(ghtml->write_stream) (ghtml, buf, strlen(buf), ghtml->user_data);
 	}
 	else
