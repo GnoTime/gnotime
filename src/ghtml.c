@@ -21,6 +21,8 @@
 #define _GNU_SOURCE
 #include <glib.h>
 #include <guile/gh.h>
+#include <libguile/backtrace.h>
+#include <libguile/debug.h>
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -1222,6 +1224,20 @@ RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
 /* ============================================================== */
 
+static SCM 
+my_catch_handler (void *data, SCM tag, SCM throw_args)
+{
+	printf ("Error: GnoTime caught error during scheme parse\n");
+	if (SCM_SYMBOLP(tag))
+	{
+		char * str  = SCM_SYMBOL_CHARS (tag);
+		printf ("\tScheme error was: %s\n", str);
+	}
+	scm_backtrace(); 
+	return SCM_EOL;
+}
+
+
 void
 gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
                    GttProject *prj)
@@ -1342,7 +1358,8 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		/* if there is markup, then dispatch */
 		if (scmstart)
 		{
-			gh_eval_str_with_standard_handler (scmstart);
+			// gh_eval_str_with_standard_handler (scmstart);
+			gh_eval_str_with_catch (scmstart, my_catch_handler);
 			scmstart = NULL;
 		}
 		start = end;
@@ -1421,6 +1438,10 @@ gtt_ghtml_new (void)
 	{
 		is_inited = 1;
 		register_procs();
+
+		/* I think I neeed to do this, not sure */
+		scm_init_debug();
+		scm_init_backtrace();
 	}
 
 	p = g_new0 (GttGhtml, 1);
