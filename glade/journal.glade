@@ -7,7 +7,7 @@
 
 <widget class="GnomeApp" id="Journal Window">
   <property name="visible">True</property>
-  <property name="title" translatable="yes">Journal</property>
+  <property name="title" translatable="yes">GnoTime: Journal</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -114,7 +114,7 @@
 </widget>
 
 <widget class="GtkWindow" id="Publish Dialog">
-  <property name="title" translatable="yes">window1</property>
+  <property name="title" translatable="yes">GnoTime: Publish Report</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -131,11 +131,11 @@
 	<widget class="GtkLabel" id="label2">
 	  <property name="visible">True</property>
 	  <property name="label" translatable="yes">&lt;b&gt;Publish This Report&lt;/b&gt;
-Enter a URL of the form below:
+Enter a URL such as one of the following:
 mailto:&lt;i&gt;&amp;lt;username&amp;gt;@&amp;lt;hostname&amp;gt;&lt;/i&gt;
-scp:&lt;i&gt;&amp;lt;hostname&amp;gt;/some/file/path&lt;/i&gt;
-
-Sorry, http:// URL's not currently supported.</property>
+ssh://&lt;i&gt;host.net/some/file/path&lt;/i&gt;
+ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
+</property>
 	  <property name="use_underline">False</property>
 	  <property name="use_markup">True</property>
 	  <property name="justify">GTK_JUSTIFY_LEFT</property>
