@@ -586,6 +586,27 @@ html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 
 
 /* ============================================================== */
+/* form events */
+
+static void
+submit_clicked_cb(HtmlDocument *doc, 
+                  const gchar * url, 
+                  const gchar * method, 
+                  const gchar * encoding, 
+                  gpointer data) 
+{
+	Wiggy *wig = (Wiggy *) data;
+	const char *path;
+
+
+	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
+
+	path = gtt_ghtml_resolve_path (url);
+	printf ("duude clocked m=%s url=%s path=%s enc=%s\n", method, url, path, encoding);
+	do_show_report (path, wig->prj);
+}
+
+/* ============================================================== */
 
 static void
 do_show_report (const char * report, GttProject *prj)
@@ -633,6 +654,9 @@ do_show_report (const char * report, GttProject *prj)
 	  
 	g_signal_connect (G_OBJECT(wig->html_doc), "link_clicked",
 			G_CALLBACK (html_link_clicked_cb), wig);
+	
+	g_signal_connect (G_OBJECT(wig->html_doc), "submit",
+			G_CALLBACK (submit_clicked_cb), wig);
 	
 #if LATER
 	g_signal_connect(G_OBJECT(wig->html_doc), "on_url",
