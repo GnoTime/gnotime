@@ -1196,6 +1196,25 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 	return SCM_EOL;
 }
 
+/* ============================================================== */
+/* Parse style-sheet type links:  links that look like
+ * <link rel="stylesheet" href="some_kind_of.css" type="text/css">
+ */
+
+static void 
+process_link (GttGhtml *ghtml, const gchar *str)
+{
+	/* no-op for now, just copy it into the window  */
+	if (ghtml->write_stream)
+	{
+		(ghtml->write_stream) (ghtml, "<link", 5, ghtml->user_data);
+		size_t nr = strlen (str);
+		(ghtml->write_stream) (ghtml, str, nr, ghtml->user_data);
+		(ghtml->write_stream) (ghtml, ">", 1, ghtml->user_data);
+	}
+}
+
+/* ============================================================== */
 
 void
 gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
@@ -1203,7 +1222,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 {
 	FILE *ph;
 	GString *template;
-	char *start, *end, *scmstart, *comstart, *comend;
+	char *start, *end, *scmstart, *comstart, *linkstart;
 	size_t nr;
 
 	if (!ghtml) return;
@@ -1263,68 +1282,95 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	start = template->str;
 	while (start)
 	{
-		scmstart = NULL;
-		
-		/* look for scheme markup */
-		end = strstr (start, "<?scm");
+		/* Look for scheme markup */
+		scmstart = strstr (start, "<?scm");
 
-		/* look for comments, and blow past them. */
+		/* Look for comments, and blow past them. */
 		comstart = strstr (start, "<!--");
-		if (comstart && comstart < end)
+
+		/* Look for <link>, and try to handle stylesheets. */
+		linkstart = strstr (start, "<link");
+
+		/* which comes first ? */
+		end = 0;
+		if (scmstart) end = scmstart;
+		if (comstart && comstart < end) end = comstart;
+		if (linkstart && linkstart < end) end = linkstart;
+
+		/* Look for comments, and blow past them. */
+		if (comstart && comstart == end)
 		{
-			comend = strstr (comstart, "-->");
-			if (comend)
+			end = strstr (comstart, "-->");
+			if (end)
 			{
-				nr = comend - start;
-				end = comend;
-			}
-			else
-			{
-				nr = strlen (start);
-				end = NULL;
+				end +=3;
 			}
 			
 			/* write everything that we got before the markup */
 			if (ghtml->write_stream)
 			{
+				nr = comstart - start;
 				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
 			}
 			start = end;
 			continue;
 		}
 
-		/* look for  termination of scm markup */
-		if (end)
+		/* Look for <link>, and try to handle stylesheets. */
+		if (linkstart && linkstart == end)
 		{
-			nr = end - start;
-			*end = 0x0;
-			scmstart = end+5;
+			end = strstr (linkstart, ">");
+			if (end)
+			{
+				*end = 0;
+				end += 1;
+			}
+			
+			/* write everything that we got before the markup */
+			if (ghtml->write_stream)
+			{
+				nr = linkstart - start;
+				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+			}
+
+			/* dispatch and handle */
+			process_link (ghtml, linkstart+5);
+			start = end;
+			continue;
+		}
+
+		/* Look for  termination of scm markup */
+		if (scmstart && scmstart == end)
+		{
 			end = strstr (scmstart, "?>");
 			if (end)
 			{
 				*end = 0;
 				end += 2;
 			}
-		}
-		else
-		{
-			nr = strlen (start);
-		}
-		
-		/* Write everything that we got before the markup */
-		if (ghtml->write_stream)
-		{
-			(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
-		}
+			
+			/* write everything that we got before the markup */
+			if (ghtml->write_stream)
+			{
+				nr = scmstart - start;
+				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+			}
 
-		/* If there is markup, then dispatch */
-		if (scmstart)
-		{
+			/* dispatch and handle */
+			scmstart +=5;
 			// scm_c_eval_string (scmstart);
 			gh_eval_str_with_catch (scmstart, my_catch_handler);
-			scmstart = NULL;
+			start = end;
+			continue;
 		}
-		start = end;
+
+		/* If we got to here, we didn't find any tags. Just output */
+		if (ghtml->write_stream)
+		{
+			nr = strlen (start);
+			(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+		}
+		break;
 	}
 
 	if (ghtml->close_stream)
