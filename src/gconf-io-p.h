@@ -57,7 +57,9 @@
    gboolean rc;                                                        \
    GError *err_ret= NULL;                                              \
                                                                        \
-   rc = gconf_client_set_string (client, dir, val, &err_ret);          \
+   const gchar *sval = val;                                            \
+   if (!sval) sval = "";                                               \
+   rc = gconf_client_set_string (client, dir, sval, &err_ret);         \
    CHKERR (rc,err_ret,dir);                                            \
 }
 

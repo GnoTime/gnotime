@@ -153,7 +153,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 		gtt_save_reports_menu();
 
 		/* zero-out entries, so next time user doesn't see them again */
-		/*
+		/* Uh, no, don't
 		gtk_entry_set_text (dlg->plugin_name, "");
 		gtk_entry_set_text (dlg->plugin_path, "");
 		gtk_entry_set_text (dlg->plugin_tooltip, "");

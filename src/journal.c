@@ -1,5 +1,5 @@
 /*   Display & Edit Journal of Timestamps for GnoTime - a time tracker
- *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003,2004 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
