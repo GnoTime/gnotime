@@ -78,7 +78,7 @@ about_box(GtkWidget *w, gpointer data)
 		  "Raja R Harinath  <harinath@cs.umn.edu>",
 		  "Peter Hawkins <peterhawkins@ozemail.com.au>",
 		  "Chris Lahey  <clahey@umich.edu>",
-		  "Gregory McLean <gregm@comstar.net>"
+		  "Gregory McLean <gregm@comstar.net>",
 		  "Kjartan Maraas  <kmaraas@gnome.org>",
 		  "Federico Mena Quintero  <federico@nuclecu.unam.mx>",
 		  "Tomas Ogren  <stric@ing.umu.se>",
