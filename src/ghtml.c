@@ -316,6 +316,37 @@ ret_linked_project (void)
 }
 
 /* ============================================================== */
+/* Control printing of internal links */
+
+static SCM
+do_set_links_on (GttGhtml *ghtml)
+{
+	ghtml->show_links = TRUE;
+	return SCM_UNSPECIFIED;
+}
+
+static SCM
+set_links_on (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_set_links_on (ghtml);
+}
+
+static SCM
+do_set_links_off (GttGhtml *ghtml)
+{
+	ghtml->show_links = FALSE;
+	return SCM_UNSPECIFIED;
+}
+
+static SCM
+set_links_off (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_set_links_off (ghtml);
+}
+
+/* ============================================================== */
 /* Return a list of all of the projects */
 
 static SCM
@@ -410,6 +441,9 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 {
 	SCM rc;
 	GList *n, *ivl_list;
+
+	/* Oddball hack to make interval datestamp printing work nicely */
+	ghtml->last_ivl_time = 0;
 
 	/* Get a pointer to null */
 	rc = gh_eval_str ("()");
@@ -605,7 +639,6 @@ RET_FUNC (SCM task_list)                                            \
 	return do_apply_on_task (ghtml, task_list, GTT_GETTER##_scm);    \
 }
 
-RET_TASK_STR (ret_task_memo,    gtt_task_get_memo)
 RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
 		  
 /* ============================================================== */
@@ -615,7 +648,7 @@ RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
  * except that we need to handle url links as well. 
  */
 static SCM
-get_task_memo_link_scm (GttGhtml *ghtml, GttTask *tsk)
+get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 {
 	if (ghtml->show_links)
 	{
@@ -634,10 +667,10 @@ get_task_memo_link_scm (GttGhtml *ghtml, GttTask *tsk)
 }
 
 static SCM
-ret_task_memo_link (SCM task_list)
+ret_task_memo (SCM task_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_apply_on_task (ghtml, task_list, get_task_memo_link_scm);
+	return do_apply_on_task (ghtml, task_list, get_task_memo_scm);
 }
 
 /* ============================================================== */
@@ -688,11 +721,18 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 
 RET_IVL_SIMPLE (ret_ivl_elapsed_str, get_ivl_elapsed_str);
 
-/* ============================================================== */
-
 static SCM
-get_ivl_link_scm (GttGhtml *ghtml, GttInterval *ivl, const char * buff)
+get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl, 
+					 time_t starp, gboolean prt_date)
 {
+	char buff[100];
+
+	if (prt_date) {
+		print_date_time (buff, 100, starp);
+	} else {
+		print_time (buff, 100, starp);
+	}
+
 	if (ghtml->show_links)
 	{
 		GString *str;
@@ -702,30 +742,58 @@ get_ivl_link_scm (GttGhtml *ghtml, GttInterval *ivl, const char * buff)
 		g_string_append (str, "</a>");
 		return gh_str2scm (str->str, str->len);
 	}
-	else 
+	else
 	{
 		return gh_str2scm (buff, strlen (buff));
 	}
+	
+	return SCM_UNSPECIFIED; /* Not reached */
 }
 
 static SCM
-get_ivl_start_link_scm (GttGhtml *ghtml, GttInterval *ivl)
+get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
+	gboolean prt_date = TRUE;
+	
 	char buff[100];
-	print_time (buff, 100, gtt_interval_get_start (ivl));
-	return get_ivl_link_scm (ghtml, ivl, buff);
+	time_t start, prev_stop;
+	
+	/* Caution! use of the last_ivl_time thing makes this 
+	 * stateful in a way that may be surprising ! 
+	 */
+	start = gtt_interval_get_start (ivl);
+	prev_stop = ghtml->last_ivl_time;
+	ghtml->last_ivl_time = start;
+
+	if (0 != prev_stop)
+	{
+		prt_date = is_same_day(start, prev_stop);
+	}
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, prt_date);
 }
+RET_IVL_SIMPLE (ret_ivl_start_str, get_ivl_start_str);
 
 static SCM
-get_ivl_stop_link_scm (GttGhtml *ghtml, GttInterval *ivl)
+get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
+	gboolean prt_date = TRUE;
+	
 	char buff[100];
-	print_time (buff, 100, gtt_interval_get_stop (ivl));
-	return get_ivl_link_scm (ghtml, ivl, buff);
+	time_t stop, prev_start;
+	
+	/* Caution! use of the last_ivl_time thing makes this 
+	 * stateful in a way that may be surprising ! 
+	 */
+	stop = gtt_interval_get_stop (ivl);
+	prev_start = ghtml->last_ivl_time;
+	ghtml->last_ivl_time = stop;
+	if (0 != prev_start)
+	{
+		prt_date = is_same_day(prev_start, stop);
+	}
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, prt_date);
 }
-
-RET_IVL_SIMPLE (ret_ivl_start_link, get_ivl_start_link);
-RET_IVL_SIMPLE (ret_ivl_stop_link,  get_ivl_stop_link);
+RET_IVL_SIMPLE (ret_ivl_stop_str, get_ivl_stop_str);
 
 /* ============================================================== */
 
@@ -879,6 +947,9 @@ register_procs (void)
 	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
 	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
 	
+	gh_new_procedure("gtt-links-on",           set_links_on,           0, 0, 0);
+	gh_new_procedure("gtt-links-off",          set_links_off,          0, 0, 0);
+	
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
 	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
@@ -892,15 +963,14 @@ register_procs (void)
 	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
 	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
 	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
-	gh_new_procedure("gtt-task-memo-link",     ret_task_memo_link,     1, 0, 0);
 	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
 	
 	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
 	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
 	gh_new_procedure("gtt-interval-fuzz",      ret_ivl_fuzz,           1, 0, 0);
 	gh_new_procedure("gtt-interval-elapsed-str", ret_ivl_elapsed_str,  1, 0, 0);
-	gh_new_procedure("gtt-interval-start-link", ret_ivl_start_link,    1, 0, 0);
-	gh_new_procedure("gtt-interval-stop-link",  ret_ivl_stop_link,     1, 0, 0);
+	gh_new_procedure("gtt-interval-start-str",  ret_ivl_start_str,     1, 0, 0);
+	gh_new_procedure("gtt-interval-stop-str",   ret_ivl_stop_str,      1, 0, 0);
 }
 
 
@@ -922,6 +992,7 @@ gtt_ghtml_new (void)
 
 	p->prj = NULL;
 	p->show_links = TRUE;
+	p->last_ivl_time = 0;
 
 	gtt_ghtml_deprecated_init (p);
 
