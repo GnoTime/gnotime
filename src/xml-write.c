@@ -41,100 +41,100 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 
 /* ======================================================= */
 
-#define PUT_STR(TOK,VAL)	{			\
-	const char * str = (VAL);			\
-	if (str && 0 != str[0])				\
-	{						\
-		node = xmlNewNode (NULL, TOK);		\
-		xmlNodeAddContent(node, str);		\
-		xmlAddChild (topnode, node);		\
-	}						\
+#define PUT_STR(TOK,VAL) {                           \
+   const char * str = (VAL);                         \
+   if (str && 0 != str[0])                           \
+   {                                                 \
+      node = xmlNewNode (NULL, TOK);                 \
+      xmlNodeAddContent(node, str);                  \
+      xmlAddChild (topnode, node);                   \
+   }                                                 \
 }
 
-#define PUT_INT(TOK,VAL)	{			\
-	char buff[80];					\
-	g_snprintf (buff, sizeof(buff), "%d", (VAL));	\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, buff);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_INT(TOK,VAL) {                           \
+   char buff[80];                                    \
+   g_snprintf (buff, sizeof(buff), "%d", (VAL));     \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, buff);                    \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_LONG(TOK,VAL)	{			\
-	char buff[80];					\
-	g_snprintf (buff, sizeof(buff), "%ld", (VAL));	\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, buff);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_LONG(TOK,VAL) {                          \
+   char buff[80];                                    \
+   g_snprintf (buff, sizeof(buff), "%ld", (VAL));    \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, buff);                    \
+   xmlAddChild (topnode, node);                      \
 }
 
 
-#define PUT_DBL(TOK,VAL)	{			\
-	char buff[80];					\
-	g_snprintf (buff, sizeof(buff), "%.18g", (VAL));\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, buff);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_DBL(TOK,VAL) {                           \
+   char buff[80];                                    \
+   g_snprintf (buff, sizeof(buff), "%.18g", (VAL));  \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, buff);                    \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_GUID(TOK,VAL)	{			\
-	char buff[80];					\
-	guid_to_string_buff ((VAL), buff);		\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, buff);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_GUID(TOK,VAL) {                          \
+   char buff[80];                                    \
+   guid_to_string_buff ((VAL), buff);                \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, buff);                    \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_BOOL(TOK,VAL)	{			\
-	gboolean boll = (VAL);				\
-	node = xmlNewNode (NULL, TOK);			\
-        if (boll) {					\
-		xmlNodeAddContent(node, "T");		\
-	} else {					\
-		xmlNodeAddContent(node, "F");		\
-	}						\
-	xmlAddChild (topnode, node);			\
+#define PUT_BOOL(TOK,VAL) {                          \
+   gboolean boll = (VAL);                            \
+   node = xmlNewNode (NULL, TOK);                    \
+   if (boll) {                                       \
+      xmlNodeAddContent(node, "T");                  \
+   } else {                                          \
+      xmlNodeAddContent(node, "F");                  \
+   }                                                 \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_ENUM_3(TOK,VAL,A,B,C) {			\
-	const char * str = #A;				\
-	switch (VAL)					\
-	{						\
-		case GTT_##A: str = #A; break;		\
-		case GTT_##B: str = #B; break;		\
-		case GTT_##C: str = #C; break; 		\
-	}						\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, str);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_ENUM_3(TOK,VAL,A,B,C) {                  \
+   const char * str = #A;                            \
+   switch (VAL)                                      \
+   {                                                 \
+      case GTT_##A: str = #A; break;                 \
+      case GTT_##B: str = #B; break;                 \
+      case GTT_##C: str = #C; break;                 \
+   }                                                 \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, str);                     \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_ENUM_4(TOK,VAL,A,B,C, D) {			\
-	const char * str = #A;				\
-	switch (VAL)					\
-	{						\
-		case GTT_##A: str = #A; break;		\
-		case GTT_##B: str = #B; break;		\
-		case GTT_##C: str = #C; break; 		\
-		case GTT_##D: str = #D; break; 		\
-	}						\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, str);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_ENUM_4(TOK,VAL,A,B,C, D) {               \
+   const char * str = #A;                            \
+   switch (VAL)                                      \
+   {                                                 \
+      case GTT_##A: str = #A; break;                 \
+      case GTT_##B: str = #B; break;                 \
+      case GTT_##C: str = #C; break;                 \
+      case GTT_##D: str = #D; break;                 \
+   }                                                 \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, str);                     \
+   xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_ENUM_5(TOK,VAL,A,B,C,D,E) {			\
-	const char * str = #A;				\
-	switch (VAL)					\
-	{						\
-		case GTT_##A: str = #A; break;		\
-		case GTT_##B: str = #B; break;		\
-		case GTT_##C: str = #C; break; 		\
-		case GTT_##D: str = #D; break; 		\
-		case GTT_##E: str = #E; break; 		\
-	}						\
-	node = xmlNewNode (NULL, TOK);			\
-	xmlNodeAddContent(node, str);			\
-	xmlAddChild (topnode, node);			\
+#define PUT_ENUM_5(TOK,VAL,A,B,C,D,E) {              \
+   const char * str = #A;                            \
+   switch (VAL)                                      \
+   {                                                 \
+      case GTT_##A: str = #A; break;                 \
+      case GTT_##B: str = #B; break;                 \
+      case GTT_##C: str = #C; break;                 \
+      case GTT_##D: str = #D; break;                 \
+      case GTT_##E: str = #E; break;                 \
+   }                                                 \
+   node = xmlNewNode (NULL, TOK);                    \
+   xmlNodeAddContent(node, str);                     \
+   xmlAddChild (topnode, node);                      \
 }
 
 /* ======================================================= */
@@ -234,7 +234,7 @@ gtt_task_list_to_dom_tree (GList *list)
 		xmlAddChild (topnode, node);
 	}
 
-   	return topnode;
+	return topnode;
 }
 
 /* ======================================================= */
@@ -319,7 +319,7 @@ gtt_project_list_to_dom_tree (GList *list)
 		xmlAddChild (topnode, node);
 	}
 
-   	return topnode;
+	return topnode;
 }
 
 /* ======================================================= */
@@ -340,8 +340,7 @@ gtt_to_dom_tree (void)
 	node = gtt_project_list_to_dom_tree (gtt_get_project_list()); 
 	if (node) xmlAddChild (topnode, node);
 
-   	return topnode;
-
+	return topnode;
 }
 
 /* Write all gtt data to xml file */
