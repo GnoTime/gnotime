@@ -618,6 +618,9 @@ drag_drop (GtkWidget *widget, GdkDragContext *context,
 		ctree_update_label (ptw, par_prj);
 	}
 
+	/* Set the focus row to the newly inserted project. */
+	set_focus_project (ptw, src_prj);
+	
 	/* Make sure we update the timestamps for the old parent
 	 * from which we were cutted. */
 	ctree_update_label (ptw, old_parent);
@@ -1652,6 +1655,9 @@ ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 		GttProject *sub_prj = n->data;
 		ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
+	
+	/* Set the focus row to the newly inserted project. */
+	set_focus_project (ptw, p);
 }
 
 /* ============================================================== */
