@@ -24,11 +24,16 @@
 #include "app.h"
 #include "cur-proj.h"
 #include "gconf-io.h"
+#include "gtt.h"
 #include "plug-in.h"
 #include "prefs.h"
 #include "timer.h"
 
 extern int save_count; /* XXX */
+extern char *first_proj_title;   /* command line flag */
+extern time_t last_timer;  /* XXX */
+extern int cur_proj_id;
+extern int run_timer;
 
 #define GTT_GCONF "/apps/GnoTimeDebug"
 
@@ -78,8 +83,8 @@ extern int save_count; /* XXX */
 /* ======================================================= */
 
 #define CHKGET(gcv,err_ret,dir,default_val)                            \
-	if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) {\
-	   retval = default_val;                                            \
+   if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) {\
+      retval = default_val;                                            \
       printf ("GTT: GConf: Warning: get %s failed: ", dir);            \
       if (err_ret) printf ("%s\n\t", err_ret->message);                \
       printf ("Using default value\n");                                \
@@ -88,21 +93,21 @@ extern int save_count; /* XXX */
 #define GETBOOL(dir,default_val) ({                                    \
    gboolean retval;                                                    \
    GError *err_ret= NULL;                                              \
-	GConfValue *gcv;                                                    \
-	gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);           \
-	CHKGET (gcv,err_ret, dir, default_val)                              \
-	else retval = gconf_value_get_bool (gcv);                           \
-	retval;                                                             \
+   GConfValue *gcv;                                                    \
+   gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);           \
+   CHKGET (gcv,err_ret, dir, default_val)                              \
+   else retval = gconf_value_get_bool (gcv);                           \
+   retval;                                                             \
 })
 
 #define F_GETINT(dir,default_val) ({                                   \
    int retval;                                                         \
    GError *err_ret= NULL;                                              \
-	GConfValue *gcv;                                                    \
-	gcv = gconf_client_get (client, dir, &err_ret);                     \
-	CHKGET (gcv,err_ret, dir, default_val)                              \
-	else retval = gconf_value_get_int (gcv);                            \
-	retval;                                                             \
+   GConfValue *gcv;                                                    \
+   gcv = gconf_client_get (client, dir, &err_ret);                     \
+   CHKGET (gcv,err_ret, dir, default_val)                              \
+   else retval = gconf_value_get_int (gcv);                            \
+   retval;                                                             \
 })
 
 #define GETINT(dir,default_val) F_GETINT (GTT_GCONF dir, default_val)
@@ -110,11 +115,11 @@ extern int save_count; /* XXX */
 #define F_GETSTR(dir,default_val) ({                                   \
    const char *retval;                                                 \
    GError *err_ret= NULL;                                              \
-	GConfValue *gcv;                                                    \
-	gcv = gconf_client_get (client, dir, &err_ret);                     \
-	CHKGET (gcv,err_ret, dir, default_val)                              \
-	else retval = gconf_value_get_string (gcv);                         \
-	retval;                                                             \
+   GConfValue *gcv;                                                    \
+   gcv = gconf_client_get (client, dir, &err_ret);                     \
+   CHKGET (gcv,err_ret, dir, default_val)                              \
+   else retval = gconf_value_get_string (gcv);                         \
+   g_strdup (retval);                                                  \
 })
 
 #define GETSTR(dir,default_val) F_GETSTR (GTT_GCONF dir, default_val)
@@ -324,7 +329,6 @@ gtt_gconf_load (void)
 	rc = gconf_client_dir_exists (client, GTT_GCONF, &err_ret);
 	if (err_ret) printf ("duude err %s\n", err_ret->message);
 
-#if 0
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
 	 * running again ... */
@@ -419,16 +423,14 @@ gtt_gconf_load (void)
 	/* ------------ */
 	config_shell_start = GETSTR ("/Actions/StartCommand", 
 	      "echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
-	config_shell_stop = GETSTR ("/Actions/StopCommand", "
+	config_shell_stop = GETSTR ("/Actions/StopCommand", 
 	      "echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
 
 	/* ------------ */
 	config_logfile_use   = GETBOOL ("/LogFile/Use", FALSE);
 	config_logfile_name  = GETSTR ("/LogFile/Filename", NULL);
-	config_logfile_start = GETSTR ("/LogFile/Entry", 
-	    g_strdup(_("project %t started"))); 
-	config_logfile_stop = GETSTR ("/LogFile/EntryStop", 
-		 g_strdup(_("stopped project %t")));
+	config_logfile_start = GETSTR ("/LogFile/EntryStart", _("project %t started")); 
+	config_logfile_stop  = GETSTR ("/LogFile/EntryStop", _("stopped project %t"));
 	config_logfile_min_secs = GETINT ("/LogFile/MinSecs", 3);
 
 	/* ------------ */
@@ -456,11 +458,11 @@ gtt_gconf_load (void)
 			GttPlugin *plg;
 			const char * name, *path, *tip;
 
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report/%d/Name", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Name", i);
 			name = F_GETSTR (s, "");
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report/%d/Path", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Path", i);
 			path = F_GETSTR(s, "");
-			g_snprintf(s, sizeof (s), GTT_CONF"/Report/%d/Tooltip", i);
+			g_snprintf(s, sizeof (s), GTT_GCONF"/Report/%d/Tooltip", i);
 			tip = F_GETSTR(s, "");
 			plg = gtt_plugin_new (name, path);
 			plg->tooltip = g_strdup (tip);
@@ -468,7 +470,7 @@ gtt_gconf_load (void)
 	} 
 
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
-	last_timer = (unsigned long) GETINT ("/Misc/LastTimer", -1);
+	last_timer = (time_t) GETINT ("/Misc/LastTimer", -1);
 
 	/* redraw the GUI */
 	if (config_show_statusbar)
@@ -492,7 +494,6 @@ gtt_gconf_load (void)
 	{
 		update_toolbar_sections();
 	}
-#endif
 }
 
 /* =========================== END OF FILE ========================= */

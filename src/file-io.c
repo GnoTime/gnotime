@@ -51,9 +51,9 @@
 extern GList * plist;
 
 
-static int cur_proj_id = -1;
-static int run_timer = FALSE;
-static time_t last_timer = -1;
+int cur_proj_id = -1;
+int run_timer = FALSE;
+time_t last_timer = -1;
 extern char *first_proj_title;	/* command line flag */
 int save_count = 0;
 
