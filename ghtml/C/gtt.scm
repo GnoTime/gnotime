@@ -90,7 +90,9 @@
                         (first_func obj)))
         )
    (if (null? next_func)
-      (list result)
+      (if (null? result)
+        '()
+        (list result))
       ; if result was null, do not put it into list! 
       (if (null? result)
         (gtt-apply-func-list-to-obj next_func obj)
@@ -121,7 +123,9 @@
                   )
         )
    (if (null? next_obj)
-       (list appres)
+       (if (null? appres)
+         '()
+         (list appres))
        (if (null? appres)
            (gtt-apply-func-list-to-obj-list func_list next_obj)
            (list appres
@@ -176,7 +180,8 @@
 (define (gtt-filter-bill-tasks tasks)
         (define (is-bill task)
                 (if (equal? (gtt-task-billstatus task) '"Bill")
-                  task  '()))
+                  task  '())
+        )
         (gtt-apply-func-list-to-obj-list (list is-bill) tasks)
 )
 

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Invoice</title>
+</head>
+<body>
+<center>
+<h1>Invoice for 
+<?scm (gtt-show-project-title) ?>
+ - 
+<?scm (gtt-show-project-desc) ?>
+</h1>
+</center>
+
+This is a sample invoice
+It only shows billable and no-charge hours.
+<br><br>
+The displayed columns, and the order in which they are displayed,
+can be changed by making a copy of the file <tt>"invoice.ghtml"</tt>
+(probably in <tt>/usr/share/gtt/ghtml/C/invoice.ghtml</tt>) 
+and editing the copy to suit your needs.  When finished, you can 
+add the new copy to your system by picking 
+the menu item "Reports... New Report".
+<br><br>
+Note that this table shows tasks that are marked 'Bill' for the 
+billing status.  There are other filters for 'paid' and 'hold',
+shown below.
+You can create more specialized filters to display special 
+combinations of data.  To do this, make a copy of the
+<tt>'gtt-filter-paid-tasks'</tt> routine, and modify it
+approriately.
+(Coming soon? -- a more complete set of predefined filters)
+
+
+<br><br>
+<center>
+<table border=1>
+<tr>
+<th>Diary Entry</th>
+<th>Billing Status</th>
+<th>Billable</th>
+<th>Bill Rate</th>
+<th>Total Time</th>
+<th>Value</th>
+<th>Billable Value</th>
+</tr>
+<?scm
+
+(gtt-show-tasks (gtt-filter-bill-tasks (gtt-tasks (gtt-linked-project)))
+    (list   
+        ''"<tr>"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-billstatus ''"</td>\n"
+        ''"<td>"  gtt-task-billable   ''"</td>\n"
+        ''"<td>"  gtt-task-billrate   ''"</td>\n"
+        ''"<td>"  gtt-task-time-str   ''"</td>\n"
+        ''"<td>"  gtt-task-value-str  ''"</td>\n"
+        ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
+        ''</tr>
+    )
+)
+
+
+?>
+</table>
+</center>
+
+<br><br>
+The table below shows only paid tasks:
+
+<center>
+<table border=1>
+<tr>
+<th>Diary Entry</th>
+<th>Billing Status</th>
+<th>Billable</th>
+<th>Bill Rate</th>
+<th>Total Time</th>
+<th>Value</th>
+<th>Billable Value</th>
+</tr>
+<?scm
+
+(gtt-show-tasks (gtt-filter-paid-tasks (gtt-tasks (gtt-linked-project)))
+    (list   
+        ''"<tr>"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-billstatus ''"</td>\n"
+        ''"<td>"  gtt-task-billable   ''"</td>\n"
+        ''"<td>"  gtt-task-billrate   ''"</td>\n"
+        ''"<td>"  gtt-task-time-str   ''"</td>\n"
+        ''"<td>"  gtt-task-value-str  ''"</td>\n"
+        ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
+        ''</tr>
+    )
+)
+
+
+?>
+</table>
+</center>
+
+<br><br>
+The table below shows only the items withheld from billing:
+
+<center>
+<table border=1>
+<tr>
+<th>Diary Entry</th>
+<th>Billing Status</th>
+<th>Billable</th>
+<th>Bill Rate</th>
+<th>Total Time</th>
+<th>Value</th>
+<th>Billable Value</th>
+</tr>
+<?scm
+
+(gtt-show-tasks (gtt-filter-hold-tasks (gtt-tasks (gtt-linked-project)))
+    (list   
+        ''"<tr>"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-billstatus ''"</td>\n"
+        ''"<td>"  gtt-task-billable   ''"</td>\n"
+        ''"<td>"  gtt-task-billrate   ''"</td>\n"
+        ''"<td>"  gtt-task-time-str   ''"</td>\n"
+        ''"<td>"  gtt-task-value-str  ''"</td>\n"
+        ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
+        ''</tr>
+    )
+)
+
+
+?>
+</table>
+</center>
+
+
+<br><br>
+<center>
+That's all Folks!
+</center>
+</body>
+</html>
