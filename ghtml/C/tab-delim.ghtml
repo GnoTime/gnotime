@@ -1,12 +1,5 @@
-
+This template file defines a sample tab-delimited export for
 <?scm (gtt-show-project-title) ?>	<?scm (gtt-show-project-desc) ?>
-
-This is sample tab-delimited export
-
-<!--
-This is commented out and not visible
--->
-
-<?scm (gtt-show-invoice '($memo $task_time $billable 
+<?scm (gtt-show-export '($memo $task_time $billable 
 $billrate "Sample Column Title for the Billing Rate" 
 $value $bill_value))  ?>
