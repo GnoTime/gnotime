@@ -17,7 +17,6 @@
  */
 
 #include "config.h"
-#include <errno.h>
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
