@@ -152,7 +152,7 @@
 
 (define (gtt-billable-tasks tasks)
         (define (is-billable task)
-                (if (equal? (gtt-task-billable task) '"Billable")
+                (if (not (equal? (gtt-task-billable task) '"Not Billable"))
                   task  ())
         )
         (gtt-apply-func-list-to-obj-list (list is-billable) tasks)
