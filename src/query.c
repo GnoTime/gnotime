@@ -80,14 +80,20 @@ day_bin (GttInterval *ivl, gpointer data)
 		{
 			bu->total += stop - start;
 			bu->intervals = g_list_append (bu->intervals, ivl);
-			bu->tasks = g_list_append (bu->tasks, tsk);
+			if (bu->tasks && (bu->tasks->data != tsk))
+			{
+				bu->tasks = g_list_append (bu->tasks, tsk);
+			}
 			return 1;
 		}
 		else
 		{
 			bu->total+= end_of_day - start;
 			bu->intervals = g_list_append (bu->intervals, ivl);
-			bu->tasks = g_list_append (bu->tasks, tsk);
+			if (bu->tasks && (bu->tasks->data != tsk))
+			{
+				bu->tasks = g_list_append (bu->tasks, tsk);
+			}
 		}
 		arr_day ++;
 		start = end_of_day;
