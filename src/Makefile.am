@@ -73,7 +73,7 @@ INCLUDES = 			\
 	-DPREFIX=\""$(prefix)"\" \
 	-DSYSCONFDIR=\""$(sysconfdir)/gnotime"\" \
 	-DGTTDATADIR=\""$(datadir)/gnotime"\" \
-	-DDATADIR=\""$(datadir)/gnotime"\" \
+	-DDATADIR=\""$(datadir)"\" \
 	-DLIBDIR=\""$(libdir)/gnotime"\" \
 	${GNOME_INCLUDEDIR}	\
 	${GUILE_INCS}

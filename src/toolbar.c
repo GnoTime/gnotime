@@ -147,8 +147,12 @@ toolbar_set_states(void)
 static void
 toolbar_help(GtkWidget *widget, gpointer data)
 {
-	GError *err;
-	gnome_help_display ("index.html", "gtt", &err);
+	GError *err = NULL;
+	gnome_help_display ("index.html", "gnotime", &err);
+	if (err)
+	{
+		printf ("duude gnome help err msg: %s\n", err->message);
+	}
 }
 
 
