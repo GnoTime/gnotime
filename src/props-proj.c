@@ -261,6 +261,7 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 
 /* ============================================================== */
 
+
 #define TAGGED(NAME) ({						\
 	GtkWidget *widget;					\
 	widget = glade_xml_get_widget (gtxml, NAME);		\
@@ -279,6 +280,20 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 		GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
 		GTK_OBJECT(dlg->dlg));				\
 	GNOME_DATE_EDIT(widget); })
+
+static void wrapper (void * gobj, void * data) {   
+	gnome_property_box_changed (GNOME_PROPERTY_BOX(data)); 
+} 
+
+#define TEXTED(NAME) ({						\
+	GtkWidget *widget;					\
+	GtkTextBuffer *buff;					\
+	widget = glade_xml_get_widget (gtxml, NAME);		\
+	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget)); \
+	g_signal_connect_object(G_OBJECT(buff), "changed",\
+		G_CALLBACK(wrapper), 	\
+		G_OBJECT(dlg->dlg), 0);				\
+	widget; })
 
 
 #define MUGGED(NAME) ({						\
@@ -331,7 +346,7 @@ prop_dialog_new (void)
 
 	dlg->title      = GTK_ENTRY(TAGGED("title box"));
 	dlg->desc       = GTK_ENTRY(TAGGED("desc box"));
-	dlg->notes      = GTK_TEXT_VIEW(TAGGED("notes box"));
+	dlg->notes      = GTK_TEXT_VIEW(TEXTED("notes box"));
 
 	dlg->regular    = GTK_ENTRY(TAGGED("regular box"));
 	dlg->overtime   = GTK_ENTRY(TAGGED("overtime box"));

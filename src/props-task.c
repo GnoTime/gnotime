@@ -166,6 +166,20 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	GTK_OPTION_MENU(widget);				\
 })
 
+static void wrapper (void * gobj, void * data) {   
+	gnome_property_box_changed (GNOME_PROPERTY_BOX(data)); 
+} 
+
+#define TEXTED(NAME) ({						\
+	GtkWidget *widget;					\
+	GtkTextBuffer *buff;					\
+	widget = glade_xml_get_widget (gtxml, NAME);		\
+	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget)); \
+	g_signal_connect_object(G_OBJECT(buff), "changed",\
+		G_CALLBACK(wrapper), 	\
+		G_OBJECT(dlg->dlg), 0);				\
+	widget; })
+
 #define MENTRY(WIDGET,NAME,ORDER,VAL) {				\
 	GtkWidget *menu_item;					\
 	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));	\
@@ -204,7 +218,7 @@ prop_task_dialog_new (void)
 	/* grab the various entry boxes and hook them up */
 
 	dlg->memo       = GTK_ENTRY(TAGGED("memo box"));
-	dlg->notes      = GTK_TEXT_VIEW(TAGGED("notes box"));
+	dlg->notes      = GTK_TEXT_VIEW(TEXTED("notes box"));
 	dlg->billstatus = MUGGED("billstatus menu");
 	dlg->billable   = MUGGED("billable menu");
 	dlg->billrate   = MUGGED("billrate menu");
