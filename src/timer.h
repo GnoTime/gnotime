@@ -1,4 +1,5 @@
-/*   Timer functions for GTimeTracker - a time tracker
+/*   Low-level timer callbacks and timeouts for GTimeTracker 
+ *   Copyright (C) 2001, 2002, 2003 Linas Vepstas <linas@linas.org>
  *   Copyright (C) 1997,98 Eckehard Berns
  *
  *   This program is free software; you can redistribute it and/or modify

@@ -1,5 +1,5 @@
 /*   Keyboard inactivity timout dialog for GTimeTracker - a time tracker
- *   Copyright (C) 2001, 2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,18 +22,10 @@
 
 #include "ctree.h"
 #include "ctree-gnome2.h"
+#include "cur-proj.h"
 #include "idle-dialog.h"
 #include "idle-timer.h"
 #include "proj.h"
-/*
-#include "app.h"
-#include "cur-proj.h"
-#include "dialog.h"
-#include "log.h"
-#include "prefs.h"
-#include "timer.h"
-*/
-
 
 
 int config_idle_timeout = -1;
@@ -41,7 +33,6 @@ int config_idle_timeout = -1;
 struct GttInactiveDialog_s 
 {
 	IdleTimeout *idt;
-
 };
 
 
@@ -54,6 +45,7 @@ inactive_dialog_new (void)
 
 	id = g_new0 (GttInactiveDialog, 1);
 	id ->idt = idle_timeout_new ();
+	return id;
 }
 
 /* =========================================================== */
@@ -79,7 +71,7 @@ show_inactive_dialog (GttInactiveDialog *id)
 	if (0 > config_idle_timeout) return;
 
 	now = time(0);
-	idle_time = now - poll_last_activity (idt);
+	idle_time = now - poll_last_activity (id->idt);
 	if (idle_time <= config_idle_timeout) return;
 
 	/* stop the timer on the current project */

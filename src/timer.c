@@ -1,6 +1,6 @@
-/*   GTimeTracker - a time tracker
+/*   Low-level timer callbacks & timeout handlers for GTimeTracker 
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002, 2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,19 +26,18 @@
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "dialog.h"
-#include "idle-timer.h"
+#include "idle-dialog.h"
 #include "log.h"
 #include "prefs.h"
 #include "proj.h"
 #include "timer.h"
 
 
-static gint main_timer = 0;
-static IdleTimeout *idt = NULL;
-
-int config_idle_timeout = -1;
 int config_autosave_period = 60;
 int config_autosave_props_period = (4*3600);
+
+static gint main_timer = 0;
+static GttInactiveDialog *idt = NULL;
 
 /* =========================================================== */
 /* zero out day counts if rolled past midnight */
@@ -106,8 +105,11 @@ timer_func(gpointer data)
 
 	if (!cur_proj) return 1;
 
+	/* Update the data in the data engine */
 	gtt_project_timer_update (cur_proj);
 
+	/* Update the GUI display, once a minute or once a second,
+	 * depending on the user preferences */
 	if (config_show_secs) 
 	{
 		ctree_update_label(global_ptw, cur_proj);
@@ -117,69 +119,26 @@ timer_func(gpointer data)
 		ctree_update_label(global_ptw, cur_proj);
 	}
 
+	/* Look for keyboard/mouse inactivity, and stop the timer if needed. */
 	if (0 < config_idle_timeout) 
 	{
-		int idle_time;
-		idle_time = now - poll_last_activity (idt);
-		/*
-printf ("duude idle for =%d\n", idle_time);
-*/
-		if (idle_time > config_idle_timeout) 
-		{
-			time_t stop;
-			char *msg;
-			GttInterval *ivl;
-			GttProject *prj = cur_proj;
-
-			/* stop the timer on the current project */
-			ctree_stop_timer (cur_proj);
-
-			/* The idle timer can trip because gtt was left running
-			 * on a laptop, which was them put in suspend mode (i.e.
-			 * by closing the cover).  When the laptop is resumed,
-			 * the poll_last_activity will return the many hours/days
-			 * tht the laptop has been shut down, and meremly stoping
-			 * the timer (as above) will credit hours/days to the 
-			 * current active project.  We don't want this, we need
-			 * to undo this damage.
-			 */
-			ivl = gtt_project_get_first_interval (prj);
-			stop = gtt_interval_get_stop (ivl);
-			stop -= idle_time;
-			stop += config_idle_timeout;
-			gtt_interval_set_stop (ivl, stop);
-
-			/* warn the user */
-			msg = g_strdup_printf (
-				_("The keyboard and mouse have been idle\n"
-				  "for %d minutes.  The currently running\n"
-				  "project (%s - %s)\n"
-				  "has been stopped.\n"
-				  "Do you want to restart it?"),
-				(config_idle_timeout+30)/60,
-				gtt_project_get_title(prj),
-				gtt_project_get_desc(prj));
-			qbox_ok_cancel (_("System Idle"), msg,
-				GTK_STOCK_YES, restart_proj, prj, 
-				GTK_STOCK_NO, NULL, NULL);
-			return 1;
-		}
+		show_inactive_dialog (idt);
 	}
 	return 1;
 }
 
 
-static int timer_inited = 0;
+static gboolean timer_inited = FALSE;
 
 void 
 init_timer(void)
 {
 	if (timer_inited) return;
-	timer_inited = 1;
+	timer_inited = TRUE;
 
-	idt = idle_timeout_new();
-
-	/* the timer is measured in milliseconds, so 1000
+	idt = inactive_dialog_new();
+	
+	/* The timer is measured in milliseconds, so 1000
 	 * means it pops once a second. */
 	main_timer = gtk_timeout_add(1000, timer_func, NULL);
 }
@@ -190,4 +149,4 @@ timer_is_running (void)
 	return (NULL != cur_proj);
 }
 
-/* ================================= END OF FILE ============================== */
+/* ========================== END OF FILE ============================ */
