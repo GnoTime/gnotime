@@ -23,6 +23,7 @@
 #include <gnome.h>
 
 #include "app.h"
+#include "gconf-io.h"
 #include "journal.h"
 #include "menus.h"
 #include "plug-in.h"

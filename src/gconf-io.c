@@ -232,15 +232,6 @@ gtt_gconf_save (void)
 		{
 			printf ("GTT: GConf: Sync Failed\n");
 		}
-
-		/* Try real hard to sync.  I was hoping this would fix the
-		 * dir_exists error, but it does not.  Keep this anyway
-		 * for paranoia reasons. */
-		gconf_synchronous_sync(gengine, &err_ret);
-		if (NULL != err_ret)
-		{
-			printf ("GTT: GConf: Sync Sync Failed\n");
-		}
 	}
 }
 
