@@ -1,7 +1,19 @@
+Fri Jan  3 19:05:11 CST 2003 Linas Vepstas <linas@linas.org>
+
+	* ghtml.c: more schemeification
+	* primer.ghtml: more examples
+	* redhat/gnotime.spec: RPM build file
+	* ghtml.c: fix bug for printing integers
+	* gtt.scm: remove dead code, fix broken code, add filters
+	* invoice.ghtml: port to new interfaces
+	* journal.ghtml: port to new interfaces
+	* bigtable.ghtml: port to new interfaces
+
 Thu Jan  2 11:54:05 CST 2003 Linas Vepstas <linas@linas.org>
 
 	* timer.c, idle-dialog.c: integrate in new idle-dialog
 	* main.c: data files go into own subdirectory
+	* Release gnotime-2.1.3
 
 Mon Dec 30 17:50:10 CST 2002 Linas Vepstas <linas@linas.org>
 
