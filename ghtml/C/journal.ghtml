@@ -36,34 +36,18 @@
                gtt-task-memo 
         ''"</big></b>"
         ''"</div>\n"
+        ''"<div class=gnotime-diary-start>"
+        ''"Started: <b>"
+               gtt-task-earliest-str
+        ''"</b>&nbsp;&nbsp;"
+        ''"Last Active: <b>"
+               gtt-task-latest-str
+        ''"</b></div>\n"
+        ''"<br><br>\n"
+        ''"<table class=gnotime-diary-notes bgcolor=#f8f8f8 width=490 border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
-        ''"\n</div>\n"
-        ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=490 border=0 cellpadding=4>\n"
-        ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
-        ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
-        ''"</tr>\n"
-         (lambda (task) (gtt-ivls task
-         (list
-               ''"<tr>\n"
-               ; the first html table column shows the start date/time
-               ''"<td class=gnotime-start-stop-table-start>"  
-                     gtt-interval-start-str 
-               ''"</td>\n"
-               
-               ; the second html table column shows the stop date/time
-               ''"<td class=gnotime-start-stop-table-stop>"  
-                     gtt-interval-stop-str 
-               ''"</td>\n"
-               
-               ; the third html table column shows the elapsed time
-               ''"<td class=gnotime-start-stop-table-elapsed>"  
-                   gtt-interval-elapsed-str  
-               ''"</td>\n</tr>\n"
-         )))
-        ''"</table>"
+        ''"\n</div></table>\n"
         ''"</td></tr></table><br><br>\n"
     )
 )
@@ -72,7 +56,9 @@
 
 <div align=right>
 Brought to you by ...  <br>
-<img src="gnotime-logo.png">
+<a href="http://gttr.sourceforge.net/">
+<img src="gnotime-logo.png" border="0" width="155" height="28"></a>
+</div>
 </div>
 </body>
 </html>
