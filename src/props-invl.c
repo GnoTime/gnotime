@@ -1,5 +1,5 @@
 /*   Edit Interval Properties for GTimeTracker - a time tracker
- *   Copyright (C) 2001 Linas Vepstas
+ *   Copyright (C) 2001,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -79,7 +79,10 @@ interval_edit_apply_cb(GtkWidget * w, gpointer data)
                                              "fuzz_factor"));
 
 	gtt_interval_set_fuzz (dlg->interval, fuzz);
-	gtt_interval_thaw (dlg->interval);
+
+	/* The thaw may cause  the interval to change.  If so, redo the GUI. */
+	dlg->interval = gtt_interval_thaw (dlg->interval);
+	edit_interval_set_interval (dlg, dlg->interval);
 }
 
 static void
@@ -100,7 +103,7 @@ interval_edit_cancel_cb(GtkWidget * w, gpointer data)
 }
 
 /* ============================================================== */
-/* set values into interval editor widgets */
+/* Set values into interval editor widgets */
 
 void 
 edit_interval_set_interval (EditIntervalDialog *dlg, GttInterval *ivl)

@@ -1169,23 +1169,30 @@ gtt_project_list_total (void)
  *     (but only do this if the nearest is in the same day).
  */
 
-static int
-scrub_intervals (GttTask *tsk)
+static GttInterval *
+get_closest (GList *node)
+{
+	if (node->next) return node->next->data;
+	if (node->prev) return node->prev->data;
+	return NULL;
+}
+
+static GttInterval *
+scrub_intervals (GttTask *tsk, GttInterval *handle)
 {
 	GttProject *prj;
 	GList *node;
-	int changed = FALSE;
 	int mini, merge, mgap;
 	int not_done = TRUE;
 	int save_freeze;
 
-	/* prevent recursion */
+	/* Prevent recursion */
 	prj = tsk->parent;
 	g_return_val_if_fail (prj, FALSE);
 	save_freeze = prj->frozen;
 	prj->frozen = TRUE;
 
-	/* first, eliminate very short intervals */
+	/* First, eliminate very short intervals */
 	mini = prj->min_interval;
 	while (not_done)
 	{
@@ -1195,23 +1202,23 @@ scrub_intervals (GttTask *tsk)
 			GttInterval *ivl = node->data;
 			int len = ivl->stop - ivl->start;
 
-			/* should never see negative intervals */
-			g_return_val_if_fail ((0 <= len), changed);
+			/* Should never see negative intervals */
+			g_return_val_if_fail ((0 <= len), handle);
 			if ((FALSE == ivl->running) &&
 			    (len <= mini) && 
 			    (0 != ivl->start))  /* don't whack new ivls */
 			{
+				if (handle == ivl) handle = get_closest (node);
 				tsk->interval_list = g_list_remove (tsk->interval_list, ivl);
 				ivl->parent = NULL;
 				g_free (ivl);
 				not_done = TRUE;
-				changed = TRUE;
 				break;
 			}
 		}
 	}
 
-	/* merge intervals with small gaps between them */
+	/* Merge intervals with small gaps between them */
 	mgap = prj->auto_merge_gap;
 	not_done = TRUE;
 	while (not_done)
@@ -1232,15 +1239,15 @@ scrub_intervals (GttTask *tsk)
 			    (ivl->fuzz > gap) ||
 			    (nivl->fuzz > gap))
 			{
-				gtt_interval_merge_down (ivl);
+				GttInterval *rc = gtt_interval_merge_down (ivl);
+				if (handle == ivl) handle = rc;
 				not_done = TRUE;
-				changed = TRUE;
 				break;
 			}
 		}
 	}
 
-	/* merge short intervals into neighbors */
+	/* Merge short intervals into neighbors */
 	merge = prj->auto_merge_interval;
 	not_done = TRUE;
 	while (not_done)
@@ -1273,7 +1280,7 @@ scrub_intervals (GttTask *tsk)
 			{
 				GttInterval *nivl = node->prev->data;
 
-				/* merge only if the intervals are in the same day */
+				/* Merge only if the intervals are in the same day */
 				if (get_midnight (nivl->start) == get_midnight (ivl->stop))
 				{
 					gap_up = nivl->start - ivl->stop;
@@ -1283,20 +1290,21 @@ scrub_intervals (GttTask *tsk)
 			if (!do_merge) continue;
 			if (gap_up < gap_down)
 			{
-				gtt_interval_merge_up (ivl);
+				GttInterval *rc = gtt_interval_merge_up (ivl);
+				if (handle == ivl) handle = rc;
 			}
 			else 
 			{
-				gtt_interval_merge_down (ivl);
+				GttInterval *rc = gtt_interval_merge_down (ivl);
+				if (handle == ivl) handle = rc;
 			}
 			not_done = TRUE;
-			changed = TRUE;
 			break;
 		}
 	}
 
 	prj->frozen = save_freeze;
-	return changed;
+	return handle;
 }
 
 static void
@@ -1324,11 +1332,11 @@ project_compute_secs (GttProject *proj)
 	month = get_month (-1);
 	newyear = get_newyear (-1);
 
-	/* total up tasks */
+	/* Total up tasks */
 	for (tsk_node= proj->task_list; tsk_node; tsk_node=tsk_node->next)
 	{
 		GttTask * task = tsk_node->data;
-		scrub_intervals (task);
+		scrub_intervals (task , NULL);
 		for (ivl_node= task->interval_list; ivl_node; ivl_node=ivl_node->next)
 		{
 			GttInterval *ivl = ivl_node->data;
@@ -1396,7 +1404,7 @@ gtt_project_list_compute_secs (void)
 	for (node= plist; node; node=node->next)
 	{
 		GttProject * prj = node->data;
-		project_compute_secs (prj);
+		proj_refresh_time (prj);
 		children_modified (prj);
 	}
 }
@@ -1479,12 +1487,14 @@ gtt_interval_freeze (GttInterval *ivl)
 	ivl->parent->parent->frozen = TRUE;
 }
 
-void 
+GttInterval *
 gtt_interval_thaw (GttInterval *ivl)
 {
-	if (!ivl ||!ivl->parent || !ivl->parent->parent) return;
+	if (!ivl ||!ivl->parent || !ivl->parent->parent) return ivl;
 	ivl->parent->parent->frozen = FALSE;
+	ivl = scrub_intervals (ivl->parent, ivl);
 	proj_refresh_time (ivl->parent->parent);
+	return ivl;
 }
 
 static void
@@ -2092,7 +2102,7 @@ gtt_interval_destroy (GttInterval * ivl)
 	if (!ivl) return;
 	if (ivl->parent)
 	{
-		/* unhook myself from the chain */
+		/* Unhook myself from the chain */
 		ivl->parent->interval_list = 
 			g_list_remove (ivl->parent->interval_list, ivl);
 		proj_refresh_time (ivl->parent->parent);

@@ -226,6 +226,16 @@ GttProject * 	gtt_project_locate_from_id (int prj_id);
  *    invoked.
  *
  * The gtt_project_thaw() routine causes notifiers to be sent.
+ *
+ * The gtt_interval_thaw() routine causes notifiers to be sent.
+ *    Also, it will run the interval-scrub routines at this point.
+ *    The scrubbing may cause the indicated interval to be deleted
+ *    (e.g. merged into the interval above/below it).   To avoid
+ *    a dangleing pointer to freed memory, doon't use the input 
+ *    pointer again; instead replace it with the returned value.
+ *    This thaw routine will return a pointer to either the 
+ *    input interval, or, if it was deleted, to another nearby
+ *    interval.
  */ 
 
 void		gtt_project_freeze (GttProject *prj);
@@ -233,7 +243,7 @@ void		gtt_project_thaw (GttProject *prj);
 void		gtt_task_freeze (GttTask *tsk);
 void		gtt_task_thaw (GttTask *tsk);
 void		gtt_interval_freeze (GttInterval *ivl);
-void		gtt_interval_thaw (GttInterval *ivl);
+GttInterval * gtt_interval_thaw (GttInterval *ivl);
 
 void		gtt_project_add_notifier (GttProject *,
 			GttProjectChanged, gpointer);
@@ -519,10 +529,16 @@ int 		gtt_task_get_secs_ever (GttTask *tsk);
  *    time: negative timer intervals are not allowed.  Note also that
  *    the system automatically removes ("scrubs away") short time 
  *    intervals when certain key operations are performed (e.g. 'thaw'). 
- *    This *    means that if you are holding a pointer to a very 
+ *    This means that if you are holding a pointer to a very 
  *    short interval, it might disappear on you.  In other words, 
  *    don't use these routines to set a short time interval, and 
  *    still expect the interval to be around when you are done.
+ *    
+ *    This is a rather unsatisfactory state of affairs; however,
+ *    I don't know how else to auto-scrub intervals and also allow
+ *    users to hold pointers to them.  If you want to get back a 
+ *    pointer to a valid interval, use the pointer returned by 
+ *    gtt_interval_thaw().
  *
  * The fuzz (measured in seconds) indicates how 'fuzzy' the 
  *    true start time was.  Typically, its 0, 300, 3600 or 12*3600
