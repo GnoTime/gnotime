@@ -265,67 +265,67 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 /* ============================================================== */
 
 
-#define TAGGED(NAME) ({						\
-	GtkWidget *widget;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	gtk_signal_connect_object(GTK_OBJECT(widget), "changed",\
-		GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-		GTK_OBJECT(dlg->dlg));				\
+#define TAGGED(NAME) ({                                           \
+	GtkWidget *widget;                                             \
+	widget = glade_xml_get_widget (gtxml, NAME);                   \
+	gtk_signal_connect_object(GTK_OBJECT(widget), "changed",       \
+	        GTK_SIGNAL_FUNC(gnome_property_box_changed),           \
+	        GTK_OBJECT(dlg->dlg));                                 \
 	widget; })
 
-#define DATED(NAME) ({						\
-	GtkWidget *widget;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	gtk_signal_connect_object(GTK_OBJECT(widget), "date_changed",\
-		GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-		GTK_OBJECT(dlg->dlg));				\
-	gtk_signal_connect_object(GTK_OBJECT(widget), "time_changed",\
-		GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-		GTK_OBJECT(dlg->dlg));				\
+#define DATED(NAME) ({                                            \
+	GtkWidget *widget;                                             \
+	widget = glade_xml_get_widget (gtxml, NAME);                   \
+	gtk_signal_connect_object(GTK_OBJECT(widget), "date_changed",  \
+	        GTK_SIGNAL_FUNC(gnome_property_box_changed),           \
+	        GTK_OBJECT(dlg->dlg));                                 \
+	gtk_signal_connect_object(GTK_OBJECT(widget), "time_changed",  \
+	        GTK_SIGNAL_FUNC(gnome_property_box_changed),           \
+	        GTK_OBJECT(dlg->dlg));                                 \
 	GNOME_DATE_EDIT(widget); })
 
 static void wrapper (void * gobj, void * data) {   
 	gnome_property_box_changed (GNOME_PROPERTY_BOX(data)); 
 } 
 
-#define TEXTED(NAME) ({						\
-	GtkWidget *widget;					\
-	GtkTextBuffer *buff;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget)); \
-	g_signal_connect_object(G_OBJECT(buff), "changed",\
-		G_CALLBACK(wrapper), 	\
-		G_OBJECT(dlg->dlg), 0);				\
+#define TEXTED(NAME) ({                                          \
+	GtkWidget *widget;                                            \
+	GtkTextBuffer *buff;                                          \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget));      \
+	g_signal_connect_object(G_OBJECT(buff), "changed",            \
+	        G_CALLBACK(wrapper),                                  \
+	        G_OBJECT(dlg->dlg), 0);                               \
 	widget; })
 
 
-#define MUGGED(NAME) ({						\
-	GtkWidget *widget, *mw;					\
-        widget = glade_xml_get_widget (gtxml, NAME);		\
-        mw = gtk_option_menu_get_menu (GTK_OPTION_MENU(widget));\
-        gtk_signal_connect_object(GTK_OBJECT(mw), "selection_done", \
-                 GTK_SIGNAL_FUNC(gnome_property_box_changed),	\
-                 GTK_OBJECT(dlg->dlg));				\
-	GTK_OPTION_MENU(widget);				\
+#define MUGGED(NAME) ({                                          \
+	GtkWidget *widget, *mw;                                       \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	mw = gtk_option_menu_get_menu (GTK_OPTION_MENU(widget));      \
+	gtk_signal_connect_object(GTK_OBJECT(mw), "selection_done",   \
+	         GTK_SIGNAL_FUNC(gnome_property_box_changed),         \
+	         GTK_OBJECT(dlg->dlg));                               \
+	GTK_OPTION_MENU(widget);                                      \
 })
 
 
-#define MENTRY(WIDGET,NAME,ORDER,VAL) {				\
-	GtkWidget *menu_item;					\
-	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));	\
-	gtk_option_menu_set_history (WIDGET, ORDER);		\
-	menu_item =  gtk_menu_get_active(menu);			\
-	gtk_object_set_data(GTK_OBJECT(menu_item), NAME,	\
-		(gpointer) VAL);				\
+#define MENTRY(WIDGET,NAME,ORDER,VAL) {                          \
+	GtkWidget *menu_item;                                         \
+	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));  \
+	gtk_option_menu_set_history (WIDGET, ORDER);                  \
+	menu_item =  gtk_menu_get_active(menu);                       \
+	gtk_object_set_data(GTK_OBJECT(menu_item), NAME,              \
+	        (gpointer) VAL);                                      \
 }
 
 
 static PropDlg *
 prop_dialog_new (void)
 {
-        PropDlg *dlg;
+	PropDlg *dlg;
 	GladeXML *gtxml;
-        // static GnomeHelpMenuEntry help_entry = { NULL, "dialogs.html#PROPERTIES" };
+	/* static GnomeHelpMenuEntry help_entry = { NULL, "dialogs.html#PROPERTIES" }; */
 
 	dlg = g_new0(PropDlg, 1);
 
