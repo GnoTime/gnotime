@@ -76,12 +76,13 @@ struct gtt_project_s
 	int frozen : 1 ;          /* defer recomputes of time totals */
 	int dirty_time : 1 ;      /* the time totals are wrong */
 
-	int secs_ever;   /* seconds spend on this project */
-	int secs_year;   /* seconds spent on this project this year */
-	int secs_month;  /* seconds spent on this project this month */
-	int secs_week;   /* seconds spent on this project this week */
-	int secs_day;    /* seconds spent on this project today */
-	int secs_yesterday;    /* seconds spent on this project yesterday */
+	int secs_ever;      /* seconds spend on this project */
+	int secs_year;      /* seconds spent on this project this year */
+	int secs_month;     /* seconds spent on this project this month */
+	int secs_week;      /* seconds spent on this project this week */
+	int secs_lastweek;  /* seconds spent on this project last week */
+	int secs_day;       /* seconds spent on this project today */
+	int secs_yesterday; /* seconds spent on this project yesterday */
 };
 
 

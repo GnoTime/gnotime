@@ -91,6 +91,7 @@ gtt_project_new(void)
 	proj->secs_day = 0;
 	proj->secs_yesterday = 0;
 	proj->secs_week = 0;
+	proj->secs_lastweek = 0;
 	proj->secs_month = 0;
 	proj->secs_year = 0;
 
@@ -989,6 +990,13 @@ prj_total_secs_week (GttProject *prj, gpointer data)
 }
 
 static int
+prj_total_secs_lastweek (GttProject *prj, gpointer data)
+{
+	*((int *) data) += prj->secs_lastweek;
+	return 1;
+}
+
+static int
 prj_total_secs_month (GttProject *prj, gpointer data)
 {
 	*((int *) data) += prj->secs_month;
@@ -1041,6 +1049,15 @@ gtt_project_total_secs_week (GttProject *proj)
 	int total = 0;
 	if (!proj) return 0;
 	gtt_project_foreach (proj, prj_total_secs_week, &total);
+	return total;
+}
+
+int
+gtt_project_total_secs_lastweek (GttProject *proj)
+{
+	int total = 0;
+	if (!proj) return 0;
+	gtt_project_foreach (proj, prj_total_secs_lastweek, &total);
 	return total;
 }
 
@@ -1099,6 +1116,13 @@ gtt_project_get_secs_week (GttProject *proj)
 {
 	if (!proj) return 0;
 	return proj->secs_week;
+}
+
+int
+gtt_project_get_secs_lastweek (GttProject *proj)
+{
+	if (!proj) return 0;
+	return proj->secs_lastweek;
 }
 
 int
@@ -1353,6 +1377,7 @@ project_compute_secs (GttProject *proj)
 	int total_day = 0;
 	int total_yesterday = 0;
 	int total_week = 0;
+	int total_lastweek = 0;
 	int total_month = 0;
 	int total_year = 0;
 	time_t midnight, sunday, month, newyear;
@@ -1372,7 +1397,9 @@ project_compute_secs (GttProject *proj)
 	month = get_month (-1);
 	newyear = get_newyear (-1);
 
-	/* Total up tasks */
+	/* Total up time spent in various tasks.
+	 * XXX None of these total handle daylight savings correctly. 
+	 */
 	for (tsk_node= proj->task_list; tsk_node; tsk_node=tsk_node->next)
 	{
 		GttTask * task = tsk_node->data;
@@ -1381,9 +1408,8 @@ project_compute_secs (GttProject *proj)
 		{
 			GttInterval *ivl = ivl_node->data;
 			total_ever += ivl->stop - ivl->start;
-			/* Accum time today.
-			 * XXX Does not handle daylight saving correctly. 
-			 */
+			
+			/* Accum time today. */
 			if (ivl->start >= midnight)
 			{
 				total_day += ivl->stop - ivl->start;
@@ -1393,9 +1419,7 @@ project_compute_secs (GttProject *proj)
 				total_day += ivl->stop - midnight;
 			}
 			
-			/* Accum time yesterday.
-			 * XXX Does not handle daylight saving correctly. 
-			 */
+			/* Accum time yesterday. */
 			if (ivl->start < midnight)
 			{
 				if (ivl->start >= midnight-24*3600)
@@ -1423,7 +1447,7 @@ project_compute_secs (GttProject *proj)
 				}
 			}
 
-			/* Accum time last week. */
+			/* Accum time this week. */
 			if (ivl->start >= sunday)
 			{
 				total_week += ivl->stop - ivl->start;
@@ -1432,6 +1456,36 @@ project_compute_secs (GttProject *proj)
 			{
 				total_week += ivl->stop - sunday;
 			}
+
+			/* Accum time last week. */
+			if (ivl->start < sunday)
+			{
+				if (ivl->start >= sunday-7*24*3600)
+				{
+					if (ivl->stop <= sunday)
+					{
+						total_lastweek += ivl->stop - ivl->start;
+					}
+					else 
+					{
+						total_lastweek += sunday - ivl->start;
+					}
+				}
+				else  /* else .. it started before sunday last week */
+				if (ivl->stop > sunday-7*24*3600)
+				{
+					if (ivl->stop <= sunday)
+					{
+						total_lastweek += ivl->stop - (sunday-7*24*3600);
+					}
+					else 
+					{
+						total_lastweek += 7*24*3600;
+					}
+				}
+			}
+
+			/* Accum time this month */
 			if (ivl->start >= month)
 			{
 				total_month += ivl->stop - ivl->start;
@@ -1455,6 +1509,7 @@ project_compute_secs (GttProject *proj)
 	proj->secs_day = total_day;
 	proj->secs_yesterday = total_yesterday;
 	proj->secs_week = total_week;
+	proj->secs_lastweek = total_lastweek; 
 	proj->secs_month = total_month;
 	proj->secs_year = total_year;
 	proj->dirty_time = FALSE;
@@ -2550,6 +2605,14 @@ cmp_week(const void *aa, const void *bb)
 }
 
 static int
+cmp_lastweek(const void *aa, const void *bb)
+{
+	GttProject *a = (GttProject *)aa;
+	GttProject *b = (GttProject *)bb;
+	return (gtt_project_total_secs_lastweek(b) - gtt_project_total_secs_lastweek(a));
+}
+
+static int
 cmp_month(const void *aa, const void *bb)
 {
 	GttProject *a = (GttProject *)aa;
@@ -2697,6 +2760,12 @@ GList *
 project_list_sort_week(GList *prjs)
 {
 	DO_SORT(cmp_week);
+}
+
+GList *
+project_list_sort_lastweek(GList *prjs)
+{
+	DO_SORT(cmp_lastweek);
 }
 
 GList *

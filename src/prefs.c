@@ -44,6 +44,7 @@ int config_show_title_ever = 1;
 int config_show_title_year = 0;
 int config_show_title_month = 0;
 int config_show_title_week = 0;
+int config_show_title_lastweek = 0;
 int config_show_title_day = 1;
 int config_show_title_yesterday = 0;
 int config_show_title_current = 0;
@@ -95,6 +96,7 @@ typedef struct _PrefsDialog
 	GtkCheckButton *show_title_year;
 	GtkCheckButton *show_title_month;
 	GtkCheckButton *show_title_week;
+	GtkCheckButton *show_title_lastweek;
 	GtkCheckButton *show_title_day;
 	GtkCheckButton *show_title_yesterday;
 	GtkCheckButton *show_title_current;
@@ -172,6 +174,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		SHOW_CHECK (title_year);
 		SHOW_CHECK (title_month);
 		SHOW_CHECK (title_week);
+		SHOW_CHECK (title_lastweek);
 		SHOW_CHECK (title_day);
 		SHOW_CHECK (title_yesterday);
 		SHOW_CHECK (title_current);
@@ -318,6 +321,7 @@ options_dialog_set(PrefsDialog *odlg)
 	SET_ACTIVE(title_year);
 	SET_ACTIVE(title_month);
 	SET_ACTIVE(title_week);
+	SET_ACTIVE(title_lastweek);
 	SET_ACTIVE(title_day);
 	SET_ACTIVE(title_yesterday);
 	SET_ACTIVE(title_current);
@@ -440,8 +444,9 @@ field_options(PrefsDialog *dlg)
 	DLGWID (year);
 	DLGWID (month);
 	DLGWID (week);
-	DLGWID (yesterday);
+	DLGWID (lastweek);
 	DLGWID (day);
+	DLGWID (yesterday);
 	DLGWID (current);
 	DLGWID (desc);
 	DLGWID (task);

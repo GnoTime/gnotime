@@ -40,6 +40,7 @@ typedef enum {
 	TIME_YEAR_COL,
 	TIME_MONTH_COL,
 	TIME_WEEK_COL,
+	TIME_LASTWEEK_COL,
 	TIME_TODAY_COL,
 	TIME_YESTERDAY_COL,
 	TIME_CURRENT_COL,
@@ -74,6 +75,7 @@ typedef struct ProjTreeNode_s
 	char day_timestr[24];
 	char yesterday_timestr[24];
 	char week_timestr[24];
+	char lastweek_timestr[24];
 	char month_timestr[24];
 	char year_timestr[24];
 	char start_timestr[24];
@@ -522,6 +524,9 @@ click_column(GtkCList *clist, gint col, gpointer data)
 		case TIME_WEEK_COL:
 			prlist = project_list_sort_week (prlist);
 			break;
+		case TIME_LASTWEEK_COL:
+			prlist = project_list_sort_lastweek (prlist);
+			break;
 		case TIME_MONTH_COL:
 			prlist = project_list_sort_month (prlist);
 			break;
@@ -734,6 +739,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 	i++; ptw->cols[i] = TIME_YEAR_COL;
 	i++; ptw->cols[i] = TIME_MONTH_COL;
 	i++; ptw->cols[i] = TIME_WEEK_COL;
+	i++; ptw->cols[i] = TIME_LASTWEEK_COL;
 	i++; ptw->cols[i] = TIME_TODAY_COL;
 	i++; ptw->cols[i] = TIME_YESTERDAY_COL;
 	i++; ptw->cols[i] = TIME_CURRENT_COL;
@@ -764,8 +770,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Entry");
 				ptw->col_tooltips[i] = 
-					_("Time spent under the current "
-					"diary entry.");
+					_("Time spent under the current diary entry.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_TODAY_COL:
@@ -786,24 +791,28 @@ ctree_init_cols (ProjTreeWindow *ptw)
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Week");
 				ptw->col_tooltips[i] = 
-					_("Time spent on this project "
-					"this week.");
+					_("Time spent on this project this week.");
+				ptw->col_width_set[i] = FALSE;
+				break;
+			case TIME_LASTWEEK_COL:
+				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
+				ptw->col_titles[i] = _("Last Week");
+				ptw->col_tooltips[i] = 
+					_("Time spent on this project last week.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_MONTH_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Month");
 				ptw->col_tooltips[i] =  
-					_("Time spent on this project "
-					"this month.");
+					_("Time spent on this project this month.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_YEAR_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Year");
 				ptw->col_tooltips[i] = 
-					_("Time spent on this project "
-					"this year.");
+					_("Time spent on this project this year.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TITLE_COL:
@@ -1014,6 +1023,11 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				i, config_show_title_week);
 			break;
+		case TIME_LASTWEEK_COL:
+			default_col_width (ptw, i, "-00:00:00");
+			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
+				i, config_show_title_lastweek);
+			break;
 		case TIME_MONTH_COL:
 			default_col_width (ptw, i, "-00:00:00");
 			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree), 
@@ -1128,6 +1142,9 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 			break;
 		case TIME_WEEK_COL:
 			PRT_TIME(week);
+			break;
+		case TIME_LASTWEEK_COL:
+			PRT_TIME(lastweek);
 			break;
 		case TIME_MONTH_COL:
 			PRT_TIME(month);
