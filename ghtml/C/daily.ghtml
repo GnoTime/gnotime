@@ -35,24 +35,25 @@
    (gtt-show-daily (gtt-daily-totals (gtt-linked-project))
 
    (list 
-      ''"<tr>"
-      ''"<td>" gtt-daily-day-str  ''"</td>"
-      ''"<td align='right'>"  gtt-daily-time-str ''"</td>"
+      ''"<tr>\n"
+      ''"<td>" gtt-daily-day-str  ''"</td>\n"
+      ''"<td align='right'>"  gtt-daily-time-str ''"</td>\n"
       ''"<td align='left'>"
-      ''"<ul>"
+      ''"<ul>\n"
       (lambda (dobj) (gtt-show-daily-tasks dobj 
            (list
                  ''"<li><b>" 
                  (lambda (x) (gtt-project-title (gtt-task-parent x)))
                  ''" -- " 
                  gtt-task-memo
-                 ''"</b><br>" 
+                 ''"</b><br>\n" 
                  gtt-task-notes
+                 ''"\n" 
                  )))
 
-      ''" </ul></td>"
+      ''" </ul></td>\n"
       
-      ''"</tr>"
+      ''"</tr>\n"
      ))
 ?>
 </table>
