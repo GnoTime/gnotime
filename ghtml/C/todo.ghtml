@@ -1,13 +1,18 @@
 
 <html>
 <head>
-<title>To-Do List</title>
+<title>To-Do List for
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+</title>
 </head>
 <body>
 <center>
-<h1>To-Do List</h1>
+<h1>To-Do List for
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+</h1>
 
-This is a sample To-Do list
+This is a sample To-Do list for the project 
+"<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>".
 <br><br>
 The displayed columns, and the order in which they are displayed,
 can be changed by making a copy of the file <tt>"todo.ghtml"</tt>
@@ -32,7 +37,7 @@ the menu item "Reports... New Report".
      to quote the string.
  -->
 
-<?scm (gtt-show-projects (gtt-projects) 
+<?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
       (list ''<tr><td>          gtt-project-importance ''"</td>\n"
             ''<td>              gtt-project-urgency    ''"</td>\n"
             ''<td>              gtt-project-title-link ''"</td>\n"
@@ -44,19 +49,6 @@ the menu item "Reports... New Report".
 </table>
 <br><br>
 </center>
-
-Below are the project notes, displayed as an ordinary html list.
-This list is probably not too pretty-looking, mostly
-because your project notes are not filled out or are 
-breif and cryptic:
-<dl>
-<?scm (gtt-show-projects (gtt-projects) 
-      (list ''<dt><b>   gtt-project-title   ''"</b></dt>\n"
-            ''<dd>      gtt-project-notes   ''"</dd>\n"
-            ))
-?>
-</dl>
-
 
 <br><br>
 That's all Folks!
