@@ -26,7 +26,6 @@ gttghtml_DATA =         \
 
 
 EXTRA_DIST =            \
-	.cvsignore           \
 	$(gttghtml_DATA)
 
 

@@ -17,5 +17,4 @@ gttglade_DATA =              \
   task_properties.glade
 
 EXTRA_DIST =          \
-   .cvsignore         \
    $(gttglade_DATA)
