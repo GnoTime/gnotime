@@ -38,6 +38,14 @@ on all projects that:
 <tr>
 <td> </td>
 <td>
+<!-- enable debug printing to stdout; handy for debugging this form. -->
+<input type="hidden" name="debug" value="1">
+
+<!-- This hard-to-read mish-mash is the actual SQL query 
+  -  to be performed to generate the report. 
+  -->
+<input type="hidden" name="query" value="SELECT * FROM GttProjectId WHERE (GttProjectEarliet <= 'kvp://earliest-end-date') AND (GttProjectLatest >= 'kvp://latest-start-date');">
+
 <input type="submit" value="Find">
 </td>
 </tr>
