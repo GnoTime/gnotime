@@ -23,7 +23,7 @@
 #include <errno.h>
 #include <glade/glade.h>
 #include <gnome.h>
-#include <libgtkhtml/gtkhtml.h>
+#include <gtkhtml/gtkhtml.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -46,9 +46,9 @@
 
 typedef struct wiggy_s 
 {
-	GttGhtml *gh;    
-	HtmlView *html_view;
-	HtmlDocument *html_doc;
+	GttGhtml  *gh;    
+	GtkHTML   *html;
+	GtkHTMLStream  *html_stream;
 	GtkWidget *top;
 	GtkWidget *interval_popup;
 	GtkWidget *interval_paste;
@@ -79,8 +79,7 @@ wiggy_open (GttGhtml *pl, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* open the browser for writing */
-	html_document_clear (wig->html_doc);
-	html_document_open_stream (wig->html_doc, "text/html");
+	wig->html_stream = gtk_html_begin (wig->html);
 }
 
 static void
@@ -89,7 +88,7 @@ wiggy_close (GttGhtml *pl, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* close the browser stream */
-	html_document_close_stream (wig->html_doc);
+	gtk_html_end (wig->html, wig->html_stream, GTK_HTML_STREAM_OK);
 }
 
 static void
@@ -98,18 +97,18 @@ wiggy_write (GttGhtml *pl, const char *str, size_t len, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* write to the browser stream */
-	html_document_write_stream (wig->html_doc, str, len);
+	gtk_html_write (wig->html, wig->html_stream, str, len);
 }
 
 static void
 wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 {
 	Wiggy *wig = (Wiggy *) ud;
-	HtmlDocument *doc = wig->html_doc;
+	GtkHTML *html = wig->html;
+	GtkHTMLStream *stream;
 	char buff[1000], *p;
 
-	html_document_clear (doc);
-	html_document_open_stream (doc, "text/html");
+	stream = gtk_html_begin (html);
 
 	if (404 == err)
 	{
@@ -121,7 +120,7 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		             (msg? (char*) msg : _("(null)")));
 		
 		p = g_stpcpy (p, "</body></html>");
-		html_document_write_stream (doc, buff, p-buff);
+		gtk_html_write (html, stream, buff, p-buff);
 	}
 	else
 	{
@@ -129,10 +128,10 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		p = g_stpcpy (p, "<html><body><h1>");
 		p = g_stpcpy (p, _("Unkown Error"));
 		p = g_stpcpy (p, "</h1></body></html>");
-		html_document_write_stream (doc, buff, p-buff);
+		gtk_html_write (html, stream, buff, p-buff);
 	}
 	
-	html_document_close_stream (doc);
+	gtk_html_end (html, stream, GTK_HTML_STREAM_OK);
 
 }
 
@@ -538,7 +537,7 @@ on_refresh_clicked_cb (GtkWidget *w, gpointer data)
 /* html events */
 
 static void
-html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data) 
+html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
 	gpointer addr = NULL;
@@ -583,9 +582,9 @@ html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 }
 
 static void
-html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data) 
+html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data) 
 {
-	// printf ("hover over the url show hover help duude=%s\n", url);
+	printf ("duude hover over the url show hover help duude=%s\n", url);
 }
 
 
@@ -677,9 +676,9 @@ printf ("duuude results=%p\n", results);
 }
 
 static void
-submit_clicked_cb(HtmlDocument *doc, 
-                  const gchar * url, 
+submit_clicked_cb(GtkHTML * doc, 
                   const gchar * method, 
+                  const gchar * url, 
                   const gchar * encoding, 
                   gpointer data) 
 {
@@ -744,10 +743,10 @@ do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean d
 	wig->top = jnl_top;
 
 	/* create browser, plug it into the viewport */
-	wig->html_doc = html_document_new();
-	wig->html_view = HTML_VIEW(html_view_new());
-	html_view_set_document (wig->html_view, wig->html_doc);
-	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html_view));
+	wig->html = GTK_HTML(gtk_html_new());
+	gtk_html_set_editable (wig->html, FALSE);
+	gtk_html_set_title (wig->html, "adsfaddfadf");
+	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html));
 
 	wig->gh = gtt_ghtml_new();
 	gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
@@ -768,19 +767,16 @@ do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean d
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
 	  
-	g_signal_connect (G_OBJECT(wig->html_doc), "link_clicked",
+	g_signal_connect (G_OBJECT(wig->html), "link_clicked",
 			G_CALLBACK (html_link_clicked_cb), wig);
 	
-	g_signal_connect (G_OBJECT(wig->html_doc), "submit",
+	g_signal_connect (G_OBJECT(wig->html), "submit",
 			G_CALLBACK (submit_clicked_cb), wig);
 	
-#if LATER
-	g_signal_connect(G_OBJECT(wig->html_doc), "on_url",
+	g_signal_connect(G_OBJECT(wig->html), "on_url",
 		G_CALLBACK(html_on_url_cb), wig);
-#endif
 
-
-	gtk_widget_show (GTK_WIDGET(wig->html_view));
+	gtk_widget_show (GTK_WIDGET(wig->html));
 	gtk_widget_show (jnl_top);
 
 	/* ---------------------------------------------------- */

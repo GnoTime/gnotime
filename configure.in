@@ -30,7 +30,7 @@ dnl *****************************************
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.3
 LIBGLADE_REQUIRED=2.0.0
-LIBGTKHTML_REQUIRED=2.0.0
+LIBGTKHTML_REQUIRED=3.0.0
 
 dnl *******************************
 dnl Guile checks
@@ -88,7 +88,7 @@ dnl *******************************
 dnl gtkhtml
 dnl *******************************
 
-PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-2.0 >= $LIBGTKHTML_REQUIRED)
+PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-3.0 >= $LIBGTKHTML_REQUIRED)
 AC_SUBST(LIBGTKHTML_CFLAGS)
 AC_SUBST(LIBGTKHTML_LIBS)
 
