@@ -229,9 +229,6 @@ resolve_old_path (const char * pathfrag)
 		confpath = gtt_get_config_filepath ();
 		if (NULL == confpath)
 		{
-			pathfrag = g_strconcat ("/gnotime.d/",
-			                    pathfrag,
-			                    NULL);
 			fullpath = gnome_config_get_real_path (pathfrag);
 		}
 		else
