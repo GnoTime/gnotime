@@ -128,7 +128,9 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 
 /* ============================================================== */
 /* A routine to recursively apply a scheme form to a flat 
- * list of gtt tasks.  It returns the result of the apply. */
+ * list of gtt tasks.  It returns the result of the apply. 
+ * This routine also accepts a typed list and applies on that.
+ * */
 
 static SCM
 do_apply_on_task (GttGhtml *ghtml, SCM task, 
@@ -150,6 +152,34 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 	{
 		SCM task_list = task;
 		
+		/* Check to see if there's a type-label of the appropriate 
+		 * type.  If so, then strip off the label, and pass back 
+		 * car to ourselves.
+		 */
+		if (FALSE == SCM_NULLP(task_list))
+		{
+			SCM type;
+			type = gh_cdr (task_list);
+			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
+			{
+				char buff[15];
+				gh_get_substr (type, buff, 0, 14);
+				buff[13] = 0x0;
+				if (!strcmp (buff, "gtt-task-list"))
+				{
+					SCM evl;
+					evl = do_apply_on_task (ghtml, gh_car (task_list), func);
+					return evl;
+				}
+				else
+				{
+					/* XXX actually, we should be dispatching on type, here */
+					g_warning ("expecting gtt-task-type, got something else\n");
+					return SCM_EOL;
+				}
+			}
+		}
+
 		/* Get a pointer to null */
 		rc = SCM_EOL;
 	
@@ -166,7 +196,7 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 		}
 
 		/* reverse the list. Ughh */
-		/* gh_reverse (rc);  this doesn't work, to it manually */
+		/* gh_reverse (rc);  this doesn't work, do it manually */
 		rc = reverse_list (rc);
 		
 		return rc;
@@ -184,7 +214,10 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 
 /* ============================================================== */
 /* A routine to recursively apply a scheme form to a flat 
- * list of gtt intervals.  It returns the result of the apply. */
+ * list of gtt intervals.  It returns the result of the apply. 
+ * It is nearly identical to do_apply_on_task, except
+ * for the typecasting, and should really be merged with that.
+ */
 
 static SCM
 do_apply_on_interval (GttGhtml *ghtml, SCM invl, 
@@ -205,6 +238,34 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 	else if (SCM_CONSP(invl))
 	{
 		SCM invl_list = invl;
+		
+		/* Check to see if there's a type-label of the appropriate 
+		 * type.  If so, then strip off the label, and pass back 
+		 * car to ourselves.
+		 */
+		if (FALSE == SCM_NULLP(invl_list))
+		{
+			SCM type;
+			type = gh_cdr (invl_list);
+			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
+			{
+				char buff[20];
+				gh_get_substr (type, buff, 0, 17);
+				buff[17] = 0x0;
+				if (!strcmp (buff, "gtt-interval-list"))
+				{
+					SCM evl;
+					evl = do_apply_on_interval (ghtml, gh_car (invl_list), func);
+					return evl;
+				}
+				else
+				{
+					/* XXX actually, we should be dispatching on type, here */
+					g_warning ("expecting gtt-interval-type, got something else\n");
+					return SCM_EOL;
+				}
+			}
+		}
 		
 		/* Get a pointer to null */
 		rc = SCM_EOL;
@@ -290,12 +351,14 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	if (SCM_CONSP(node))
 	{
 		SCM node_list = node;
-		while (FALSE == SCM_NULLP(node_list))
+		do
 		{
 			node = gh_car (node_list);
 			do_show_scm (ghtml, node);
 			node_list = gh_cdr (node_list);
 		}
+		while (SCM_CONSP(node_list));
+		do_show_scm (ghtml, node_list);
 	}
 	else
 	if (SCM_BOOLP(node))
@@ -421,19 +484,20 @@ g_list_to_scm (GList * gplist, const char * type)
 
 	/* Get a pointer to null */
 	rc = SCM_EOL;
-	if (!gplist) return rc;
-	
-	/* Get tail of g_list */
-	for (n= gplist; n->next; n=n->next) {}
-	gplist = n;
-	
-	/* Walk backwards, creating a scheme list */
-	for (n= gplist; n; n=n->prev)
+	if (gplist) 
 	{
-		node = gh_ulong2scm ((unsigned long) n->data);
-		rc = gh_cons (node, rc);
+		/* Get tail of g_list */
+		for (n= gplist; n->next; n=n->next) {}
+		gplist = n;
+		
+		/* Walk backwards, creating a scheme list */
+		for (n= gplist; n; n=n->prev)
+		{
+			node = gh_ulong2scm ((unsigned long) n->data);
+			rc = gh_cons (node, rc);
+		}
 	}
-
+	
 	/* Prepend type label */
 	node = gh_str2scm (type, strlen (type));
 	rc = gh_cons (rc, node);
@@ -612,17 +676,18 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* Skip days for which no time has been spent */
 		if (0 == secs) continue;
 
+		rpt = SCM_EOL;
 		/* Append the list of tasks and intervals for this day */
-		node = g_list_to_scm (bu->intervals, "interval-list");
+		node = g_list_to_scm (bu->intervals, "gtt-interval-list");
 		rpt = gh_cons (node, rpt);
-		node = g_list_to_scm (bu->tasks, "task-list");
+		node = g_list_to_scm (bu->tasks, "gtt-task-list");
 		rpt = gh_cons (node, rpt);
 		
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
 		print_hours_elapsed (buff, 100, secs, TRUE);
 		node = gh_str2scm (buff, strlen (buff));
-		rpt = gh_cons (node, SCM_EOL);
+		rpt = gh_cons (node, rpt);
 		
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
@@ -632,7 +697,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		rpt = gh_cons (node, rpt);
 
 		/* Put a data type in the cdr slot */
-		node = gh_str2scm ("daily", 5);
+		node = gh_str2scm ("gtt-daily", 9);
 		rpt = gh_cons (rpt, node);
 		
 		rc = gh_cons (rpt, rc);
