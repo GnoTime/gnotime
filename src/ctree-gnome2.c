@@ -116,6 +116,7 @@ struct ProjTreeWindow_s
 };
 
 static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
+static void ctree_update_column_values (ProjTreeWindow *ptw, ProjTreeNode *ptn, gboolean expand);
 static void ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn);
 
 /* ============================================================== */
@@ -362,7 +363,7 @@ tree_expand (GtkCTree *ctree, GtkCTreeNode *row)
 	int i;
 #if XXX
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
-   ctree_update_row (ptw, ptn);
+	ctree_update_column_values (ptw, ptn, TRUE);
 #endif
 }
 
@@ -372,7 +373,7 @@ tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 	int i;
 #if XXX
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
-   ctree_update_row (ptw, ptn);
+	ctree_update_column_values (ptw, ptn, FALSE);
 #endif
 }
 
