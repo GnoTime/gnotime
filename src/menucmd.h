@@ -44,6 +44,7 @@ void menu_properties(GtkWidget *w, gpointer data);
 
 void menu_clear_daily_counter(GtkWidget *w, gpointer data);
 
+void menu_howto_edit_times (GtkWidget *w,gpointer data);
 
 #ifdef DEBUG
 void menu_test(GtkWidget *w, gpointer data);

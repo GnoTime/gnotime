@@ -442,4 +442,22 @@ menu_clear_daily_counter(GtkWidget *w, gpointer data)
 	ctree_update_label(global_ptw, prj);
 }
 
+/* Cheesey usability hack to tell the user how to edit the timer
+ * intervals.  Replace with something intuitive at earliest convenience.
+ */
+
+static void show_j (GtkWidget *w) { show_report (w, "journal.ghtml"); }
+
+void 
+menu_howto_edit_times (GtkWidget *w,gpointer data)
+{
+	char * msg;
+
+	msg = _("To edit the timer interval for this project,\n"
+	        "open the Journal window and click on a link.\n"
+	        "This will bring up a menu of time editing options.\n");
+
+	msgbox_ok (_("Info"), msg, GTK_STOCK_OK, show_j);
+}
+
 /* ============================ END OF FILE ======================= */
