@@ -1,4 +1,4 @@
-/*   GTimeTracker - a time tracker
+/*   Logfile output for GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include <gnome.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include "cur-proj.h"
 #include "log.h"
@@ -30,30 +31,35 @@
 
 
 static gboolean 
-log_write(time_t t, const char *s)
+log_write(time_t t, const char *logstr)
 {
-	FILE *f;
 	char date[256];
 	char *filename;
+	GnomeVFSHandle   *handle;
+	GnomeVFSResult    result;
 
-	g_return_val_if_fail (s != NULL, FALSE);
+	g_return_val_if_fail (logstr != NULL, FALSE);
 
-	if ( ! CAN_LOG)
-		return TRUE;
+	if (!CAN_LOG) return TRUE;
 
 	if ((config_logfile_name[0] == '~') &&
 	    (config_logfile_name[1] == '/') &&
-	    (config_logfile_name[2] != 0)) {
+	    (config_logfile_name[2] != 0)) 
+	{
 		filename = gnome_util_prepend_user_home(&config_logfile_name[2]);
-		f = fopen(filename, "at");
+
+		result = gnome_vfs_create (&handle, filename, 
+		                          GNOME_VFS_OPEN_WRITE, FALSE, 0644);
 		g_free (filename);
 	} else {
-		f = fopen (config_logfile_name, "at");
+		result = gnome_vfs_create (&handle, config_logfile_name, 
+		                          GNOME_VFS_OPEN_WRITE, FALSE, 0644);
 	}
 
-	if (f == NULL) {
-		g_warning (_("Cannot open logfile %s for append"),
-			   config_logfile_name);
+	if (GNOME_VFS_OK != result)
+	{
+		g_warning (_("Cannot open logfile %s for append: %s"),
+			   config_logfile_name, gnome_vfs_result_to_string (result));
 		return FALSE;
 	}
 
@@ -61,11 +67,17 @@ log_write(time_t t, const char *s)
 		t = time(NULL);
 
 	/* Translators: Format to use in the gnotime logfile */
-	if (strftime (date, sizeof (date), _("%b %d %H:%M:%S"),
-		      localtime(&t)) <= 0)
-		strcpy (date, "???");
-	fprintf (f, "%s %s\n", date, s);
-	fclose (f);
+	int rc = strftime (date, sizeof (date), _("%b %d %H:%M:%S"), localtime(&t));
+	if (0 >= rc) strcpy (date, "???");
+
+	/* Append to end of file */
+	gnome_vfs_seek (handle, GNOME_VFS_SEEK_END, 0);
+	GnomeVFSFileSize bytes_written;
+	gnome_vfs_write (handle, date, strlen(date), &bytes_written);
+	gnome_vfs_write (handle, logstr, strlen(logstr), &bytes_written);
+	gnome_vfs_write (handle, "\n", 1, &bytes_written);
+	
+	gnome_vfs_close (handle);
 	return TRUE;
 }
 
