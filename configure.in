@@ -28,10 +28,11 @@ dnl Look for a portable way to reap zombie processes
 dnl *****************************************
 AC_CHECK_HEADER([signal.h], AC_DEFINE([HAVE_SIGNAL_H], [1], [Define to 1 if we have signal.h on our system.]),
 	AC_ERROR([signal.h is needed to compile this program.]))
-AC_CHECK_HEADERS([wait.h])
+
+AC_CHECK_HEADERS([sys/wait.h])
 if test x$ac_cv_header_wait_h != "x"; then
 	AC_CHECK_FUNCS(waitpid)
-	AC_CHECK_DECLS(WNOHANG,,,[#include<wait.h>])
+	AC_CHECK_DECLS(WNOHANG,,,[#include<sys/wait.h>])
 
 	dnl This causes RETSIGTYPE to contain a signal handler's return type.
 	AC_TYPE_SIGNAL()

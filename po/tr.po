@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.1\n"
-"POT-Creation-Date: 2004-04-26 21:26-0500\n"
+"POT-Creation-Date: 2004-05-23 15:59-0500\n"
 "PO-Revision-Date: 2001-11-05 19:36+0300\n"
 "Last-Translator: Görkem Çetin <gorkem@gelecek.com.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -201,7 +201,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1284 src/ghtml.c:890 src/ghtml.c:904
+#: src/ctree.c:1284 src/ghtml.c:906 src/ghtml.c:920
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Düþük"
@@ -214,25 +214,25 @@ msgstr "Orta"
 msgid "High"
 msgstr "Yüksek"
 
-#: src/ctree.c:1295 src/ghtml.c:918 glade/project_properties.glade.h:30
+#: src/ctree.c:1295 src/ghtml.c:934 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Baþlatýlmadý"
 
-#: src/ctree.c:1296 src/ghtml.c:919 glade/project_properties.glade.h:22
+#: src/ctree.c:1296 src/ghtml.c:935 glade/project_properties.glade.h:22
 #, fuzzy
 msgid "In Progress"
 msgstr "Ýþlem:"
 
-#: src/ctree.c:1297 src/ghtml.c:920 glade/project_properties.glade.h:32
+#: src/ctree.c:1297 src/ghtml.c:936 glade/project_properties.glade.h:32
 #, fuzzy
 msgid "On Hold"
 msgstr "Katý"
 
-#: src/ctree.c:1298 src/ghtml.c:921 glade/project_properties.glade.h:10
+#: src/ctree.c:1298 src/ghtml.c:937 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Ýptal edildi"
 
-#: src/ctree.c:1299 src/ghtml.c:922 glade/project_properties.glade.h:11
+#: src/ctree.c:1299 src/ghtml.c:938 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Bitti"
 
@@ -297,7 +297,7 @@ msgstr "pid dosyasý yaratýlamadý!"
 msgid "Error exporting data: %s"
 msgstr "#%d numaralý iz biçimlendiriliyor"
 
-#: src/export.c:138 src/journal.c:209
+#: src/export.c:138 src/journal.c:211
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "%s dosyasý zaten var, üzerine yazýlsýn mý?"
@@ -332,85 +332,85 @@ msgstr "Deðer"
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:891
+#: src/ghtml.c:907
 msgid "Normal"
 msgstr ""
 
-#: src/ghtml.c:892
+#: src/ghtml.c:908
 #, fuzzy
 msgid "Urgent"
 msgstr "Aciliyet:"
 
-#: src/ghtml.c:893 src/ghtml.c:895 src/ghtml.c:907 src/ghtml.c:909
-#: src/ghtml.c:924
+#: src/ghtml.c:909 src/ghtml.c:911 src/ghtml.c:923 src/ghtml.c:925
+#: src/ghtml.c:940
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:905 glade/project_properties.glade.h:27
+#: src/ghtml.c:921 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr ""
 
-#: src/ghtml.c:906
+#: src/ghtml.c:922
 #, fuzzy
 msgid "Important"
 msgstr "Önem:"
 
-#: src/ghtml.c:1023 glade/task_properties.glade.h:14
+#: src/ghtml.c:1039 glade/task_properties.glade.h:14
 #, fuzzy
 msgid "Hold"
 msgstr "Katý"
 
-#: src/ghtml.c:1024 glade/task_properties.glade.h:4
+#: src/ghtml.c:1040 glade/task_properties.glade.h:3
 #, fuzzy
 msgid "Bill"
 msgstr "Kapalý"
 
-#: src/ghtml.c:1025 glade/task_properties.glade.h:22
+#: src/ghtml.c:1041 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr ""
 
-#: src/ghtml.c:1036 glade/task_properties.glade.h:5
+#: src/ghtml.c:1052 glade/task_properties.glade.h:4
 #, fuzzy
 msgid "Billable"
 msgstr "Kapalý"
 
-#: src/ghtml.c:1037 glade/task_properties.glade.h:18
+#: src/ghtml.c:1053 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr ""
 
-#: src/ghtml.c:1038 glade/task_properties.glade.h:17
+#: src/ghtml.c:1054 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr ""
 
-#: src/ghtml.c:1049 glade/task_properties.glade.h:23
+#: src/ghtml.c:1065 glade/task_properties.glade.h:23
 #, fuzzy
 msgid "Regular"
 msgstr "Yeniden yükle"
 
-#: src/ghtml.c:1050 glade/task_properties.glade.h:21
+#: src/ghtml.c:1066 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr ""
 
-#: src/ghtml.c:1051
+#: src/ghtml.c:1067
 msgid "Double Overtime"
 msgstr ""
 
-#: src/ghtml.c:1052 glade/task_properties.glade.h:13
+#: src/ghtml.c:1068 glade/task_properties.glade.h:13
 #, fuzzy
 msgid "Flat Fee"
 msgstr "Kaygan"
 
-#: src/idle-dialog.c:117
+#: src/idle-dialog.c:166
 #, fuzzy, c-format
 msgid "%s minutes"
 msgstr "dakika"
 
-#: src/idle-dialog.c:122
+#: src/idle-dialog.c:171
 #, fuzzy, c-format
 msgid "%s hours"
 msgstr "3 Saat"
 
-#: src/idle-dialog.c:132
+#: src/idle-dialog.c:181
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
@@ -418,7 +418,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:142
+#: src/idle-dialog.c:191
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
@@ -426,7 +426,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:158
+#: src/idle-dialog.c:211
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
@@ -434,31 +434,31 @@ msgid ""
 "restart it?"
 msgstr ""
 
-#: src/idle-dialog.c:170
+#: src/idle-dialog.c:221
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
 
-#: src/journal.c:138
+#: src/journal.c:140
 msgid "Error 404 Not Found"
 msgstr "404 Hatasý: Bulunamadý"
 
-#: src/journal.c:140
+#: src/journal.c:142
 #, c-format
 msgid "The file %s was not found."
 msgstr "%s dosyasý bulunamadý"
 
-#: src/journal.c:141
+#: src/journal.c:143
 msgid "(null)"
 msgstr "(boþ)"
 
-#: src/journal.c:150
+#: src/journal.c:152
 msgid "Unkown Error"
 msgstr "Bilinmeyen Hata"
 
-#: src/journal.c:229
+#: src/journal.c:231
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -467,20 +467,20 @@ msgstr ""
 "%s dosyasý açýlamadý\n"
 "%s"
 
-#: src/journal.c:396 src/proj.c:734 src/proj.c:1749 src/proj.c:1950
-#: src/proj.c:2090 glade/notes.glade.h:8
+#: src/journal.c:430 src/proj.c:754 src/proj.c:1769 src/proj.c:1973
+#: glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:656
+#: src/journal.c:706
 msgid "mailto: URL is not supported at this time"
 msgstr ""
 
-#: src/journal.c:679
+#: src/journal.c:729
 msgid "Save HTML To File"
 msgstr "HTML'i Dosyaya Kaydet"
 
-#: src/journal.c:862
+#: src/journal.c:912
 msgid "Left-click to bring up menu"
 msgstr ""
 
@@ -599,7 +599,7 @@ msgstr "GTimeTracker'den çýk"
 msgid "Edit the time interval associated with this project"
 msgstr ""
 
-#: src/menus.c:80 src/menus.c:169
+#: src/menus.c:80
 msgid "_Journal..."
 msgstr ""
 
@@ -608,48 +608,48 @@ msgstr ""
 msgid "Show the journal for this project"
 msgstr "Bu projede geçirilen toplam süre"
 
-#: src/menus.c:84
-#, fuzzy
-msgid "Time _Interval..."
-msgstr "Bu Aralýðý Sil"
-
-#: src/menus.c:85 src/menus.c:170
-msgid "Show the timesheet journal for this project"
+#: src/menus.c:84 src/menus.c:169
+msgid "_Activity..."
 msgstr ""
+
+#: src/menus.c:85
+#, fuzzy
+msgid "Show the journal together with the timestamps for this project"
+msgstr "Bu projede geçirilen toplam süre"
 
 #: src/menus.c:88
-msgid "_Invoice..."
-msgstr ""
-
-#: src/menus.c:89
-msgid "Show a sample invoice for this project"
-msgstr ""
-
-#: src/menus.c:92
 msgid "_Daily..."
 msgstr ""
 
-#: src/menus.c:93
+#: src/menus.c:89
 #, fuzzy
 msgid "Show the total time spent on a project, day by day"
 msgstr "Bu projede geçirilen toplam süre"
 
-#: src/menus.c:96
+#: src/menus.c:92
 #, fuzzy
 msgid "_Status..."
 msgstr "Durum"
 
-#: src/menus.c:97
+#: src/menus.c:93
 #, fuzzy
 msgid "Show the project descriptions and notes."
 msgstr "Proje Açýklamasýný Göster"
 
-#: src/menus.c:100
+#: src/menus.c:96
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:101
+#: src/menus.c:97
 msgid "Show a sample to-do list"
+msgstr ""
+
+#: src/menus.c:100
+msgid "_Invoice..."
+msgstr ""
+
+#: src/menus.c:101
+msgid "Show a sample invoice for this project"
 msgstr ""
 
 #: src/menus.c:104
@@ -714,6 +714,10 @@ msgstr "_Raporlar"
 msgid "_Timer"
 msgstr "S_aat"
 
+#: src/menus.c:170
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
 #: src/menus.c:177 glade/task_popup.glade.h:6
 msgid "_New Diary Entry"
 msgstr ""
@@ -744,12 +748,12 @@ msgstr ""
 "%s dosyasý açýlamadý\n"
 "%s"
 
-#: src/proj.c:715
+#: src/proj.c:735
 msgid "Old GTT Tasks"
 msgstr ""
 
-#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
-#: src/props-task.c:77
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:94
+#: src/props-task.c:95
 msgid "empty"
 msgstr "boþ"
 
@@ -770,7 +774,7 @@ msgid "Paste Project"
 msgstr "Projeyi Yapýþtýr"
 
 #: src/toolbar.c:182
-msgid "Journal"
+msgid "Activity Journal"
 msgstr ""
 
 #: src/toolbar.c:183
@@ -895,10 +899,20 @@ msgstr "Yukarý Birleþtir"
 
 #: glade/interval_popup.glade.h:6
 #, fuzzy
+msgid "Move Down"
+msgstr "Aþaðý Birleþtir"
+
+#: glade/interval_popup.glade.h:7
+#, fuzzy
+msgid "Move Up"
+msgstr "Yukarý Birleþtir"
+
+#: glade/interval_popup.glade.h:8
+#, fuzzy
 msgid "New Interval"
 msgstr "Bu Aralýðý Sil"
 
-#: glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:9
 msgid "Paste Diary Entry"
 msgstr ""
 
@@ -980,7 +994,7 @@ msgstr "Mevcut belgeyi kapat"
 msgid "Desc:"
 msgstr ""
 
-#: glade/notes.glade.h:5 glade/task_properties.glade.h:11
+#: glade/notes.glade.h:5 glade/task_properties.glade.h:10
 msgid "Diary Entry:"
 msgstr ""
 
@@ -1563,16 +1577,17 @@ msgid "_Paste Diary Entry"
 msgstr ""
 
 #: glade/task_properties.glade.h:2
-msgid "A set of private notes that will not be printed on an invoice."
-msgstr ""
-
-#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr ""
+
+#: glade/task_properties.glade.h:6
+#, fuzzy
+msgid "Billing"
+msgstr "Kapalý"
 
 #: glade/task_properties.glade.h:7
 msgid "Billing Block:"
@@ -1586,10 +1601,10 @@ msgstr ""
 msgid "Billing Status:"
 msgstr ""
 
-#: glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:11
 #, fuzzy
-msgid "Diary Entry Properties"
-msgstr "GDiskFree Ayarlarý"
+msgid "Diary Notes"
+msgstr "Notlar:"
 
 #: glade/task_properties.glade.h:12
 msgid "Fee rate to be charged for this task."
@@ -1621,6 +1636,10 @@ msgid ""
 msgstr ""
 
 #: glade/task_properties.glade.h:25
+msgid "Type detailed diary entry notes here."
+msgstr ""
+
+#: glade/task_properties.glade.h:26
 msgid "minutes"
 msgstr "dakika"
 
@@ -1632,6 +1651,14 @@ msgstr "Zaman takip uygulamasý"
 #: gnotime.desktop.in.h:2
 msgid "To-Do List Organizer, Diary and Billing System"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Time _Interval..."
+#~ msgstr "Bu Aralýðý Sil"
+
+#, fuzzy
+#~ msgid "Diary Entry Properties"
+#~ msgstr "GDiskFree Ayarlarý"
 
 #~ msgid "Error"
 #~ msgstr "Hata"
@@ -1661,10 +1688,6 @@ msgstr ""
 
 #~ msgid "(empty)"
 #~ msgstr "(boþ)"
-
-#, fuzzy
-#~ msgid "Notes"
-#~ msgstr "Notlar:"
 
 #~ msgid "Task Time"
 #~ msgstr "Görev Süresi"

@@ -33,7 +33,7 @@
 #include <unistd.h>
 #include <utime.h>
 #if defined(HAVE_DECL_WNOHANG) && defined(HAVE_WAITPID)
-#include <wait.h>
+#include <sys/wait.h>
 #endif
 
 #include <qof.h>

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.1.2\n"
-"POT-Creation-Date: 2004-04-26 21:26-0500\n"
+"POT-Creation-Date: 2004-05-23 15:59-0500\n"
 "PO-Revision-Date: 2002-06-02 21:20+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -193,7 +193,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1284 src/ghtml.c:890 src/ghtml.c:904
+#: src/ctree.c:1284 src/ghtml.c:906 src/ghtml.c:920
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
@@ -206,23 +206,23 @@ msgstr "中"
 msgid "High"
 msgstr "高"
 
-#: src/ctree.c:1295 src/ghtml.c:918 glade/project_properties.glade.h:30
+#: src/ctree.c:1295 src/ghtml.c:934 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "未開始"
 
-#: src/ctree.c:1296 src/ghtml.c:919 glade/project_properties.glade.h:22
+#: src/ctree.c:1296 src/ghtml.c:935 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "進行中"
 
-#: src/ctree.c:1297 src/ghtml.c:920 glade/project_properties.glade.h:32
+#: src/ctree.c:1297 src/ghtml.c:936 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "暫時擱置"
 
-#: src/ctree.c:1298 src/ghtml.c:921 glade/project_properties.glade.h:10
+#: src/ctree.c:1298 src/ghtml.c:937 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/ctree.c:1299 src/ghtml.c:922 glade/project_properties.glade.h:11
+#: src/ctree.c:1299 src/ghtml.c:938 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "已完成"
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "E格式化磁軌 #%d 時發生錯誤"
 
-#: src/export.c:138 src/journal.c:209
+#: src/export.c:138 src/journal.c:211
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "檔案 %s 已存在，要覆寫？"
@@ -323,80 +323,80 @@ msgstr "數值"
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:891
+#: src/ghtml.c:907
 msgid "Normal"
 msgstr ""
 
-#: src/ghtml.c:892
+#: src/ghtml.c:908
 #, fuzzy
 msgid "Urgent"
 msgstr "緊急程度："
 
-#: src/ghtml.c:893 src/ghtml.c:895 src/ghtml.c:907 src/ghtml.c:909
-#: src/ghtml.c:924
+#: src/ghtml.c:909 src/ghtml.c:911 src/ghtml.c:923 src/ghtml.c:925
+#: src/ghtml.c:940
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:905 glade/project_properties.glade.h:27
+#: src/ghtml.c:921 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr ""
 
-#: src/ghtml.c:906
+#: src/ghtml.c:922
 #, fuzzy
 msgid "Important"
 msgstr "重要性："
 
-#: src/ghtml.c:1023 glade/task_properties.glade.h:14
+#: src/ghtml.c:1039 glade/task_properties.glade.h:14
 msgid "Hold"
 msgstr ""
 
-#: src/ghtml.c:1024 glade/task_properties.glade.h:4
+#: src/ghtml.c:1040 glade/task_properties.glade.h:3
 msgid "Bill"
 msgstr ""
 
-#: src/ghtml.c:1025 glade/task_properties.glade.h:22
+#: src/ghtml.c:1041 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr ""
 
-#: src/ghtml.c:1036 glade/task_properties.glade.h:5
+#: src/ghtml.c:1052 glade/task_properties.glade.h:4
 msgid "Billable"
 msgstr ""
 
-#: src/ghtml.c:1037 glade/task_properties.glade.h:18
+#: src/ghtml.c:1053 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr ""
 
-#: src/ghtml.c:1038 glade/task_properties.glade.h:17
+#: src/ghtml.c:1054 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr ""
 
-#: src/ghtml.c:1049 glade/task_properties.glade.h:23
+#: src/ghtml.c:1065 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr ""
 
-#: src/ghtml.c:1050 glade/task_properties.glade.h:21
+#: src/ghtml.c:1066 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr ""
 
-#: src/ghtml.c:1051
+#: src/ghtml.c:1067
 msgid "Double Overtime"
 msgstr ""
 
-#: src/ghtml.c:1052 glade/task_properties.glade.h:13
+#: src/ghtml.c:1068 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr ""
 
-#: src/idle-dialog.c:117
+#: src/idle-dialog.c:166
 #, fuzzy, c-format
 msgid "%s minutes"
 msgstr "分"
 
-#: src/idle-dialog.c:122
+#: src/idle-dialog.c:171
 #, fuzzy, c-format
 msgid "%s hours"
 msgstr "3 小時"
 
-#: src/idle-dialog.c:132
+#: src/idle-dialog.c:181
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
@@ -404,7 +404,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:142
+#: src/idle-dialog.c:191
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
@@ -412,7 +412,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:158
+#: src/idle-dialog.c:211
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
@@ -420,31 +420,31 @@ msgid ""
 "restart it?"
 msgstr ""
 
-#: src/idle-dialog.c:170
+#: src/idle-dialog.c:221
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
 
-#: src/journal.c:138
+#: src/journal.c:140
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: src/journal.c:140
+#: src/journal.c:142
 #, c-format
 msgid "The file %s was not found."
 msgstr "找不到檔案 %s。"
 
-#: src/journal.c:141
+#: src/journal.c:143
 msgid "(null)"
 msgstr ""
 
-#: src/journal.c:150
+#: src/journal.c:152
 msgid "Unkown Error"
 msgstr "不明的錯誤"
 
-#: src/journal.c:229
+#: src/journal.c:231
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -453,20 +453,20 @@ msgstr ""
 "無法開啟檔案 %s\n"
 "%s"
 
-#: src/journal.c:396 src/proj.c:734 src/proj.c:1749 src/proj.c:1950
-#: src/proj.c:2090 glade/notes.glade.h:8
+#: src/journal.c:430 src/proj.c:754 src/proj.c:1769 src/proj.c:1973
+#: glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:656
+#: src/journal.c:706
 msgid "mailto: URL is not supported at this time"
 msgstr ""
 
-#: src/journal.c:679
+#: src/journal.c:729
 msgid "Save HTML To File"
 msgstr "將 HTML 儲存至檔案"
 
-#: src/journal.c:862
+#: src/journal.c:912
 msgid "Left-click to bring up menu"
 msgstr ""
 
@@ -584,7 +584,7 @@ msgstr "結束 GTimeTracker"
 msgid "Edit the time interval associated with this project"
 msgstr ""
 
-#: src/menus.c:80 src/menus.c:169
+#: src/menus.c:80
 msgid "_Journal..."
 msgstr ""
 
@@ -593,46 +593,47 @@ msgstr ""
 msgid "Show the journal for this project"
 msgstr "此計劃總共使用的時間。"
 
-#: src/menus.c:84
-msgid "Time _Interval..."
+#: src/menus.c:84 src/menus.c:169
+msgid "_Activity..."
 msgstr ""
 
-#: src/menus.c:85 src/menus.c:170
-msgid "Show the timesheet journal for this project"
-msgstr ""
+#: src/menus.c:85
+#, fuzzy
+msgid "Show the journal together with the timestamps for this project"
+msgstr "此計劃總共使用的時間。"
 
 #: src/menus.c:88
-msgid "_Invoice..."
-msgstr ""
-
-#: src/menus.c:89
-msgid "Show a sample invoice for this project"
-msgstr ""
-
-#: src/menus.c:92
 msgid "_Daily..."
 msgstr ""
 
-#: src/menus.c:93
+#: src/menus.c:89
 #, fuzzy
 msgid "Show the total time spent on a project, day by day"
 msgstr "此計劃總共使用的時間。"
 
-#: src/menus.c:96
+#: src/menus.c:92
 #, fuzzy
 msgid "_Status..."
 msgstr "情況"
 
-#: src/menus.c:97
+#: src/menus.c:93
 msgid "Show the project descriptions and notes."
 msgstr ""
 
-#: src/menus.c:100
+#: src/menus.c:96
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:101
+#: src/menus.c:97
 msgid "Show a sample to-do list"
+msgstr ""
+
+#: src/menus.c:100
+msgid "_Invoice..."
+msgstr ""
+
+#: src/menus.c:101
+msgid "Show a sample invoice for this project"
 msgstr ""
 
 #: src/menus.c:104
@@ -696,6 +697,10 @@ msgstr "報告(_R)"
 msgid "_Timer"
 msgstr "計時器(_T)"
 
+#: src/menus.c:170
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
 #: src/menus.c:177 glade/task_popup.glade.h:6
 msgid "_New Diary Entry"
 msgstr ""
@@ -726,12 +731,12 @@ msgstr ""
 "無法開啟檔案 %s\n"
 "%s"
 
-#: src/proj.c:715
+#: src/proj.c:735
 msgid "Old GTT Tasks"
 msgstr ""
 
-#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
-#: src/props-task.c:77
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:94
+#: src/props-task.c:95
 msgid "empty"
 msgstr "空白"
 
@@ -752,7 +757,7 @@ msgid "Paste Project"
 msgstr "貼上計劃"
 
 #: src/toolbar.c:182
-msgid "Journal"
+msgid "Activity Journal"
 msgstr ""
 
 #: src/toolbar.c:183
@@ -874,10 +879,18 @@ msgid "Merge Up"
 msgstr ""
 
 #: glade/interval_popup.glade.h:6
-msgid "New Interval"
+msgid "Move Down"
 msgstr ""
 
 #: glade/interval_popup.glade.h:7
+msgid "Move Up"
+msgstr ""
+
+#: glade/interval_popup.glade.h:8
+msgid "New Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:9
 msgid "Paste Diary Entry"
 msgstr ""
 
@@ -957,7 +970,7 @@ msgstr ""
 msgid "Desc:"
 msgstr ""
 
-#: glade/notes.glade.h:5 glade/task_properties.glade.h:11
+#: glade/notes.glade.h:5 glade/task_properties.glade.h:10
 msgid "Diary Entry:"
 msgstr ""
 
@@ -1526,16 +1539,17 @@ msgid "_Paste Diary Entry"
 msgstr ""
 
 #: glade/task_properties.glade.h:2
-msgid "A set of private notes that will not be printed on an invoice."
-msgstr ""
-
-#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr ""
+
+#: glade/task_properties.glade.h:6
+#, fuzzy
+msgid "Billing"
+msgstr "大小"
 
 #: glade/task_properties.glade.h:7
 msgid "Billing Block:"
@@ -1549,8 +1563,8 @@ msgstr ""
 msgid "Billing Status:"
 msgstr ""
 
-#: glade/task_properties.glade.h:10
-msgid "Diary Entry Properties"
+#: glade/task_properties.glade.h:11
+msgid "Diary Notes"
 msgstr ""
 
 #: glade/task_properties.glade.h:12
@@ -1582,6 +1596,10 @@ msgid ""
 msgstr ""
 
 #: glade/task_properties.glade.h:25
+msgid "Type detailed diary entry notes here."
+msgstr ""
+
+#: glade/task_properties.glade.h:26
 msgid "minutes"
 msgstr "分"
 
@@ -1619,10 +1637,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Estimated End Date"
 #~ msgstr "計劃估計開始的日期"
-
-#, fuzzy
-#~ msgid "Sizing"
-#~ msgstr "大小"
 
 #, fuzzy
 #~ msgid "Percent Complete"

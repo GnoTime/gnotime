@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.1\n"
-"POT-Creation-Date: 2004-04-26 21:26-0500\n"
+"POT-Creation-Date: 2004-05-23 15:59-0500\n"
 "PO-Revision-Date: 2002-01-29 23:35+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -196,7 +196,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1284 src/ghtml.c:890 src/ghtml.c:904
+#: src/ctree.c:1284 src/ghtml.c:906 src/ghtml.c:920
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Lav"
@@ -209,23 +209,23 @@ msgstr "Middels"
 msgid "High"
 msgstr "Høy"
 
-#: src/ctree.c:1295 src/ghtml.c:918 glade/project_properties.glade.h:30
+#: src/ctree.c:1295 src/ghtml.c:934 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Ikke startet"
 
-#: src/ctree.c:1296 src/ghtml.c:919 glade/project_properties.glade.h:22
+#: src/ctree.c:1296 src/ghtml.c:935 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "Under arbeid"
 
-#: src/ctree.c:1297 src/ghtml.c:920 glade/project_properties.glade.h:32
+#: src/ctree.c:1297 src/ghtml.c:936 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Pauset"
 
-#: src/ctree.c:1298 src/ghtml.c:921 glade/project_properties.glade.h:10
+#: src/ctree.c:1298 src/ghtml.c:937 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Avbrutt"
 
-#: src/ctree.c:1299 src/ghtml.c:922 glade/project_properties.glade.h:11
+#: src/ctree.c:1299 src/ghtml.c:938 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Fullført"
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "Feil ved eksport av data: %s"
 
-#: src/export.c:138 src/journal.c:209
+#: src/export.c:138 src/journal.c:211
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Filen %s eksisterer, overskriv?"
@@ -340,78 +340,78 @@ msgstr "Verdi"
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:891
+#: src/ghtml.c:907
 msgid "Normal"
 msgstr "Normal"
 
-#: src/ghtml.c:892
+#: src/ghtml.c:908
 msgid "Urgent"
 msgstr "Tidskrav"
 
-#: src/ghtml.c:893 src/ghtml.c:895 src/ghtml.c:907 src/ghtml.c:909
-#: src/ghtml.c:924
+#: src/ghtml.c:909 src/ghtml.c:911 src/ghtml.c:923 src/ghtml.c:925
+#: src/ghtml.c:940
 msgid "Undefined"
 msgstr "Ikke definert"
 
-#: src/ghtml.c:905 glade/project_properties.glade.h:27
+#: src/ghtml.c:921 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr "Middels"
 
-#: src/ghtml.c:906
+#: src/ghtml.c:922
 msgid "Important"
 msgstr "Viktig"
 
-#: src/ghtml.c:1023 glade/task_properties.glade.h:14
+#: src/ghtml.c:1039 glade/task_properties.glade.h:14
 msgid "Hold"
 msgstr "Pause"
 
-#: src/ghtml.c:1024 glade/task_properties.glade.h:4
+#: src/ghtml.c:1040 glade/task_properties.glade.h:3
 msgid "Bill"
 msgstr "Regning"
 
-#: src/ghtml.c:1025 glade/task_properties.glade.h:22
+#: src/ghtml.c:1041 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr "Betalt"
 
-#: src/ghtml.c:1036 glade/task_properties.glade.h:5
+#: src/ghtml.c:1052 glade/task_properties.glade.h:4
 msgid "Billable"
 msgstr "Kan regningsføres"
 
-#: src/ghtml.c:1037 glade/task_properties.glade.h:18
+#: src/ghtml.c:1053 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "Kan ikke regningsføres"
 
-#: src/ghtml.c:1038 glade/task_properties.glade.h:17
+#: src/ghtml.c:1054 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr "Ingen kostnad"
 
-#: src/ghtml.c:1049 glade/task_properties.glade.h:23
+#: src/ghtml.c:1065 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "Vanlig"
 
-#: src/ghtml.c:1050 glade/task_properties.glade.h:21
+#: src/ghtml.c:1066 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "Overtid"
 
-#: src/ghtml.c:1051
+#: src/ghtml.c:1067
 msgid "Double Overtime"
 msgstr "Dobbel overtid"
 
-#: src/ghtml.c:1052 glade/task_properties.glade.h:13
+#: src/ghtml.c:1068 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "Flat kostnad"
 
-#: src/idle-dialog.c:117
+#: src/idle-dialog.c:166
 #, fuzzy, c-format
 msgid "%s minutes"
 msgstr "minutter"
 
-#: src/idle-dialog.c:122
+#: src/idle-dialog.c:171
 #, fuzzy, c-format
 msgid "%s hours"
 msgstr "3 timer"
 
-#: src/idle-dialog.c:132
+#: src/idle-dialog.c:181
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
@@ -419,7 +419,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:142
+#: src/idle-dialog.c:191
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
@@ -427,7 +427,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:158
+#: src/idle-dialog.c:211
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
@@ -440,7 +440,7 @@ msgstr ""
 "er stoppet.\n"
 "Vil du starte det på nytt?"
 
-#: src/idle-dialog.c:170
+#: src/idle-dialog.c:221
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
@@ -452,24 +452,24 @@ msgstr ""
 "er stoppet.\n"
 "Vil du starte det på nytt?"
 
-#: src/journal.c:138
+#: src/journal.c:140
 msgid "Error 404 Not Found"
 msgstr "Feil 404 Ikke funnet"
 
-#: src/journal.c:140
+#: src/journal.c:142
 #, c-format
 msgid "The file %s was not found."
 msgstr "Filen %s ble ikke funnet."
 
-#: src/journal.c:141
+#: src/journal.c:143
 msgid "(null)"
 msgstr "(null)"
 
-#: src/journal.c:150
+#: src/journal.c:152
 msgid "Unkown Error"
 msgstr "Ukjent feil"
 
-#: src/journal.c:229
+#: src/journal.c:231
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -478,20 +478,20 @@ msgstr ""
 "Kunne ikke åpne fil %s\n"
 "%s"
 
-#: src/journal.c:396 src/proj.c:734 src/proj.c:1749 src/proj.c:1950
-#: src/proj.c:2090 glade/notes.glade.h:8
+#: src/journal.c:430 src/proj.c:754 src/proj.c:1769 src/proj.c:1973
+#: glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr "Ny dagbokoppføring"
 
-#: src/journal.c:656
+#: src/journal.c:706
 msgid "mailto: URL is not supported at this time"
 msgstr ""
 
-#: src/journal.c:679
+#: src/journal.c:729
 msgid "Save HTML To File"
 msgstr "Lagre HTML til fil"
 
-#: src/journal.c:862
+#: src/journal.c:912
 msgid "Left-click to bring up menu"
 msgstr ""
 
@@ -612,7 +612,7 @@ msgstr "Eksakt tid"
 msgid "Edit the time interval associated with this project"
 msgstr "Tittel som gis til dette prosjektet"
 
-#: src/menus.c:80 src/menus.c:169
+#: src/menus.c:80
 msgid "_Journal..."
 msgstr "_Journal..."
 
@@ -621,50 +621,50 @@ msgstr "_Journal..."
 msgid "Show the journal for this project"
 msgstr "Vis timelistejournal for dette prosjektet"
 
-#: src/menus.c:84
-#, fuzzy
-msgid "Time _Interval..."
-msgstr "Nytt tidsintervall"
+#: src/menus.c:84 src/menus.c:169
+msgid "_Activity..."
+msgstr ""
 
-#: src/menus.c:85 src/menus.c:170
-msgid "Show the timesheet journal for this project"
+#: src/menus.c:85
+#, fuzzy
+msgid "Show the journal together with the timestamps for this project"
 msgstr "Vis timelistejournal for dette prosjektet"
 
 #: src/menus.c:88
-msgid "_Invoice..."
-msgstr "_Faktura..."
-
-#: src/menus.c:89
-msgid "Show a sample invoice for this project"
-msgstr "Vis en eksempelfaktura for dette prosjektet"
-
-#: src/menus.c:92
 #, fuzzy
 msgid "_Daily..."
 msgstr "_Journal..."
 
-#: src/menus.c:93
+#: src/menus.c:89
 #, fuzzy
 msgid "Show the total time spent on a project, day by day"
 msgstr "Total tid brukt på dette prosjektet."
 
-#: src/menus.c:96
+#: src/menus.c:92
 #, fuzzy
 msgid "_Status..."
 msgstr "Status"
 
-#: src/menus.c:97
+#: src/menus.c:93
 #, fuzzy
 msgid "Show the project descriptions and notes."
 msgstr "Vis prosjektbeskrivelse"
 
-#: src/menus.c:100
+#: src/menus.c:96
 msgid "_To Do..."
 msgstr "Å gjøre..."
 
-#: src/menus.c:101
+#: src/menus.c:97
 msgid "Show a sample to-do list"
 msgstr "Vis eksempel på \"å-gjøre\"-liste"
+
+#: src/menus.c:100
+msgid "_Invoice..."
+msgstr "_Faktura..."
+
+#: src/menus.c:101
+msgid "Show a sample invoice for this project"
+msgstr "Vis en eksempelfaktura for dette prosjektet"
 
 #: src/menus.c:104
 #, fuzzy
@@ -728,6 +728,10 @@ msgstr "_Rapporter"
 msgid "_Timer"
 msgstr "_Klokke"
 
+#: src/menus.c:170
+msgid "Show the timesheet journal for this project"
+msgstr "Vis timelistejournal for dette prosjektet"
+
 #: src/menus.c:177 glade/task_popup.glade.h:6
 msgid "_New Diary Entry"
 msgstr "_Ny dagbokoppføring"
@@ -757,12 +761,12 @@ msgstr ""
 "Kunne ikke åpne fil %s\n"
 "%s"
 
-#: src/proj.c:715
+#: src/proj.c:735
 msgid "Old GTT Tasks"
 msgstr "Gamle GTT-oppgaver"
 
-#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
-#: src/props-task.c:77
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:94
+#: src/props-task.c:95
 msgid "empty"
 msgstr "tom"
 
@@ -783,7 +787,8 @@ msgid "Paste Project"
 msgstr "Lim inn valgte prosjekt"
 
 #: src/toolbar.c:182
-msgid "Journal"
+#, fuzzy
+msgid "Activity Journal"
 msgstr "Journal"
 
 #: src/toolbar.c:183
@@ -904,10 +909,20 @@ msgid "Merge Up"
 msgstr "Flett opp"
 
 #: glade/interval_popup.glade.h:6
+#, fuzzy
+msgid "Move Down"
+msgstr "Flett ned"
+
+#: glade/interval_popup.glade.h:7
+#, fuzzy
+msgid "Move Up"
+msgstr "Flett opp"
+
+#: glade/interval_popup.glade.h:8
 msgid "New Interval"
 msgstr "Nytt intervall"
 
-#: glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:9
 msgid "Paste Diary Entry"
 msgstr "Lim inn dagbokoppføring"
 
@@ -991,7 +1006,7 @@ msgstr "Lim inn en tidligere utklippet dagbokoppføring."
 msgid "Desc:"
 msgstr ""
 
-#: glade/notes.glade.h:5 glade/task_properties.glade.h:11
+#: glade/notes.glade.h:5 glade/task_properties.glade.h:10
 msgid "Diary Entry:"
 msgstr "Dagbokoppføring:"
 
@@ -1582,16 +1597,17 @@ msgid "_Paste Diary Entry"
 msgstr "_Lim inn dagbokoppføring"
 
 #: glade/task_properties.glade.h:2
-msgid "A set of private notes that will not be printed on an invoice."
-msgstr "Et sett private notater som ikke skrives ut på en faktura."
-
-#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr "En kort beskrivelse som skal festes til denne tidsblokken."
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr "Fakturerbar:"
+
+#: glade/task_properties.glade.h:6
+#, fuzzy
+msgid "Billing"
+msgstr "Regning"
 
 #: glade/task_properties.glade.h:7
 msgid "Billing Block:"
@@ -1605,9 +1621,10 @@ msgstr "Faktureringsrate:"
 msgid "Billing Status:"
 msgstr "Fakturastatus:"
 
-#: glade/task_properties.glade.h:10
-msgid "Diary Entry Properties"
-msgstr "Egenskaper for dagbokoppføring"
+#: glade/task_properties.glade.h:11
+#, fuzzy
+msgid "Diary Notes"
+msgstr "Dagbokoppføring"
 
 #: glade/task_properties.glade.h:12
 msgid "Fee rate to be charged for this task."
@@ -1646,6 +1663,11 @@ msgstr ""
 "Fakturert tidsenhet vil rundes av til et heltallsmultiplum av denne tiden."
 
 #: glade/task_properties.glade.h:25
+#, fuzzy
+msgid "Type detailed diary entry notes here."
+msgstr "Rediger dagbokoppføringen og andre egenskaper for oppgaven."
+
+#: glade/task_properties.glade.h:26
 msgid "minutes"
 msgstr "minutter"
 
@@ -1657,6 +1679,16 @@ msgstr "Tidtaker"
 #: gnotime.desktop.in.h:2
 msgid "To-Do List Organizer, Diary and Billing System"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Time _Interval..."
+#~ msgstr "Nytt tidsintervall"
+
+#~ msgid "A set of private notes that will not be printed on an invoice."
+#~ msgstr "Et sett private notater som ikke skrives ut på en faktura."
+
+#~ msgid "Diary Entry Properties"
+#~ msgstr "Egenskaper for dagbokoppføring"
 
 #~ msgid "Error"
 #~ msgstr "Feil"
@@ -1806,9 +1838,6 @@ msgstr ""
 
 #~ msgid "Delete the diary entry, and the time intervals below it."
 #~ msgstr "Slett dagbokoppføringen og tidsintervallene under den."
-
-#~ msgid "Edit the diary entry and other task properties."
-#~ msgstr "Rediger dagbokoppføringen og andre egenskaper for oppgaven."
 
 #~ msgid "Insert a new diary entry above this one."
 #~ msgstr "Sett inn en ny dagbokoppføring over denne."

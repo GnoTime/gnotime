@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils-0.99.6\n"
-"POT-Creation-Date: 2004-04-26 21:26-0500\n"
+"POT-Creation-Date: 2004-05-23 15:59-0500\n"
 "PO-Revision-Date: 2002-06-23 02:09+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -195,7 +195,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1284 src/ghtml.c:890 src/ghtml.c:904
+#: src/ctree.c:1284 src/ghtml.c:906 src/ghtml.c:920
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
@@ -208,23 +208,23 @@ msgstr "中"
 msgid "High"
 msgstr "高"
 
-#: src/ctree.c:1295 src/ghtml.c:918 glade/project_properties.glade.h:30
+#: src/ctree.c:1295 src/ghtml.c:934 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "尚未开始"
 
-#: src/ctree.c:1296 src/ghtml.c:919 glade/project_properties.glade.h:22
+#: src/ctree.c:1296 src/ghtml.c:935 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "正在进行"
 
-#: src/ctree.c:1297 src/ghtml.c:920 glade/project_properties.glade.h:32
+#: src/ctree.c:1297 src/ghtml.c:936 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "暂停"
 
-#: src/ctree.c:1298 src/ghtml.c:921 glade/project_properties.glade.h:10
+#: src/ctree.c:1298 src/ghtml.c:937 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/ctree.c:1299 src/ghtml.c:922 glade/project_properties.glade.h:11
+#: src/ctree.c:1299 src/ghtml.c:938 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "已完成"
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "E格式化第 %d 道时出错"
 
-#: src/export.c:138 src/journal.c:209
+#: src/export.c:138 src/journal.c:211
 #, fuzzy, c-format
 msgid "File %s exists, overwrite?"
 msgstr "文件已存在，覆盖？"
@@ -339,81 +339,81 @@ msgstr "值"
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:891
+#: src/ghtml.c:907
 #, fuzzy
 msgid "Normal"
 msgstr "日记"
 
-#: src/ghtml.c:892
+#: src/ghtml.c:908
 msgid "Urgent"
 msgstr ""
 
-#: src/ghtml.c:893 src/ghtml.c:895 src/ghtml.c:907 src/ghtml.c:909
-#: src/ghtml.c:924
+#: src/ghtml.c:909 src/ghtml.c:911 src/ghtml.c:923 src/ghtml.c:925
+#: src/ghtml.c:940
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:905 glade/project_properties.glade.h:27
+#: src/ghtml.c:921 glade/project_properties.glade.h:27
 #, fuzzy
 msgid "Medium"
 msgstr "中"
 
-#: src/ghtml.c:906
+#: src/ghtml.c:922
 msgid "Important"
 msgstr ""
 
-#: src/ghtml.c:1023 glade/task_properties.glade.h:14
+#: src/ghtml.c:1039 glade/task_properties.glade.h:14
 #, fuzzy
 msgid "Hold"
 msgstr "暂停"
 
-#: src/ghtml.c:1024 glade/task_properties.glade.h:4
+#: src/ghtml.c:1040 glade/task_properties.glade.h:3
 msgid "Bill"
 msgstr "支付"
 
-#: src/ghtml.c:1025 glade/task_properties.glade.h:22
+#: src/ghtml.c:1041 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr "已支付"
 
-#: src/ghtml.c:1036 glade/task_properties.glade.h:5
+#: src/ghtml.c:1052 glade/task_properties.glade.h:4
 msgid "Billable"
 msgstr "可支付"
 
-#: src/ghtml.c:1037 glade/task_properties.glade.h:18
+#: src/ghtml.c:1053 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "不可支付"
 
-#: src/ghtml.c:1038 glade/task_properties.glade.h:17
+#: src/ghtml.c:1054 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr "无收费"
 
-#: src/ghtml.c:1049 glade/task_properties.glade.h:23
+#: src/ghtml.c:1065 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "常规"
 
-#: src/ghtml.c:1050 glade/task_properties.glade.h:21
+#: src/ghtml.c:1066 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "超时"
 
-#: src/ghtml.c:1051
+#: src/ghtml.c:1067
 msgid "Double Overtime"
 msgstr "双倍超时"
 
-#: src/ghtml.c:1052 glade/task_properties.glade.h:13
+#: src/ghtml.c:1068 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "平整费用"
 
-#: src/idle-dialog.c:117
+#: src/idle-dialog.c:166
 #, fuzzy, c-format
 msgid "%s minutes"
 msgstr "分"
 
-#: src/idle-dialog.c:122
+#: src/idle-dialog.c:171
 #, fuzzy, c-format
 msgid "%s hours"
 msgstr "时"
 
-#: src/idle-dialog.c:132
+#: src/idle-dialog.c:181
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
@@ -421,7 +421,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:142
+#: src/idle-dialog.c:191
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
@@ -429,7 +429,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:158
+#: src/idle-dialog.c:211
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
@@ -442,7 +442,7 @@ msgstr ""
 " 已被停止。您希望\n"
 "重新启动它吗？"
 
-#: src/idle-dialog.c:170
+#: src/idle-dialog.c:221
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
@@ -454,24 +454,24 @@ msgstr ""
 " 已被停止。您希望\n"
 "重新启动它吗？"
 
-#: src/journal.c:138
+#: src/journal.c:140
 msgid "Error 404 Not Found"
 msgstr "错误 404 未找到"
 
-#: src/journal.c:140
+#: src/journal.c:142
 #, c-format
 msgid "The file %s was not found."
 msgstr "未找到文件 %s 。"
 
-#: src/journal.c:141
+#: src/journal.c:143
 msgid "(null)"
 msgstr "(无)"
 
-#: src/journal.c:150
+#: src/journal.c:152
 msgid "Unkown Error"
 msgstr "未知错误"
 
-#: src/journal.c:229
+#: src/journal.c:231
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -480,21 +480,21 @@ msgstr ""
 "无法打开文件 %s\n"
 "%s"
 
-#: src/journal.c:396 src/proj.c:734 src/proj.c:1749 src/proj.c:1950
-#: src/proj.c:2090 glade/notes.glade.h:8
+#: src/journal.c:430 src/proj.c:754 src/proj.c:1769 src/proj.c:1973
+#: glade/notes.glade.h:8
 #, fuzzy
 msgid "New Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/journal.c:656
+#: src/journal.c:706
 msgid "mailto: URL is not supported at this time"
 msgstr ""
 
-#: src/journal.c:679
+#: src/journal.c:729
 msgid "Save HTML To File"
 msgstr "将 HTML 保存到文件"
 
-#: src/journal.c:862
+#: src/journal.c:912
 msgid "Left-click to bring up menu"
 msgstr ""
 
@@ -614,7 +614,7 @@ msgstr "任务时间"
 msgid "Edit the time interval associated with this project"
 msgstr "花在该计划上的总时间。"
 
-#: src/menus.c:80 src/menus.c:169
+#: src/menus.c:80
 msgid "_Journal..."
 msgstr "日记(_J)..."
 
@@ -623,50 +623,50 @@ msgstr "日记(_J)..."
 msgid "Show the journal for this project"
 msgstr "为该计划显示时间表单日记"
 
-#: src/menus.c:84
-#, fuzzy
-msgid "Time _Interval..."
-msgstr "slider 更新间隔"
+#: src/menus.c:84 src/menus.c:169
+msgid "_Activity..."
+msgstr ""
 
-#: src/menus.c:85 src/menus.c:170
-msgid "Show the timesheet journal for this project"
+#: src/menus.c:85
+#, fuzzy
+msgid "Show the journal together with the timestamps for this project"
 msgstr "为该计划显示时间表单日记"
 
 #: src/menus.c:88
-msgid "_Invoice..."
-msgstr "支票(_I)..."
-
-#: src/menus.c:89
-msgid "Show a sample invoice for this project"
-msgstr "为该计划显示示例支票"
-
-#: src/menus.c:92
 #, fuzzy
 msgid "_Daily..."
 msgstr "日记(_J)..."
 
-#: src/menus.c:93
+#: src/menus.c:89
 #, fuzzy
 msgid "Show the total time spent on a project, day by day"
 msgstr "花在该计划上的总时间。"
 
-#: src/menus.c:96
+#: src/menus.c:92
 #, fuzzy
 msgid "_Status..."
 msgstr "状态"
 
-#: src/menus.c:97
+#: src/menus.c:93
 #, fuzzy
 msgid "Show the project descriptions and notes."
 msgstr "计划描述:"
 
-#: src/menus.c:100
+#: src/menus.c:96
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:101
+#: src/menus.c:97
 #, fuzzy
 msgid "Show a sample to-do list"
+msgstr "为该计划显示示例支票"
+
+#: src/menus.c:100
+msgid "_Invoice..."
+msgstr "支票(_I)..."
+
+#: src/menus.c:101
+msgid "Show a sample invoice for this project"
 msgstr "为该计划显示示例支票"
 
 #: src/menus.c:104
@@ -733,6 +733,10 @@ msgstr "报告(_R)"
 msgid "_Timer"
 msgstr "计时器(_T)"
 
+#: src/menus.c:170
+msgid "Show the timesheet journal for this project"
+msgstr "为该计划显示时间表单日记"
+
 #: src/menus.c:177 glade/task_popup.glade.h:6
 #, fuzzy
 msgid "_New Diary Entry"
@@ -765,12 +769,12 @@ msgstr ""
 "无法打开文件 %s\n"
 "%s"
 
-#: src/proj.c:715
+#: src/proj.c:735
 msgid "Old GTT Tasks"
 msgstr "老式 GTT 任务"
 
-#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
-#: src/props-task.c:77
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:94
+#: src/props-task.c:95
 msgid "empty"
 msgstr "空"
 
@@ -792,7 +796,8 @@ msgid "Paste Project"
 msgstr "粘贴计划"
 
 #: src/toolbar.c:182
-msgid "Journal"
+#, fuzzy
+msgid "Activity Journal"
 msgstr "日记"
 
 #: src/toolbar.c:183
@@ -923,11 +928,19 @@ msgid "Merge Up"
 msgstr ""
 
 #: glade/interval_popup.glade.h:6
+msgid "Move Down"
+msgstr ""
+
+#: glade/interval_popup.glade.h:7
+msgid "Move Up"
+msgstr ""
+
+#: glade/interval_popup.glade.h:8
 #, fuzzy
 msgid "New Interval"
 msgstr "一般"
 
-#: glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:9
 #, fuzzy
 msgid "Paste Diary Entry"
 msgstr "新建日记条目(_E)"
@@ -1017,7 +1030,7 @@ msgstr "当前日记条目"
 msgid "Desc:"
 msgstr ""
 
-#: glade/notes.glade.h:5 glade/task_properties.glade.h:11
+#: glade/notes.glade.h:5 glade/task_properties.glade.h:10
 #, fuzzy
 msgid "Diary Entry:"
 msgstr "新建日记条目(_E)"
@@ -1628,17 +1641,18 @@ msgid "_Paste Diary Entry"
 msgstr "新建日记条目(_E)"
 
 #: glade/task_properties.glade.h:2
-msgid "A set of private notes that will not be printed on an invoice."
-msgstr ""
-
-#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:5
 #, fuzzy
 msgid "Billable:"
 msgstr "可支付"
+
+#: glade/task_properties.glade.h:6
+#, fuzzy
+msgid "Billing"
+msgstr "支付"
 
 #: glade/task_properties.glade.h:7
 msgid "Billing Block:"
@@ -1654,10 +1668,10 @@ msgstr "支付率"
 msgid "Billing Status:"
 msgstr "帐单状态"
 
-#: glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:11
 #, fuzzy
-msgid "Diary Entry Properties"
-msgstr "内容"
+msgid "Diary Notes"
+msgstr "新建日记条目(_E)"
 
 #: glade/task_properties.glade.h:12
 msgid "Fee rate to be charged for this task."
@@ -1689,6 +1703,10 @@ msgid ""
 msgstr ""
 
 #: glade/task_properties.glade.h:25
+msgid "Type detailed diary entry notes here."
+msgstr ""
+
+#: glade/task_properties.glade.h:26
 #, fuzzy
 msgid "minutes"
 msgstr "分"
@@ -1700,6 +1718,14 @@ msgstr ""
 #: gnotime.desktop.in.h:2
 msgid "To-Do List Organizer, Diary and Billing System"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Time _Interval..."
+#~ msgstr "slider 更新间隔"
+
+#, fuzzy
+#~ msgid "Diary Entry Properties"
+#~ msgstr "内容"
 
 #~ msgid "Error"
 #~ msgstr "错误"
