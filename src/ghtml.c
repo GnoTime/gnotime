@@ -437,6 +437,15 @@ ret_intervals (SCM task_list)
  * a scheme list of the project titles.
  */
 
+#define RET_PROJECT_SIMPLE(RET_FUNC,DO_SIMPLE)                      \
+static SCM                                                          \
+RET_FUNC (SCM proj_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_project (ghtml, proj_list, DO_SIMPLE);        \
+}
+
+
 #define RET_PROJECT_STR(RET_FUNC,GTT_GETTER)                        \
 static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
@@ -444,13 +453,8 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 	const char * str = GTT_GETTER (prj);                             \
 	return gh_str2scm (str, strlen (str));                           \
 }                                                                   \
-                                                                    \
-static SCM                                                          \
-RET_FUNC (SCM proj_list)                                            \
-{                                                                   \
-	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
-	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
-}
+RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
+		  
 
 #define RET_PROJECT_LONG(RET_FUNC,GTT_GETTER)                       \
 static SCM                                                          \
@@ -459,14 +463,9 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 	long i = GTT_GETTER (prj);                                       \
 	return gh_long2scm (i);                                          \
 }                                                                   \
-                                                                    \
-static SCM                                                          \
-RET_FUNC (SCM proj_list)                                            \
-{                                                                   \
-	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
-	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
-}
+RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
+                                                                    \
 #define RET_PROJECT_ULONG(RET_FUNC,GTT_GETTER)                      \
 static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
@@ -474,13 +473,8 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 	unsigned long i = GTT_GETTER (prj);                              \
 	return gh_ulong2scm (i);                                         \
 }                                                                   \
-                                                                    \
-static SCM                                                          \
-RET_FUNC (SCM proj_list)                                            \
-{                                                                   \
-	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
-	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
-}
+RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
+
 
 
 RET_PROJECT_STR   (ret_project_title, gtt_project_get_title)
@@ -519,12 +513,7 @@ get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
 	}
 }
 
-static SCM
-ret_project_title_link (SCM proj_list)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_apply_on_project (ghtml, proj_list, get_project_title_link_scm);
-}
+RET_PROJECT_SIMPLE (ret_project_title_link, get_project_title_link_scm)
 
 /* ============================================================== */
 
@@ -576,14 +565,6 @@ RET_PROJECT_STR (ret_project_urgency,    get_urgency)
 RET_PROJECT_STR (ret_project_importance, get_importance)
 RET_PROJECT_STR (ret_project_status,     get_status)
 		  
-#define RET_PROJECT_SIMPLE(RET_FUNC,DO_SIMPLE)                      \
-static SCM                                                          \
-RET_FUNC (SCM proj_list)                                            \
-{                                                                   \
-	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
-	return do_apply_on_project (ghtml, proj_list, DO_SIMPLE);        \
-}
-
 /* ============================================================== */
 /* Define a set of subroutines that accept a scheme list of tasks,
  * applies the gtt_task function on each, and then returns a 
@@ -646,14 +627,7 @@ ret_task_memo_link (SCM task_list)
 
 /* ============================================================== */
 
-#define RET_IVL_ULONG(RET_FUNC,GTT_GETTER)                          \
-static SCM                                                          \
-GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
-{                                                                   \
-	unsigned long i = GTT_GETTER (ivl);                              \
-	return gh_ulong2scm (i);                                         \
-}                                                                   \
-                                                                    \
+#define RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)                         \
 static SCM                                                          \
 RET_FUNC (SCM ivl_list)                                             \
 {                                                                   \
@@ -661,9 +635,82 @@ RET_FUNC (SCM ivl_list)                                             \
 	return do_apply_on_interval (ghtml, ivl_list, GTT_GETTER##_scm); \
 }
 
+
+#define RET_IVL_STR(RET_FUNC,GTT_GETTER)                            \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
+{                                                                   \
+	const char * str = GTT_GETTER (ivl);                             \
+	return gh_str2scm (str, strlen (str));                           \
+}                                                                   \
+RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
+
+
+#define RET_IVL_ULONG(RET_FUNC,GTT_GETTER)                          \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
+{                                                                   \
+	unsigned long i = GTT_GETTER (ivl);                              \
+	return gh_ulong2scm (i);                                         \
+}                                                                   \
+RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
+
+
 RET_IVL_ULONG (ret_ivl_start, gtt_interval_get_start)
 RET_IVL_ULONG (ret_ivl_stop,  gtt_interval_get_stop)
 RET_IVL_ULONG (ret_ivl_fuzz,  gtt_interval_get_fuzz)
+
+static SCM
+get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	char buff[100];
+	time_t elapsed;
+	elapsed = gtt_interval_get_stop (ivl);
+	elapsed -= gtt_interval_get_start (ivl);
+	print_hours_elapsed (buff, 100, elapsed, TRUE);
+	return gh_str2scm (buff, strlen (buff));
+}
+
+RET_IVL_SIMPLE (ret_ivl_elapsed_str, get_ivl_elapsed_str);
+
+/* ============================================================== */
+
+static SCM
+get_ivl_link_scm (GttGhtml *ghtml, GttInterval *ivl, const char * buff)
+{
+	if (ghtml->show_links)
+	{
+		GString *str;
+		str = g_string_new (NULL);
+		g_string_append_printf (str, "<a href=\"gtt:interval:0x%x\">", ivl);
+		g_string_append (str, buff); 
+		g_string_append (str, "</a>");
+		return gh_str2scm (str->str, str->len);
+	}
+	else 
+	{
+		return gh_str2scm (buff, strlen (buff));
+	}
+}
+
+static SCM
+get_ivl_start_link_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	char buff[100];
+	print_time (buff, 100, gtt_interval_get_start (ivl));
+	return get_ivl_link_scm (ghtml, ivl, buff);
+}
+
+static SCM
+get_ivl_stop_link_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	char buff[100];
+	print_time (buff, 100, gtt_interval_get_stop (ivl));
+	return get_ivl_link_scm (ghtml, ivl, buff);
+}
+
+RET_IVL_SIMPLE (ret_ivl_start_link, get_ivl_start_link);
+RET_IVL_SIMPLE (ret_ivl_stop_link,  get_ivl_stop_link);
 
 /* ============================================================== */
 
@@ -836,6 +883,9 @@ register_procs (void)
 	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
 	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
 	gh_new_procedure("gtt-interval-fuzz",      ret_ivl_fuzz,           1, 0, 0);
+	gh_new_procedure("gtt-interval-elapsed-str", ret_ivl_elapsed_str,  1, 0, 0);
+	gh_new_procedure("gtt-interval-start-link", ret_ivl_start_link,    1, 0, 0);
+	gh_new_procedure("gtt-interval-stop-link",  ret_ivl_stop_link,     1, 0, 0);
 }
 
 
