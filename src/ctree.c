@@ -656,7 +656,7 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
                              GtkCTreeNode *new_parent,
                              GtkCTreeNode *new_sibling)
 {
-	ProjTreeWindow *ptw = gtk_object_get_data (GTK_OBJECT(ctree), "ptw");
+	ProjTreeWindow *ptw = g_object_get_data (G_OBJECT(ctree), "ptw");
 
 	if (!source_node) return FALSE;
 
@@ -1443,7 +1443,7 @@ ctree_new(void)
 	w = gtk_ctree_new_with_titles(ptw->ncols, i, ptw->col_titles);
 	ptw->ctree = GTK_CTREE(w);
 
-	gtk_object_set_data (GTK_OBJECT(w), "ptw", ptw);
+	g_object_set_data (G_OBJECT(w), "ptw", ptw);
 
 	for (i=0; i<ptw->ncols; i++)
 	{
