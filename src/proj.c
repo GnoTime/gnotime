@@ -2807,9 +2807,10 @@ cmp_status(const void *aa, const void *bb)
 }
 
 #define DO_SORT(CMP_FUNC)                                   \
-   gboolean is_top = FALSE;                                 \
-   GttProject *parent;                                      \
-   if (prjs == plist) is_top = TRUE;                        \
+	gboolean is_top = FALSE;                                 \
+	GttProject *parent;                                      \
+	if (!prjs) return NULL;                                  \
+	if (prjs == plist) is_top = TRUE;                        \
 	parent = ((GttProject *) (prjs->data))->parent;          \
 	prjs = project_list_sort(prjs, CMP_FUNC);                \
 	if (is_top) plist = prjs;                                \
