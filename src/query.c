@@ -237,7 +237,7 @@ gtt_project_get_daily_buckets (GttProject *proj, gboolean include_subprojects)
 int   
 gtt_project_foreach_interval (GttProject *proj, GttIntervalCB cb, gpointer data)
 {
-	int rc = 0;
+	int rc = 1;
 	GList *tnode, *inode;
 	
 	/* Get the list of tasks, and walk the list.  We are not
