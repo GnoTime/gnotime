@@ -21,6 +21,7 @@
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include "app.h"
 #include "gconf-io.h"
@@ -94,18 +95,20 @@ gtt_plugin_free (GttPlugin *plg)
 static void 
 new_plugin_create_cb (GtkWidget * w, gpointer data)
 {
-	FILE *fh;
 	const char *title, *path, *tip;
 	NewPluginDialog *dlg = data;
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
+	path = gnome_file_entry_get_full_path (dlg->plugin_path, FALSE);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
 
-	/* do a basic sanity check */
-	fh = fopen (path, "r");
-	if (!fh) 
+	/* Do a basic sanity check */
+	GnomeVFSURI *parsed_uri;
+	parsed_uri = gnome_vfs_uri_new (path);
+	gboolean exists = gnome_vfs_uri_exists (parsed_uri);
+	gnome_vfs_uri_unref (parsed_uri);
+	if (!exists)
 	{
 		gchar *msg;
 		GtkWidget *mb;
@@ -124,13 +127,11 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 		GttPlugin *plg;
 		GnomeUIInfo entry[2];
 		
-		fclose (fh);
-
-		/* create the plugin */
+		/* Create the plugin */
 		plg = gtt_plugin_new (title,path);
 		plg->tooltip = g_strdup (tip);
 	
-		/* add the thing to the Reports menu */
+		/* Add the thing to the Reports menu */
 		entry[0].type = GNOME_APP_UI_ITEM;
 		entry[0].label = plg->name;
 		entry[0].hint = plg->tooltip;
