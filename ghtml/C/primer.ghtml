@@ -105,16 +105,17 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      <br><br>
 
 <li> The primitive <tt>gtt-show</tt> can be used anywhere,
-     such as this Leibniz series expression for Pi:
+     such as this (slowly converging) Leibniz series expression 
+	  for Pi:
      <br><br>
      <tt>(define (pi-sum a b) (if (> a b) 0 
      <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
      <br>
      <?scm (define (pi-sum a b) (if (> a b) 0 (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) )) ?>
    
-     (define (pi-approx) (gtt-show (* 8 (pi-sum 1 2000)) ))
+     (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) ))
      <br>
-     <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 2000)) )) ?>
+     <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) )) ?>
      (pi-approx)
      </tt>
      <br> <br>
@@ -124,7 +125,7 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      <br><br>
 
 <li> We have started implementing a way of getting the raw 
-     project/task/interval data into scheme, but its rather
+     project/task/interval data into scheme, but its 
      incomplete at this time.
      However, some things do work, as below:
      <br><br>
