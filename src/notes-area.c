@@ -161,6 +161,7 @@ void
 gtt_notes_timer_callback (NotesArea *na)
 {
 	if (!na) return;
+	na->ignore_events = TRUE;
 	if (na->task_freeze)
 	{
 		gtt_task_thaw (na->task_freeze);
@@ -171,6 +172,7 @@ gtt_notes_timer_callback (NotesArea *na)
 		na->proj_freeze = FALSE;
 		gtt_project_thaw (na->proj);
 	}
+	na->ignore_events = FALSE;
 }
 
 /* ============================================================== */
