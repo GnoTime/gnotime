@@ -42,7 +42,6 @@ GttProject *cur_proj = NULL;
 
 ProjTreeWindow *global_ptw;
 GtkWidget *window;
-GtkWidget *glist;
 GtkWidget *status_bar;
 
 static GtkStatusbar *status_project = NULL;
@@ -200,6 +199,7 @@ cur_proj_set(GttProject *proj)
 
 void app_new(int argc, char *argv[], const char *geometry_string)
 {
+	GtkWidget *ctree;
 	GtkWidget *vbox;
 	GtkWidget *widget;
 	gint x, y, w, h;
@@ -258,8 +258,8 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 
 	/* create the main columned tree for showing projects */
 	global_ptw = ctree_new();
-	glist = ctree_get_widget(global_ptw);
-	gtk_box_pack_end(GTK_BOX(vbox), glist->parent, TRUE, TRUE, 0);
+	ctree = ctree_get_widget(global_ptw);
+	gtk_box_pack_end(GTK_BOX(vbox), ctree->parent, TRUE, TRUE, 0);
 
 	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);
@@ -286,6 +286,27 @@ app_show (void)
 	{
 		gtk_widget_show(window);
 	}
+}
+
+
+
+void
+app_quit(GtkWidget *w, gpointer data)
+{
+	const char * errmsg;
+
+	errmsg = save_all ();
+	if (errmsg)
+	{
+		msgbox_ok(_("Warning"),
+		     errmsg,
+		     GTK_STOCK_OK,
+		     G_CALLBACK(gtk_main_quit));
+		g_free ((gchar *) errmsg);
+		return;
+	}
+
+	gtk_main_quit();
 }
 
 /* ============================== END OF FILE ===================== */

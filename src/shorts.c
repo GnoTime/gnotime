@@ -53,6 +53,7 @@ static gint hotkey_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
 void
 connect_short_cuts(void)
 {
+	GtkWidget *glist = ctree_get_widget(global_ptw);
 	g_signal_connect(G_OBJECT(window), "key_press_event",
 			   G_CALLBACK(hotkey_press), NULL);
 	/* Focus the list when focusing the app. */
@@ -92,12 +93,13 @@ hotkey_press(GtkWidget *widget, GdkEventKey *event, gpointer data)
 static void
 hk_quit_app(guint keyval)
 {
-	quit_app(NULL, NULL);
+	app_quit(NULL, NULL);
 }
 
 static void
 hk_move_focus(guint keyval)
 {
+	GtkWidget *glist = ctree_get_widget(global_ptw);
 	if (! GTK_IS_CLIST (glist)) return;
 
 	gtk_widget_grab_focus(glist); /* in case we lost it somewhere */

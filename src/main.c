@@ -234,7 +234,7 @@ read_data(void)
 	{
 		post_read_data ();
 	}
-	g_free (xml_filepath);
+	g_free ((gchar *) xml_filepath);
 }
 
 static void
@@ -329,7 +329,7 @@ save_all (void)
 	{
 		errmsg = gtt_err_to_string (errcode, xml_filepath);
 	}
-	g_free (xml_filepath);
+	g_free ((gchar *) xml_filepath);
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
@@ -395,7 +395,7 @@ save_projects (void)
 		     NULL);
 		g_free ((gchar *) errmsg);
 	}
-	g_free (xml_filepath);
+	g_free ((gchar *) xml_filepath);
 }
 
 
@@ -451,7 +451,7 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 static void
 session_die(GnomeClient *client)
 {
-	quit_app(NULL, NULL);
+	app_quit(NULL, NULL);
 }
 
 #endif /* USE_SM */
@@ -474,6 +474,12 @@ guile_inner_main(int argc, char **argv)
 	gtk_main();
 
 	unlock_gtt();
+
+#if 0
+	/* Clean things up on exit.  But this is pretty pointless */
+	gtk_widget_destroy (window);
+	project_list_destroy ();
+#endif
 }
 
 
@@ -522,7 +528,7 @@ main(int argc, char *argv[])
 	app_new(argc, argv, geometry_string);
 
 	g_signal_connect(G_OBJECT(window), "delete_event",
-			   G_CALLBACK(quit_app), NULL);
+			   G_CALLBACK(app_quit), NULL);
 
 	/*
 	 * Added by SMH 2000-03-22:

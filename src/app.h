@@ -25,8 +25,7 @@
 
 extern ProjTreeWindow *global_ptw;
 
-extern GtkWidget *window;
-extern GtkWidget *glist;
+extern GtkWidget *window;  /* global top-level window */
 extern GtkWidget *status_bar;
 
 /* true if command line over-rides geometry */
@@ -38,6 +37,8 @@ void update_status_bar(void);
 void app_new(int argc, char *argv[], const char *geometry_string);
 
 void app_show(void);
+void app_quit(GtkWidget *w, gpointer data);
+		  
 
 
 #endif /* __GTT_APP_H__ */

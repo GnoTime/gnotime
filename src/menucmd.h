@@ -23,7 +23,6 @@
 
 extern GttProject *cutted_project;
 
-void quit_app(GtkWidget *, gpointer);
 void about_box(GtkWidget *, gpointer);
 
 void new_project(GtkWidget *, gpointer);

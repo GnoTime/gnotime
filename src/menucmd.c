@@ -39,27 +39,6 @@
 
 
 void
-quit_app(GtkWidget *w, gpointer data)
-{
-	const char * errmsg;
-
-	errmsg = save_all ();
-	if (errmsg)
-	{
-		msgbox_ok(_("Warning"),
-		     errmsg,
-		     GTK_STOCK_OK,
-		     G_CALLBACK(gtk_main_quit));
-		g_free ((gchar *) errmsg);
-		return;
-	}
-
-	gtk_main_quit();
-}
-
-
-
-void
 about_box(GtkWidget *w, gpointer data)
 {
 	static GtkWidget *about = NULL;
