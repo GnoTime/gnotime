@@ -603,8 +603,7 @@ bogus_query (KvpFrame *kvpf)
 {
 	KvpValue *val;
 	char *str;
-	time_t earliest_end;
-	time_t latest_end;
+	time_t earliest_end, latest_start;
 	QofQuery *q;
 	QofQueryPredData *pred_data;
 	GSList *param_list;
@@ -622,12 +621,12 @@ printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 printf ("duude got sttrig %s\n", str);
    if (FALSE == qof_scan_date_secs (str, &earliest_end)) return NULL;
 	
-	val = kvp_frame_get_slot (kvpf, "latest-end-date");
+	val = kvp_frame_get_slot (kvpf, "latest-start-date");
 	str = kvp_value_get_string (val);
 printf ("duude got sttrig %s\n", str);
-   if (FALSE == qof_scan_date_secs (str, &latest_end)) return NULL;
+   if (FALSE == qof_scan_date_secs (str, &latest_start)) return NULL;
 	
-printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(ctime (&latest_end)));
+printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(ctime (&latest_start)));
 	
 	/* Create a new query */
 	q =  qof_query_create ();
@@ -643,12 +642,12 @@ printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(cti
 	 * and had activity later than the interval start.
 	 */
 	 
-	/* Activity must preceed the 'latest end' */
+	/* Activity must preceed the 'latest start' */
 	param_list = qof_query_build_param_list (GTT_PROJECT_EARLIEST, 
 	                                            NULL);
 	pred_data = qof_query_int32_predicate (
 	                   QOF_COMPARE_LTE,         /* comparison to make */
-							 latest_end);             /* time to match */
+							 latest_start);             /* time to match */
 	qof_query_add_term (q, param_list, pred_data,
 	            QOF_QUERY_FIRST_TERM);             /* How to combine terms */
 	
