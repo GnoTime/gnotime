@@ -31,6 +31,8 @@
  * web-based version that we hope to code up someday).  Currently, 
  * the stream is used to push data into GtkHTML, and also to fwrite()
  * for the save-to-file function.
+ *
+ * The X that can be Y is not the true X.
  */
 
 typedef struct gtt_ghtml_s GttGhtml;
@@ -48,6 +50,7 @@ struct gtt_ghtml_s
 	GttProject *prj;
 	
 	gboolean show_links; /* Flag -- show internal <a href> links */
+	gboolean really_hide_links; /* Flag -- show internal <a href> links */
 
 	time_t last_ivl_time;  /* hackl for pretty-printing interval dates */
 

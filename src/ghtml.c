@@ -340,7 +340,10 @@ ret_linked_project (void)
 static SCM
 do_set_links_on (GttGhtml *ghtml)
 {
-	ghtml->show_links = TRUE;
+	if (FALSE == ghtml->really_hide_links)
+	{
+		ghtml->show_links = TRUE;
+	}
 	return SCM_UNSPECIFIED;
 }
 
@@ -1011,6 +1014,7 @@ gtt_ghtml_new (void)
 
 	p->prj = NULL;
 	p->show_links = TRUE;
+	p->really_hide_links = FALSE;
 	p->last_ivl_time = 0;
 
 	gtt_ghtml_deprecated_init (p);
@@ -1041,10 +1045,14 @@ gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
 	p->error = er;
 }
 
+/* This sets the over-ride flag, so that no internal links are shown, 
+ * really really for real, when printing out to file. 
+ */
 void 
 gtt_ghtml_show_links (GttGhtml *p, gboolean sl)
 {
 	if (!p) return;
+	p->really_hide_links = (FALSE == sl);
 	p->show_links = sl;
 }
 
