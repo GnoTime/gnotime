@@ -26,6 +26,7 @@
 #include <libgnomevfs/gnome-vfs.h>
 #include <stdio.h>
 #include <string.h>
+#include <sched.h>
 
 #include <kvp_frame.h>
 #include <qof.h>
@@ -82,7 +83,7 @@ typedef struct wiggy_s
 
 	/* Publish-to-URL dialog */
 	GtkWidget *publish_popup;
-	GtkWidget *publish_entry;
+	GtkEntry  *publish_entry;
 } Wiggy;
 
 static void do_show_report (const char *, GttPlugin *, 
@@ -155,10 +156,10 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 }
 
 /* ============================================================== */
-/* Routines that take html and mash it into a file. */
+/* Routine that take html and mash it into a file. */
 
 static void
-file_write (GttGhtml *pl, const char *str, size_t len, gpointer data)
+file_write_helper (GttGhtml *pl, const char *str, size_t len, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GnomeVFSFileSize buflen = len;
@@ -176,30 +177,10 @@ file_write (GttGhtml *pl, const char *str, size_t len, gpointer data)
 }
 
 /* ============================================================== */
-/* engine callbacks */
 
 static void 
-redraw (GttProject * prj, gpointer data)
+remember_uri (Wiggy *wig, const char * filename)
 {
-	Wiggy *wig = (Wiggy *) data;
-
-	gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
-}
-
-/* ============================================================== */
-/* file selection callbacks */
-/* XXX should re-write to save contents from gtkhtml window, so that
- * results of user editing are saved, rather than the orig contents.
- */
-
-static void 
-filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
-{
-	Wiggy *wig = (Wiggy *) data;
-	const char * filename;
-
-	filename = gtk_file_selection_get_filename (wig->filesel);
-
 	/* Remember history, on a per-report basis */
 	if (wig->plg && ((NULL == wig->plg->last_url) || 
 	                 (0==wig->plg->last_url[0]) ||
@@ -208,6 +189,11 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 		if (wig->plg->last_url) g_free (wig->plg->last_url);
 		wig->plg->last_url = g_strdup_printf ("file:%s", filename);
 	}
+}
+
+static void 
+save_to_gnomevfs (Wiggy *wig, const char * filename)
+{
 
 	/* Don't clobber the file, ask user for permission */
 	GnomeVFSURI *parsed_uri;
@@ -249,7 +235,7 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	{
 		/* Cause ghtml to output the html again, but this time
 		 * using raw file-io handlers instead. */
-		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write, 
+		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write_helper, 
 			NULL, wiggy_error);
 		gtt_ghtml_show_links (wig->gh, FALSE);
 		gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
@@ -262,6 +248,61 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 		gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
 		   wiggy_close, wiggy_error);
 	}
+}
+
+static void 
+save_to_file (Wiggy *wig, const char * uri)
+{
+
+#if BORKEN_STILL_GET_X11_TRAFFIC_WHICH_HOSES_THINGS
+	/* If its an remote system URI, we fork/exec, because
+	 * gnomevfs can take a looooong time to respond ...
+	 */ 
+	if (0 == strncmp (uri, "ssh://", 6))
+	{
+		pid_t pid;
+		pid = fork ();
+		if (0 == pid)
+		{
+			save_to_gnomevfs (wig, uri);
+
+			/* exit the child as cleanly as we can ... do NOT 
+			 * generate any socket/X11/graphics/gtk traffic.  */
+			execl ("/bin/true", "/bin/true", NULL);
+			execl ("/bin/false", "/bin/false", NULL);
+		}
+		else if (0 > pid)
+		{
+			g_warning ("unable to fork\n");
+			save_to_gnomevfs (wig, uri);
+		}
+		else
+		{
+			/* else we are parent, child will save for us */
+			sched_yield();
+		}	
+	}
+#endif
+
+	save_to_gnomevfs (wig, uri);
+}
+
+/* ============================================================== */
+/* file selection callbacks */
+/* XXX should re-write to save contents from gtkhtml window, so that
+ * results of user editing are saved, rather than the orig contents.
+ */
+
+static void 
+filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
+{
+	Wiggy *wig = (Wiggy *) data;
+	const char * filename;
+
+	filename = gtk_file_selection_get_filename (wig->filesel);
+
+	remember_uri (wig, filename);
+	save_to_file (wig, filename);
 
 	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
 	wig->filesel = NULL;
@@ -273,6 +314,17 @@ filesel_cancel_clicked_cb (GtkWidget *w, gpointer data)
 	Wiggy *wig = (Wiggy *) data;
 	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
 	wig->filesel = NULL;
+}
+
+/* ============================================================== */
+/* engine callbacks */
+
+static void 
+redraw (GttProject * prj, gpointer data)
+{
+	Wiggy *wig = (Wiggy *) data;
+
+	gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
 }
 
 /* ============================================================== */
@@ -559,6 +611,12 @@ static void
 on_publish_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = data;
+
+	/* Remind use of the last url that they used. */
+	if (wig->plg && wig->plg->last_url)
+	{
+		gtk_entry_set_text (wig->publish_entry, wig->plg->last_url);
+	}
 	gtk_widget_show (wig->publish_popup);
 }
 
@@ -573,7 +631,17 @@ static void
 on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = data;
-printf ("duude ok %p\n", wig);
+	const char * uri = gtk_entry_get_text (wig->publish_entry);
+
+	remember_uri (wig, uri);
+	if (0 == strncmp (uri, "mailto:", 7))
+	{
+		printf ("duude got mailo yuir\n");
+	}
+	else
+	{
+		save_to_file (wig, uri);
+	}
 	gtk_widget_hide (wig->publish_popup);
 }
 
@@ -594,7 +662,7 @@ on_save_clicked_cb (GtkWidget *w, gpointer data)
 	/* Manually set a per-report history thingy */
 	if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
 	{
-		char * path = wig->plg->last_url + 5; /* skip past "file:" */
+		char * path = wig->plg->last_url; 
 		gtk_file_selection_set_filename(wig->filesel, path);
 	}
 	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button), 
@@ -1065,7 +1133,7 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	glxml = gtt_glade_xml_new ("glade/journal.glade", "Publish Dialog");
 	wig->publish_popup = glade_xml_get_widget (glxml, "Publish Dialog");
-	wig->publish_entry = glade_xml_get_widget (glxml, "url entry");
+	wig->publish_entry = GTK_ENTRY(glade_xml_get_widget (glxml, "url entry"));
 
 	glade_xml_signal_connect_data (glxml, "on_pub_help_clicked",
 	        GTK_SIGNAL_FUNC (gtt_help_popup), "gnotime.xml");
