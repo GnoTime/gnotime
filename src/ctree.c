@@ -101,7 +101,11 @@ struct ProjTreeWindow_s
 	GtkCTreeNode *sibling_ctree_node;
 };
 
-static void ctree_col_values (ProjTreeNode *ptn, gboolean expand);
+static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
+static void ctree_update_column_values (ProjTreeWindow *ptw, ProjTreeNode *ptn, gboolean expand);
+static void ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn);
+		  
+		  
 
 /* ============================================================== */
 
@@ -239,27 +243,15 @@ tree_unselect_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 static void 
 tree_expand (GtkCTree *ctree, GtkCTreeNode *row)
 {
-	int i;
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
-	ctree_col_values (ptn, TRUE);
-	for (i=0; i<ptn->ptw->ncols; i++)
-	{
-		gtk_ctree_node_set_text(ptn->ptw->ctree, 
-			ptn->ctnode, i, ptn->col_values[i]);
-	}
+   ctree_update_column_values (ptn->ptw, ptn, TRUE);
 }
 
 static void 
 tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 {
-	int i;
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
-	ctree_col_values (ptn, FALSE);
-	for (i=0; i<ptn->ptw->ncols; i++)
-	{
-		gtk_ctree_node_set_text(ptn->ptw->ctree, 
-			ptn->ctnode, i, ptn->col_values[i]);
-	}
+   ctree_update_column_values (ptn->ptw, ptn, FALSE);
 }
 
 /* ============================================================== */
@@ -833,7 +825,7 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 }
 
 static void 
-ctree_col_values (ProjTreeNode *ptn, gboolean expand)
+stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 {
 	GttProject *prj = ptn->prj;
 	ProjTreeWindow *ptw = ptn->ptw;
@@ -995,6 +987,40 @@ ctree_col_values (ProjTreeNode *ptn, gboolean expand)
 }
 
 /* ============================================================== */
+/* update the values in the treestore/treeview for this project */
+
+static void
+ctree_update_column_values (ProjTreeWindow *ptw, ProjTreeNode *ptn, gboolean expand)
+{
+	int i;
+	
+	stringify_col_values (ptn, expand);
+	for (i=0; i<ptw->ncols; i++)
+	{
+		gtk_ctree_node_set_text(ptw->ctree, 
+			ptn->ctnode, i, ptn->col_values[i]);
+	}
+}
+
+/* ============================================================== */
+/* Redraw one row, and one row only.  Expansion automatically determined. */
+
+static void
+ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
+{
+	int i;
+	gboolean expand;
+	
+	expand = GTK_CTREE_ROW(ptn->ctnode)->expanded;
+	stringify_col_values (ptn, expand);
+	for (i=0; i<ptw->ncols; i++)
+	{
+		gtk_ctree_node_set_text(ptw->ctree, 
+			ptn->ctnode, i, ptn->col_values[i]);
+	}
+}
+		  
+/* ============================================================== */
 /* redraw utility, recursively walks visibile project tree */
 
 static void
@@ -1012,16 +1038,12 @@ refresh_list (ProjTreeWindow *ptw, GList *prjlist)
 		GttProject *prj = node->data;
 
 		ptn = gtt_project_get_private_data (prj);
+
+		/* Determine if project is expanded -- this affects display of time totals */
 		expand = GTK_CTREE_ROW(ptn->ctnode)->expanded;
-		ctree_col_values (ptn, expand);
+		ctree_update_column_values (ptw, ptn, expand);
 
-		for (i=0; i<ptw->ncols; i++)
-		{
-			gtk_ctree_node_set_text(tree_w, ptn->ctnode, 
-				i, ptn->col_values[i]);
-		}
-
-		/* should we show sub-projects? recurse */
+		/* Should we show sub-projects? recurse */
 		if (expand)
 		{
 			prjlist = gtt_project_get_children (prj);
@@ -1056,21 +1078,13 @@ ctree_refresh (ProjTreeWindow *ptw)
 }
 
 /* ============================================================== */
-/* redraw handler */
+/* Redraw handler, redraws just one particular project/row */
 
 static void
 redraw (GttProject *prj, gpointer data)
 {
 	ProjTreeNode *ptn = data;
-	ProjTreeWindow *ptw = ptn->ptw;
-	int i;
-
-	ctree_col_values (ptn, GTK_CTREE_ROW(ptn->ctnode)->expanded);
-	for (i=0; i<ptw->ncols; i++)
-	{
-		gtk_ctree_node_set_text(ptw->ctree, ptn->ctnode, 
-			i, ptn->col_values[i]);
-	}
+	ctree_update_row (ptn->ptw, ptn);
 }
 
 /* ============================================================== */
@@ -1310,7 +1324,7 @@ ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 		gtt_project_set_private_data (p, ptn);
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
-	ctree_col_values (ptn, FALSE);
+	stringify_col_values (ptn, FALSE);
 	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,  parent, NULL,
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
                                FALSE, FALSE);
@@ -1355,7 +1369,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		gtt_project_set_private_data (p, ptn);
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
-	ctree_col_values (ptn, FALSE);
+	stringify_col_values (ptn, FALSE);
 	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,  
                                parentnode, sibnode,
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
@@ -1401,7 +1415,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		gtt_project_set_private_data (p, ptn);
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
-	ctree_col_values (ptn, FALSE);
+	stringify_col_values (ptn, FALSE);
 	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,  
                                parentnode, next_sibling,
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
@@ -1435,19 +1449,12 @@ ctree_remove(ProjTreeWindow *ptw, GttProject *p)
 void
 ctree_update_label(ProjTreeWindow *ptw, GttProject *p)
 {
-	int i;
 	ProjTreeNode *ptn;
 	if (!ptw || !p) return;
 	ptn = gtt_project_get_private_data (p);
 	g_return_if_fail (NULL != ptn);
-	ctree_col_values (ptn, GTK_CTREE_ROW(ptn->ctnode)->expanded);
 
-	for (i=0; i<ptw->ncols; i++)
-	{
-		gtk_ctree_node_set_text(ptw->ctree, 
-			ptn->ctnode, i, ptn->col_values[i]);
-	}
-
+	ctree_update_row (ptw, ptn);
 	update_status_bar();
 }
 
