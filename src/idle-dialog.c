@@ -100,6 +100,55 @@ adjust_timer (GttIdleDialog *dlg, time_t adjustment)
 }
 
 /* =========================================================== */
+/* Gnome Pango is picky about having bare ampersands in text.
+ * Escape the ampersands into proper html.
+ * Basically, replace & by &amp; unless its already &amp; 
+ * free the returned string when done.
+ */
+
+static char *
+util_escape_html_markup (const char *str)
+{
+	char * p;
+	char * ret;
+
+	p = strchr (str, '&');
+	if (!p) return g_strdup (str);
+
+	/* count number of ampersands */
+	int ampcnt = 0;
+	while (p)
+	{
+		ampcnt ++;
+		p = strchr (p+1, '&');
+	}
+	
+	/* make room for the escapes */
+	int len = strlen(str);
+	ret = g_new0 (char, len+4*ampcnt+1);
+	
+	/* replace & by &amp; unless its already &amp; */
+	p = strchr (str, '&');
+	const char *start = str;
+	while (p)
+	{
+		strncat (ret, start, p-start);
+		if (strncmp (p, "&amp;", 5))
+		{
+			strcat (ret, "&amp;");
+		}
+		else
+		{
+			strcat (ret, "&");
+		}
+		start = p+1;
+		p = strchr (start, '&');
+	}
+	strcat (ret, start);
+	return ret;
+}
+
+/* =========================================================== */
 
 static void
 display_value (GttIdleDialog *dlg, time_t credit)
@@ -152,6 +201,10 @@ display_value (GttIdleDialog *dlg, time_t credit)
 	/* Update the total elapsed time part of the message */
 	idle_time = now - dlg->last_activity;
 	
+	char *ptitle = util_escape_html_markup (
+	                            gtt_project_get_title(dlg->prj));
+	char *pdesc = util_escape_html_markup (
+	                            gtt_project_get_desc(dlg->prj));
 	if (3600 > idle_time)
 	{
 		msg = g_strdup_printf (
@@ -160,9 +213,7 @@ display_value (GttIdleDialog *dlg, time_t credit)
 			  "project, <b><i>%s - %s</i></b>, "
 			  "has been stopped. "
 			  "Do you want to restart it?"),
-			(idle_time+30)/60,
-			gtt_project_get_title(dlg->prj),
-			gtt_project_get_desc(dlg->prj));
+			(idle_time+30)/60, ptitle, pdesc);
 	}
 	else
 	{
@@ -173,13 +224,13 @@ display_value (GttIdleDialog *dlg, time_t credit)
 			  "has been stopped. "
 			  "Do you want to restart it?"),
 			(idle_time+30)/3600, ((idle_time+30)/60)%60,
-			gtt_project_get_title(dlg->prj),
-			gtt_project_get_desc(dlg->prj));
+		   ptitle, pdesc);
 	}
 	
 	gtk_label_set_markup (dlg->idle_label, msg);
 	g_free (msg);
-
+	g_free (ptitle);
+	g_free (pdesc);
 }
 
 /* =========================================================== */
