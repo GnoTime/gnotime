@@ -197,6 +197,8 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 	  <ul>
 	  <li><tt>(gtt-task-memo tsk)</tt>:
 	      <?scm (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) ?>
+	  <li><tt>(gtt-links-off)(gtt-task-memo tsk)(gtt-links-on)</tt>:
+	      <?scm (gtt-links-off) (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) (gtt-links-on) ?>
 	  <li><tt>(gtt-task-notes tsk)</tt>:
 	      <?scm (gtt-show (gtt-task-notes (gtt-tasks (gtt-selected-project)))) ?>
 	  </ul>
