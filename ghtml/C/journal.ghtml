@@ -6,6 +6,7 @@
 <?scm (gtt-include "gtt-style.css") ?>
 </head>
 <body bgcolor="#c8c8d3">
+<div id="gnotime-body">
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
 - 
@@ -47,7 +48,7 @@
         ''"<table class=gnotime-diary-notes bgcolor=#f8f8f8 width=490 border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
-        ''"\n</div></table>\n"
+        ''"\n</div></td></tr></table>\n"
         ''"</td></tr></table><br><br>\n"
     )
 )
