@@ -105,7 +105,7 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 }
 
 /* ============================================================== */
-/* A routine to recursively apply a scheme form to a hierarchical 
+/* A routine to recursively apply a scheme form to a flat 
  * list of gtt tasks.  It returns the result of the apply. */
 
 static SCM
@@ -148,6 +148,54 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 	}
 	
 	g_warning ("expecting gtt task as argument, got something else\n");
+	rc = gh_eval_str ("()");
+	return rc;
+}
+
+/* ============================================================== */
+/* A routine to recursively apply a scheme form to a flat 
+ * list of gtt intervals.  It returns the result of the apply. */
+
+static SCM
+do_apply_on_interval (GttGhtml *ghtml, SCM invl, 
+             SCM (*func)(GttGhtml *, GttInterval *))
+{
+	GttInterval * ivl;
+	SCM rc;
+
+	/* If its a number, its in fact a pointer to the C struct. */
+	if (SCM_NUMBERP(invl))
+	{
+		ivl = (GttInterval *) gh_scm2ulong (invl);
+		rc = func (ghtml, ivl);
+		return rc;
+	}
+
+	/* if its a list, then process the list */
+	else if (SCM_CONSP(invl))
+	{
+		SCM invl_list = invl;
+		
+		/* Get a pointer to null */
+		rc = gh_eval_str ("()");
+	
+		while (FALSE == SCM_NULLP(invl_list))
+		{
+			SCM evl;
+			invl = gh_car (invl_list);
+			evl = do_apply_on_interval (ghtml, invl, func);
+			rc = gh_cons (evl, rc);
+			invl_list = gh_cdr (invl_list);
+		}
+
+		/* reverse the list. Ughh */
+		/* gh_reverse (rc);  this doesn't work, to it manually */
+		rc = reverse_list (rc);
+		
+		return rc;
+	}
+	
+	g_warning ("expecting gtt interval as argument, got something else\n");
 	rc = gh_eval_str ("()");
 	return rc;
 }
@@ -337,6 +385,45 @@ ret_tasks (SCM proj_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	return do_apply_on_project (ghtml, proj_list, do_ret_tasks);
+}
+
+/* ============================================================== */
+/* Return a list of all of the intervals of a task */
+
+static SCM
+do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
+{
+	SCM rc;
+	GList *n, *ivl_list;
+
+	/* Get a pointer to null */
+	rc = gh_eval_str ("()");
+	if (!tsk) return rc;
+	
+	/* Get list of intervals, then get tail */
+	ivl_list = gtt_task_get_intervals (tsk);
+	if (!ivl_list) return rc;
+	
+	for (n= ivl_list; n->next; n=n->next) {}
+	ivl_list = n;
+	
+	/* Walk backwards, creating a scheme list */
+	for (n= ivl_list; n; n=n->prev)
+	{
+		GttInterval *ivl = n->data;
+      SCM node;
+		
+		node = gh_ulong2scm ((unsigned long) ivl);
+		rc = gh_cons (node, rc);
+	}
+	return rc;
+}
+
+static SCM
+ret_intervals (SCM task_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_task (ghtml, task_list, do_ret_intervals);
 }
 
 
@@ -559,6 +646,27 @@ ret_task_memo_link (SCM task_list)
 
 /* ============================================================== */
 
+#define RET_IVL_ULONG(RET_FUNC,GTT_GETTER)                          \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
+{                                                                   \
+	unsigned long i = GTT_GETTER (ivl);                              \
+	return gh_ulong2scm (i);                                         \
+}                                                                   \
+                                                                    \
+static SCM                                                          \
+RET_FUNC (SCM ivl_list)                                             \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_interval (ghtml, ivl_list, GTT_GETTER##_scm); \
+}
+
+RET_IVL_ULONG (ret_ivl_start, gtt_interval_get_start)
+RET_IVL_ULONG (ret_ivl_stop,  gtt_interval_get_stop)
+RET_IVL_ULONG (ret_ivl_fuzz,  gtt_interval_get_fuzz)
+
+/* ============================================================== */
+
 void
 gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
                    GttProject *prj)
@@ -617,6 +725,8 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		(ghtml->open_stream) (ghtml, ghtml->user_data);
 	}
 
+	/* Loop over input text, looking for scheme markup and 
+	 * sgml comments. */
 	start = template->str;
 	while (start)
 	{
@@ -705,6 +815,8 @@ register_procs (void)
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
 
 	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
+	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
+	
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
 	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
@@ -720,6 +832,10 @@ register_procs (void)
 	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
 	gh_new_procedure("gtt-task-memo-link",     ret_task_memo_link,     1, 0, 0);
 	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
+	
+	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
+	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
+	gh_new_procedure("gtt-interval-fuzz",      ret_ivl_fuzz,           1, 0, 0);
 }
 
 
