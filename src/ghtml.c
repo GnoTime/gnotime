@@ -84,8 +84,9 @@ struct gtt_ghtml_s
 };
 
 /* ============================================================== */
+/* Seems to me like guile screwed the pooch; we need a global! */
 
-static GttGhtml *ghtml_guile_global_hack = NULL;   /* seems like guile screwed the pooch */
+static GttGhtml *ghtml_guile_global_hack = NULL;   
 
 /* ============================================================== */
 /* a simple, hard-coded version of show_table */
@@ -935,10 +936,74 @@ ret_selected_project (void)
 	return do_ret_selected_project (ghtml);
 }
 
+/* return a list of all of the projects */
+
+static SCM
+do_ret_projects (GttGhtml *ghtml, GList *proj_list)
+{
+	SCM rc;
+	GList *n;
+
+	/* Get a pointer to null */
+	rc = gh_eval_str ("()");
+	
+	/* Get list of all top-level projects, then get tail */
+	if (!proj_list) return rc;
+	
+	/* find the tail */
+	for (n= proj_list; n->next; n=n->next) {}
+	proj_list = n;
+	
+	/* walk backwards, creating a scheme list */
+	for (n= proj_list; n; n=n->prev)
+	{
+		GttProject *prj = n->data;
+      SCM node;
+		GList *subprjs;
+		
+		/* handle sub-projects, if any, before the project itself */
+		subprjs = gtt_project_get_children (prj);
+		if (subprjs)
+		{
+			node = do_ret_projects (ghtml, subprjs);
+			rc = gh_cons (node, rc);
+		}
+
+		node = gh_ulong2scm ((unsigned long) prj);
+		rc = gh_cons (node, rc);
+	}
+	return rc;
+}
+
+static SCM
+ret_projects (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	GList *proj_list = gtt_get_project_list();
+	return do_ret_projects (ghtml, proj_list);
+}
+
 /* ============================================================== */
+
+static SCM
+reverse_list (SCM node_list)
+{
+	SCM rc, node;
+	rc = gh_eval_str ("()");
+
+	while (FALSE == SCM_NULLP(node_list))
+	{
+		node = gh_car (node_list);
+		rc = gh_cons (node, rc);
+		node_list = gh_cdr (node_list);
+	}
+	return rc;
+}
+
 /* This routine will call a generic gtt project function (that 
- * takes a Gtt project as an argument, and return its string 
- * value as a scheme object.
+ * takes a Gtt project as an argument), and return its string 
+ * value as a scheme object.   It will also accept a scheme
+ * list of projects, and output the appropriate strings for that.
  */
 
 static SCM
@@ -948,15 +1013,42 @@ do_ret_project_str (GttGhtml *ghtml, SCM node,
 	const char * str;
 	GttProject * prj;
 	SCM rc;
-	if (!SCM_NUMBERP(node))
+
+	/* If its a number, its in fact a pointer to the C struct. */
+	if (SCM_NUMBERP(node))
 	{
-		g_warning ("expecting gtt project as argument, got something else\n");
-		rc = gh_str2scm ("(null)", 6);
+		prj = (GttProject *) gh_scm2ulong (node);
+		str = func (prj);
+		rc = gh_str2scm (str, strlen (str));
 		return rc;
 	}
-	prj = (GttProject *) gh_scm2ulong (node);
-	str = func (prj);
-	rc = gh_str2scm (str, strlen (str));
+
+	/* if its a list, then process the list */
+	else if (SCM_CONSP(node))
+	{
+		SCM node_list = node;
+		
+		/* Get a pointer to null */
+		rc = gh_eval_str ("()");
+	
+		while (FALSE == SCM_NULLP(node_list))
+		{
+			SCM evl;
+			node = gh_car (node_list);
+			evl = do_ret_project_str (ghtml, node, func);
+			rc = gh_cons (evl, rc);
+			node_list = gh_cdr (node_list);
+		}
+
+		/* reverse the list. Ughh */
+		/* gh_reverse (rc);  this doesn't work, to it manually */
+		rc = reverse_list (rc);
+		
+		return rc;
+	}
+	
+	g_warning ("expecting gtt project as argument, got something else\n");
+	rc = gh_str2scm ("(null)", 6);
 	return rc;
 }
 
@@ -1116,6 +1208,7 @@ register_procs (void)
 	gh_new_procedure("gtt-show-project",         show_project,   1, 0, 0);
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
+	gh_new_procedure("gtt-projects",             ret_projects,   0, 0, 0);
 	gh_new_procedure("gtt-project-title",        ret_project_title, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",         ret_project_desc,  1, 0, 0);
 	gh_new_procedure("gtt-project-notes",        ret_project_notes, 1, 0, 0);
