@@ -27,6 +27,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <kvp_frame.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
@@ -597,6 +599,7 @@ submit_clicked_cb(HtmlDocument *doc,
 {
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
+	KvpFrame *kvpf;
 
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
@@ -604,6 +607,11 @@ submit_clicked_cb(HtmlDocument *doc,
 	path = gtt_ghtml_resolve_path (url, wig->filepath);
 	printf ("duude clocked m=%s url=%s resolvedpath=%s enc=%s\n", method, url, path, encoding);
 	printf ("duude old path = %s\n", wig->filepath);
+
+	kvpf = kvp_frame_new ();
+	kvp_frame_add_url_encoding (kvpf, encoding);
+
+	printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
 	/* We can reuse the same window, or we can open a new one */
 	do_show_report (path, wig->prj);  /* open a new window */

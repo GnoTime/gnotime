@@ -23,17 +23,11 @@
 #include <gtk/gtktext.h>
 #include <glade/glade.h>
 
+#include "gnc-date.h"
+
 
 /* ------------------------------------------------------------------ */
 /* date and time utilities */
-typedef enum
-{
-  DATE_FORMAT_US,       /* United states: mm/dd/yyyy */
-  DATE_FORMAT_UK,       /* Britain: dd/mm/yyyy */
-  DATE_FORMAT_CE,       /* Continental Europe: dd.mm.yyyy */
-  DATE_FORMAT_ISO,      /* ISO: yyyy-mm-dd */
-  DATE_FORMAT_LOCALE    /* Take from locale information */
-} DateFormat;
 
 /* The print_hours_elapsed() routine will print the 'secs' argument
  *    as HH:MM, and will print the seconds if show_secs is true.  

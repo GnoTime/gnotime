@@ -26,15 +26,15 @@ gnotime_SOURCES = 		\
 	plug-edit.c	\
 	plug-in.c	\
 	prefs.c		\
-	proj.c		\
-	props-invl.c	\
-	props-proj.c	\
-	props-task.c	\
-	query.c     \
-	timer.c		\
-	toolbar.c	\
-	util.c		\
-	xml-read.c	\
+	proj.c          \
+	props-invl.c    \
+	props-proj.c    \
+	props-task.c    \
+	query.c         \
+	timer.c         \
+	toolbar.c       \
+	util.c          \
+	xml-read.c      \
 	xml-write.c
 
 noinst_HEADERS = 	\
@@ -80,30 +80,32 @@ noinst_HEADERS = 	\
 #	-DGTK_DISABLE_DEPRECATED	
 #	-DGNOME_DISABLE_DEPRECATED	
 
-CFLAGS = -g \
-	@CFLAGS@ 		\
-	${GNOTIME_CFLAGS}	\
-	${GCONF_CFLAGS} 	\
-	${LIBGTKHTML_CFLAGS} 	\
+AM_CFLAGS = -g           \
+	@CFLAGS@              \
+	${GNOTIME_CFLAGS}     \
+	${GCONF_CFLAGS}       \
+	${LIBGTKHTML_CFLAGS}  \
 	${LIBGLADE_CFLAGS} 
 
-INCLUDES = 			\
-	-I$(includedir)		\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DGTTGLADEDIR=\""$(datadir)/gnotime"\" \
-	-DPREFIX=\""$(prefix)"\" \
-	-DSYSCONFDIR=\""$(sysconfdir)/gnotime"\" \
-	-DGTTDATADIR=\""$(datadir)/gnotime"\" \
-	-DDATADIR=\""$(datadir)"\" \
-	-DLIBDIR=\""$(libdir)/gnotime"\" \
-	${GNOME_INCLUDEDIR}	\
+INCLUDES =                                   \
+	-I../lib/qof                              \
+	-I$(includedir)                           \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
+	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
+	-DPREFIX=\""$(prefix)"\"                  \
+	-DSYSCONFDIR=\""$(sysconfdir)/gnotime"\"  \
+	-DGTTDATADIR=\""$(datadir)/gnotime"\"     \
+	-DDATADIR=\""$(datadir)"\"                \
+	-DLIBDIR=\""$(libdir)/gnotime"\"          \
+	${GNOME_INCLUDEDIR}                       \
 	${GUILE_INCS}
 						 
-gnotime_LDADD = \
-	$(GNOTIME_LIBS)	\
-	$(LIBGLADE_LIBS)        \
-	$(LIBGTKHTML_LIBS)	\
-	${GUILE_LIBS}		\
+gnotime_LDADD =         \
+	$(GNOTIME_LIBS)      \
+	../lib/qof/libqof.la \
+	$(LIBGLADE_LIBS)     \
+	$(LIBGTKHTML_LIBS)   \
+	${GUILE_LIBS}        \
 	$(INTLLIBS)
 
 #	$(LIBGNOMEXML_LIBS)        	
