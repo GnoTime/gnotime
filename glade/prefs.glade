@@ -588,7 +588,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label6">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Switch Project Command:</property>
+		  <property name="label" translatable="yes">Start Project Command:</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -612,7 +612,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label7">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">No Project Command:</property>
+		  <property name="label" translatable="yes">Stop Project Command:</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -639,14 +639,14 @@
 		  <property name="max_saved">10</property>
 
 		  <child internal-child="entry">
-		    <widget class="GtkEntry" id="switch project">
+		    <widget class="GtkEntry" id="start project">
 		      <property name="visible">True</property>
 		      <property name="tooltip" translatable="yes">Enter a shell command to be executed whenever projects are switched.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
+		      <property name="text" translatable="yes">echo shell start id=%D &quot;%t&quot; xx&quot;%d&quot; %T  %Hxx%Mxx%S hours=%h min=%m secs=%s</property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -668,14 +668,14 @@
 		  <property name="max_saved">10</property>
 
 		  <child internal-child="entry">
-		    <widget class="GtkEntry" id="no project">
+		    <widget class="GtkEntry" id="stop project">
 		      <property name="visible">True</property>
 		      <property name="tooltip" translatable="yes">Enter a shell command to be executed when no projects are active.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
+		      <property name="text" translatable="yes">echo shell stop id=%D &quot;%t&quot; xx&quot;%d&quot; %T  %Hxx%Mxx%S hours=%h min=%m secs=%s</property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
