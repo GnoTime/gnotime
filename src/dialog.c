@@ -165,12 +165,13 @@ gtt_help_popup(GtkWidget *widget, gpointer data)
 {
 	GError *err = NULL;
 	char * section = data;
+	if (NULL == section) section = "";
 	gnome_help_display ("gnotime", section, &err);
 	if (err)
 	{
 		GtkWidget *w = gnome_error_dialog (err->message);
 		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (widget));
-		// printf ("duude gnome help err msg: %s\n", err->message);
+		printf ("duude gnome help err msg: %s\n", err->message);
 	}
 }
 

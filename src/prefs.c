@@ -712,6 +712,12 @@ misc_options(PrefsDialog *dlg)
 
 /* ============================================================== */
 
+static void 
+help_cb (GnomePropertyBox *propertybox, gint page_num, gpointer data)
+{
+	gtt_help_popup (propertybox, data);
+}
+
 static PrefsDialog *
 prefs_dialog_new (void)
 {
@@ -726,7 +732,7 @@ prefs_dialog_new (void)
 	dlg->dlg = GNOME_PROPERTY_BOX (glade_xml_get_widget (gtxml,  "Global Preferences"));
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
-			   GTK_SIGNAL_FUNC(gtt_help_popup),
+			   GTK_SIGNAL_FUNC(help_cb),
 			   "gnotime.xml#preferences");
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",

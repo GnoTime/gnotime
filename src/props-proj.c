@@ -320,6 +320,12 @@ static void wrapper (void * gobj, void * data) {
 
 /* ================================================================= */
 
+static void 
+help_cb (GnomePropertyBox *propertybox, gint page_num, gpointer data)
+{
+	gtt_help_popup (propertybox, data);
+}
+
 static PropDlg *
 prop_dialog_new (void)
 {
@@ -334,8 +340,8 @@ prop_dialog_new (void)
 	dlg->dlg = GNOME_PROPERTY_BOX (glade_xml_get_widget (gtxml,  "Project Properties"));
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
-			   GTK_SIGNAL_FUNC(gtt_help_popup),
-			   "gnotime.xml#preferences");
+	                   GTK_SIGNAL_FUNC(help_cb),
+			             "gnotime.xml#preferences");
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",
 			   GTK_SIGNAL_FUNC(prop_set), dlg);
