@@ -1,4 +1,11 @@
 
-EXTRA_DIST = \
-	README   \
+
+EXTRA_DIST =        \
+	README           \
+	gnotime.spec.in  \
 	gnotime.spec
+
+
+
+								
+# CLEANFILES = gnotime.spec
