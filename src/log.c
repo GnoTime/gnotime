@@ -126,14 +126,6 @@ printf_project(const char *format, GttProject *proj)
 				g_string_append_printf (str, "%d", sss / 60);
 				break;
 				
-			case 'n': {
-				char buff[100];
-				sss = time(0);
-				ctime_r (&sss, buff);
-				buff [strlen(buff)-1] = 0; /* erase newline */
-				g_string_append (str, buff);
-				break;
-			}
 			case 'M':
 				sss = gtt_project_get_secs_day (proj);
 				g_string_append_printf (str, "%02d", (sss / 60) % 60);
@@ -210,7 +202,8 @@ log_proj_intern (GttProject *proj, gboolean log_if_equal)
 	/* used for flushing, forcing a start entry, used at end of day */
 	if (log_if_equal &&
 	    last_proj == proj &&
-	    logged_last) {
+	    logged_last) 
+	{
 		do_log_proj (-1, proj, TRUE /*start*/);
 		return;
 	}
