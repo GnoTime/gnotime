@@ -16,6 +16,7 @@ gttghtml_DATA =      \
 	tab-delim.ghtml   \
 	todo.ghtml	      \
 	todo-export.ghtml \
+	gnotime-logo.png  \
 	gtt.scm           \
 	gtt-style.css
 

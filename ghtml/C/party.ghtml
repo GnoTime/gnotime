@@ -1,20 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<link rel="stylesheet" href="/en/gnucash.css" type="text/css">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Journal - GnoTime</title>
+<title>Journal - <?scm (gtt-show-project-title) ?></title>
+<?scm (gtt-include "gtt-style.css") ?>
 </head>
-<body>
+<body bgcolor="#c8c8d3">
+<img "src=gnotime-logo.png" align="right">
 <center>
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
 </h1>
-
-Here it is:
-<br><br>
+</center>
 
 <!-- If you do not like how this table is laid out, please feel 
      free to modify it.  The markup below may seem a little confusing,
@@ -28,46 +27,49 @@ Here it is:
      markup.
 -->
 
-<table border=1>
-<tr><th colspan=4>Diary Entry</th></tr>
-<tr><th> xx </th><th>Start</th><th>Stop</th><th>Elapsed</th></tr>
 <?scm
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
-        ''"<tr><td colspan=4><br>"  
+        ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=500 border=0 cellpadding=4><tr><td>\n"
+        ''"<div class=gnotime-diary-memo>"
+        ''"<b><big>"
                gtt-task-memo 
-               ''"<br>" gtt-task-notes ''"<br><br>"
-        ''"</td></tr>\n"
+        ''"</big></b>"
+        ''"</div>\n"
+        ''"<div class=gnotime-diary-notes>\n"
+               gtt-task-notes 
+        ''"\n</div>\n"
+        ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=490 border=0 cellpadding=4>\n"
+        ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
+        ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
+        ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
+        ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
+        ''"</tr>\n"
          (lambda (task) (gtt-ivls task
          (list
-
-               ; the first html table column is blank
-               ''"<tr><td> </td>\n"
-
-
-               ; the second html table column shows the start date/time
-               ''"<td align=right> &nbsp; &nbsp; "  
+               ''"<tr>\n"
+               ; the first html table column shows the start date/time
+               ''"<td class=gnotime-start-stop-table-start>"  
                      gtt-interval-start-str 
-               ''" &nbsp; &nbsp; </td>\n"
+               ''"</td>\n"
                
-               ; the third html table column shows the stop date/time
-               ''"<td> &nbsp; &nbsp; "  
+               ; the second html table column shows the stop date/time
+               ''"<td class=gnotime-start-stop-table-stop>"  
                      gtt-interval-stop-str 
-               ''" &nbsp; &nbsp; </td>\n"
+               ''"</td>\n"
                
-               ; the fourth html table column shows the elapsed time
-               ''"<td> &nbsp; &nbsp; "     
+               ; the third html table column shows the elapsed time
+               ''"<td class=gnotime-start-stop-table-elapsed>"  
                    gtt-interval-elapsed-str  
-               ''" &nbsp; &nbsp; </td>\n"
+               ''"</td>\n</tr>\n"
          )))
+        ''"</table>"
+        ''"</td></tr></table><br><br>\n"
     )
 )
 
-
 ?>
-</table>
-                                         
 
 <br><br>
 That's all Folks!

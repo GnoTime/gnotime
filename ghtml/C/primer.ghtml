@@ -5,6 +5,7 @@
 <title>Hello World!</title>
 </head>
 <body>
+<img "src=gnotime-logo.png" align="right">
 <h1>Custom Report Primer</h1>
 
 <p>
@@ -29,6 +30,11 @@ for generating HTML tables for projects and diary entries.
 This page shows some examples; you can view the HTML source for
 this example primer by viewing 'primer.ghtml' (probably installed
 at <tt>/usr/share/gnotime/ghtml/C/primer.ghtml</tt>)
+</p>
+<p>
+<img src="gnotime-logo.png" align="right">
+Yes, images using standard HTML markup are now supported.
+You should see a GnoTime PNG logo on your right.
 </p>
 <p>
 Some sample scheme forms, and their output:
