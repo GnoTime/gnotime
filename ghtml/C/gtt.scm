@@ -90,7 +90,7 @@
 ; to the object, omitting null results from the list
 ; 
 (define (gtt-apply-func-list-to-obj-list func_list obj_list) 
-   (if (null? obj_list) ()
+   (if (null? obj_list) '()
    (let ( (parent_obj (car obj_list))
           (next_obj   (cdr obj_list))
         )
