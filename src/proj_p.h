@@ -28,7 +28,8 @@
 
 struct gtt_project_s 
 {
-	/* 'protected' data, accessible trough setters & getters */
+	/* State data, data that is saved/restored/transmitted */
+	/* 'protected' data, accessible through setters & getters */
 	/* This data defines the 'state' of the project. */
 	char *title;     /* short title */
 	char *desc;      /* breif description for invoice */
@@ -60,17 +61,20 @@ struct gtt_project_s
 	GList *sub_projects;   /* sub-projects */
 	GttProject *parent;    /* back pointer to parent project */
 
+	/* ------------------------------------------------ */
+	/* 'private' internal data caches & etc. Stores temp or
+	 * dynamically generated info, not save to file or transmitted. 
+	 */
+
 	/* hack alert - come gnome-2.0, listeners should be replaced
-	 * by a gobj callback */
+	 * by a GObject callback; once this whole struct is a GObject.
+	 */
 	GList *listeners;      /* listeners for change events */
 
 	/* miscellaneous -- used by GUI to display */
 	gpointer *private_data;
 
 	int id;		/* simple id number */
-
-	/* ------------------------------------------------ */
-	/* 'private' internal data caches & etc. stores temp info */
 
 	int being_destroyed : 1;  /* project is being destroyed */
 	int frozen : 1 ;          /* defer recomputes of time totals */
