@@ -28,6 +28,22 @@
  * these are some hard-coded routines that return what we need.
  */
 
+/* The following struct is returned as the result of a query.
+ * It can be directly accessed as desired; it is a read-only struct.
+ * It is a "bucket" for results.
+ */
+
+typedef struct GttBucket_s GttBucket;
+
+struct GttBucket_s
+{
+	time_t start;     /* Start time that defines this bucket */
+	time_t end;       /* End time that defines this bucket */
+	time_t total;     /* Total amount of time in the bucket */
+	GList *tasks;     /* List of GttTasks in the bucket */
+	GList *intervals; /* List of GttIntervals in the bucket */
+};
+
 
 /* The following routines are needed to implement a 
  *    calendar report in GTT.  
@@ -44,9 +60,12 @@
  *    If 'include_subprojects' is TRUE, then subprojects are
  *    included in the search for the latest stop.
  *
- * The gtt_project_get_daily_time() routine returns 
- *    a GArray containing the total number of seconds 
- *    spent on the project, day by day.  Each element
+ * The gtt_project_get_daily_buckets() routine returns 
+ *    a GArray of GttBucket.  Each bucket will record a start
+ *    and stop time for the bucket, the total number of seconds 
+ *    spent on the project, in that bucket, and a list of the tasks
+ *    and intervals in that bucket.  The buckets are ordered
+ *    one per day, day by day; that is, each element
  *    of the array corresponds to one day.  Day 0 
  *    corresponds to the earliest day for which there
  *    is data for this project.  The length of the array
@@ -58,7 +77,7 @@
  *    included in the day totals.
  */
 
-GArray * gtt_project_get_daily_time (GttProject *proj, 
+GArray * gtt_project_get_daily_buckets (GttProject *proj, 
 					      gboolean include_subprojects);
 
 time_t   gtt_project_get_earliest_start (GttProject *proj, 

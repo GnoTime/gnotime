@@ -1320,7 +1320,13 @@ refresh_list (ProjTreeWindow *ptw, GList *prjlist)
 
 		ptn = gtt_project_get_private_data (prj);
 
-		/* Determine if project is expanded -- this affects display of time totals */
+		/* Under rare circumstances, e.g. when run after midnight,
+		 * th GUI might not yet be initialized, so ptn is zero. 
+		 * We sorta shouldn't even be here in that case, but oh well. */
+		if (!ptn) continue;
+		
+		/* Determine if project is expanded -- this affects 
+		 * display of time totals */
 		expand = GTK_CTREE_ROW(ptn->ctnode)->expanded;
 		ctree_update_column_values (ptw, ptn, expand);
 

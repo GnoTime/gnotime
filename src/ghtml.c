@@ -554,7 +554,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 	if (!prj) return rc;
 	
 	/* Get the project data */
-	arr = gtt_project_get_daily_time (prj, TRUE);
+	arr = gtt_project_get_daily_buckets (prj, TRUE);
 	earliest = gtt_project_get_earliest_start (prj, TRUE);
 	
 	/* Format the start date */
@@ -563,12 +563,14 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 
 	for (i=0; i< arr->len; i++)
 	{
+		GttBucket *bu;
 		char buff[100];
 		SCM node;
 		time_t rptdate, secs;
 		
 		tday.tm_mday ++;
-		secs = g_array_index (arr, time_t, i);
+		bu = & g_array_index (arr, GttBucket, i);
+		secs = bu->total;
 
 		/* Skip days for which no time has been spent */
 		if (0 == secs) continue;
@@ -578,6 +580,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, SCM_EOL);
 		
+		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
 		print_date (buff, 100, rptdate);
