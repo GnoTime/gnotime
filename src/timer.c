@@ -38,6 +38,7 @@ static IdleTimeout *idt = NULL;
 
 int config_idle_timeout = -1;
 int config_autosave_period = 60;
+int config_autosave_props_period = (4*3600);
 
 /* =========================================================== */
 /* zero out day counts if rolled past midnight */
@@ -96,6 +97,11 @@ timer_func(gpointer data)
 	if (0 == now%config_autosave_period)
 	{
 		save_projects ();
+	}
+
+	if (0 == now%config_autosave_props_period)
+	{
+		save_properties ();
 	}
 
 	if (!cur_proj) return 1;
