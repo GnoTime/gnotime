@@ -29,6 +29,9 @@
 #include "prefs.h"
 #include "timer.h"
 
+/* XXX these should not be externs, they should be part of
+ * some app-global structure.
+ */
 extern int save_count; /* XXX */
 extern char *first_proj_title;   /* command line flag */
 extern time_t last_timer;  /* XXX */
@@ -38,7 +41,7 @@ extern int run_timer;
 #define GTT_GCONF "/apps/gnotime"
 
 /* ======================================================= */
-/* XXX Should use changesets */
+/* XXX Should use GConfChangesets */
 /* XXX warnings should be graphical */
 #define CHKERR(rc,err_ret,dir) {                                       \
    if (FALSE == rc) {                                                  \
@@ -75,6 +78,14 @@ extern int run_timer;
 }
 
 #define SETSTR(dir,val) F_SETSTR (GTT_GCONF dir, val)
+
+#define SETLIST(dir,tipe,val) {                                        \
+   gboolean rc;                                                        \
+   GError *err_ret= NULL;                                              \
+                                                                       \
+   rc = gconf_client_set_list (client, GTT_GCONF dir, tipe, val, &err_ret);  \
+   CHKERR (rc,err_ret,dir);                                            \
+}
 
 #define UNSET(dir) {                                                   \
    gboolean rc;                                                        \
@@ -116,6 +127,18 @@ extern int run_timer;
 
 #define GETINT(dir,default_val) F_GETINT (GTT_GCONF dir, default_val)
 
+#define F_GETLIST(dir,default_val) ({                                  \
+   GSList *retval;                                                     \
+   GError *err_ret= NULL;                                              \
+   GConfValue *gcv;                                                    \
+   gcv = gconf_client_get (client, dir, &err_ret);                     \
+   CHKGET (gcv,err_ret, dir, default_val)                              \
+   else retval = gconf_value_get_list (gcv);                           \
+   retval;                                                             \
+})
+
+#define GETLIST(dir,default_val) F_GETLIST (GTT_GCONF dir,  default_val)
+
 #define F_GETSTR(dir,default_val) ({                                   \
    const char *retval;                                                 \
    GError *err_ret= NULL;                                              \
@@ -127,6 +150,17 @@ extern int run_timer;
 })
 
 #define GETSTR(dir,default_val) F_GETSTR (GTT_GCONF dir, default_val)
+
+/* Convert list of GConfValue to list of the actual values */
+#define GETINTLIST(dir) ({                                             \
+   GSList *l,*n;                                                       \
+   l = GETLIST(dir, NULL);                                             \
+   for (n=l; n; n=n->next) {                                           \
+      /* XXX mem leak?? do we need to free gconf value  ?? */          \
+      n->data = (gpointer) gconf_value_get_int (n->data);              \
+   }                                                                   \
+   l;                                                                  \
+})
 
 /* ======================================================= */
 /* Save only the GUI configuration info, not the actual data */
@@ -244,13 +278,17 @@ gtt_gconf_save (void)
 	SETINT ("/Data/SaveCount", save_count);
 
 	/* ------------- */
-	w = 0;
-	for (i = 0; -1< w; i++) 
 	{
-		g_snprintf(s, sizeof (s), GTT_GCONF"/CList/ColumnWidth%d", i);
-		w = ctree_get_col_width (global_ptw, i);
-		if (0 > w) break;
-		F_SETINT (s,w);
+		GSList *list= NULL;
+		for (i=0, w=0; -1< w; i++) 
+		{
+			w = ctree_get_col_width (global_ptw, i);
+			if (0 > w) break;
+			list = g_slist_prepend (list, (gpointer) w);
+		}
+		list = g_slist_reverse (list);
+		SETLIST ("/CList/ColumnWidths", GCONF_VALUE_INT, list);
+		g_slist_free (list);
 	}
 
 	/* ------------- */
@@ -459,14 +497,15 @@ gtt_gconf_load (void)
 	config_data_url = GETSTR ("/Data/URL", XML_DATA_FILENAME);
 
 	/* ------------ */
-	num = 0;
-	for (i = 0; -1 < num; i++) 
 	{
-		g_snprintf(s, sizeof (s), GTT_GCONF"/CList/ColumnWidth%d", i);
-		num = F_GETINT (s, -1);
-		if (-1 < num)
+		GSList *node, *list = GETINTLIST ("/CList/ColumnWidths");
+		for (i=0,node=list; node != NULL; node=node->next, i++) 
 		{
-			ctree_set_col_width (global_ptw, i, num);
+			num = (int)(node->data);
+			if (-1 < num)
+			{
+				ctree_set_col_width (global_ptw, i, num);
+			}
 		}
 	}
 
