@@ -88,8 +88,6 @@ edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
 	int i,rc;
 	GtkTreeIter iter;
 
-printf ("duude redraw len=%d\n", ped->menus->len);
-
 	/* Walk the current menu list */
 	rc = gtk_tree_model_get_iter_first (GTK_TREE_MODEL(ped->treestore), &iter);
 	for (i=0; i<ped->menus->len; i++)
@@ -206,6 +204,84 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 /* ============================================================ */
 
 static void 
+edit_plugin_changed_cb (GtkWidget * w, gpointer data)
+{
+	GnomeUIInfo *curr_item;
+	GValue val = {G_TYPE_INVALID};
+	PluginEditorDialog *dlg = data;
+
+	if (!dlg->do_redraw) return;
+	if (FALSE == dlg->have_selection) return;
+	
+	gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore), 
+	                &dlg->curr_selection, PTRCOL, &val);
+	curr_item = g_value_get_pointer(&val);
+
+	/* Save current values of widgets to current item */
+	edit_plugin_widgets_to_item (dlg, curr_item);
+	edit_plugin_redraw_row (dlg, &dlg->curr_selection, curr_item);
+}
+
+/* ============================================================ */
+/* Make and delete private, dialog-local copies of menu system. */
+
+static void
+edit_plugin_setup (PluginEditorDialog *dlg)
+{
+	int i, nitems;
+	GnomeUIInfo *sysmenus;
+		
+	/* Copy-in existing menus from the system */
+	sysmenus = gtt_get_reports_menu ();
+	for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
+	nitems = i;
+
+	dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
+	dlg->menus = g_array_append_vals (dlg->menus, sysmenus, nitems);
+	sysmenus = (GnomeUIInfo *) dlg->menus->data;
+	for (i=0; i<nitems; i++)
+	{
+		sysmenus[i].user_data = gtt_plugin_copy (sysmenus[i].user_data);
+	}
+
+	/* Redraw the tree */
+	edit_plugin_redraw_tree (dlg);
+
+	/* Hook up the row-selection callback */
+	dlg->have_selection = FALSE;
+
+	/* clear out the various widgets */
+	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
+	gnome_file_entry_set_filename (dlg->plugin_path, "");
+	gtk_entry_set_text (dlg->plugin_tooltip, "");
+
+}
+
+static void
+edit_plugin_cleanup (PluginEditorDialog *dlg)
+{
+	GnomeUIInfo *sysmenus;
+	int i;
+	
+	/* Free our local copy of menu structure */
+	sysmenus = (GnomeUIInfo *) dlg->menus->data;
+	for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
+	{
+		gtt_plugin_free (sysmenus[i].user_data);
+	}
+	g_array_free (dlg->menus, TRUE);
+	dlg->menus = NULL;
+
+	/* Unselect row in tree widget. */
+	gtk_tree_selection_unselect_all (dlg->selection);
+	dlg->have_selection = FALSE;
+
+	/* XXX don't we need to empty the tree widget too? */
+}
+
+/* ============================================================ */
+
+static void 
 edit_plugin_create_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
@@ -257,11 +333,13 @@ static void
 edit_plugin_cancel_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
+	
+	edit_plugin_cleanup (dlg);
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
-printf ("cancle cleicked\n");
 }
 
 /* ============================================================ */
+/* Add and delete menu items callbacks */
 
 static void 
 edit_plugin_add_cb (GtkWidget * w, gpointer data)
@@ -292,27 +370,6 @@ edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
 printf ("delete clicked\n");
-}
-
-static void 
-edit_plugin_changed_cb (GtkWidget * w, gpointer data)
-{
-	PluginEditorDialog *dlg = data;
-
-	if (!dlg->do_redraw) return;
-printf ("duude changed\n");
-	if (dlg->have_selection)
-	{
-		GnomeUIInfo *curr_item;
-		GValue val = {G_TYPE_INVALID};
-		gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore), 
-		                &dlg->curr_selection, PTRCOL, &val);
-		curr_item = g_value_get_pointer(&val);
-
-		/* Save current values of widgets to current item */
-		edit_plugin_widgets_to_item (dlg, curr_item);
-		edit_plugin_redraw_row (dlg, &dlg->curr_selection, curr_item);
-	}
 }
 
 /* ============================================================ */
@@ -356,6 +413,17 @@ edit_plugin_dialog_new (void)
 		GTK_SIGNAL_FUNC (edit_plugin_delete_cb), dlg);
 	  
 	/* ------------------------------------------------------ */
+	/* Grab the various entry boxes and hook them up */
+	e = glade_xml_get_widget (gtxml, "plugin name");
+	dlg->plugin_name = GTK_ENTRY(e);
+
+	e = glade_xml_get_widget (gtxml, "plugin path");
+	dlg->plugin_path = GNOME_FILE_ENTRY(e);
+
+	e = glade_xml_get_widget (gtxml, "plugin tooltip");
+	dlg->plugin_tooltip = GTK_ENTRY(e);
+
+	/* ------------------------------------------------------ */
 	/* Inpout widget changed events */
 	glade_xml_signal_connect_data (gtxml, "on_plugin_name_changed",
 		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
@@ -398,20 +466,7 @@ edit_plugin_dialog_new (void)
 	}
 
 	/* Copy-in existing menus from the system */
-	{
-		int nitems;
-		GnomeUIInfo *sysmenus;
-		
-		sysmenus = gtt_get_reports_menu ();
-		for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
-		nitems = i;
-
-		dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
-		dlg->menus = g_array_append_vals (dlg->menus, sysmenus, nitems);
-	}
-
-	/* Redraw the tree */
-	edit_plugin_redraw_tree (dlg);
+	edit_plugin_setup (dlg);
 
 	/* Hook up the row-selection callback */
 	dlg->have_selection = FALSE;
@@ -419,21 +474,6 @@ edit_plugin_dialog_new (void)
 	gtk_tree_selection_set_mode (dlg->selection, GTK_SELECTION_SINGLE);
 	g_signal_connect (G_OBJECT (dlg->selection), "changed",
 	            G_CALLBACK (edit_plugin_tree_selection_changed_cb), dlg);
-
-	/* ------------------------------------------------------ */
-	/* Grab the various entry boxes and hook them up */
-	e = glade_xml_get_widget (gtxml, "plugin name");
-	dlg->plugin_name = GTK_ENTRY(e);
-
-	e = glade_xml_get_widget (gtxml, "plugin path");
-	dlg->plugin_path = GNOME_FILE_ENTRY(e);
-
-	e = glade_xml_get_widget (gtxml, "plugin tooltip");
-	dlg->plugin_tooltip = GTK_ENTRY(e);
-
-	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
-	gnome_file_entry_set_filename (dlg->plugin_path, "");
-	gtk_entry_set_text (dlg->plugin_tooltip, "");
 
 	gtk_widget_hide_on_delete (GTK_WIDGET(dlg->dialog));
 
@@ -465,6 +505,7 @@ void
 report_menu_edit(GtkWidget *widget, gpointer data)
 {
 	if (!epdlg) epdlg = edit_plugin_dialog_new ();
+	edit_plugin_setup (epdlg);
 	gtk_widget_show(GTK_WIDGET(epdlg->dialog));
 }
 
