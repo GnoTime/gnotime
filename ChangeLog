@@ -1,3 +1,6 @@
+Sun Apr 25 2004 Linas Vepstas <linas@linas.org>
+	* Prep for 2.2.0 release: tag gnotime-2-2-0
+
 Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
 	* prefs.c, props-proj.c props-task.c: Fix core dump 
 	  when user clicks on 'help' button.
@@ -18,6 +21,7 @@ Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
 	* ghtml.c: use GnomeVFS for report template input.
 	* journal.c: use GnomeVFS for HTML output save.
 	* log.c: use GnomeVFS for output logging.
+	* journal.c: add 'copy' to the task popup menu
 
 Tues Apr 20 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.9 release: tag gnotime-2-1-9
