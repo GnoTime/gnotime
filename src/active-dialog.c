@@ -44,7 +44,7 @@ struct GttActiveDialog_s
 	GtkButton   *no_btn;
 	GtkLabel    *active_label;
 	GtkLabel    *credit_label;
-	GtkOptionMenu *project_menu;
+	GtkMenu     *project_menu;
 	
 	GttProject  *prj;
 	IdleTimeout *idt;
@@ -86,8 +86,18 @@ start_proj (GObject *obj, GttActiveDialog *dlg)
 /* =========================================================== */
 
 static void
+pick_proj (GtkMenuItem *menu_item, GttProject *prj)
+{
+  printf ("duude pick proj =%p\n", prj);
+}
+
+/* =========================================================== */
+
+static void
 setup_menus (GttActiveDialog *dlg)
 {
+	GtkMenuShell *menushell;
+	GList *prjlist, *node;
 	char * msg;
 
 	msg = _("No project timer is currently running in GnoTime.  "
@@ -103,6 +113,21 @@ setup_menus (GttActiveDialog *dlg)
 	        "the project will be credited when you click 'Start'");
 						 
 	gtk_label_set_text (dlg->credit_label, msg);
+
+	menushell = GTK_MENU_SHELL (dlg->project_menu);
+
+	/* XXX should be query */
+	prjlist = gtt_get_project_list ();
+	for (node = prjlist; node; node=node->next)
+	{
+		GttProject *prj = node->data;
+		GtkWidget *item;
+		item = gtk_menu_item_new_with_label (gtt_project_get_title (prj));
+		gtk_menu_shell_append (menushell, item);
+		g_signal_connect(G_OBJECT(item), "activate",
+	          G_CALLBACK(pick_proj), prj);
+
+	}
 }
 
 /* =========================================================== */
@@ -127,7 +152,7 @@ active_dialog_realize (GttActiveDialog * id)
 	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
 	id->active_label = GTK_LABEL (glade_xml_get_widget (gtxml, "active label"));
 	id->credit_label = GTK_LABEL (glade_xml_get_widget (gtxml, "credit label"));
-	id->project_menu = GTK_OPTION_MENU (glade_xml_get_widget (gtxml, "project menu"));
+	id->project_menu = GTK_MENU (glade_xml_get_widget (gtxml, "project menu"));
 
 	g_signal_connect(G_OBJECT(id->dlg), "destroy",
 	          G_CALLBACK(dialog_close), id);
