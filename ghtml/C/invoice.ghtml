@@ -49,14 +49,14 @@ approriately.
 (gtt-show-tasks (gtt-filter-bill-tasks (gtt-tasks (gtt-linked-project)))
     (list   
         ''"<tr>"
-		  ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
         ''"<td>"  gtt-task-billstatus ''"</td>\n"
         ''"<td>"  gtt-task-billable   ''"</td>\n"
         ''"<td>"  gtt-task-billrate   ''"</td>\n"
         ''"<td>"  gtt-task-time-str   ''"</td>\n"
         ''"<td>"  gtt-task-value-str  ''"</td>\n"
         ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
-		  ''</tr>
+        ''</tr>
     )
 )
 
@@ -84,14 +84,14 @@ The table below shows only paid tasks:
 (gtt-show-tasks (gtt-filter-paid-tasks (gtt-tasks (gtt-linked-project)))
     (list   
         ''"<tr>"
-		  ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
         ''"<td>"  gtt-task-billstatus ''"</td>\n"
         ''"<td>"  gtt-task-billable   ''"</td>\n"
         ''"<td>"  gtt-task-billrate   ''"</td>\n"
         ''"<td>"  gtt-task-time-str   ''"</td>\n"
         ''"<td>"  gtt-task-value-str  ''"</td>\n"
         ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
-		  ''</tr>
+        ''</tr>
     )
 )
 
@@ -119,14 +119,14 @@ The table below shows only the items withheld from billing:
 (gtt-show-tasks (gtt-filter-hold-tasks (gtt-tasks (gtt-linked-project)))
     (list   
         ''"<tr>"
-		  ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
         ''"<td>"  gtt-task-billstatus ''"</td>\n"
         ''"<td>"  gtt-task-billable   ''"</td>\n"
         ''"<td>"  gtt-task-billrate   ''"</td>\n"
         ''"<td>"  gtt-task-time-str   ''"</td>\n"
         ''"<td>"  gtt-task-value-str  ''"</td>\n"
         ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
-		  ''</tr>
+        ''</tr>
     )
 )
 

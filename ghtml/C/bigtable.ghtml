@@ -36,7 +36,7 @@ to create your own custom reports.
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
         ''"<tr>"
-		  ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-memo       ''"</td>\n"
         ''"<td>"  gtt-task-notes      ''"</td>\n"
         ''"<td>"  gtt-task-billstatus ''"</td>\n"
         ''"<td>"  gtt-task-billable   ''"</td>\n"
@@ -44,7 +44,7 @@ to create your own custom reports.
         ''"<td>"  gtt-task-time-str   ''"</td>\n"
         ''"<td>"  gtt-task-value-str  ''"</td>\n"
         ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
-		  ''</tr>
+        ''</tr>
     )
 )
 
@@ -70,26 +70,26 @@ The table below presents an alternate layout for the journal report.
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
         ''"<tr><td>"  gtt-task-memo ''"</td>\n"
-		  ''"<td colspan=4> </td>\n"
-		  ''</tr>
+        ''"<td colspan=4> </td>\n"
+        ''</tr>
          (lambda (task) (gtt-ivls task
          (list
 
-			      ; the first column is blank
+               ; the first column is blank
                ''"<tr><td> </td>\n"
 
-			      ; the second html table column shows the start date/time
+               ; the second html table column shows the start date/time
                ''"<td>"  gtt-interval-start-str ''"</td>\n"
-					
-			      ; the third html table column shows the stop date/time
+               
+               ; the third html table column shows the stop date/time
                ''"<td>"  gtt-interval-stop-str ''"</td>\n"
-					
-			      ; the fourth html table column shows the elapsed time
+               
+               ; the fourth html table column shows the elapsed time
                ''"<td>"  gtt-interval-elapsed-str  ''"</td>\n"
-					
-			      ; the fifth html table column shows the start/end time fuzziness
+               
+               ; the fifth html table column shows the start/end time fuzziness
                ''"<td>"  gtt-interval-fuzz-str  ''"</td>\n"
-					''"</tr>"
+               ''"</tr>"
          )))
     )
 )
