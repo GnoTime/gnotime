@@ -1,3 +1,7 @@
+
+Sun Dec 22 23:47:17 CST 2002 Linas Vepstas <linas@linas.org>
+	* configure.in: fix guile detection problem
+
 Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
 
 	* src/journal.c: fix the killer hang in mallopt; yahooo!
@@ -7,6 +11,7 @@ Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
 	* doc/*: rename gtt to gnotime
 	* src/props-invl.c: fix hide-on-close buglet
 	* src/gtt.h, file-io.h: modernize the file names
+	* src/*.c: autosave data; remove save/load from menu
 	
 Thu Nov  7 01:12:27 CST 2002 Linas Vepstas <linas@linas.org>
 
