@@ -100,20 +100,20 @@ struct IdleTimeout_s
 
   int nscreens;
   IdleTimeoutScreen *screens;
-  IdleTimeoutScreen *default_screen;	/* ...on which dialogs will appear. */
+  IdleTimeoutScreen *default_screen;        /* ...on which dialogs will appear. */
 
   Display *dpy;
 
-  Bool using_xidle_extension;	   /* which extension is being used.         */
+  Bool using_xidle_extension;           /* which extension is being used.         */
   Bool using_proc_interrupts;
 
   Bool scanning_all_windows;
   Bool polling_mouse_position;
 
-  guint check_pointer_timer_id;	/* `prefs.pointer_timeout' */
+  guint check_pointer_timer_id;        /* `prefs.pointer_timeout' */
 
-  time_t dispatch_time;		   /* Time of event dispatch. */
-  time_t last_activity_time;	   /* Time of last user activity. */
+  time_t dispatch_time;                   /* Time of event dispatch. */
+  time_t last_activity_time;           /* Time of last user activity. */
   time_t last_wall_clock_time;     /* Used to detect laptop suspend. */
   IdleTimeoutScreen *last_activity_screen;
 
@@ -136,7 +136,7 @@ struct IdleTimeoutScreen_s
   Screen *screen;
   // Widget toplevel_shell;
 
-  int poll_mouse_last_root_x;		/* Used only when no server exts. */
+  int poll_mouse_last_root_x;                /* Used only when no server exts. */
   int poll_mouse_last_root_y;
   Window poll_mouse_last_child;
   unsigned int poll_mouse_last_mask;
@@ -181,7 +181,7 @@ notice_events (IdleTimeout *si, Window window, Bool top_p)
 
   XGetWindowAttributes (si->dpy, window, &attrs);
   events = ((attrs.all_event_masks | attrs.do_not_propagate_mask)
-	    & KeyPressMask );
+            & KeyPressMask );
 
   /* Select for SubstructureNotify on all windows.
      Select for KeyPress on all windows that already have it selected.
@@ -214,7 +214,7 @@ notice_events (IdleTimeout *si, Window window, Bool top_p)
     {
       while (nkids)
       {
-	notice_events (si, kids [--nkids], top_p);
+         notice_events (si, kids [--nkids], top_p);
       }
       XFree ((char *) kids);
     }
@@ -327,13 +327,13 @@ check_pointer_timer (gpointer closure)
       unsigned int mask;
 
       XQueryPointer (si->dpy, RootWindowOfScreen (ssi->screen), &root, &child,
-		     &root_x, &root_y, &x, &y, &mask);
+                     &root_x, &root_y, &x, &y, &mask);
 
       if (root_x == ssi->poll_mouse_last_root_x &&
-	  root_y == ssi->poll_mouse_last_root_y &&
-	  child  == ssi->poll_mouse_last_child &&
-	  mask   == ssi->poll_mouse_last_mask)
-	continue;
+          root_y == ssi->poll_mouse_last_root_y &&
+          child  == ssi->poll_mouse_last_child &&
+          mask   == ssi->poll_mouse_last_mask)
+        continue;
 
       active_p = True;
 
@@ -577,7 +577,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
         }
     }
 
-  if (f0 == (FILE *) -1)	    /* means we got an error initializing. */
+  if (f0 == (FILE *) -1)      /* means we got an error initializing. */
     return False;
 
   if (need_dup)
@@ -683,6 +683,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
       }
       if (need_dup == False) {
           fclose(f1);
+          f1 = NULL;
       }
     }
   else
