@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.2.1\n"
-"POT-Creation-Date: 2002-09-06 18:10-0500\n"
+"POT-Creation-Date: 2002-12-23 00:06-0600\n"
 "PO-Revision-Date: 2001-03-25 19:23+0200\n"
 "Last-Translator: Softcatalà <tradgnome@softcatala.org>\n"
 "Language-Team: Catalan <linux@softcatala.org>\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:116 src/app.c:228
+#: src/app.c:115 src/app.c:227
 msgid "no project selected"
 msgstr "no s'ha seleccionat cap projecte"
 
-#: src/app.c:218
+#: src/app.c:217
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:270
+#: src/app.c:269
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -30,195 +30,195 @@ msgstr ""
 "No s'ha pogut entendre la geometria (posició i tamany)\n"
 "especificada a la línia de comandes"
 
-#: src/ctree.c:517
+#: src/ctree.c:509
 msgid "Total"
 msgstr "Total"
 
-#: src/ctree.c:519
+#: src/ctree.c:511
 msgid "Total time spent on this project."
 msgstr ""
 
-#: src/ctree.c:524
+#: src/ctree.c:516
 #, fuzzy
 msgid "Entry"
 msgstr "Finalització de l'entrada:"
 
-#: src/ctree.c:526
+#: src/ctree.c:518
 msgid "Time spent under the current diary entry."
 msgstr ""
 
-#: src/ctree.c:532 glade/interval_edit.glade.h:14
+#: src/ctree.c:524 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Avui"
 
-#: src/ctree.c:534
+#: src/ctree.c:526
 msgid "Time spent on this project today."
 msgstr ""
 
-#: src/ctree.c:539
+#: src/ctree.c:531
 msgid "Week"
 msgstr ""
 
-#: src/ctree.c:541
+#: src/ctree.c:533
 msgid "Time spent on this project this week."
 msgstr ""
 
-#: src/ctree.c:547
+#: src/ctree.c:539
 #, fuzzy
 msgid "Month"
 msgstr "Monitoritza"
 
-#: src/ctree.c:549
+#: src/ctree.c:541
 msgid "Time spent on this project this month."
 msgstr ""
 
-#: src/ctree.c:555
+#: src/ctree.c:547
 #, fuzzy
 msgid "Year"
 msgstr "Lineal"
 
-#: src/ctree.c:557
+#: src/ctree.c:549
 msgid "Time spent on this project this year."
 msgstr ""
 
-#: src/ctree.c:563
+#: src/ctree.c:555
 #, fuzzy
 msgid "Title"
 msgstr "Fitxer"
 
-#: src/ctree.c:564 src/menucmd.c:155
+#: src/ctree.c:556 src/menucmd.c:155
 msgid "Project Title"
 msgstr "Títol del projecte"
 
-#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
+#: src/ctree.c:561 src/ctree.c:562 src/menucmd.c:156
 msgid "Description"
 msgstr "Descripció"
 
-#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
+#: src/ctree.c:567 src/ghtml.c:103 src/ghtml.c:231
 msgid "Diary Entry"
 msgstr ""
 
-#: src/ctree.c:577
+#: src/ctree.c:569
 #, fuzzy
 msgid "The current diary entry"
 msgstr "Tanca el document actual"
 
-#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: src/ctree.c:574 src/ghtml.c:103 src/ghtml.c:280
 #: glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "Inicia"
 
-#: src/ctree.c:584
+#: src/ctree.c:576
 msgid "Estimated Project Start Date"
 msgstr ""
 
-#: src/ctree.c:589
+#: src/ctree.c:581
 #, fuzzy
 msgid "End"
 msgstr "Habilitat"
 
-#: src/ctree.c:591
+#: src/ctree.c:583
 #, fuzzy
 msgid "Estimated Project Completion Date"
 msgstr "Editar les propietats..."
 
-#: src/ctree.c:596
+#: src/ctree.c:588
 msgid "Due"
 msgstr ""
 
-#: src/ctree.c:598
+#: src/ctree.c:590
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 
-#: src/ctree.c:605
+#: src/ctree.c:597
 msgid "Size"
 msgstr "Tamany"
 
-#: src/ctree.c:607
+#: src/ctree.c:599
 msgid "Sizing: How much work it will take to finish this project."
 msgstr ""
 
-#: src/ctree.c:613
+#: src/ctree.c:605
 #, fuzzy
 msgid "Done"
 msgstr "Cap"
 
-#: src/ctree.c:615
+#: src/ctree.c:607
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
 
-#: src/ctree.c:622
+#: src/ctree.c:614
 msgid "U"
 msgstr ""
 
-#: src/ctree.c:624
+#: src/ctree.c:616
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr ""
 
-#: src/ctree.c:630
+#: src/ctree.c:622
 msgid "Imp"
 msgstr ""
 
-#: src/ctree.c:632
+#: src/ctree.c:624
 msgid "Importance: How important is this project?"
 msgstr ""
 
-#: src/ctree.c:638
+#: src/ctree.c:630
 msgid "Status"
 msgstr "Estat"
 
-#: src/ctree.c:640
+#: src/ctree.c:632
 msgid "The current status of this project."
 msgstr ""
 
-#: src/ctree.c:959
+#: src/ctree.c:951
 msgid "3"
 msgstr ""
 
-#: src/ctree.c:960
+#: src/ctree.c:952
 msgid "2"
 msgstr ""
 
-#: src/ctree.c:961
+#: src/ctree.c:953
 msgid "1"
 msgstr ""
 
-#: src/ctree.c:971 glade/project_properties.glade.h:25
+#: src/ctree.c:963 glade/project_properties.glade.h:26
 #, fuzzy
 msgid "Low"
 msgstr "Logview"
 
-#: src/ctree.c:972
+#: src/ctree.c:964
 #, fuzzy
 msgid "Med"
 msgstr "roig"
 
-#: src/ctree.c:973 glade/project_properties.glade.h:15
+#: src/ctree.c:965 glade/project_properties.glade.h:16
 msgid "High"
 msgstr ""
 
-#: src/ctree.c:982 glade/project_properties.glade.h:29
+#: src/ctree.c:974 glade/project_properties.glade.h:30
 #, fuzzy
 msgid "Not Started"
 msgstr "Inicia"
 
-#: src/ctree.c:983 glade/project_properties.glade.h:21
+#: src/ctree.c:975 glade/project_properties.glade.h:22
 #, fuzzy
 msgid "In Progress"
 msgstr "Procés:"
 
-#: src/ctree.c:984 glade/project_properties.glade.h:31
+#: src/ctree.c:976 glade/project_properties.glade.h:38
 #, fuzzy
 msgid "On Hold"
 msgstr "Sòlid"
 
-#: src/ctree.c:985 glade/project_properties.glade.h:9
+#: src/ctree.c:977 glade/project_properties.glade.h:10
 #, fuzzy
 msgid "Cancelled"
 msgstr "Cancel·lar"
 
-#: src/ctree.c:986 glade/project_properties.glade.h:10
+#: src/ctree.c:978 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr ""
 
@@ -278,159 +278,174 @@ msgid ""
 "\t%s\n"
 msgstr "No s'ha pogut escriure el fitxer de configuració!"
 
-#: src/file-io.c:376
+#: src/export.c:76
+#, fuzzy, c-format
+msgid "Error exporting data: %s"
+msgstr "EError en formatar la pista #%d"
+
+#: src/export.c:133
+#, c-format
+msgid "File %s exists, overwrite?"
+msgstr ""
+
+#: src/export.c:145
+#, fuzzy
+msgid "File could not be opened"
+msgstr "No s'ha pogut obrir %s."
+
+#: src/export.c:153
+msgid "Error occured during export"
+msgstr ""
+
+#: src/export.c:170
+msgid "Tab-Delimited Export"
+msgstr ""
+
+#: src/file-io.c:371
 msgid "project %t started"
 msgstr "s'ha iniciat el projecte %s"
 
-#: src/file-io.c:379
+#: src/file-io.c:374
 msgid "stopped project %t"
 msgstr "s'ha detingut el projecte %s"
 
-#. Translators: This is a "time format", that is
-#. * format on how to print the elapsed time with
-#. * hours:minutes:seconds.
-#: src/file-io.c:677
-#, c-format
-msgid "%d:%02d:%02d"
-msgstr ""
-
-#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+#: src/ghtml.c:103 src/ghtml.c:283 glade/interval_edit.glade.h:13
 msgid "Stop"
 msgstr "Atura"
 
-#: src/ghtml.c:95 src/ghtml.c:273
+#: src/ghtml.c:103 src/ghtml.c:286
 msgid "Elapsed"
 msgstr ""
 
-#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
+#: src/ghtml.c:121 src/ghtml.c:382 src/ghtml.c:391
 #, fuzzy
 msgid "(empty)"
 msgstr "buit"
 
-#: src/ghtml.c:225
+#: src/ghtml.c:236
 #, fuzzy
 msgid "Notes"
 msgstr "Cap"
 
-#: src/ghtml.c:229
+#: src/ghtml.c:240
 msgid "Task Time"
 msgstr ""
 
-#: src/ghtml.c:233
+#: src/ghtml.c:244
 #, fuzzy
 msgid "Bill Status"
 msgstr "Estat"
 
-#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
+#: src/ghtml.c:248 src/ghtml.c:421 glade/task_properties.glade.h:5
 #, fuzzy
 msgid "Billable"
 msgstr "Inhabilitat"
 
-#: src/ghtml.c:241
+#: src/ghtml.c:252
 #, fuzzy
 msgid "Bill Rate"
 msgstr "Inhabilitat"
 
-#: src/ghtml.c:245
+#: src/ghtml.c:256
 msgid "Value"
 msgstr "Valor"
 
-#: src/ghtml.c:249
+#: src/ghtml.c:260
 #, fuzzy
 msgid "Billable Value"
 msgstr "Inhabilitat"
 
-#: src/ghtml.c:253 src/ghtml.c:279
+#: src/ghtml.c:264 src/ghtml.c:292
 #, fuzzy
 msgid "No Default Value"
 msgstr "Per defecte"
 
-#: src/ghtml.c:276
+#: src/ghtml.c:289
 #, fuzzy
 msgid "Start Time Fuzziness"
 msgstr "Inicia"
 
-#: src/ghtml.c:392 glade/task_properties.glade.h:13
+#: src/ghtml.c:405 glade/task_properties.glade.h:14
 #, fuzzy
 msgid "Hold"
 msgstr "Sòlid"
 
-#: src/ghtml.c:395 glade/task_properties.glade.h:3
+#: src/ghtml.c:408 glade/task_properties.glade.h:4
 #, fuzzy
 msgid "Bill"
 msgstr "Inhabilitat"
 
-#: src/ghtml.c:398 glade/task_properties.glade.h:21
+#: src/ghtml.c:411 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr ""
 
-#: src/ghtml.c:411 glade/task_properties.glade.h:17
+#: src/ghtml.c:424 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr ""
 
-#: src/ghtml.c:414 glade/task_properties.glade.h:16
+#: src/ghtml.c:427 glade/task_properties.glade.h:17
 #, fuzzy
 msgid "No Charge"
 msgstr "Cap nom"
 
-#: src/ghtml.c:424 glade/task_properties.glade.h:22
+#: src/ghtml.c:437 glade/task_properties.glade.h:23
 #, fuzzy
 msgid "Regular"
 msgstr "Rellegir"
 
-#: src/ghtml.c:427 glade/task_properties.glade.h:20
+#: src/ghtml.c:440 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr ""
 
-#: src/ghtml.c:430
+#: src/ghtml.c:443
 msgid "Double Overtime"
 msgstr ""
 
-#: src/ghtml.c:433 glade/task_properties.glade.h:12
+#: src/ghtml.c:446 glade/task_properties.glade.h:13
 #, fuzzy
 msgid "Flat Fee"
 msgstr "Coma flotant"
 
-#: src/ghtml.c:453
+#: src/ghtml.c:466
 #, fuzzy
 msgid "Error - Unknown"
 msgstr "Desconegut"
 
-#: src/ghtml.c:703
+#: src/ghtml.c:729
 msgid "unknown token: >>>>"
 msgstr ""
 
-#: src/journal.c:111
+#: src/journal.c:107
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: src/journal.c:113
+#: src/journal.c:109
 #, fuzzy, c-format
 msgid "The file %s was not found."
 msgstr "No s'ha trobat el fitxer logotip"
 
-#: src/journal.c:114
+#: src/journal.c:110
 msgid "(null)"
 msgstr ""
 
-#: src/journal.c:124
+#: src/journal.c:119
 #, fuzzy
 msgid "Unkown Error"
 msgstr "Desconegut"
 
-#: src/journal.c:175 src/plug-in.c:90
+#: src/journal.c:168 src/plug-in.c:90
 #, fuzzy, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr "No es pot obrir el fitxer de registre!\n"
 
-#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/journal.c:260 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
 #: src/proj.c:1807
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:455
+#: src/journal.c:448
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "_Desa la paleta"
@@ -484,27 +499,27 @@ msgstr "Error"
 msgid "Shall I setup a new configuration?"
 msgstr ""
 
-#: src/main.c:440
-msgid "Specify geometry"
-msgstr "Especifica la geometria"
-
-#: src/main.c:440
-msgid "GEOMETRY"
-msgstr "GEOMETRIA"
-
-#: src/main.c:442
-msgid "Select a project on startup"
-msgstr "Selecciona un projecte en arrancar"
-
-#: src/main.c:442
-msgid "PROJECT"
-msgstr "PROJECTE"
-
-#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
+#: src/main.c:363 src/main.c:388 src/main.c:535 src/menucmd.c:48
 msgid "Warning"
 msgstr "Avís"
 
-#: src/menucmd.c:89
+#: src/main.c:491
+msgid "Specify geometry"
+msgstr "Especifica la geometria"
+
+#: src/main.c:491
+msgid "GEOMETRY"
+msgstr "GEOMETRIA"
+
+#: src/main.c:493
+msgid "Select a project on startup"
+msgstr "Selecciona un projecte en arrancar"
+
+#: src/main.c:493
+msgid "PROJECT"
+msgstr "PROJECTE"
+
+#: src/menucmd.c:90
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -516,136 +531,105 @@ msgstr ""
 msgid "New Project..."
 msgstr "Nou projecte..."
 
-#: src/menucmd.c:231 src/toolbar.c:179
-msgid "Reload Configuration File"
-msgstr "Rellegir fitxer de configuració"
-
-#: src/menucmd.c:232
-#, fuzzy
-msgid "Do you really want to reload the configuration file?"
-msgstr "No s'ha pogut llegir el fitxer de configuració"
-
-#: src/menucmd.c:267
-#, c-format
-msgid "File %s exists, overwrite?"
-msgstr ""
-
-#: src/menucmd.c:278
-msgid "File cannot be written"
-msgstr ""
-
-#: src/menucmd.c:298
-#, fuzzy
-msgid "Export Current State"
-msgstr "Valor actual"
-
-#: src/menus.c:33
+#: src/menus.c:34
 msgid "_New Project..."
 msgstr "_Nou projecte..."
 
-#: src/menus.c:36
-msgid "_Reload Configuration File"
-msgstr "_Rellegir fitxer de configuració"
-
-#: src/menus.c:40
-msgid "_Save Configuration File"
-msgstr "_Guardar fitxer de configuració"
-
-#: src/menus.c:44
-msgid "_Export Current State"
+#: src/menus.c:37
+msgid "_Export Tab-Delimited"
 msgstr ""
 
-#: src/menus.c:63 src/menus.c:173
+#: src/menus.c:56 src/menus.c:166
 msgid "Clear _Daily Counter"
 msgstr "_Esborrar comptador diari"
 
-#: src/menus.c:64 src/menus.c:174
+#: src/menus.c:57 src/menus.c:167
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr ""
 
-#: src/menus.c:68 src/menus.c:87 src/menus.c:156
+#: src/menus.c:61 src/menus.c:80 src/menus.c:149
 msgid "_Journal..."
 msgstr ""
 
-#: src/menus.c:69 src/menus.c:88 src/menus.c:157
+#: src/menus.c:62 src/menus.c:81 src/menus.c:150
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
-#: src/menus.c:72 src/menus.c:160
+#: src/menus.c:65 src/menus.c:153
 msgid "New Diary _Entry"
 msgstr ""
 
-#: src/menus.c:73 src/menus.c:161
+#: src/menus.c:66 src/menus.c:154
 msgid "Change the current task for this project"
 msgstr ""
 
-#: src/menus.c:91
+#: src/menus.c:84
 msgid "_All Journal..."
 msgstr ""
 
-#: src/menus.c:92
+#: src/menus.c:85
 msgid "Show the verbose timesheet journal for this project"
 msgstr ""
 
-#: src/menus.c:95
+#: src/menus.c:88
 #, fuzzy
 msgid "_Invoice..."
 msgstr "_Guardar..."
 
-#: src/menus.c:96
+#: src/menus.c:89
 msgid "Show a sample invoice for this project"
 msgstr ""
 
-#: src/menus.c:99
+#: src/menus.c:92
 #, fuzzy
 msgid "_Primer..."
 msgstr "Preferències..."
 
-#: src/menus.c:100
+#: src/menus.c:93
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr ""
 
-#: src/menus.c:103
+#: src/menus.c:96
 #, fuzzy
 msgid "_New Report..."
 msgstr "_Nou projecte..."
 
-#: src/menus.c:104
+#: src/menus.c:97
 msgid "Define a path to a new GTT phtml report file"
 msgstr ""
 
-#: src/menus.c:115
+#: src/menus.c:108
 msgid "St_art"
 msgstr "_Iniciar"
 
-#: src/menus.c:116
+#: src/menus.c:109
 msgid "Start the timer running"
 msgstr ""
 
-#: src/menus.c:121
+#: src/menus.c:114
 msgid "Sto_p"
 msgstr "_Parar"
 
-#: src/menus.c:122
+#: src/menus.c:115
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Setembre"
 
-#: src/menus.c:127
+#: src/menus.c:120
 msgid "_Timer Running"
 msgstr "_Cronòmetre corrent"
 
-#: src/menus.c:146
+#: src/menus.c:139
 msgid "_Reports"
 msgstr ""
 
-#: src/menus.c:147
+#: src/menus.c:140
 msgid "_Timer"
 msgstr "C_ronòmetre"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:244
+#: src/menus.c:237
 #, fuzzy
 msgid "Reports"
 msgstr "Reiniciar"
@@ -663,7 +647,7 @@ msgstr ""
 msgid "empty"
 msgstr "buit"
 
-#: src/timer.c:117
+#: src/timer.c:127
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -673,71 +657,67 @@ msgid ""
 "Do you want to restart it?"
 msgstr ""
 
-#: src/timer.c:125
+#: src/timer.c:135
 #, fuzzy
 msgid "System Idle"
 msgstr "Informació del sistema"
 
-#: src/toolbar.c:169
+#: src/toolbar.c:173
 #, fuzzy
 msgid "Create a New Project..."
 msgstr "Nou projecte..."
 
-#: src/toolbar.c:184
-msgid "Save Configuration File"
-msgstr "Guarda el fitxer de configuració"
-
-#: src/toolbar.c:194
+#: src/toolbar.c:183
 msgid "Cut Selected Project"
 msgstr "Talla el projecte seleccionat"
 
-#: src/toolbar.c:199
+#: src/toolbar.c:188
 msgid "Copy Selected Project"
 msgstr "Còpia el projecte seleccionat"
 
-#: src/toolbar.c:204
+#: src/toolbar.c:193
 msgid "Paste Project"
 msgstr "Apega un projecte"
 
-#: src/toolbar.c:213 glade/journal.glade.h:2
+#: src/toolbar.c:202 glade/journal.glade.h:2
 msgid "Journal"
 msgstr ""
 
-#: src/toolbar.c:214
+#: src/toolbar.c:203
 msgid "View and Edit Timestamp Logs"
 msgstr ""
 
-#: src/toolbar.c:223
+#: src/toolbar.c:212
 #, fuzzy
 msgid "Edit Project Properties..."
 msgstr "Editar les propietats..."
 
-#: src/toolbar.c:230
+#: src/toolbar.c:219
 msgid "Timer"
 msgstr "Cronòmetre"
 
-#: src/toolbar.c:231
+#: src/toolbar.c:220
 msgid "Start/Stop Timer"
 msgstr "Inicia/para el cronòmetre"
 
-#: src/toolbar.c:241
+#: src/toolbar.c:230
 msgid "Calendar"
 msgstr "Calendari"
 
-#: src/toolbar.c:242
+#: src/toolbar.c:231
 #, fuzzy
 msgid "View Calendar"
 msgstr "Amaga el calendari"
 
-#: src/toolbar.c:262
+#: src/toolbar.c:251
 msgid "Edit Preferences..."
 msgstr "Editar les preferències..."
 
-#: src/toolbar.c:270
+#: src/toolbar.c:259
 msgid "User's Guide and Manual"
 msgstr ""
 
-#: src/toolbar.c:278
+#: src/toolbar.c:267
 #, fuzzy
 msgid "Quit Gnome TimeTracker"
 msgstr "Abandona GTimeTracker"
@@ -796,65 +776,34 @@ msgstr "Inicia"
 
 #: glade/interval_popup.glade.h:1
 #, fuzzy
-msgid "Add a new time interval."
-msgstr "Afig una nova vista del tampó"
-
-#: glade/interval_popup.glade.h:2
-#, fuzzy
 msgid "Delete Interval"
 msgstr "Interval d'actualització de l'agulla"
 
-#: glade/interval_popup.glade.h:3
-#, fuzzy
-msgid "Delete This Interval"
-msgstr "Interval d'actualització de l'agulla"
-
-#: glade/interval_popup.glade.h:4
+#: glade/interval_popup.glade.h:2
 #, fuzzy
 msgid "Edit Interval"
 msgstr "General"
 
-#: glade/interval_popup.glade.h:5
-#, fuzzy
-msgid "Edit the Start & Stop Times"
-msgstr "Inicia/para el cronòmetre"
-
-#: glade/interval_popup.glade.h:6
+#: glade/interval_popup.glade.h:3
 #, fuzzy
 msgid "Insert Diary Entry"
 msgstr "_Insereix al final"
 
-#: glade/interval_popup.glade.h:7
-msgid "Insert a new diary entry above this time interval."
-msgstr ""
-
-#: glade/interval_popup.glade.h:8
+#: glade/interval_popup.glade.h:4
 msgid "Merge Down"
 msgstr ""
 
-#: glade/interval_popup.glade.h:9
-msgid "Merge Into Interval Above"
-msgstr ""
-
-#: glade/interval_popup.glade.h:10
-msgid "Merge Into Interval Below"
-msgstr ""
-
-#: glade/interval_popup.glade.h:11
+#: glade/interval_popup.glade.h:5
 msgid "Merge Up"
 msgstr ""
 
-#: glade/interval_popup.glade.h:12
+#: glade/interval_popup.glade.h:6
 #, fuzzy
 msgid "New Interval"
 msgstr "Interval d'actualització de l'agulla"
 
-#: glade/interval_popup.glade.h:13
+#: glade/interval_popup.glade.h:7
 msgid "Paste Diary Entry"
-msgstr ""
-
-#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
-msgid "Paste a previously cut diary entry."
 msgstr ""
 
 #: glade/journal.glade.h:1
@@ -901,223 +850,224 @@ msgid ""
 "Coming Soon, I hope!"
 msgstr "Açò encara no s'ha implementat"
 
-#: glade/prefs.glade.h:1
+#: glade/prefs.glade.h:1 glade/project_properties.glade.h:6
+#: glade/task_properties.glade.h:1
+msgid "*"
+msgstr ""
+
+#: glade/prefs.glade.h:2
 msgid "Display"
 msgstr "Visualització"
 
-#: glade/prefs.glade.h:2
+#: glade/prefs.glade.h:3
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
 
-#: glade/prefs.glade.h:3
+#: glade/prefs.glade.h:4
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 
-#: glade/prefs.glade.h:4
+#: glade/prefs.glade.h:5
 msgid "Entry Start:"
 msgstr "Començament de l'entrada:"
 
-#: glade/prefs.glade.h:5
+#: glade/prefs.glade.h:6
 msgid "Entry Stop:"
 msgstr "Finalització de l'entrada:"
 
-#: glade/prefs.glade.h:7
+#: glade/prefs.glade.h:8
 #, no-c-format
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
 "title, %d for the description, etc. See the manual for more options."
 msgstr ""
 
-#: glade/prefs.glade.h:9
+#: glade/prefs.glade.h:10
 #, no-c-format
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
 "title, %d for the project description, etc. See the manual for more options."
 msgstr ""
 
-#: glade/prefs.glade.h:10
+#: glade/prefs.glade.h:11
 #, fuzzy
 msgid "Fields"
 msgstr "Cercar"
 
-#: glade/prefs.glade.h:11
+#: glade/prefs.glade.h:12
 msgid "Filename:"
 msgstr "Nom del fitxer:"
 
-#: glade/prefs.glade.h:12
+#: glade/prefs.glade.h:13
 #, fuzzy
 msgid "Idle Seconds:"
 msgstr "Mostrar els segons"
 
-#: glade/prefs.glade.h:13
+#: glade/prefs.glade.h:14
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: glade/prefs.glade.h:14
+#: glade/prefs.glade.h:15
 msgid "Logfile"
 msgstr "Fitxer de registre"
 
-#: glade/prefs.glade.h:15
+#: glade/prefs.glade.h:16
 #, fuzzy
 msgid "Min Recorded:"
 msgstr "Cos principal:"
 
-#: glade/prefs.glade.h:16
+#: glade/prefs.glade.h:17
 msgid "Misc"
 msgstr "Miscel·lània"
 
-#: glade/prefs.glade.h:17
+#: glade/prefs.glade.h:18
 msgid "No Project Command:"
 msgstr "Comanda quan no hi haja projecte:"
 
-#: glade/prefs.glade.h:18
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Project List Display"
 msgstr "Títol del projecte"
 
-#: glade/prefs.glade.h:19
+#: glade/prefs.glade.h:20
 #, fuzzy
 msgid "Shell"
 msgstr "Comprovació ortogràfica"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:21
 msgid "Shell Commands"
 msgstr "Comandes de l'intèrpret"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:22
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:23
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:24
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:26
 msgid "Show Planned Project Start Date"
 msgstr ""
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Description"
 msgstr "Descripció del projecte:"
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "Comanda quan no hi haja projecte:"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Status"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:31
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:32
 msgid "Show Seconds"
 msgstr "Mostrar els segons"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:33
 msgid "Show Status Bar"
 msgstr "Mostrar la barra d'estat"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:34
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:35
 msgid "Show Table Header"
 msgstr "Mostrar la capçalera de la taula"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:36
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:37
 msgid "Show Time This Month"
 msgstr ""
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:38
 msgid "Show Time This Week"
 msgstr ""
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "Mostrar «Cronòmetre»"
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:40
 #, fuzzy
 msgid "Show Time Today"
 msgstr "Mostrar «Cronòmetre»"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Icons"
 msgstr "Mostrar les icones de la barra"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:42
 msgid "Show Toolbar Texts"
 msgstr "Mostrar els texts de la barra"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:43
 msgid "Show Tooltips"
 msgstr "Mostrar pistes"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:44
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "Mostrar la capçalera de la taula"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:45
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Mostrar «Tallar», «Copiar», «Apegar»"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:46
 msgid "Show `Help'"
 msgstr "Mostrar «Ajuda»"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:47
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "Mostrar «Ajuda»"
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:48
 msgid "Show `New'"
 msgstr "Mostrar «Nou»"
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:49
 msgid "Show `Preferences'"
 msgstr "Mostrar «Preferències»"
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:50
 msgid "Show `Properties'"
 msgstr "Mostrar «Propietats»"
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:51
 msgid "Show `Quit'"
 msgstr "Mostrar «Eixir»"
-
-#: glade/prefs.glade.h:51
-msgid "Show `Save', `Reload'"
-msgstr "Mostrar «Guardar», «Rellegir»"
 
 #: glade/prefs.glade.h:52
 msgid "Show `Timer'"
@@ -1181,259 +1131,244 @@ msgstr "Zoom                    "
 msgid "% Complete"
 msgstr ""
 
-#: glade/project_properties.glade.h:6
+#: glade/project_properties.glade.h:7
 msgid "A title to assign to this project"
 msgstr ""
 
-#: glade/project_properties.glade.h:7
+#: glade/project_properties.glade.h:8
 msgid "Auto-merge Gap:"
 msgstr ""
 
-#: glade/project_properties.glade.h:8
+#: glade/project_properties.glade.h:9
 msgid "Auto-merge Interval:"
 msgstr ""
 
-#: glade/project_properties.glade.h:11
+#: glade/project_properties.glade.h:12
 msgid ""
 "Does this item need immediate attention? Note that some urgent tasks might "
 "not be important.  For example, Bill may want you to answer his email today, "
 "but you may have better things to do today."
 msgstr ""
 
-#: glade/project_properties.glade.h:12
+#: glade/project_properties.glade.h:13
 msgid "Double-Overtime Rate:"
 msgstr ""
 
-#: glade/project_properties.glade.h:13
+#: glade/project_properties.glade.h:14
 #, fuzzy
 msgid "Due Date:"
 msgstr "Date:"
 
-#: glade/project_properties.glade.h:14
+#: glade/project_properties.glade.h:15
 msgid "Flat Fee:"
 msgstr ""
 
-#: glade/project_properties.glade.h:16
+#: glade/project_properties.glade.h:17
 msgid "Hours to Finish:"
 msgstr ""
 
-#: glade/project_properties.glade.h:17
+#: glade/project_properties.glade.h:18
 msgid ""
 "How important is it to perform this task?  Not everything important is "
 "urgent.  For example, it is important to file a tax return every year, but "
 "you have a lot of time to get ready to do this."
 msgstr ""
 
-#: glade/project_properties.glade.h:18
+#: glade/project_properties.glade.h:19
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
 msgstr ""
 
-#: glade/project_properties.glade.h:19
+#: glade/project_properties.glade.h:20
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
 msgstr ""
 
-#: glade/project_properties.glade.h:20
+#: glade/project_properties.glade.h:21
 #, fuzzy
 msgid "Importance:"
 msgstr "Tolerància:"
 
-#: glade/project_properties.glade.h:22
+#: glade/project_properties.glade.h:23
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
 msgstr ""
 
-#: glade/project_properties.glade.h:23
+#: glade/project_properties.glade.h:24
 #, fuzzy
 msgid "Intervals"
 msgstr "General"
 
-#: glade/project_properties.glade.h:24
+#: glade/project_properties.glade.h:25
 msgid "Intervals smaller than this will be discarded"
 msgstr ""
 
-#: glade/project_properties.glade.h:26
+#: glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr ""
 
-#: glade/project_properties.glade.h:27
+#: glade/project_properties.glade.h:28
 msgid "Minimum Interval: "
 msgstr ""
 
-#: glade/project_properties.glade.h:28
+#: glade/project_properties.glade.h:29
 #, fuzzy
 msgid "Not Set"
 msgstr "Selector de Fonts"
 
-#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
-msgid "Notes:"
+#: glade/project_properties.glade.h:31
+msgid ""
+"Notes:\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 msgstr ""
 
-#: glade/project_properties.glade.h:32
+#: glade/project_properties.glade.h:39
 msgid "Overtime Rate:"
 msgstr ""
 
-#: glade/project_properties.glade.h:33
-msgid "Planned Finish:"
-msgstr ""
-
-#: glade/project_properties.glade.h:34
-#, fuzzy
-msgid "Planned Start:"
-msgstr "Començament de l'entrada:"
-
-#: glade/project_properties.glade.h:35
-#, fuzzy
-msgid "Planning"
-msgstr "Avís"
-
-#: glade/project_properties.glade.h:36
-msgid "Project"
-msgstr "Projecte"
-
-#: glade/project_properties.glade.h:37
-msgid "Project Description:"
-msgstr "Descripció del projecte:"
-
-#: glade/project_properties.glade.h:38
-msgid "Project Title:"
-msgstr "Títol del projecte:"
-
-#: glade/project_properties.glade.h:39
-msgid "Rates"
-msgstr ""
-
 #: glade/project_properties.glade.h:40
-msgid "Regular Rate:"
+msgid "Planned Finish:"
 msgstr ""
 
 #: glade/project_properties.glade.h:41
 #, fuzzy
-msgid "Status:"
-msgstr "Estat"
+msgid "Planned Start:"
+msgstr "Començament de l'entrada:"
 
 #: glade/project_properties.glade.h:42
-msgid "The dollars per hour charged for overtime work on this project."
-msgstr ""
+#, fuzzy
+msgid "Planning"
+msgstr "Avís"
 
 #: glade/project_properties.glade.h:43
-msgid "The dollars per hour normally charged for this project."
-msgstr ""
+msgid "Project"
+msgstr "Projecte"
 
 #: glade/project_properties.glade.h:44
-msgid "The over-overtime rate (overtime on Sundays, etc.)"
-msgstr ""
+msgid "Project Description:"
+msgstr "Descripció del projecte:"
 
 #: glade/project_properties.glade.h:45
-msgid "Time below which an interval is merged with its neighbors"
-msgstr ""
+msgid "Project Title:"
+msgstr "Títol del projecte:"
 
 #: glade/project_properties.glade.h:46
-msgid "Urgency:"
+msgid "Rates"
 msgstr ""
 
 #: glade/project_properties.glade.h:47
-msgid "What is the status of this project?"
+msgid "Regular Rate:"
 msgstr ""
 
 #: glade/project_properties.glade.h:48
+#, fuzzy
+msgid "Status:"
+msgstr "Estat"
+
+#: glade/project_properties.glade.h:49
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:50
+msgid "The dollars per hour normally charged for this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:51
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr ""
+
+#: glade/project_properties.glade.h:52
+msgid "Time below which an interval is merged with its neighbors"
+msgstr ""
+
+#: glade/project_properties.glade.h:53
+msgid "Urgency:"
+msgstr ""
+
+#: glade/project_properties.glade.h:54
+msgid "What is the status of this project?"
+msgstr ""
+
+#: glade/project_properties.glade.h:55
 msgid "a short description that will be printed on the invoice."
 msgstr ""
 
-#: glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:56
 #, fuzzy
 msgid "seconds"
 msgstr "segons"
 
 #: glade/task_popup.glade.h:1
-#, fuzzy
-msgid "Add a new time interval"
-msgstr "Afig una nova vista del tampó"
-
-#: glade/task_popup.glade.h:2
 msgid "Cut Entry & _Times"
 msgstr ""
 
-#: glade/task_popup.glade.h:3
-msgid "Delete the diary entry only, keep the time intervals"
-msgstr ""
-
-#: glade/task_popup.glade.h:4
-msgid "Delete the diary entry, and the time intervals below it."
-msgstr ""
-
-#: glade/task_popup.glade.h:5
-msgid "Edit the diary entry and other task properties."
-msgstr ""
-
-#: glade/task_popup.glade.h:6
-msgid "Insert a new diary entry above this one."
-msgstr ""
-
-#: glade/task_popup.glade.h:7
+#: glade/task_popup.glade.h:2
 #, fuzzy
 msgid "New Time Interval"
 msgstr "Interval d'actualització de l'agulla"
 
-#: glade/task_popup.glade.h:9
+#: glade/task_popup.glade.h:3
 #, fuzzy
 msgid "_Cut Diary Entry"
 msgstr "Suprimeix un paràmetre"
 
-#: glade/task_popup.glade.h:10
+#: glade/task_popup.glade.h:4
 msgid "_Edit Diary Entry"
 msgstr ""
 
-#: glade/task_popup.glade.h:11
+#: glade/task_popup.glade.h:5
 msgid "_New Diary Entry"
 msgstr ""
 
-#: glade/task_popup.glade.h:12
+#: glade/task_popup.glade.h:6
 msgid "_Paste Diary Entry"
 msgstr ""
 
-#: glade/task_properties.glade.h:1
+#: glade/task_properties.glade.h:2
 msgid "A set of private notes that will not be printed on an invoice."
 msgstr ""
 
-#: glade/task_properties.glade.h:2
+#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: glade/task_properties.glade.h:5
+#: glade/task_properties.glade.h:6
 msgid "Billable:"
 msgstr ""
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:7
 msgid "Billing Block:"
 msgstr ""
 
-#: glade/task_properties.glade.h:7
+#: glade/task_properties.glade.h:8
 msgid "Billing Rate:"
 msgstr ""
 
-#: glade/task_properties.glade.h:8
+#: glade/task_properties.glade.h:9
 msgid "Billing Status:"
 msgstr ""
 
-#: glade/task_properties.glade.h:9
+#: glade/task_properties.glade.h:10
 #, fuzzy
 msgid "Diary Entry Properties"
 msgstr "Propietats del GDiskFree"
 
-#: glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:11
 #, fuzzy
 msgid "Diary Entry:"
 msgstr "Directori:"
 
-#: glade/task_properties.glade.h:11
+#: glade/task_properties.glade.h:12
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: glade/task_properties.glade.h:14
+#: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
 "the normal fashion.   \"Not Billable\" means we can't ask for money for "
@@ -1441,7 +1376,7 @@ msgid ""
 "as 'free/no-charge'."
 msgstr ""
 
-#: glade/task_properties.glade.h:15
+#: glade/task_properties.glade.h:16
 msgid ""
 "Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
@@ -1449,27 +1384,70 @@ msgid ""
 msgstr ""
 
 #: glade/task_properties.glade.h:19
+msgid "Notes:"
+msgstr ""
+
+#: glade/task_properties.glade.h:20
 #, fuzzy
 msgid "OverOver"
 msgstr "Servidor"
 
-#: glade/task_properties.glade.h:23
+#: glade/task_properties.glade.h:24
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 
-#: glade/task_properties.glade.h:24
+#: glade/task_properties.glade.h:25
 #, fuzzy
 msgid "minutes"
 msgstr "minuts"
 
-#: gtt.desktop.in.h:1
+#: gnotime.desktop.in.h:1
 msgid "Time Tracker tool"
 msgstr "Fa un seguiment del temps usat en un projecte"
 
-#: gtt.desktop.in.h:2
+#: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Seguiment de temps"
+
+#~ msgid "Reload Configuration File"
+#~ msgstr "Rellegir fitxer de configuració"
+
+#, fuzzy
+#~ msgid "Do you really want to reload the configuration file?"
+#~ msgstr "No s'ha pogut llegir el fitxer de configuració"
+
+#, fuzzy
+#~ msgid "Export Current State"
+#~ msgstr "Valor actual"
+
+#~ msgid "_Reload Configuration File"
+#~ msgstr "_Rellegir fitxer de configuració"
+
+#~ msgid "_Save Configuration File"
+#~ msgstr "_Guardar fitxer de configuració"
+
+#~ msgid "Save Configuration File"
+#~ msgstr "Guarda el fitxer de configuració"
+
+#, fuzzy
+#~ msgid "Add a new time interval."
+#~ msgstr "Afig una nova vista del tampó"
+
+#, fuzzy
+#~ msgid "Delete This Interval"
+#~ msgstr "Interval d'actualització de l'agulla"
+
+#, fuzzy
+#~ msgid "Edit the Start & Stop Times"
+#~ msgstr "Inicia/para el cronòmetre"
+
+#~ msgid "Show `Save', `Reload'"
+#~ msgstr "Mostrar «Guardar», «Rellegir»"
+
+#, fuzzy
+#~ msgid "Add a new time interval"
+#~ msgstr "Afig una nova vista del tampó"
 
 #~ msgid "The Gnome Calculator"
 #~ msgstr "La Calculadora del GNOME"
@@ -2160,9 +2138,6 @@ msgstr "Seguiment de temps"
 #~ "L'usuari no pot llegir %s; segurament té permisos de només lectura. "
 #~ "Executeu el programa com a root o demaneu a l'administrador del sistema "
 #~ "que en canviï els permisos."
-
-#~ msgid "%s could not be opened."
-#~ msgstr "No s'ha pogut obrir %s."
 
 #~ msgid "%s not a log file."
 #~ msgstr "%s no és un fitxer de registre."
@@ -3394,9 +3369,6 @@ msgstr "Seguiment de temps"
 
 #~ msgid "EI don't know what this is, but it's very wrong."
 #~ msgstr "ENo sé què és, però està molt malament."
-
-#~ msgid "EError formatting track #%d"
-#~ msgstr "EError en formatar la pista #%d"
 
 #~ msgid "EError during completion of formatting"
 #~ msgstr "EError en completar el formatatge"

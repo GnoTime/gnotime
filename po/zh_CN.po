@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils-0.99.6\n"
-"POT-Creation-Date: 2002-09-06 20:49-0500\n"
+"POT-Creation-Date: 2002-12-23 00:06-0600\n"
 "PO-Revision-Date: 2002-06-23 02:09+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -32,199 +32,199 @@ msgstr ""
 " geometry (位置和大小)"
 
 # gtt/clist.c:169
-#: src/ctree.c:517
+#: src/ctree.c:509
 msgid "Total"
 msgstr "合计"
 
-#: src/ctree.c:519
+#: src/ctree.c:511
 msgid "Total time spent on this project."
 msgstr "花在该计划上的总时间。"
 
 # gtt/options.c:408
-#: src/ctree.c:524
+#: src/ctree.c:516
 msgid "Entry"
 msgstr "条目"
 
-#: src/ctree.c:526
+#: src/ctree.c:518
 msgid "Time spent under the current diary entry."
 msgstr "花在当前日记条目上的时间。"
 
 # gtt/clist.c:170
-#: src/ctree.c:532 glade/interval_edit.glade.h:14
+#: src/ctree.c:524 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "今天"
 
-#: src/ctree.c:534
+#: src/ctree.c:526
 msgid "Time spent on this project today."
 msgstr "今天花在该计划上的时间。"
 
-#: src/ctree.c:539
+#: src/ctree.c:531
 msgid "Week"
 msgstr "周"
 
-#: src/ctree.c:541
+#: src/ctree.c:533
 msgid "Time spent on this project this week."
 msgstr "本周花在该计划上的时间。"
 
 # ghex/preferences.c:143
-#: src/ctree.c:547
+#: src/ctree.c:539
 msgid "Month"
 msgstr "月"
 
-#: src/ctree.c:549
+#: src/ctree.c:541
 msgid "Time spent on this project this month."
 msgstr "本月花在该计划上的时间。"
 
 # ghex/converter.c:50
-#: src/ctree.c:555
+#: src/ctree.c:547
 msgid "Year"
 msgstr "年"
 
-#: src/ctree.c:557
+#: src/ctree.c:549
 msgid "Time spent on this project this year."
 msgstr "今年花在该计划上的时间。"
 
-#: src/ctree.c:563
+#: src/ctree.c:555
 msgid "Title"
 msgstr "标题"
 
 # gtt/clist.c:171
-#: src/ctree.c:564 src/menucmd.c:155
+#: src/ctree.c:556 src/menucmd.c:155
 msgid "Project Title"
 msgstr "计划标题"
 
 # gtt/clist.c:172
-#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
+#: src/ctree.c:561 src/ctree.c:562 src/menucmd.c:156
 msgid "Description"
 msgstr "描述"
 
-#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
+#: src/ctree.c:567 src/ghtml.c:103 src/ghtml.c:231
 #, fuzzy
 msgid "Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/ctree.c:577
+#: src/ctree.c:569
 msgid "The current diary entry"
 msgstr "当前日记条目"
 
 # gsearchtool/gsearchtool.c:514
-#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: src/ctree.c:574 src/ghtml.c:103 src/ghtml.c:280
 #: glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "开始"
 
-#: src/ctree.c:584
+#: src/ctree.c:576
 msgid "Estimated Project Start Date"
 msgstr "估计计划开始日期"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ctree.c:589
+#: src/ctree.c:581
 msgid "End"
 msgstr "结束"
 
 # gtt/toolbar.c:179
-#: src/ctree.c:591
+#: src/ctree.c:583
 msgid "Estimated Project Completion Date"
 msgstr "估计计划完成日期"
 
-#: src/ctree.c:596
+#: src/ctree.c:588
 msgid "Due"
 msgstr "截止"
 
-#: src/ctree.c:598
+#: src/ctree.c:590
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr "截止日期：计划绝对必须在该日期以前完成。"
 
 # mini-utils/guname/info.c:60
-#: src/ctree.c:605
+#: src/ctree.c:597
 msgid "Size"
 msgstr "大小"
 
-#: src/ctree.c:607
+#: src/ctree.c:599
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "大小：完成该计划必须的工作量。"
 
 # mini-utils/idetool/idetool.c:207
-#: src/ctree.c:613
+#: src/ctree.c:605
 msgid "Done"
 msgstr "完成度"
 
-#: src/ctree.c:615
+#: src/ctree.c:607
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr "完成百分比：迄今为止该计划已经完成的比例。"
 
-#: src/ctree.c:622
+#: src/ctree.c:614
 msgid "U"
 msgstr "紧急度"
 
-#: src/ctree.c:624
+#: src/ctree.c:616
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "紧急度：该计划是否需要尽快完成？"
 
-#: src/ctree.c:630
+#: src/ctree.c:622
 msgid "Imp"
 msgstr "重要性"
 
-#: src/ctree.c:632
+#: src/ctree.c:624
 msgid "Importance: How important is this project?"
 msgstr "重要性：该计划有多重要？"
 
 # mini-utils/idetool/idetool.c:316
-#: src/ctree.c:638
+#: src/ctree.c:630
 msgid "Status"
 msgstr "状态"
 
-#: src/ctree.c:640
+#: src/ctree.c:632
 msgid "The current status of this project."
 msgstr "该计划当前的状态。"
 
-#: src/ctree.c:959
+#: src/ctree.c:951
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:960
+#: src/ctree.c:952
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:961
+#: src/ctree.c:953
 msgid "1"
 msgstr "1"
 
 # gtt/options.c:363
-#: src/ctree.c:971 glade/project_properties.glade.h:25
+#: src/ctree.c:963 glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
 
-#: src/ctree.c:972
+#: src/ctree.c:964
 msgid "Med"
 msgstr "中"
 
-#: src/ctree.c:973 glade/project_properties.glade.h:15
+#: src/ctree.c:965 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "高"
 
 # gsearchtool/gsearchtool.c:514
-#: src/ctree.c:982 glade/project_properties.glade.h:29
+#: src/ctree.c:974 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "尚未开始"
 
 # mini-utils/guname/info.c:44
-#: src/ctree.c:983 glade/project_properties.glade.h:21
+#: src/ctree.c:975 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "正在进行"
 
-#: src/ctree.c:984 glade/project_properties.glade.h:31
+#: src/ctree.c:976 glade/project_properties.glade.h:38
 msgid "On Hold"
 msgstr "暂停"
 
 # mini-utils/gnome-run/gnome-run.c:70
-#: src/ctree.c:985 glade/project_properties.glade.h:9
+#: src/ctree.c:977 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/ctree.c:986 glade/project_properties.glade.h:10
+#: src/ctree.c:978 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "已完成"
 
@@ -301,161 +301,176 @@ msgstr ""
 "无法写入配置文件\n"
 "\t%s\n"
 
+#: src/export.c:76
+#, fuzzy, c-format
+msgid "Error exporting data: %s"
+msgstr "E格式化第 %d 道时出错"
+
+#: src/export.c:133
+#, fuzzy, c-format
+msgid "File %s exists, overwrite?"
+msgstr "文件已存在，覆盖？"
+
+#: src/export.c:145
+#, fuzzy
+msgid "File could not be opened"
+msgstr "无法打开 %s。"
+
+#: src/export.c:153
+msgid "Error occured during export"
+msgstr ""
+
+#: src/export.c:170
+msgid "Tab-Delimited Export"
+msgstr ""
+
 # gtt/proj.c:461
-#: src/file-io.c:376
+#: src/file-io.c:371
 msgid "project %t started"
 msgstr "计划 %t 启动"
 
 # gtt/proj.c:464
-#: src/file-io.c:379
+#: src/file-io.c:374
 msgid "stopped project %t"
 msgstr "停止计划 %t"
 
-#. Translators: This is a "time format", that is
-#. * format on how to print the elapsed time with
-#. * hours:minutes:seconds.
-#: src/file-io.c:677
-#, c-format
-msgid "%d:%02d:%02d"
-msgstr "%d:%02d:%02d"
-
 # gsearchtool/gsearchtool.c:515
-#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+#: src/ghtml.c:103 src/ghtml.c:283 glade/interval_edit.glade.h:13
 msgid "Stop"
 msgstr "停止"
 
-#: src/ghtml.c:95 src/ghtml.c:273
+#: src/ghtml.c:103 src/ghtml.c:286
 msgid "Elapsed"
 msgstr "已用时间"
 
 # gtt/prop.c:55
-#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
+#: src/ghtml.c:121 src/ghtml.c:382 src/ghtml.c:391
 msgid "(empty)"
 msgstr "(空)"
 
 # mini-utils/idetool/idetool.c:207
-#: src/ghtml.c:225
+#: src/ghtml.c:236
 msgid "Notes"
 msgstr "注解"
 
-#: src/ghtml.c:229
+#: src/ghtml.c:240
 msgid "Task Time"
 msgstr "任务时间"
 
 # mini-utils/idetool/idetool.c:316
-#: src/ghtml.c:233
+#: src/ghtml.c:244
 msgid "Bill Status"
 msgstr "帐单状态"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
+#: src/ghtml.c:248 src/ghtml.c:421 glade/task_properties.glade.h:5
 msgid "Billable"
 msgstr "可支付"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ghtml.c:241
+#: src/ghtml.c:252
 msgid "Bill Rate"
 msgstr "支付率"
 
 # gstripchart/gstripchart.c:1516 mini-utils/gcolorsel/gcolorsel.c:156
 # mini-utils/guname/moreinfo.c:218
-#: src/ghtml.c:245
+#: src/ghtml.c:256
 msgid "Value"
 msgstr "值"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ghtml.c:249
+#: src/ghtml.c:260
 msgid "Billable Value"
 msgstr "支付率的值"
 
 # ghex/preferences.c:50 mini-utils/idetool/idetool.c:19
 # mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#: src/ghtml.c:253 src/ghtml.c:279
+#: src/ghtml.c:264 src/ghtml.c:292
 msgid "No Default Value"
 msgstr "没有默认值"
 
-#: src/ghtml.c:276
+#: src/ghtml.c:289
 #, fuzzy
 msgid "Start Time Fuzziness"
 msgstr "启动计时器的运行"
 
-#: src/ghtml.c:392 glade/task_properties.glade.h:13
+#: src/ghtml.c:405 glade/task_properties.glade.h:14
 #, fuzzy
 msgid "Hold"
 msgstr "暂停"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ghtml.c:395 glade/task_properties.glade.h:3
+#: src/ghtml.c:408 glade/task_properties.glade.h:4
 msgid "Bill"
 msgstr "支付"
 
-#: src/ghtml.c:398 glade/task_properties.glade.h:21
+#: src/ghtml.c:411 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr "已支付"
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: src/ghtml.c:411 glade/task_properties.glade.h:17
+#: src/ghtml.c:424 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "不可支付"
 
-#: src/ghtml.c:414 glade/task_properties.glade.h:16
+#: src/ghtml.c:427 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr "无收费"
 
 # gtt/toolbar.c:152
-#: src/ghtml.c:424 glade/task_properties.glade.h:22
+#: src/ghtml.c:437 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "常规"
 
 # gtt/toolbar.c:156
-#: src/ghtml.c:427 glade/task_properties.glade.h:20
+#: src/ghtml.c:440 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "超时"
 
-#: src/ghtml.c:430
+#: src/ghtml.c:443
 msgid "Double Overtime"
 msgstr "双倍超时"
 
 # mini-utils/gcolorsel/gcolorsel.c:320
-#: src/ghtml.c:433 glade/task_properties.glade.h:12
+#: src/ghtml.c:446 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "平整费用"
 
 # mini-utils/guname/info.c:206 mini-utils/idetool/idetool.c:26
-#: src/ghtml.c:453
+#: src/ghtml.c:466
 msgid "Error - Unknown"
 msgstr "错误 - 未知"
 
-#: src/ghtml.c:703
+#: src/ghtml.c:729
 msgid "unknown token: >>>>"
 msgstr "未知标识符：>>>>"
 
-#: src/journal.c:111
+#: src/journal.c:107
 msgid "Error 404 Not Found"
 msgstr "错误 404 未找到"
 
 # mini-utils/guname/guname.c:506
-#: src/journal.c:113
+#: src/journal.c:109
 #, c-format
 msgid "The file %s was not found."
 msgstr "未找到文件 %s 。"
 
-#: src/journal.c:114
+#: src/journal.c:110
 msgid "(null)"
 msgstr "(无)"
 
 # mini-utils/guname/info.c:206 mini-utils/idetool/idetool.c:26
-#: src/journal.c:124
+#: src/journal.c:119
 msgid "Unkown Error"
 msgstr "未知错误"
 
 # ghex/ui.c:305
-#: src/journal.c:175 src/plug-in.c:90
+#: src/journal.c:168 src/plug-in.c:90
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -464,14 +479,14 @@ msgstr ""
 "无法打开文件 %s\n"
 "%s"
 
-#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/journal.c:260 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
 #: src/proj.c:1807
 #, fuzzy
 msgid "New Diary Entry"
 msgstr "新建日记条目(_E)"
 
 # gtt/toolbar.c:156
-#: src/journal.c:455
+#: src/journal.c:448
 msgid "Save HTML To File"
 msgstr "将 HTML 保存到文件"
 
@@ -530,32 +545,32 @@ msgstr "错误"
 msgid "Shall I setup a new configuration?"
 msgstr "我该设置新配置吗？"
 
+# gtt/menucmd.c:31 gtt/menucmd.c:121 gtt/menucmd.c:153
+#: src/main.c:363 src/main.c:388 src/main.c:535 src/menucmd.c:48
+msgid "Warning"
+msgstr "警告"
+
 # gtt/main.c:204
-#: src/main.c:440
+#: src/main.c:491
 msgid "Specify geometry"
 msgstr "指定 geometry"
 
 # gtt/main.c:204 mini-utils/gless/gless.c:131
-#: src/main.c:440
+#: src/main.c:491
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
 # gtt/main.c:206
-#: src/main.c:442
+#: src/main.c:493
 msgid "Select a project on startup"
 msgstr "在启动时选取一个计划"
 
 # gtt/main.c:206
-#: src/main.c:442
+#: src/main.c:493
 msgid "PROJECT"
 msgstr "计划"
 
-# gtt/menucmd.c:31 gtt/menucmd.c:121 gtt/menucmd.c:153
-#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
-msgid "Warning"
-msgstr "警告"
-
-#: src/menucmd.c:89
+#: src/menucmd.c:90
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -568,148 +583,113 @@ msgstr ""
 msgid "New Project..."
 msgstr "新增计划..."
 
-# gtt/menucmd.c:137 gtt/toolbar.c:153
-#: src/menucmd.c:231 src/toolbar.c:179
-msgid "Reload Configuration File"
-msgstr "重新载入设定文件"
-
-# gtt/menucmd.c:123
-#: src/menucmd.c:232
-msgid "Do you really want to reload the configuration file?"
-msgstr "您真的希望重新装入配置文件？"
-
-#: src/menucmd.c:267
-#, fuzzy, c-format
-msgid "File %s exists, overwrite?"
-msgstr "文件已存在，覆盖？"
-
-#: src/menucmd.c:278
-msgid "File cannot be written"
-msgstr "无法写入文件"
-
-# gstripchart/gstripchart.c:1538
-#: src/menucmd.c:298
-msgid "Export Current State"
-msgstr "导出当前状态"
-
 # gtt/menus.c:27
-#: src/menus.c:33
+#: src/menus.c:34
 msgid "_New Project..."
 msgstr "新增计划 _N..."
 
-# gtt/menus.c:30
-#: src/menus.c:36
-msgid "_Reload Configuration File"
-msgstr "重新载入设定文件 _R"
-
-# gtt/menus.c:34
-#: src/menus.c:40
-msgid "_Save Configuration File"
-msgstr "另存设定文件 _S"
-
-# gstripchart/gstripchart.c:1538
-#: src/menus.c:44
-msgid "_Export Current State"
-msgstr "导出当前状态(_E)"
+#: src/menus.c:37
+msgid "_Export Tab-Delimited"
+msgstr ""
 
 # gtt/menus.c:59 gtt/menus.c:115
-#: src/menus.c:63 src/menus.c:173
+#: src/menus.c:56 src/menus.c:166
 msgid "Clear _Daily Counter"
 msgstr "清除 Daily 计数器(_D)"
 
-#: src/menus.c:64 src/menus.c:174
+#: src/menus.c:57 src/menus.c:167
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "通过删除今天的时间日志清除今天的计数器"
 
 # gtt/toolbar.c:198
-#: src/menus.c:68 src/menus.c:87 src/menus.c:156
+#: src/menus.c:61 src/menus.c:80 src/menus.c:149
 msgid "_Journal..."
 msgstr "日记(_J)..."
 
-#: src/menus.c:69 src/menus.c:88 src/menus.c:157
+#: src/menus.c:62 src/menus.c:81 src/menus.c:150
 msgid "Show the timesheet journal for this project"
 msgstr "为该计划显示时间表单日记"
 
-#: src/menus.c:72 src/menus.c:160
+#: src/menus.c:65 src/menus.c:153
 msgid "New Diary _Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/menus.c:73 src/menus.c:161
+#: src/menus.c:66 src/menus.c:154
 msgid "Change the current task for this project"
 msgstr "改变该计划的当前任务"
 
-#: src/menus.c:91
+#: src/menus.c:84
 msgid "_All Journal..."
 msgstr "所有日记(_A)..."
 
-#: src/menus.c:92
+#: src/menus.c:85
 msgid "Show the verbose timesheet journal for this project"
 msgstr "为该计划显示详细时间表单日记"
 
 # mini-utils/gw/gw.c:174
-#: src/menus.c:95
+#: src/menus.c:88
 msgid "_Invoice..."
 msgstr "支票(_I)..."
 
-#: src/menus.c:96
+#: src/menus.c:89
 msgid "Show a sample invoice for this project"
 msgstr "为该计划显示示例支票"
 
 # gtt/toolbar.c:193
-#: src/menus.c:99
+#: src/menus.c:92
 msgid "_Primer..."
 msgstr "初级读本(_P)..."
 
-#: src/menus.c:100
+#: src/menus.c:93
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr "显示关于设计定制报告的介绍性读本的示例"
 
 # gtt/menus.c:27
-#: src/menus.c:103
+#: src/menus.c:96
 msgid "_New Report..."
 msgstr "新建报告(_N)..."
 
-#: src/menus.c:104
+#: src/menus.c:97
 msgid "Define a path to a new GTT phtml report file"
 msgstr "定义一个到新建 GTT phtml 报告文件的路径"
 
 # gsearchtool/gsearchtool.c:514
-#: src/menus.c:115
+#: src/menus.c:108
 msgid "St_art"
 msgstr "开始(_A)"
 
-#: src/menus.c:116
+#: src/menus.c:109
 msgid "Start the timer running"
 msgstr "启动计时器的运行"
 
 # gtt/menus.c:75
-#: src/menus.c:121
+#: src/menus.c:114
 msgid "Sto_p"
 msgstr "停止(_P)"
 
-#: src/menus.c:122
+#: src/menus.c:115
 #, fuzzy
 msgid "Stop the timer"
 msgstr "设定端口号"
 
 # gtt/menus.c:80
-#: src/menus.c:127
+#: src/menus.c:120
 msgid "_Timer Running"
 msgstr "计时器正在运行(_T)"
 
-#: src/menus.c:146
+#: src/menus.c:139
 msgid "_Reports"
 msgstr "报告(_R)"
 
 # gtt/menus.c:99
-#: src/menus.c:147
+#: src/menus.c:140
 msgid "_Timer"
 msgstr "计时器(_T)"
 
 # mini-utils/gshutdown/gshutdown.c:92
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:244
+#: src/menus.c:237
 msgid "Reports"
 msgstr "报告"
 
@@ -727,7 +707,7 @@ msgstr "老式 GTT 任务"
 msgid "empty"
 msgstr "空"
 
-#: src/timer.c:117
+#: src/timer.c:127
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -742,78 +722,73 @@ msgstr ""
 " 已被停止。您希望\n"
 "重新启动它吗？"
 
-#: src/timer.c:125
+#: src/timer.c:135
 msgid "System Idle"
 msgstr "系统空闲"
 
 # gtt/menucmd.c:85 gtt/toolbar.c:146
-#: src/toolbar.c:169
+#: src/toolbar.c:173
 msgid "Create a New Project..."
 msgstr "创建新计划..."
 
-# gtt/toolbar.c:157
-#: src/toolbar.c:184
-msgid "Save Configuration File"
-msgstr "保存配置文件"
-
 # gtt/toolbar.c:164
-#: src/toolbar.c:194
+#: src/toolbar.c:183
 msgid "Cut Selected Project"
 msgstr "剪切选中的计划"
 
 # gtt/toolbar.c:164
-#: src/toolbar.c:199
+#: src/toolbar.c:188
 #, fuzzy
 msgid "Copy Selected Project"
 msgstr "剪切选中的计划"
 
 # gtt/toolbar.c:172
-#: src/toolbar.c:204
+#: src/toolbar.c:193
 msgid "Paste Project"
 msgstr "粘贴计划"
 
-#: src/toolbar.c:213 glade/journal.glade.h:2
+#: src/toolbar.c:202 glade/journal.glade.h:2
 msgid "Journal"
 msgstr "日记"
 
-#: src/toolbar.c:214
+#: src/toolbar.c:203
 msgid "View and Edit Timestamp Logs"
 msgstr "查看并编辑时间戳日志"
 
 # gtt/toolbar.c:179
-#: src/toolbar.c:223
+#: src/toolbar.c:212
 msgid "Edit Project Properties..."
 msgstr "编辑计划属性..."
 
 # gtt/toolbar.c:183
-#: src/toolbar.c:230
+#: src/toolbar.c:219
 msgid "Timer"
 msgstr "计时器"
 
 # gtt/toolbar.c:184
-#: src/toolbar.c:231
+#: src/toolbar.c:220
 msgid "Start/Stop Timer"
 msgstr "启动/停止 计时器"
 
-#: src/toolbar.c:241
+#: src/toolbar.c:230
 msgid "Calendar"
 msgstr "日历"
 
-#: src/toolbar.c:242
+#: src/toolbar.c:231
 msgid "View Calendar"
 msgstr "查看日历"
 
-#: src/toolbar.c:262
+#: src/toolbar.c:251
 #, fuzzy
 msgid "Edit Preferences..."
 msgstr "首选项..."
 
-#: src/toolbar.c:270
+#: src/toolbar.c:259
 msgid "User's Guide and Manual"
 msgstr "用户指南与手册"
 
 # gtt/toolbar.c:203
-#: src/toolbar.c:278
+#: src/toolbar.c:267
 msgid "Quit Gnome TimeTracker"
 msgstr "退出 Gnome 时间跟踪器"
 
@@ -870,75 +845,41 @@ msgstr ""
 msgid "Start Fuzz"
 msgstr "开始"
 
-# ghex/hex-document.c:87
-#: glade/interval_popup.glade.h:1
-#, fuzzy
-msgid "Add a new time interval."
-msgstr "Add a new view of the buffer"
-
 # gstripchart/gstripchart.c:1891
-#: glade/interval_popup.glade.h:2
+#: glade/interval_popup.glade.h:1
 #, fuzzy
 msgid "Delete Interval"
 msgstr "slider 更新间隔"
 
-# gstripchart/gstripchart.c:1891
-#: glade/interval_popup.glade.h:3
-#, fuzzy
-msgid "Delete This Interval"
-msgstr "slider 更新间隔"
-
 # gstripchart/gstripchart.c:1887
-#: glade/interval_popup.glade.h:4
+#: glade/interval_popup.glade.h:2
 #, fuzzy
 msgid "Edit Interval"
 msgstr "图表更新间隔"
 
-# gtt/toolbar.c:184
-#: glade/interval_popup.glade.h:5
-#, fuzzy
-msgid "Edit the Start & Stop Times"
-msgstr "启动/停止 Timer"
-
-#: glade/interval_popup.glade.h:6
+#: glade/interval_popup.glade.h:3
 #, fuzzy
 msgid "Insert Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/interval_popup.glade.h:7
-msgid "Insert a new diary entry above this time interval."
-msgstr ""
-
-#: glade/interval_popup.glade.h:8
+#: glade/interval_popup.glade.h:4
 msgid "Merge Down"
 msgstr ""
 
-#: glade/interval_popup.glade.h:9
-msgid "Merge Into Interval Above"
-msgstr ""
-
-#: glade/interval_popup.glade.h:10
-msgid "Merge Into Interval Below"
-msgstr ""
-
-#: glade/interval_popup.glade.h:11
+#: glade/interval_popup.glade.h:5
 msgid "Merge Up"
 msgstr ""
 
 # mini-utils/gshutdown/gshutdown.c:395
-#: glade/interval_popup.glade.h:12
+#: glade/interval_popup.glade.h:6
 #, fuzzy
 msgid "New Interval"
 msgstr "一般"
 
-#: glade/interval_popup.glade.h:13
+#: glade/interval_popup.glade.h:7
 #, fuzzy
 msgid "Paste Diary Entry"
 msgstr "新建日记条目(_E)"
-
-#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
-msgid "Paste a previously cut diary entry."
-msgstr ""
 
 # ghex/converter.c:96 mini-utils/gshutdown/gshutdown.c:152
 # mini-utils/gshutdown/gshutdown.c:596
@@ -995,39 +936,44 @@ msgid ""
 "Coming Soon, I hope!"
 msgstr "此功能尚未完成"
 
+#: glade/prefs.glade.h:1 glade/project_properties.glade.h:6
+#: glade/task_properties.glade.h:1
+msgid "*"
+msgstr "*"
+
 # ghex/preferences.c:194 gtt/options.c:186
-#: glade/prefs.glade.h:1
+#: glade/prefs.glade.h:2
 msgid "Display"
 msgstr "显示"
 
-#: glade/prefs.glade.h:2
+#: glade/prefs.glade.h:3
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
 
-#: glade/prefs.glade.h:3
+#: glade/prefs.glade.h:4
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 
 # gtt/options.c:394
-#: glade/prefs.glade.h:4
+#: glade/prefs.glade.h:5
 #, fuzzy
 msgid "Entry Start:"
 msgstr "条目细节(_E)"
 
 # gtt/options.c:408
-#: glade/prefs.glade.h:5
+#: glade/prefs.glade.h:6
 #, fuzzy
 msgid "Entry Stop:"
 msgstr "条目"
 
-#: glade/prefs.glade.h:7
+#: glade/prefs.glade.h:8
 #, no-c-format
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
 "title, %d for the description, etc. See the manual for more options."
 msgstr ""
 
-#: glade/prefs.glade.h:9
+#: glade/prefs.glade.h:10
 #, no-c-format
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
@@ -1035,223 +981,218 @@ msgid ""
 msgstr ""
 
 # mini-utils/gless/gless.c:461
-#: glade/prefs.glade.h:10
+#: glade/prefs.glade.h:11
 #, fuzzy
 msgid "Fields"
 msgstr "查找"
 
 # gtt/options.c:380
-#: glade/prefs.glade.h:11
+#: glade/prefs.glade.h:12
 msgid "Filename:"
 msgstr "文件名:"
 
 # gtt/options.c:194
-#: glade/prefs.glade.h:12
+#: glade/prefs.glade.h:13
 #, fuzzy
 msgid "Idle Seconds:"
 msgstr "显示秒"
 
-#: glade/prefs.glade.h:13
+#: glade/prefs.glade.h:14
 msgid "Inactivity Timeout"
 msgstr ""
 
 # gtt/options.c:363
-#: glade/prefs.glade.h:14
+#: glade/prefs.glade.h:15
 msgid "Logfile"
 msgstr "纪录档"
 
-#: glade/prefs.glade.h:15
+#: glade/prefs.glade.h:16
 #, fuzzy
 msgid "Min Recorded:"
 msgstr "主体："
 
 # gtt/options.c:505
-#: glade/prefs.glade.h:16
+#: glade/prefs.glade.h:17
 msgid "Misc"
 msgstr "其它"
 
 # gtt/options.c:329
-#: glade/prefs.glade.h:17
+#: glade/prefs.glade.h:18
 msgid "No Project Command:"
 msgstr "没有计划的指令:"
 
 # gtt/clist.c:171
-#: glade/prefs.glade.h:18
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Project List Display"
 msgstr "计划标题"
 
-#: glade/prefs.glade.h:19
+#: glade/prefs.glade.h:20
 #, fuzzy
 msgid "Shell"
 msgstr "拼写"
 
 # gtt/options.c:310
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:21
 msgid "Shell Commands"
 msgstr "Shell 指令"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:22
 #, fuzzy
 msgid "Show Current Diary Entry"
 msgstr "当前日记条目"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:23
 msgid "Show Estimated Effort"
 msgstr ""
 
 # mini-utils/guname/info.c:63
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:24
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "可用百分比"
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:26
 #, fuzzy
 msgid "Show Planned Project Start Date"
 msgstr "估计计划开始日期"
 
 # gtt/prop.c:209
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Description"
 msgstr "计划描述:"
 
 # gtt/options.c:272
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "显示 `内容'"
 
 # gtt/options.c:329
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "没有计划的指令:"
 
 # gtt/options.c:272
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Status"
 msgstr "显示 `内容'"
 
 # gtt/options.c:272
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:31
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "显示 `内容'"
 
 # gtt/options.c:194
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:32
 msgid "Show Seconds"
 msgstr "显示秒"
 
 # gtt/options.c:200
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:33
 msgid "Show Status Bar"
 msgstr "显示状态列"
 
 # gtt/options.c:272
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:34
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "显示 `内容'"
 
 # gtt/options.c:206
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:35
 msgid "Show Table Header"
 msgstr "显示表格档头"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:36
 #, fuzzy
 msgid "Show Time For The Current Diary Entry"
 msgstr "当前日记条目"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:37
 msgid "Show Time This Month"
 msgstr ""
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:38
 msgid "Show Time This Week"
 msgstr ""
 
 # gtt/options.c:278
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "显示 `Timer'"
 
 # gtt/options.c:278
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:40
 #, fuzzy
 msgid "Show Time Today"
 msgstr "显示 `Timer'"
 
 # gtt/options.c:228
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Icons"
 msgstr "显示工具栏图标"
 
 # gtt/options.c:234
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:42
 msgid "Show Toolbar Texts"
 msgstr "显示工具栏文字"
 
 # gtt/options.c:240
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:43
 msgid "Show Tooltips"
 msgstr "显示工具栏提示"
 
 # gtt/options.c:206
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:44
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "显示表格档头"
 
 # gtt/options.c:266
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:45
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "显示 `剪下', `复制', `贴上'"
 
 # gtt/options.c:290
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:46
 msgid "Show `Help'"
 msgstr "显示 `说明'"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:47
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "日记"
 
 # gtt/options.c:254
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:48
 msgid "Show `New'"
 msgstr "显示 `新增'"
 
 # gtt/options.c:284
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:49
 msgid "Show `Preferences'"
 msgstr "显示 `偏好设定'"
 
 # gtt/options.c:272
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:50
 #, fuzzy
 msgid "Show `Properties'"
 msgstr "显示日志属性"
 
 # gtt/options.c:296
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:51
 msgid "Show `Quit'"
 msgstr "显示 `结束'"
-
-# gtt/options.c:260
-#: glade/prefs.glade.h:51
-msgid "Show `Save', `Reload'"
-msgstr "显示 `储存', `重新载入'"
 
 # gtt/options.c:278
 #: glade/prefs.glade.h:52
@@ -1321,295 +1262,279 @@ msgstr "过滤器..                "
 msgid "% Complete"
 msgstr "已完成"
 
-#: glade/project_properties.glade.h:6
+#: glade/project_properties.glade.h:7
 #, fuzzy
 msgid "A title to assign to this project"
 msgstr "花在该计划上的总时间。"
 
-#: glade/project_properties.glade.h:7
+#: glade/project_properties.glade.h:8
 msgid "Auto-merge Gap:"
 msgstr ""
 
-#: glade/project_properties.glade.h:8
+#: glade/project_properties.glade.h:9
 msgid "Auto-merge Interval:"
 msgstr ""
 
-#: glade/project_properties.glade.h:11
+#: glade/project_properties.glade.h:12
 msgid ""
 "Does this item need immediate attention? Note that some urgent tasks might "
 "not be important.  For example, Bill may want you to answer his email today, "
 "but you may have better things to do today."
 msgstr ""
 
-#: glade/project_properties.glade.h:12
+#: glade/project_properties.glade.h:13
 #, fuzzy
 msgid "Double-Overtime Rate:"
 msgstr "双倍超时"
 
 # gtt/toolbar.c:171
-#: glade/project_properties.glade.h:13
+#: glade/project_properties.glade.h:14
 #, fuzzy
 msgid "Due Date:"
 msgstr "日期："
 
 # mini-utils/gcolorsel/gcolorsel.c:320
-#: glade/project_properties.glade.h:14
+#: glade/project_properties.glade.h:15
 #, fuzzy
 msgid "Flat Fee:"
 msgstr "平整费用"
 
-#: glade/project_properties.glade.h:16
+#: glade/project_properties.glade.h:17
 msgid "Hours to Finish:"
 msgstr ""
 
-#: glade/project_properties.glade.h:17
+#: glade/project_properties.glade.h:18
 msgid ""
 "How important is it to perform this task?  Not everything important is "
 "urgent.  For example, it is important to file a tax return every year, but "
 "you have a lot of time to get ready to do this."
 msgstr ""
 
-#: glade/project_properties.glade.h:18
+#: glade/project_properties.glade.h:19
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
 msgstr ""
 
-#: glade/project_properties.glade.h:19
+#: glade/project_properties.glade.h:20
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
 msgstr ""
 
-#: glade/project_properties.glade.h:20
+#: glade/project_properties.glade.h:21
 msgid "Importance:"
 msgstr ""
 
-#: glade/project_properties.glade.h:22
+#: glade/project_properties.glade.h:23
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
 msgstr ""
 
 # mini-utils/gshutdown/gshutdown.c:395
-#: glade/project_properties.glade.h:23
+#: glade/project_properties.glade.h:24
 #, fuzzy
 msgid "Intervals"
 msgstr "反函数"
 
-#: glade/project_properties.glade.h:24
+#: glade/project_properties.glade.h:25
 msgid "Intervals smaller than this will be discarded"
 msgstr ""
 
-#: glade/project_properties.glade.h:26
+#: glade/project_properties.glade.h:27
 #, fuzzy
 msgid "Medium"
 msgstr "中"
 
-#: glade/project_properties.glade.h:27
+#: glade/project_properties.glade.h:28
 msgid "Minimum Interval: "
 msgstr ""
 
 # mini-utils/idetool/idetool.c:207
-#: glade/project_properties.glade.h:28
+#: glade/project_properties.glade.h:29
 #, fuzzy
 msgid "Not Set"
 msgstr "注解"
 
 # mini-utils/idetool/idetool.c:207
-#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
+#: glade/project_properties.glade.h:31
 #, fuzzy
-msgid "Notes:"
+msgid ""
+"Notes:\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 msgstr "注解"
 
 # gtt/toolbar.c:156
-#: glade/project_properties.glade.h:32
+#: glade/project_properties.glade.h:39
 #, fuzzy
 msgid "Overtime Rate:"
 msgstr "超时"
 
-#: glade/project_properties.glade.h:33
+#: glade/project_properties.glade.h:40
 msgid "Planned Finish:"
 msgstr ""
 
-#: glade/project_properties.glade.h:34
+#: glade/project_properties.glade.h:41
 msgid "Planned Start:"
 msgstr ""
 
 # gtt/menucmd.c:31 gtt/menucmd.c:121 gtt/menucmd.c:153
-#: glade/project_properties.glade.h:35
+#: glade/project_properties.glade.h:42
 #, fuzzy
 msgid "Planning"
 msgstr "警告"
 
 # gtt/prop.c:178
-#: glade/project_properties.glade.h:36
+#: glade/project_properties.glade.h:43
 msgid "Project"
 msgstr "计划"
 
 # gtt/prop.c:209
-#: glade/project_properties.glade.h:37
+#: glade/project_properties.glade.h:44
 msgid "Project Description:"
 msgstr "计划描述:"
 
 # gtt/prop.c:197
-#: glade/project_properties.glade.h:38
+#: glade/project_properties.glade.h:45
 msgid "Project Title:"
 msgstr "计划标题:"
 
 # ghex/ui.c:89
-#: glade/project_properties.glade.h:39
+#: glade/project_properties.glade.h:46
 #, fuzzy
 msgid "Rates"
 msgstr "Bytes"
 
 # gtt/toolbar.c:152
-#: glade/project_properties.glade.h:40
+#: glade/project_properties.glade.h:47
 #, fuzzy
 msgid "Regular Rate:"
 msgstr "常规"
 
 # mini-utils/idetool/idetool.c:316
-#: glade/project_properties.glade.h:41
+#: glade/project_properties.glade.h:48
 #, fuzzy
 msgid "Status:"
 msgstr "状态"
 
-#: glade/project_properties.glade.h:42
+#: glade/project_properties.glade.h:49
 msgid "The dollars per hour charged for overtime work on this project."
 msgstr ""
 
-#: glade/project_properties.glade.h:43
+#: glade/project_properties.glade.h:50
 #, fuzzy
 msgid "The dollars per hour normally charged for this project."
 msgstr "为该计划显示示例支票"
 
-#: glade/project_properties.glade.h:44
+#: glade/project_properties.glade.h:51
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
 msgstr ""
 
-#: glade/project_properties.glade.h:45
+#: glade/project_properties.glade.h:52
 msgid "Time below which an interval is merged with its neighbors"
 msgstr ""
 
-#: glade/project_properties.glade.h:46
+#: glade/project_properties.glade.h:53
 msgid "Urgency:"
 msgstr ""
 
-#: glade/project_properties.glade.h:47
+#: glade/project_properties.glade.h:54
 #, fuzzy
 msgid "What is the status of this project?"
 msgstr "该计划当前的状态。"
 
-#: glade/project_properties.glade.h:48
+#: glade/project_properties.glade.h:55
 msgid "a short description that will be printed on the invoice."
 msgstr ""
 
 # gtt/prop.c:259 gtt/prop.c:297
-#: glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:56
 #, fuzzy
 msgid "seconds"
 msgstr "秒"
 
-# ghex/hex-document.c:87
 #: glade/task_popup.glade.h:1
-#, fuzzy
-msgid "Add a new time interval"
-msgstr "Add a new view of the buffer"
-
-#: glade/task_popup.glade.h:2
 msgid "Cut Entry & _Times"
 msgstr ""
 
-#: glade/task_popup.glade.h:3
-msgid "Delete the diary entry only, keep the time intervals"
-msgstr ""
-
-#: glade/task_popup.glade.h:4
-msgid "Delete the diary entry, and the time intervals below it."
-msgstr ""
-
-#: glade/task_popup.glade.h:5
-msgid "Edit the diary entry and other task properties."
-msgstr ""
-
-#: glade/task_popup.glade.h:6
-msgid "Insert a new diary entry above this one."
-msgstr ""
-
 # gstripchart/gstripchart.c:1891
-#: glade/task_popup.glade.h:7
+#: glade/task_popup.glade.h:2
 #, fuzzy
 msgid "New Time Interval"
 msgstr "slider 更新间隔"
 
-#: glade/task_popup.glade.h:9
+#: glade/task_popup.glade.h:3
 #, fuzzy
 msgid "_Cut Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_popup.glade.h:10
+#: glade/task_popup.glade.h:4
 #, fuzzy
 msgid "_Edit Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_popup.glade.h:11
+#: glade/task_popup.glade.h:5
 #, fuzzy
 msgid "_New Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_popup.glade.h:12
+#: glade/task_popup.glade.h:6
 #, fuzzy
 msgid "_Paste Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_properties.glade.h:1
+#: glade/task_properties.glade.h:2
 msgid "A set of private notes that will not be printed on an invoice."
 msgstr ""
 
-#: glade/task_properties.glade.h:2
+#: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: glade/task_properties.glade.h:5
+#: glade/task_properties.glade.h:6
 #, fuzzy
 msgid "Billable:"
 msgstr "可支付"
 
-#: glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:7
 msgid "Billing Block:"
 msgstr ""
 
 # mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
 # mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#: glade/task_properties.glade.h:7
+#: glade/task_properties.glade.h:8
 #, fuzzy
 msgid "Billing Rate:"
 msgstr "支付率"
 
 # mini-utils/idetool/idetool.c:316
-#: glade/task_properties.glade.h:8
+#: glade/task_properties.glade.h:9
 #, fuzzy
 msgid "Billing Status:"
 msgstr "帐单状态"
 
 # gtt/prop.c:171
-#: glade/task_properties.glade.h:9
+#: glade/task_properties.glade.h:10
 #, fuzzy
 msgid "Diary Entry Properties"
 msgstr "内容"
 
-#: glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:11
 #, fuzzy
 msgid "Diary Entry:"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_properties.glade.h:11
+#: glade/task_properties.glade.h:12
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: glade/task_properties.glade.h:14
+#: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
 "the normal fashion.   \"Not Billable\" means we can't ask for money for "
@@ -1617,36 +1542,100 @@ msgid ""
 "as 'free/no-charge'."
 msgstr ""
 
-#: glade/task_properties.glade.h:15
+#: glade/task_properties.glade.h:16
 msgid ""
 "Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
+# mini-utils/idetool/idetool.c:207
 #: glade/task_properties.glade.h:19
+#, fuzzy
+msgid "Notes:"
+msgstr "注解"
+
+#: glade/task_properties.glade.h:20
 #, fuzzy
 msgid "OverOver"
 msgstr "服务器"
 
-#: glade/task_properties.glade.h:23
+#: glade/task_properties.glade.h:24
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 
 # gtt/prop.c:248 gtt/prop.c:286
-#: glade/task_properties.glade.h:24
+#: glade/task_properties.glade.h:25
 #, fuzzy
 msgid "minutes"
 msgstr "分"
 
-#: gtt.desktop.in.h:1
+#: gnotime.desktop.in.h:1
 msgid "Time Tracker tool"
 msgstr ""
 
-#: gtt.desktop.in.h:2
+#: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr ""
+
+#~ msgid "%d:%02d:%02d"
+#~ msgstr "%d:%02d:%02d"
+
+# gtt/menucmd.c:137 gtt/toolbar.c:153
+#~ msgid "Reload Configuration File"
+#~ msgstr "重新载入设定文件"
+
+# gtt/menucmd.c:123
+#~ msgid "Do you really want to reload the configuration file?"
+#~ msgstr "您真的希望重新装入配置文件？"
+
+#~ msgid "File cannot be written"
+#~ msgstr "无法写入文件"
+
+# gstripchart/gstripchart.c:1538
+#~ msgid "Export Current State"
+#~ msgstr "导出当前状态"
+
+# gtt/menus.c:30
+#~ msgid "_Reload Configuration File"
+#~ msgstr "重新载入设定文件 _R"
+
+# gtt/menus.c:34
+#~ msgid "_Save Configuration File"
+#~ msgstr "另存设定文件 _S"
+
+# gstripchart/gstripchart.c:1538
+#~ msgid "_Export Current State"
+#~ msgstr "导出当前状态(_E)"
+
+# gtt/toolbar.c:157
+#~ msgid "Save Configuration File"
+#~ msgstr "保存配置文件"
+
+# ghex/hex-document.c:87
+#, fuzzy
+#~ msgid "Add a new time interval."
+#~ msgstr "Add a new view of the buffer"
+
+# gstripchart/gstripchart.c:1891
+#, fuzzy
+#~ msgid "Delete This Interval"
+#~ msgstr "slider 更新间隔"
+
+# gtt/toolbar.c:184
+#, fuzzy
+#~ msgid "Edit the Start & Stop Times"
+#~ msgstr "启动/停止 Timer"
+
+# gtt/options.c:260
+#~ msgid "Show `Save', `Reload'"
+#~ msgstr "显示 `储存', `重新载入'"
+
+# ghex/hex-document.c:87
+#, fuzzy
+#~ msgid "Add a new time interval"
+#~ msgstr "Add a new view of the buffer"
 
 #~ msgid ""
 #~ "Executing arbitrary programs that you downloaded from the network might "
@@ -1844,9 +1833,6 @@ msgstr ""
 
 #~ msgid "9"
 #~ msgstr "9"
-
-#~ msgid "*"
-#~ msgstr "*"
 
 #~ msgid "Multiply by"
 #~ msgstr "乘"
@@ -2316,9 +2302,6 @@ msgstr ""
 
 #~ msgid "EI don't know what this is, but it's very wrong."
 #~ msgstr "E未知原因的严重错误。"
-
-#~ msgid "EError formatting track #%d"
-#~ msgstr "E格式化第 %d 道时出错"
 
 #~ msgid "EError during completion of formatting"
 #~ msgstr "E完成格式时出错"
@@ -3033,9 +3016,6 @@ msgstr ""
 #~ msgstr ""
 #~ "用户不能读取 %s。要么以 root 身份运行程序，要么要求系统管理员改变文件的许"
 #~ "可权。"
-
-#~ msgid "%s could not be opened."
-#~ msgstr "无法打开 %s。"
 
 # ghex/ui.c:305
 #~ msgid "%s not a log file."
