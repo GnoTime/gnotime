@@ -24,6 +24,10 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* (various): implement the following two sourceforge featues:
 	  [ 899397 ] Monday := Monday 03:00 to Tuesday 03:00
 	  [ 834919 ] Choice for start of week
+	* src/ctree.c: apply patch to exchange today/yesterday colums
+	  from Andrew Cowie <andrew@operationaldynamics.com>
+	* configure.in: Add improved Guile configure checks from 
+	  Egil Kvaleberg <egil@kvaleberg.no>
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8

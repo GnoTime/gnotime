@@ -53,23 +53,67 @@ dnl *******************************
 dnl Guile checks
 dnl *******************************
 
-# AM_GUILE_VERSION_CHECK(1.3.4, 1.5.0, , [AC_MSG_ERROR([
-# 
-#   guile  does not appear to be installed correctly, or is not in the
-#   correct version range.  Perhaps you have not installed the guile
-#   development packages?  Right now gnotime requires at least version
-#   1.3.4 to build, but does not work with 1.5 or greater.
-# ])])
-		  
 # If nothing else works, then try the hard coded values ..
 # GUILE_LIBS='-lguile -lsocket -lnsl -ldl'
 # GUILE_LIBS='-lguile -lqthreads -lnsl -ldl'
 # GUILE_LIBS='-lguile -lnsl -ldl'
 
-GUILE_FLAGS
-GUILE_LIBS="$GUILE_LDFLAGS"
-AC_SUBST(GUILE_INCS)
-AC_SUBST(GUILE_LIBS)
+# GUILE_FLAGS
+# GUILE_LIBS="$GUILE_LDFLAGS"
+# AC_SUBST(GUILE_INCS)
+# AC_SUBST(GUILE_LIBS)
+
+dnl   GUILE_FLAGS14 --- set flags for compiling and linking with Guile
+dnl   or Guile14
+dnl
+dnl   This macro runs the `guile-config' script, installed with Guile,
+dnl   to find out where Guile's header files and libraries are
+dnl   installed.  It sets four variables, marked for substitution, as
+dnl   by AC_SUBST.
+dnl
+dnl     GUILE --- path of guile interpreter
+dnl
+dnl     GUILE_PACKAGE --- name of guile interpreter.
+dnl
+dnl     GUILE_CFLAGS --- flags to pass to a C or C++ compiler to build
+dnl             code that uses Guile header files.  This is almost
+dnl             always just a -I flag.
+dnl
+dnl     GUILE_LDFLAGS --- flags to pass to the linker to link a
+dnl             program against Guile.  This includes `-lguile' for
+dnl             the Guile library itself, any libraries that Guile
+dnl             itself requires (like -lqthreads), and so on.  It may
+dnl             also include a -L flag to tell the compiler where to
+dnl             find the libraries.
+                                                                                
+
+AC_DEFUN([GUILE_FLAGS14],[
+  AC_PATH_PROG(GUILE,guile14)
+  if test "$GUILE" != "" ; then
+    GUILE_PACKAGE="guile14"
+    GUILE_CFLAGS="`guile-config14 compile`"
+    GUILE_LDFLAGS="`guile-config14 link`"
+  else
+    AC_MSG_RESULT(no)
+    AC_PATH_PROG(GUILE,guile)
+    if test "$GUILE" = "" ; then
+      AC_MSG_ERROR([ 
+        guile14 or guile required but not found. 
+        guile  does not appear to be installed correctly.
+        Perhaps you have not installed the guile development packages? 
+      ])
+    fi
+    GUILE_PACKAGE="guile"
+    GUILE_CFLAGS="`guile-config compile`"
+    GUILE_LDFLAGS="`guile-config link`"
+  fi
+  AC_SUBST(GUILE)
+  AC_SUBST(GUILE_PACKAGE)
+  AC_SUBST(GUILE_CFLAGS)
+  AC_SUBST(GUILE_LDFLAGS)
+])
+
+GUILE_FLAGS14
 
 dnl *****************************************
 dnl libgnome, libgnomeui needed for all utils
