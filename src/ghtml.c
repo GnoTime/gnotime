@@ -894,7 +894,7 @@ show_export (SCM col_list)
 static SCM
 do_show_scm (GttGhtml *ghtml, SCM node)
 {
-	int len;
+	size_t len;
 	char * str = NULL;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
@@ -905,7 +905,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	{
 		char buf[132];
 		double x = scm_num2dbl (node, "do_show_scm");
-		sprintf (buf, "%g ", x);
+		sprintf (buf, "%g", x);
 		(ghtml->write_stream) (ghtml, buf, strlen(buf), ghtml->user_data);
 	}
 	else
@@ -913,8 +913,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
 	{
 		str = gh_scm2newstr (node, &len);
-		(ghtml->write_stream) (ghtml, str, strlen(str), ghtml->user_data);
-		(ghtml->write_stream) (ghtml, " ", 1, ghtml->user_data);
+		if (0<len) (ghtml->write_stream) (ghtml, str, len, ghtml->user_data);
 		free (str);
 	}
 	else
@@ -1184,7 +1183,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 {
 	FILE *ph;
 	GString *template;
-	char *start, *end, *scmstart, *scmend, *comstart, *comend;
+	char *start, *end, *scmstart, *comstart, *comend;
 	size_t nr;
 
 	if (!ghtml) return;
@@ -1239,7 +1238,6 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	while (start)
 	{
 		scmstart = NULL;
-		scmend = NULL;
 		
 		/* look for scheme markup */
 		end = strstr (start, "<?scm");
@@ -1297,6 +1295,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		if (scmstart)
 		{
 			gh_eval_str_with_standard_handler (scmstart);
+			scmstart = NULL;
 		}
 		start = end;
 	}
