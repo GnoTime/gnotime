@@ -51,7 +51,7 @@
         (if (gtt-did-query)
           (gtt-show '"<br><br><b><big>The query did not return 
                       any projects to be listed.</big></b>")
-          (gtt-show '"<br><br><b><big>There is no status to show, 
+          (gtt-show '"<br><br><b><big>There is no to-do list to show, 
                       the selected project has no sub-projects!</big></b>")
         )
         (do-show-todo)

@@ -34,16 +34,23 @@
 	border: 0px;
 	margin: 4px 2px 1px 6px;
 	}
-	.gnotime-start-stop-table
+	.gnotime-start-stop-table,
+	.gnotime-todo-table
 	{
 	background: #f8f8f0;
 	margin: 4px 4px 4px 4px;
 	border: solid 1px #9999a9
 	}
 	.gnotime-start-stop-table-header,
+	.gnotime-todo-table-header
+	{
+	background: #e8e8e8;
+	font-size: 105%;
+	font-weight: bold;
+	}
 	.gnotime-project-status-overview
 	{
-	background: #ebebeb;
+	background: #e8e8e8;
 	display: block;
 	font-size: 105%;
 	font-weight: bold;
