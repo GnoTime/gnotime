@@ -172,3 +172,16 @@
         (- (gtt-interval-stop interval) (gtt-interval-start interval))
 )
   
+;; ---------------------------------------------------------     
+; The gtt-task-billable-value-str routine will display the value of
+; a task, but only if its been marked as 'billable'.
+; XXX Need to i18n/l10n the text '"Billable", otherwise the function
+; breaks
+
+
+(define (gtt-task-billable-value-str task)
+        (if (equal? (gtt-task-billable task) '"Billable")
+            (gtt-task-value-str task) 
+            '"$0.00")
+)
+
