@@ -49,10 +49,12 @@ struct gtt_ghtml_s
 	
 	gboolean show_links; /* Flag -- show internal <a href> links */
 
+	time_t last_ivl_time;  /* hackl for pretty-printing interval dates */
+
 	/* ------------------------------------------------------ */
-	/* deprecated portion of this struct -- will soon go away */
-	/* used only by ghtml-deprecated.c */
-	/* table layout info */
+	/* Deprecated portion of this struct -- will go away someday. */
+	/* Used only by ghtml-deprecated.c */
+	/* Table layout info */
 
 	gboolean show_html;  /* Flag -- add html markup, or not */
 

@@ -76,7 +76,7 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 		return rc;
 	}
 
-	/* if its a list, then process the list */
+	/* If its a list, then process the list */
 	else if (SCM_CONSP(project))
 	{
 		SCM proj_list = project;
@@ -98,6 +98,12 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 		rc = reverse_list (rc);
 		
 		return rc;
+	}
+
+	/* If its a null list, do nothing */
+	else if (SCM_NULLP (project))
+	{ 
+		return project;
 	}
 	
 	g_warning ("expecting gtt project as argument, got something else\n");
@@ -124,7 +130,7 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 		return rc;
 	}
 
-	/* if its a list, then process the list */
+	/* If its a list, then process the list */
 	else if (SCM_CONSP(task))
 	{
 		SCM task_list = task;
@@ -146,6 +152,12 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 		rc = reverse_list (rc);
 		
 		return rc;
+	}
+
+	/* If its a null list, do nothing */
+	else if (SCM_NULLP (task))
+	{ 
+		return task;
 	}
 	
 	g_warning ("expecting gtt task as argument, got something else\n");
@@ -172,7 +184,7 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 		return rc;
 	}
 
-	/* if its a list, then process the list */
+	/* If its a list, then process the list */
 	else if (SCM_CONSP(invl))
 	{
 		SCM invl_list = invl;
@@ -195,6 +207,13 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 		
 		return rc;
 	}
+
+	/* If its a null list, do nothing */
+	else if (SCM_NULLP (invl))
+	{ 
+		return invl;
+	}
+	
 	
 	g_warning ("expecting gtt interval as argument, got something else\n");
 	rc = gh_eval_str ("()");
