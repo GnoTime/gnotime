@@ -234,11 +234,8 @@ edit_interval_dialog_new (void)
 	gtk_object_set_data(GTK_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(12*3600));
 
-	gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE);
-/*
-	gnome_dialog_set_parent(GNOME_DIALOG(dlg->dlg), GTK_WINDOW(window));
-
-*/
+	/* gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE); */
+	gtk_widget_hide_on_delete (dlg->interval_edit);
 	return dlg;
 }
 
