@@ -43,8 +43,8 @@ typedef enum {
 	TIME_MONTH_COL,
 	TIME_WEEK_COL,
 	TIME_LASTWEEK_COL,
-	TIME_TODAY_COL,
 	TIME_YESTERDAY_COL,
+	TIME_TODAY_COL,
 	TIME_CURRENT_COL,
 	TITLE_COL,
 	DESC_COL,
@@ -538,11 +538,11 @@ click_column(GtkCList *clist, gint col, gpointer data)
 		case TIME_CURRENT_COL:
 			prlist = project_list_sort_current (prlist);
 			break;
-		case TIME_TODAY_COL:
-			prlist = project_list_sort_day (prlist);
-			break;
 		case TIME_YESTERDAY_COL:
 			prlist = project_list_sort_yesterday (prlist);
+			break;
+		case TIME_TODAY_COL:
+			prlist = project_list_sort_day (prlist);
 			break;
 		case TIME_WEEK_COL:
 			prlist = project_list_sort_week (prlist);
@@ -763,8 +763,8 @@ ctree_init_cols (ProjTreeWindow *ptw)
 	i++; ptw->cols[i] = TIME_MONTH_COL;
 	i++; ptw->cols[i] = TIME_WEEK_COL;
 	i++; ptw->cols[i] = TIME_LASTWEEK_COL;
-	i++; ptw->cols[i] = TIME_TODAY_COL;
 	i++; ptw->cols[i] = TIME_YESTERDAY_COL;
+	i++; ptw->cols[i] = TIME_TODAY_COL;
 	i++; ptw->cols[i] = TIME_CURRENT_COL;
 	i++; ptw->cols[i] = TITLE_COL;
 	i++; ptw->cols[i] = DESC_COL;
@@ -796,18 +796,18 @@ ctree_init_cols (ProjTreeWindow *ptw)
 					_("Time spent under the current diary entry.");
 				ptw->col_width_set[i] = FALSE;
 				break;
-			case TIME_TODAY_COL:
-				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
-				ptw->col_titles[i] = _("Today");
-				ptw->col_tooltips[i] =  
-					_("Time spent on this project today.");
-				ptw->col_width_set[i] = FALSE;
-				break;
 			case TIME_YESTERDAY_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Yesterday");
 				ptw->col_tooltips[i] =  
 					_("Time spent on this project yesterday.");
+				ptw->col_width_set[i] = FALSE;
+				break;
+			case TIME_TODAY_COL:
+				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
+				ptw->col_titles[i] = _("Today");
+				ptw->col_tooltips[i] =  
+					_("Time spent on this project today.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_WEEK_COL:
@@ -1031,15 +1031,15 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				i, config_show_title_current);
 			break;
-		case TIME_TODAY_COL:
-			default_col_width (ptw, i, "-00:00:00");
-			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
-				 i, config_show_title_day);
-			break;
 		case TIME_YESTERDAY_COL:
 			default_col_width (ptw, i, "-00:00:00");
 			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				 i, config_show_title_yesterday);
+			break;
+		case TIME_TODAY_COL:
+			default_col_width (ptw, i, "-00:00:00");
+			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
+				 i, config_show_title_day);
 			break;
 		case TIME_WEEK_COL:
 			default_col_width (ptw, i, "-00:00:00");
@@ -1157,11 +1157,11 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 		case TIME_CURRENT_COL:
 			PRT_TIME(current);
 			break;
-		case TIME_TODAY_COL:
-			PRT_TIME(day);
-			break;
 		case TIME_YESTERDAY_COL:
 			PRT_TIME(yesterday);
+			break;
+		case TIME_TODAY_COL:
+			PRT_TIME(day);
 			break;
 		case TIME_WEEK_COL:
 			PRT_TIME(week);
