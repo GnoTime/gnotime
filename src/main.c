@@ -424,8 +424,8 @@ make_backup (const char * filename)
 		 * some of these older files by hand */
 		sprintf (new_name+len, ".%d.%d", suffix, lm); 
 		sprintf (old_name+len, ".%d.2", suffix-1); 
-		stat (old_name, &old_stat);
-		rc = rename (old_name, new_name);
+		rc = stat (old_name, &old_stat);
+		rc += rename (old_name, new_name);
 		if (0 == rc)
 		{
 			ub.actime = old_stat.st_atime;
@@ -435,8 +435,8 @@ make_backup (const char * filename)
 	}
 	
 	sprintf (new_name+len, ".0.%d",lm); 
-	stat (filename, &old_stat);
-	rc = rename (filename, new_name);
+	rc = stat (filename, &old_stat);
+	rc += rename (filename, new_name);
 	if (0 == rc)
 	{
 		ub.actime = old_stat.st_atime;
