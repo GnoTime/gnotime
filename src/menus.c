@@ -1,5 +1,6 @@
-/*   GTimeTracker - a time tracker
+/*   Application menubar menu layout for GTimeTracker
  *   Copyright (C) 1997,98 Eckehard Berns
+ *   Copyright (C) 2002, 2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,7 +29,6 @@
 #include "menus.h"
 #include "plug-in.h"
 #include "timer.h"
-#include "toolbar.h"
 
 
 static GnomeUIInfo menu_main_file[] = {
@@ -254,14 +254,6 @@ menus_add_plugins (GnomeApp *app)
 }
 
 
-GtkCheckMenuItem *
-menus_get_toggle_timer(void)
-{
-	return GTK_CHECK_MENU_ITEM(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget);
-}
-
-
-
 void
 menu_set_states(void)
 {
@@ -271,7 +263,17 @@ menu_set_states(void)
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget,
 				 1);
 	mi = GTK_CHECK_MENU_ITEM(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget);
+	/* Can't call the 'set_active' directly, as that issues an 
+	 * event which puts us in an infinite loop.  Instead,
+	 * just set the value.
+	 * gtk_check_menu_item_set_active (mi, timer_is_running());
+	 */
 	mi->active = timer_is_running();
+
+	/* XXX would be nice to change this menu entry to say 
+	 * 'timer stopped' when the timer is stopped.  But don't
+	 * know how to change the menu label in gtk */
+			  
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_START_POS].widget,
 				 (FALSE == timer_is_running()) );
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_STOP_POS].widget,
@@ -279,12 +281,13 @@ menu_set_states(void)
 	gtk_widget_set_sensitive(menu_main_edit[MENU_EDIT_PASTE_POS].widget,
 				 (cutted_project) ? 1 : 0);
 
-	if (!menu_popup[MENU_POPUP_CUT_POS].widget) return;
-
-	gtk_widget_set_sensitive(menu_popup[MENU_POPUP_PASTE_POS].widget,
+printf ("duuude cutted project=%p\n", cutted_project);
+	if (menu_popup[MENU_POPUP_CUT_POS].widget)
+	{
+		gtk_widget_set_sensitive(menu_popup[MENU_POPUP_PASTE_POS].widget,
 				 (cutted_project) ? 1 : 0);
-
-	toolbar_set_states();
+	}
 }
 
+/* ======================= END OF FILE ===================== */
 

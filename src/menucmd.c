@@ -304,6 +304,14 @@ cut_project(GtkWidget *w, gpointer data)
 	if (cutted_project == cur_proj) ctree_stop_timer (cur_proj);
 	gtt_project_remove(cutted_project);
 	ctree_remove(global_ptw, cutted_project);
+
+	/* Update various subsystems */
+	/* Set the notes are to whatever the new focus project is. */
+	prj = ctree_get_focus_project (global_ptw);
+	notes_area_set_project (global_na, prj);
+						 
+	menu_set_states();      /* to enable paste menu item */
+	toolbar_set_states();
 }
 
 
@@ -349,7 +357,10 @@ copy_project(GtkWidget *w, gpointer data)
 		gtt_project_destroy(cutted_project);
 	}
 	cutted_project = gtt_project_dup(prj);
-	menu_set_states(); /* to enable paste */
+	
+	/* Update various subsystems */
+	menu_set_states();      /* to enable paste menu item */
+	toolbar_set_states();
 }
 
 
@@ -382,7 +393,6 @@ menu_toggle_timer(GtkWidget *w, gpointer data)
 	GttProject *prj;
 	prj = ctree_get_focus_project (global_ptw);
 
-	/* if (GTK_CHECK_MENU_ITEM(menus_get_toggle_timer())->active) { */
 	if (timer_is_running()) {
 		ctree_stop_timer (cur_proj);
 	} else {

@@ -204,6 +204,16 @@ ctree_stop_timer (GttProject *prj)
 }
 
 /* ============================================================== */
+
+static GtkCTreeNode *
+get_focus_row (GtkCTree *ctree)
+{
+	GtkCTreeNode *rownode;
+	rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
+	return rownode;
+}
+
+/* ============================================================== */
 /* Pseudo focus-row-changed callback. Things inside of ctree
  * should call this, which in turn calls out to distribute
  * an event to other subsystems, telling them that the focus 
@@ -249,14 +259,6 @@ ctree_get_focus_project (ProjTreeWindow *ptw)
 	return proj;
 }
 
-
-static GtkCTreeNode *
-get_focus_row (GtkCTree *ctree)
-{
-	GtkCTreeNode *rownode;
-	rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
-	return rownode;
-}
 
 static void
 set_focus_project (ProjTreeWindow *ptw, GttProject *prj)

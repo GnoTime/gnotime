@@ -23,8 +23,6 @@ GtkWidget *menus_get_popup(void);
 void menus_create(GnomeApp *app);
 void menus_set_states(void);
 
-GtkCheckMenuItem *menus_get_toggle_timer(void);
-
 void menus_add_plugins(GnomeApp *app);
 
 #endif /* __GTT_MENUS_H__ */

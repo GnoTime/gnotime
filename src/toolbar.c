@@ -56,7 +56,6 @@ MyToolbar *mytbar = NULL;
 void
 toolbar_set_states(void)
 {
-	extern GttProject *cutted_project;
 	GtkToolbarStyle tb_style;
 
 	g_return_if_fail(mytbar != NULL);

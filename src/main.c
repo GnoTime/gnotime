@@ -192,6 +192,7 @@ post_read_data(void)
 	ctree_setup(global_ptw);
 	gtt_post_ctree_config();
 	menu_set_states();
+	toolbar_set_states();
 	init_timer();
 
 	/* plugins need to be added to the main menus dynamically,

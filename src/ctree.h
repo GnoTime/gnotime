@@ -29,8 +29,12 @@ typedef struct ProjTreeWindow_s ProjTreeWindow;
 
 extern int clist_header_width_set;
 
-/* create the window that shows the project tree */
+/* The ctree_new() routine will create the widget that shows the 
+ *    project tree.  It returns a pointer to an opaque handle to
+ *    reference this widget.
+ */
 ProjTreeWindow * ctree_new(void);
+
 void ctree_setup(ProjTreeWindow *ptw);
 void ctree_destroy(ProjTreeWindow *ptw);
 
@@ -56,7 +60,7 @@ void ctree_insert_after(ProjTreeWindow *, GttProject *p, GttProject *insert_afte
  *    the project as 'active', but it will also actually start the 
  *    project timer ticking.
  *
- * The ctree_stop_timer() routine stop the project timer.
+ * The ctree_stop_timer() routine stops the project timer.
  */
 void ctree_start_timer (GttProject *prj);
 void ctree_stop_timer (GttProject *prj);

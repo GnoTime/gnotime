@@ -197,6 +197,7 @@ cur_proj_set (GttProject *proj)
 
 	/* update GUI elements */
 	menu_set_states();
+	toolbar_set_states();
 	if (proj) 
 	{
 		prop_dialog_set_project(proj);

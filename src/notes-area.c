@@ -245,18 +245,20 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	
 	if (!na) return;
 
-	if (!proj) return; // xxx should clear fields instead
-
 	/* Calling gtk_entry_set_text makes 'changed' events happen,
 	 * which causes us to get the entry text, which exposes a gtk
 	 * bug.  So we work around the bug and save cpu time by ignoring
 	 * change events during a mass update. */
 	na->ignore_events = TRUE;
 	
+	/* Note Bene its OK to have the proj be null: this has the
+	 * effect of clearing all the fields out.
+	 */
 	na->proj = proj;
 	
 	/* Fetch data from the data engine, stuff it into the GUI. */
 	str = gtt_project_get_title (proj);
+	if (!str) str = "";
 	gtk_entry_set_text (na->proj_title, str);
 	
 	str = gtt_project_get_desc (proj);

@@ -25,7 +25,10 @@ typedef struct NotesArea_s NotesArea;
 
 NotesArea * notes_area_new (void);
 
-/* bind a project to the notes area */
+/* The notes_area_set_project() routine binds a project to the 
+ *    notes area.  That is, the notes area will display (and edit)
+ *    the indicated project.
+ */
 void notes_area_set_project (NotesArea *na, GttProject *proj);
 
 /* returns the vpaned widget at the top of the notes area heirarchy */
