@@ -122,7 +122,12 @@ printf_project(const char *format, GttProject *proj)
 			   sss = gtt_project_get_id (proj);
 				g_string_append_printf (str, "%d", sss);
 				break;
-				
+
+			case 'e':
+				sss = gtt_project_get_sizing (proj);
+				g_string_append_printf (str,"%d", sss);
+				break;
+
 			case 'h':
 				sss = gtt_project_get_secs_ever (proj);
 				g_string_append_printf (str, "%d", sss / 3600);
