@@ -3,18 +3,19 @@
 
 <glade-interface>
 
-<widget class="GtkDialog" id="idle dialog">
-  <property name="visible">True</property>
+<widget class="GtkDialog" id="Idle Dialog">
   <property name="title" translatable="yes">Restart Idle Timer Dialog</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
-  <property name="window_position">GTK_WIN_POS_NONE</property>
-  <property name="modal">False</property>
+  <property name="window_position">GTK_WIN_POS_CENTER</property>
+  <property name="modal">True</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="has_separator">True</property>
+  <signal name="close" handler="gtk_widget_hide" last_modification_time="Thu, 02 Jan 2003 19:51:10 GMT"/>
+  <signal name="destroy_event" handler="gtk_widget_hide" last_modification_time="Thu, 02 Jan 2003 20:04:39 GMT"/>
 
   <child internal-child="vbox">
-    <widget class="GtkVBox" id="dialog-vbox1">
+    <widget class="GtkVBox" id="dialog box">
       <property name="visible">True</property>
       <property name="homogeneous">False</property>
       <property name="spacing">0</property>
@@ -102,7 +103,6 @@
 	      <child>
 		<widget class="GtkScrolledWindow" id="scrolledwindow1">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
 		  <property name="vscrollbar_policy">GTK_POLICY_NEVER</property>
 		  <property name="shadow_type">GTK_SHADOW_NONE</property>
@@ -157,7 +157,6 @@ another message).</property>
 	      <child>
 		<widget class="GtkScrolledWindow" id="scrolledwindow2">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
 		  <property name="vscrollbar_policy">GTK_POLICY_NEVER</property>
 		  <property name="shadow_type">GTK_SHADOW_NONE</property>
