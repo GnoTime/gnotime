@@ -280,6 +280,15 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 
 /* ============================================================== */
 
+#define PROJ_COL_TITLE(DEFAULT_STR)                        \
+{                                                          \
+   if (ghtml->proj_titles[i]) {                            \
+      p = g_string_append (p, ghtml->proj_titles[i]);      \
+   } else {                                                \
+      p = g_string_append (p, DEFAULT_STR);                \
+   }                                                       \
+}
+
 #define TASK_COL_TITLE(DEFAULT_STR)                        \
 {                                                          \
    if (ghtml->task_titles[i]) {                            \
@@ -305,7 +314,6 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	GList *node;
 	char buff [100];
 	GString *p;
-	char * ps;
 	gboolean output_html = ghtml->show_html;
 	gboolean show_links = ghtml->show_links;
 
@@ -365,12 +373,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 				TASK_COL_TITLE (_("No Default Value"));
 		}
 		p = g_string_append (p, ghtml->delim);	
+		if (output_html) p = g_string_append (p, "</th>");
 	}
 	p = g_string_append (p, "\r\n");
 
 	if (output_html && (0 < ghtml->ninvl_cols))
 	{
-		p = g_string_append (p, "</th></tr><tr>");
+		p = g_string_append (p, "</tr><tr>");
 	}
 	for (i=0; i<ghtml->ninvl_cols; i++)
 	{
@@ -392,10 +401,11 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			default:
 				TASK_COL_TITLE (_("No Default Value"));
 		}
+		if (output_html) p = g_string_append (p, "</th>");
 	}
 	if (output_html && (0 < ghtml->ninvl_cols))
 	{
-		p = g_string_append (p, "</th></tr>");
+		p = g_string_append (p, "</tr>");
 	}
 	p = g_string_append (p, "\r\n");
 
@@ -457,7 +467,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 				break;
 		}
 
-		/* start with an ampty string */
+		/* start with an empty string */
 		p = g_string_truncate (p,0);
 
 		/* write the task data */
@@ -568,11 +578,12 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 					p = g_string_append (p, _("Error - Unknown"));
 			}
 			p = g_string_append (p, ghtml->delim);
+			if (output_html) p = g_string_append (p, "</td>");
 		}
 
 		if (0 < ghtml->ntask_cols)
 		{
-			if (output_html) p = g_string_append (p, "</td></tr>");
+			if (output_html) p = g_string_append (p, "</tr>");
 			p = g_string_append (p, "\r\n");
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 		}
@@ -661,9 +672,10 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	default:
 		if (output_html) p = g_string_append (p, "<td>");
 				}
+				if (output_html) p = g_string_append (p, "</td>");
 			}
 
-			if (output_html) p = g_string_append (p, "</td></tr>");
+			if (output_html) p = g_string_append (p, "</tr>");
 			p = g_string_append (p, ghtml->delim);
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 		}
@@ -673,16 +685,137 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 	g_string_free (p, FALSE);
 	
-	if (output_html) ps = "</table>\n";
-	(ghtml->write_stream) (ghtml, ps, strlen(ps), ghtml->user_data);
+	if (output_html)
+	{
+		char * ps = "</table>\n";
+		(ghtml->write_stream) (ghtml, ps, strlen(ps), ghtml->user_data);
+	}
 }
 
 /* ============================================================== */
+/* write out a list of projects */
+
+static SCM
+do_show_project_header (GttGhtml *ghtml)
+{
+	int i;
+	GString *p;
+	char * ps;
+	gboolean output_html = ghtml->show_html;
+	gboolean show_links = ghtml->show_links;
+
+	if (NULL == ghtml->write_stream) return;
+
+	p = g_string_new (NULL);
+	if (output_html) p = g_string_append (p, "<table border=1>");
+
+	/* write out the table header */
+	if (output_html && (0 < ghtml->nproj_cols))
+	{
+		p = g_string_append (p, "<tr>");
+	}
+	for (i=0; i<ghtml->nproj_cols; i++)
+	{
+		switch (ghtml->proj_cols[i]) 
+		{
+			case TITLE:
+				if (output_html) p = g_string_append (p, "<th>");
+				PROJ_COL_TITLE (_("Title"));
+				break;
+			case DESC:
+				if (output_html) p = g_string_append (p, "<th>");
+				PROJ_COL_TITLE (_("Description"));
+				break;
+			default:
+				if (output_html) p = g_string_append (p, "<th>");
+				PROJ_COL_TITLE (_("No Default Value"));
+		}
+		p = g_string_append (p, ghtml->delim);	
+		if (output_html) p = g_string_append (p, "</th>");
+	}
+	p = g_string_append (p, "</tr>\r\n");
+
+	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
+
+	g_string_free (p, FALSE);
+	
+	return SCM_UNSPECIFIED;  
+}
+
+static SCM
+do_show_project_footer (GttGhtml *ghtml)
+{
+	gboolean output_html = ghtml->show_html;
+
+	if (NULL == ghtml->write_stream) return;
+	
+	if (output_html) 
+	{
+		char * ps = "</table>\n";
+		(ghtml->write_stream) (ghtml, ps, strlen(ps), ghtml->user_data);
+	}
+
+	return SCM_UNSPECIFIED;  
+}
 
 static SCM
 do_show_project (GttGhtml *ghtml, GttProject *prj)
 {
-	(ghtml->write_stream) (ghtml, "like duude<br><br>", 18, ghtml->user_data);
+	int i;
+	GList *node;
+	char buff [100];
+	GString *p;
+	char * ps;
+	gboolean output_html = ghtml->show_html;
+	gboolean show_links = ghtml->show_links;
+
+	if (NULL == ghtml->write_stream) return;
+
+	p = g_string_new (NULL);
+
+	/* write the project data */
+	if (output_html && (0 < ghtml->nproj_cols))
+	{
+		p = g_string_append (p, "<tr>");
+	}
+	for (i=0; i<ghtml->nproj_cols; i++)
+	{
+		const char *pp;
+
+		switch (ghtml->proj_cols[i]) 
+		{
+			case TITLE:
+				if (output_html) p = g_string_append (p, "<td>");
+				if (show_links) 
+				{
+					g_string_append_printf (p, "<a href=\"gtt:proj:0x%x\">", prj);
+				}
+				pp = gtt_project_get_title(prj);
+				if (!pp || !pp[0]) pp = _("(empty)");
+				p = g_string_append (p, pp);
+				if (show_links) p = g_string_append (p, "</a>");
+				break;
+
+			case DESC:
+				if (output_html) p = g_string_append (p, "<td align=left>");
+				pp = gtt_project_get_desc(prj);
+				if (!pp || !pp[0]) pp = _("(empty)");
+				p = g_string_append (p, pp); 
+				break;
+
+			default:
+				if (output_html) p = g_string_append (p, "<td>");
+		}
+		if (output_html) p = g_string_append (p, "</td>");
+	}
+
+	p = g_string_append (p, ghtml->delim);
+	if (output_html) p = g_string_append (p, "</tr>\n");
+	
+	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
+
+	g_string_free (p, FALSE);
+
 	return SCM_UNSPECIFIED;  
 }
 
@@ -914,26 +1047,12 @@ show_project (SCM proj_list, SCM col_list)
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG2, "gtt-show-project");
 	
 	rc = decode_scm_col_list (ghtml, col_list);
+	rc = do_show_project_header (ghtml);
 	rc = do_apply_on_project (ghtml, proj_list, do_show_project); 
+	rc = do_show_project_footer (ghtml);
 	return rc;
 }
 
-static SCM
-show_project_xxx (SCM proj_and_col_list)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	SCM proj_list, col_list, rc;
-	
-	SCM_ASSERT ( SCM_CONSP (proj_and_col_list), proj_and_col_list, 
-						 SCM_ARG1, "gtt-show-project");
-	
-	proj_list = gh_car (proj_and_col_list);
-	col_list = gh_cdr (proj_and_col_list);
-
-	rc = decode_scm_col_list (ghtml, col_list);
-	rc = do_apply_on_project (ghtml, proj_list, do_show_project); 
-	return rc;
-}
 
 /* ============================================================== */
 /* This routine accepts an SCM node, and 'prints' it out.
