@@ -237,7 +237,6 @@ static void
 new_task_cb (GtkButton *but, NotesArea *na)
 {
 	GttTask *tsk;
-	const char * str;
 	if (NULL == na->proj) return;
 	// if (na->ignore_events) return;
 	

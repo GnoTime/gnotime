@@ -477,10 +477,7 @@ static void
 edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 {
 	int row;
-	GnomeUIInfo *curr_item;
 	GnomeUIInfo *sysmenus;
-	GtkTreeModel *model;
-	GValue val = {G_TYPE_INVALID};
 	PluginEditorDialog *dlg = data;
 
 	if (FALSE == dlg->have_selection) return;
