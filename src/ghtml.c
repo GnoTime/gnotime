@@ -25,6 +25,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include <qof.h>
 
@@ -1266,7 +1267,6 @@ void
 gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
                    GttProject *prj)
 {
-	FILE *ph;
 	GString *template;
 	char *start, *end, *scmstart, *comstart, *linkstart;
 	size_t nr;
@@ -1284,8 +1284,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	}
 
 	/* Try to get the ghtml file ... */
-	ph = fopen (filepath, "r");
-	if (!ph && (0==ghtml->open_count))
+	GnomeVFSResult    result;
+	GnomeVFSHandle   *handle;
+	result = gnome_vfs_open (&handle, filepath, GNOME_VFS_OPEN_READ);
+	if ((GNOME_VFS_OK != result) && (0==ghtml->open_count))
 	{
 		if (ghtml->error)
 		{
@@ -1297,18 +1299,18 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 
 	/* Read in the whole file.  Hopefully its not huge */
 	template = g_string_new (NULL);
-	while (!feof (ph))
+	while (GNOME_VFS_OK == result)
 	{
 #define BUFF_SIZE 4000
 		char buff[BUFF_SIZE+1];
-		nr = fread (buff, 1, BUFF_SIZE, ph);
-		if (0 >= nr) break;  /* EOF I presume */
-		buff[nr] = 0x0;
+		GnomeVFSFileSize  bytes_read;
+		result = gnome_vfs_read (handle, buff, BUFF_SIZE, &bytes_read);
+		if (0 >= bytes_read) break;  /* EOF I presume */
+		buff[bytes_read] = 0x0;
 		g_string_append (template, buff);
 	}
-	fclose (ph);
-		
-	
+	gnome_vfs_close (handle);
+
 	/* ugh. gag. choke. puke. */
 	ghtml_guile_global_hack = ghtml;
 
