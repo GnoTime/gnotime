@@ -67,6 +67,7 @@ zero_on_rollover (time_t when)
 	    (day_last_reset != t1->tm_yday)) 
 	{
 		gtt_project_list_compute_secs ();
+		ctree_refresh(global_ptw);
 		log_endofday();
 		year_last_reset = t1->tm_year;
 	    	day_last_reset = t1->tm_yday;
