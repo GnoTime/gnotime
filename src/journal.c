@@ -68,7 +68,6 @@ wiggy_open (GttGhtml *pl, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* open the browser for writing */
-	// wig->handle = gtk_html_begin_content(wig->htmlw, "text/html");
 	html_document_clear (wig->html_doc);
 	html_document_open_stream (wig->html_doc, "text/html");
 }
@@ -79,9 +78,7 @@ wiggy_close (GttGhtml *pl, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* close the browser stream */
-	// gtk_html_end (wig->htmlw, wig->handle, GTK_HTML_STREAM_OK);
 	html_document_close_stream (wig->html_doc);
-	wig->html_doc = NULL;
 }
 
 static void
@@ -90,7 +87,6 @@ wiggy_write (GttGhtml *pl, const char *str, size_t len, gpointer ud)
 	Wiggy *wig = (Wiggy *) ud;
 
 	/* write to the browser stream */
-	// gtk_html_write (wig->htmlw, wig->handle, str, len);
 	html_document_write_stream (wig->html_doc, str, len);
 }
 
@@ -570,13 +566,9 @@ do_show_report (const char * report, GttProject *prj)
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
 	  
-	/* XXX */
 	g_signal_connect (G_OBJECT(wig->html_doc), "link_clicked",
 			G_CALLBACK (html_link_clicked_cb), wig);
 	
-	// agtk_signal_connect(GTK_OBJECT(wig->html_doc), "link_clicked",
-	//	GTK_SIGNAL_FUNC(html_link_clicked_cb), wig);
-
 #if LATER
 	gtk_signal_connect(GTK_OBJECT(wig->html_doc), "on_url",
 		GTK_SIGNAL_FUNC(html_on_url_cb), wig);
