@@ -187,22 +187,22 @@ int		gtt_project_get_auto_merge_gap (GttProject *);
  * could define multiple stages: e.g. 'testing', 'designing', 
  * 'on-hold', 'waiting for response', etc.
  */
-void		gtt_project_set_estimated_start (GttProject *, time_t);
-time_t		gtt_project_get_estimated_start (GttProject *);
-void		gtt_project_set_estimated_end (GttProject *, time_t);
-time_t		gtt_project_get_estimated_end (GttProject *);
-void		gtt_project_set_due_date (GttProject *, time_t);
-time_t		gtt_project_get_due_date (GttProject *);
-void		gtt_project_set_sizing (GttProject *, int);
-int		gtt_project_get_sizing (GttProject *);
-void		gtt_project_set_percent_complete (GttProject *, int);
-int		gtt_project_get_percent_complete (GttProject *);
-void		gtt_project_set_urgency (GttProject *, GttRank);
-GttRank		gtt_project_get_urgency (GttProject *);
-void		gtt_project_set_importance (GttProject *, GttRank);
-GttRank		gtt_project_get_importance (GttProject *);
-void		gtt_project_set_status (GttProject *, GttProjectStatus);
-GttProjectStatus		gtt_project_get_status (GttProject *);
+void     gtt_project_set_estimated_start (GttProject *, time_t);
+time_t   gtt_project_get_estimated_start (GttProject *);
+void     gtt_project_set_estimated_end (GttProject *, time_t);
+time_t   gtt_project_get_estimated_end (GttProject *);
+void     gtt_project_set_due_date (GttProject *, time_t);
+time_t   gtt_project_get_due_date (GttProject *);
+void     gtt_project_set_sizing (GttProject *, int);
+int      gtt_project_get_sizing (GttProject *);
+void     gtt_project_set_percent_complete (GttProject *, int);
+int      gtt_project_get_percent_complete (GttProject *);
+void     gtt_project_set_urgency (GttProject *, GttRank);
+GttRank  gtt_project_get_urgency (GttProject *);
+void     gtt_project_set_importance (GttProject *, GttRank);
+GttRank  gtt_project_get_importance (GttProject *);
+void     gtt_project_set_status (GttProject *, GttProjectStatus);
+GttProjectStatus      gtt_project_get_status (GttProject *);
 
 
 /* The id is a simple id, handy for .. stuff */
