@@ -20,10 +20,10 @@
 
 #include "config.h"
 
-#include <errno.h>
 #include <glade/glade.h>
 #include <gnome.h>
 #include <gtkhtml/gtkhtml.h>
+#include <libgnomevfs/gnome-vfs.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -77,8 +77,8 @@ typedef struct wiggy_s
 
 	/* Save-to-file dialog */
 	GtkFileSelection *filesel;
-	FILE        *fh;        /* file handle to save to */
-	GttPlugin   *plg;       /* file path save history */
+	GnomeVFSHandle   *handle;  /* file handle to save to */
+	GttPlugin   *plg;          /* file path save history */
 
 	/* Publish-to-URL dialog */
 	GtkWidget *publish_popup;
@@ -161,7 +161,18 @@ static void
 file_write (GttGhtml *pl, const char *str, size_t len, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
-	fwrite (str, len, 1, wig->fh);
+	GnomeVFSFileSize buflen = len;
+	GnomeVFSFileSize bytes_written = 0;
+	size_t off = 0;
+	while (1)
+	{
+		GnomeVFSResult result;
+		result = gnome_vfs_write (wig->handle, &str[off], buflen, &bytes_written);
+		off += bytes_written;
+		buflen -= bytes_written;
+		if (0>= buflen) break;
+		if (GNOME_VFS_OK != result) break;
+	}
 }
 
 /* ============================================================== */
@@ -199,7 +210,11 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	}
 
 	/* Don't clobber the file, ask user for permission */
-	if (0 == access (filename, F_OK))
+	GnomeVFSURI *parsed_uri;
+	parsed_uri = gnome_vfs_uri_new  (filename);
+	gboolean exists = gnome_vfs_uri_exists (parsed_uri);
+	gnome_vfs_uri_unref (parsed_uri);
+	if (exists)
 	{
 		GtkWidget *dg;
 		char *s;
@@ -213,14 +228,16 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	}
 		
 	/* Try to open the file for writing */
-	wig->fh = fopen (filename, "w");
-	if (!wig->fh) 
+	GnomeVFSResult    result;
+	result = gnome_vfs_create (&wig->handle, filename, 
+	                     GNOME_VFS_OPEN_WRITE, FALSE, 0644);
+
+	if (GNOME_VFS_OK != result)
 	{
 		gchar *msg;
 		GtkWidget *mb;
-		int nerr = errno;
 		msg = g_strdup_printf (_("Unable to open the file %s\n%s"),
-			filename, strerror (nerr)); 
+			filename, gnome_vfs_result_to_string (result));
 		mb = gnome_message_box_new (msg,
 			GNOME_MESSAGE_BOX_ERROR, 
 			GTK_STOCK_CLOSE,
@@ -238,8 +255,8 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 		gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
 		gtt_ghtml_show_links (wig->gh, TRUE);
 
-		fclose (wig->fh);
-		wig->fh = NULL;
+		gnome_vfs_close (wig->handle);
+		wig->handle = NULL;
 
 		/* Reset the html out handlers back to the browser */
 		gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
@@ -682,18 +699,22 @@ html_url_requested_cb(GtkHTML *doc, const gchar * url,
 	const char * path = gtt_ghtml_resolve_path (url, wig->filepath);
 	if (!path) return;
 
-	FILE *fh = fopen (path, "r");
-	if (!fh) return;
+	GnomeVFSResult    result;
+	GnomeVFSHandle   *vfs;
+	result = gnome_vfs_open (&vfs, path, GNOME_VFS_OPEN_READ);
+
+	if (GNOME_VFS_OK != result) return;
 	
 #define BSZ 16000
 	char buff[BSZ];
-	size_t sz = fread (buff, 1, BSZ, fh);
-	while (0 < sz)
+	GnomeVFSFileSize  bytes_read; 
+	result = gnome_vfs_read (vfs, buff, BSZ, &bytes_read);
+	while (GNOME_VFS_OK == result)
 	{
-		gtk_html_write (doc, handle, buff, sz);
-		sz = fread (buff, 1, BSZ, fh);
+		gtk_html_write (doc, handle, buff, bytes_read);
+		result = gnome_vfs_read (vfs, buff, BSZ, &bytes_read);
 	}
-	fclose (fh);
+	gnome_vfs_close (vfs);
 }
 
 /* ============================================================== */
@@ -983,7 +1004,6 @@ do_show_report (const char * report, GttPlugin *plg,
 	wig = g_new0 (Wiggy, 1);
 	wig->edit_ivl = NULL;
 	wig->filesel = NULL;
-	wig->fh = NULL;
 
 	wig->top = jnl_top;
 	wig->plg = plg;
