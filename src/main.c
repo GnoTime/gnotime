@@ -680,8 +680,9 @@ guile_inner_main(void *closure, int argc, char **argv)
 }
 
 #if defined (HAVE_DECL_WNOHANG) && defined (HAVE_WAITPID)
-inline RETSIGTYPE sigchld_handler(int unused) {
-    while(waitpid(-1, NULL, WNOHANG) > 0) {}
+inline RETSIGTYPE sigchld_handler(int unused) 
+{
+	while(waitpid(-1, NULL, WNOHANG) > 0) {}
 }
 #endif
 
@@ -689,8 +690,8 @@ int
 main(int argc, char *argv[])
 {
 #if defined (HAVE_DECL_WNOHANG) || defined (HAVE_DECL_SA_NOCLDWAIT)
-    struct sigaction reapchildren;
-    memset(&reapchildren, 0, sizeof reapchildren);
+	struct sigaction reapchildren;
+	memset(&reapchildren, 0, sizeof reapchildren);
 #endif /*  WNOHANG/SA_NOCLDWAIT */
 
 	static char *geometry_string = NULL;
@@ -724,17 +725,17 @@ main(int argc, char *argv[])
 	gconf_init (argc, argv, NULL);
 
 #ifdef HAVE_DECL_WNOHANG
-    /* Create a signal handler to reap zombie processes.  Most portable */
-    reapchildren.sa_flags=SA_NOCLDSTOP;
-    reapchildren.sa_handler=sigchld_handler;
-    sigaction(SIGCHLD, &reapchildren, NULL);
+	/* Create a signal handler to reap zombie processes.  Most portable */
+	reapchildren.sa_flags=SA_NOCLDSTOP;
+	reapchildren.sa_handler=sigchld_handler;
+	sigaction(SIGCHLD, &reapchildren, NULL);
 #elif defined (HAVE_DECL_SA_NOCLDWAIT)
-    /* Specify autoreaping using sigaction flag.  Next most portable */
-    memset(&reapchildren, 0, sizeof reapchildren);
-    reapchildren.sa_flags = SA_NOCLDWAIT;
-    sigaction(SIGCHLD, &reapchildren, NULL);
+	/* Specify autoreaping using sigaction flag.  Next most portable */
+	memset(&reapchildren, 0, sizeof reapchildren);
+	reapchildren.sa_flags = SA_NOCLDWAIT;
+	sigaction(SIGCHLD, &reapchildren, NULL);
 #else
-    /* Old SysVr3 way of specifying auto reaping.  Inconsistently supported */
+	/* Old SysVr3 way of specifying auto reaping.  Inconsistently supported */
 	signal (SIGCHLD, SIG_IGN);
 #endif /* Signal handler to auto-reap zombies */
 
@@ -771,7 +772,7 @@ main(int argc, char *argv[])
 	read_config();
 #endif
 
-   scm_boot_guile (argc, argv, guile_inner_main, NULL);
+	scm_boot_guile (argc, argv, guile_inner_main, NULL);
 	return 0; /* not reached !? */
 }
 
