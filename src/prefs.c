@@ -21,13 +21,13 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
-#include <libgnome/gnome-help.h>
 #include <string.h>
 
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
+#include "dialog.h"
 #include "gtt.h"
 #include "prefs.h"
 #include "timer.h"
@@ -548,7 +548,6 @@ prefs_dialog_new (void)
 {
 	PrefsDialog *dlg;
 	GladeXML *gtxml;
-	// static GnomeHelpMenuEntry help_entry = { NULL, "preferences.html#PREF" };
 
 	dlg = g_malloc(sizeof(PrefsDialog));
 
@@ -557,12 +556,9 @@ prefs_dialog_new (void)
 
 	dlg->dlg = GNOME_PROPERTY_BOX (glade_xml_get_widget (gtxml,  "Global Preferences"));
 
-#if GNOME_20_HELP_IS_DIFFERENT
-	help_entry.name = gnome_app_id;
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
-			   GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-			   &help_entry);
-#endif
+			   GTK_SIGNAL_FUNC(gtt_help_popup),
+			   "gnotime.xml#preferences");
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",
 			   GTK_SIGNAL_FUNC(prefs_set), dlg);

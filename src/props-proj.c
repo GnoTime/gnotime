@@ -21,9 +21,9 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
-#include <libgnome/gnome-help.h>
 #include <string.h>
 
+#include "dialog.h"
 #include "proj.h"
 #include "props-proj.h"
 #include "util.h"
@@ -318,13 +318,13 @@ static void wrapper (void * gobj, void * data) {
 	g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL); \
 }
 
+/* ================================================================= */
 
 static PropDlg *
 prop_dialog_new (void)
 {
 	PropDlg *dlg;
 	GladeXML *gtxml;
-	/* static GnomeHelpMenuEntry help_entry = { NULL, "dialogs.html#PROPERTIES" }; */
 
 	dlg = g_new0(PropDlg, 1);
 
@@ -333,12 +333,9 @@ prop_dialog_new (void)
 
 	dlg->dlg = GNOME_PROPERTY_BOX (glade_xml_get_widget (gtxml,  "Project Properties"));
 
-#ifdef GNOME_20_HAS_INCOMPATIBLE_HELP_SYSTEM
-	help_entry.name = gnome_app_id;
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
-			   GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-			   &help_entry);
-#endif
+			   GTK_SIGNAL_FUNC(gtt_help_popup),
+			   "gnotime.xml#preferences");
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",
 			   GTK_SIGNAL_FUNC(prop_set), dlg);

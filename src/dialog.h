@@ -19,6 +19,10 @@
 #define __DIALOG_H__
 
 
+/* Most of these dialog popups are probably obsolete, and have 
+ * been replaced by gnome-standard API's.  Please remove these
+ * when appropriate.
+ */
 void new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
 		   const char *s, GCallback sigfunc, gpointer data);
 void new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
@@ -34,5 +38,8 @@ void msgbox_ok_cancel(const char *title, const char *text,
 void qbox_ok_cancel(const char *title, const char *text,
                    const char *ok_text, GCallback sigfunc, gpointer data,
                    const char *cancel_text, GCallback c_sigfunc, gpointer c_data);
+
+/* popup the appropriate help/documentaiton subsystem */
+void gtt_help_popup(GtkWidget *widget, gpointer data);
 
 #endif

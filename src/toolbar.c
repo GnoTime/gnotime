@@ -19,10 +19,10 @@
 
 #include <config.h>
 #include <gnome.h>
-#include <libgnome/gnome-help.h>
 #include <string.h>
 
 #include "app.h"
+#include "dialog.h"
 #include "gtt.h"
 #include "journal.h"
 #include "menucmd.h"
@@ -99,20 +99,6 @@ toolbar_set_states(void)
 		tb_style = GTK_TOOLBAR_ICONS;
 	}
 	gtk_toolbar_set_style(mytbar->tbar, tb_style);
-}
-
-
-/* ================================================================= */
-
-static void
-toolbar_help(GtkWidget *widget, gpointer data)
-{
-	GError *err = NULL;
-	gnome_help_display ("gnotime", NULL, &err);
-	if (err)
-	{
-		printf ("duude gnome help err msg: %s\n", err->message);
-	}
 }
 
 /* ================================================================= */
@@ -253,7 +239,7 @@ build_toolbar(void)
 		gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_HELP,
 				_("User's Guide and Manual"), NULL,
-				(GtkSignalFunc)toolbar_help, NULL,
+				(GtkSignalFunc)gtt_help_popup, NULL,
 				position ++);
 	}
 	if (config_show_tb_exit) 

@@ -18,9 +18,12 @@
 
 #include <config.h>
 #include <gnome.h>
+#include <libgnome/gnome-help.h>
  
 #include "dialog.h"
 #include "gtt.h"
+
+/* ================================================================= */
 
 static void 
 dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
@@ -30,6 +33,7 @@ dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 	if (vbox_return) *vbox_return = GTK_BOX(dlg->vbox);
 }
 
+/* ================================================================= */
 
 void 
 new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
@@ -50,6 +54,7 @@ new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
 	g_free (tmp);
 }
 
+/* ================================================================= */
 
 void 
 new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
@@ -81,6 +86,7 @@ new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 	g_free (tmp);
 }
 
+/* ================================================================= */
 
 void 
 msgbox_ok(const char *title, const char *text, const char *ok_text,
@@ -101,6 +107,7 @@ msgbox_ok(const char *title, const char *text, const char *ok_text,
 }
 
 
+/* ================================================================= */
 
 void 
 msgbox_ok_cancel(const char *title, const char *text,
@@ -121,6 +128,8 @@ msgbox_ok_cancel(const char *title, const char *text,
 
 	g_free (s);
 }
+
+/* ================================================================= */
 
 void 
 qbox_ok_cancel(const char *title, const char *text,
@@ -149,3 +158,20 @@ qbox_ok_cancel(const char *title, const char *text,
 	g_free (s);
 }
 
+/* ================================================================= */
+
+void
+gtt_help_popup(GtkWidget *widget, gpointer data)
+{
+	GError *err = NULL;
+	char * section = data;
+	gnome_help_display ("gnotime", section, &err);
+	if (err)
+	{
+		GtkWidget *w = gnome_error_dialog (err->message);
+		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (widget));
+		// printf ("duude gnome help err msg: %s\n", err->message);
+	}
+}
+
+/* ==================== END OF FILE ================================ */
