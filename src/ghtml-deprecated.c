@@ -76,7 +76,10 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 	if (NULL == ghtml->write_stream) return;
 
 	p = g_string_new(NULL);
-	g_string_append_printf (p, "<table border=1>\n"
+	g_string_append_printf (p, 
+		"<b>The use of this function is deprecated. "
+		" Please see the examples for the recommended style.</b>"
+		"<table border=1>\n"
 		"<tr><th colspan=4>%s</th></tr>\n"
 		"<tr><th> &nbsp; </th><th>%s</th><th>%s</th><th>%s</th></tr>\n",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
@@ -210,6 +213,9 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 	p = g_string_new (NULL);
 	if (output_html) p = g_string_append (p, "<table border=1>");
+	p = g_string_append (p,
+		"<b>The use of this function is deprecated. "
+		" Please see the examples for the recommended style.</b>");
 
 	/* write out the table header */
 	if (output_html && (0 < ghtml->ntask_cols))
