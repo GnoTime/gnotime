@@ -1,52 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<link rel="stylesheet" href="/en/gnucash.css" type="text/css">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Custom Report Generator</title>
+<title>Journal - GnoTime</title>
 </head>
 <body>
 <center>
-<h1>Custom Report Generator</h1>
-
-Run report on
+<h1>Journal for 
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
+</h1>
 
-<p>
-<FORM METHOD="get" ACTION="status.ghtml">
-Run the report 
-&nbsp;
-<SELECT NAME="report-path">
-<OPTION VALUE="journal.ghtml">Journal</OPTION>
-<OPTION VALUE="bigtable.ghtml">Big Journal</OPTION>
-<OPTION VALUE="invoice.ghtml">Invoice</OPTION>
-<OPTION VALUE="daily.ghtml">Daily</OPTION>
-<OPTION VALUE="status.ghtml" SELECTED>Status</OPTION>
-<OPTION VALUE="todo.ghtml">To Do</OPTION>
-</SELECT>
-&nbsp;
-on all projects that:
-<table>
-<tr>
-<td>Showed activity more recently than:</td>
-<td><input name="earliest-end-date" size="12"> </td>
-</tr>
-<tr>
-<td>Showed activity no later than:</td>
-<td><input name="latest-start-date" size="12"> </td>
-<tr>
-<td> </td>
-<td>
-<input type="submit" value="Find">
-</td>
-</tr>
+Here it is:
+<br><br>
+
+<!-- If you do not like how this table is laid out, please feel 
+     free to modify it.  The markup below may seem a little confusing,
+     but hopefully not too confusing.  Just remember to start string
+     literals with ''" and end them with ".  \n is the usual new-line
+     escape character; other C-langauage escapes apply: \t for tab,
+     \r for carriage return, etc.
+
+     Note also you can get pure-ascii output by removing all the html
+     markup! Or you can get other file formats by inserting appropriate 
+     markup.
+-->
+
+<table border=1>
+<tr><th colspan=4>Diary Entry</th></tr>
+<tr><th> xx </th><th>Start</th><th>Stop</th><th>Elapsed</th></tr>
+<?scm
+
+(gtt-show-tasks (gtt-tasks (gtt-linked-project))
+    (list   
+        ''"<tr><td colspan=4><br>"  
+               gtt-task-memo 
+               ''"<br>" gtt-task-notes ''"<br><br>"
+        ''"</td></tr>\n"
+         (lambda (task) (gtt-ivls task
+         (list
+
+               ; the first html table column is blank
+               ''"<tr><td> </td>\n"
+
+
+               ; the second html table column shows the start date/time
+               ''"<td align=right> &nbsp; &nbsp; "  
+                     gtt-interval-start-str 
+               ''" &nbsp; &nbsp; </td>\n"
+               
+               ; the third html table column shows the stop date/time
+               ''"<td> &nbsp; &nbsp; "  
+                     gtt-interval-stop-str 
+               ''" &nbsp; &nbsp; </td>\n"
+               
+               ; the fourth html table column shows the elapsed time
+               ''"<td> &nbsp; &nbsp; "     
+                   gtt-interval-elapsed-str  
+               ''" &nbsp; &nbsp; </td>\n"
+         )))
+    )
+)
+
+
+?>
 </table>
-</FORM>
-
-Please note that this query generator is under development and is 
-subject to change.  
-
+                                         
 
 <br><br>
 That's all Folks!

@@ -3,45 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Journal - <?scm (gtt-show-project-title) ?></title>
-<style type="text/css">
-   body
-   {
-   background: #c8c8d3;
-   font-color: #000000;
-   }
-	.gnotime-diary-entry
-	{
-   background: #e0e0e0;
-	display: block;
-	width: 500px;
-	margin: 4px 2px 4px 8px;
-	border: solid 2px #000000;
-	margin: 4px 2px 4px 8px;
-	}
-	.gnotime-diary-memo
-	{
-	font-size: 120%;
-	font-weight: bold;
-	font-stretch: wider;
-	margin: 4px 2px 1px 6px;
-	}
-	.gnotime-diary-notes
-	{
-	margin: 4px 2px 1px 6px;
-	}
-	.gnotime-start-stop-table
-	{
-   background: #f8f8f0;
-	margin: 4px 4px 4px 4px;
-	border: solid 1px #9999a9
-	}
-	.gnotime-start-stop-table-header
-	{
-   background: #ebebeb;
-	font-size: 105%;
-	font-weight: bold;
-	}
-</style>
+<?scm (gtt-include "gtt-style.css") ?>
 </head>
 <body bgcolor="#c8c8d3">
 <center>

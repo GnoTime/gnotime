@@ -4,6 +4,7 @@ lang = C
 gttghtmldir = $(datadir)/gnotime/ghtml/C
 
 gttghtml_DATA =      \
+	basic-journal.ghtml  \
 	bigtable.ghtml    \
 	daily.ghtml       \
 	invoice.ghtml     \
@@ -15,7 +16,8 @@ gttghtml_DATA =      \
 	tab-delim.ghtml   \
 	todo.ghtml	      \
 	todo-export.ghtml \
-	gtt.scm
+	gtt.scm           \
+	gtt-style.css
 
 
 EXTRA_DIST =         \
