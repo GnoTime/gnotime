@@ -300,4 +300,30 @@ show_inactive_dialog (GttInactiveDialog *id)
 	gtk_widget_show (GTK_WIDGET(id->dlg));
 }
 
+/* =========================================================== */
+
+void 
+raise_inactive_dialog (GttInactiveDialog *id)
+{
+	time_t now;
+	time_t idle_time;
+
+	if (!id) return;
+	if (NULL == id->gtxml) return;
+
+	/* If there has not been any activity recently, then leave things
+	 * alone. Otherwise, work real hard to put the dialog where the
+	 * user will see it.
+	 */
+	now = time(0);
+	idle_time = now - poll_last_activity (id->idt);
+	if (15 < idle_time) return;
+
+	/* The following will raise the window, and put it on the current
+	 * workspace, at least if the metacity WM is used. Haven't tried
+	 * other window managers.
+	 */
+	gtk_window_present (GTK_WINDOW (id->dlg));
+}
+
 /* =========================== END OF FILE ============================== */

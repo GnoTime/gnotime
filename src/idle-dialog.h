@@ -31,7 +31,19 @@ typedef struct GttInactiveDialog_s GttInactiveDialog;
 
 GttInactiveDialog * inactive_dialog_new (void);
 
+/** This routine will display the inactive dialog, but only
+ *  if the keyboard/mouse has been idle for some amount of time.
+ */
 void show_inactive_dialog (GttInactiveDialog *id);
 		  
+/** This routine will raise the inactive dialog to the top of the
+ *  current screen. But it will do this only if the inactive dialog
+ *  is already being diplayed, and if some mouse/keyboard events have
+ *  been detected recently.   The problem that this routine is trying
+ *  to solve is that the inactive dialog often ends up obscured by
+ *  another window, or it ends up on a different workspace than the
+ *  current workspace, and so the user can't see it, can't find it.
+ */
+void raise_inactive_dialog (GttInactiveDialog *id);
 
 #endif /* GTT_INACTIVITY_DIALOG_H_ */

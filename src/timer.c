@@ -82,29 +82,40 @@ timer_func(gpointer data)
 {
 	time_t now = time(0);
 
-	/* Even if there is no active project,
-	 * we still have to zero out the counters periodically. */
+	/* Even if there is no active project, we still have to zero out 
+	 * the day/week/month counters periodically. */
 	if (0 == now%60) zero_on_rollover (now);
 
-	/* Periodically save data to file -- not strictly neccessary,
-	 * but real nice way of avoiding data loss in case something 
-	 * core dumps. */
+	/* Periodically save data to file -- this is how we avoid data loss
+	 * in case Gnotime or X11 or the OS crashes. */
 	if (0 == now%config_autosave_period)
 	{
 		save_projects ();
 	}
 
+	/* Save current configuration, but less often */
 	if (0 == now%config_autosave_props_period)
 	{
 		save_properties ();
 	}
 
-	/* Wake up notes are gui if needed */
+	/* Wake up the notes area GUI, if needed. */
 	gtt_notes_timer_callback (global_na);
 	
-	if (!cur_proj) return 1;
+	/* If no project is running, but there is keyboard/mouse activity, 
+	 * remind user to start the timer.
+	 */
+	if (!cur_proj) 
+	{
+		if (0 < config_idle_timeout)
+		{
+			/* Make sure the inactive dialog is visible */
+			raise_inactive_dialog (idt);
+		}
+		return 1;
+	}
 
-	/* Update the data in the data engine */
+	/* Update the data in the data engine. */
 	gtt_project_timer_update (cur_proj);
 
 	/* Update the GUI display, once a minute or once a second,
