@@ -10,6 +10,7 @@ gnotime_SOURCES = 		\
 	err-throw.c	\
 	export.c	\
 	file-io.c	\
+	gconf-io.c	\
 	ghtml.c		\
 	ghtml-deprecated.c		\
 	idle-dialog.c	\
@@ -43,6 +44,7 @@ noinst_HEADERS = 	\
 	err-throw.h	\
 	export.h	\
 	file-io.h	\
+	gconf-io.h		\
 	ghtml.h		\
 	ghtml-deprecated.h		\
 	gtt.h		\

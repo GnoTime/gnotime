@@ -32,6 +32,7 @@
 #include "cur-proj.h"
 #include "err-throw.h"
 #include "file-io.h"
+#include "gconf-io.h"
 #include "gtt.h"
 #include "plug-in.h"
 #include "prefs.h"
@@ -57,7 +58,18 @@ extern char *first_proj_title;	/* command line flag */
 int save_count = 0;
 
 /* ============================================================= */
-/* file I/O routines */
+/* File I/O routines:
+ * Note that this file supports reading from several old, 'obsolete'
+ * config file formats taht GTT has used over the years.  We support
+ * these reads so that users do not get left out in the cold when 
+ * upgrading from old versions of GTT.  All 'saves' are in the new
+ * file format (currently, GConf-2).
+ *
+ * 1) Oldest format is data stuck into a ~/.gtimetrackerrc file
+ * 2) Next is Gnome-1 Gnome-Config files in ~/.gnome/gtt
+ * 3) Next is Gnome-2 Gnome-Config files in ~/.gnome2/GnoTime
+ * 4) Current is GConf2 system.
+ */
 
 /* RC_NAME is old, depricated; stays here for backwards compat. */
 #define RC_NAME ".gtimetrackerrc"
@@ -559,6 +571,8 @@ gtt_save_config(const char *fname)
 	int x, y, w, h;
 	const char *xpn;
 
+	/* XXX Obsoleted by gtt_gconf_save .... */
+gtt_gconf_save(); /* XXX */
 	old_num = gnome_config_get_int(GTT_CONF"/Misc/NumProjects=0");
 
 	/* ------------- */

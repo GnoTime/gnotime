@@ -18,23 +18,12 @@
 
 #include "config.h"
 
-
-#ifndef GTT_GCONF_IO_H_
-#define GTT_GCONF_IO_H_
-
-#include <glib.h>
-
-void gtt_gconf_save (void);
-void gtt_gconf_load (void);
-gboolean gtt_gconf_exists (void);
-
-#endif /* GTT_GCONF_IO_H_ */
-
 #include <gconf/gconf-client.h>
 #include <glib.h>
 
 #include "app.h"
 #include "cur-proj.h"
+#include "gconf-io.h"
 #include "plug-in.h"
 #include "prefs.h"
 #include "timer.h"
@@ -86,7 +75,8 @@ extern int save_count; /* XXX */
 }
 
 /* ======================================================= */
-/* save only the GUI configuration info, not the actual data */
+/* Save only the GUI configuration info, not the actual data */
+/* XXX this should really use GConfChangeSet */
 
 void
 gtt_gconf_save (void)
