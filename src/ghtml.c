@@ -678,6 +678,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 	
 	/* Get the project data */
 	arr = gtt_project_get_daily_buckets (prj, TRUE);
+	if (!arr) return rc;
 	earliest = gtt_project_get_earliest_start (prj, TRUE);
 	
 	/* Format the start date */

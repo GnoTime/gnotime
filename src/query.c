@@ -233,6 +233,7 @@ gtt_project_get_daily_buckets (GttProject *proj, gboolean include_subprojects)
 	
 	/* Figure out how many days in the array */
 	count_days (&da, proj, include_subprojects);
+	if (0 > da.array_len) return NULL;
 
 	/* Alloc the array, fill it in, return the results */
 	arr = g_array_new (FALSE, TRUE, sizeof (GttBucket));
