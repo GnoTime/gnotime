@@ -1108,7 +1108,7 @@
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">How important is it to perform this task?  Not everything important is urgent.  For example, it is important to file a tax return every year, but you have a lot of time to get ready to do this.</property>
 	      <property name="can_focus">True</property>
-	      <property name="history">0</property>
+	      <property name="history">1</property>
 
 	      <child internal-child="menu">
 		<widget class="GtkMenu" id="convertwidget8">
@@ -1313,6 +1313,48 @@
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkEntry" id="sizing box">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="editable">True</property>
+	      <property name="visibility">True</property>
+	      <property name="max_length">0</property>
+	      <property name="text" translatable="yes"></property>
+	      <property name="has_frame">True</property>
+	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="activates_default">False</property>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">6</property>
+	      <property name="bottom_attach">7</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkEntry" id="percent box">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="editable">True</property>
+	      <property name="visibility">True</property>
+	      <property name="max_length">0</property>
+	      <property name="text" translatable="yes"></property>
+	      <property name="has_frame">True</property>
+	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="activates_default">False</property>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">7</property>
+	      <property name="bottom_attach">8</property>
 	      <property name="y_options"></property>
 	    </packing>
 	  </child>
