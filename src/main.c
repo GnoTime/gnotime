@@ -327,7 +327,7 @@ make_backup (const char * filename)
 	struct stat old_stat;
 	struct utimbuf ub;
 	int suffix=0;
-	int lm;
+	int lm, i;
 
 	/* Figure out how far to back up.  This computes a
 	 * logarithm base BK_FREQ */
@@ -339,6 +339,14 @@ make_backup (const char * filename)
 		if (0 == lm%BK_FREQ) suffix ++;
 		else break;
 		lm /= BK_FREQ;
+	}
+
+	suffix ++;
+	/* save on 0,1 not 2,3 */
+	/* the resulting sequence looks a little crazy but is regular */
+	for (i=2; i<BK_FREQ; i++)
+	{
+		if (lm%BK_FREQ == i) suffix = 0;
 	}
 
 	/* Build filenames */
