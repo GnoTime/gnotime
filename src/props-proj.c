@@ -75,7 +75,8 @@ static void
 prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 {
 	int ivl;
-	const gchar *str;
+	const gchar *cstr;
+	gchar *str;
 	double rate;
 	time_t tval;
 
@@ -84,10 +85,10 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 	if (0 == page)
 	{
 		gtt_project_freeze (dlg->proj);
-		str = gtk_entry_get_text(dlg->title);
-		if (str && str[0]) 
+		cstr = gtk_entry_get_text(dlg->title);
+		if (cstr && cstr[0]) 
 		{
-			gtt_project_set_title(dlg->proj, str);
+			gtt_project_set_title(dlg->proj, cstr);
 		} 
 		else 
 		{
@@ -326,7 +327,7 @@ prop_dialog_new (void)
 	GladeXML *gtxml;
         // static GnomeHelpMenuEntry help_entry = { NULL, "dialogs.html#PROPERTIES" };
 
-	dlg = g_malloc(sizeof(PropDlg));
+	dlg = g_new0(PropDlg, 1);
 
 	gtxml = gtt_glade_xml_new ("glade/project_properties.glade", "Project Properties");
 	dlg->gtxml = gtxml;

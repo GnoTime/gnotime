@@ -58,17 +58,18 @@ task_prop_set(GnomePropertyBox * pb, gint page, PropTaskDlg *dlg)
 	GttBillable able;
 	GttBillRate rate;
 	int ivl;
-	const gchar *str;
+	const gchar *cstr;
+	gchar *str;
 
 	if (!dlg->task) return;
 
 	if (0 == page)
 	{
 		gtt_task_freeze (dlg->task);
-		str = gtk_entry_get_text(dlg->memo);
-		if (str && str[0]) 
+		cstr = gtk_entry_get_text(dlg->memo);
+		if (cstr && cstr[0]) 
 		{
-			gtt_task_set_memo(dlg->task, str);
+			gtt_task_set_memo(dlg->task, cstr);
 		} 
 		else 
 		{
@@ -199,7 +200,7 @@ prop_task_dialog_new (void)
 	GladeXML *gtxml;
 	// static GnomeHelpMenuEntry help_entry = { NULL, "index.html#TASK" };
 
-	dlg = g_malloc(sizeof(PropTaskDlg));
+	dlg = g_new0 (PropTaskDlg, 1);
 
 	gtxml = gtt_glade_xml_new ("glade/task_properties.glade", "Task Properties");
 	dlg->gtxml = gtxml;

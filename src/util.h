@@ -70,7 +70,7 @@ int is_same_day (time_t, time_t);
 /* ------------------------------------------------------------------ */
 /* some gtk-like utilities */
 void xxxgtk_textview_set_text (GtkTextView *text, const char *str);
-const char * xxxgtk_textview_get_text (GtkTextView *text);
+char * xxxgtk_textview_get_text (GtkTextView *text);
 
 /* Glade loader, it will look in the right directories */
 GladeXML *gtt_glade_xml_new (const char *filename, const char *widget);
