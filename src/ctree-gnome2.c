@@ -4,7 +4,7 @@
  *
  *   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
  *   This is an attempted gnome-2 port of the ctree.c stuff, i.e.
- *   from the depricated gtkctree to gtktreeview.  Its unfinished
+ *   from the deprecated gtkctree to gtktreeview.  Its unfinished
  *   because gtktreeview seems to be missing a focus/cursor row,
  *   which is critical to the current operation of gtt.
  *
@@ -14,9 +14,19 @@
  *   -- unfinished expand/collapse
  *   -- unfinished column widths/text justification
  *
- *   Things I need to do, but can't figure out how:  I'd like
- *   to be able to draw a given row with different colors/fonts/etc.
- *   -- i.e. to effectively highlight it somehow.  How??
+ *   Things I need to do, but can't figure out how:  
+ *   -- I'd like to be able to draw a given row with different 
+ *      colors/fonts/etc. i.e. to effectively highlight it 
+ *      somehow to show its active.  How??
+ *   -- Control left-right justification of column entries.
+ *   -- Over-ride some the colors and arrow styles choosen by
+ *      the gtk themes.
+ *
+ *   Things that we need that the old gtkctree does poorly:
+ *   (reasons to abandon gtkctree):
+ *   -- the drag-n-drop icon handling is atrocious.
+ *   -- the drag-n-drop source & dest sometimes gets insanely
+ *      confused.
  *   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  *
  *   This program is free software; you can redistribute it and/or modify

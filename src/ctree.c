@@ -518,12 +518,13 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
 
 #if 0
 {
-printf ("draging %s\n", gtt_project_get_desc(
-	gtk_ctree_node_get_row_data(ctree, source_ctree_node)->prj));
-printf ("to parent %s\n", gtt_project_get_desc(
-	gtk_ctree_node_get_row_data(ctree, parent_ctree_node)->prj));
-printf ("before sibl %s\n\n", gtt_project_get_desc(
-	gtk_ctree_node_get_row_data(ctree, sibling_ctree_node)->prj));
+	ProjTreeNode *ptn;
+	ptn = gtk_ctree_node_get_row_data(ctree, source_node);
+	printf ("draging     \"%s\"\n", gtt_project_get_title(ptn?ptn->prj:NULL));
+	ptn = gtk_ctree_node_get_row_data(ctree, new_parent);
+	printf ("\tto parent   \"%s\"\n", gtt_project_get_title(ptn?ptn->prj:NULL));
+	ptn = gtk_ctree_node_get_row_data(ctree, new_sibling);
+	printf ("\tbefore sibl \"%s\"\n\n", gtt_project_get_title(ptn?ptn->prj:NULL));
 }
 #endif
 	/* Note, we must test for new sibling before new parent,
@@ -1283,6 +1284,8 @@ ctree_new(void)
 	parent_pixmap = gtk_window_new (GTK_WINDOW_POPUP);
 	sibling_pixmap = gtk_window_new (GTK_WINDOW_POPUP);
 
+	/* XXX gnome_pixmap_new_from_xpm_d is deprecated, but I cannot
+	 * figure out how to use the new, recommended interfaces. Ugh. */
 	{
 		#include "down.xpm"
 		wimg = gnome_pixmap_new_from_xpm_d (down);
