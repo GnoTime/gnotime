@@ -48,7 +48,7 @@ void ctree_destroy(ProjTreeWindow *ptw);
 /** The ctree_insert_before() routine inserts the new project p
  *   before the project "before me".
  */
-void ctree_add(ProjTreeWindow *, GttProject *p, GtkCTreeNode *parent);
+void ctree_add(ProjTreeWindow *, GttProject *p);
 void ctree_insert_before(ProjTreeWindow *, GttProject *p, GttProject *insert_before_me);
 void ctree_insert_after(ProjTreeWindow *, GttProject *p, GttProject *insert_after_me);
 

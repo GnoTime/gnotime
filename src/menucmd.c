@@ -268,7 +268,7 @@ new_project(GtkWidget *widget, gpointer data)
 	gtk_dialog_add_button (dlg, GTK_STOCK_OK, GTK_RESPONSE_OK);
 	gtk_dialog_add_button (dlg, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
-	vbox = dlg->vbox;
+	vbox = GTK_BOX(dlg->vbox);
 
 	/* Put stuff into the dialog box */
 	t = gtk_label_new(_("Project Title"));
@@ -304,7 +304,7 @@ new_project(GtkWidget *widget, gpointer data)
 			   G_CALLBACK(free_data),
 			   entries);
 	
-	gtk_widget_show(dlg);
+	gtk_widget_show(GTK_WIDGET(dlg));
 }
 
 /* ======================================================= */
@@ -406,7 +406,7 @@ paste_project(GtkWidget *w, gpointer data)
 	if (!sib_prj) 
 	{
 		/* top-level insert */
-		ctree_add(global_ptw, p, NULL);
+		ctree_add(global_ptw, p);
 		return;
 	}
 	ctree_insert_before(global_ptw, p, sib_prj);

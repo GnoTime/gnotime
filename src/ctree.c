@@ -1599,7 +1599,7 @@ ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 		for (node = prjlist; node; node = node->next) 
 		{
 			GttProject *prj = node->data;
-			ctree_add(ptw, prj, NULL);
+			ctree_add(ptw, prj);
 		}
 		gtk_clist_thaw(GTK_CLIST(tree_w));
 	} else {
@@ -1700,8 +1700,8 @@ ptn_destroy (ProjTreeNode *ptn)
 }
 #endif
 
-void
-ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
+static void
+do_ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 {
 	ProjTreeNode *ptn;
 	GList *n;
@@ -1737,11 +1737,17 @@ ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 	for (n=gtt_project_get_children(p); n; n=n->next)
 	{
 		GttProject *sub_prj = n->data;
-		ctree_add (ptw, sub_prj, ptn->ctnode);
+		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
 	
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
+}
+
+void
+ctree_add (ProjTreeWindow *ptw, GttProject *p)
+{
+	do_ctree_add (ptw, p, NULL)
 }
 
 /* ============================================================== */
@@ -1787,7 +1793,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	for (n=gtt_project_get_children(p); n; n=n->next)
 	{
 		GttProject *sub_prj = n->data;
-		ctree_add (ptw, sub_prj, ptn->ctnode);
+		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
 	
 	/* Set the focus row to the newly inserted project. */
@@ -1844,7 +1850,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	for (n=gtt_project_get_children(p); n; n=n->next)
 	{
 		GttProject *sub_prj = n->data;
-		ctree_add (ptw, sub_prj, ptn->ctnode);
+		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
 	
 	/* Set the focus row to the newly inserted project. */
