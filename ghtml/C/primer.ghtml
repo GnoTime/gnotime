@@ -106,7 +106,7 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 
 <li> The primitive <tt>gtt-show</tt> can be used anywhere,
      such as this (slowly converging) Leibniz series expression 
-	  for Pi:
+     for Pi:
      <br><br>
      <tt>(define (pi-sum a b) (if (> a b) 0 
      <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
@@ -139,70 +139,70 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      </i></b>
 
      <br><br>
-	  We've already mentioned <tt>(gtt-selected-project)</tt>
-	  before; it returns the project that is currently selected
-	  in the main window.  There is also the <tt>(gtt-linked-project)</tt>
-	  primitive, which returns the project that was linked to create
-	  this report.  The are frequently the same, but need not be.
-	  For example, select a different project, and then hit the 
-	  refresh button on this page:
-	  <br><br>
-	  This is the linked project:
-	      <b><?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?></b>
-	  
-	  <br>
-	  This is the selected project:
-	      <b><?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?></b>
+     We've already mentioned <tt>(gtt-selected-project)</tt>
+     before; it returns the project that is currently selected
+     in the main window.  There is also the <tt>(gtt-linked-project)</tt>
+     primitive, which returns the project that was linked to create
+     this report.  The are frequently the same, but need not be.
+     For example, select a different project, and then hit the 
+     refresh button on this page:
+     <br><br>
+     This is the linked project:
+         <b><?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?></b>
+     
+     <br>
+     This is the selected project:
+         <b><?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?></b>
      <br><br>
 
      <br><br>
-	  The following project attributes are supported:
-	  <ul>
-	  <li><tt>(gtt-project-title prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-title-link prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title-link (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-desc prj)</tt>:
-	      <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-notes prj)</tt>:
-	      <?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-urgency prj)</tt>:
-	      <?scm (gtt-show (gtt-project-urgency (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-importance prj)</tt>:
-	      <?scm (gtt-show (gtt-project-importance (gtt-selected-project))) ?>
-	  <li><tt>(gtt-project-status prj)</tt>:
-	      <?scm (gtt-show (gtt-project-status (gtt-selected-project))) ?>
-			
-	  <li><tt>(gtt-project-estimated-start prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-start (gtt-selected-project))) ?>
-			<i>(seconds since January 1, 1970)</i>
-	  <li><tt>(gtt-project-estimated-end prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-end (gtt-selected-project))) ?>
-			<i>(seconds since January 1, 1970)</i>
-	  <li><tt>(gtt-project-due-date prj)</tt>:
-	      <?scm (gtt-show (gtt-project-due-date (gtt-selected-project))) ?>
-			<i>(seconds since January 1, 1970)</i>
+     The following project attributes are supported:
+     <ul>
+     <li><tt>(gtt-project-title prj)</tt>:
+         <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-title-link prj)</tt>:
+         <?scm (gtt-show (gtt-project-title-link (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-desc prj)</tt>:
+         <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-notes prj)</tt>:
+         <?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-urgency prj)</tt>:
+         <?scm (gtt-show (gtt-project-urgency (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-importance prj)</tt>:
+         <?scm (gtt-show (gtt-project-importance (gtt-selected-project))) ?>
+     <li><tt>(gtt-project-status prj)</tt>:
+         <?scm (gtt-show (gtt-project-status (gtt-selected-project))) ?>
+         
+     <li><tt>(gtt-project-estimated-start prj)</tt>:
+         <?scm (gtt-show (gtt-project-estimated-start (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
+     <li><tt>(gtt-project-estimated-end prj)</tt>:
+         <?scm (gtt-show (gtt-project-estimated-end (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
+     <li><tt>(gtt-project-due-date prj)</tt>:
+         <?scm (gtt-show (gtt-project-due-date (gtt-selected-project))) ?>
+         <i>(seconds since January 1, 1970)</i>
 
-	  <li><tt>(gtt-project-sizing prj)</tt>:
-	      <?scm (gtt-show (gtt-project-sizing (gtt-selected-project))) ?>
-			<i>(seconds)</i>
-	  <li><tt>(gtt-project-percent-complete prj)</tt>:
-	      <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
-			<i>(percentage)</i>
-	  </ul>
+     <li><tt>(gtt-project-sizing prj)</tt>:
+         <?scm (gtt-show (gtt-project-sizing (gtt-selected-project))) ?>
+         <i>(seconds)</i>
+     <li><tt>(gtt-project-percent-complete prj)</tt>:
+         <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
+         <i>(percentage)</i>
+     </ul>
 
-	  Tasks (aka 'diary entries') can be obtained with the 
-	  <tt>(gtt-tasks prj)</tt> routine.
-	  The various task attributes can be obtained with getters that take
-	  a task (or a task list) as an argument:
-	  <ul>
-	  <li><tt>(gtt-task-memo tsk)</tt>:
-	      <?scm (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) ?>
-	  <li><tt>(gtt-links-off)(gtt-task-memo tsk)(gtt-links-on)</tt>:
-	      <?scm (gtt-links-off) (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) (gtt-links-on) ?>
-	  <li><tt>(gtt-task-notes tsk)</tt>:
-	      <?scm (gtt-show (gtt-task-notes (gtt-tasks (gtt-selected-project)))) ?>
-	  </ul>
+     Tasks (aka 'diary entries') can be obtained with the 
+     <tt>(gtt-tasks prj)</tt> routine.
+     The various task attributes can be obtained with getters that take
+     a task (or a task list) as an argument:
+     <ul>
+     <li><tt>(gtt-task-memo tsk)</tt>:
+         <?scm (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) ?>
+     <li><tt>(gtt-links-off)(gtt-task-memo tsk)(gtt-links-on)</tt>:
+         <?scm (gtt-links-off) (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) (gtt-links-on) ?>
+     <li><tt>(gtt-task-notes tsk)</tt>:
+         <?scm (gtt-show (gtt-task-notes (gtt-tasks (gtt-selected-project)))) ?>
+     </ul>
 
 
 
