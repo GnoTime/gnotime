@@ -12,17 +12,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# gtt/app.c:117 gtt/app.c:223
 #: src/app.c:115 src/app.c:227
 msgid "no project selected"
 msgstr "没有任何计划被选取"
 
-# gtt/app.c:212
 #: src/app.c:217
 msgid "00:00"
 msgstr "00:00"
 
-# gtt/app.c:251 mini-utils/gless/gless.c:424
 #: src/app.c:269
 msgid ""
 "Couldn't understand geometry (position and size)\n"
@@ -31,7 +28,6 @@ msgstr ""
 "无法识别在指令列指定的\n"
 " geometry (位置和大小)"
 
-# gtt/clist.c:169
 #: src/ctree.c:509
 msgid "Total"
 msgstr "合计"
@@ -40,7 +36,6 @@ msgstr "合计"
 msgid "Total time spent on this project."
 msgstr "花在该计划上的总时间。"
 
-# gtt/options.c:408
 #: src/ctree.c:516
 msgid "Entry"
 msgstr "条目"
@@ -49,7 +44,6 @@ msgstr "条目"
 msgid "Time spent under the current diary entry."
 msgstr "花在当前日记条目上的时间。"
 
-# gtt/clist.c:170
 #: src/ctree.c:524 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "今天"
@@ -66,7 +60,6 @@ msgstr "周"
 msgid "Time spent on this project this week."
 msgstr "本周花在该计划上的时间。"
 
-# ghex/preferences.c:143
 #: src/ctree.c:539
 msgid "Month"
 msgstr "月"
@@ -75,7 +68,6 @@ msgstr "月"
 msgid "Time spent on this project this month."
 msgstr "本月花在该计划上的时间。"
 
-# ghex/converter.c:50
 #: src/ctree.c:547
 msgid "Year"
 msgstr "年"
@@ -88,12 +80,10 @@ msgstr "今年花在该计划上的时间。"
 msgid "Title"
 msgstr "标题"
 
-# gtt/clist.c:171
 #: src/ctree.c:556 src/menucmd.c:155
 msgid "Project Title"
 msgstr "计划标题"
 
-# gtt/clist.c:172
 #: src/ctree.c:561 src/ctree.c:562 src/menucmd.c:156
 msgid "Description"
 msgstr "描述"
@@ -107,7 +97,6 @@ msgstr "新建日记条目(_E)"
 msgid "The current diary entry"
 msgstr "当前日记条目"
 
-# gsearchtool/gsearchtool.c:514
 #: src/ctree.c:574 src/ghtml.c:103 src/ghtml.c:280
 #: glade/interval_edit.glade.h:11
 msgid "Start"
@@ -117,13 +106,10 @@ msgstr "开始"
 msgid "Estimated Project Start Date"
 msgstr "估计计划开始日期"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ctree.c:581
 msgid "End"
 msgstr "结束"
 
-# gtt/toolbar.c:179
 #: src/ctree.c:583
 msgid "Estimated Project Completion Date"
 msgstr "估计计划完成日期"
@@ -137,7 +123,6 @@ msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr "截止日期：计划绝对必须在该日期以前完成。"
 
-# mini-utils/guname/info.c:60
 #: src/ctree.c:597
 msgid "Size"
 msgstr "大小"
@@ -146,7 +131,6 @@ msgstr "大小"
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "大小：完成该计划必须的工作量。"
 
-# mini-utils/idetool/idetool.c:207
 #: src/ctree.c:605
 msgid "Done"
 msgstr "完成度"
@@ -171,7 +155,6 @@ msgstr "重要性"
 msgid "Importance: How important is this project?"
 msgstr "重要性：该计划有多重要？"
 
-# mini-utils/idetool/idetool.c:316
 #: src/ctree.c:630
 msgid "Status"
 msgstr "状态"
@@ -192,7 +175,6 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-# gtt/options.c:363
 #: src/ctree.c:963 glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
@@ -205,12 +187,10 @@ msgstr "中"
 msgid "High"
 msgstr "高"
 
-# gsearchtool/gsearchtool.c:514
 #: src/ctree.c:974 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "尚未开始"
 
-# mini-utils/guname/info.c:44
 #: src/ctree.c:975 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "正在进行"
@@ -219,7 +199,6 @@ msgstr "正在进行"
 msgid "On Hold"
 msgstr "暂停"
 
-# mini-utils/gnome-run/gnome-run.c:70
 #: src/ctree.c:977 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
@@ -228,7 +207,6 @@ msgstr "已取消"
 msgid "Completed"
 msgstr "已完成"
 
-# gtt/main.c:121
 #: src/err-throw.c:61
 msgid "No Error"
 msgstr "无错误"
@@ -291,7 +269,6 @@ msgstr ""
 "在解析以下内容时发现未知的值\n"
 "\t%s\n"
 
-# gtt/menucmd.c:32 gtt/menucmd.c:155
 #: src/err-throw.c:97
 #, c-format
 msgid ""
@@ -324,17 +301,14 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-# gtt/proj.c:461
 #: src/file-io.c:371
 msgid "project %t started"
 msgstr "计划 %t 启动"
 
-# gtt/proj.c:464
 #: src/file-io.c:374
 msgid "stopped project %t"
 msgstr "停止计划 %t"
 
-# gsearchtool/gsearchtool.c:515
 #: src/ghtml.c:103 src/ghtml.c:283 glade/interval_edit.glade.h:13
 msgid "Stop"
 msgstr "停止"
@@ -343,12 +317,10 @@ msgstr "停止"
 msgid "Elapsed"
 msgstr "已用时间"
 
-# gtt/prop.c:55
 #: src/ghtml.c:121 src/ghtml.c:382 src/ghtml.c:391
 msgid "(empty)"
 msgstr "(空)"
 
-# mini-utils/idetool/idetool.c:207
 #: src/ghtml.c:236
 msgid "Notes"
 msgstr "注解"
@@ -357,37 +329,26 @@ msgstr "注解"
 msgid "Task Time"
 msgstr "任务时间"
 
-# mini-utils/idetool/idetool.c:316
 #: src/ghtml.c:244
 msgid "Bill Status"
 msgstr "帐单状态"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ghtml.c:248 src/ghtml.c:421 glade/task_properties.glade.h:5
 msgid "Billable"
 msgstr "可支付"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ghtml.c:252
 msgid "Bill Rate"
 msgstr "支付率"
 
-# gstripchart/gstripchart.c:1516 mini-utils/gcolorsel/gcolorsel.c:156
-# mini-utils/guname/moreinfo.c:218
 #: src/ghtml.c:256
 msgid "Value"
 msgstr "值"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ghtml.c:260
 msgid "Billable Value"
 msgstr "支付率的值"
 
-# ghex/preferences.c:50 mini-utils/idetool/idetool.c:19
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
 #: src/ghtml.c:264 src/ghtml.c:292
 msgid "No Default Value"
 msgstr "没有默认值"
@@ -402,8 +363,6 @@ msgstr "启动计时器的运行"
 msgid "Hold"
 msgstr "暂停"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ghtml.c:408 glade/task_properties.glade.h:4
 msgid "Bill"
 msgstr "支付"
@@ -412,8 +371,6 @@ msgstr "支付"
 msgid "Paid"
 msgstr "已支付"
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: src/ghtml.c:424 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "不可支付"
@@ -422,12 +379,10 @@ msgstr "不可支付"
 msgid "No Charge"
 msgstr "无收费"
 
-# gtt/toolbar.c:152
 #: src/ghtml.c:437 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "常规"
 
-# gtt/toolbar.c:156
 #: src/ghtml.c:440 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "超时"
@@ -436,12 +391,10 @@ msgstr "超时"
 msgid "Double Overtime"
 msgstr "双倍超时"
 
-# mini-utils/gcolorsel/gcolorsel.c:320
 #: src/ghtml.c:446 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "平整费用"
 
-# mini-utils/guname/info.c:206 mini-utils/idetool/idetool.c:26
 #: src/ghtml.c:466
 msgid "Error - Unknown"
 msgstr "错误 - 未知"
@@ -454,7 +407,6 @@ msgstr "未知标识符：>>>>"
 msgid "Error 404 Not Found"
 msgstr "错误 404 未找到"
 
-# mini-utils/guname/guname.c:506
 #: src/journal.c:109
 #, c-format
 msgid "The file %s was not found."
@@ -464,12 +416,10 @@ msgstr "未找到文件 %s 。"
 msgid "(null)"
 msgstr "(无)"
 
-# mini-utils/guname/info.c:206 mini-utils/idetool/idetool.c:26
 #: src/journal.c:119
 msgid "Unkown Error"
 msgstr "未知错误"
 
-# ghex/ui.c:305
 #: src/journal.c:168 src/plug-in.c:90
 #, c-format
 msgid ""
@@ -485,12 +435,10 @@ msgstr ""
 msgid "New Diary Entry"
 msgstr "新建日记条目(_E)"
 
-# gtt/toolbar.c:156
 #: src/journal.c:448
 msgid "Save HTML To File"
 msgstr "将 HTML 保存到文件"
 
-# ghex/ui.c:348
 #: src/log.c:55
 #, c-format
 msgid "Cannot open logfile %s for append"
@@ -502,23 +450,19 @@ msgstr "无法打开日志文件 %s 以便附加内容"
 msgid "%b %d %H:%M:%S"
 msgstr "%Y%m%d%H%M%S"
 
-# gtt/log.c:82
 #: src/log.c:102
 msgid "no description"
 msgstr "无描述"
 
-# gtt/log.c:64 gtt/log.c:216
 #: src/log.c:167 src/log.c:258
 msgid "program started"
 msgstr "程序已启动"
 
-# gtt/log.c:208
 #. log_if_equal
 #: src/log.c:250
 msgid "program exited"
 msgstr "程序已退出"
 
-# gtt/main.c:77
 #: src/main.c:114
 msgid ""
 "There seems to be another GTimeTracker running.\n"
@@ -527,7 +471,6 @@ msgstr ""
 "似乎有另一个 GTimeTracker 正在执行中。\n"
 "按下 确认 强行启动 GTimeTracker，或按下 取消 结束。"
 
-# ghex/ui.c:305
 #: src/main.c:126
 msgid "Cannot create pid-file!"
 msgstr "无法创建 pid-file！"
@@ -536,7 +479,6 @@ msgstr "无法创建 pid-file！"
 msgid "Do you want to continue?"
 msgstr "您希望继续吗？"
 
-# gtt/main.c:121
 #: src/main.c:222 src/main.c:275
 msgid "Error"
 msgstr "错误"
@@ -545,27 +487,22 @@ msgstr "错误"
 msgid "Shall I setup a new configuration?"
 msgstr "我该设置新配置吗？"
 
-# gtt/menucmd.c:31 gtt/menucmd.c:121 gtt/menucmd.c:153
 #: src/main.c:363 src/main.c:388 src/main.c:535 src/menucmd.c:48
 msgid "Warning"
 msgstr "警告"
 
-# gtt/main.c:204
 #: src/main.c:491
 msgid "Specify geometry"
 msgstr "指定 geometry"
 
-# gtt/main.c:204 mini-utils/gless/gless.c:131
 #: src/main.c:491
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-# gtt/main.c:206
 #: src/main.c:493
 msgid "Select a project on startup"
 msgstr "在启动时选取一个计划"
 
-# gtt/main.c:206
 #: src/main.c:493
 msgid "PROJECT"
 msgstr "计划"
@@ -578,12 +515,10 @@ msgid ""
 "well as track that status of other projects."
 msgstr ""
 
-# gtt/menucmd.c:85 gtt/toolbar.c:146
 #: src/menucmd.c:149
 msgid "New Project..."
 msgstr "新增计划..."
 
-# gtt/menus.c:27
 #: src/menus.c:34
 msgid "_New Project..."
 msgstr "新增计划 _N..."
@@ -592,7 +527,6 @@ msgstr "新增计划 _N..."
 msgid "_Export Tab-Delimited"
 msgstr ""
 
-# gtt/menus.c:59 gtt/menus.c:115
 #: src/menus.c:56 src/menus.c:166
 msgid "Clear _Daily Counter"
 msgstr "清除 Daily 计数器(_D)"
@@ -601,7 +535,6 @@ msgstr "清除 Daily 计数器(_D)"
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "通过删除今天的时间日志清除今天的计数器"
 
-# gtt/toolbar.c:198
 #: src/menus.c:61 src/menus.c:80 src/menus.c:149
 msgid "_Journal..."
 msgstr "日记(_J)..."
@@ -626,7 +559,6 @@ msgstr "所有日记(_A)..."
 msgid "Show the verbose timesheet journal for this project"
 msgstr "为该计划显示详细时间表单日记"
 
-# mini-utils/gw/gw.c:174
 #: src/menus.c:88
 msgid "_Invoice..."
 msgstr "支票(_I)..."
@@ -635,7 +567,6 @@ msgstr "支票(_I)..."
 msgid "Show a sample invoice for this project"
 msgstr "为该计划显示示例支票"
 
-# gtt/toolbar.c:193
 #: src/menus.c:92
 msgid "_Primer..."
 msgstr "初级读本(_P)..."
@@ -644,7 +575,6 @@ msgstr "初级读本(_P)..."
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr "显示关于设计定制报告的介绍性读本的示例"
 
-# gtt/menus.c:27
 #: src/menus.c:96
 msgid "_New Report..."
 msgstr "新建报告(_N)..."
@@ -653,7 +583,6 @@ msgstr "新建报告(_N)..."
 msgid "Define a path to a new GTT phtml report file"
 msgstr "定义一个到新建 GTT phtml 报告文件的路径"
 
-# gsearchtool/gsearchtool.c:514
 #: src/menus.c:108
 msgid "St_art"
 msgstr "开始(_A)"
@@ -662,7 +591,6 @@ msgstr "开始(_A)"
 msgid "Start the timer running"
 msgstr "启动计时器的运行"
 
-# gtt/menus.c:75
 #: src/menus.c:114
 msgid "Sto_p"
 msgstr "停止(_P)"
@@ -672,7 +600,6 @@ msgstr "停止(_P)"
 msgid "Stop the timer"
 msgstr "设定端口号"
 
-# gtt/menus.c:80
 #: src/menus.c:120
 msgid "_Timer Running"
 msgstr "计时器正在运行(_T)"
@@ -681,12 +608,10 @@ msgstr "计时器正在运行(_T)"
 msgid "_Reports"
 msgstr "报告(_R)"
 
-# gtt/menus.c:99
 #: src/menus.c:140
 msgid "_Timer"
 msgstr "计时器(_T)"
 
-# mini-utils/gshutdown/gshutdown.c:92
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
 #: src/menus.c:237
@@ -701,7 +626,6 @@ msgstr "报告/<分隔符>"
 msgid "Old GTT Tasks"
 msgstr "老式 GTT 任务"
 
-# gtt/prop.c:55
 #: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
 #: src/props-task.c:76
 msgid "empty"
@@ -726,23 +650,19 @@ msgstr ""
 msgid "System Idle"
 msgstr "系统空闲"
 
-# gtt/menucmd.c:85 gtt/toolbar.c:146
 #: src/toolbar.c:173
 msgid "Create a New Project..."
 msgstr "创建新计划..."
 
-# gtt/toolbar.c:164
 #: src/toolbar.c:183
 msgid "Cut Selected Project"
 msgstr "剪切选中的计划"
 
-# gtt/toolbar.c:164
 #: src/toolbar.c:188
 #, fuzzy
 msgid "Copy Selected Project"
 msgstr "剪切选中的计划"
 
-# gtt/toolbar.c:172
 #: src/toolbar.c:193
 msgid "Paste Project"
 msgstr "粘贴计划"
@@ -755,17 +675,14 @@ msgstr "日记"
 msgid "View and Edit Timestamp Logs"
 msgstr "查看并编辑时间戳日志"
 
-# gtt/toolbar.c:179
 #: src/toolbar.c:212
 msgid "Edit Project Properties..."
 msgstr "编辑计划属性..."
 
-# gtt/toolbar.c:183
 #: src/toolbar.c:219
 msgid "Timer"
 msgstr "计时器"
 
-# gtt/toolbar.c:184
 #: src/toolbar.c:220
 msgid "Start/Stop Timer"
 msgstr "启动/停止 计时器"
@@ -787,12 +704,10 @@ msgstr "首选项..."
 msgid "User's Guide and Manual"
 msgstr "用户指南与手册"
 
-# gtt/toolbar.c:203
 #: src/toolbar.c:267
 msgid "Quit Gnome TimeTracker"
 msgstr "退出 Gnome 时间跟踪器"
 
-# gtt/prop.c:237 gtt/prop.c:275
 #: glade/interval_edit.glade.h:1
 #, fuzzy
 msgid "1 Hour"
@@ -806,7 +721,6 @@ msgstr ""
 msgid "15 Min"
 msgstr ""
 
-# gtt/prop.c:237 gtt/prop.c:275
 #: glade/interval_edit.glade.h:4
 #, fuzzy
 msgid "2 Hours"
@@ -816,7 +730,6 @@ msgstr "时"
 msgid "20 Min"
 msgstr ""
 
-# gtt/prop.c:237 gtt/prop.c:275
 #: glade/interval_edit.glade.h:6
 #, fuzzy
 msgid "3 Hours"
@@ -839,19 +752,16 @@ msgstr "任务时间"
 msgid "Set how Uncertain the Start Time Is"
 msgstr ""
 
-# gsearchtool/gsearchtool.c:514
 #: glade/interval_edit.glade.h:12
 #, fuzzy
 msgid "Start Fuzz"
 msgstr "开始"
 
-# gstripchart/gstripchart.c:1891
 #: glade/interval_popup.glade.h:1
 #, fuzzy
 msgid "Delete Interval"
 msgstr "slider 更新间隔"
 
-# gstripchart/gstripchart.c:1887
 #: glade/interval_popup.glade.h:2
 #, fuzzy
 msgid "Edit Interval"
@@ -870,7 +780,6 @@ msgstr ""
 msgid "Merge Up"
 msgstr ""
 
-# mini-utils/gshutdown/gshutdown.c:395
 #: glade/interval_popup.glade.h:6
 #, fuzzy
 msgid "New Interval"
@@ -881,26 +790,21 @@ msgstr "一般"
 msgid "Paste Diary Entry"
 msgstr "新建日记条目(_E)"
 
-# ghex/converter.c:96 mini-utils/gshutdown/gshutdown.c:152
-# mini-utils/gshutdown/gshutdown.c:596
 #: glade/journal.glade.h:1
 #, fuzzy
 msgid "Close"
 msgstr "余弦"
 
-# mini-utils/gless/gless.c:294
 #: glade/journal.glade.h:3
 #, fuzzy
 msgid "New File"
 msgstr "新增窗口 _N"
 
-# mini-utils/gless/gless.c:700
 #: glade/journal.glade.h:4
 #, fuzzy
 msgid "Open File"
 msgstr "开启文字文件..."
 
-# ghex/preferences.c:143
 #: glade/journal.glade.h:5
 #, fuzzy
 msgid "Print"
@@ -910,25 +814,21 @@ msgstr "字形"
 msgid "Refresh"
 msgstr ""
 
-# gtt/toolbar.c:156
 #: glade/journal.glade.h:7
 #, fuzzy
 msgid "Save"
 msgstr "储存"
 
-# mini-utils/gless/gless.c:294
 #: glade/journal.glade.h:8
 #, fuzzy
 msgid "Save File"
 msgstr "新增窗口 _N"
 
-# mini-utils/guname/moreinfo.c:280
 #: glade/not-implemented.glade.h:1
 #, fuzzy
 msgid "Information"
 msgstr "CPU 讯息"
 
-# gsearchtool/gsearchtool.c:533
 #: glade/not-implemented.glade.h:2
 #, fuzzy
 msgid ""
@@ -941,7 +841,6 @@ msgstr "此功能尚未完成"
 msgid "*"
 msgstr "*"
 
-# ghex/preferences.c:194 gtt/options.c:186
 #: glade/prefs.glade.h:2
 msgid "Display"
 msgstr "显示"
@@ -954,13 +853,11 @@ msgstr ""
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 
-# gtt/options.c:394
 #: glade/prefs.glade.h:5
 #, fuzzy
 msgid "Entry Start:"
 msgstr "条目细节(_E)"
 
-# gtt/options.c:408
 #: glade/prefs.glade.h:6
 #, fuzzy
 msgid "Entry Stop:"
@@ -980,18 +877,15 @@ msgid ""
 "title, %d for the project description, etc. See the manual for more options."
 msgstr ""
 
-# mini-utils/gless/gless.c:461
 #: glade/prefs.glade.h:11
 #, fuzzy
 msgid "Fields"
 msgstr "查找"
 
-# gtt/options.c:380
 #: glade/prefs.glade.h:12
 msgid "Filename:"
 msgstr "文件名:"
 
-# gtt/options.c:194
 #: glade/prefs.glade.h:13
 #, fuzzy
 msgid "Idle Seconds:"
@@ -1001,7 +895,6 @@ msgstr "显示秒"
 msgid "Inactivity Timeout"
 msgstr ""
 
-# gtt/options.c:363
 #: glade/prefs.glade.h:15
 msgid "Logfile"
 msgstr "纪录档"
@@ -1011,17 +904,14 @@ msgstr "纪录档"
 msgid "Min Recorded:"
 msgstr "主体："
 
-# gtt/options.c:505
 #: glade/prefs.glade.h:17
 msgid "Misc"
 msgstr "其它"
 
-# gtt/options.c:329
 #: glade/prefs.glade.h:18
 msgid "No Project Command:"
 msgstr "没有计划的指令:"
 
-# gtt/clist.c:171
 #: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Project List Display"
@@ -1032,7 +922,6 @@ msgstr "计划标题"
 msgid "Shell"
 msgstr "拼写"
 
-# gtt/options.c:310
 #: glade/prefs.glade.h:21
 msgid "Shell Commands"
 msgstr "Shell 指令"
@@ -1046,7 +935,6 @@ msgstr "当前日记条目"
 msgid "Show Estimated Effort"
 msgstr ""
 
-# mini-utils/guname/info.c:63
 #: glade/prefs.glade.h:24
 #, fuzzy
 msgid "Show Percent Complete"
@@ -1061,53 +949,44 @@ msgstr ""
 msgid "Show Planned Project Start Date"
 msgstr "估计计划开始日期"
 
-# gtt/prop.c:209
 #: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Description"
 msgstr "计划描述:"
 
-# gtt/options.c:272
 #: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "显示 `内容'"
 
-# gtt/options.c:329
 #: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "没有计划的指令:"
 
-# gtt/options.c:272
 #: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Status"
 msgstr "显示 `内容'"
 
-# gtt/options.c:272
 #: glade/prefs.glade.h:31
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "显示 `内容'"
 
-# gtt/options.c:194
 #: glade/prefs.glade.h:32
 msgid "Show Seconds"
 msgstr "显示秒"
 
-# gtt/options.c:200
 #: glade/prefs.glade.h:33
 msgid "Show Status Bar"
 msgstr "显示状态列"
 
-# gtt/options.c:272
 #: glade/prefs.glade.h:34
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "显示 `内容'"
 
-# gtt/options.c:206
 #: glade/prefs.glade.h:35
 msgid "Show Table Header"
 msgstr "显示表格档头"
@@ -1125,45 +1004,37 @@ msgstr ""
 msgid "Show Time This Week"
 msgstr ""
 
-# gtt/options.c:278
 #: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "显示 `Timer'"
 
-# gtt/options.c:278
 #: glade/prefs.glade.h:40
 #, fuzzy
 msgid "Show Time Today"
 msgstr "显示 `Timer'"
 
-# gtt/options.c:228
 #: glade/prefs.glade.h:41
 msgid "Show Toolbar Icons"
 msgstr "显示工具栏图标"
 
-# gtt/options.c:234
 #: glade/prefs.glade.h:42
 msgid "Show Toolbar Texts"
 msgstr "显示工具栏文字"
 
-# gtt/options.c:240
 #: glade/prefs.glade.h:43
 msgid "Show Tooltips"
 msgstr "显示工具栏提示"
 
-# gtt/options.c:206
 #: glade/prefs.glade.h:44
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "显示表格档头"
 
-# gtt/options.c:266
 #: glade/prefs.glade.h:45
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "显示 `剪下', `复制', `贴上'"
 
-# gtt/options.c:290
 #: glade/prefs.glade.h:46
 msgid "Show `Help'"
 msgstr "显示 `说明'"
@@ -1173,28 +1044,23 @@ msgstr "显示 `说明'"
 msgid "Show `Journal'"
 msgstr "日记"
 
-# gtt/options.c:254
 #: glade/prefs.glade.h:48
 msgid "Show `New'"
 msgstr "显示 `新增'"
 
-# gtt/options.c:284
 #: glade/prefs.glade.h:49
 msgid "Show `Preferences'"
 msgstr "显示 `偏好设定'"
 
-# gtt/options.c:272
 #: glade/prefs.glade.h:50
 #, fuzzy
 msgid "Show `Properties'"
 msgstr "显示日志属性"
 
-# gtt/options.c:296
 #: glade/prefs.glade.h:51
 msgid "Show `Quit'"
 msgstr "显示 `结束'"
 
-# gtt/options.c:278
 #: glade/prefs.glade.h:52
 msgid "Show `Timer'"
 msgstr "显示 `Timer'"
@@ -1205,7 +1071,6 @@ msgid ""
 "perform this project."
 msgstr ""
 
-# gtt/options.c:318
 #: glade/prefs.glade.h:54
 msgid "Switch Project Command:"
 msgstr "切换计划的指令:"
@@ -1222,22 +1087,18 @@ msgid ""
 "keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
 msgstr ""
 
-# gtt/options.c:220 gtt/options.c:518
 #: glade/prefs.glade.h:57
 msgid "Toolbar"
 msgstr "工具栏"
 
-# gtt/options.c:246
 #: glade/prefs.glade.h:58
 msgid "Toolbar Segments"
 msgstr "工具栏区块"
 
-# gtt/options.c:371
 #: glade/prefs.glade.h:59
 msgid "Use Logfile"
 msgstr "使用纪录档"
 
-# gtt/prop.c:171
 #: glade/prefs.glade.h:60
 #, fuzzy
 msgid "View Project Fields"
@@ -1287,13 +1148,11 @@ msgstr ""
 msgid "Double-Overtime Rate:"
 msgstr "双倍超时"
 
-# gtt/toolbar.c:171
 #: glade/project_properties.glade.h:14
 #, fuzzy
 msgid "Due Date:"
 msgstr "日期："
 
-# mini-utils/gcolorsel/gcolorsel.c:320
 #: glade/project_properties.glade.h:15
 #, fuzzy
 msgid "Flat Fee:"
@@ -1331,7 +1190,6 @@ msgid ""
 "Internal notes about the project that will not be printed on an invoice."
 msgstr ""
 
-# mini-utils/gshutdown/gshutdown.c:395
 #: glade/project_properties.glade.h:24
 #, fuzzy
 msgid "Intervals"
@@ -1350,13 +1208,11 @@ msgstr "中"
 msgid "Minimum Interval: "
 msgstr ""
 
-# mini-utils/idetool/idetool.c:207
 #: glade/project_properties.glade.h:29
 #, fuzzy
 msgid "Not Set"
 msgstr "注解"
 
-# mini-utils/idetool/idetool.c:207
 #: glade/project_properties.glade.h:31
 #, fuzzy
 msgid ""
@@ -1368,7 +1224,6 @@ msgid ""
 "\n"
 msgstr "注解"
 
-# gtt/toolbar.c:156
 #: glade/project_properties.glade.h:39
 #, fuzzy
 msgid "Overtime Rate:"
@@ -1382,40 +1237,33 @@ msgstr ""
 msgid "Planned Start:"
 msgstr ""
 
-# gtt/menucmd.c:31 gtt/menucmd.c:121 gtt/menucmd.c:153
 #: glade/project_properties.glade.h:42
 #, fuzzy
 msgid "Planning"
 msgstr "警告"
 
-# gtt/prop.c:178
 #: glade/project_properties.glade.h:43
 msgid "Project"
 msgstr "计划"
 
-# gtt/prop.c:209
 #: glade/project_properties.glade.h:44
 msgid "Project Description:"
 msgstr "计划描述:"
 
-# gtt/prop.c:197
 #: glade/project_properties.glade.h:45
 msgid "Project Title:"
 msgstr "计划标题:"
 
-# ghex/ui.c:89
 #: glade/project_properties.glade.h:46
 #, fuzzy
 msgid "Rates"
 msgstr "Bytes"
 
-# gtt/toolbar.c:152
 #: glade/project_properties.glade.h:47
 #, fuzzy
 msgid "Regular Rate:"
 msgstr "常规"
 
-# mini-utils/idetool/idetool.c:316
 #: glade/project_properties.glade.h:48
 #, fuzzy
 msgid "Status:"
@@ -1451,7 +1299,6 @@ msgstr "该计划当前的状态。"
 msgid "a short description that will be printed on the invoice."
 msgstr ""
 
-# gtt/prop.c:259 gtt/prop.c:297
 #: glade/project_properties.glade.h:56
 #, fuzzy
 msgid "seconds"
@@ -1461,7 +1308,6 @@ msgstr "秒"
 msgid "Cut Entry & _Times"
 msgstr ""
 
-# gstripchart/gstripchart.c:1891
 #: glade/task_popup.glade.h:2
 #, fuzzy
 msgid "New Time Interval"
@@ -1495,8 +1341,6 @@ msgstr ""
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: glade/task_properties.glade.h:6
 #, fuzzy
 msgid "Billable:"
@@ -1506,20 +1350,16 @@ msgstr "可支付"
 msgid "Billing Block:"
 msgstr ""
 
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
 #: glade/task_properties.glade.h:8
 #, fuzzy
 msgid "Billing Rate:"
 msgstr "支付率"
 
-# mini-utils/idetool/idetool.c:316
 #: glade/task_properties.glade.h:9
 #, fuzzy
 msgid "Billing Status:"
 msgstr "帐单状态"
 
-# gtt/prop.c:171
 #: glade/task_properties.glade.h:10
 #, fuzzy
 msgid "Diary Entry Properties"
@@ -1549,7 +1389,6 @@ msgid ""
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
-# mini-utils/idetool/idetool.c:207
 #: glade/task_properties.glade.h:19
 #, fuzzy
 msgid "Notes:"
@@ -1565,7 +1404,6 @@ msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 
-# gtt/prop.c:248 gtt/prop.c:286
 #: glade/task_properties.glade.h:25
 #, fuzzy
 msgid "minutes"
@@ -1579,25 +1417,18 @@ msgstr ""
 msgid "Time tracking tool"
 msgstr ""
 
-#~ msgid "%d:%02d:%02d"
-#~ msgstr "%d:%02d:%02d"
-
-# gtt/menucmd.c:137 gtt/toolbar.c:153
 #~ msgid "Reload Configuration File"
 #~ msgstr "重新载入设定文件"
 
-# gtt/menucmd.c:123
 #~ msgid "Do you really want to reload the configuration file?"
 #~ msgstr "您真的希望重新装入配置文件？"
 
 #~ msgid "File cannot be written"
 #~ msgstr "无法写入文件"
 
-# gstripchart/gstripchart.c:1538
 #~ msgid "Export Current State"
 #~ msgstr "导出当前状态"
 
-# gtt/menus.c:30
 #~ msgid "_Reload Configuration File"
 #~ msgstr "重新载入设定文件 _R"
 
@@ -1605,7 +1436,6 @@ msgstr ""
 #~ msgid "_Save Configuration File"
 #~ msgstr "另存设定文件 _S"
 
-# gstripchart/gstripchart.c:1538
 #~ msgid "_Export Current State"
 #~ msgstr "导出当前状态(_E)"
 
@@ -1613,12 +1443,10 @@ msgstr ""
 #~ msgid "Save Configuration File"
 #~ msgstr "保存配置文件"
 
-# ghex/hex-document.c:87
 #, fuzzy
 #~ msgid "Add a new time interval."
 #~ msgstr "Add a new view of the buffer"
 
-# gstripchart/gstripchart.c:1891
 #, fuzzy
 #~ msgid "Delete This Interval"
 #~ msgstr "slider 更新间隔"
@@ -1632,3802 +1460,3 @@ msgstr ""
 #~ msgid "Show `Save', `Reload'"
 #~ msgstr "显示 `储存', `重新载入'"
 
-# ghex/hex-document.c:87
-#, fuzzy
-#~ msgid "Add a new time interval"
-#~ msgstr "Add a new view of the buffer"
-
-#~ msgid ""
-#~ "Executing arbitrary programs that you downloaded from the network might "
-#~ "be dangerous.\n"
-#~ "\n"
-#~ "Are you sure you want to run `%s'?"
-#~ msgstr ""
-#~ "执行任何从网络下载的程序可能是危险的。\n"
-#~ "\n"
-#~ "您确定您要运行“%s”？"
-
-#~ msgid "Could not access file permissions"
-#~ msgstr "无法访问文件权限"
-
-#~ msgid "Could not execute the file `%s' due to a permission problem"
-#~ msgstr "由于权限问题而无法执行文件“%s”"
-
-#~ msgid "Failure at executing `%s'"
-#~ msgstr "执行“%s”时失败"
-
-#~ msgid "It was not possible to open the file `%s'"
-#~ msgstr "不可能打开文件“%s”"
-
-#~ msgid "The file `%s' is empty"
-#~ msgstr "文件“%s”为空"
-
-#~ msgid "There was an error. `%s' is empty"
-#~ msgstr "出现错误。“%s”为空"
-
-#~ msgid "This is a library and can not be executed"
-#~ msgstr "该文件是库文件，不可执行"
-
-#~ msgid "The file is a core file and can not be executed"
-#~ msgstr "该文件是 core 文件，不可执行"
-
-#~ msgid "This is an unknown kind of executable"
-#~ msgstr "它是未知类型的可执行文件"
-
-#~ msgid ""
-#~ "The executable is for a different platform and can not be executed on "
-#~ "this system"
-#~ msgstr "该可执行程序运行于其它平台并且不能在该系统中执行"
-
-#~ msgid "translator_credits"
-#~ msgstr "Wang Li <charlesw1234@163.com>"
-
-# gcalc/gcalc.c:124
-#~ msgid "GNOME Calculator"
-#~ msgstr "Gnome 计算器"
-
-# gcalc/gcalc.c:33
-#~ msgid "Simple double precision calculator similiar to xcalc"
-#~ msgstr "一个类似 xcalc 的双精准度计算器"
-
-# gcalc/gcalc.c:124
-#~ msgid "_Calculator"
-#~ msgstr "计算器(_C)"
-
-#~ msgid "inf"
-#~ msgstr "inf"
-
-#~ msgid "DEG"
-#~ msgstr "DEG"
-
-#~ msgid "RAD"
-#~ msgstr "RAD"
-
-#~ msgid "GRAD"
-#~ msgstr "GRAD"
-
-#~ msgid "1/x"
-#~ msgstr "1/x"
-
-# gtt/toolbar.c:156
-#~ msgid "Square"
-#~ msgstr "平方"
-
-#~ msgid "SQRT"
-#~ msgstr "SQRT"
-
-#~ msgid "Square root"
-#~ msgstr "平方根"
-
-#~ msgid "CE/C"
-#~ msgstr "CE/C"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "AC"
-#~ msgstr "AC"
-
-# mini-utils/idetool/idetool.c:327
-#~ msgid "Reset"
-#~ msgstr "重置"
-
-#~ msgid "INV"
-#~ msgstr "INV"
-
-#~ msgid "Inverse trigonometry/log function"
-#~ msgstr "反转三角/对数函数"
-
-#~ msgid "sin"
-#~ msgstr "sin"
-
-# mini-utils/guname/info.c:60
-#~ msgid "Sine"
-#~ msgstr "正弦"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "Tangent"
-#~ msgstr "正切"
-
-#~ msgid " DEG  "
-#~ msgstr " DEG  "
-
-#~ msgid "Switch degrees / radians / grad"
-#~ msgstr "在角度/弧度/梯度间切换"
-
-#~ msgid "e"
-#~ msgstr "e"
-
-#~ msgid "Base of Natural Logarithm"
-#~ msgstr "自然对数的底"
-
-#~ msgid "EE"
-#~ msgstr "EE"
-
-#~ msgid "Add digit"
-#~ msgstr "增加数字"
-
-#~ msgid "log"
-#~ msgstr "log"
-
-#~ msgid "Base 10 Logarithm"
-#~ msgstr "以10为底的对数"
-
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "Natural Logarithm"
-#~ msgstr "自然对数"
-
-#~ msgid "Power"
-#~ msgstr "幂"
-
-#~ msgid "PI"
-#~ msgstr "PI"
-
-#~ msgid "x!"
-#~ msgstr "x!"
-
-#~ msgid "Factorial"
-#~ msgstr "阶乘"
-
-#~ msgid "("
-#~ msgstr "("
-
-#~ msgid "Opening Parenthesis"
-#~ msgstr "左括号"
-
-#~ msgid ")"
-#~ msgstr ")"
-
-# gstripchart/gstripchart.c:423
-#~ msgid "Closing Parenthesis"
-#~ msgstr "右括号"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "Divide by"
-#~ msgstr "除以"
-
-#~ msgid "STO"
-#~ msgstr "STO"
-
-#~ msgid ""
-#~ "Store the value in the\n"
-#~ "display field in memory"
-#~ msgstr ""
-#~ "将显示域中的值\n"
-#~ "保存到记忆中"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "9"
-#~ msgstr "9"
-
-#~ msgid "Multiply by"
-#~ msgstr "乘"
-
-#~ msgid "RCL"
-#~ msgstr "RCL"
-
-#~ msgid ""
-#~ "Display the value in memory\n"
-#~ "in the display field"
-#~ msgstr ""
-#~ "在显示域显示\n"
-#~ "记忆中的值"
-
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-# gsearchtool/gsearchtool.c:514
-#~ msgid "Subtract"
-#~ msgstr "减"
-
-#~ msgid "SUM"
-#~ msgstr "SUM"
-
-#~ msgid ""
-#~ "Add the value in the display\n"
-#~ "field to the value in memory"
-#~ msgstr ""
-#~ "将显示域的值于\n"
-#~ "内存中的值相加"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-# gsearchtool/gsearchtool.c:503 mini-utils/gw/gw.c:488
-#~ msgid "Add"
-#~ msgstr "添加"
-
-#~ msgid "EXC"
-#~ msgstr "EXC"
-
-#~ msgid ""
-#~ "Exchange the values in the\n"
-#~ "display field and memory"
-#~ msgstr ""
-#~ "交换显示域和\n"
-#~ "内存中的值"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "."
-#~ msgstr "."
-
-# mini-utils/gcolorsel/gcolorsel.c:316
-#~ msgid "Decimal Point"
-#~ msgstr "十进制点"
-
-#~ msgid "+/-"
-#~ msgstr "+/-"
-
-#~ msgid "Change sign"
-#~ msgstr "改变符号"
-
-#~ msgid "="
-#~ msgstr "="
-
-# gcalc/gcalc.c:124
-#~ msgid "Calculate"
-#~ msgstr "计算器"
-
-# gcalc/gcalc.c:124
-#~ msgid "Calculator"
-#~ msgstr "计算器"
-
-#~ msgid "Perform simple calculations"
-#~ msgstr "执行简单计算"
-
-# gcalc/gcalc.c:124
-#~ msgid "Character Map"
-#~ msgstr "字符映射表"
-
-#~ msgid "Insert special characters into documents"
-#~ msgstr "将特殊字符插入到文档中"
-
-# ghex/ui.c:206
-#~ msgid "Select Character"
-#~ msgstr "选择字符"
-
-#~ msgid "_Insert"
-#~ msgstr "插入(_I)"
-
-#~ msgid "Character code:"
-#~ msgstr "字符码："
-
-#~ msgid "Character:"
-#~ msgstr "字符："
-
-#~ msgid "Character Code"
-#~ msgstr "字符码"
-
-# ghex/ui.c:206
-#~ msgid "Select character code"
-#~ msgstr "选择字符码"
-
-#~ msgid "Character"
-#~ msgstr "字符"
-
-#~ msgid "Character to insert"
-#~ msgstr "要插入的字符"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-#~ msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-# gcalc/gcalc.c:124
-#~ msgid "GNOME Character Map"
-#~ msgstr "GNOME 字符映射表"
-
-#~ msgid ""
-#~ "Select, copy and paste characters from your font into other applications"
-#~ msgstr "从您的字体中选择、复制字符并粘贴到其它应用程序中"
-
-# mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:320
-#~ msgid "del"
-#~ msgstr "删除"
-
-#~ msgid " %s: Character code %d"
-#~ msgstr " %s：字符码 %d"
-
-#~ msgid "Text copied to clipboard..."
-#~ msgstr "复制到剪贴板的文本..."
-
-#~ msgid "Text cut to clipboard..."
-#~ msgstr "剪切到剪贴板的文本..."
-
-#~ msgid "Text pasted from clipboard..."
-#~ msgstr "从剪贴板粘贴的文本..."
-
-# gcalc/gcalc.c:124
-#~ msgid "Gnome Character Map"
-#~ msgstr "Gnome 字符映射表"
-
-# gtt/options.c:220 gtt/options.c:518
-#~ msgid "Action Toolbar"
-#~ msgstr "动作工具栏"
-
-#~ msgid "_Text to copy:"
-#~ msgstr "要复制的文本(_T)："
-
-# gtt/toolbar.c:167
-#~ msgid "_Copy"
-#~ msgstr "复制(_C)"
-
-#~ msgid "Text to copy"
-#~ msgstr "要复制的文本"
-
-# gtt/toolbar.c:167
-#~ msgid "Copy"
-#~ msgstr "复制"
-
-#~ msgid "Copy the text"
-#~ msgstr "复制文本"
-
-# ghex/preferences.c:159
-#~ msgid "_Browse..."
-#~ msgstr "浏览(_B)..."
-
-#~ msgid "Insert character(s) by choosing character codes."
-#~ msgstr "通过选择字符码插入字符。"
-
-#~ msgid "_Characters"
-#~ msgstr "字符(_C)"
-
-# gtt/toolbar.c:163
-#~ msgid "Cut"
-#~ msgstr "剪切"
-
-#~ msgid "Cut the selection"
-#~ msgstr "剪切选中内容"
-
-#~ msgid "Copy the selection"
-#~ msgstr "复制选中内容"
-
-# gtt/toolbar.c:171
-#~ msgid "Paste"
-#~ msgstr "粘贴"
-
-#~ msgid "Paste the clipboard"
-#~ msgstr "粘贴剪贴板"
-
-#~ msgid "Gdialog progressbar"
-#~ msgstr "Gdialog 进度条"
-
-#~ msgid "Indicates the percentage specified at the standard input"
-#~ msgstr "给出在标准输入所占的百分比"
-
-#~ msgid "GDialog Entry"
-#~ msgstr "GDialog 条目"
-
-#~ msgid "Enter the text"
-#~ msgstr "输入文字"
-
-#~ msgid "Accessories"
-#~ msgstr "附件"
-
-#~ msgid "Dictionary Lookup"
-#~ msgstr "查字典"
-
-#~ msgid "Lookup words in an online dictionary"
-#~ msgstr "在在线字典中查询单词"
-
-# gtt/toolbar.c:168
-#~ msgid "Look Up Selected Text..."
-#~ msgstr "搜索选中的文字..."
-
-# gstripchart/gstripchart.c:1663 mini-utils/gshutdown/gshutdown.c:318
-#~ msgid "_About..."
-#~ msgstr "关于(_A)..."
-
-# gstripchart/gstripchart.c:1452
-#~ msgid "_Help"
-#~ msgstr "帮助(_H)"
-
-# gtt/options.c:499 mini-utils/gshutdown/gshutdown.c:313
-#~ msgid "_Preferences"
-#~ msgstr "首选项(_P)"
-
-#~ msgid "_Show/Hide Definition Window..."
-#~ msgstr "显示/隐藏定义窗口(_S)..."
-
-#~ msgid "Cannot connect to server"
-#~ msgstr "无法连接服务器"
-
-#~ msgid ""
-#~ "A serious error occured. Please check that your server and port are "
-#~ "correct. For reference the default server is dict.org and the port 2628"
-#~ msgstr ""
-#~ "发生了严重错误。请检查您的服务器和端口是否正确。默认服务器 dict.org，端口 "
-#~ "2628 可以作为参考"
-
-#~ msgid ""
-#~ "Client for MIT dictionary server.\n"
-#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-#~ msgstr ""
-#~ "MIT 字典服务器的客户端。\n"
-#~ "网站：http://gdict.dhs.org/，http://www.psilord.com/code/"
-
-# mini-utils/gless/gless.c:851
-#~ msgid "Spell-checking..."
-#~ msgstr "正在检查拼写..."
-
-#~ msgid "Spell check done"
-#~ msgstr "拼写检查完成"
-
-#~ msgid "No matches found"
-#~ msgstr "找不到匹配"
-
-#~ msgid "Looking up word..."
-#~ msgstr "正在搜索单词..."
-
-#~ msgid "Lookup done"
-#~ msgstr "搜索完成"
-
-# mini-utils/guname/guname.c:506
-#~ msgid "String not found"
-#~ msgstr "找不到字符串"
-
-# mini-utils/gless/gless.c:461
-#~ msgid "_Find"
-#~ msgstr "查找(_F)"
-
-#~ msgid ""
-#~ "Unable to perform requested operation. \n"
-#~ "Either the server you are using is not available \n"
-#~ "or you are not connected to the Internet."
-#~ msgstr ""
-#~ "无法实施您请求的操作。\n"
-#~ "要么您正使用的服务器不可用\n"
-#~ "要么您没有连接到 Internet。"
-
-#~ msgid "_Look Up Word"
-#~ msgstr "搜索单词(_L)"
-
-#~ msgid "Lookup word in dictionary"
-#~ msgstr "在字典中搜索单词"
-
-#~ msgid "Check _Spelling"
-#~ msgstr "检查拼写(_S)"
-
-#~ msgid "Check word spelling"
-#~ msgstr "检查单词的拼写"
-
-#~ msgid "_Dictionary"
-#~ msgstr "字典(_D)"
-
-#~ msgid "Dictionary"
-#~ msgstr "字典"
-
-# ghex/ui.c:90
-#~ msgid "_Word: "
-#~ msgstr "单词(_W)："
-
-# ghex/hex-document.c:59
-#~ msgid "Word"
-#~ msgstr "单词"
-
-#~ msgid "Word Entry"
-#~ msgstr "单词条目"
-
-#~ msgid "Enter a Word or select one from the list below"
-#~ msgstr "输入一个单词或从下面的列表中选择一个单词"
-
-#~ msgid "Look Up for a Word"
-#~ msgstr "搜索一个单词"
-
-#~ msgid "_Lookup"
-#~ msgstr "搜索(_L)"
-
-#~ msgid "Error invoking query: %s"
-#~ msgstr "调用查询时出错：%s"
-
-#~ msgid "Headword:"
-#~ msgstr "词头："
-
-#~ msgid "Sub-number:"
-#~ msgstr "子编号："
-
-#~ msgid "Pronunciation:"
-#~ msgstr "发音："
-
-#~ msgid "Etymology:"
-#~ msgstr "词源："
-
-#~ msgid "Part of speech:"
-#~ msgstr "部分引语："
-
-#~ msgid "Example:"
-#~ msgstr "示例："
-
-# gtt/options.c:499 mini-utils/gshutdown/gshutdown.c:313
-#~ msgid "Cross-reference:"
-#~ msgstr "交叉引用："
-
-# gtt/toolbar.c:194
-#~ msgid "Dictionary Preferences"
-#~ msgstr "字典首选项..."
-
-#~ msgid "Smart _lookup"
-#~ msgstr "智能搜索(_L)"
-
-#~ msgid "_Server:"
-#~ msgstr "服务器(_S)："
-
-# ghex/preferences.c:50 mini-utils/idetool/idetool.c:19
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#~ msgid "De_fault"
-#~ msgstr "默认(_F)"
-
-# mini-utils/gshutdown/gshutdown.c:368
-#~ msgid "Reset server to default"
-#~ msgstr "将服务器重置为默认值"
-
-#~ msgid "_Port:"
-#~ msgstr "端口(_P)："
-
-# ghex/preferences.c:50 mini-utils/idetool/idetool.c:19
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#~ msgid "Def_ault"
-#~ msgstr "默认(_A)"
-
-# mini-utils/gshutdown/gshutdown.c:368
-#~ msgid "Reset port to default"
-#~ msgstr "将端口重置为默认值"
-
-#~ msgid "Server Entry"
-#~ msgstr "服务器条目"
-
-#~ msgid "Enter the Server Name"
-#~ msgstr "输入服务器名"
-
-#~ msgid "Port"
-#~ msgstr "端口"
-
-#~ msgid "Port Entry"
-#~ msgstr "端口条目"
-
-#~ msgid "Enter the Port Number"
-#~ msgstr "输入端口编号"
-
-#~ msgid "_Database:"
-#~ msgstr "数据库(_D)："
-
-#~ msgid "D_efault strategy:"
-#~ msgstr "默认策略(_E)："
-
-#~ msgid "Search all databases"
-#~ msgstr "搜索所有数据库"
-
-#~ msgid "Database"
-#~ msgstr "数据库"
-
-#~ msgid "Database Name"
-#~ msgstr "数据库名称"
-
-#~ msgid "Default Strategy"
-#~ msgstr "默认策略"
-
-# ghex/ui.c:90
-#~ msgid "_Word:"
-#~ msgstr "单词(_W)："
-
-#~ msgid "Enter a word to know the spelling"
-#~ msgstr "输入一个单词以便知道拼写"
-
-#~ msgid "Click to do the spell check"
-#~ msgstr "点击以便进行拼写检查"
-
-#~ msgid "Search S_trategy:"
-#~ msgstr "搜索策略(_T)："
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Search _Results"
-#~ msgstr "搜寻结果(_R)"
-
-#~ msgid "Check Spelling"
-#~ msgstr "检查拼写"
-
-#~ msgid "Search Strategy"
-#~ msgstr "搜索策略"
-
-#~ msgid "Floppy Formatter"
-#~ msgstr "软盘格式化器"
-
-#~ msgid "Format Floppy Disks"
-#~ msgstr "格式化软盘"
-
-#~ msgid "MInternal Error: Unable to seek to the correct location."
-#~ msgstr "M内部错误：无法移动到正确位置。"
-
-#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
-#~ msgstr "M内部错误：do_test 中的非法值 (%ld)\n"
-
-#~ msgid "EBad block at block %lu"
-#~ msgstr "E在 %lu 块处的坏块"
-
-#~ msgid "MChecking for bad blocks..."
-#~ msgstr "M正在检查坏块..."
-
-#~ msgid "MFailed to open device %s for badblock checking\n"
-#~ msgstr "M为执行坏块检查打开设备 %s 失败\n"
-
-#~ msgid "MChecking for bad blocks... Done"
-#~ msgstr "M检查坏块... 完成"
-
-#~ msgid "MFormatting the disk..."
-#~ msgstr "M正在格式化磁盘..."
-
-#~ msgid "EI don't know what this is, but it's very wrong."
-#~ msgstr "E未知原因的严重错误。"
-
-#~ msgid "EError during completion of formatting"
-#~ msgstr "E完成格式时出错"
-
-#~ msgid "MFormatting the disk... Done"
-#~ msgstr "M格式化磁盘... 完成"
-
-#~ msgid "MVerifying the format..."
-#~ msgstr "M正在检查磁盘格式..."
-
-#~ msgid ""
-#~ "EUnable to write to the floppy.\n"
-#~ "\n"
-#~ "Please confirm that it is not write-protected."
-#~ msgstr ""
-#~ "E无法写入软盘。\n"
-#~ "\n"
-#~ "请确认它没有被写保护。"
-
-#~ msgid "EInsufficient permissions to open floppy device %s."
-#~ msgstr "E没有足够的权限打开软盘设备 %s。"
-
-#~ msgid ""
-#~ "EUnable to access the floppy disk.\n"
-#~ "\n"
-#~ "Please confirm that it is in the drive\n"
-#~ "with the drive door shut."
-#~ msgstr ""
-#~ "E无法访问软盘。\n"
-#~ "\n"
-#~ "请确认软盘在驱动器内\n"
-#~ "并且关闭了驱动器门。"
-
-#~ msgid ""
-#~ "EGeneric error accessing floppy device %s.\n"
-#~ "\n"
-#~ "Error code %s:%d"
-#~ msgstr ""
-#~ "E访问软盘设备时发生一般性错误 %s。\n"
-#~ "\n"
-#~ "错误码 %s：%d"
-
-#~ msgid ""
-#~ "ERead Error:\n"
-#~ "Problem reading cylinder %d, expected %d, read %d"
-#~ msgstr ""
-#~ "E读错误:\n"
-#~ "读柱面 %d 时出现问题，期待值 %d，读取值 %d"
-
-#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
-#~ msgstr "E读柱面 %d 时出现问题，期待值 %d，读取值 %d"
-
-#~ msgid "MBad data in cyl %d.  Continuing... "
-#~ msgstr "M错误的数据存在于柱面 %d。继续..."
-
-#~ msgid "EError closing device %s"
-#~ msgstr "E关闭设备 %s 时出错"
-
-#~ msgid "MVerifying the format... Done"
-#~ msgstr "M正在检查磁盘格式...完成"
-
-#~ msgid "EUnable to write to device %s"
-#~ msgstr "E无法向设备 %s 写入"
-
-#~ msgid ""
-#~ "EGeneric error accessing floppy device %s.\n"
-#~ "\n"
-#~ "Error code %s"
-#~ msgstr ""
-#~ "E访问软盘设备 %s 时发生一般性错误。\n"
-#~ "\n"
-#~ "错误码 %s"
-
-#~ msgid "ECould not determine current format type"
-#~ msgstr "E无法确定当前格式化类型"
-
-#~ msgid "MMaking filesystem on disk..."
-#~ msgstr "M正在在磁盘上创建文件系统.."
-
-# mini-utils/idetool/idetool.c:42
-#~ msgid "EUnable to create filesystem correctly."
-#~ msgstr "E无法正确创建文件系统。"
-
-#~ msgid "MMaking filesystem on disk... Done"
-#~ msgstr "M正在格式化磁盘... 完成"
-
-# mini-utils/idetool/idetool.c:42
-#~ msgid "EUnable to create filesystem."
-#~ msgstr "E无法创建文件系统。"
-
-#~ msgid "MChecking for bad blocks... (this might take a while)"
-#~ msgstr "M正在检查坏块... (这将花些时间)"
-
-#~ msgid "DOS (fat)"
-#~ msgstr "DOS (fat)"
-
-#~ msgid "Double Density 3.5\" (720KB)"
-#~ msgstr "倍密度 3.5\" (720 KB)"
-
-#~ msgid "Double Density 5.25\" (360KB)"
-#~ msgstr "倍密度 5.25\" (360 KB)"
-
-#~ msgid "File system _type:"
-#~ msgstr "文件系统类型(_T)："
-
-#~ msgid "Floppy _density:"
-#~ msgstr "软盘密度(_D)："
-
-#~ msgid "Floppy de_vice:"
-#~ msgstr "软盘设备(_V)："
-
-#~ msgid "Format a Floppy"
-#~ msgstr "格式化软盘"
-
-#~ msgid "High Density 3.5\" (1.44MB)"
-#~ msgstr "高密度 3.5\" (1.44 MB)"
-
-#~ msgid "High Density 5.25\" (1.2MB)"
-#~ msgstr "高密度 5.25\" (1.2 MB)"
-
-#~ msgid "Linux Native (ext2)"
-#~ msgstr "Linux Native (ext2)"
-
-#~ msgid "_Format"
-#~ msgstr "格式化(_F)"
-
-#~ msgid "_Quick format"
-#~ msgstr "快速格式化(_Q)"
-
-#~ msgid "Unable to open the device %s, formatting cannot continue."
-#~ msgstr "无法开启设备 %s，无法继续格式化。"
-
-#~ msgid ""
-#~ "The device %s is disconnected.\n"
-#~ "Please attach device to continue."
-#~ msgstr ""
-#~ "设备 %s 已断开。\n"
-#~ "请连接设备并继续。"
-
-#~ msgid ""
-#~ "You do not have the proper permissions to write to %s, formatting will "
-#~ "not be possible.\n"
-#~ "Contact your system administrator about getting write permissions."
-#~ msgstr ""
-#~ "您没有适当的权限写入 %s，格式化是不可能的。\n"
-#~ "与您的系统管理员交涉以获得写权限。"
-
-#~ msgid "The device to format"
-#~ msgstr "要格式化的设备"
-
-#~ msgid "DEVICE"
-#~ msgstr "设备"
-
-#~ msgid ""
-#~ "Could not display help for the floppy formatter.\n"
-#~ "%s"
-#~ msgstr ""
-#~ "无法显示磁盘格式化程序的求助信息。\n"
-#~ "%s"
-
-#~ msgid "Format another floppy?"
-#~ msgstr "还要格式化其它的软盘吗?"
-
-#~ msgid "Floppy formatted successfully."
-#~ msgstr "软盘格式化成功。"
-
-#~ msgid "Floppy formatting cancelled."
-#~ msgstr "取消软盘格式化。"
-
-#~ msgid "Format progress."
-#~ msgstr "格式化进度。"
-
-# gsearchtool/gsearchtool.c:610
-#~ msgid "Search for Files"
-#~ msgstr "搜索文件"
-
-# ghex/findreplace.c:60
-#~ msgid "Search your disk for files"
-#~ msgstr "在您的磁盘上搜索文件"
-
-# gsearchtool/gsearchtool.c:21
-#~ msgid "File name is"
-#~ msgstr "文件名为"
-
-# gsearchtool/gsearchtool.c:21
-#~ msgid "File name is not"
-#~ msgstr "文件名不是"
-
-# gsearchtool/gsearchtool.c:28
-#~ msgid "Don't search mounted filesystems"
-#~ msgstr "不搜寻加载的文件系统"
-
-#~ msgid "Follow symbolic links"
-#~ msgstr "跟随符号连接"
-
-#~ msgid "Process folder contents depth first"
-#~ msgstr "以深度优先的顺序处理文件夹内容"
-
-#~ msgid "Owned by user"
-#~ msgstr "由用户所有"
-
-# gsearchtool/gsearchtool.c:25
-#~ msgid "Owned by group"
-#~ msgstr "文件所属组"
-
-# gsearchtool/gsearchtool.c:32
-#~ msgid "Invalid user or group"
-#~ msgstr "无效的用户或组"
-
-# gsearchtool/gsearchtool.c:26
-#~ msgid "Last time modified"
-#~ msgstr "最后修改时间"
-
-#~ msgid "File is empty"
-#~ msgstr "文件为空"
-
-# gsearchtool/gsearchtool.c:37
-#~ msgid "Matches regular expression"
-#~ msgstr "匹配正则表达式"
-
-#~ msgid "Start folder does not exist."
-#~ msgstr "启动文件夹不存在。"
-
-#~ msgid "today at %-I:%M %p"
-#~ msgstr "今天 %p %-I:%M"
-
-#~ msgid "yesterday at %-I:%M %p"
-#~ msgstr "昨天 %p %-I:%M"
-
-#~ msgid "%m/%-d/%y, %-I:%M %p"
-#~ msgstr "%y/%m/%-d，%p %-I:%M"
-
-#~ msgid "folder"
-#~ msgstr "文件夹"
-
-# mini-utils/gnome-run/gnome-run.c:69
-#~ msgid "program"
-#~ msgstr "程序"
-
-#~ msgid "symbolic link"
-#~ msgstr "符号连接"
-
-#~ msgid "No Files Found."
-#~ msgstr "找不到文件。"
-
-#~ msgid ""
-#~ "Cannot perform the search.\n"
-#~ "The Bourne shell was not found\n"
-#~ "It is typically installed as /bin/sh or /usr/bin/sh."
-#~ msgstr ""
-#~ "无法执行搜索。\n"
-#~ "找不到 bourne shell\n"
-#~ "它通常被安装为 /bin/sh 或 /usr/bin/sh。"
-
-# mini-utils/gless/gless.c:851
-#~ msgid "Searching..."
-#~ msgstr "正在寻找..."
-
-#~ msgid ""
-#~ "\n"
-#~ "... Too many errors to display ..."
-#~ msgstr ""
-#~ "\n"
-#~ "... 需显示太多错误 ..."
-
-#~ msgid "No files found"
-#~ msgstr "找不到文件"
-
-#~ msgid "One file found"
-#~ msgstr "找到一个文件"
-
-#~ msgid "%d files found"
-#~ msgstr "找到 %d 个文件"
-
-#~ msgid "Cannot perform the search. Please specify a search criteria."
-#~ msgstr "无法执行搜索。请给出搜索条件。"
-
-#~ msgid ""
-#~ "A search is already running.  Please wait for the search to complete or "
-#~ "cancel it."
-#~ msgstr "一个搜索已在运行。请等那个搜索完成或取消它。"
-
-#~ msgid "Start folder does not exist"
-#~ msgstr "启动文件夹不存在"
-
-#~ msgid ""
-#~ "Cannot show the search command line. Please specify a search criteria."
-#~ msgstr "无法显示搜索命令行。请给出搜索条件。"
-
-# mini-utils/gw/gw.c:479
-#~ msgid "Search Command Line"
-#~ msgstr "搜索命令行"
-
-#~ msgid ""
-#~ "This is the command line that can be used to execute this search\n"
-#~ "from the console.\n"
-#~ "\n"
-#~ "C_ommand:"
-#~ msgstr ""
-#~ "这是可以从 console 执行该搜索的命令行。\n"
-#~ "\n"
-#~ "命令(_O)："
-
-# mini-utils/gw/gw.c:560
-#~ msgid "Command"
-#~ msgstr "命令"
-
-# mini-utils/gw/gw.c:479
-#~ msgid "Command Line Entry"
-#~ msgstr "命令行条目"
-
-#~ msgid "Use this command line to execute the search from console"
-#~ msgstr "在控制台使用该命令行以执行该搜索"
-
-# mini-utils/guname/moreinfo.c:104
-#~ msgid "No viewer available for this mime type."
-#~ msgstr "没有对该 mime 类型可用的查看器"
-
-#~ msgid "Entry changed called for a non entry option!"
-#~ msgstr "已改变的条目呼叫非条目选项！"
-
-#~ msgid "Search Rule Value Entry"
-#~ msgstr "搜索规则值条目"
-
-#~ msgid "Enter a value for search rule"
-#~ msgstr "为搜索规则输入一个值"
-
-# gsearchtool/gsearchtool.c:426
-#~ msgid "Enabled"
-#~ msgstr "已启用"
-
-#~ msgid "Toggle On/Off to enable/disable the rule"
-#~ msgstr "将规则的开/关切换为启用/禁用"
-
-#~ msgid "Click to Remove the Rule"
-#~ msgstr "点击以删除规则"
-
-# mini-utils/guname/guname.c:506
-#~ msgid "S_tarting in folder:"
-#~ msgstr "从此文件夹开始(_T)："
-
-# ghex/preferences.c:159
-#~ msgid "Browse"
-#~ msgstr "浏览"
-
-# mini-utils/guname/guname.c:506
-#~ msgid "Starting folder entry"
-#~ msgstr "起点从文件夹条目"
-
-#~ msgid "Enter the folder name where you want to start the search"
-#~ msgstr "当您希望启动搜索时输入文件夹名称"
-
-#~ msgid "Rules:"
-#~ msgstr "规则："
-
-#~ msgid "A_dd Rule:"
-#~ msgstr "添加规则(_D)："
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Search Rules Menu"
-#~ msgstr "搜寻规则菜单"
-
-#~ msgid "Select a search rule from the menu"
-#~ msgstr "从菜单中选择一个搜索规则"
-
-#~ msgid "Click to Add a Rule"
-#~ msgstr "点击以添加规则"
-
-#~ msgid "Click to Start the Search"
-#~ msgstr "点击以开始搜索"
-
-#~ msgid "Click to Stop the Search"
-#~ msgstr "点击以停止搜索"
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "S_earch Results"
-#~ msgstr "搜寻结果(_E)"
-
-# mini-utils/gcolorsel/gcolorsel.c:157 mini-utils/guname/moreinfo.c:217
-# mini-utils/gw/gw.c:479 mini-utils/gw/gw.c:554
-#~ msgid "Name"
-#~ msgstr "名字"
-
-#~ msgid "Folder"
-#~ msgstr "文件夹"
-
-#~ msgid "Type"
-#~ msgstr "类型"
-
-#~ msgid "Date Modified"
-#~ msgstr "修改时间"
-
-# gsearchtool/gsearchtool.c:21
-#~ msgid "Find files _named:"
-#~ msgstr "查找文件名为(_N)："
-
-# gsearchtool/gsearchtool.c:21
-#~ msgid "File Name Entry"
-#~ msgstr "文件名条目"
-
-#~ msgid "Enter the file name you want to search"
-#~ msgstr "输入您希望搜索的文件名"
-
-#~ msgid "Click to Start the search"
-#~ msgstr "点击以便开始搜索"
-
-#~ msgid "Click to Stop the search"
-#~ msgstr "点击以便停止搜索"
-
-# mini-utils/guname/info.c:60
-#~ msgid "Simple"
-#~ msgstr "简单"
-
-# mini-utils/gshutdown/gshutdown.c:208 mini-utils/gshutdown/gshutdown.c:209
-#~ msgid "Advanced"
-#~ msgstr "高级"
-
-# gsearchtool/gsearchtool.c:610
-#~ msgid "GNOME Search Tool"
-#~ msgstr "GNOME 搜索工具"
-
-# gsearchtool/gsearchtool.c:565
-#~ msgid "(C) 1998,2002 the Free Software Foundation"
-#~ msgstr "(C) 1998,2002 自由软件基金会"
-
-# gsearchtool/gsearchtool.c:567
-#~ msgid "Frontend to the unix find/locate commands"
-#~ msgstr "Unix find/locate 命令前端"
-
-#~ msgid "File %s already exists. Overwrite?"
-#~ msgstr "文件 %s 已存在。覆盖它？"
-
-# ghex/ui.c:305
-#~ msgid "Cannot save the results file."
-#~ msgstr "无法保存结果文件。"
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Save Results"
-#~ msgstr "保存结果"
-
-# gtt/options.c:310
-#~ msgid "S_how Command..."
-#~ msgstr "显示命令(_H)..."
-
-#~ msgid "Show the command used to perform the search"
-#~ msgstr "显示用于执行搜索的命令"
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Save Results _As..."
-#~ msgstr "结果保存为(_A)..."
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Save the search results"
-#~ msgstr "保存搜索结果"
-
-#~ msgid "Sear_ch"
-#~ msgstr "搜索(_C)"
-
-#~ msgid "Cannot initialize bonobo."
-#~ msgstr "无法初始化 bonobo。"
-
-# gsearchtool/gsearchtool.c:610
-#~ msgid "Search Tool"
-#~ msgstr "搜索工具"
-
-#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
-#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#~ msgid ""
-#~ "This  program  is  part of  the  GNOME  project for Linux. Logview comes "
-#~ "with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome "
-#~ "to redistribute it under the conditions of the GNU General Public "
-#~ "Licence. The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-#~ msgstr ""
-#~ "该程序是 Linux 下 GNOME 项目的一部分。Logview 没有任何担保。这是自由软件，"
-#~ "欢迎您按照通用公共许可证的条款发行它。日志图标是 Tuomas Kuosmanen (又名 "
-#~ "tigert) 的作品。"
-
-#~ msgid "GNOME System Log Viewer"
-#~ msgstr "GNOME 系统日志查看器"
-
-# gstripchart/gstripchart.c:1425
-#~ msgid "Copyright (C) 1998"
-#~ msgstr "版权所有 (C) 1998"
-
-#~ msgid "Action database"
-#~ msgstr "动作数据库"
-
-# gstripchart/gstripchart.c:1545
-#, fuzzy
-#~ msgid "Actions"
-#~ msgstr "工作中"
-
-# gsearchtool/gsearchtool.c:503 mini-utils/gw/gw.c:488
-#, fuzzy
-#~ msgid "_Add"
-#~ msgstr "添加"
-
-#, fuzzy
-#~ msgid "_Edit"
-#~ msgstr "编辑"
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "_Remove"
-#~ msgstr "删除(_R)"
-
-#~ msgid "Cannot open action data base <%s>! Open failed."
-#~ msgstr "无法打开动作数据库 <%s>！打开失败。"
-
-#~ msgid "Error parsing actions data base"
-#~ msgstr "解析动作数据库错误"
-
-#~ msgid "Can't write to actions database!"
-#~ msgstr "无法写入动作数据库"
-
-# gtt/prop.c:55
-#~ msgid "<empty>"
-#~ msgstr "<空>"
-
-# mini-utils/guname/info.c:45
-#~ msgid "log name regexp"
-#~ msgstr "日志名正则表达式"
-
-# mini-utils/guname/info.c:45
-#~ msgid "process regexp"
-#~ msgstr "进程正则表达式"
-
-#~ msgid "message regexp"
-#~ msgstr "消息正则表达式"
-
-#~ msgid "action to execute when regexps are TRUE"
-#~ msgstr "当正则表达式为真时执行"
-
-# gtt/clist.c:172
-#~ msgid "description"
-#~ msgstr "描述"
-
-# gtt/clist.c:172
-#, fuzzy
-#~ msgid "_Description:"
-#~ msgstr "描述："
-
-#~ msgid "Description of this entry."
-#~ msgstr "对该条目的描述。"
-
-#~ msgid ""
-#~ "tag: [%s]\n"
-#~ "log_name: [%s]\n"
-#~ "process: [%s]\n"
-#~ "message: [%s]\n"
-#~ "description: [%s]\n"
-#~ "action: [%s]\n"
-#~ msgstr ""
-#~ "标记：[%s]\n"
-#~ "日志名：[%s]\n"
-#~ "进程：[%s]\n"
-#~ "消息：[%s]\n"
-#~ "描述：[%s]\n"
-#~ "动作：[%s]\n"
-
-#, fuzzy
-#~ msgid "fixed 12"
-#~ msgstr "simsun 12"
-
-#, fuzzy
-#~ msgid "fixed Bold 12"
-#~ msgstr "simsun 12"
-
-#, fuzzy
-#~ msgid "fixed 10"
-#~ msgstr "simsun 10"
-
-#, fuzzy
-#~ msgid "fixed Bold 8"
-#~ msgstr "simsun 8"
-
-#, fuzzy
-#~ msgid "Helvetica 14"
-#~ msgstr "simsun 14"
-
-#, fuzzy
-#~ msgid "Helvetica Bold 14"
-#~ msgstr "simsun 14"
-
-#, fuzzy
-#~ msgid "Helvetica 12"
-#~ msgstr "simsun 12"
-
-#, fuzzy
-#~ msgid "Helvetica Bold 12"
-#~ msgstr "simsun 12"
-
-#, fuzzy
-#~ msgid "Helvetica 10"
-#~ msgstr "simsun 10"
-
-#, fuzzy
-#~ msgid "Helvetica Bold 10"
-#~ msgstr "simsun 10"
-
-#~ msgid "Cannot open regexp data base <%s>! Open failed."
-#~ msgstr "无法打开正则表达式数据库 <%s>！打开失败。"
-
-#~ msgid "Cannot open description data base <%s>! Open failed."
-#~ msgstr "无法打开描述数据库 <%s>！打开失败。"
-
-#~ msgid "System Log"
-#~ msgstr "系统日志"
-
-#~ msgid "View the system log file"
-#~ msgstr "查看系统日志文件"
-
-#~ msgid "Log stats"
-#~ msgstr "日志状态"
-
-# mini-utils/guname/info.c:60
-#~ msgid "Size:"
-#~ msgstr "大小："
-
-#~ msgid "Modified:"
-#~ msgstr "已修改："
-
-# gsearchtool/gsearchtool.c:514
-#, fuzzy
-#~ msgid "Start Date:"
-#~ msgstr "开始日期："
-
-# mini-utils/guname/info.c:46
-#, fuzzy
-#~ msgid "Last Date:"
-#~ msgstr "最后日期："
-
-#, fuzzy
-#~ msgid "Number of Lines:"
-#~ msgstr "行数："
-
-# mini-utils/guname/moreinfo.c:280
-#, fuzzy
-#~ msgid "Log Information"
-#~ msgstr "日志信息"
-
-#, fuzzy
-#~ msgid "<No log loaded>"
-#~ msgstr "关于 <没有装载日志> 的详细日志行"
-
-# mini-utils/guname/moreinfo.c:161
-#~ msgid "%ld bytes"
-#~ msgstr "%ld 字节："
-
-# ghex/converter.c:50
-#~ msgid "January"
-#~ msgstr "一月"
-
-#~ msgid "February"
-#~ msgstr "二月"
-
-#~ msgid "March"
-#~ msgstr "三月"
-
-#~ msgid "April"
-#~ msgstr "四月"
-
-#~ msgid "May"
-#~ msgstr "五月"
-
-#~ msgid "June"
-#~ msgstr "六月"
-
-#~ msgid "July"
-#~ msgstr "七月"
-
-#~ msgid "August"
-#~ msgstr "八月"
-
-#~ msgid "September"
-#~ msgstr "九月"
-
-#~ msgid "October"
-#~ msgstr "十月"
-
-#~ msgid "November"
-#~ msgstr "十一月"
-
-#~ msgid "December"
-#~ msgstr "十二月"
-
-#~ msgid "%x"
-#~ msgstr "%x"
-
-#~ msgid "%X"
-#~ msgstr "%X"
-
-#~ msgid "%B %e"
-#~ msgstr "%B %e"
-
-#~ msgid "Not enough memory!\n"
-#~ msgstr "内存不足！\n"
-
-#~ msgid "Out of memory!\n"
-#~ msgstr "内存耗尽！\n"
-
-# ghex/ui.c:305
-#~ msgid "Unable to open logfile!\n"
-#~ msgstr "无法打开日志文件！\n"
-
-#~ msgid "%s is not a regular file."
-#~ msgstr "%s 不是普通文件。"
-
-#~ msgid ""
-#~ "%s is not user readable. Either run the program as root or ask the "
-#~ "sysadmin to change the permissions on the file."
-#~ msgstr ""
-#~ "用户不能读取 %s。要么以 root 身份运行程序，要么要求系统管理员改变文件的许"
-#~ "可权。"
-
-# ghex/ui.c:305
-#~ msgid "%s not a log file."
-#~ msgstr "%s 不是日志文件。"
-
-#~ msgid "ReadLogStats: out of memory"
-#~ msgstr "ReadLogStats：内存耗尽"
-
-#~ msgid "S_witch Log"
-#~ msgstr "切换日志(_W)"
-
-#~ msgid "Switch log"
-#~ msgstr "切换日志"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "_Monitor..."
-#~ msgstr "监视器(_M)..."
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Monitor Log"
-#~ msgstr "监视器日志"
-
-# gtt/prop.c:171
-#~ msgid "_Properties"
-#~ msgstr "属性(_P)"
-
-#~ msgid "_Calendar"
-#~ msgstr "日历(_C)"
-
-#~ msgid "Show Calendar Log"
-#~ msgstr "显示日历日志"
-
-#~ msgid "Show Entry Detail"
-#~ msgstr "显示条目细节"
-
-# gstripchart/gstripchart.c:1663 mini-utils/gshutdown/gshutdown.c:318
-#~ msgid "About..."
-#~ msgstr "关于..."
-
-#~ msgid "Info about logview"
-#~ msgstr "关于日志视图的信息"
-
-#~ msgid "_Log"
-#~ msgstr "日志(_L)"
-
-# ghex/ui.c:206
-#~ msgid "No log files to open"
-#~ msgstr "没有要打开的日志文件"
-
-#~ msgid "System Log Viewer"
-#~ msgstr "系统日志查看器"
-
-# gtt/options.c:380
-#~ msgid "Filename: "
-#~ msgstr "文件名："
-
-#~ msgid "Last Modified: "
-#~ msgstr "最近修改时间："
-
-#~ msgid "Too many open logs. Close one and try again"
-#~ msgstr "打开的日志太多。关闭一个并重试"
-
-#~ msgid "File already opened"
-#~ msgstr "文件已经打开"
-
-# mini-utils/gless/gless.c:700
-#~ msgid "Open new logfile"
-#~ msgstr "打开新的日志文件"
-
-#~ msgid "Cannot load required fonts, cannot continue"
-#~ msgstr "无法装入必须的字体，无法继续"
-
-#~ msgid "Error: [%s]\n"
-#~ msgstr "错误：[%s]\n"
-
-# mini-utils/guname/info.c:64
-#, fuzzy
-#~ msgid "Monitor Options"
-#~ msgstr "加载选项"
-
-#~ msgid "Choose logs to monitor"
-#~ msgstr "选择需监视的日志"
-
-#, fuzzy
-#~ msgid "Add logs to monitor"
-#~ msgstr "选择需监视的日志"
-
-#, fuzzy
-#~ msgid "Remove logs from monitor"
-#~ msgstr "选择需监视的日志"
-
-#, fuzzy
-#~ msgid "_Hide Application"
-#~ msgstr "关于本应用程序"
-
-# gstripchart/gstripchart.c:1528
-#, fuzzy
-#~ msgid "_Execute Actions"
-#~ msgstr "执行动作"
-
-#~ msgid "Too many logs to monitor. Remove one and try again"
-#~ msgstr "需监视的日志太多。关闭一个并重试"
-
-#~ msgid "tmp_list is NULL\n"
-#~ msgstr "tmp_list 为 NULL\n"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Monitoring logs..."
-#~ msgstr "正在监视日志..."
-
-#~ msgid "TOUCHED!!\n"
-#~ msgstr "已更新！！\n"
-
-#~ msgid "hostname column width ( 0 to hide this column ): "
-#~ msgstr "主机名列宽度 ( 0 表示隐藏该列 )："
-
-# mini-utils/gshutdown/gshutdown.c:378
-#~ msgid "Columns"
-#~ msgstr "列"
-
-#~ msgid "Zoom view"
-#~ msgstr "缩放视图"
-
-# mini-utils/guname/info.c:44
-#~ msgid "Process:"
-#~ msgstr "进程："
-
-#~ msgid "Message:"
-#~ msgstr "消息："
-
-# gtt/clist.c:172
-#~ msgid "Description:"
-#~ msgstr "描述："
-
-#, fuzzy
-#~ msgid "Log line detail for"
-#~ msgstr "关于 %s 的详细日志行"
-
-#~ msgid "%B %e %X"
-#~ msgstr "%B %e %X"
-
-#~ msgid "Archive Generator"
-#~ msgstr "归档生成器"
-
-#~ msgid "Create compressed archives containing many files"
-#~ msgstr "创建含有许多文件的归档文件"
-
-#~ msgid ""
-#~ "Number of files: %d\n"
-#~ "Number of folders: %d"
-#~ msgstr ""
-#~ "文件数量：%d\n"
-#~ "文件夹数量：%d"
-
-#~ msgid ""
-#~ "No files or folders, drop files or folders\n"
-#~ "above to add them to the archive"
-#~ msgstr ""
-#~ "没有文件或文件夹，拖放文件或文件夹到此\n"
-#~ "以便将其添加到归档文件中"
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "%s removed"
-#~ msgstr "已删除 %s"
-
-# mini-utils/gless/gless.c:610
-#~ msgid "Failed to create %s"
-#~ msgstr "创建 %s 失败"
-
-#~ msgid "Archive.tar.gz"
-#~ msgstr "Archive.tar.gz"
-
-#~ msgid "GNOME Archive Generator"
-#~ msgstr "GNOME 归档生成器"
-
-#~ msgid "Drag files in to make archives"
-#~ msgstr "拖放文件以便创建归档文件"
-
-# gtt/app.c:117 gtt/app.c:223
-#~ msgid "All files selected"
-#~ msgstr "已选中所有文件"
-
-#~ msgid "All files removed"
-#~ msgstr "已删除所有文件"
-
-# gtt/app.c:117 gtt/app.c:223
-#~ msgid "No filename selected"
-#~ msgstr "未选择文件名"
-
-#~ msgid "%s created"
-#~ msgstr "已创建 %s"
-
-#~ msgid "No items to archive"
-#~ msgstr "没有要归档的项目"
-
-#~ msgid "%s added"
-#~ msgstr "已添加 %s"
-
-#~ msgid "File does not exists"
-#~ msgstr "文件不存在"
-
-#~ msgid "Add file or folder"
-#~ msgstr "添加文件或文件夹"
-
-#~ msgid "_Add file or folder..."
-#~ msgstr "添加文件或文件夹(_A)..."
-
-#~ msgid "Add a file or folder to archive"
-#~ msgstr "将文件或文件夹添加到归档文件"
-
-# mini-utils/gless/gless.c:851
-#~ msgid "_Create archive..."
-#~ msgstr "创建归档文件(_C)..."
-
-#~ msgid "Create a new archive from the items"
-#~ msgstr "从项目创建新归档文件"
-
-#~ msgid "Remove the selected item"
-#~ msgstr "删除选中的项目"
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "R_emove All"
-#~ msgstr "全部删除(_E)"
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "Remove all items"
-#~ msgstr "删除所有项目"
-
-#~ msgid "Drop files here to add them to the archive."
-#~ msgstr "将文件拖放到此以便将其添加到归档文件中。"
-
-# mini-utils/gless/gless.c:851
-#~ msgid "_Create Archive"
-#~ msgstr "创建归档文件(_C)"
-
-#~ msgid ""
-#~ "Drag this button to the destination where you want the archive to be "
-#~ "created or press it to pop up a file selection dialog."
-#~ msgstr ""
-#~ "将该按钮拖动到您希望创建归档文件的目标，或点击它以便弹出一个文件选择对话"
-#~ "框。"
-
-#~ msgid "Cannot find proper icons anywhere!"
-#~ msgstr "无论何处都找不到适当的图标！"
-
-#~ msgid ""
-#~ "Cannot find the archive (tar) program!\n"
-#~ "This is the program used for creating archives."
-#~ msgstr ""
-#~ "无法找到归档 (tar) 程序！\n"
-#~ "该程序是用于创建归档文件的。"
-
-#~ msgid "x^2"
-#~ msgstr "x^2"
-
-#~ msgid "x^y"
-#~ msgstr "x^y"
-
-#~ msgid "Default database. ! indicates all databases"
-#~ msgstr "默认数据库。! 表示所有数据库"
-
-#~ msgid "Default strategy"
-#~ msgstr "默认策略"
-
-#~ msgid "Dictionary server"
-#~ msgstr "字典服务器"
-
-#~ msgid "Port used to connect to server"
-#~ msgstr "用于连接服务器的端口"
-
-#~ msgid "Use smart lookup"
-#~ msgstr "使用智能搜索"
-
-# mini-utils/guname/info.c:64
-#~ msgid "Action options"
-#~ msgstr "动作选项"
-
-# gsearchtool/gsearchtool.c:503 mini-utils/gw/gw.c:488
-#~ msgid "Add..."
-#~ msgstr "添加..."
-
-#~ msgid "Edit..."
-#~ msgstr "编辑..."
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "Remove"
-#~ msgstr "删除"
-
-# gtt/clist.c:172
-#~ msgid "description:"
-#~ msgstr "描述："
-
-#~ msgid "Log:"
-#~ msgstr "日志："
-
-# gsearchtool/gsearchtool.c:503 mini-utils/gw/gw.c:488
-#~ msgid "Add >>"
-#~ msgstr "添加 >>"
-
-# gsearchtool/gsearchtool.c:433
-#~ msgid "Remove <<"
-#~ msgstr "删除 <<"
-
-#~ msgid "Hide app"
-#~ msgstr "隐藏应用程序"
-
-# gstripchart/gstripchart.c:1545
-#~ msgid "Actions..."
-#~ msgstr "动作中..."
-
-#~ msgid "_Floppy Device:"
-#~ msgstr "软盘设备(_F)："
-
-#, fuzzy
-#~ msgid "Dictionary Applet"
-#~ msgstr "字典"
-
-# mini-utils/gless/gless.c:461
-#~ msgid "Find:"
-#~ msgstr "查找："
-
-#~ msgid "Press button to look up any highlighted text in a dictionary"
-#~ msgstr "点击按钮以便在字典中搜索任何高亮文本"
-
-# gstripchart/gstripchart.c:1657
-#~ msgid "Help"
-#~ msgstr "求助"
-
-#, fuzzy
-#~ msgid "GNOME System Log"
-#~ msgstr "系统日志"
-
-# mini-utils/gless/gless.c:700
-#~ msgid "Open log..."
-#~ msgstr "打开日志..."
-
-#~ msgid "Open log"
-#~ msgstr "打开日志"
-
-#~ msgid "Export log..."
-#~ msgstr "导出日志..."
-
-#~ msgid "Export log"
-#~ msgstr "导出日志"
-
-# ghex/converter.c:96 mini-utils/gshutdown/gshutdown.c:152
-# mini-utils/gshutdown/gshutdown.c:596
-#~ msgid "Close log"
-#~ msgstr "关闭日志"
-
-# gstripchart/gstripchart.c:1675
-#~ msgid "Exit"
-#~ msgstr "退出"
-
-# mini-utils/gnome-run/gnome-run.c:69
-#~ msgid "Exit program"
-#~ msgstr "退出程序"
-
-# gtt/options.c:200
-#~ msgid "Show log stats"
-#~ msgstr "显示日志状态"
-
-#~ msgid "Zoom"
-#~ msgstr "缩放"
-
-#~ msgid "Show line info"
-#~ msgstr "显示行信息"
-
-#~ msgid "Select...               "
-#~ msgstr "选择..."
-
-# ghex/ui.c:206
-#~ msgid "Select log events"
-#~ msgstr "选择日志事件"
-
-#~ msgid "Filter log events"
-#~ msgstr "过滤器日志事件"
-
-# gstripchart/gstripchart.c:1440
-#~ msgid "Cannot start the archive (tar) program"
-#~ msgstr "无法启动归档程序 (tar)"
-
-#~ msgid "Cannot run tar/gtar"
-#~ msgstr "无法运行 tar/gtar"
-
-# gcalc/gcalc.c:30
-#~ msgid "The GNOME Calculator"
-#~ msgstr "Gnome 计算器"
-
-#~ msgid "Run in analog (slide rule) mode"
-#~ msgstr "运行于模拟 (滑动规则) 模式"
-
-#~ msgid "Shift"
-#~ msgstr "Shift"
-
-# gsearchtool/gsearchtool.c:515
-#~ msgid "Store"
-#~ msgstr "存储"
-
-# ghex/converter.c:60 ghex/preferences.c:110
-#~ msgid "Recall"
-#~ msgstr "取回"
-
-#~ msgid "Sum"
-#~ msgstr "加"
-
-# gstripchart/gstripchart.c:1530
-#~ msgid "Exchange"
-#~ msgstr "交换"
-
-#~ msgid ""
-#~ "The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
-#~ "contain bad English."
-#~ msgstr ""
-#~ "Gnome 中微软 Windows 字符映射表的等价程序。警告：可能\n"
-#~ "含有错误的英文。"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
-#~ msgstr "-*-helvetica-medium-r-normal-*-14-*-*-*-p-*-*-*,*-r-*"
-
-# gstripchart/gstripchart.c:1663 mini-utils/gshutdown/gshutdown.c:318
-#~ msgid "About"
-#~ msgstr "关于"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-#~ msgstr "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-#~ msgid "_Browse Characters..."
-#~ msgstr "浏览字符(_B)..."
-
-# gtt/options.c:220 gtt/options.c:518
-#~ msgid "_Text Toolbar"
-#~ msgstr "文本工具栏(_T)"
-
-#~ msgid "View or hide the text toolbar"
-#~ msgstr "显示或隐藏文本工具栏"
-
-# mini-utils/idetool/idetool.c:316
-#~ msgid "_Statusbar"
-#~ msgstr "状态栏(_S)"
-
-#~ msgid "View or hide the statusbar"
-#~ msgstr "显示或隐藏状态栏"
-
-#~ msgid "_Insert at end"
-#~ msgstr "在末端插入(_I)"
-
-#~ msgid "Insert every selected character at the end of the text entry"
-#~ msgstr "将各个选中的字符插入到文本条目的末端"
-
-#~ msgid "_Focusable Buttons"
-#~ msgstr "可聚焦的按钮(_F)"
-
-#~ msgid "Set the buttons to be focusable or not"
-#~ msgstr "设定按钮是否可聚焦"
-
-#~ msgid "Lookup"
-#~ msgstr "搜索"
-
-#~ msgid "_Look Up"
-#~ msgstr "搜索(_L)"
-
-# gtt/toolbar.c:156
-#~ msgid "Set _Server"
-#~ msgstr "设定服务器(_S)"
-
-# gtt/menus.c:71
-#~ msgid "Set _Port"
-#~ msgstr "设定端口(_P)"
-
-#~ msgid "_Spell"
-#~ msgstr "拼写(_S)"
-
-# mini-utils/gless/gless.c:851
-#~ msgid "Spell checker"
-#~ msgstr "拼写检查器"
-
-# gsearchtool/gsearchtool.c:23
-#~ msgid "Don't search subdirectories"
-#~ msgstr "不搜寻子目录"
-
-# gsearchtool/gsearchtool.c:203
-#~ msgid "Results"
-#~ msgstr "结果"
-
-# gsearchtool/gsearchtool.c:564
-#~ msgid "The Gnome Search Tool"
-#~ msgstr "Gnome 搜索工具"
-
-# gtt/options.c:363
-#~ msgid "Logview"
-#~ msgstr "日志视图"
-
-# gtt/options.c:284
-#~ msgid "Show user preferences"
-#~ msgstr "显示用户首选项"
-
-#~ msgid "Date: "
-#~ msgstr "日期："
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-
-#~ msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-
-#~ msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-#~ msgstr "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-
-#~ msgid "Dos (FAT)"
-#~ msgstr "Dos (FAT)"
-
-#~ msgid "Floppy Density:"
-#~ msgstr "软盘密度："
-
-#~ msgid "File system type:"
-#~ msgstr "文件系统类型："
-
-#~ msgid "The GNOME Archive Generator"
-#~ msgstr "GNOME 归档生成器"
-
-#~ msgid "Archive"
-#~ msgstr "归档"
-
-#~ msgid "The server you specified could not be found."
-#~ msgstr "找不到您所指定的数据库。"
-
-#~ msgid "The server could not be found on that port."
-#~ msgstr "在指定端口找不到服务器。"
-
-# gtt/options.c:220 gtt/options.c:518
-#~ msgid "_Action Toolbar"
-#~ msgstr "动作工具条(_A)"
-
-#~ msgid "View or hide the action toolbar"
-#~ msgstr "显示或隐藏动作工具条"
-
-#~ msgid ""
-#~ "The server could not be contacted. \n"
-#~ "If you are not connected to the internet please do so."
-#~ msgstr ""
-#~ "无法连接到服务器。\n"
-#~ "如果您还没有连接到 Internet，请连接。"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Cut to Clipboard"
-#~ msgstr "剪切到剪贴板"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Copy to Clipboard"
-#~ msgstr "复制到剪贴板"
-
-#~ msgid "Paste Clipboard Contents"
-#~ msgstr "粘贴剪贴板内容"
-
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#~ msgid "Settings"
-#~ msgstr "设置"
-
-#~ msgid "Server to use, default search strategy, fonts"
-#~ msgstr "使用的服务器、默认搜索策略、字体"
-
-# gsearchtool/gsearchtool.c:485
-#~ msgid "Start in directory "
-#~ msgstr "从目录开始 "
-
-#~ msgid "(memory buffer)"
-#~ msgstr "(内存缓冲区)"
-
-#~ msgid "(memory buffer"
-#~ msgstr "(内存缓冲区"
-
-#~ msgid ""
-#~ "An error occured while loading the user interface\n"
-#~ "element %s%s from file %s.\n"
-#~ "Possibly the glade interface description was corrupted.\n"
-#~ "%s cannot continue and will exit now.\n"
-#~ "You should check your installation of %s or reinstall %s."
-#~ msgstr ""
-#~ "从文件 %3$s 装入用户界面\n"
-#~ "元素 %1$s%2$s 时出错。\n"
-#~ "glade 界面描述可能已崩溃。\n"
-#~ "%4$s 无法继续并马上退出。\n"
-#~ "您应该检查您安装的 %5$s 或重新安装 %6$s。"
-
-#~ msgid ""
-#~ "Glade file is on crack! Make sure the correct file is installed!\n"
-#~ "file: %s widget: %s"
-#~ msgstr ""
-#~ "Glade 文件已崩溃！请确认安装了正确的文件！\n"
-#~ "文件：%s 构件：%s"
-
-#~ msgid ""
-#~ "An error occured while loading the user interface\n"
-#~ "element %s%s from file %s.\n"
-#~ "CList type widget should have %d columns.\n"
-#~ "Possibly the glade interface description was corrupted.\n"
-#~ "%s cannot continue and will exit now.\n"
-#~ "You should check your installation of %s or reinstall %s."
-#~ msgstr ""
-#~ "从文件 %3$s 中装入用户界面\n"
-#~ "元素 %1$s%2$s 时出错。\n"
-#~ "CList 类型构件应该含有 %4$d 列。\n"
-#~ "glade 界面描述可能已崩溃。\n"
-#~ "%5$s 无法继续并将立即退出。\n"
-#~ "您应该检查您安装的 %6$s 或重新安装 %7$s。"
-
-#~ msgid ""
-#~ "Glade file is on crack! Make sure the correct file is installed!\n"
-#~ "file: %s widget: %s expected clist columns: %d"
-#~ msgstr ""
-#~ "Glade 文件已崩溃！请确认安装了正确的文件！\n"
-#~ "文件：%s 构件：%s 需要 clist 列：%d"
-
-#~ msgid ""
-#~ "An error occured while loading the user interface\n"
-#~ "from file %s.\n"
-#~ "Possibly the glade interface description was not found.\n"
-#~ "%s cannot continue and will exit now.\n"
-#~ "You should check your installation of %s or reinstall %s."
-#~ msgstr ""
-#~ "从文件 %s 中装入用户界面时发生错误。\n"
-#~ "可能找不到 glade 界面描述。\n"
-#~ "%s 无法继续并将立即退出。\n"
-#~ "您应该检查您安装的 %s 或重新安装 %s。"
-
-#~ msgid "No interface could be loaded, BAD! (file: %s)"
-#~ msgstr "没有可以装入的界面，糟糕！(文件：%s)"
-
-#~ msgid "Character Table's Font..."
-#~ msgstr "字符表字体..."
-
-#~ msgid "Set the character table's font."
-#~ msgstr "设定字符表字体。"
-
-#~ msgid "Insert character(s) by choosing character codes"
-#~ msgstr "通过选择字符码插入字符"
-
-#~ msgid "Show Gnome Character Map's manual"
-#~ msgstr "显示 Gnome 字符映射表手册"
-
-#~ msgid "Exit the program"
-#~ msgstr "退出程序"
-
-# gsearchtool/gsearchtool.c:24
-#~ msgid "File owner"
-#~ msgstr "文件所有者"
-
-# gsearchtool/gsearchtool.c:30
-#~ msgid "Empty file"
-#~ msgstr "清空文件"
-
-# gsearchtool/gsearchtool.c:33
-#~ msgid "Filenames except"
-#~ msgstr "排除的文件名"
-
-# gsearchtool/gsearchtool.c:34
-#~ msgid "Simple substring search"
-#~ msgstr "简易子字符串搜索"
-
-# gsearchtool/gsearchtool.c:35
-#~ msgid "Regular expression search"
-#~ msgstr "正则表达式搜索"
-
-# gsearchtool/gsearchtool.c:94 gsearchtool/gsearchtool.c:149
-#~ msgid "grep options found in find list bad bad!"
-#~ msgstr "搜索列表中找到的 grep 选项有问题！"
-
-# gsearchtool/gsearchtool.c:163
-#~ msgid "non-grep option found in grep list, bad bad!"
-#~ msgstr "grep 列表中找到非 grep 的选项，真糟糕！"
-
-#~ msgid "Search already running on another page"
-#~ msgstr "已经在其它页运行着搜索"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Nothing to locate"
-#~ msgstr "无从定位"
-
-#~ msgid ""
-#~ "This is an interface to locate.  If you type in a simple string it\n"
-#~ "will be matched as a subset of the full path, and if you type\n"
-#~ "in a string with wildcards, it will have to match the full path."
-#~ msgstr ""
-#~ "这是一个用于定位的界面。如果您输入简单字符串，\n"
-#~ "它将匹配完整路径的子集，如果您输入带有通配符\n"
-#~ "的字符串，它将匹配完整路径。"
-
-# ghex/ui.c:300
-#~ msgid "Locate file: "
-#~ msgstr "定位文件："
-
-# gsearchtool/gsearchtool.c:546
-#~ msgid "Full find (find)"
-#~ msgstr "完整查找 (查找)"
-
-# gsearchtool/gsearchtool.c:549
-#~ msgid "Quick find (locate)"
-#~ msgstr "快速查找 (定位)"
-
-# gsearchtool/gsearchtool.c:610
-#~ msgid "Gnome Search Tool"
-#~ msgstr "Gnome 搜寻工具"
-
-# mini-utils/gw/gw.c:479
-#~ msgid "Command mangled"
-#~ msgstr "命令已损坏"
-
-#~ msgid "gfloppy"
-#~ msgstr "软盘"
-
-#~ msgid "SysLog tool"
-#~ msgstr "系统日志工具"
-
-# mini-utils/guname/guname.c:424
-#~ msgid "System log monitor"
-#~ msgstr "系统日志监视器"
-
-#~ msgid "calculator-font.png"
-#~ msgstr "calculator-font.png"
-
-# gtt/log.c:82
-#, fuzzy
-#~ msgid "Word definition"
-#~ msgstr "没有描述"
-
-# ghex/ui.c:305
-#, fuzzy
-#~ msgid "Cannot create applet!\n"
-#~ msgstr "无法开启文件!"
-
-# ghex/preferences.c:143
-#, fuzzy
-#~ msgid "Fonts"
-#~ msgstr "字形"
-
-# gstripchart/gstripchart.c:1534
-#, fuzzy
-#~ msgid "Display handle bar"
-#~ msgstr "显示范围"
-
-# gtt/main.c:204
-#, fuzzy
-#~ msgid "Specify the geometry of the window."
-#~ msgstr "指定 geometry"
-
-#, fuzzy
-#~ msgid "Show drive mount points"
-#~ msgstr "显示进阶选项"
-
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#, fuzzy
-#~ msgid "General Settings"
-#~ msgstr "保留设定值"
-
-# gtt/main.c:122
-#~ msgid ""
-#~ "An error occured while reading the configuration file.\n"
-#~ "Shall I setup a new configuration?"
-#~ msgstr ""
-#~ "读取设定文件时发生错误.\n"
-#~ "是否开始一个新的设定文件?"
-
-# gtt/menucmd.c:138
-#~ msgid ""
-#~ "This will overwrite your current set of projects.\n"
-#~ "Do you really want to reload the configuration file?"
-#~ msgstr ""
-#~ "将要覆盖现存计划的设定.\n"
-#~ "是否真的要重新载入设定文件?"
-
-# gtt/options.c:422
-#~ msgid "Timeout in secs:"
-#~ msgstr "Timeout in secs:"
-
-# gtt/toolbar.c:145
-#~ msgid "[GTT]New"
-#~ msgstr "[GTT]新增"
-
-# gtt/toolbar.c:152
-#~ msgid "Reload"
-#~ msgstr "重新载入"
-
-# gtt/toolbar.c:178
-#~ msgid "Props"
-#~ msgstr "内容"
-
-# gtt/toolbar.c:193
-#~ msgid "Prefs"
-#~ msgstr "偏好设定"
-
-# gtt/toolbar.c:198
-#~ msgid "Manual"
-#~ msgstr "使用手册"
-
-# gtt/toolbar.c:203
-#~ msgid "Quit"
-#~ msgstr "结束"
-
-# mini-utils/gw/gw.c:489
-#~ msgid "Delete"
-#~ msgstr "删除"
-
-# mini-utils/guname/moreinfo.c:161
-#, fuzzy
-#~ msgid "Memo:"
-#~ msgstr "内存"
-
-#, fuzzy
-#~ msgid "Edit it"
-#~ msgstr "编辑"
-
-#, fuzzy
-#~ msgid "Search RGB"
-#~ msgstr "搜寻"
-
-# ghex/preferences.c:143
-#, fuzzy
-#~ msgid "Concat"
-#~ msgstr "字形"
-
-# ghex/converter.c:96 mini-utils/gshutdown/gshutdown.c:152
-# mini-utils/gshutdown/gshutdown.c:596
-#, fuzzy
-#~ msgid "GColorsel"
-#~ msgstr "关闭"
-
-# gsearchtool/gsearchtool.c:503 mini-utils/gw/gw.c:488
-#, fuzzy
-#~ msgid "Add ->"
-#~ msgstr "新增"
-
-# gtt/clist.c:172
-#, fuzzy
-#~ msgid "Description :"
-#~ msgstr "描述"
-
-# ghex/ui.c:206
-#, fuzzy
-#~ msgid "Select type"
-#~ msgstr "选择要开启的文件"
-
-# mini-utils/guname/info.c:46
-#, fuzzy
-#~ msgid "Short name : "
-#~ msgstr "主机域名:"
-
-# gtt/toolbar.c:178
-#, fuzzy
-#~ msgid "Drop:"
-#~ msgstr "内容"
-
-# ghex/preferences.c:53
-#~ msgid "Modal"
-#~ msgstr "Modal"
-
-# mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:320
-#, fuzzy
-#~ msgid "Mode:"
-#~ msgstr "型号"
-
-# ghex/preferences.c:51
-#~ msgid "Notebook"
-#~ msgstr "记事本"
-
-# gstripchart/gstripchart.c:1629
-#~ msgid "Top"
-#~ msgstr "顶端"
-
-# ghex/preferences.c:52
-#~ msgid "Toplevel"
-#~ msgstr "最上层"
-
-# gtt/prop.c:171
-#, fuzzy
-#~ msgid "Special properties"
-#~ msgstr "内容"
-
-# gtt/prop.c:171
-#, fuzzy
-#~ msgid "Common properties"
-#~ msgstr "内容"
-
-# mini-utils/gcolorsel/gcolorsel.c:157 mini-utils/guname/moreinfo.c:217
-# mini-utils/gw/gw.c:479 mini-utils/gw/gw.c:554
-#, fuzzy
-#~ msgid "Name :"
-#~ msgstr "域名"
-
-#, fuzzy
-#~ msgid "Blue :"
-#~ msgstr "蓝色"
-
-#, fuzzy
-#~ msgid "Green :"
-#~ msgstr "绿色"
-
-# mini-utils/gcolorsel/gcolorsel.c:89
-#, fuzzy
-#~ msgid "Colors format :"
-#~ msgstr "色彩域名:"
-
-# mini-utils/gcolorsel/gcolorsel.c:89
-#, fuzzy
-#~ msgid "Color height :"
-#~ msgstr "色彩域名:"
-
-# mini-utils/gless/gless.c:294
-#, fuzzy
-#~ msgid "New View"
-#~ msgstr "新增窗口 _N"
-
-# ghex/converter.c:96 mini-utils/gshutdown/gshutdown.c:152
-# mini-utils/gshutdown/gshutdown.c:596
-#, fuzzy
-#~ msgid "Close view"
-#~ msgstr "关闭"
-
-# ghex/hex-document.c:89
-#, fuzzy
-#~ msgid "Close the current view"
-#~ msgstr "Remove the current view of the buffer"
-
-# mini-utils/gless/gless.c:700
-#, fuzzy
-#~ msgid "_Open palette..."
-#~ msgstr "开启文字文件..."
-
-# mini-utils/gless/gless.c:660
-#, fuzzy
-#~ msgid "Save palette _As..."
-#~ msgstr "另存文字..."
-
-# gtt/toolbar.c:194
-#, fuzzy
-#~ msgid "Edit selected colors ..."
-#~ msgstr "编辑偏好设定..."
-
-# mini-utils/gless/gless.c:660
-#, fuzzy
-#~ msgid "Save Palette as"
-#~ msgstr "另存文字..."
-
-# gsearchtool/gsearchtool.c:21
-#, fuzzy
-#~ msgid "File saved ..."
-#~ msgstr "文件名"
-
-# mini-utils/gcolorsel/gcolorsel.c:65 mini-utils/gcolorsel/gcolorsel.c:67
-# mini-utils/gcolorsel/gcolorsel.c:243 mini-utils/gcolorsel/gcolorsel.c:369
-#~ msgid "Gnome Color Browser"
-#~ msgstr "Gnome 色彩浏览器"
-
-# mini-utils/gcolorsel/gcolorsel.c:373
-#~ msgid "Small utility to browse available X11 colors."
-#~ msgstr "一个浏览所有在 X11 下可用色彩的小工具程序."
-
-# gstripchart/gstripchart.c:1522 mini-utils/gcolorsel/gcolorsel.c:155
-#, fuzzy
-#~ msgid "New Color"
-#~ msgstr "色彩"
-
-# gtt/prop.c:171
-#, fuzzy
-#~ msgid "Document properties"
-#~ msgstr "内容"
-
-#, fuzzy
-#~ msgid "Open a palette"
-#~ msgstr "Open search spec"
-
-# mini-utils/gcolorsel/gcolorsel.c:247
-#, fuzzy
-#~ msgid "User Colors"
-#~ msgstr "扫描可用色彩"
-
-# mini-utils/gcolorsel/gcolorsel.c:317
-#, fuzzy
-#~ msgid "Decimal 16 bits"
-#~ msgstr "十进位 (16 bit)"
-
-# mini-utils/gcolorsel/gcolorsel.c:318
-#, fuzzy
-#~ msgid "Hex 8 bits"
-#~ msgstr "十六进位 (8 bit)"
-
-# mini-utils/gcolorsel/gcolorsel.c:319
-#, fuzzy
-#~ msgid "Hex 16 bits"
-#~ msgstr "十六进位 (16 bit)"
-
-# mini-utils/gcolorsel/gcolorsel.c:320
-#~ msgid "Float"
-#~ msgstr "浮点数"
-
-# gstripchart/gstripchart.c:1522 mini-utils/gcolorsel/gcolorsel.c:155
-#~ msgid "Color"
-#~ msgstr "色彩"
-
-# mini-utils/gfontsel/gfontsel.c:145
-#~ msgid "Font Selector"
-#~ msgstr "字形选择程序"
-
-# mini-utils/gfontsel/gfontsel.c:170
-#~ msgid "Selection:"
-#~ msgstr "选择:"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "Font to load"
-#~ msgstr "欲载入字形"
-
-# mini-utils/gfontsel/gfontsel.c:253
-#~ msgid "FONTSPEC"
-#~ msgstr "FONTSPEC"
-
-# mini-utils/gfontsel/gfontsel.c:254
-#~ msgid "Print selected font name on exit"
-#~ msgstr "在退出时印出选择的字形域名"
-
-# mini-utils/gfontsel/gfontsel.c:255
-#~ msgid "Inhibit remembering selected font for next run"
-#~ msgstr "下次执行时不要记住现在被选取的字体"
-
-# mini-utils/gfontsel/gfontsel.c:256
-#~ msgid "Inhibit loading of last font"
-#~ msgstr "不要载入最后被选取的字体"
-
-# mini-utils/gless/gless.c:116
-#~ msgid "Reason %d\n"
-#~ msgstr "理由%d\n"
-
-# mini-utils/gless/gless.c:131
-#~ msgid "Where to put the window, and its size"
-#~ msgstr "窗口摆放的位置与大小"
-
-# mini-utils/gless/gless.c:132
-#~ msgid "Ignore standard input; may be needed in some cases."
-#~ msgstr "忽略标准输入; 在某些场合可能需要."
-
-# mini-utils/gless/gless.c:294
-#~ msgid "_New Window"
-#~ msgstr "新增窗口 _N"
-
-# mini-utils/gless/gless.c:295
-#~ msgid "New text viewer window"
-#~ msgstr "新增文字查看器窗口"
-
-# mini-utils/gless/gless.c:313
-#~ msgid "_Fixed Font"
-#~ msgstr "字形 _F"
-
-# mini-utils/gless/gless.c:314
-#~ msgid "Display text with a fixed font"
-#~ msgstr "用固定字形显示文字"
-
-# mini-utils/gless/gless.c:352
-#~ msgid "Text File Viewer"
-#~ msgstr "文字文件查看器"
-
-# mini-utils/gless/gless.c:29
-#~ msgid "Copyright 1998, under the GNU General Public License."
-#~ msgstr "Copyright 1998, under the GNU General Public License."
-
-# mini-utils/gless/gless.c:460
-#~ msgid "Find string"
-#~ msgstr "搜寻字串"
-
-# mini-utils/gless/gless.c:498
-#~ msgid "Loading..."
-#~ msgstr "正在载入..."
-
-# mini-utils/gless/gless.c:502
-#~ msgid ""
-#~ "No such file or directory:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "没有这个文件或目录:\n"
-#~ "%s"
-
-# mini-utils/gless/gless.c:520
-#~ msgid ""
-#~ "Failed to decompress and display the file:\n"
-#~ "%s\n"
-#~ "%s"
-#~ msgstr ""
-#~ "无法解压缩并且显示文件:\n"
-#~ "%s\n"
-#~ "%s"
-
-# mini-utils/gless/gless.c:533
-#~ msgid ""
-#~ "Unable to display compressed file.\n"
-#~ "zcat not found in your path."
-#~ msgstr ""
-#~ "无法显示压缩档.\n"
-#~ "在执行路径内找不到 zcat."
-
-# mini-utils/gless/gless.c:541
-#~ msgid ""
-#~ "Error loading file:\n"
-#~ "%s\n"
-#~ "%s"
-#~ msgstr ""
-#~ "载入文件时错误:\n"
-#~ "%s\n"
-#~ "%s"
-
-# mini-utils/gless/gless.c:599
-#~ msgid "Saving..."
-#~ msgstr "正在储存..."
-
-# mini-utils/gless/gless.c:660
-#~ msgid "Save Text As..."
-#~ msgstr "另存文字..."
-
-# mini-utils/gless/gless.c:700
-#~ msgid "Open Text File..."
-#~ msgstr "开启文字文件..."
-
-# mini-utils/gless/gless.c:764
-#~ msgid "Sorry, no preferences yet."
-#~ msgstr "抱歉,然而没有参数选择"
-
-# mini-utils/gless/gless.c:862
-#~ msgid "No search string was specified!"
-#~ msgstr "找不到字串!"
-
-# mini-utils/gshutdown/gshutdown.c:86
-#~ msgid "Shut Down"
-#~ msgstr "关机"
-
-# mini-utils/gshutdown/gshutdown.c:87
-#~ msgid "Single User Mode"
-#~ msgstr "单人使用模式"
-
-# mini-utils/gshutdown/gshutdown.c:88
-#~ msgid "Runlevel 2"
-#~ msgstr "Runlevel 2"
-
-# mini-utils/gshutdown/gshutdown.c:89
-#~ msgid "Runlevel 3"
-#~ msgstr "Runlevel 3"
-
-# mini-utils/gshutdown/gshutdown.c:90
-#~ msgid "Runlevel 4"
-#~ msgstr "Runlevel 4"
-
-# mini-utils/gshutdown/gshutdown.c:91
-#~ msgid "Runlevel 5"
-#~ msgstr "Runlevel 5"
-
-# mini-utils/gshutdown/gshutdown.c:98
-#~ msgid "Are you sure you want to shut down the computer?"
-#~ msgstr "你确定要关掉计算机?"
-
-# mini-utils/gshutdown/gshutdown.c:99
-#~ msgid "Are you sure you want to switch to single user mode?"
-#~ msgstr "你确定要切换至单人使用模式?"
-
-# mini-utils/gshutdown/gshutdown.c:100
-#~ msgid "Are you sure you want to switch to runlevel 2?"
-#~ msgstr "你确定要切换至 runlevel 2?"
-
-# mini-utils/gshutdown/gshutdown.c:101
-#~ msgid "Are you sure you want to switch to runlevel 3?"
-#~ msgstr "你确定要切换至 runlevel 3?"
-
-# mini-utils/gshutdown/gshutdown.c:102
-#~ msgid "Are you sure you want to switch to runlevel 4?"
-#~ msgstr "你确定要切换至 runlevel 4?"
-
-# mini-utils/gshutdown/gshutdown.c:103
-#~ msgid "Are you sure you want to switch to runlevel 5?"
-#~ msgstr "你确定要切换至 runlevel 5?"
-
-# mini-utils/gshutdown/gshutdown.c:104
-#~ msgid "Are you sure you want to reboot the system?"
-#~ msgstr "你确定要重新启动系统?"
-
-# mini-utils/gshutdown/gshutdown.c:150 mini-utils/gshutdown/gshutdown.c:593
-#~ msgid ""
-#~ "You must be the super-user (root) to shut down or restart the computer."
-#~ msgstr "你必需有 super-user (root) 的权限才可以关闭或重新启动计算机."
-
-# mini-utils/gshutdown/gshutdown.c:186
-#~ msgid "Shutdown or Reboot"
-#~ msgstr "关闭或重新启动"
-
-# mini-utils/gshutdown/gshutdown.c:203 mini-utils/gshutdown/gshutdown.c:204
-#~ msgid "Easy"
-#~ msgstr "简单"
-
-# mini-utils/gshutdown/gshutdown.c:241
-#~ msgid ""
-#~ "Click OK to shutdown or reboot. You will lose\n"
-#~ "any unsaved information in open applications."
-#~ msgstr ""
-#~ "按下 OK 关闭或重新启动计算机. 你会失去所有\n"
-#~ "已开启程序中尚未储存的数据."
-
-# mini-utils/gshutdown/gshutdown.c:378
-#~ msgid "Commands"
-#~ msgstr "指令"
-
-# mini-utils/gshutdown/gshutdown.c:383
-#~ msgid "Confirm before shutdown?"
-#~ msgstr "关机前是否再确认?"
-
-# mini-utils/gshutdown/gshutdown.c:448
-#~ msgid ""
-#~ "%s\n"
-#~ "You will lose any unsaved work."
-#~ msgstr ""
-#~ "%s\n"
-#~ "你将丢失任何未保存的工作"
-
-# mini-utils/gshutdown/gshutdown.c:458
-#~ msgid "Don't ask next time."
-#~ msgstr "下次别问了."
-
-# mini-utils/gshutdown/gshutdown.c:691
-#~ msgid "Command execution failed: fork failed"
-#~ msgstr "命令执行失败:创建子进程失败"
-
-# mini-utils/guname/guname.c:51
-#~ msgid "Make guname act as a control center applet"
-#~ msgstr "使guname起一个控制中心小应用程序的作用"
-
-# mini-utils/guname/guname.c:114
-#~ msgid "an initialization error occurred while starting 'guname-capplet'."
-#~ msgstr "当起动'guname-capplet'时初始化错误产生"
-
-# mini-utils/guname/guname.c:510
-#~ msgid "GNOME contributors:"
-#~ msgstr "GNOME contributors:"
-
-# mini-utils/guname/guname.c:513
-#~ msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-# mini-utils/guname/guname.c:524
-#~ msgid "GNOME: The GNU Network Object Model Environment"
-#~ msgstr "GNOME: The GNU Network Object Model Environment"
-
-# mini-utils/guname/guname.c:548
-#~ msgid "Email Information..."
-#~ msgstr "电子邮件讯息..."
-
-# mini-utils/guname/guname.c:561
-#~ msgid "Save Information to File..."
-#~ msgstr "把讯息存入文件..."
-
-# mini-utils/guname/guname.c:573 mini-utils/guname/guname.c:640
-#~ msgid "Detailed Information..."
-#~ msgstr "详细的信息..."
-
-# mini-utils/guname/guname.c:588
-#~ msgid "Category"
-#~ msgstr "类别"
-
-# mini-utils/guname/guname.c:588
-#~ msgid "Your System"
-#~ msgstr "你的系统"
-
-# mini-utils/guname/guname.c:626
-#~ msgid "Save As..."
-#~ msgstr "另存新文件..."
-
-# mini-utils/guname/guname.c:632
-#~ msgid "Mail To..."
-#~ msgstr "寄至..."
-
-# mini-utils/guname/guname.c:680
-#~ msgid ""
-#~ "Error closing file `%s': \n"
-#~ "%s\n"
-#~ "Some or all data may not have been written."
-#~ msgstr ""
-#~ "关闭文件`%s'错误: \n"
-#~ "%s\n"
-#~ "部份或可能所有数据都尚未被写入."
-
-# mini-utils/guname/guname.c:692
-#~ msgid "Couldn't open file `%s': %s"
-#~ msgstr "无法开启文件 `%s': %s"
-
-# mini-utils/guname/guname.c:707
-#~ msgid "Save System Information As..."
-#~ msgstr "另存系统讯息..."
-
-# mini-utils/guname/guname.c:753
-#~ msgid "Command failed ` %s ': %s"
-#~ msgstr "指令失败 ` %s ': %s "
-
-# mini-utils/guname/guname.c:761
-#~ msgid "Couldn't run command ` %s ': %s"
-#~ msgstr "无法执行指令 ` %s ': %s "
-
-# mini-utils/guname/guname.c:785
-#~ msgid ""
-#~ "The following mail will be sent to %s.\n"
-#~ " Are you sure you want to mail this information?"
-#~ msgstr ""
-#~ "您的email将被寄给 %s.\n"
-#~ "你确定要寄出这些信息?"
-
-# msgid ""
-# ".\n"
-# " Are you sure you want to mail this information?"
-# msgstr ""
-# ".\n"
-# msgstr " 你确定要寄出这个讯息?"
-# mini-utils/guname/guname.c:796
-#~ msgid "Are you sure?"
-#~ msgstr "你确定?"
-
-# mini-utils/guname/guname.c:830
-#~ msgid "Address to mail to:"
-#~ msgstr "欲寄至的邮件地址:"
-
-# mini-utils/guname/info.c:39
-#~ msgid "Distribution:"
-#~ msgstr "发行套件:"
-
-# mini-utils/guname/info.c:40
-#~ msgid "Operating System:"
-#~ msgstr "操作系统:"
-
-# mini-utils/guname/info.c:41
-#~ msgid "Distribution Version:"
-#~ msgstr "发行套件版本:"
-
-# mini-utils/guname/info.c:42
-#~ msgid "Operating System Version:"
-#~ msgstr "操作系统版本:"
-
-# mini-utils/guname/info.c:43
-#~ msgid "Operating System Release:"
-#~ msgstr "操作系统发行版本:"
-
-# mini-utils/guname/info.c:44
-#~ msgid "Processor Type:"
-#~ msgstr "处理器类型:"
-
-# mini-utils/guname/info.c:45
-#~ msgid "Processor Speed:"
-#~ msgstr "处理器速度:"
-
-# mini-utils/guname/info.c:46
-#~ msgid "Host Name:"
-#~ msgstr "主机域名:"
-
-# mini-utils/guname/info.c:47
-#~ msgid "Domain Name:"
-#~ msgstr "域域名:"
-
-# mini-utils/guname/info.c:48
-#~ msgid "User Name:"
-#~ msgstr "使用者域名:"
-
-# mini-utils/guname/info.c:49
-#~ msgid "X Display Name:"
-#~ msgstr "X Display Name:"
-
-# mini-utils/guname/info.c:50
-#~ msgid "System Status:"
-#~ msgstr "系统状态:"
-
-# mini-utils/guname/info.c:51
-#~ msgid "Real Memory:"
-#~ msgstr "真实内存:"
-
-# mini-utils/guname/info.c:52
-#~ msgid "Swap Space (\"virtual memory\"):"
-#~ msgstr "Swap Space (\"虚拟内存\"):"
-
-# mini-utils/guname/info.c:53
-#~ msgid "Total Memory:"
-#~ msgstr "内存合计:"
-
-# mini-utils/guname/info.c:54
-#~ msgid "Free Memory:"
-#~ msgstr "可用剩馀内存:"
-
-# mini-utils/guname/info.c:59
-#~ msgid "Device"
-#~ msgstr "装置"
-
-# mini-utils/guname/info.c:61
-#~ msgid "Used space"
-#~ msgstr "已使用空间"
-
-# mini-utils/guname/info.c:62
-#~ msgid "Free space"
-#~ msgstr "可用剩馀空间"
-
-# mini-utils/guname/info.c:64
-#~ msgid "Mount point"
-#~ msgstr "挂载点"
-
-# mini-utils/guname/moreinfo.c:82
-#~ msgid "Unknown filesystem"
-#~ msgstr "不明的文件系统"
-
-# mini-utils/guname/moreinfo.c:104
-#~ msgid "No information for this filesystem."
-#~ msgstr "没有关于这个文件系统的信息."
-
-# mini-utils/guname/moreinfo.c:161
-#~ msgid "Memory"
-#~ msgstr "内存"
-
-# mini-utils/guname/moreinfo.c:161
-#~ msgid "Kilobytes"
-#~ msgstr "千比特"
-
-#, fuzzy
-#~ msgid "%ld%% memory used."
-#~ msgstr "%ld%% %s 已被使用."
-
-#, fuzzy
-#~ msgid "%ld%% swap used."
-#~ msgstr "%ld%% %s 已被使用."
-
-# mini-utils/guname/moreinfo.c:214
-#~ msgid "CPU %d"
-#~ msgstr "CPU %d"
-
-# mini-utils/guname/moreinfo.c:262
-#~ msgid "Detailed System Information"
-#~ msgstr "详细的系统讯息"
-
-# mini-utils/guname/moreinfo.c:275
-#~ msgid "Disk Information"
-#~ msgstr "磁盘机讯息"
-
-# mini-utils/guname/moreinfo.c:277
-#~ msgid "Memory Information"
-#~ msgstr "内存讯息"
-
-# mini-utils/guname/moreinfo.c:312
-#~ msgid "Mount Point: "
-#~ msgstr "挂载点: "
-
-# mini-utils/guname/moreinfo.c:313
-#~ msgid "    Device: "
-#~ msgstr "    装置: "
-
-# mini-utils/guname/moreinfo.c:314
-#~ msgid "    Filesystem Type: "
-#~ msgstr "    文件系统类型: "
-
-# mini-utils/guname/moreinfo.c:327
-#~ msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
-#~ msgstr "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
-
-#~ msgid "%2d%% full "
-#~ msgstr "%2d%% 满了 "
-
-# mini-utils/gw/gw.c:141
-#~ msgid ""
-#~ "Couldn't find the \"w\" command in your path.\n"
-#~ "This command is needed for the program to work."
-#~ msgstr ""
-#~ "在你的执行路径中找不到 \"w\" 这个指令.\n"
-#~ "这个指令必需存在以供程序执行."
-
-# mini-utils/gw/gw.c:202
-#~ msgid "Active User Listing"
-#~ msgstr "使用者列表"
-
-# mini-utils/gw/gw.c:219
-#~ msgid "Update Information"
-#~ msgstr "更新讯息"
-
-# mini-utils/gw/gw.c:487
-#~ msgid "Add some defaults"
-#~ msgstr "新增缺省值"
-
-# mini-utils/gw/gw.c:507
-#~ msgid "Command Editor"
-#~ msgstr "指令编辑器"
-
-# mini-utils/gw/gw.c:517
-#~ msgid ""
-#~ "You can configure the commands on the popup menus.\n"
-#~ "Just enter the name you want to appear on the \n"
-#~ "menu, and the command to execute.\n"
-#~ "In the command, you can use %u to represent the\n"
-#~ "currently selected username, and %t for the tty."
-#~ msgstr ""
-#~ "你可以自行设定弹出式选单上的指令.\n"
-#~ "输入你欲在选单上显示的名字, \n"
-#~ ", 和欲执行的指令.\n"
-#~ "在指令列中, 你可以用 %u 来表示目前正被选择的使用者域名\n"
-#~ ", 而 %t 表示 tty."
-
-# mini-utils/gw/gw.c:524
-#~ msgid ""
-#~ "Click this button to add\n"
-#~ "some sample commands."
-#~ msgstr ""
-#~ "按下这个按钮以新增\n"
-#~ "一些样本指令."
-
-# mini-utils/gw/gw.c:532
-#~ msgid "Menu items"
-#~ msgstr "选单项目"
-
-# mini-utils/gw/gw.c:947
-#~ msgid "Running: %s\n"
-#~ msgstr "运行: %s\n"
-
-# mini-utils/idetool/idetool.c:21
-#~ msgid "32-bit"
-#~ msgstr "32位"
-
-# mini-utils/idetool/idetool.c:22
-#~ msgid "32-bit w/sync"
-#~ msgstr "32-bit w/sync"
-
-# mini-utils/idetool/idetool.c:27
-#~ msgid "Sleeping"
-#~ msgstr "睡眠"
-
-# mini-utils/idetool/idetool.c:28
-#~ msgid "Active/Idle"
-#~ msgstr "工作中/发呆"
-
-# mini-utils/idetool/idetool.c:29
-#~ msgid "Standby"
-#~ msgstr "从"
-
-# mini-utils/idetool/idetool.c:42
-#~ msgid "Unable to access the drive."
-#~ msgstr "无法存取这个磁盘机."
-
-# mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
-#~ msgid "The DMA setting for this drive cannot be changed."
-#~ msgstr "这个磁盘机的 DMA 设定值不能改变."
-
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#~ msgid "Disabled"
-#~ msgstr "关闭"
-
-# mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
-#~ msgid "The IRQ unmask setting for this drive cannot be changed."
-#~ msgstr "这个磁盘机的 IRQ unmask 设定值不能改变."
-
-# mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
-#~ msgid "The drive refused to keep its settings."
-#~ msgstr "这个磁盘机拒绝保留它的设定值."
-
-# mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:327
-#~ msgid "Keep settings"
-#~ msgstr "保留设定值"
-
-# mini-utils/idetool/idetool.c:211
-#~ msgid "(1 Sector)"
-#~ msgstr "(1 Sector)"
-
-# mini-utils/idetool/idetool.c:213
-#~ msgid "(Dual Port)"
-#~ msgstr "(Dual Port)"
-
-# mini-utils/idetool/idetool.c:215
-#~ msgid "(Dual Port Cache)"
-#~ msgstr "(Dual Port Cache)"
-
-# mini-utils/idetool/idetool.c:243
-#~ msgid "No"
-#~ msgstr "不"
-
-# mini-utils/idetool/idetool.c:245
-#~ msgid "Yes (%d sector)"
-#~ msgstr "是(%d Sector)"
-
-# mini-utils/idetool/idetool.c:247
-#~ msgid "Yes (%d sectors)"
-#~ msgstr "是 (%d Sector)"
-
-# mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:320
-#~ msgid "Model"
-#~ msgstr "型号"
-
-# mini-utils/idetool/idetool.c:311
-#~ msgid "Firmware"
-#~ msgstr "韧体"
-
-# mini-utils/idetool/idetool.c:312
-#~ msgid "Serial No."
-#~ msgstr "序号."
-
-# mini-utils/idetool/idetool.c:314
-#~ msgid "Geometry"
-#~ msgstr "Geometry"
-
-# mini-utils/idetool/idetool.c:315
-#~ msgid "Cache"
-#~ msgstr "快取内存"
-
-# mini-utils/idetool/idetool.c:320
-#~ msgid "Legacy MFM/RLL drive"
-#~ msgstr "Legacy MFM/RLL drive"
-
-# mini-utils/idetool/idetool.c:323
-#~ msgid "DMA Mode"
-#~ msgstr "DMA 模式"
-
-# mini-utils/idetool/idetool.c:324
-#~ msgid "IO Mode"
-#~ msgstr "IO 模式"
-
-# mini-utils/idetool/idetool.c:325
-#~ msgid "IRQ Unmask"
-#~ msgstr "IRQ Unmask"
-
-# mini-utils/idetool/idetool.c:326
-#~ msgid "Multisector"
-#~ msgstr "Multisector"
-
-# mini-utils/idetool/idetool.c:353
-#~ msgid "IDE Status"
-#~ msgstr "IDE 状态"
-
-# mini-utils/idetool/idetool.c:366
-#~ msgid "Disk Logo Not Found"
-#~ msgstr "Disk Logo Not Found"
-
-# mini-utils/idetool/idetool.c:417
-#~ msgid "Only the superuser can use this tool"
-#~ msgstr "只有 superuser 可以使用这个工具"
-
-# mini-utils/idetool/idetool.c:428
-#~ msgid "You appear to have no IDE drives"
-#~ msgstr "你似乎没有 IDE 磁盘机"
-
-# gstripchart/gstripchart.c:1516 gstripchart/gstripchart.c:1629
-#~ msgid "Param"
-#~ msgstr "参数"
-
-# gstripchart/gstripchart.c:1629
-#~ msgid "Current"
-#~ msgstr "目前的值"
-
-# gstripchart/gstripchart.c:1777
-#, fuzzy
-#~ msgid "Stripchart"
-#~ msgstr "条形图程序"
-
-# gstripchart/gstripchart.c:1425
-#, fuzzy
-#~ msgid "Copyright 2000 John Kodis"
-#~ msgstr "Copyright 1998 John Kodis"
-
-#, fuzzy
-#~ msgid "Show values"
-#~ msgstr "显示状态列"
-
-#, fuzzy
-#~ msgid "Edit Prefs..."
-#~ msgstr "编辑偏好设定..."
-
-#, fuzzy
-#~ msgid "Edit Params..."
-#~ msgstr "编辑内容..."
-
-# gstripchart/gstripchart.c:440
-#~ msgid "no such field: %d"
-#~ msgstr "找不到此一范围: %d"
-
-# gstripchart/gstripchart.c:468
-#~ msgid "missing variable identifer"
-#~ msgstr "没有变量的域名"
-
-# gstripchart/gstripchart.c:470
-#~ msgid "invalid variable identifer: %s"
-#~ msgstr "无效的变量域名: %s"
-
-# gstripchart/gstripchart.c:474
-#~ msgid "number expected"
-#~ msgstr "应该是数字才对"
-
-# gstripchart/gstripchart.c:553
-#, fuzzy
-#~ msgid "extra junk at end: \"%s\""
-#~ msgstr "结尾有多馀的废物: \"%s\""
-
-# gstripchart/gstripchart.c:1516 gstripchart/gstripchart.c:1629
-#, fuzzy
-#~ msgid "Parameter"
-#~ msgstr "参数"
-
-# gstripchart/gstripchart.c:1528
-#~ msgid "Equation"
-#~ msgstr "方程序"
-
-# gstripchart/gstripchart.c:1524
-#~ msgid "Filename"
-#~ msgstr "文件名"
-
-# gstripchart/gstripchart.c:1526
-#~ msgid "Pattern"
-#~ msgstr "样式"
-
-# gstripchart/gstripchart.c:1522 mini-utils/gcolorsel/gcolorsel.c:155
-#, fuzzy
-#~ msgid "Add Color"
-#~ msgstr "色彩"
-
-# mini-utils/gw/gw.c:489
-#, fuzzy
-#~ msgid "Delete Color"
-#~ msgstr "删除"
-
-# gstripchart/gstripchart.c:1669
-#, fuzzy
-#~ msgid "Parameters"
-#~ msgstr "参数"
-
-# gsearchtool/gsearchtool.c:514
-#, fuzzy
-#~ msgid "Chart"
-#~ msgstr "开始"
-
-# mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-# mini-utils/idetool/idetool.c:323 mini-utils/idetool/idetool.c:325
-#, fuzzy
-#~ msgid "enabled"
-#~ msgstr "启动"
-
-# gtt/prop.c:248 gtt/prop.c:286
-#, fuzzy
-#~ msgid "minor"
-#~ msgstr "分"
-
-# gstripchart/gstripchart.c:1526
-#, fuzzy
-#~ msgid "Pen"
-#~ msgstr "样式"
-
-# gstripchart/gstripchart.c:1883
-#~ msgid "Geometry string: WxH+X+Y"
-#~ msgstr "Geometry字符串:WxH+X+Y"
-
-# gstripchart/gstripchart.c:1883
-#~ msgid "GEO"
-#~ msgstr "GEO"
-
-# gstripchart/gstripchart.c:1885
-#~ msgid "Configuration file name"
-#~ msgstr "设定文件名"
-
-# gstripchart/gstripchart.c:1885
-#~ msgid "FILE"
-#~ msgstr "文件"
-
-# gstripchart/gstripchart.c:1516 mini-utils/gcolorsel/gcolorsel.c:156
-# mini-utils/guname/moreinfo.c:218
-#, fuzzy
-#~ msgid "Values"
-#~ msgstr "值"
-
-# gstripchart/gstripchart.c:1669
-#, fuzzy
-#~ msgid "Params..."
-#~ msgstr "参数"
-
-# ghex/ui.c:97
-#, fuzzy
-#~ msgid "ASCII code:"
-#~ msgstr "ASCII data"
-
-# gtt/prop.c:221
-#~ msgid "Project Time today:"
-#~ msgstr "Project Time today:"
-
-# gtt/prop.c:263
-#~ msgid "Project Time ever:"
-#~ msgstr "Project Time ever:"
-
-#, fuzzy
-#~ msgid "Preferences...          "
-#~ msgstr "偏好设定..."
-
-# mini-utils/gless/gless.c:294
-#, fuzzy
-#~ msgid "window1"
-#~ msgstr "新增窗口 _N"
-
-# mini-utils/gw/gw.c:174
-#~ msgid "Write information to disk"
-#~ msgstr "将讯息写回磁盘"
-
-# mini-utils/gw/gw.c:466
-#~ msgid "Save not implemented yet\n"
-#~ msgstr "此功能尚未完成\n"
-
-#~ msgid "Formatting /dev/floppy"
-#~ msgstr "正在格式化: /dev/floppy"
-
-#, fuzzy
-#~ msgid "Formatting %s"
-#~ msgstr "M正在格式化磁盘..."
-
-# gdiskfree/df.c:212
-#~ msgid ""
-#~ "A quick hack to show the amount of space free on mounted file systems "
-#~ "uitilizing a dial."
-#~ msgstr "显示已挂载之文件系统的可用空间 "
-
-# ghex/converter.c:41
-#~ msgid "GHex: Converter"
-#~ msgstr "GHex: 转码程序"
-
-# ghex/converter.c:70
-#~ msgid "Hex"
-#~ msgstr "十六进位"
-
-# ghex/converter.c:80
-#~ msgid "ASCII"
-#~ msgstr "ASCII"
-
-# ghex/converter.c:90
-#~ msgid "Get cursor value"
-#~ msgstr "获得游标位置"
-
-# ghex/converter.c:190
-#~ msgid "ERROR"
-#~ msgstr "错误"
-
-# ghex/findreplace.c:51 ghex/main.c:83
-#~ msgid "GHex (%s): Find Data"
-#~ msgstr "GHex (%s): 寻找数据"
-
-# ghex/findreplace.c:76
-#~ msgid "Find Next"
-#~ msgstr "找下一个"
-
-# ghex/findreplace.c:83
-#~ msgid "Find Previous"
-#~ msgstr "找前一个"
-
-# ghex/findreplace.c:111 ghex/main.c:84
-#~ msgid "GHex (%s): Find & Replace Data"
-#~ msgstr "GHex (%s): 寻找并且取代数据"
-
-# ghex/findreplace.c:125
-#~ msgid "Replace %s"
-#~ msgstr "取代 %s"
-
-# ghex/findreplace.c:141
-#~ msgid "Find next"
-#~ msgstr "找下一个"
-
-# ghex/findreplace.c:148
-#~ msgid "Replace"
-#~ msgstr "取代"
-
-# ghex/findreplace.c:155
-#~ msgid "Replace All"
-#~ msgstr "全部取代"
-
-# ghex/findreplace.c:179 ghex/main.c:85
-#~ msgid "GHex (%s): Jump To Byte"
-#~ msgstr "GHex (%s): 跳至 Byte"
-
-# ghex/findreplace.c:260 ghex/findreplace.c:283 ghex/findreplace.c:336
-#~ msgid "There is no active buffer to search!"
-#~ msgstr "没有缓冲区可供搜寻!"
-
-# ghex/findreplace.c:268 ghex/findreplace.c:291 ghex/findreplace.c:344
-#~ msgid "There seems to be no string to search for!"
-#~ msgstr "没有字串可供搜寻!"
-
-# ghex/findreplace.c:274 ghex/findreplace.c:351
-#~ msgid "End Of File reached"
-#~ msgstr "到达文件底端"
-
-# ghex/findreplace.c:298
-#~ msgid "Beginning Of File reached"
-#~ msgstr "到达文件的顶端"
-
-# ghex/findreplace.c:306
-#~ msgid "There is no active buffer to move the cursor in!"
-#~ msgstr "没有缓冲区可供游标移入!"
-
-# ghex/findreplace.c:311
-#~ msgid "No offset has been specified!"
-#~ msgstr "尚未指定偏移量!"
-
-# ghex/findreplace.c:318
-#~ msgid "The offset must be a positive integer value!"
-#~ msgstr "偏移量必需为正值!"
-
-# ghex/findreplace.c:323
-#~ msgid "Can not position cursor beyond the End Of File!"
-#~ msgstr "不能将游标置於文件底端之后!"
-
-# ghex/findreplace.c:361 ghex/findreplace.c:400
-#~ msgid "There is no active buffer to replace data in!"
-#~ msgstr "没有缓冲区可供数据置换!"
-
-# ghex/findreplace.c:372 ghex/findreplace.c:411
-#~ msgid "Strange find or replace string!"
-#~ msgstr "在搜寻和取代时遇到奇怪的字串!"
-
-# ghex/findreplace.c:377 ghex/findreplace.c:416
-#~ msgid "Both strings must be of the same length!"
-#~ msgstr "两个字串长度必需相同!"
-
-# ghex/findreplace.c:390
-#~ msgid "End Of File reached!"
-#~ msgstr "到达文件底端!"
-
-# ghex/findreplace.c:431
-#~ msgid "Replaced %d occurencies."
-#~ msgstr "总共取代了 %d 个."
-
-# ghex/hex-document.c:57
-#~ msgid "_Bytes"
-#~ msgstr "_Byte"
-
-# ghex/hex-document.c:58
-#~ msgid "Group data by 8 bits"
-#~ msgstr "Group data by 8 bits"
-
-# ghex/hex-document.c:60
-#~ msgid "Group data by 16 bits"
-#~ msgstr "Group data by 16 bits"
-
-# ghex/hex-document.c:61
-#~ msgid "_Longwords"
-#~ msgstr "_Longwords"
-
-# ghex/hex-document.c:62
-#~ msgid "Group data by 32 bits"
-#~ msgstr "Group data by 32 bits"
-
-# ghex/hex-document.c:78
-#~ msgid "_Goto Byte..."
-#~ msgstr "跳至 _G Byte..."
-
-# ghex/hex-document.c:78
-#~ msgid "Jump to a certain position"
-#~ msgstr "跳至一特定的位置"
-
-# ghex/hex-document.c:81
-#~ msgid "_Group Data As"
-#~ msgstr "_Group Data As"
-
-# ghex/hex-document.c:86
-#~ msgid "_Add view"
-#~ msgstr "_Add view"
-
-# ghex/hex-document.c:88
-#~ msgid "_Remove view"
-#~ msgstr "_Remove view"
-
-# ghex/main.c:51
-#~ msgid ""
-#~ "File %s has changed since last save.\n"
-#~ "Do you want to save changes?"
-#~ msgstr ""
-#~ "文件 %s 的内容已有变动.\n"
-#~ "是否要储存这些变动?"
-
-# ghex/main.c:173
-#~ msgid "Offset: %s"
-#~ msgstr "偏移: %s"
-
-# ghex/preferences.c:82
-#~ msgid "Maximum number of undo levels"
-#~ msgstr "可还原的次数上限"
-
-# ghex/preferences.c:96
-#~ msgid "Show cursor offset in statusbar as"
-#~ msgstr "在状态列显示游标位置的方式: "
-
-# ghex/preferences.c:115
-#~ msgid "Hexadecimal"
-#~ msgstr "十六进位"
-
-# ghex/preferences.c:121
-#~ msgid "Custom"
-#~ msgstr "自定"
-
-# ghex/preferences.c:131
-#~ msgid "Show offsets column"
-#~ msgstr "显示字段"
-
-# ghex/preferences.c:136
-#~ msgid "Editing"
-#~ msgstr "编辑中"
-
-# ghex/preferences.c:178
-#~ msgid "Default Group Type"
-#~ msgstr "Default Group Type"
-
-# ghex/preferences.c:201
-#~ msgid "MDI Mode"
-#~ msgstr "MDI 模式"
-
-# ghex/preferences.c:218
-#~ msgid "MDI"
-#~ msgstr "MDI"
-
-# ghex/preferences.c:365
-#~ msgid "Can not open desired font!"
-#~ msgstr "无法开启选定的字形!"
-
-# ghex/ui.c:51
-#~ msgid "Open Con_verter..."
-#~ msgstr "开启转码程序 _v..."
-
-# ghex/ui.c:52
-#~ msgid "Open base conversion dialog"
-#~ msgstr "开启比特转换对话框"
-
-# ghex/ui.c:91
-#~ msgid "Longwords"
-#~ msgstr "Longwords"
-
-# ghex/ui.c:96
-#~ msgid "hex data"
-#~ msgstr "hex data"
-
-# ghex/ui.c:174
-#~ msgid "GHex, a binary file editor"
-#~ msgstr "GHex, 二比特档编辑器"
-
-# ghex/ui.c:176
-#~ msgid "Released under the terms of GNU Public License"
-#~ msgstr "Released under the terms of GNU Public License"
-
-# ghex/ui.c:193 ghex/ui.c:344
-#~ msgid "Error saving file!"
-#~ msgstr "存档时发生错误!"
-
-# ghex/ui.c:197 ghex/ui.c:339
-#~ msgid "Saved buffer to file %s"
-#~ msgstr "把缓冲区内容存至文件 %s"
-
-# ghex/ui.c:224
-#~ msgid "Select a file to save buffer as"
-#~ msgstr "选择要把缓冲区存入的文件"
-
-# ghex/ui.c:272
-#~ msgid "Really revert file %s?"
-#~ msgstr "确定要复原文件 %s?"
-
-# ghex/ui.c:285
-#~ msgid "Reverted buffer from file %s"
-#~ msgstr "把缓冲区内容复原成文件 %s"
-
-# gstripchart/gstripchart.c:630
-#~ msgid "%s, line %d: "
-#~ msgstr "%s, %d 行: "
-
-# gstripchart/gstripchart.c:707
-#~ msgid "can't open config file \"%s\""
-#~ msgstr "无法开启 \"%s\" 这个设定文件"
-
-# gstripchart/gstripchart.c:734
-#~ msgid ""
-#~ "can't open config file \"./gstripchart.conf\", \"%s\", \"%s\", or \"%s\""
-#~ msgstr "无法开启 gstripchart.conf这个设置文件,\"%s\", \"%s\", or \"%s\""
-
-# gstripchart/gstripchart.c:739
-#~ msgid "can't open config file \"./gstripchart.conf\", \"%s\", or \"%s\""
-#~ msgstr "无法开启设定文件\"./gstripchart.conf\", \"%s\", or \"%s\""
-
-# gstripchart/gstripchart.c:796
-#~ msgid "invalid display type: %s"
-#~ msgstr "无效的显示格式: %s"
-
-# gstripchart/gstripchart.c:830
-#~ msgid "identifier or begin must be first"
-#~ msgstr "begin 或域名要摆在最前面"
-
-# gstripchart/gstripchart.c:837 gstripchart/gstripchart.c:853
-#~ msgid "unrecognized color: %s"
-#~ msgstr "无效的颜色: %s"
-
-# gstripchart/gstripchart.c:880
-#~ msgid "invalid option: \"%s\""
-#~ msgstr "无效的选项: \"%s\""
-
-# gstripchart/gstripchart.c:1409
-#~ msgid "E_xit"
-#~ msgstr "退出 _x"
-
-# gstripchart/gstripchart.c:1409
-#~ msgid "Terminate the stripchart program"
-#~ msgstr "结束 stripchart"
-
-# gstripchart/gstripchart.c:1440
-#~ msgid "_About"
-#~ msgstr "开於 _A"
-
-# gstripchart/gstripchart.c:1451
-#~ msgid "_File"
-#~ msgstr "文件 _F"
-
-# gstripchart/gstripchart.c:1520
-#~ msgid "Identifier"
-#~ msgstr "域名"
-
-# gstripchart/gstripchart.c:1561
-#~ msgid "Gnome Stripchart Parameters"
-#~ msgstr "Gnome 条形图程序之参数"
-
-# gstripchart/gstripchart.c:1777
-#~ msgid "Gnome stripchart viewer"
-#~ msgstr "Gnome 条形图程序"
-
-# gstripchart/gstripchart.c:1856
-#~ msgid "invalid display type: %s\n"
-#~ msgstr "无效的显示格式: %s\n"
-
-# gstripchart/gstripchart.c:1887 gstripchart/gstripchart.c:1889
-# gstripchart/gstripchart.c:1891 gstripchart/gstripchart.c:1893
-#~ msgid "SECS"
-#~ msgstr "SECS"
-
-# gstripchart/gstripchart.c:1889
-#~ msgid "Chart low-pass filter time constant"
-#~ msgstr "Chart低通道过滤时间常数"
-
-# gstripchart/gstripchart.c:1893
-#~ msgid "Slider low-pass filter time constant"
-#~ msgstr "Slider低通道过滤时间常数"
-
-# gstripchart/gstripchart.c:1895
-#~ msgid "Adds a menubar to the main window"
-#~ msgstr "添加一个菜单条到主菜单"
-
-# gstripchart/gstripchart.c:1897
-#~ msgid "Omits slider window"
-#~ msgstr "关闭slider窗口"
-
-# gstripchart/gstripchart.c:1899
-#~ msgid "TYPE is one of gtk, text, graph, or none"
-#~ msgstr "TYPE is one of gtk, text, graph, or none"
-
-# gstripchart/gstripchart.c:1899
-#~ msgid "TYPE"
-#~ msgstr "TYPE"
-
-# gtt/menucmd.c:89
-#~ msgid "Please enter the name of the new project:"
-#~ msgstr "请输入新计划的域名:"
-
-# mini-utils/gcolorsel/gcolorsel.c:79
-#~ msgid "Format Style:"
-#~ msgstr "格式:"
-
-# mini-utils/gcolorsel/gcolorsel.c:96
-#~ msgid "Color Values:"
-#~ msgstr "色彩值:"
-
-# mini-utils/gcolorsel/gcolorsel.c:234
-#~ msgid "Error, cannot find the file 'rgb.txt' on your system!"
-#~ msgstr "错误，在您的系统上找不到 'rgb.txt' 这个文件!"
-
-# mini-utils/gnome-run/gnome-run.c:48
-#~ msgid ""
-#~ "Failed to execute command:\n"
-#~ "%s\n"
-#~ "%s"
-#~ msgstr ""
-#~ "执行指令失败:\n"
-#~ "%s\n"
-#~ "%s"
-
-# mini-utils/gnome-run/gnome-run.c:70
-#~ msgid "Run"
-#~ msgstr "执行"
-
-# mini-utils/gnome-run/gnome-run.c:81
-#~ msgid "Select a program to run"
-#~ msgstr "选择要执行的程序"
-
-# mini-utils/idetool/idetool.c:20
-#~ msgid "16-bit"
-#~ msgstr "16位"
-
-#~ msgid ""
-#~ "You are trying to change your user identity.\n"
-#~ "Please enter the password for user `"
-#~ msgstr ""
-#~ "你正试图变换你的使用者身份.\n"
-#~ "请输入密码 `"
-
-#~ msgid ""
-#~ "You are trying to do something which requires\n"
-#~ "root (system administrator) privileges.\n"
-#~ "To do this, you must give the root password.\n"
-#~ "Please enter the root password now, or choose\n"
-#~ "Cancel if you do not know it."
-#~ msgstr ""
-#~ "你现在要做的事需要有\n"
-#~ "root (系统管理员) 的权限.\n"
-#~ "要完成这些事, 你必需输入 root 的密码.\n"
-#~ "现在请输入 root 的密码或选择\n"
-#~ "取消如果你不知道 root 的密码."
-
-#~ msgid "Root password request"
-#~ msgstr "请输入 Root 的密码"
-
-#~ msgid "using restricted shell %s"
-#~ msgstr "使用受限制的 shell %s"
-
-#~ msgid "incorrect password"
-#~ msgstr "密码不正确"
-
-#~ msgid ""
-#~ "\n"
-#~ "Report bugs to sh-utils-bugs@gnu.ai.mit.edu"
-#~ msgstr ""
-#~ "\n"
-#~ "回报程序错误给 sh-utils-bugs@gnu.ai.mit.edu"
-
-#~ msgid ""
-#~ "Change the effective user id and group id to that of USER.\n"
-#~ "\n"
-#~ "  -, -l, --login               make the shell a login shell\n"
-#~ "  -c, --commmand=COMMAND       pass a single COMMAND to the shell with -"
-#~ "c\n"
-#~ "  -f, --fast                   pass -f to the shell (for csh or tcsh)\n"
-#~ "  -m, --preserve-environment   do not reset environment variables\n"
-#~ "  -p                           same as -m\n"
-#~ "  -s, --shell=SHELL            run SHELL if /etc/shells allows it\n"
-#~ "      --help                   display this help and exit\n"
-#~ "      --version                output version information and exit\n"
-#~ "\n"
-#~ "A mere - implies -l.   If USER not given, assume root.\n"
-#~ msgstr ""
-#~ "切换使用者代号和群组代号成另一个使用者.\n"
-#~ "\n"
-#~ "  -, -l, --login               make the shell a login shell\n"
-#~ "  -c, --commmand=COMMAND       pass a single COMMAND to the shell with -"
-#~ "c\n"
-#~ "  -f, --fast                   pass -f to the shell (for csh or tcsh)\n"
-#~ "  -m, --preserve-environment   do not reset environment variables\n"
-#~ "  -p                           同 -m\n"
-#~ "  -s, --shell=SHELL            run SHELL if /etc/shells allows it\n"
-#~ "      --help                   显示说明然后结束程序\n"
-#~ "      --version                显示版本编号然后结束程序\n"
-#~ "\n"
-#~ "A mere - implies -l.   如果没有指定使用者，则假设为 root.\n"
-
-#~ msgid "Usage: %s [OPTION]... [-] [USER [ARG]...]\n"
-#~ msgstr "使用方法: %s [OPTION]... [-] [USER [ARG]...]\n"
-
-#~ msgid "Try `%s --help' for more information.\n"
-#~ msgstr "键入 `%s --help' 取得更多信息.\n"
-
-#~ msgid "Cannot set user id: %s"
-#~ msgstr "无法设定使用者代号: %s"
-
-#~ msgid "Cannot set group id: %s"
-#~ msgstr "无法设定群组代号: %s"
-
-#~ msgid "Cannot set groups: %s"
-#~ msgstr "无法设定群组: %s"
-
-#~ msgid "virtual memory exhausted"
-#~ msgstr "虚拟内存用尽"
-
-#~ msgid "Error, cannot open /usr/X11R6/lib/X11/rgb.txt.\n"
-#~ msgstr "错误, 无法开启 /usr/X11R6/lib/X11/rgb.txt.\n"
-
-#~ msgid "Examine and adjust parameters"
-#~ msgstr "查看并调整参数"
-
-#~ msgid "GNOME Find is a fast, flexible file search tool."
-#~ msgstr "GNOME 搜寻是一个快速, 具弹性的文件搜寻工具."
-
-#~ msgid "GNOME Find"
-#~ msgstr "GNOME 搜寻"
-
-#~ msgid "Directory to Search"
-#~ msgstr "搜寻目录"
-
-#~ msgid "Find Files"
-#~ msgstr "寻找文件"
-
-#~ msgid "Start the current search"
-#~ msgstr "开始目前的搜寻"
-
-#~ msgid "Clear the search window"
-#~ msgstr "清除搜寻窗口"
-
-#~ msgid "New"
-#~ msgstr "新增"
-
-#~ msgid "About Gnome Find..."
-#~ msgstr "关于 Gnome 搜寻..."
-
-#~ msgid "Start search"
-#~ msgstr "开始搜寻"
-
-#~ msgid "Remove last search condition"
-#~ msgstr "移除最后一个搜寻条件"
-
-#~ msgid "Remove condition"
-#~ msgstr "移除条件"
-
-#~ msgid "Add a search condition"
-#~ msgstr "增加一个新的条件"
-
-#~ msgid "Save search spec as..."
-#~ msgstr "Save search spec as..."
-
-#~ msgid "Save search spec"
-#~ msgstr "Save search spec"
-
-#~ msgid "New search"
-#~ msgstr "新的搜寻"
-
-#~ msgid "swap"
-#~ msgstr "swap"
-
-#~ msgid "The following mail will be sent to "
-#~ msgstr "以下邮件将寄至 "
-
-#~ msgid " ': "
-#~ msgstr " ': "
-
-#~ msgid "Error closing file `"
-#~ msgstr "关闭文件时发生错误 `"
-
-#~ msgid "yellow"
-#~ msgstr "黄色"
-
-#~ msgid "Busy"
-#~ msgstr "忙线"
-
-#~ msgid "Load"
-#~ msgstr "载入"
-
-#~ msgid "PPP In"
-#~ msgstr "PPP 入"
-
-#~ msgid "PPP Out"
-#~ msgstr "PPP 出"
-
-#~ msgid "Swap"
-#~ msgstr "swap"
-
-#~ msgid "geometry"
-#~ msgstr "geometry"
-
-#~ msgid "chart LP filter TC"
-#~ msgstr "chart LP filter TC"
-
-#~ msgid "slider LP filter TC"
-#~ msgstr "slider LP filter TC"
-
-#~ msgid "add menubar"
-#~ msgstr "新增选单列"
-
-#~ msgid "gtk|text|graph|none"
-#~ msgstr "gtk|text|graph|none"
-
-#~ msgid ""
-#~ "High Density 3.5\" (1.44 Ms)\n"
-#~ "High Density 5.25\" (1.2 M)\n"
-#~ "Double Density 3.5\" (720 K)\n"
-#~ "Double Density 5.25\" (360 K)\n"
-#~ msgstr ""
-#~ "高密 3.5\" (1.44 M)\n"
-#~ "高密 5.25\" (1.2 M)\n"
-#~ "倍密 3.5\" (720 K)\n"
-#~ "倍密 5.25\" (360 K)\n"
-
-#~ msgid ""
-#~ "Linux Native (ext2)\n"
-#~ "Dos (FAT16)\n"
-#~ msgstr ""
-#~ "Linux Native (ext2)\n"
-#~ "Dos (FAT16)\n"
