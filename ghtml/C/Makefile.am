@@ -4,6 +4,7 @@ lang = C
 gttghtmldir = $(datadir)/gnotime/ghtml/C
 
 gttghtml_DATA =         \
+	basic-daily.ghtml    \
 	basic-invoice.ghtml  \
 	basic-journal.ghtml  \
 	basic-todo.ghtml     \

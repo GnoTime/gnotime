@@ -3,27 +3,26 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Daily Report</title>
-<?scm (gtt-include "gtt-style.css") ?>
 </head>
-<body bgcolor="#c8c8d3">
-<div id="gnotime-body">
+<body>
 <center>
 <h1>Daily Report for 
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
 </h1>
-</center>
 
-<div id="gnotime-project-daily-overview">
-<?scm (gtt-show-project-notes) ?>
-</div>
+This is an example of a daily report.  This is stil under construction
+and subject to change.
+
+Make a copy of this file, and edit it
+to create your own custom reports.
 
 <br><br>
 
 
-<table class=gnotime-daily-table bgcolor=#f8f8f8 border=0 cellspacing=2 cellpadding=4>
-<tr class=gnotime-daily-table-header bgcolor=#e8e8e8>
+<table border=1>
+<tr>
 <th>Date</th>
 <th>Total Time</th>
 <th>Notes</th>
@@ -36,9 +35,9 @@
 
    (list 
       ''"<tr>"
-      ''"<td>" gtt-daily-day-str  ''"</td>"
-      ''"<td align='right'>"  gtt-daily-time-str ''"</td>"
-      ''"<td align='left'>"
+      ''"<td> &nbsp; " gtt-daily-day-str  ''" &nbsp; </td>"
+      ''"<td align='right'> &nbsp; "  gtt-daily-time-str ''"&nbsp; </td>"
+      ''"<td align='left'> &nbsp; "
       ''"<ul>"
       (lambda (dobj) (gtt-show-daily-tasks dobj 
            (list
@@ -46,24 +45,20 @@
                  (lambda (x) (gtt-project-title (gtt-task-parent x)))
                  ''" -- " 
                  gtt-task-memo
-                 ''"</b><br>" 
+                 ''"</b> &nbsp;" 
                  gtt-task-notes
+                 ''"&nbsp;" 
                  )))
 
-      ''" </ul></td>"
+      ''" </ul>&nbsp; </td>"
       
       ''"</tr>"
      ))
 ?>
 </table>
 
-<br><br>
-<div align=right>
-Brought to you by ...  <br>
-<a href="http://gttr.sourceforge.net/">
-<img src="gnotime-logo.png" border="0" width="155" height="28"></a>
-</div>
 
-</div>
+<br><br>
+That's all Folks!
 </body>
 </html>

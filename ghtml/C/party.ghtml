@@ -2,182 +2,60 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Invoice</title>
+<title>Daily Report</title>
 <?scm (gtt-include "gtt-style.css") ?>
 </head>
 <body bgcolor="#c8c8d3">
 <div id="gnotime-body">
 <center>
-<h1>Invoice for 
+<h1>Daily Report for 
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
 </h1>
 </center>
 
-You don't want to send this invoice to your customers without
-at least putting your logo on the top.  To do that, you will
-you will have to modify the invoice report template.  
-Changing it is easy: make a copy of the file <tt>invoice.ghtml</tt>
-(probably in <tt>/usr/share/gtt/ghtml/C/invoice.ghtml</tt>),
-and edit it to suit your needs.  The templates are raw HTML,
-so you do need to know a bit of that to do anything fancy.
-If you're adventurous, you can modify the column layout
-and order.
-<br><br>
-When finished, you can add your new report to your system by picking 
-the menu item "Reports... New Report".
+<div id="gnotime-project-daily-overview">
+<?scm (gtt-show-project-notes) ?>
+</div>
 
-<?scm 
-   ;; ---------------------------
-   ;; print out a header showing the query status, 
-   ;; but only if this report was invoked by the query generator.
-
-   (if (gtt-did-query)
-       (gtt-show (list
-          ''"<br><br>"
-          ''"Items shown are for projects that were active between dates"
-                (gtt-kvp-str '"earliest-end-date")
-          ''"and"
-                (gtt-kvp-str '"latest-start-date")
-          ''".\n"
-        )))
-?>
-
-<center>
-<h3>Billable, Unpaid Work Items</h3>
-</center>
-<?scm
-  (define (do-show-billable-items)
-    (gtt-show 
-        '" <center>\n 
-           <table bgcolor=#f0f0f0 width=90% border=0 cellpadding=6>\n
-           <tr bgcolor=#d8d8d8>
-           <th>Work Item</th>\n
-           <th>Billing Status</th>\n
-           <th>Billable</th>\n
-           <th>Bill Rate</th>\n
-           <th>Total Time</th>\n
-           <th>Value</th>\n
-           <th>Billable Value</th>\n
-           </tr>\n"
-    )
-    (gtt-show-tasks (gtt-filter-bill-tasks (gtt-tasks (gtt-linked-project)))
-      (list   
-         ''"<tr>"
-         ''"<td>"               gtt-task-memo       ''"</td>\n"
-         ''"<td align=center>"  gtt-task-billstatus ''"</td>\n"
-         ''"<td>"               gtt-task-billable   ''"</td>\n"
-         ''"<td>"               gtt-task-billrate   ''"</td>\n"
-         ''"<td>"               gtt-task-time-str   ''"</td>\n"
-         ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
-         ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
-      )
-    )
-    (gtt-show '" </table> </center>\n")
-  )
-  (if (null? (gtt-filter-bill-tasks (gtt-tasks (gtt-linked-project))))
-      (gtt-show '"<center><b><big>There are no billable items</big></b></center>\n")
-      (do-show-billable-items)
-  )
-?>
 <br><br>
 
-<center>
-<h3>Billable, Paid Work Items</h3>
-The table below shows work items that have been paid:
-</center>
+
+<table class=gnotime-daily-table bgcolor=#f8f8f8 border=0 cellspacing=2 cellpadding=4>
+<tr class=gnotime-daily-table-header bgcolor=#e8e8e8>
+<th>Date</th>
+<th>Total Time</th>
+<th>Notes</th>
+</tr>
 
 <?scm
-  (define (do-show-paid-items)
-    (gtt-show 
-        '" <center>\n 
-           <table bgcolor=#f0f0f0 width=90% border=0 cellpadding=6>\n
-           <tr bgcolor=#d8d8d8>
-           <th>Work Item</th>\n
-           <th>Billing Status</th>\n
-           <th>Billable</th>\n
-           <th>Bill Rate</th>\n
-           <th>Total Time</th>\n
-           <th>Value</th>\n
-           <th>Billable Value</th>\n
-           </tr>\n"
-    )
-    (gtt-show-tasks (gtt-filter-paid-tasks (gtt-tasks (gtt-linked-project)))
-      (list   
-         ''"<tr>"
-         ''"<td>"               gtt-task-memo       ''"</td>\n"
-         ''"<td align=center>"  gtt-task-billstatus ''"</td>\n"
-         ''"<td>"               gtt-task-billable   ''"</td>\n"
-         ''"<td>"               gtt-task-billrate   ''"</td>\n"
-         ''"<td>"               gtt-task-time-str   ''"</td>\n"
-         ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
-         ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
-      )
-    )
-    (gtt-show '" </table> </center>\n")
-  )
-  (if (null? (gtt-filter-paid-tasks (gtt-tasks (gtt-linked-project))))
-      (gtt-show '"<center><b><big>There are no paid items</big></b></center>\n")
-      (do-show-paid-items)
-  )
+   ;; XXX should be using srfi-19 to print the time values
+
+   (gtt-show-daily (gtt-daily-totals (gtt-linked-project))
+
+   (list 
+      ''"<tr>"
+      ''"<td>" gtt-daily-day-str  ''"</td>"
+      ''"<td align='right'>"  gtt-daily-time-str ''"</td>"
+      ''"<td align='left'>"
+      ''"<ul>"
+      (lambda (dobj) (gtt-show-daily-tasks dobj 
+           (list
+                 ''"<li><b>" 
+                 (lambda (x) (gtt-project-title (gtt-task-parent x)))
+                 ''" -- " 
+                 gtt-task-memo
+                 ''"</b><br>" 
+                 gtt-task-notes
+                 )))
+
+      ''" </ul></td>"
+      
+      ''"</tr>"
+     ))
 ?>
-<br><br>
-
-<center>
-<h3>Billable, Held Tasks</h3>
-The table below shows only the items withheld from billing:
-</center>
-
-<?scm
-  (define (do-show-hold-items)
-    (gtt-show 
-        '" <center>\n 
-           <table bgcolor=#f0f0f0 width=90% border=0 cellpadding=6>\n
-           <tr bgcolor=#d8d8d8>
-           <th>Work Item</th>\n
-           <th>Billing Status</th>\n
-           <th>Billable</th>\n
-           <th>Bill Rate</th>\n
-           <th>Total Time</th>\n
-           <th>Value</th>\n
-           <th>Billable Value</th>\n
-           </tr>\n"
-    )
-    (gtt-show-tasks (gtt-filter-hold-tasks (gtt-tasks (gtt-linked-project)))
-      (list   
-         ''"<tr>"
-         ''"<td>"               gtt-task-memo       ''"</td>\n"
-         ''"<td align=center>"  gtt-task-billstatus ''"</td>\n"
-         ''"<td>"               gtt-task-billable   ''"</td>\n"
-         ''"<td>"               gtt-task-billrate   ''"</td>\n"
-         ''"<td>"               gtt-task-time-str   ''"</td>\n"
-         ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
-         ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
-      )
-    )
-    (gtt-show '" </table> </center>\n")
-  )
-  (if (null? (gtt-filter-hold-tasks (gtt-tasks (gtt-linked-project))))
-      (gtt-show '"<center><b><big>There are no held items</big></b></center>\n")
-      (do-show-hold-items)
-  )
-?>
-<br><br>
-
-To create more specialized filters to show more complex 
-combinations of work items, you will have to do some hacking
-in scheme.  Go into the <tt>gtt.scm</tt> file, make 
-a copy of the <tt>'gtt-filter-paid-tasks'</tt> routine, and 
-start hacking.  Please post new/improved filters to the
-GnoTime patch repositiory at
-<a href="http://sourceforge.net/projects/gttr/">
-http://sourceforge.net/projects/gttr/</a>
-so that they can be included in future versions.
-
+</table>
 
 <br><br>
 <div align=right>
