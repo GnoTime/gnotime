@@ -435,6 +435,19 @@ show_scm (SCM node_list)
  * --linas
  */
 
+static SCM
+do_ret_project (GttGhtml *ghtml, GttProject *prj)
+{
+	SCM node,rc;
+	rc = gh_ulong2scm ((unsigned long) prj);
+
+	/* Label the pointer with a type identifier */
+	node = gh_str2scm ("gtt-project-ptr", 15);
+	rc = gh_cons (rc, node);
+	
+	return rc;
+}
+
 /* The 'selected project' is the project highlighted by the 
  * focus row in the main window.
  */
@@ -442,10 +455,8 @@ show_scm (SCM node_list)
 static SCM
 do_ret_selected_project (GttGhtml *ghtml)
 {
-	SCM rc;
 	GttProject *prj = ctree_get_focus_project (global_ptw);
-	rc = gh_ulong2scm ((unsigned long) prj);
-	return rc;
+	return do_ret_project (ghtml, prj);
 }
 
 static SCM
@@ -458,9 +469,7 @@ ret_selected_project (void)
 static SCM
 do_ret_linked_project (GttGhtml *ghtml)
 {
-	SCM rc;
-	rc = gh_ulong2scm ((unsigned long) ghtml->prj);
-	return rc;
+	return do_ret_project (ghtml, ghtml->prj);
 }
 
 static SCM
@@ -543,7 +552,7 @@ g_list_to_scm (GList * gplist, const char * type)
 /* Return a list of all of the projects */
 
 static SCM
-do_ret_projects (GttGhtml *ghtml, GList *proj_list)
+do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 {
 	SCM rc;
 	GList *n;
@@ -553,7 +562,8 @@ do_ret_projects (GttGhtml *ghtml, GList *proj_list)
 	if (!proj_list) return rc;
 	
 	/* XXX should use g_list_to_scm() here */
-	/* find the tail */
+	/* XXX should use type identifier gtt-project-list */
+	/* Find the tail */
 	for (n= proj_list; n->next; n=n->next) {}
 	proj_list = n;
 	
@@ -564,11 +574,11 @@ do_ret_projects (GttGhtml *ghtml, GList *proj_list)
       SCM node;
 		GList *subprjs;
 		
-		/* handle sub-projects, if any, before the project itself */
+		/* Handle sub-projects, if any, before the project itself */
 		subprjs = gtt_project_get_children (prj);
 		if (subprjs)
 		{
-			node = do_ret_projects (ghtml, subprjs);
+			node = do_ret_project_list (ghtml, subprjs);
 			rc = gh_cons (node, rc);
 		}
 
@@ -585,7 +595,28 @@ ret_projects (void)
 	
 	/* Get list of all top-level projects */
 	GList *proj_list = gtt_get_project_list();
-	return do_ret_projects (ghtml, proj_list);
+	return do_ret_project_list (ghtml, proj_list);
+}
+
+/* ============================================================== */
+/* Return a list of all subprojects of a project */
+
+static SCM
+do_ret_subprjs (GttGhtml *ghtml, GttProject *prj)
+{
+	GList *proj_list;
+	
+	/* Get list of subprojects. */
+	proj_list = gtt_project_get_children (prj);
+	if (!proj_list) return SCM_EOL;
+	return do_ret_project_list (ghtml, proj_list);
+}
+
+static SCM
+ret_project_subprjs(SCM proj_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_project (ghtml, proj_list, do_ret_subprjs);
 }
 
 /* ============================================================== */
@@ -960,14 +991,7 @@ static SCM
 get_task_parent_scm (GttGhtml *ghtml, GttTask *tsk)
 {
 	GttProject *prj = gtt_task_get_parent (tsk);
-	SCM node, rc;
-
-	/* Label the pointer with a type identifier */
-	node = gh_str2scm ("gtt-project-ptr", 15);
-	rc = gh_ulong2scm ((unsigned long) prj);
-	rc = gh_cons (rc, node);
-	
-	return rc;
+	return do_ret_project (ghtml, prj);
 }
 
 static SCM
@@ -1352,6 +1376,7 @@ register_procs (void)
 	gh_new_procedure("gtt-links-on",           set_links_on,           0, 0, 0);
 	gh_new_procedure("gtt-links-off",          set_links_off,          0, 0, 0);
 	
+	gh_new_procedure("gtt-project-subprojects", ret_project_subprjs,   1, 0, 0);
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
 	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
