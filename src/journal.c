@@ -75,6 +75,7 @@ typedef struct wiggy_s
 	GtkWidget *hover_help_window;
 	GtkLabel  *hover_label;
 	guint      hover_timeout_id;
+	guint      hover_kill_id;
 
 	/* Save-to-file dialog */
 	GtkFileSelection *filesel;
@@ -863,6 +864,15 @@ get_hover_msg (const gchar *url)
 }
 
 static gint
+hover_kill_func(gpointer data)
+{
+	Wiggy *wig = data;
+
+	gtk_widget_hide (wig->hover_help_window);
+	return 0;
+}
+
+static gint
 hover_timer_func(gpointer data)
 {
 	Wiggy *wig = data;
@@ -876,10 +886,17 @@ hover_timer_func(gpointer data)
 	gtk_window_move (GTK_WINDOW(wig->hover_help_window), rx, ry);
 	gtk_widget_show (wig->hover_help_window);
 
+	/* 8000 milisecs = 8 secs */
+	/* XXX the 'hover-loose-focus' tool below seems to be broken, and
+	 * if we don't do something, gtt will leave visual turds on the 
+	 * screen indefinitely.  So, in case of turds, hide the hover help 
+	 * after 8 seconds.
+	 */
+	wig->hover_kill_id = gtk_timeout_add (8000, hover_kill_func, wig);
 	return 0;
 }
 
-/* If the html window looses foxus, we've got to hie the flyover help;
+/* If the html window looses focus, we've got to hide the flyover help;
  * otherwise it will leave garbage on the screen. 
  */
 static gboolean
@@ -953,8 +970,8 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 	/* If hovering over a URL, bring up the help popup after one second. */
 	if (url)
 	{
-		/* 1000 milliseconds == 1 second */
-		wig->hover_timeout_id = gtk_timeout_add (1000, hover_timer_func, wig);
+		/* 600 milliseconds == 0.6 second */
+		wig->hover_timeout_id = gtk_timeout_add (600, hover_timer_func, wig);
 	}
 	else
 	{
