@@ -54,8 +54,8 @@ extern int config_show_tb_pref;
 extern int config_show_tb_help;
 extern int config_show_tb_exit;
 
-extern char *config_command;
-extern char *config_command_null;
+extern char *config_shell_start;
+extern char *config_shell_stop;
 extern char *config_logfile_name;
 extern char *config_logfile_start;
 extern char *config_logfile_stop;

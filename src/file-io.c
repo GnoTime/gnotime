@@ -176,17 +176,17 @@ project_list_load_old(const char *fname)
 				read_tb_sects_old(s);
 			}
 		} else if (s[0] == 'c') {
-			/* switch project command */
+			/* start project command */
 			while (s[strlen(s) - 1] == '\n')
 				s[strlen(s) - 1] = 0;
-			if (config_command) g_free(config_command);
-			config_command = g_strdup(&s[2]);
+			if (config_shell_start) g_free(config_shell_start);
+			config_shell_start = g_strdup(&s[2]);
 		} else if (s[0] == 'n') {
-			/* no project command */
+			/* stop project command */
 			while (s[strlen(s) - 1] == '\n')
 				s[strlen(s) - 1] = 0;
-			if (config_command_null) g_free(config_command_null);
-			config_command_null = g_strdup(&s[2]);
+			if (config_shell_stop) g_free(config_shell_stop);
+			config_shell_stop = g_strdup(&s[2]);
 		} else if (s[0] == 'l') {
 			if (s[1] == 'u') {
 				/* use logfile? */
@@ -361,8 +361,8 @@ gtt_load_config (const char *fname)
 	config_show_tb_exit = gnome_config_get_bool(GTT_CONF"/Toolbar/ShowExit=true");
 
 	/* ------------ */
-	config_command = gnome_config_get_string(GTT_CONF"/Actions/ProjCommand");
-	config_command_null = gnome_config_get_string(GTT_CONF"/Actions/NullCommand");
+	config_shell_start = gnome_config_get_string(GTT_CONF"/Actions/StartCommand=echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
+	config_shell_stop = gnome_config_get_string(GTT_CONF"/Actions/StopCommand=echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
 
 	/* ------------ */
 	config_logfile_use = gnome_config_get_bool(GTT_CONF"/LogFile/Use=false");
@@ -580,14 +580,14 @@ gtt_save_config(const char *fname)
 	gnome_config_set_bool(GTT_CONF"/Toolbar/ShowExit", config_show_tb_exit);
 
 	/* ------------- */
-	if (config_command)
-		gnome_config_set_string(GTT_CONF"/Actions/ProjCommand", config_command);
+	if (config_shell_start)
+		gnome_config_set_string(GTT_CONF"/Actions/StartCommand", config_shell_start);
 	else
-		gnome_config_clean_key(GTT_CONF"/Actions/ProjCommand");
-	if (config_command_null)
-		gnome_config_set_string(GTT_CONF"/Actions/NullCommand", config_command_null);
+		gnome_config_clean_key(GTT_CONF"/Actions/StartCommand");
+	if (config_shell_stop)
+		gnome_config_set_string(GTT_CONF"/Actions/StopCommand", config_shell_stop);
 	else
-		gnome_config_clean_key(GTT_CONF"/Actions/NullCommand");
+		gnome_config_clean_key(GTT_CONF"/Actions/StopCommand");
 
 	/* ------------- */
 	gnome_config_set_bool(GTT_CONF"/LogFile/Use", config_logfile_use);

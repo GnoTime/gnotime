@@ -114,8 +114,8 @@ typedef struct _PrefsDialog
 	GtkWidget      *logfileminsecs_l;
 	GtkEntry       *logfileminsecs;
 
-	GtkEntry       *command;
-	GtkEntry       *command_null;
+	GtkEntry       *shell_start;
+	GtkEntry       *shell_stop;
 
 	GtkCheckButton *show_tb_icons;
 	GtkCheckButton *show_tb_texts;
@@ -226,8 +226,8 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 	if (2 == page)
 	{
 		/* shell command options */
-		ENTRY_TO_CHAR(odlg->command, config_command);
-		ENTRY_TO_CHAR(odlg->command_null, config_command_null);
+		ENTRY_TO_CHAR(odlg->shell_start, config_shell_start);
+		ENTRY_TO_CHAR(odlg->shell_stop, config_shell_stop);
 	}
 
 	if (3 == page)
@@ -325,27 +325,32 @@ options_dialog_set(PrefsDialog *odlg)
 	SET_ACTIVE(title_sizing);
 	SET_ACTIVE(title_percent_complete);
 
-	if (config_command)
-		gtk_entry_set_text(odlg->command, config_command);
+	if (config_shell_start)
+		gtk_entry_set_text(odlg->shell_start, config_shell_start);
 	else
-		gtk_entry_set_text(odlg->command, "");
-	if (config_command_null)
-		gtk_entry_set_text(odlg->command_null, config_command_null);
+		gtk_entry_set_text(odlg->shell_start, "");
+	
+	if (config_shell_stop)
+		gtk_entry_set_text(odlg->shell_stop, config_shell_stop);
 	else
-		gtk_entry_set_text(odlg->command_null, "");
+		gtk_entry_set_text(odlg->shell_stop, "");
+	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->logfileuse), config_logfile_use);
 	if (config_logfile_name)
 		gtk_entry_set_text(odlg->logfilename, config_logfile_name);
 	else
 		gtk_entry_set_text(odlg->logfilename, "");
+	
 	if (config_logfile_start)
 		gtk_entry_set_text(odlg->logfilestart, config_logfile_start);
 	else
 		gtk_entry_set_text(odlg->logfilestart, "");
+	
 	if (config_logfile_stop)
 		gtk_entry_set_text(odlg->logfilestop, config_logfile_stop);
 	else
 		gtk_entry_set_text(odlg->logfilestop, "");
+
 	g_snprintf(s, sizeof (s), "%d", config_logfile_min_secs);
 	gtk_entry_set_text(GTK_ENTRY(odlg->logfileminsecs), s);
 
@@ -444,16 +449,16 @@ field_options(PrefsDialog *dlg)
 
 
 static void 
-command_options (PrefsDialog *dlg)
+shell_command_options (PrefsDialog *dlg)
 {
 	GtkWidget *e;
 	GladeXML *gtxml = dlg->gtxml;
 
-	e = GETWID ("switch project");
-	dlg->command = GTK_ENTRY(e);
+	e = GETWID ("start project");
+	dlg->shell_start = GTK_ENTRY(e);
 
-	e = GETWID ("no project");
-	dlg->command_null = GTK_ENTRY(e);
+	e = GETWID ("stop project");
+	dlg->shell_stop = GTK_ENTRY(e);
 }
 
 static void 
@@ -556,7 +561,7 @@ prefs_dialog_new (void)
 	/* grab the various entry boxes and hook them up */
 	display_options (dlg);
 	field_options (dlg);
-	command_options (dlg);
+	shell_command_options (dlg);
 	logfile_options (dlg);
 	toolbar_options (dlg);
 	misc_options (dlg);

@@ -49,8 +49,8 @@ static GtkStatusbar *status_project = NULL;
 static GtkStatusbar *status_day_time = NULL;
 static GtkWidget *status_timer = NULL;
 
-char *config_command = NULL;
-char *config_command_null = NULL;
+char *config_shell_start = NULL;
+char *config_shell_stop = NULL;
 
 gboolean geom_place_override = FALSE;
 gboolean geom_size_override = FALSE;
@@ -124,40 +124,25 @@ update_status_bar(void)
 
 
 /* ============================================================= */
+/* Handle shell commands */
 
-void 
-cur_proj_set(GttProject *proj)
+static void
+run_shell_command (GttProject *proj, gboolean do_start)
 {
-	GttProject *prev_proj = NULL;
-	pid_t pid;
 	char *cmd;
 	const char *str;
+	pid_t pid;
 
-	/* Due to the way the widget callbacks work, 
-	 * we may be called recursively ... */
-	if (cur_proj == proj) return;
+	cmd = (do_start) ? config_shell_start : config_shell_stop;
 
-	log_proj(NULL);
-	gtt_project_timer_stop (cur_proj);
-	if (proj) 
-	{
-		cur_proj = proj;
-		gtt_project_timer_start (proj); 
-	}
-	else
-	{
-		prev_proj = cur_proj;
-		cur_proj = NULL;
-	}
-	log_proj(proj);
-	menu_set_states();
-	if (proj) prop_dialog_set_project(proj);
-	update_status_bar();
-	cmd = (proj) ? config_command : config_command_null;
-
-	/* handle commands */
 	if (!cmd) return;
-	str = printf_project (cmd, (proj) ? cur_proj : prev_proj);
+
+	/* Sometimes, we are called to stop a NULL project.
+	 * We don't really want that (its a result be being called twice).
+	 */ 
+	if (!proj) return;
+	
+	str = printf_project (cmd, proj);
 	pid = fork();
 	if (pid == 0) 
 	{
@@ -165,7 +150,8 @@ cur_proj_set(GttProject *proj)
 		g_warning("%s: %d: cur_proj_set: couldn't exec\n", __FILE__, __LINE__);
 		exit(1);
 	}
-	if (pid < 0) {
+	if (pid < 0) 
+	{
 		g_warning("%s: %d: cur_proj_set: couldn't fork\n", __FILE__, __LINE__);
 	}
 
@@ -175,6 +161,37 @@ cur_proj_set(GttProject *proj)
 	 * the child process at least start running.  And we can do this by
 	 * yielding our time-slice ... */
 	sched_yield();
+}
+
+/* ============================================================= */
+
+void 
+cur_proj_set(GttProject *proj)
+{
+	/* Due to the way the widget callbacks work, 
+	 * we may be called recursively ... */
+	if (cur_proj == proj) return;
+
+	log_proj(NULL);
+	gtt_project_timer_stop (cur_proj);
+	run_shell_command (cur_proj, FALSE);
+	
+	if (proj) 
+	{
+		cur_proj = proj;
+		gtt_project_timer_start (proj); 
+		run_shell_command (cur_proj, TRUE);
+	}
+	else
+	{
+		cur_proj = NULL;
+	}
+	log_proj(proj);
+
+	/* update GUI elements */
+	menu_set_states();
+	if (proj) prop_dialog_set_project(proj);
+	update_status_bar();
 }
 
 
