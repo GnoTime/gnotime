@@ -50,9 +50,10 @@
 ; to the object, omitting null results from the list
 ; 
 ; XXX FIXME the vars first_func, next_func, parent_obj,
-; next_obj, result, appres  are scoped globally to the 
-; functions being applied.   This introducees potential symbol
-; conflist.  This needds to be fixed!
+; next_obj, result, appres, is-billable  
+; are scoped globally to the functions being applied.   This 
+; introducees potential symbol conflist.  This needds to be fixed!
+;
 (define (gtt-apply-func-list-to-obj func_list obj)
    (let ( (first_func (car func_list))
           (next_func  (cdr func_list)) 
@@ -137,10 +138,25 @@
 ; XXX Need to i18n/l10n the text '"Billable", otherwise the function
 ; breaks
 
-
 (define (gtt-task-billable-value-str task)
         (if (equal? (gtt-task-billable task) '"Billable")
             (gtt-task-value-str task) 
             '"$0.00")
 )
 
+;; ---------------------------------------------------------     
+;; Define some filters to prune down task lists.
+;;
+;; The gtt-billable-tasks takes a list of tasks, and returns
+;; a list of only those that are billable.
+
+(define (gtt-billable-tasks tasks)
+        (define (is-billable task)
+                (if (equal? (gtt-task-billable task) '"Billable")
+                  task  ())
+        )
+        (gtt-apply-func-list-to-obj-list (list is-billable) tasks)
+)
+
+;; ---------------------------------------------------------     
+;; --------------------- end of file -----------------------     
