@@ -35,7 +35,14 @@ extern int clist_header_width_set;
  */
 ProjTreeWindow * ctree_new(void);
 
-void ctree_setup(ProjTreeWindow *ptw);
+/* The ctree_setup() routine will copy project data into the ctree
+ *    window.  Call this routine after reading in project data, to 
+ *    populate the window; or to redraw the window after a 'deep'
+ *    data restructuring, such as change in the sort order of the 
+ *    projects.  The order of the items displayed in the ctree will
+ *    be the same as that presented in the project list.
+ */
+void ctree_setup (ProjTreeWindow *ptw, GList *project_list);
 void ctree_destroy(ProjTreeWindow *ptw);
 
 /* The ctree_insert_before() routine inserts the new project p

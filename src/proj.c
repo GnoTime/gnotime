@@ -1,6 +1,6 @@
 /*   project structure handling for GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001 Linas Vepstas
+ *   Copyright (C) 2001,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -2576,101 +2576,111 @@ cmp_status(const void *aa, const void *bb)
 	return (b->status - a->status);
 }
 
+#define DO_SORT(CMP_FUNC)                                   \
+   gboolean is_top = FALSE;                                 \
+   GttProject *parent;                                      \
+   if (prjs == plist) is_top = TRUE;                        \
+	parent = ((GttProject *) (prjs->data))->parent;          \
+	prjs = project_list_sort(prjs, CMP_FUNC);                \
+	if (is_top) plist = prjs;                                \
+	else if (parent) parent->sub_projects = prjs;            \
+	return prjs;                                             \
 
-void
-project_list_sort_day(void)
+
+GList *
+project_list_sort_day(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_day);
+	DO_SORT(cmp_day);
 }
 
-void
-project_list_sort_week(void)
+GList *
+project_list_sort_week(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_week);
+	DO_SORT(cmp_week);
 }
 
-void
-project_list_sort_month(void)
+GList *
+project_list_sort_month(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_month);
+	DO_SORT(cmp_month);
 }
 
-void
-project_list_sort_year(void)
+GList *
+project_list_sort_year(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_year);
+	DO_SORT(cmp_year);
 }
 
-void
-project_list_sort_ever(void)
+GList *
+project_list_sort_ever(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_ever);
+	DO_SORT(cmp_ever);
 }
 
-void
-project_list_sort_current(void)
+GList *
+project_list_sort_current(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_current);
+	DO_SORT(cmp_current);
 }
 
-void
-project_list_sort_title(void)
+GList *
+project_list_sort_title(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_title);
+	DO_SORT(cmp_title);
 }
 
-void
-project_list_sort_desc(void)
+GList *
+project_list_sort_desc(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_desc);
+	DO_SORT(cmp_desc);
 }
 
-void
-project_list_sort_start(void)
+GList *
+project_list_sort_start(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_start);
+	DO_SORT(cmp_start);
 }
 
-void
-project_list_sort_end(void)
+GList *
+project_list_sort_end(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_end);
+	DO_SORT(cmp_end);
 }
 
-void
-project_list_sort_due(void)
+GList *
+project_list_sort_due(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_due);
+	DO_SORT(cmp_due);
 }
 
-void
-project_list_sort_sizing(void)
+GList *
+project_list_sort_sizing(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_sizing);
+	DO_SORT(cmp_sizing);
 }
 
-void
-project_list_sort_percent(void)
+GList *
+project_list_sort_percent(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_percent);
+	DO_SORT(cmp_percent);
 }
 
-void
-project_list_sort_urgency(void)
+GList *
+project_list_sort_urgency(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_urgency);
+	DO_SORT(cmp_urgency);
 }
 
-void
-project_list_sort_importance(void)
+GList *
+project_list_sort_importance(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_importance);
+	DO_SORT(cmp_importance);
 }
 
-void
-project_list_sort_status(void)
+GList *
+project_list_sort_status(GList *prjs)
 {
-	plist = project_list_sort(plist, cmp_status);
+	DO_SORT(cmp_status);
 }
 
 /* =========================== END OF FILE ========================= */

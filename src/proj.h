@@ -1,6 +1,6 @@
 /*   Project data manipulation for GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -375,22 +375,34 @@ GList * 	gtt_get_project_list (void);
 void 		gtt_project_list_append(GttProject *p);
 
 void project_list_destroy(void);
-void project_list_sort_current(void);
-void project_list_sort_day(void);
-void project_list_sort_week(void);
-void project_list_sort_month(void);
-void project_list_sort_year(void);
-void project_list_sort_ever(void);
-void project_list_sort_title(void);
-void project_list_sort_desc(void);
-void project_list_sort_start(void);
-void project_list_sort_end(void);
-void project_list_sort_due(void);
-void project_list_sort_sizing(void);
-void project_list_sort_percent(void);
-void project_list_sort_urgency(void);
-void project_list_sort_importance(void);
-void project_list_sort_status(void);
+
+/* The 'sort' functions have a sort-of wacky interface.
+ * They will sort the list of projects passed as an argument,
+ * returning the sorted list.  If the list is the top-level
+ * list, it will 'do the right thing'.  If the list is a set
+ * of sub-projects of a project, then the parent project
+ * will be reparented with them.  Note that this will cause 
+ * data loss and destruction, or garbaged trees, etc. if the
+ * list that is passed as the argument is *not* the complete
+ * list of subprojects for that project.
+ * 
+ */
+GList * project_list_sort_current(GList *);
+GList * project_list_sort_day(GList *);
+GList * project_list_sort_week(GList *);
+GList * project_list_sort_month(GList *);
+GList * project_list_sort_year(GList *);
+GList * project_list_sort_ever(GList *);
+GList * project_list_sort_title(GList *);
+GList * project_list_sort_desc(GList *);
+GList * project_list_sort_start(GList *);
+GList * project_list_sort_end(GList *);
+GList * project_list_sort_due(GList *);
+GList * project_list_sort_sizing(GList *);
+GList * project_list_sort_percent(GList *);
+GList * project_list_sort_urgency(GList *);
+GList * project_list_sort_importance(GList *);
+GList * project_list_sort_status(GList *);
 
 /* The gtt_project_list_total_secs_day() routine returns the
  *    total number of seconds spent on all projects today,

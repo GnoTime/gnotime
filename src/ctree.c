@@ -85,7 +85,10 @@ struct ProjTreeWindow_s
 {
 	GtkCTree *ctree;
 
-	/* stuff that defines the column layout */
+	/* List of projects we are currently displaying in this tree */
+	GList *proj_list;
+	
+	/* Stuff that defines the column layout */
 	ColType cols[NCOLS];
 	char * col_titles[NCOLS];
 	char * col_tooltips[NCOLS];
@@ -94,21 +97,21 @@ struct ProjTreeWindow_s
 	gboolean col_width_set[NCOLS];
 	int ncols;
 
-	/* stuff we need to have handy while dragging */
+	/* Stuff we need to have handy while dragging */
 	GdkDragContext *drag_context;
 	GtkCTreeNode *source_ctree_node;
 	GtkCTreeNode *parent_ctree_node;
 	GtkCTreeNode *sibling_ctree_node;
 
-	/* colors to use to indicate active project */
+	/* Colors to use to indicate active project */
 	GdkColor active_bgcolor;
 	GdkColor neutral_bgcolor;
 
 	/* Should the select row be shown? */
 	gboolean show_select_row;
 
-	/* total number of rows/projects, and string showing 
-	 * expander state. 
+	/* Total number of rows/projects, and string showing 
+	 * expander state.  Used to save and restore expanders.
 	 */
 	int num_rows;
 	char * expander_state;
@@ -493,67 +496,69 @@ static void
 click_column(GtkCList *clist, gint col, gpointer data)
 {
 	ProjTreeWindow *ptw = data;
+	GList *plist;
 	ColType ct;
 
+	plist = ptw->proj_list;
 	if ((0 > col) || (ptw->ncols <= col)) return;
 	ct = ptw->cols[col];
 	switch (ct)
 	{
 		case TIME_EVER_COL:
-			project_list_sort_ever();
+			plist = project_list_sort_ever (plist);
 			break;
 		case TIME_CURRENT_COL:
-			project_list_sort_current();
+			plist = project_list_sort_current (plist);
 			break;
 		case TIME_TODAY_COL:
-			project_list_sort_day();
+			plist = project_list_sort_day (plist);
 			break;
 		case TIME_WEEK_COL:
-			project_list_sort_week();
+			plist = project_list_sort_week (plist);
 			break;
 		case TIME_MONTH_COL:
-			project_list_sort_month();
+			plist = project_list_sort_month (plist);
 			break;
 		case TIME_YEAR_COL:
-			project_list_sort_year();
+			plist = project_list_sort_year (plist);
 			break;
 		case TITLE_COL:
-			project_list_sort_title();
+			plist = project_list_sort_title (plist);
 			break;
 		case DESC_COL:
-			project_list_sort_desc();
+			plist = project_list_sort_desc (plist);
 			break;
 		case TASK_COL:
 			break;
 		case NULL_COL:
 			break;
 		case START_COL:
-			project_list_sort_start();
+			plist = project_list_sort_start (plist);
 			break;
 		case END_COL:
-			project_list_sort_end();
+			plist = project_list_sort_end (plist);
 			break;
 		case DUE_COL:
-			project_list_sort_due();
+			plist = project_list_sort_due (plist);
 			break;
 		case SIZING_COL:
-			project_list_sort_sizing();
+			plist = project_list_sort_sizing (plist);
 			break;
 		case PERCENT_COL:
-			project_list_sort_percent();
+			plist = project_list_sort_percent (plist);
 			break;
 		case URGENCY_COL:
-			project_list_sort_urgency();
+			plist = project_list_sort_urgency (plist);
 			break;
 		case IMPORTANCE_COL:
-			project_list_sort_importance();
+			plist = project_list_sort_importance (plist);
 			break;
 		case STATUS_COL:
-			project_list_sort_status();
+			plist = project_list_sort_status (plist);
 			break;
 	}
 	
-	ctree_setup(ptw);
+	ctree_setup(ptw, plist);
 }
 
 /* ============================================================== */
@@ -1369,6 +1374,8 @@ ctree_new(void)
 	int i;
 
 	ptw = g_new0 (ProjTreeWindow, 1);
+	ptw->proj_list = NULL;
+
 	ptw->source_ctree_node = NULL;
 	ptw->parent_ctree_node = NULL;
 	ptw->sibling_ctree_node = NULL;
@@ -1495,10 +1502,10 @@ ctree_new(void)
  */
 
 void
-ctree_setup (ProjTreeWindow *ptw)
+ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 {
 	GtkCTree *tree_w;
-	GList *node, *prjlist;
+	GList *node;
 
 	if (!ptw) return;
 	tree_w = ptw->ctree;
@@ -1508,8 +1515,9 @@ ctree_setup (ProjTreeWindow *ptw)
 	ctree_save_expander_state (ptw);
 
 	/* First, add all projects to the ctree. */
-	prjlist = gtt_get_project_list();
-	if (prjlist) {
+	ptw->proj_list = prjlist;
+	if (prjlist) 
+	{
 		gtk_clist_freeze(GTK_CLIST(tree_w));
 		gtk_clist_clear(GTK_CLIST(tree_w));
 		for (node = prjlist; node; node = node->next) 
