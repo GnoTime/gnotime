@@ -1113,7 +1113,7 @@ gtt_project_get_secs_current (GttProject *proj)
 static int
 prj_total (GttProject *prj, gpointer data)
 {
-	*((int *) data) ++;  /* just count one */
+	*((int *) data) += 1;  /* just count one */
 	return 1;
 }
 
