@@ -35,7 +35,7 @@ extern time_t last_timer;  /* XXX */
 extern int cur_proj_id;
 extern int run_timer;
 
-#define GTT_GCONF "/apps/GnoTime"
+#define GTT_GCONF "/apps/gnotime"
 
 /* ======================================================= */
 /* XXX Should use changesets */
@@ -318,6 +318,8 @@ gtt_gconf_exists (void)
 	 * completely hoses that directory for future use. Its Badddd.
 	 * rc = gconf_engine_dir_exists (gengine, GTT_GCONF, &err_ret);
 	 * gconf_client_dir_exists() is no better.
+	 * Actually, the bug is that the dirs are unusable only while 
+	 * gconf is still running. Upon reboot, its starts working OK.
 	 * Hack around it by trying to fetch a key.
 	 */
 
