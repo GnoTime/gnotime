@@ -14,6 +14,12 @@ Status and notes for subprojects of the
 <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
 project.
 <p>
+Results shown for projects that were active between dates
+<?scm (gtt-show (gtt-kvp-str '"earliest-end-date")) ?>
+and
+<?scm (gtt-show (gtt-kvp-str '"latest-end-date")) ?>.
+
+<p>
 Please edit this file to suit your particular reporting needs.
 
 <p>
@@ -21,9 +27,9 @@ Please edit this file to suit your particular reporting needs.
 <dl>
 <?scm (gtt-show-projects (gtt-selected-or-query-results)
       (list 
-		      ''"<dt><b>" gtt-project-title   ''"</b>"
-		      ''" -- "    gtt-project-desc    ''"</dt>\n"
-            ''"<dd>"    gtt-project-notes   ''"</dd>\n\n"
+            ''"\n<dt><b>" gtt-project-title   ''"</b>"
+            ''" -- "      gtt-project-desc    ''"</dt>\n"
+            ''"<dd>"      gtt-project-notes   ''"</dd>\n\n"
             ))
 ?>
 </dl>
