@@ -60,7 +60,6 @@ int config_show_tb_icons = 1;
 int config_show_tb_texts = 1;
 int config_show_tb_tips = 1;
 int config_show_tb_new = 1;
-int config_show_tb_file = 0;
 int config_show_tb_ccp = 0;
 int config_show_tb_journal = 1;
 int config_show_tb_calendar = 0;
@@ -126,7 +125,6 @@ typedef struct _PrefsDialog
 	GtkCheckButton *show_tb_pref;
 	GtkCheckButton *show_tb_timer;
 	GtkCheckButton *show_tb_prop;
-	GtkCheckButton *show_tb_file;
 	GtkCheckButton *show_tb_help;
 	GtkCheckButton *show_tb_exit;
 
@@ -252,7 +250,6 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 	
 		/* toolbar sections */
 		SHOW_CHECK (tb_new);
-		SHOW_CHECK (tb_file);
 		SHOW_CHECK (tb_ccp);
 		SHOW_CHECK (tb_journal);
 		SHOW_CHECK (tb_prop);
@@ -273,6 +270,9 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 	{
 		config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
 	}
+
+	/* Also save them the to file at this point */
+	save_properties();
 }
 
 /* ============================================================== */
@@ -355,7 +355,6 @@ options_dialog_set(PrefsDialog *odlg)
 	SET_ACTIVE(tb_texts);
 	SET_ACTIVE(tb_tips);
 	SET_ACTIVE(tb_new);
-	SET_ACTIVE(tb_file);
 	SET_ACTIVE(tb_ccp);
 	SET_ACTIVE(tb_journal);
 	SET_ACTIVE(tb_prop);
@@ -507,7 +506,6 @@ toolbar_options(PrefsDialog *dlg)
 	TBWID (texts);
 	TBWID (tips);
 	TBWID (new);
-	TBWID (file);
 	TBWID (ccp);
 	TBWID (journal);
 	TBWID (prop);
@@ -563,10 +561,6 @@ prefs_dialog_new (void)
 	misc_options (dlg);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
-/*
-	gnome_dialog_set_parent(GNOME_DIALOG(dlg->dlg), GTK_WINDOW(window));
-
-*/
 	return dlg;
 }
 

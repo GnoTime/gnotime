@@ -80,8 +80,6 @@ read_tb_sects_old(char *s)
 {
 	if (s[2] == 'n') {
 		config_show_tb_new = (s[5] == 'n');
-	} else if (s[2] == 'f') {
-		config_show_tb_file = (s[5] == 'n');
 	} else if (s[2] == 'c') {
 		config_show_tb_ccp = (s[5] == 'n');
 	} else if (s[2] == 'p') {
@@ -107,7 +105,7 @@ project_list_load_old(const char *fname)
 	GttProject *proj = NULL;
 	char s[1024];
 	int i;
-	int _n, _f, _c, _p, _t, _o, _h, _e;
+	int _n, _c, _p, _t, _o, _h, _e;
 
 	if (fname != NULL)
 	{
@@ -131,7 +129,6 @@ project_list_load_old(const char *fname)
 	plist = NULL;
 
 	_n = config_show_tb_new;
-	_f = config_show_tb_file;
 	_c = config_show_tb_ccp;
 	_p = config_show_tb_prop;
 	_t = config_show_tb_timer;
@@ -241,7 +238,6 @@ project_list_load_old(const char *fname)
 
 	update_status_bar();
 	if ((_n != config_show_tb_new) ||
-	    (_f != config_show_tb_file) ||
 	    (_c != config_show_tb_ccp) ||
 	    (_p != config_show_tb_prop) ||
 	    (_t != config_show_tb_timer) ||
@@ -268,7 +264,7 @@ gtt_load_config (const char *fname)
 {
 	char s[256];
 	int i, num;
-	int _n, _f, _c, _j, _p, _t, _o, _h, _e;
+	int _n, _c, _j, _p, _t, _o, _h, _e;
 	gboolean got_default;
 
 	/* The old file type doesn't have numprojets in it */
@@ -292,7 +288,6 @@ gtt_load_config (const char *fname)
 	}
 
 	_n = config_show_tb_new;
-	_f = config_show_tb_file;
 	_c = config_show_tb_ccp;
 	_j = config_show_tb_journal;
 	_p = config_show_tb_prop;
@@ -355,7 +350,6 @@ gtt_load_config (const char *fname)
 	config_show_tb_texts = gnome_config_get_bool(GTT"Toolbar/ShowTexts=true");
 	config_show_tb_tips = gnome_config_get_bool(GTT"Toolbar/ShowTips=true");
 	config_show_tb_new = gnome_config_get_bool(GTT"Toolbar/ShowNew=true");
-	config_show_tb_file = gnome_config_get_bool(GTT"Toolbar/ShowFile=false");
 	config_show_tb_ccp = gnome_config_get_bool(GTT"Toolbar/ShowCCP=false");
 	config_show_tb_journal = gnome_config_get_bool(GTT"Toolbar/ShowJournal=true");
 	config_show_tb_prop = gnome_config_get_bool(GTT"Toolbar/ShowProp=true");
@@ -466,7 +460,6 @@ gtt_load_config (const char *fname)
 
 	update_status_bar();
 	if ((_n != config_show_tb_new) ||
-	    (_f != config_show_tb_file) ||
 	    (_c != config_show_tb_ccp) ||
 	    (_j != config_show_tb_journal) ||
 	    (_p != config_show_tb_prop) ||
@@ -576,7 +569,6 @@ gtt_save_config(const char *fname)
 	gnome_config_set_bool(GTT"Toolbar/ShowTexts", config_show_tb_texts);
 	gnome_config_set_bool(GTT"Toolbar/ShowTips", config_show_tb_tips);
 	gnome_config_set_bool(GTT"Toolbar/ShowNew", config_show_tb_new);
-	gnome_config_set_bool(GTT"Toolbar/ShowFile", config_show_tb_file);
 	gnome_config_set_bool(GTT"Toolbar/ShowCCP", config_show_tb_ccp);
 	gnome_config_set_bool(GTT"Toolbar/ShowJournal", config_show_tb_journal);
 	gnome_config_set_bool(GTT"Toolbar/ShowProp", config_show_tb_prop);

@@ -40,6 +40,13 @@ void err_init(void);
  *    If an error occurs, it returns an error message.
  */
 const char * save_all (void);
+
+/* The save_properties() routine will write out the application
+ * properties to the application file.  It will pop up a warning
+ * gui window if the save fails for some reason.
+ */
+void save_properties (void);
+
 void unlock_gtt(void);
 const char *gtt_gettext(const char *s);
 

@@ -344,6 +344,33 @@ save_all (void)
 }
 
 
+void
+save_properties (void)
+{
+	GttErrCode errcode;
+	const char *errmsg = NULL;
+
+	/* Try ... */
+	gtt_err_set_code (GTT_NO_ERR);
+	gtt_save_config (NULL);
+
+	/* Catch */
+	errcode = gtt_err_get_code();
+	if (GTT_NO_ERR != errcode)
+	{
+		const char *fp;
+		fp = gtt_get_config_filepath();
+		errmsg = gtt_err_to_string (errcode, fp);
+
+		msgbox_ok(_("Warning"),
+		     errmsg,
+		     GTK_STOCK_OK,
+		     NULL);
+		g_free ((gchar *) errmsg);
+	}
+}
+
+
 
 #ifdef USE_SM
 

@@ -176,21 +176,6 @@ build_toolbar(void)
 		gtk_toolbar_append_space(mytbar->tbar);
 		position ++;
 	}
-	if (config_show_tb_file) 
-	{
-		gtk_toolbar_insert_stock (mytbar->tbar, 
-				GTK_STOCK_OPEN,
-				_("Reload Configuration File"), NULL,
-				(GtkSignalFunc)init_project_list, NULL,
-				position ++);
-		gtk_toolbar_insert_stock (mytbar->tbar, 
-				GTK_STOCK_SAVE,
-				_("Save Configuration File"), NULL,
-				(GtkSignalFunc)save_project_list, NULL,
-				position ++);
-		gtk_toolbar_append_space(mytbar->tbar);
-		position ++;
-	}
 	if (config_show_tb_ccp) 
 	{
 		mytbar->cut = gtk_toolbar_insert_stock (mytbar->tbar, 

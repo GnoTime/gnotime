@@ -45,7 +45,6 @@ extern int config_show_tb_icons;
 extern int config_show_tb_texts;
 extern int config_show_tb_tips;
 extern int config_show_tb_new;
-extern int config_show_tb_file;
 extern int config_show_tb_ccp;
 extern int config_show_tb_journal;
 extern int config_show_tb_calendar;
