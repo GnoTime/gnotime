@@ -171,6 +171,17 @@ export_really (GtkWidget *widget, export_format_t *xp)
 
 /* ======================================================= */
 
+static void
+export_close (GtkWidget *widget, export_format_t *xp)
+{
+	/* Is this a memory leak, because widget is not destroyed ??
+	 * But it crashes if I call destroy here ... */
+	gtk_widget_hide (GTK_WIDGET (xp->picker));
+	g_free (xp);
+}
+
+/* ======================================================= */
+
 void
 export_file_picker (GtkWidget *widget, gpointer data)
 {
@@ -186,17 +197,10 @@ export_file_picker (GtkWidget *widget, gpointer data)
 	xp->template = gtt_ghtml_resolve_path (template_filename, NULL);
 
 	g_signal_connect (G_OBJECT (dialog), "destroy",
-			    G_CALLBACK (gtk_widget_destroyed),
-			    &dialog);
+			    G_CALLBACK (export_close), xp);
 
-#if 0
-	g_signal_connect_object (G_OBJECT (xp->picker->cancel_button), "clicked",
-				   G_CALLBACK (gtk_widget_destroy),
-				   G_OBJECT (xp->picker), 0);
-#endif
 	g_signal_connect (G_OBJECT (xp->picker->cancel_button), "clicked",
-			    G_CALLBACK (gtk_widget_destroy),
-			    dialog);
+			    G_CALLBACK (export_close), xp);
 
 	g_signal_connect (G_OBJECT (xp->picker->ok_button), "clicked",
 			    G_CALLBACK (export_really),
