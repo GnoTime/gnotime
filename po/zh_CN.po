@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils-0.99.6\n"
-"POT-Creation-Date: 2003-01-02 20:18-0600\n"
+"POT-Creation-Date: 2003-01-05 11:17-0600\n"
 "PO-Revision-Date: 2002-06-23 02:09+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -12,16 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:108 src/app.c:248
+#: src/app.c:109 src/app.c:251
 #, fuzzy
 msgid "Timer is not running"
 msgstr "计时器正在运行(_T)"
 
-#: src/app.c:236
+#: src/app.c:237
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:277
+#: src/app.c:291
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -81,11 +81,11 @@ msgstr "今年花在该计划上的时间。"
 msgid "Title"
 msgstr "标题"
 
-#: src/ctree.c:725 src/menucmd.c:244
+#: src/ctree.c:725 src/menucmd.c:245
 msgid "Project Title"
 msgstr "计划标题"
 
-#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:245
+#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:246
 msgid "Description"
 msgstr "描述"
 
@@ -175,7 +175,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1149 src/ghtml.c:541 src/ghtml.c:555
+#: src/ctree.c:1149 src/ghtml.c:606 src/ghtml.c:620
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
@@ -188,23 +188,23 @@ msgstr "中"
 msgid "High"
 msgstr "高"
 
-#: src/ctree.c:1160 src/ghtml.c:569 glade/project_properties.glade.h:30
+#: src/ctree.c:1160 src/ghtml.c:634 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "尚未开始"
 
-#: src/ctree.c:1161 src/ghtml.c:570 glade/project_properties.glade.h:22
+#: src/ctree.c:1161 src/ghtml.c:635 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "正在进行"
 
-#: src/ctree.c:1162 src/ghtml.c:571 glade/project_properties.glade.h:32
+#: src/ctree.c:1162 src/ghtml.c:636 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "暂停"
 
-#: src/ctree.c:1163 src/ghtml.c:572 glade/project_properties.glade.h:10
+#: src/ctree.c:1163 src/ghtml.c:637 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/ctree.c:1164 src/ghtml.c:573 glade/project_properties.glade.h:11
+#: src/ctree.c:1164 src/ghtml.c:638 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "已完成"
 
@@ -231,11 +231,11 @@ msgstr ""
 "\t%s\n"
 
 #: src/err-throw.c:75
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The file\n"
 "\t%s\n"
-"doesn't seem to be a GTT project data file\n"
+"doesn't seem to be a GnoTime project data file\n"
 msgstr ""
 "文件\n"
 "\t%s\n"
@@ -310,27 +310,68 @@ msgstr "计划 %t 启动"
 msgid "stopped project %t"
 msgstr "停止计划 %t"
 
-#: src/ghtml.c:542
+#: src/ghtml.c:607
 #, fuzzy
 msgid "Normal"
 msgstr "日记"
 
-#: src/ghtml.c:543
+#: src/ghtml.c:608
 msgid "Urgent"
 msgstr ""
 
-#: src/ghtml.c:546 src/ghtml.c:560 src/ghtml.c:576
+#: src/ghtml.c:611 src/ghtml.c:625 src/ghtml.c:641
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:556 glade/project_properties.glade.h:27
+#: src/ghtml.c:621 glade/project_properties.glade.h:27
 #, fuzzy
 msgid "Medium"
 msgstr "中"
 
-#: src/ghtml.c:557
+#: src/ghtml.c:622
 msgid "Important"
 msgstr ""
+
+#: src/ghtml.c:722 glade/task_properties.glade.h:14
+#, fuzzy
+msgid "Hold"
+msgstr "暂停"
+
+#: src/ghtml.c:723 glade/task_properties.glade.h:4
+msgid "Bill"
+msgstr "支付"
+
+#: src/ghtml.c:724 glade/task_properties.glade.h:22
+msgid "Paid"
+msgstr "已支付"
+
+#: src/ghtml.c:735 glade/task_properties.glade.h:5
+msgid "Billable"
+msgstr "可支付"
+
+#: src/ghtml.c:736 glade/task_properties.glade.h:18
+msgid "Not Billable"
+msgstr "不可支付"
+
+#: src/ghtml.c:737 glade/task_properties.glade.h:17
+msgid "No Charge"
+msgstr "无收费"
+
+#: src/ghtml.c:748 glade/task_properties.glade.h:23
+msgid "Regular"
+msgstr "常规"
+
+#: src/ghtml.c:749 glade/task_properties.glade.h:21
+msgid "Overtime"
+msgstr "超时"
+
+#: src/ghtml.c:750
+msgid "Double Overtime"
+msgstr "双倍超时"
+
+#: src/ghtml.c:751 glade/task_properties.glade.h:13
+msgid "Flat Fee"
+msgstr "平整费用"
 
 #: src/journal.c:113
 msgid "Error 404 Not Found"
@@ -373,7 +414,7 @@ msgstr "将 HTML 保存到文件"
 msgid "Cannot open logfile %s for append"
 msgstr "无法打开日志文件 %s 以便附加内容"
 
-#. Translators: Format to use in the gtt logfile
+#. Translators: Format to use in the gnotime logfile
 #: src/log.c:64
 #, fuzzy
 msgid "%b %d %H:%M:%S"
@@ -445,7 +486,7 @@ msgstr "计划"
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:179
+#: src/menucmd.c:180
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -453,22 +494,22 @@ msgid ""
 "well as track the status of other projects."
 msgstr ""
 
-#: src/menucmd.c:238
+#: src/menucmd.c:239
 msgid "New Project..."
 msgstr "新增计划..."
 
 #: src/menus.c:35
-msgid "_New Project..."
-msgstr "新增计划 _N..."
-
-#: src/menus.c:38
 msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:42
+#: src/menus.c:39
 #, fuzzy
 msgid "Export _Projects"
 msgstr "粘贴计划"
+
+#: src/menus.c:50
+msgid "_New Project..."
+msgstr "新增计划 _N..."
 
 #: src/menus.c:61 src/menus.c:179
 msgid "Clear _Daily Counter"
@@ -486,9 +527,9 @@ msgstr "日记(_J)..."
 msgid "Show the timesheet journal for this project"
 msgstr "为该计划显示时间表单日记"
 
-#: src/menus.c:70 glade/task_popup.glade.h:5
+#: src/menus.c:70
 #, fuzzy
-msgid "_New Diary Entry"
+msgid "New _Diary Entry"
 msgstr "新建日记条目(_E)"
 
 #: src/menus.c:71
@@ -1280,6 +1321,11 @@ msgstr "slider 更新间隔"
 msgid "_Cut Diary Entry"
 msgstr "新建日记条目(_E)"
 
+#: glade/task_popup.glade.h:5
+#, fuzzy
+msgid "_New Diary Entry"
+msgstr "新建日记条目(_E)"
+
 #: glade/task_popup.glade.h:6
 #, fuzzy
 msgid "_Paste Diary Entry"
@@ -1292,14 +1338,6 @@ msgstr ""
 #: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
-
-#: glade/task_properties.glade.h:4
-msgid "Bill"
-msgstr "支付"
-
-#: glade/task_properties.glade.h:5
-msgid "Billable"
-msgstr "可支付"
 
 #: glade/task_properties.glade.h:6
 #, fuzzy
@@ -1334,15 +1372,6 @@ msgstr "新建日记条目(_E)"
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: glade/task_properties.glade.h:13
-msgid "Flat Fee"
-msgstr "平整费用"
-
-#: glade/task_properties.glade.h:14
-#, fuzzy
-msgid "Hold"
-msgstr "暂停"
-
 #: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
@@ -1358,30 +1387,10 @@ msgid ""
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
-#: glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr "无收费"
-
-#: glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr "不可支付"
-
 #: glade/task_properties.glade.h:20
 #, fuzzy
 msgid "OverOver"
 msgstr "服务器"
-
-#: glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr "超时"
-
-#: glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr "已支付"
-
-#: glade/task_properties.glade.h:23
-msgid "Regular"
-msgstr "常规"
 
 #: glade/task_properties.glade.h:24
 msgid ""
@@ -1447,9 +1456,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Start Time Fuzziness"
 #~ msgstr "启动计时器的运行"
-
-#~ msgid "Double Overtime"
-#~ msgstr "双倍超时"
 
 #~ msgid "Error - Unknown"
 #~ msgstr "错误 - 未知"

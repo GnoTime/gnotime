@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.99\n"
-"POT-Creation-Date: 2003-01-02 20:18-0600\n"
+"POT-Creation-Date: 2003-01-05 11:17-0600\n"
 "PO-Revision-Date: 2001-12-20 16:52+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Dansk/Danish <dansk@klid.dk>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:108 src/app.c:248
+#: src/app.c:109 src/app.c:251
 #, fuzzy
 msgid "Timer is not running"
 msgstr "_Tidstæller kører"
 
-#: src/app.c:236
+#: src/app.c:237
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:277
+#: src/app.c:291
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -86,11 +86,11 @@ msgstr "Tid brugt på dette projekt dette år."
 msgid "Title"
 msgstr "Titel"
 
-#: src/ctree.c:725 src/menucmd.c:244
+#: src/ctree.c:725 src/menucmd.c:245
 msgid "Project Title"
 msgstr "Projekttitel"
 
-#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:245
+#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:246
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -181,7 +181,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1149 src/ghtml.c:541 src/ghtml.c:555
+#: src/ctree.c:1149 src/ghtml.c:606 src/ghtml.c:620
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Lav"
@@ -194,23 +194,23 @@ msgstr "Mellem"
 msgid "High"
 msgstr "Høj"
 
-#: src/ctree.c:1160 src/ghtml.c:569 glade/project_properties.glade.h:30
+#: src/ctree.c:1160 src/ghtml.c:634 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Ikke startet"
 
-#: src/ctree.c:1161 src/ghtml.c:570 glade/project_properties.glade.h:22
+#: src/ctree.c:1161 src/ghtml.c:635 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "I gang"
 
-#: src/ctree.c:1162 src/ghtml.c:571 glade/project_properties.glade.h:32
+#: src/ctree.c:1162 src/ghtml.c:636 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Afventer"
 
-#: src/ctree.c:1163 src/ghtml.c:572 glade/project_properties.glade.h:10
+#: src/ctree.c:1163 src/ghtml.c:637 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Annulleret"
 
-#: src/ctree.c:1164 src/ghtml.c:573 glade/project_properties.glade.h:11
+#: src/ctree.c:1164 src/ghtml.c:638 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Færdiggjort"
 
@@ -238,7 +238,7 @@ msgstr ""
 msgid ""
 "The file\n"
 "\t%s\n"
-"doesn't seem to be a GTT project data file\n"
+"doesn't seem to be a GnoTime project data file\n"
 msgstr ""
 
 #: src/err-throw.c:81
@@ -301,28 +301,68 @@ msgstr "projektet %t er startet"
 msgid "stopped project %t"
 msgstr "stoppede projektet %t"
 
-#: src/ghtml.c:542
+#: src/ghtml.c:607
 #, fuzzy
 msgid "Normal"
 msgstr "Journal"
 
-#: src/ghtml.c:543
+#: src/ghtml.c:608
 #, fuzzy
 msgid "Urgent"
 msgstr "Hastende:"
 
-#: src/ghtml.c:546 src/ghtml.c:560 src/ghtml.c:576
+#: src/ghtml.c:611 src/ghtml.c:625 src/ghtml.c:641
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:556 glade/project_properties.glade.h:27
+#: src/ghtml.c:621 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr "Mellem"
 
-#: src/ghtml.c:557
+#: src/ghtml.c:622
 #, fuzzy
 msgid "Important"
 msgstr "Vigtighed:"
+
+#: src/ghtml.c:722 glade/task_properties.glade.h:14
+msgid "Hold"
+msgstr "Afvent"
+
+#: src/ghtml.c:723 glade/task_properties.glade.h:4
+msgid "Bill"
+msgstr "Fakturér"
+
+#: src/ghtml.c:724 glade/task_properties.glade.h:22
+msgid "Paid"
+msgstr "Betalt"
+
+#: src/ghtml.c:735 glade/task_properties.glade.h:5
+msgid "Billable"
+msgstr "Betalbart"
+
+#: src/ghtml.c:736 glade/task_properties.glade.h:18
+msgid "Not Billable"
+msgstr "Ikke fakturerbart"
+
+#: src/ghtml.c:737 glade/task_properties.glade.h:17
+msgid "No Charge"
+msgstr "Ingen regning"
+
+#: src/ghtml.c:748 glade/task_properties.glade.h:23
+msgid "Regular"
+msgstr "Normal"
+
+#: src/ghtml.c:749 glade/task_properties.glade.h:21
+msgid "Overtime"
+msgstr "Overarbejde"
+
+#: src/ghtml.c:750
+msgid "Double Overtime"
+msgstr "Dobbelt-overarbejde"
+
+#: src/ghtml.c:751 glade/task_properties.glade.h:13
+msgid "Flat Fee"
+msgstr "Fast honorar"
 
 #: src/journal.c:113
 msgid "Error 404 Not Found"
@@ -364,7 +404,7 @@ msgstr "Gem HTML i fil"
 msgid "Cannot open logfile %s for append"
 msgstr "Kan ikke åbne logfilen %s til tilføjelse"
 
-#. Translators: Format to use in the gtt logfile
+#. Translators: Format to use in the gnotime logfile
 #: src/log.c:64
 msgid "%b %d %H:%M:%S"
 msgstr "%d. %b %H:%M:%S"
@@ -436,7 +476,7 @@ msgstr "PROJEKT"
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:179
+#: src/menucmd.c:180
 #, fuzzy
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
@@ -449,22 +489,22 @@ msgstr ""
 "en opgave, tilknytte et notat til det, sætte en faktureringspris, udskrive "
 "en faktura, samt følge status for andre projekter."
 
-#: src/menucmd.c:238
+#: src/menucmd.c:239
 msgid "New Project..."
 msgstr "Nyt projekt..."
 
 #: src/menus.c:35
-msgid "_New Project..."
-msgstr "_Nyt projekt..."
-
-#: src/menus.c:38
 msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:42
+#: src/menus.c:39
 #, fuzzy
 msgid "Export _Projects"
 msgstr "Indsæt projekt"
+
+#: src/menus.c:50
+msgid "_New Project..."
+msgstr "_Nyt projekt..."
 
 #: src/menus.c:61 src/menus.c:179
 msgid "Clear _Daily Counter"
@@ -482,9 +522,10 @@ msgstr "_Journal..."
 msgid "Show the timesheet journal for this project"
 msgstr "Vis journalen med tidspunkter for dette projekt"
 
-#: src/menus.c:70 glade/task_popup.glade.h:5
-msgid "_New Diary Entry"
-msgstr "_Ny kalenderindgang"
+#: src/menus.c:70
+#, fuzzy
+msgid "New _Diary Entry"
+msgstr "Ny indgang i kalender"
 
 #: src/menus.c:71
 #, fuzzy
@@ -1237,6 +1278,10 @@ msgstr "Nyt opdateringsinterval"
 msgid "_Cut Diary Entry"
 msgstr "_Udklip kalenderindgangen"
 
+#: glade/task_popup.glade.h:5
+msgid "_New Diary Entry"
+msgstr "_Ny kalenderindgang"
+
 #: glade/task_popup.glade.h:6
 msgid "_Paste Diary Entry"
 msgstr "_Indsæt kalenderindgang"
@@ -1248,14 +1293,6 @@ msgstr "Et sæt af private noter der ikke vil blive skrevet på en faktura."
 #: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr "En kort beskrivelse knyttet til denne tidsblok."
-
-#: glade/task_properties.glade.h:4
-msgid "Bill"
-msgstr "Fakturér"
-
-#: glade/task_properties.glade.h:5
-msgid "Billable"
-msgstr "Betalbart"
 
 #: glade/task_properties.glade.h:6
 msgid "Billable:"
@@ -1285,14 +1322,6 @@ msgstr "Kalenderindgang:"
 msgid "Fee rate to be charged for this task."
 msgstr "Honorartarif som skal tages for denne opgave."
 
-#: glade/task_properties.glade.h:13
-msgid "Flat Fee"
-msgstr "Fast honorar"
-
-#: glade/task_properties.glade.h:14
-msgid "Hold"
-msgstr "Afvent"
-
 #: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
@@ -1316,29 +1345,9 @@ msgstr ""
 "næste faktura. 'Betalt' betyder at det ikke længere bør inkluderes på "
 "fakturaer."
 
-#: glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr "Ingen regning"
-
-#: glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr "Ikke fakturerbart"
-
 #: glade/task_properties.glade.h:20
 msgid "OverOver"
 msgstr "EkstraOver"
-
-#: glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr "Overarbejde"
-
-#: glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr "Betalt"
-
-#: glade/task_properties.glade.h:23
-msgid "Regular"
-msgstr "Normal"
 
 #: glade/task_properties.glade.h:24
 msgid ""
@@ -1404,9 +1413,6 @@ msgstr "Tidsforbrugsværktøj"
 
 #~ msgid "Start Time Fuzziness"
 #~ msgstr "Usikkerhed på starttid"
-
-#~ msgid "Double Overtime"
-#~ msgstr "Dobbelt-overarbejde"
 
 #~ msgid "Error - Unknown"
 #~ msgstr "Fejl - ukendt"

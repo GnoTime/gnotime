@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2003-01-02 20:18-0600\n"
+"POT-Creation-Date: 2003-01-05 11:17-0600\n"
 "PO-Revision-Date: 2001-08-14 10:53+0400\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=KOI8-r\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/app.c:108 src/app.c:248
+#: src/app.c:109 src/app.c:251
 #, fuzzy
 msgid "Timer is not running"
 msgstr "Таймер запущен"
 
-#: src/app.c:236
+#: src/app.c:237
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:277
+#: src/app.c:291
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -86,11 +86,11 @@ msgstr ""
 msgid "Title"
 msgstr "Файл"
 
-#: src/ctree.c:725 src/menucmd.c:244
+#: src/ctree.c:725 src/menucmd.c:245
 msgid "Project Title"
 msgstr "Название проекта"
 
-#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:245
+#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:246
 msgid "Description"
 msgstr "Описание"
 
@@ -183,7 +183,7 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1149 src/ghtml.c:541 src/ghtml.c:555
+#: src/ctree.c:1149 src/ghtml.c:606 src/ghtml.c:620
 #: glade/project_properties.glade.h:26
 #, fuzzy
 msgid "Low"
@@ -198,26 +198,26 @@ msgstr ""
 msgid "High"
 msgstr "Справа"
 
-#: src/ctree.c:1160 src/ghtml.c:569 glade/project_properties.glade.h:30
+#: src/ctree.c:1160 src/ghtml.c:634 glade/project_properties.glade.h:30
 #, fuzzy
 msgid "Not Started"
 msgstr "Старт"
 
-#: src/ctree.c:1161 src/ghtml.c:570 glade/project_properties.glade.h:22
+#: src/ctree.c:1161 src/ghtml.c:635 glade/project_properties.glade.h:22
 #, fuzzy
 msgid "In Progress"
 msgstr "Процесс:"
 
-#: src/ctree.c:1162 src/ghtml.c:571 glade/project_properties.glade.h:32
+#: src/ctree.c:1162 src/ghtml.c:636 glade/project_properties.glade.h:32
 #, fuzzy
 msgid "On Hold"
 msgstr "Сплошное"
 
-#: src/ctree.c:1163 src/ghtml.c:572 glade/project_properties.glade.h:10
+#: src/ctree.c:1163 src/ghtml.c:637 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr ""
 
-#: src/ctree.c:1164 src/ghtml.c:573 glade/project_properties.glade.h:11
+#: src/ctree.c:1164 src/ghtml.c:638 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid ""
 "The file\n"
 "\t%s\n"
-"doesn't seem to be a GTT project data file\n"
+"doesn't seem to be a GnoTime project data file\n"
 msgstr ""
 
 #: src/err-throw.c:81
@@ -308,26 +308,71 @@ msgstr "проект \"%t\" запущен"
 msgid "stopped project %t"
 msgstr "проект \"%t\" остановлен"
 
-#: src/ghtml.c:542
+#: src/ghtml.c:607
 msgid "Normal"
 msgstr ""
 
-#: src/ghtml.c:543
+#: src/ghtml.c:608
 msgid "Urgent"
 msgstr ""
 
-#: src/ghtml.c:546 src/ghtml.c:560 src/ghtml.c:576
+#: src/ghtml.c:611 src/ghtml.c:625 src/ghtml.c:641
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:556 glade/project_properties.glade.h:27
+#: src/ghtml.c:621 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr ""
 
-#: src/ghtml.c:557
+#: src/ghtml.c:622
 #, fuzzy
 msgid "Important"
 msgstr "Терпимость:"
+
+#: src/ghtml.c:722 glade/task_properties.glade.h:14
+#, fuzzy
+msgid "Hold"
+msgstr "Сплошное"
+
+#: src/ghtml.c:723 glade/task_properties.glade.h:4
+#, fuzzy
+msgid "Bill"
+msgstr "Выкл."
+
+#: src/ghtml.c:724 glade/task_properties.glade.h:22
+msgid "Paid"
+msgstr ""
+
+#: src/ghtml.c:735 glade/task_properties.glade.h:5
+#, fuzzy
+msgid "Billable"
+msgstr "Выкл."
+
+#: src/ghtml.c:736 glade/task_properties.glade.h:18
+msgid "Not Billable"
+msgstr ""
+
+#: src/ghtml.c:737 glade/task_properties.glade.h:17
+msgid "No Charge"
+msgstr ""
+
+#: src/ghtml.c:748 glade/task_properties.glade.h:23
+#, fuzzy
+msgid "Regular"
+msgstr "Перезагрузить"
+
+#: src/ghtml.c:749 glade/task_properties.glade.h:21
+msgid "Overtime"
+msgstr ""
+
+#: src/ghtml.c:750
+msgid "Double Overtime"
+msgstr ""
+
+#: src/ghtml.c:751 glade/task_properties.glade.h:13
+#, fuzzy
+msgid "Flat Fee"
+msgstr "Плавающее"
 
 #: src/journal.c:113
 msgid "Error 404 Not Found"
@@ -369,7 +414,7 @@ msgstr "Сохранить палитру"
 msgid "Cannot open logfile %s for append"
 msgstr "Не удалось открыть файл журнала %s для добавления"
 
-#. Translators: Format to use in the gtt logfile
+#. Translators: Format to use in the gnotime logfile
 #: src/log.c:64
 msgid "%b %d %H:%M:%S"
 msgstr "%b %d %H:%M:%S"
@@ -441,7 +486,7 @@ msgstr "ПРОЕКТ"
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:179
+#: src/menucmd.c:180
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -449,22 +494,22 @@ msgid ""
 "well as track the status of other projects."
 msgstr ""
 
-#: src/menucmd.c:238
+#: src/menucmd.c:239
 msgid "New Project..."
 msgstr "Новый проект..."
 
 #: src/menus.c:35
-msgid "_New Project..."
-msgstr "Новый проект..."
-
-#: src/menus.c:38
 msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:42
+#: src/menus.c:39
 #, fuzzy
 msgid "Export _Projects"
 msgstr "Вставить проект"
+
+#: src/menus.c:50
+msgid "_New Project..."
+msgstr "Новый проект..."
 
 #: src/menus.c:61 src/menus.c:179
 msgid "Clear _Daily Counter"
@@ -482,9 +527,10 @@ msgstr ""
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
-#: src/menus.c:70 glade/task_popup.glade.h:5
-msgid "_New Diary Entry"
-msgstr ""
+#: src/menus.c:70
+#, fuzzy
+msgid "New _Diary Entry"
+msgstr "Вставить в конце"
 
 #: src/menus.c:71
 msgid "Create new task header for this project"
@@ -1261,6 +1307,10 @@ msgstr "Общие"
 msgid "_Cut Diary Entry"
 msgstr "Удалить параметр"
 
+#: glade/task_popup.glade.h:5
+msgid "_New Diary Entry"
+msgstr ""
+
 #: glade/task_popup.glade.h:6
 msgid "_Paste Diary Entry"
 msgstr ""
@@ -1272,16 +1322,6 @@ msgstr ""
 #: glade/task_properties.glade.h:3
 msgid "A short description to attach to this block of time."
 msgstr ""
-
-#: glade/task_properties.glade.h:4
-#, fuzzy
-msgid "Bill"
-msgstr "Выкл."
-
-#: glade/task_properties.glade.h:5
-#, fuzzy
-msgid "Billable"
-msgstr "Выкл."
 
 #: glade/task_properties.glade.h:6
 msgid "Billable:"
@@ -1312,16 +1352,6 @@ msgstr ""
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: glade/task_properties.glade.h:13
-#, fuzzy
-msgid "Flat Fee"
-msgstr "Плавающее"
-
-#: glade/task_properties.glade.h:14
-#, fuzzy
-msgid "Hold"
-msgstr "Сплошное"
-
 #: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
@@ -1337,31 +1367,10 @@ msgid ""
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
-#: glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr ""
-
-#: glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr ""
-
 #: glade/task_properties.glade.h:20
 #, fuzzy
 msgid "OverOver"
 msgstr "Сохранить"
-
-#: glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr ""
-
-#: glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr ""
-
-#: glade/task_properties.glade.h:23
-#, fuzzy
-msgid "Regular"
-msgstr "Перезагрузить"
 
 #: glade/task_properties.glade.h:24
 msgid ""
