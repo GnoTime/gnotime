@@ -1,6 +1,6 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -82,7 +82,8 @@ about_box(GtkWidget *w, gpointer data)
 	}
 	about = gnome_about_new(APP_NAME,
 				    VERSION,
-				    "Copyright (C) 1997,98 Eckehard Berns and others",
+				    "Copyright (C) 1997,98 Eckehard Berns\n"
+				    "Copyright (C) 2001,2002 Linas Vepstas",
 #ifdef DEBUG
 				    __DATE__ ", " __TIME__,
 #else
@@ -98,7 +99,8 @@ about_box(GtkWidget *w, gpointer data)
 				    NULL);
 	gtk_signal_connect(GTK_OBJECT(about), "destroy",
 		GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
-	gnome_dialog_set_parent(GNOME_DIALOG(about), GTK_WINDOW(window));
+     /* not required for an about box: */
+     /* gnome_dialog_set_parent(GNOME_ABOUT(about), GTK_WINDOW(window)); */
 	gtk_widget_show(about);
 }
 

@@ -1,4 +1,11 @@
-Fri Sep  6 19:46:12 CDT 2002 Linas Vepstas <linas@linas.org>O
+Thu Nov  7 01:12:27 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* glade/*.glade: convert to gnome2 from Egil Kvaleberg <egil@kvaleberg.no>
+	* src/xml-read.c, xml-write.c: convert to libxml-2
+	* src/props-proj.c, src/props-task.c: convert to gtkTextView
+
+Fri Sep  6 19:46:12 CDT 2002 Linas Vepstas <linas@linas.org>
+
 	* configure.in, src/Makefile.am: gtt is now a stand-alone app.
 
 2002-06-16  Pablo Saratxaga  <pablo@mandrakesoft.com>
