@@ -1,5 +1,5 @@
-/*   gtt project private data structure file.
- *   Copyright (C) 2001 Linas Vepstas
+/*   gtt project private data structure file for GTimeTracker
+ *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,14 +35,14 @@ struct gtt_project_s
 	char *notes;     /* long description */
 	char *custid;    /* customer id (TBD -- index to addresbook) */
 
-	int min_interval;  /* smallest recorded interval */
-	int auto_merge_interval;  /* merge intervals smaller than this */
-	int auto_merge_gap;       /* merge gaps smaller than this */
+	int min_interval;        /* smallest recorded interval */
+	int auto_merge_interval; /* merge intervals smaller than this */
+	int auto_merge_gap;      /* merge gaps smaller than this */
 
-        double billrate;   /* billing rate, in units of currency per hour */
-        double overtime_rate;  /*  in units of currency per hour */
-        double overover_rate;  /*  the good money is here ... */
-        double flat_fee;  /* flat price, in units of currency */
+	double billrate;       /* billing rate, in units of currency per hour */
+	double overtime_rate;  /*  in units of currency per hour */
+	double overover_rate;  /*  the good money is here ... */
+	double flat_fee;       /* flat price, in units of currency */
 
 	time_t estimated_start;  /* projected/planned start date */
 	time_t estimated_end;    /* projected/planned end date */
@@ -64,8 +64,8 @@ struct gtt_project_s
 	 * by a gobj callback */
 	GList *listeners;      /* listeners for change events */
 
-        /* miscellaneous -- used by GUI to display */
-        gpointer *private_data;
+	/* miscellaneous -- used by GUI to display */
+	gpointer *private_data;
 
 	int id;		/* simple id number */
 
@@ -77,7 +77,7 @@ struct gtt_project_s
 	int dirty_time : 1 ;      /* the time totals are wrong */
 
 	int secs_ever;   /* seconds spend on this project */
-	int secs_year;  /* seconds spent on this project this year */
+	int secs_year;   /* seconds spent on this project this year */
 	int secs_month;  /* seconds spent on this project this month */
 	int secs_week;   /* seconds spent on this project this week */
 	int secs_day;    /* seconds spent on this project today */
@@ -96,20 +96,20 @@ struct gtt_task_s
 	GttBillable   billable;   /* if fees can be collected for this task */
 	GttBillRate   billrate;   /* hourly rate at which to bill */
 	GttBillStatus billstatus; /* disposition of this item */
-	int	bill_unit;	  /* billable unit, in seconds */
+	int	bill_unit;          /* billable unit, in seconds */
 	GList *interval_list;     /* collection of start-stop's */
 };
 
 /* one start-stop interval */
 struct gtt_interval_s 
 {
-	GttTask *parent;	/* who I belong to */
-	time_t	start;		/* when the timer started */
-	time_t	stop;		/* if stopped, shows when timer stopped, 
-				 * if running, then the most recent log point */
+	GttTask *parent;      /* who I belong to */
+	time_t	start;       /* when the timer started */
+	time_t	stop;        /* if stopped, shows when timer stopped, 
+	                       * if running, then the most recent log point */
 	int	fuzz;           /* how fuzzy the start time is.  In
-	                         * seconds, typically 300, 3600 or 1/2 day */
-	int	running : 1;	/* boolean: is the timer running? */
+	                       * seconds, typically 300, 3600 or 1/2 day */
+	int	running : 1;    /* boolean: is the timer running? */
 };
 
 #endif /* __GTT_PROJ_P_H__ */
