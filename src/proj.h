@@ -92,6 +92,7 @@ typedef struct gtt_interval_s GttInterval;
 
 typedef void (*GttProjectChanged) (GttProject *, gpointer);
 typedef int (*GttProjectCB) (GttProject *, gpointer);
+typedef int (*GttIntervalCB) (GttInterval *, gpointer);
 
 /* -------------------------------------------------------- */
 /* project data */
@@ -239,20 +240,37 @@ void		gtt_project_add_notifier (GttProject *,
 void		gtt_project_remove_notifier (GttProject *,
 			GttProjectChanged, gpointer);
 
-/* generic place to hang arbitrary data on the project (used by GUI) */
-gpointer	gtt_project_get_private_data (GttProject *);
-void		gtt_project_set_private_data (GttProject *, gpointer);
+/* These functions provide a generic place to hang arbitrary data 
+ *     on the project (used by the GUI). 
+ */
+gpointer gtt_project_get_private_data (GttProject *);
+void     gtt_project_set_private_data (GttProject *, gpointer);
 
 /* The gtt_project_foreach() routine calls the indicated function
  *    on the project and each of the sub-projects.  The recursion is
  *    stopped if the callback returns zero, otherwise it continues
- *    until all sub-projects ahve been visited.
+ *    until all sub-projects have been visited.
  *    This routine returns the value of the last callback.
+ *
+ * The gtt_project_foreach_interval() routine calls the indicated 
+ *    function on each interval of each task in the project.  The 
+ *    recursion is stopped if the callback returns zero, otherwise
+ *    it continues until each interval has been visited.
+ *    This routines does *NOT* visit subprojects.
+ *    This routine returns the value of the last callback.
+ *
+ * The gtt_project_foreach_subproject_interval() routine works just
+ *    like gtt_project_foreach_interval(), except that it also
+ *    visits the subprojects of the project.
+ *    
  */ 
-int		gtt_project_foreach (GttProject *,  GttProjectCB, gpointer);
+int      gtt_project_foreach (GttProject *,  GttProjectCB, gpointer);
+int      gtt_project_foreach_interval (GttProject *, GttIntervalCB, gpointer);
+int      gtt_project_foreach_subproject_interval (GttProject *, GttIntervalCB, gpointer);
+		  
 
 /* -------------------------------------------------------- */
-/* project manipulation */
+/* Project Manipulation */
 
 /* The project_timer_start() routine logs the time when
  *    a new task interval starts.
