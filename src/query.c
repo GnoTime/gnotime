@@ -80,9 +80,11 @@ day_bin (GttInterval *ivl, gpointer data)
 		{
 			bu->total += stop - start;
 			bu->intervals = g_list_append (bu->intervals, ivl);
+
+			/* Avoid duplicate tasks by checking if same as last */
 			if (!bu->tasks || (bu->tasks->data != tsk))
 			{
-				bu->tasks = g_list_append (bu->tasks, tsk);
+				bu->tasks = g_list_prepend (bu->tasks, tsk);
 			}
 			return 1;
 		}
@@ -90,9 +92,11 @@ day_bin (GttInterval *ivl, gpointer data)
 		{
 			bu->total+= end_of_day - start;
 			bu->intervals = g_list_append (bu->intervals, ivl);
+
+			/* Avoid duplicate tasks by checking if same as last */
 			if (!bu->tasks || (bu->tasks->data != tsk))
 			{
-				bu->tasks = g_list_append (bu->tasks, tsk);
+				bu->tasks = g_list_prepend (bu->tasks, tsk);
 			}
 		}
 		arr_day ++;
@@ -129,6 +133,9 @@ count_days (DayArray *da, GttProject *proj, gboolean include_subprojects)
 static void
 run_daily_bins(DayArray *da, GttProject *proj, gboolean include_subprojects)
 {
+	int i;
+	
+	/* apply recursively */
 	if (include_subprojects)
 	{
 		gtt_project_foreach_subproject_interval (proj, day_bin, da);
@@ -136,6 +143,33 @@ run_daily_bins(DayArray *da, GttProject *proj, gboolean include_subprojects)
 	else
 	{
 		gtt_project_foreach_interval (proj, day_bin, da);
+	}
+
+	/* Clean up the taks lists */
+	for (i=0; i<da->array_len; i++)
+	{
+		GttBucket *bu;
+		GList *node;
+		bu = &g_array_index (da->buckets, GttBucket, i);
+
+		/* Reverse the list, since they went in backwards */
+		bu->tasks = g_list_reverse (bu->tasks);
+
+		
+	   /* Scrub out duplicate task entries */
+		for (node=bu->tasks; node; node=node->next)
+		{
+			GList *sode;
+rerun:
+			for (sode=node->next; sode; sode=sode->next)
+			{
+				if (sode->data == node->data)
+				{
+					g_list_delete_link (node, sode);
+					goto rerun;
+				}
+			}
+		}
 	}
 }
 
