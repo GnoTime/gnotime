@@ -53,5 +53,10 @@ void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
  */
 void gtt_ghtml_display (GttGhtml *, const char *path_frag, GttProject *prj);
 
+/* The gtt_ghtml_resolve_path() routine helps find the fully-qualified
+ * path name to the indicated filename, so that the file can be opened.
+ */
+char * gtt_ghtml_resolve_path (const char *path_frag);
+
 #endif /* __GTT_GHTML_H__ */
 

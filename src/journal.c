@@ -651,7 +651,8 @@ do_show_report (const char * report, GttProject *prj)
 	wig->filepath = g_strdup (report);
 	if (!prj)
 	{
-		gtt_ghtml_display (wig->gh, "noproject.ghtml", NULL);
+		gtt_ghtml_display (wig->gh, 
+				gtt_ghtml_resolve_path("noproject.ghtml"), NULL);
 	} 
 	else 
 	{
@@ -662,8 +663,8 @@ do_show_report (const char * report, GttProject *prj)
 
 /* ============================================================== */
 
-static char *
-resolve_path (char *path_frag)
+char *
+gtt_ghtml_resolve_path (const char *path_frag)
 {
 	const GList *list;
 	char buff[PATH_MAX], *path;
@@ -708,7 +709,7 @@ edit_journal(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 	if (!prj) return;
 
-	path = resolve_path ("journal.ghtml");
+	path = gtt_ghtml_resolve_path ("journal.ghtml");
 	do_show_report (path, prj);
 }
 
@@ -721,7 +722,7 @@ edit_alldata(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 	if (!prj) return;
 
-	path = resolve_path ("bigtable.ghtml");
+	path = gtt_ghtml_resolve_path ("bigtable.ghtml");
 	do_show_report (path, prj);
 }
 
@@ -734,7 +735,7 @@ edit_invoice(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 	if (!prj) return;
 
-	path = resolve_path ("invoice.ghtml");
+	path = gtt_ghtml_resolve_path ("invoice.ghtml");
 	do_show_report (path, prj);
 }
 
@@ -747,7 +748,7 @@ edit_primer(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 	if (!prj) return;
 
-	path = resolve_path ("primer.ghtml");
+	path = gtt_ghtml_resolve_path ("primer.ghtml");
 	do_show_report (path, prj);
 }
 
