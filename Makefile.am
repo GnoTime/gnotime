@@ -1,7 +1,13 @@
+#
+# Makefile.am
+# main makeile am for GnoTime
+# 
 
 SUBDIRS = debian doc gconf glade ghtml lib po redhat fedora src
 
-Productivitydir = $(datadir)/gnome/apps/Applications
+# old, obsolete location ??
+# Productivitydir = $(datadir)/gnome/apps/Applications
+Productivitydir = $(datadir)/applications
 Productivity_in_files = gnotime.desktop.in
 Productivity_DATA = $(Productivity_in_files:.desktop.in=.desktop)
 
