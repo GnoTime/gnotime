@@ -898,7 +898,10 @@ show_scm (SCM node_list)
 /* ============================================================== */
 /* Cheesy hack, this returns a pointer to the currently
  * selected project as a ulong.  Its baaaad,  but achaives its 
- * purpose for now.
+ * purpose for now.   Its baad because it exposes a C pointer to
+ * the schemers, which could be used for evil purposes, such
+ * as propagating viruses, worms, etc.  But for now, I don't know
+ * of a better way.  --linas
  */
 
 static SCM
@@ -920,28 +923,35 @@ ret_selected_project (void)
 /* ============================================================== */
 
 static SCM
-do_ret_project_title (GttGhtml *ghtml, SCM node)
+do_ret_project_str (GttGhtml *ghtml, SCM node, const char * (*func)(GttProject *))
 {
-	const char * title;
+	const char * str;
 	GttProject * prj;
 	SCM rc;
 	if (!SCM_NUMBERP(node))
 	{
-		printf ("duuuude badd !!!! \n");
+		g_warning ("expecting gtt project as argument, got something else\n");
 		rc = gh_str2scm ("(null)", 6);
 		return rc;
 	}
 	prj = (GttProject *) gh_scm2ulong (node);
-	title = gtt_project_get_title (prj);
-	rc = gh_str2scm (title, strlen (title));
+	str = func (prj);
+	rc = gh_str2scm (str, strlen (str));
 	return rc;
+}
+
+static SCM
+ret_project_desc (SCM node)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_project_str (ghtml, node, gtt_project_get_desc);
 }
 
 static SCM
 ret_project_title (SCM node)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_ret_project_title (ghtml, node);
+	return do_ret_project_str (ghtml, node, gtt_project_get_title);
 }
 
 /* ============================================================== */
@@ -1086,6 +1096,7 @@ register_procs (void)
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
 	gh_new_procedure("gtt-project-title",        ret_project_title,  1, 0, 0);
+	gh_new_procedure("gtt-project-desc",         ret_project_desc,  1, 0, 0);
 }
 
 
