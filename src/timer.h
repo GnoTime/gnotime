@@ -31,7 +31,14 @@
 
 void init_timer(void);
 gboolean timer_is_running (void);
+
+/* The idle timeout is how long, in seconds, that the system seems idle
+ * before the clock stops itself */
 extern int config_idle_timeout;
+
+/* The autosave period is how long, in seconds, we wait before doing a 
+ * periodic save-thyself. */
+extern int config_autosave_period;
 
 void zero_on_rollover (time_t now);
 void set_last_reset (time_t last);

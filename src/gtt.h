@@ -47,6 +47,12 @@ const char * save_all (void);
  */
 void save_properties (void);
 
+/* The save_projects() routine will write out the project data
+ * to the data file.  It will pop up a warning
+ * gui window if the save fails for some reason.
+ */
+void save_projects (void);
+
 void unlock_gtt(void);
 const char *gtt_gettext(const char *s);
 

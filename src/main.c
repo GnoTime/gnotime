@@ -348,7 +348,6 @@ void
 save_properties (void)
 {
 	GttErrCode errcode;
-	const char *errmsg = NULL;
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
@@ -358,9 +357,33 @@ save_properties (void)
 	errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != errcode)
 	{
-		const char *fp;
-		fp = gtt_get_config_filepath();
-		errmsg = gtt_err_to_string (errcode, fp);
+		const char *fp = gtt_get_config_filepath();
+		const char *errmsg = gtt_err_to_string (errcode, fp);
+
+		msgbox_ok(_("Warning"),
+		     errmsg,
+		     GTK_STOCK_OK,
+		     NULL);
+		g_free ((gchar *) errmsg);
+	}
+}
+
+void
+save_projects (void)
+{
+	GttErrCode errcode;
+	const char * xml_filepath;
+
+	/* Try ... */
+	xml_filepath = resolve_path (config_data_url);
+	gtt_err_set_code (GTT_NO_ERR);
+	gtt_xml_write_file (xml_filepath);
+
+	/* Catch */
+	errcode = gtt_err_get_code();
+	if (GTT_NO_ERR != errcode)
+	{
+		const char *errmsg = gtt_err_to_string (errcode, xml_filepath);
 
 		msgbox_ok(_("Warning"),
 		     errmsg,

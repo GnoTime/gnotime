@@ -297,9 +297,10 @@ gtt_load_config (const char *fname)
 	_e = config_show_tb_exit;
 
 	/* get last running project */
-       	cur_proj_id = gnome_config_get_int(GTT"Misc/CurrProject=-1");
+   cur_proj_id = gnome_config_get_int(GTT"Misc/CurrProject=-1");
 
-       	config_idle_timeout = gnome_config_get_int(GTT"Misc/IdleTimeout=-1");
+   config_idle_timeout = gnome_config_get_int(GTT"Misc/IdleTimeout=-1");
+   config_autosave_period = gnome_config_get_int(GTT"Misc/AutosavePeriod=60");
 
 	/* Reset the main window width and height to the values 
 	 * last stored in the config file.  Note that if the user 
@@ -621,11 +622,13 @@ gtt_save_config(const char *fname)
 	g_snprintf(s, sizeof (s), "%ld", time(0));
 	gnome_config_set_string(GTT"Misc/LastTimer", s);
 	gnome_config_set_int(GTT"Misc/IdleTimeout", config_idle_timeout);
+	gnome_config_set_int(GTT"Misc/AutosavePeriod", config_autosave_period);
 	gnome_config_set_int(GTT"Misc/TimerRunning", timer_is_running());
 	gnome_config_set_int(GTT"Misc/CurrProject", gtt_project_get_id (cur_proj));
 	gnome_config_set_int(GTT"Misc/NumProjects", -1);
 
-	/* delete all project information */
+	/* Delete all project information (this file shouldn't have any,
+	 * unless its very very old.  Projects are now stored in xml file. */
 	for (i=0; i < old_num; i++) {
 		g_snprintf(s, sizeof (s), GTT"Project%d", i);
 		gnome_config_clean_section(s);

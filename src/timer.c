@@ -36,6 +36,7 @@ static gint main_timer = 0;
 static IdleTimeout *idt = NULL;
 
 int config_idle_timeout = -1;
+int config_autosave_period = 60;
 
 /* =========================================================== */
 /* zero out day counts if rolled past midnight */
@@ -87,6 +88,14 @@ timer_func(gpointer data)
 	/* Even if there is no active project,
 	 * we still have to zero out the counters periodically. */
 	if (0 == now%60) zero_on_rollover (now);
+
+	/* Periodically save data to file -- not strictly neccessary,
+	 * but real nice way of avoiding data loss in case something 
+	 * core dumps. */
+	if (0 == now%config_autosave_period)
+	{
+		save_projects ();
+	}
 
 	if (!cur_proj) return 1;
 
