@@ -29,13 +29,13 @@ typedef struct ProjTreeWindow_s ProjTreeWindow;
 
 extern int clist_header_width_set;
 
-/* The ctree_new() routine will create the widget that shows the 
+/** The ctree_new() routine will create the widget that shows the 
  *    project tree.  It returns a pointer to an opaque handle to
  *    reference this widget.
  */
 ProjTreeWindow * ctree_new(void);
 
-/* The ctree_setup() routine will copy project data into the ctree
+/** The ctree_setup() routine will copy project data into the ctree
  *    window.  Call this routine after reading in project data, to 
  *    populate the window; or to redraw the window after a 'deep'
  *    data restructuring, such as change in the sort order of the 
@@ -45,24 +45,14 @@ ProjTreeWindow * ctree_new(void);
 void ctree_setup (ProjTreeWindow *ptw, GList *project_list);
 void ctree_destroy(ProjTreeWindow *ptw);
 
-/* The ctree_insert_before() routine inserts the new project p
+/** The ctree_insert_before() routine inserts the new project p
  *   before the project "before me".
- *
- * The ctree_update_column_visibility() routine sets/changes
- *    which columns will be visible in the ctree window.  Note
- *    that it does *not* redraw the data in the columns: use
- *    ctree_refresh() for that.
- *
- * The ctree_refresh() routine redraws the entire ctree window.
- *    It will update the column visibility according to the current
- *    defaults, then grab all data out of the top project list,
- *    and then redraw everything.
  */
 void ctree_add(ProjTreeWindow *, GttProject *p, GtkCTreeNode *parent);
 void ctree_insert_before(ProjTreeWindow *, GttProject *p, GttProject *insert_before_me);
 void ctree_insert_after(ProjTreeWindow *, GttProject *p, GttProject *insert_after_me);
 
-/* The ctree_start_timer() routine handles all of the ctree-related
+/** The ctree_start_timer() routine handles all of the ctree-related
  *    work for starting a project running.  This will not only color
  *    the project as 'active', but it will also actually start the 
  *    project timer ticking.
@@ -80,7 +70,20 @@ void ctree_update_desc(ProjTreeWindow *, GttProject *p);
 void ctree_set_col_width (ProjTreeWindow *ptw, int col, int width);
 int  ctree_get_col_width (ProjTreeWindow *ptw, int col);
 
+/** The ctree_refresh() routine redraws the entire ctree window.
+ *    It will update the column visibility according to the current
+ *    defaults, then grab all data out of the top project list,
+ *    reformat its internal representation of the data (e.g. date, 
+ *    time strings) , and then redraw everything so that it becomes 
+ *    visible to the user.
+ */
 void ctree_refresh (ProjTreeWindow *ptw);
+
+/** The ctree_update_column_visibility() routine sets/changes
+ *    which columns will be visible in the ctree window.  Note
+ *    that it does *not* redraw the data in the columns: use
+ *    ctree_refresh() for that.
+ */
 void ctree_update_column_visibility (ProjTreeWindow *ptw);
 void ctree_titles_show (ProjTreeWindow *ptw);
 void ctree_titles_hide (ProjTreeWindow *ptw);
@@ -89,13 +92,13 @@ void ctree_subproj_hide (ProjTreeWindow *ptw);
 
 GtkWidget * ctree_get_widget(ProjTreeWindow *);
 
-/* The 'focus project' corresponds to the 'focus row' in the ctree:
+/** The 'focus project' corresponds to the 'focus row' in the ctree:
  *    its the project that corresponds to where the keyboard events
  *    are directed.
  */
 GttProject *ctree_get_focus_project (ProjTreeWindow *);
 
-/* The ctree_get_expander_state() routine returns the state of
+/** The ctree_get_expander_state() routine returns the state of
  *    the row expanders as an ascii string.
  * The ctree_set_expander_state() routine takes this ascii string,
  *    and sets the expanders to match.
