@@ -66,8 +66,8 @@
         )
 ))
            
-; The gtt-apply-func-list-to-proj routine is a simple utility 
-; to apply a list of functions to a list of projects.
+; The gtt-apply-func-list-to-proj-list routine is a simple 
+; utility to apply a list of functions to a list of projects.
 ; The 'function list' should be either:
 ;  -- a function that takes a single project as an argument
 ;  -- a double-quoted string

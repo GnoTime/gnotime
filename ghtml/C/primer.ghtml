@@ -187,6 +187,7 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 			<i>(seconds)</i>
 	  <li><tt>(gtt-project-percent-complete prj)</tt>:
 	      <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
+			<i>(percentage)</i>
 	  </ul>
 
 	  Tasks (aka 'diary entries') can be obtained with the 
@@ -196,6 +197,8 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 	  <ul>
 	  <li><tt>(gtt-task-memo tsk)</tt>:
 	      <?scm (gtt-show (gtt-task-memo (gtt-tasks (gtt-selected-project)))) ?>
+	  <li><tt>(gtt-task-memo-link tsk)</tt>:
+	      <?scm (gtt-show (gtt-task-memo-link (gtt-tasks (gtt-selected-project)))) ?>
 	  <li><tt>(gtt-task-notes tsk)</tt>:
 	      <?scm (gtt-show (gtt-task-notes (gtt-tasks (gtt-selected-project)))) ?>
 	  </ul>
