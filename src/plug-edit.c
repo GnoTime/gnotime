@@ -104,6 +104,66 @@ printf ("duude redraw len=%d\n", ped->menus->len);
 
 /* ============================================================ */
 
+static void 
+edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
+{
+	const char *title, *path, *tip;
+	GttPlugin *plg;
+
+	if (!gui) return;
+
+	/* Get the dialog contents */
+	title = gtk_entry_get_text (dlg->plugin_name);
+	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
+
+	if (!path)
+	{
+		msgbox_ok(_("Warning"),
+	   	          _("You must specify a complete filepath to the report, "
+	   	            "including a leading slash."),
+	      	       GTK_STOCK_OK,
+	         	    NULL);
+	}
+
+	tip = gtk_entry_get_text (dlg->plugin_tooltip);
+	if (!path) path="";
+	if (!tip) path="";
+
+	/* set the values into the item */
+	gui->type = GNOME_APP_UI_ITEM;
+	gui->label = title;
+	gui->hint = tip;
+	gui->moreinfo = invoke_report;
+	gui->unused_data = NULL;
+	gui->pixmap_type = GNOME_APP_PIXMAP_STOCK;
+	gui->pixmap_info = GNOME_STOCK_BLANK;
+	gui->accelerator_key = 0;
+	gui->ac_mods = (GdkModifierType) 0;
+	
+	plg = gui->user_data;
+	if (plg->name) g_free (plg->name);
+	plg->name = g_strdup (title);
+	if (plg->path) g_free (plg->path);
+	plg->path = g_strdup (path);
+	if (plg->tooltip) g_free (plg->tooltip);
+	plg->tooltip = g_strdup (tip);
+}
+
+static void 
+edit_plugin_item_to_widgets (PluginEditorDialog *dlg, GnomeUIInfo *gui)
+{
+	GttPlugin *plg;
+
+	if (!gui) return;
+	plg = gui->user_data;
+	
+	gtk_entry_set_text (dlg->plugin_name, plg->name);
+	gnome_file_entry_set_filename (dlg->plugin_path, plg->path);
+	gtk_entry_set_text (dlg->plugin_tooltip, plg->tooltip);
+}
+
+/* ============================================================ */
+
 static void
 edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
 {
@@ -113,13 +173,31 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 	gboolean have_selection;
 
 	have_selection = gtk_tree_selection_get_selected (selection, &model, &iter);
-printf ("duude row selection changed\n");
+	
+	if (dlg->have_selection)
+	{
+		GnomeUIInfo *curr_item;
+		GValue val = {G_TYPE_INVALID};
+		gtk_tree_model_get_value (model, &dlg->curr_selection, PTRCOL, &val);
+		curr_item = g_value_get_pointer(&val);
+
+		/* Save current values of widgets to current item */
+		edit_plugin_widgets_to_item (dlg, curr_item);
+	}
+
 	if (have_selection)
 	{
+		GnomeUIInfo *curr_item;
 		GValue val = {G_TYPE_INVALID};
 		gtk_tree_model_get_value (model, &iter, PTRCOL, &val);
-printf ("duude selection got ptr=%x\n", g_value_get_pointer(&val));
+		curr_item = g_value_get_pointer(&val);
+
+		dlg->have_selection = TRUE;
+		dlg->curr_selection = iter;
+		edit_plugin_item_to_widgets (dlg, curr_item);
 	}
+
+	/* XXX if dlg->changed redraw */
 }
 
 /* ============================================================ */
@@ -187,51 +265,23 @@ edit_plugin_add_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
 	GnomeUIInfo item;
-	const char *title, *path, *tip;
 	int index;
 	GttPlugin *plg;
 printf ("add clicked dlg=%x\n",dlg);
 
-	/* Get the dialog contents */
-	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
-
-	if (!path)
-	{
-		msgbox_ok(_("Warning"),
-	   	          _("You must specify a complete filepath to the report, "
-	   	            "including a leading slash."),
-	      	       GTK_STOCK_OK,
-	         	    NULL);
-	}
-
-	tip = gtk_entry_get_text (dlg->plugin_tooltip);
-	if (!path) path="";
-	if (!tip) path="";
-
    index = 0; /* XXX should be current in ctree */
 
 	/* Create a plugin */
-	plg = gtt_plugin_new (title, path);
+	plg = gtt_plugin_new ("x", "/x");
 	if (!plg) return;
 
-	plg->tooltip = g_strdup (tip);
-
-	/* Add item to array */
-	item.type = GNOME_APP_UI_ITEM;
-	item.label = title;
-	item.hint = tip;
-	item.moreinfo = invoke_report;
 	item.user_data = plg;
-	item.unused_data = NULL;
-	item.pixmap_type = GNOME_APP_PIXMAP_STOCK;
-	item.pixmap_info = GNOME_STOCK_BLANK;
-	item.accelerator_key = 0;
-	item.ac_mods = (GdkModifierType) 0;
+	edit_plugin_widgets_to_item (dlg, &item);
 	g_array_insert_val (dlg->menus, index, item);
 	
 	/* Redraw the tree */
 	edit_plugin_redraw_tree (dlg);
+	/* XXX set the new thing to selected row */
 }
 
 static void 
