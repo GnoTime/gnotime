@@ -93,10 +93,82 @@
         )
 ))
 
+
+;; ---------------------------------------------------------     
+; The gtt-apply-func-list-to-obj routine is a simple utility 
+; to apply a list of functions to a single gtt object,
+; where a gtt object is a task, interval, or project.
+; The 'function list' should be either:
+;  -- a function that takes a single gtt object as an argument
+;  -- a double-quoted string
+; 
+(define (gtt-apply-func-list-to-obj func_list obj)
+   (let ( (first_func (car func_list))
+          (next_func  (cdr func_list)) 
+        )
+        (list
+           ; if a list, then its an error
+           (if (list? obj) ())
+
+           ; if its not a function, but just a quoted string,
+           ; then output that string
+           (if (xquoted? first_func) 
+               (cdr first_func)
+               (first_func obj))
+               
+           (if (not (null? next_func))
+               (gtt-apply-func-list-to-obj next_func obj))
+        )
+))
+           
+; The gtt-apply-func-list-to-obj-list routine is a simple 
+; utility to apply a list of functions to a list of gtt objects.
+; The 'function list' should be either:
+;  -- a function that takes a single object as an argument
+;  -- a double-quoted string
+; 
+(define (gtt-apply-func-list-to-obj-list func_list obj_list) 
+   (let ( (parent_obj (car obj_list))
+          (next_obj   (cdr obj_list))
+        )
+   
+        (list
+           ; if parent is a list, then error
+           (if (list? parent_obj) ())
+
+           ; if parent is a singleton, then its a obj 
+           ; apply the column functions to it
+           (if (not (pair? parent_obj))
+               (gtt-apply-func-list-to-obj func_list parent_obj)) 
+               
+           ; and if there are more objs, do them
+           (if (not (null? next_obj))
+                (gtt-apply-func-list-to-obj-list func_list next_obj))
+        )
+))
+
+;; ---------------------------------------------------------     
 ; The gtt-show-projects is syntatic sugar for displaying a 
 ; project info with embedded html markup
 ;
 (define (gtt-show-projects prj_list func_list) 
         (gtt-show (gtt-apply-func-list-to-proj-list func_list prj_list))
+)
+  
+; The gtt-show-tasks proceedure is syntatic sugar for displaying a 
+; task info with embedded html markup
+;
+(define (gtt-show-tasks task_list func_list) 
+        (gtt-show (gtt-apply-func-list-to-obj-list func_list task_list))
+)
+  
+; Syntactic sugar for organizing intervals.
+(define (gtt-ivls task func_list)
+        (gtt-apply-func-list-to-obj-list func_list (gtt-intervals task))
+)
+
+; Utility to compute elapsed time
+(define (gtt-interval-elapsed interval)
+        (- (gtt-interval-stop interval) (gtt-interval-start interval))
 )
   
