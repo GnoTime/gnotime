@@ -592,6 +592,9 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 /* Display a tool-tip type of message when the user pauses thier 
  * mouse over a URL.   If mouse pointer doesn't move for a 
  * second, popup a window.
+ *
+ * XXX we were going to do something fancy with this, but now I 
+ * forget what ... 
  */
 static gint
 hover_timer_func(gpointer data)
@@ -654,7 +657,7 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		gtk_window_move (GTK_WINDOW(wig->hover_help_window), 300,300);
 	}
 
-	/* If hovering over a URL, bring up a timer after one second. */
+	/* If hovering over a URL, bring up the help popup after one second. */
 	if (url)
 	{
 		/* 1000 milliseconds == 1 second */
