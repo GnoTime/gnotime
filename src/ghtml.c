@@ -49,6 +49,11 @@
  * putting a non-pointer in the cdr is an effective way to stop the 
  * recursion.)  The 'daily-totals' object already follows this 
  * convention.
+ *
+ * Another major design problem is that formatting for date/time
+ * strings is totally not user-settable.  Most of the formatting
+ * needs to be moved over to scheme code, and we just need to let
+ * the functions below return plain-old time_t seconds.
  */
 
 /* ============================================================== */
@@ -946,7 +951,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
 {                                                                   \
 	const char * str = GTT_GETTER (tsk);                             \
-	return scm_mem2string (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                       \
 }                                                                   \
                                                                     \
 static SCM                                                          \
@@ -1062,6 +1067,26 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 }
 
 static SCM
+task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	char buff[100];
+
+	time_t task_date = gtt_task_get_secs_earliest(tsk);
+	size_t len = qof_print_date_time_buff (buff, 100, task_date);
+	return scm_mem2string (buff, len);
+}
+
+static SCM
+task_get_latest_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	char buff[100];
+
+	time_t task_date = gtt_task_get_secs_latest(tsk);
+	size_t len = qof_print_date_time_buff (buff, 100, task_date);
+	return scm_mem2string (buff, len);
+}
+
+static SCM
 task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 {
 	time_t task_secs;
@@ -1087,11 +1112,13 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	return scm_mem2string (buff, strlen (buff));
 }
 
-RET_TASK_STR (ret_task_billstatus, task_get_billstatus)
-RET_TASK_STR (ret_task_billable,   task_get_billable)
-RET_TASK_STR (ret_task_billrate,   task_get_billrate)
-RET_TASK_SIMPLE (ret_task_time_str,  task_get_time_str)
-RET_TASK_SIMPLE (ret_task_value_str, task_get_value_str)
+RET_TASK_STR (ret_task_billstatus,      task_get_billstatus)
+RET_TASK_STR (ret_task_billable,        task_get_billable)
+RET_TASK_STR (ret_task_billrate,        task_get_billrate)
+RET_TASK_SIMPLE (ret_task_time_str,     task_get_time_str)
+RET_TASK_SIMPLE (ret_task_earliest_str, task_get_earliest_str)
+RET_TASK_SIMPLE (ret_task_latest_str,   task_get_latest_str)
+RET_TASK_SIMPLE (ret_task_value_str,    task_get_value_str)
 
 /* ============================================================== */
 
@@ -1477,6 +1504,8 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-task-billable",      1, 0, 0, ret_task_billable);
 	scm_c_define_gsubr("gtt-task-billrate",      1, 0, 0, ret_task_billrate);
 	scm_c_define_gsubr("gtt-task-time-str",      1, 0, 0, ret_task_time_str);
+	scm_c_define_gsubr("gtt-task-earliest-str",  1, 0, 0, ret_task_earliest_str);
+	scm_c_define_gsubr("gtt-task-latest-str",    1, 0, 0, ret_task_latest_str);
 	scm_c_define_gsubr("gtt-task-value-str",     1, 0, 0, ret_task_value_str);
 	scm_c_define_gsubr("gtt-task-parent",        1, 0, 0, ret_task_parent);
 	

@@ -540,8 +540,14 @@ void		gtt_task_append_interval (GttTask *, GttInterval *);
 
 /* gtt_task_get_secs_ever() adds up and returns the total number of 
  * seconds in the intervals in this task. */
-int 		gtt_task_get_secs_ever (GttTask *tsk);
+int     gtt_task_get_secs_ever (GttTask *tsk);
 
+/* Get the earliest and the latest timestamps to occur in any
+ * intervals associated with this task.  Return 0 if there
+ * are  o intervals on this task.
+ */
+time_t   gtt_task_get_secs_earliest (GttTask *tsk);
+time_t   gtt_task_get_secs_latest (GttTask *tsk);
 
 /* intervals */
 /* The gtt_interval_set_start() and gtt_interval_set_stop() set the

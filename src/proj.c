@@ -2302,6 +2302,38 @@ gtt_task_get_secs_ever (GttTask *tsk)
 	return total;
 }
 
+time_t
+gtt_task_get_secs_earliest (GttTask *tsk)
+{
+	GList *node;
+	if (NULL == tsk->interval_list) return 0;
+
+	time_t earliest = INT_MAX;
+
+	for (node=tsk->interval_list; node; node=node->next)
+	{
+		GttInterval * ivl = node->data;
+		if (ivl->start < earliest) earliest = ivl->start;
+	}
+	return earliest;
+}
+
+time_t
+gtt_task_get_secs_latest (GttTask *tsk)
+{
+	GList *node;
+	if (NULL == tsk->interval_list) return 0;
+
+	time_t latest = INT_MIN;
+
+	for (node=tsk->interval_list; node; node=node->next)
+	{
+		GttInterval * ivl = node->data;
+		if (ivl->stop > latest) latest = ivl->stop;
+	}
+	return latest;
+}
+
 /* =========================================================== */
 
 GttInterval *
