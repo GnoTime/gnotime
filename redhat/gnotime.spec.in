@@ -11,6 +11,7 @@ Copyright: GPL
 Group: Applications/Productivity
 Source: gnotime-%{PACKAGE_VERSION}.tar.gz
 BuildRoot: /tmp/gnotime-%{PACKAGE_VERSION}-root
+BuildPreReq: guile-devel gtkhtml2-devel
 Packager: Eric Anderson <eric.anderson@cordata.net>
 
 %description
