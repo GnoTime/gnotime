@@ -1,4 +1,4 @@
-# Norwegian translation of gfloppy (bokmål dialect).
+# Norwegian translation of gnotime (bokmål dialect).
 # Copyright (C) 1999-2001 Free Software Foundation, Inc.
 # Kjartan Maraas <kmaraas@gnome.org>, 1999-2001.
 #
@@ -250,7 +250,7 @@ msgid ""
 msgstr ""
 "Filen\n"
 "\t%s\n"
-"ser ut til å være korrupt\n"
+"ser ut til å være ødelagt\n"
 
 #: src/err-throw.c:87
 #, c-format
@@ -295,11 +295,11 @@ msgstr "Filen kunne ikke åpnes"
 
 #: src/export.c:143
 msgid "Error occured during export"
-msgstr ""
+msgstr "Feil ved eksportering"
 
 #: src/export.c:161
 msgid "Tab-Delimited Export"
-msgstr ""
+msgstr "Tabulator-separert Eksport"
 
 #: src/file-io.c:374
 msgid "project %t started"
@@ -319,7 +319,7 @@ msgstr "Tidskrav"
 
 #: src/ghtml.c:611 src/ghtml.c:625 src/ghtml.c:641
 msgid "Undefined"
-msgstr ""
+msgstr "Ikke definert"
 
 #: src/ghtml.c:621 glade/project_properties.glade.h:27
 msgid "Medium"
@@ -433,11 +433,11 @@ msgstr "program avsluttet"
 
 #: src/main.c:121
 msgid ""
-"There seems to be another GTimeTracker running.\n"
-"Press OK to start GTimeTracker anyway, or press Cancel to quit."
+"There seems to be another GnoTime running.\n"
+"Press OK to start GnoTime anyway, or press Cancel to quit."
 msgstr ""
-"Det ser ut som om GtimeTracker allerede kjører.\n"
-"Trykk OK for å starte GTimeTracker likevel, eller avbryt for å avslutte."
+"Det ser ut som om GnoTime allerede kjører.\n"
+"Trykk OK for å starte GnoTime likevel, eller avbryt for å avslutte."
 
 #: src/main.c:133
 msgid "Cannot create pid-file!"
@@ -477,19 +477,18 @@ msgstr "PROSJEKT"
 
 #: src/menucmd.c:50
 msgid "Bug-fixes from:"
-msgstr ""
+msgstr "Feilrettinger fra:"
 
 #: src/menucmd.c:180
-#, fuzzy
 msgid ""
-"GTimeTracker is a combination stop-watch, diary, consultant billing system "
+"GnoTime is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
 "task, associate a memo with it, set a billing rate, print an invoice, as "
 "well as track the status of other projects."
 msgstr ""
-"GTimeTracker er en kombinasjon av en stoppeklokke, dagbok, "
-"faktureringssystem for konsulenter og prosjekthåndterer. Du kan måle mengden "
-"tid du bruker på en oppgave, koble et notat til det, sette faktureringsrate, "
+"GnoTime er en kombinasjon av stoppeklokke, dagbok, "
+"faktureringssystem for konsulenter og prosjekthåndterer. Du kan måle medgått "
+"tid du bruker på en oppgave, koble et notat til det, sette timesats, "
 "skrive ut faktura, i tillegg til å spore status for andre prosjekter."
 
 #: src/menucmd.c:239
@@ -498,7 +497,7 @@ msgstr "Nytt prosjekt..."
 
 #: src/menus.c:35
 msgid "_Export Tasks"
-msgstr ""
+msgstr "_Eksporter oppgaver"
 
 #: src/menus.c:39
 msgid "Export _Projects"
@@ -530,9 +529,8 @@ msgid "New _Diary Entry"
 msgstr "Ny dagbokoppføring"
 
 #: src/menus.c:71
-#, fuzzy
 msgid "Create new task header for this project"
-msgstr "Endre aktiv oppgave for dette prosjektet"
+msgstr "Lag ny oppgaveoverskrift for dette prosjektet"
 
 #: src/menus.c:89
 msgid "_All Journal..."
@@ -615,9 +613,8 @@ msgid "_Edit Diary Entry"
 msgstr "R_ediger dagbokoppføring"
 
 #: src/menus.c:167
-#, fuzzy
 msgid "Edit task header for this project"
-msgstr "Vis timelistejournal for dette prosjektet"
+msgstr "Endre oppgaveoverskrift for dette prosjektet"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
@@ -691,8 +688,8 @@ msgid "User's Guide and Manual"
 msgstr "Brukerhåndbok"
 
 #: src/toolbar.c:258
-msgid "Quit Gnome TimeTracker"
-msgstr "Avslutt GTimeTracker"
+msgid "Quit GnoTime"
+msgstr "Avslutt GnoTime"
 
 #. ======================= END OF FILE =======================
 #: glade/interval_edit.glade.h:1
@@ -1040,7 +1037,7 @@ msgid ""
 "Switches between projects that happen faster than this will not be logged "
 "(enter the number of seconds)"
 msgstr ""
-"Bytting mellom prosjekter som skjer raskere enn dette vil ikke logges (skriv "
+"Bytte mellom prosjekter som skjer raskere enn dette vil ikke logges (skriv "
 "inn antall sekunder)"
 
 #: glade/prefs.glade.h:56
