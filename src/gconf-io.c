@@ -1,3 +1,22 @@
+/*   GConf2 input/output handling for GTimeTracker - a time tracker
+ *   Copyright (C) 2003 Linas Vepstas <linas@linas.org>
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program; if not, write to the Free Software
+ *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+#include "config.h"
 
 
 #ifndef GTT_GCONF_IO_H_
@@ -15,15 +34,19 @@ gboolean gtt_gconf_exists (void);
 #include <glib.h>
 
 #include "app.h"
+#include "cur-proj.h"
+#include "plug-in.h"
 #include "prefs.h"
+#include "timer.h"
 
+extern int save_count; /* XXX */
 
 #define GTT_GCONF "/apps/GnoTimeDebug"
 
 /* XXX Should use changesets */
 /* XXX warnings should be graphical */
 #define CHKERR(rc,err_ret,dir) {                                       \
-   if (rc) {                                                           \
+   if (FALSE == rc) {                                                  \
       printf ("GTT: GConf: Warning: set %s failed: ", dir);            \
       if (err_ret) printf ("%s", err_ret->message);                    \
       printf ("\n");                                                   \
@@ -50,7 +73,7 @@ gboolean gtt_gconf_exists (void);
    gboolean rc;                                                        \
    GError *err_ret= NULL;                                              \
                                                                        \
-   rc = gconf_client_set_str (client, GTT_GCONF dir, val, &err_ret);   \
+   rc = gconf_client_set_string (client, GTT_GCONF dir, val, &err_ret); \
    CHKERR (rc,err_ret,dir);                                            \
 }
 
@@ -184,7 +207,7 @@ gtt_gconf_save (void)
 		w = ctree_get_col_width (global_ptw, i);
 		if (0 > w) break;
 		rc = gconf_client_set_int(client, s, w, &err_ret);
-		CHKERR(rc,err_ret);
+		CHKERR(rc,err_ret,s);
 	}
 
 	/* ------------- */
@@ -204,16 +227,16 @@ gtt_gconf_save (void)
 		GError *err_ret= NULL;
 
 		GttPlugin *plg = node->data;
-	   g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Name", i);
-		rc = gconfig_client_set_string(client, s, plg->name, &err_ret);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Name", i);
+		rc = gconf_client_set_string(client, s, plg->name, &err_ret);
 		CHKERR (rc,err_ret,s);
 
-	   g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Path", i);
-		rc = gconfig_client_set_string(client, s, plg->path, &err_ret);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Path", i);
+		rc = gconf_client_set_string(client, s, plg->path, &err_ret);
 		CHKERR (rc,err_ret,s);
 
-	   g_snprintf(s, sizeof (s), GTT_CONF"/Report%d/Tooltip", i);
-		rc = gconfig_client_set_string(client, s, plg->tooltip, &err_ret);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Tooltip", i);
+		rc = gconf_client_set_string(client, s, plg->tooltip, &err_ret);
 		CHKERR (rc,err_ret,s);
 
 		i++;
