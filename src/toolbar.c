@@ -1,5 +1,6 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
+ *   Copyright (C) 2002, Linas Vepstas <linas@lionas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,55 +35,25 @@
 typedef struct _MyToggle MyToggle;
 typedef struct _MyToolbar MyToolbar;
 
-struct _MyToolbar {
+struct _MyToolbar 
+{
 	GtkToolbar *tbar;
-	GtkWidget *cut, *copy, *paste; /* to make them sensible
-					  as needed */
-	GtkWidget *journal_w;
+	GtkWidget *cut, *copy, *paste; /* to make them sensible as needed */
+	GtkWidget *journal_button;
 	GtkWidget *prop_w;
-	GtkWidget *timer_w;
-	// GnomeStock *timer;  broken by gnome-2.0 ....
+	GtkWidget *timer_button;
+	GtkImage  *timer_button_image;
 	GtkWidget *calendar_w;
 };
 
 MyToolbar *mytbar = NULL;
 
-
-
-static GtkWidget *
-add_stock_button(GtkToolbar *tbar, const char *text, const char *tt_text,
-		 const char *icon, GtkSignalFunc sigfunc)
-{
-	GtkWidget *w, *pixmap;
-
-	pixmap = gtk_image_new_from_stock (icon, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	w = gtk_toolbar_append_item(tbar, text, tt_text, NULL, pixmap,
-				    sigfunc, NULL);
-	return w;
-}
-
-
-#ifdef GNOME_20_BROKEN_NEEDS_FIXING
-static GnomeStock *
-add_toggle_button(GtkToolbar *tbar, char *text, char *tt_text,
-		 char *icon, GtkSignalFunc sigfunc, GtkWidget **wptr)
-{
-	GtkWidget *w;
-
-/* i think I'm supposed to use 
- * w = gtk_image_new_from_stock (icon, GTK_ICON_SIZE_LARGE_TOOLBAR);
- *
- * and later use gtk_image_set_from_stock()
- * to toggle the thing ...
+/* ================================================================= */
+/* This routine updates the appearence/behaviour of the toolbar.
+ * In particular, the 'paste' button becomes active when there
+ * is something to paste, and the timer button toggles it's 
+ * image when a project timer is started/stopped.
  */
-	w = gnome_stock_pixmap_widget((GtkWidget *)window, icon);
-	(*wptr) = gtk_toolbar_append_item(tbar, text, tt_text, NULL, w,
-					  sigfunc, NULL);
-	return GNOME_STOCK(w);
-}
-#endif
-
-
 
 void
 toolbar_set_states(void)
@@ -94,55 +65,47 @@ toolbar_set_states(void)
 	g_return_if_fail(mytbar->tbar != NULL);
 	g_return_if_fail(GTK_IS_TOOLBAR(mytbar->tbar));
 
-	if (mytbar->tbar && mytbar->tbar->tooltips) {
+	if (mytbar->tbar && mytbar->tbar->tooltips) 
+	{  
 		if (config_show_tb_tips)
 			gtk_tooltips_enable(mytbar->tbar->tooltips);
 		else
 			gtk_tooltips_disable(mytbar->tbar->tooltips);
 	}
-#if 0
-/* not done any more, use the focus project instead */
-	if (mytbar->cut)
-		gtk_widget_set_sensitive(mytbar->cut, (cur_proj != NULL));
-	if (mytbar->copy)
-		gtk_widget_set_sensitive(mytbar->copy, (cur_proj != NULL));
-#endif
+	
 	if (mytbar->paste)
+	{
 		gtk_widget_set_sensitive(mytbar->paste,
 					 (cutted_project != NULL));
-#if 0
-/* not done any more, use the focus project instead */
-	if (mytbar->prop_w)
-		gtk_widget_set_sensitive(mytbar->prop_w, (cur_proj != NULL));
-	if (mytbar->journal_w)
-		gtk_widget_set_sensitive(mytbar->journal_w, (cur_proj != NULL));
-#endif
-#ifdef GNOME_20_BROKEN_NEEDS_FIXING
-	if (mytbar->timer)
-		gnome_stock_set_icon(mytbar->timer,
-				     (timer_is_running()) ?
+	}
+
+	if (mytbar->timer_button_image)
+	{
+		gtk_image_set_from_stock (mytbar->timer_button_image,
+				 ((timer_is_running()) ?
 				     GNOME_STOCK_TIMER_STOP :
-				     GNOME_STOCK_TIMER);
-#endif
+				     GNOME_STOCK_TIMER),
+				 GTK_ICON_SIZE_LARGE_TOOLBAR);
+	}
+		
 
-#if 0
-/* not done any more, use the focus project */
-	if (mytbar->timer_w)
-		gtk_widget_set_sensitive(GTK_WIDGET(mytbar->timer_w),
-			(NULL != prev_proj) || (NULL != cur_proj));
-#endif
-
-	if ((config_show_tb_icons) && (config_show_tb_texts)) {
+	if ((config_show_tb_icons) && (config_show_tb_texts)) 
+	{
 		tb_style = GTK_TOOLBAR_BOTH;
-	} else if ((!config_show_tb_icons) && (config_show_tb_texts)) {
+	} 
+	else if ((!config_show_tb_icons) && (config_show_tb_texts)) 
+	{
 		tb_style = GTK_TOOLBAR_TEXT;
-	} else {
+	} 
+	else 
+	{
 		tb_style = GTK_TOOLBAR_ICONS;
 	}
 	gtk_toolbar_set_style(mytbar->tbar, tb_style);
 }
 
 
+/* ================================================================= */
 
 static void
 toolbar_help(GtkWidget *widget, gpointer data)
@@ -155,9 +118,28 @@ toolbar_help(GtkWidget *widget, gpointer data)
 	}
 }
 
+/* ================================================================= */
+/* A small utility routine to use a stock image with custom text,
+ * and put the whole thing into the toolbar
+ */
+static GtkWidget *
+add_stock_button(GtkToolbar *tbar, const char *text, const char *tt_text,
+		 const char *icon, GtkSignalFunc sigfunc)
+{
+	GtkWidget *w, *image;
 
+	image = gtk_image_new_from_stock (icon, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	w = gtk_toolbar_append_item(tbar, text, tt_text, NULL, image,
+				    sigfunc, NULL);
+	return w;
+}
 
-/* returns a pointer to the (still hidden) GtkToolbar */
+/* ================================================================= */
+/* Assemble the buttons in the toolbar.  Which ones
+ * are visible depends on the config settings.
+ * Returns a pointer to the (still hidden) GtkToolbar 
+ */
+
 GtkWidget *
 build_toolbar(void)
 {
@@ -198,11 +180,14 @@ build_toolbar(void)
 	}
 	if (config_show_tb_journal) 
 	{
-		mytbar->journal_w = add_stock_button(mytbar->tbar, 
+		/* There is no true 'stock' item for journal, so
+		 * instead we draw our own button, and use a stock 
+		 * image. */
+		mytbar->journal_button = add_stock_button(mytbar->tbar, 
 				 _("Journal"),
 				 _("View and Edit Timestamp Logs"),
 				 GNOME_STOCK_BOOK_OPEN,
-				 (GtkSignalFunc)edit_journal);
+				 (GtkSignalFunc) edit_journal);
 		position ++;
 	}
 	if (config_show_tb_prop) 
@@ -210,19 +195,26 @@ build_toolbar(void)
 		mytbar->prop_w = gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_PROPERTIES,
 				_("Edit Project Properties..."), NULL,
-				(GtkSignalFunc)menu_properties, NULL,
+				(GtkSignalFunc) menu_properties, NULL,
 				position ++);
 	}
 	if (config_show_tb_timer) 
 	{
-#ifdef GNOME_20_BROKEN_NEEDS_FIXING
-		mytbar->timer = add_toggle_button(mytbar->tbar, _("Timer"),
-				_("Start/Stop Timer"),
-				GNOME_STOCK_TIMER,
-				(GtkSignalFunc)menu_toggle_timer,
-				&(mytbar->timer_w));
+		/* There is no true 'stock' item for timer, so
+		 * instead we draw our own button, and use a 
+		 * pair of stock images to toggle between. 
+		 */
+		mytbar->timer_button_image = GTK_IMAGE(gtk_image_new());
+		gtk_image_set_from_stock (mytbar->timer_button_image,
+				 GNOME_STOCK_TIMER, GTK_ICON_SIZE_LARGE_TOOLBAR);
+		
+		mytbar->timer_button = 
+		       gtk_toolbar_append_item(mytbar->tbar, 
+				 _("Timer"),
+				 _("Start/Stop Timer"),
+				 NULL, mytbar->timer_button_image,
+				 (GtkSignalFunc) menu_toggle_timer, NULL);
 		position ++;
-#endif
 	}
 	if (config_show_tb_calendar) 
 	{
@@ -299,3 +291,4 @@ update_toolbar_sections(void)
 }
 
 
+/* ======================= END OF FILE ======================= */
