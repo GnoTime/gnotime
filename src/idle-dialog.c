@@ -104,6 +104,8 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	char tbuff [30];
 	char mbuff [130];
 	char * msg;
+	time_t now = time(0);
+	time_t idle_time;
 	
 	/* Set a value for the thingy under the slider */
 	if (3600 > credit)
@@ -124,17 +126,17 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	if (3600 > credit)
 	{
 		msg = g_strdup_printf (
-		         _("The timer has been credited "
-		           "with %s minutes since the last keyboard/mouse "
+		         _("The timer will be credited "
+		           "with %d minutes since the last keyboard/mouse "
 		           "activity.  If you want to change the amount "
 		           "of time credited, use the slider below to "
 		           "adjust the value."),
-		           tbuff);
+		           (credit+30)/60);
 	}
 	else
 	{
 		msg = g_strdup_printf (
-		         _("The timer has been credited "
+		         _("The timer will be credited "
 		           "with %s hours since the last keyboard/mouse "
 		           "activity.  If you want to change the amount "
 		           "of time credited, use the slider below to "
@@ -142,6 +144,37 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 		           tbuff);
 	}
 	gtk_label_set_text (dlg->credit_label, msg);
+	g_free (msg);
+
+	/* Update the total elapsed time part of the message */
+	idle_time = now - dlg->last_activity;
+	
+	if (3600 > idle_time)
+	{
+		msg = g_strdup_printf (
+			_("The keyboard and mouse have been idle "
+			  "for %d minutes.  The currently running "
+			  "project, <b><i>%s - %s</i></b>, "
+			  "has been stopped. "
+			  "Do you want to restart it?"),
+			(idle_time+30)/60,
+			gtt_project_get_title(dlg->prj),
+			gtt_project_get_desc(dlg->prj));
+	}
+	else
+	{
+		msg = g_strdup_printf (
+			_("The keyboard and mouse have been idle "
+			  "for %d:%02d hours.  The currently running "
+			  "project (%s - %s) "
+			  "has been stopped. "
+			  "Do you want to restart it?"),
+			(idle_time+30)/3600, ((idle_time+30)/60)%60,
+			gtt_project_get_title(dlg->prj),
+			gtt_project_get_desc(dlg->prj));
+	}
+	
+	gtk_label_set_markup (dlg->idle_label, msg);
 	g_free (msg);
 
 }
@@ -228,7 +261,6 @@ show_inactive_dialog (GttInactiveDialog *id)
 {
 	time_t now;
 	time_t idle_time;
-	char *msg;
 	GttProject *prj = cur_proj;
 
 	if (!id) return;
@@ -261,21 +293,8 @@ show_inactive_dialog (GttInactiveDialog *id)
 	id->previous_credit = idle_time;
 	adjust_timer (id, config_idle_timeout);
 
+	/* Now, draw the messages in the GUI popup. */
 	display_value (id, config_idle_timeout);
-
-	/* warn the user */
-	msg = g_strdup_printf (
-		_("The keyboard and mouse have been idle "
-		  "for %d minutes.  The currently running "
-		  "project (%s - %s) "
-		  "has been stopped. "
-		  "Do you want to restart it?"),
-		(idle_time+30)/60,
-		gtt_project_get_title(prj),
-		gtt_project_get_desc(prj));
-	
-	gtk_label_set_text (id->idle_label, msg);
-	g_free (msg);
 
 	gtk_widget_show (GTK_WIDGET(id->dlg));
 }
