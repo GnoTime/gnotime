@@ -177,7 +177,7 @@ about_box(GtkWidget *w, gpointer data)
 #ifdef DEBUG
 				    __DATE__ ", " __TIME__,
 #else
- _("GTimeTracker is a combination stop-watch, diary, consultant billing "
+ _("GnoTime is a combination stop-watch, diary, consultant billing "
    "system and project manager.  You can measure the amount of time you "
    "spend on a task, associate a memo with it, set a billing rate, print "
    "an invoice, as well as track the status of other projects."),

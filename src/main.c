@@ -117,8 +117,8 @@ static void lock_gtt(void)
 	{
 		GtkWidget *warning;
 		warning = gnome_message_box_new(
-			_("There seems to be another GTimeTracker running.\n"
-			  "Press OK to start GTimeTracker anyway, or press Cancel to quit."),
+			_("There seems to be another GnoTime running.\n"
+			  "Press OK to start GnoTime anyway, or press Cancel to quit."),
 			GNOME_MESSAGE_BOX_WARNING,
 			GTK_STOCK_OK,
 			GTK_STOCK_CANCEL,

@@ -34,4 +34,4 @@ GttInactiveDialog * inactive_dialog_new (void);
 void show_inactive_dialog (GttInactiveDialog *id);
 		  
 
-#endif GTT_INACTIVITY_DIALOG_H_
+#endif /* GTT_INACTIVITY_DIALOG_H_ */

@@ -255,7 +255,7 @@ build_toolbar(void)
 	{
 		gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_QUIT,
-				_("Quit Gnome TimeTracker"), NULL,
+				_("Quit GnoTime"), NULL,
 				 (GtkSignalFunc)app_quit, NULL,
 				position ++);
 	}

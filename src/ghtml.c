@@ -606,7 +606,6 @@ get_urgency (GttProject *prj)
 		case GTT_LOW:       return _("Low"); 
 		case GTT_MEDIUM:    return _("Normal");
 		case GTT_HIGH:      return _("Urgent"); 
-		default:
 	}
 	return _("Undefined");
 }
@@ -620,7 +619,6 @@ get_importance (GttProject *prj)
 		case GTT_LOW:       return _("Low"); 
 		case GTT_MEDIUM:    return _("Medium");
 		case GTT_HIGH:      return _("Important"); 
-		default:
 	}
 	return _("Undefined");
 }
@@ -636,7 +634,6 @@ get_status (GttProject *prj)
 		case GTT_ON_HOLD:      return _("On Hold"); 
 		case GTT_CANCELLED:    return _("Cancelled"); 
 		case GTT_COMPLETED:    return _("Completed"); 
-		default:
 	}
 	return _("Undefined");
 }
