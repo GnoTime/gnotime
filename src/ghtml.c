@@ -21,8 +21,6 @@
 #define _GNU_SOURCE
 #include <glib.h>
 #include <guile/gh.h>
-#include <libguile/backtrace.h>
-#include <libguile/debug.h>
 #include <libguile.h>
 #include <limits.h>
 #include <stdio.h>
@@ -111,12 +109,10 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 	/* Either a 'symbol or a "quoted string" */
 	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
 	{
-		int len;
 		SCM rc = SCM_EOL;
-		char *str;
-		str = gh_scm2newstr (node, &len);
+		char *str = SCM_STRING_CHARS (node);
+		int len = SCM_STRING_LENGTH (node);
 		if (0<len) rc = str_func (ghtml, str);
-		free (str);
 		return rc;
 	}
 		
@@ -168,8 +164,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
 			{
 				cur_type = GTT_NONE;
-				char buff[20];
-				gh_get_substr (type, buff, 0, 20);
+				char *buff = SCM_STRING_CHARS (type);
 
 				if ((!strncmp (buff, "gtt-project-ptr",15)) ||
 				    (!strncmp (buff, "gtt-project-list",16)))
@@ -330,9 +325,9 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	/* either a 'symbol or a "quoted string" */
 	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
 	{
-		str = gh_scm2newstr (node, &len);
+		str = SCM_STRING_CHARS (node);
+		len = SCM_STRING_LENGTH (node);
 		if (0<len) (ghtml->write_stream) (ghtml, str, len, ghtml->user_data);
-		free (str);
 	}
 	else
 	if (SCM_CONSP(node))
@@ -1192,6 +1187,11 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 		printf ("\tScheme error was: %s\n", str);
 	}
 	scm_backtrace(); 
+
+	SCM fmt = scm_makfrom0str ("~S");
+	SCM s_str = scm_simple_format (SCM_BOOL_F, fmt, SCM_LIST1(throw_args));
+	printf ("\tthrow_args=%s\n", SCM_STRING_CHARS (s_str));
+
 	return SCM_EOL;
 }
 
@@ -1307,18 +1307,17 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 			nr = strlen (start);
 		}
 		
-		/* write everything that we got before the markup */
+		/* Write everything that we got before the markup */
 		if (ghtml->write_stream)
 		{
 			(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
 		}
 
-		/* if there is markup, then dispatch */
+		/* If there is markup, then dispatch */
 		if (scmstart)
 		{
-			// gh_eval_str_with_standard_handler (scmstart);
-			gh_eval_str_with_catch (scmstart, my_catch_handler);
 			// scm_c_eval_string (scmstart);
+			gh_eval_str_with_catch (scmstart, my_catch_handler);
 			scmstart = NULL;
 		}
 		start = end;

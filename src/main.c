@@ -23,8 +23,8 @@
 #include <gconf/gconf.h>
 #include <glade/glade.h>
 #include <gnome.h>
-#include <guile/gh.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <libguile.h>
 #include <signal.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -56,9 +56,6 @@
 char *first_proj_title = NULL;  /* command line over-ride */
 
 static gboolean first_time_ever = FALSE;  /* has gtt ever run before? */
-
-/* SM == session management */
-#define USE_SM
 
 
 const char *
@@ -612,8 +609,6 @@ save_projects (void)
 
 
 
-#ifdef USE_SM
-
 /*
  * session management
  */
@@ -665,8 +660,6 @@ session_die(GnomeClient *client)
 	app_quit(NULL, NULL);
 }
 
-#endif /* USE_SM */
-
 
 static void
 got_signal (int sig)
@@ -680,7 +673,7 @@ got_signal (int sig)
 
 
 static void 
-guile_inner_main(int argc, char **argv)
+guile_inner_main(void *closure, int argc, char **argv)
 {
 	gtk_main();
 	unlock_gtt();
@@ -695,16 +688,12 @@ inline RETSIGTYPE sigchld_handler(int unused) {
 int 
 main(int argc, char *argv[])
 {
-	static char *geometry_string = NULL;
 #if defined (HAVE_DECL_WNOHANG) || defined (HAVE_DECL_SA_NOCLDWAIT)
     struct sigaction reapchildren;
-   
     memset(&reapchildren, 0, sizeof reapchildren);
 #endif /*  WNOHANG/SA_NOCLDWAIT */
 
-#ifdef USE_SM
-	GnomeClient *client;
-#endif /* USE_SM */
+	static char *geometry_string = NULL;
 	static const struct poptOption geo_options[] =
 	{
 		{"geometry", 'g', POPT_ARG_STRING, &geometry_string, 0,
@@ -723,13 +712,11 @@ main(int argc, char *argv[])
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(GETTEXT_PACKAGE);
 
-#ifdef USE_SM
-	client = gnome_master_client();
+	GnomeClient *client = gnome_master_client();
 	g_signal_connect(G_OBJECT(client), "save_yourself",
 			   G_CALLBACK(save_state), (gpointer) argv[0]);
 	g_signal_connect(G_OBJECT(client), "die",
 			   G_CALLBACK(session_die), NULL);
-#endif /* USE_SM */
 
 	glade_init();
 
@@ -784,7 +771,7 @@ main(int argc, char *argv[])
 	read_config();
 #endif
 
-	gh_enter(argc, argv, guile_inner_main);
+   scm_boot_guile (argc, argv, guile_inner_main, NULL);
 	return 0; /* not reached !? */
 }
 
