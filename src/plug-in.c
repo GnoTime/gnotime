@@ -17,7 +17,6 @@
  */
 
 #include "config.h"
-#include <errno.h>
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
@@ -112,9 +111,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	{
 		gchar *msg;
 		GtkWidget *mb;
-		int nerr = errno;
-		msg = g_strdup_printf (_("Unable to open the report file %s\n%s"),
-			path, strerror (nerr)); 
+		msg = g_strdup_printf (_("Unable to open the report file %s\n"), path); 
 		mb = gnome_message_box_new (msg,
 			GNOME_MESSAGE_BOX_ERROR, 
 			GTK_STOCK_CLOSE,

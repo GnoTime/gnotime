@@ -19,7 +19,6 @@
 
 #include "config.h"
 
-#include <errno.h>
 #include <glib.h>
 #include <gnome.h>    /* only needed for definition of _() */
 /* #include <libintl.h> conflicts with <libgnome/gnome-i18n.h> on some systems */

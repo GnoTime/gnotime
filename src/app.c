@@ -18,7 +18,6 @@
  */
 #include "config.h"
 
-#include <errno.h>
 #include <gnome.h>
 #include <sched.h>
 #include <stdio.h>
