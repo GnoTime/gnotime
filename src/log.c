@@ -155,6 +155,8 @@ printf_project(const char *format, GttProject *proj)
 		}
 	}
 	ret = str->str;
+	/* Uhh, I'm not sure, but I think 'FALSE' means don't free 
+	 * the char * array  */
 	g_string_free (str, FALSE);
 	return ret;
 }
@@ -183,6 +185,7 @@ do_log_proj (time_t t, GttProject *proj, gboolean start)
 	}
 
 	log_write (t, s);
+	g_free (s);
 }
 
 static void

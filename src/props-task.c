@@ -76,7 +76,9 @@ task_prop_set(GnomePropertyBox * pb, gint page, PropTaskDlg *dlg)
 			gtk_entry_set_text(dlg->memo, _("empty"));
 		}
 	
-		gtt_task_set_notes(dlg->task, xxxgtk_textview_get_text(dlg->notes));
+		str = xxxgtk_textview_get_text(dlg->notes);
+		gtt_task_set_notes(dlg->task, str);
+		g_free (str);
 
 		ivl = (int) (60.0 * atof (gtk_entry_get_text(dlg->unit)));
 		gtt_task_set_bill_unit (dlg->task, ivl);

@@ -184,7 +184,7 @@ resolve_path (const char * pathfrag)
 	else
 	{
 		/* I suppose we should look up $HOME if ~ */
-		fullpath = pathfrag;
+		fullpath = g_strdup (pathfrag);
 	}
 
 	return fullpath;
@@ -234,6 +234,7 @@ read_data(void)
 	{
 		post_read_data ();
 	}
+	g_free (xml_filepath);
 }
 
 static void
@@ -328,6 +329,7 @@ save_all (void)
 	{
 		errmsg = gtt_err_to_string (errcode, xml_filepath);
 	}
+	g_free (xml_filepath);
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
@@ -393,6 +395,7 @@ save_projects (void)
 		     NULL);
 		g_free ((gchar *) errmsg);
 	}
+	g_free (xml_filepath);
 }
 
 

@@ -154,6 +154,7 @@ run_shell_command (GttProject *proj, gboolean do_start)
 	{
 		g_warning("%s: %d: cur_proj_set: couldn't fork\n", __FILE__, __LINE__);
 	}
+	g_free (str);
 
 	/* Note that the forked processes might be scheduled by the operating
 	 * system 'out of order', if we've made rapid successive calls to this

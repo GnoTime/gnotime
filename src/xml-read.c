@@ -327,7 +327,8 @@ gtt_xml_read_projects (const char * filename)
 	if (!root->name || strcmp ("gtt", root->name)) 
 	{
 		xmlFreeDoc(doc);
-		gtt_err_set_code (GTT_NOT_A_GTT_FILE); return NULL;
+		gtt_err_set_code (GTT_NOT_A_GTT_FILE); 
+		return NULL;
 	}
 
 	project_list = root->xmlChildrenNode;
@@ -349,6 +350,8 @@ gtt_xml_read_projects (const char * filename)
 		prj = parse_project (project);
 		prjs = g_list_append (prjs, prj);
 	}
+
+	xmlFreeDoc(doc);
 	return prjs;
 }
 

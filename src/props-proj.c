@@ -96,7 +96,9 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 		}
 	
 		gtt_project_set_desc(dlg->proj, gtk_entry_get_text(dlg->desc));
-		gtt_project_set_notes(dlg->proj, xxxgtk_textview_get_text(dlg->notes));
+		str = xxxgtk_textview_get_text(dlg->notes);
+		gtt_project_set_notes(dlg->proj, str);
+		g_free(str);
 		gtt_project_thaw (dlg->proj);
 	}
 
