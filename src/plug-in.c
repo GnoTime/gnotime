@@ -32,7 +32,7 @@ struct NewPluginDialog_s
 	GladeXML  *gtxml;
 	GtkDialog *dialog;
 	GtkEntry  *plugin_name;
-	GtkEntry  *plugin_path;
+	GnomeFileEntry  *plugin_path;
 	GtkEntry  *plugin_tooltip;
 	GnomeApp  *app;
 };
@@ -77,7 +77,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gtk_entry_get_text (dlg->plugin_path);
+	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
 
 	/* do a basic sanity check */
@@ -94,7 +94,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 			GTK_STOCK_CLOSE,
 			NULL);
 		gtk_widget_show (mb);
-		// g_free (msg);
+		/* g_free (msg);   XXX memory leak needs fixing. */
 	}
 	else
 	{
@@ -121,9 +121,11 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 		gnome_app_insert_menus (dlg->app,  N_("Reports/<Separator>"), entry);
 	
 		/* zero-out entries, so next time user doesn't see them again */
+		/*
 		gtk_entry_set_text (dlg->plugin_name, "");
 		gtk_entry_set_text (dlg->plugin_path, "");
 		gtk_entry_set_text (dlg->plugin_tooltip, "");
+		*/
 	}
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
 }
@@ -165,7 +167,7 @@ new_plugin_dialog_new (void)
 	dlg->plugin_name = GTK_ENTRY(e);
 
 	e = glade_xml_get_widget (gtxml, "plugin path");
-	dlg->plugin_path = GTK_ENTRY(e);
+	dlg->plugin_path = GNOME_FILE_ENTRY(e);
 
 	e = glade_xml_get_widget (gtxml, "plugin tooltip");
 	dlg->plugin_tooltip = GTK_ENTRY(e);
