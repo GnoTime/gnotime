@@ -306,10 +306,15 @@ int      gtt_project_total (GttProject *);
 
 /* The gtt_project_get_children() returns a list of the 
  *    subprojects of this project 
+ *    
  * The gtt_project_get_tasks() routine returns a list of
  *    tasks associated with this project.
+ *    
  * The gtt_project_get_first_task() returns the task at the head
- *    of the queue (the currently active task).
+ *    of the queue (the currently active task).  If this is a new
+ *    project, there may not be any tasks, and it would
+ *    return NULL.
+ *
  * The gtt_project_get_first_interval() routine returns the 
  *    interval at the head of the active task (i.e. the currenly
  *    ticking interval, or the last interval to tick).
