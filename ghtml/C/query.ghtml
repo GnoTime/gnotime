@@ -14,8 +14,19 @@ Run report on
 <?scm (gtt-show-project-desc) ?>
 
 <p>
-Find all projects that:
-<form method="get" action="status.ghtml">
+<FORM METHOD="get" ACTION="status.ghtml">
+Run the report 
+&nbsp;
+<SELECT NAME="report-path">
+<OPTION VALUE="journal.ghtml">Journal</OPTION>
+<OPTION VALUE="bigtable.ghtml">Big Journal</OPTION>
+<OPTION VALUE="invoice.ghtml">Invoice</OPTION>
+<OPTION VALUE="daily.ghtml">Daily</OPTION>
+<OPTION VALUE="status.ghtml" SELECTED>Status</OPTION>
+<OPTION VALUE="todo.ghtml">To Do</OPTION>
+</SELECT>
+&nbsp;
+on all projects that:
 <table>
 <tr>
 <td>Showed activity more recently than:</td>
@@ -31,7 +42,7 @@ Find all projects that:
 </td>
 </tr>
 </table>
-</form>
+</FORM>
 
 Please note that this query generator is under development and is 
 subject to change.  
