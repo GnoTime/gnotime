@@ -111,18 +111,29 @@ printf_project(const char *format, GttProject *proj)
 				g_string_append_printf (str, "%d", sss);
 				break;
 				
-			case 'T': 
-				sss = gtt_project_get_secs_ever(proj);
-				g_string_append_printf(str, "%d:%02d:%02d", sss / 3600,
-					   (sss / 60) % 60,
-					   sss % 60);
+			case 'h':
+				sss = gtt_project_get_secs_ever (proj);
+				g_string_append_printf (str, "%d", sss / 3600);
 				break;
-				
+
+			case 'H':
+				sss = gtt_project_get_secs_day (proj);
+				g_string_append_printf (str, "%02d", sss / 3600);
+				break;
+
 			case 'm':
 				sss = gtt_project_get_secs_ever (proj);
 				g_string_append_printf (str, "%d", sss / 60);
 				break;
 				
+			case 'n': {
+				char buff[100];
+				sss = time(0);
+				ctime_r (&sss, buff);
+				buff [strlen(buff)-1] = 0; /* erase newline */
+				g_string_append (str, buff);
+				break;
+			}
 			case 'M':
 				sss = gtt_project_get_secs_day (proj);
 				g_string_append_printf (str, "%02d", (sss / 60) % 60);
@@ -138,16 +149,13 @@ printf_project(const char *format, GttProject *proj)
 				g_string_append_printf (str, "%02d", sss % 60);
 				break;
 
-			case 'h':
-				sss = gtt_project_get_secs_ever (proj);
-				g_string_append_printf (str, "%d", sss / 3600);
+			case 'T': 
+				sss = gtt_project_get_secs_ever(proj);
+				g_string_append_printf(str, "%d:%02d:%02d", sss / 3600,
+					   (sss / 60) % 60,
+					   sss % 60);
 				break;
-
-			case 'H':
-				sss = gtt_project_get_secs_day (proj);
-				g_string_append_printf (str, "%02d", sss / 3600);
-				break;
-
+				
 			default:
 				g_string_append_c(str, *p);
 				break;
