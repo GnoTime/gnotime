@@ -204,6 +204,32 @@ ctree_stop_timer (GttProject *prj)
 }
 
 /* ============================================================== */
+/* Pseudo focus-row-changed callback. Things inside of ctree
+ * should call this, which in turn calls out to distribute
+ * an event to other subsystems, telling them that the focus 
+ * has changed. 
+ */
+
+static void
+focus_row_changed_cb (GtkCTree *ctree, int row)
+{
+	GtkCTreeNode *rownode;
+	GttProject *proj = NULL;
+
+	rownode = get_focus_row(ctree);
+	if (rownode)
+	{
+		ProjTreeNode *ptn;
+		ptn = gtk_ctree_node_get_row_data(ctree, rownode);
+		proj = ptn->prj;
+	}
+	
+	/* Call the event-redistributor in app.c.  This should
+	 * be replaced by g_object/g_signal for a better implementation. */
+	focus_row_set (proj);
+}
+
+/* ============================================================== */
 
 GttProject *
 ctree_get_focus_project (ProjTreeWindow *ptw)
@@ -257,28 +283,7 @@ set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
 		}
 		i++;
 	}
-}
-
-/* ============================================================== */
-/* Pseudo focus-row-chan ged callback */
-
-void
-focus_row_changed_cb (GtkCTree *ctree, int row)
-{
-	GtkCTreeNode *rownode;
-	GttProject *proj = NULL;
-
-	rownode = get_focus_row(ctree);
-	if (rownode)
-	{
-		ProjTreeNode *ptn;
-		ptn = gtk_ctree_node_get_row_data(ctree, rownode);
-		proj = ptn->prj;
-	}
-	
-	/* Call the event-redistributor in app.c.  This should
-	 * be replaced by g_object/g_signal for a better implementation. */
-	focus_row_set (proj);
+	focus_row_changed_cb (ctree, GTK_CLIST(ctree)->focus_row);
 }
 
 /* ============================================================== */
