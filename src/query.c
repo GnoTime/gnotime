@@ -45,7 +45,8 @@ yearday_to_centuryday (int yday, int year)
 }
 
 /* ========================================================== */
-/** divide list of tasks into daily bins */
+/** Sort list of tasks into daily bins */
+
 static int
 day_bin (GttInterval *ivl, gpointer data)
 {
@@ -71,6 +72,11 @@ day_bin (GttInterval *ivl, gpointer data)
 
 	while (1)
 	{
+		/* Check error bounds, should never happen */
+		if ((0 > arr_day) || (arr_day >= da->array_len))
+		{
+			return 1;
+		}
 		GttBucket *bu;
 		bu = &g_array_index (da->buckets, GttBucket, arr_day);
 
@@ -109,7 +115,7 @@ day_bin (GttInterval *ivl, gpointer data)
 
 /* ========================================================== */
 /** Set up the DayArray object so that the length (in days) is known,
- * and so that the start day is known
+ *  and so that the start day is known
  */
 static void
 count_days (DayArray *da, GttProject *proj, gboolean include_subprojects)
@@ -123,7 +129,7 @@ count_days (DayArray *da, GttProject *proj, gboolean include_subprojects)
 	num_days = (stop - start) / (24*3600);
 	num_days += 2; /* two midnights might be crossed */
 
-	da->array_len = num_days;
+	da->array_len = num_days+1;
 	
 	localtime_r (&start, &da->start_tm);
 	
@@ -146,7 +152,7 @@ run_daily_bins(DayArray *da, GttProject *proj, gboolean include_subprojects)
 		gtt_project_foreach_interval (proj, day_bin, da);
 	}
 
-	/* Clean up the taks lists */
+	/* Clean up the taks lists by removing duplicates */
 	for (i=0; i<da->array_len; i++)
 	{
 		GttBucket *bu;
@@ -155,9 +161,8 @@ run_daily_bins(DayArray *da, GttProject *proj, gboolean include_subprojects)
 
 		/* Reverse the list, since they went in backwards */
 		bu->tasks = g_list_reverse (bu->tasks);
-
 		
-	   /* Scrub out duplicate task entries */
+		/* Scrub out duplicate task entries */
 		for (node=bu->tasks; node; node=node->next)
 		{
 			GList *sode;
