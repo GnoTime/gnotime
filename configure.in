@@ -159,13 +159,13 @@ dnl **************************************************************
 dnl If QOF is found on the build system, then use it.
 dnl **************************************************************
 
-QOF_CFLAGS="`$PKG_CONFIG --cflags qof-0`"
-QOF_LIBS="`$PKG_CONFIG --libs qof-0`"
+LIBQOF_CFLAGS="`$PKG_CONFIG --cflags qof-0`"
+LIBQOF_LIBS="`$PKG_CONFIG --libs qof-0`"
 
-if test x$QOF_LIBS = x; then
+if test x$LIBQOF_LIBS = x; then
    AC_MSG_WARN([****** QOF libs not found; build without QOF.])
-	QOF_CFLAGS="-I$(top_srcdir)/lib"
-	QOF_LIBS="$(top_builddir)/lib/qof/libqof.la $(top_builddir)/lib/libqofsql/libqofsql.la"
+	LIBQOF_CFLAGS="-I$(top_srcdir)/lib"
+	LIBQOF_LIBS="$(top_builddir)/lib/qof/libqof.la $(top_builddir)/lib/libqofsql/libqofsql.la"
 else
    AC_DEFINE(HAVE_QOF,,We Have Found QOF)
 fi
@@ -339,7 +339,7 @@ echo "CFLAGS : $CFLAGS"
 echo "LDFLAGS : $LDFLAGS"
 echo "X_LIBS : $X_LIBS"
 echo "GUILE_LIBS : $GUILE_LIBS"
-echo "QOF_LIBS : $QOF_LIBS"
+echo "LIBQOF_LIBS : $LIBQOF_LIBS"
 echo ""
 
 dnl <= Prefixes =>
