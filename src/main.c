@@ -19,6 +19,7 @@
 
 #include "config.h"
 
+#include <errno.h>
 #include <gconf/gconf.h>
 #include <glade/glade.h>
 #include <gnome.h>
@@ -49,6 +50,8 @@
 
 
 char *first_proj_title = NULL;  /* command line over-ride */
+
+static gboolean first_time_ever = FALSE;  /* has gtt ever run before? */
 
 /* SM == session management */
 #define USE_SM
@@ -142,6 +145,45 @@ unlock_gtt(void)
 	unlink(build_lock_fname());
 }
 
+/* Return a 1 if the indicated directory did not exist, and
+ * and was successfully created.  Else return 0.
+ */
+static int
+create_data_dir (const char * fpath)
+{
+	struct stat fsb;
+	char * filepath;
+	int rc;
+	char * sep;
+
+	filepath = g_strdup (fpath);
+	sep = rindex (filepath, '/');
+	sep ++;
+	*sep = 0x0;   /* null terminate */
+
+	/* See if directory exists */
+	rc = stat (filepath, &fsb);
+	if (0 > rc)
+	{
+		int norr = errno;
+		if (norr)
+		{
+			/* If we are here, directory does not exist. */
+			/* Try to create it */
+			rc = mkdir (filepath, S_IRWXU);
+			if (0 == rc)
+			{
+				/* If we are here, the create directory succeeded. */
+				g_free (filepath);
+				return 1;
+			}
+		}
+	}
+	g_free (filepath);
+	return 0;
+}
+
+
 static void
 post_read_data(void)
 {
@@ -173,10 +215,10 @@ read_data_err_run_or_abort (GtkWidget *w, gint butnum)
 	}
 }
 
-static const char *
+static char *
 resolve_path (const char * pathfrag)
 {
-	const char * fullpath;
+	char * fullpath;
 
 	if (('~' != pathfrag[0]) &&
 	    ('/' != pathfrag[0]))
@@ -198,7 +240,9 @@ static void
 read_data(void)
 {
 	GttErrCode xml_errcode;
-	const char * xml_filepath;
+	char * xml_filepath;
+	gboolean read_is_ok;
+	char *errmsg, *qmsg;
 
 	xml_filepath = resolve_path (config_data_url);
 
@@ -209,35 +253,51 @@ read_data(void)
 	/* Catch ... */
 	xml_errcode = gtt_err_get_code();
 
+	read_is_ok = (GTT_NO_ERR == xml_errcode);
+	
 	/* If the xml file read bombed because the file doesn't exist,
 	 * and yet the project list isn't null, that's because we read
 	 * and old-format config file that had the proejcts in it.
 	 * This is not an error. This is OK.
 	 */
-	if (!((GTT_NO_ERR == xml_errcode) ||
-	      ((GTT_CANT_OPEN_FILE == xml_errcode) &&
-		gtt_get_project_list())
-	    ))
+	read_is_ok |= (GTT_CANT_OPEN_FILE == xml_errcode) &&
+	               gtt_get_project_list();
+
+	/* Its possible that the read failed because this is the
+	 * first time that gnotime is being run.  In this case,
+	 * create the data directory, and don't display any errors.
+	 */
+	if (GTT_CANT_OPEN_FILE == xml_errcode)
 	{
-		const char *errmsg, *qmsg;
-		errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
-		qmsg = g_strconcat (errmsg, 
+		/* If the create directory succeeded, its not an error
+		 * if GTT is being run for the first time.
+		 */
+		if (create_data_dir (xml_filepath))
+		{
+			read_is_ok |= first_time_ever;
+		}
+	}
+
+	if (read_is_ok)
+	{
+		post_read_data ();
+		g_free (xml_filepath);
+		return;
+	}
+
+	/* Else handle an error. */
+	errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
+	qmsg = g_strconcat (errmsg, 
 			_("Do you want to continue?"),
 			NULL);
 
-		msgbox_ok_cancel(_("Error"),
+	msgbox_ok_cancel(_("Error"),
 			 qmsg,
 			 GTK_STOCK_YES, 
 			 GTK_STOCK_NO,
 			 G_CALLBACK(read_data_err_run_or_abort));
-		g_free ((gchar *) qmsg); 
-		g_free ((gchar *) errmsg);
-	}
-	else
-	{
-		post_read_data ();
-	}
-	g_free ((gchar *) xml_filepath);
+	g_free (qmsg); 
+	g_free (errmsg);
 }
 
 static void
@@ -255,6 +315,7 @@ read_config_err_run_or_abort (GtkWidget *w, gint butnum)
 	}
 	else
 	{
+		first_time_ever = TRUE;
 		post_read_config();
 	}
 }
@@ -272,7 +333,8 @@ read_config(void)
 	conf_errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != conf_errcode) 
 	{
-		const char *fp, *errmsg, *qmsg;
+		const char *fp;
+		char *errmsg, *qmsg;
 		fp = gtt_get_config_filepath();
 		errmsg = gtt_err_to_string (conf_errcode, fp);
 		qmsg = g_strconcat (errmsg, 
@@ -284,8 +346,8 @@ read_config(void)
 			 GTK_STOCK_YES, 
 			 GTK_STOCK_NO,
 			 G_CALLBACK(read_config_err_run_or_abort));
-		g_free ((gchar *) qmsg); 
-		g_free ((gchar *) errmsg);
+		g_free (qmsg); 
+		g_free (errmsg);
 	}
 	else 
 	{
@@ -386,12 +448,12 @@ make_backup (const char * filename)
  * we'll miss the second one ... but what the hey, who cares.
  */
 
-const char *
+char *
 save_all (void)
 {
 	GttErrCode errcode;
-	const char *errmsg = NULL;
-	const char * xml_filepath;
+	char *errmsg = NULL;
+	char * xml_filepath;
 
 	xml_filepath = resolve_path (config_data_url);
 
@@ -407,7 +469,7 @@ save_all (void)
 	{
 		errmsg = gtt_err_to_string (errcode, xml_filepath);
 	}
-	g_free ((gchar *) xml_filepath);
+	g_free (xml_filepath);
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
@@ -441,13 +503,13 @@ save_properties (void)
 	if (GTT_NO_ERR != errcode)
 	{
 		const char *fp = gtt_get_config_filepath();
-		const char *errmsg = gtt_err_to_string (errcode, fp);
+		char *errmsg = gtt_err_to_string (errcode, fp);
 
 		msgbox_ok(_("Warning"),
 		     errmsg,
 		     GTK_STOCK_OK,
 		     NULL);
-		g_free ((gchar *) errmsg);
+		g_free (errmsg);
 	}
 }
 
@@ -457,7 +519,7 @@ void
 save_projects (void)
 {
 	GttErrCode errcode;
-	const char * xml_filepath;
+	char * xml_filepath;
 
 	/* Try ... */
 	xml_filepath = resolve_path (config_data_url);
@@ -466,20 +528,30 @@ save_projects (void)
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_write_file (xml_filepath);
 
+	/* Try to handle a bizzare missing-directory error 
+	 * by creating the directory, and trying again. */
+	errcode = gtt_err_get_code();
+	if (GTT_CANT_OPEN_FILE == errcode)
+	{
+		create_data_dir (xml_filepath);
+		gtt_err_set_code (GTT_NO_ERR);
+		gtt_xml_write_file (xml_filepath);
+	}
+				  
 	/* Catch */
 	errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != errcode)
 	{
-		const char *errmsg = gtt_err_to_string (errcode, xml_filepath);
+		char *errmsg = gtt_err_to_string (errcode, xml_filepath);
 
 		msgbox_ok(_("Warning"),
 		     errmsg,
 		     GTK_STOCK_OK,
 		     NULL);
-		g_free ((gchar *) errmsg);
+		g_free (errmsg);
 	}
 
-	g_free ((gchar *) xml_filepath);
+	g_free (xml_filepath);
 }
 
 
@@ -495,7 +567,7 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	   gint shutdown, GnomeInteractStyle interact_styyle, gint fast,
 	   gpointer data)
 {
-	const char *errmsg;
+	char *errmsg;
 	const char *sess_id;
 	char *argv[5];
 	int argc;
@@ -526,7 +598,7 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	errmsg = save_all();
 	rc = 0;
 	if (NULL == errmsg) rc = 1;
-	g_free ((gchar *) errmsg);
+	g_free (errmsg);
 
 	return rc;
 }

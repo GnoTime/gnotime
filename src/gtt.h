@@ -26,7 +26,7 @@
 #define GTT_APP_PROPER_NAME  "GnoTime"
 #define GTT_APP_NAME         "gnotime"
 
-#define XML_DATA_FILENAME "gnotime-data.xml"
+#define XML_DATA_FILENAME "gnotime.d/gnotime-data.xml"
 
 /* err.c */
 
@@ -37,7 +37,7 @@ void err_init(void);
 /* The save_all() routine will write out all state to files.  
  *    If an error occurs, it returns an error message.
  */
-const char * save_all (void);
+char * save_all (void);
 
 /* The save_properties() routine will write out the application
  * properties to the application file.  It will pop up a warning
