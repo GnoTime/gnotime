@@ -1,0 +1,92 @@
+.TH gtt 1 "12 Oct 2001" "GNOME" "The GNOME Project"
+.SH NAME
+gtt - GTimeTracker - a time tracker
+.SH SYNOPSIS
+.B gtt
+.RB [ --display
+.IR displayname ]
+.RB [ --geometry
+.IR geometry ]
+.SH DESCRIPTION
+.PP
+.I GTimeTracker
+is a simple combination of a stopwatch, a to-do-list manager and 
+time-keeping/billing system.   
+.PP
+In its simplest mode of operation,
+as a stopwatch, it simply counts the number of elapsed seconds
+while the timer is running.  Unlike ordinary stopwatches, it will
+keep a log of each time that the timer was started and stopped.
+The log, or 'journal', can be annotated with comments, allowing
+a diary of events to be kept.  
+.PP
+.I GTimeTracker
+functions as a billing system by allowing you to assign a 
+value to an hour's worth of time.  
+You can specify overtime, double-overtime rates and fixed 
+flat-fees.  Individual chunks of time as 'billable',
+'not-billable', 'no-charge', 'hold', and so on.
+.PP
+.I GTimeTracker 
+can also be used as a simple to-do list tracker.
+You can assign an urgency as well as an importance to a given 
+project, assign an estimated start and end date, specify a 
+sizing and a percent-complete value.  Clicking on column headings 
+will sort the list in the order of that column.
+.PP
+Custom reports can be created using standard 
+.I HTML 
+enhanced with embedded
+.I Scheme 
+(a 
+.I LISP
+-like programming language).
+
+.SH OPTIONS
+.TP
+.B --display
+specifies the X server that gtt should connect to. Refer to 
+the X(1x) manual page for more info.
+.TP
+.B --geometry
+specifies the
+.I geometry
+of the main window. The syntax 
+.B [WIDTHxHEIGHT][(+|-)X(+|-)Y]
+is just like the X toolkit option
+.I geometry.
+See X(1x) for more info.
+.SH OTHER TYPES OF DOCUMENTATION
+You can find more information about
+.I GTimeTracker
+and its functions in the
+.I Gnome help system.
+Just select
+.B Contents
+from the 
+.B Help
+menu to get there.
+.SH "SEE ALSO"
+X(1x), the
+.I GTimeTracker
+Online Help, the
+.I GNOME
+Online Help.
+.SH AUTHOR
+ Copyright (C) 1997,1998 Eckehard Berns
+ Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+.\"   This program is free software; you can redistribute it and/or modify
+.\"   it under the terms of the GNU General Public License as published by
+.\"   the Free Software Foundation; either version 2 of the License, or
+.\"   (at your option) any later version.
+.\"
+.\"   This program is distributed in the hope that it will be useful,
+.\"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\"   GNU General Public License for more details.
+.\"
+.\"   You should have received a copy of the GNU General Public License
+.\"   along with this program; if not, write to the Free Software
+.\"   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\"
+.\"   For more details see the file COPYING.

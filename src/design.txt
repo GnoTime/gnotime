@@ -1,0 +1,93 @@
+
+Design Quickie Overview
+-----------------------
+by Linas Vepstas, August 2001
+
+Overall Structure
+-----------------
+GTT four basic parts:
+1) the 'engine', a set of C objects that encapsulate 
+   project, task and time interval data with a set of 
+   GUI-independent programming API's.  The API is in proj.h,
+   the code in proj.c and the private data structs in 
+   proj_p.h.  The goal of splitting out the data this way is
+   to make it easier to write an SQL back-end for storage,
+   and/or to interface to the web via cgi-bins.
+   
+2) some code to read/write the structs to an XML-formatted
+   file. The code in in xml-read.c, xml-write.c
+
+3) The 'journal' code.  This code displays the diary
+   of project activity as html, inside the gtkhtml html
+   widget.  It uses scheme as an extension language, so 
+   that the user can design custom forms.  The code is in
+   ghtml.c.  The design should be sufficiently abstract
+   that it could be piped to anything (e.g. to cgi-bins
+   in apache).
+
+4) The Gnome GUI.  This is most of the rest of the files,
+   including the parts of the GUI done up with glade.
+
+
+Projects, Sub-projects, Tasks and Intervals
+-------------------------------------------
+An 'interval' is supposed to just be a record of a timer start & stop
+and not much more.  (see, however, 'interval fuzz' below).
+
+A 'task' is supposed to be just a text memo associated with some
+intervals.  Think of a task as a kind of a "diary entry": a place
+where you can write down what you did today.   You can't go back
+and restart old tasks because you can't go back and re-live yesterday.
+(Tasks are mis-named, and should probably have been called 'diary 
+entries').
+
+If you want to 'restart' a task, then what you should really do is to
+set up a set of sub-projects.  Projects & sub-projects can always be
+restarted: that is what a sub-projects are supposed to be. 
+
+
+All About Billing
+-----------------
+There are four supported billing rates: regular, overtime,
+double-overtime and flat-rate.  The dollar values for these are stored
+in the project structure.   Which of these to use is an enum associated
+with a task.   'flat_rate' is what it sounds like: the amount to bill
+for the task, independent of the actual time spent.
+
+Tasks can also be classed as billable or not in four ways:
+billable -- go ahead an bill for this.
+free of charge -- print on invoice but price is zero
+not billable -- do not print on invoice.
+hold -- potentially billable, but still being edited for correctness.
+
+Tasks have a bill unit: everything on the bill will appear as a 
+multiple of this value.  Typically 15 minutes or an hour.  Interval
+totals less than this are rounded up to a bill unit.
+
+
+Interval Fuzz
+-------------
+If users need to hand-enter ex-post-facto hours into gtt, they may not 
+exactly remember the exact start time, down to the exact second.  
+Their memory is fuzzy.  The interval 'fuzz' is used to indicate
+how uncertain the start time is.  Typically, its 0, 300, 900 or 3600
+seconds.  If set to 12*3600, it just means "I did this work sometime
+today", but is otherwise vague about when.  (So, for example, in this
+case, the start time should be understood to indicate a day, but not
+a time.)
+
+Just because the fuzz is set doesn't mean that the interval is
+inaccurate.  Its still assumed that the interval is correct down to the
+last second.  
+
+
+Notes vs. Memos:
+----------------
+Memo's are meant to be printed on invoices, whereas notes are meant to
+be kept internal, not shown to the customer.
+
+
+Custid
+------
+Customer id.   Not used at the moment, future hook for customer
+name/address/vcard,etc. info for invoicing.

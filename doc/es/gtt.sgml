@@ -1,0 +1,890 @@
+<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.1//EN"[
+<!ENTITY version "1.2">
+]>
+
+<article id="index" lang="es"> <!-- please do not change the id-->
+
+  <artheader> 
+    <title>Manual de la Herramienta del Supervisor de Tiempos de GNOME
+</title>
+    <copyright>
+      <year>1997-2000</year>
+      <holder>Eckehard Berns</holder>
+    </copyright>
+    <copyright>
+      <year>2000</year>
+      <holder>Helix Code, Inc.</holder>
+
+    </copyright>
+
+    <legalnotice id="legalnotice">
+      <para>Se permite la copia, distribución y/o modificación de este documento
+	bajo los términos de la <ulink type="help"
+	url="gnome-help:fdl"><citetitle>Licencia de Documentación Libre de
+	  GNU</citetitle></ulink>, Versión 1.1 o cualquier versión posterior 
+	publicada por  la Fundación del  Software Libre sin Secciones Invariantes, 
+	sin Textos de Portada, y sin Textos de Contra-portada. Puede encontrar una copia de la 
+	licencia  <ulink type="help" url="gnome-help:fdl">aquí</ulink>.
+      </para>
+      <para>Muchos que los nombres utilizados por las empresas para distinguir sus 
+      productos y servicios se llaman marcas registradas. Cuando dichos nombres aparezcan
+      en cualquier documentación de GNOME, y cuando los miembros del Proyecto de Documentación 
+      de GNOME estean al corriente de dichas marcas registradas, los nombres aparecerán en 
+      mayúsculas o con la inicial en mayúscula.
+      </para>
+    </legalnotice>
+
+    <releaseinfo> 
+	 Esta es la versión del manual del  Supervisor de Tiempos de GNOME.
+     </releaseinfo> 
+<!-- this is version of manual, not application --> 
+  </artheader>
+
+<!-- =============Document Body ============================= -->
+
+<!-- =============Introduction ============================= -->
+  <sect1 id="introduction">
+      <title>Introducción</title> 
+    <sect2 id="whatis">
+    <title>¿Qué es el Supervisor de Tiempos de GNOME?</title>
+    <para>
+      <application>Supervisor de Tiempos de GNOME</application> es un programa que gestiona el flujo de
+      trabajo y sigue el tiempo utilizado en un proyecto determinado.
+      Una vez que Vd. haya aprendido a utilizar el  <application>Supervisor de Tiempos de GNOME</application> de forma
+      efectiva, le podrá ser de gran ayuda. Podrá utilizarlo para optimizar su trabajo y decidir si ha
+      gastado demasiado tiempo en tareas de poca importancia. Podrá contar las horas que gasa en un
+      proyecto que se paga por horas. Podrá descubrir muchas otras formas en las cuales el
+      <application>Supervisor de Tiempos de GNOME</application> podrá trabajar por Vd.
+    </para>
+    <para>
+     El <application>Supervisor de Tiempos de GNOME</application>  se incluye en el paquete
+     <filename>gnome-utils</filename>, que forma parte del entorno de escritorio GNOME. Este documento
+     describe la versión &version; del <application>Supervisor de Tiempos de GNOME</application>
+    </para>
+
+    <para>El <application>Supervisor de Tiempos de GNOME</application> puede ser iniciado seleccionando la
+      <guimenuitem>Herramienta de Supervisión de Tiempos </guimenuitem> del submenú 
+      <guisubmenu>Aplicaciones</guisubmenu> del <guimenu>Menú Principal</guimenu>,  o ejecutando la orden
+      <command>gtt</command> desde la línea de comandos.  
+    </para>
+  </sect2>
+</sect1>
+
+
+<sect1 id="usage"> 
+   <title>Utilizando la Herramienta de Supervisión de Tiempos de GNOME</title>
+   <sect2 id="working">
+      <title>Trabajando con el Supervisor de Tiempos de GNOME</title>
+      <para> El <application>Supervisor de Tiempos de GNOME</application> se puede utilizar para seguir
+      el tiempo que gasta en diferentes tareas. Lo hace definiendo distintos proyectos y entonces, a lo largo
+      del día, diciéndole al <application>Supervisor de Tiempos de GNOME</application> en que 
+      proyecto se está trabajando. Le dirá cuanto tiempo ha gastado en cada proyecto cada día, el tiempo
+      total invertido en cada proyecto, y la cuanto tiempo ha utilizado en todos los proyectos cada día.
+      </para>
+
+    <para>
+    Desafortunadamente, el <application>Supervisor de Tiempos de GNOME</application> no es especialmente
+    elegante: no desconectará el cronómetro por Vd. si se toma un paréntesis para un rápido juego de
+    solitario y se convierte en varias horas de distracción.  Cuando deje de trabajar en un proyecto,
+    asegúrese de desconectar el cronómetro presionando el botón <guibutton>Temporizador</guibutton> o
+    utilizando <guimenuitem>Parar</guimenuitem> del menú <guimenu>Temporizador</guimenu>. Tanto en cuanto
+    recuerde realizar lo anterior, su trabajo será registrado de forma efectiva.  Podrá, sin embargo, alterar
+    los tiempos del diálogo <interface>Propiedades</interface> si son incorrectos. Véase
+    <link linkend="properties"></link> para más información.
+    </para>
+ 
+<para id="timer"> El <application>Supervisor de Tiempos de GNOME</application> le podrá informar sobre los
+      tiempos de proyecto de varias formas. Para cada proyecto, mantiene un temporizador el tiempo que ha
+      gastado en ese proyecto hoy, y cuando ha gastado en total. Además, el <application>Supervisor de 
+      Tiempos de GNOME</application> cuenta cuanto tiempo ha gastado en todos los proyectos en en día actual.
+      Este último número se visualiza en la esquina inferior izquierda de la barra de estado.
+      </para>
+
+<para>
+	Cuando empiece por primera vez el <application>Supervisor de Tiempos de GNOME</application>, verá una
+	<interface>Ventana Principal</interface>, tal y como se observa en 
+	<link linkend="mainwindowfig"></link>.
+<!-- ==============Figure=================================== -->
+	<figure id="mainwindowfig">
+	  <title>Ventana Principal del Supervisor de Tiempos de GNOME </title>
+	  <screenshot>
+	    <screeninfo>Ventana Principal del Supervisor de Tiempos de GNOME,
+	    con un proyecto seleccionado</screeninfo>
+	    <graphic fileref="gtt_mainwin.png"></graphic>
+	  </screenshot>
+	</figure>
+<!-- ==============End of Figure=================================== -->
+      
+
+
+
+      La ventana principal consta de cuatro zonas. Hay una barra de menú (véase <link linkend="menubar">
+      </link>) y una barra de herramientas (véase <link linkend="toolbar"></link>) en la parte superior de la
+      ventana, una barra de estado (véase <link linkend="statusbar"></link>) en la parte inferior de la
+      ventana, y entre la barra de herramientas y la barra de estado, una lista de proyecto deslizante (véase
+      <link linkend="projlist"></link>).
+      Cuando inicie por primera vez el <application>Supervisor de Tiempos de GNOME</application>, esta área
+      mostrará simplemente un proyecto, titulado "vacío".
+   </para>		    
+
+
+   <tip>
+   <para>
+      Puede personalizar la apariencia de la ventana principal en el <interface>diálogo
+      preferencias</interface>. Véase <link linkend="preferences"></link> para más información sobre como
+      cambiar la barra de herramientas, la lista de proyectos, y el tiempo mostrado.
+   </para>
+  </tip>
+</sect2>
+
+
+      <!-- =========Subsection=========================== -->   
+    <sect2 id="menubar">
+      <title>Menús</title>
+
+
+   <para>
+      Casi todos los elementos de menú del <application>Supervisor de Tiempos de GNOME</application> tiene un
+      atajo o una tecla aceleradora. Los atajos aparecen a la derecha después del nombre de los elementos de
+      menú en los menús.
+   </para>
+
+   <para>
+       La barra de menú consta de cuatro menús:<guimenu>Fichero</guimenu>,
+       <guimenu>Editar</guimenu>, <guimenu>Temporizador</guimenu> y <guimenu>Ayuda</guimenu>.
+   </para>
+
+      <!-- =========List=========================== -->
+      <variablelist>
+	<varlistentry> 
+          <term><guimenu>Fichero</guimenu></term>
+            <listitem>
+              <para>
+                 Este menú contiene las siguientes órdenes:
+	      </para>
+            <para>  
+	       <menuchoice>
+	            <shortcut>
+                      <keysym>
+                        Ctrl-N
+                      </keysym>
+		    </shortcut> 
+		
+		    <guimenuitem>
+                   &mdash; Nuevo Proyecto
+                    </guimenuitem>
+	         </menuchoice>
+	         Nuevo Proyecto hará que parezca el diálogo <interface>Nuevo Proyecto</interface> así podrá
+		 crear un nuevo proyecto.
+            </para>
+	    <para>
+		<menuchoice>
+	          <shortcut>
+                    <keysym>
+                      Ctrl-L
+                    </keysym>
+		    </shortcut> 
+		    <guimenuitem> &mdash; Recargar el Fichero de Configuración</guimenuitem>
+		  </menuchoice>
+	      
+	      Recarga la última versión guardada del fichero de configuración,
+		<filename>$HOME/.gnome/gtt</filename>.  Este fichero se guarda cada vez que el 
+		<application>Supervisor de Tiempos de GNOME</application> termina, y contiene información
+		sobre las preferencias y proyectos. Si elije este elemento de menú, sus  proyectos volverán
+		al estado en el que estaban cuando se guardó el último fichero de configuración.
+	      </para>
+
+	      <para>
+	      <menuchoice>
+		<shortcut><keysym>Ctrl-S</keysym>
+		</shortcut>
+		<guimenuitem> &mdash; Guardar Fichero de Configuración </guimenuitem>
+	      </menuchoice>
+	      Esta función guarda información sobre sus proyectos y preferencias en el fichero de
+	      configuración <filename>$HOME/.gnome/gtt</filename>.
+	      <application>Supervisor de Tiempos de GNOME</application> guarda esta información
+	      automáticamente cada vez que sale del programa, e intenta hacerlo cada vez que se cae. Aún así,
+	      vale la pena guardar la información de su proyecto de vez en cuando.
+	      </para>
+
+	      <para>
+	      <menuchoice>
+	        <shortcut><keysym>Ctrl-Q</keysym>
+		</shortcut>
+		<guimenuitem> &mdash; Salir</guimenuitem>
+	      </menuchoice>
+	      Sale del <application>Supervisor de Tiempos de GNOME</application>. Salir automáticamente
+	      guarda los datos del proyecto y actualiza el fichero bitácora.
+	    </para>
+	  </listitem>
+	</varlistentry> 
+
+	<varlistentry>
+	  <term><guimenu>Editar</guimenu></term>
+          <listitem>
+	    <para>
+              Este menú contiene las siguientes órdenes:
+	      <menuchoice>
+		 <shortcut><keysym>Ctrl-X</keysym></shortcut>
+		<guimenuitem>Cortar</guimenuitem>
+	        
+	      </menuchoice>
+	      &mdash; Retira un elemento de la lista de proyectos, guardándola en memoria si desea pegarla en
+	      algún otro lado.
+	      </para>
+
+	      <para>
+		 <menuchoice>
+		    <shortcut><keysym>Ctrl-C</keysym></shortcut>	
+		    <guimenuitem>Copiar</guimenuitem>	    
+		 </menuchoice>	
+		&mdash; Duplica un proyecto seleccionado, copiándolo en memoria.
+		</para>
+
+		<para>
+		   <menuchoice>
+		      <shortcut><keysym>Ctrl-V</keysym></shortcut>
+		      <guimenuitem>Pegar</guimenuitem>
+		   </menuchoice>
+		     &mdash; Coloca el proyecto memorizado en la lista de tareas.  Los proyectos se colocan
+		     antes del elemento seleccionado. Si no se selecciona ningún elemento, aparecerá en la
+		     parte inferior de la lista.
+		</para>
+
+		<para>
+		    <menuchoice>  
+		       <guimenuitem>Limpiar el Contador Diario</guimenuitem>
+	            </menuchoice>
+		      &mdash; Esta función es una forma rápida de limpiar el contador diario del  proyecto
+		      seleccionado.  Puede utilizarlo si quiere controlar el tiempo de un proceso más de una
+		      vez. Es útil si desea cuanto dura una conexión PPP a internet, o  para controlar el
+		      tiempo de compilación u otras tareas repetitivas. Esta orden no altera el temporizador
+		      global.
+	         </para>
+
+		 <para>
+		 <menuchoice>
+	            <guimenuitem>Propiedades...</guimenuitem>
+		 </menuchoice>
+		 &mdash; Este selección abre el diálogo <interface>Propiedades</interface> del proyecto
+		 actualmente seleccionado. Aquí podrá ver y editar el nombre, descripción, y tiempos de su
+		 proyecto. Dese cuenta que esto es lo mismo que el botón <guibutton>Props</guibutton> 
+		 de la barra de  herramientas.  Véase <link linkend="properties"></link> 
+		 para más información.
+		 </para>
+	    </listitem>
+	</varlistentry>
+
+	<varlistentry> 
+
+	    <term><guimenu>Preferencias</guimenu></term>
+	    <listitem>
+               <para>
+                 Este menú contiene sólo una orden:
+	         <guimenuitem>Preferencias</guimenuitem>, que lanza el 
+	         <interface>Diálogo Preferencias</interface>.  Véase <link linkend="preferences"></link>
+                 para más información.
+               </para>
+             </listitem>
+        </varlistentry>
+
+	<varlistentry>
+	   <term><guimenu>Temporizador</guimenu></term>
+	   <listitem>
+             <para>
+	       Este menú contiene las siguientes órdenes:
+               <menuchoice>
+		 <shortcut><keysym>Ctrl-A</keysym></shortcut>
+		<guimenuitem>Empezar</guimenuitem>
+	       </menuchoice>
+              &mdash; Arranca el temporizador del proyecto seleccionado.	      
+             </para>
+
+	     <para>
+	       <menuchoice>
+		<shortcut><keysym>Ctrl-Z</keysym></shortcut>
+		<guimenuitem>Para Temporizador</guimenuitem>
+	       </menuchoice>
+               &mdash; Para el temporizador.
+             </para>
+  
+	      <para>
+                <menuchoice>
+		<shortcut><keysym>Ctrl-T</keysym></shortcut>   
+		<guimenuitem>Cambia Temporizador</guimenuitem>
+	      </menuchoice> 
+                &mdash;Este elemento cambia el temporizador a encendido o apagado.
+              </para>
+            </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	    <term><guimenu>Ayuda</guimenu></term>
+	      <listitem>
+                 <para>
+		   Este menú consta de las órdenes:
+	           <menuchoice><guimenuitem>Manual</guimenuitem></menuchoice>
+		   &mdash; Muestra este manual.
+		 </para>
+
+		 <para>
+                     <menuchoice><guimenuitem>Introducción</guimenuitem></menuchoice>
+		     &mdash; Muestra una introducción a este manual y al 
+		     <application>Supervisor de Tiempos de GNOME</application> 
+		     generalmente.
+		 </para>
+
+		 <para>
+                    <menuchoice><guimenuitem>Trabajando con  GTT</guimenuitem></menuchoice>
+		    &mdash; Muestra la sección del manual que trata sobre trabajando con el
+		    <application>Supervisor de Tiempos de GNOME</application>.
+		 </para>
+
+		  <para>
+                     <menuchoice><guimenuitem>La Ventana Principal</guimenuitem></menuchoice>
+		     &mdash; Ayuda con la Ventana Principal.
+		  </para>
+		  
+		  <para>
+                     <menuchoice><guimenuitem>Diálogos</guimenuitem></menuchoice>
+		     &mdash; Muestra información sobre las distintas cajas de diálogo que mostrará el 
+		    <application> Supervisor de Tiempos de GNOME</application>.
+		  </para>
+
+		  <para>
+                    <menuchoice><guimenuitem>Sobre</guimenuitem></menuchoice>
+		    &mdash; Muestra el copyright y la información del autor del 
+		    <application>Supervisor de Tiempos de GNOME</application>.
+		  </para>
+
+		</listitem>
+	   </varlistentry>
+	</variablelist>
+      <!-- =========End of list=========================== -->
+	</sect2>
+
+
+
+	<sect2 id="toolbar">
+	<title>La Barra de Herramientas</title>
+        <para>
+	La barra de herramientas es otra forma de acelerar sus operaciones más habituales con el 
+        <application>Supervisor de Tiempos de GNOME</application>. Cada icono es un atajo para una de las
+	funciones del menú. Por defecto los botones son:
+        <itemizedlist>
+        <listitem>
+          <para>
+            <guibutton>Nuevo</guibutton>, abre el diálogo <interface>Nuevo Proyecto</interface>.
+          </para>  
+        </listitem>
+
+        <listitem>
+          <para>
+            <guibutton>Props</guibutton>, abre el diálogo <interface>Propiedades</interface> .
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <guibutton>Temporizador</guibutton>, cambia el temporizador entre encendido y apagado.
+          </para>
+        </listitem>
+        
+        <listitem>
+          <para>
+            <guibutton>Prefs</guibutton>, 
+             abre el diálogo <interface>Preferencias</interface>.
+          </para>
+        </listitem>
+        <listitem>
+           <para>
+              <guibutton>Manual</guibutton>, abre este manual.
+           </para>
+        </listitem>
+
+        <listitem>
+          <para>
+             <guibutton>Salir</guibutton>, sale del <application>Supervisor de Tiempos de GNOME</application>.
+          </para>
+        </listitem>
+     </itemizedlist>
+Puede seleccionar que funciones aparecerán en la barra de herramientas del diálogo
+<interface>Preferencias</interface>. Véase  <link linkend="preferences"></link> para más información.
+	</para>
+	</sect2>   
+
+
+    <sect2 id="projlist">
+      <title>Lista de Proyectos</title>
+      <para>
+      La Lista de Proyectos consta de una lista de todos sus proyectos e indica que proyecto es el activo en
+      un momento dado. También muestra las características de cada proyecto. Puede alterar esas
+      características en el diálogo <interface>Preferencias</interface> 
+      (véase <link linkend="preferences"></link>).
+      </para>
+      
+      <sect3 id="projwhat">
+      <title>¿Qué es un Proyecto?</title>
+      <para>
+        Un proyecto consta de lo siguiente:
+	<itemizedlist>
+
+	  <listitem><para>
+	  Un título, que será mostrado en la lista de proyectos.
+	  </para></listitem>
+
+	  <listitem><para>
+	      Un temporizador <emphasis>diario</emphasis>, que será automáticamente puesto a cero cada día, y
+	      que podrá ser puesto a cero a voluntad.
+	  </para></listitem>
+
+	  <listitem><para>
+	      Un temporizador del  <emphasis>tiempo total</emphasis>, que lleva la cantidad total de  tiempo
+	      gastada en cada proyecto.
+	  </para></listitem>
+
+	  <listitem><para>
+	      Una breve descripción del proyecto.
+	  </para></listitem>
+	</itemizedlist>
+        </para>
+	</sect3>
+	
+	<sect3>
+	<title>El Estado de un Proyecto</title>
+
+	  <para>Un proyecto tiene dos estados, seleccionado o no seleccionado. Sólo puede seleccionar un
+	  proyecto cada vez.
+	  </para>
+
+	  <para>
+	  Si un proyecto no se selecciona, nada ocurre.
+	  </para>
+	  
+	  <para>
+	  Si se selecciona un proyecto, pero el temporizador no se está ejecutando, la orden de la línea de
+	  comandos del proyecto seleccionado  ha sido ejecutada y no terminada. Sin embargo, no se cambia
+	  el fichero bitácora.
+  <!-- Traducción incorrecta:
+	  If a project is selected, but the timer is not running,
+	  the select-project shell command has been run
+	  and not terminated.
+	 //-->
+
+       	  </para>
+	  
+	  <para>
+	  Si se selecciona un proyecto y el temporizador está corriendo, se ejecuta la orden de la línea de
+	  comandos y se actualiza el fichero bitácora.
+	  </para>
+
+	  <para>Esto puede, al principio, confundir, pero juntamente con las órdenes de la línea de comandos
+	  (véase <link linkend="shellcmd"></link>) podrá  utilizar variaciones en el estado para mantener una
+	  bitácoras de proyecto más aproximadas y legibles.
+
+          </para>
+<example id="projectstate-example">
+	  <title>Utilizando los Estados de Proyecto</title>
+	  <para>
+	  He fijado las órdenes de la línea de comandos del 
+          <application>Supervisor de Tiempos de GNOME</application> para actualizar  mi fichero
+	  <filename>.project</filename> cuando seleccione o de-seleccione un proyecto.
+	  No quiero alterar el fichero si simplemente me estoy tomando una ligera parada de un proyecto. Así,
+	  cuando me levanto para tomar el café, paro el temporizador en lugar de de-seleccionar el proyecto. 
+	  Esto deja el fichero <filename>.project</filename> sólo sin contar el tiempo que dejo el proyecto.
+	  </para>
+
+</example>	  
+	</sect3>
+	<sect3 id="working-with-projlist">
+	 <title>Trabajando con la Lista de Proyectos</title>
+	    <para>
+	    La lista de proyectos se sitúa en el área central de la ventana principal. Muestra  la lista de
+	    proyectos que están actualmente seleccionados. Cada línea se corresponde con un proyecto, y
+	    muestra el tiempo total y diario acumulado para cada proyecto, además de su título y descripción.
+	    </para>
+
+	    <para>
+	    Vd. puede seleccionar un proyecto presionando-lo con el botón izquierdo del ratón. Presionando el
+	    botón izquierdo otra vez en un proyecto seleccionado lo de-selecciona. Dese cuenta que sólo puede
+	    tener un proyecto seleccionado a la vez.
+	    </para>
+
+	    <para>
+	    Para tener un menú emergente de un proyecto, presione el botón derecho sobre él. Si el proyecto
+	    no fue seleccionado, recibirá la selección,  y se mostrará el menú <guimenu>Editar</guimenu>.
+	    </para>
+	    </sect3>
+	
+	</sect2>
+
+	<sect2 id="statusbar">
+	 <title>La Barra de Estado</title>
+
+	<para>
+	El primer campo de la barra de estado muestra la suma de los tiempos diarios de todos los proyectos.
+	Si no ha fijado a cero el contador diario, reflejará el tiempo total que Vd. ha trabajado en sus
+	proyectos hoy.
+	</para>
+
+	<para>
+	El segundo campo almacena el título del proyecto actualmente seleccionado. Si no se selecciona ningún
+	proyecto aparecerá:<computeroutput>ningún proyecto seleccionado</computeroutput>.
+	</para>
+
+	<para>
+	La esquina derecha de la barra de estado almacena un pequeño reloj  si el temporizador está
+	funcionando. Si el temporizador está apagado, el espacio está vacío.
+        </para>
+</sect2>
+</sect1>
+
+
+<!-- =============New section============================= --> 
+  <sect1 id="preferences">
+      <title>Personalización</title> 
+      <para>
+      Para cambiar las propiedades por defecto, seleccione la orden 
+      <guimenuitem>Preferencias</guimenuitem> del menú
+      <guimenu>Settings</guimenu>. Lanzará el 
+      <interface>diálogo Preferencias</interface>, mostrado en  <link linkend="prefsfigure"></link>.
+       En la ventana hay dos lengüetas de preferencias.
+     </para>
+<!-- ==============Figure=================================== -->
+	<figure id="prefsfigure">
+	  <title>Diálogo Preferencias</title>
+	  <screenshot>
+	    <screeninfo>Diálogo Preferencias</screeninfo>
+	    <graphic fileref="gtt_prefswin.png">
+	    </graphic>
+	  </screenshot>
+	</figure>
+<!-- ==============End of Figure=================================== -->
+ 
+ <sect2 id="toolbar-prefs">
+      <title>La Lengüeta Preferencias de la Barra de Herramientas</title>
+      <para>
+           
+        Esta lengüeta contiene dos secciones de botones: <guilabel>Barra de Herramientas</guilabel>
+	y <guilabel>Segmentos de la Barra de Herramientas</guilabel>
+        <itemizedlist>
+          <listitem>
+	    <para> 
+	      La  <guilabel>Barra de Herramientas</guilabel> contiene las siguientes cajas de chequeo: 
+	      <simplelist>
+		<member>
+		  <guibutton> Mostrar Iconos de la Barra de Herramientas</guibutton>
+		</member>
+		<member>
+		  <guibutton> Mostrar Textos de la Barra de Herramientas</guibutton>
+		</member> 
+		<member>
+		  <guibutton> Mostrar Sugerencias</guibutton>
+		</member>
+	      </simplelist>
+	      Determinan cuando aparecen los iconos y su descripción en la barra de herramientas, y cuando las sugerencias describiendo la apariencia de los botones el puntero del ratón pasa sobre la barra de herramientas.
+	    </para>
+	  </listitem>
+          <listitem>
+	      <para>
+	        Las cajas de chequeo de <guilabel>los Segmentos de la Barra de Herramientas</guilabel>  determina que botones de atajo aparecerán en la barra de herramientas:
+		<simplelist>
+		<member><guilabel> Mostrar 'Nuevo' </guilabel></member>
+		<member><guilabel> Mostrar 'Guardar', 'Recargar' </guilabel></member>
+		<member><guilabel> Mostrar 'Cortar', 'Copiar', 'Pegar' </guilabel></member>
+		<member><guilabel> Mostrar 'Propiedades'  </guilabel></member>
+		<member><guilabel> Mostrar 'Temporizador' </guilabel></member>
+		<member><guilabel> Mostrar 'Preferencias' </guilabel></member>
+		<member><guilabel> Mostrar 'Ayuda'  </guilabel></member>
+		<member><guilabel> Mostrar 'Salir' </guilabel></member>
+		</simplelist>
+	      </para>
+          </listitem>
+        </itemizedlist>
+        </para>
+    </sect2>
+
+   <sect2 id="other-settings">
+      <title>Otras Propiedades</title>
+         <para>
+	Hay tres secciones dentro de la pestaña  <guibutton>Misc</guibutton> .
+	 <variablelist>
+           
+           <varlistentry> 
+              <term><guilabel>Display</guilabel></term>
+	      <listitem> 
+                <para>
+		 La caja de 'Display' contiene tres cajas de chequeo:
+	          <simplelist>
+	              <member><guilabel> Mostrar Segundos </guilabel></member>
+	              <member><guilabel> Mostrar la Barra de Estado </guilabel> </member>
+	              <member><guilabel> Mostrar la Tabla Encabezado </guilabel></member>
+	          </simplelist>
+		  Determinan cuando aparecen los segundos en la pantalla del temporizador, y cuando aparecen en la <interface>Ventana Principal</interface> la barra de estado y el encabezado de la tabla.
+	         </para>
+              </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	        <term><guilabel>Órdenes de la Línea de Comandos (Shell)</guilabel></term>
+                <listitem>
+                   <para>
+                     <anchor id="shellcmd">
+		      Hay tres órdenes de la línea de comandos ejecutados por el 
+		  <application>Supervisor de Tiempos de GNOME</application>. Uno se ejecuta cuando Vd, cambia entre proyectos, y el otro cuando de-selecciona un proyecto o sale de la aplicación.
+                      <itemizedlist>
+                        <listitem>
+	                  <para>
+		            <guilabel>Órdenes de Cambio de Proyecto</guilabel>:
+			    Esta orden se ejecuta cada vez que Vd. selecciona un proyecto que ha sido previamente de-seleccionado. Si Vd. utiliza en esta orden  <literal>&percnt;s</literal>, el  <application>Supervisor de Tiempos de GNOME</application> lo  reemplazará  con el título del proyecto seleccionado. Utilizo la siguiente entrada para actualizar mi fichero  proyecto <filename>.project</filename> :
+		            <userinput>echo '&percnt;s' &gt;~/.project</userinput>
+		           </para>
+                         </listitem>
+		         <listitem>
+		           <para>
+                             <guilabel>Sin Órdenes de Proyecto</guilabel>
+			     Esta orden se ejecuta cada vez que Vd. de-selecciona un proyecto o sale  del <application>Supervisor de Tiempos de GNOME</application>. Para completar el ejemplo superior, utilizo esta orden:
+		             <userinput>rm -f ~/.project</userinput>
+                           </para>
+                         </listitem>
+                      </itemizedlist>
+                   </para>	   
+                 </listitem>
+             </varlistentry>
+
+	 <varlistentry>
+	    <term><guilabel>Preferencias del Fichero Bitácora </guilabel></term>
+	    <listitem>
+              <para>
+		El área de las Preferencias del Fichero Bitácora contiene un botón de chequeo <guibutton>Utilizar Bitácora</guibutton>, que determina cuando se utiliza un fichero bitácora, y los rectángulos siguientes de la entrada de texto,  controlando su funcionamiento::
+<!-- Mal traducido de:
+  The Logfile Preferences area contains a <guibutton>Use Logfile</guibutton>
+	        Checkbox, which determines whether you use a logfile at all,
+	        and the following text entry boxes, governing its behavior
+//-->
+	        <itemizedlist>
+	     
+                <listitem><para>
+	             <guilabel>Nombre de Archivo</guilabel>
+		      Determina la trayectoria y el nombre del fichero bitácora. Se debe dar la trayectoria y el nombre de archivo completos, sin variables como $HOME o ~.
+		</para></listitem>
+
+                <listitem><para>
+                      <guilabel>Inicio de Entrada </guilabel>
+		      Esta es la cadena que indica el inicio de la entrada de un fichero bitácora. Puede incluir  las mismas variables que  <guilabel>Parada Entrada </guilabel>.
+                </para></listitem>
+
+                <listitem><para>
+                      <guilabel>Parada de Entrada</guilabel>
+		      Esta cadena marca el final del fichero bitácora. Ambos, cadena y el y el <guilabel>Inicio de Entrada</guilabel> pueden contener las siguientes variables:
+                      <itemizedlist>
+ <listitem><para><literal>&percnt;t</literal> &mdash; Título del Proyecto.</para></listitem>
+ <listitem><para><literal>&percnt;d</literal> &mdash; Título del Proyecto.</para></listitem>
+ <listitem><para><literal>&percnt;t</literal> &mdash; Descripción del proyecto.</para></listitem>
+ <listitem><para><literal>&percnt;T</literal> &mdash; Tiempo Total empleado en el proyecto, en forma de  Horas:Minutos:Segundos.</para></listitem>
+ <listitem><para><literal>&percnt;h</literal> &mdash; El número de horas empleadas hoy en el proyecto. </para></listitem>
+ <listitem><para><literal>&percnt;H</literal> &mdash; El número de horas empleadas hoy  en el proyecto, en dos dígitos.</para></listitem>
+ <listitem><para><literal>&percnt;m</literal> &mdash; El número de minutos empleados hoy en el proyecto.</para></listitem>
+ <listitem><para><literal>&percnt;M</literal> &mdash; El número de minutos empleados hoy en el proyecto (00-59).</para></listitem>
+ <listitem><para><literal>&percnt;s</literal> &mdash; El número de segundos empleados hoy en el proyecto.</para></listitem>
+ <listitem><para><literal>&percnt;S</literal> &mdash; El número de segundos empleados hoy en el proyecto (00-59).</para></listitem>
+</itemizedlist>
+                </para></listitem>
+		   
+		<listitem><para>
+		    <guilabel>Lapso de tiempo en segundos</guilabel> &mdash; 
+		      Este valor representa el tiempo mínimo que debe estar seleccionado un proyecto para que sea grabado. Es útil si no quiere grabar tareas muy cortas, o si pulso en el proyecto incorrecto. Por ejemplo, suponga que quiere empezar a trabaja en una carta que a su amigo José, y entonces selecciona el proyecto <emphasis>Carta a José</emphasis>,  pero recuerda que debe preparar primero la lista de regalos de Navidad (José le ha pedido que le dé algunas buenas ideas). Entonces, cambia el proyecto a <emphasis>Regalos de Navidad </emphasis>. No quiere que su proyecto <emphasis>Carta a José</emphasis> esté en su fichero bitácora, por no lo ha empezado aún. Le sugiero que fije ese valor a, por lo menos, 10 segundos..
+	        </para></listitem>
+
+             </itemizedlist>
+            
+              <tip>
+		 <para> Dese cuenta que un proyecto no será seguido hasta que Vd. o bien salga del   <application>Supervisor de Tiempos de GNOME</application>, cambie a otro proyecto, o de-seleccione ese proyecto. No se confunda cuando observe su fichero bitácora y su proyecto actual hasta que todavía no esté listado, incluso si  ha funcionado durante dos horas..</para>
+	      </tip>
+		 
+	
+	</para></listitem>
+	</varlistentry>
+	</variablelist></para>
+  </sect2>
+ 
+      <sect2 id="ok-apply-close">
+	  <title>OK, Aplicar y Cerrar</title>
+	<para>
+	 Si está de acuerdo con los cambios que ha realizado, presione <guibutton>OK</guibutton> para activarlos y diálogo desaparecerá.
+	</para>
+
+	<para>
+	  Si quiere ver que apariencia tendrán los cambios que ha realizado sin cerrar la ventana, presione <guibutton>Aplicar</guibutton> para activar los valores manteniendo el diálogo abierto.
+	</para>
+
+	<para>
+	  Si no desea activar sus cambios, presione <guibutton>Cerrar</guibutton>. Cerrará el diálogo, pero no guardará lo cambios que haya realizado. Esta opción no rehace los cambios activados por la orden <guibutton>Aplicar</guibutton>. Dese cuenta que presionando el botón <guibutton>Aplicar</guibutton> y <guibutton>Cerrar</guibutton> tiene el mismo efecto que presionar <guibutton>OK</guibutton>.
+	</para>
+      </sect2>
+    </sect1>
+
+
+
+
+
+
+<sect1 id="dialogs">
+       <title>Extras del  Supervisor de Tiempos de GNOME </title>
+         <sect2 id="properties">  
+	<title>El Diálogo Propiedades</title>
+        <para> En este diálogo, Vd. puede ver y editar todas las propiedades de un proyecto:
+        <itemizedlist>      
+         <listitem>
+              <para>
+              <guilabel>Título del Proyecto</guilabel>
+	      Aquí puede cambiar el título del proyecto..</para>
+	  </listitem>
+
+          <listitem><para>
+	  <guilabel>Descripción del Proyecto</guilabel>
+	    Si lo desea puede dar al proyecto una descripción más detallada.</para>
+	</listitem>
+
+	<listitem><para>
+	  <guilabel>Tiempo de Proyecto Actual (Hoy)</guilabel>
+	    Este es el tiempo <emphasis>diario</emphasis> que ha invertido en el proyecto hoy. Aquí puede editar este tiempo.</para>
+	</listitem>
+
+	<listitem><para>
+	  <guilabel>Tiempo Total de Proyecto</guilabel>
+	  Este es el tiempo <emphasis>total</emphasis> que ha trabajado en un proyecto. Aquí puede editar dicho tiempo.</para>
+	</listitem>
+      </itemizedlist>
+    </para>
+</sect2>
+
+<sect2 id="newproject">
+      <title>El Diálogo de Nuevo Proyecto</title>
+      <para>Este diálogo es pequeño. Simplemente quiere averiguar el nombre del nuevo proyecto. Simplemente introduzca un título y presione <guibutton>OK</guibutton>.
+	Si ha cambiado de idea y no quiere que el  <application> Supervisor de Tiempos de GNOME</application> añada un nuevo proyecto,presione <guibutton>Cancelar</guibutton>.
+      </para>
+    </sect2>      
+</sect1>
+
+
+
+
+<!-- =============New section============================= -->
+  <sect1 id="bugs">
+    <title>Errores y limitaciones conocidas</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+	    <para>
+	    Si altera el tiempo diario en la ventana propiedades, no afecta al tiempo total.
+            </para>
+          </listitem>
+          <listitem>
+	    <para>
+	    Puede introducir tiempos negativos para los proyectos;  se mostrarán de forma extraña.
+            </para>
+          </listitem>
+          <listitem>
+	    <para>
+	     Se ha hecho algún esfuerzo en recuperación de caídas de los servidores X, pero se garantizan que valores se guardarán si la aplicación se cierra inesperadamente. No hay función de auto-guardado.
+            </para>
+          </listitem>
+	   <listitem>
+	    <para>
+	      El botón <guibutton>OK</guibutton> en el diálogo preferencias puede no funcionar &mdash;
+              permanece gris incluso después de que se hayan alterado los valores por defecto.   Debe pulsar el botón <guibutton>Aplicar</guibutton> y <guibutton>Cerrar</guibutton> para mantener los valores que ha cambiado..
+            </para>
+          </listitem>
+          <listitem>
+	    <para>
+	     Los tiempos son representados internamente como enteros (segundo). En algunas máquinas, sin embargo,  es teóricamente posible exceder el tiempo máximo que un programa puede entender. En la mayoría de las máquinas un proyecto debe ejecutarse más de 68 años para que esto ocurra.
+            </para>
+          </listitem>
+  </itemizedlist>
+	</para>
+  </sect1>
+
+<!-- =============Authors Section============================= -->
+
+  <sect1 id="authors">
+    <title>Autores</title>
+    <para>
+       <application>Supervisor de Tiempos de GNOME</application> fue escrito por 
+       <author>
+           <firstname>Eckehard</firstname> 
+           <surname>Berns</surname> 
+       </author>.
+       No se realiza soporte de la aplicación. Si desea realizar el soporte de la aplicación, por favor contacte con el autor en  <email>eb@berns.i-s-o.net</email>. Por favor envíe todos los comentarios,
+sugerencias, e informes de errores a la <ulink url="http://bugzilla.gnome.org" type="http">base de datos de seguimiento de errores de Gnome</ulink>. Encontrara información sobre la forma de enviar informes de errores en linea en<ulink      url="http://bugs.gnome.org/Reporting.html" type="http">http://bugs.gnome.org/Reporting.html</ulink>.  Si esta usando Gnome 1.1 o posterior, puede usar también el comando<command>bug-buddy</command>para enviar informes de errores.
+
+     
+    </para>
+    <para>
+      Este manual ha sido escrito por  Aaron Weber (<email>aaron@helixcode.com</email>) y (Eckehard Berns<email>eb@berns.i-s-o.net</email>). Por favor envíe todos los comentarios y sugerencias acerca de este manual al proyecto de documentación de Gnome en  <email>docs@gnome.org</email>.
+También puede incluir sus comentarios en directo usando <ulink type="http" url="http://developer.gnome.org/projects/gdp/doctable/">la tabla de estado de la documentación GNOME</ulink>. 
+
+      </para>
+
+
+<para>José Antonio Salgueiro Aquino (<email>joseantsa@retemail.es</email> es el traductor de este manual al Castellano. Por favor envíe todos los comentarios y sugerencias acerca de este traducción al proyecto de traducción de gnome-es en  <email>traductores@es.gnome.org</email>.
+</para>
+
+<para>Puede encontrar mas documentación de Gnome en Castellano en las páginas
+ del grupo de traducción al Castellano
+<ulink type="http" url="http://www.croftj.net/~barreiro/spanish/gnome-es">
+gnome-es</ulink>,
+o en las de
+<ulink type="http" url="http://www.es.gnome.org">Gnome España</ulink>.
+</para>
+
+    <!-- For translations: uncomment this:
+      <para> Latin translation was done by ME
+      (<email>MYNAME@MYADDRESS</email>). Please send all comments
+      and suggestions regarding this translation to SOMEWHERE.
+     </para> 
+     -->
+      </sect1>
+
+
+ <!-- ============= Application License ============================= -->
+
+ <sect1 id="license">
+  <title>Licencia</title>
+  <para> 
+      Este programa es software libre; Vd, puede redistribuirlo y/o modificarlos bajo los términos de la 
+<ulink url="gnome-help:gpl">Licencia Pública General GNU</ulink> tal como publicó la Fundación del Software Libre; en su versión 2 de la Licencia, o (a su elección) cualesquiera versiones posteriores.
+  </para>
+  <para>
+
+Este programa se distribuye con la esperanza de que sea útil, pero sin garantía alguna;
+incluso sin la garantía implícita de mercancía o conveniencia para determinados propósitos.
+véase la <citetitle> licencia publica general GNU </citetitle> para más detalles.
+
+  </para>
+  <para>
+      Puede obtener una copia de la <citetitle> licencia publica general GNU </citetitle> en la Fundación del Software Libre visitando <ulink type="http" url="http://www.fsf.org">su Sitio Web</ulink> o escribiendo a
+      <address>
+	Free Software Foundation, Inc.
+	<street>59 Temple Place</street> - Suite 330
+	<city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+	<country>Estados Unidos</country>
+   </address>
+  </para>
+ </sect1>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
