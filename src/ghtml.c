@@ -53,6 +53,15 @@ typedef enum {
 	/* project things */
 	TITLE =200,
 	DESC,
+	PNOTES,
+	EST_START,
+	EST_END,
+	DUE_DATE,
+	SIZING,
+	PERCENT,
+	URGENCY,
+	IMPORTANCE,
+	STATUS
 
 } TableCol;
 
@@ -716,18 +725,43 @@ do_show_project_header (GttGhtml *ghtml)
 	}
 	for (i=0; i<ghtml->nproj_cols; i++)
 	{
+		if (output_html) p = g_string_append (p, "<th>");
 		switch (ghtml->proj_cols[i]) 
 		{
 			case TITLE:
-				if (output_html) p = g_string_append (p, "<th>");
 				PROJ_COL_TITLE (_("Title"));
 				break;
 			case DESC:
-				if (output_html) p = g_string_append (p, "<th>");
 				PROJ_COL_TITLE (_("Description"));
 				break;
+			case PNOTES:
+				PROJ_COL_TITLE (_("Notes"));
+				break;
+			case EST_START:
+				PROJ_COL_TITLE (_("Estimated Start Date"));
+				break;
+			case EST_END:
+				PROJ_COL_TITLE (_("Estimated End Date"));
+				break;
+			case DUE_DATE:
+				PROJ_COL_TITLE (_("Due Date"));
+				break;
+			case SIZING:
+				PROJ_COL_TITLE (_("Sizing"));
+				break;
+			case PERCENT:
+				PROJ_COL_TITLE (_("Percent Complete"));
+				break;
+			case URGENCY:
+				PROJ_COL_TITLE (_("Urgency"));
+				break;
+			case IMPORTANCE:
+				PROJ_COL_TITLE (_("Importance"));
+				break;
+			case STATUS:
+				PROJ_COL_TITLE (_("Status"));
+				break;
 			default:
-				if (output_html) p = g_string_append (p, "<th>");
 				PROJ_COL_TITLE (_("No Default Value"));
 		}
 		p = g_string_append (p, ghtml->delim);	
@@ -758,6 +792,7 @@ do_show_project_footer (GttGhtml *ghtml)
 	return SCM_UNSPECIFIED;  
 }
 
+
 static SCM
 do_show_project (GttGhtml *ghtml, GttProject *prj)
 {
@@ -768,8 +803,18 @@ do_show_project (GttGhtml *ghtml, GttProject *prj)
 	char * ps;
 	gboolean output_html = ghtml->show_html;
 	gboolean show_links = ghtml->show_links;
+	SCM rc =  SCM_UNSPECIFIED;  
+	
+	if (NULL == ghtml->write_stream) return rc; 
 
-	if (NULL == ghtml->write_stream) return;
+	/* A cheesy hack, but we don't show projects that are completed
+	 * or 100 % complete.  That's why this is called a todo list.
+	 * XXX hack alert -- this should be replaced by a generic query,
+	 * maybe/possibly/probably re-written in scheme. 
+	 */
+	if (100 <= gtt_project_get_percent_complete (prj)) return rc;
+	if (GTT_CANCELLED == gtt_project_get_status (prj)) return rc;
+	if (GTT_COMPLETED == gtt_project_get_status (prj)) return rc;
 
 	p = g_string_new (NULL);
 
@@ -781,11 +826,16 @@ do_show_project (GttGhtml *ghtml, GttProject *prj)
 	for (i=0; i<ghtml->nproj_cols; i++)
 	{
 		const char *pp;
+		time_t start, end, due;
+		int ival;
+		char buff[100];
+		GttRank rank;
+		GttProjectStatus status;
 
+		if (output_html) p = g_string_append (p, "<td align=left>");
 		switch (ghtml->proj_cols[i]) 
 		{
 			case TITLE:
-				if (output_html) p = g_string_append (p, "<td>");
 				if (show_links) 
 				{
 					g_string_append_printf (p, "<a href=\"gtt:proj:0x%x\">", prj);
@@ -797,14 +847,78 @@ do_show_project (GttGhtml *ghtml, GttProject *prj)
 				break;
 
 			case DESC:
-				if (output_html) p = g_string_append (p, "<td align=left>");
 				pp = gtt_project_get_desc(prj);
 				if (!pp || !pp[0]) pp = _("(empty)");
 				p = g_string_append (p, pp); 
 				break;
 
+			case PNOTES:
+				pp = gtt_project_get_notes(prj);
+				if (!pp || !pp[0]) pp = _("(empty)");
+				p = g_string_append (p, pp); 
+				break;
+				
+			case EST_START:
+				start = gtt_project_get_estimated_start (prj);
+				print_date_time (buff, 100, start);
+				p = g_string_append (p, buff);
+				break;
+
+			case EST_END:
+				end = gtt_project_get_estimated_end (prj);
+				print_date_time (buff, 100, end);
+				p = g_string_append (p, buff);
+				break;
+
+			case DUE_DATE:
+				due = gtt_project_get_due_date (prj);
+				print_date_time (buff, 100, due);
+				p = g_string_append (p, buff);
+				break;
+
+			case SIZING:
+				ival = gtt_project_get_sizing (prj);
+				g_string_append_printf (p, "%d", ival);
+				break;
+				
+			case PERCENT:
+				ival = gtt_project_get_percent_complete (prj);
+				g_string_append_printf (p, "%d", ival);
+				break;
+
+			case URGENCY:
+				rank = gtt_project_get_urgency (prj);
+				switch (rank) {
+					case GTT_UNDEFINED: p = g_string_append (p, _("Undefined")); break;
+					case GTT_LOW:       p = g_string_append (p, _("Low")); break;
+					case GTT_MEDIUM:    p = g_string_append (p, _("Normal")); break;
+					case GTT_HIGH:      p = g_string_append (p, _("Urgent")); break;
+				}
+				break;
+				
+			case IMPORTANCE:
+				rank = gtt_project_get_importance (prj);
+				switch (rank) {
+					case GTT_UNDEFINED: p = g_string_append (p, _("Undefined")); break;
+					case GTT_LOW:       p = g_string_append (p, _("Low")); break;
+					case GTT_MEDIUM:    p = g_string_append (p, _("Medium")); break;
+					case GTT_HIGH:      p = g_string_append (p, _("Important")); break;
+				}
+				break;
+				
+			case STATUS:
+				status = gtt_project_get_status (prj);
+				switch (status) {
+					case GTT_NOT_STARTED: p = g_string_append (p, _("Not Started")); break;
+					case GTT_IN_PROGRESS: p = g_string_append (p, _("In Progress")); break;
+					case GTT_ON_HOLD:     p = g_string_append (p, _("On Hold")); break;
+					case GTT_CANCELLED:   p = g_string_append (p, _("Cancelled")); break;
+					case GTT_COMPLETED:   p = g_string_append (p, _("Completed")); break;
+				}
+				break;
+
 			default:
-				if (output_html) p = g_string_append (p, "<td>");
+				break;
 		}
 		if (output_html) p = g_string_append (p, "</td>");
 	}
@@ -816,7 +930,7 @@ do_show_project (GttGhtml *ghtml, GttProject *prj)
 
 	g_string_free (p, FALSE);
 
-	return SCM_UNSPECIFIED;  
+	return rc;
 }
 
 /* ============================================================== */
@@ -883,6 +997,51 @@ decode_column (GttGhtml *ghtml, const char * tok)
 	if (0 == strncmp (tok, "$desc", 5))
 	{
 		PROJ_COL (DESC);
+	}
+	else
+	if (0 == strncmp (tok, "$pnotes", 7))
+	{
+		PROJ_COL (PNOTES);
+	}
+	else
+	if (0 == strncmp (tok, "$est_start", 10))
+	{
+		PROJ_COL (EST_START);
+	}
+	else
+	if (0 == strncmp (tok, "$est_end", 8))
+	{
+		PROJ_COL (EST_END);
+	}
+	else
+	if (0 == strncmp (tok, "$due_date", 9))
+	{
+		PROJ_COL (DUE_DATE);
+	}
+	else
+	if (0 == strncmp (tok, "$sizing", 7))
+	{
+		PROJ_COL (SIZING);
+	}
+	else
+	if (0 == strncmp (tok, "$percent", 8))
+	{
+		PROJ_COL (PERCENT);
+	}
+	else
+	if (0 == strncmp (tok, "$urgency", 8))
+	{
+		PROJ_COL (URGENCY);
+	}
+	else
+	if (0 == strncmp (tok, "$importance", 11))
+	{
+		PROJ_COL (IMPORTANCE);
+	}
+	else
+	if (0 == strncmp (tok, "$status", 7))
+	{
+		PROJ_COL (STATUS);
 	}
 	else
 	if (0 == strncmp (tok, "$start_datime", 13))
