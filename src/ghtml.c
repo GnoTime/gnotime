@@ -112,7 +112,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		SCM rc = SCM_EOL;
 		char *str = SCM_STRING_CHARS (node);
 		int len = SCM_STRING_LENGTH (node);
-		if (0<len) rc = str_func (ghtml, str);
+		if ((0<len) && str_func) rc = str_func (ghtml, str);
 		return rc;
 	}
 		
@@ -919,7 +919,7 @@ RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
 static SCM
 get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 {
-	if (ghtml->show_links)
+	if (ghtml && ghtml->show_links)
 	{
 		GString *str;
 		str = g_string_new (NULL);
