@@ -44,9 +44,8 @@ struct GttActiveDialog_s
 	GtkButton   *no_btn;
 	GtkLabel    *active_label;
 	GtkLabel    *credit_label;
-	GtkMenu     *project_menu;
+	GtkOptionMenu  *project_menu;
 	
-	GttProject  *prj;
 	IdleTimeout *idt;
 	time_t      time_armed;
 };
@@ -78,17 +77,19 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 static void
 start_proj (GObject *obj, GttActiveDialog *dlg)
 {
-		  printf ("duude start proj (not really, nothing done yet)\n");
+	GtkMenu *menu;
+	GtkWidget *w;
+	GttProject *prj;
+	
+	menu = GTK_MENU (gtk_option_menu_get_menu (dlg->project_menu));
+	w = gtk_menu_get_active (menu);
+	prj = g_object_get_data (G_OBJECT (w), "prj");
+
+printf ("duude start proj=%p %s\n", prj, gtt_project_get_title(prj));
+
+	ctree_start_timer (prj);
 	dlg->armed = FALSE;
 	dialog_kill (obj, dlg);
-}
-
-/* =========================================================== */
-
-static void
-pick_proj (GtkMenuItem *menu_item, GttProject *prj)
-{
-  printf ("duude pick proj =%p\n", prj);
 }
 
 /* =========================================================== */
@@ -114,7 +115,7 @@ setup_menus (GttActiveDialog *dlg)
 						 
 	gtk_label_set_text (dlg->credit_label, msg);
 
-	menushell = GTK_MENU_SHELL (dlg->project_menu);
+	menushell = GTK_MENU_SHELL (gtk_menu_new());
 
 	/* XXX should be query */
 	prjlist = gtt_get_project_list ();
@@ -123,11 +124,11 @@ setup_menus (GttActiveDialog *dlg)
 		GttProject *prj = node->data;
 		GtkWidget *item;
 		item = gtk_menu_item_new_with_label (gtt_project_get_title (prj));
+		g_object_set_data (G_OBJECT(item), "prj", prj);
 		gtk_menu_shell_append (menushell, item);
-		g_signal_connect(G_OBJECT(item), "activate",
-	          G_CALLBACK(pick_proj), prj);
-
+		gtk_widget_show (item);
 	}
+	gtk_option_menu_set_menu (dlg->project_menu, GTK_WIDGET(menushell));
 }
 
 /* =========================================================== */
@@ -139,9 +140,8 @@ setup_menus (GttActiveDialog *dlg)
 static void
 active_dialog_realize (GttActiveDialog * id)
 {
+	GtkWidget *w;
 	GladeXML *gtxml;
-
-	id->prj = NULL;
 
 	gtxml = gtt_glade_xml_new ("glade/active.glade", "Active Dialog");
 	id->gtxml = gtxml;
@@ -152,7 +152,8 @@ active_dialog_realize (GttActiveDialog * id)
 	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
 	id->active_label = GTK_LABEL (glade_xml_get_widget (gtxml, "active label"));
 	id->credit_label = GTK_LABEL (glade_xml_get_widget (gtxml, "credit label"));
-	id->project_menu = GTK_MENU (glade_xml_get_widget (gtxml, "project menu"));
+	w = glade_xml_get_widget (gtxml, "project option menu");
+	id->project_menu = GTK_OPTION_MENU (w);
 
 	g_signal_connect(G_OBJECT(id->dlg), "destroy",
 	          G_CALLBACK(dialog_close), id);
@@ -176,8 +177,6 @@ active_dialog_new (void)
 	ad->armed = TRUE;
 	ad->time_armed = time(0);
 	ad->idt = idle_timeout_new ();
-	ad->prj = NULL;
-
 	ad->gtxml = NULL;
 
 	return ad;
