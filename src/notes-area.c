@@ -22,6 +22,7 @@
 #include <gnome.h>
 
 #include "notes-area.h"
+#include "util.h"
 
 typedef struct _NotesArea_s
 {
@@ -46,6 +47,8 @@ notes_area_new (void)
 	dlg->vpane = glade_xml_get_widget (gtxml, "notes vpane");
 
 	gtk_widget_show (dlg->vpane);
+
+	return dlg;
 }
 
 /* ============================================================== */

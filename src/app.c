@@ -31,6 +31,7 @@
 #include "log.h"
 #include "menucmd.h"
 #include "menus.h"
+#include "notes-area.h"
 #include "prefs.h"
 #include "props-proj.h"
 #include "timer.h"
@@ -262,6 +263,17 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	global_ptw = ctree_new();
 	ctree = ctree_get_widget(global_ptw);
 	gtk_box_pack_end(GTK_BOX(vbox), ctree->parent, TRUE, TRUE, 0);
+
+#ifdef LATER
+	/* create the notes area */
+	// XXXX
+	notes_area_init();
+	{ GtkWidget *nar = notes_area_get_widget ();
+       gtk_widget_reparent (nar, vbox);  // ???
+	    gtk_box_pack_end(GTK_BOX(vbox), nar, TRUE, TRUE, 0);
+	}
+#endif
+	
 
 	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);

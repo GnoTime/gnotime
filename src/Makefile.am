@@ -20,6 +20,7 @@ gnotime_SOURCES = 		\
 	menucmd.c	\
 	menus.c		\
 	myoaf.c		\
+	notes-area.c	\
 	plug-in.c	\
 	prefs.c		\
 	proj.c		\
@@ -52,6 +53,7 @@ noinst_HEADERS = 	\
 	menucmd.h	\
 	menus.h		\
 	myoaf.h		\
+	notes-area.h	\
 	plug-in.h	\
 	prefs.h		\
 	proj.h		\
