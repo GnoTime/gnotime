@@ -9,6 +9,7 @@ gttglade_DATA =              \
   not-implemented.glade      \
   notes.glade                \
   plugin.glade               \
+  plugin_editor.glade        \
   prefs.glade                \
   project_properties.glade   \
   task_popup.glade           \
