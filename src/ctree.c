@@ -64,6 +64,8 @@ typedef struct ProjTreeNode_s
 	GtkCTreeNode *ctnode;
 	GttProject *prj;
 
+	char save_expander_state;
+
 	char *col_values[NCOLS];
 
 	char ever_timestr[24];
@@ -104,6 +106,12 @@ struct ProjTreeWindow_s
 
 	/* Should the select row be shown? */
 	gboolean show_select_row;
+
+	/* total number of rows/projects, and string showing 
+	 * expander state. 
+	 */
+	int num_rows;
+	char * expander_state;
 };
 
 static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
@@ -354,6 +362,41 @@ tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 
 /* ============================================================== */
 
+static void 
+ctree_save_expander_state (ProjTreeWindow *ptw)
+{
+	int i = 0;
+	GtkCTree *ctree;
+	GtkCTreeNode *ctn;
+	ProjTreeNode *ptn;
+	gboolean expanded, is_leaf;
+
+	if (!ptw) return;
+	ctree = ptw->ctree;
+
+	while (1) 
+	{
+		ctn = gtk_ctree_node_nth (ctree, i);
+		if (!ctn) break;
+		ptn = gtk_ctree_node_get_row_data(ctree, ctn);
+		gtk_ctree_get_node_info (ctree, ctn, 
+		                NULL, NULL, NULL, NULL, NULL, NULL,
+		                &is_leaf, &expanded);
+
+		if (expanded)
+		{
+			ptn->save_expander_state = 'y';
+		}
+		else
+		{
+			ptn->save_expander_state = 'n';
+		}
+		i++;
+	}
+}
+
+/* ============================================================== */
+
 static void
 click_column(GtkCList *clist, gint col, gpointer data)
 {
@@ -418,6 +461,7 @@ click_column(GtkCList *clist, gint col, gpointer data)
 			break;
 	}
 	
+	ctree_save_expander_state (ptw);
 	ctree_setup(ptw);
 }
 
@@ -1328,13 +1372,20 @@ ctree_new(void)
 
 	ptw->show_select_row = FALSE;
 
+	/* total number of rows and expander state */
+	ptw->num_rows = 0;
+	ptw->expander_state = NULL;
+
 	return ptw;
 }
 
 
 /* ========================================================= */
-/* The ctree_setup routine runs once, during initialization,
- * to set up the state of the ctree widget infrastructure.
+/* The ctree_setup routine runs during initialization,
+ * and also whenever the window is 'deeply' restructured:
+ * e.g. when the projects are sorted into a new order.
+ * 
+ * It sets up the state of the ctree widget infrastructure.
  * It can't be run until after the project data has been
  * read in.
  */
@@ -1344,11 +1395,10 @@ ctree_setup (ProjTreeWindow *ptw)
 {
 	GtkCTree *tree_w;
 	GList *node, *prjlist;
-	GttProject *running_project = cur_proj;
 
 	if (!ptw) return;
 	tree_w = ptw->ctree;
-	cur_proj_set (NULL);
+	
 
 	/* first, add all projects to the ctree */
 	prjlist = gtt_get_project_list();
@@ -1367,7 +1417,6 @@ ctree_setup (ProjTreeWindow *ptw)
 
 	/* Next, highlight the current project, and expand 
 	 * the tree branches to it, if needed */
-	if (running_project) cur_proj_set (running_project);
 	if (cur_proj) 
 	{
 		GttProject *parent;
@@ -1387,8 +1436,6 @@ ctree_setup (ProjTreeWindow *ptw)
 			parent = gtt_project_get_parent (parent);
 		}
 	}
-
-	menu_set_states();
 
 	if (config_show_clist_titles)
 	{
@@ -1412,14 +1459,26 @@ ctree_setup (ProjTreeWindow *ptw)
 
 	if (cur_proj) 
 	{
+		int i=0;
 		ProjTreeNode *ptn;
 		ptn = gtt_project_get_private_data (cur_proj);
 
-		/* Make sure that the active row is visible */
+		/* Make sure that the active row is in view */
 		gtk_ctree_node_moveto(tree_w, ptn->ctnode, -1, 0.5, 0.0);
 
-		/* XXX hack alert -- we should set the focus row 
-		 * here as well */
+		/* Set the focus row here as well.  Seems like the 
+		 * only way to get the row number is to search for it. */
+		while (1) 
+		{
+			GtkCTreeNode * ctn = gtk_ctree_node_nth (tree_w, i);
+			if (!ctn) break;
+			if (gtk_ctree_node_get_row_data(tree_w, ctn) == ptn)
+			{
+	    		GTK_CLIST(ptw->ctree)->focus_row = i;
+				break;
+			}
+			i++;
+		}
 	}
 	gtk_widget_grab_focus (GTK_WIDGET(tree_w));
 	gtk_widget_queue_draw (GTK_WIDGET(tree_w));
@@ -1445,6 +1504,22 @@ ctree_destroy (ProjTreeWindow *ptw)
 
 /* ============================================================== */
 
+#if 0
+/* we don't want to do this willy-nilly with a GtkDestroyNotify, 
+ * because it will erase things like expander state whenever we clear
+ * and redraw the window, e.g. during column sorts.
+ * We need some smarter way of freeing things.  */
+static void
+ptn_destroy (ProjTreeNode *ptn)
+{
+	gtt_project_set_private_data (ptn->prj, NULL);
+	gtt_project_remove_notifier (ptn->prj, redraw, ptn);
+	ptn->ptw = NULL;
+	ptn->prj = NULL;
+	g_free (ptn);
+}
+#endif
+
 void
 ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 {
@@ -1457,6 +1532,7 @@ ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 		ptn = g_new0 (ProjTreeNode, 1);
 		ptn->ptw = ptw;
 		ptn->prj = p;
+		ptn->save_expander_state = 0;
 		gtt_project_set_private_data (p, ptn);
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
@@ -1465,9 +1541,19 @@ ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
                                FALSE, FALSE);
 
-	gtk_ctree_node_set_row_data(ptw->ctree, ptn->ctnode, ptn);
+	gtk_ctree_node_set_row_data (ptw->ctree, ptn->ctnode, ptn);
 
-	/* make sure children get moved over also */
+	/* Restore expander state, if possible */
+	if ('y' == ptn->save_expander_state)
+	{
+		gtk_ctree_expand (ptw->ctree, ptn->ctnode);
+	}
+	else if ('n' == ptn->save_expander_state)
+	{
+		gtk_ctree_collapse (ptw->ctree, ptn->ctnode);
+	}
+	
+	/* Make sure children get moved over also */
 	for (n=gtt_project_get_children(p); n; n=n->next)
 	{
 		GttProject *sub_prj = n->data;
