@@ -110,7 +110,7 @@ export_projects (export_format_t *xp)
 	gtt_ghtml_destroy (xp->ghtml);
 	xp->ghtml = NULL;
 
-	g_free(xp->template);
+	g_free((char *) xp->template);
 	xp->template = NULL;
 
 	return 0;
