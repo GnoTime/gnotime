@@ -1109,6 +1109,23 @@ gtt_project_get_secs_current (GttProject *proj)
 	return gtt_task_get_secs_ever(tsk);
 }
 
+/* This routine adds up total number of projects, and sub-projects */
+static int
+prj_total (GttProject *prj, gpointer data)
+{
+	*((int *) data) ++;  /* just count one */
+	return 1;
+}
+
+int
+gtt_project_total (GttProject *proj)
+{
+	int total = 0;
+	if (!proj) return 0;
+	gtt_project_foreach (proj, prj_total, &total);
+	return total;
+}
+
 /* =========================================================== */
 
 int
@@ -1122,6 +1139,21 @@ gtt_project_list_total_secs_day (void)
 	{
 		GttProject *proj = node->data;
 		total += gtt_project_total_secs_day (proj);
+	}
+	return total;
+}
+
+int
+gtt_project_list_total (void)
+{
+	GList *node;
+	int total = 0;
+	if (!plist) return 0;
+
+	for (node=plist; node; node=node->next)
+	{
+		GttProject *proj = node->data;
+		total += gtt_project_total (proj);
 	}
 	return total;
 }

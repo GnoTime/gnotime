@@ -293,6 +293,11 @@ int 		gtt_project_total_secs_ever (GttProject *proj);
 
 void gtt_project_list_compute_secs (void);
 
+/* The gtt_project_total() routine returns the total
+ *   number of projects, including subprojects.
+ */
+int      gtt_project_total (GttProject *);
+
 
 /* The gtt_project_get_children() returns a list of the 
  *    subprojects of this project 
@@ -358,10 +363,10 @@ void gtt_clear_daily_counter (GttProject *proj);
 /* -------------------------------------------------------- */
 /* master project list */
 
-/* Return a list of all projects */
+/* Return a list of all top-level projects */
 GList * 	gtt_get_project_list (void);
 
-/* append project to the master project list */
+/* Append project to the top-level project list */
 void 		gtt_project_list_append(GttProject *p);
 
 void project_list_destroy(void);
@@ -393,6 +398,11 @@ void project_list_sort_status(void);
 
 int 		gtt_project_list_total_secs_day (void);
 int 		gtt_project_list_total_secs_ever (void);
+
+/* The gtt_project_list_total() routine returns the total
+ *   number of projects, including subprojects.
+ */
+int      gtt_project_list_total (void);
 
 /* -------------------------------------------------------- */
 /* Tasks */
