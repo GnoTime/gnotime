@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>GTTglade</name>
+  <program_name>gttglade</program_name>
+  <directory></directory>
+  <source_directory></source_directory>
+  <pixmaps_directory></pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>True</gettext_support>
+  <output_main_file>False</output_main_file>
+  <output_support_files>False</output_support_files>
+  <output_build_files>False</output_build_files>
+  <backup_source_files>False</backup_source_files>
+</project>
+
+<widget>
+  <class>GtkMenu</class>
+  <name>Interval Popup</name>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>new_interval</name>
+    <tooltip>Add a new time interval.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_new_interval_activate</handler>
+      <last_modification_time>Sat, 01 Dec 2001 05:22:34 GMT</last_modification_time>
+    </signal>
+    <label>New Interval</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>edit</name>
+    <tooltip>Edit the Start &amp; Stop Times</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_edit_activate</handler>
+      <last_modification_time>Sat, 01 Sep 2001 04:19:16 GMT</last_modification_time>
+    </signal>
+    <label>Edit Interval</label>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>delete</name>
+    <tooltip>Delete This Interval</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_delete_activate</handler>
+      <last_modification_time>Sat, 01 Sep 2001 04:16:00 GMT</last_modification_time>
+    </signal>
+    <label>Delete Interval</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_CUT</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>separator1</name>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>merge_up</name>
+    <tooltip>Merge Into Interval Above</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_merge_up_activate</handler>
+      <last_modification_time>Sat, 01 Sep 2001 04:16:00 GMT</last_modification_time>
+    </signal>
+    <label>Merge Up</label>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>merge_down</name>
+    <tooltip>Merge Into Interval Below</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_merge_down_activate</handler>
+      <last_modification_time>Sat, 01 Sep 2001 04:18:36 GMT</last_modification_time>
+    </signal>
+    <label>Merge Down</label>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>separator2</name>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>insert_memo</name>
+    <tooltip>Insert a new diary entry above this time interval.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_insert_memo_activate</handler>
+      <last_modification_time>Mon, 03 Sep 2001 19:56:52 GMT</last_modification_time>
+    </signal>
+    <label>Insert Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>paste_memo</name>
+    <tooltip>Paste a previously cut diary entry.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_paste_memo_activate</handler>
+      <last_modification_time>Wed, 12 Sep 2001 17:38:22 GMT</last_modification_time>
+    </signal>
+    <label>Paste Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_PASTE</stock_icon>
+  </widget>
+</widget>
+
+</GTK-Interface>

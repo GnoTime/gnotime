@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>GTTGlade</name>
+  <program_name>gttglade</program_name>
+  <directory></directory>
+  <source_directory></source_directory>
+  <pixmaps_directory></pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>True</gettext_support>
+  <output_main_file>False</output_main_file>
+  <output_support_files>False</output_support_files>
+  <output_build_files>False</output_build_files>
+</project>
+
+<widget>
+  <class>GtkMenu</class>
+  <name>Task Popup</name>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>new_task</name>
+    <tooltip>Insert a new diary entry above this one.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_new_task_activate</handler>
+      <last_modification_time>Wed, 12 Sep 2001 13:29:35 GMT</last_modification_time>
+    </signal>
+    <label>_New Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>edit_task</name>
+    <tooltip>Edit the diary entry and other task properties.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_edit_task_activate</handler>
+      <last_modification_time>Wed, 12 Sep 2001 13:29:35 GMT</last_modification_time>
+    </signal>
+    <label>_Edit Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_PROP</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>delete_memo</name>
+    <tooltip>Delete the diary entry only, keep the time intervals</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_delete_memo_activate</handler>
+      <last_modification_time>Tue, 11 Sep 2001 21:08:07 GMT</last_modification_time>
+    </signal>
+    <label>_Cut Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_CUT</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>delete_times</name>
+    <tooltip>Delete the diary entry, and the time intervals below it.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_delete_times_activate</handler>
+      <last_modification_time>Tue, 11 Sep 2001 21:08:07 GMT</last_modification_time>
+    </signal>
+    <label>Cut Entry &amp; _Times</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_CUT</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>paste</name>
+    <tooltip>Paste a previously cut diary entry.</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_paste_activate</handler>
+      <last_modification_time>Wed, 12 Sep 2001 16:37:38 GMT</last_modification_time>
+    </signal>
+    <label>_Paste Diary Entry</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_PASTE</stock_icon>
+  </widget>
+
+  <widget>
+    <class>GtkMenuItem</class>
+    <name>separator1</name>
+    <right_justify>False</right_justify>
+  </widget>
+
+  <widget>
+    <class>GtkPixmapMenuItem</class>
+    <name>new_interval</name>
+    <tooltip>Add a new time interval</tooltip>
+    <signal>
+      <name>activate</name>
+      <handler>on_new_interval_activate</handler>
+      <last_modification_time>Fri, 30 Nov 2001 06:23:59 GMT</last_modification_time>
+    </signal>
+    <label>New Time Interval</label>
+    <right_justify>False</right_justify>
+    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
+  </widget>
+</widget>
+
+</GTK-Interface>

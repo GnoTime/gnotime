@@ -1,0 +1,157 @@
+
+August 2001
+===========
+
+* Lots of Big, Brand-New Features:
+  -- Basic 'todo' list management has been added.  Projects can be 
+     ranked by urgency, importance, status.  Planned start, end and 
+     due dates can be specified, as well as an estimated sizing,
+     and a % complete value.
+  -- Sub-project support has been added.  New projects can be listed 
+     as sub-projects of other projects.  The time totals will show 
+     the total including sub-projects.  The Hierarchical tree can be 
+     expanded / collapsed to simplify viewing.  The tree can be 
+     re-arranged by dragging-n-dropping projects.
+  -- The 'focus row' now works.  The focus row is the one with a box
+     drawn around it... when editing the project properties, or viewing
+     the journal, its the 'focus row' that is the one that's used.
+     (In the past, all menu activities applied to the currently
+     running project.  Now, all menu actions apply to the 'focus row')
+  -- Arrow keys and carriage return now work in the main window.
+     Up/down keys can be used to move the "focus row" up & down.  
+     (The keyboard j & k also work).  The left/right arrow
+     keys expand/collapse a sub-project list.  Hitting return selects
+     the project.  
+  -- A journal showing explicit start and stop times is now maintained. 
+     Blocks of time can be annotated with memos.  The journal can be 
+     exported as an html page, or printed (OK, printer support not
+     yet finished).
+  -- Infrastructure for storing price & billing information has been
+     put into place.  This allows billing invoices to be generated.
+     Tasks can be marked as billable, non-billable, on-hold, or 
+     free-of-charge. Billing rates for regular, overtime, 
+     double-overtime or flat-fee can be set per task.
+     (Fancier-looking invoices still needed).
+  -- Auto-merge/cleanup of short intervals supported. Extremely short
+     intervals (the length is configurable) are automatically removed
+     from the log files.  Slightly longer but still short intervals
+     are automerged into nearby neighbors. Short gaps between intervals
+     are coalesced as well.  You can specify a time period of 0 seconds
+     to turn these features off.
+  -- The journal GUI is based on extended html pages.  If you know
+     html, then you can create customized report pages.
+     User-defined reports (contained in ghtml files) can be added to the
+     menus by typing in the filename into the 'new report' GUI dialog.
+     Typically, a 'user-defined report' is one with customized layout,
+     maybe a logo added, all-spiffed up & such.
+  -- An inactivity timeout has been implemented. If the keyboard
+     or mouse have been idle for more than some period of time, then 
+     the clock is stopped.
+  -- Scheme (guile) is used as an extension language, although scheme
+     support is currently limited to report generation.
+  -- The above features required an expanded way of storing data: and so
+     there is now a new XML file format that stores both project and 
+     journal data.
+  -- Export to GnuCash coming soon, I hope ...
+
+A very simple website for gtt is now up at 
+http://www.linas.org/linux/gtt/gtt.html
+
+  (This blast of new features by Linas Vepstas <linas@linas.org>)
+
+Cost of new features: 
+Before new features were added gtt was 4.0 KLOC of *.c and 0.4 KLOC *.h
+As of now (1.4.0.99) the size is       9.2 KLOC of *.c and 1.2 KLOC *.h
+
+
+Mon Aug 31 00:38:34 CEST 1998
+=============================
+
+* Log file entries can be customized. The start of a project uses the string
+  defined in `Entry Start' in the preferences dialog. The end of a project
+  uses the string in `Entry Stop'. Both strings can include the following
+  macros:
+
+  %t - the project's title
+  %d - the project's description
+  %T - the time ever in H:MM:SS (H = hours, MM = mins, SS = secs)
+  %h - the hours spent on the project today
+  %H - the hours spent on the project today (two digits)
+  %m - the minutes spent on the project today
+  %M - the minutes spent on the project today (00-59)
+  %s - the seconds spent on the project today
+  %S - the seconds spent on the project today (00-59)
+
+  Thus the string `project %t started (%d)' in `Entry Start' would cause the
+  following line to be logged:
+
+  Aug 31 00:39:17 project Project's Title started (Project's Description)
+
+  And the string `stopped project %t (%H:%M:%S)' would append the total time
+  spent on the project today as in `(8:03:51)' (meaning 8 hours, 3 minutes and
+  51 seconds). Alternatively you could specify %m to get 483 minutes (8*60 +
+  3).
+
+
+New since 0.12.0
+================
+
+* The configuration file is gnomified.
+
+* The toolbar settings in the help window are part of the
+  configuration file.
+
+* The toolbar can be configured now. I found the default toolbar to be
+  much to long when using toolbar texts.
+  
+* non-Gnome support has been kicked.
+
+
+New since 0.11.0
+================
+
+* internationalized GTT and provided a de.po
+
+* added an experimental help window using Gtk-XmHTML.
+
+* rearranged/renames some menu items a bit.
+
+* changes my own distribution to work with automake
+
+* wrote some documentation - HTML and text.
+
+* added the (optional) status bar. It just contains the title of the current
+  selected project yet.
+
+* added a popup menu when right-clicking on a project.
+
+* added clear daily counter to the menus.
+
+
+
+
+New since 0.10.0
+================
+
+
+Shell Command
+-------------
+
+In the Preferences dialog you can specify shell commands which get executed
+every time you change or disable a project. You can use '%s' as a
+replacement for the title of the new project in "Switch Project Command".
+
+
+Log Files
+---------
+
+It is now possible to write log files. You will have to specify the complete
+path of the logfile. '~' and environment variables are unsupported up to
+now.
+
+The timeout value specifies the time in seconds, that have to pass before a
+selected project will get logged. It is a good idea to set this value to a
+minimum of 10 seconds. If you clicked on the wrong project the first time
+and correct your selection within 10 seconds, the wrong project will not
+show up in the log file.
+

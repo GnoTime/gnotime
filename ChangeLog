@@ -1,0 +1,958 @@
+2002-06-16  Pablo Saratxaga  <pablo@mandrakesoft.com>
+
+	* glade/journal.glade: added handling of signal "destroy"
+	so that closing by clicking on the "close" button or
+	by closing the windows trough the windows manager works the same
+
+Mon Dec 17 22:18:17 CST 2001 Linas Vepstas <linas@linas.org>
+
+	* timer.c: failed to redraw main window when clock ticks!
+	* prefs.c: core dump when changing preferences
+	* help/*: remove this documentation directory entirely
+
+Mon Dec 10 10:48:28 CST 2001 Linas Vepstas <linas@linas.org>
+
+	* proj.c: fix core dump
+
+Fri Nov 30 12:26:23 CST 2001 Linas Vepstas <linas@linas.org>
+
+	* proj.h, proj.c, props-invl.c: bug fix for coredump
+	* props-task.c: fix redraw bug
+        * journal.c, task_opup.glade, interval_popup.glade:
+          add new popup menu entries.
+	* gtt.sgml: add list of new features
+
+Wed Nov 28 12:12:44 CST 2001 Linas Vepstas <linas@linas.org>
+
+	* Makefile.am, src/journal.c: patch from Derek Atkins
+          to search 'unusual' install paths for data directories.
+
+	* proj.c: remove conflicting libintl.h; bugfix for 
+	  clear_daily_counter.
+
+Tue Nov 27 15:59:57 2001  George Lebl <jirka@5z.com>
+
+	* src/journal.c: use gnome_program_locate_file instead of
+	  gnome_datadir_file
+
+	* src/util.c: use g_file_test instead of g_file_exists
+
+
+Fri Nov 23 17:18:14 CST 2001 Linas Vepstas <linas@linas.org>
+
+        * doc/C/gtt.sgml: update maintainer list, add warning
+          about out-of-date documentation.
+
+        * src/*.c, glade/*.glade: rename "Task" to the more 
+          correct "Diary Entry"
+
+Thu Nov 15 14:51:04 CST 2001  Linas Vepstas <linas@linas.org>
+
+	* src/*.c: misc changes in porting to gnome-2.0
+
+Mon Nov  5 13:23:02 CST 2001  Linas Vepstas <linas@linas.org>
+
+        * src/ghtml.c: replace obsolete guile macro with supported
+          function. (needed for guile-1.5 comaptibility).
+
+Thu Oct 18 16:31:35 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* main.c, file-io.c patch from Jeff Putsch
+	  <putsch@fiber.mxim.com> to fix coredump on initial 
+	  startup.
+
+Fri Oct 12 14:01:25 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* ctree.c, ctree.h, prefs.c: bugfix: redraw columns when
+	  changing column visibility.
+
+	* ctree.c: bugfix: set rational default column widths.
+	           bugfix: print start, end, due dates correctly.
+	           bugfix: fix column titles, add tooltips.
+
+	* props-proj.c: bugfix: fix property box sensitivity.
+	  What's up with that anthrax shit?  That's some bad shit 
+	  comin down. 
+
+	* help/C/gtt.1: update the man page.
+
+Fri Oct 05 11:20:18 2001  George Lebl <jirka@5z.com>
+
+	* Makefile.am, journal.c, plug-in.c, prefs.c, props-invl.c,
+	  props-proj.c, props-task.c, util.[ch]:  Add a function for 
+	  getting the GladeXML from the right directory.
+
+	* glade/Makefile.am: dist all glade files
+
+Thu Oct 04 21:37:11 2001  George Lebl <jirka@5z.com>
+
+	* ghtml.c: more 64bit fixes.  Guile uses int and not size_t for the
+	  sizes of strings apparently.  It's kind of evil.
+
+	* Makefile.am: fix make dist
+
+	* journal.c: fix 64bit issue with saving
+
+Wed Sep 26 18:45:32 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* proj.[ch], proj-props.c, xml-read.c xml-write.c:
+	  add support for a to-do list.
+
+	* proj.[ch], file-io.c, prefs.[ch], ctree.c: add weekly, 
+          monthly time totals
+
+	* proj.[ch], xml-read.c, xml-write.c, ghtml.c: : add 
+          billing status field
+
+Sun Sep 23 15:17:30 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* menucmd.c, toolbar.c: use the focus row, not the 
+	  current project, as the target of menu operations.
+
+	* err-throw.c: add canonical error messages 
+
+	* main.c: modify order of intialization, in prep for 
+	  SQL and other data sources.
+
+	* file-io.c: add support for alternate data sources 
+	  (e.g. sql work being done by Thomas Lang?s)
+
+	* ctree.c, menus.c: add support for showing & editing 
+	  the task memo from the main window
+
+Wed Sep 19 10:17:58 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* xml-read.c: changes to minimize likelyhood of loss
+	  of data if some weird i/o error occurs.
+
+Thu Sep 13 13:11:19 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* prefs.[ch], options.c: transition user preferences
+	  dialog to glade dialog
+	* *.[ch]: misc multiple bug fixes
+
+Mon Sep 10 14:29:50 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* idle-timer.[ch], timers.c: detect system idleness, 
+	  stop current project after an inactivity timeout.
+	* ctree.c: make the arrow keys, the enter key work.
+	* journal.c, proj.c: implement cut & paste of memos 
+	  in the journal report.
+
+Sat Sep  8 13:05:24 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* phtml.[ch], ghtml.[ch], journal.c: reimplement reports 
+	  with guile interpreter.
+	* ghtml.c: provide configurable column titles.
+	* journal.c: i18n'ize the paths to the reports
+
+Fri Sep  7 10:51:53 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* proj.c: misc bug fxes
+
+Tue Sep  4 23:43:02 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* phtml.c: provide support for configurable report layout,
+	  add invoice creation.
+
+	* plug-in.[ch], plugin.glade: define a simple GUI to allow
+	  users to add new, user-defined reports.
+
+Tue Sep 04 01:15:32 2001  George Lebl <jirka@5z.com>
+
+	* main.c: Have the "unstable" warning mention release 1.4.0.2 since
+	  I'm making 1.4.0.99 so it'd be good to tell users about a version
+	  number rather then just a cvs date
+
+
+Mon Sep  3 22:01:48 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* proj.c: important little bug fix.
+
+	* proj.c: implement auto-merge of intervals
+
+	* proj.c, journal.c: add ability to insert new 
+	  memos into journal.
+
+	* journal.c: add ability to save html to file.
+
+Mon Sep 03 06:15:08 2001  George Lebl <jirka@5z.com>
+
+	* glade/*.c, glade/Makefile.am: the translatable string stuff is now
+	  handled by xml-i18n-tools so the string files are not needed
+
+
+Sun Sep  2 13:27:18 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* proj.c: fix killer bug that was destroying timer data!
+	  Ouch!! (this bug introduced only a few days ago).
+
+	* props-invl.c: add interval edit dialog
+
+	* ctree.*, journal.*, proj.*: add event notification, so that
+	  any/all relevent windows are redrawn when data changes.
+
+	* cur-proj.h: start isolating cur-proj, since this global
+	  prevents us from having multiple cur projects.
+
+Sat Sep  1 15:51:53 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* props-task.c: add task properties GUI dialog
+	* props-proj.c: convert the project properties dialog to
+	  glade, add all the missing bits of the project properties.
+
+	* util.[ch]: clairify date utilities
+	* phtml.c: Beautify table layout slightly, add crude 
+	  ability to edit intervals.
+
+Fri Aug 31 20:16:55 2001  George Lebl <jirka@5z.com>
+
+	* Makefile.am: add proper gconf CFLAGS and link with GCONF, though
+	  not really needed by gtt itself.
+
+Fri Aug 31 09:33:13 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* proj.[ch], xml-read, write: add more billing rates/types, 
+	  add min intervals
+
+	* *.[ch] fix miscellaneous bugs
+	
+Thu Aug 30 17:00:24 CDT 2001  Linas Vepstas <linas@linas.org>
+	
+	* design.txt: begin a rudimentary overview of the 
+	  internals of GTT
+	
+	* journal.[ch]: add ability to view & edit journal of 
+	  annotated timestamps (via gtkhtml window)
+	  
+	* phtml.[ch]: add ability to parse gtt-style html markup,
+	  and output to aribtrary stream.
+
+2001-08-30  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* menucmd.c: Fix a typo.
+
+Tue Aug 28 20:11:34 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* main.c: add warning noting file format change.
+
+	* ctree.[ch]: convert old clist display to ctree display for
+	  heirarchical projects (sub-projects).  One can drag-n-drop
+	  projects to reparent/reorder them.
+
+	* *.[ch] rewire so that project timing data is stored in xml file
+	  while true GUI config data is stored in config file
+
+	* proj.[ch] add routines to subtotal time spent in sub-projects.
+
+Fri Aug 24 23:05:16 CDT 2001  Linas Vepstas <linas@linas.org>
+	* app.c clist.c gtt.h main.c menucmd.c menus.c proj.c timer.c
+	  toolbar.c: add routine gboolean timer_is_running()
+
+	* app.c main.c proj.c: bug fix, sometimes timer doesn't start right.
+
+	* file-io.c, proj.c: split out i/o routines to its own file
+	
+	* app.c, file-io.c: save and restore the window size and placement
+
+	* file-io.c: save and restore the current project
+
+	* fix bug introduced last week regarding zeroing of day timers.
+
+Fri Aug 17 10:56:14 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* xml-read.c, xml-write.c: add routines to read, write XML to file.
+
+	* *.[ch] misc cleanup, additions to support above.
+
+Tue Aug 14 19:46:21 CDT 2001  Linas Vepstas <linas@linas.org>
+
+	* *.[ch]: add C structs for storing/maniuplating log data
+	  in memory. This includes heirarchical project trees, 
+	  and memo strings attached to time intervals.
+
+	* proj.c, clist.c: get rid of home-grown linked list, use glib routines.
+
+	* *.[ch]: add some data hiding in classic oo-style
+
+	* xml-write.[ch]: fill in a bit of the xml-output routine
+
+Sat Aug 11 13:56:44 2001  George Lebl <jirka@5z.com>
+
+	* app.c, log.c: rewrite most of the internals of the project logging
+	  stuff to work sanely, fixes bug #58792.  Also log program start
+	  correctly
+
+2001-08-08  Abel Cheung  <maddog@linux.org.hk>
+
+	* \*.desktop: Added zh_TW.Big5 (traditional Chinese) strings.
+
+2001-07-24 John Fleck <jfleck@inkstain.net>
+
+	* options.c - the preferences help button was pointing
+	at the wrong file
+	
+Sat Jun 30 00:19:21 2001  George Lebl <jirka@5z.com>
+
+	* proj.c, menus.c, menucmd.[ch], gtt.h:  Add export current state
+	  feature.  Exports to a tab delimited file for use in spreadsheets,
+	  at some point I suppose it should support multiple formats, such as
+	  csv, gnumeric, html or whatever.
+
+Sun Jun 24 17:10:31 2001  George Lebl <jirka@5z.com>
+
+	* *.[ch]: Further constization in search of the gettext corruption
+	  bug
+
+Wed Jun 13 21:49:51 2001  George Lebl <jirka@5z.com>
+
+	* app.c, dialog.c, gtt.h, log.c, main.c, options.c, proj.c, prop.c,
+	  toolbar.c: Whack all uses of sprintf, fix fork to use double fork,
+	  try to use dynamic rather then static buffers to avoid overruns,
+	  when there is a pid file try seeing if the process exists first
+	  before warning to figure out if the pid file might be stale, whack
+	  the pid file on SIGINT and SIGTERM
+
+	* menucmd.c: make focus be on the name entry and enter makes focus
+	  move to the next entry rather then close the dialog
+
+2001-06-03 Manuel de Vega Barreiro <mbarreiro@red.madritel.es>
+
+	* gtt.sgml Spanish Translation
+
+2001-02-21 John Fleck <jfleck@inkstain.net>
+
+	* updated doc/C/gtt.sgml for 1.4 release: bumped up version
+	number, changed bugzilla reference
+
+2000-11-19 John Fleck <jfleck@inkstain.net>
+	
+	* updated doc/C/Makefile.am to install sgml in help directory
+
+2000-11-17 John Fleck <jfleck@inkstain.net>
+
+	*gtt/doc/C/gtt.sgml: updating for Nautilus
+	
+2000-10-07  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* options.c: Use gnome_help_pbox_display() as the
+	help callback.
+	* props.c: Same here
+		
+2000-06-28 - John Fleck <jfleck@inkstain.net>
+	* fixed gtt.sgml version number
+
+Sun Jun 18 15:59:39 2000  George Lebl <jirka@5z.com>
+
+	* dialog.[ch]: fix up data pointers, make dialogs have the main
+	  window as parent, and remove some useless code.
+
+	* menucmd.c, : s/gettext/_/ ... why the @#$@ wasn't this done, am I
+	  missing something here?
+
+	* gtt.h, menucmd.c, proj.c: Apply patch from "Sven M. Hallberg"
+	  <pesco@gmx.de> to allow specifying project title in the new dialog.
+
+	* menucmd.c: free the entries data allocated for the callback.  Also
+	  get rid of the hack with "activate" and use the gnome_dialog method
+	  for this.
+
+	* menucmd.c, prop.c, options.c: make dialogs parent of window and
+	  use gnome_entries for text entry stuff.  When there is no
+	  text, set the entry to "" in options_dialog_set.  When the property
+	  box was just set set the modified state to false.
+
+2000-05-16 Gregory McLean <gregm@comstar.net>
+
+	* applied patch from Gediminas Paulauskas <menesis@delfi.lt>
+
+2000-04-23 John Fleck <jfleck@inkstain.net>
+
+	* fixed toolbar.c to link help button to GNOME help browser instead
+	of default browser
+
+2000-04-22  Fatih Demir	<kabalak@gmx.net>
+	
+	* gtt.desktop : Added [tr] .
+
+2000-04-19 John Fleck <jfleck@inkstain.net>
+
+	Makefile.am, doc/C/Makefile.am, topic.dat - fixes to correctly
+	link docs
+
+Sat Apr 01 10:39:46 2000  George Lebl <jirka@5z.com>
+
+	* main.c, shorts.[ch]: added a patch from "Sven M. Hallberg"
+	  <pesco@gmx.de> to implement vi key support for moving around
+	  the list
+
+2000-02-24  Peter Hawkins <peterhawkins@ozemail.com.au>
+
+	* menucmd.c: stop the about box from being shown multiple times at once.
+
+2000-02-03  Jonathan Blandford  <jrb@redhat.com>
+
+	* proj.c (project_get_timestr): allow it to print negative time
+	correctly.
+
+1999-06-25  Pablo Saratxaga <srtxg@chanae.alphanet.ch>
+
+	* help/es/*: synchronized the help files with the names used for
+	menus in the po/es.po file
+
+1999-04-28  Ettore Perazzoli  <ettore@comm2000.it>
+
+	* gtt.desktop: Added Italian translations.
+
+1999-04-11  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* timer.c, app.c: added a timer image to the statusbar that is only
+	displayed when the timer is running. People told me, that they can't
+	make out if the timer is currently running or not. This should fix
+	that.
+
+1999-03-18  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* proj.c: applied patch from robbe@orcus.priv.at that fixes the
+	segfault when using --select-project at the command line.
+
+1999-03-16  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* toolbar.c (toolbar_set_states): if the timer is running the toolbar
+	should show the icon that indicates to stop the timer and vice versa.
+	* toolbar.c (_MyToolbar): added timer_w to point to the timer toolbar
+	button. The button should only be sensitive when a project is selected.
+
+1999-03-11  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* removed some compiler warnings.
+	* start/stop timer gets logged now.
+
+1999-03-09  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* log.c (log_write): check for ~ in config_logfile_name and substitute
+	by user's home
+
+1999-02-25  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* toolbar.c: get GNOME preferences for toolbars and apply them.
+
+1999-02-24  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* help/C/gtt.1: fixed typo
+	* help/C/gtt-db.sgml: fixed types
+	* help/C/index.html: rebuilt from gtt-db.sgml
+	* app.c (update_status_bar): obey config_show_secs in status bar.
+	* options.c (options_apply_cb): call update_status_bar if
+	config_show_secs changed.
+	* menus.c (MENU_EDIT_PROPS_POS): set to correct value.
+	* help/es/index.html: new file, built from gtt-db.sgml
+	* help/es/Makefile.am: install index.html and topic.dat
+	* help/de: new directory, just replacing topic.dat at the moment
+
+1999-02-08  Tomas Ogren  <stric@ing.umu.se>
+
+	* app.c: Removed the widget realize call and changed
+	gtk_widget_set_usize() to gtk_window_set_default_size()
+	Also increased the default size somewhat (so the stuff inside fits)
+
+1999-02-04  Tomas Ogren  <stric@ing.umu.se>
+
+	* gtt.h, app.c, main.c: Rewrote the --geometry stuff to leave the
+	parsing part to gnome and made it work better.
+
+1999-01-20  Nat Friedman  <nat@nat.org>
+
+	* prop.c (prop_dialog): Connect the help signal of the property
+ 	box to gnome_help_pbox_goto.  Removed the old help callback.
+
+	* options.c (signals): Ditto.
+
+1999-01-15  Chris Lahey  <clahey@umich.edu>
+
+	* menus.c (menus_get_popup): Removed some code that stripped
+	accelerators since gnome_popup_menu_new handles that now.
+
+Fri Jan 08 18:56:10 1999  George Lebl  <jirka@5z.com>
+
+	* menus.c: strip accelerators from the popup menu to avoid
+	  warnings from gtk
+
+Fri Jan 08 01:42:54 1999  George Lebl  <jirka@5z.com>
+
+	* menus.c: fixup menus to be standard (mostly), and made the
+	  popup menu use gnome-popup-menu, the popup menu needs
+	  to be created first so that the accelerators are shown on
+	  the menubar
+
+	* clist.c,main.c: fixed the initial showing problem, fixed popup
+	  menu and fixed double click
+
+Wed Jan 06 23:07:20 1999  George Lebl  <jirka@5z.com>
+
+	* menus.c: standardize the menus (sort of) with the new stuff
+
+1998-12-30  Jeff Garzik  <jgarzik@pobox.com>
+
+	* options.c, prop.c, toolbar.c:
+	s/g_copy_strings/g_strconcat/
+
+1998-12-02  Sebastian Wilhelmi  <wilhelmi@ira.uka.de>
+
+	* options.c (options_dialog): 
+	* prop.c (prop_dialog): 
+	s/gtk_container_border_width/gtk_container_set_border_width/ 
+
+1998-11-23  Miguel de Icaza  <miguel@nuclecu.unam.mx>
+
+	* clist.c (create_clist): Update GtkCList usage.
+
+Fri Nov 20 21:53:27 CET 1998  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* myself: shot in the head because to stupid to commit local changes.
+	* clist.c: resurrected popup menu died again (see above)
+	* clist.c: applyed patch from Robert Bihlmeyer <robbe@orcus.priv.at>,
+	that addresses the unselect_row bug.
+
+Sun Nov  8 18:33:12 CET 1998  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* clist.c: check button_press_event to resurrect the popup menu.
+
+Sun Nov  8 14:19:41 CET 1998  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* proj.c (project_list_load): applied patch from Robert Bihlmeyer that
+	fixes status bar handling on startup.
+	* main.c (parse_geometry): check if geometry_string is set.
+
+Sat Oct 10 15:57:18 CEST 1998  Eckehard Berns  <eb@berns.i-s-o.net>
+
+	* gtt-db.{sgml,html}: applyed corrections by Dan Mueth
+	<dmueth@rheo.uchicago.edu>
+
+Sat Sep 19 19:36:18 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* menus.c: added menu shortcuts
+
+Mon Aug 31 00:52:08 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* log files can be customized now.
+	* NEWS: added a short description about the log file customization.
+
+Tue Aug 25 01:35:40 1998  Tom Tromey  <tromey@cygnus.com>
+
+	* options.c: Don't include libintl.h.
+	* log.c: Don't include libintl.h.
+	* app.c: Don't include libintl.h.
+
+1998-08-12  Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>
+
+	* prop.c (prop_dialog): Replaced 'gnome_property_box_append_page'
+ 	with 'gtk_notebook_append_page'.
+
+	* options.c (options_dialog): Likewise.
+
+Wed Aug 12 18:05:46 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* toolbar.c: changed GnomeSockPixmapWidget to GnomeStock
+
+Sun Jul 26 23:16:38 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtt-db.sgml: fixed typos.
+	* gtt-db.html: updated from gtt-db.sgml.
+	* proj.c: sorting by description with empty description fields doesn't
+	segfault any more.
+	* options.c: added LogFile Entry entry. This will hold the value of
+	the logfile format string.
+
+1998-07-01  Nuno Ferreira  <nmrf@rnl.ist.utl.pt>
+
+	* gtt.desktop: Added Portuguese translation.
+
+1998-06-14  Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>
+
+	* main.c (main): Uses 'gnome_master_client' instead of
+ 	'gnome_client_new_default'.
+
+Mon Jun  1 22:08:32 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* app.c (app_new): delete 2 lines of code which should have been
+	deleted a long time ago.
+
+	* prop.c options.c: Okay, it was an unclean implementation of the
+	gnome-propertybox widget within my code. I should have
+	signal_connected to the `close' event, not `delete_event'. Thies
+	signals are gone now alltogether and replaced by the
+	gnome_dialog_close_hides.
+
+Mon Jun  1 18:05:19 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* prop.c options.c: added explicite call to gnome_dialog_close_hides,
+	because gnome-dialog (or gnome-propertybox) doesn't handle
+	delete_events right.
+
+Thu May  7 17:03:10 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* main.c (main): explicitly ignore SIGCHLD to avoid zombie processes.
+
+Thu Apr 30 13:19:40 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* main.c (save_state): get better geometry values for SM.
+	* menus.c: cutted unused code.
+
+Wed Apr 29 22:39:19 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* clist.c (setup_clist): rearranged clist_moveto. fixed some bugs.
+
+	* app.c (app_new): switched window policy to allow shrinking.
+
+	* proj.c (project_list_{load,save}): Save and reload the state of the
+	timer.
+
+Tue Apr 28 22:57:27 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* proj.c (project_list_{load,save}): Save and reload the width of the
+	list titles.
+
+Tue Apr 28 16:23:33 1998  Havoc Pennington  <hp@pobox.com>
+
+	* options.c: Use GnomePropertyBox.
+
+Mon Apr 27 15:37:03 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* clist.c (setup_clist): added gtk_clist_moveto to scroll to the
+	selected project. I'm having some troubles with it though.
+	([un]select_row): Added support for double click. Single right-click
+	lets the popup menu stay open.
+
+Sun Apr 26 18:45:55 1998  Havoc Pennington  <hp@pobox.com>
+
+	* prop.c: Project properties dialog is now a property box. 
+	* dialog.c: removed _set_default() call in msgbox_ok since 
+	there's only one button in the created box.
+
+Sun Apr 26 12:07:51 1998  Havoc Pennington  <hp@pobox.com>
+
+	* dialog.h: Removed function new_dialog(); it was unused
+	and didn't work with GnomeDialog.
+	* dialog.c (dialog_setup): New static function.
+	* dialog.c: Everything converted to GnomeDialog. Conditional
+	sans-Gnome compile stuff taken out.
+	* app.c, main.c, menucmd.c: Use stock buttons for dialogs.
+
+Sun Apr 26 01:19:31 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* menus.c: moved `Preferences...' menu item to the file menu.
+
+Sat Apr 25 20:20:33 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* main.c: added session management support
+
+Wed Apr 22 17:05:38 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* clist.c: moved gtk_clist_column_width to another place
+
+Tue Apr  7 16:18:03 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* clist.c: removed initial `empty' project
+
+Tue Apr  7 15:15:50 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* proj.c gtt.h clist.c: applied patch from Aaron Digulla
+	<digulla@wi-pc44.fh-konstanz.de> which works around the clist title
+	bug and adds new columns (total time and description)
+
+Sat Mar 21 10:52:37 1998  Tom Tromey  <tromey@cygnus.com>
+
+	* dialog.c: Use gnome_message_box_*, not gnome_messagebox_*.
+
+	* menucmd.c (init_project_list_2): messagebox buttons now start at
+	0.
+	* app.c (init_list_2): messagebox buttons now start at 0.
+
+1998-03-20  Eckehard Berns  <eb@berns.prima.de>
+
+	* options.c: use gnome_file_entry for the logfile name.
+
+	* toolbar.c: changed the timer button to use gnome_stock_pixmap_widget
+	and ..._set_icon.
+
+	* menus.c: fixed the menu icons for preferences and properties.
+
+Sat Mar 15 02:26:35 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* menus.c: changing "Exit" back to "Quit".
+
+Tue Mar 10 14:27:35 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* main.c (main): added "--geometry" to argp options, moved geometry
+	processing to main.c (I was a bit braindead and am to lazy to move
+	it back :) ).
+	
+	* removed some bogus HAS_GNOME stuff.
+
+Mon Mar  9 23:25:58 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* toolbar.c (build_toolbar): use stock preferences icon
+
+	* tb_timer{,_stopped}.xpm: use new version
+
+Sun Mar  8 16:43:43 1998  Tom Tromey  <tromey@cygnus.com>
+
+	* Makefile.am (INCLUDES): Added GNOME_INCLUDEDIR.
+
+	* main.c (main): Use new gnome_init.
+
+Thu Mar  5 20:39:37 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* updated gtt's code to reflect the current gtk+ (GtkStatusbar,
+	GtkCList, ...) and gnome-config
+
+	* fixed statusbar
+
+1998-03-02  Federico Mena Quintero  <federico@nuclecu.unam.mx>
+
+	* app.c: Updated for new gtk_statusbar.
+
+1998-03-01  Raja R Harinath  <harinath@cs.umn.edu>
+
+	* log.c (log_last): Don't pass NULL to printf (via g_warning).
+
+Sun Mar  1 20:47:50 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* app.c (app_new): fixed -geometry parameter parsing.
+
+	* gtt-db.sgml: started to work at the documentation again.
+
+	* {toolbar,options,prop}.c: changed gnome_help_goto's to reflect the
+	new docbook documentation.
+
+	* topic.dat: dito.
+
+1998-02-26  Eckehard Berns  <eb@berns.prima.de>
+
+	* toolbar.c: use gnome_pixmap_new_...
+
+1998-02-25  Eckehard Berns  <eb@berns.prima.de>
+
+	* overall: major cleanup of unused code
+
+	* menus.[ch]: rewrite to use gnome-app-helper and gnome-help
+
+	* gtthelp.[ch]: kicked.
+
+1998-02-22  Eckehard Berns  <eb@berns.prima.de>
+
+	* options.c (options_dialog): work around a bug in gtk
+	(gtk_widget_get_parent_window), which prevents me of calling
+	gtk_notebook_append_page before the notebook has been
+	conatiner_added to a window.
+
+1998-02-19  Federico Mena Quintero  <federico@nuclecu.unam.mx>
+
+	* main.c (main): Added app_id "gtt".
+
+1998-02-19  Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>
+
+	* Makefile.am (gtt_LDADD): Added '$(INTLLIBS)'
+
+1998-02-17  Eckehard Berns <eb@berns.prima.de>
+
+	* clist.c (create_clist): set `Time' column to the width of the
+	string `00:00:00'
+
+Tue Feb 17 21:25:32 KST 1998  Changwoo Ryu  <cwryu@adam.kaist.ac.kr>
+
+	* main.c (main): Added bindtextdomain.
+	* Makefile.am (INCLUDES): Define GNOMELOCALEDIR.
+
+1998-02-17  Eckehard Berns <eb@berns.prima.de>
+
+	* gtthelp.c: added width/height entries for GnomeStockPixmapEntry
+
+	* toolbar.c: removed explicite realization.
+
+1998-02-16  Eckehard Berns <eb@berns.prima.de>
+
+	* toolbar.c (add_toggle_button): added gtk_widget_ref because the
+	GtkPixmap can be gtk_container_removed.
+
+1998-02-16  Eckehard Berns <eb@berns.prima.de>
+
+	* log.c (log_proj_intern): added instant log if min_secs is zero.
+	Projects will now get logged, as soon as the log file timeout
+	expires.
+	* timer.c (timer_func): call to log_proj added. log_proj will never
+	log a project twice. This makes sure, that the log entry will be
+	written as soon as the timeout expires.
+
+	* dialog.c (dialog_new_ok_cancel): made the first button the default
+	button. Doesn't work as I thought though.
+	* menucmd.c (new_project): added default actions for the `activate'
+	signal of the entry.
+
+1998-02-15  Raja R Harinath  <harinath@cs.umn.edu>
+
+	* main.c (lock_gtt): Remove bogus declaration of `getpid'.
+
+1998-02-13  Federico Mena Quintero  <federico@nuclecu.unam.mx>
+
+	* toolbar.c (add_stock_button): Bad hack: force-realize the window
+	so that the pixmaps will use the correct visual.  The toolbar
+	still has an incorrect size --- Gnome-stock has to be fixed for this.
+
+	* menus.c: Updated g_string_hash and g_string_equal by g_str_hash
+	and g_str_equal, respectively.
+
+1998-02-12  Federico Mena Quintero  <federico@nuclecu.unam.mx>
+
+	* main.c: Added #include <locale.h>
+
+Wed Feb 11 23:29:44 CET 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtt.1: added a man page for gtt.
+
+Sun Feb  8 03:11:04 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtthelp.c (gtt_help_init_menu): changed the `close' menu item to
+ 	  use gnome_stock_menu_item for demonstration purposes.
+
+Wed Feb  4 01:32:49 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtthelp.c: added use of gnome_stock_pixmap_register to let the
+ 	  API do the dirty work about the proper state settings of the
+ 	  `back' and `forward' icons.
+
+	* timer.c (timer_func): oops, big bug: when the timer has been
+	  stopped and restarted again, timer_func added all the seconds,
+	  the timer was stoppen (due to the last_timer counter). This has
+	  been fixed now.
+
+Sat Jan 31 11:37:57 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* app.c (app_new): call gtk_window_set_wmclass added
+
+Fri Jan 30 00:20:59 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* timer.c (timer_func): oops, wrong diff_time...
+
+	* clist.c,proj.c: one can sort the list, if GtkCList is used.
+
+	* options.c,toolbar.c: added option to show/hide tooltips.
+
+	* clist.c: added this file. added support for GtkCList throughout
+	  the sources.
+
+	* timer.c (timer_func): don't know if it really matters, but I
+ 	  check the time that is elapsed since the last timer event. This
+ 	  ensures that I don't miss any second.
+
+1998-01-28  Raja R Harinath  <harinath@cs.umn.edu>
+
+	* Makefile.am: Misc fixes.
+
+Wed Jan 28 15:37:55 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* menucmd.c (about_box): I'm now using GnomeAbout.
+
+Tue Jan 27 08:31:01 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* toolbar.c (build_toolbar): changed dgettext to gtt_gettext and
+ 	  added a prefix to "New". That way I don't need my own domain
+ 	  _and_ have no ambiguities.
+
+1998-01-26  Mark Galassi  <rosalia@cygnus.com>
+
+	* Makefile.am (LDADD): added $(DL_LIB) since these are now
+	required for any user of libgnome.a.
+	
+Mon Jan 26 14:25:17 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* {options,prop}.c: used gnome_stock_button for the dialogs.
+
+	* toolbar.c (build_toolbar): replaced _("New") with
+ 	  dgettext("gtt", "New") to distinguish my "New" with the one of
+ 	  gnomine.
+
+Sun Jan 25 03:36:25 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtthelp.c: gnome_config'ed the GttHelp settings.
+
+	* proj.c: I'm using gnome config now. If no gnome config is found,
+ 	  a fallback to the old (and non-GNOME) config file is used to
+ 	  convert old config files.
+
+	* added support to shorten the toolbar by choosing `toolbar
+ 	  sections'. This includes some not so pretty gtk_widget_hides
+ 	  (instead of _destroys), and some hacks around gnome_app. But I
+ 	  think, it's worth it.
+
+1998-01-25  Mark Galassi  <rosalia@cygnus.com>
+
+	* gtt-db.sgml: translated Eckehard's debiandoc SGML into DocBook.
+	Checked in gtt-db.sgml and the html output.
+
+Sat Jan 24 13:35:15 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* app.c: changed the statusbar to be a GtkStatusbar (looks better)
+
+Wed Jan 21 18:11:39 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* log.c (log_proj_intern): added last_real_proj to avoid duplicate
+ 	  log file enrties.
+
+Tue Jan 20 22:43:29 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* gtthelp.[ch]: added Options->Show Tooltips to GttHelp
+
+Tue Jan 20 02:03:29 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* app.c (init_list): checked for ENOENT - no configuration file is
+ 	  no error
+
+	* proj.c (project_list_load): checked for ENOENT
+
+	* gtthelp.c: Added a toolbar. Added a menu to configure the
+ 	  toolbar. These toolbar settings still need to be saved.
+
+Mon Jan 19 22:24:13 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* prop.c (prop_dialog): signal_connected delete_event to
+ 	  gtt_delete_event
+
+	* options.c (options_dialog): signal_connected delete_event to
+ 	  gtt_delete_event, which actiually just hides the widget
+
+	* app.c: eliminated segfault bug by not destroying any GnomeApp
+ 	  (GTT's main window and GttHelp).
+
+	* gtthelp.c: added history. Found out about
+ 	  XmHTMLAnchorScrollToName. I still do not use it because it is
+ 	  not converted to gtk yet. Found the segfault bug - seems to be a
+ 	  problem with free/malloc in my libc or in gtk - I worked around
+ 	  it by not destroying anything.
+
+Mon Jan 19 15:52:46 1998 MET  Eckehard Berns  <eb@berns.prima.de>
+
+	* made gtt use gnome-stock.[ch]
+	
+Mon Jan 19 01:34:13 1998  Eckehard Berns  <eb@berns.prima.de>
+
+	* dialog.c (new_dialog): included GtkDialog support when
+ 	  GTK_USE_DIALOG is set.
+
+	* Fixed some style bugs. Added some "delete_event"s.
+
+	* toolbar.c: revamped completely. when using GtkToolbar, widgets
+ 	  get updated now.
+	  
+	  Added support for gnome-stock.[ch], which I'm develeping at this
+ 	  time.
+
+	* prior to this I added many things to GTT, I do not remember
+ 	  exactly (that's why I started this ChangeLog :-) ).All changes,
+ 	  the user might see, are covered in NEWS though.
+
+Tue Jan 13 17:13:26 1998  Federico Mena  <federico@bananoid.nuclecu.unam.mx>
+
+	* timer.c: #include <string.h>
+	* main.c: #include <string.h>
