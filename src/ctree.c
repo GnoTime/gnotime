@@ -170,6 +170,7 @@ static void
 toggle_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
 	gboolean running = timer_is_running();
+	if (!ptn) return;
 	if ((ptn->prj == cur_proj) && running)
 	{
 		stop_timer_for_row (ptw, ptn);
