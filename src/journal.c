@@ -759,6 +759,9 @@ gtt_ghtml_resolve_path (const char *path_frag)
 }
 
 
+/* XXX the following half-dozen routines should be collapsed 
+ * into a list */
+
 void
 edit_journal(GtkWidget *w, gpointer data)
 {
@@ -828,6 +831,18 @@ edit_daily (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("daily.ghtml");
+	do_show_report (path, prj);
+}
+
+void
+edit_status (GtkWidget *w, gpointer data)
+{
+	GttProject *prj;
+	char * path;
+
+	prj = ctree_get_focus_project (global_ptw);
+
+	path = gtt_ghtml_resolve_path ("status.ghtml");
 	do_show_report (path, prj);
 }
 

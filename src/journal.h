@@ -26,6 +26,7 @@ void edit_invoice  (GtkWidget *, gpointer);
 void edit_primer   (GtkWidget *, gpointer);
 void edit_todolist (GtkWidget *, gpointer);
 void edit_daily    (GtkWidget *, gpointer);
+void edit_status   (GtkWidget *, gpointer);
 void invoke_report (GtkWidget *, gpointer);
 
 /* The new_task_ui() routine will create a new task at the head 
