@@ -288,7 +288,6 @@ read_config(void)
 }
 
 
-#define DEVEL_VERSION_WARNING 1
 #if DEVEL_VERSION_WARNING
 /* used only to display development version warning messsage */
 static void 
