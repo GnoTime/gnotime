@@ -66,7 +66,7 @@ extern int config_logfile_min_secs;
 
 extern char *config_data_url;
 
-/* pop up a dialog box for setting user preferences */
+/* Pop up a dialog box for setting user preferences */
 void prefs_dialog_show (void);
 
 #endif /* __GLOBAL_PREFS_H__ */

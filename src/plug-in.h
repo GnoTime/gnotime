@@ -30,7 +30,7 @@ typedef struct GttPlugin_s
 
 } GttPlugin;
 
-/* return the list of plugins */
+/* Return the list of report plugins */
 GList * gtt_plugin_get_list (void);
 
 GttPlugin * gtt_plugin_new (const char * name, const char * path);
@@ -38,7 +38,7 @@ GttPlugin * gtt_plugin_new (const char * name, const char * path);
 
 /*-------------------------------------------- */
 /* A really simple, stupid GUI that allows user to enter in the path
- * name to a phtml file, and then paste it into a menu.  The idea
+ * name to a ghtml file, and then paste it into a menu.  The idea
  * here is to make it as easy as possible for new users to create
  * modified/custom reports.
  */
@@ -50,6 +50,19 @@ void new_plugin_dialog_show(NewPluginDialog *dlg);
 void new_plugin_dialog_destroy(NewPluginDialog *dlg);
 
 void new_report(GtkWidget *widget, gpointer data);
+
+/*-------------------------------------------- */
+/* A fairly complex GUI allowing the user to edit the Reports menu,
+ * and add/remove/rearrange/rename reports.
+ */
+
+typedef struct PluginEditorDialog_s PluginEditorDialog;
+
+PluginEditorDialog * edit_plugin_dialog_new (void);
+void edit_plugin_dialog_show(PluginEditorDialog *dlg);
+void edit_plugin_dialog_destroy(PluginEditorDialog *dlg);
+
+void report_menu_edit(GtkWidget *widget, gpointer data);
 
 
 #endif /* __GTT_PLUG_IN_H__ */

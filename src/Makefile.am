@@ -11,6 +11,7 @@ gnotime_SOURCES = 		\
 	export.c	\
 	file-io.c	\
 	gconf-io.c	\
+	gconf-gnomeui.c	\
 	ghtml.c		\
 	ghtml-deprecated.c		\
 	idle-dialog.c	\
@@ -22,6 +23,7 @@ gnotime_SOURCES = 		\
 	menus.c		\
 	myoaf.c		\
 	notes-area.c	\
+	plug-edit.c	\
 	plug-in.c	\
 	prefs.c		\
 	proj.c		\
@@ -45,6 +47,7 @@ noinst_HEADERS = 	\
 	export.h	\
 	file-io.h	\
 	gconf-io.h		\
+	gconf-io-p.h		\
 	ghtml.h		\
 	ghtml-deprecated.h		\
 	gtt.h		\

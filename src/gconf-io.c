@@ -20,10 +20,13 @@
 
 #include <gconf/gconf-client.h>
 #include <glib.h>
+#include <gnome.h>
 
 #include "app.h"
 #include "cur-proj.h"
+#include "gconf-gnomeui.h"
 #include "gconf-io.h"
+#include "gconf-io-p.h"
 #include "gtt.h"
 #include "plug-in.h"
 #include "prefs.h"
@@ -38,129 +41,9 @@ extern time_t last_timer;  /* XXX */
 extern int cur_proj_id;
 extern int run_timer;
 
+extern GnomeUIInfo *gtt_reports_menu;
+
 #define GTT_GCONF "/apps/gnotime"
-
-/* ======================================================= */
-/* XXX Should use GConfChangesets */
-/* XXX warnings should be graphical */
-#define CHKERR(rc,err_ret,dir) {                                       \
-   if (FALSE == rc) {                                                  \
-      printf ("GTT: GConf: Warning: set %s failed: ", dir);            \
-      if (err_ret) printf ("%s", err_ret->message);                    \
-      printf ("\n");                                                   \
-   }                                                                   \
-}
-
-#define SETBOOL(dir,val) {                                             \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_bool (client, GTT_GCONF dir, val, &err_ret);  \
-   CHKERR (rc,err_ret,dir);                                            \
-}
-
-#define F_SETINT(dir,val) {                                            \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_int (client, dir, val, &err_ret);             \
-   CHKERR (rc,err_ret,dir);                                            \
-}
-
-#define SETINT(dir,val) F_SETINT (GTT_GCONF dir, val)
-
-#define F_SETSTR(dir,val) {                                            \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_string (client, dir, val, &err_ret);          \
-   CHKERR (rc,err_ret,dir);                                            \
-}
-
-#define SETSTR(dir,val) F_SETSTR (GTT_GCONF dir, val)
-
-#define SETLIST(dir,tipe,val) {                                        \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_list (client, GTT_GCONF dir, tipe, val, &err_ret);  \
-   CHKERR (rc,err_ret,dir);                                            \
-}
-
-#define UNSET(dir) {                                                   \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_unset (client, GTT_GCONF dir, &err_ret);          \
-   CHKERR (rc,err_ret,dir);                                            \
-}
-
-/* ======================================================= */
-
-#define CHKGET(gcv,err_ret,dir,default_val)                            \
-   if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) {\
-      retval = default_val;                                            \
-      printf ("GTT: GConf: Warning: get %s failed: ", dir);            \
-      if (err_ret) printf ("%s\n\t", err_ret->message);                \
-      printf ("Using default value\n");                                \
-   }
-
-#define GETBOOL(dir,default_val) ({                                    \
-   gboolean retval;                                                    \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);           \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_bool (gcv);                           \
-   retval;                                                             \
-})
-
-#define F_GETINT(dir,default_val) ({                                   \
-   int retval;                                                         \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_int (gcv);                            \
-   retval;                                                             \
-})
-
-#define GETINT(dir,default_val) F_GETINT (GTT_GCONF dir, default_val)
-
-#define F_GETLIST(dir,default_val) ({                                  \
-   GSList *retval;                                                     \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_list (gcv);                           \
-   retval;                                                             \
-})
-
-#define GETLIST(dir,default_val) F_GETLIST (GTT_GCONF dir,  default_val)
-
-#define F_GETSTR(dir,default_val) ({                                   \
-   const char *retval;                                                 \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_string (gcv);                         \
-   g_strdup (retval);                                                  \
-})
-
-#define GETSTR(dir,default_val) F_GETSTR (GTT_GCONF dir, default_val)
-
-/* Convert list of GConfValue to list of the actual values */
-#define GETINTLIST(dir) ({                                             \
-   GSList *l,*n;                                                       \
-   l = GETLIST(dir, NULL);                                             \
-   for (n=l; n; n=n->next) {                                           \
-      /* XXX mem leak?? do we need to free gconf value  ?? */          \
-      n->data = (gpointer) gconf_value_get_int (n->data);              \
-   }                                                                   \
-   l;                                                                  \
-})
 
 /* ======================================================= */
 /* Save only the GUI configuration info, not the actual data */
@@ -170,7 +53,7 @@ void
 gtt_gconf_save (void)
 {
 	GList *node;
-	char s[120];
+	char s[120], *p, *pp;
 	int i;
 	int x, y, w, h;
 	const char *xpn;
@@ -306,15 +189,19 @@ gtt_gconf_save (void)
 	for (node = gtt_plugin_get_list(); node; node=node->next)
 	{
 		GttPlugin *plg = node->data;
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
+		p = s + strlen(s);
+	   strcpy (p, "Name");
 		F_SETSTR (s, plg->name);
 		
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
+	   strcpy (p, "Path");
 		F_SETSTR (s, plg->path);
 
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
+	   strcpy (p, "Tooltip");
 		F_SETSTR (s, plg->tooltip);
 
+	   *p = 0;
+		gtt_save_gnomeui_in_gconf (client, s, &gtt_reports_menu[i]); 
 		i++;
 	}
 	SETINT ("/Misc/NumReports", i);
@@ -511,23 +398,20 @@ gtt_gconf_load (void)
 
 	/* Read in the user-defined report locations */
 	num = GETINT ("/Misc/NumReports", 0);
-	if (0 < num)
+	for (i = 0; i < num; i++) 
 	{
-		for (i = num-1; i >= 0 ; i--) 
-		{
-			GttPlugin *plg;
-			const char * name, *path, *tip;
+		GttPlugin *plg;
+		const char * name, *path, *tip;
 
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
-			name = F_GETSTR (s, "");
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
-			path = F_GETSTR(s, "");
-			g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
-			tip = F_GETSTR(s, "");
-			plg = gtt_plugin_new (name, path);
-			plg->tooltip = g_strdup (tip);
-		}
-	} 
+		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
+		name = F_GETSTR (s, "");
+		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
+		path = F_GETSTR(s, "");
+		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
+		tip = F_GETSTR(s, "");
+		plg = gtt_plugin_new (name, path);
+		plg->tooltip = g_strdup (tip);
+	}
 
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
 	/* Use string for time, to avoid unsigned-long problems */

@@ -42,17 +42,50 @@ struct PluginEditorDialog_s
 	GnomeApp  *app;
 };
 
+#define NCOLUMNS 3
+
 /* ============================================================ */
+
+static void
+edit_plugin_redraw_row (struct PluginEditorDialog_s *ped, 
+					 GtkTreeIter *iter, GnomeUIInfo *uientry)
+{
+	GttPlugin *plg;
+	GValue val = {G_TYPE_INVALID};
+
+	if (!uientry || !uientry->user_data) return;
+	plg = uientry->user_data;
+
+	g_value_init(&val, G_TYPE_STRING);
+	g_value_set_string (&val, plg->name);
+	gtk_tree_store_set_value (ped->treestore, iter, 0, &val);
+	
+	g_value_set_string (&val, plg->path);
+	gtk_tree_store_set_value (ped->treestore, iter, 1, &val);
+	
+	g_value_set_string (&val, plg->tooltip);
+	gtk_tree_store_set_value (ped->treestore, iter, 2, &val);
+}
 
 static void
 edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
 {
-	int i;
+	int i,rc;
+	GtkTreeIter iter;
 
 printf ("duude redraw len=%d\n", ped->menus->len);
+
 	/* Walk the current menu list */
+	rc = gtk_tree_model_get_iter_first (GTK_TREE_MODEL(ped->treestore), &iter);
 	for (i=0; i<ped->menus->len; i++)
 	{
+		GnomeUIInfo *uientry = (GnomeUIInfo *)ped->menus->data;
+   	if (0 == rc)
+		{
+			gtk_tree_store_append (ped->treestore, &iter, NULL);
+		}
+		edit_plugin_redraw_row (ped, &iter, &uientry[i]);
+		rc = gtk_tree_model_iter_next (GTK_TREE_MODEL(ped->treestore), &iter);
 	}
 }
 
@@ -151,9 +184,9 @@ edit_plugin_add_cb (GtkWidget * w, gpointer data)
 	const char *title, *path, *tip;
 	int index;
 	GttPlugin *plg;
-printf ("add clicked\n");
-	
-	gtk_entry_set_text (dlg->plugin_name, "New Item");
+printf ("add clicked dlg=%x\n",dlg);
+
+	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
 	/* gtk_entry_set_text (dlg->plugin_path, "");
 	gtk_entry_set_text (dlg->plugin_tooltip, ""); */
 
@@ -161,11 +194,15 @@ printf ("add clicked\n");
 	title = gtk_entry_get_text (dlg->plugin_name);
 	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
+	if (!path) path="";
+	if (!tip) path="";
 
    index = 0; /* XXX should be current in ctree */
 
 	/* Create a plugin */
 	plg = gtt_plugin_new (title, path);
+	if (!plg) return;
+
 	plg->tooltip = g_strdup (tip);
 
 	/* Add item to array */
@@ -189,12 +226,11 @@ static void
 edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
-printf ("delete cleicked\n");
+printf ("delete clicked\n");
 }
 
 /* ============================================================ */
 
-#define NCOL 3
 
 PluginEditorDialog *
 edit_plugin_dialog_new (void)
@@ -203,7 +239,7 @@ edit_plugin_dialog_new (void)
 	GladeXML *gtxml;
 	GtkWidget *e;
 	int i;
-	const char *col_titles[NCOL];
+	const char *col_titles[NCOLUMNS];
 
 	dlg = g_malloc(sizeof(PluginEditorDialog));
 	dlg->app = GNOME_APP (app_window);
@@ -239,9 +275,9 @@ edit_plugin_dialog_new (void)
 	dlg->treeview = GTK_TREE_VIEW (e);
 
 	{
-		GType col_type[NCOL];
-		for (i=0;i<NCOL;i++) { col_type[i] = G_TYPE_STRING; }
-      dlg->treestore = gtk_tree_store_newv (NCOL, col_type);
+		GType col_type[NCOLUMNS];
+		for (i=0;i<NCOLUMNS;i++) { col_type[i] = G_TYPE_STRING; }
+      dlg->treestore = gtk_tree_store_newv (NCOLUMNS, col_type);
 	}
 	gtk_tree_view_set_model (dlg->treeview, GTK_TREE_MODEL(dlg->treestore));
 
@@ -249,7 +285,7 @@ edit_plugin_dialog_new (void)
 	col_titles[0] = "Name";
 	col_titles[1] = "Path";
 	col_titles[2] = "Tooltip";
-	for (i=0; i<NCOL; i++)
+	for (i=0; i<NCOLUMNS; i++)
 	{
 		GtkTreeViewColumn *col;
 		GtkCellRenderer *renderer;
@@ -266,6 +302,9 @@ edit_plugin_dialog_new (void)
 
 	/* XXX should copy-in from system */
 	dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
+
+	/* Redraw the tree */
+	edit_plugin_redraw_tree (dlg);
 
 	/* ------------------------------------------------------ */
 	/* grab the various entry boxes and hook them up */

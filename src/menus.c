@@ -114,6 +114,10 @@ static GnomeUIInfo menu_main_reports[] = {
 		N_("Define a path to a new GnoTime ghtml report file"),
 			       new_report,
 			       GNOME_STOCK_BLANK),
+	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Report..."), 
+		N_("Edit the entries in the Reports pulldown menu (this menu)"),
+			       report_menu_edit,
+			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_SEPARATOR,
 	GNOMEUIINFO_END
 };
@@ -217,10 +221,12 @@ menus_create(GnomeApp *app)
 
 }
 
+/* Global: the user-defined reports pull-down menu */
+GnomeUIInfo *gtt_reports_menu = NULL;
+	
 void
 menus_add_plugins (GnomeApp *app)
 {
-	GnomeUIInfo *plugins;
 	char * path;
 	GList *node;
 	int len, i;
@@ -231,34 +237,33 @@ menus_add_plugins (GnomeApp *app)
 	if (0 >= len) return;
 
 	len ++;
-	plugins = g_new0 (GnomeUIInfo, len);
+	gtt_reports_menu = g_new0 (GnomeUIInfo, len);
 
 	i = 0;
 	for (node = gtt_plugin_get_list(); node; node=node->next)
 	{
 		GttPlugin *plg = node->data;
 
-		plugins[i].type = GNOME_APP_UI_ITEM;
-		plugins[i].label = plg->name;
-		plugins[i].hint = plg->tooltip;
-		plugins[i].moreinfo = invoke_report;
-		plugins[i].user_data = plg->path;
-		plugins[i].unused_data = NULL;
-		plugins[i].pixmap_type = GNOME_APP_PIXMAP_STOCK;
-		plugins[i].pixmap_info = GNOME_STOCK_BLANK;
-		plugins[i].accelerator_key = 0;
-		plugins[i].ac_mods = (GdkModifierType) 0;
+		gtt_reports_menu[i].type = GNOME_APP_UI_ITEM;
+		gtt_reports_menu[i].label = plg->name;
+		gtt_reports_menu[i].hint = plg->tooltip;
+		gtt_reports_menu[i].moreinfo = invoke_report;
+		gtt_reports_menu[i].user_data = plg->path;
+		gtt_reports_menu[i].unused_data = NULL;
+		gtt_reports_menu[i].pixmap_type = GNOME_APP_PIXMAP_STOCK;
+		gtt_reports_menu[i].pixmap_info = GNOME_STOCK_BLANK;
+		gtt_reports_menu[i].accelerator_key = 0;
+		gtt_reports_menu[i].ac_mods = (GdkModifierType) 0;
 
 		i++;
 	}
-	plugins[i].type = GNOME_APP_UI_ENDOFINFO;
+	gtt_reports_menu[i].type = GNOME_APP_UI_ENDOFINFO;
 
 	/* deal with the i18n menu path ...*/
 	/* (is this right ??? or is this pre-i18n ???) */
 	path = g_strdup_printf ("%s/<Separator>", _("Reports"));
 
-	gnome_app_insert_menus (app, path, plugins);
-	g_free (plugins);
+	gnome_app_insert_menus (app, path, gtt_reports_menu);
 }
 
 
