@@ -408,7 +408,7 @@ RET_PROJECT_LONG  (ret_project_percent, gtt_project_get_percent_complete)
 
 
 /* ============================================================== */
-/* Handle re_project_title in the almost-standard way,
+/* Handle ret_project_title_link in the almost-standard way,
  * i.e. as
  * RET_PROJECT_STR (ret_project_title, gtt_project_get_title) 
  * except that we need to handle url links as well. 
@@ -525,6 +525,38 @@ RET_FUNC (SCM task_list)                                            \
 RET_TASK_STR (ret_task_memo,    gtt_task_get_memo)
 RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
 		  
+/* ============================================================== */
+/* Handle ret_task_memo_link in the almost-standard way,
+ * i.e. as
+ * RET_TASK_STR (ret_task_memo, gtt_task_get_memo) 
+ * except that we need to handle url links as well. 
+ */
+static SCM
+get_task_memo_link_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	if (ghtml->show_links)
+	{
+		GString *str;
+		str = g_string_new (NULL);
+		g_string_append_printf (str, "<a href=\"gtt:task:0x%x\">", tsk);
+		g_string_append (str, gtt_task_get_memo (tsk)); 
+		g_string_append (str, "</a>");
+		return gh_str2scm (str->str, str->len);
+	}
+	else 
+	{
+		const char * str = gtt_task_get_memo (tsk); 
+		return gh_str2scm (str, strlen (str));
+	}
+}
+
+static SCM
+ret_task_memo_link (SCM task_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_task (ghtml, task_list, get_task_memo_link_scm);
+}
+
 /* ============================================================== */
 
 void
@@ -686,6 +718,7 @@ register_procs (void)
 	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
 	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
 	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
+	gh_new_procedure("gtt-task-memo-link",     ret_task_memo_link,     1, 0, 0);
 	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
 }
 
