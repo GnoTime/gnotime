@@ -210,7 +210,8 @@ build_toolbar(void)
 		       gtk_toolbar_append_item(mytbar->tbar, 
 				 _("Timer"),
 				 _("Start/Stop Timer"),
-				 NULL, mytbar->timer_button_image,
+				 NULL, 
+				 GTK_WIDGET(mytbar->timer_button_image),
 				 (GtkSignalFunc) menu_toggle_timer, NULL);
 		position ++;
 	}
