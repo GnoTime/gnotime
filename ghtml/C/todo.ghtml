@@ -20,19 +20,19 @@ the menu item "Reports... New Report".
 <table border=1>
 <tr><th>Importance</th>
     <th>Urgency</th>
-	 <th>Title</th>
-	 <th>Description</th>
-	 <th>Status</th>
-	 </tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    </tr>
 
 <?scm (gtt-show-projects (gtt-projects) 
       (list ''<tr><td>          gtt-project-importance ''</td>
-	         ''<td>              gtt-project-urgency    ''</td>
-	         ''<td>              gtt-project-title      ''</td>
-	         ''(<td align=left>) gtt-project-desc       ''</td>
-	         ''<td>              gtt-project-status     ''</td>
-			   ''</tr>
-			   ))
+            ''<td>              gtt-project-urgency    ''</td>
+            ''<td>              gtt-project-title-link ''</td>
+            ''(<td align=left>) gtt-project-desc       ''</td>
+            ''<td>              gtt-project-status     ''</td>
+            ''</tr>
+            ))
 ?>
 </table>
 <br><br>
