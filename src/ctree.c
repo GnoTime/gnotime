@@ -1325,12 +1325,10 @@ static void
 refresh_list (ProjTreeWindow *ptw, GList *prjlist)
 {
 	GList *node;
-	GtkCTree *tree_w = ptw->ctree;
 
 	/* now, draw each project */
 	for (node = prjlist; node; node = node->next) 
 	{
-		int i;
 		gboolean expand;
 		ProjTreeNode *ptn;
 		GttProject *prj = node->data;
@@ -1928,7 +1926,7 @@ ctree_get_expander_state (ProjTreeWindow *ptw)
 	ProjTreeNode *ptn;
 	gboolean expanded, is_leaf;
 
-	if (!ptw) return;
+	if (!ptw) return NULL;
 	ctree = ptw->ctree;
 
 	ptw->num_rows = gtt_project_list_total();
