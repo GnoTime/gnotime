@@ -16,7 +16,8 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* src/journal.c: implement flyover help in the html window.
 	* src/query.c: fix core dump when displaying daily totals.
 	* src/idle-timer.c: fix bug: use /proc/interrupts to detect 
-	  keyboard activity.
+	  keyboard activity. Fixes excessive poping up of timeout 
+	  reminders.
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
