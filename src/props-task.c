@@ -1,5 +1,5 @@
 /*   Task Properties for GTimeTracker - a time tracker
- *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003,2004 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,21 +28,46 @@
 #include "util.h"
 
 
-typedef struct _PropTaskDlg 
+typedef struct PropTaskDlg_s 
 {
 	GladeXML *gtxml;
-	GnomePropertyBox *dlg;
+	GtkDialog *dlg;
 	GtkEntry *memo;
 	GtkTextView *notes;
 	GtkOptionMenu *billstatus;
 	GtkOptionMenu *billable;
 	GtkOptionMenu *billrate;
 	GtkEntry *unit;
+
 	GttTask *task;
+
+	/* The goal of 'ignore events' is to prevent an inifinite
+	 * loop of cascading events as we modify the project and the GUI.
+	 */
+	gboolean ignore_events;
+
+	/* The goal of the freezes is to prevent more than one update
+	 * of windows per second.  The problem is that without this,
+	 * there would be one event per keystroke, which could cause
+	 * a redraw of e.g. the journal window.  In such a case, even
+	 * moderate typists on a slow CPU could saturate the CPU entirely.
+	 */
+	gboolean task_freeze;
+	
 } PropTaskDlg;
 
+/* ============================================================== */
+
+#define TSK_SETUP(dlg)                          \
+	if (NULL == dlg->task) return;               \
+	if (dlg->ignore_events) return;              \
+	                                             \
+	dlg->ignore_events = TRUE;                   \
+	dlg->task_freeze = TRUE;                     \
+	gtt_task_freeze (dlg->task);
 
 /* ============================================================== */
+/* Copy from widget to gtt objects */
 
 #define GET_MENU(WIDGET,NAME) ({                          \
 	GtkWidget *menu, *menu_item;                           \
@@ -52,53 +77,59 @@ typedef struct _PropTaskDlg
 })
 
 static void 
-task_prop_set(GnomePropertyBox * pb, gint page, PropTaskDlg *dlg)
+save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
+{
+	const gchar *cstr;
+	gchar *str;
+
+	TSK_SETUP(dlg);
+
+	cstr = gtk_entry_get_text(dlg->memo);
+	if (cstr && cstr[0]) 
+	{
+		gtt_task_set_memo(dlg->task, cstr);
+	} 
+	else 
+	{
+		gtt_task_set_memo(dlg->task, _("empty"));
+		gtk_entry_set_text(dlg->memo, _("empty"));
+	}
+
+	str = xxxgtk_textview_get_text(dlg->notes);
+	gtt_task_set_notes(dlg->task, str);
+	g_free (str);
+
+	dlg->ignore_events = FALSE;
+}
+
+static void 
+save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
 {
 	GttBillStatus status;
 	GttBillable able;
 	GttBillRate rate;
 	int ivl;
-	const gchar *cstr;
-	gchar *str;
 
-	if (!dlg->task) return;
+	TSK_SETUP(dlg);
 
-	if (0 == page)
-	{
-		gtt_task_freeze (dlg->task);
-		cstr = gtk_entry_get_text(dlg->memo);
-		if (cstr && cstr[0]) 
-		{
-			gtt_task_set_memo(dlg->task, cstr);
-		} 
-		else 
-		{
-			gtt_task_set_memo(dlg->task, _("empty"));
-			gtk_entry_set_text(dlg->memo, _("empty"));
-		}
-	
-		str = xxxgtk_textview_get_text(dlg->notes);
-		gtt_task_set_notes(dlg->task, str);
-		g_free (str);
+	ivl = (int) (60.0 * atof (gtk_entry_get_text(dlg->unit)));
+	gtt_task_set_bill_unit (dlg->task, ivl);
 
-		ivl = (int) (60.0 * atof (gtk_entry_get_text(dlg->unit)));
-		gtt_task_set_bill_unit (dlg->task, ivl);
+	status = (GttBillStatus) GET_MENU (dlg->billstatus, "billstatus");
+	gtt_task_set_billstatus (dlg->task, status);
 
-		status = (GttBillStatus) GET_MENU (dlg->billstatus, "billstatus");
-		gtt_task_set_billstatus (dlg->task, status);
+	able = (GttBillable) GET_MENU (dlg->billable, "billable");
+	gtt_task_set_billable (dlg->task, able);
 
-		able = (GttBillable) GET_MENU (dlg->billable, "billable");
-		gtt_task_set_billable (dlg->task, able);
+	rate = (GttBillRate) GET_MENU (dlg->billrate, "billrate");
+	gtt_task_set_billrate (dlg->task, rate);
 
-		rate = (GttBillRate) GET_MENU (dlg->billrate, "billrate");
-		gtt_task_set_billrate (dlg->task, rate);
-		gtt_task_thaw (dlg->task);
-	}
+	dlg->ignore_events = FALSE;
 }
 
 
 /* ============================================================== */
-
+/* Copy values from gnotime object to widget */
 
 static void 
 do_set_task(GttTask *tsk, PropTaskDlg *dlg)
@@ -110,7 +141,6 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 
 	if (!tsk) 
 	{
-
 		dlg->task = NULL;
 		gtk_entry_set_text(dlg->memo, "");
 		xxxgtk_textview_set_text(dlg->notes, "");
@@ -121,6 +151,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	/* Set the task, even if its same as the old task.  Do this because
 	 * the widget may contain rejected edit values.  */
 	dlg->task = tsk;
+	TSK_SETUP (dlg);
 
 	gtk_entry_set_text(dlg->memo, gtt_task_get_memo(tsk));
 	xxxgtk_textview_set_text(dlg->notes, gtt_task_get_notes (tsk));
@@ -144,58 +175,86 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	else if (GTT_OVEROVER == rate) gtk_option_menu_set_history (dlg->billrate, 2);
 	else if (GTT_FLAT_FEE == rate) gtk_option_menu_set_history (dlg->billrate, 3);
 
-	/* Set to unmodified as it reflects the current state of the project. */
-	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(dlg->dlg),
-					FALSE);
+	dlg->ignore_events = FALSE;
 }
 
 /* ============================================================== */
 
-#define TAGGED(NAME) ({						\
-	GtkWidget *widget;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	gtk_signal_connect_object(GTK_OBJECT(widget), "changed",\
-		GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-		GTK_OBJECT(dlg->dlg));				\
+static void 
+redraw (GttProject *prj, gpointer data)
+{
+	PropTaskDlg *dlg = data;
+	do_set_task (dlg->task, dlg);
+}
+
+static void
+close_cb (GtkWidget *w,  PropTaskDlg *dlg)
+{
+	GttProject *prj;
+	prj = gtt_task_get_parent (dlg->task);
+	gtt_project_remove_notifier (prj, redraw, dlg);
+
+	dlg->ignore_events = FALSE;
+	gtt_task_thaw (dlg->task);
+	dlg->task_freeze = FALSE;
+	save_task_notes (w, dlg);
+	save_task_billinfo (w, dlg);
+	dlg->task = NULL;
+	gtk_widget_hide (GTK_WIDGET(dlg->dlg));
+}
+
+static PropTaskDlg *global_dlog = NULL;
+
+static void
+destroy_cb (GtkWidget *w, PropTaskDlg *dlg)
+{
+	close_cb (w,dlg);
+	global_dlog = NULL;
+	g_free (dlg);
+}
+
+/* ============================================================== */
+
+#define NTAGGED(NAME) ({                                         \
+	GtkWidget *widget;                                            \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	g_signal_connect (G_OBJECT(widget), "changed",                \
+	        G_CALLBACK(save_task_notes), dlg);                    \
 	widget; })
 
-#define MUGGED(NAME) ({						\
-	GtkWidget *widget, *mw;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	mw = gtk_option_menu_get_menu (GTK_OPTION_MENU(widget));\
-	gtk_signal_connect_object(GTK_OBJECT(mw), "selection_done", \
-		 GTK_SIGNAL_FUNC(gnome_property_box_changed),	\
-		 GTK_OBJECT(dlg->dlg));				\
-	GTK_OPTION_MENU(widget);				\
+#define BTAGGED(NAME) ({                                         \
+	GtkWidget *widget;                                            \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	g_signal_connect (G_OBJECT(widget), "changed",                \
+	        G_CALLBACK(save_task_billinfo), dlg);                 \
+	widget; })
+
+#define TEXTED(NAME) ({                                          \
+	GtkWidget *widget;                                            \
+	GtkTextBuffer *buff;                                          \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget));      \
+	g_signal_connect(G_OBJECT(buff), "changed",                   \
+	        G_CALLBACK(save_task_notes), dlg);                    \
+	widget; })
+
+#define MUGGED(NAME) ({                                          \
+	GtkWidget *widget, *mw;                                       \
+	widget = glade_xml_get_widget (gtxml, NAME);                  \
+	mw = gtk_option_menu_get_menu (GTK_OPTION_MENU(widget));      \
+	g_signal_connect(G_OBJECT(mw), "selection_done",              \
+	         G_CALLBACK(save_task_billinfo), dlg);                \
+	GTK_OPTION_MENU(widget);                                      \
 })
 
-static void wrapper (void * gobj, void * data) {   
-	gnome_property_box_changed (GNOME_PROPERTY_BOX(data)); 
-} 
-
-#define TEXTED(NAME) ({						\
-	GtkWidget *widget;					\
-	GtkTextBuffer *buff;					\
-	widget = glade_xml_get_widget (gtxml, NAME);		\
-	buff = gtk_text_view_get_buffer (GTK_TEXT_VIEW(widget)); \
-	g_signal_connect_object(G_OBJECT(buff), "changed",\
-		G_CALLBACK(wrapper), 	\
-		G_OBJECT(dlg->dlg), 0);				\
-	widget; })
-
-#define MENTRY(WIDGET,NAME,ORDER,VAL) {				\
-	GtkWidget *menu_item;					\
-	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));	\
-	gtk_option_menu_set_history (WIDGET, ORDER);		\
-	menu_item =  gtk_menu_get_active(menu);			\
-	g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL);	\
+#define MENTRY(WIDGET,NAME,ORDER,VAL) {                          \
+	GtkWidget *menu_item;                                         \
+	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));  \
+	gtk_option_menu_set_history (WIDGET, ORDER);                  \
+	menu_item =  gtk_menu_get_active(menu);                       \
+	g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL); \
 }
 
-static void 
-help_cb (GnomePropertyBox *propertybox, gint page_num, gpointer data)
-{
-	gtt_help_popup (GTK_WIDGET(propertybox), data);
-}
 
 static  PropTaskDlg *
 prop_task_dialog_new (void)
@@ -208,24 +267,27 @@ prop_task_dialog_new (void)
 	gtxml = gtt_glade_xml_new ("glade/task_properties.glade", "Task Properties");
 	dlg->gtxml = gtxml;
 
-	dlg->dlg = GNOME_PROPERTY_BOX (glade_xml_get_widget (gtxml,  "Task Properties"));
+	dlg->dlg = GTK_DIALOG (glade_xml_get_widget (gtxml,  "Task Properties"));
 
-	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
-	                   GTK_SIGNAL_FUNC(help_cb), 
-	                   "gnotime.xml#preferences");
+	glade_xml_signal_connect_data (gtxml, "on_help_button_clicked",
+		GTK_SIGNAL_FUNC (gtt_help_popup), "gnotime.xml#preferences");
 
-	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",
-			   GTK_SIGNAL_FUNC(task_prop_set), dlg);
+	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
+		GTK_SIGNAL_FUNC (close_cb), dlg);
+
+	g_signal_connect(G_OBJECT(dlg->dlg), "close", G_CALLBACK(close_cb), dlg);
+	g_signal_connect(G_OBJECT(dlg->dlg), "destroy", G_CALLBACK(destroy_cb), dlg);
 
 	/* ------------------------------------------------------ */
 	/* grab the various entry boxes and hook them up */
 
-	dlg->memo       = GTK_ENTRY(TAGGED("memo box"));
+	dlg->memo       = GTK_ENTRY(NTAGGED("memo box"));
 	dlg->notes      = GTK_TEXT_VIEW(TEXTED("notes box"));
+
 	dlg->billstatus = MUGGED("billstatus menu");
 	dlg->billable   = MUGGED("billable menu");
 	dlg->billrate   = MUGGED("billrate menu");
-	dlg->unit       = GTK_ENTRY(TAGGED("unit box"));
+	dlg->unit       = GTK_ENTRY(BTAGGED("unit box"));
 
 	/* ------------------------------------------------------ */
 	/* associate values with the three option menus */
@@ -243,40 +305,45 @@ prop_task_dialog_new (void)
 	MENTRY (dlg->billrate, "billrate", 2, GTT_OVEROVER);
 	MENTRY (dlg->billrate, "billrate", 3, GTT_FLAT_FEE);
 
-	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
+	dlg->ignore_events = FALSE;
+	dlg->task_freeze = FALSE;
+	gtk_widget_hide_on_delete (GTK_WIDGET(dlg->dlg));
+
 	return dlg;
 }
 
 /* ============================================================== */
 
-static void 
-redraw (GttProject *prj, gpointer data)
+
+void
+gtt_diary_timer_callback (gpointer nuts)
 {
-	PropTaskDlg *dlg = data;
-	do_set_task (dlg->task, dlg);
+	/* If there was a more elegant timer add func, 
+	 * we wouldn't need this global */
+	PropTaskDlg *dlg = global_dlog;
+	if (!dlg) return;
+	dlg->ignore_events = TRUE;
+	if (dlg->task_freeze)
+	{
+		gtt_task_thaw (dlg->task);
+		dlg->task_freeze = FALSE;
+	}
+	dlg->ignore_events = FALSE;
 }
-
-/* ============================================================== */
-
-static PropTaskDlg *dlog = NULL;
 
 void 
 prop_task_dialog_show (GttTask *task)
 {
 	GttProject *prj;
 	if (!task) return;
-	if (!dlog) dlog = prop_task_dialog_new();
+	if (!global_dlog) global_dlog = prop_task_dialog_new();
 
-	
-	prj = gtt_task_get_parent (dlog->task);
-	gtt_project_remove_notifier (prj, redraw, dlog);
-
-	do_set_task(task, dlog);
+	do_set_task(task, global_dlog);
 	
 	prj = gtt_task_get_parent (task);
-	gtt_project_add_notifier (prj, redraw, dlog);
+	gtt_project_add_notifier (prj, redraw, global_dlog);
 	
-	gtk_widget_show(GTK_WIDGET(dlog->dlg));
+	gtk_widget_show(GTK_WIDGET(global_dlog->dlg));
 }
 
 /* ===================== END OF FILE =========================== */
