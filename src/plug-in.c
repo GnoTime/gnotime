@@ -52,7 +52,6 @@ gtt_plugin_new (const char * nam, const char * pth)
 	plg->name = g_strdup(nam);
 	plg->path = g_strdup(pth);
 	plg->tooltip = NULL;
-printf ("duuuude new plugin at %p name=%p path=%p\n", plg, plg->name, plg->path);
 
 	return plg;
 }
@@ -81,7 +80,6 @@ void
 gtt_plugin_free (GttPlugin *plg)
 {
 	if (!plg) return;
-printf ("duuuude delete plugin at %p name=%p path=%p\n", plg, plg->name, plg->path);
 	if (plg->name) g_free (plg->name);
 	if (plg->path) g_free (plg->path);
 	if (plg->tooltip) g_free (plg->tooltip);
