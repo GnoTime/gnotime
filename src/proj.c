@@ -1381,7 +1381,6 @@ project_compute_secs (GttProject *proj)
 		{
 			GttInterval *ivl = ivl_node->data;
 			total_ever += ivl->stop - ivl->start;
-
 			/* Accum time today.
 			 * XXX Does not handle daylight saving correctly. 
 			 */
@@ -1397,27 +1396,30 @@ project_compute_secs (GttProject *proj)
 			/* Accum time yesterday.
 			 * XXX Does not handle daylight saving correctly. 
 			 */
-			if (ivl->start >= midnight-24*3600)
+			if (ivl->start < midnight)
 			{
-				if (ivl->stop <= midnight)
+				if (ivl->start >= midnight-24*3600)
 				{
-					total_yesterday += ivl->stop - ivl->start;
+					if (ivl->stop <= midnight)
+					{
+						total_yesterday += ivl->stop - ivl->start;
+					}
+					else 
+					{
+						total_yesterday += midnight - ivl->start;
+					}
 				}
-				else 
+				else  /* else .. it started before midnight yesterday */
+				if (ivl->stop > midnight-24*3600)
 				{
-					total_yesterday += midnight - ivl->start;
-				}
-			}
-			else  /* else .. it started before midnight yesterday */
-			if (ivl->stop > midnight-24*3600)
-			{
-				if (ivl->stop <= midnight)
-				{
-					total_yesterday += ivl->stop - (midnight-24*3600);
-				}
-				else 
-				{
-					total_yesterday += 24*3600;
+					if (ivl->stop <= midnight)
+					{
+						total_yesterday += ivl->stop - (midnight-24*3600);
+					}
+					else 
+					{
+						total_yesterday += 24*3600;
+					}
 				}
 			}
 
@@ -1753,7 +1755,6 @@ gtt_project_timer_update (GttProject *proj)
 	diff = now - prev_update;
 	proj->secs_ever += diff;
 	proj->secs_day += diff;
-	proj->secs_yesterday += diff;
 	proj->secs_week += diff;
 	proj->secs_month += diff;
 	proj->secs_year += diff;
