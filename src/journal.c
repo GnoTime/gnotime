@@ -686,18 +686,24 @@ submit_clicked_cb(HtmlDocument *doc,
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
 	KvpFrame *kvpf;
+	KvpValue *val;
 	GList *qresults;
 	
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
-	printf ("duude what the\n");
-	path = gtt_ghtml_resolve_path (url, wig->filepath);
-	printf ("duude clocked m=%s url=%s resolvedpath=%s enc=%s\n", method, url, path, encoding);
-	printf ("duude old path = %s\n", wig->filepath);
+printf ("duude clocked m=%s url=%s enc=%s\n", method, url, encoding);
+printf ("duude old path = %s\n", wig->filepath);
 
 	kvpf = kvp_frame_new ();
 	kvp_frame_add_url_encoding (kvpf, encoding);
 
+	/* If there is a report specified, use that, else use 
+	 * the report specified in the form "action" */
+	val = kvp_frame_get_slot (kvpf, "report-path");
+	path = kvp_value_get_string (val);
+	if (!path) path = url;
+	path = gtt_ghtml_resolve_path (path, wig->filepath);
+	
 	/* Build an ad-hoc query */
 	qresults = bogus_query (kvpf);
 	
