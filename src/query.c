@@ -97,7 +97,7 @@ gtt_project_get_daily_time (GttProject *proj, gboolean include_subprojects)
 	start = gtt_project_get_earliest_start (proj, include_subprojects);
 	stop = gtt_project_get_latest_stop (proj, include_subprojects);
 	num_days = (stop - start) / (24*3600);
-	num_days +=2;
+	num_days += 2; /* two midnights might be crossed */
 
 	arr = g_array_new (FALSE, TRUE, sizeof (time_t));
 	g_array_set_size (arr, num_days);
