@@ -12,20 +12,20 @@
 ; GPL license for details.
 
 
-; Various bits of syntactic sugar for showing the current (selected)
+; Various bits of syntactic sugar for showing the current (linked)
 ; project title and other stuff of that sort.
 ;
 (define (gtt-show-project-title) 
-        (gtt-show (gtt-project-title (gtt-selected-project))))
+        (gtt-show (gtt-project-title (gtt-linked-project))))
 
 (define (gtt-show-project-desc) 
-        (gtt-show (gtt-project-desc (gtt-selected-project))))
+        (gtt-show (gtt-project-desc (gtt-linked-project))))
 
 (define (gtt-show-project-notes) 
-        (gtt-show (gtt-project-notes (gtt-selected-project))))
+        (gtt-show (gtt-project-notes (gtt-linked-project))))
 
 (define (gtt-show-basic-journal)
-        (gtt-show-journal (gtt-selected-project)))
+        (gtt-show-journal (gtt-linked-project)))
 
 
 ;; ---------------------------------------------------------     
