@@ -37,13 +37,13 @@
 	}
 	.gnotime-start-stop-table-header
 	{
-   background: #e8e8e8;
+   background: #ebebeb;
 	font-size: 105%;
 	font-weight: bold;
 	}
 </style>
 </head>
-<body background="#c8c8d3">
+<body bgcolor="#c8c8d3">
 <center>
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
@@ -68,7 +68,7 @@
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
-        ''"<div class=gnotime-diary-entry>\n"
+        ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=500 border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-memo>"
         ''"<b><big>"
                gtt-task-memo 
@@ -77,8 +77,8 @@
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
         ''"\n</div>\n"
-        ''"<table class=gnotime-start-stop-table width=490 border=1 cellpadding=4>\n"
-        ''"<tr class=gnotime-start-stop-table-header background=#f8f8f0>\n"
+        ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=490 border=0 cellpadding=4>\n"
+        ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
         ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
         ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
         ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
@@ -102,7 +102,7 @@
                ''"</td>\n</tr>\n"
          )))
         ''"</table>"
-        ''"</div>\n"
+        ''"</td></tr></table><br><br>\n"
     )
 )
 
