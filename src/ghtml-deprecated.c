@@ -770,20 +770,17 @@ static SCM
 show_export (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
-	gboolean save_show_html = ghtml->show_html;
-	char *save_delim = ghtml->delim;
 	
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-export");
 	rc = decode_scm_col_list (ghtml, col_list);
 	
 	ghtml->show_html = FALSE;
+	ghtml->show_links = FALSE;
 	ghtml->delim = "\t";
 	
 	do_show_table (ghtml, ghtml->prj, FALSE);
 	
-	ghtml->show_html = save_show_html;
-	ghtml->delim = save_delim;
 	
 	return rc;
 }
