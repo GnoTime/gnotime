@@ -75,7 +75,7 @@ interval_edit_apply_cb(GtkWidget * w, gpointer data)
 
 	menu = gtk_option_menu_get_menu (GTK_OPTION_MENU(dlg->fuzz_widget));
 	menu_item = gtk_menu_get_active(GTK_MENU(menu));
-	fuzz = GPOINTER_TO_INT(gtk_object_get_data(GTK_OBJECT(menu_item),
+	fuzz = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu_item),
                                              "fuzz_factor"));
 
 	gtt_interval_set_fuzz (dlg->interval, fuzz);
@@ -192,52 +192,52 @@ edit_interval_dialog_new (void)
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 0);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(0));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 1);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(300));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 2);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 3);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(900));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 4);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(1200));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 5);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(1800));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 6);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(3600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 7);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(7200));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 8);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(3*3600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 9);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	gtk_object_set_data(GTK_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item), 
 		"fuzz_factor", GINT_TO_POINTER(12*3600));
 
 	/* gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE); */

@@ -44,11 +44,11 @@ typedef struct _PropTaskDlg
 
 /* ============================================================== */
 
-#define GET_MENU(WIDGET,NAME) ({				\
-	GtkWidget *menu, *menu_item;				\
-	menu = gtk_option_menu_get_menu (WIDGET);		\
-       	menu_item = gtk_menu_get_active(GTK_MENU(menu));	\
-       	(gtk_object_get_data(GTK_OBJECT(menu_item), NAME));	\
+#define GET_MENU(WIDGET,NAME) ({                          \
+	GtkWidget *menu, *menu_item;                           \
+	menu = gtk_option_menu_get_menu (WIDGET);              \
+	menu_item = gtk_menu_get_active(GTK_MENU(menu));       \
+	(g_object_get_data(G_OBJECT(menu_item), NAME));        \
 })
 
 static void 
@@ -188,8 +188,7 @@ static void wrapper (void * gobj, void * data) {
 	GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu (WIDGET));	\
 	gtk_option_menu_set_history (WIDGET, ORDER);		\
 	menu_item =  gtk_menu_get_active(menu);			\
-	gtk_object_set_data(GTK_OBJECT(menu_item), NAME,	\
-		(gpointer) VAL);				\
+	g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL);	\
 }
 
 
