@@ -59,7 +59,7 @@ dialog_close (GObject *obj, GttActiveDialog *dlg)
 {
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
-	dlg->armed = FALSE;
+	dlg->time_armed = time(0);
 }
 
 /* =========================================================== */
@@ -70,7 +70,7 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
-	dlg->armed = FALSE;
+	dlg->time_armed = time(0);
 }
 
 /* =========================================================== */
@@ -79,6 +79,7 @@ static void
 start_proj (GObject *obj, GttActiveDialog *dlg)
 {
 		  printf ("duude start proj (not really, nothing done yet)\n");
+	dlg->armed = FALSE;
 	dialog_kill (obj, dlg);
 }
 
