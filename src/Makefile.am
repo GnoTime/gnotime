@@ -1,19 +1,20 @@
 
 bin_PROGRAMS = gnotime
 
-gnotime_SOURCES = 		\
-	app.c		\
-	ctree.c		\
-	ctree-gnome2.c		\
-	dialog.c	\
-	err.c		\
-	err-throw.c	\
-	export.c	\
-	file-io.c	\
-	gconf-gnomeui.c	\
-	gconf-io.c	\
-	ghtml.c		\
-	ghtml-deprecated.c		\
+gnotime_SOURCES =     \
+	active-dialog.c    \
+	app.c              \
+	ctree.c            \
+	ctree-gnome2.c     \
+	dialog.c           \
+	err.c              \
+	err-throw.c        \
+	export.c           \
+	file-io.c          \
+	gconf-gnomeui.c    \
+	gconf-io.c         \
+	ghtml.c            \
+	ghtml-deprecated.c \
 	idle-dialog.c      \
 	idle-timer.c       \
 	journal.c          \
@@ -38,6 +39,7 @@ gnotime_SOURCES = 		\
 	xml-write.c
 
 noinst_HEADERS =      \
+	active-dialog.h    \
 	app.h              \
 	ctree.h            \
 	ctree-gnome2.h     \
@@ -51,26 +53,26 @@ noinst_HEADERS =      \
 	gconf-io-p.h       \
 	ghtml.h            \
 	ghtml-deprecated.h \
-	gtt.h		\
-	idle-dialog.h	\
-	idle-timer.h	\
-	journal.h	\
-	log.h		\
-	menucmd.h	\
-	menus.h		\
-	myoaf.h		\
-	notes-area.h	\
-	plug-in.h	\
-	prefs.h		\
-	proj.h		\
-	proj_p.h	\
-	props-invl.h	\
-	props-proj.h	\
-	props-task.h	\
-	query.h     \
-	timer.h		\
-	toolbar.h	\
-	util.h		\
+	gtt.h              \
+	idle-dialog.h      \
+	idle-timer.h       \
+	journal.h          \
+	log.h              \
+	menucmd.h          \
+	menus.h            \
+	myoaf.h            \
+	notes-area.h       \
+	plug-in.h          \
+	prefs.h            \
+	proj.h             \
+	proj_p.h           \
+	props-invl.h       \
+	props-proj.h       \
+	props-task.h       \
+	query.h            \
+	timer.h            \
+	toolbar.h          \
+	util.h             \
 	xml-gtt.h
 	
 
