@@ -39,13 +39,15 @@ to create your own custom reports.
       ''"<td align='left'> &nbsp; "
       ''"<ul>"
       (lambda (dobj) (gtt-show-daily-tasks dobj 
-                           (list
-                            ''"<li><b>" 
-                            gtt-task-memo 
-                            ''"</b> &nbsp;" 
-                            gtt-task-notes
-                            ''"&nbsp;" 
-                            )))
+           (list
+                 ''"<li><b>" 
+                 (lambda (x) (gtt-project-title (gtt-task-parent x)))
+                 ''" -- " 
+                 gtt-task-memO 
+                 ''"</b> &nbsp;" 
+                 gtt-task-notes
+                 ''"&nbsp;" 
+                 )))
 
       ''" </ul>&nbsp; </td>"
       
