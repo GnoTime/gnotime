@@ -317,8 +317,8 @@ gtt_load_config (const char *fname)
 	if (!geom_size_override)
 	{
 		int w, h;
-		w = gnome_config_get_int(GTT_CONF"/Geometry/Width=320");
-		h = gnome_config_get_int(GTT_CONF"/Geometry/Height=220");
+		w = gnome_config_get_int(GTT_CONF"/Geometry/Width=442");
+		h = gnome_config_get_int(GTT_CONF"/Geometry/Height=272");
 
 		gtk_window_set_default_size(GTK_WINDOW(window), w, h);
 	}

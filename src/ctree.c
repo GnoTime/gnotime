@@ -758,7 +758,7 @@ string_width(GtkWidget *w, const char * str)
 	if (NULL == style) 
 	{
 		style = gtk_widget_get_default_style ();
-		if (NULL == style) return 49;
+		if (NULL == style) return -49;
 	}
 
 	/* Try really hard to find a font */
@@ -769,13 +769,13 @@ string_width(GtkWidget *w, const char * str)
 	if (NULL == gc)
 	{
 		style = gtk_widget_get_default_style ();
-		if (NULL == style) return 50;
+		if (NULL == style) return -50;
 
 		gc = style->text_gc[0];
 		if (NULL == gc) gc = style->fg_gc[0];
 		if (NULL == gc) gc = style->bg_gc[0];
 		if (NULL == gc) gc = style->base_gc[0];
-		if (NULL == gc) return 51;
+		if (NULL == gc) return -51;
 	}
 	
 	gdk_gc_get_values(gc, &vals);
@@ -796,7 +796,24 @@ default_col_width (ProjTreeWindow *ptw, int col, const char * str)
 	int width;
 	if (TRUE == ptw->col_width_set[col]) return;
 
+	/* Size the column width based on the font size times
+	 * length of string.  Get the font from the GC. */
 	width = string_width (GTK_WIDGET(ptw->ctree), str);
+
+	/* Add special handling for certain columns, so that we get
+	 * a good first-time default column width.
+	 */
+	if (0 > width)
+	{
+		width = -width;
+		switch (ptw->cols[col])
+		{
+			case IMPORTANCE_COL: width = 16; break;
+			case URGENCY_COL:    width = 16; break;	
+			case DESC_COL:       width = 62; break;	
+			default: break;
+		}
+	}
 	ctree_set_col_width (ptw, col, width);
 }
 

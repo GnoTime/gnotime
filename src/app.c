@@ -207,8 +207,8 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	gtk_window_set_wmclass(GTK_WINDOW(window),
 			       GTT_APP_NAME, GTT_APP_PROPER_NAME);
 
-	/* 320 x 220 seems to be a good size to default to */
-	gtk_window_set_default_size(GTK_WINDOW(window), 320, 220);
+	/* 485 x 272 seems to be a good size to default to */
+	gtk_window_set_default_size(GTK_WINDOW(window), 485, 272);
 	gtk_window_set_policy(GTK_WINDOW(window), TRUE, TRUE, FALSE);
 	
 	/* build menus */
