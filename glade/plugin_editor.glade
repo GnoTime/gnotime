@@ -253,6 +253,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_plugin_tooltip_changed" last_modification_time="Sat, 10 May 2003 17:41:56 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -269,6 +270,7 @@
 		      <property name="max_saved">10</property>
 		      <property name="directory_entry">False</property>
 		      <property name="modal">False</property>
+		      <signal name="changed" handler="on_plugin_path_changed" last_modification_time="Sat, 10 May 2003 17:41:42 GMT"/>
 
 		      <child internal-child="entry">
 			<widget class="GtkEntry" id="combo-entry1">
@@ -304,6 +306,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_plugin_name_changed" last_modification_time="Sat, 10 May 2003 17:40:57 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -311,22 +314,6 @@
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
 		      <property name="y_options"></property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GnomeIconEntry" id="iconentry1">
-		      <property name="visible">True</property>
-		      <property name="browse_dialog_title" translatable="yes"></property>
-		      <property name="max_saved">10</property>
-		    </widget>
-		    <packing>
-		      <property name="left_attach">1</property>
-		      <property name="right_attach">2</property>
-		      <property name="top_attach">3</property>
-		      <property name="bottom_attach">4</property>
-		      <property name="x_options">fill</property>
-		      <property name="y_options">fill</property>
 		    </packing>
 		  </child>
 
@@ -429,6 +416,36 @@
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
+
+		  <child>
+		    <widget class="GnomeFileEntry" id="fileentry1">
+		      <property name="visible">True</property>
+		      <property name="max_saved">10</property>
+		      <property name="directory_entry">False</property>
+		      <property name="modal">False</property>
+
+		      <child internal-child="entry">
+			<widget class="GtkEntry" id="combo-entry2">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char" translatable="yes">*</property>
+			  <property name="activates_default">False</property>
+			</widget>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">3</property>
+		      <property name="bottom_attach">4</property>
+		      <property name="y_options"></property>
+		    </packing>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -447,12 +464,13 @@
 		  <property name="column_spacing">4</property>
 
 		  <child>
-		    <widget class="GtkButton" id="button5">
+		    <widget class="GtkButton" id="add button">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Add</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <signal name="clicked" handler="on_add_button_clicked" last_modification_time="Wed, 07 May 2003 02:10:44 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -498,12 +516,13 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button8">
+		    <widget class="GtkButton" id="delete button">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Delete</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <signal name="clicked" handler="on_delete_button_clicked" last_modification_time="Wed, 07 May 2003 02:13:14 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
