@@ -11,6 +11,7 @@ EXTRA_DIST =                   \
 	AUTHORS                     \
 	COPYING                     \
 	ChangeLog                   \
+	INSTALL                     \
 	NEWS                        \
 	TODO                        \
 	autogen.sh                  \
