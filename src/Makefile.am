@@ -101,7 +101,7 @@ AM_CFLAGS = -g -Wall     \
 	${LIBXML2_CFLAGS}
 
 INCLUDES =                                   \
-	$(QOF_CFLAGS)                             \
+	$(LIBQOF_CFLAGS)                          \
 	-I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
@@ -115,7 +115,7 @@ INCLUDES =                                   \
 						 
 gnotime_LDADD =         \
 	$(GNOTIME_LIBS)      \
-	$(QOF_LIBS)          \
+	$(LIBQOF_LIBS)       \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	${LIBGNOMEVFS_LIBS}  \

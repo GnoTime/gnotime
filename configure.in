@@ -164,14 +164,14 @@ QOF_LIBS="`$PKG_CONFIG --libs qof-0`"
 
 if test x$QOF_LIBS = x; then
    AC_MSG_WARN([****** QOF libs not found; build without QOF.])
-	QOF_CFLAGS="-I../lib"
-	QOF_LIBS="../lib/qof/libqof.la ../lib/libqofsql/libqofsql.la"
+	QOF_CFLAGS="-I$(top_srcdir)/lib"
+	QOF_LIBS="$(top_builddir)/lib/qof/libqof.la $(top_builddir)/lib/libqofsql/libqofsql.la"
 else
    AC_DEFINE(HAVE_QOF,,We Have Found QOF)
 fi
 
-AC_SUBST(QOF_CFLAGS)
-AC_SUBST(QOF_LIBS)
+AC_SUBST(LIBQOF_CFLAGS)
+AC_SUBST(LIBQOF_LIBS)
 
 AM_CONDITIONAL(BUILD_QOF, [test x$HAVE_QOF = x])
 
@@ -185,10 +185,14 @@ AC_SUBST(LIBGNOMEVFS_LIBS)
 
 
 dnl *******************************
-dnl gtkhtml
+dnl gtkhtml -- use 3.1 if present, else use 3.0
 dnl *******************************
 
-PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-3.1 >= $LIBGTKHTML_REQUIRED)
+if $PKG_CONFIG --exists libgtkhtml-3.1; then
+	PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-3.1 >= $LIBGTKHTML_REQUIRED)
+else
+	PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-3.0 >= $LIBGTKHTML_REQUIRED)
+fi
 AC_SUBST(LIBGTKHTML_CFLAGS)
 AC_SUBST(LIBGTKHTML_LIBS)
 
