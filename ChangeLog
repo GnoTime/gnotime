@@ -14,6 +14,7 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* (various): fix the help button so that the help dialogs
 	  actually pop up.
 	* src/journal.c: implement flyover help in the html window.
+	* src/query.c: fix core dump when displaying daily totals.
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
