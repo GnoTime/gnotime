@@ -612,6 +612,8 @@ bogus_query (KvpFrame *kvpf)
 	if (!kvpf) return NULL;
 printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
+#define DEPRECATED_REMOVE_ME
+#if DEPRECATED_REMOVE_ME
 	/* work around highly bogus locale setting */
  	qof_date_format_set(QOF_DATE_FORMAT_US);
 
@@ -641,6 +643,21 @@ printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(cti
 	p = stpcpy (p, ") AND (" GTT_PROJECT_LATEST " >= ");
 	p += sprintf (p, "%ld", earliest_end);
 	p = stpcpy (p, ");");
+#else 
+	QofSqlQuery *q = qof_sql_query_new();
+
+	if (!book) book = qof_book_new();
+	qof_sql_query_set_book (q, book);
+	qof_sql_query_set_kvp (q, kvpf);
+
+	/* XXX eventually, we should be pulling this query out of
+	 * the web page itself, instead of hard-coding it in C. */
+	char qstr[2000];
+	strcpy (qstr, 
+	   "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
+	       GTT_PROJECT_EARLIEST " <= \'kvp://earliest-end-date\') AND ("
+	       GTT_PROJECT_LATEST " >= \'kvp://latest-start-date\');");
+#endif
 
 printf ("duude the query string is %s\n", qstr);
 	/* Run the query */
