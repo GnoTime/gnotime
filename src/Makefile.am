@@ -63,7 +63,7 @@ CFLAGS = -DGTK_ENABLE_BROKEN	\
 	@CFLAGS@ 		\
 	${GNOTIME_CFLAGS}	\
 	${GCONF_CFLAGS} 	\
-	${GTKHTML2_CFLAGS} 	\
+	${LIBGTKHTML_CFLAGS} 	\
 	${LIBGLADE_CFLAGS} 
 
 INCLUDES = 			\
@@ -77,12 +77,12 @@ INCLUDES = 			\
 gtt_LDADD = \
 	$(GNOTIME_LIBS)	\
 	$(LIBGLADE_LIBS)        \
-	$(GTKHTML2_LIBS)	\
+	$(LIBGTKHTML_LIBS)	\
+	${GUILE_LIBS}		\
 	$(INTLLIBS)
 
 #	$(LIBXML2_LIBS)        	\
 #	$(GCONF_LIBS)	 	\
-#	${GUILE_LIBS}		\
 
 EXTRA_DIST = 			\
 	down.xpm		\

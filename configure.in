@@ -27,6 +27,7 @@ dnl *****************************************
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.0
 LIBGLADE_REQUIRED=2.0.0
+LIBGTKHTML_REQUIRED=2.0.0
 
 dnl *****************************************
 dnl libgnome, libgnomeui needed for all utils
@@ -42,7 +43,6 @@ dnl *****************************************
 PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
-
 
 dnl *********************************************
 dnl for anything which calls gconftool-2 correctly
@@ -63,35 +63,22 @@ dnl *******************************
 
 # argh ... its in /usr/share/aclocal/gnome-macros/gnome-guile-checks.m4
 # but I can't get configure to find this ...
-# GNOME_CHECK_GUILE('fail')
+# GNOME_CHECK_GUILE("fail")
+
+# glurg really wrong ...
+# GUILE_LIBS='-lguile -lsocket -lnsl -ldl'
+GUILE_LIBS='-lguile -lnsl -ldl'
+AC_SUBST(GUILE_LIBS)
 
 
 dnl *******************************
 dnl gtkhtml
 dnl gtkhtml is needed to build gtt
 dnl *******************************
-# GTKHTML2_LIBS=`$GNOME_CONFIG --libs gtkhtml2`
-# GTKHTML2_CFLAGS=`$GNOME_CONFIG --cflags gtkhtml2`
-GTKHTML2_LIBS=`pkg-config --libs libgtkhtml-2.0`
-GTKHTML2_CFLAGS=`pkg-config --cflags libgtkhtml-2.0`
 
-AC_MSG_CHECKING(for GtkHTML2)
-if pkg-config --libs libgtkhtml-2.0 > /dev/null 2>&1; then
-    AC_MSG_RESULT(found)
-else
-    AC_MSG_WARN([Cannot find libgtkhtml-2.0. See config.log for more info.])
-fi
-
-AC_SUBST(GTKHTML2_LIBS)
-AC_SUBST(GTKHTML2_CFLAGS)
-
-dnl *******************************
-dnl sched.h
-dnl sched.h is needed to build gtt
-dnl *******************************
-
-AC_CHECK_HEADER(sched.h,,
-                AC_MSG_WARN([*** gtt will not be built.]))
+PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-2.0 >= $LIBGTKHTML_REQUIRED)
+AC_SUBST(LIBGTKHTML_CFLAGS)
+AC_SUBST(LIBGTKHTML_LIBS)
 
 
 dnl ********************
