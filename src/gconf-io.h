@@ -42,5 +42,11 @@ void gtt_gconf_load (void);
  */
 gboolean gtt_gconf_exists (void);
 
+/**
+ * The gtt_save_reports_menu() routine saves only the reports menu
+ * attributes to the gconf system.
+ */
+void gtt_save_reports_menu (void);
+
 #endif /* GTT_GCONF_IO_H_ */
 
