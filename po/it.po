@@ -1,0 +1,5453 @@
+# Italian localisation file for package: gnome-utils
+# Copyright (C) 1998-2001 Free Software Foundation, Inc.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-utils 1.3.1\n"
+"POT-Creation-Date: 2001-11-30 16:14-0600\n"
+"PO-Revision-Date: 2001-05-24 18:25+02:00\n"
+"Last-Translator: Giovanni Bortolozzo <borto@pluto.linux.it>\n"
+"Language-Team: Italiano <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gcalc/gcalc.c:41
+msgid "The Gnome Calculator"
+msgstr "La calcolatrice di Gnome"
+
+#: gcalc/gcalc.c:44
+msgid "Simple double precision calculator similiar to xcalc"
+msgstr "Semplice calcolatrice in doppia precisione simile a xcalc"
+
+#: gcalc/gcalc.c:124
+msgid "Run in analog (slide rule) mode"
+msgstr ""
+
+#: gcalc/gcalc.c:152
+msgid "Gnome Calculator"
+msgstr "Calcolatrice di Gnome"
+
+#: gcalc/gnome-calc.c:517 gcalc/gnome-calc.c:1185
+msgid "DEG"
+msgstr ""
+
+#: gcalc/gnome-calc.c:519
+msgid "RAD"
+msgstr ""
+
+#: gcalc/gnome-calc.c:521
+msgid "GRAD"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1175
+msgid "1/x"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1176
+msgid "x^2"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1177
+msgid "SQRT"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1178
+msgid "CE/C"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1179
+msgid "AC"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1181 gcalc/gnome-calc.c:1379
+msgid "INV"
+msgstr ""
+
+#. inverse button
+#: gcalc/gnome-calc.c:1182
+#, fuzzy
+msgid "sin"
+msgstr "Min"
+
+#: gcalc/gnome-calc.c:1183
+msgid "cos"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1184
+msgid "tan"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1187
+msgid "e"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1188
+msgid "EE"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1189
+msgid "log"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1190
+msgid "ln"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1191
+msgid "x^y"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1193
+msgid "PI"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1194
+msgid "x!"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1195
+msgid "("
+msgstr ""
+
+#: gcalc/gnome-calc.c:1196
+msgid ")"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1197
+msgid "/"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1199
+msgid "STO"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1200
+msgid "7"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1201
+msgid "8"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1202
+msgid "9"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1203
+msgid "*"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1205
+msgid "RCL"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1206
+msgid "4"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1207
+msgid "5"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1208
+msgid "6"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1209
+msgid "-"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1211
+msgid "SUM"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1212 gtt/ctree.c:959
+msgid "1"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1213 gtt/ctree.c:958
+msgid "2"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1214 gtt/ctree.c:957
+msgid "3"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1215
+msgid "+"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1217
+msgid "EXC"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1218
+msgid "0"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1219
+msgid "."
+msgstr ""
+
+#: gcalc/gnome-calc.c:1220
+msgid "+/-"
+msgstr ""
+
+#: gcalc/gnome-calc.c:1221
+msgid "="
+msgstr ""
+
+#. Translators:  This allows you to create translated font pngs,
+#. * though probably won't be necessary
+#: gcalc/gnome-calc.c:1246
+msgid "calculator-font.png"
+msgstr ""
+
+#: gcharmap/src/asciiselect.c:96
+#, fuzzy
+msgid "Select Character"
+msgstr "Seleziona carattere ASCII"
+
+#: gcharmap/src/asciiselect.c:97 gcharmap/src/menus.c:99
+msgid "Insert"
+msgstr "Inserisci"
+
+#: gcharmap/src/asciiselect.c:105
+#, fuzzy
+msgid "Character code:"
+msgstr "Carattere:"
+
+#: gcharmap/src/asciiselect.c:115
+msgid "Character:"
+msgstr "Carattere:"
+
+#: gcharmap/src/asciiselect.c:123
+msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/callbacks.c:43 gcharmap/src/interface.c:141
+msgid "Gnome Character Map"
+msgstr "Mappa Caratteri di GNOME"
+
+#: gcharmap/src/callbacks.c:47
+msgid ""
+"The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+"contain bad English."
+msgstr "L'equivalente per GNOME della Mappa di Caratteri di Windows."
+
+#: gcharmap/src/callbacks.c:63 gcharmap/src/callbacks.c:101
+#: gcharmap/src/interface.c:65
+#, fuzzy
+msgid "del"
+msgstr "Modello"
+
+#: gcharmap/src/callbacks.c:107
+#, fuzzy, c-format
+msgid " %s: Character code %d"
+msgstr "%s: codice ASCII %d"
+
+#: gcharmap/src/callbacks.c:134
+msgid "Text copied to clipboard..."
+msgstr "Testo copiato negli appunti..."
+
+#: gcharmap/src/callbacks.c:146
+msgid "Text cut to clipboard..."
+msgstr "Testo tagliato negli appunti..."
+
+#: gcharmap/src/callbacks.c:199
+msgid "Text pasted from clipboard..."
+msgstr "Testo incollato dagli appunti..."
+
+#: gcharmap/src/interface.c:170
+msgid "Action Toolbar"
+msgstr "Barra strumenti"
+
+#: gcharmap/src/interface.c:189
+msgid "Text to copy:"
+msgstr "Testo da copiare:"
+
+#: gcharmap/src/interface.c:215
+#, fuzzy
+msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/interface.c:238 gcharmap/src/menus.c:114 logview/logview.c:100
+#: mini-utils/gcolorsel/menus.c:921 stripchart/chart-app.c:258
+msgid "Exit"
+msgstr "Esci"
+
+#: gcharmap/src/interface.c:239 gcharmap/src/menus.c:104
+#: gdictsrc/gdict-app.c:519 gtt/toolbar.c:181
+msgid "Copy"
+msgstr "Copia"
+
+#: gcharmap/src/interface.c:243 gcharmap/src/menus.c:111
+#: mini-utils/gcolorsel/menus.c:919 mini-utils/gshutdown/gshutdown.c:321
+#: stripchart/chart-app.c:232 stripchart/params.c:1013
+#: stripchart/stripchart-applet.c:89
+msgid "About"
+msgstr "Informazioni su"
+
+#: gcharmap/src/interface.c:245 gcharmap/src/menus.c:109
+#: gdictsrc/gdict-applet.c:284 stripchart/chart-app.c:227
+#: stripchart/params.c:1048 stripchart/params.c:1051
+#: stripchart/stripchart-applet.c:86
+msgid "Help"
+msgstr "Aiuto"
+
+#: gcharmap/src/interface.c:264
+#, fuzzy
+msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/menus.c:51
+msgid "Insert Character..."
+msgstr "Inserisci carattere..."
+
+#: gcharmap/src/menus.c:52
+#, fuzzy
+msgid "Insert character(s) by choosing character codes."
+msgstr "Inserisci carattere(i) tramite codice ASCII."
+
+#: gcharmap/src/menus.c:59
+msgid "_Action Toolbar"
+msgstr "Barra degli _strumenti"
+
+#: gcharmap/src/menus.c:59
+msgid "View or hide the action toolbar"
+msgstr "Mostra o nascondi la barra degli strumenti"
+
+#: gcharmap/src/menus.c:61
+msgid "_Text Toolbar"
+msgstr "Barra del _testo"
+
+#: gcharmap/src/menus.c:61
+msgid "View or hide the text toolbar"
+msgstr "Mostra o nascondi la barra del testo"
+
+#: gcharmap/src/menus.c:63
+msgid "_Statusbar"
+msgstr "Barra di st_ato"
+
+#: gcharmap/src/menus.c:63
+msgid "View or hide the statusbar"
+msgstr "Mostra o nascondi la barra di stato"
+
+#: gcharmap/src/menus.c:70
+msgid "Character Table's Font..."
+msgstr "Font della tabella dei caratteri..."
+
+#: gcharmap/src/menus.c:70
+msgid "Set the character table's font."
+msgstr "Imposta il font della tabella dei caratteri."
+
+#: gcharmap/src/menus.c:73
+msgid "_Insert at end"
+msgstr "_Inserisci alla fine"
+
+#: gcharmap/src/menus.c:73
+msgid "Insert every selected character at the end of the text entry"
+msgstr "Inserisci ogni carattere selezionato alla fine della casella di testo"
+
+#: gcharmap/src/menus.c:75
+msgid "_Focusable Buttons"
+msgstr "Pulsanti _focalizzabili"
+
+#: gcharmap/src/menus.c:75
+msgid "Set the buttons to be focusable or not"
+msgstr "Attiva/disattiva la focalizzazione dei pulsanti"
+
+#: gcharmap/src/menus.c:99
+#, fuzzy
+msgid "Insert character(s) by choosing character codes"
+msgstr "Inserisci carattere(i) tramite codice ASCII"
+
+#: gcharmap/src/menus.c:102 gdictsrc/gdict-app.c:516 gtt/toolbar.c:177
+msgid "Cut"
+msgstr "Taglia"
+
+#: gcharmap/src/menus.c:102
+msgid "Cut the selection"
+msgstr "Taglia la selezione"
+
+#: gcharmap/src/menus.c:104
+msgid "Copy the selection"
+msgstr "Copia la selezione"
+
+#: gcharmap/src/menus.c:106 gdictsrc/gdict-app.c:522 gtt/toolbar.c:185
+msgid "Paste"
+msgstr "Incolla"
+
+#: gcharmap/src/menus.c:106
+msgid "Paste the clipboard"
+msgstr "Incolla dagli appunti"
+
+#: gcharmap/src/menus.c:109
+msgid "Show Gnome Character Map's manual"
+msgstr "Mostra il manuale della Mappa Caratteri di GNOME"
+
+#: gcharmap/src/menus.c:111 mini-utils/gcolorsel/menus.c:919
+msgid "About this application"
+msgstr "Informazioni su questa applicazione"
+
+#: gcharmap/src/menus.c:114 mini-utils/gcolorsel/menus.c:921
+msgid "Exit the program"
+msgstr "Esci dal programma"
+
+#: gdictsrc/main.c:93
+msgid ""
+"Couldn't start the dictionary; most likely, http://www.dict.org could not be "
+"contacted."
+msgstr ""
+
+#. Could not look up search strategies, so just display a
+#. * label; FIXME: Memory leak
+#.
+#: gdictsrc/dict.c:637 gdictsrc/gdict-pref-dialog.c:502
+#: gdictsrc/gdict-pref-dialog.c:546 gdictsrc/gdict-speller.c:393
+msgid "Cannot connect to server"
+msgstr "Impossibile connettersi al server"
+
+#: gdictsrc/gdict-about.c:40
+msgid ""
+"Client for MIT dictionary server.\n"
+"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+msgstr ""
+"Client per il server dizionario del MIT.\n"
+"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#: gdictsrc/gdict-app.c:117
+msgid "Spell-checking..."
+msgstr "Controllo ortografico..."
+
+#: gdictsrc/gdict-app.c:125
+msgid "Spell check done"
+msgstr "Controllo ortografico completato"
+
+#: gdictsrc/gdict-app.c:133 gdictsrc/gdict-app.c:266
+msgid "No matches found"
+msgstr "Non è stata trovata alcuna corrispondenza"
+
+#: gdictsrc/gdict-app.c:250
+msgid "Looking up word..."
+msgstr "Ricerca della parola..."
+
+#: gdictsrc/gdict-app.c:258
+msgid "Lookup done"
+msgstr "Ricerca completata"
+
+#: gdictsrc/gdict-app.c:278
+msgid "String not found"
+msgstr "Stringa non trovata"
+
+#: gdictsrc/gdict-app.c:381
+msgid "Find:"
+msgstr "Cerca:"
+
+#: gdictsrc/gdict-app.c:413
+msgid ""
+"Unable to perform requested operation, either because the server\n"
+"you are using is down or because you are not connected to the\n"
+"Internet. If you are not already connected to the Internet, please\n"
+"do so and try again."
+msgstr ""
+"Impossibile eseguire l'operazione richiesta, o perché il server utilizzato\n"
+"non risponde oppure perché non si è collegati ad Internet. Se non si è già\n"
+"connessi a Internet, ci si connetta e si riprovi."
+
+#: gdictsrc/gdict-app.c:452 gdictsrc/gdict-app.c:509
+#: gdictsrc/gdict-applet.c:313
+#, fuzzy
+msgid "Look up"
+msgstr "Cerca"
+
+#: gdictsrc/gdict-app.c:453 gdictsrc/gdict-app.c:510
+#, fuzzy
+msgid "Look up word in dictionary"
+msgstr "Cerca una parola nel dizionario"
+
+#: gdictsrc/gdict-app.c:455 gdictsrc/gdict-app.c:512
+msgid "Spell"
+msgstr "Ortografia"
+
+#: gdictsrc/gdict-app.c:456 gdictsrc/gdict-app.c:513
+msgid "Check word spelling"
+msgstr "Controlla ortografia della parola"
+
+#: gdictsrc/gdict-app.c:517
+msgid "Cut to Clipboard"
+msgstr "Taglia negli appunti"
+
+#: gdictsrc/gdict-app.c:520
+msgid "Copy to Clipboard"
+msgstr "Copia negli appunti"
+
+#: gdictsrc/gdict-app.c:523
+msgid "Paste Clipboard Contents"
+msgstr "Incolla il contenuto degli appunti"
+
+#: gdictsrc/gdict-app.c:526
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: gdictsrc/gdict-app.c:527
+msgid "Server to use, default search strategy, fonts"
+msgstr "Server da utilizzare, strategia di ricerca predefinita, caratteri"
+
+#: gdictsrc/gdict-app.c:588
+msgid "Word definition"
+msgstr "Definizione della parola"
+
+#: gdictsrc/gdict-applet.c:280 logview/logview.c:136
+msgid "About..."
+msgstr "Informazioni su..."
+
+#: gdictsrc/gdict-applet.c:289 logview/logview.c:116
+msgid "Preferences..."
+msgstr "Preferenze..."
+
+#: gdictsrc/gdict-applet.c:293
+msgid "Show/Hide Definition Window..."
+msgstr "Mostra/Nascondi finestra delle definizioni..."
+
+#: gdictsrc/gdict-applet.c:297
+msgid "Spell Check..."
+msgstr "Controllo ortografico..."
+
+#: gdictsrc/gdict-applet.c:309
+msgid "Cannot create applet!\n"
+msgstr "Impossibile creare l'applet!\n"
+
+#: gdictsrc/gdict-defbox.c:524 gdictsrc/gdict-speller.c:417
+#, fuzzy, c-format
+msgid "Error invoking query: %s"
+msgstr "EErrore nella chiusura del device %s"
+
+#: gdictsrc/gdict-pref-dialog.c:38
+msgid "Headword:"
+msgstr "Parola chiave:"
+
+#: gdictsrc/gdict-pref-dialog.c:39
+msgid "Sub-number:"
+msgstr "Significato:"
+
+#: gdictsrc/gdict-pref-dialog.c:40
+msgid "Pronunciation:"
+msgstr "Pronuncia:"
+
+#: gdictsrc/gdict-pref-dialog.c:41
+msgid "Etymology:"
+msgstr "Etimologia:"
+
+#: gdictsrc/gdict-pref-dialog.c:42
+msgid "Part of speech:"
+msgstr "Parte del discorso:"
+
+#: gdictsrc/gdict-pref-dialog.c:43
+msgid "Example:"
+msgstr "Esempio:"
+
+#: gdictsrc/gdict-pref-dialog.c:44
+msgid "Main body:"
+msgstr "Descrizione:"
+
+#: gdictsrc/gdict-pref-dialog.c:45
+msgid "Cross-reference:"
+msgstr "Riferimento incrociato:"
+
+#. Fixme these should be stock buttons
+#: gdictsrc/gdict-pref-dialog.c:129 mini-utils/gshutdown/gshutdown.c:316
+#: stripchart/prefs.c:195
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: gdictsrc/gdict-pref-dialog.c:147
+msgid "Smart lookup"
+msgstr "Ricerca intelligente"
+
+#: gdictsrc/gdict-pref-dialog.c:156
+msgid "Server:"
+msgstr "Server:"
+
+#: gdictsrc/gdict-pref-dialog.c:161
+msgid "Port:"
+msgstr "Porta:"
+
+#: gdictsrc/gdict-pref-dialog.c:171
+msgid "Database:"
+msgstr "Database:"
+
+#: gdictsrc/gdict-pref-dialog.c:178
+msgid "Default strategy:"
+msgstr "Strategia predefinita:"
+
+#: gdictsrc/gdict-pref-dialog.c:185
+msgid "Server"
+msgstr "Server"
+
+#: gdictsrc/gdict-pref-dialog.c:235
+msgid "Fonts"
+msgstr "Caratteri"
+
+#: gdictsrc/gdict-pref-dialog.c:252
+msgid "Display handle bar"
+msgstr "Mostra barra di gestione"
+
+#: gdictsrc/gdict-pref-dialog.c:256
+msgid ""
+"You have to restart GDict for these\n"
+"settings to become active."
+msgstr ""
+"È necessario riavviare GDict perché le\n"
+"modifiche abbiano effetto."
+
+#: gdictsrc/gdict-pref-dialog.c:263
+msgid "Applet"
+msgstr "Applet"
+
+#: gdictsrc/gdict-pref-dialog.c:494
+msgid "Search all databases"
+msgstr ""
+
+#: gdictsrc/gdict-pref-dialog.c:585
+msgid "The server you specified could not be found."
+msgstr "Il server specificato non è stato trovato."
+
+#: gdictsrc/gdict-speller.c:118
+msgid "Word:"
+msgstr ""
+
+#: gdictsrc/gdict-speller.c:127
+#, fuzzy
+msgid "Search Strategy:"
+msgstr "Strategia predefinita:"
+
+#: gdictsrc/gdict-speller.c:150
+msgid "Find Words..."
+msgstr ""
+
+#: gdictsrc/gdict-speller.c:151
+#, fuzzy
+msgid "Look up Word..."
+msgstr "Ricerca della parola..."
+
+#: gdictsrc/gdict-speller.c:163
+#, fuzzy
+msgid "Spell checker"
+msgstr "Controllo ortografico completato"
+
+#: gdiskfree/gdiskfree_app.c:53 gdiskfree/gdiskfree_menus.c:108
+msgid "GDiskFree"
+msgstr "GDiskFree"
+
+#: gdiskfree/gdiskfree_app.c:73
+#, c-format
+msgid "Unable to parse the geometry string '%s'"
+msgstr "Impossibile leggere la stringa della geometria '%s'"
+
+#: gdiskfree/gdiskfree.c:58
+msgid "Specify the geometry of the window."
+msgstr "Specifica la geometria della finestra"
+
+#: gdiskfree/gdiskfree.c:59 gtt/main.c:439 mini-utils/gless/gless.c:130
+msgid "GEOMETRY"
+msgstr "GEOMETRIA"
+
+#: gdiskfree/gdiskfree_menus.c:111
+msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
+msgstr ""
+"GDiskFree è una implementazione di GNOME del programma di utilità 'df'."
+
+#: gdiskfree/gdiskfree_options.c:222
+msgid "GDiskFree Properties"
+msgstr "Proprietà di GDiskFree"
+
+#: gdiskfree/gdiskfree_options.c:227
+msgid "Invoke sync before getting usage info"
+msgstr "Chiama sync prima di mostrare le informazioni sull'utilizzazione"
+
+#: gdiskfree/gdiskfree_options.c:239
+msgid "Show drive mount points"
+msgstr "Mostra i mount point"
+
+#: gdiskfree/gdiskfree_options.c:250
+msgid "Show drive size"
+msgstr "Mostra la dimensione dei dischi"
+
+#: gdiskfree/gdiskfree_options.c:260
+msgid "Dial Orientation"
+msgstr "Allineamento indicatori"
+
+#: gdiskfree/gdiskfree_options.c:265
+msgid "Vertical"
+msgstr "Verticale"
+
+#: gdiskfree/gdiskfree_options.c:278
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#: gdiskfree/gdiskfree_options.c:297
+msgid "Update interval (ms)"
+msgstr "Intervallo di aggiornamento (ms)"
+
+#: gdiskfree/gdiskfree_options.c:308
+msgid "General Settings"
+msgstr "Impostazioni generali"
+
+#: gsearchtool/gsearchtool.c:33
+msgid "File name"
+msgstr "Nome file"
+
+#: gsearchtool/gsearchtool.c:35
+msgid "Don't search subdirectories"
+msgstr "Non cercare nelle sottodirectory"
+
+#: gsearchtool/gsearchtool.c:36
+msgid "File owner"
+msgstr "Proprietario del file"
+
+#: gsearchtool/gsearchtool.c:37
+msgid "File owner group"
+msgstr "Gruppo del file"
+
+#: gsearchtool/gsearchtool.c:38
+msgid "Last modification time"
+msgstr "Data/ora ultima modifica"
+
+#: gsearchtool/gsearchtool.c:40
+msgid "Don't search mounted filesystems"
+msgstr "Non cercare nei filesystem montati"
+
+#: gsearchtool/gsearchtool.c:41
+msgid "Empty file"
+msgstr "File vuoto"
+
+#: gsearchtool/gsearchtool.c:43
+msgid "Invalid user or group"
+msgstr "Utente o gruppo non valido"
+
+#: gsearchtool/gsearchtool.c:44
+msgid "Filenames except"
+msgstr "Nomi dei file eccetto"
+
+#: gsearchtool/gsearchtool.c:45
+msgid "Follow symbolic links"
+msgstr "Segui i link simbolici"
+
+#: gsearchtool/gsearchtool.c:46
+msgid "Simple substring search"
+msgstr "Ricerca semplice di sottostringa"
+
+#: gsearchtool/gsearchtool.c:47
+msgid "Regular expression search"
+msgstr "Ricerca espressione regolare"
+
+#: gsearchtool/gsearchtool.c:49
+msgid "Extended regular expression search"
+msgstr "Ricerca espressione regolare estesa"
+
+#: gsearchtool/gsearchtool.c:151
+msgid "grep options found in find list bad bad!"
+msgstr "opzioni di grep trovate nella lista di find!  molto male!"
+
+#: gsearchtool/gsearchtool.c:165
+msgid "non-grep option found in grep list, bad bad!"
+msgstr "opzione non-grep trovata nella lista di grep!  molto male!"
+
+#: gsearchtool/gsearchtool.c:219
+msgid "Search already running on another page"
+msgstr "Ricerca già attiva in un'altra finestra"
+
+#. create the results box
+#. FIXME: add an option to autoclear result box and pass TRUE in that
+#. case
+#: gsearchtool/gsearchtool.c:229
+msgid "Search Results"
+msgstr "Risultati della ricerca"
+
+#: gsearchtool/gsearchtool.c:336
+msgid ""
+"\n"
+"... Too many errors to display ..."
+msgstr ""
+"\n"
+"... Troppi errori da visualizzare ..."
+
+#: gsearchtool/gsearchtool.c:369 gsearchtool/gsearchtool.c:400
+msgid "Start directory does not exist"
+msgstr "La directory di partenza non esiste"
+
+#: gsearchtool/gsearchtool.c:409
+msgid "Search command line"
+msgstr "Comando di ricerca"
+
+#: gsearchtool/gsearchtool.c:415
+msgid ""
+"This is the command line that can be used to execute this search from the "
+"console:\n"
+"(Note: to print one file per line rather then null separated,\n"
+"append \"| tr '\\000' '\\n'\" to the line below)"
+msgstr ""
+"Questa è la linea di comando che può essere utilizzata per eseguire\n"
+"questa ricerca dalla console:\n"
+"(Nota: per stampare un file per linea piuttosto che più file separati\n"
+"da spazi, aggiungere \"| tr '\\000' '\\n'\" alla linea qui sotto)"
+
+#: gsearchtool/gsearchtool.c:502
+msgid "Entry changed called for a non entry option!"
+msgstr "Il cambiamento della voce ha chiamato una opzione non valida!"
+
+#: gsearchtool/gsearchtool.c:568
+msgid "Enable"
+msgstr "Abilita"
+
+#: gsearchtool/gsearchtool.c:576 logview/actions.c:163
+#: meat-grinder/meat-grinder.c:702
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: gsearchtool/gsearchtool.c:628
+msgid "Start in directory:"
+msgstr "Comincia nella directory:"
+
+#: gsearchtool/gsearchtool.c:630
+msgid "Browse"
+msgstr "Sfoglia"
+
+#: gsearchtool/gsearchtool.c:650 mini-utils/gw/gw.c:494
+msgid "Add"
+msgstr "Aggiungi"
+
+#: gsearchtool/gsearchtool.c:661
+msgid "Show Command"
+msgstr "Mostra comando"
+
+#: gsearchtool/gsearchtool.c:666 gsearchtool/gsearchtool.c:759 gtt/ctree.c:576
+#: gtt/ghtml.c:95 gtt/ghtml.c:267 gtt/glade/interval_edit.glade.h:11
+msgid "Start"
+msgstr "Cerca"
+
+#: gsearchtool/gsearchtool.c:667 gsearchtool/gsearchtool.c:760 gtt/ghtml.c:95
+#: gtt/ghtml.c:270 gtt/glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Interrompi"
+
+#: gsearchtool/gsearchtool.c:700
+msgid "Nothing to locate"
+msgstr "Niente da cercare"
+
+#: gsearchtool/gsearchtool.c:735
+msgid ""
+"This is an interface to locate.  If you type in a simple string it\n"
+"will be matched as a subset of the full path, and if you type\n"
+"in a string with wildcards, it will have to match the full path."
+msgstr ""
+"Questa è una interfaccia per il comando 'locate'. Se digitate una semplice\n"
+"stringa questa verrà trovata anche all'interno di un percorso completo, "
+"mentre\n"
+"digitando una stringa con caratteri jolly, otterrete la ricerca del percorso "
+"completo"
+
+#: gsearchtool/gsearchtool.c:744
+msgid "Locate file: "
+msgstr "Trova il file: "
+
+#: gsearchtool/gsearchtool.c:781
+msgid "Full find (find)"
+msgstr "Ricerca completa (find)"
+
+#: gsearchtool/gsearchtool.c:783
+msgid "Quick find (locate)"
+msgstr "Ricerca veloce (locate)"
+
+#: gsearchtool/gsearchtool.c:804
+msgid "The Gnome Search Tool"
+msgstr "Il Cerca File di Gnome"
+
+#: gsearchtool/gsearchtool.c:805
+msgid "(C) 1998,2000 the Free Software Foundation"
+msgstr "(C) 1998,2000 Free Software Foundation"
+
+#: gsearchtool/gsearchtool.c:807
+msgid "Frontend to the unix find/grep/locate commands"
+msgstr "Interfaccia ai comandi Unix find/grep/locate"
+
+#: gsearchtool/gsearchtool.c:865
+msgid "Gnome Search Tool"
+msgstr "Cerca File di Gnome"
+
+#: gsearchtool/outdlg.c:51
+#, fuzzy
+msgid "Cannot save file"
+msgstr "Impossibile creare l'applet!\n"
+
+#: gsearchtool/outdlg.c:69 meat-grinder/meat-grinder.c:476
+msgid "Save Results"
+msgstr "Salva i risultati"
+
+#: gsearchtool/outdlg.c:130
+msgid "Command mangled"
+msgstr "Comando rovinato"
+
+#: gsearchtool/outdlg.c:159
+msgid "No command for this mime type"
+msgstr "Nessun comando associato a questo tipo mime"
+
+#: gtt/app.c:115 gtt/app.c:227
+msgid "no project selected"
+msgstr "nessuna attività selezionata"
+
+#: gtt/app.c:217
+msgid "00:00"
+msgstr "00:00"
+
+#: gtt/app.c:259 mini-utils/gless/gless.c:423
+msgid ""
+"Couldn't understand geometry (position and size)\n"
+" specified on command line"
+msgstr ""
+"La geometria (posizione e dimensione) specificata in\n"
+"riga di comando è incomprensibile."
+
+#: gtt/ctree.c:511
+msgid "Total"
+msgstr "Totale"
+
+#: gtt/ctree.c:513
+msgid "Total time spent on this project."
+msgstr ""
+
+#: gtt/ctree.c:518
+#, fuzzy
+msgid "Entry"
+msgstr "Interrompi elemento:"
+
+#: gtt/ctree.c:520
+msgid "Time spent under the current diary entry."
+msgstr ""
+
+#: gtt/ctree.c:526 gtt/glade/interval_edit.glade.h:14
+msgid "Today"
+msgstr "Oggi"
+
+#: gtt/ctree.c:528
+msgid "Time spent on this project today."
+msgstr ""
+
+#: gtt/ctree.c:533
+msgid "Week"
+msgstr ""
+
+#: gtt/ctree.c:535
+msgid "Time spent on this project this week."
+msgstr ""
+
+#: gtt/ctree.c:541
+#, fuzzy
+msgid "Month"
+msgstr "Monitor"
+
+#: gtt/ctree.c:543
+msgid "Time spent on this project this month."
+msgstr ""
+
+#: gtt/ctree.c:549
+#, fuzzy
+msgid "Year"
+msgstr "Lineare"
+
+#: gtt/ctree.c:551
+msgid "Time spent on this project this year."
+msgstr ""
+
+#: gtt/ctree.c:557
+#, fuzzy
+msgid "Title"
+msgstr "File"
+
+#: gtt/ctree.c:558 gtt/menucmd.c:148
+msgid "Project Title"
+msgstr "Titolo attività"
+
+#: gtt/ctree.c:563 gtt/ctree.c:564 gtt/menucmd.c:149 stripchart/params.c:654
+msgid "Description"
+msgstr "Descrizione"
+
+#: gtt/ctree.c:569 gtt/ghtml.c:95 gtt/ghtml.c:220
+msgid "Diary Entry"
+msgstr ""
+
+#: gtt/ctree.c:571
+#, fuzzy
+msgid "The current diary entry"
+msgstr "Chiude il documento corrente"
+
+#: gtt/ctree.c:578
+msgid "Estimated Project Start Date"
+msgstr ""
+
+#: gtt/ctree.c:583
+#, fuzzy
+msgid "End"
+msgstr "Abilitato"
+
+#: gtt/ctree.c:585
+#, fuzzy
+msgid "Estimated Project Completion Date"
+msgstr "Modifica proprietà..."
+
+#: gtt/ctree.c:590
+msgid "Due"
+msgstr ""
+
+#: gtt/ctree.c:592
+msgid ""
+"Due Date: the date by which the project absolutely must be completed by."
+msgstr ""
+
+#: gtt/ctree.c:599 mini-utils/guname/info.c:61
+msgid "Size"
+msgstr "Dimensione"
+
+#: gtt/ctree.c:601
+msgid "Sizing: How much work it will take to finish this project."
+msgstr ""
+
+#: gtt/ctree.c:607
+#, fuzzy
+msgid "Done"
+msgstr "Nessuno"
+
+#: gtt/ctree.c:609
+msgid "Percent Complete: How much of this project has been finished till now."
+msgstr ""
+
+#: gtt/ctree.c:616
+msgid "U"
+msgstr ""
+
+#: gtt/ctree.c:618
+msgid "Urgency: Does this project need to be done soon, done quickly?"
+msgstr ""
+
+#: gtt/ctree.c:624
+msgid "Imp"
+msgstr ""
+
+#: gtt/ctree.c:626
+msgid "Importance: How important is this project?"
+msgstr ""
+
+#: gtt/ctree.c:632 mini-utils/idetool/idetool.c:317
+#: mini-utils/idetool/idetool.c:319
+msgid "Status"
+msgstr "Stato"
+
+#: gtt/ctree.c:634
+msgid "The current status of this project."
+msgstr ""
+
+#: gtt/ctree.c:969 gtt/glade/project_properties.glade.h:25
+#, fuzzy
+msgid "Low"
+msgstr "Logview"
+
+#: gtt/ctree.c:970
+#, fuzzy
+msgid "Med"
+msgstr "rosso"
+
+#: gtt/ctree.c:971 gtt/glade/project_properties.glade.h:15
+msgid "High"
+msgstr ""
+
+#: gtt/ctree.c:980 gtt/glade/project_properties.glade.h:29
+#, fuzzy
+msgid "Not Started"
+msgstr "Cerca"
+
+#: gtt/ctree.c:981 gtt/glade/project_properties.glade.h:21
+#, fuzzy
+msgid "In Progress"
+msgstr "Avvia programma"
+
+#: gtt/ctree.c:982 gtt/glade/project_properties.glade.h:31
+#, fuzzy
+msgid "On Hold"
+msgstr "Solido"
+
+#: gtt/ctree.c:983 gtt/glade/project_properties.glade.h:9
+#, fuzzy
+msgid "Cancelled"
+msgstr "Annulla"
+
+#: gtt/ctree.c:984 gtt/glade/project_properties.glade.h:10
+msgid "Completed"
+msgstr ""
+
+#: gtt/file-io.c:376
+msgid "project %t started"
+msgstr "attività %t avviato"
+
+#: gtt/file-io.c:379
+msgid "stopped project %t"
+msgstr "attività %t fermata"
+
+#. Translators: This is a "time format", that is
+#. * format on how to print the elapsed time with
+#. * hours:minutes:seconds.
+#: gtt/file-io.c:677
+#, c-format
+msgid "%d:%02d:%02d"
+msgstr ""
+
+#: gtt/ghtml.c:95 gtt/ghtml.c:273
+msgid "Elapsed"
+msgstr ""
+
+#: gtt/ghtml.c:113 gtt/ghtml.c:369 gtt/ghtml.c:378
+#, fuzzy
+msgid "(empty)"
+msgstr "vuoto"
+
+#: gtt/ghtml.c:225
+#, fuzzy
+msgid "Notes"
+msgstr "Blocco note"
+
+#: gtt/ghtml.c:229
+msgid "Task Time"
+msgstr ""
+
+#: gtt/ghtml.c:233
+#, fuzzy
+msgid "Bill Status"
+msgstr "Stato"
+
+#: gtt/ghtml.c:237 gtt/ghtml.c:408 gtt/glade/task_properties.glade.h:4
+#, fuzzy
+msgid "Billable"
+msgstr "Disabilitato"
+
+#: gtt/ghtml.c:241
+#, fuzzy
+msgid "Bill Rate"
+msgstr "Disabilitato"
+
+#: gtt/ghtml.c:245 mini-utils/gcolorsel/view-color-list.c:197
+#: mini-utils/guname/moreinfo.c:227
+msgid "Value"
+msgstr "Valore"
+
+#: gtt/ghtml.c:249
+#, fuzzy
+msgid "Billable Value"
+msgstr "Disabilitato"
+
+#: gtt/ghtml.c:253 gtt/ghtml.c:279
+#, fuzzy
+msgid "No Default Value"
+msgstr "Predefinite"
+
+#: gtt/ghtml.c:276
+#, fuzzy
+msgid "Start Time Fuzziness"
+msgstr "Cerca"
+
+#: gtt/ghtml.c:392 gtt/glade/task_properties.glade.h:13
+#, fuzzy
+msgid "Hold"
+msgstr "Solido"
+
+#: gtt/ghtml.c:395 gtt/glade/task_properties.glade.h:3
+#, fuzzy
+msgid "Bill"
+msgstr "Disabilitato"
+
+#: gtt/ghtml.c:398 gtt/glade/task_properties.glade.h:21
+msgid "Paid"
+msgstr ""
+
+#: gtt/ghtml.c:411 gtt/glade/task_properties.glade.h:17
+msgid "Not Billable"
+msgstr ""
+
+#: gtt/ghtml.c:414 gtt/glade/task_properties.glade.h:16
+#, fuzzy
+msgid "No Charge"
+msgstr "Nessun nome"
+
+#: gtt/ghtml.c:424 gtt/glade/task_properties.glade.h:22
+#, fuzzy
+msgid "Regular"
+msgstr "Ricarica"
+
+#: gtt/ghtml.c:427 gtt/glade/task_properties.glade.h:20
+msgid "Overtime"
+msgstr ""
+
+#: gtt/ghtml.c:430
+msgid "Double Overtime"
+msgstr ""
+
+#: gtt/ghtml.c:433 gtt/glade/task_properties.glade.h:12
+#, fuzzy
+msgid "Flat Fee"
+msgstr "Virgola mobile"
+
+#: gtt/ghtml.c:453
+#, fuzzy
+msgid "Error - Unknown"
+msgstr "Sconosciuto"
+
+#: gtt/ghtml.c:703
+msgid "unknown token: >>>>"
+msgstr ""
+
+#: gtt/journal.c:108
+msgid "Error 404 Not Found"
+msgstr ""
+
+#: gtt/journal.c:110
+#, fuzzy, c-format
+msgid "The file %s was not found."
+msgstr "Non è stato trovato il file del logo"
+
+#: gtt/journal.c:111
+msgid "(null)"
+msgstr ""
+
+#: gtt/journal.c:120
+#, fuzzy
+msgid "Unkown Error"
+msgstr "Sconosciuto"
+
+#: gtt/journal.c:169 gtt/plug-in.c:90
+#, fuzzy, c-format
+msgid ""
+"Unable to open the file %s\n"
+"%s"
+msgstr "Impossibile aprire il file di log!\n"
+
+#: gtt/journal.c:248 gtt/proj.c:716 gtt/proj.c:1539 gtt/proj.c:1667
+#: gtt/proj.c:1807
+msgid "New Diary Entry"
+msgstr ""
+
+#: gtt/journal.c:436
+#, fuzzy
+msgid "Save HTML To File"
+msgstr "_Salva tavolozza"
+
+#: gtt/log.c:55
+#, fuzzy, c-format
+msgid "Cannot open logfile %s for append"
+msgstr "Nessun file da aprire"
+
+#. Translators: Format to use in the gtt logfile
+#: gtt/log.c:64
+msgid "%b %d %H:%M:%S"
+msgstr ""
+
+#: gtt/log.c:102
+msgid "no description"
+msgstr "nessuna descrizione"
+
+#: gtt/log.c:167 gtt/log.c:258
+msgid "program started"
+msgstr "programma iniziato"
+
+#. log_if_equal
+#: gtt/log.c:250
+msgid "program exited"
+msgstr "programma terminato"
+
+#: gtt/main.c:114
+msgid ""
+"There seems to be another GTimeTracker running.\n"
+"Press OK to start GTimeTracker anyway, or press Cancel to quit."
+msgstr ""
+"Sembra che ci sia un'altra copia di GTimeTracker in esecuzione.\n"
+"Premere OK per fare partire GTimeTracker comunque, o premere Annulla\n"
+"per uscire."
+
+#: gtt/main.c:126
+#, fuzzy
+msgid "Cannot create pid-file!"
+msgstr "Impossibile creare l'applet!\n"
+
+#: gtt/main.c:219
+msgid "Do you want to continue?"
+msgstr ""
+
+#: gtt/main.c:222 gtt/main.c:275
+msgid "Error"
+msgstr "Errore"
+
+#: gtt/main.c:272
+msgid "Shall I setup a new configuration?"
+msgstr ""
+
+#: gtt/main.c:439
+msgid "Specify geometry"
+msgstr "Specifica la geometria"
+
+#: gtt/main.c:441
+msgid "Select a project on startup"
+msgstr "Seleziona un'attività all'avvio"
+
+#: gtt/main.c:441
+msgid "PROJECT"
+msgstr "ATTIVITÀ"
+
+#: gtt/main.c:481 gtt/menucmd.c:48 gtt/menucmd.c:204 gtt/menucmd.c:240
+msgid "Warning"
+msgstr "Attenzione"
+
+#: gtt/menucmd.c:85
+msgid ""
+"GTimeTracker is a combination stop-watch, diary, consultant billing system "
+"and project manager.  You can measure the amount of time you spend on a "
+"task, associate a memo with it, set a billing rate, print an invoice, as "
+"well as track that status of other projects."
+msgstr ""
+
+#: gtt/menucmd.c:142
+msgid "New Project..."
+msgstr "Nuova attività..."
+
+#: gtt/menucmd.c:224 gtt/toolbar.c:167
+msgid "Reload Configuration File"
+msgstr "Ricarica il file di configurazione"
+
+#: gtt/menucmd.c:225
+#, fuzzy
+msgid "Do you really want to reload the configuration file?"
+msgstr "Impossibile leggere il file di configurazione"
+
+#: gtt/menucmd.c:260
+#, c-format
+msgid "File %s exists, overwrite?"
+msgstr ""
+
+#: gtt/menucmd.c:271
+msgid "File cannot be written"
+msgstr ""
+
+#: gtt/menucmd.c:291
+#, fuzzy
+msgid "Export Current State"
+msgstr "Valore corrente"
+
+#: gtt/menus.c:33
+msgid "_New Project..."
+msgstr "_Nuova attività..."
+
+#: gtt/menus.c:36
+msgid "_Reload Configuration File"
+msgstr "_Ricarica file di configurazione"
+
+#: gtt/menus.c:40
+msgid "_Save Configuration File"
+msgstr "_Salva file di configurazione"
+
+#: gtt/menus.c:44
+msgid "_Export Current State"
+msgstr ""
+
+#: gtt/menus.c:63 gtt/menus.c:173
+msgid "Clear _Daily Counter"
+msgstr "Azzera contatore _giornaliero"
+
+#: gtt/menus.c:64 gtt/menus.c:174
+msgid "Zero out todays timer by deleting todays time logs"
+msgstr ""
+
+#: gtt/menus.c:68 gtt/menus.c:87 gtt/menus.c:156
+msgid "_Journal..."
+msgstr ""
+
+#: gtt/menus.c:69 gtt/menus.c:88 gtt/menus.c:157
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
+#: gtt/menus.c:72 gtt/menus.c:160
+msgid "New Diary _Entry"
+msgstr ""
+
+#: gtt/menus.c:73 gtt/menus.c:161
+msgid "Change the current task for this project"
+msgstr ""
+
+#: gtt/menus.c:91
+msgid "_All Journal..."
+msgstr ""
+
+#: gtt/menus.c:92
+msgid "Show the verbose timesheet journal for this project"
+msgstr ""
+
+#: gtt/menus.c:95
+#, fuzzy
+msgid "_Invoice..."
+msgstr "_Salva..."
+
+#: gtt/menus.c:96
+msgid "Show a sample invoice for this project"
+msgstr ""
+
+#: gtt/menus.c:99
+#, fuzzy
+msgid "_Primer..."
+msgstr "Preferenze..."
+
+#: gtt/menus.c:100
+msgid "Show a sample introductory primer for designing custom reports"
+msgstr ""
+
+#: gtt/menus.c:103
+#, fuzzy
+msgid "_New Report..."
+msgstr "_Nuova attività..."
+
+#: gtt/menus.c:104
+msgid "Define a path to a new GTT phtml report file"
+msgstr ""
+
+#: gtt/menus.c:115
+msgid "St_art"
+msgstr "_Avvia"
+
+#: gtt/menus.c:116
+msgid "Start the timer running"
+msgstr ""
+
+#: gtt/menus.c:121
+msgid "Sto_p"
+msgstr "Interrom_pi"
+
+#: gtt/menus.c:122
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Settembre"
+
+#: gtt/menus.c:127
+msgid "_Timer Running"
+msgstr "_Cronometro attivo"
+
+#: gtt/menus.c:146
+msgid "_Reports"
+msgstr ""
+
+#: gtt/menus.c:147
+msgid "_Timer"
+msgstr "_Cronometro"
+
+#. deal with the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#: gtt/menus.c:244
+#, fuzzy
+msgid "Reports"
+msgstr "Riavvia"
+
+#: gtt/plug-in.c:121
+msgid "Reports/<Separator>"
+msgstr ""
+
+#: gtt/proj.c:697
+msgid "Old GTT Tasks"
+msgstr ""
+
+#: gtt/props-proj.c:94 gtt/props-proj.c:95 gtt/props-task.c:75
+#: gtt/props-task.c:76
+msgid "empty"
+msgstr "vuoto"
+
+#: gtt/timer.c:117
+#, c-format
+msgid ""
+"The keyboard and mouse have been idle\n"
+"for %d minutes.  The currently running\n"
+"project (%s - %s)\n"
+"has been stopped.\n"
+"Do you want to restart it?"
+msgstr ""
+
+#: gtt/timer.c:125
+#, fuzzy
+msgid "System Idle"
+msgstr "Informazioni sul sistema"
+
+#. Note to translators: just skip the `[GTT]'
+#: gtt/toolbar.c:159
+msgid "[GTT]New"
+msgstr "Nuova"
+
+#: gtt/toolbar.c:160
+#, fuzzy
+msgid "Create a New Project..."
+msgstr "Nuova attività..."
+
+#: gtt/toolbar.c:166
+msgid "Reload"
+msgstr "Ricarica"
+
+#: gtt/glade/journal.glade.h:7 gtt/toolbar.c:170 stripchart/params.c:939
+msgid "Save"
+msgstr "Salva"
+
+#: gtt/toolbar.c:171
+msgid "Save Configuration File"
+msgstr "Salva file di configurazione"
+
+#: gtt/toolbar.c:178
+msgid "Cut Selected Project"
+msgstr "Taglia attività selezionata"
+
+#: gtt/toolbar.c:182
+msgid "Copy Selected Project"
+msgstr "Copia attività selezionata"
+
+#: gtt/toolbar.c:186
+msgid "Paste Project"
+msgstr "Incolla attività"
+
+#: gtt/glade/journal.glade.h:2 gtt/toolbar.c:193
+msgid "Journal"
+msgstr ""
+
+#: gtt/toolbar.c:194
+msgid "View and Edit Timestamp Logs"
+msgstr ""
+
+#: gtt/toolbar.c:199
+msgid "Props"
+msgstr "Proprietà"
+
+#: gtt/toolbar.c:200
+#, fuzzy
+msgid "Edit Project Properties..."
+msgstr "Modifica proprietà..."
+
+#: gtt/toolbar.c:204
+msgid "Timer"
+msgstr "Cronometro"
+
+#: gtt/toolbar.c:205
+msgid "Start/Stop Timer"
+msgstr "Avvia/Ferma cronometro"
+
+#: gtt/toolbar.c:211 logview/calendar.c:112 logview/logview.c:107
+msgid "Calendar"
+msgstr "Calendario"
+
+#: gtt/toolbar.c:212
+#, fuzzy
+msgid "View Calendar"
+msgstr "Nascondi calendario"
+
+#: gtt/toolbar.c:225
+msgid "Prefs"
+msgstr "Preferenze"
+
+#: gtt/toolbar.c:226
+msgid "Edit Preferences..."
+msgstr "Modifica preferenze..."
+
+#: gtt/toolbar.c:230
+msgid "Manual"
+msgstr "Manuale"
+
+#: gtt/toolbar.c:231
+msgid "User's Guide and Manual"
+msgstr ""
+
+#: gtt/toolbar.c:236
+msgid "Quit"
+msgstr "Esci"
+
+#: gtt/toolbar.c:236
+msgid "Quit GTimeTracker"
+msgstr "Esci da GTimeTracker"
+
+#: gtt/glade/interval_edit.glade.h:1
+msgid "1 Hour"
+msgstr ""
+
+#: gtt/glade/interval_edit.glade.h:2
+#, fuzzy
+msgid "10 Min"
+msgstr "Min"
+
+#: gtt/glade/interval_edit.glade.h:3
+#, fuzzy
+msgid "15 Min"
+msgstr "Min"
+
+#: gtt/glade/interval_edit.glade.h:4
+#, fuzzy
+msgid "2 Hours"
+msgstr "ore"
+
+#: gtt/glade/interval_edit.glade.h:5
+#, fuzzy
+msgid "20 Min"
+msgstr "Min"
+
+#: gtt/glade/interval_edit.glade.h:6
+#, fuzzy
+msgid "3 Hours"
+msgstr "ore"
+
+#: gtt/glade/interval_edit.glade.h:7
+#, fuzzy
+msgid "30 Min"
+msgstr "Min"
+
+#: gtt/glade/interval_edit.glade.h:8
+#, fuzzy
+msgid "5 Min"
+msgstr "Min"
+
+#: gtt/glade/interval_edit.glade.h:9
+msgid "Exact Time"
+msgstr ""
+
+#: gtt/glade/interval_edit.glade.h:10
+msgid "Set how Uncertain the Start Time Is"
+msgstr ""
+
+#: gtt/glade/interval_edit.glade.h:12
+#, fuzzy
+msgid "Start Fuzz"
+msgstr "Cerca"
+
+#: gtt/glade/interval_popup.glade.h:1
+#, fuzzy
+msgid "Delete Interval"
+msgstr "Intervallo di aggiornamento dello slider"
+
+#: gtt/glade/interval_popup.glade.h:2
+#, fuzzy
+msgid "Delete This Interval"
+msgstr "Intervallo di aggiornamento dello slider"
+
+#: gtt/glade/interval_popup.glade.h:3
+#, fuzzy
+msgid "Edit Interval"
+msgstr "Generali"
+
+#: gtt/glade/interval_popup.glade.h:4
+#, fuzzy
+msgid "Edit the Start & Stop Times"
+msgstr "Avvia/Ferma cronometro"
+
+#: gtt/glade/interval_popup.glade.h:5
+#, fuzzy
+msgid "Insert Diary Entry"
+msgstr "_Inserisci alla fine"
+
+#: gtt/glade/interval_popup.glade.h:6
+msgid "Insert a new diary entry above this time interval."
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:7
+msgid "Merge Down"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:8
+msgid "Merge Into Interval Above"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:9
+msgid "Merge Into Interval Below"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:10
+msgid "Merge Up"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:11
+msgid "Paste Diary Entry"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:12 gtt/glade/task_popup.glade.h:8
+msgid "Paste a previously cut diary entry."
+msgstr ""
+
+#: gtt/glade/journal.glade.h:1 mini-utils/gcolorsel/menus.c:89
+#: mini-utils/gcolorsel/menus.c:913 mini-utils/gshutdown/gshutdown.c:155
+#: mini-utils/gshutdown/gshutdown.c:631 stripchart/params.c:953
+msgid "Close"
+msgstr "Chiudi"
+
+#: gtt/glade/journal.glade.h:3
+#, fuzzy
+msgid "New File"
+msgstr "Nuova vista"
+
+#: gtt/glade/journal.glade.h:4
+#, fuzzy
+msgid "Open File"
+msgstr "Apri log"
+
+#: gtt/glade/journal.glade.h:5
+#, fuzzy
+msgid "Print"
+msgstr "Punto"
+
+#: gtt/glade/journal.glade.h:6
+msgid "Refresh"
+msgstr ""
+
+#: gtt/glade/journal.glade.h:8
+#, fuzzy
+msgid "Save File"
+msgstr "_Salva tavolozza"
+
+#: gtt/glade/not-implemented.glade.h:1
+#, fuzzy
+msgid "Information"
+msgstr "Informazioni sulla CPU"
+
+#: gtt/glade/not-implemented.glade.h:2
+msgid ""
+"This function is not yet implemented!\n"
+"Coming Soon, I hope!"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:1
+msgid "Display"
+msgstr "Visualizzazione"
+
+#: gtt/glade/prefs.glade.h:2
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:3
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:4
+msgid "Entry Start:"
+msgstr "Avvia elemento:"
+
+#: gtt/glade/prefs.glade.h:5
+msgid "Entry Stop:"
+msgstr "Interrompi elemento:"
+
+#: gtt/glade/prefs.glade.h:7
+#, no-c-format
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:9
+#, no-c-format
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:10
+#, fuzzy
+msgid "Fields"
+msgstr "Trova"
+
+#: gtt/glade/prefs.glade.h:11
+msgid "Filename:"
+msgstr "Nome file:"
+
+#: gtt/glade/prefs.glade.h:12
+#, fuzzy
+msgid "Idle Seconds:"
+msgstr "Mostra secondi"
+
+#: gtt/glade/prefs.glade.h:13
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:14
+msgid "Logfile"
+msgstr "File di log"
+
+#: gtt/glade/prefs.glade.h:15
+#, fuzzy
+msgid "Min Recorded:"
+msgstr "Descrizione:"
+
+#: gtt/glade/prefs.glade.h:16
+msgid "Misc"
+msgstr "Varie"
+
+#: gtt/glade/prefs.glade.h:17
+msgid "No Project Command:"
+msgstr "Comando di nessun attività:"
+
+#: gtt/glade/prefs.glade.h:18
+#, fuzzy
+msgid "Project List Display"
+msgstr "Titolo attività"
+
+#: gtt/glade/prefs.glade.h:19
+#, fuzzy
+msgid "Shell"
+msgstr "Ortografia"
+
+#: gtt/glade/prefs.glade.h:20
+msgid "Shell Commands"
+msgstr "Comandi di shell"
+
+#: gtt/glade/prefs.glade.h:21
+msgid "Show Current Diary Entry"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:22
+msgid "Show Estimated Effort"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:23
+#, fuzzy
+msgid "Show Percent Complete"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:24
+msgid "Show Planned Project End Date"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:25
+msgid "Show Planned Project Start Date"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:26
+#, fuzzy
+msgid "Show Project Description"
+msgstr "Descrizione attività:"
+
+#: gtt/glade/prefs.glade.h:27
+#, fuzzy
+msgid "Show Project Due Date"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:28
+#, fuzzy
+msgid "Show Project Importance"
+msgstr "Comando di nessun attività:"
+
+#: gtt/glade/prefs.glade.h:29
+#, fuzzy
+msgid "Show Project Status"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:30
+#, fuzzy
+msgid "Show Project Urgency"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:31
+msgid "Show Seconds"
+msgstr "Mostra secondi"
+
+#: gtt/glade/prefs.glade.h:32
+msgid "Show Status Bar"
+msgstr "Mostra barra di stato"
+
+#: gtt/glade/prefs.glade.h:33
+#, fuzzy
+msgid "Show Sub-Projects"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:34
+msgid "Show Table Header"
+msgstr "Mostra intestazione tabella"
+
+#: gtt/glade/prefs.glade.h:35
+msgid "Show Time For The Current Diary Entry"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:36
+msgid "Show Time This Month"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:37
+msgid "Show Time This Week"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:38
+#, fuzzy
+msgid "Show Time This Year"
+msgstr "Mostra `Cronometro'"
+
+#: gtt/glade/prefs.glade.h:39
+#, fuzzy
+msgid "Show Time Today"
+msgstr "Mostra `Cronometro'"
+
+#: gtt/glade/prefs.glade.h:40
+msgid "Show Toolbar Icons"
+msgstr "Mostra icone nella barra degli strumenti"
+
+#: gtt/glade/prefs.glade.h:41
+msgid "Show Toolbar Texts"
+msgstr "Mostra testo nella barra degli strumenti"
+
+#: gtt/glade/prefs.glade.h:42
+msgid "Show Tooltips"
+msgstr "Mostra suggerimenti"
+
+#: gtt/glade/prefs.glade.h:43
+#, fuzzy
+msgid "Show Total Time Ever"
+msgstr "Mostra intestazione tabella"
+
+#: gtt/glade/prefs.glade.h:44
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr "Mostra `Taglia', `Copia', `Incolla'"
+
+#: gtt/glade/prefs.glade.h:45
+msgid "Show `Help'"
+msgstr "Mostra `Aiuto'"
+
+#: gtt/glade/prefs.glade.h:46
+#, fuzzy
+msgid "Show `Journal'"
+msgstr "Mostra `Aiuto'"
+
+#: gtt/glade/prefs.glade.h:47
+msgid "Show `New'"
+msgstr "Mostra `Nuova'"
+
+#: gtt/glade/prefs.glade.h:48
+msgid "Show `Preferences'"
+msgstr "Mostra `Preferenze'"
+
+#: gtt/glade/prefs.glade.h:49
+msgid "Show `Properties'"
+msgstr "Mostra `Proprietà'"
+
+#: gtt/glade/prefs.glade.h:50
+msgid "Show `Quit'"
+msgstr "Mostra `Esci'"
+
+#: gtt/glade/prefs.glade.h:51
+msgid "Show `Save', `Reload'"
+msgstr "Mostra `Salva', `Ricarica'"
+
+#: gtt/glade/prefs.glade.h:52
+msgid "Show `Timer'"
+msgstr "Mostra `Cronometro'"
+
+#: gtt/glade/prefs.glade.h:53
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:54
+msgid "Switch Project Command:"
+msgstr "Comando di cambio attività:"
+
+#: gtt/glade/prefs.glade.h:55
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:56
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:57
+msgid "Toolbar"
+msgstr "Barra degli strumenti"
+
+#: gtt/glade/prefs.glade.h:58
+msgid "Toolbar Segments"
+msgstr "Segmenti della barra degli strumenti"
+
+#: gtt/glade/prefs.glade.h:59
+msgid "Use Logfile"
+msgstr "Usa file di log"
+
+#: gtt/glade/prefs.glade.h:60
+#, fuzzy
+msgid "View Project Fields"
+msgstr "Proprietà vista"
+
+#: gtt/glade/project_properties.glade.h:1
+msgid "        "
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:2
+#, fuzzy
+msgid "            "
+msgstr "Apri log..."
+
+#: gtt/glade/project_properties.glade.h:3
+#, fuzzy
+msgid "                        "
+msgstr "Ingrandisci             "
+
+#: gtt/glade/project_properties.glade.h:5
+#, no-c-format
+msgid "% Complete"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:6
+msgid "A title to assign to this project"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:7
+msgid "Auto-merge Gap:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:8
+msgid "Auto-merge Interval:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:11
+msgid ""
+"Does this item need immediate attention? Note that some urgent tasks might "
+"not be important.  For example, Bill may want you to answer his email today, "
+"but you may have better things to do today."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:12
+msgid "Double-Overtime Rate:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:13
+#, fuzzy
+msgid "Due Date:"
+msgstr "Data:"
+
+#: gtt/glade/project_properties.glade.h:14
+msgid "Flat Fee:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:16
+msgid "Hours to Finish:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:17
+msgid ""
+"How important is it to perform this task?  Not everything important is "
+"urgent.  For example, it is important to file a tax return every year, but "
+"you have a lot of time to get ready to do this."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:18
+msgid ""
+"If the gap between intervals is smaller than this, the intervals will be "
+"merged together."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:19
+msgid ""
+"If this project is billed for one price no matter how long it takes, enter "
+"the fee here."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:20
+#, fuzzy
+msgid "Importance:"
+msgstr "Tolleranza :"
+
+#: gtt/glade/project_properties.glade.h:22
+msgid ""
+"Internal notes about the project that will not be printed on an invoice."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:23
+#, fuzzy
+msgid "Intervals"
+msgstr "Generali"
+
+#: gtt/glade/project_properties.glade.h:24
+msgid "Intervals smaller than this will be discarded"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:26
+msgid "Medium"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:27
+msgid "Minimum Interval: "
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:28
+#, fuzzy
+msgid "Not Set"
+msgstr "Selettore Font"
+
+#: gtt/glade/project_properties.glade.h:30
+#: gtt/glade/task_properties.glade.h:18
+msgid "Notes:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:32
+msgid "Overtime Rate:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:33
+msgid "Planned Finish:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:34
+#, fuzzy
+msgid "Planned Start:"
+msgstr "Avvia elemento:"
+
+#: gtt/glade/project_properties.glade.h:35
+#, fuzzy
+msgid "Planning"
+msgstr "Attenzione"
+
+#: gtt/glade/project_properties.glade.h:36
+msgid "Project"
+msgstr "Attività"
+
+#: gtt/glade/project_properties.glade.h:37
+msgid "Project Description:"
+msgstr "Descrizione attività:"
+
+#: gtt/glade/project_properties.glade.h:38
+msgid "Project Title:"
+msgstr "Titolo attività:"
+
+#: gtt/glade/project_properties.glade.h:39
+msgid "Rates"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:40
+msgid "Regular Rate:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:41
+#, fuzzy
+msgid "Status:"
+msgstr "Stato"
+
+#: gtt/glade/project_properties.glade.h:42
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:43
+msgid "The dollars per hour normally charged for this project."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:44
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:45
+msgid "Time below which an interval is merged with its neighbors"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:46
+msgid "Urgency:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:47
+msgid "What is the status of this project?"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:48
+msgid "a short description that will be printed on the invoice."
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:49
+#, fuzzy
+msgid "seconds"
+msgstr "sec"
+
+#: gtt/glade/task_popup.glade.h:1
+#, fuzzy
+msgid "Add a new time interval"
+msgstr "Intervallo di aggiornamento (ms)"
+
+#: gtt/glade/task_popup.glade.h:2
+#, fuzzy
+msgid "Delete _Times"
+msgstr "Elimina"
+
+#: gtt/glade/task_popup.glade.h:3
+msgid "Delete the diary entry only, keep the time intervals"
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:4
+msgid "Delete the diary entry, and the time intervals below it."
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:5
+msgid "Edit the diary entry and other task properties."
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:6
+msgid "Insert a new diary entry above this one."
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:7
+#, fuzzy
+msgid "New Time Interval"
+msgstr "Intervallo di aggiornamento dello slider"
+
+#: gtt/glade/task_popup.glade.h:9
+#, fuzzy
+msgid "_Delete Diary Entry"
+msgstr "Cancella parametro"
+
+#: gtt/glade/task_popup.glade.h:10
+msgid "_Edit Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:11
+msgid "_New Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:12
+msgid "_Paste Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:1
+msgid "A set of private notes that will not be printed on an invoice."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:2
+msgid "A short description to attach to this block of time."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:5
+msgid "Billable:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:6
+msgid "Billing Block:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:7
+msgid "Billing Rate:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:8
+msgid "Billing Status:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:9
+#, fuzzy
+msgid "Diary Entry Properties"
+msgstr "Proprietà di GDiskFree"
+
+#: gtt/glade/task_properties.glade.h:10
+#, fuzzy
+msgid "Diary Entry:"
+msgstr "Directory:"
+
+#: gtt/glade/task_properties.glade.h:11
+msgid "Fee rate to be charged for this task."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:14
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:15
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:19
+#, fuzzy
+msgid "OverOver"
+msgstr "Server"
+
+#: gtt/glade/task_properties.glade.h:23
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:24
+#, fuzzy
+msgid "minutes"
+msgstr "min"
+
+#: logview/about.c:41
+msgid "Cesar Miquel (miquel@df.uba.ar)"
+msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#: logview/about.c:42
+#, fuzzy
+msgid ""
+"This  program  is  part of  the  GNOME  project. Logview comes with "
+"ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+"redistribute it under the conditions of the GNU General Public Licence. The "
+"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+msgstr ""
+"Questo programma fa parte del progetto GNOME per Linux. Logview è "
+"distribuito SENZA ALCUNA GARANZIA. Questo è un software libero e si è "
+"invitati a ridistribuirlo nei termini della GNU General Public Licence. "
+"L'icona del tronco è una cortesia di Tuomas Kuosmanen (a.k.a tigert)."
+
+#. go get logview.xpm in $(prefix)/share/pixmaps/logview
+#: logview/about.c:55
+msgid "Logview"
+msgstr "Logview"
+
+#: logview/about.c:56
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: logview/actions.c:92
+msgid "Action database"
+msgstr "Database azioni"
+
+#: logview/actions.c:97 logview/monitor.c:110
+msgid "Monitor options"
+msgstr "Opzioni monitoraggio"
+
+#: logview/actions.c:151
+msgid "Add..."
+msgstr "Aggiungi..."
+
+#: logview/actions.c:157
+msgid "Edit..."
+msgstr "Modifica..."
+
+#: logview/actions.c:278
+#, c-format
+msgid "Cannot open action data base <%s>! Open failed."
+msgstr ""
+
+#: logview/actions.c:313 logview/actions.c:326 logview/actions.c:337
+#: logview/actions.c:348 logview/actions.c:359 logview/actions.c:370
+msgid "Error parsing actions data base"
+msgstr "Errore durante la lettura del database delle azioni"
+
+#: logview/actions.c:404
+msgid "Can't write to actions database!"
+msgstr "Impossibile scrivere nel database delle azioni!"
+
+#: logview/actions.c:511
+msgid "<empty>"
+msgstr "<vuoto>"
+
+#: logview/actions.c:512
+#, fuzzy
+msgid "log name regexp"
+msgstr "regexp nome log"
+
+#: logview/actions.c:513
+msgid "process regexp"
+msgstr "interpreta espressione regolare"
+
+#: logview/actions.c:514
+msgid "message regexp"
+msgstr "regexp messaggio"
+
+#: logview/actions.c:515
+msgid "action to execute when regexps are TRUE"
+msgstr "azione da eseguire quando l'espressione regolare è uguale a TRUE"
+
+#: logview/actions.c:516
+msgid "description"
+msgstr "descrizione"
+
+#: logview/actions.c:746
+msgid "description:"
+msgstr "descrizione:"
+
+#: logview/actions.c:754
+msgid "Description of this entry."
+msgstr "Descrizione per questa voce."
+
+#: logview/actions.c:810
+#, c-format
+msgid ""
+"tag: [%s]\n"
+"log_name: [%s]\n"
+"process: [%s]\n"
+"message: [%s]\n"
+"description: [%s]\n"
+"action: [%s]\n"
+msgstr ""
+"tag: [%s]\n"
+"nome_log: [%s]\n"
+"processo: [%s]\n"
+"messaggio: [%s]\n"
+"descrizione: [%s]\n"
+"azione: [%s]\n"
+
+#: logview/info.c:79 logview/logview.c:110
+msgid "Log stats"
+msgstr "Statistiche log"
+
+#: logview/info.c:139
+msgid "Log information"
+msgstr "Informazioni sul log"
+
+#: logview/info.c:156
+msgid "Log:"
+msgstr "Log:"
+
+#: logview/info.c:158
+msgid "Size:"
+msgstr "Dimensione:"
+
+#: logview/info.c:160
+msgid "Modified:"
+msgstr "Modificato:"
+
+#: logview/info.c:162
+msgid "Start date:"
+msgstr "Data di inizio:"
+
+#: logview/info.c:164
+msgid "Last date:"
+msgstr "Ultima data:"
+
+#: logview/info.c:166
+msgid "Num. lines:"
+msgstr "Numero di linee:"
+
+#: logview/info.c:183
+#, c-format
+msgid "%ld bytes"
+msgstr "%ld byte"
+
+#: logview/log_repaint.c:86
+msgid "January"
+msgstr "Gennaio"
+
+#: logview/log_repaint.c:86
+msgid "February"
+msgstr "Febbraio"
+
+#: logview/log_repaint.c:86
+msgid "March"
+msgstr "Marzo"
+
+#: logview/log_repaint.c:86
+msgid "April"
+msgstr "Aprile"
+
+#: logview/log_repaint.c:86
+msgid "May"
+msgstr "Maggio"
+
+#: logview/log_repaint.c:87
+msgid "June"
+msgstr "Giugno"
+
+#: logview/log_repaint.c:87
+msgid "July"
+msgstr "Luglio"
+
+#: logview/log_repaint.c:87
+msgid "August"
+msgstr "Agosto"
+
+#: logview/log_repaint.c:87
+msgid "September"
+msgstr "Settembre"
+
+#: logview/log_repaint.c:87
+msgid "October"
+msgstr "Ottobre"
+
+#: logview/log_repaint.c:88
+msgid "November"
+msgstr "Novembre"
+
+#: logview/log_repaint.c:88
+msgid "December"
+msgstr "Dicembre"
+
+#. Translators: Date only format, %x should well do really
+#: logview/log_repaint.c:477
+#, c-format
+msgid "%x"
+msgstr ""
+
+#. Translators: should be only the time, date could be bogus
+#: logview/log_repaint.c:587
+#, c-format
+msgid "%X"
+msgstr ""
+
+#. bogus
+#. Translators: Make sure this is only Month and Day format, year
+#. * will be bogus here
+#: logview/log_repaint.c:671
+msgid "%B %e"
+msgstr ""
+
+#: logview/logrtns.c:199
+msgid "Not enough memory!\n"
+msgstr "Memoria insuffciente!\n"
+
+#: logview/logrtns.c:207
+msgid "Out of memory!\n"
+msgstr "Memoria finita!\n"
+
+#: logview/logrtns.c:233
+msgid "Unable to open logfile!\n"
+msgstr "Impossibile aprire il file di log!\n"
+
+#: logview/logrtns.c:288
+#, c-format
+msgid "%s is not a regular file."
+msgstr "%s non è un file regolare."
+
+#: logview/logrtns.c:296
+#, fuzzy, c-format
+msgid ""
+"%s is not user readable. Either run the program as root or ask the sysadmin "
+"to change the permissions on the file."
+msgstr ""
+"%s non è leggibile dall'utente. Probabilmente non si possiedono i permessi "
+"di lettura. Provare a lanciare il programma come root o chiedere "
+"all'amministratore di sistema di cambiare i permessi del file."
+
+#: logview/logrtns.c:309
+#, c-format
+msgid "%s could not be opened."
+msgstr "%s non può essere aperto."
+
+#: logview/logrtns.c:332
+#, c-format
+msgid "%s not a log file."
+msgstr "%s non è un file di log."
+
+#: logview/logrtns.c:756 logview/logrtns.c:787 logview/logrtns.c:918
+msgid "ReadLogStats: out of memory"
+msgstr "ReadLogStats: memoria esaurita"
+
+#: logview/logview.c:85
+#, fuzzy
+msgid "Open log..."
+msgstr "Apri log"
+
+#: logview/logview.c:86
+msgid "Open log"
+msgstr "Apri log"
+
+#: logview/logview.c:88
+#, fuzzy
+msgid "Export log..."
+msgstr "Esporta log..."
+
+#: logview/logview.c:89
+msgid "Export log"
+msgstr "Esporta log..."
+
+#: logview/logview.c:91 logview/logview.c:92
+msgid "Close log"
+msgstr "Chiudi log"
+
+#: logview/logview.c:94 logview/logview.c:95
+msgid "Switch log"
+msgstr "Cambia log"
+
+#: logview/logview.c:97
+#, fuzzy
+msgid "Monitor..."
+msgstr "Monitor"
+
+#: logview/logview.c:98
+msgid "Monitor log"
+msgstr "Controlla il log"
+
+#: logview/logview.c:101
+msgid "Exit program"
+msgstr "Esci dal programma"
+
+#: logview/logview.c:108
+msgid "Show calendar log"
+msgstr "Mostra il calendario dei log"
+
+#: logview/logview.c:111
+msgid "Show log stats"
+msgstr "Mostra statistiche del log"
+
+#: logview/logview.c:113
+#, fuzzy
+msgid "Zoom"
+msgstr "Vista ingrandita"
+
+#: logview/logview.c:114
+msgid "Show line info"
+msgstr "Mostra informazioni sulla riga"
+
+#: logview/logview.c:117
+msgid "Show user preferences"
+msgstr "Mostra preferenze dell'utente"
+
+#: logview/logview.c:124
+msgid "Select...               "
+msgstr "Seleziona...            "
+
+#: logview/logview.c:125
+msgid "Select log events"
+msgstr "Seleziona eventi"
+
+#: logview/logview.c:127
+msgid "Filter..                "
+msgstr "Filtro..                "
+
+#: logview/logview.c:128
+msgid "Filter log events"
+msgstr "Filtra eventi del log"
+
+#: logview/logview.c:137
+msgid "Info about logview"
+msgstr "Informazioni sul visualizzatore di log"
+
+#: logview/logview.c:241
+msgid "No log files to open"
+msgstr "Nessun file da aprire"
+
+#. Create App
+#: logview/logview.c:264
+msgid "System Log Viewer"
+msgstr "Visualizzatore Log di Sistema"
+
+#: logview/logview.c:368
+msgid "Filename: "
+msgstr "Nome file: "
+
+#: logview/logview.c:384
+msgid "Date: "
+msgstr "Data: "
+
+#: logview/logview.c:619
+msgid "Too many open logs. Close one and try again"
+msgstr "Troppi log aperti. Chiuderne uno e riprovare"
+
+#: logview/logview.c:676
+msgid "Open new logfile"
+msgstr "Apri nuovo file di log"
+
+#: logview/misc.c:55
+#, c-format
+msgid "Error: [%s]\n"
+msgstr "Errore: [%s]\n"
+
+#: logview/monitor.c:124
+msgid "Choose logs to monitor"
+msgstr "Scegli file da monitorare"
+
+#. Arrowed buttons
+#: logview/monitor.c:168
+#, fuzzy
+msgid "Add >>"
+msgstr "Aggiungi ->"
+
+#. Remove button
+#: logview/monitor.c:176
+#, fuzzy
+msgid "Remove <<"
+msgstr "Rimuovi"
+
+#. Check boxes
+#: logview/monitor.c:207
+msgid "Hide app"
+msgstr "Nascondi applicazione"
+
+#: logview/monitor.c:215
+msgid "Exec actions"
+msgstr "Esegui azioni"
+
+#. Actions button
+#: logview/monitor.c:227
+#, fuzzy
+msgid "Actions..."
+msgstr "Azioni"
+
+#: logview/monitor.c:282 logview/monitor.c:329
+msgid "tmp_list is NULL\n"
+msgstr "tmp_list è NULL\n"
+
+#: logview/monitor.c:456
+#, fuzzy
+msgid "Monitoring logs..."
+msgstr "Monitoraggio log.."
+
+#: logview/monitor.c:638
+msgid "TOUCHED!!\n"
+msgstr "CAMBIATO!!\n"
+
+#: logview/userprefsdialog.c:65
+msgid "hostname column width ( 0 to hide this column ): "
+msgstr "Dimensione colonna per i nomi degli host ( 0 per nasconderla ): "
+
+#: logview/userprefsdialog.c:66
+msgid "Columns"
+msgstr "Colonne"
+
+#: logview/zoom.c:78
+msgid "Zoom view"
+msgstr "Vista ingrandita"
+
+#: logview/zoom.c:154
+#, c-format
+msgid "Log line detail for %s"
+msgstr "Dettaglio per linea del log %s"
+
+#: logview/zoom.c:157
+msgid "Log line detail for <No log loaded>"
+msgstr "Dettaglio linea per <nessun log aperto>"
+
+#: logview/zoom.c:180
+msgid "Date:"
+msgstr "Data:"
+
+#: logview/zoom.c:182
+msgid "Process:"
+msgstr "Processo:"
+
+#: logview/zoom.c:184
+msgid "Message:"
+msgstr "Messaggio:"
+
+#: logview/zoom.c:186
+msgid "Description:"
+msgstr "Descrizione:"
+
+#. Translators: do not include year, it would be bogus
+#: logview/zoom.c:212
+msgid "%B %e %X"
+msgstr ""
+
+#.
+#. * 	-------------------
+#. * 	     Defines
+#. * 	-------------------
+#.
+#: logview/config.c:34
+#, fuzzy
+msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: logview/config.c:35
+#, fuzzy
+msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: logview/config.c:36
+#, fuzzy
+msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: logview/config.c:37
+#, fuzzy
+msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: logview/config.c:39
+#, fuzzy
+msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: logview/config.c:40
+#, fuzzy
+msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: logview/config.c:41
+#, fuzzy
+msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: logview/config.c:42
+#, fuzzy
+msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: logview/config.c:43
+#, fuzzy
+msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: logview/config.c:44
+#, fuzzy
+msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: logview/desc_db.c:37
+#, c-format
+msgid "Cannot open regexp data base <%s>! Open failed."
+msgstr ""
+
+#: logview/desc_db.c:147
+#, c-format
+msgid "Cannot open description data base <%s>! Open failed."
+msgstr ""
+
+#: mini-utils/gcolorsel/dialog-prefs.c:119
+msgid "Do nothing"
+msgstr "Non fare niente"
+
+#: mini-utils/gcolorsel/dialog-prefs.c:124
+msgid "Append it to ->"
+msgstr "Aggiungilo a ->"
+
+#: mini-utils/gcolorsel/dialog-prefs.c:129
+msgid "Search it in ->"
+msgstr "Cercalo in ->"
+
+#: mini-utils/gcolorsel/dialog-prefs.c:135
+msgid "Edit it"
+msgstr "Modificalo"
+
+#. First view is considered as the default view ...
+#: mini-utils/gcolorsel/gcolorsel.c:24
+msgid "List"
+msgstr "Lista"
+
+#: mini-utils/gcolorsel/gcolorsel.c:28
+msgid "Grid"
+msgstr "Griglia"
+
+#: mini-utils/gcolorsel/gcolorsel.c:32 mini-utils/gcolorsel/menus.c:573
+#: mini-utils/gcolorsel/menus.c:660 stripchart/params.c:1041
+#: stripchart/params.c:1044
+msgid "Edit"
+msgstr "Modifica"
+
+#: mini-utils/gcolorsel/gcolorsel.c:40 stripchart/params.c:1034
+#: stripchart/params.c:1037
+msgid "File"
+msgstr "File"
+
+#: mini-utils/gcolorsel/gcolorsel.c:42
+msgid "Search RGB"
+msgstr "Cerca RGB"
+
+#: mini-utils/gcolorsel/gcolorsel.c:44
+msgid "Monitor"
+msgstr "Monitor"
+
+#: mini-utils/gcolorsel/gcolorsel.c:46
+msgid "Concat"
+msgstr "Concatenare"
+
+#: mini-utils/gcolorsel/gcolorsel.c:96
+#, c-format
+msgid "'%s' document has been modified; do you wish to save it ?"
+msgstr "Il documento '%s' è stato modificato: salvare?"
+
+#: mini-utils/gcolorsel/gcolorsel.c:206
+msgid "GColorsel was unable to paste colors from the clipboard."
+msgstr "GColorsel non è riuscito ad incollare i colori dagli appunti."
+
+#: mini-utils/gcolorsel/gcolorsel.c:220
+msgid "Please select a file document before."
+msgstr "Prima selezionare il file di un documento."
+
+#: mini-utils/gcolorsel/gcolorsel.c:398
+msgid ""
+"I can't execute this action. Check that :\n"
+"\n"
+"1. You have associated an action with this event.\n"
+"2. The associated document still exists.\n"
+"3. The type of the associated document.\n"
+"\n"
+"Go to preferences, in the edit menu."
+msgstr ""
+"Impossibile eseguire questa operazione. Controllare che :\n"
+"\n"
+"1. Sia stata associata una operazione con questo evento.\n"
+"2. Il documento associato esista ancora.\n"
+"3. Il tipo di documento associato.\n"
+"\n"
+"Controllare le preferenze."
+
+#. Init GnomeMDI
+#: mini-utils/gcolorsel/gcolorsel.c:505
+msgid "GColorsel"
+msgstr "GColorSel"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:1
+msgid "<- Remove"
+msgstr "<- Rimuovi"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:2
+msgid "<- Remove all"
+msgstr "<- Rimuovi tutto"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:3
+msgid "Add ->"
+msgstr "Aggiungi ->"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:4
+msgid "Add all ->"
+msgstr "Aggiungi tutto ->"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:5
+msgid "Available documents"
+msgstr "Documenti disponibili"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:6
+msgid "Available views"
+msgstr "Viste disponibili"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:7
+msgid "Connect to"
+msgstr "Connetti a"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:8
+msgid "Create a document"
+msgstr "Crea un documento"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:9
+msgid "Create views"
+msgstr "Crea viste"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:10
+msgid "Description :"
+msgstr "Descrizione :"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:11
+msgid ""
+"Please, select the type of document to create.\n"
+"You can choose a short name, do not confuse it with the file name."
+msgstr ""
+"Selezionare il tipo di documento da creare.\n"
+"È possibile scegliere un nome breve, da non confondere con il nome del file."
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:13
+msgid "Select source document"
+msgstr "Seleziona documento sorgente"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:14
+msgid "Select type"
+msgstr "Seleziona tipo"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:15
+msgid "Short name : "
+msgstr "Nome breve : "
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:16
+msgid ""
+"This document read document from one or more other document. Please, choose "
+"these documents."
+msgstr "Questo documento legge da uno o più documenti. Selezionarli."
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:17
+msgid ""
+"You can create one or more views for this document. Note that you have to "
+"create at least one view."
+msgstr ""
+"È possibile creare una o più viste per questo documento. È necessario "
+"crearne almeno una."
+
+#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:1
+msgid "Create a new view"
+msgstr "Crea una nuova vista"
+
+#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:2
+msgid "Please, select the type of view you want to create."
+msgstr "Selezionare il tipo di vista che si vuole creare."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:1
+msgid "Actions"
+msgstr "Azioni"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:2 stripchart/params.c:732
+msgid "Bottom"
+msgstr "Sotto"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:3
+#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
+msgid "Default"
+msgstr "Predefinite"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:4
+msgid "Display documents menu (restart required)."
+msgstr "Visualizza il menu documenti (riavvio necessario)."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:5
+msgid "Documents"
+msgstr "Documenti"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:6
+msgid "DoubleClick in previews:"
+msgstr "Doppio click nelle anteprime:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:7
+msgid "DoubleClick in views:"
+msgstr "Doppio click nelle viste:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:8
+msgid "Drop:"
+msgstr "Rilascia:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:9
+#: mini-utils/gshutdown/gshutdown.c:398
+msgid "General"
+msgstr "Generali"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:10
+msgid "Grab:"
+msgstr "Cattura:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:11
+msgid "Left"
+msgstr ""
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:12
+msgid "MDI (Multiple Document Interface)"
+msgstr "MDI (Multiple Document Interface)"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:13
+#, fuzzy
+msgid "Modal"
+msgstr "Modello"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:14
+msgid "Mode:"
+msgstr "Modo:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:15
+msgid "Notebook"
+msgstr ""
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:16
+msgid "Notebook Tab position:"
+msgstr "Posizione delle linguette:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:17
+msgid "On ... execute ..."
+msgstr "Con ... esegui ..."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:18
+msgid "Right"
+msgstr ""
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:19
+msgid "Save session on exit."
+msgstr "Salva la sessione in uscita."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:20
+msgid "Session"
+msgstr "Sessione"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:21
+#: stripchart/chart-app.c:162 stripchart/params.c:704
+msgid "Top"
+msgstr "Massimo"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:22
+msgid "Toplevel"
+msgstr ""
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:1
+msgid ""
+"Begin\n"
+"Comments :"
+msgstr ""
+"Inizio\n"
+"Commenti :"
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:3
+msgid ""
+"End\n"
+"Comments :"
+msgstr ""
+"Fine\n"
+"Commenti : "
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:5
+msgid "File name :"
+msgstr "Nome file :"
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:6
+msgid "Header :"
+msgstr "Header :"
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:7
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:3
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:4
+msgid "Special properties"
+msgstr "Proprietà speciali"
+
+#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:1
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:2
+msgid "Common properties"
+msgstr "Proprietà comuni"
+
+#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:2
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:3
+msgid "Name :"
+msgstr "Nome :"
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:1
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:106
+msgid "Blue :"
+msgstr "Blu :"
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:2
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:102
+msgid "Green :"
+msgstr "Verde :"
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:4
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:98
+msgid "Red :"
+msgstr "Rosso :"
+
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:1
+msgid "Colors format :"
+msgstr "Formato colori :"
+
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:3
+msgid "Display document control (if exists)"
+msgstr "Mostra argomenti di visualizzazione (se disponibili)"
+
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:1
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:1
+msgid "Color height :"
+msgstr "Altezza colore :"
+
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:2
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:2
+msgid "Color width :"
+msgstr "Larghezza colore :"
+
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:3
+msgid "Draw numbers"
+msgstr "Disegna i numeri"
+
+#: mini-utils/gcolorsel/menus.c:52
+msgid "New Document"
+msgstr "Nuovo Documento"
+
+#: mini-utils/gcolorsel/menus.c:53
+msgid "Create a new document"
+msgstr "Crea nuovo documento"
+
+#: mini-utils/gcolorsel/menus.c:55
+msgid "New View"
+msgstr "Nuova vista"
+
+#: mini-utils/gcolorsel/menus.c:56
+msgid "Create a new view for a document"
+msgstr "Crea una nuova finestra per il documento"
+
+#: mini-utils/gcolorsel/menus.c:62
+msgid "Close document"
+msgstr "Chiudi documento"
+
+#: mini-utils/gcolorsel/menus.c:63
+msgid "Close the current document"
+msgstr "Chiude il documento corrente"
+
+#: mini-utils/gcolorsel/menus.c:65
+msgid "Close view"
+msgstr "Chiudi la vista"
+
+#: mini-utils/gcolorsel/menus.c:66 mini-utils/gcolorsel/menus.c:913
+msgid "Close the current view"
+msgstr "Chiude la vista corrente"
+
+#: mini-utils/gcolorsel/menus.c:76
+msgid "_Open palette..."
+msgstr "_Apri tavolozza..."
+
+#: mini-utils/gcolorsel/menus.c:77
+msgid "Load a palette"
+msgstr "Carica tavolozza"
+
+#: mini-utils/gcolorsel/menus.c:79
+msgid "_Save palette"
+msgstr "_Salva tavolozza"
+
+#: mini-utils/gcolorsel/menus.c:80
+msgid "Save the current palette in a file"
+msgstr "Salva la tavolozza corrente in un file"
+
+#: mini-utils/gcolorsel/menus.c:82
+msgid "Save palette _As..."
+msgstr "Salva la tavolozza con _nome..."
+
+#: mini-utils/gcolorsel/menus.c:83
+msgid "Save the current palette with a different name"
+msgstr "Salva la tavolozza corrente con un nome differente"
+
+#: mini-utils/gcolorsel/menus.c:105
+msgid "Insert color"
+msgstr "Inserisci colore"
+
+#: mini-utils/gcolorsel/menus.c:107
+msgid "Remove selected colors"
+msgstr "Rimuovi i colori selezionati"
+
+#: mini-utils/gcolorsel/menus.c:109
+msgid "Edit selected colors ..."
+msgstr "Modifica i colori selezionati..."
+
+#: mini-utils/gcolorsel/menus.c:113
+msgid "Document/View properties"
+msgstr "Proprietà documento/vista"
+
+#: mini-utils/gcolorsel/menus.c:179
+#, c-format
+msgid ""
+"GColorsel was unable to save the file :\n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that the path you provided exists,\n"
+"and that you have the approprate write permissions.\n"
+"\n"
+"Do you want to retry ?"
+msgstr ""
+"GColorsel non è riuscito a salvare il file:\n"
+"\n"
+"%s\n"
+"\n"
+"Controllare che il percorso fornito esista\n"
+"e di avere i permessi in scrittura sul file.\n"
+"\n"
+"Riprovare?"
+
+#: mini-utils/gcolorsel/menus.c:198
+#, c-format
+msgid ""
+"GColorsel was unable to load the file:\n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that the path you provided exists,\n"
+"and that you have permissions for opening the file."
+msgstr ""
+"GColorsel non è riuscito a leggere il file:\n"
+"\n"
+"%s\n"
+"\n"
+"Controllare che il percorso fornito esista\n"
+"e di avere i permessi in lettura sul file."
+
+#: mini-utils/gcolorsel/menus.c:217
+msgid "Open Palette"
+msgstr "Apri tavolozza colori"
+
+#: mini-utils/gcolorsel/menus.c:242
+msgid "Loading file, please wait ..."
+msgstr "Caricamento file, attendere prego..."
+
+#: mini-utils/gcolorsel/menus.c:273
+msgid "Save Palette as"
+msgstr "Salva la tavolozza con nome"
+
+#: mini-utils/gcolorsel/menus.c:320
+msgid "File not saved ..."
+msgstr "File non salvato..."
+
+#: mini-utils/gcolorsel/menus.c:330
+msgid "File saved ..."
+msgstr "File salvato..."
+
+#: mini-utils/gcolorsel/menus.c:408
+#, c-format
+msgid ""
+"I'm going to close the last view of '%s'.\n"
+"\n"
+"This document will be closed too, continue ?\n"
+"\n"
+"Please note that %d virtual document use data from this document."
+msgstr ""
+"L'ultima vista di '%s' sta per essere chiusa.\n"
+"\n"
+"Questo documento verrà chiuso, continuare?\n"
+"\n"
+"Si noti che il documento virtuale %d utilizza i dati di questo documento."
+
+#: mini-utils/gcolorsel/menus.c:410
+#, c-format
+msgid ""
+"I'm going to close the last view of '%s'.\n"
+"\n"
+"This document will be closed too, continue ?"
+msgstr ""
+"L'ultima vista del file '%s' sta per essere chiusa.\n"
+"\n"
+"Questo documento verrà chiuso. Continuare?"
+
+#: mini-utils/gcolorsel/menus.c:444
+#, c-format
+msgid ""
+"I'm going to close '%s'.\n"
+"\n"
+"Please note that %d views will be destroyed,\n"
+"and that %d virtual document use data from this document.\n"
+"\n"
+"Do you want to continue ?"
+msgstr ""
+"Il file '%s' verrà chiuso.\n"
+"\n"
+"Si noti che verranno distrutte %d viste e che il documento \n"
+"virtuale %d utilizza dati da questo documento.\n"
+"\n"
+"Continuare?"
+
+#: mini-utils/gcolorsel/menus.c:446
+#, c-format
+msgid ""
+"I'm going to close '%s'.\n"
+"\n"
+"Please note that %d views will be destroyed.\n"
+"\n"
+"Do you want to continue ?"
+msgstr ""
+"Il file '%s' verrà chiuso.\n"
+"\n"
+"Si noti che verranno distrutte %d viste.\n"
+"\n"
+"Continuare?"
+
+#: mini-utils/gcolorsel/menus.c:493
+msgid "Gnome Color Browser"
+msgstr "Visualizzatore di Colori di Gnome"
+
+#: mini-utils/gcolorsel/menus.c:496
+msgid "Small utility to browse available X11 colors."
+msgstr "Semplice utilità per sfogliare i colori disponibili in X11."
+
+#: mini-utils/gcolorsel/menus.c:606
+msgid "New Color"
+msgstr "Nuovo colore"
+
+#: mini-utils/gcolorsel/menus.c:863
+msgid "View properties"
+msgstr "Proprietà vista"
+
+#: mini-utils/gcolorsel/menus.c:878
+msgid "Document properties"
+msgstr "Proprietà documento"
+
+#: mini-utils/gcolorsel/menus.c:911
+msgid "Open"
+msgstr "Apri"
+
+#: mini-utils/gcolorsel/menus.c:911
+msgid "Open a palette"
+msgstr "Apri una tavolozza"
+
+#: mini-utils/gcolorsel/menus.c:916
+msgid "Grab"
+msgstr "Cattura"
+
+#: mini-utils/gcolorsel/menus.c:916
+msgid "Grab a color on the screen"
+msgstr "Cattura un colore dallo schermo"
+
+#: mini-utils/gcolorsel/session.c:305
+msgid ""
+"Your config file is corrupted.\n"
+"Do you want to create a new session ?"
+msgstr ""
+"Il file di configurazione è corrotto.\n"
+"Creare una nuova sessione ?"
+
+#: mini-utils/gcolorsel/session.c:358
+msgid "Loading files, please wait ..."
+msgstr "Caricamento file, attendere prego..."
+
+#: mini-utils/gcolorsel/session.c:383
+msgid ""
+"One or more files can not be restored :\n"
+"\n"
+msgstr ""
+"Uno o più file non posso essere ripristinati :\n"
+"\n"
+
+#: mini-utils/gcolorsel/session.c:409
+msgid "System Colors"
+msgstr "Colori di sistema"
+
+#: mini-utils/gcolorsel/session.c:430
+msgid "User Colors"
+msgstr "Colori dell'utente"
+
+#: mini-utils/gcolorsel/session.c:438
+msgid "Search"
+msgstr "Cerca"
+
+#: mini-utils/gcolorsel/view-color-generic.c:16
+msgid "Decimal 8 bits"
+msgstr "Decimale a 8 bit"
+
+#: mini-utils/gcolorsel/view-color-generic.c:17
+msgid "Decimal 16 bits"
+msgstr "Decimale a 16 bit"
+
+#: mini-utils/gcolorsel/view-color-generic.c:18
+msgid "Hex 8 bits"
+msgstr "Esadecimale a 8 bit"
+
+#: mini-utils/gcolorsel/view-color-generic.c:19
+msgid "Hex 16 bits"
+msgstr "Esadecimale a 16 bit"
+
+#: mini-utils/gcolorsel/view-color-generic.c:20
+msgid "Float"
+msgstr "Virgola mobile"
+
+#: mini-utils/gcolorsel/view-color-list.c:196 stripchart/params.c:827
+msgid "Color"
+msgstr "Colore"
+
+#. Create everything.
+#: mini-utils/gcolorsel/view-color-list.c:198 mini-utils/guname/moreinfo.c:225
+#: mini-utils/gw/gw.c:490 mini-utils/gw/gw.c:560
+msgid "Name"
+msgstr "Nome"
+
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:110
+msgid "Tolerance :"
+msgstr "Tolleranza :"
+
+#: mini-utils/gfontsel/gfontsel.c:162
+#: mini-utils/gfontsel/gfontsel.desktop.in.h:1
+msgid "Font Selector"
+msgstr "Selettore Font"
+
+#: mini-utils/gfontsel/gfontsel.c:190
+msgid "Selection:"
+msgstr "Selezione:"
+
+#: mini-utils/gfontsel/gfontsel.c:273
+msgid "Font to load"
+msgstr "Font da caricare"
+
+#: mini-utils/gfontsel/gfontsel.c:273
+msgid "FONTSPEC"
+msgstr "FONTSPEC"
+
+#: mini-utils/gfontsel/gfontsel.c:274
+msgid "Print selected font name on exit"
+msgstr "Stampa il nome del font selezionato all'uscita"
+
+#: mini-utils/gfontsel/gfontsel.c:275
+msgid "Inhibit remembering selected font for next run"
+msgstr ""
+"Non permettere che venga ricordato il font selezionato per la prossima volta"
+
+#: mini-utils/gfontsel/gfontsel.c:276
+msgid "Inhibit loading of last font"
+msgstr "Disabilita il caricamento dell'ultimo font"
+
+#: mini-utils/gless/gless.c:115
+#, c-format
+msgid "Reason %d\n"
+msgstr "Motivo %d\n"
+
+#: mini-utils/gless/gless.c:130
+msgid "Where to put the window, and its size"
+msgstr "Dove posizionare la finestra, e la sua dimensione"
+
+#: mini-utils/gless/gless.c:131
+msgid "Ignore standard input; may be needed in some cases."
+msgstr "Ignora lo standard input; potrebbe essere necessario in alcuni casi."
+
+#: mini-utils/gless/gless.c:293
+msgid "_New Window"
+msgstr "_Nuova finestra"
+
+#: mini-utils/gless/gless.c:294
+msgid "New text viewer window"
+msgstr "Nuova finestra per il visualizzatore di testi"
+
+#: mini-utils/gless/gless.c:312
+msgid "_Fixed Font"
+msgstr "Font a larghezza _fissa"
+
+#: mini-utils/gless/gless.c:313
+msgid "Display text with a fixed font"
+msgstr "Visualizza il testo con un font a larghezza fissa"
+
+#: mini-utils/gless/gless.c:351 mini-utils/gless/gless.desktop.in.h:2
+msgid "Text File Viewer"
+msgstr "Visualizzatore di file di testo"
+
+#: mini-utils/gless/gless.c:446 mini-utils/gshutdown/gshutdown.c:30
+#: mini-utils/guname/guname.c:43 mini-utils/gw/gw.c:29
+#: mini-utils/idetool/idetool.c:11
+msgid "Copyright 1998, under the GNU General Public License."
+msgstr "Copyright 1998, sotto la GNU General Public License."
+
+#: mini-utils/gless/gless.c:467
+msgid "Find string"
+msgstr "Trova stringa"
+
+#: mini-utils/gless/gless.c:468
+msgid "Find"
+msgstr "Trova"
+
+#: mini-utils/gless/gless.c:505
+msgid "Loading..."
+msgstr "Caricamento in corso..."
+
+#: mini-utils/gless/gless.c:509
+#, c-format
+msgid ""
+"No such file or directory:\n"
+"%s"
+msgstr ""
+"Nessun file o directory:\n"
+"%s"
+
+#: mini-utils/gless/gless.c:527
+#, c-format
+msgid ""
+"Failed to decompress and display the file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Impossibile decomprimere e visualizzare il file:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:540
+msgid ""
+"Unable to display compressed file.\n"
+"zcat not found in your path."
+msgstr ""
+"Impossibile visualizzare il file compresso.\n"
+"zcat non è nel path."
+
+#: mini-utils/gless/gless.c:548
+#, c-format
+msgid ""
+"Error loading file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Errore nel caricamento del file:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:606
+msgid "Saving..."
+msgstr "Salvataggio in corso..."
+
+#: mini-utils/gless/gless.c:617
+#, c-format
+msgid ""
+"Failed to write file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Impossibile scrivere il file:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:667
+msgid "Save Text As..."
+msgstr "Salva il testo come..."
+
+#: mini-utils/gless/gless.c:707
+msgid "Open Text File..."
+msgstr "Apri file di testo..."
+
+#: mini-utils/gless/gless.c:771
+msgid "Sorry, no preferences yet."
+msgstr "Spiacente, nessuna preferenza."
+
+#: mini-utils/gless/gless.c:858
+msgid "Searching..."
+msgstr "Ricerca in corso..."
+
+#: mini-utils/gless/gless.c:869
+msgid "No search string was specified!"
+msgstr "Non è stata specificata alcuna stringa di ricerca!"
+
+#: mini-utils/gshutdown/gshutdown.c:87
+msgid "Shut Down"
+msgstr "Spegni"
+
+#: mini-utils/gshutdown/gshutdown.c:88
+msgid "Single User Mode"
+msgstr "Modalità a utente singolo"
+
+#: mini-utils/gshutdown/gshutdown.c:89
+msgid "Runlevel 2"
+msgstr "Livello di esecuzione 2"
+
+#: mini-utils/gshutdown/gshutdown.c:90
+msgid "Runlevel 3"
+msgstr "Livello di esecuzione 3"
+
+#: mini-utils/gshutdown/gshutdown.c:91
+msgid "Runlevel 4"
+msgstr "Livello di esecuzione 4"
+
+#: mini-utils/gshutdown/gshutdown.c:92
+msgid "Runlevel 5"
+msgstr "Livello di esecuzione 5"
+
+#: mini-utils/gshutdown/gshutdown.c:93
+msgid "Reboot"
+msgstr "Riavvia"
+
+#: mini-utils/gshutdown/gshutdown.c:99
+msgid "Are you sure you want to shut down the computer?"
+msgstr "Si desidera davvero spegnere il computer?"
+
+#: mini-utils/gshutdown/gshutdown.c:100
+msgid "Are you sure you want to switch to single user mode?"
+msgstr "Si desidera davvero passare alla modalità a utente singolo?"
+
+#: mini-utils/gshutdown/gshutdown.c:101
+msgid "Are you sure you want to switch to runlevel 2?"
+msgstr "Si desidera davvero passare al livello di esecuzione 2?"
+
+#: mini-utils/gshutdown/gshutdown.c:102
+msgid "Are you sure you want to switch to runlevel 3?"
+msgstr "Si desidera davvero passare al livello di esecuzione 3?"
+
+#: mini-utils/gshutdown/gshutdown.c:103
+msgid "Are you sure you want to switch to runlevel 4?"
+msgstr "Si desidera davvero passare al livello di esecuzione 4?"
+
+#: mini-utils/gshutdown/gshutdown.c:104
+msgid "Are you sure you want to switch to runlevel 5?"
+msgstr "Si desidera davvero passare al livello di esecuzione 5?"
+
+#: mini-utils/gshutdown/gshutdown.c:105
+msgid "Are you sure you want to reboot the system?"
+msgstr "Si desidera davvero riavviare il sistema?"
+
+#: mini-utils/gshutdown/gshutdown.c:153 mini-utils/gshutdown/gshutdown.c:628
+msgid "You must be the super-user (root) to shut down or restart the computer."
+msgstr ""
+"Bisogna essere il super-user (root) per spegnere o riavviare il computer."
+
+#. notebook pages
+#: mini-utils/gshutdown/gshutdown.c:189
+msgid "Shutdown or Reboot"
+msgstr "Spegni o riavvia"
+
+#: mini-utils/gshutdown/gshutdown.c:206 mini-utils/gshutdown/gshutdown.c:207
+msgid "Easy"
+msgstr "Facile"
+
+#: mini-utils/gshutdown/gshutdown.c:211 mini-utils/gshutdown/gshutdown.c:212
+msgid "Advanced"
+msgstr "Avanzato"
+
+#: mini-utils/gshutdown/gshutdown.c:244
+msgid ""
+"Click OK to shutdown or reboot. You will lose\n"
+"any unsaved information in open applications."
+msgstr ""
+"Fare click su OK per spegnere o riavviare.  Si perderanno\n"
+"tutte le informazioni non salvate nelle applicazioni attive."
+
+#. Put in a "revert to defaults" button
+#: mini-utils/gshutdown/gshutdown.c:371
+msgid "Revert to Defaults"
+msgstr "Reimposta i valori predefiniti"
+
+#: mini-utils/gshutdown/gshutdown.c:381
+msgid "Commands"
+msgstr "Comandi"
+
+#: mini-utils/gshutdown/gshutdown.c:386
+msgid "Confirm before shutdown?"
+msgstr "Confermare prima di spegnere?"
+
+#: mini-utils/gshutdown/gshutdown.c:454
+#, c-format
+msgid ""
+"%s\n"
+"You will lose any unsaved work."
+msgstr ""
+"%s\n"
+"Tutti i dati non salvati verrano persi."
+
+#: mini-utils/gshutdown/gshutdown.c:464
+msgid "Don't ask next time."
+msgstr "Non chiedre conferma la prossima volta."
+
+#: mini-utils/gshutdown/gshutdown.c:722
+msgid "Command execution failed: fork failed"
+msgstr "Esecuzione del comando fallita: fork fallito."
+
+#: mini-utils/guname/guname.c:53
+msgid "Make guname act as a control center applet"
+msgstr "Rendi 'guname' una applet per il centro di controllo"
+
+#: mini-utils/guname/guname.c:119
+msgid "an initialization error occurred while starting 'guname-capplet'."
+msgstr "Errore di inizializzazione durante l'avvio della applet 'guname'."
+
+#: mini-utils/guname/guname-capplet.desktop.in.h:2
+#: mini-utils/guname/guname.c:446
+msgid "System Information"
+msgstr "Informazioni sul sistema"
+
+#: mini-utils/guname/guname.c:540
+msgid "Logo file not found"
+msgstr "Non è stato trovato il file del logo"
+
+#. Up here so it uses the default font
+#: mini-utils/guname/guname.c:544
+msgid "GNOME contributors:"
+msgstr "Collaboratori a GNOME:"
+
+#. fontset used by guname; adapt it if your language requires it
+#: mini-utils/guname/guname.c:548
+msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: mini-utils/guname/guname.c:559
+msgid "GNOME: The GNU Network Object Model Environment"
+msgstr "GNOME: The GNU Network Object Model Environment"
+
+#: mini-utils/guname/guname.c:583
+msgid "Email Information..."
+msgstr "Invia le informazioni via email..."
+
+#: mini-utils/guname/guname.c:596
+msgid "Save Information to File..."
+msgstr "Salva le informazioni in un file..."
+
+#: mini-utils/guname/guname.c:608 mini-utils/guname/guname.c:678
+msgid "Detailed Information..."
+msgstr "Informazioni dettagliate..."
+
+#: mini-utils/guname/guname.c:623
+msgid "Category"
+msgstr "Categoria"
+
+#: mini-utils/guname/guname.c:623
+msgid "Your System"
+msgstr "Valore nel sistema"
+
+#: mini-utils/guname/guname.c:664 stripchart/params.c:946
+msgid "Save As..."
+msgstr "Salva come..."
+
+#: mini-utils/guname/guname.c:670
+msgid "Mail To..."
+msgstr "Invia per email a..."
+
+#: mini-utils/guname/guname.c:718
+#, c-format
+msgid ""
+"Error closing file `%s': \n"
+"%s\n"
+"Some or all data may not have been written."
+msgstr ""
+"Errore nella chiusura del file `%s': \n"
+"%s\n"
+"Tutti oppure alcuni dei dati potrebbero non essere stati salvati."
+
+#: mini-utils/guname/guname.c:730
+#, c-format
+msgid "Couldn't open file `%s': %s"
+msgstr "Impossibile aprire il file `%s': %s"
+
+#: mini-utils/guname/guname.c:752
+msgid "Save System Information As..."
+msgstr "Salva le informazioni di sistema come..."
+
+#. I don't think the error_string() will reliably mean anything.
+#: mini-utils/guname/guname.c:809
+#, c-format
+msgid "Command failed ` %s ': %s"
+msgstr "Comando fallito ` %s ' : %s "
+
+#: mini-utils/guname/guname.c:817
+#, c-format
+msgid "Couldn't run command ` %s ': %s"
+msgstr "Impossibile eseguire il comando ` %s ' : %s "
+
+#: mini-utils/guname/guname.c:841
+#, c-format
+msgid ""
+"The following mail will be sent to %s.\n"
+" Are you sure you want to mail this information?"
+msgstr ""
+"Il seguente messaggio di posta verrà spedito a %s.\n"
+"Sei sicuro di voler inviare queste informazioni?"
+
+#: mini-utils/guname/guname.c:852
+msgid "Are you sure?"
+msgstr "Sei sicuro?"
+
+#: mini-utils/guname/guname.c:894
+msgid "Address to mail to:"
+msgstr "Indirizzo email di destinazione:"
+
+#. ***********************************
+#. Globals
+#. **********************************
+#: mini-utils/guname/info.c:40
+msgid "Distribution:"
+msgstr "Distribuzione:"
+
+#: mini-utils/guname/info.c:41
+msgid "Operating System:"
+msgstr "Sistema operativo:"
+
+#: mini-utils/guname/info.c:42
+msgid "Distribution Version:"
+msgstr "Versione della distribuzione:"
+
+#: mini-utils/guname/info.c:43
+msgid "Operating System Version:"
+msgstr "Versione sistema operativo:"
+
+#: mini-utils/guname/info.c:44
+msgid "Operating System Release:"
+msgstr "Release sistema operativo:"
+
+#: mini-utils/guname/info.c:45
+msgid "Processor Type:"
+msgstr "Tipo di processore:"
+
+#: mini-utils/guname/info.c:46
+msgid "Processor Speed:"
+msgstr "Velocità del processore:"
+
+#: mini-utils/guname/info.c:47
+msgid "Host Name:"
+msgstr "Nome dell'host:"
+
+#: mini-utils/guname/info.c:48
+msgid "Domain Name:"
+msgstr "Nome di dominio:"
+
+#: mini-utils/guname/info.c:49
+msgid "User Name:"
+msgstr "Nome dell'utente:"
+
+#: mini-utils/guname/info.c:50
+msgid "X Display Name:"
+msgstr "Nome display X:"
+
+#: mini-utils/guname/info.c:51
+msgid "System Status:"
+msgstr "Stato del sistema:"
+
+#: mini-utils/guname/info.c:52
+msgid "Real Memory:"
+msgstr "Memoria reale:"
+
+#: mini-utils/guname/info.c:53
+msgid "Swap Space (\"virtual memory\"):"
+msgstr "Memoria swap (\"memoria virtuale\"):"
+
+#: mini-utils/guname/info.c:54
+msgid "Total Memory:"
+msgstr "Memoria totale:"
+
+#: mini-utils/guname/info.c:55
+msgid "Free Memory:"
+msgstr "Memoria libera:"
+
+#: mini-utils/guname/info.c:60
+msgid "Device"
+msgstr "Dispositivo"
+
+#: mini-utils/guname/info.c:62
+msgid "Used space"
+msgstr "Spazio utilizzato"
+
+#: mini-utils/guname/info.c:63
+msgid "Free space"
+msgstr "Spazio libero"
+
+#: mini-utils/guname/info.c:64
+msgid "Percent free"
+msgstr "Percentuale libera"
+
+#: mini-utils/guname/info.c:65
+msgid "Mount point"
+msgstr "Punto di mount"
+
+#. This is about the only case where we'll put Unknown instead
+#. of simply not showing the info.
+#: mini-utils/guname/info.c:202 mini-utils/idetool/idetool.c:21
+#: mini-utils/idetool/idetool.c:26 mini-utils/idetool/idetool.c:319
+#: mini-utils/idetool/idetool.c:330
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: mini-utils/guname/moreinfo.c:82
+msgid "Unknown filesystem"
+msgstr "File system sconosciuto"
+
+#: mini-utils/guname/moreinfo.c:104
+msgid "No information for this filesystem."
+msgstr "Nessuna informazione su questo file system."
+
+#: mini-utils/guname/moreinfo.c:161
+msgid "Memory"
+msgstr "Memoria"
+
+#: mini-utils/guname/moreinfo.c:161
+msgid "Kilobytes"
+msgstr "Kilobyte"
+
+#: mini-utils/guname/moreinfo.c:186
+#, c-format
+msgid "%ld%% memory used."
+msgstr "%ld%% di memoria utilizzata."
+
+#: mini-utils/guname/moreinfo.c:197
+#, c-format
+msgid "%ld%% swap used."
+msgstr "%ld%% di swap utilizzato."
+
+#: mini-utils/guname/moreinfo.c:222
+#, c-format
+msgid "CPU %d"
+msgstr "CPU %d"
+
+#: mini-utils/guname/moreinfo.c:276
+msgid "Detailed System Information"
+msgstr "Informazioni dettagliate sul sistema"
+
+#: mini-utils/guname/moreinfo.c:289
+msgid "Disk Information"
+msgstr "Informazioni sui dischi"
+
+#: mini-utils/guname/moreinfo.c:291
+msgid "Memory Information"
+msgstr "Informazioni sulla memoria"
+
+#: mini-utils/guname/moreinfo.c:294
+msgid "CPU Information"
+msgstr "Informazioni sulla CPU"
+
+#: mini-utils/guname/moreinfo.c:326
+msgid "Mount Point: "
+msgstr "Punto di mount:"
+
+#: mini-utils/guname/moreinfo.c:327
+msgid "    Device: "
+msgstr "    Dispositivo: "
+
+#: mini-utils/guname/moreinfo.c:328
+msgid "    Filesystem Type: "
+msgstr "    Tipo di file system: "
+
+#: mini-utils/guname/moreinfo.c:341
+#, c-format
+msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
+msgstr "%ld megabyte, %ld liberi (%ld per superuser); %ld inode, %ld liberi."
+
+#: mini-utils/guname/moreinfo.c:353
+#, c-format
+msgid "%2d%% full "
+msgstr "%2d%% pieno "
+
+#: mini-utils/gw/gw.c:143
+msgid ""
+"Couldn't find the \"w\" command in your path.\n"
+"This command is needed for the program to work."
+msgstr ""
+"Impossibile trovare il comando \"w\" nel path.\n"
+"Questo comando è richiesto per il funzionamento del programma."
+
+#: mini-utils/gw/gw.c:198
+msgid "Active User Listing"
+msgstr "Lista utenti attivi"
+
+#: mini-utils/gw/gw.c:215
+msgid "Update Information"
+msgstr "Aggiorna informazioni"
+
+#: mini-utils/gw/gw.c:491
+msgid "Command Line"
+msgstr "Riga di comando"
+
+#: mini-utils/gw/gw.c:493
+msgid "Add some defaults"
+msgstr "Aggiungi qualche comando predefinito"
+
+#: mini-utils/gw/gw.c:495
+msgid "Delete"
+msgstr "Elimina"
+
+#: mini-utils/gw/gw.c:513
+msgid "Command Editor"
+msgstr "Editor dei comandi"
+
+#: mini-utils/gw/gw.c:523
+msgid ""
+"You can configure the commands on the popup menus.\n"
+"Just enter the name you want to appear on the \n"
+"menu, and the command to execute.\n"
+"In the command, you can use %u to represent the\n"
+"currently selected username, and %t for the tty."
+msgstr ""
+"È possibile configurare i comandi nei menu a comparsa.\n"
+"Inserire il nome che si vuole che appaia nel menu\n"
+"e il comando da eseguire.\n"
+"Nel comando è possibile utilizzare %u per rappresentare\n"
+"l'utente selezionato correntemente e %t per la tty."
+
+#: mini-utils/gw/gw.c:530
+msgid ""
+"Click this button to add\n"
+"some sample commands."
+msgstr ""
+"Premere questo pulsante per aggiungere\n"
+"qualche comando di esempio."
+
+#: mini-utils/gw/gw.c:538
+msgid "Menu items"
+msgstr "Voci di menu"
+
+#: mini-utils/gw/gw.c:566
+msgid "Command"
+msgstr "Comando"
+
+#: mini-utils/gw/gw.c:978
+#, c-format
+msgid "Running: %s\n"
+msgstr "In esecuzione: %s\n"
+
+#: mini-utils/idetool/idetool.c:19
+msgid "Default 16-bit"
+msgstr "Predefinito a 16 bit"
+
+#: mini-utils/idetool/idetool.c:20
+msgid "32-bit"
+msgstr "32 bit"
+
+#. there is no 2 apparently
+#: mini-utils/idetool/idetool.c:22
+msgid "32-bit w/sync"
+msgstr "32 bit con sync"
+
+#: mini-utils/idetool/idetool.c:27
+msgid "Sleeping"
+msgstr "Sleeping"
+
+#: mini-utils/idetool/idetool.c:28
+msgid "Active/Idle"
+msgstr "Attivo/Inattivo"
+
+#: mini-utils/idetool/idetool.c:29
+msgid "Standby"
+msgstr "Standby"
+
+#: mini-utils/idetool/idetool.c:42
+msgid "Unable to access the drive."
+msgstr "Impossibile accedere al drive."
+
+#: mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
+msgid "The DMA setting for this drive cannot be changed."
+msgstr "L'impostazione del DMA per questo drive non può essere modificata."
+
+#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
+#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
+msgid "Enabled"
+msgstr "Abilitato"
+
+#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
+#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
+msgid "The IRQ unmask setting for this drive cannot be changed."
+msgstr ""
+"L'impostazione del smascheramento dell'IRQ per questo drive non può essere "
+"modificata."
+
+#: mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
+msgid "The drive refused to keep its settings."
+msgstr "Il drive ha rifiutato di mantenere le proprie impostazioni."
+
+#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
+msgid "Keep settings"
+msgstr "Mantieni impostazioni"
+
+#: mini-utils/idetool/idetool.c:203
+msgid "None"
+msgstr "Nessuno"
+
+#: mini-utils/idetool/idetool.c:207
+msgid "(1 Sector)"
+msgstr "(1 Settore)"
+
+#: mini-utils/idetool/idetool.c:209
+msgid "(Dual Port)"
+msgstr "(Porta Duale)"
+
+#: mini-utils/idetool/idetool.c:211
+msgid "(Dual Port Cache)"
+msgstr "(Cache Porta Duale)"
+
+#: mini-utils/idetool/idetool.c:241
+msgid "No"
+msgstr "No"
+
+#: mini-utils/idetool/idetool.c:243
+#, c-format
+msgid "Yes (%d sector)"
+msgstr "Sì (%d settore)"
+
+#: mini-utils/idetool/idetool.c:245
+#, c-format
+msgid "Yes (%d sectors)"
+msgstr "Sì (%d settori)"
+
+#: mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:323
+msgid "Model"
+msgstr "Modello"
+
+#: mini-utils/idetool/idetool.c:311
+msgid "Firmware"
+msgstr "Firmware"
+
+#: mini-utils/idetool/idetool.c:312
+msgid "Serial No."
+msgstr "Num. di serie"
+
+#. do config here
+#: mini-utils/idetool/idetool.c:314
+msgid "Geometry"
+msgstr "Geometria"
+
+#: mini-utils/idetool/idetool.c:315
+msgid "Cache"
+msgstr "Cache"
+
+#: mini-utils/idetool/idetool.c:323
+msgid "Legacy MFM/RLL drive"
+msgstr "Drive legacy MFM/RLL"
+
+#: mini-utils/idetool/idetool.c:326
+msgid "DMA Mode"
+msgstr "Modalità di DMA"
+
+#: mini-utils/idetool/idetool.c:328 mini-utils/idetool/idetool.c:330
+msgid "IO Mode"
+msgstr "Modalità di I/O"
+
+#: mini-utils/idetool/idetool.c:331
+msgid "IRQ Unmask"
+msgstr "Smascheramento IRQ"
+
+#: mini-utils/idetool/idetool.c:332
+msgid "Multisector"
+msgstr "Multisettore"
+
+#: mini-utils/idetool/idetool.c:333
+msgid "On Reset"
+msgstr "Al Reset"
+
+#.
+#. *	Set up the outer display first
+#.
+#: mini-utils/idetool/idetool.c:373
+msgid "IDE Status"
+msgstr "Stato IDE"
+
+#: mini-utils/idetool/idetool.c:395
+msgid "Disk Logo Not Found"
+msgstr "Logo del disco non trovato"
+
+#: mini-utils/idetool/idetool.c:446
+msgid "Only the superuser can use this tool"
+msgstr "Solo il superuser può usare questo programma"
+
+#: mini-utils/idetool/idetool.c:457
+msgid "You appear to have no IDE drives"
+msgstr "Sembra che non ci siano drive IDE nel sistema"
+
+#: gfloppy/src/badblocks.c:102
+msgid "MInternal Error: Unable to seek to the correct location."
+msgstr "MErrore interno: Impossibile fare il seek alla posizione corretta."
+
+#: gfloppy/src/badblocks.c:111
+#, c-format
+msgid "MInternal Error: Weird value (%ld) in do_test\n"
+msgstr "MErrore interno: Valore assurdo (%ld) in do_test\n"
+
+#: gfloppy/src/badblocks.c:166
+#, c-format
+msgid "EBad block at block %lu"
+msgstr "EBlocco rovinato al blocco %lu"
+
+#. while (!i)
+#. ;
+#: gfloppy/src/badblocks.c:260
+msgid "MChecking for bad blocks..."
+msgstr "MRicerca dei blocchi rovinati... "
+
+#: gfloppy/src/badblocks.c:272
+#, c-format
+msgid "MFailed to open device %s for badblock checking\n"
+msgstr "MImpossibile aprire il device %s per la ricerca dei blocchi rovinati\n"
+
+#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
+msgid "MChecking for bad blocks... Done"
+msgstr "MRicerca dei blocchi rovinati... Fatto"
+
+#: gfloppy/src/fdformat.c:45
+msgid "MFormatting the disk..."
+msgstr "MFormattazione del disco..."
+
+#: gfloppy/src/fdformat.c:47
+msgid "EI don't know what this is, but it's very wrong."
+msgstr "ENon so cosa sia questa cosa, ma è molto sbagliata."
+
+#: gfloppy/src/fdformat.c:55 gfloppy/src/fdformat.c:67
+#, c-format
+msgid "EError formatting track #%d"
+msgstr "EErrore formattando la traccia #%d"
+
+#: gfloppy/src/fdformat.c:75
+msgid "EError during completion of formatting"
+msgstr "EErrore durante il completamento della formattazione"
+
+#. XXXX - need to tell parent we're finished
+#: gfloppy/src/fdformat.c:79
+msgid "MFormatting the disk... Done"
+msgstr "Formattazione del disco... Fatto"
+
+#. XXXX - tell parent we're starting verify stage
+#: gfloppy/src/fdformat.c:95
+msgid "MVerifying the format..."
+msgstr "MVerifica del formato..."
+
+#: gfloppy/src/fdformat.c:100 gfloppy/src/fdformat.c:175
+msgid ""
+"EUnable to write to the floppy.\n"
+"\n"
+"Please confirm that it is not write-protected."
+msgstr ""
+"EImpossibile scrivere nel dischetto.\n"
+"\n"
+"Assicurarsi che non sia protetto da scrittura."
+
+#: gfloppy/src/fdformat.c:103 gfloppy/src/fdformat.c:178
+#, c-format
+msgid "EInsufficient permissions to open floppy device %s."
+msgstr "EPermessi insufficienti per aprire il device del dischetto %s."
+
+#: gfloppy/src/fdformat.c:107 gfloppy/src/fdformat.c:182
+msgid ""
+"EUnable to access the floppy disk.\n"
+"\n"
+"Please confirm that it is in the drive\n"
+"with the drive door shut."
+msgstr ""
+"EImpossibile accedere al dischetto.\n"
+"\n"
+"Controllare che il dischetto sia nel lettore\n"
+"e che lo sportellino sia chiuso."
+
+#: gfloppy/src/fdformat.c:110
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s:%d"
+msgstr ""
+"EErrore generico accedendo al device del floppy %s.\n"
+"\n"
+"Codice d'errore %s:%d"
+
+#: gfloppy/src/fdformat.c:130
+#, c-format
+msgid ""
+"ERead Error:\n"
+"Problem reading cylinder %d, expected %d, read %d"
+msgstr ""
+"EErrore di lettura:\n"
+"Problema leggendo il cilindro %d, atteso %d, letto %d"
+
+#: gfloppy/src/fdformat.c:133
+#, c-format
+msgid "EProblem reading cylinder %d, expected %d, read %d"
+msgstr "EProblema leggendo il cilindro %d, atteso %d, letto %d"
+
+#: gfloppy/src/fdformat.c:142
+#, c-format
+msgid "MBad data in cyl %d.  Continuing... "
+msgstr "MDato errato nel cilindro %d.  Continuo... "
+
+#: gfloppy/src/fdformat.c:149
+#, c-format
+msgid "EError closing device %s"
+msgstr "EErrore nella chiusura del device %s"
+
+#: gfloppy/src/fdformat.c:154
+msgid "MVerifying the format... Done"
+msgstr "MVerifica del formato... Fatto"
+
+#: gfloppy/src/fdformat.c:166
+#, c-format
+msgid "EUnable to write to device %s"
+msgstr "EImpossibile scrivere sul device %s"
+
+#: gfloppy/src/fdformat.c:185
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s"
+msgstr ""
+"EErrore generico accedendo al device del dischetto %s.\n"
+"\n"
+"Codice d'errore %s"
+
+#: gfloppy/src/fdformat.c:195
+msgid "ECould not determine current format type"
+msgstr "EImpossibile determinare il tipo di formato corrente"
+
+#: gfloppy/src/gfloppy-i18n.h:9 gfloppy/src/gfloppy.glade.h:1
+msgid "Dos (FAT)"
+msgstr "Dos (FAT)"
+
+#: gfloppy/src/gfloppy-i18n.h:15 gfloppy/src/gfloppy.glade.h:2
+msgid "Double Density 3.5\" (720 KB)"
+msgstr "3.5\" a doppia densità (720 KB)"
+
+#: gfloppy/src/gfloppy-i18n.h:16 gfloppy/src/gfloppy.glade.h:3
+msgid "Double Density 5.25\" (360 KB)"
+msgstr "5.25\" a doppia densità (360KB)"
+
+#: gfloppy/src/gfloppy-i18n.h:12 gfloppy/src/gfloppy.glade.h:4
+msgid "File system type:"
+msgstr "Tipo di file system:"
+
+#: gfloppy/src/gfloppy-i18n.h:11 gfloppy/src/gfloppy.glade.h:5
+msgid "Floppy Density:"
+msgstr "Densità del dischetto:"
+
+#: gfloppy/src/gfloppy-i18n.h:18 gfloppy/src/gfloppy.glade.h:6
+#, fuzzy
+msgid "Floppy Device:"
+msgstr "Densità del dischetto:"
+
+#.
+#. * Translatable strings file generated by Glade.
+#. * Add this file to your project's POTFILES.in.
+#. * DO NOT compile it as part of your application.
+#.
+#: gfloppy/src/gfloppy-i18n.h:7 gfloppy/src/gfloppy.glade.h:7
+msgid "Format a floppy"
+msgstr "Formatta un dischetto"
+
+#: gfloppy/src/gfloppy-i18n.h:13 gfloppy/src/gfloppy.glade.h:8
+msgid "High Density 3.5\" (1.44 MB)"
+msgstr "3.5\" ad alta densità (1.44 MB)"
+
+#: gfloppy/src/gfloppy-i18n.h:14 gfloppy/src/gfloppy.glade.h:9
+msgid "High Density 5.25\" (1.2 MB)"
+msgstr "5.25\" ad alta densità (1.2 MB)"
+
+#: gfloppy/src/gfloppy-i18n.h:8 gfloppy/src/gfloppy-i18n.h:10
+#: gfloppy/src/gfloppy.glade.h:10
+msgid "Linux Native (ext2)"
+msgstr "Linux nativo (ext2)"
+
+#: gfloppy/src/gfloppy-i18n.h:17 gfloppy/src/gfloppy.glade.h:11
+#, fuzzy
+msgid "_Quick format"
+msgstr "Formattazione veloce"
+
+#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
+msgid "MMaking filesystem on disk..."
+msgstr "MCreazione del filesystem sul disco..."
+
+#: gfloppy/src/gfloppy.c:167
+msgid "EUnable to create filesystem correctly."
+msgstr "EImpossibile creare correttamente il filesystem."
+
+#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
+msgid "MMaking filesystem on disk... Done"
+msgstr "MCreazione del filesystem sul disco... Fatto"
+
+#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
+msgid "EUnable to create filesystem."
+msgstr "EImpossibile creare il filesystem."
+
+#: gfloppy/src/gfloppy.c:209
+msgid "MChecking for bad blocks... (this might take a while)"
+msgstr "MRicerca dei blocchi rovinati... (può durante un po' di tempo)"
+
+#: gfloppy/src/main.c:135 gfloppy/src/main.c:171
+#, fuzzy, c-format
+msgid "Unable to open the device %s, formatting cannot continue."
+msgstr "MImpossibile aprire il device %s per la ricerca dei blocchi rovinati\n"
+
+#: gfloppy/src/main.c:138 gfloppy/src/main.c:174
+#, c-format
+msgid ""
+"The device %s is disconnected.\n"
+"Please attach device to continue."
+msgstr ""
+
+#: gfloppy/src/main.c:141 gfloppy/src/main.c:177
+#, c-format
+msgid ""
+"You do not have the proper permissions to write to %s, formatting will not "
+"be possible.\n"
+"Contact your system administrator about getting write permissions."
+msgstr ""
+
+#: gfloppy/src/main.c:285
+msgid "The device to format"
+msgstr "Il device da formattare"
+
+#: gfloppy/src/main.c:286
+msgid "DEVICE"
+msgstr "DEVICE"
+
+#. We do this to get around a bug in libglade.  Ideally we won't need
+#. * to do this in the future.
+#: gfloppy/src/main.c:317
+msgid "Format"
+msgstr "Formatta"
+
+#: gfloppy/src/main.c:360
+msgid "Format another floppy?"
+msgstr "Formatto un altro dischetto?"
+
+#: gfloppy/src/progress.c:117
+msgid "Floppy formatted successfully."
+msgstr "Dischetto formattato con successo."
+
+#: gfloppy/src/progress.c:121
+msgid "Floppy formatting cancelled."
+msgstr "Formattazione del dischetto annullata."
+
+#: gfloppy/src/progress.c:176
+msgid "Format progress."
+msgstr "Avanzamento della formattazione."
+
+#: stripchart/chart-app.c:160
+msgid "Param"
+msgstr "Parametro"
+
+#: stripchart/chart-app.c:161
+msgid "Current"
+msgstr "Corrente"
+
+#: stripchart/chart-app.c:163 stripchart/params.c:760
+msgid "Scale"
+msgstr "Scala"
+
+#: stripchart/chart-app.c:197 stripchart/stripchart-applet.c:69
+#: stripchart/stripchart-applet.desktop.in.h:2 stripchart/stripchart.c:92
+#: stripchart/stripchart.c:97
+msgid "Stripchart"
+msgstr "Stripchart"
+
+#: stripchart/chart-app.c:198
+msgid "Copyright 2000 John Kodis"
+msgstr "Copyright 2000 John Kodis"
+
+#: stripchart/chart-app.c:200
+msgid ""
+"The GNOME stripchart program plots various user-specified parameters as a "
+"function of time.  Its main use is to chart system performance parameters "
+"such as CPU load, CPU utilization, network traffic levels, and the like.  "
+"Other more ingenious uses are left as an exercise for the interested user."
+msgstr ""
+"Il programma GNOME stripchart disegna vari parametri specificati dall'utente "
+"come come funzioni del tempo. Il suo scopo principale è quello di graficare "
+"i parametri delle prestazione del sistema, come il carico sulla CPU, l'uso "
+"della CPU, il traffico di rete e altri. Altri scopi ingegnosi sono lasciati "
+"alla fantasia dell'utente."
+
+#: stripchart/chart-app.c:239
+msgid "Show values"
+msgstr "Mostra valori"
+
+#: stripchart/chart-app.c:246
+msgid "Edit Prefs..."
+msgstr "Modifica preferenze..."
+
+#: stripchart/chart-app.c:251
+msgid "Edit Params..."
+msgstr "Modifica parametri..."
+
+#: stripchart/eval.c:252
+msgid "closing parenthesis expected"
+msgstr "attesa una parentesi di chiusura"
+
+#: stripchart/eval.c:269
+#, c-format
+msgid "no such field: %d"
+msgstr "campo non valido: %d"
+
+#: stripchart/eval.c:294
+msgid "missing variable identifer"
+msgstr "manca l'identificatore della variabile"
+
+#: stripchart/eval.c:296
+#, c-format
+msgid "invalid variable identifer: %s"
+msgstr "identificatore della variabile non valido: %s"
+
+#: stripchart/eval.c:300
+msgid "number expected"
+msgstr "atteso un numero"
+
+#: stripchart/eval.c:371
+#, c-format
+msgid "extra junk at end: \"%s\""
+msgstr "\"junk\" extra alla fine: \"%s\""
+
+#: stripchart/params.c:633
+msgid "Parameter"
+msgstr "Parametro"
+
+#: stripchart/params.c:671
+msgid "Equation"
+msgstr "Equazione"
+
+#: stripchart/params.c:682
+msgid "Filename"
+msgstr "Nome file"
+
+#: stripchart/params.c:693
+msgid "Pattern"
+msgstr "Pattern"
+
+#: stripchart/params.c:714 stripchart/params.c:742
+msgid "Min"
+msgstr "Min"
+
+#: stripchart/params.c:723 stripchart/params.c:751
+msgid "Max"
+msgstr "Max"
+
+#: stripchart/params.c:771
+msgid "Linear"
+msgstr "Lineare"
+
+#: stripchart/params.c:779
+msgid "Logarithmic"
+msgstr "Logaritmico"
+
+#: stripchart/params.c:784
+msgid "Type"
+msgstr "Tipo"
+
+#: stripchart/params.c:795
+msgid "Indicator"
+msgstr "Indicatore"
+
+#: stripchart/params.c:802
+msgid "Line"
+msgstr "Linea"
+
+#: stripchart/params.c:809
+msgid "Point"
+msgstr "Punto"
+
+#: stripchart/params.c:816
+msgid "Solid"
+msgstr "Solido"
+
+#: stripchart/params.c:965
+msgid "Add Parameter Before"
+msgstr "Aggiungi parametro prima"
+
+#: stripchart/params.c:972
+msgid "Add Parameter After"
+msgstr "Aggiungi parametro dopo"
+
+#: stripchart/params.c:979
+msgid "Apply Parameter Changes"
+msgstr "Applica modifiche ai parametri"
+
+#: stripchart/params.c:986
+msgid "Delete Parameter"
+msgstr "Cancella parametro"
+
+#: stripchart/params.c:994
+msgid "Add Color"
+msgstr "Aggiungi colore"
+
+#: stripchart/params.c:1001
+msgid "Delete Color"
+msgstr "Cancella colore"
+
+#: stripchart/params.c:1020
+msgid "Info"
+msgstr "Informazioni"
+
+#: stripchart/params.c:1091
+msgid "Parameter Editor"
+msgstr "Editor dei parametri"
+
+#: stripchart/params.c:1100
+msgid "Parameters"
+msgstr "Parametri"
+
+#: stripchart/prefs.c:208
+msgid "Chart"
+msgstr "Grafico"
+
+#: stripchart/prefs.c:218 stripchart/prefs.c:277
+msgid "enabled"
+msgstr "abilitato"
+
+#: stripchart/prefs.c:225
+msgid "minor"
+msgstr "minore"
+
+#: stripchart/prefs.c:231
+msgid "major"
+msgstr "maggiore"
+
+#: stripchart/prefs.c:244 stripchart/prefs.c:262
+msgid "Update"
+msgstr "Aggiorna"
+
+#: stripchart/prefs.c:247 stripchart/prefs.c:270
+msgid "Smooth"
+msgstr "Smussa"
+
+#: stripchart/prefs.c:250
+msgid "Ticks"
+msgstr "Tacche"
+
+#: stripchart/prefs.c:255
+msgid "Pen"
+msgstr "Penna"
+
+#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
+msgid "Geometry string: WxH+X+Y"
+msgstr "Stringa della geometria: WxH+X+Y"
+
+#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
+msgid "GEO"
+msgstr "GEO"
+
+#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
+msgid "Configuration file name"
+msgstr "Nome del file di configurazione"
+
+#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
+msgid "FILE"
+msgstr "FILE"
+
+#: stripchart/stripchart-applet.c:92
+msgid "Values"
+msgstr "Valori"
+
+#: stripchart/stripchart-applet.c:95
+msgid "Prefs..."
+msgstr "Preferenze..."
+
+#: stripchart/stripchart-applet.c:98
+msgid "Params..."
+msgstr "Parametri..."
+
+#: exe-handler/gnome-exe-handler.c:76
+#, c-format
+msgid ""
+"Executing arbitrary programs that you downloaded from the network might be "
+"dangerous.\n"
+"\n"
+"Are you sure you want to run `%s'?"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:83
+msgid "Could not access file permissions"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:88
+#, c-format
+msgid "Could not execute the file `%s' due to a permission problem"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:104
+#, c-format
+msgid "Failure at executing `%s'"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:123
+#, c-format
+msgid "It was not possible to open the file `%s'"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:132
+#, c-format
+msgid "The file `%s' is empty"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:137
+#, c-format
+msgid "There was an error. `%s' is empty"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:152
+msgid "This is a library and can not be executed"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:158
+#, fuzzy
+msgid "The file is a core file and can not be executed"
+msgstr ""
+"Uno o più file non posso essere ripristinati :\n"
+"\n"
+
+#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
+msgid "This is an unknown kind of executable"
+msgstr ""
+
+#: exe-handler/gnome-exe-handler.c:192
+msgid ""
+"The executable is for a different platform and can not be executed on this "
+"system"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:106
+#, c-format
+msgid ""
+"Number of files: %d\n"
+"Nuber of folders: %d"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:112
+msgid ""
+"No files or folders, drop files or folders\n"
+"above to add them to the archive"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:217 meat-grinder/meat-grinder.c:220
+#, fuzzy
+msgid "Cannot start the archive (tar) program"
+msgstr "Informazioni sul programma Stripchart."
+
+#: meat-grinder/meat-grinder.c:228
+msgid "Cannot run tar/gtar"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:279
+msgid "Archive.tar.gz"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:379
+msgid "The GNOME Archive Generator"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:382
+msgid "Drag files in to make archives"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:444 meat-grinder/meat-grinder.c:602
+#, fuzzy
+msgid "No filename selected"
+msgstr "nessuna attività selezionata"
+
+#: meat-grinder/meat-grinder.c:448
+msgid "File exists, overwrite?"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:472
+msgid "No items to archive"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:605
+#, fuzzy
+msgid "File does not exists"
+msgstr "La directory di partenza non esiste"
+
+#: meat-grinder/meat-grinder.c:619
+msgid "Add file or folder"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:689
+msgid "Add file or folder..."
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:690
+msgid "Add a file or folder to the archive"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:693
+#, fuzzy
+msgid "Create archive..."
+msgstr "Crea viste"
+
+#: meat-grinder/meat-grinder.c:694
+#, fuzzy
+msgid "Create a new archive from the items"
+msgstr "Crea una nuova finestra per il documento"
+
+#: meat-grinder/meat-grinder.c:703
+#, fuzzy
+msgid "Remove the selected item(s)"
+msgstr "Rimuovi i colori selezionati"
+
+#: meat-grinder/meat-grinder.c:735
+msgid "GNOME Archive Generator"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:765
+msgid "Drop files here to add them to the archive."
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:783
+#, fuzzy
+msgid "Archive"
+msgstr "Attivo"
+
+#: meat-grinder/meat-grinder.c:790
+msgid ""
+"Drag this button to the destination where you want the archive to be created "
+"or press it to pop up a file selection dialog."
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:883
+msgid "Cannot find proper icons anywhere!"
+msgstr ""
+
+#: meat-grinder/meat-grinder.c:891
+msgid ""
+"Cannot find the archive (tar) program!\n"
+"This is the program used for creating archives."
+msgstr ""
+
+#: gfloppy/gfloppy.desktop.in.h:1
+#, fuzzy
+msgid "Format Floppy Disks"
+msgstr "Formatta un dischetto"
+
+#: gfloppy/gfloppy.desktop.in.h:2
+msgid "gfloppy"
+msgstr ""
+
+#: gdictsrc/GDict.desktop.in.h:1 gdictsrc/gdict.desktop.in.h:1
+msgid "GDict"
+msgstr ""
+
+#: gdictsrc/GDict.desktop.in.h:2
+msgid "Gnome client for the MIT dictionary server"
+msgstr ""
+
+#: gdictsrc/gdict.desktop.in.h:2
+msgid "GNOME client for RFC 2229-compliant dictionary server"
+msgstr ""
+
+#: stripchart/stripchart-applet.desktop.in.h:1
+#, fuzzy
+msgid "Shows a stripchart plot"
+msgstr "Stripchart"
+
+#: gstripchart/gstripchart.desktop.in.h:1 stripchart/stripchart.desktop.in.h:1
+#, fuzzy
+msgid "Stripchart Plotter"
+msgstr "Parametri stripchart"
+
+#: notepad/Notepad.desktop.in.h:1
+msgid "Notepad"
+msgstr "Blocco note"
+
+#: notepad/Notepad.desktop.in.h:2
+msgid "Simple editor (notepad)"
+msgstr "Semplice editor di testo"
+
+#: mini-utils/idetool/idetool.desktop.in.h:1
+msgid "IDE Device Tool"
+msgstr ""
+
+#: mini-utils/idetool/idetool.desktop.in.h:2
+msgid "Show and Configure IDE Device Settings"
+msgstr ""
+
+#: mini-utils/gw/gw.desktop.in.h:1
+msgid "User Listing"
+msgstr "Lista utenti collegati"
+
+#: mini-utils/gw/gw.desktop.in.h:2
+msgid "View users on the system"
+msgstr "Visualizza la lista degli utenti attualmente collegati al sistema"
+
+#: mini-utils/guname/guname-capplet.desktop.in.h:1
+#, fuzzy
+msgid "Show various system information"
+msgstr "Informazioni sul sistema"
+
+#: mini-utils/guname/guname.desktop.in.h:1
+msgid "System Info"
+msgstr "Informazioni sul sistema"
+
+#: mini-utils/guname/guname.desktop.in.h:2
+msgid "Technical information about this computer"
+msgstr "Visualizza informazioni tecniche su questo computer"
+
+#: mini-utils/gshutdown/gshutdown.desktop.in.h:1
+msgid "Shut Down or Reboot"
+msgstr "Spegni o riavvia il computer"
+
+#: mini-utils/gshutdown/gshutdown.desktop.in.h:2
+msgid "Turn off or reset the computer"
+msgstr "Spegni o riavvia il computer"
+
+#: mini-utils/grun/grun.desktop.in.h:1
+msgid "Ask for a command to execute"
+msgstr ""
+
+#: mini-utils/grun/grun.desktop.in.h:2
+#, fuzzy
+msgid "Run A Command..."
+msgstr "Comando"
+
+#: mini-utils/gpenguin/gpenguin.desktop.in.h:1
+#, fuzzy
+msgid "GNOME Penguin"
+msgstr "GNOME Find"
+
+#: mini-utils/gpenguin/gpenguin.desktop.in.h:2
+msgid "Let a cute pinguin chase your pointer"
+msgstr ""
+
+#: mini-utils/gnome-run/gnome-run.desktop.in.h:1
+msgid "Prompts the user for a program to run"
+msgstr "Esegui un programma specificato"
+
+#: mini-utils/gnome-run/gnome-run.desktop.in.h:2
+msgid "Run program..."
+msgstr "Avvia programma..."
+
+#: mini-utils/gless/gless.desktop.in.h:1
+msgid "Page files as with `more' and `less'"
+msgstr ""
+
+#: mini-utils/gfontsel/gfontsel.desktop.in.h:2
+msgid "Select a font for pasting"
+msgstr "Seleziona un font di caratteri"
+
+#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:1
+msgid "Browse available X11 colors."
+msgstr "Sfoglia i colori predefiniti"
+
+#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:2
+msgid "Color Browser"
+msgstr "Selettore colori"
+
+#: meat-grinder/meat-grinder.desktop.in.h:1
+msgid "Archive Generator"
+msgstr ""
+
+#: meat-grinder/meat-grinder.desktop.in.h:2
+msgid "GNOME Archive Generator aka Meat Grinder"
+msgstr ""
+
+#: logview/logview.desktop.in.h:1
+msgid "SysLog tool"
+msgstr ""
+
+#: logview/logview.desktop.in.h:2
+#, fuzzy
+msgid "System log monitor"
+msgstr "Scegli file da monitorare"
+
+#: gtt/gtt.desktop.in.h:1
+msgid "Time Tracker tool"
+msgstr "Programma GNOME di gestione del tempo"
+
+#: gtt/gtt.desktop.in.h:2
+msgid "Time tracking tool"
+msgstr "GNOME Time Tracker"
+
+#: gstripchart/gstripchart_applet.desktop.in.h:1
+#, fuzzy
+msgid "Gstripchart"
+msgstr "gstripchart"
+
+#: gstripchart/gstripchart_applet.desktop.in.h:2
+#, fuzzy
+msgid "Shows a stripchart"
+msgstr "Stripchart"
+
+#: gsearchtool/gsearchtool.desktop.in.h:1
+#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
+msgid "GNOME Search Tool"
+msgstr "Cerca file"
+
+#: gdiskfree/gdiskfree.desktop.in.h:1
+#, fuzzy
+msgid "GNOME DiskFree"
+msgstr "GDiskFree"
+
+#: gdiskfree/gdiskfree.desktop.in.h:2
+msgid "Show free space on mounted file systems using dials."
+msgstr ""
+
+#: gcharmap/gcharmap.desktop.in.h:1
+#, fuzzy
+msgid "GNOME Character Map"
+msgstr "Mappa Caratteri di GNOME"
+
+#: gcalc/gcalc.desktop.in.h:1
+msgid "Simple Calculator"
+msgstr "Calcolatrice"
+
+#: cromagnon/Cromagnon.desktop.in.h:1
+msgid "Personal cron manager"
+msgstr ""
+
+#: cromagnon/Cromagnon.desktop.in.h:2
+msgid "Personal crontab manager"
+msgstr ""
+
+#~ msgid ""
+#~ "An error occured while reading the configuration file.\n"
+#~ "Shall I setup a new configuration?"
+#~ msgstr ""
+#~ "È stato rilevato un errore durante la lettura del file di "
+#~ "configurazione.\n"
+#~ "Installare una nuova configurazione?"
+
+#, fuzzy
+#~ msgid "Could not write the configuration file!"
+#~ msgstr "Impossibile scrivere il file di configurazione!"
+
+#~ msgid "Time tracking tool for GNOME"
+#~ msgstr "Strumento di time tracking per GNOME"
+
+#~ msgid ""
+#~ "This will overwrite your current set of projects.\n"
+#~ "Do you really want to reload the configuration file?"
+#~ msgstr ""
+#~ "In questo modo verrà sovrascritto l'insieme corrente di attività.\n"
+#~ "Si vuole veramente ricaricare il file di configurazione?"
+
+#~ msgid "Timeout in secs:"
+#~ msgstr "Scadenza in secondi:"
+
+#, fuzzy
+#~ msgid "Memo:"
+#~ msgstr "Memoria"
+
+#, fuzzy
+#~ msgid "Task Properties"
+#~ msgstr "Proprietà"
+
+#~ msgid "ASCII code:"
+#~ msgstr "Codice ASCII:"
+
+#~ msgid "Project Time today:"
+#~ msgstr "Tempo odierno dell'attività:"
+
+#~ msgid "Project Time ever:"
+#~ msgstr "Tempo totale attività:"
+
+#~ msgid "Manual..."
+#~ msgstr "Manuale..."
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Export log...          "
+#~ msgstr "Esporta log..."
+
+#~ msgid "Close log              "
+#~ msgstr "Chiudi il log          "
+
+#~ msgid "Switch log             "
+#~ msgstr "Cambia log             "
+
+#~ msgid "Monitor..              "
+#~ msgstr "Controlla..            "
+
+#~ msgid "Exit                   "
+#~ msgstr "Esci                   "
+
+#~ msgid "Calendar                "
+#~ msgstr "Calendario              "
+
+#~ msgid "Log stats               "
+#~ msgstr "Statistiche log         "
+
+#~ msgid "Preferences...          "
+#~ msgstr "Preferenze...           "
+
+#~ msgid "About..                "
+#~ msgstr "Informazioni su..      "
+
+#~ msgid ""
+#~ "Notebook\n"
+#~ "Toplevel\n"
+#~ "Modal\n"
+#~ "Default\n"
+#~ msgstr ""
+#~ "Schedario\n"
+#~ "Primo livello\n"
+#~ "Modale\n"
+#~ "Predefinito\n"
+
+#~ msgid ""
+#~ "Left\n"
+#~ "Right\n"
+#~ "Top\n"
+#~ "Bottom\n"
+#~ msgstr ""
+#~ "Sinistra\n"
+#~ "Destra\n"
+#~ "Alto\n"
+#~ "Basso\n"
+
+#~ msgid "window1"
+#~ msgstr "finestra1"
+
+#~ msgid "Write information to disk"
+#~ msgstr "Scrivi le informazioni su disco"
+
+#~ msgid "Save not implemented yet\n"
+#~ msgstr "Il salvataggio non è ancora implementato\n"
+
+#~ msgid "Formatting /dev/floppy"
+#~ msgstr "Formattazione di /dev/floppy"
+
+#~ msgid "Formatting %s"
+#~ msgstr "Formattazione di %s"
+
+#~ msgid "rparen expected"
+#~ msgstr "atteso rparen"
+
+#~ msgid "extra gunk at end: \"%s\""
+#~ msgstr "\"gunk\" extra alla fine: \"%s\""
+
+#~ msgid "%s, line %d: "
+#~ msgstr "%s, linea %d: "
+
+#~ msgid "can't open config file \"%s\""
+#~ msgstr "impossibile aprire il file di configurazione \"%s\""
+
+#~ msgid ""
+#~ "can't open config file \"./gstripchart.conf\", \"%s\", \"%s\", or \"%s\""
+#~ msgstr ""
+#~ "impossibile aprire il file di configurazione \"./gstripchart.conf\", \"%s"
+#~ "\", \"%s\", oppure \"%s\""
+
+#~ msgid "can't open config file \"./gstripchart.conf\", \"%s\", or \"%s\""
+#~ msgstr ""
+#~ "impossibile aprire il file di configurazione \"./gstripchart.conf\", \"%s"
+#~ "\" oppure \"%s\""
+
+#~ msgid "identifier or begin must be first"
+#~ msgstr "un identificatore o un inizio devono essere primi"
+
+#~ msgid "unrecognized color: %s"
+#~ msgstr "colore non riconosciuto: %s"
+
+#~ msgid "scale must be either \"log\" or \"linear\""
+#~ msgstr "la scala deve essere logaritmica oppure lineare"
+
+#~ msgid "no equation found"
+#~ msgstr "nessuna equazione trovata"
+
+#~ msgid "invalid option: \"%s\""
+#~ msgstr "opzione non valida: \"%s\""
+
+#~ msgid "E_xit"
+#~ msgstr "E_sci"
+
+#~ msgid "Terminate the stripchart program"
+#~ msgstr "Termina il programma stripchart"
+
+#~ msgid "Copyright 1998,99 John Kodis"
+#~ msgstr "Copyright 1998,99 John Kodis"
+
+#~ msgid "Identifier"
+#~ msgstr "Identificatore"
+
+#~ msgid "Expected range"
+#~ msgstr "Intervallo atteso"
+
+#~ msgid "Displayed range"
+#~ msgstr "Intervallo visualizzato"
+
+#~ msgid "Params"
+#~ msgstr "Parametri"
+
+#~ msgid "Stripchart Viewer"
+#~ msgstr "Visualizzatore di grafici"
+
+#~ msgid "invalid display type: %s\n"
+#~ msgstr "tipo display non valido: %s\n"
+
+#~ msgid "Chart update interval"
+#~ msgstr "Intervallo di aggiornamento del grafico"
+
+#~ msgid "SECS"
+#~ msgstr "SECS"
+
+#~ msgid "Chart low-pass filter time constant"
+#~ msgstr "Costante di tempo del filtro passa basso del grafico"
+
+#~ msgid "Slider low-pass filter time constant"
+#~ msgstr "Costante di tempo del filtro passa basso dello slider"
+
+#~ msgid "Adds a menubar to the main window"
+#~ msgstr "Aggiungi una barra dei menu alla finestra principale"
+
+#~ msgid "Omits slider window"
+#~ msgstr "Omette la finestra dello slider"
+
+#~ msgid "TYPE is one of gtk, applet, text, or none"
+#~ msgstr "TIPO deve essere uno fra gtk, applet, testo o niente"
+
+#~ msgid "TYPE"
+#~ msgstr "TIPO"
+
+#~ msgid "TYPE is one of gtk, text, or none"
+#~ msgstr "TIPO deve essere uno di gtk, testo o niente"
+
+#~ msgid "white"
+#~ msgstr "bianco"
+
+#~ msgid "black"
+#~ msgstr "nero"
+
+#~ msgid "yellow"
+#~ msgstr "giallo"
+
+#~ msgid "blue"
+#~ msgstr "blu"
+
+#~ msgid "green"
+#~ msgstr "verde"
+
+#~ msgid "cyan"
+#~ msgstr "ciano"
+
+#~ msgid "magenta"
+#~ msgstr "magenta"
+
+#~ msgid "Busy"
+#~ msgstr "Occupato"
+
+#~ msgid "Load"
+#~ msgstr "Carica"
+
+#~ msgid "Swap"
+#~ msgstr "Swap"
+
+#~ msgid "Battery"
+#~ msgstr "Batteria"
+
+#~ msgid "Net In"
+#~ msgstr "Rete in"
+
+#~ msgid "Net Out"
+#~ msgstr "Rete out"
+
+#~ msgid "ppp"
+#~ msgstr "ppp"
+
+#~ msgid "%s: unable to load the penguin.\n"
+#~ msgstr "%s: impossibile caricare il pinguino.\n"
+
+#~ msgid ""
+#~ "You are trying to do something which requires\n"
+#~ "root (system administrator) privileges.\n"
+#~ "To do this, you must give the root password.\n"
+#~ "Please enter the root password now, or choose\n"
+#~ "Cancel if you do not know it."
+#~ msgstr ""
+#~ "Si sta tentando di fare di fare qualcosa che richiede\n"
+#~ "i privilegi di root, l'amministratore di sistema.\n"
+#~ "Per fare questo, è necessario inserire la password \n"
+#~ "dell'utente root. Inserire adesso questa password,\n"
+#~ "oppure selezionare Annulla se non la si conosce."
+
+#~ msgid ""
+#~ "You are trying to change your user identity.\n"
+#~ "Please enter the password for user `%s'."
+#~ msgstr ""
+#~ "Si sta tentando di cambiare la propria identità di utente.\n"
+#~ "Inserire la password dell'utente `%s'."
+
+#~ msgid "Command to be run as another user"
+#~ msgstr "Comando da eseguire come altro utente"
+
+#~ msgid "User name to run command as"
+#~ msgstr "Utente con cui eseguire il comando"
+
+#~ msgid "File containing interface description"
+#~ msgstr "File contenente la descrizione dell'interfaccia"
+
+#~ msgid "Target User"
+#~ msgstr "Utente finale"
+
+#~ msgid "USER"
+#~ msgstr "UTENTE"
+
+#~ msgid ""
+#~ "Failed to execute command:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Impossibile eseguire il comando:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Run"
+#~ msgstr "Avvia"
+
+#~ msgid "Select a program to run"
+#~ msgstr "Selezionare un programma da avviare"
+
+#~ msgid "New search"
+#~ msgstr "Nuova ricerca"
+
+#~ msgid "Open search spec"
+#~ msgstr "Apri specifiche della ricerca"
+
+#~ msgid "Save search spec"
+#~ msgstr "Salva le specifiche della ricerca"
+
+#~ msgid "Save search spec as..."
+#~ msgstr "Salve le specifiche delle ricerca come..."
+
+#~ msgid "Add condition"
+#~ msgstr "Aggiungi condizione"
+
+#~ msgid "Add a search condition"
+#~ msgstr "Aggiunge un condizione alla ricerca"
+
+#~ msgid "Remove condition"
+#~ msgstr "Rimuovi condizione"
+
+#~ msgid "Remove last search condition"
+#~ msgstr "Rimuove l'ultima condizione della ricerca"
+
+#~ msgid "Show advanced options"
+#~ msgstr "Mostra opzioni avanzate"
+
+#~ msgid "Start search"
+#~ msgstr "Inizia la ricerca"
+
+#~ msgid "New"
+#~ msgstr "Nuovo"
+
+#~ msgid "Clear the search window"
+#~ msgstr "Cancella la finestre della ricerca"
+
+#~ msgid "Start the current search"
+#~ msgstr "Avvia la ricerca corrente"
+
+#~ msgid "Find Files"
+#~ msgstr "Trova file"
+
+#~ msgid "Directory to Search"
+#~ msgstr "Directory in cui cercare"
+
+#~ msgid "(C) 1998 the Free Software Foundation"
+#~ msgstr "(C) 1998 Free Software Foundation"
+
+#~ msgid "GNOME Find is a fast, flexible file search tool."
+#~ msgstr ""
+#~ "GNOME Find è uno strumento veloce e flessibile per la ricerca dei file."
+
+#~ msgid "Cut the text to clipboard"
+#~ msgstr "Taglia il testo negli appunti"
+
+#~ msgid "Copy the text to clipboard."
+#~ msgstr "Copia il testo negli Appunti"
+
+#~ msgid "This sets the overall application settings."
+#~ msgstr "Questo imposta le impostazioni generali dell'applicazione."
+
+#~ msgid "About Gnome Find..."
+#~ msgstr "Informazioni su Gnome Find..."
+
+#~ msgid "_About"
+#~ msgstr "_Informazioni"
+
+#~ msgid "_File"
+#~ msgstr "_File"
+
+#~ msgid "_Help"
+#~ msgstr "_Aiuto"
+
+#~ msgid "label2"
+#~ msgstr "etichetta2"
+
+#~ msgid "label13"
+#~ msgstr "label13"
+
+#~ msgid "label14"
+#~ msgstr "label14"
+
+#~ msgid "label15"
+#~ msgstr "label15"
+
+#~ msgid "label16"
+#~ msgstr "label16"
+
+#~ msgid "label4"
+#~ msgstr "label4"
+
+#~ msgid "F_ilter"
+#~ msgstr "Fil_tra"
+
+#~ msgid "16-bit"
+#~ msgstr "16-bit"
+
+#~ msgid "Please enter the name of the new project:"
+#~ msgstr "Inserire il nome del nuovo progetto:"
+
+#~ msgid "GOMETRY"
+#~ msgstr "GEOMETRIA"
+
+#~ msgid "Continuous (Slow)"
+#~ msgstr "Continuo (lento)"
+
+#~ msgid "Delayed"
+#~ msgstr "Ritardato"
+
+#~ msgid "Discontinuous"
+#~ msgstr "Discontinuo"
+
+#~ msgid "Simple"
+#~ msgstr "Semplice"
+
+#~ msgid "Favorites"
+#~ msgstr "Preferiti"
+
+#~ msgid "Add it to favorites"
+#~ msgstr "Aggiungi ai preferiti"
+
+#~ msgid "On drop"
+#~ msgstr "Al rilascio"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Aggiungi ai preferiti"
+
+#~ msgid "Rename"
+#~ msgstr "Rinomina"
+
+#~ msgid "Error, cannot save favorites !"
+#~ msgstr "Errore, impossibile salvare i preferiti!"
+
+#~ msgid "Parsing Colors"
+#~ msgstr "Lettura dei colori in corso..."
+
+#~ msgid "Error, cannot find the file 'rgb.txt' on your system!"
+#~ msgstr "Errore, impossibile trovare il file `rgb.txt' nel sistema!"
+
+#~ msgid "Enter new name for : "
+#~ msgstr "Inserire nuovo nome per : "

@@ -1,0 +1,5005 @@
+# Finnish translations of gnome-utils
+# Copyright (C) 1999 Free Software Foundation, Inc.
+# Antti Ahvensalmi <aahven@mbnet.fi>, 2000
+# Tuomas Merilä <tuomas@merila.org>, 1999
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-utils\n"
+"POT-Creation-Date: 2001-11-30 16:14-0600\n"
+"PO-Revision-Date: 2001-08-13 11:20+0200\n"
+"Last-Translator: Antti Ahvensalmi <aahven@mbnet.fi>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gcalc/gcalc.c:41
+msgid "The Gnome Calculator"
+msgstr "The Gnome Calculator"
+
+#: gcalc/gcalc.c:44
+msgid "Simple double precision calculator similiar to xcalc"
+msgstr ""
+"Yksinkertainen, xcalc:in kaltainen liukulukulaskin.\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: gcalc/gcalc.c:124
+msgid "Run in analog (slide rule) mode"
+msgstr "Aja analogisessa tilassa"
+
+#: gcalc/gcalc.c:152
+msgid "Gnome Calculator"
+msgstr "Laskin"
+
+#: gcalc/gnome-calc.c:517 gcalc/gnome-calc.c:1185
+msgid "DEG"
+msgstr "DEG"
+
+#: gcalc/gnome-calc.c:519
+msgid "RAD"
+msgstr "RAD"
+
+#: gcalc/gnome-calc.c:521
+msgid "GRAD"
+msgstr "GRAD"
+
+#: gcalc/gnome-calc.c:1175
+msgid "1/x"
+msgstr "1/x"
+
+#: gcalc/gnome-calc.c:1176
+msgid "x^2"
+msgstr "x^2"
+
+#: gcalc/gnome-calc.c:1177
+msgid "SQRT"
+msgstr "SQRT"
+
+#: gcalc/gnome-calc.c:1178
+msgid "CE/C"
+msgstr "CE/C"
+
+#: gcalc/gnome-calc.c:1179
+msgid "AC"
+msgstr "AC"
+
+#: gcalc/gnome-calc.c:1181 gcalc/gnome-calc.c:1379
+msgid "INV"
+msgstr "INV"
+
+#. inverse button
+#: gcalc/gnome-calc.c:1182
+msgid "sin"
+msgstr "sin"
+
+#: gcalc/gnome-calc.c:1183
+msgid "cos"
+msgstr "cos"
+
+#: gcalc/gnome-calc.c:1184
+msgid "tan"
+msgstr "tan"
+
+#: gcalc/gnome-calc.c:1187
+msgid "e"
+msgstr "e"
+
+#: gcalc/gnome-calc.c:1188
+msgid "EE"
+msgstr "EE"
+
+#: gcalc/gnome-calc.c:1189
+msgid "log"
+msgstr "log"
+
+#: gcalc/gnome-calc.c:1190
+msgid "ln"
+msgstr "ln"
+
+#: gcalc/gnome-calc.c:1191
+msgid "x^y"
+msgstr "x^y"
+
+#: gcalc/gnome-calc.c:1193
+msgid "PI"
+msgstr "PI"
+
+#: gcalc/gnome-calc.c:1194
+msgid "x!"
+msgstr "x!"
+
+#: gcalc/gnome-calc.c:1195
+msgid "("
+msgstr "("
+
+#: gcalc/gnome-calc.c:1196
+msgid ")"
+msgstr ")"
+
+#: gcalc/gnome-calc.c:1197
+msgid "/"
+msgstr "/"
+
+#: gcalc/gnome-calc.c:1199
+msgid "STO"
+msgstr "STO"
+
+#: gcalc/gnome-calc.c:1200
+msgid "7"
+msgstr "7"
+
+#: gcalc/gnome-calc.c:1201
+msgid "8"
+msgstr "8"
+
+#: gcalc/gnome-calc.c:1202
+msgid "9"
+msgstr "9"
+
+#: gcalc/gnome-calc.c:1203
+msgid "*"
+msgstr "*"
+
+#: gcalc/gnome-calc.c:1205
+msgid "RCL"
+msgstr "RCL"
+
+#: gcalc/gnome-calc.c:1206
+msgid "4"
+msgstr "4"
+
+#: gcalc/gnome-calc.c:1207
+msgid "5"
+msgstr "5"
+
+#: gcalc/gnome-calc.c:1208
+msgid "6"
+msgstr "6"
+
+#: gcalc/gnome-calc.c:1209
+msgid "-"
+msgstr "-"
+
+#: gcalc/gnome-calc.c:1211
+msgid "SUM"
+msgstr "SUM"
+
+#: gcalc/gnome-calc.c:1212 gtt/ctree.c:959
+msgid "1"
+msgstr "1"
+
+#: gcalc/gnome-calc.c:1213 gtt/ctree.c:958
+msgid "2"
+msgstr "2"
+
+#: gcalc/gnome-calc.c:1214 gtt/ctree.c:957
+msgid "3"
+msgstr "3"
+
+#: gcalc/gnome-calc.c:1215
+msgid "+"
+msgstr "+"
+
+#: gcalc/gnome-calc.c:1217
+msgid "EXC"
+msgstr "EXC"
+
+#: gcalc/gnome-calc.c:1218
+msgid "0"
+msgstr "0"
+
+#: gcalc/gnome-calc.c:1219
+msgid "."
+msgstr "."
+
+#: gcalc/gnome-calc.c:1220
+msgid "+/-"
+msgstr "+/-"
+
+#: gcalc/gnome-calc.c:1221
+msgid "="
+msgstr "="
+
+#. Translators:  This allows you to create translated font pngs,
+#. * though probably won't be necessary
+#: gcalc/gnome-calc.c:1246
+msgid "calculator-font.png"
+msgstr "calculator-font.png"
+
+#: gcharmap/src/asciiselect.c:96
+msgid "Select Character"
+msgstr "Valitse merkki"
+
+#: gcharmap/src/asciiselect.c:97 gcharmap/src/menus.c:99
+msgid "Insert"
+msgstr "Lisää"
+
+#: gcharmap/src/asciiselect.c:105
+msgid "Character code:"
+msgstr "Merkin koodi:"
+
+#: gcharmap/src/asciiselect.c:115
+msgid "Character:"
+msgstr "Merkki:"
+
+#: gcharmap/src/asciiselect.c:123
+msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/callbacks.c:43 gcharmap/src/interface.c:141
+msgid "Gnome Character Map"
+msgstr "Gnome Character Map"
+
+#: gcharmap/src/callbacks.c:47
+msgid ""
+"The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+"contain bad English."
+msgstr ""
+"Gnome Character Map on Gnomen vastine Windowsin Merkistö-ohjemalle.\n"
+"http://users.telekabel.nl/hongli/\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: gcharmap/src/callbacks.c:63 gcharmap/src/callbacks.c:101
+#: gcharmap/src/interface.c:65
+msgid "del"
+msgstr "del"
+
+#: gcharmap/src/callbacks.c:107
+#, c-format
+msgid " %s: Character code %d"
+msgstr "%s: merkki-koodi %d"
+
+#: gcharmap/src/callbacks.c:134
+msgid "Text copied to clipboard..."
+msgstr "Teksti kopioitu leikepöydälle..."
+
+#: gcharmap/src/callbacks.c:146
+msgid "Text cut to clipboard..."
+msgstr "Teksti leikattu leikepöydälle..."
+
+#: gcharmap/src/callbacks.c:199
+msgid "Text pasted from clipboard..."
+msgstr "Teksti liitetty leikepöydältä..."
+
+#: gcharmap/src/interface.c:170
+msgid "Action Toolbar"
+msgstr "Työkalurivi"
+
+#: gcharmap/src/interface.c:189
+msgid "Text to copy:"
+msgstr "Kopioitava teksti:"
+
+#: gcharmap/src/interface.c:215
+msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+msgstr "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/interface.c:238 gcharmap/src/menus.c:114 logview/logview.c:100
+#: mini-utils/gcolorsel/menus.c:921 stripchart/chart-app.c:258
+msgid "Exit"
+msgstr "Lopeta"
+
+#: gcharmap/src/interface.c:239 gcharmap/src/menus.c:104
+#: gdictsrc/gdict-app.c:519 gtt/toolbar.c:181
+msgid "Copy"
+msgstr "Kopioi"
+
+#: gcharmap/src/interface.c:243 gcharmap/src/menus.c:111
+#: mini-utils/gcolorsel/menus.c:919 mini-utils/gshutdown/gshutdown.c:321
+#: stripchart/chart-app.c:232 stripchart/params.c:1013
+#: stripchart/stripchart-applet.c:89
+msgid "About"
+msgstr "Tietoja"
+
+#: gcharmap/src/interface.c:245 gcharmap/src/menus.c:109
+#: gdictsrc/gdict-applet.c:284 stripchart/chart-app.c:227
+#: stripchart/params.c:1048 stripchart/params.c:1051
+#: stripchart/stripchart-applet.c:86
+msgid "Help"
+msgstr "Ohje"
+
+#: gcharmap/src/interface.c:264
+msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+msgstr "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/menus.c:51
+msgid "Insert Character..."
+msgstr "Lisää merkki..."
+
+#: gcharmap/src/menus.c:52
+msgid "Insert character(s) by choosing character codes."
+msgstr "Lisää merkkejä valitsemalla merkkikoodeja."
+
+#: gcharmap/src/menus.c:59
+msgid "_Action Toolbar"
+msgstr "_Työkalurivi"
+
+#: gcharmap/src/menus.c:59
+msgid "View or hide the action toolbar"
+msgstr "Näytä tai piilota työkalurivi"
+
+#: gcharmap/src/menus.c:61
+msgid "_Text Toolbar"
+msgstr "T_ekstirivi"
+
+#: gcharmap/src/menus.c:61
+msgid "View or hide the text toolbar"
+msgstr "Näytä tai piilota tekstirivi"
+
+#: gcharmap/src/menus.c:63
+msgid "_Statusbar"
+msgstr "T_ilarivi"
+
+#: gcharmap/src/menus.c:63
+msgid "View or hide the statusbar"
+msgstr "Näytä tai piilota tilarivi"
+
+#: gcharmap/src/menus.c:70
+msgid "Character Table's Font..."
+msgstr "Merkkitaulukon kirjasin..."
+
+#: gcharmap/src/menus.c:70
+msgid "Set the character table's font."
+msgstr "Aseta merkkitaulukon kirjasin."
+
+#: gcharmap/src/menus.c:73
+msgid "_Insert at end"
+msgstr "_Lisää loppuun"
+
+#: gcharmap/src/menus.c:73
+msgid "Insert every selected character at the end of the text entry"
+msgstr "Lisää jokainen valittu merkki tekstin loppuun"
+
+#: gcharmap/src/menus.c:75
+msgid "_Focusable Buttons"
+msgstr "_Kohdistettavat napit"
+
+#: gcharmap/src/menus.c:75
+msgid "Set the buttons to be focusable or not"
+msgstr "Aseta nappien kohdistettavuus"
+
+#: gcharmap/src/menus.c:99
+msgid "Insert character(s) by choosing character codes"
+msgstr "Lisää merkkejä valitsemalla merkkikoodeja."
+
+#: gcharmap/src/menus.c:102 gdictsrc/gdict-app.c:516 gtt/toolbar.c:177
+msgid "Cut"
+msgstr "Leikkaa"
+
+#: gcharmap/src/menus.c:102
+msgid "Cut the selection"
+msgstr "Leikkaa valinta"
+
+#: gcharmap/src/menus.c:104
+msgid "Copy the selection"
+msgstr "Kopioi valinta"
+
+#: gcharmap/src/menus.c:106 gdictsrc/gdict-app.c:522 gtt/toolbar.c:185
+msgid "Paste"
+msgstr "Liitä"
+
+#: gcharmap/src/menus.c:106
+msgid "Paste the clipboard"
+msgstr "Liitä leikepöydältä"
+
+#: gcharmap/src/menus.c:109
+msgid "Show Gnome Character Map's manual"
+msgstr "Näytä manuaali"
+
+#: gcharmap/src/menus.c:111 mini-utils/gcolorsel/menus.c:919
+msgid "About this application"
+msgstr "Tietoja ohjelmasta"
+
+#: gcharmap/src/menus.c:114 mini-utils/gcolorsel/menus.c:921
+msgid "Exit the program"
+msgstr "Sulje ohjelma"
+
+#: gdictsrc/main.c:93
+msgid ""
+"Couldn't start the dictionary; most likely, http://www.dict.org could not be "
+"contacted."
+msgstr ""
+"Sanakirjaa ei voitu käynnistää. Todennäköisesti http://www.dict.org ei "
+"vastannut."
+
+#. Could not look up search strategies, so just display a
+#. * label; FIXME: Memory leak
+#.
+#: gdictsrc/dict.c:637 gdictsrc/gdict-pref-dialog.c:502
+#: gdictsrc/gdict-pref-dialog.c:546 gdictsrc/gdict-speller.c:393
+msgid "Cannot connect to server"
+msgstr "Palvelimeen ei saada yhteyttä"
+
+#: gdictsrc/gdict-about.c:40
+msgid ""
+"Client for MIT dictionary server.\n"
+"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+msgstr ""
+"Asiakas MIT-sanakirjapalvelimelle.\n"
+"http://gdict.dhs.org/, http://www.psilord.com/code/\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: gdictsrc/gdict-app.c:117
+msgid "Spell-checking..."
+msgstr "Etsitään samankaltaisia sanoja..."
+
+#: gdictsrc/gdict-app.c:125
+msgid "Spell check done"
+msgstr "Oikeinkirjoitus tarkistettu"
+
+#: gdictsrc/gdict-app.c:133 gdictsrc/gdict-app.c:266
+msgid "No matches found"
+msgstr "Ei löydy"
+
+#: gdictsrc/gdict-app.c:250
+msgid "Looking up word..."
+msgstr "Etsitään sanaa..."
+
+#: gdictsrc/gdict-app.c:258
+msgid "Lookup done"
+msgstr "Etsintä suoritettu"
+
+#: gdictsrc/gdict-app.c:278
+msgid "String not found"
+msgstr "Merkkijonoa ei löydy"
+
+#: gdictsrc/gdict-app.c:381
+msgid "Find:"
+msgstr "Etsi:"
+
+#: gdictsrc/gdict-app.c:413
+msgid ""
+"Unable to perform requested operation, either because the server\n"
+"you are using is down or because you are not connected to the\n"
+"Internet. If you are not already connected to the Internet, please\n"
+"do so and try again."
+msgstr ""
+"Vaaditun toiminnon suorittaminen ei onnistu. Käyttämäsi palvelin\n"
+"ei ehkä ole toiminnassa, tai Internet-yhteytesi ei toimi oikein.\n"
+"Varmista, että yhteytesi on päällä ja yritä uudelleen."
+
+#: gdictsrc/gdict-app.c:452 gdictsrc/gdict-app.c:509
+#: gdictsrc/gdict-applet.c:313
+msgid "Look up"
+msgstr "Etsi"
+
+#: gdictsrc/gdict-app.c:453 gdictsrc/gdict-app.c:510
+msgid "Look up word in dictionary"
+msgstr "Etsi sanakirjasta"
+
+#: gdictsrc/gdict-app.c:455 gdictsrc/gdict-app.c:512
+msgid "Spell"
+msgstr "Oikeinkirjoitus"
+
+#: gdictsrc/gdict-app.c:456 gdictsrc/gdict-app.c:513
+msgid "Check word spelling"
+msgstr "Tarkista oikeinkirjoitus"
+
+#: gdictsrc/gdict-app.c:517
+msgid "Cut to Clipboard"
+msgstr "Leikkaa leikepöydälle"
+
+#: gdictsrc/gdict-app.c:520
+msgid "Copy to Clipboard"
+msgstr "Kopioi leikepöydälle"
+
+#: gdictsrc/gdict-app.c:523
+msgid "Paste Clipboard Contents"
+msgstr "Liitä leikepöydän sisältö"
+
+#: gdictsrc/gdict-app.c:526
+msgid "Settings"
+msgstr "Asetukset"
+
+#: gdictsrc/gdict-app.c:527
+msgid "Server to use, default search strategy, fonts"
+msgstr "Palvelin, kirjasimet, hakustrategia"
+
+#: gdictsrc/gdict-app.c:588
+msgid "Word definition"
+msgstr "Määritelmä"
+
+#: gdictsrc/gdict-applet.c:280 logview/logview.c:136
+msgid "About..."
+msgstr "Tietoja..."
+
+#: gdictsrc/gdict-applet.c:289 logview/logview.c:116
+msgid "Preferences..."
+msgstr "Asetukset..."
+
+#: gdictsrc/gdict-applet.c:293
+msgid "Show/Hide Definition Window..."
+msgstr "Näytä/Piilota määritelmäikkuna..."
+
+#: gdictsrc/gdict-applet.c:297
+msgid "Spell Check..."
+msgstr "Oikoluku..."
+
+#: gdictsrc/gdict-applet.c:309
+msgid "Cannot create applet!\n"
+msgstr "Sovelman luominen ei onnistu!\n"
+
+#: gdictsrc/gdict-defbox.c:524 gdictsrc/gdict-speller.c:417
+#, c-format
+msgid "Error invoking query: %s"
+msgstr "Virhe lähettäessä kyselyä: %s"
+
+#: gdictsrc/gdict-pref-dialog.c:38
+msgid "Headword:"
+msgstr "Sana:"
+
+#: gdictsrc/gdict-pref-dialog.c:39
+msgid "Sub-number:"
+msgstr "Alalaji"
+
+#: gdictsrc/gdict-pref-dialog.c:40
+msgid "Pronunciation:"
+msgstr "Ääntäminen:"
+
+#: gdictsrc/gdict-pref-dialog.c:41
+msgid "Etymology:"
+msgstr "Etymologia:"
+
+#: gdictsrc/gdict-pref-dialog.c:42
+msgid "Part of speech:"
+msgstr "Puheessa:"
+
+#: gdictsrc/gdict-pref-dialog.c:43
+msgid "Example:"
+msgstr "Esimerkki:"
+
+#: gdictsrc/gdict-pref-dialog.c:44
+msgid "Main body:"
+msgstr "Päärunko:"
+
+#: gdictsrc/gdict-pref-dialog.c:45
+msgid "Cross-reference:"
+msgstr "Viittaus:"
+
+#. Fixme these should be stock buttons
+#: gdictsrc/gdict-pref-dialog.c:129 mini-utils/gshutdown/gshutdown.c:316
+#: stripchart/prefs.c:195
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: gdictsrc/gdict-pref-dialog.c:147
+msgid "Smart lookup"
+msgstr "Älykäs haku"
+
+#: gdictsrc/gdict-pref-dialog.c:156
+msgid "Server:"
+msgstr "Palvelin:"
+
+#: gdictsrc/gdict-pref-dialog.c:161
+msgid "Port:"
+msgstr "Portti:"
+
+#: gdictsrc/gdict-pref-dialog.c:171
+msgid "Database:"
+msgstr "Tietokanta:"
+
+#: gdictsrc/gdict-pref-dialog.c:178
+msgid "Default strategy:"
+msgstr "Strategia:"
+
+#: gdictsrc/gdict-pref-dialog.c:185
+msgid "Server"
+msgstr "Palvelin"
+
+#: gdictsrc/gdict-pref-dialog.c:235
+msgid "Fonts"
+msgstr "Kirjasimet"
+
+#: gdictsrc/gdict-pref-dialog.c:252
+msgid "Display handle bar"
+msgstr "Näytä kahva"
+
+#: gdictsrc/gdict-pref-dialog.c:256
+msgid ""
+"You have to restart GDict for these\n"
+"settings to become active."
+msgstr ""
+"Ottaaksesi asetukset käyttöön sinun on\n"
+"käynnistettävä ohjelma uudelleen."
+
+#: gdictsrc/gdict-pref-dialog.c:263
+msgid "Applet"
+msgstr "Sovelma"
+
+#: gdictsrc/gdict-pref-dialog.c:494
+msgid "Search all databases"
+msgstr "Etsi kaikista tietokannoista"
+
+#: gdictsrc/gdict-pref-dialog.c:585
+msgid "The server you specified could not be found."
+msgstr "Määriteltyä palvelinta ei löydy."
+
+#: gdictsrc/gdict-speller.c:118
+msgid "Word:"
+msgstr "Sana:"
+
+#: gdictsrc/gdict-speller.c:127
+msgid "Search Strategy:"
+msgstr "Hakustrategia:"
+
+#: gdictsrc/gdict-speller.c:150
+msgid "Find Words..."
+msgstr "Etsi sanoja..."
+
+#: gdictsrc/gdict-speller.c:151
+msgid "Look up Word..."
+msgstr "Etsi sanaa..."
+
+#: gdictsrc/gdict-speller.c:163
+msgid "Spell checker"
+msgstr "Oikolukija"
+
+#: gdiskfree/gdiskfree_app.c:53 gdiskfree/gdiskfree_menus.c:108
+msgid "GDiskFree"
+msgstr "GDiskFree"
+
+#: gdiskfree/gdiskfree_app.c:73
+#, c-format
+msgid "Unable to parse the geometry string '%s'"
+msgstr "Epäselvä geometriajono: '%s'"
+
+#: gdiskfree/gdiskfree.c:58
+msgid "Specify the geometry of the window."
+msgstr "Määritä ikkunan geometria."
+
+#: gdiskfree/gdiskfree.c:59 gtt/main.c:439 mini-utils/gless/gless.c:130
+msgid "GEOMETRY"
+msgstr "GEOMETRIA"
+
+#: gdiskfree/gdiskfree_menus.c:111
+msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
+msgstr ""
+"GDiskFree on GNOME:n vastine konsoliohjelmalle 'df'.\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: gdiskfree/gdiskfree_options.c:222
+msgid "GDiskFree Properties"
+msgstr "Ominaisuudet"
+
+#: gdiskfree/gdiskfree_options.c:227
+msgid "Invoke sync before getting usage info"
+msgstr "Aja sync ennen tietojen hakemista"
+
+#: gdiskfree/gdiskfree_options.c:239
+msgid "Show drive mount points"
+msgstr "Näytä liitoskohdat"
+
+#: gdiskfree/gdiskfree_options.c:250
+msgid "Show drive size"
+msgstr "Näytä aseman koko"
+
+#: gdiskfree/gdiskfree_options.c:260
+msgid "Dial Orientation"
+msgstr "Suunta"
+
+#: gdiskfree/gdiskfree_options.c:265
+msgid "Vertical"
+msgstr "Pysty"
+
+#: gdiskfree/gdiskfree_options.c:278
+msgid "Horizontal"
+msgstr "Vaaka"
+
+#: gdiskfree/gdiskfree_options.c:297
+msgid "Update interval (ms)"
+msgstr "Päivitysväli (ms)"
+
+#: gdiskfree/gdiskfree_options.c:308
+msgid "General Settings"
+msgstr "Yleiset Asetukset"
+
+#: gsearchtool/gsearchtool.c:33
+msgid "File name"
+msgstr "Tiedostonimi"
+
+#: gsearchtool/gsearchtool.c:35
+msgid "Don't search subdirectories"
+msgstr "Älä etsi alihakemistoista"
+
+#: gsearchtool/gsearchtool.c:36
+msgid "File owner"
+msgstr "Tiedoston omistaja"
+
+#: gsearchtool/gsearchtool.c:37
+msgid "File owner group"
+msgstr "Tiedoston omistajaryhmä"
+
+#: gsearchtool/gsearchtool.c:38
+msgid "Last modification time"
+msgstr "Viimeisimmän muutoksen aika"
+
+#: gsearchtool/gsearchtool.c:40
+msgid "Don't search mounted filesystems"
+msgstr "Älä hae liitetyistä tiedostojärjestelmistä"
+
+#: gsearchtool/gsearchtool.c:41
+msgid "Empty file"
+msgstr "Tyhjä tiedosto"
+
+#: gsearchtool/gsearchtool.c:43
+msgid "Invalid user or group"
+msgstr "Kelvoton käyttäjä tai ryhmä"
+
+#: gsearchtool/gsearchtool.c:44
+msgid "Filenames except"
+msgstr "Tiedostonimet paitsi"
+
+#: gsearchtool/gsearchtool.c:45
+msgid "Follow symbolic links"
+msgstr "Seuraa symboolisia linkkejä"
+
+#: gsearchtool/gsearchtool.c:46
+msgid "Simple substring search"
+msgstr "Yksinkertainen merkkijonohaku"
+
+#: gsearchtool/gsearchtool.c:47
+msgid "Regular expression search"
+msgstr "Haku säännöllisellä lausekkeella"
+
+#: gsearchtool/gsearchtool.c:49
+msgid "Extended regular expression search"
+msgstr "Haku laajennetulla säännöllisellä ilmaisulla"
+
+#: gsearchtool/gsearchtool.c:151
+msgid "grep options found in find list bad bad!"
+msgstr "grepin valitsimia löydetty findin listasta, paha, paha!"
+
+#: gsearchtool/gsearchtool.c:165
+msgid "non-grep option found in grep list, bad bad!"
+msgstr "kelvottomia grep-optioita löydetty grepin listasta, paha, paha!"
+
+#: gsearchtool/gsearchtool.c:219
+msgid "Search already running on another page"
+msgstr "Haku jo käynnissä toisella sivulla"
+
+#. create the results box
+#. FIXME: add an option to autoclear result box and pass TRUE in that
+#. case
+#: gsearchtool/gsearchtool.c:229
+msgid "Search Results"
+msgstr "Haun tulokset"
+
+#: gsearchtool/gsearchtool.c:336
+msgid ""
+"\n"
+"... Too many errors to display ..."
+msgstr ""
+"\n"
+"... Liian monta virhettä näytettäväksi ..."
+
+#: gsearchtool/gsearchtool.c:369 gsearchtool/gsearchtool.c:400
+msgid "Start directory does not exist"
+msgstr "Aloita hakemistosta:"
+
+#: gsearchtool/gsearchtool.c:409
+msgid "Search command line"
+msgstr "Hae komentoriviltä"
+
+#: gsearchtool/gsearchtool.c:415
+msgid ""
+"This is the command line that can be used to execute this search from the "
+"console:\n"
+"(Note: to print one file per line rather then null separated,\n"
+"append \"| tr '\\000' '\\n'\" to the line below)"
+msgstr ""
+"Tämä on komentorivi, jolta haku voidaan suorittaa konsolista:\n"
+"(Huom: tulostaaksesi tiedoston / rivi, lisää \"| tr '\\000' '\\n'\")"
+
+#: gsearchtool/gsearchtool.c:502
+msgid "Entry changed called for a non entry option!"
+msgstr "Muutettu kohta kutsui sellaista valitsinta, mitä ei ole!"
+
+#: gsearchtool/gsearchtool.c:568
+msgid "Enable"
+msgstr "Päällä"
+
+#: gsearchtool/gsearchtool.c:576 logview/actions.c:163
+#: meat-grinder/meat-grinder.c:702
+msgid "Remove"
+msgstr "Poista"
+
+#: gsearchtool/gsearchtool.c:628
+msgid "Start in directory:"
+msgstr "Aloita hakemistosta:"
+
+#: gsearchtool/gsearchtool.c:630
+msgid "Browse"
+msgstr "Selaa"
+
+#: gsearchtool/gsearchtool.c:650 mini-utils/gw/gw.c:494
+msgid "Add"
+msgstr "Lisää"
+
+#: gsearchtool/gsearchtool.c:661
+msgid "Show Command"
+msgstr "Näytä Komento"
+
+#: gsearchtool/gsearchtool.c:666 gsearchtool/gsearchtool.c:759 gtt/ctree.c:576
+#: gtt/ghtml.c:95 gtt/ghtml.c:267 gtt/glade/interval_edit.glade.h:11
+msgid "Start"
+msgstr "Aloita"
+
+#: gsearchtool/gsearchtool.c:667 gsearchtool/gsearchtool.c:760 gtt/ghtml.c:95
+#: gtt/ghtml.c:270 gtt/glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Pysäytä"
+
+#: gsearchtool/gsearchtool.c:700
+msgid "Nothing to locate"
+msgstr "Ei mitään etsittävää"
+
+#: gsearchtool/gsearchtool.c:735
+msgid ""
+"This is an interface to locate.  If you type in a simple string it\n"
+"will be matched as a subset of the full path, and if you type\n"
+"in a string with wildcards, it will have to match the full path."
+msgstr ""
+"Tämä on käyttöliittymä komennolle 'locate'. Sinun on syötettävä\n"
+"alle joko polun osa, tai jokerimerkkejä käyttäessä koko polku."
+
+#: gsearchtool/gsearchtool.c:744
+msgid "Locate file: "
+msgstr "Locate: "
+
+#: gsearchtool/gsearchtool.c:781
+msgid "Full find (find)"
+msgstr "Täysi haku (find)"
+
+#: gsearchtool/gsearchtool.c:783
+msgid "Quick find (locate)"
+msgstr "Pikahaku (locate)"
+
+#: gsearchtool/gsearchtool.c:804
+msgid "The Gnome Search Tool"
+msgstr "The Gnome Search Tool"
+
+#: gsearchtool/gsearchtool.c:805
+msgid "(C) 1998,2000 the Free Software Foundation"
+msgstr "(C) 1998, 2000 the Free Software Foundation"
+
+#: gsearchtool/gsearchtool.c:807
+msgid "Frontend to the unix find/grep/locate commands"
+msgstr ""
+"Käyttöliittymä unixin find-, grep- ja locate-komennoile\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: gsearchtool/gsearchtool.c:865
+msgid "Gnome Search Tool"
+msgstr "Gnome Search Tool"
+
+#: gsearchtool/outdlg.c:51
+msgid "Cannot save file"
+msgstr "Ei voida tallentaa tiedostoa"
+
+#: gsearchtool/outdlg.c:69 meat-grinder/meat-grinder.c:476
+msgid "Save Results"
+msgstr "Tallenna Tulokset"
+
+#: gsearchtool/outdlg.c:130
+msgid "Command mangled"
+msgstr "Virheellinen komento"
+
+#: gsearchtool/outdlg.c:159
+msgid "No command for this mime type"
+msgstr "Ei komentoa tälle MIME-tyypille"
+
+#: gtt/app.c:115 gtt/app.c:227
+msgid "no project selected"
+msgstr "ei valittua projektia"
+
+#: gtt/app.c:217
+msgid "00:00"
+msgstr "00:00"
+
+#: gtt/app.c:259 mini-utils/gless/gless.c:423
+msgid ""
+"Couldn't understand geometry (position and size)\n"
+" specified on command line"
+msgstr "Viallinen geometria"
+
+#: gtt/ctree.c:511
+msgid "Total"
+msgstr "Aika"
+
+#: gtt/ctree.c:513
+#, fuzzy
+msgid "Total time spent on this project."
+msgstr "Projektille annettava nimi"
+
+#: gtt/ctree.c:518
+#, fuzzy
+msgid "Entry"
+msgstr "Merkinnän loppu:"
+
+#: gtt/ctree.c:520
+#, fuzzy
+msgid "Time spent under the current diary entry."
+msgstr "Projektille annettava nimi"
+
+#: gtt/ctree.c:526 gtt/glade/interval_edit.glade.h:14
+msgid "Today"
+msgstr "Tänään"
+
+#: gtt/ctree.c:528
+#, fuzzy
+msgid "Time spent on this project today."
+msgstr "Projektille annettava nimi"
+
+#: gtt/ctree.c:533
+msgid "Week"
+msgstr "Viikko"
+
+#: gtt/ctree.c:535
+msgid "Time spent on this project this week."
+msgstr ""
+
+#: gtt/ctree.c:541
+msgid "Month"
+msgstr "Kuukausi"
+
+#: gtt/ctree.c:543
+msgid "Time spent on this project this month."
+msgstr ""
+
+#: gtt/ctree.c:549
+msgid "Year"
+msgstr "Vuosi"
+
+#: gtt/ctree.c:551
+msgid "Time spent on this project this year."
+msgstr ""
+
+#: gtt/ctree.c:557
+#, fuzzy
+msgid "Title"
+msgstr "Tiedosto"
+
+#: gtt/ctree.c:558 gtt/menucmd.c:148
+msgid "Project Title"
+msgstr "Projektin nimi"
+
+#: gtt/ctree.c:563 gtt/ctree.c:564 gtt/menucmd.c:149 stripchart/params.c:654
+msgid "Description"
+msgstr "Kuvaus"
+
+#: gtt/ctree.c:569 gtt/ghtml.c:95 gtt/ghtml.c:220
+msgid "Diary Entry"
+msgstr ""
+
+#: gtt/ctree.c:571
+#, fuzzy
+msgid "The current diary entry"
+msgstr "Sulje tämänhetkinen dokumentti"
+
+#: gtt/ctree.c:578
+#, fuzzy
+msgid "Estimated Project Start Date"
+msgstr "Arvioitu alkupäivä"
+
+#: gtt/ctree.c:583
+#, fuzzy
+msgid "End"
+msgstr "Päällä"
+
+#: gtt/ctree.c:585
+#, fuzzy
+msgid "Estimated Project Completion Date"
+msgstr "Arvioitu alkupäivä"
+
+#: gtt/ctree.c:590
+msgid "Due"
+msgstr ""
+
+#: gtt/ctree.c:592
+msgid ""
+"Due Date: the date by which the project absolutely must be completed by."
+msgstr ""
+
+#: gtt/ctree.c:599 mini-utils/guname/info.c:61
+msgid "Size"
+msgstr "Koko"
+
+#: gtt/ctree.c:601
+msgid "Sizing: How much work it will take to finish this project."
+msgstr ""
+
+#: gtt/ctree.c:607
+#, fuzzy
+msgid "Done"
+msgstr "Ei mitään"
+
+#: gtt/ctree.c:609
+msgid "Percent Complete: How much of this project has been finished till now."
+msgstr ""
+
+#: gtt/ctree.c:616
+msgid "U"
+msgstr ""
+
+#: gtt/ctree.c:618
+msgid "Urgency: Does this project need to be done soon, done quickly?"
+msgstr ""
+
+#: gtt/ctree.c:624
+msgid "Imp"
+msgstr ""
+
+#: gtt/ctree.c:626
+msgid "Importance: How important is this project?"
+msgstr ""
+
+#: gtt/ctree.c:632 mini-utils/idetool/idetool.c:317
+#: mini-utils/idetool/idetool.c:319
+msgid "Status"
+msgstr "Tila"
+
+#: gtt/ctree.c:634
+#, fuzzy
+msgid "The current status of this project."
+msgstr "Vaihda tämänhetkinen tehtävä tälle projektille"
+
+#: gtt/ctree.c:969 gtt/glade/project_properties.glade.h:25
+msgid "Low"
+msgstr "Alhainen"
+
+#: gtt/ctree.c:970
+msgid "Med"
+msgstr "Tavallinen"
+
+#: gtt/ctree.c:971 gtt/glade/project_properties.glade.h:15
+msgid "High"
+msgstr "Korkea"
+
+#: gtt/ctree.c:980 gtt/glade/project_properties.glade.h:29
+msgid "Not Started"
+msgstr "Ei alkanut"
+
+#: gtt/ctree.c:981 gtt/glade/project_properties.glade.h:21
+msgid "In Progress"
+msgstr "Käynnissä"
+
+#: gtt/ctree.c:982 gtt/glade/project_properties.glade.h:31
+msgid "On Hold"
+msgstr "Pysäytetty"
+
+#: gtt/ctree.c:983 gtt/glade/project_properties.glade.h:9
+msgid "Cancelled"
+msgstr "Peruutettu"
+
+#: gtt/ctree.c:984 gtt/glade/project_properties.glade.h:10
+msgid "Completed"
+msgstr "Valmis"
+
+#: gtt/file-io.c:376
+msgid "project %t started"
+msgstr "projekti %t aloitettu"
+
+#: gtt/file-io.c:379
+msgid "stopped project %t"
+msgstr "projekti %t pysäytetty"
+
+#. Translators: This is a "time format", that is
+#. * format on how to print the elapsed time with
+#. * hours:minutes:seconds.
+#: gtt/file-io.c:677
+#, c-format
+msgid "%d:%02d:%02d"
+msgstr "%d:%02d:%02d"
+
+#: gtt/ghtml.c:95 gtt/ghtml.c:273
+msgid "Elapsed"
+msgstr "Kulunut"
+
+#: gtt/ghtml.c:113 gtt/ghtml.c:369 gtt/ghtml.c:378
+msgid "(empty)"
+msgstr "(tyhjä)"
+
+#: gtt/ghtml.c:225
+#, fuzzy
+msgid "Notes"
+msgstr "Muistiinpanoja:"
+
+#: gtt/ghtml.c:229
+msgid "Task Time"
+msgstr "Tehtäväaika"
+
+#: gtt/ghtml.c:233
+msgid "Bill Status"
+msgstr "Laskun tila"
+
+#: gtt/ghtml.c:237 gtt/ghtml.c:408 gtt/glade/task_properties.glade.h:4
+msgid "Billable"
+msgstr "Laskutettava"
+
+#: gtt/ghtml.c:241
+msgid "Bill Rate"
+msgstr "Laskutustahti"
+
+#: gtt/ghtml.c:245 mini-utils/gcolorsel/view-color-list.c:197
+#: mini-utils/guname/moreinfo.c:227
+msgid "Value"
+msgstr "Arvo"
+
+#: gtt/ghtml.c:249
+msgid "Billable Value"
+msgstr "Lasku"
+
+#: gtt/ghtml.c:253 gtt/ghtml.c:279
+msgid "No Default Value"
+msgstr "Oletus"
+
+#: gtt/ghtml.c:276
+#, fuzzy
+msgid "Start Time Fuzziness"
+msgstr "Aloita aikasähellys"
+
+#: gtt/ghtml.c:392 gtt/glade/task_properties.glade.h:13
+msgid "Hold"
+msgstr "Pysäytä"
+
+#: gtt/ghtml.c:395 gtt/glade/task_properties.glade.h:3
+msgid "Bill"
+msgstr "Lasku"
+
+#: gtt/ghtml.c:398 gtt/glade/task_properties.glade.h:21
+msgid "Paid"
+msgstr "Maksettu"
+
+#: gtt/ghtml.c:411 gtt/glade/task_properties.glade.h:17
+msgid "Not Billable"
+msgstr "Ei laskutettava"
+
+#: gtt/ghtml.c:414 gtt/glade/task_properties.glade.h:16
+msgid "No Charge"
+msgstr "Ei maksua"
+
+#: gtt/ghtml.c:424 gtt/glade/task_properties.glade.h:22
+msgid "Regular"
+msgstr "Tavallinen"
+
+#: gtt/ghtml.c:427 gtt/glade/task_properties.glade.h:20
+msgid "Overtime"
+msgstr "Yliaika"
+
+#: gtt/ghtml.c:430
+msgid "Double Overtime"
+msgstr "Tuplayliaika"
+
+#: gtt/ghtml.c:433 gtt/glade/task_properties.glade.h:12
+msgid "Flat Fee"
+msgstr "Tasainen"
+
+#: gtt/ghtml.c:453
+msgid "Error - Unknown"
+msgstr "Virhe - Tuntematon"
+
+#: gtt/ghtml.c:703
+msgid "unknown token: >>>>"
+msgstr "tuntematon merkki: >>>>"
+
+#: gtt/journal.c:108
+msgid "Error 404 Not Found"
+msgstr "Error 404 Not Found"
+
+#: gtt/journal.c:110
+#, c-format
+msgid "The file %s was not found."
+msgstr "Tiedostoa %s ei löydy."
+
+#: gtt/journal.c:111
+msgid "(null)"
+msgstr "(null)"
+
+#: gtt/journal.c:120
+msgid "Unkown Error"
+msgstr "Tuntematon virhe"
+
+#: gtt/journal.c:169 gtt/plug-in.c:90
+#, c-format
+msgid ""
+"Unable to open the file %s\n"
+"%s"
+msgstr ""
+"Ei voida avata tiedostoa %s\n"
+"%s"
+
+#: gtt/journal.c:248 gtt/proj.c:716 gtt/proj.c:1539 gtt/proj.c:1667
+#: gtt/proj.c:1807
+msgid "New Diary Entry"
+msgstr ""
+
+#: gtt/journal.c:436
+msgid "Save HTML To File"
+msgstr "Tallenna HTML tiedostoon"
+
+#: gtt/log.c:55
+#, c-format
+msgid "Cannot open logfile %s for append"
+msgstr "Ei voida avata lokitiedostoa %s lisäämiseen"
+
+#. Translators: Format to use in the gtt logfile
+#: gtt/log.c:64
+#, fuzzy
+msgid "%b %d %H:%M:%S"
+msgstr "%b %d %H:%M:%S"
+
+#: gtt/log.c:102
+msgid "no description"
+msgstr "ei kuvausta"
+
+#: gtt/log.c:167 gtt/log.c:258
+msgid "program started"
+msgstr "ohjelma aloitettu"
+
+#. log_if_equal
+#: gtt/log.c:250
+msgid "program exited"
+msgstr "ohjelma lopetettu"
+
+#: gtt/main.c:114
+msgid ""
+"There seems to be another GTimeTracker running.\n"
+"Press OK to start GTimeTracker anyway, or press Cancel to quit."
+msgstr ""
+"Näyttää siltä, että toinen ajanseurantaohjelma on käynnissä.\n"
+"Paina OK käynnistääksesi Ajanseurannan siitä huolimatta\n"
+" tai Peruuta lopettaaksesi."
+
+#: gtt/main.c:126
+msgid "Cannot create pid-file!"
+msgstr "Ei voida luoda pid-tiedostoa!"
+
+#: gtt/main.c:219
+msgid "Do you want to continue?"
+msgstr "Haluatko jatkaa?"
+
+#: gtt/main.c:222 gtt/main.c:275
+msgid "Error"
+msgstr "Virhe"
+
+#: gtt/main.c:272
+msgid "Shall I setup a new configuration?"
+msgstr "Määrittelenkö uudet asetukset?"
+
+#: gtt/main.c:439
+msgid "Specify geometry"
+msgstr "Määritä geometria"
+
+#: gtt/main.c:441
+msgid "Select a project on startup"
+msgstr "Valitse projekti käynnistettäessä"
+
+#: gtt/main.c:441
+msgid "PROJECT"
+msgstr "PROJEKTI"
+
+#: gtt/main.c:481 gtt/menucmd.c:48 gtt/menucmd.c:204 gtt/menucmd.c:240
+msgid "Warning"
+msgstr "Varoitus"
+
+#: gtt/menucmd.c:85
+msgid ""
+"GTimeTracker is a combination stop-watch, diary, consultant billing system "
+"and project manager.  You can measure the amount of time you spend on a "
+"task, associate a memo with it, set a billing rate, print an invoice, as "
+"well as track that status of other projects."
+msgstr ""
+
+#: gtt/menucmd.c:142
+msgid "New Project..."
+msgstr "Uusi projekti..."
+
+#: gtt/menucmd.c:224 gtt/toolbar.c:167
+msgid "Reload Configuration File"
+msgstr "Lataa asetustiedosto uudelleen"
+
+#: gtt/menucmd.c:225
+msgid "Do you really want to reload the configuration file?"
+msgstr "Haluatko todellakin lukea asetustiedoston uudelleen?"
+
+#: gtt/menucmd.c:260
+#, c-format
+msgid "File %s exists, overwrite?"
+msgstr "Tiedosto %s on olemassa, korvataan?"
+
+#: gtt/menucmd.c:271
+msgid "File cannot be written"
+msgstr "Tiedostoon ei voida kirjoittaa."
+
+#: gtt/menucmd.c:291
+msgid "Export Current State"
+msgstr "Vie nykyinen tila"
+
+#: gtt/menus.c:33
+msgid "_New Project..."
+msgstr "_Uusi projekti..."
+
+#: gtt/menus.c:36
+msgid "_Reload Configuration File"
+msgstr "_Päivitä asetustiedosto"
+
+#: gtt/menus.c:40
+msgid "_Save Configuration File"
+msgstr "_Tallenna asetustiedosto"
+
+#: gtt/menus.c:44
+msgid "_Export Current State"
+msgstr "_Vie nykyinen tila"
+
+#: gtt/menus.c:63 gtt/menus.c:173
+msgid "Clear _Daily Counter"
+msgstr "_Tyhjennä päivälaskuri"
+
+#: gtt/menus.c:64 gtt/menus.c:174
+msgid "Zero out todays timer by deleting todays time logs"
+msgstr "Nollaa tämän päivän laskuri poistamalla päivän aikalokit"
+
+#: gtt/menus.c:68 gtt/menus.c:87 gtt/menus.c:156
+msgid "_Journal..."
+msgstr "_Päiväkirja..."
+
+#: gtt/menus.c:69 gtt/menus.c:88 gtt/menus.c:157
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
+#: gtt/menus.c:72 gtt/menus.c:160
+msgid "New Diary _Entry"
+msgstr ""
+
+#: gtt/menus.c:73 gtt/menus.c:161
+msgid "Change the current task for this project"
+msgstr "Vaihda tämänhetkinen tehtävä tälle projektille"
+
+#: gtt/menus.c:91
+msgid "_All Journal..."
+msgstr ""
+
+#: gtt/menus.c:92
+msgid "Show the verbose timesheet journal for this project"
+msgstr ""
+
+#: gtt/menus.c:95
+msgid "_Invoice..."
+msgstr "_Lasku..."
+
+#: gtt/menus.c:96
+msgid "Show a sample invoice for this project"
+msgstr "Näyttää esimerkkilaskun tälle projektille"
+
+#: gtt/menus.c:99
+msgid "_Primer..."
+msgstr "_Aapinen..."
+
+#: gtt/menus.c:100
+msgid "Show a sample introductory primer for designing custom reports"
+msgstr "Näytä raporttien luomisen aapinen "
+
+#: gtt/menus.c:103
+msgid "_New Report..."
+msgstr "_Uusi raportti..."
+
+#: gtt/menus.c:104
+msgid "Define a path to a new GTT phtml report file"
+msgstr "Määrittele polku uudelle GTT-phtml-raporttitiedostolle"
+
+#: gtt/menus.c:115
+msgid "St_art"
+msgstr "_Käynnistä"
+
+#: gtt/menus.c:116
+msgid "Start the timer running"
+msgstr "Aloita ajanlasku"
+
+#: gtt/menus.c:121
+msgid "Sto_p"
+msgstr "_Pysäytä"
+
+#: gtt/menus.c:122
+msgid "Stop the timer"
+msgstr "Pysäytä laskuri"
+
+#: gtt/menus.c:127
+msgid "_Timer Running"
+msgstr "_Ajastin käy"
+
+#: gtt/menus.c:146
+msgid "_Reports"
+msgstr "_Raportit"
+
+#: gtt/menus.c:147
+msgid "_Timer"
+msgstr "A_jastin"
+
+#. deal with the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#: gtt/menus.c:244
+msgid "Reports"
+msgstr "Raportit"
+
+#: gtt/plug-in.c:121
+msgid "Reports/<Separator>"
+msgstr "Raportit/<Erotin>"
+
+#: gtt/proj.c:697
+msgid "Old GTT Tasks"
+msgstr "Vanhat GTT-tehtävät"
+
+#: gtt/props-proj.c:94 gtt/props-proj.c:95 gtt/props-task.c:75
+#: gtt/props-task.c:76
+msgid "empty"
+msgstr "tyhjä"
+
+#: gtt/timer.c:117
+#, c-format
+msgid ""
+"The keyboard and mouse have been idle\n"
+"for %d minutes.  The currently running\n"
+"project (%s - %s)\n"
+"has been stopped.\n"
+"Do you want to restart it?"
+msgstr ""
+"Näppäimistö ja hiiri ovat olleet\n"
+"koskemattomina %d minuuttia. Käynnissä\n"
+"ollut projekti (%s - %s)\n"
+"on keskeytetty.\n"
+"Haluatko aloittaa uudestaan?"
+
+#: gtt/timer.c:125
+msgid "System Idle"
+msgstr "Järjestelmä levossa"
+
+#. Note to translators: just skip the `[GTT]'
+#: gtt/toolbar.c:159
+msgid "[GTT]New"
+msgstr "[GTT]Uusi"
+
+#: gtt/toolbar.c:160
+msgid "Create a New Project..."
+msgstr "Luo uusi projekti..."
+
+#: gtt/toolbar.c:166
+msgid "Reload"
+msgstr "Päivitä"
+
+#: gtt/glade/journal.glade.h:7 gtt/toolbar.c:170 stripchart/params.c:939
+msgid "Save"
+msgstr "Tallenna"
+
+#: gtt/toolbar.c:171
+msgid "Save Configuration File"
+msgstr "Tallenna asetustiedosto"
+
+#: gtt/toolbar.c:178
+msgid "Cut Selected Project"
+msgstr "Leikkaa valittu projekti"
+
+#: gtt/toolbar.c:182
+msgid "Copy Selected Project"
+msgstr "Kopioi valittu projekti"
+
+#: gtt/toolbar.c:186
+msgid "Paste Project"
+msgstr "Liitä projekti"
+
+#: gtt/glade/journal.glade.h:2 gtt/toolbar.c:193
+msgid "Journal"
+msgstr "Päiväkirja"
+
+#: gtt/toolbar.c:194
+msgid "View and Edit Timestamp Logs"
+msgstr "Katso ja muokkaa aikaleimalokeja"
+
+#: gtt/toolbar.c:199
+msgid "Props"
+msgstr "Ominaisuudet"
+
+#: gtt/toolbar.c:200
+msgid "Edit Project Properties..."
+msgstr "Muokkaa projektin ominaisuuksia..."
+
+#: gtt/toolbar.c:204
+msgid "Timer"
+msgstr "Ajastin"
+
+#: gtt/toolbar.c:205
+msgid "Start/Stop Timer"
+msgstr "Käynnistä/pysäytä ajastin"
+
+#: gtt/toolbar.c:211 logview/calendar.c:112 logview/logview.c:107
+msgid "Calendar"
+msgstr "Kalenteri"
+
+#: gtt/toolbar.c:212
+msgid "View Calendar"
+msgstr "Näytä kalenteri"
+
+#: gtt/toolbar.c:225
+msgid "Prefs"
+msgstr "Asetukset"
+
+#: gtt/toolbar.c:226
+msgid "Edit Preferences..."
+msgstr "Muokkaa asetuksia..."
+
+#: gtt/toolbar.c:230
+msgid "Manual"
+msgstr "Ohje"
+
+#: gtt/toolbar.c:231
+msgid "User's Guide and Manual"
+msgstr "Käyttäjän opas ja ohjekirja"
+
+#: gtt/toolbar.c:236
+msgid "Quit"
+msgstr "Lopeta"
+
+#: gtt/toolbar.c:236
+msgid "Quit GTimeTracker"
+msgstr "Sulje ohjelma"
+
+#: gtt/glade/interval_edit.glade.h:1
+msgid "1 Hour"
+msgstr "1 tunti"
+
+#: gtt/glade/interval_edit.glade.h:2
+msgid "10 Min"
+msgstr "10 Min"
+
+#: gtt/glade/interval_edit.glade.h:3
+msgid "15 Min"
+msgstr "15 Min"
+
+#: gtt/glade/interval_edit.glade.h:4
+msgid "2 Hours"
+msgstr "2 tuntia"
+
+#: gtt/glade/interval_edit.glade.h:5
+msgid "20 Min"
+msgstr "20 Min"
+
+#: gtt/glade/interval_edit.glade.h:6
+msgid "3 Hours"
+msgstr "3 tuntia"
+
+#: gtt/glade/interval_edit.glade.h:7
+msgid "30 Min"
+msgstr "30 Min"
+
+#: gtt/glade/interval_edit.glade.h:8
+msgid "5 Min"
+msgstr "5 Min"
+
+#: gtt/glade/interval_edit.glade.h:9
+msgid "Exact Time"
+msgstr "Tarkka aika"
+
+#: gtt/glade/interval_edit.glade.h:10
+msgid "Set how Uncertain the Start Time Is"
+msgstr "Aseta kuinka epätarkka aloitusaika on"
+
+#: gtt/glade/interval_edit.glade.h:12
+#, fuzzy
+msgid "Start Fuzz"
+msgstr "Aloita sähellys"
+
+#: gtt/glade/interval_popup.glade.h:1
+msgid "Delete Interval"
+msgstr "Poista viive"
+
+#: gtt/glade/interval_popup.glade.h:2
+msgid "Delete This Interval"
+msgstr "Poista tämä viive"
+
+#: gtt/glade/interval_popup.glade.h:3
+msgid "Edit Interval"
+msgstr "Muokkaa viivettä"
+
+#: gtt/glade/interval_popup.glade.h:4
+msgid "Edit the Start & Stop Times"
+msgstr "Muokkaa aloitus- ja lopetusaikoja"
+
+#: gtt/glade/interval_popup.glade.h:5
+#, fuzzy
+msgid "Insert Diary Entry"
+msgstr "_Lisää loppuun"
+
+#: gtt/glade/interval_popup.glade.h:6
+#, fuzzy
+msgid "Insert a new diary entry above this time interval."
+msgstr "Lisää uusi huomautus tämän viiveen yläpuolelle."
+
+#: gtt/glade/interval_popup.glade.h:7
+msgid "Merge Down"
+msgstr "Liitä alas"
+
+#: gtt/glade/interval_popup.glade.h:8
+msgid "Merge Into Interval Above"
+msgstr "Liitä ylempään viiveeseen"
+
+#: gtt/glade/interval_popup.glade.h:9
+msgid "Merge Into Interval Below"
+msgstr "Liitä alempaan viiveeseen"
+
+#: gtt/glade/interval_popup.glade.h:10
+msgid "Merge Up"
+msgstr "Liitä ylös"
+
+#: gtt/glade/interval_popup.glade.h:11
+msgid "Paste Diary Entry"
+msgstr ""
+
+#: gtt/glade/interval_popup.glade.h:12 gtt/glade/task_popup.glade.h:8
+#, fuzzy
+msgid "Paste a previously cut diary entry."
+msgstr "Liitä aikaisemmin leikattu huomautus."
+
+#: gtt/glade/journal.glade.h:1 mini-utils/gcolorsel/menus.c:89
+#: mini-utils/gcolorsel/menus.c:913 mini-utils/gshutdown/gshutdown.c:155
+#: mini-utils/gshutdown/gshutdown.c:631 stripchart/params.c:953
+msgid "Close"
+msgstr "Sulje"
+
+#: gtt/glade/journal.glade.h:3
+msgid "New File"
+msgstr "Uusi tiedosto"
+
+#: gtt/glade/journal.glade.h:4
+msgid "Open File"
+msgstr "Avaa tiedosto"
+
+#: gtt/glade/journal.glade.h:5
+msgid "Print"
+msgstr "Tulosta"
+
+#: gtt/glade/journal.glade.h:6
+msgid "Refresh"
+msgstr "Päivitä"
+
+#: gtt/glade/journal.glade.h:8
+msgid "Save File"
+msgstr "Tallenna tiedosto"
+
+#: gtt/glade/not-implemented.glade.h:1
+msgid "Information"
+msgstr "Tietoa"
+
+#: gtt/glade/not-implemented.glade.h:2
+msgid ""
+"This function is not yet implemented!\n"
+"Coming Soon, I hope!"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:1
+msgid "Display"
+msgstr "Näyttö"
+
+#: gtt/glade/prefs.glade.h:2
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr "Anna komento, joka suoritetaan muiden tehtävien puutteessa."
+
+#: gtt/glade/prefs.glade.h:3
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr "Anna komento, joka suoritetaan projekteja vaihdettaessa."
+
+#: gtt/glade/prefs.glade.h:4
+msgid "Entry Start:"
+msgstr "Merkinnän alku:"
+
+#: gtt/glade/prefs.glade.h:5
+msgid "Entry Stop:"
+msgstr "Merkinnän loppu:"
+
+#: gtt/glade/prefs.glade.h:7
+#, no-c-format
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
+"Viesti, joka kirjataan kun projekti alkaa. Käytä %t:tä otsikkoon, %d:tä "
+"kuvaukseen ja niin edelleen. Katso ohjekirjasta lisätietoja."
+
+#: gtt/glade/prefs.glade.h:9
+#, no-c-format
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
+"Viesti, joka kirjataan lokiin kun projekti loppuu. Käytä %s:tä otsikkoon, %d:"
+"tä kuvaukseen ja niin edelleen. Katso ohjekirjasta lisätietoja."
+
+#: gtt/glade/prefs.glade.h:10
+msgid "Fields"
+msgstr "Kentät"
+
+#: gtt/glade/prefs.glade.h:11
+msgid "Filename:"
+msgstr "Tiedostonimi:"
+
+#: gtt/glade/prefs.glade.h:12
+msgid "Idle Seconds:"
+msgstr "Levätyt sekunnit:"
+
+#: gtt/glade/prefs.glade.h:13
+msgid "Inactivity Timeout"
+msgstr "Epäaktiivisuuden aikaraja"
+
+#: gtt/glade/prefs.glade.h:14
+msgid "Logfile"
+msgstr "Lokitiedosto"
+
+#: gtt/glade/prefs.glade.h:15
+msgid "Min Recorded:"
+msgstr "Minuuttia nauhoitettu:"
+
+#: gtt/glade/prefs.glade.h:16
+msgid "Misc"
+msgstr "Sekalaiset"
+
+#: gtt/glade/prefs.glade.h:17
+msgid "No Project Command:"
+msgstr "'Ei projektia'-komento"
+
+#: gtt/glade/prefs.glade.h:18
+msgid "Project List Display"
+msgstr "Projektilistan näyttö"
+
+#: gtt/glade/prefs.glade.h:19
+msgid "Shell"
+msgstr "Kuori"
+
+#: gtt/glade/prefs.glade.h:20
+msgid "Shell Commands"
+msgstr "Ajettavat komennot"
+
+#: gtt/glade/prefs.glade.h:21
+#, fuzzy
+msgid "Show Current Diary Entry"
+msgstr "Näytä nykyinen tehtävä"
+
+#: gtt/glade/prefs.glade.h:22
+msgid "Show Estimated Effort"
+msgstr "Näytä arvioitu vaiva"
+
+#: gtt/glade/prefs.glade.h:23
+msgid "Show Percent Complete"
+msgstr "Näytä suoritusprosentti"
+
+#: gtt/glade/prefs.glade.h:24
+msgid "Show Planned Project End Date"
+msgstr "Näytä projektin suunniteltu lopetuspäivä"
+
+#: gtt/glade/prefs.glade.h:25
+msgid "Show Planned Project Start Date"
+msgstr "Näytä projektin suunniteltu aloituspäivä"
+
+#: gtt/glade/prefs.glade.h:26
+msgid "Show Project Description"
+msgstr "Näytä rojektin kuvaus"
+
+#: gtt/glade/prefs.glade.h:27
+#, fuzzy
+msgid "Show Project Due Date"
+msgstr "ei valittua projektia"
+
+#: gtt/glade/prefs.glade.h:28
+msgid "Show Project Importance"
+msgstr "Näytä projektin tärkeys"
+
+#: gtt/glade/prefs.glade.h:29
+msgid "Show Project Status"
+msgstr "Näytä projektin tila"
+
+#: gtt/glade/prefs.glade.h:30
+msgid "Show Project Urgency"
+msgstr "Näytä projektin kiireellisyys"
+
+#: gtt/glade/prefs.glade.h:31
+msgid "Show Seconds"
+msgstr "Näytä sekunnit"
+
+#: gtt/glade/prefs.glade.h:32
+msgid "Show Status Bar"
+msgstr "Näytä tilarivi"
+
+#: gtt/glade/prefs.glade.h:33
+msgid "Show Sub-Projects"
+msgstr "Näytä aliprojekti"
+
+#: gtt/glade/prefs.glade.h:34
+msgid "Show Table Header"
+msgstr "Näytä taulukon otsake"
+
+#: gtt/glade/prefs.glade.h:35
+#, fuzzy
+msgid "Show Time For The Current Diary Entry"
+msgstr "Näytä tämänhetkisen tehtävän aika"
+
+#: gtt/glade/prefs.glade.h:36
+msgid "Show Time This Month"
+msgstr "Näytä aika tässä kuussa"
+
+#: gtt/glade/prefs.glade.h:37
+msgid "Show Time This Week"
+msgstr "Näytä aika tällä viikolla"
+
+#: gtt/glade/prefs.glade.h:38
+msgid "Show Time This Year"
+msgstr "Näytä aika tänä vuonna"
+
+#: gtt/glade/prefs.glade.h:39
+msgid "Show Time Today"
+msgstr "Näytä aika tänään"
+
+#: gtt/glade/prefs.glade.h:40
+msgid "Show Toolbar Icons"
+msgstr "Näytä kuvakkeet"
+
+#: gtt/glade/prefs.glade.h:41
+msgid "Show Toolbar Texts"
+msgstr "Näytä tekstit"
+
+#: gtt/glade/prefs.glade.h:42
+msgid "Show Tooltips"
+msgstr "Näytä vinkit"
+
+#: gtt/glade/prefs.glade.h:43
+msgid "Show Total Time Ever"
+msgstr "Näytä koko aika"
+
+#: gtt/glade/prefs.glade.h:44
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr "Näytä 'Leikkaa', 'Kopioi', 'Liitä'"
+
+#: gtt/glade/prefs.glade.h:45
+msgid "Show `Help'"
+msgstr "Näytä 'Apua'"
+
+#: gtt/glade/prefs.glade.h:46
+msgid "Show `Journal'"
+msgstr "Näytä päiväkirja"
+
+#: gtt/glade/prefs.glade.h:47
+msgid "Show `New'"
+msgstr "Näytä 'Uusi'"
+
+#: gtt/glade/prefs.glade.h:48
+msgid "Show `Preferences'"
+msgstr "Näytä 'Asetukset'"
+
+#: gtt/glade/prefs.glade.h:49
+msgid "Show `Properties'"
+msgstr "Näytä 'Ominaisuudet'"
+
+#: gtt/glade/prefs.glade.h:50
+msgid "Show `Quit'"
+msgstr "Näytä 'Lopeta'"
+
+#: gtt/glade/prefs.glade.h:51
+msgid "Show `Save', `Reload'"
+msgstr "Näytä 'Tallenna', 'Päivitä'"
+
+#: gtt/glade/prefs.glade.h:52
+msgid "Show `Timer'"
+msgstr "Näytä 'Ajastin'"
+
+#: gtt/glade/prefs.glade.h:53
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr "Näytä projektin totetuttamiseen arvioitu työmäärä."
+
+#: gtt/glade/prefs.glade.h:54
+msgid "Switch Project Command:"
+msgstr "Projektin vaihtokomento:"
+
+#: gtt/glade/prefs.glade.h:55
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+
+#: gtt/glade/prefs.glade.h:56
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+"Aktiivinen projekti pysäytetään, kun hiiri/näppäimistö on ollut koskematon "
+"näin monta sekuntia. Arvo -1 poistaa ominaisuuden."
+
+#: gtt/glade/prefs.glade.h:57
+msgid "Toolbar"
+msgstr "Työkalurivi"
+
+#: gtt/glade/prefs.glade.h:58
+msgid "Toolbar Segments"
+msgstr "Työkalurivin osat"
+
+#: gtt/glade/prefs.glade.h:59
+msgid "Use Logfile"
+msgstr "Käytä lokitiedostoa"
+
+#: gtt/glade/prefs.glade.h:60
+msgid "View Project Fields"
+msgstr "Näytä projektin kentät"
+
+#: gtt/glade/project_properties.glade.h:1
+msgid "        "
+msgstr "        "
+
+#: gtt/glade/project_properties.glade.h:2
+msgid "            "
+msgstr "            "
+
+#: gtt/glade/project_properties.glade.h:3
+msgid "                        "
+msgstr "                        "
+
+#: gtt/glade/project_properties.glade.h:5
+#, no-c-format
+msgid "% Complete"
+msgstr "%s valmis"
+
+#: gtt/glade/project_properties.glade.h:6
+msgid "A title to assign to this project"
+msgstr "Projektille annettava nimi"
+
+#: gtt/glade/project_properties.glade.h:7
+msgid "Auto-merge Gap:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:8
+msgid "Auto-merge Interval:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:11
+msgid ""
+"Does this item need immediate attention? Note that some urgent tasks might "
+"not be important.  For example, Bill may want you to answer his email today, "
+"but you may have better things to do today."
+msgstr ""
+"Tarvitseeko tämä kohde välitöntä huomiota? Huomaa, että jotkut kiireelliset "
+"tehtävät eivät välttämättä ole tärkeitä. Esimerkiksi Bill saattaa haluta, "
+"että vastaat hänen viestiinsä tänään, mutta sinulla on tärkeämpääkin "
+"tekemistä."
+
+#: gtt/glade/project_properties.glade.h:12
+msgid "Double-Overtime Rate:"
+msgstr "Kaksinkertainen yliaika"
+
+#: gtt/glade/project_properties.glade.h:13
+msgid "Due Date:"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:14
+msgid "Flat Fee:"
+msgstr "Tasainen"
+
+#: gtt/glade/project_properties.glade.h:16
+msgid "Hours to Finish:"
+msgstr "Tunteja jäljellä:"
+
+#: gtt/glade/project_properties.glade.h:17
+msgid ""
+"How important is it to perform this task?  Not everything important is "
+"urgent.  For example, it is important to file a tax return every year, but "
+"you have a lot of time to get ready to do this."
+msgstr ""
+"Kuinka tärkeää tämän tehtävän suorittaminen on? Kaikki mikä on tärkeää, ei "
+"ole kiireellistä. On esimerkiksi tärkeää maksa verot joka vuosi, mutta "
+"sinulla on paljon aikaa valmistautumiseen."
+
+#: gtt/glade/project_properties.glade.h:18
+msgid ""
+"If the gap between intervals is smaller than this, the intervals will be "
+"merged together."
+msgstr "Jos viiveiden väli on pienempi kuin tämä, viiveet yhdistetään."
+
+#: gtt/glade/project_properties.glade.h:19
+msgid ""
+"If this project is billed for one price no matter how long it takes, enter "
+"the fee here."
+msgstr ""
+"Jos tästä projektista maksutetaan tietty hinta siihen kuluneesta ajasta "
+"huolimatta, syötä se tähän."
+
+#: gtt/glade/project_properties.glade.h:20
+msgid "Importance:"
+msgstr "Tärkeys: "
+
+#: gtt/glade/project_properties.glade.h:22
+#, fuzzy
+msgid ""
+"Internal notes about the project that will not be printed on an invoice."
+msgstr "Projektiin liittyviä sisäisiä huomautuksia, mitä ei tulosteta laskuun."
+
+#: gtt/glade/project_properties.glade.h:23
+msgid "Intervals"
+msgstr "Välit"
+
+#: gtt/glade/project_properties.glade.h:24
+msgid "Intervals smaller than this will be discarded"
+msgstr "Tätä pienemmät viiveet poistetaan"
+
+#: gtt/glade/project_properties.glade.h:26
+msgid "Medium"
+msgstr "Tavallinen"
+
+#: gtt/glade/project_properties.glade.h:27
+msgid "Minimum Interval: "
+msgstr "Minimiviive:"
+
+#: gtt/glade/project_properties.glade.h:28
+msgid "Not Set"
+msgstr "Ei asetettu"
+
+#: gtt/glade/project_properties.glade.h:30
+#: gtt/glade/task_properties.glade.h:18
+msgid "Notes:"
+msgstr "Muistiinpanoja:"
+
+#: gtt/glade/project_properties.glade.h:32
+msgid "Overtime Rate:"
+msgstr "Yliaika"
+
+#: gtt/glade/project_properties.glade.h:33
+msgid "Planned Finish:"
+msgstr "Suunniteltu lopetus:"
+
+#: gtt/glade/project_properties.glade.h:34
+msgid "Planned Start:"
+msgstr "Suunniteltu alku:"
+
+#: gtt/glade/project_properties.glade.h:35
+msgid "Planning"
+msgstr "Suunnitelma"
+
+#: gtt/glade/project_properties.glade.h:36
+msgid "Project"
+msgstr "Projekti"
+
+#: gtt/glade/project_properties.glade.h:37
+msgid "Project Description:"
+msgstr "Projektin kuvaus:"
+
+#: gtt/glade/project_properties.glade.h:38
+msgid "Project Title:"
+msgstr "Projektin nimi:"
+
+#: gtt/glade/project_properties.glade.h:39
+msgid "Rates"
+msgstr "Taksa"
+
+#: gtt/glade/project_properties.glade.h:40
+msgid "Regular Rate:"
+msgstr "Normaali"
+
+#: gtt/glade/project_properties.glade.h:41
+msgid "Status:"
+msgstr "Tila:"
+
+#: gtt/glade/project_properties.glade.h:42
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr ""
+"Projektin parissa käytetystä yliajasta maksettu palkka euroina tunnissa."
+
+#: gtt/glade/project_properties.glade.h:43
+msgid "The dollars per hour normally charged for this project."
+msgstr "Projektin parissa käytetystä ajasta maksettu palkka euroina tunnisssa."
+
+#: gtt/glade/project_properties.glade.h:44
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr "Yliaikatahti (yliaika sunnuntaisin jne.)"
+
+#: gtt/glade/project_properties.glade.h:45
+msgid "Time below which an interval is merged with its neighbors"
+msgstr ""
+
+#: gtt/glade/project_properties.glade.h:46
+msgid "Urgency:"
+msgstr "Kiireellisyys:"
+
+#: gtt/glade/project_properties.glade.h:47
+msgid "What is the status of this project?"
+msgstr "Mikä tämän projetin tila on?"
+
+#: gtt/glade/project_properties.glade.h:48
+#, fuzzy
+msgid "a short description that will be printed on the invoice."
+msgstr "lyhyt kuvaus joka tulostetaan."
+
+#: gtt/glade/project_properties.glade.h:49
+msgid "seconds"
+msgstr "sekuntia"
+
+#: gtt/glade/task_popup.glade.h:1
+#, fuzzy
+msgid "Add a new time interval"
+msgstr "Lisää uusi huomautus tämän viiveen yläpuolelle."
+
+#: gtt/glade/task_popup.glade.h:2
+msgid "Delete _Times"
+msgstr "Poista _ajat"
+
+#: gtt/glade/task_popup.glade.h:3
+#, fuzzy
+msgid "Delete the diary entry only, keep the time intervals"
+msgstr "Poista vain huomautus, säilytä viiveet"
+
+#: gtt/glade/task_popup.glade.h:4
+#, fuzzy
+msgid "Delete the diary entry, and the time intervals below it."
+msgstr "Poista huomautus ja siihen liittyvät viiveet."
+
+#: gtt/glade/task_popup.glade.h:5
+#, fuzzy
+msgid "Edit the diary entry and other task properties."
+msgstr "Muokkaa huomautusta ja muita tehtävän ominaisuuksia."
+
+#: gtt/glade/task_popup.glade.h:6
+#, fuzzy
+msgid "Insert a new diary entry above this one."
+msgstr "Lisää uusi huomautus tämän yläpuolelle."
+
+#: gtt/glade/task_popup.glade.h:7
+#, fuzzy
+msgid "New Time Interval"
+msgstr "Poista tämä viive"
+
+#: gtt/glade/task_popup.glade.h:9
+#, fuzzy
+msgid "_Delete Diary Entry"
+msgstr "Poista mittari"
+
+#: gtt/glade/task_popup.glade.h:10
+msgid "_Edit Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:11
+msgid "_New Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_popup.glade.h:12
+msgid "_Paste Diary Entry"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:1
+#, fuzzy
+msgid "A set of private notes that will not be printed on an invoice."
+msgstr "Lista yksityisistä huomautuksista, joita ei tulosteta."
+
+#: gtt/glade/task_properties.glade.h:2
+msgid "A short description to attach to this block of time."
+msgstr "Lyhyt kuvaus, joka liitetään tähän ajanjaksoon."
+
+#: gtt/glade/task_properties.glade.h:5
+msgid "Billable:"
+msgstr "Laskutettava:"
+
+#: gtt/glade/task_properties.glade.h:6
+msgid "Billing Block:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:7
+msgid "Billing Rate:"
+msgstr "Laskutustahti:"
+
+#: gtt/glade/task_properties.glade.h:8
+msgid "Billing Status:"
+msgstr "Laskutustila:"
+
+#: gtt/glade/task_properties.glade.h:9
+#, fuzzy
+msgid "Diary Entry Properties"
+msgstr "Ominaisuudet"
+
+#: gtt/glade/task_properties.glade.h:10
+msgid "Diary Entry:"
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:11
+msgid "Fee rate to be charged for this task."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:14
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:15
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:19
+msgid "OverOver"
+msgstr "YliYli"
+
+#: gtt/glade/task_properties.glade.h:23
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+
+#: gtt/glade/task_properties.glade.h:24
+msgid "minutes"
+msgstr "minuuttia"
+
+#: logview/about.c:41
+msgid "Cesar Miquel (miquel@df.uba.ar)"
+msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#: logview/about.c:42
+#, fuzzy
+msgid ""
+"This  program  is  part of  the  GNOME  project. Logview comes with "
+"ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+"redistribute it under the conditions of the GNU General Public Licence. The "
+"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+msgstr ""
+"Tämä ohjelma on osa Linuxin GNOME-työpöytäympäristöä. Lokiselaimen käyttö "
+"tapahtuu täysin omalla vastuulla, MINKÄÄNLAISTA takuuta ei ole. Lokiselain "
+"on vapaa ohjelmisto, ja sitä saa levittää GNU General Public License-"
+"lisenssin sääntöjen mukaisesti. Kuvake on Tuomas Kuosmasen (alias tigert) "
+"työtä.\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#. go get logview.xpm in $(prefix)/share/pixmaps/logview
+#: logview/about.c:55
+msgid "Logview"
+msgstr "Logview"
+
+#: logview/about.c:56
+msgid "Copyright (C) 1998"
+msgstr "Copyright 1998"
+
+#: logview/actions.c:92
+msgid "Action database"
+msgstr "Toimintotietokanta"
+
+#: logview/actions.c:97 logview/monitor.c:110
+msgid "Monitor options"
+msgstr "Tarkkailtavat lokit"
+
+#: logview/actions.c:151
+msgid "Add..."
+msgstr "Lisää..."
+
+#: logview/actions.c:157
+msgid "Edit..."
+msgstr "Muokkaa..."
+
+#: logview/actions.c:278
+#, c-format
+msgid "Cannot open action data base <%s>! Open failed."
+msgstr "Ei voida avata tietokantaa <%s>! Avaaminen epäonnistui."
+
+#: logview/actions.c:313 logview/actions.c:326 logview/actions.c:337
+#: logview/actions.c:348 logview/actions.c:359 logview/actions.c:370
+msgid "Error parsing actions data base"
+msgstr "Virhe toimintotietokannassa"
+
+#: logview/actions.c:404
+msgid "Can't write to actions database!"
+msgstr "Toimintotietokantaan kirjoittaminen ei onnistu!"
+
+#: logview/actions.c:511
+msgid "<empty>"
+msgstr "<tyhjä>"
+
+#: logview/actions.c:512
+msgid "log name regexp"
+msgstr "lokinimen säännöllinen lauseke"
+
+#: logview/actions.c:513
+msgid "process regexp"
+msgstr "prosessi"
+
+#: logview/actions.c:514
+msgid "message regexp"
+msgstr "viesti"
+
+#: logview/actions.c:515
+msgid "action to execute when regexps are TRUE"
+msgstr "toimenpide, jos joku ylläolevista on tosi"
+
+#: logview/actions.c:516
+msgid "description"
+msgstr "kuvaus"
+
+#: logview/actions.c:746
+msgid "description:"
+msgstr "kuvaus:"
+
+#: logview/actions.c:754
+msgid "Description of this entry."
+msgstr "Kuvaus"
+
+#: logview/actions.c:810
+#, c-format
+msgid ""
+"tag: [%s]\n"
+"log_name: [%s]\n"
+"process: [%s]\n"
+"message: [%s]\n"
+"description: [%s]\n"
+"action: [%s]\n"
+msgstr ""
+"tag: [%s]\n"
+"lokin nimi: [%s]\n"
+"prosessi: [%s]\n"
+"viesti: [%s]\n"
+"kuvaus: [%s]\n"
+"toimenpide: [%s]\n"
+
+#: logview/info.c:79 logview/logview.c:110
+msgid "Log stats"
+msgstr "Lokitiedot"
+
+#: logview/info.c:139
+msgid "Log information"
+msgstr "Tietoja lokista"
+
+#: logview/info.c:156
+msgid "Log:"
+msgstr "Loki:"
+
+#: logview/info.c:158
+msgid "Size:"
+msgstr "Koko:"
+
+#: logview/info.c:160
+msgid "Modified:"
+msgstr "Muutettu:"
+
+#: logview/info.c:162
+msgid "Start date:"
+msgstr "Aloitettu:"
+
+#: logview/info.c:164
+msgid "Last date:"
+msgstr "Viim. päiväys:"
+
+#: logview/info.c:166
+msgid "Num. lines:"
+msgstr "Rivejä:"
+
+#: logview/info.c:183
+#, c-format
+msgid "%ld bytes"
+msgstr "%ld tavua"
+
+#: logview/log_repaint.c:86
+msgid "January"
+msgstr "Tammikuu"
+
+#: logview/log_repaint.c:86
+msgid "February"
+msgstr "Helmikuu"
+
+#: logview/log_repaint.c:86
+msgid "March"
+msgstr "Maaliskuu"
+
+#: logview/log_repaint.c:86
+msgid "April"
+msgstr "Helmikuu"
+
+#: logview/log_repaint.c:86
+msgid "May"
+msgstr "Toukokuu"
+
+#: logview/log_repaint.c:87
+msgid "June"
+msgstr "Kesäkuu"
+
+#: logview/log_repaint.c:87
+msgid "July"
+msgstr "Heinäkuu"
+
+#: logview/log_repaint.c:87
+msgid "August"
+msgstr "Elokuu"
+
+#: logview/log_repaint.c:87
+msgid "September"
+msgstr "Syyskuu"
+
+#: logview/log_repaint.c:87
+msgid "October"
+msgstr "Lokakuu"
+
+#: logview/log_repaint.c:88
+msgid "November"
+msgstr "Marraskuu"
+
+#: logview/log_repaint.c:88
+msgid "December"
+msgstr "Joulukuu"
+
+#. Translators: Date only format, %x should well do really
+#: logview/log_repaint.c:477
+#, c-format
+msgid "%x"
+msgstr "%x"
+
+#. Translators: should be only the time, date could be bogus
+#: logview/log_repaint.c:587
+#, c-format
+msgid "%X"
+msgstr "%X"
+
+#. bogus
+#. Translators: Make sure this is only Month and Day format, year
+#. * will be bogus here
+#: logview/log_repaint.c:671
+msgid "%B %e"
+msgstr "%B %e"
+
+#: logview/logrtns.c:199
+msgid "Not enough memory!\n"
+msgstr "Muisti ei riitä!\n"
+
+#: logview/logrtns.c:207
+msgid "Out of memory!\n"
+msgstr "Muisti loppui!\n"
+
+#: logview/logrtns.c:233
+msgid "Unable to open logfile!\n"
+msgstr "Lokitiedoston avaaminen ei onnistu.\n"
+
+#: logview/logrtns.c:288
+#, c-format
+msgid "%s is not a regular file."
+msgstr "%s ei ole tavallinen tiedosto."
+
+#: logview/logrtns.c:296
+#, c-format
+msgid ""
+"%s is not user readable. Either run the program as root or ask the sysadmin "
+"to change the permissions on the file."
+msgstr ""
+"%s ei ole käyttäjien luettavissa. Voit suorittaa ohjelman pääkäyttäjänä "
+"(root) tai pyytää järjestelmän ylläpitäjää muuttamaan oikeuksia."
+
+#: logview/logrtns.c:309
+#, c-format
+msgid "%s could not be opened."
+msgstr "Ei voi avata tiedostoa: %s"
+
+#: logview/logrtns.c:332
+#, c-format
+msgid "%s not a log file."
+msgstr "%s ei ole lokitiedosto."
+
+#: logview/logrtns.c:756 logview/logrtns.c:787 logview/logrtns.c:918
+msgid "ReadLogStats: out of memory"
+msgstr "ReaadLogStats: muisti loppui"
+
+#: logview/logview.c:85
+msgid "Open log..."
+msgstr "Avaa loki..."
+
+#: logview/logview.c:86
+msgid "Open log"
+msgstr "Avaa loki"
+
+#: logview/logview.c:88
+msgid "Export log..."
+msgstr "Vie loki..."
+
+#: logview/logview.c:89
+msgid "Export log"
+msgstr "Tallenna loki"
+
+#: logview/logview.c:91 logview/logview.c:92
+msgid "Close log"
+msgstr "Sulje loki"
+
+#: logview/logview.c:94 logview/logview.c:95
+msgid "Switch log"
+msgstr "Vaihda lokia"
+
+#: logview/logview.c:97
+msgid "Monitor..."
+msgstr "Valvo..."
+
+#: logview/logview.c:98
+msgid "Monitor log"
+msgstr "Valvo lokia"
+
+#: logview/logview.c:101
+msgid "Exit program"
+msgstr "Poistu ohjelmasta"
+
+#: logview/logview.c:108
+msgid "Show calendar log"
+msgstr "Näytä kalenteriloki"
+
+#: logview/logview.c:111
+msgid "Show log stats"
+msgstr "Näytä lokin tiedot"
+
+#: logview/logview.c:113
+msgid "Zoom"
+msgstr "Suurenna"
+
+#: logview/logview.c:114
+msgid "Show line info"
+msgstr "Näytä rivin tiedot"
+
+#: logview/logview.c:117
+msgid "Show user preferences"
+msgstr "Asetukset"
+
+#: logview/logview.c:124
+msgid "Select...               "
+msgstr "Valitse...             "
+
+#: logview/logview.c:125
+msgid "Select log events"
+msgstr "Valitse lokitapahtumat"
+
+#: logview/logview.c:127
+msgid "Filter..                "
+msgstr "Suodin..               "
+
+#: logview/logview.c:128
+msgid "Filter log events"
+msgstr "Suotimen lokitapahtumat"
+
+#: logview/logview.c:137
+msgid "Info about logview"
+msgstr "Tietoja Logviewistä"
+
+#: logview/logview.c:241
+msgid "No log files to open"
+msgstr "Ei avattavia lokitiedostoja"
+
+#. Create App
+#: logview/logview.c:264
+msgid "System Log Viewer"
+msgstr "Logview"
+
+#: logview/logview.c:368
+msgid "Filename: "
+msgstr "Lokitiedosto: "
+
+#: logview/logview.c:384
+msgid "Date: "
+msgstr "Päiväys:"
+
+#: logview/logview.c:619
+msgid "Too many open logs. Close one and try again"
+msgstr "Liikaa avoimia lokeja. Sulje yksi ja kokeile uudestaan."
+
+#: logview/logview.c:676
+msgid "Open new logfile"
+msgstr "Avaa uusi lokitiedosto"
+
+#: logview/misc.c:55
+#, c-format
+msgid "Error: [%s]\n"
+msgstr "Virhe: [%s]\n"
+
+#: logview/monitor.c:124
+msgid "Choose logs to monitor"
+msgstr "Valitse tarkkailtavat lokit"
+
+#. Arrowed buttons
+#: logview/monitor.c:168
+msgid "Add >>"
+msgstr "Lisää >>"
+
+#. Remove button
+#: logview/monitor.c:176
+msgid "Remove <<"
+msgstr "Poista <<"
+
+#. Check boxes
+#: logview/monitor.c:207
+msgid "Hide app"
+msgstr "Piilota ohjelma"
+
+#: logview/monitor.c:215
+msgid "Exec actions"
+msgstr "Suorita toiminnot"
+
+#. Actions button
+#: logview/monitor.c:227
+msgid "Actions..."
+msgstr "Toiminnot..."
+
+#: logview/monitor.c:282 logview/monitor.c:329
+msgid "tmp_list is NULL\n"
+msgstr "tmp_list on NULL\n"
+
+#: logview/monitor.c:456
+msgid "Monitoring logs..."
+msgstr "Valvotaan lokeja..."
+
+#: logview/monitor.c:638
+msgid "TOUCHED!!\n"
+msgstr "MUUTETTU!!\n"
+
+#: logview/userprefsdialog.c:65
+msgid "hostname column width ( 0 to hide this column ): "
+msgstr "Tietokoneen nimen pituus (0 ei näytä nimeä): "
+
+#: logview/userprefsdialog.c:66
+msgid "Columns"
+msgstr "Sarakkeet"
+
+#: logview/zoom.c:78
+msgid "Zoom view"
+msgstr "Tarkat tiedot"
+
+#: logview/zoom.c:154
+#, c-format
+msgid "Log line detail for %s"
+msgstr "Tarkat tiedot lokille %s"
+
+#: logview/zoom.c:157
+msgid "Log line detail for <No log loaded>"
+msgstr "Ei avoimia lokeja"
+
+#: logview/zoom.c:180
+msgid "Date:"
+msgstr "Päivämäärä:"
+
+#: logview/zoom.c:182
+msgid "Process:"
+msgstr "Prosessi:"
+
+#: logview/zoom.c:184
+msgid "Message:"
+msgstr "Viesti:"
+
+#: logview/zoom.c:186
+msgid "Description:"
+msgstr "Kuvaus:"
+
+#. Translators: do not include year, it would be bogus
+#: logview/zoom.c:212
+msgid "%B %e %X"
+msgstr "%B %e"
+
+#.
+#. * 	-------------------
+#. * 	     Defines
+#. * 	-------------------
+#.
+#: logview/config.c:34
+msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#: logview/config.c:35
+msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#: logview/config.c:36
+msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+msgstr "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#: logview/config.c:37
+msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+msgstr "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#: logview/config.c:39
+msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+
+#: logview/config.c:40
+msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+
+#: logview/config.c:41
+msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#: logview/config.c:42
+msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#: logview/config.c:43
+msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+
+#: logview/config.c:44
+msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+
+#: logview/desc_db.c:37
+#, c-format
+msgid "Cannot open regexp data base <%s>! Open failed."
+msgstr "Ei voida avata lauseketietokantaa <%s>! Avaaminen epäonnistui."
+
+#: logview/desc_db.c:147
+#, c-format
+msgid "Cannot open description data base <%s>! Open failed."
+msgstr "Ei voida avata kuvaustietokantaa <%s>! Avaaminen epäonnistui."
+
+#: mini-utils/gcolorsel/dialog-prefs.c:119
+msgid "Do nothing"
+msgstr "Älä tee mitään"
+
+#: mini-utils/gcolorsel/dialog-prefs.c:124
+msgid "Append it to ->"
+msgstr "Liitä ->"
+
+#: mini-utils/gcolorsel/dialog-prefs.c:129
+msgid "Search it in ->"
+msgstr "Etsi kohteesta: "
+
+#: mini-utils/gcolorsel/dialog-prefs.c:135
+msgid "Edit it"
+msgstr "Muokkaa"
+
+#. First view is considered as the default view ...
+#: mini-utils/gcolorsel/gcolorsel.c:24
+msgid "List"
+msgstr "Lista"
+
+#: mini-utils/gcolorsel/gcolorsel.c:28
+msgid "Grid"
+msgstr "Taulukko"
+
+#: mini-utils/gcolorsel/gcolorsel.c:32 mini-utils/gcolorsel/menus.c:573
+#: mini-utils/gcolorsel/menus.c:660 stripchart/params.c:1041
+#: stripchart/params.c:1044
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: mini-utils/gcolorsel/gcolorsel.c:40 stripchart/params.c:1034
+#: stripchart/params.c:1037
+msgid "File"
+msgstr "Tiedosto"
+
+#: mini-utils/gcolorsel/gcolorsel.c:42
+msgid "Search RGB"
+msgstr "Etsi RGB"
+
+#: mini-utils/gcolorsel/gcolorsel.c:44
+msgid "Monitor"
+msgstr "Valvo"
+
+#: mini-utils/gcolorsel/gcolorsel.c:46
+msgid "Concat"
+msgstr "Liitä"
+
+#: mini-utils/gcolorsel/gcolorsel.c:96
+#, c-format
+msgid "'%s' document has been modified; do you wish to save it ?"
+msgstr "Dokumenttia '%s' muutettu, haluatko tallentaa sen?"
+
+#: mini-utils/gcolorsel/gcolorsel.c:206
+msgid "GColorsel was unable to paste colors from the clipboard."
+msgstr "Väriselain ei onnistunut liittämään värejä työpöydältä."
+
+#: mini-utils/gcolorsel/gcolorsel.c:220
+msgid "Please select a file document before."
+msgstr "Valitse ensin dokumentti."
+
+#: mini-utils/gcolorsel/gcolorsel.c:398
+msgid ""
+"I can't execute this action. Check that :\n"
+"\n"
+"1. You have associated an action with this event.\n"
+"2. The associated document still exists.\n"
+"3. The type of the associated document.\n"
+"\n"
+"Go to preferences, in the edit menu."
+msgstr ""
+"En voi suorittaa toimintoa. Tarkista:\n"
+"\n"
+"1. Että tapahtumaan on liitetty toiminto.\n"
+"2. Että Dokumentti on yhä olemassa.\n"
+"3. Dokumentin tyyppi\n"
+"\n"
+"Mene asetuksiin muokkaa-valikon kautta."
+
+#. Init GnomeMDI
+#: mini-utils/gcolorsel/gcolorsel.c:505
+msgid "GColorsel"
+msgstr "GColorsel"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:1
+msgid "<- Remove"
+msgstr "<- Poista"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:2
+msgid "<- Remove all"
+msgstr "<- Poista kaikki"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:3
+msgid "Add ->"
+msgstr "Lisää ->"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:4
+msgid "Add all ->"
+msgstr "Lisää kaikki ->"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:5
+msgid "Available documents"
+msgstr "Mahdolliset dokumentit"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:6
+msgid "Available views"
+msgstr "Mahdolliset sivut"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:7
+msgid "Connect to"
+msgstr "Liitä"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:8
+msgid "Create a document"
+msgstr "Luo dokumentti"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:9
+msgid "Create views"
+msgstr "Luo sivuja"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:10
+msgid "Description :"
+msgstr "Kuvaus: "
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:11
+msgid ""
+"Please, select the type of document to create.\n"
+"You can choose a short name, do not confuse it with the file name."
+msgstr ""
+"Valitse luotavan dokumentin tyyppi.\n"
+"Voit valita lyhyen nimen, älä sekoita sitä tiedostonimeen."
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:13
+msgid "Select source document"
+msgstr "Valitse lähdedokumentti"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:14
+msgid "Select type"
+msgstr "Valitse tyyppi"
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:15
+msgid "Short name : "
+msgstr "Lyhyt nimi: "
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:16
+msgid ""
+"This document read document from one or more other document. Please, choose "
+"these documents."
+msgstr ""
+"Tämä dokumentti lukee tietoja yhdestä tai useammasta dokumentista. Valitse "
+"nämä dokumentit."
+
+#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:17
+msgid ""
+"You can create one or more views for this document. Note that you have to "
+"create at least one view."
+msgstr ""
+"Voit luoda yhden tai useamman sivun tähän dokumenttiin. Huomaa, että sinun "
+"on luotava ainakin yksi sivu."
+
+#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:1
+msgid "Create a new view"
+msgstr "Luo uusi sivu"
+
+#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:2
+msgid "Please, select the type of view you want to create."
+msgstr "Valitse luotavan sivun tyyppi."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:1
+msgid "Actions"
+msgstr "Toiminnot"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:2 stripchart/params.c:732
+msgid "Bottom"
+msgstr "Pohja"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:3
+#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
+msgid "Default"
+msgstr "Oletus"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:4
+msgid "Display documents menu (restart required)."
+msgstr "Näytä dokumenttivalikko (vaatii uudellenkäynnistyksen)."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:5
+msgid "Documents"
+msgstr "Dokumentit"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:6
+msgid "DoubleClick in previews:"
+msgstr "Kaksoisnapsautus esikatselussa:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:7
+msgid "DoubleClick in views:"
+msgstr "Kaksoisnapsautus sivuilla:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:8
+msgid "Drop:"
+msgstr "Pudota:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:9
+#: mini-utils/gshutdown/gshutdown.c:398
+msgid "General"
+msgstr "Yleiset"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:10
+msgid "Grab:"
+msgstr "Sieppaa:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:11
+msgid "Left"
+msgstr "Vasen"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:12
+msgid "MDI (Multiple Document Interface)"
+msgstr "MDI (Multiple Document Interface)"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:13
+msgid "Modal"
+msgstr "Pieni"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:14
+msgid "Mode:"
+msgstr "Tila:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:15
+msgid "Notebook"
+msgstr "Välilehti"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:16
+msgid "Notebook Tab position:"
+msgstr "Välilehtien sijainti:"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:17
+msgid "On ... execute ..."
+msgstr "Kun ... suorita ..."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:18
+msgid "Right"
+msgstr "Oikea"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:19
+msgid "Save session on exit."
+msgstr "Tallenna istunto poistuessa."
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:20
+msgid "Session"
+msgstr "Istunto"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:21
+#: stripchart/chart-app.c:162 stripchart/params.c:704
+msgid "Top"
+msgstr "Ennätys"
+
+#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:22
+msgid "Toplevel"
+msgstr "Ylätaso"
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:1
+msgid ""
+"Begin\n"
+"Comments :"
+msgstr ""
+"Alku\n"
+"Kommentit: "
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:3
+msgid ""
+"End\n"
+"Comments :"
+msgstr ""
+"Loppu\n"
+"Kommentit: "
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:5
+msgid "File name :"
+msgstr "Tiedostonimi: "
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:6
+msgid "Header :"
+msgstr "Otsikko: "
+
+#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:7
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:3
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:4
+msgid "Special properties"
+msgstr "Erikoisominaisuudet"
+
+#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:1
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:2
+msgid "Common properties"
+msgstr "Tavalliset ominaisuudet"
+
+#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:2
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:3
+msgid "Name :"
+msgstr "Nimi: "
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:1
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:106
+msgid "Blue :"
+msgstr "Sininen: "
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:2
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:102
+msgid "Green :"
+msgstr "Vihreä: "
+
+#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:4
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:98
+msgid "Red :"
+msgstr "Punainen: "
+
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:1
+msgid "Colors format :"
+msgstr "Värin formaatti:"
+
+#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:3
+msgid "Display document control (if exists)"
+msgstr "Näytä dokumentin kontrolli (jos on)"
+
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:1
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:1
+msgid "Color height :"
+msgstr "Värin korkeus:"
+
+#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:2
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:2
+msgid "Color width :"
+msgstr "Värin leveys: "
+
+#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:3
+msgid "Draw numbers"
+msgstr "Piirrä numerot"
+
+#: mini-utils/gcolorsel/menus.c:52
+msgid "New Document"
+msgstr "Uusi dokumentti"
+
+#: mini-utils/gcolorsel/menus.c:53
+msgid "Create a new document"
+msgstr "Luo uusi dokumentti"
+
+#: mini-utils/gcolorsel/menus.c:55
+msgid "New View"
+msgstr "Uusi sivu"
+
+#: mini-utils/gcolorsel/menus.c:56
+msgid "Create a new view for a document"
+msgstr "Luo dokumentille uusi sivu"
+
+#: mini-utils/gcolorsel/menus.c:62
+msgid "Close document"
+msgstr "Sulje dokumentti"
+
+#: mini-utils/gcolorsel/menus.c:63
+msgid "Close the current document"
+msgstr "Sulje tämänhetkinen dokumentti"
+
+#: mini-utils/gcolorsel/menus.c:65
+msgid "Close view"
+msgstr "Sulje sivu"
+
+#: mini-utils/gcolorsel/menus.c:66 mini-utils/gcolorsel/menus.c:913
+msgid "Close the current view"
+msgstr "Sulje tämä sivu"
+
+#: mini-utils/gcolorsel/menus.c:76
+msgid "_Open palette..."
+msgstr "_Avaa paletti..."
+
+#: mini-utils/gcolorsel/menus.c:77
+msgid "Load a palette"
+msgstr "Lataa paletti"
+
+#: mini-utils/gcolorsel/menus.c:79
+msgid "_Save palette"
+msgstr "_Tallenna paletti"
+
+#: mini-utils/gcolorsel/menus.c:80
+msgid "Save the current palette in a file"
+msgstr "Tallenna paletti _tiedostoon"
+
+#: mini-utils/gcolorsel/menus.c:82
+msgid "Save palette _As..."
+msgstr "Tallenna paletti _nimellä"
+
+#: mini-utils/gcolorsel/menus.c:83
+msgid "Save the current palette with a different name"
+msgstr "Tallenna paletti eri nimellä"
+
+#: mini-utils/gcolorsel/menus.c:105
+msgid "Insert color"
+msgstr "Lisää väri"
+
+#: mini-utils/gcolorsel/menus.c:107
+msgid "Remove selected colors"
+msgstr "Poista valitut värit"
+
+#: mini-utils/gcolorsel/menus.c:109
+msgid "Edit selected colors ..."
+msgstr "Muokkaa valittuja värejä..."
+
+#: mini-utils/gcolorsel/menus.c:113
+msgid "Document/View properties"
+msgstr "Dokumentin/sivun ominaisuudet"
+
+#: mini-utils/gcolorsel/menus.c:179
+#, c-format
+msgid ""
+"GColorsel was unable to save the file :\n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that the path you provided exists,\n"
+"and that you have the approprate write permissions.\n"
+"\n"
+"Do you want to retry ?"
+msgstr ""
+"Väriselain ei voinut tallentaa tiedostoa: \n"
+"\n"
+"%s\n"
+"\n"
+"Varmista, että annettu polku on olemassa,\n"
+"ja sinulla on kirjoitusoikeudet.\n"
+"\n"
+"Haluatko yrittää uudelleen?"
+
+#: mini-utils/gcolorsel/menus.c:198
+#, c-format
+msgid ""
+"GColorsel was unable to load the file:\n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that the path you provided exists,\n"
+"and that you have permissions for opening the file."
+msgstr ""
+"Väriselain ei kyennyt lataamaan tiedostoa:\n"
+"\n"
+"%s\n"
+"\n"
+"Varmista, että annettu polku on olemassa,\n"
+"ja että sinulla on lukuoikeudet."
+
+#: mini-utils/gcolorsel/menus.c:217
+msgid "Open Palette"
+msgstr "Avaa paletti"
+
+#: mini-utils/gcolorsel/menus.c:242
+msgid "Loading file, please wait ..."
+msgstr "Ladataan tiedostoa, odota..."
+
+#: mini-utils/gcolorsel/menus.c:273
+msgid "Save Palette as"
+msgstr "Tallenna paletti nimellä"
+
+#: mini-utils/gcolorsel/menus.c:320
+msgid "File not saved ..."
+msgstr "Ei tallennettu..."
+
+#: mini-utils/gcolorsel/menus.c:330
+msgid "File saved ..."
+msgstr "Tallennettu..."
+
+#: mini-utils/gcolorsel/menus.c:408
+#, c-format
+msgid ""
+"I'm going to close the last view of '%s'.\n"
+"\n"
+"This document will be closed too, continue ?\n"
+"\n"
+"Please note that %d virtual document use data from this document."
+msgstr ""
+"Suljen nyt dokumentin '%s' viimeisen sivun.\n"
+"\n"
+"Myös dokumentti suljetaan, jatketaanko?\n"
+"\n"
+"Huomaa, että %d virtuaalista dokumenttia käyttää tätä dokumenttia."
+
+#: mini-utils/gcolorsel/menus.c:410
+#, c-format
+msgid ""
+"I'm going to close the last view of '%s'.\n"
+"\n"
+"This document will be closed too, continue ?"
+msgstr ""
+"Suljen nyt dokumentin '%s' viimeisen sivun.\n"
+"\n"
+"Myös dokumentti suljetaan, jatketaanko?"
+
+#: mini-utils/gcolorsel/menus.c:444
+#, c-format
+msgid ""
+"I'm going to close '%s'.\n"
+"\n"
+"Please note that %d views will be destroyed,\n"
+"and that %d virtual document use data from this document.\n"
+"\n"
+"Do you want to continue ?"
+msgstr ""
+"Suljen nyt: '%s'\n"
+"\n"
+"Huomaa, että %d sivua tuhotaan, ja\n"
+"%d virtuaalista dokumenttia käyttää tietoja tästä dokumentista.\n"
+"\n"
+"Jatketaanko?"
+
+#: mini-utils/gcolorsel/menus.c:446
+#, c-format
+msgid ""
+"I'm going to close '%s'.\n"
+"\n"
+"Please note that %d views will be destroyed.\n"
+"\n"
+"Do you want to continue ?"
+msgstr ""
+"Suljen nyt: '%s'\n"
+"\n"
+"Huomaa, että %d sivua tuhotaan.\n"
+"\n"
+"Jatketaanko?"
+
+#: mini-utils/gcolorsel/menus.c:493
+msgid "Gnome Color Browser"
+msgstr "Gnome Color Browser"
+
+#: mini-utils/gcolorsel/menus.c:496
+msgid "Small utility to browse available X11 colors."
+msgstr ""
+"Pieni työkalu käytettävissä olevien X11:n värien selailuun\n"
+"Suomennos: http://gnome-fi.sourceforge.net/"
+
+#: mini-utils/gcolorsel/menus.c:606
+msgid "New Color"
+msgstr "Uusi väri"
+
+#: mini-utils/gcolorsel/menus.c:863
+msgid "View properties"
+msgstr "Näytä ominaisuudet"
+
+#: mini-utils/gcolorsel/menus.c:878
+msgid "Document properties"
+msgstr "Dokumentin ominaisuudet"
+
+#: mini-utils/gcolorsel/menus.c:911
+msgid "Open"
+msgstr "Avaa"
+
+#: mini-utils/gcolorsel/menus.c:911
+msgid "Open a palette"
+msgstr "Avaa paletti"
+
+#: mini-utils/gcolorsel/menus.c:916
+msgid "Grab"
+msgstr "Sieppaa"
+
+#: mini-utils/gcolorsel/menus.c:916
+msgid "Grab a color on the screen"
+msgstr "Sieppaa väri ruudulta"
+
+#: mini-utils/gcolorsel/session.c:305
+msgid ""
+"Your config file is corrupted.\n"
+"Do you want to create a new session ?"
+msgstr ""
+"Asetustiedostosi on viallinen.\n"
+"Luodaanko uusi istunto??"
+
+#: mini-utils/gcolorsel/session.c:358
+msgid "Loading files, please wait ..."
+msgstr "Ladataan tiedostoja, odota..."
+
+#: mini-utils/gcolorsel/session.c:383
+msgid ""
+"One or more files can not be restored :\n"
+"\n"
+msgstr ""
+"Yhden tai useamman tiedoston palauttaminen ei onnistu:\n"
+"\n"
+
+#: mini-utils/gcolorsel/session.c:409
+msgid "System Colors"
+msgstr "Järjestelmän värit"
+
+#: mini-utils/gcolorsel/session.c:430
+msgid "User Colors"
+msgstr "Käyttäjän värit"
+
+#: mini-utils/gcolorsel/session.c:438
+msgid "Search"
+msgstr "Etsi"
+
+#: mini-utils/gcolorsel/view-color-generic.c:16
+msgid "Decimal 8 bits"
+msgstr "Kymmenjärjestelmä (8 bittiä)"
+
+#: mini-utils/gcolorsel/view-color-generic.c:17
+msgid "Decimal 16 bits"
+msgstr "Kymmenjärjestelmä (16 bittiä)"
+
+#: mini-utils/gcolorsel/view-color-generic.c:18
+msgid "Hex 8 bits"
+msgstr "Heksa (8 bittiä)"
+
+#: mini-utils/gcolorsel/view-color-generic.c:19
+msgid "Hex 16 bits"
+msgstr "Heksa (16 bittiä)"
+
+#: mini-utils/gcolorsel/view-color-generic.c:20
+msgid "Float"
+msgstr "Liukuluku"
+
+#: mini-utils/gcolorsel/view-color-list.c:196 stripchart/params.c:827
+msgid "Color"
+msgstr "Väri"
+
+#. Create everything.
+#: mini-utils/gcolorsel/view-color-list.c:198 mini-utils/guname/moreinfo.c:225
+#: mini-utils/gw/gw.c:490 mini-utils/gw/gw.c:560
+msgid "Name"
+msgstr "Nimi"
+
+#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:110
+msgid "Tolerance :"
+msgstr "Toleranssi: "
+
+#: mini-utils/gfontsel/gfontsel.c:162
+#: mini-utils/gfontsel/gfontsel.desktop.in.h:1
+msgid "Font Selector"
+msgstr "Kirjasinlajin valitsin"
+
+#: mini-utils/gfontsel/gfontsel.c:190
+msgid "Selection:"
+msgstr "Valinta:"
+
+#: mini-utils/gfontsel/gfontsel.c:273
+msgid "Font to load"
+msgstr "Ladattava kirjasinlaji"
+
+#: mini-utils/gfontsel/gfontsel.c:273
+msgid "FONTSPEC"
+msgstr "KIRJLAJI"
+
+#: mini-utils/gfontsel/gfontsel.c:274
+msgid "Print selected font name on exit"
+msgstr "Tulosta valitun kirjasinlajin nimi lopetettaessa"
+
+#: mini-utils/gfontsel/gfontsel.c:275
+msgid "Inhibit remembering selected font for next run"
+msgstr "Estä valitun kirjasinlajin muistaminen seuraavalla suorituskerralla"
+
+#: mini-utils/gfontsel/gfontsel.c:276
+msgid "Inhibit loading of last font"
+msgstr "Estä edellisen kirjasinlajin lataus"
+
+#: mini-utils/gless/gless.c:115
+#, c-format
+msgid "Reason %d\n"
+msgstr "Syy %d\n"
+
+#: mini-utils/gless/gless.c:130
+msgid "Where to put the window, and its size"
+msgstr "Ikkunan sijoituspaikka ja koko"
+
+#: mini-utils/gless/gless.c:131
+msgid "Ignore standard input; may be needed in some cases."
+msgstr "Ohita vakiosyöttövirta; voi olla tarpeen joissain tilanteissa."
+
+#: mini-utils/gless/gless.c:293
+msgid "_New Window"
+msgstr "_Uusi ikkuna"
+
+#: mini-utils/gless/gless.c:294
+msgid "New text viewer window"
+msgstr "Uusi teksti-ikkuna"
+
+#: mini-utils/gless/gless.c:312
+msgid "_Fixed Font"
+msgstr "_Tasavälinen kirjasinlaji"
+
+#: mini-utils/gless/gless.c:313
+msgid "Display text with a fixed font"
+msgstr "Näytä tiedosto tasavälisellä kirjasinlajilla"
+
+#: mini-utils/gless/gless.c:351 mini-utils/gless/gless.desktop.in.h:2
+msgid "Text File Viewer"
+msgstr "gless"
+
+#: mini-utils/gless/gless.c:446 mini-utils/gshutdown/gshutdown.c:30
+#: mini-utils/guname/guname.c:43 mini-utils/gw/gw.c:29
+#: mini-utils/idetool/idetool.c:11
+msgid "Copyright 1998, under the GNU General Public License."
+msgstr "Copyright 1998, GNU GPL:n alla."
+
+#: mini-utils/gless/gless.c:467
+msgid "Find string"
+msgstr "Etsi seuraava"
+
+#: mini-utils/gless/gless.c:468
+msgid "Find"
+msgstr "Etsi"
+
+#: mini-utils/gless/gless.c:505
+msgid "Loading..."
+msgstr "Lataan..."
+
+#: mini-utils/gless/gless.c:509
+#, c-format
+msgid ""
+"No such file or directory:\n"
+"%s"
+msgstr ""
+"Tiedostoa tai hakemistoa ei löydy:\n"
+"%s"
+
+#: mini-utils/gless/gless.c:527
+#, c-format
+msgid ""
+"Failed to decompress and display the file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Tiedoston purku ja näyttö epäonnistui:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:540
+msgid ""
+"Unable to display compressed file.\n"
+"zcat not found in your path."
+msgstr ""
+"Pakatun tiedoston näyttö epäonnistui.\n"
+"zcat-komentoa ei löytynyt hakupolustasi."
+
+#: mini-utils/gless/gless.c:548
+#, c-format
+msgid ""
+"Error loading file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Virhe ladattaessa tiedostoa:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:606
+msgid "Saving..."
+msgstr "Tallennan..."
+
+#: mini-utils/gless/gless.c:617
+#, c-format
+msgid ""
+"Failed to write file:\n"
+"%s\n"
+"%s"
+msgstr ""
+"Tiedoston kirjoitus epäonnistui:\n"
+"%s\n"
+"%s"
+
+#: mini-utils/gless/gless.c:667
+msgid "Save Text As..."
+msgstr "Tallenna teksti nimellä..."
+
+#: mini-utils/gless/gless.c:707
+msgid "Open Text File..."
+msgstr "Avaa tekstitiedosto..."
+
+#: mini-utils/gless/gless.c:771
+msgid "Sorry, no preferences yet."
+msgstr "Pahoittelut, ei asetuksia vielä."
+
+#: mini-utils/gless/gless.c:858
+msgid "Searching..."
+msgstr "Etsin..."
+
+#: mini-utils/gless/gless.c:869
+msgid "No search string was specified!"
+msgstr "Hakumerkkijonoa ei määritelty!"
+
+#: mini-utils/gshutdown/gshutdown.c:87
+msgid "Shut Down"
+msgstr "Sammuta"
+
+#: mini-utils/gshutdown/gshutdown.c:88
+msgid "Single User Mode"
+msgstr "Yhden käyttäjän tila"
+
+#: mini-utils/gshutdown/gshutdown.c:89
+msgid "Runlevel 2"
+msgstr "Suoritustaso 2"
+
+#: mini-utils/gshutdown/gshutdown.c:90
+msgid "Runlevel 3"
+msgstr "Suoritustaso 3"
+
+#: mini-utils/gshutdown/gshutdown.c:91
+msgid "Runlevel 4"
+msgstr "Suoritustaso 4"
+
+#: mini-utils/gshutdown/gshutdown.c:92
+msgid "Runlevel 5"
+msgstr "Suoritustaso 5"
+
+#: mini-utils/gshutdown/gshutdown.c:93
+msgid "Reboot"
+msgstr "Uudelleenkäynnistä"
+
+#: mini-utils/gshutdown/gshutdown.c:99
+msgid "Are you sure you want to shut down the computer?"
+msgstr "Oletko varma että haluat sammuttaa tietokoneen?"
+
+#: mini-utils/gshutdown/gshutdown.c:100
+msgid "Are you sure you want to switch to single user mode?"
+msgstr "Oletko varma että haluat siirtää järjestelmän yhden käyttäjän tilaan?"
+
+#: mini-utils/gshutdown/gshutdown.c:101
+msgid "Are you sure you want to switch to runlevel 2?"
+msgstr "Oletko varma että haluat siirtää järjestelmän suoritustasolle 2?"
+
+#: mini-utils/gshutdown/gshutdown.c:102
+msgid "Are you sure you want to switch to runlevel 3?"
+msgstr "Oletko varma että haluat siirtää järjestelmän suoritustasolle 3?"
+
+#: mini-utils/gshutdown/gshutdown.c:103
+msgid "Are you sure you want to switch to runlevel 4?"
+msgstr "Oletko varma että haluat siirtää järjestelmän suoritustasolle 4?"
+
+#: mini-utils/gshutdown/gshutdown.c:104
+msgid "Are you sure you want to switch to runlevel 5?"
+msgstr "Oletko varma että haluat siirtää järjestelmän suoritustasolle 5?"
+
+#: mini-utils/gshutdown/gshutdown.c:105
+msgid "Are you sure you want to reboot the system?"
+msgstr "Oletko varma että haluat uudelleenkäynnistää järjestelmän?"
+
+#: mini-utils/gshutdown/gshutdown.c:153 mini-utils/gshutdown/gshutdown.c:628
+msgid "You must be the super-user (root) to shut down or restart the computer."
+msgstr "Vain pääkäyttäjä voi sammuttaa tai uudelleenkäynnistää tietokoneen."
+
+#. notebook pages
+#: mini-utils/gshutdown/gshutdown.c:189
+msgid "Shutdown or Reboot"
+msgstr "Sammutus tai uudelleenkäynnistys"
+
+#: mini-utils/gshutdown/gshutdown.c:206 mini-utils/gshutdown/gshutdown.c:207
+msgid "Easy"
+msgstr "Perus"
+
+#: mini-utils/gshutdown/gshutdown.c:211 mini-utils/gshutdown/gshutdown.c:212
+msgid "Advanced"
+msgstr "Edistyneet"
+
+#: mini-utils/gshutdown/gshutdown.c:244
+msgid ""
+"Click OK to shutdown or reboot. You will lose\n"
+"any unsaved information in open applications."
+msgstr ""
+"Paina OK sulkeaksesi tai käynnistääksesi uudelleen. Menetät\n"
+"kaikki tallentamattomat tiedot avoimista sovelluksista."
+
+#. Put in a "revert to defaults" button
+#: mini-utils/gshutdown/gshutdown.c:371
+msgid "Revert to Defaults"
+msgstr "Palauta oletusarvot"
+
+#: mini-utils/gshutdown/gshutdown.c:381
+msgid "Commands"
+msgstr "Komennot"
+
+#: mini-utils/gshutdown/gshutdown.c:386
+msgid "Confirm before shutdown?"
+msgstr "Varmista ennen sammutusta?"
+
+#: mini-utils/gshutdown/gshutdown.c:454
+#, c-format
+msgid ""
+"%s\n"
+"You will lose any unsaved work."
+msgstr ""
+"%s\n"
+"Menetät tallentamattomat tiedot."
+
+#: mini-utils/gshutdown/gshutdown.c:464
+msgid "Don't ask next time."
+msgstr "Älä kysy ensi kerralla"
+
+#: mini-utils/gshutdown/gshutdown.c:722
+msgid "Command execution failed: fork failed"
+msgstr "Komennon suoritus epäonnistui: fork epäonnistui"
+
+#: mini-utils/guname/guname.c:53
+msgid "Make guname act as a control center applet"
+msgstr "Aseta guname toimimaan hallintakeskuksen sovelmana"
+
+#: mini-utils/guname/guname.c:119
+msgid "an initialization error occurred while starting 'guname-capplet'."
+msgstr "alustusvirhe sattui käynnistettäessä 'guname-capplet':ia."
+
+#: mini-utils/guname/guname-capplet.desktop.in.h:2
+#: mini-utils/guname/guname.c:446
+msgid "System Information"
+msgstr "Tietoja järjestelmästä"
+
+#: mini-utils/guname/guname.c:540
+msgid "Logo file not found"
+msgstr "Logotiedostoa ei löytynyt"
+
+#. Up here so it uses the default font
+#: mini-utils/guname/guname.c:544
+msgid "GNOME contributors:"
+msgstr "GNOME:n kehittäjät"
+
+#. fontset used by guname; adapt it if your language requires it
+#: mini-utils/guname/guname.c:548
+msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#: mini-utils/guname/guname.c:559
+msgid "GNOME: The GNU Network Object Model Environment"
+msgstr "GNOME: The GNU Network Object Model Environment"
+
+#: mini-utils/guname/guname.c:583
+msgid "Email Information..."
+msgstr "Lähetä tiedot sähköpostitse..."
+
+#: mini-utils/guname/guname.c:596
+msgid "Save Information to File..."
+msgstr "Tallenna tiedot tiedostoon..."
+
+#: mini-utils/guname/guname.c:608 mini-utils/guname/guname.c:678
+msgid "Detailed Information..."
+msgstr "Yksityiskohtaiset tiedot..."
+
+#: mini-utils/guname/guname.c:623
+msgid "Category"
+msgstr "Kategoria"
+
+#: mini-utils/guname/guname.c:623
+msgid "Your System"
+msgstr "Järjestelmäsi"
+
+#: mini-utils/guname/guname.c:664 stripchart/params.c:946
+msgid "Save As..."
+msgstr "Tallenna nimellä..."
+
+#: mini-utils/guname/guname.c:670
+msgid "Mail To..."
+msgstr "Postita..."
+
+#: mini-utils/guname/guname.c:718
+#, c-format
+msgid ""
+"Error closing file `%s': \n"
+"%s\n"
+"Some or all data may not have been written."
+msgstr ""
+"Virhe sulkiessa tiedostoa '%s': \n"
+"%s\n"
+"Tiedot saattoivat jäädä tallentamatta osittaan tai kokonaan."
+
+#: mini-utils/guname/guname.c:730
+#, c-format
+msgid "Couldn't open file `%s': %s"
+msgstr "En voinut avata tiedostoa '%s': %s"
+
+#: mini-utils/guname/guname.c:752
+msgid "Save System Information As..."
+msgstr "Tallenna järjestelmän tiedot nimellä..."
+
+#. I don't think the error_string() will reliably mean anything.
+#: mini-utils/guname/guname.c:809
+#, c-format
+msgid "Command failed ` %s ': %s"
+msgstr "Epäonnistunut komento ' %s ': %s"
+
+#: mini-utils/guname/guname.c:817
+#, c-format
+msgid "Couldn't run command ` %s ': %s"
+msgstr "En voinut suorittaa komentoa ' %s ': %s"
+
+#: mini-utils/guname/guname.c:841
+#, c-format
+msgid ""
+"The following mail will be sent to %s.\n"
+" Are you sure you want to mail this information?"
+msgstr ""
+"Seuraava sähköposti lähetetään osoitteeseen %s.\n"
+" Oletko varma, että haluat lähettää nämä tiedot sähköpostitse?"
+
+#: mini-utils/guname/guname.c:852
+msgid "Are you sure?"
+msgstr "Oletko varma?"
+
+#: mini-utils/guname/guname.c:894
+msgid "Address to mail to:"
+msgstr "Osoite johon lähetetään:"
+
+#. ***********************************
+#. Globals
+#. **********************************
+#: mini-utils/guname/info.c:40
+msgid "Distribution:"
+msgstr "Jakelu:"
+
+#: mini-utils/guname/info.c:41
+msgid "Operating System:"
+msgstr "Käyttöjärjestelmä:"
+
+#: mini-utils/guname/info.c:42
+msgid "Distribution Version:"
+msgstr "Jakelun versio:"
+
+#: mini-utils/guname/info.c:43
+msgid "Operating System Version:"
+msgstr "Ytimen luontipäiväys:"
+
+#: mini-utils/guname/info.c:44
+msgid "Operating System Release:"
+msgstr "Ytimen versio:"
+
+#: mini-utils/guname/info.c:45
+msgid "Processor Type:"
+msgstr "Prosessori:"
+
+#: mini-utils/guname/info.c:46
+msgid "Processor Speed:"
+msgstr "Prosessorin nopeus:"
+
+#: mini-utils/guname/info.c:47
+msgid "Host Name:"
+msgstr "Koneen nimi:"
+
+#: mini-utils/guname/info.c:48
+msgid "Domain Name:"
+msgstr "Verkkoalueen nimi:"
+
+#: mini-utils/guname/info.c:49
+msgid "User Name:"
+msgstr "Käyttäjä:"
+
+#: mini-utils/guname/info.c:50
+msgid "X Display Name:"
+msgstr "X-näytön nimi:"
+
+#: mini-utils/guname/info.c:51
+msgid "System Status:"
+msgstr "Systeemin tila:"
+
+#: mini-utils/guname/info.c:52
+msgid "Real Memory:"
+msgstr "Todellista muistia:"
+
+#: mini-utils/guname/info.c:53
+msgid "Swap Space (\"virtual memory\"):"
+msgstr "Sivutustila (\"näennäismuisti\")"
+
+#: mini-utils/guname/info.c:54
+msgid "Total Memory:"
+msgstr "Kokonaismuisti:"
+
+#: mini-utils/guname/info.c:55
+msgid "Free Memory:"
+msgstr "Vapaa muisti:"
+
+#: mini-utils/guname/info.c:60
+msgid "Device"
+msgstr "Laite"
+
+#: mini-utils/guname/info.c:62
+msgid "Used space"
+msgstr "Käytetty tila"
+
+#: mini-utils/guname/info.c:63
+msgid "Free space"
+msgstr "Vapaa tila"
+
+#: mini-utils/guname/info.c:64
+msgid "Percent free"
+msgstr "Vapaa %"
+
+#: mini-utils/guname/info.c:65
+msgid "Mount point"
+msgstr "Liitoskohta"
+
+#. This is about the only case where we'll put Unknown instead
+#. of simply not showing the info.
+#: mini-utils/guname/info.c:202 mini-utils/idetool/idetool.c:21
+#: mini-utils/idetool/idetool.c:26 mini-utils/idetool/idetool.c:319
+#: mini-utils/idetool/idetool.c:330
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: mini-utils/guname/moreinfo.c:82
+msgid "Unknown filesystem"
+msgstr "Tuntematon tiedostojärjestelmä"
+
+#: mini-utils/guname/moreinfo.c:104
+msgid "No information for this filesystem."
+msgstr "Ei tietoja tälle tiedostojärjestelmälle."
+
+#: mini-utils/guname/moreinfo.c:161
+msgid "Memory"
+msgstr "Muisti"
+
+#: mini-utils/guname/moreinfo.c:161
+msgid "Kilobytes"
+msgstr "Kilotavua"
+
+#: mini-utils/guname/moreinfo.c:186
+#, c-format
+msgid "%ld%% memory used."
+msgstr "%ld%% muistia käytössä."
+
+#: mini-utils/guname/moreinfo.c:197
+#, c-format
+msgid "%ld%% swap used."
+msgstr "%ld%% sivutustilaa käytössä"
+
+#: mini-utils/guname/moreinfo.c:222
+#, c-format
+msgid "CPU %d"
+msgstr "Prosessori %d"
+
+#: mini-utils/guname/moreinfo.c:276
+msgid "Detailed System Information"
+msgstr "Yksityiskohtaiset järjestelmätiedot"
+
+#: mini-utils/guname/moreinfo.c:289
+msgid "Disk Information"
+msgstr "Levytiedot"
+
+#: mini-utils/guname/moreinfo.c:291
+msgid "Memory Information"
+msgstr "Muistitiedot"
+
+#: mini-utils/guname/moreinfo.c:294
+msgid "CPU Information"
+msgstr "Prosessorin tiedot"
+
+#: mini-utils/guname/moreinfo.c:326
+msgid "Mount Point: "
+msgstr "Liitoskohta: "
+
+#: mini-utils/guname/moreinfo.c:327
+msgid "    Device: "
+msgstr "     Laite: "
+
+#: mini-utils/guname/moreinfo.c:328
+msgid "    Filesystem Type: "
+msgstr "    Tiedostojärjestelmä: "
+
+#: mini-utils/guname/moreinfo.c:341
+#, c-format
+msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
+msgstr ""
+"%ld megatavua, %ld vapaana (%ld pääkäyttäjälle); %ld inodea, %ld vapaana."
+
+#: mini-utils/guname/moreinfo.c:353
+#, c-format
+msgid "%2d%% full "
+msgstr "%2d%% täynnä "
+
+#: mini-utils/gw/gw.c:143
+msgid ""
+"Couldn't find the \"w\" command in your path.\n"
+"This command is needed for the program to work."
+msgstr ""
+"\"w\"-komentoa ei löytynyt hakupolustasi.\n"
+"Komentoa tarvitaan, jotta tämä ohjelma toimisi."
+
+#: mini-utils/gw/gw.c:198
+msgid "Active User Listing"
+msgstr "Lista aktiivista käyttäjistä"
+
+#: mini-utils/gw/gw.c:215
+msgid "Update Information"
+msgstr "Päivitä tiedot"
+
+#: mini-utils/gw/gw.c:491
+msgid "Command Line"
+msgstr "Komentorivi"
+
+#: mini-utils/gw/gw.c:493
+msgid "Add some defaults"
+msgstr "Lisää muutama oletusasetus"
+
+#: mini-utils/gw/gw.c:495
+msgid "Delete"
+msgstr "Poista"
+
+#: mini-utils/gw/gw.c:513
+msgid "Command Editor"
+msgstr "Komentoeditori"
+
+#: mini-utils/gw/gw.c:523
+msgid ""
+"You can configure the commands on the popup menus.\n"
+"Just enter the name you want to appear on the \n"
+"menu, and the command to execute.\n"
+"In the command, you can use %u to represent the\n"
+"currently selected username, and %t for the tty."
+msgstr ""
+"Voit määrittää ponnahdusvalikkojen komennot.\n"
+"Kirjoita vain nimi, jonka haluat näkyvän valikossa,\n"
+"ja anna komento, joka suoritetaan.\n"
+"Voit käyttää %u:ta komennossa kuvaamaan\n"
+"käyttäjän nimeä ja %t:tä kuvaamaan tty:tä."
+
+#: mini-utils/gw/gw.c:530
+msgid ""
+"Click this button to add\n"
+"some sample commands."
+msgstr ""
+"Paina tätä painiketta lisätäksesi\n"
+"joitakin esimerkkikomentoja."
+
+#: mini-utils/gw/gw.c:538
+msgid "Menu items"
+msgstr "Valikon kohdat"
+
+#: mini-utils/gw/gw.c:566
+msgid "Command"
+msgstr "Komento"
+
+#: mini-utils/gw/gw.c:978
+#, c-format
+msgid "Running: %s\n"
+msgstr "Ajetaan: %s\n"
+
+#: mini-utils/idetool/idetool.c:19
+msgid "Default 16-bit"
+msgstr "Oletus 16-bittinen"
+
+#: mini-utils/idetool/idetool.c:20
+msgid "32-bit"
+msgstr "32-bittinen"
+
+#. there is no 2 apparently
+#: mini-utils/idetool/idetool.c:22
+msgid "32-bit w/sync"
+msgstr "32-bittinen (synkroninen)"
+
+#: mini-utils/idetool/idetool.c:27
+msgid "Sleeping"
+msgstr "Nukkuu"
+
+#: mini-utils/idetool/idetool.c:28
+msgid "Active/Idle"
+msgstr "Aktiivinen/joutilas"
+
+#: mini-utils/idetool/idetool.c:29
+msgid "Standby"
+msgstr "Odotustila"
+
+#: mini-utils/idetool/idetool.c:42
+msgid "Unable to access the drive."
+msgstr "Pääsy asemaan ei onnistu."
+
+#: mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
+msgid "The DMA setting for this drive cannot be changed."
+msgstr "Tämän aseman DMA-asetuksia ei voida muuttaa."
+
+#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
+#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
+msgid "Enabled"
+msgstr "Päällä"
+
+#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
+#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
+msgid "Disabled"
+msgstr "Pois päältä"
+
+#: mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
+msgid "The IRQ unmask setting for this drive cannot be changed."
+msgstr "Tämän aseman IRQ:n paljastusasetusta ei voida muuttaa."
+
+#: mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
+msgid "The drive refused to keep its settings."
+msgstr "Asema ei suostunut pitämään asetuksia."
+
+#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
+msgid "Keep settings"
+msgstr "Pidä asetukset"
+
+#: mini-utils/idetool/idetool.c:203
+msgid "None"
+msgstr "Ei mitään"
+
+#: mini-utils/idetool/idetool.c:207
+msgid "(1 Sector)"
+msgstr "(1 sektori)"
+
+#: mini-utils/idetool/idetool.c:209
+msgid "(Dual Port)"
+msgstr "(Kaksoisportti)"
+
+#: mini-utils/idetool/idetool.c:211
+msgid "(Dual Port Cache)"
+msgstr "(Kaksoisportti, välimuisti)"
+
+#: mini-utils/idetool/idetool.c:241
+msgid "No"
+msgstr "Ei"
+
+#: mini-utils/idetool/idetool.c:243
+#, c-format
+msgid "Yes (%d sector)"
+msgstr "Kyllä (%d sektori)"
+
+#: mini-utils/idetool/idetool.c:245
+#, c-format
+msgid "Yes (%d sectors)"
+msgstr "Kyllä (%d sektoria)"
+
+#: mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:323
+msgid "Model"
+msgstr "Malli"
+
+#: mini-utils/idetool/idetool.c:311
+msgid "Firmware"
+msgstr "Laitteisto-ohjelmisto"
+
+#: mini-utils/idetool/idetool.c:312
+msgid "Serial No."
+msgstr "Sarjanumero"
+
+#. do config here
+#: mini-utils/idetool/idetool.c:314
+msgid "Geometry"
+msgstr "Geometria"
+
+#: mini-utils/idetool/idetool.c:315
+msgid "Cache"
+msgstr "Välimuisti"
+
+#: mini-utils/idetool/idetool.c:323
+msgid "Legacy MFM/RLL drive"
+msgstr "Vanha MFM/RLL asema"
+
+#: mini-utils/idetool/idetool.c:326
+msgid "DMA Mode"
+msgstr "DMA-tila"
+
+#: mini-utils/idetool/idetool.c:328 mini-utils/idetool/idetool.c:330
+msgid "IO Mode"
+msgstr "IO-tila"
+
+#: mini-utils/idetool/idetool.c:331
+msgid "IRQ Unmask"
+msgstr "IRQ:n paljastus"
+
+#: mini-utils/idetool/idetool.c:332
+msgid "Multisector"
+msgstr "Monisektorinen"
+
+#: mini-utils/idetool/idetool.c:333
+msgid "On Reset"
+msgstr "Alustettaessa"
+
+#.
+#. *	Set up the outer display first
+#.
+#: mini-utils/idetool/idetool.c:373
+msgid "IDE Status"
+msgstr "IDE:n tila"
+
+#: mini-utils/idetool/idetool.c:395
+msgid "Disk Logo Not Found"
+msgstr "Levyn logoa ei löytynyt"
+
+#: mini-utils/idetool/idetool.c:446
+msgid "Only the superuser can use this tool"
+msgstr "Vain pääkäyttäjä (root) voi käyttää tätä työkalua"
+
+#: mini-utils/idetool/idetool.c:457
+msgid "You appear to have no IDE drives"
+msgstr "Sinulla ei näytä olevan IDE-levyjä"
+
+#: gfloppy/src/badblocks.c:102
+msgid "MInternal Error: Unable to seek to the correct location."
+msgstr "MSisäinen virhe: Ei voida etsiä oikeaa sijaintia."
+
+#: gfloppy/src/badblocks.c:111
+#, c-format
+msgid "MInternal Error: Weird value (%ld) in do_test\n"
+msgstr "MSisäinen virhe: Outo arvo (%ld) do_test:ssä\n"
+
+#: gfloppy/src/badblocks.c:166
+#, c-format
+msgid "EBad block at block %lu"
+msgstr "EHuono lohko lohkossa %lu"
+
+#. while (!i)
+#. ;
+#: gfloppy/src/badblocks.c:260
+msgid "MChecking for bad blocks..."
+msgstr "MEtsitään huonoja lohkoja..."
+
+#: gfloppy/src/badblocks.c:272
+#, c-format
+msgid "MFailed to open device %s for badblock checking\n"
+msgstr "MLaitteen %s avaaminen lohkotestiä varten epäonnistui\n"
+
+#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
+msgid "MChecking for bad blocks... Done"
+msgstr "MEtsitään huonoja lohkoja... Valmis"
+
+#: gfloppy/src/fdformat.c:45
+msgid "MFormatting the disk..."
+msgstr "MAlustetaan levykettä..."
+
+#: gfloppy/src/fdformat.c:47
+msgid "EI don't know what this is, but it's very wrong."
+msgstr "EEn tiedä mikä tämä on, mutta se on erittäin väärin."
+
+#: gfloppy/src/fdformat.c:55 gfloppy/src/fdformat.c:67
+#, c-format
+msgid "EError formatting track #%d"
+msgstr "EVirhe alustaessa rataa #%d"
+
+#: gfloppy/src/fdformat.c:75
+msgid "EError during completion of formatting"
+msgstr "EVirhe alustuksen viimeistelyn aikana"
+
+#. XXXX - need to tell parent we're finished
+#: gfloppy/src/fdformat.c:79
+msgid "MFormatting the disk... Done"
+msgstr "MAlustetaan levykettä... Valmis"
+
+#. XXXX - tell parent we're starting verify stage
+#: gfloppy/src/fdformat.c:95
+msgid "MVerifying the format..."
+msgstr "MVarmistetaan alustus..."
+
+#: gfloppy/src/fdformat.c:100 gfloppy/src/fdformat.c:175
+msgid ""
+"EUnable to write to the floppy.\n"
+"\n"
+"Please confirm that it is not write-protected."
+msgstr ""
+"EEi voi kirjoittaa levylle.\n"
+"\n"
+"Varmista, että se ei ole kirjoitussuojattu."
+
+#: gfloppy/src/fdformat.c:103 gfloppy/src/fdformat.c:178
+#, c-format
+msgid "EInsufficient permissions to open floppy device %s."
+msgstr "ERiittämättömät oikeudet levylaitteen %s avaamiseksi."
+
+#: gfloppy/src/fdformat.c:107 gfloppy/src/fdformat.c:182
+msgid ""
+"EUnable to access the floppy disk.\n"
+"\n"
+"Please confirm that it is in the drive\n"
+"with the drive door shut."
+msgstr ""
+"Ei voida lukea levykettä.\n"
+"\n"
+"Varmista, että että se on asemassa."
+
+#: gfloppy/src/fdformat.c:110
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s:%d"
+msgstr ""
+"EYleinen virhe käsiteltäessä levyasemaa %s.\n"
+"\n"
+"Virhekoodi %s:%d"
+
+#: gfloppy/src/fdformat.c:130
+#, c-format
+msgid ""
+"ERead Error:\n"
+"Problem reading cylinder %d, expected %d, read %d"
+msgstr ""
+"ELukuvirhe:\n"
+"Ongelma luettaessa sylinteriä %d, odotettiin %d, luettiin %d"
+
+#: gfloppy/src/fdformat.c:133
+#, c-format
+msgid "EProblem reading cylinder %d, expected %d, read %d"
+msgstr "EOngelma lukiessa sylinteriä %d, odotettiin %d, luettiin %d"
+
+#: gfloppy/src/fdformat.c:142
+#, c-format
+msgid "MBad data in cyl %d.  Continuing... "
+msgstr "MHuonoa dataa sylinterissä %d. Jatketaan..."
+
+#: gfloppy/src/fdformat.c:149
+#, c-format
+msgid "EError closing device %s"
+msgstr "Virhe sulkiessa laitetta %s"
+
+#: gfloppy/src/fdformat.c:154
+msgid "MVerifying the format... Done"
+msgstr "MVarmistetaan alustus... Valmis"
+
+#: gfloppy/src/fdformat.c:166
+#, c-format
+msgid "EUnable to write to device %s"
+msgstr "EEi voida kirjoittaa laitteelle %s"
+
+#: gfloppy/src/fdformat.c:185
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s"
+msgstr ""
+"EYleisvirhe käytettäessä levyasemaa %s.\n"
+"\n"
+"Virhekoodi %s"
+
+#: gfloppy/src/fdformat.c:195
+msgid "ECould not determine current format type"
+msgstr "EEi voida selvittää tämänhetkistä alustuksen tyyppiä"
+
+#: gfloppy/src/gfloppy-i18n.h:9 gfloppy/src/gfloppy.glade.h:1
+msgid "Dos (FAT)"
+msgstr "DOS (FAT)"
+
+#: gfloppy/src/gfloppy-i18n.h:15 gfloppy/src/gfloppy.glade.h:2
+msgid "Double Density 3.5\" (720 KB)"
+msgstr "DD 3.5\" (720 Kt)"
+
+#: gfloppy/src/gfloppy-i18n.h:16 gfloppy/src/gfloppy.glade.h:3
+msgid "Double Density 5.25\" (360 KB)"
+msgstr "DD 5.25\" (360 Kt)"
+
+#: gfloppy/src/gfloppy-i18n.h:12 gfloppy/src/gfloppy.glade.h:4
+msgid "File system type:"
+msgstr "Tiedostojärjestelmä: "
+
+#: gfloppy/src/gfloppy-i18n.h:11 gfloppy/src/gfloppy.glade.h:5
+msgid "Floppy Density:"
+msgstr "Levyn tiheys"
+
+#: gfloppy/src/gfloppy-i18n.h:18 gfloppy/src/gfloppy.glade.h:6
+msgid "Floppy Device:"
+msgstr "Levykeasema:"
+
+#.
+#. * Translatable strings file generated by Glade.
+#. * Add this file to your project's POTFILES.in.
+#. * DO NOT compile it as part of your application.
+#.
+#: gfloppy/src/gfloppy-i18n.h:7 gfloppy/src/gfloppy.glade.h:7
+msgid "Format a floppy"
+msgstr "Alusta levyke"
+
+#: gfloppy/src/gfloppy-i18n.h:13 gfloppy/src/gfloppy.glade.h:8
+msgid "High Density 3.5\" (1.44 MB)"
+msgstr "HD 3.5\" (1.44 Mt)"
+
+#: gfloppy/src/gfloppy-i18n.h:14 gfloppy/src/gfloppy.glade.h:9
+msgid "High Density 5.25\" (1.2 MB)"
+msgstr "HD 5.25\" (1.2 Mt)"
+
+#: gfloppy/src/gfloppy-i18n.h:8 gfloppy/src/gfloppy-i18n.h:10
+#: gfloppy/src/gfloppy.glade.h:10
+msgid "Linux Native (ext2)"
+msgstr "Linux (ext2)"
+
+#: gfloppy/src/gfloppy-i18n.h:17 gfloppy/src/gfloppy.glade.h:11
+msgid "_Quick format"
+msgstr "_Pika-alustus"
+
+#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
+msgid "MMaking filesystem on disk..."
+msgstr "MTehdään tiedostojärjestelmää levylle..."
+
+#: gfloppy/src/gfloppy.c:167
+msgid "EUnable to create filesystem correctly."
+msgstr "EEi voida luoda tiedostojärjestelmää oikein."
+
+#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
+msgid "MMaking filesystem on disk... Done"
+msgstr "MTehdään tiedostojärjestelmää levylle... Valmis"
+
+#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
+msgid "EUnable to create filesystem."
+msgstr "EEi voida luoda tiedostojärjestelmää"
+
+#: gfloppy/src/gfloppy.c:209
+msgid "MChecking for bad blocks... (this might take a while)"
+msgstr "MEtsitään huonoja lohkoja... (voi mennä hetki)"
+
+#: gfloppy/src/main.c:135 gfloppy/src/main.c:171
+#, c-format
+msgid "Unable to open the device %s, formatting cannot continue."
+msgstr "Laitteen %s avaaminen epäonnistui, alustamista ei voida jatkaa."
+
+#: gfloppy/src/main.c:138 gfloppy/src/main.c:174
+#, c-format
+msgid ""
+"The device %s is disconnected.\n"
+"Please attach device to continue."
+msgstr ""
+"Laite %s on irti.\n"
+"Liitä laite jatkaaksesi."
+
+#: gfloppy/src/main.c:141 gfloppy/src/main.c:177
+#, c-format
+msgid ""
+"You do not have the proper permissions to write to %s, formatting will not "
+"be possible.\n"
+"Contact your system administrator about getting write permissions."
+msgstr ""
+"Sinulla ei ole vaadittuja oikeuksia %s:n kirjoittamiseen, alustaminen ei ole "
+"mahdollista.\n"
+"Ota yhteyttä järjestelmäsi ylläpitäjään tarvittavien oikeuksien saamiseksi."
+
+#: gfloppy/src/main.c:285
+msgid "The device to format"
+msgstr "Alustettava laite"
+
+#: gfloppy/src/main.c:286
+msgid "DEVICE"
+msgstr "LAITE"
+
+#. We do this to get around a bug in libglade.  Ideally we won't need
+#. * to do this in the future.
+#: gfloppy/src/main.c:317
+msgid "Format"
+msgstr "Alusta"
+
+#: gfloppy/src/main.c:360
+msgid "Format another floppy?"
+msgstr "Alusta toinen levyke?"
+
+#: gfloppy/src/progress.c:117
+msgid "Floppy formatted successfully."
+msgstr "Levyke alustettu onnistuneesti."
+
+#: gfloppy/src/progress.c:121
+msgid "Floppy formatting cancelled."
+msgstr "Levykkeen alustus keskeytetty."
+
+#: gfloppy/src/progress.c:176
+msgid "Format progress."
+msgstr "Alustuksen seuranta."
+
+#: stripchart/chart-app.c:160
+msgid "Param"
+msgstr "Mittari"
+
+#: stripchart/chart-app.c:161
+msgid "Current"
+msgstr "Tämänhetkinen arvo"
+
+#: stripchart/chart-app.c:163 stripchart/params.c:760
+msgid "Scale"
+msgstr "Asteikko"
+
+#: stripchart/chart-app.c:197 stripchart/stripchart-applet.c:69
+#: stripchart/stripchart-applet.desktop.in.h:2 stripchart/stripchart.c:92
+#: stripchart/stripchart.c:97
+msgid "Stripchart"
+msgstr "Stripchart"
+
+#: stripchart/chart-app.c:198
+msgid "Copyright 2000 John Kodis"
+msgstr "Copyright 2000 John Kodis"
+
+#: stripchart/chart-app.c:200
+msgid ""
+"The GNOME stripchart program plots various user-specified parameters as a "
+"function of time.  Its main use is to chart system performance parameters "
+"such as CPU load, CPU utilization, network traffic levels, and the like.  "
+"Other more ingenious uses are left as an exercise for the interested user."
+msgstr ""
+"GStripchart näyttää erinäisiä käyttäjän määrittelemiä järjestelmätietoja. "
+"Sen pääkäyttötarkoitus on mitata järjestelmän kuormitusta kuten "
+"prosessorikuormaa ja verkkoliikennettä. Muut mahdolliset käyttötarkoitukset "
+"jätetään käyttäjän harjoitustehtäväksi."
+
+#: stripchart/chart-app.c:239
+msgid "Show values"
+msgstr "Näytetyt arvot"
+
+#: stripchart/chart-app.c:246
+msgid "Edit Prefs..."
+msgstr "Muokkaa asetuksia..."
+
+#: stripchart/chart-app.c:251
+msgid "Edit Params..."
+msgstr "Mittarit..."
+
+#: stripchart/eval.c:252
+msgid "closing parenthesis expected"
+msgstr "oikea sulku puuttuu"
+
+#: stripchart/eval.c:269
+#, c-format
+msgid "no such field: %d"
+msgstr "Ei kenttää: %d"
+
+#: stripchart/eval.c:294
+msgid "missing variable identifer"
+msgstr "muuttujatunnus puuttuu"
+
+#: stripchart/eval.c:296
+#, c-format
+msgid "invalid variable identifer: %s"
+msgstr "virheellinen muuttujatunnus: %s"
+
+#: stripchart/eval.c:300
+msgid "number expected"
+msgstr "numero puuttuu"
+
+#: stripchart/eval.c:371
+#, c-format
+msgid "extra junk at end: \"%s\""
+msgstr "ylimääräistä roskaa lopussa: \"%s\""
+
+#: stripchart/params.c:633
+msgid "Parameter"
+msgstr "Mittari"
+
+#: stripchart/params.c:671
+msgid "Equation"
+msgstr "Kaava"
+
+#: stripchart/params.c:682
+msgid "Filename"
+msgstr "Tiedostonimi"
+
+#: stripchart/params.c:693
+msgid "Pattern"
+msgstr "Lauseke"
+
+#: stripchart/params.c:714 stripchart/params.c:742
+msgid "Min"
+msgstr "Min"
+
+#: stripchart/params.c:723 stripchart/params.c:751
+msgid "Max"
+msgstr "Max"
+
+#: stripchart/params.c:771
+msgid "Linear"
+msgstr "Lineaarinen"
+
+#: stripchart/params.c:779
+msgid "Logarithmic"
+msgstr "Logaritminen"
+
+#: stripchart/params.c:784
+msgid "Type"
+msgstr "Tyyppi"
+
+#: stripchart/params.c:795
+msgid "Indicator"
+msgstr "Indikaattori"
+
+#: stripchart/params.c:802
+msgid "Line"
+msgstr "Rivi"
+
+#: stripchart/params.c:809
+msgid "Point"
+msgstr "Piste"
+
+#: stripchart/params.c:816
+msgid "Solid"
+msgstr "Tasainen"
+
+#: stripchart/params.c:965
+msgid "Add Parameter Before"
+msgstr "Lisää mittari ennen"
+
+#: stripchart/params.c:972
+msgid "Add Parameter After"
+msgstr "Lisää mittari jälkeen"
+
+#: stripchart/params.c:979
+msgid "Apply Parameter Changes"
+msgstr "Hyväksy muutokset"
+
+#: stripchart/params.c:986
+msgid "Delete Parameter"
+msgstr "Poista mittari"
+
+#: stripchart/params.c:994
+msgid "Add Color"
+msgstr "Lisää väri"
+
+#: stripchart/params.c:1001
+msgid "Delete Color"
+msgstr "Poista väri"
+
+#: stripchart/params.c:1020
+msgid "Info"
+msgstr "Info"
+
+#: stripchart/params.c:1091
+msgid "Parameter Editor"
+msgstr "Mittarieditori"
+
+#: stripchart/params.c:1100
+msgid "Parameters"
+msgstr "Mittarit"
+
+#: stripchart/prefs.c:208
+msgid "Chart"
+msgstr "Taulukko"
+
+#: stripchart/prefs.c:218 stripchart/prefs.c:277
+msgid "enabled"
+msgstr "päällä"
+
+#: stripchart/prefs.c:225
+msgid "minor"
+msgstr "pieni"
+
+#: stripchart/prefs.c:231
+msgid "major"
+msgstr "suuri"
+
+#: stripchart/prefs.c:244 stripchart/prefs.c:262
+msgid "Update"
+msgstr "Päivitä"
+
+#: stripchart/prefs.c:247 stripchart/prefs.c:270
+msgid "Smooth"
+msgstr "Pehmeä"
+
+#: stripchart/prefs.c:250
+msgid "Ticks"
+msgstr "Rastit"
+
+#: stripchart/prefs.c:255
+msgid "Pen"
+msgstr "Kynä"
+
+#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
+msgid "Geometry string: WxH+X+Y"
+msgstr "Geometria: WxH+X+Y"
+
+#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
+msgid "GEO"
+msgstr "GEO"
+
+#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
+msgid "Configuration file name"
+msgstr "Asetustiedosto"
+
+#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
+msgid "FILE"
+msgstr "TIEDOSTO"
+
+#: stripchart/stripchart-applet.c:92
+msgid "Values"
+msgstr "Arvot"
+
+#: stripchart/stripchart-applet.c:95
+msgid "Prefs..."
+msgstr "Asetukset..."
+
+#: stripchart/stripchart-applet.c:98
+msgid "Params..."
+msgstr "Mittarit..."
+
+#: exe-handler/gnome-exe-handler.c:76
+#, c-format
+msgid ""
+"Executing arbitrary programs that you downloaded from the network might be "
+"dangerous.\n"
+"\n"
+"Are you sure you want to run `%s'?"
+msgstr ""
+"Epämääräisten verkoista ladattujen ohjelmien suorittaminen voi olla\n"
+"vaarallista.\n"
+"\n"
+"Haluatko varmasti ajaa ohjelman '%s'?"
+
+#: exe-handler/gnome-exe-handler.c:83
+msgid "Could not access file permissions"
+msgstr "Ei pääsyä tiedoston oikeuksiin"
+
+#: exe-handler/gnome-exe-handler.c:88
+#, c-format
+msgid "Could not execute the file `%s' due to a permission problem"
+msgstr "Ei voida suorittaa tiedostoa '%s' oikeusongelmien vuoksi"
+
+#: exe-handler/gnome-exe-handler.c:104
+#, c-format
+msgid "Failure at executing `%s'"
+msgstr "Virhe suorittaessa tiedostoa '%s'"
+
+#: exe-handler/gnome-exe-handler.c:123
+#, c-format
+msgid "It was not possible to open the file `%s'"
+msgstr "Ei ollut mahdollista vata tiedostoa '%s'"
+
+#: exe-handler/gnome-exe-handler.c:132
+#, c-format
+msgid "The file `%s' is empty"
+msgstr "Tiedosto '%s' on tyhjä"
+
+#: exe-handler/gnome-exe-handler.c:137
+#, c-format
+msgid "There was an error. `%s' is empty"
+msgstr "Sattui virhe. '%s' on tyhjä"
+
+#: exe-handler/gnome-exe-handler.c:152
+msgid "This is a library and can not be executed"
+msgstr "Tämä on kirjasto, eikä sitä voida suorittaa"
+
+#: exe-handler/gnome-exe-handler.c:158
+msgid "The file is a core file and can not be executed"
+msgstr "Tämä tiedosto on kuoritiedosto eikä sitä voida suorittaa"
+
+#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
+msgid "This is an unknown kind of executable"
+msgstr "Tämä on tyypiltään tuntematon ohjelma"
+
+#: exe-handler/gnome-exe-handler.c:192
+msgid ""
+"The executable is for a different platform and can not be executed on this "
+"system"
+msgstr ""
+"Ohjelma on toista alustaa varten, eikä sitä voida suorittaa tässä "
+"järjestelmässä"
+
+#: meat-grinder/meat-grinder.c:106
+#, c-format
+msgid ""
+"Number of files: %d\n"
+"Nuber of folders: %d"
+msgstr ""
+"Tiedostojen määrä: %d\n"
+"Kansioiden määrä: %d"
+
+#: meat-grinder/meat-grinder.c:112
+msgid ""
+"No files or folders, drop files or folders\n"
+"above to add them to the archive"
+msgstr ""
+"Ei tiedostoja tai kansioita, pudota tiedostoja\n"
+"tai kansioita lisätäksesi ne pakettiin"
+
+#: meat-grinder/meat-grinder.c:217 meat-grinder/meat-grinder.c:220
+msgid "Cannot start the archive (tar) program"
+msgstr "Ei voida käynnistää pakkausohjelmaa (tar)"
+
+#: meat-grinder/meat-grinder.c:228
+msgid "Cannot run tar/gtar"
+msgstr "Ei voida ajaa tar- tai gtar-ohjelmia"
+
+#: meat-grinder/meat-grinder.c:279
+msgid "Archive.tar.gz"
+msgstr "paketti.tar.gz"
+
+#: meat-grinder/meat-grinder.c:379
+msgid "The GNOME Archive Generator"
+msgstr "The GNOME Archive Generator"
+
+#: meat-grinder/meat-grinder.c:382
+msgid "Drag files in to make archives"
+msgstr "Raahaa tiedostoja luodaksesi paketin"
+
+#: meat-grinder/meat-grinder.c:444 meat-grinder/meat-grinder.c:602
+msgid "No filename selected"
+msgstr "Ei valittua tiedostonimeä"
+
+#: meat-grinder/meat-grinder.c:448
+msgid "File exists, overwrite?"
+msgstr "Tiedosto olemassa, korvataan?"
+
+#: meat-grinder/meat-grinder.c:472
+msgid "No items to archive"
+msgstr "Ei kohteita pakattavaksi"
+
+#: meat-grinder/meat-grinder.c:605
+msgid "File does not exists"
+msgstr "Tiedosto ei ole olemassa"
+
+#: meat-grinder/meat-grinder.c:619
+msgid "Add file or folder"
+msgstr "Lisää tiedosto tai kansio"
+
+#: meat-grinder/meat-grinder.c:689
+msgid "Add file or folder..."
+msgstr "Lisää tiedosto tai kansio..."
+
+#: meat-grinder/meat-grinder.c:690
+msgid "Add a file or folder to the archive"
+msgstr "Lisää tiedosto tai kansio pakettiin"
+
+#: meat-grinder/meat-grinder.c:693
+msgid "Create archive..."
+msgstr "Luo pakkaus..."
+
+#: meat-grinder/meat-grinder.c:694
+msgid "Create a new archive from the items"
+msgstr "Luo kohteista uusi paketti"
+
+#: meat-grinder/meat-grinder.c:703
+msgid "Remove the selected item(s)"
+msgstr "Poista valitut kohteet"
+
+#: meat-grinder/meat-grinder.c:735
+msgid "GNOME Archive Generator"
+msgstr "GNOME Archive Generator"
+
+#: meat-grinder/meat-grinder.c:765
+msgid "Drop files here to add them to the archive."
+msgstr "Pudota tänne tiedostoja lisätäksesi ne pakettiin."
+
+#: meat-grinder/meat-grinder.c:783
+msgid "Archive"
+msgstr "Paketti"
+
+#: meat-grinder/meat-grinder.c:790
+msgid ""
+"Drag this button to the destination where you want the archive to be created "
+"or press it to pop up a file selection dialog."
+msgstr ""
+"Raahaa tämä nappi kohteeseen, johon haluat paketin luotavan. Voit myös "
+"napsauttaa sitä tuodaksesi esille tiedostoikkunan."
+
+#: meat-grinder/meat-grinder.c:883
+msgid "Cannot find proper icons anywhere!"
+msgstr "Ei voida löytää oikeita kuvakkeita!"
+
+#: meat-grinder/meat-grinder.c:891
+msgid ""
+"Cannot find the archive (tar) program!\n"
+"This is the program used for creating archives."
+msgstr ""
+"Ei voida löytää pakkausohjelmaa (tar)!\n"
+"Tätä ohjelmaa käytetään pakettien luomiseen."
+
+#: gfloppy/gfloppy.desktop.in.h:1
+msgid "Format Floppy Disks"
+msgstr "Alusta levykkeitä"
+
+#: gfloppy/gfloppy.desktop.in.h:2
+msgid "gfloppy"
+msgstr "gfloppy"
+
+#: gdictsrc/GDict.desktop.in.h:1 gdictsrc/gdict.desktop.in.h:1
+msgid "GDict"
+msgstr "GDict"
+
+#: gdictsrc/GDict.desktop.in.h:2
+msgid "Gnome client for the MIT dictionary server"
+msgstr "Gnomen asiakas MIT-sanakirjapalvelimelle"
+
+#: gdictsrc/gdict.desktop.in.h:2
+msgid "GNOME client for RFC 2229-compliant dictionary server"
+msgstr "GNOME-asiakas RFC 2229-yhteensopivalle sanakirjapalvelimelle"
+
+#: stripchart/stripchart-applet.desktop.in.h:1
+msgid "Shows a stripchart plot"
+msgstr "Näyttää käyriä"
+
+#: gstripchart/gstripchart.desktop.in.h:1 stripchart/stripchart.desktop.in.h:1
+msgid "Stripchart Plotter"
+msgstr "Stripchart Plotter"
+
+#: notepad/Notepad.desktop.in.h:1
+msgid "Notepad"
+msgstr "Muistio"
+
+#: notepad/Notepad.desktop.in.h:2
+msgid "Simple editor (notepad)"
+msgstr "Yksinkertainen editori (muistio)"
+
+#: mini-utils/idetool/idetool.desktop.in.h:1
+msgid "IDE Device Tool"
+msgstr "IDE-työkalu"
+
+#: mini-utils/idetool/idetool.desktop.in.h:2
+msgid "Show and Configure IDE Device Settings"
+msgstr "Näyttää ja määrittelee IDE-laitteiden asetuksia"
+
+#: mini-utils/gw/gw.desktop.in.h:1
+msgid "User Listing"
+msgstr "Käyttäjälista"
+
+#: mini-utils/gw/gw.desktop.in.h:2
+msgid "View users on the system"
+msgstr "Näyttää järjestelmän käyttäjät"
+
+#: mini-utils/guname/guname-capplet.desktop.in.h:1
+msgid "Show various system information"
+msgstr "Näyttää erilaisia tietoja järjestelmästä"
+
+#: mini-utils/guname/guname.desktop.in.h:1
+msgid "System Info"
+msgstr "Tietoja järjestelmästä"
+
+#: mini-utils/guname/guname.desktop.in.h:2
+msgid "Technical information about this computer"
+msgstr "Teknistä tietoa tästä tietokoneesta"
+
+#: mini-utils/gshutdown/gshutdown.desktop.in.h:1
+msgid "Shut Down or Reboot"
+msgstr "Sammuta tai käynnistä uudelleen"
+
+#: mini-utils/gshutdown/gshutdown.desktop.in.h:2
+msgid "Turn off or reset the computer"
+msgstr "Sulje tai uudelleenkäynnistä tietokone"
+
+#: mini-utils/grun/grun.desktop.in.h:1
+msgid "Ask for a command to execute"
+msgstr "Pyydä suoritettavaa komentoa"
+
+#: mini-utils/grun/grun.desktop.in.h:2
+msgid "Run A Command..."
+msgstr "Suorita komento"
+
+#: mini-utils/gpenguin/gpenguin.desktop.in.h:1
+msgid "GNOME Penguin"
+msgstr "GNOME-pingviini"
+
+#: mini-utils/gpenguin/gpenguin.desktop.in.h:2
+msgid "Let a cute pinguin chase your pointer"
+msgstr "Anna söpön pingviinnin jahdata osoitintasi"
+
+#: mini-utils/gnome-run/gnome-run.desktop.in.h:1
+msgid "Prompts the user for a program to run"
+msgstr "Pyytää käyttäjältä suoritettavan ohjelman"
+
+#: mini-utils/gnome-run/gnome-run.desktop.in.h:2
+msgid "Run program..."
+msgstr "Suorita ohjelma..."
+
+#: mini-utils/gless/gless.desktop.in.h:1
+msgid "Page files as with `more' and `less'"
+msgstr "Sivuta tiedostot kuten `more' ja `less'"
+
+#: mini-utils/gfontsel/gfontsel.desktop.in.h:2
+msgid "Select a font for pasting"
+msgstr "Valitse kirjasin liittämiseen"
+
+#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:1
+msgid "Browse available X11 colors."
+msgstr "Selaa tarjolla olevia X11-värejä."
+
+#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:2
+msgid "Color Browser"
+msgstr "Väriselain"
+
+#: meat-grinder/meat-grinder.desktop.in.h:1
+msgid "Archive Generator"
+msgstr "Archive Generator"
+
+#: meat-grinder/meat-grinder.desktop.in.h:2
+msgid "GNOME Archive Generator aka Meat Grinder"
+msgstr "GNOME Archive Generator eli Meat Grinder"
+
+#: logview/logview.desktop.in.h:1
+msgid "SysLog tool"
+msgstr "SysLog-työkalu"
+
+#: logview/logview.desktop.in.h:2
+msgid "System log monitor"
+msgstr "Järjestelmälokien tarkkailuohjelma"
+
+#: gtt/gtt.desktop.in.h:1
+msgid "Time Tracker tool"
+msgstr "Ajanhallintaohjelma"
+
+#: gtt/gtt.desktop.in.h:2
+msgid "Time tracking tool"
+msgstr "Ajanhallintaohjelma"
+
+#: gstripchart/gstripchart_applet.desktop.in.h:1
+msgid "Gstripchart"
+msgstr "GStripchart"
+
+#: gstripchart/gstripchart_applet.desktop.in.h:2
+msgid "Shows a stripchart"
+msgstr "Näyttää käyriä"
+
+#: gsearchtool/gsearchtool.desktop.in.h:1
+#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
+msgid "GNOME Search Tool"
+msgstr "GNOME Search Tool"
+
+#: gdiskfree/gdiskfree.desktop.in.h:1
+msgid "GNOME DiskFree"
+msgstr "GNOME DiskFree"
+
+#: gdiskfree/gdiskfree.desktop.in.h:2
+msgid "Show free space on mounted file systems using dials."
+msgstr "Näyttää liitettyjen tiedostojärjestelmien vapaan tilan."
+
+#: gcharmap/gcharmap.desktop.in.h:1
+msgid "GNOME Character Map"
+msgstr "GNOME Merkistö"
+
+#: gcalc/gcalc.desktop.in.h:1
+msgid "Simple Calculator"
+msgstr "Yksinkertainen laskin"
+
+#: cromagnon/Cromagnon.desktop.in.h:1
+msgid "Personal cron manager"
+msgstr "Henkilökohtainen cron-hallinta"
+
+#: cromagnon/Cromagnon.desktop.in.h:2
+msgid "Personal crontab manager"
+msgstr "Henkilökohtainen crontab-hallinta"
+
+#~ msgid "This Memo"
+#~ msgstr "Tämä huomautus"
+
+#~ msgid "Task"
+#~ msgstr "Tehtävä"
+
+#, fuzzy
+#~ msgid "The memo for the current task"
+#~ msgstr "Näytä tämänhetkisen tehtävän aika"
+
+#~ msgid "Memo"
+#~ msgstr "Huomautus"
+
+#~ msgid "New Task"
+#~ msgstr "Uusi tehtävä"
+
+#~ msgid "Time tracking tool for GNOME"
+#~ msgstr ""
+#~ "GNOME:n ajanhallintatyökalu.\n"
+#~ "Suomennos: http://gnome-fi.sourceforge.net/"
+
+#~ msgid "New _Task..."
+#~ msgstr "Uusi _tehtävä..."
+
+#~ msgid "Insert Memo"
+#~ msgstr "Lisää huomautus"
+
+#~ msgid "Paste Memo"
+#~ msgstr "Liitä huomautus"
+
+#~ msgid "Delete _Memo"
+#~ msgstr "Poista _huomautus"
+
+#~ msgid "_Edit Memo"
+#~ msgstr "_Muokkaa huomautusta"
+
+#~ msgid "_New Memo"
+#~ msgstr "_Uusi huomautus"
+
+#~ msgid "_Paste Memo"
+#~ msgstr "_Liitä huomautus"
+
+#~ msgid "Memo:"
+#~ msgstr "Huomautus:"
+
+#~ msgid "Task Properties"
+#~ msgstr "Tehtävän ominaisuudet"
+
+#~ msgid "Estimated End Date"
+#~ msgstr "Arvioitu loppupäivä"
+
+#, fuzzy
+#~ msgid "Date Due"
+#~ msgstr "Päiväys:"
+
+#, fuzzy
+#~ msgid "Sizing"
+#~ msgstr "Koko"
+
+#~ msgid "Urgency"
+#~ msgstr "Kiirellisyys"
+
+#~ msgid "Importance"
+#~ msgstr "Tärkeys"
