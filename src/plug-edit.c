@@ -147,16 +147,6 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	if (!tip) path="";
 
 	/* set the values into the item */
-	gui->type = GNOME_APP_UI_ITEM;
-	gui->label = title;
-	gui->hint = tip;
-	gui->moreinfo = invoke_report;
-	gui->unused_data = NULL;
-	gui->pixmap_type = GNOME_APP_PIXMAP_STOCK;
-	gui->pixmap_info = GNOME_STOCK_BLANK;
-	gui->accelerator_key = 0;
-	gui->ac_mods = (GdkModifierType) 0;
-	
 	plg = gui->user_data;
 	if (plg->name) g_free (plg->name);
 	plg->name = g_strdup (title);
@@ -164,6 +154,16 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	plg->path = g_strdup (path);
 	if (plg->tooltip) g_free (plg->tooltip);
 	plg->tooltip = g_strdup (tip);
+
+	gui->type = GNOME_APP_UI_ITEM;
+	gui->label = plg->name;
+	gui->hint = plg->tooltip;
+	gui->moreinfo = invoke_report;
+	gui->unused_data = NULL;
+	gui->pixmap_type = GNOME_APP_PIXMAP_STOCK;
+	gui->pixmap_info = GNOME_STOCK_BLANK;
+	gui->accelerator_key = 0;
+	gui->ac_mods = (GdkModifierType) 0;
 }
 
 static void 
@@ -280,7 +280,14 @@ edit_plugin_setup (PluginEditorDialog *dlg)
 	sysmenus = (GnomeUIInfo *) dlg->menus->data;
 	for (i=0; i<nitems; i++)
 	{
-		sysmenus[i].user_data = gtt_plugin_copy (sysmenus[i].user_data);
+		GttPlugin *plg = sysmenus[i].user_data;
+		plg = gtt_plugin_copy (plg);
+		sysmenus[i].user_data = plg;
+		if (plg)
+		{
+			sysmenus[i].label = plg->name;
+			sysmenus[i].hint = plg->tooltip;
+		}
 	}
 
 	/* Redraw the tree */
@@ -335,7 +342,14 @@ edit_plugin_apply_cb (GtkWidget * w, gpointer data)
 	memcpy (sysmenu, dlgmenu, nitems*sizeof(GnomeUIInfo));
 	for (i=0; i<nitems-1; i++)
 	{
-		sysmenu[i].user_data = gtt_plugin_copy (dlgmenu[i].user_data);
+		GttPlugin *plg = dlgmenu[i].user_data;
+		plg = gtt_plugin_copy (plg);
+		sysmenu[i].user_data = plg;
+		if (plg)
+		{
+			sysmenu[i].label = plg->name;
+			sysmenu[i].hint = plg->tooltip;
+		}
 	}
 	gtt_set_reports_menu (dlg->app, sysmenu);
 }
