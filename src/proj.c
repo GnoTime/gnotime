@@ -20,11 +20,14 @@
 #include "config.h"
 
 #include <errno.h>
+#include <glib.h>
 #include <gnome.h>    /* only needed for definition of _() */
 /* #include <libintl.h> conflicts with <libgnome/gnome-i18n.h> on some systems */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <qof.h>
 
 #include "err-throw.h"
 #include "log.h"
@@ -37,7 +40,7 @@ typedef struct notif_s
 	gpointer user_data;
 } Notifier;
 
-// hack alert -- plist should be made static/private to this file
+// hack alert -- plist should be made to belong to a book
 GList * plist = NULL;
 
 static void proj_refresh_time (GttProject *proj);
@@ -1222,6 +1225,7 @@ gtt_project_list_total (void)
 }
 
 /* =========================================================== */
+/* =========================================================== */
 /* Recomputed cached data.  Scrub it while we're at it. */
 /* Scrub algorithm as follows (as documented in header files):
  *     Discard all intervals shorter than proj->min_interval
@@ -1846,6 +1850,60 @@ gtt_project_timer_stop (GttProject *proj)
 	 * windows so that the old data doesn't show.
 	 */
 	proj_refresh_time (proj);
+}
+
+/* =========================================================== */
+
+static void
+prj_obj_foreach_helper (GList *prjlist, QofEntityForeachCB cb, gpointer data)
+{
+	GList *node;
+
+	for (node=prjlist; node; node=node->next)
+	{
+		GttProject *prj = node->data;
+		cb (prj, data);
+		prj_obj_foreach_helper (prj->sub_projects, cb, data);
+	}
+}
+
+void
+gtt_project_obj_foreach (QofBook *book, QofEntityForeachCB cb, gpointer data)
+{
+	prj_obj_foreach_helper (plist, cb, data);
+}
+
+static int
+prj_obj_order (GttProject *a, GttProject *b)
+{
+	return 0;
+}
+
+#define GTT_PROJECT_ID "GttProjectId"
+
+static QofObject prj_object_def =
+{
+   interface_version: QOF_OBJECT_VERSION,
+   name:              GTT_PROJECT_ID,
+   type_label:        GTT_PROJECT_ID,
+   book_begin:        NULL,
+   book_end:          NULL,
+   is_dirty:          NULL,
+   mark_clean:        NULL,
+   foreach:           gtt_project_obj_foreach,
+   printable:         NULL,
+};
+
+gboolean 
+gtt_project_obj_register (void)
+{
+   /* Associate an ASCII name to each getter, as well as the return type */
+   static QofQueryObject params[] = {
+		{ NULL },
+	};
+
+	qof_query_object_register (GTT_PROJECT_ID, (QofSortFunc)prj_obj_order, params);
+	return qof_object_register (&prj_object_def);
 }
 
 /* =========================================================== */
