@@ -109,6 +109,7 @@ INCLUDES =                                   \
 gnotime_LDADD =         \
 	$(GNOTIME_LIBS)      \
 	../lib/qof/libqof.la \
+	../lib/libqofsql/libqofsql.la \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	$(LIBXML2_LIBS)      \
