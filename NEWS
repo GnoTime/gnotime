@@ -9,6 +9,20 @@ measure the time spent on to-do list items and generate invoices.
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
 
+New in the 2.2.0 Release:
+-------------------------
+This release sports a brand-new look-n-feel for the reports,
+together with improved URL support.  The reports now use CSS style 
+sheets, and can contain embedded images.  A 'publish' function 
+using GnomeVFS makes it easier to copy reports to other systems, 
+using ssh, ftp, http or any other supported method.  In addition, 
+the following bugs were fixed:
+
+-- Crashes when 'help' button clicked in certain dialogs.
+-- Corruption of 'reports' menu, followed by crash.
+-- Fix flyover help to actually work.
+-- Add missing 'copy' to interval edit popup menu.
+
 New in the 2.1.9 Release:
 -------------------------
 This release fixes a number of bugs, the most serious of which were:
