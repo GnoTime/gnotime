@@ -32,6 +32,7 @@ extern int save_count; /* XXX */
 
 #define GTT_GCONF "/apps/GnoTimeDebug"
 
+/* ======================================================= */
 /* XXX Should use changesets */
 /* XXX warnings should be graphical */
 #define CHKERR(rc,err_ret,dir) {                                       \
@@ -73,6 +74,28 @@ extern int save_count; /* XXX */
    rc = gconf_client_unset (client, GTT_GCONF dir, &err_ret);          \
    CHKERR (rc,err_ret,dir);                                            \
 }
+
+/* ======================================================= */
+
+#define CHKGET(gcv,err_ret,dir,default_val)                            \
+	if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) {\
+	   retval = default_val;                                            \
+      printf ("GTT: GConf: Warning: get %s failed: ", dir);            \
+      if (err_ret) printf ("%s\n\t", err_ret->message);                \
+      printf ("Using default value\n");                                \
+   }
+
+#define GETINT(dir,default_val) ({                                     \
+   int retval;                                                         \
+   GError *err_ret= NULL;                                              \
+	GConfValue *gcv;                                                    \
+	gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);           \
+	printf ("duude gdv=%x\n", gcv); \
+	if (gcv) printf ("duude valid=%d\n", GCONF_VALUE_TYPE_VALID(gcv->type)); \
+	CHKGET (gcv,err_ret, dir, default_val)                              \
+	else retval = gconf_value_get_int (gcv);                            \
+	retval;                                                             \
+})
 
 /* ======================================================= */
 /* Save only the GUI configuration info, not the actual data */
@@ -209,7 +232,7 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
 	SETINT ("/Misc/NumProjects", -1);
 
-	/* write out the customer report info */
+	/* Write out the customer report info */
 	i = 0;
 	for (node = gtt_plugin_get_list(); node; node=node->next)
 	{
@@ -217,15 +240,15 @@ gtt_gconf_save (void)
 		GError *err_ret= NULL;
 
 		GttPlugin *plg = node->data;
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Name", i);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
 		rc = gconf_client_set_string(client, s, plg->name, &err_ret);
 		CHKERR (rc,err_ret,s);
 
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Path", i);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
 		rc = gconf_client_set_string(client, s, plg->path, &err_ret);
 		CHKERR (rc,err_ret,s);
 
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Report%d/Tooltip", i);
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
 		rc = gconf_client_set_string(client, s, plg->tooltip, &err_ret);
 		CHKERR (rc,err_ret,s);
 
@@ -275,6 +298,13 @@ gtt_gconf_load (void)
 
 	rc = gconf_client_dir_exists (client, GTT_GCONF, &err_ret);
 	if (err_ret) printf ("duude err %s\n", err_ret->message);
+
+	{ int x;
+	x = GETINT ("/asdf", 42);
+	printf ("duude x=%d\n", x);
+	x = GETINT ("/Data/SaveCount", 0);
+	printf ("duude cnt=%d\n", x);
+	}
 
 }
 

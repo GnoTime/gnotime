@@ -274,8 +274,8 @@ err:
 
 /* ======================================================= */
 
-void
-gtt_load_config (const char *fname)
+static void
+gtt_load_gnome_config (const char *fname)
 {
 	char s[256];
 	int i, num;
@@ -496,6 +496,17 @@ gtt_load_config (const char *fname)
 	{
 		update_toolbar_sections();
 	}
+}
+
+/* ======================================================= */
+
+void
+gtt_load_config (const char *fname)
+{
+	/* Load config from ~/.gnome2/GnoTime using deprecated gnome_config */
+	gtt_load_gnome_config (fname);
+
+	/* XXX */ gtt_gconf_load ();
 }
 
 /* ======================================================= */
