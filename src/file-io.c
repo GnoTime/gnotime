@@ -540,7 +540,7 @@ gtt_load_config (void)
 	{
 		strcpy (s, "=");
 		strcat (s, h);
-		strcat (s, "/gtt=");
+		strcat (s, "/.gnome/gtt=");
 		printf ("GTT: Info: Importing ~/.gnome/gtt file\n");
 		gtt_load_gnome_config (s);
 		gtt_config_filepath = s;
