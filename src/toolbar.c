@@ -274,7 +274,7 @@ update_toolbar_sections(void)
 	GtkWidget *tb;
 	GtkWidget *w;
 
-	if (!window) return;
+	if (!app_window) return;
 	if (!mytbar) return;
 
 	w = GTK_WIDGET(mytbar->tbar)->parent;

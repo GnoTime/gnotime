@@ -1338,7 +1338,7 @@ ctree_new(void)
 	ctree_update_column_visibility (ptw);
 	
 	/*   XXX  uhh, isn't this overriding some other geom hint?? thats bad */
-	gtk_widget_set_usize(w, -1, 120);
+	gtk_widget_set_size_request(w, -1, 120);
 
 	/* create the top-level window to hold the c-tree */
 	sw = gtk_scrolled_window_new (NULL, NULL);

@@ -1,5 +1,5 @@
 /*   Task Properties for GTimeTracker - a time tracker
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -118,8 +118,8 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 		return;
 	}
 
-	/* set the task, evenm if its same as the old task.  Do this because
-	 * the widget may contain rejected edit values  */
+	/* Set the task, even if its same as the old task.  Do this because
+	 * the widget may contain rejected edit values.  */
 	dlg->task = tsk;
 
 	gtk_entry_set_text(dlg->memo, gtt_task_get_memo(tsk));
@@ -144,7 +144,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	else if (GTT_OVEROVER == rate) gtk_option_menu_set_history (dlg->billrate, 2);
 	else if (GTT_FLAT_FEE == rate) gtk_option_menu_set_history (dlg->billrate, 3);
 
-	/* set to unmodified as it reflects the current state of the project */
+	/* Set to unmodified as it reflects the current state of the project. */
 	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(dlg->dlg),
 					FALSE);
 }
@@ -249,16 +249,34 @@ prop_task_dialog_new (void)
 
 /* ============================================================== */
 
+static void 
+redraw (GttProject *prj, gpointer data)
+{
+	PropTaskDlg *dlg = data;
+	do_set_task (dlg->task, dlg);
+}
+
+/* ============================================================== */
+
 static PropTaskDlg *dlog = NULL;
 
 void 
 prop_task_dialog_show (GttTask *task)
 {
+	GttProject *prj;
 	if (!task) return;
 	if (!dlog) dlog = prop_task_dialog_new();
 
+	
+	prj = gtt_task_get_parent (dlog->task);
+	gtt_project_remove_notifier (prj, redraw, dlog);
+
 	do_set_task(task, dlog);
+	
+	prj = gtt_task_get_parent (task);
+	gtt_project_add_notifier (prj, redraw, dlog);
+	
 	gtk_widget_show(GTK_WIDGET(dlog->dlg));
 }
 
-/* ================= END OF FILE ================================ */
+/* ===================== END OF FILE =========================== */

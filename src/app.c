@@ -1,5 +1,6 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -39,11 +40,16 @@
 #include "util.h"
 
 
+/* XXX Most of the globals below should be placed into thier
+ * own top-level structure, rather than being allows to be 
+ * globals.
+ */
 GttProject *cur_proj = NULL;
 
-ProjTreeWindow *global_ptw;
-GtkWidget *window;
-GtkWidget *status_bar;
+ProjTreeWindow *global_ptw = NULL;
+NotesArea *global_na = NULL;
+GtkWidget *app_window = NULL;
+GtkWidget *status_bar = NULL;
 
 static GtkStatusbar *status_project = NULL;
 static GtkStatusbar *status_day_time = NULL;
@@ -167,7 +173,7 @@ run_shell_command (GttProject *proj, gboolean do_start)
 /* ============================================================= */
 
 void 
-cur_proj_set(GttProject *proj)
+cur_proj_set (GttProject *proj)
 {
 	/* Due to the way the widget callbacks work, 
 	 * we may be called recursively ... */
@@ -191,8 +197,24 @@ cur_proj_set(GttProject *proj)
 
 	/* update GUI elements */
 	menu_set_states();
-	if (proj) prop_dialog_set_project(proj);
+	if (proj) 
+	{
+		prop_dialog_set_project(proj);
+		notes_area_set_project (global_na, proj);
+	}
 	update_status_bar();
+}
+
+
+/* ============================================================= */
+
+void 
+focus_row_set (GttProject *proj)
+{
+	/* update GUI elements */
+	
+	prop_dialog_set_project(proj);
+	notes_area_set_project (global_na, proj);
 }
 
 
@@ -203,23 +225,23 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	GtkWidget *ctree;
 	GtkWidget *vbox;
 	GtkWidget *widget;
-	gint x, y, w, h;
+	GtkWidget *vpane;
 
-	window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
-	gtk_window_set_wmclass(GTK_WINDOW(window),
+	app_window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
+	gtk_window_set_wmclass(GTK_WINDOW(app_window),
 			       GTT_APP_NAME, GTT_APP_PROPER_NAME);
 
 	/* 485 x 272 seems to be a good size to default to */
-	gtk_window_set_default_size(GTK_WINDOW(window), 485, 272);
-	gtk_window_set_policy(GTK_WINDOW(window), TRUE, TRUE, FALSE);
+	gtk_window_set_default_size(GTK_WINDOW(app_window), 485, 272);
+	gtk_window_set_policy(GTK_WINDOW(app_window), TRUE, TRUE, FALSE);
 	
 	/* build menus */
-	menus_create(GNOME_APP(window));
+	menus_create(GNOME_APP(app_window));
 
 	/* build toolbar */
 	widget = build_toolbar();
 	gtk_widget_show(widget);
-	gnome_app_set_toolbar(GNOME_APP(window), GTK_TOOLBAR(widget));
+	gnome_app_set_toolbar(GNOME_APP(app_window), GTK_TOOLBAR(widget));
 	
 	/* container holds status bar, main ctree widget */
 	vbox = gtk_vbox_new(FALSE, 0);
@@ -262,32 +284,37 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	/* create the main columned tree for showing projects */
 	global_ptw = ctree_new();
 	ctree = ctree_get_widget(global_ptw);
-	gtk_box_pack_end(GTK_BOX(vbox), ctree->parent, TRUE, TRUE, 0);
 
-#ifdef LATER
 	/* create the notes area */
-	// XXXX
-	notes_area_init();
-	{ GtkWidget *nar = notes_area_get_widget ();
-       gtk_widget_reparent (nar, vbox);  // ???
-	    gtk_box_pack_end(GTK_BOX(vbox), nar, TRUE, TRUE, 0);
-	}
-#endif
-	
+	global_na = notes_area_new();
+	vpane = notes_area_get_widget (global_na);
 
+	/* Need to reparent, to get rid of glade parent-window hack.
+	 * But gtk_widget_reparent (vpane); causes  a "Gtk-CRITICAL" 
+	 * to occur.  So we need a fancier move.
+	 */
+	gtk_widget_ref (vpane);
+	gtk_container_remove(GTK_CONTAINER(vpane->parent), vpane);
+	// gtk_box_pack_end(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
+	gtk_widget_unref (vpane);
+
+	notes_area_add_ctree (global_na, ctree);
+	
+	
 	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);
-	gnome_app_set_contents(GNOME_APP(window), vbox);
+	gnome_app_set_contents(GNOME_APP(app_window), vbox);
 
 	if (!geometry_string) return;
 	
-	if (gtk_window_parse_geometry(GTK_WINDOW(window),geometry_string))
+	if (gtk_window_parse_geometry(GTK_WINDOW(app_window),geometry_string))
 	{
 		geom_size_override=TRUE;
 	}
 	else 
 	{
-		gnome_app_error(GNOME_APP(window),
+		gnome_app_error(GNOME_APP(app_window),
 			_("Couldn't understand geometry (position and size)\n"
 			  " specified on command line"));
 	}
@@ -296,9 +323,9 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 void 
 app_show (void)
 {
-	if (!GTK_WIDGET_MAPPED(window)) 
+	if (!GTK_WIDGET_MAPPED(app_window)) 
 	{
-		gtk_widget_show(window);
+		gtk_widget_show(app_window);
 	}
 }
 

@@ -44,7 +44,6 @@
 #include "menus.h"
 #include "menucmd.h"
 #include "prefs.h"
-#include "shorts.h"		/* SMH 2000-03-22: connect_short_cuts() */
 #include "timer.h"
 #include "xml-gtt.h"
 
@@ -197,7 +196,7 @@ post_read_data(void)
 
 	/* plugins need to be added to the main menus dynamically,
 	 * after the config file has been read */
-	menus_add_plugins (GNOME_APP(window));
+	menus_add_plugins (GNOME_APP(app_window));
 	log_start();
 	app_show();
 }
@@ -575,11 +574,10 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	int rc;
 
 	sess_id  = gnome_client_get_id(client);
-	if (!window)
-		return FALSE;
+	if (!app_window) return FALSE;
 
-	gdk_window_get_origin(window->window, &x, &y);
-	gdk_window_get_size(window->window, &w, &h);
+	gdk_window_get_origin (app_window->window, &x, &y);
+	gdk_window_get_size (app_window->window, &w, &h);
 	argv[0] = (char *)data;
 	argv[1] = "--geometry";
 	argv[2] = g_strdup_printf("%dx%d+%d+%d", w, h, x, y);
@@ -633,7 +631,7 @@ guile_inner_main(int argc, char **argv)
 
 #if 0
 	/* Clean things up on exit.  But this is pretty pointless */
-	gtk_widget_destroy (window);
+	gtk_widget_destroy (app_window);
 	project_list_destroy ();
 #endif
 }
@@ -683,14 +681,8 @@ main(int argc, char *argv[])
 	lock_gtt();
 	app_new(argc, argv, geometry_string);
 
-	g_signal_connect(G_OBJECT(window), "delete_event",
+	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			   G_CALLBACK(app_quit), NULL);
-
-	/*
-	 * Added by SMH 2000-03-22:
-	 * Connect short-cut keys. 
-	 */
-	connect_short_cuts();
 
 #if DEVEL_VERSION_WARNING
 	msgbox_ok_cancel(_("Warning"),
@@ -713,4 +705,4 @@ main(int argc, char *argv[])
 	return 0; /* not reached !? */
 }
 
-
+/* ======================= END OF FILE =================== */

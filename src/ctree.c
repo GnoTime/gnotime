@@ -1,6 +1,6 @@
-/*   GtkCTree display of projects for the GTimeTracker - a time tracker
+/*   GtkCTree display of projects for GTimeTracker 
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -260,6 +260,28 @@ set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
 }
 
 /* ============================================================== */
+/* Pseudo focus-row-chan ged callback */
+
+void
+focus_row_changed_cb (GtkCTree *ctree, int row)
+{
+	GtkCTreeNode *rownode;
+	GttProject *proj = NULL;
+
+	rownode = get_focus_row(ctree);
+	if (rownode)
+	{
+		ProjTreeNode *ptn;
+		ptn = gtk_ctree_node_get_row_data(ctree, rownode);
+		proj = ptn->prj;
+	}
+	
+	/* Call the event-redistributor in app.c.  This should
+	 * be replaced by g_object/g_signal for a better implementation. */
+	focus_row_set (proj);
+}
+
+/* ============================================================== */
 
 static int
 widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
@@ -268,7 +290,9 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 	GtkCTreeNode *rownode;
 	GdkEventKey *kev = (GdkEventKey *)event;
 
-	if (event->type != GDK_KEY_RELEASE) return FALSE;
+	if (GDK_KEY_RELEASE != event->type) return FALSE;
+	if (FALSE == gtk_widget_is_focus (GTK_WIDGET(ctree))) return FALSE;
+	
 	switch (kev->keyval)
 	{
 		case GDK_Return:
@@ -280,13 +304,16 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 			}
 			return TRUE;
 		case GDK_Up:
+		case GDK_Page_Up:
 		case GDK_Down:
+		case GDK_Page_Down:
 			rownode = get_focus_row(ctree);
 			if (rownode)
 			{
 				ptn = gtk_ctree_node_get_row_data(ctree, rownode);
 			   if (ptn->ptw->show_select_row) gtk_ctree_select (ctree, rownode);
 			}
+			focus_row_changed_cb (ctree, GTK_CLIST(ctree)->focus_row);
 			return FALSE;
 		case GDK_Left:
 			rownode = get_focus_row(ctree);
@@ -296,6 +323,31 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 			rownode = get_focus_row(ctree);
 			gtk_ctree_expand (ctree, rownode);
 			return TRUE;
+			
+		case 'j':
+			if(GTK_CLIST(ctree)->focus_row < GTK_CLIST(ctree)->rows - 1)
+			{
+				gtk_clist_freeze(GTK_CLIST(ctree));
+				GTK_CLIST(ctree)->focus_row += 1;
+				gtk_clist_thaw(GTK_CLIST(ctree));
+				focus_row_changed_cb (ctree, GTK_CLIST(ctree)->focus_row);
+			}
+			return TRUE;
+
+		case 'k':
+			if(GTK_CLIST(ctree)->focus_row > 0)
+			{
+				gtk_clist_freeze(GTK_CLIST(ctree));
+				GTK_CLIST(ctree)->focus_row -= 1;
+				gtk_clist_thaw(GTK_CLIST(ctree));
+				focus_row_changed_cb (ctree, GTK_CLIST(ctree)->focus_row);
+			}
+			return TRUE;
+
+		case 'q':
+			app_quit (NULL, NULL);
+			return TRUE;
+
 		default:
 			return FALSE;
 	}
@@ -1275,6 +1327,16 @@ redraw (GttProject *prj, gpointer data)
 
 /* ============================================================== */
 
+static void
+select_row_cb (GtkCTree *ctree, gint row, gint col, 
+					 GdkEvent *ev, ProjTreeWindow *ptw)
+{
+	/* shim to artificial callback */
+	focus_row_changed_cb (ctree, row);
+}
+
+/* ============================================================== */
+
 GtkWidget *
 ctree_get_widget (ProjTreeWindow *ptw)
 {
@@ -1287,7 +1349,7 @@ ctree_new(void)
 {
 	ProjTreeWindow *ptw;
 	GtkWidget *wimg;
-	GtkWidget *w, *sw;
+	GtkWidget *w;
 	int i;
 
 	ptw = g_new0 (ProjTreeWindow, 1);
@@ -1326,18 +1388,15 @@ ctree_new(void)
 		ptw->col_tt_w[i] = tt;
 	}
 
-	gtk_widget_set_usize(w, -1, 120);
+	/* set miinimum size, set stubbie on the tree display */
+	gtk_widget_set_size_request (w, -1, 120);
 	ctree_update_column_visibility (ptw);
 	gtk_ctree_set_show_stub(GTK_CTREE(w), FALSE);
 
-	/* create the top-level window to hold the c-tree */
-	sw = gtk_scrolled_window_new (NULL, NULL);
-	gtk_container_add (GTK_CONTAINER (sw), w);
-	gtk_scrolled_window_set_policy (
-		GTK_SCROLLED_WINDOW (sw),
-		GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-	gtk_widget_show_all (sw);
-
+	/* Grab initial focus for hot-key events */
+	gtk_widget_grab_focus (w);
+	
+	/* connect various signals */
 	g_signal_connect(G_OBJECT(w), "button_press_event",
 			   G_CALLBACK(widget_button_event), ptw);
 	g_signal_connect(G_OBJECT(w), "key_release_event",
@@ -1358,6 +1417,9 @@ ctree_new(void)
 
 	g_signal_connect(G_OBJECT(w), "drag_drop",
 			   G_CALLBACK(drag_drop), ptw);
+
+	g_signal_connect(G_OBJECT(w), "select_row",
+			   G_CALLBACK(select_row_cb), ptw);
 
 	/* allow projects to be re-arranged by dragging */
 	gtk_clist_set_reorderable(GTK_CLIST(w), TRUE);

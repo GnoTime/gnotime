@@ -159,7 +159,7 @@ export_file_picker (GtkWidget *widget, gpointer data)
 	const char * template_filename = data;
 
 	dialog = gtk_file_selection_new (_("Tab-Delimited Export"));
-	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (app_window));
 
 	xp = export_format_new ();
 	xp->picker = GTK_FILE_SELECTION (dialog);

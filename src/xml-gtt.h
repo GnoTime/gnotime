@@ -22,7 +22,7 @@
 #include <glib.h>
 
 /* The gtt_xml_write() routine will all gtt data to xml file.
- *    If an error occurs, one of teh err-throw.h errors will
+ *    If an error occurs, one of the err-throw.h errors will
  *    be set.
  *
  * The gtt_xml_read_projects() will read a gtt XML file, and

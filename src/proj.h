@@ -22,6 +22,11 @@
 
 #include <glib.h>
 
+/* The data structures for GnoTime are written in a quasi-object-oriented
+ * style.  All data is encapsulated in opaque structs, and can be accessed
+ * only through the setters and getters defined in this file.
+ */
+
 
 #ifdef TIME_WITH_SYS_TIME
 #include <sys/time.h>
@@ -455,12 +460,12 @@ int		gtt_task_get_bill_unit (GttTask *);
  * The gtt_task_is_first_task() routine returns True if this task
  *    is the leading task of the project.
  */
-void		gtt_task_remove (GttTask *);
-GttTask *	gtt_task_new_insert (GttTask *);
-void		gtt_task_insert (GttTask *where, GttTask *insertee);
-void		gtt_task_merge_up (GttTask *);
-gboolean	gtt_task_is_first_task (GttTask *);
-GttProject *	gtt_task_get_parent (GttTask *);
+void         gtt_task_remove (GttTask *);
+GttTask *    gtt_task_new_insert (GttTask *);
+void         gtt_task_insert (GttTask *where, GttTask *insertee);
+void         gtt_task_merge_up (GttTask *);
+gboolean     gtt_task_is_first_task (GttTask *);
+GttProject * gtt_task_get_parent (GttTask *);
 
 
 GList *  gtt_task_get_intervals (GttTask *);

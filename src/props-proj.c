@@ -1,6 +1,6 @@
 /*   Project Properties for GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -63,11 +63,11 @@ typedef struct _PropDlg
 
 /* ============================================================== */
 
-#define GET_MENU(WIDGET,NAME) ({				\
-	GtkWidget *menu, *menu_item;				\
-	menu = gtk_option_menu_get_menu (WIDGET);		\
-       	menu_item = gtk_menu_get_active(GTK_MENU(menu));	\
-       	(gtk_object_get_data(GTK_OBJECT(menu_item), NAME));	\
+#define GET_MENU(WIDGET,NAME) ({                                \
+        GtkWidget *menu, *menu_item;                            \
+        menu = gtk_option_menu_get_menu (WIDGET);               \
+        menu_item = gtk_menu_get_active(GTK_MENU(menu));        \
+        (gtk_object_get_data(GTK_OBJECT(menu_item), NAME));     \
 })
 
 
@@ -398,6 +398,15 @@ prop_dialog_new (void)
 
 /* ============================================================== */
 
+static void 
+redraw (GttProject *prj, gpointer data)
+{
+	PropDlg *dlg = data;
+	do_set_project(prj, dlg);
+}
+
+/* ============================================================== */
+
 static PropDlg *dlog = NULL;
 
 void 
@@ -405,7 +414,9 @@ prop_dialog_show(GttProject *proj)
 {
 	if (!dlog) dlog = prop_dialog_new();
  
+	gtt_project_remove_notifier (dlog->proj, redraw, dlog);
 	do_set_project(proj, dlog);
+	gtt_project_add_notifier (proj, redraw, dlog);
 	gtk_widget_show(GTK_WIDGET(dlog->dlg));
 }
 
@@ -414,7 +425,9 @@ prop_dialog_set_project(GttProject *proj)
 {
 	if (!dlog) return;
  
+	gtt_project_remove_notifier (dlog->proj, redraw, dlog);
 	do_set_project(proj, dlog);
+	gtt_project_add_notifier (proj, redraw, dlog);
 }
 
 /* ==================== END OF FILE ============================= */

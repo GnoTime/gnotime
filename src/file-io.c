@@ -1,6 +1,6 @@
 /*   file input/output handling for GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001 Linas Vepstas
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -302,7 +302,7 @@ gtt_load_config (const char *fname)
 	/* get last running project */
    cur_proj_id = gnome_config_get_int(GTT_CONF"/Misc/CurrProject=-1");
 
-   config_idle_timeout = gnome_config_get_int(GTT_CONF"/Misc/IdleTimeout=-1");
+   config_idle_timeout = gnome_config_get_int(GTT_CONF"/Misc/IdleTimeout=300");
    config_autosave_period = gnome_config_get_int(GTT_CONF"/Misc/AutosavePeriod=60");
 
 	/* Reset the main window width and height to the values 
@@ -314,7 +314,7 @@ gtt_load_config (const char *fname)
 		int x, y;
 		x = gnome_config_get_int(GTT_CONF"/Geometry/X=10");
 		y = gnome_config_get_int(GTT_CONF"/Geometry/Y=10");
-		gtk_widget_set_uposition(GTK_WIDGET(window), x, y);
+		gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
 	}
 	if (!geom_size_override)
 	{
@@ -322,7 +322,14 @@ gtt_load_config (const char *fname)
 		w = gnome_config_get_int(GTT_CONF"/Geometry/Width=442");
 		h = gnome_config_get_int(GTT_CONF"/Geometry/Height=272");
 
-		gtk_window_set_default_size(GTK_WINDOW(window), w, h);
+		gtk_window_set_default_size(GTK_WINDOW(app_window), w, h);
+	}
+
+	{
+		int vp, hp;
+		vp = gnome_config_get_int(GTT_CONF"/Geometry/VPaned=250");
+		hp = gnome_config_get_int(GTT_CONF"/Geometry/HPaned=220");
+		notes_area_set_pane_sizes (global_na, vp, hp);
 	}
 
 	config_show_secs = gnome_config_get_bool(GTT_CONF"/Display/ShowSecs=false");
@@ -554,13 +561,19 @@ gtt_save_config(const char *fname)
 
 	/* ------------- */
 	/* save the window location and size */
-	gdk_window_get_origin(window->window, &x, &y);
-	gdk_window_get_size(window->window, &w, &h);
+	gdk_window_get_origin(app_window->window, &x, &y);
+	gdk_window_get_size(app_window->window, &w, &h);
 	gnome_config_set_int(GTT_CONF"/Geometry/Width", w);
 	gnome_config_set_int(GTT_CONF"/Geometry/Height", h);
 	gnome_config_set_int(GTT_CONF"/Geometry/X", x);
 	gnome_config_set_int(GTT_CONF"/Geometry/Y", y);
 
+	{
+		int vp, hp;
+		notes_area_get_pane_sizes (global_na, &vp, &hp);
+		gnome_config_set_int(GTT_CONF"/Geometry/VPaned", vp);
+		gnome_config_set_int(GTT_CONF"/Geometry/HPaned", hp);
+	}
 	/* ------------- */
 	/* save the configure dialog values */
 	gnome_config_set_bool(GTT_CONF"/Display/ShowSecs", config_show_secs);

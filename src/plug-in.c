@@ -22,6 +22,7 @@
 #include <glib.h>
 #include <gnome.h>
 
+#include "app.h"
 #include "journal.h"
 #include "plug-in.h"
 #include "util.h"
@@ -137,10 +138,6 @@ new_plugin_cancel_cb (GtkWidget * w, gpointer data)
 /* ============================================================ */
 
 
-/* XXX: This is our main window.  It is ugly that its a global, and
- * it should be passed around in the data fields instead. */
-extern GtkWidget *window;
-
 NewPluginDialog *
 new_plugin_dialog_new (void)
 {
@@ -149,7 +146,7 @@ new_plugin_dialog_new (void)
 	GtkWidget *e;
 
 	dlg = g_malloc(sizeof(NewPluginDialog));
-	dlg->app = GNOME_APP (window);
+	dlg->app = GNOME_APP (app_window);
 
 	gtxml = gtt_glade_xml_new ("glade/plugin.glade", "Plugin New");
 	dlg->gtxml = gtxml;
