@@ -1668,6 +1668,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	ProjTreeNode *ptn;
 	GtkCTreeNode *sibnode=NULL;
 	GtkCTreeNode *parentnode=NULL;
+	GList *n;
 
 	if (sibling)
 	{
@@ -1698,6 +1699,13 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 
 	gtk_ctree_node_set_row_data(ptw->ctree, ptn->ctnode, ptn);
 
+	/* Make sure children get moved over also */
+	for (n=gtt_project_get_children(p); n; n=n->next)
+	{
+		GttProject *sub_prj = n->data;
+		ctree_add (ptw, sub_prj, ptn->ctnode);
+	}
+	
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
 }
@@ -1710,6 +1718,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	ProjTreeNode *ptn;
 	GtkCTreeNode *parentnode=NULL;
 	GtkCTreeNode *next_sibling=NULL;
+	GList *n;
 
 	if (sibling)
 	{
@@ -1747,6 +1756,13 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 
 	gtk_ctree_node_set_row_data(ptw->ctree, ptn->ctnode, ptn);
 
+	/* Make sure children get moved over also */
+	for (n=gtt_project_get_children(p); n; n=n->next)
+	{
+		GttProject *sub_prj = n->data;
+		ctree_add (ptw, sub_prj, ptn->ctnode);
+	}
+	
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
 }
