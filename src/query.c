@@ -64,7 +64,7 @@ day_bin (GttInterval *ivl, gpointer data)
 
 	while (1)
 	{
-		stm.tm_yday ++;
+		stm.tm_mday ++;
 		end_of_day = mktime (&stm);
 		if (stop < end_of_day)
 		{
@@ -99,7 +99,9 @@ gtt_project_get_daily_time (GttProject *proj, gboolean include_subprojects)
 	num_days = (stop - start) / (24*3600);
 	num_days +=2;
 
-	arr = g_array_sized_new (FALSE, TRUE, sizeof (time_t), num_days);
+	arr = g_array_new (FALSE, TRUE, sizeof (time_t));
+	g_array_set_size (arr, num_days);
+
 	localtime_r (&start, &stm);
 
 	da.arr = arr;
