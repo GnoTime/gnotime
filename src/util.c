@@ -90,6 +90,42 @@ print_hours_elapsed (char * buff, int len, int secs, gboolean show_secs)
 }
 
 /* ============================================================== */
+
+char *
+print_minutes_elapsed (char * buff, int len, int secs, gboolean show_secs)
+{
+	size_t flen;
+	if (0 <= secs)
+	{
+		if (show_secs)
+		{
+			flen = g_snprintf(buff, len,
+			   "%02d:%02d", 
+				(int)(secs / 60), (int)(secs % 60));
+		}
+		else
+		{
+			flen = g_snprintf(buff, len, 
+			   "%02d", (int)(secs / 60));
+		}
+	} 
+	else 
+	{
+		if (show_secs)
+		{
+			flen = g_snprintf(buff, len,
+			   "-%02d:%02d", (int)(-secs / 60), (int)(-secs % 60));
+		}
+		else
+		{
+			flen = g_snprintf(buff, len,
+			   "-%02d", (int)(-secs / 60));
+		}
+	}
+	return buff+flen;
+}
+
+/* ============================================================== */
 /* The following code baldly stolen fron GnuCash */
 
 static DateFormat dateFormat = DATE_FORMAT_LOCALE;

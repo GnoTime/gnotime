@@ -42,6 +42,7 @@ typedef enum
  *    null character.
  */
 char * print_hours_elapsed (char * buff, int len, int secs, gboolean show_secs);
+char * print_minutes_elapsed (char * buff, int len, int secs, gboolean show_secs);
 
 /* The set_date_format() routine sets date format to one of 
  *    US, UK, CE, OR ISO.  Checks to make sure it's a legal value.
