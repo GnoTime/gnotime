@@ -8,6 +8,7 @@ gttghtml_DATA =		\
 	invoice.ghtml	\
 	journal.ghtml	\
 	primer.ghtml	\
+	tab-delim.ghtml	\
 	noproject.ghtml
 
 
