@@ -67,7 +67,8 @@ typedef struct wiggy_s
 	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
-static void do_show_report (const char *, KvpFrame *, GttProject *, gboolean, GList *);
+static void do_show_report (const char *, const char *, 
+                KvpFrame *, GttProject *, gboolean, GList *);
 
 
 /* ============================================================== */
@@ -158,6 +159,9 @@ redraw (GttProject * prj, gpointer data)
 
 /* ============================================================== */
 /* file selection callbacks */
+/* XXX should re-write to save contents from gtkhtml window, so that
+ * results of user editing are saved, rather than the orig contents.
+ */
 
 static void 
 filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
@@ -573,7 +577,7 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		wig->interval = NULL;
 
 		path = gtt_ghtml_resolve_path ("journal.ghtml", wig->filepath);
-		do_show_report (path, NULL, prj, FALSE, NULL);
+		do_show_report (path, NULL, NULL, prj, FALSE, NULL);
 	}
 	else
 	{
@@ -707,7 +711,7 @@ printf ("duude old path = %s\n", wig->filepath);
 	qresults = bogus_query (kvpf);
 	
 	/* Open a new window */
-	do_show_report (path, kvpf, wig->prj, TRUE, qresults); 
+	do_show_report (path, NULL, kvpf, wig->prj, TRUE, qresults); 
 
 	/* XXX We cannnot reuse the same window from this callback, we 
 	 * have to let the callback return first, else we get a nasty error. 
@@ -724,7 +728,9 @@ printf ("duude old path = %s\n", wig->filepath);
 /* ============================================================== */
 
 static void
-do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean did_query, GList *prjlist)
+do_show_report (const char * report, const char * title, 
+                KvpFrame *kvpf, GttProject *prj, 
+                gboolean did_query, GList *prjlist)
 {
 	GtkWidget *jnl_top, *jnl_viewport;
 	GladeXML  *glxml;
@@ -742,10 +748,11 @@ do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean d
 
 	wig->top = jnl_top;
 
-	/* create browser, plug it into the viewport */
+	if (title) gtk_window_set_title (GTK_WINDOW(jnl_top), title);
+
+	/* Create browser, plug it into the viewport */
 	wig->html = GTK_HTML(gtk_html_new());
 	gtk_html_set_editable (wig->html, FALSE);
-	gtk_html_set_title (wig->html, "adsfaddfadf");
 	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html));
 
 	wig->gh = gtt_ghtml_new();
@@ -855,6 +862,9 @@ do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean d
 	/* XXX should add notifiers for prjlist too ?? Yes we should */
 	if (prj) gtt_project_add_notifier (prj, redraw, wig);
 	gtt_ghtml_display (wig->gh, report, prj);
+
+	/* Can only set editable *after* there's content in the window */
+	// gtk_html_set_editable (wig->html, TRUE);
 }
 
 /* ============================================================== */
@@ -935,7 +945,7 @@ show_report (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path (report_file, NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
+	do_show_report (path, NULL, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -947,7 +957,7 @@ invoke_report(GtkWidget *widget, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	/* Do not gnome-filepath this, this is for user-defined reports */
-	do_show_report (plg->path, NULL, prj, FALSE, NULL);
+	do_show_report (plg->path, plg->name, NULL, prj, FALSE, NULL);
 }
 
 /* ===================== END OF FILE ==============================  */
