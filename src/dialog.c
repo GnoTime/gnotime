@@ -36,27 +36,6 @@ dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 /* ================================================================= */
 
 void 
-new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
-		       const char *s, GCallback sigfunc, gpointer data)
-{
-	GtkWidget *dia;
-	char *tmp;
-
-	tmp = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
-	dia = gnome_dialog_new(tmp, s, NULL);
-	if (dlg) *dlg = dia;
-	dialog_setup(GNOME_DIALOG(dia), vbox);
-	
-	if (sigfunc)
-	       gnome_dialog_button_connect(GNOME_DIALOG(dia), 0,
-					   sigfunc, data);
-
-	g_free (tmp);
-}
-
-/* ================================================================= */
-
-void 
 new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 			  const char *s_ok, GCallback sigfunc, gpointer data,
 			  const char *s_cancel, GCallback c_sigfunc, gpointer c_data)
@@ -87,6 +66,18 @@ new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 }
 
 /* ================================================================= */
+/* XXXXXXXXXXXXXX FIXME
+ * This routine should be eliminated and replaced by the GtkMessageDialog
+ * thingy.  Except for one stooptid trivial detail:
+ * I can't figure out how to make the GtkMessageDialog go away after
+ * the user has clicked the ok/cancel/yes/no buttons.  The stupid p.o.s.
+ * stays on the screen and grins stupidly at me.  Even if I install
+ * the 'close' signal!  Arghhhh!
+ *
+ * On the other hand, the old, crappy code above and below actually 
+ * just plain works.  So much for porting from gtk-1.2 to 2.0. 
+ * -- linas April 2004
+ */
 
 void 
 msgbox_ok(const char *title, const char *text, const char *ok_text,

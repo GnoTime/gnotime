@@ -179,6 +179,14 @@ file_write_helper (GttGhtml *pl, const char *str, size_t len, gpointer data)
 /* ============================================================== */
 
 static void 
+on_msg_close_cb (GtkWidget *w, gpointer data)
+{
+	/* !@#$%^&*() gtk-2.0 is borken in soooo many ways and this is one of them */
+	printf ("duuude where's my close signal??? w=%p\n", w);
+	gtk_widget_destroy (w);
+}
+
+static void 
 remember_uri (Wiggy *wig, const char * filename)
 {
 	/* Remember history, on a per-report basis */
@@ -220,16 +228,19 @@ save_to_gnomevfs (Wiggy *wig, const char * filename)
 
 	if (GNOME_VFS_OK != result)
 	{
-		gchar *msg;
 		GtkWidget *mb;
-		msg = g_strdup_printf (_("Unable to open the file %s\n%s"),
-			filename, gnome_vfs_result_to_string (result));
-		mb = gnome_message_box_new (msg,
-			GNOME_MESSAGE_BOX_ERROR, 
-			GTK_STOCK_CLOSE,
-			NULL);
+		mb = gtk_message_dialog_new (GTK_WINDOW(wig->top),
+		               GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+		               GTK_MESSAGE_ERROR,
+		               GTK_BUTTONS_CLOSE,
+		               _("Unable to open the file %s\n%s"),
+		               filename, 
+		               gnome_vfs_result_to_string (result));
+		/* !@#$%^&*() gtk-2.0 is borken in soooo many ways and this is one of them */
+		/* effing dialog won't close no matter what I do. */
+		g_signal_connect (G_OBJECT(mb), "close",
+		               G_CALLBACK (on_msg_close_cb), mb);
 		gtk_widget_show (mb);
-		/* g_free (msg); don't free -- avoid mystery coredump */
 	}
 	else
 	{
@@ -635,7 +646,18 @@ on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
 	remember_uri (wig, uri);
 	if (0 == strncmp (uri, "mailto:", 7))
 	{
-		printf ("duude got mailo yuir\n");
+		GtkWidget *mb;
+		mb = gtk_message_dialog_new (GTK_WINDOW(wig->publish_popup),
+		               // GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+		               GTK_DIALOG_MODAL,
+		               GTK_MESSAGE_INFO,
+		               GTK_BUTTONS_CLOSE,
+		               _("mailto: URL is not supported at this time"));
+		/* !@#$%^&*() gtk-2.0 is borken in soooo many ways and this is one of them */
+		/* effing dialog won't close no matter what I do. */
+		g_signal_connect (G_OBJECT(mb), "close",
+		               G_CALLBACK (on_msg_close_cb), mb);
+		gtk_widget_show (mb);
 	}
 	else
 	{
