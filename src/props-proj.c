@@ -341,7 +341,7 @@ prop_dialog_new (void)
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help",
 	                   GTK_SIGNAL_FUNC(help_cb),
-			             "gnotime.xml#preferences");
+			             "properties");
 
 	gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply",
 			   GTK_SIGNAL_FUNC(prop_set), dlg);

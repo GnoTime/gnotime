@@ -28,6 +28,7 @@
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "idle-dialog.h"
+#include "dialog.h"
 #include "idle-timer.h"
 #include "proj.h"
 #include "util.h"
@@ -41,6 +42,7 @@ struct GttIdleDialog_s
 	GtkDialog   *dlg;
 	GtkButton   *yes_btn;
 	GtkButton   *no_btn;
+	GtkButton   *help_btn;
 	GtkLabel    *idle_label;
 	GtkLabel    *credit_label;
 	GtkLabel    *time_label;
@@ -52,6 +54,14 @@ struct GttIdleDialog_s
 	time_t      previous_credit;
 };
 
+
+/* =========================================================== */
+
+static void
+help_cb (GObject *obj, GttIdleDialog *dlg)
+{
+	gtt_help_popup (GTK_WIDGET(dlg->dlg), "idletimer");
+}
 
 /* =========================================================== */
 
@@ -272,6 +282,7 @@ idle_dialog_realize (GttIdleDialog * id)
 
 	id->yes_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "yes button"));
 	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
+	id->help_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "helpbutton1"));
 	id->idle_label = GTK_LABEL (glade_xml_get_widget (gtxml, "idle label"));
 	id->credit_label = GTK_LABEL (glade_xml_get_widget (gtxml, "credit label"));
 	id->time_label = GTK_LABEL (glade_xml_get_widget (gtxml, "time label"));
@@ -285,6 +296,9 @@ idle_dialog_realize (GttIdleDialog * id)
 
 	g_signal_connect(G_OBJECT(id->no_btn), "clicked",
 	          G_CALLBACK(dialog_kill), id);
+
+	g_signal_connect(G_OBJECT(id->help_btn), "clicked",
+	          G_CALLBACK(help_cb), id);
 
 	g_signal_connect(G_OBJECT(id->scale), "value_changed",
 	          G_CALLBACK(value_changed), id);

@@ -1225,7 +1225,7 @@ do_show_report (const char * report, GttPlugin *plg,
 	wig->publish_entry = GTK_ENTRY(glade_xml_get_widget (glxml, "url entry"));
 
 	glade_xml_signal_connect_data (glxml, "on_pub_help_clicked",
-	        GTK_SIGNAL_FUNC (gtt_help_popup), "gnotime.xml");
+	        GTK_SIGNAL_FUNC (gtt_help_popup), NULL);
 	  
 	glade_xml_signal_connect_data (glxml, "on_pub_cancel_clicked",
 	        GTK_SIGNAL_FUNC (on_pub_cancel_clicked_cb), wig);

@@ -270,7 +270,7 @@ prop_task_dialog_new (void)
 	dlg->dlg = GTK_DIALOG (glade_xml_get_widget (gtxml,  "Task Properties"));
 
 	glade_xml_signal_connect_data (gtxml, "on_help_button_clicked",
-		GTK_SIGNAL_FUNC (gtt_help_popup), "gnotime.xml#preferences");
+		GTK_SIGNAL_FUNC (gtt_help_popup), "properties");
 
 	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
 		GTK_SIGNAL_FUNC (close_cb), dlg);

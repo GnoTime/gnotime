@@ -999,6 +999,41 @@ slightly differently in this new version.
         press <guibutton>Cancel</guibutton>.
       </para>
     </sect2>      
+<sect2 id="idletimer">
+  <title>The Idle Timer Diaogs</title>
+  <para>When <application>GNOME Time Tracker</application> detects that you
+    have not entered anything into your computer for a period of time
+    (configured under <xref linkend="preferences" />), it stops the timer
+    and pops up a dialog asking if you want to restart the timer.</para>
+  <figure id="restarttimer" xreflabel="Restart Timer Dialog">
+    <title>Restart Timer Dialog</title>
+    <screenshot>
+      <screeninfo>Restart Timer Dialog</screeninfo>
+      <graphic fileref="figures/gtt_restartwin.png" />
+    </screenshot>
+  </figure>
+  <para>If you want the time credited to the project anyway (If you had to
+    make a call related to the project, for instance,) Gnotime provides a
+    slider which can be set to the time you want to credit the project with.
+    Pressing <guibutton>Yes</guibutton> credits the project and restarts the
+    timer.  Pressing <guibutton>No</guibutton> halts the timer.</para>
+  
+  <para>Similarly, when there is no project running, <application>GNOME Timer
+    Tracker</application> pops up a dialog asking if you want to start
+    one.</para>
+  <figure id="starttimer" xreflabel="Start Timer Dialog">
+    <title>Start Project Timer Dialog</title>
+    <screenshot>
+      <screeninfo>Restart Timer Dialog</screeninfo>
+      <graphic fileref="figures/gtt_startprojwin.png" />
+    </screenshot>
+  </figure>
+  <para>It provides a dropdown list of your projects which you can choose to
+    select as well as a place to enter any time you want credited to the
+    timer.  If you choose to restart the timer with a project, press the
+    <guibutton>Execute</guibutton> button.  Otherwise,
+    <guibutton>Cancel</guibutton> is what you want.</para>
+</sect2>
 </sect1>
 
 
@@ -1115,18 +1150,3 @@ slightly differently in this new version.
   </para>
  </sect1>
 </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

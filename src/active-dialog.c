@@ -32,6 +32,7 @@
 #include "proj.h"
 #include "proj-query.h"
 #include "util.h"
+#include "dialog.h"
 
 
 extern int config_idle_timeout;
@@ -43,6 +44,7 @@ struct GttActiveDialog_s
 	GtkDialog   *dlg;
 	GtkButton   *yes_btn;
 	GtkButton   *no_btn;
+	GtkButton   *help_btn;
 	GtkLabel    *active_label;
 	GtkLabel    *credit_label;
 	GtkOptionMenu  *project_menu;
@@ -51,6 +53,14 @@ struct GttActiveDialog_s
 	time_t      time_armed;
 };
 
+
+/* =========================================================== */
+
+static void
+dialog_help (GObject *obj, GttActiveDialog *dlg)
+{
+	gtt_help_popup (GTK_WIDGET(dlg->dlg), "idletimer");
+}
 
 /* =========================================================== */
 
@@ -151,6 +161,7 @@ active_dialog_realize (GttActiveDialog * id)
 
 	id->yes_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "yes button"));
 	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
+	id->help_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "helpbutton1"));
 	id->active_label = GTK_LABEL (glade_xml_get_widget (gtxml, "active label"));
 	id->credit_label = GTK_LABEL (glade_xml_get_widget (gtxml, "credit label"));
 	w = glade_xml_get_widget (gtxml, "project option menu");
@@ -164,6 +175,9 @@ active_dialog_realize (GttActiveDialog * id)
 
 	g_signal_connect(G_OBJECT(id->no_btn), "clicked",
 	          G_CALLBACK(dialog_kill), id);
+
+	g_signal_connect(G_OBJECT(id->help_btn), "clicked",
+	          G_CALLBACK(dialog_help), id);
 
 }
 
