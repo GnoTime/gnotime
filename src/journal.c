@@ -1,5 +1,5 @@
 /*   Display & Edit Journal of Timestamps for GnoTime - a time tracker
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -919,90 +919,21 @@ gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path)
 }
 
 
-/* XXX the following half-dozen routines should be collapsed 
- * into a list */
+/* XXX The show_report routine should probably be using data pulled from
+ * GConf, in the same way that the user-defined items are obtained.
+ * Currently, these are hard-coded in menus.c.
+ */
 
 void
-edit_journal(GtkWidget *w, gpointer data)
+show_report (GtkWidget *w, gpointer data)
 {
+	char *report_file = data;
 	GttProject *prj;
 	char * path;
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("journal.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_alldata(GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("bigtable.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_invoice(GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("invoice.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_primer(GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("primer.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_todolist (GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("todo.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_daily (GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("daily.ghtml", NULL);
-	do_show_report (path, NULL, prj, FALSE, NULL);
-}
-
-void
-edit_status (GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	char * path;
-
-	prj = ctree_get_focus_project (global_ptw);
-
-	path = gtt_ghtml_resolve_path ("status.ghtml", NULL);
+	path = gtt_ghtml_resolve_path (report_file, NULL);
 	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 

@@ -45,6 +45,10 @@ static GnomeUIInfo menu_main_file[] = {
 	GNOMEUIINFO_END
 };
 
+/* Insert an item with a stock icon and a user data pointer */
+#define GNOMEUIINFO_ITEM_STOCK_DATA(label, tooltip, callback, user_data, stock_id) \
+   { GNOME_APP_UI_ITEM, label, tooltip, (gpointer)callback, user_data, NULL, \
+     GNOME_APP_PIXMAP_STOCK, stock_id, 0, (GdkModifierType) 0, NULL }
 
 static GnomeUIInfo menu_main_edit[] = {
 	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
@@ -63,9 +67,9 @@ static GnomeUIInfo menu_main_edit[] = {
 			       menu_clear_daily_counter,
 			       GNOME_STOCK_BLANK),
 #define MENU_EDIT_JNL_POS 7
-	GNOMEUIINFO_ITEM_STOCK(N_("_Journal..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
 		N_("Show the timesheet journal for this project"),
-			       edit_journal,
+			       show_report, "journal.ghtml",
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("New _Diary Entry"),
 		N_("Create new task header for this project"),
@@ -81,34 +85,39 @@ static GnomeUIInfo menu_main_settings[] = {
 	GNOMEUIINFO_END
 };
 
+
 static GnomeUIInfo menu_main_reports[] = {
-	GNOMEUIINFO_ITEM_STOCK(N_("_Journal..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
 		N_("Show the timesheet journal for this project"),
-			       edit_journal,
+			       show_report, "journal.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Big Journal..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Big Journal..."), 
 		N_("Show the verbose timesheet journal for this project"),
-			       edit_alldata,
+			       show_report, "bigtable.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Invoice..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Invoice..."), 
 		N_("Show a sample invoice for this project"),
-			       edit_invoice,
+			       show_report, "invoice.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Daily..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Daily..."), 
 		N_("Show the total time spent on a project, day by day"),
-			       edit_daily,
+			       show_report, "daily.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Status..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Status..."), 
 		N_("Show the project descriptions and notes."),
-			       edit_status,
+			       show_report, "status.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_To Do..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_To Do..."), 
 		N_("Show a sample to-do list"),
-			       edit_todolist,
+			       show_report, "todo.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Primer..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Query..."), 
+		N_("Run a sample Query Generator"),
+			       show_report, "query.ghtml",
+			       GNOME_STOCK_BLANK),
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Primer..."), 
 		N_("Show a sample introductory primer for designing custom reports"),
-			       edit_primer,
+			       show_report, "primer.ghtml",
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("_New Report..."), 
 		N_("Define a path to a new GnoTime ghtml report file"),
@@ -167,9 +176,9 @@ static GnomeUIInfo menu_main[] = {
 
 static GnomeUIInfo menu_popup[] = {
 #define MENU_POPUP_JNL_POS 0
-	GNOMEUIINFO_ITEM_STOCK(N_("_Journal..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
 		N_("Show the timesheet journal for this project"),
-			       edit_journal,
+			       show_report, "journal.ghtml",
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("New Diary _Entry"),
 		N_("Change the current task for this project"),

@@ -1,5 +1,5 @@
 /*   Display Journal Timestamp Log entries for GTimeTracker - a time tracker
- *   Copyright (C) 2001 Linas Vepstas
+ *   Copyright (C) 2001,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -19,14 +19,11 @@
 #ifndef __GTT_JOURNAL_H__
 #define __GTT_JOURNAL_H__
 
-/* Callbacks to put iup various journal-related ui dialogs. */
-void edit_journal  (GtkWidget *, gpointer);
-void edit_alldata  (GtkWidget *, gpointer);
-void edit_invoice  (GtkWidget *, gpointer);
-void edit_primer   (GtkWidget *, gpointer);
-void edit_todolist (GtkWidget *, gpointer);
-void edit_daily    (GtkWidget *, gpointer);
-void edit_status   (GtkWidget *, gpointer);
+/* Menu callback, will show the report passed as filename */
+void show_report   (GtkWidget *, gpointer filename);
+
+/* Menu callback, will show the report set up as a dynamically 
+ * configured menu item. */
 void invoke_report (GtkWidget *, gpointer);
 
 /* The new_task_ui() routine will create a new task at the head 

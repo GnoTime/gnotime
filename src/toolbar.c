@@ -1,6 +1,6 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2002, Linas Vepstas <linas@lionas.org>
+ *   Copyright (C) 2002,2003 Linas Vepstas <linas@lionas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -120,14 +120,20 @@ toolbar_help(GtkWidget *widget, gpointer data)
  * and put the whole thing into the toolbar
  */
 static GtkWidget *
-add_stock_button(GtkToolbar *tbar, const char *text, const char *tt_text,
-		 const char *icon, GtkSignalFunc sigfunc)
+toolbar_append_stock_button (GtkToolbar *toolbar, 
+                             const gchar *text, 
+                             const gchar *tooltip_text,
+                             const gchar *stock_icon_id, 
+                             GtkSignalFunc callback, 
+                             gpointer user_data)
 {
 	GtkWidget *w, *image;
 
-	image = gtk_image_new_from_stock (icon, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	w = gtk_toolbar_append_item(tbar, text, tt_text, NULL, image,
-				    sigfunc, NULL);
+	image = gtk_image_new_from_stock (stock_icon_id, 
+	                GTK_ICON_SIZE_LARGE_TOOLBAR);
+	w = gtk_toolbar_append_item(toolbar, text, tooltip_text, 
+	                NULL, image,
+	                callback, user_data);
 	return w;
 }
 
@@ -180,11 +186,11 @@ build_toolbar(void)
 		/* There is no true 'stock' item for journal, so
 		 * instead we draw our own button, and use a stock 
 		 * image. */
-		mytbar->journal_button = add_stock_button(mytbar->tbar, 
+		mytbar->journal_button = toolbar_append_stock_button(mytbar->tbar, 
 				 _("Journal"),
 				 _("View and Edit Timestamp Logs"),
 				 GNOME_STOCK_BOOK_OPEN,
-				 (GtkSignalFunc) edit_journal);
+				 (GtkSignalFunc) show_report, "journal.ghtml");
 		position ++;
 	}
 	if (config_show_tb_prop) 
@@ -216,11 +222,11 @@ build_toolbar(void)
 	}
 	if (config_show_tb_calendar) 
 	{
-		mytbar->calendar_w = add_stock_button(mytbar->tbar, 
+		mytbar->calendar_w = toolbar_append_stock_button(mytbar->tbar, 
 				_("Calendar"),
 				_("View Calendar"),
 				GNOME_STOCK_TEXT_BULLETED_LIST,
-				(GtkSignalFunc)edit_calendar);
+				(GtkSignalFunc)edit_calendar, NULL);
 		position ++;
 	}
 	if (((config_show_tb_timer)    || 
