@@ -19,7 +19,7 @@
 #include "config.h"
 
 #include <libxml/tree.h>
-#include <qof.h>
+#include <qof/qof.h>
 #include <stdio.h>
 
 #include "err-throw.h"

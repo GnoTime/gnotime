@@ -27,7 +27,7 @@
 #include <string.h>
 #include <libgnomevfs/gnome-vfs.h>
 
-#include <qof.h>
+#include <qof/qof.h>
 
 #include "app.h"
 #include "ctree.h"

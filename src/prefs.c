@@ -21,7 +21,7 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
-#include <qof.h>
+#include <qof/qof.h>
 #include <string.h>
 
 #include "app.h"

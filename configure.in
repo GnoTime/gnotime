@@ -51,6 +51,7 @@ LIBGTKHTML_REQUIRED=3.0.0
 LIBXML2_REQUIRED=2.0.0
 SCROLLKEEPER_BUILD_REQUIRED=0.3.5
 
+
 dnl *******************************
 dnl Guile checks
 dnl *******************************
@@ -153,6 +154,26 @@ fi
 
 AM_GCONF_SOURCE_2
 
+
+dnl **************************************************************
+dnl If QOF is found on the build system, then use it.
+dnl **************************************************************
+
+QOF_CFLAGS="`$PKG_CONFIG --cflags qof-0`"
+QOF_LIBS="`$PKG_CONFIG --libs qof-0`"
+
+if test x$QOF_LIBS = x; then
+   AC_MSG_WARN([****** QOF libs not found; build without QOF.])
+	QOF_CFLAGS="-I../lib"
+	QOF_LIBS="../lib/qof/libqof.la ../lib/libqofsql/libqofsql.la"
+else
+   AC_DEFINE(HAVE_QOF,,We Have Found QOF)
+fi
+
+AC_SUBST(QOF_CFLAGS)
+AC_SUBST(QOF_LIBS)
+
+AM_CONDITIONAL(BUILD_QOF, [test x$HAVE_QOF = x])
 
 dnl *******************************
 dnl Gnome VFS
@@ -314,6 +335,7 @@ echo "CFLAGS : $CFLAGS"
 echo "LDFLAGS : $LDFLAGS"
 echo "X_LIBS : $X_LIBS"
 echo "GUILE_LIBS : $GUILE_LIBS"
+echo "QOF_LIBS : $QOF_LIBS"
 echo ""
 
 dnl <= Prefixes =>

@@ -22,7 +22,7 @@
 #include <config.h>
 #include <gnome.h>
 
-#include <gnc-date.h>
+#include <qof/gnc-date.h>
 
 #include "app.h"
 #include "ctree.h"

@@ -36,7 +36,7 @@
 #include <sys/wait.h>
 #endif
 
-#include <qof.h>
+#include <qof/qof.h>
 
 #include "app.h"
 #include "ctree.h"

@@ -1,3 +1,10 @@
+#
+# FILE:
+# Makefile.am
+#
+# FUNCTION:
+# Gnotime build file.
+#
 
 bin_PROGRAMS = gnotime
 
@@ -94,8 +101,7 @@ AM_CFLAGS = -g -Wall     \
 	${LIBXML2_CFLAGS}
 
 INCLUDES =                                   \
-	-I../lib                                  \
-	-I../lib/qof                              \
+	$(QOF_CFLAGS)                             \
 	-I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
@@ -109,8 +115,7 @@ INCLUDES =                                   \
 						 
 gnotime_LDADD =         \
 	$(GNOTIME_LIBS)      \
-	../lib/qof/libqof.la \
-	../lib/libqofsql/libqofsql.la \
+	$(QOF_LIBS)          \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	${LIBGNOMEVFS_LIBS}  \

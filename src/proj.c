@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <qof.h>
+#include <qof/qof.h>
 #include <qof/qofid-p.h>
 
 #include "err-throw.h"
@@ -1918,7 +1918,7 @@ static QofObject prj_object_def =
 interface_version: QOF_OBJECT_VERSION,
 e_type:            GTT_PROJECT_ID,
 type_label:        GTT_PROJECT_ID,
-new:               NULL,
+create:            NULL,
 book_begin:        NULL,
 book_end:          NULL,
 is_dirty:          NULL,

@@ -19,7 +19,7 @@
 #ifndef __GTT_GHTML_H__
 #define __GTT_GHTML_H__
 
-#include <qof.h>
+#include <qof/qof.h>
 
 #include "proj.h"
 
