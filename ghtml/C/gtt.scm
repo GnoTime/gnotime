@@ -40,61 +40,6 @@
 
 
 ;; ---------------------------------------------------------     
-; The gtt-apply-func-list-to-proj routine is a simple utility 
-; to apply a list of functions to a single project.
-; The 'function list' should be either:
-;  -- a function that takes a single project as an argument
-;  -- a double-quoted string
-; 
-(define (gtt-apply-func-list-to-proj func_list prj)
-   (let ( (first_func (car func_list))
-          (next_func  (cdr func_list)) 
-        )
-        (list
-           ; if project is really a list, then handle that
-           (if (list? prj)
-               (gtt-apply-func-list-to-proj-list func_list prj))
-
-           ; if its not a function, but just a quoted string,
-           ; then output that string
-           (if (xquoted? first_func) 
-               (cdr first_func)
-               (first_func prj))
-               
-           (if (not (null? next_func))
-               (gtt-apply-func-list-to-proj next_func prj))
-        )
-))
-           
-; The gtt-apply-func-list-to-proj-list routine is a simple 
-; utility to apply a list of functions to a list of projects.
-; The 'function list' should be either:
-;  -- a function that takes a single project as an argument
-;  -- a double-quoted string
-; 
-(define (gtt-apply-func-list-to-proj-list func_list prj_list) 
-   (let ( (parent_proj (car prj_list))
-          (next_proj   (cdr prj_list))
-        )
-   
-        (list
-           ; if parent is a list, then its a list of child projects
-           (if (list? parent_proj)
-               (gtt-apply-func-list-to-proj-list func_list parent_proj))
-
-           ; if parent is a singleton, then its a projet 
-           ; apply the column functions to it
-           (if (not (pair? parent_proj))
-               (gtt-apply-func-list-to-proj func_list parent_proj)) 
-               
-           ; and if there are more projects, do them
-           (if (not (null? next_proj))
-                (gtt-apply-func-list-to-proj-list func_list next_proj))
-        )
-))
-
-
-;; ---------------------------------------------------------     
 ; The gtt-apply-func-list-to-obj routine is a simple utility 
 ; to apply a list of functions to a single gtt object,
 ; where a gtt object is a task, interval, or project.
@@ -104,6 +49,10 @@
 ; It returns a list of the result of applying each function
 ; to the object, omitting null results from the list
 ; 
+; XXX FIXME the vars first_func, next_func, parent_obj,
+; next_obj, result, appres  are scoped globally to the 
+; functions being applied.   This introducees potential symbol
+; conflist.  This needds to be fixed!
 (define (gtt-apply-func-list-to-obj func_list obj)
    (let ( (first_func (car func_list))
           (next_func  (cdr func_list)) 
@@ -115,7 +64,6 @@
         (result (if (xquoted? first_func) 
                       (cdr first_func) (first_func obj)))
         )
-        
         (if (null? next_func)
            result
            ; if result was null, do not put it into list! 
@@ -140,15 +88,10 @@
           (next_obj   (cdr obj_list))
         )
    (let (
-        ; appre is the result of the evaluation. 
+        ; appres is the result of the evaluation. 
         ; We compute it here to make sure we apply only once;
         ; we can use the result for tests.
         (appres (if (list? parent_obj)
-                    ; if parent is a list, then technically its an error.
-                    ; however, sometimes things are oddly nested, so
-                    ; we go ahead and handle this case.  Although its
-                    ; probably hiding errors elsewhere.  (possibly
-                    ; errors in user-defined funcs XXX)
                     (gtt-apply-func-list-to-obj-list func_list parent_obj)
                     (gtt-apply-func-list-to-obj func_list parent_obj)) 
                 )
@@ -168,7 +111,7 @@
 ; project info with embedded html markup
 ;
 (define (gtt-show-projects prj_list func_list) 
-        (gtt-show (gtt-apply-func-list-to-proj-list func_list prj_list))
+        (gtt-show (gtt-apply-func-list-to-obj-list func_list prj_list))
 )
   
 ; The gtt-show-tasks proceedure is syntatic sugar for displaying a 
