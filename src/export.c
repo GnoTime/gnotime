@@ -23,6 +23,7 @@
 
 #include "app.h"
 #include "export.h"
+#include "ghtml.h"
 #include "proj.h"
 
 /* Project data export */
@@ -51,53 +52,36 @@ export_format_new (void)
 }
 
 /* ======================================================= */
-
-static char *
-get_time (int secs)
-{
-	/* Translators: This is a "time format", that is
-	 * format on how to print the elapsed time with
-	 * hours:minutes:seconds. */
-	return g_strdup_printf (_("%d:%02d:%02d"),
-				secs / (60*60),
-				(secs / 60) % 60,
-				secs % 60);
-
-}
-
-/* ======================================================= */
-/* The default format for this exporter is tab-delimited;
- * however, by adding an export type to the export format, 
- * one could support lots of different formats.
+/* XXXX
+ * This project printer should be replaced by a guile-based 
+ * thingy in parallel to the ghtml stuff.
  */
+
+static void 
+export_write (GttGhtml *gxp, const char *str, size_t len, 
+					 export_format_t *xp)
+{
+	printf ("duuude %s\n", str);
+	fprintf (xp->fp, "%s", str);
+}
 
 static gint
 export_projects (export_format_t *xp)
 {
 	GList *node;
+	GttGhtml *gxp;
 
-
-	/* Translators: this is the header of a tab-separated file,
-	 * it should really be all ASCII, or at least not multibyte,
-	 * I don't think most spreadsheets would handle multi-byte well.
-	 */
-	fprintf (xp->fp, "Title\tDescription\tTotal time\tTime today\n");
+	gxp = gtt_ghtml_new();
+	gtt_ghtml_set_stream (gxp, xp, NULL, (GttGhtmlWriteStream) export_write,
+						 NULL, NULL);
 
 	for (node = gtt_get_project_list(); node; node = node->next) 
 	{
+	
 		GttProject *prj = node->data;
-		char *total_time, *time_today;
-		if (!gtt_project_get_title(prj)) continue;
-		total_time = get_time (gtt_project_total_secs_ever(prj));
-		time_today = get_time (gtt_project_total_secs_day(prj));
-		fprintf (xp->fp, "%s\t%s\t%s\t%s\n",
-			 gtt_sure_string (gtt_project_get_title(prj)),
-			 gtt_sure_string (gtt_project_get_desc(prj)),
-			 total_time,
-			 time_today);
-		g_free (total_time);
-		g_free (time_today);
+		gtt_ghtml_display (gxp, "tab-delim.ghtml", prj);
 	}
+	gtt_ghtml_destroy (gxp);
 
 	return 0;
 }
