@@ -569,7 +569,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		if (0 == secs) continue;
 
 		/* Print time spent on project this day */
-		print_time (buff, 100, secs);
+		print_hours_elapsed (buff, 100, secs, TRUE);
 	   node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, SCM_EOL);
 		
@@ -1013,7 +1013,7 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	char buff[100];
 
-	print_time (buff, 100, gtt_interval_get_fuzz (ivl));
+	print_hours_elapsed (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
 	return gh_str2scm (buff, strlen (buff));
 }
 
