@@ -1,113 +1,141 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
-<project>
-  <name>GTTGlade</name>
-  <program_name>gttglade</program_name>
-  <directory></directory>
-  <source_directory></source_directory>
-  <pixmaps_directory></pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-  <output_main_file>False</output_main_file>
-  <output_support_files>False</output_support_files>
-  <output_build_files>False</output_build_files>
-</project>
+<glade-interface>
 
-<widget>
-  <class>GtkMenu</class>
-  <name>Task Popup</name>
+<widget class="GtkMenu" id="Task Popup">
+  <property name="visible">True</property>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>new_task</name>
-    <tooltip>Insert a new diary entry above this one.</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_new_task_activate</handler>
-      <last_modification_time>Wed, 12 Sep 2001 13:29:35 GMT</last_modification_time>
-    </signal>
-    <label>_New Diary Entry</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
-  </widget>
+  <child>
+    <widget class="GtkImageMenuItem" id="new_task">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">_New Diary Entry</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_new_task_activate"/>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>edit_task</name>
-    <tooltip>Edit the diary entry and other task properties.</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_edit_task_activate</handler>
-      <last_modification_time>Wed, 12 Sep 2001 13:29:35 GMT</last_modification_time>
-    </signal>
-    <label>_Edit Diary Entry</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_PROP</stock_icon>
-  </widget>
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget1">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-new</property>
+	  <property name="icon_size">4</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>delete_memo</name>
-    <tooltip>Delete the diary entry only, keep the time intervals</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_delete_memo_activate</handler>
-      <last_modification_time>Tue, 11 Sep 2001 21:08:07 GMT</last_modification_time>
-    </signal>
-    <label>_Cut Diary Entry</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_CUT</stock_icon>
-  </widget>
+  <child>
+    <widget class="GtkImageMenuItem" id="edit_task">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">_Edit Diary Entry</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_edit_task_activate"/>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>delete_times</name>
-    <tooltip>Delete the diary entry, and the time intervals below it.</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_delete_times_activate</handler>
-      <last_modification_time>Tue, 11 Sep 2001 21:08:07 GMT</last_modification_time>
-    </signal>
-    <label>Cut Entry &amp; _Times</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_CUT</stock_icon>
-  </widget>
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget2">
+	  <property name="visible">True</property>
+	  <property name="pixbuf">gtk-prop</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>paste</name>
-    <tooltip>Paste a previously cut diary entry.</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_paste_activate</handler>
-      <last_modification_time>Wed, 12 Sep 2001 16:37:38 GMT</last_modification_time>
-    </signal>
-    <label>_Paste Diary Entry</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_PASTE</stock_icon>
-  </widget>
+  <child>
+    <widget class="GtkImageMenuItem" id="delete_memo">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">_Cut Diary Entry</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_delete_memo_activate"/>
 
-  <widget>
-    <class>GtkMenuItem</class>
-    <name>separator1</name>
-    <right_justify>False</right_justify>
-  </widget>
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget3">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-cut</property>
+	  <property name="icon_size">4</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>new_interval</name>
-    <tooltip>Add a new time interval</tooltip>
-    <signal>
-      <name>activate</name>
-      <handler>on_new_interval_activate</handler>
-      <last_modification_time>Fri, 30 Nov 2001 06:23:59 GMT</last_modification_time>
-    </signal>
-    <label>New Time Interval</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_NEW</stock_icon>
-  </widget>
+  <child>
+    <widget class="GtkImageMenuItem" id="delete_times">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Cut Entry &amp; _Times</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_delete_times_activate"/>
+
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget4">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-cut</property>
+	  <property name="icon_size">4</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkImageMenuItem" id="paste">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">_Paste Diary Entry</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_paste_activate"/>
+
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget5">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-paste</property>
+	  <property name="icon_size">4</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="separator1">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkImageMenuItem" id="new_interval">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">New Time Interval</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_new_interval_activate"/>
+
+      <child internal-child="image">
+	<widget class="GtkImage" id="convertwidget6">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-new</property>
+	  <property name="icon_size">4</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
 </widget>
 
-</GTK-Interface>
+</glade-interface>

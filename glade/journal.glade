@@ -1,161 +1,129 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
-<project>
-  <name>GTTglade</name>
-  <program_name>gttglade</program_name>
-  <directory></directory>
-  <source_directory></source_directory>
-  <pixmaps_directory></pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-  <output_main_file>False</output_main_file>
-  <output_support_files>False</output_support_files>
-  <output_build_files>False</output_build_files>
-  <backup_source_files>False</backup_source_files>
-</project>
+<glade-interface>
+<requires lib="gnome"/>
+<requires lib="bonobo"/>
 
-<widget>
-  <class>GnomeApp</class>
-  <name>Journal Window</name>
-  <title>Journal</title>
-  <type>GTK_WINDOW_TOPLEVEL</type>
-  <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
-  <default_width>450</default_width>
-  <default_height>450</default_height>
-  <allow_shrink>False</allow_shrink>
-  <allow_grow>True</allow_grow>
-  <auto_shrink>False</auto_shrink>
-  <enable_layout_config>True</enable_layout_config>
+<widget class="GnomeApp" id="Journal Window">
+  <property name="visible">True</property>
+  <property name="title" translatable="yes">Journal</property>
+  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="window_position">GTK_WIN_POS_NONE</property>
+  <property name="modal">False</property>
+  <property name="default_width">450</property>
+  <property name="default_height">450</property>
+  <property name="resizable">True</property>
+  <property name="destroy_with_parent">False</property>
+  <property name="enable_layout_config">True</property>
+  <signal name="destroy" handler="on_close_clicked"/>
 
-  <signal>
-    <name>destroy</name>
-    <handler>on_close_clicked</handler>
-  </signal>
-  
-  <widget>
-    <class>GnomeDock</class>
-    <child_name>GnomeApp:dock</child_name>
-    <name>dock2</name>
-    <allow_floating>True</allow_floating>
-    <child>
-      <padding>0</padding>
-      <expand>True</expand>
-      <fill>True</fill>
-    </child>
+  <child internal-child="dock">
+    <widget class="BonoboDock" id="dock2">
+      <property name="visible">True</property>
+      <property name="allow_floating">True</property>
 
-    <widget>
-      <class>GnomeDockItem</class>
-      <name>dockitem4</name>
-      <border_width>1</border_width>
-      <placement>GNOME_DOCK_TOP</placement>
-      <band>0</band>
-      <position>0</position>
-      <offset>0</offset>
-      <locked>False</locked>
-      <exclusive>True</exclusive>
-      <never_floating>False</never_floating>
-      <never_vertical>False</never_vertical>
-      <never_horizontal>False</never_horizontal>
-      <shadow_type>GTK_SHADOW_OUT</shadow_type>
+      <child>
+	<widget class="BonoboDockItem" id="dockitem4">
+	  <property name="border_width">1</property>
+	  <property name="visible">True</property>
+	  <property name="shadow_type">GTK_SHADOW_OUT</property>
 
-      <widget>
-	<class>GtkToolbar</class>
-	<name>toolbar2</name>
-	<border_width>1</border_width>
-	<orientation>GTK_ORIENTATION_HORIZONTAL</orientation>
-	<type>GTK_TOOLBAR_BOTH</type>
-	<space_size>16</space_size>
-	<space_style>GTK_TOOLBAR_SPACE_LINE</space_style>
-	<relief>GTK_RELIEF_NONE</relief>
-	<tooltips>True</tooltips>
+	  <child>
+	    <widget class="GtkToolbar" id="toolbar2">
+	      <property name="border_width">1</property>
+	      <property name="visible">True</property>
+	      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+	      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+	      <property name="tooltips">True</property>
 
-	<widget>
-	  <class>GtkButton</class>
-	  <child_name>Toolbar:button</child_name>
-	  <name>print</name>
-	  <tooltip>New File</tooltip>
-	  <signal>
-	    <name>clicked</name>
-	    <handler>on_print_clicked</handler>
-	    <last_modification_time>Thu, 30 Aug 2001 19:48:05 GMT</last_modification_time>
-	  </signal>
-	  <label>Print</label>
-	  <stock_pixmap>GNOME_STOCK_PIXMAP_PRINT</stock_pixmap>
+	      <child>
+		<widget class="button" id="print">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">New File</property>
+		  <property name="label" translatable="yes">Print</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-print</property>
+		  <signal name="clicked" handler="on_print_clicked"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="save">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Open File</property>
+		  <property name="label" translatable="yes">Save</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-save</property>
+		  <signal name="clicked" handler="on_save_clicked"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="refresh">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">Refresh</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-refresh</property>
+		  <signal name="clicked" handler="on_refresh_clicked"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="quit">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Save File</property>
+		  <property name="label" translatable="yes">Close</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-close</property>
+		  <signal name="clicked" handler="on_close_clicked"/>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
+	<packing>
+	  <property name="placement">BONOBO_DOCK_TOP</property>
+	  <property name="band">0</property>
+	  <property name="position">0</property>
+	  <property name="offset">0</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE</property>
+	</packing>
+      </child>
 
-	<widget>
-	  <class>GtkButton</class>
-	  <child_name>Toolbar:button</child_name>
-	  <name>save</name>
-	  <tooltip>Open File</tooltip>
-	  <signal>
-	    <name>clicked</name>
-	    <handler>on_save_clicked</handler>
-	    <last_modification_time>Thu, 30 Aug 2001 19:47:41 GMT</last_modification_time>
-	  </signal>
-	  <label>Save</label>
-	  <stock_pixmap>GNOME_STOCK_PIXMAP_SAVE</stock_pixmap>
-	</widget>
+      <child>
+	<widget class="GtkScrolledWindow" id="Journal ScrollWin">
+	  <property name="visible">True</property>
+	  <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	  <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+	  <property name="shadow_type">GTK_SHADOW_NONE</property>
+	  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
-	<widget>
-	  <class>GtkButton</class>
-	  <child_name>Toolbar:button</child_name>
-	  <name>refresh</name>
-	  <signal>
-	    <name>clicked</name>
-	    <handler>on_refresh_clicked</handler>
-	    <last_modification_time>Wed, 12 Sep 2001 16:02:21 GMT</last_modification_time>
-	  </signal>
-	  <label>Refresh</label>
-	  <stock_pixmap>GNOME_STOCK_PIXMAP_REFRESH</stock_pixmap>
+	  <child>
+	    <placeholder/>
+	  </child>
 	</widget>
-
-	<widget>
-	  <class>GtkButton</class>
-	  <child_name>Toolbar:button</child_name>
-	  <name>quit</name>
-	  <tooltip>Save File</tooltip>
-	  <signal>
-	    <name>clicked</name>
-	    <handler>on_close_clicked</handler>
-	    <last_modification_time>Thu, 30 Aug 2001 19:09:26 GMT</last_modification_time>
-	  </signal>
-	  <label>Close</label>
-	  <stock_pixmap>GNOME_STOCK_PIXMAP_CLOSE</stock_pixmap>
-	</widget>
-      </widget>
+      </child>
     </widget>
+    <packing>
+      <property name="padding">0</property>
+      <property name="expand">True</property>
+      <property name="fill">True</property>
+    </packing>
+  </child>
 
-    <widget>
-      <class>GtkScrolledWindow</class>
-      <child_name>GnomeDock:contents</child_name>
-      <name>Journal ScrollWin</name>
-      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-
-      <widget>
-	<class>Placeholder</class>
-      </widget>
+  <child internal-child="appbar">
+    <widget class="GnomeAppBar" id="appbar2">
+      <property name="visible">True</property>
+      <property name="has_progress">True</property>
+      <property name="has_status">True</property>
     </widget>
-  </widget>
-
-  <widget>
-    <class>GnomeAppBar</class>
-    <child_name>GnomeApp:appbar</child_name>
-    <name>appbar2</name>
-    <has_progress>True</has_progress>
-    <has_status>True</has_status>
-    <child>
-      <padding>0</padding>
-      <expand>True</expand>
-      <fill>True</fill>
-    </child>
-  </widget>
+    <packing>
+      <property name="padding">0</property>
+      <property name="expand">True</property>
+      <property name="fill">True</property>
+    </packing>
+  </child>
 </widget>
 
-</GTK-Interface>
+</glade-interface>
