@@ -68,6 +68,7 @@ dnl *******************************
 
 GUILE_FLAGS
 GUILE_LIBS="$GUILE_LDFLAGS"
+AC_SUBST(GUILE_INCS)
 AC_SUBST(GUILE_LIBS)
 
 dnl *****************************************
