@@ -968,7 +968,8 @@ void
 gtt_ghtml_destroy (GttGhtml *p)
 {
 	if (!p) return;
-	g_free (p);
+	// XXX memory leak, but otherwise mystery coredump due to this g_free
+	// g_free (p);
 }
 
 void gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
