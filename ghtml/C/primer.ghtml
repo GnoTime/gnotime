@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+<h1>Guile HTML Scheme Primer</h1>
+
+You can design custom reports rather easily if you know a bit
+of basic html.   And if you know scheme, then the world is at 
+your feet, since the report generator uses guile to interpret the
+embedded scheme in a report.  You can view the html source for
+this example primer by viewing 'primer.ghtml' (probably installed
+at <tt>/usr/share/gtt/ghtml/C/primer.ghtml</tt>)
+<p>
+Some sample scheme expressions, and their output:
+
+<p>
+<ul>
+<li> <tt>(gtt-hello)</tt>  prints the following:
+     <?scm  (gtt-hello) ?>
+     <br><br>
+
+<li> <tt>(gtt-show-project-title)</tt>  prints the following:
+     <?scm  (gtt-show-project-title) ?>
+     <br><br>
+
+<li> <tt>(gtt-show-project-desc)</tt>  prints the following:
+     <?scm  (gtt-show-project-desc) ?>
+     <br><br>
+
+<li> <tt>(gtt-show-basic-journal)</tt>  prints a basic layout of the journal, 
+     see <tt>journal.ghtml</tt> for an example.
+     <br><br>
+
+<li> <tt>(gtt-show-table)</tt>  prints a configurable table showing the 
+     journal entries.  See <tt>bigtable.ghtml</tt> for an extended example. 
+     <br><br>
+     Here's a little example:
+     <br><br>
+     <tt>(gtt-show-table '($memo "blah blah memo" $billstatus "what's up
+      duude" $billable "bulbous blort" 
+      $billrate $value "da bucks" $bill_value))</tt>
+     <br><br>
+     will print: <br>
+     <?scm (gtt-show-table '($memo "blah blah memo" 
+                $billstatus "what's up duude" 
+                $billable "bulbous blort" 
+                $billrate $value "da bucks" $bill_value)) ?>
+     <br><br>
+<!-- 
+<?scm (gtt-show-table '($memo $billable $billrate $task_time $value $bill_value 
+$start_datime $stop_datime $elapsed $fuzz))  ?>
+-->
+
+<li> <tt>(gtt-show-invoice)</tt>  prints a configurable invoice, see 
+     <tt>invoice.ghtml</tt> for an example.
+     <br><br>
+
+<li> The primitive <tt>gtt-show</tt> acts as the ghtml analog of the 
+     scheme primitive <tt>display</tt>, in that it merely prints an expression. 
+     It differs, however, in one important way: it omits parenthesis.
+     Note that html markup does pass through:
+     <br><br> 
+     <tt>(gtt-show '(yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
+         duude&lt;/b&gt;)))</tt>  prints the following:
+     <br>
+     <?scm (gtt-show '(yabba dabba <i>do</i> (<b>eh duude</b>))) ?>
+     <br><br>
+
+<li> <tt>(gtt-show (+ 2 2))</tt>  prints the following:
+     <?scm (gtt-show (+ 2 2)) ?>
+     <br><br>
+
+<li> The primitive <tt>gtt-show</tt> can be used anywhere,
+     such as this Leibniz series expression for Pi:
+     <tt>(define (pi-sum a b) (if (> a b) 0 
+     <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
+     <br>
+     <?scm (define (pi-sum a b) (if (> a b) 0 (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) )) ?>
+   
+     (define (pi-approx) (gtt-show (* 8 (pi-sum 1 2000)) ))
+     <br>
+     <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 2000)) )) ?>
+     (pi-approx)
+     </tt>
+     <br>
+
+     prints the following:
+     <?scm (pi-approx) ?>
+     <br><br>
+
+<li> We have not currently implemented a way of getting the raw project/task/interval
+     data into scheme, as there's no call for it yet. But it should be easy to add.
+
+</ul>
+
+<p>
+Thats all for now folks!
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+<html>
+<head>
+<title>Invoice</title>
+</head>
+<body>
+<center>
+<h1>Invoice for <?scm (gtt-show-project-title) ?> - <?scm (gtt-show-project-desc) ?></h1>
+
+This is a sample invoice
+It only shows billable and no-charge hours.
+<br><br>
+The displayed columns, and the order in which they are displayed,
+can be changed by making a copy of the file <tt>"invoice.ghtml"</tt>
+(probably in <tt>/usr/share/gtt/ghtml/C/invoice.ghtml</tt>) 
+and editing the copy to suit your needs.  When finished, you can 
+add the new copy to your system by picking 
+the menu item "Reports... New Report".
+<br><br>
+
+<!--
+This is commented out and not visible
+<?scm (gtt-show-invoice '($memo $billable $billrate $task_time $value $bill_value 
+$start_datime $stop_datime $elapsed)) ?>
+-->
+
+<?scm (gtt-show-invoice '($memo $task_time $billable 
+$billrate "Sample Configurable Alternate Column Title for the Billing Rate" 
+$value $bill_value))  ?>
+
+<br><br>
+That's all Folks!
+</center>
+</body>
+</html>

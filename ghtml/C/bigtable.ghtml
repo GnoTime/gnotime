@@ -1,0 +1,24 @@
+
+<html>
+<head>
+<title>Verbose Journal - GTT</title>
+</head>
+<body>
+<center>
+<h1>Verbose Journal for <?scm (gtt-show-project-title) ?> - <?scm (gtt-show-project-desc) ?></h1>
+
+This is the verbose journal, showing all data:
+(handy for debugging and what not).
+<br><br>
+
+<?scm (gtt-show-table '($memo $notes $billstatus $billable $billrate $task_time $value $bill_value 
+$start_datime $stop_datime $elapsed $fuzz))  ?>
+
+<!--
+<?scm (gtt-show-table '($memo $billable $billrate $value $bill_value)) ?>
+-->
+
+<br><br>
+That's all Folks!
+</body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Journal - GTT</title>
+</head>
+<body>
+<center>
+<h1>Journal for <?scm (gtt-show-project-title) ?> - <?scm (gtt-show-project-desc) ?></h1>
+
+Here it is:
+<br><br>
+
+<?scm (gtt-show-basic-journal) ?>
+
+<br><br>
+That's all Folks!
+</body>
+</html>
