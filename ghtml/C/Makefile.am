@@ -11,6 +11,7 @@ gttghtml_DATA =         \
 	daily.ghtml          \
 	invoice.ghtml        \
 	journal.ghtml        \
+	journal-rss.ghtml    \
 	noproject.ghtml      \
 	primer.ghtml         \
 	query.ghtml          \

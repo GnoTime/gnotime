@@ -1,0 +1,43 @@
+<?xml version=\"1.0\" ?>
+
+<!-- Experimental, still-broken RSS for the journal.  -->
+
+ <rss version="2.0" encoding="iso-8859-1">
+  <channel>
+   <!-- <channel rdf:about="http://www.xml.com/xml/news.rss"> -->
+    <title><?scm (gtt-show-project-title) ?></title>
+    <!----XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <link>http://www.this-url-is-wrong-XXX-fixme.org/</link>
+
+    <description><?scm (gtt-show-project-desc) ?></description>
+    <language>en-us</language>
+    <ttl>60</ttl>
+    <generator>Why, exactly, do you think this field is interesting? version 99</generator>
+    <!-- <copyright>Copyright 2004, ABC 123</copyright> -->
+  
+    <!-- <?scm (gtt-show-project-notes) ?> -->
+
+
+<?scm
+
+(gtt-show-tasks (gtt-tasks (gtt-linked-project))
+    (list   
+        ''"<item>"
+               gtt-task-memo 
+        ''"</item>"
+        ''"<pubDate>"
+               gtt-task-earliest-str
+        ''"</pubDate>"
+        ''"<description>"
+               gtt-task-notes 
+        ''"</description>"
+        ''"<link>"
+        ''"borken--borken"
+        ''"</link>"
+    )
+)
+
+?>
+
+</channel>
+</rss>
