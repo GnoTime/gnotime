@@ -6,13 +6,11 @@
 <?scm (gtt-include "gtt-style.css") ?>
 </head>
 <body bgcolor="#c8c8d3">
-<center>
 <h1>Journal for 
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
 </h1>
-</center>
 
 <!-- If you do not like how this table is laid out, please feel 
      free to modify it.  The markup below may seem a little confusing,
@@ -70,7 +68,9 @@
 
 ?>
 
-<br><br>
-That's all Folks!
+<div align=right>
+Brought to you by ...  <br>
+<img src="gnotime-logo.png">
+</div>
 </body>
 </html>
