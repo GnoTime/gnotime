@@ -42,6 +42,7 @@ struct NotesArea_s
 
 	GtkButton *close_proj;
 	GtkButton *close_task;
+	GtkButton *new_task;
 
 	GttProject *proj;
 
@@ -232,6 +233,26 @@ close_task_area (GtkButton *but, NotesArea *na)
 
 /* ============================================================== */
 
+static void
+new_task_cb (GtkButton *but, NotesArea *na)
+{
+	GttTask *tsk;
+	const char * str;
+	if (NULL == na->proj) return;
+	// if (na->ignore_events) return;
+	
+	// na->ignore_events = TRUE;
+	tsk = gtt_task_new();
+	gtt_project_prepend_task (na->proj, tsk);
+	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze); 
+	gtt_task_freeze (tsk);
+	na->task_freeze = tsk;
+
+	// na->ignore_events = FALSE;
+}
+
+/* ============================================================== */
+
 #define CONNECT_ENTRY(GLADE_NAME,CB)  ({                           \
 	GtkEntry * entry;                                               \
 	entry = GTK_ENTRY(glade_xml_get_widget (gtxml, GLADE_NAME));    \
@@ -265,6 +286,7 @@ notes_area_new (void)
 	dlg->hpane = GTK_PANED(glade_xml_get_widget (gtxml, "leftright hpane"));
 	dlg->close_proj = GTK_BUTTON(glade_xml_get_widget (gtxml, "close proj button"));
 	dlg->close_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "close diary button"));
+	dlg->new_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "new diary button"));
 	
 	dlg->proj_title = CONNECT_ENTRY ("proj title entry", proj_title_changed);
 	dlg->proj_desc = CONNECT_ENTRY ("proj desc entry", proj_desc_changed);
@@ -279,6 +301,9 @@ notes_area_new (void)
 
 	g_signal_connect (G_OBJECT (dlg->close_task), "clicked",
 	                G_CALLBACK (close_task_area), dlg);
+
+	g_signal_connect (G_OBJECT (dlg->new_task), "clicked",
+	                G_CALLBACK (new_task_cb), dlg);
 
 	gtk_widget_show (GTK_WIDGET(dlg->vpane));
 
