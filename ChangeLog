@@ -1,8 +1,14 @@
+Sun July 13 2003 Linas Vepstas <linas@linas.org>
+
+	* idle-dalog.[ch], timer.c: make sure that stopped-project dialog
+	  is presented to the user if keyboard/mouse activity is detected again.
+
 Sun June 29 2003 Linas Vepstas <linas@linas.org>
 
 	* proj.c: Start using the QOF object system to define objects
 	* util.[ch]: Remove copy of <gnc-date.h> duplicated code.
 	* *.ghtml: Bad use of quotations caused some reports to show blank
+	* ghtml.c, journal.c: add basic report-by-date-range.
 
 Sat June 28 2003 Linas Vepstas <linas@linas.org>
 
