@@ -98,13 +98,37 @@ about_box(GtkWidget *w, gpointer data)
 		  NULL
 	};
 
-	const gchar *translators[] = {
-		"Manuel de Vega Barreiro <mbarreiro@red.madritel.es> - es",
-		"Abel Cheung  <maddog@linux.org.hk> - zh_TW.Big5",
-		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt>",
-		"many translators...",
-		  NULL
-	};
+	const gchar *translators = 
+		"Vasif Ismailoglu MD <azerb_linux@hotmail.com> - az\n"
+		"Borislav Aleksandrov <B.Aleksandrov@cnsys.bg> - bg\n"
+		"Ivan Vilata i Balaguer <al011097@alumail.uji.es> - ca\n"
+		"Softcatal <tradgnome@softcatala.org> - ca\n"
+		"David Sauer <davids@penguin.cz> - cz\n"
+		"George Lebl <jirka@5z.com> - cz\n"
+		"Kenneth Christiansen <kenneth@ripen.dk> - da\n"
+		"Kim Schulz <kim@schulz.dk> - da\n"
+		"Birger Langkjer <birger.langkjer@image.dk> - da\n"
+		"Keld Simonsen <keld@dkuug.dk> - da\n"
+		"Ole Laursen <olau@hardworking.dk> - da\n"
+		"Matthias Warkus <mawa@iname.com> - de\n"
+		"Keld Simonsen <keld@dkuug.dk> - da\n"
+		"Karl Eichwalder <ke@suse.de> - de\n"
+		"Benedikt Roth <Benedikt.Roth@gmx.net> - de\n"
+		"Christian Meyer <chrisime@gnome.org> - de\n"
+		"Lauris Kaplinski <lauris@ariman.ee> - ee\n"
+		"Spiros Papadimitriou <spapadim+@cs.cmu.edu> - el\n"
+		"Simos Xenitellis <simos@hellug.gr> - el\n"
+		"Robert Brady <rwb197@ecs.soton.ac.uk> - en_GB\n"
+	   "Pablo Saratxaga <srtxg@chanae.alphanet.ch> - es\n"
+		"Manuel de Vega Barreiro <mbarreiro@red.madritel.es> - es\n"
+		"Josu Walio <josu@elhuyar.com> - eu\n"
+		"Antti Ahvensalmi <aahven@mbnet.fi> - fi\n"
+		"Tuomas Meril - fi\n"
+
+		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt>\n"
+		"Abel Cheung  <maddog@linux.org.hk> - zh_TW.Big5\n"
+	;
+
 
 	if (about != NULL)
 	{
