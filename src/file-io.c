@@ -518,6 +518,7 @@ gtt_load_config (void)
 	if (gtt_gconf_exists())
 	{
 		gtt_gconf_load ();
+		gtt_config_filepath = NULL;
 		return;
 	}
 			  
@@ -543,6 +544,8 @@ gtt_load_config (void)
 		strcat (s, "/.gnome/gtt=");
 		printf ("GTT: Info: Importing ~/.gnome/gtt file\n");
 		gtt_load_gnome_config (s);
+		strcpy (s, h);
+		strcat (s, "/.gnome");
 		gtt_config_filepath = s;
 		return;
 	}

@@ -216,6 +216,42 @@ read_data_err_run_or_abort (GtkWidget *w, gint butnum)
 }
 
 static char *
+resolve_old_path (const char * pathfrag)
+{
+	char * fullpath;
+	const char * confpath;
+
+	if (('~' != pathfrag[0]) &&
+	    ('/' != pathfrag[0]))
+	{
+		/* If not an absolute filepath, look for the file in the same dir
+		 * where the gtt config file was found. */
+		confpath = gtt_get_config_filepath ();
+		if (NULL == confpath)
+		{
+			pathfrag = g_strconcat ("/gnotime.d/",
+			                    pathfrag,
+			                    NULL);
+			fullpath = gnome_config_get_real_path (pathfrag);
+		}
+		else
+		{
+			fullpath = g_strconcat ( confpath,
+			                    "/",
+			                    pathfrag,
+			                    NULL);
+		}
+	}
+	else
+	{
+		/* I suppose we should look up $HOME if ~ */
+		fullpath = g_strdup (pathfrag);
+	}
+
+	return fullpath;
+}
+
+static char *
 resolve_path (const char * pathfrag)
 {
 	char * fullpath;
@@ -223,7 +259,8 @@ resolve_path (const char * pathfrag)
 	if (('~' != pathfrag[0]) &&
 	    ('/' != pathfrag[0]))
 	{
-		/* if not an absolute filepath ..*/
+		/* If not an absolute filepath, look for the file in the current
+		 * gnome config dir ...*/
 		fullpath = gnome_config_get_real_path (pathfrag);
 	}
 	else
@@ -244,7 +281,7 @@ read_data(void)
 	gboolean read_is_ok;
 	char *errmsg, *qmsg;
 
-	xml_filepath = resolve_path (config_data_url);
+	xml_filepath = resolve_old_path (config_data_url);
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
