@@ -35,6 +35,7 @@
 #include "proj.h"
 #include "props-proj.h"
 #include "timer.h"
+#include "toolbar.h"
 #include "xml-gtt.h"
 
 

@@ -24,6 +24,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <gnc-date.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "gtt.h"
@@ -32,7 +34,9 @@
 #include "proj.h"
 #include "util.h"
 
-/* This file contains deprecated routines, which will soon go away */
+/* This file contains deprecated routines, which should go away 
+ * sometime in 2004 or 2005, around gnotime version 3.0 or so
+ */
 
 typedef enum {
 	NUL=0,
@@ -73,7 +77,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 	char * ps;
 	gboolean show_links = ghtml->show_links;
 
-	if (NULL == ghtml->write_stream) return;
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;  
 
 	p = g_string_new(NULL);
 	g_string_append_printf (p, 
@@ -98,7 +102,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 		p = g_string_append (p, "<tr><td colspan=4>");
 		if (show_links) 
 		{
-			g_string_append_printf (p, "<a href=\"gtt:task:0x%x\">", tsk);
+			g_string_append_printf (p, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
 		}
 
 		pp = gtt_task_get_memo(tsk);
@@ -124,36 +128,36 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 				"<td align=right> &nbsp; &nbsp; ");
 			if (show_links) 
 			{
-				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+				g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 			}
 
 			/* print hour only or date too? */
 			if (0 != prev_stop) {
-				prt_date = is_same_day(start, prev_stop);
+				prt_date = qof_is_same_day(start, prev_stop);
 			}
 			if (prt_date) {
-				print_date_time (buff, 100, start);
+				qof_print_date_time_buff (buff, 100, start);
 				p = g_string_append (p, buff);
 			} else {
-				print_time (buff, 100, start);
+				qof_print_time_buff (buff, 100, start);
 				p = g_string_append (p, buff);
 			}
 
 			/* print hour only or date too? */
-			prt_date = is_same_day(start, stop);
+			prt_date = qof_is_same_day(start, stop);
 			if (show_links) p = g_string_append (p, "</a>");
 			p = g_string_append (p, 
 				" &nbsp; &nbsp; </td>\n"
 				"<td> &nbsp; &nbsp; ");
 			if (show_links)
 			{
-				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+				g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 			}
 			if (prt_date) {
-				print_date_time (buff, 100, stop);
+				qof_print_date_time_buff (buff, 100, stop);
 				p = g_string_append (p, buff);
 			} else {
-				print_time (buff, 100, stop);
+				qof_print_time_buff (buff, 100, stop);
 				p = g_string_append (p, buff);
 			}
 
@@ -161,7 +165,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 
 			if (show_links) p = g_string_append (p, "</a>");
 			p = g_string_append (p, " &nbsp; &nbsp; </td>\n<td> &nbsp; &nbsp; ");
-			print_hours_elapsed (buff, 100, elapsed, TRUE);
+			qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 			p = g_string_append (p, buff);
 			p = g_string_append (p, " &nbsp; &nbsp; </td></tr>\n");
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
@@ -381,7 +385,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 					if (output_html) g_string_append_printf (p, "<td colspan=%d>", mcols);
 					if (show_links) 
 					{
-						g_string_append_printf (p, "<a href=\"gtt:task:0x%x\">", tsk);
+						g_string_append_printf (p, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
 					}
 					pp = gtt_task_get_memo(tsk);
 					if (!pp || !pp[0]) pp = _("(empty)");
@@ -399,7 +403,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 				case TASK_TIME:
 					if (output_html) p = g_string_append (p, "<td align=right>");
-					print_hours_elapsed (buff, 100, task_secs, TRUE);
+					qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
 					p = g_string_append (p, buff); 
 					break;
 
@@ -496,9 +500,9 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			elapsed = stop - start;
 
 			/* print hour only or date too? */
-			prt_stop_date = is_same_day(start, stop);
+			prt_stop_date = qof_is_same_day(start, stop);
 			if (0 != prev_stop) {
-				prt_start_date = is_same_day(start, prev_stop);
+				prt_start_date = qof_is_same_day(start, prev_stop);
 			}
 			prev_stop = stop;
 
@@ -516,13 +520,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 		if (output_html) p = g_string_append (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
-			g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+			g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 		}
 		if (prt_start_date) {
-			print_date_time (buff, 100, start);
+			qof_print_date_time_buff (buff, 100, start);
 			p = g_string_append (p, buff);
 		} else {
-			print_time (buff, 100, start);
+			qof_print_time_buff (buff, 100, start);
 			p = g_string_append (p, buff);
 		}
 		if (show_links) p = g_string_append (p, "</a>");
@@ -534,13 +538,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 		if (output_html) p = g_string_append (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
-			g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+			g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 		}
 		if (prt_stop_date) {
-			print_date_time (buff, 100, stop);
+			qof_print_date_time_buff (buff, 100, stop);
 			p = g_string_append (p, buff);
 		} else {
-			print_time (buff, 100, stop);
+			qof_print_time_buff (buff, 100, stop);
 			p = g_string_append (p, buff);
 		}
 		if (show_links) p = g_string_append (p, "</a>");
@@ -550,7 +554,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	case ELAPSED:
 	{
 		if (output_html) p = g_string_append (p, "<td>&nbsp;&nbsp;");
-		print_hours_elapsed (buff, 100, elapsed, TRUE);
+		qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 		p = g_string_append (p, buff);
 		if (output_html) p = g_string_append (p, "&nbsp;&nbsp;");
 		break;
@@ -558,7 +562,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	case FUZZ:
 	{
 		if (output_html) p = g_string_append (p, "<td>&nbsp;&nbsp;");
-		print_hours_elapsed (buff, 100, gtt_interval_get_fuzz(ivl), TRUE);
+		qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz(ivl), TRUE);
 		p = g_string_append (p, buff);
 		if (output_html) p = g_string_append (p, "&nbsp;&nbsp;");
 		break;

@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <gnc-date.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
@@ -87,7 +89,7 @@ update_status_bar(void)
 	if (!old_project) old_project = g_strdup("");
 
 	/* update timestamp */
-	print_hours_elapsed (day_total_str, 25, 
+	qof_print_hours_elapsed_buff (day_total_str, 25, 
 	         gtt_project_list_total_secs_day(), config_show_secs);
 
 	s = g_strdup(day_total_str);

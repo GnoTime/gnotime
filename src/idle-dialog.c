@@ -22,6 +22,8 @@
 #include <gnome.h>
 #include <string.h>
 
+#include <gnc-date.h>
+
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
@@ -110,12 +112,12 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	/* Set a value for the thingy under the slider */
 	if (3600 > credit)
 	{
-		print_minutes_elapsed (tbuff, 30, credit, TRUE);
+		qof_print_minutes_elapsed_buff (tbuff, 30, credit, TRUE);
 		g_snprintf (mbuff, 130, _("%s minutes"), tbuff);
 	}
 	else 
 	{
-		print_hours_elapsed (tbuff, 30, credit, FALSE);
+		qof_print_hours_elapsed_buff (tbuff, 30, credit, FALSE);
 		g_snprintf (mbuff, 130, _("%s hours"), tbuff);
 	}
 	gtk_label_set_text (dlg->time_label, mbuff);
@@ -127,7 +129,7 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	{
 		msg = g_strdup_printf (
 		         _("The timer will be credited "
-		           "with %d minutes since the last keyboard/mouse "
+		           "with %ld minutes since the last keyboard/mouse "
 		           "activity.  If you want to change the amount "
 		           "of time credited, use the slider below to "
 		           "adjust the value."),
@@ -153,7 +155,7 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	{
 		msg = g_strdup_printf (
 			_("The keyboard and mouse have been idle "
-			  "for %d minutes.  The currently running "
+			  "for %ld minutes.  The currently running "
 			  "project, <b><i>%s - %s</i></b>, "
 			  "has been stopped. "
 			  "Do you want to restart it?"),
@@ -165,7 +167,7 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 	{
 		msg = g_strdup_printf (
 			_("The keyboard and mouse have been idle "
-			  "for %d:%02d hours.  The currently running "
+			  "for %ld:%02ld hours.  The currently running "
 			  "project (%s - %s) "
 			  "has been stopped. "
 			  "Do you want to restart it?"),
@@ -243,7 +245,6 @@ GttInactiveDialog *
 inactive_dialog_new (void)
 {
 	GttInactiveDialog *id;
-	GladeXML *gtxml;
 
 	id = g_new0 (GttInactiveDialog, 1);
 	id->idt = idle_timeout_new ();

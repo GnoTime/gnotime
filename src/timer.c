@@ -26,6 +26,7 @@
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "dialog.h"
+#include "gtt.h"
 #include "idle-dialog.h"
 #include "log.h"
 #include "notes-area.h"
@@ -75,13 +76,6 @@ zero_on_rollover (time_t when)
 }
 
 /* =========================================================== */
-
-static void
-restart_proj (GtkWidget *w, gpointer data)
-{
-	GttProject *prj = data;
-	ctree_start_timer (prj);
-}
 
 static gint 
 timer_func(gpointer data)

@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <gconf/gconf-client.h>
+#include <gconf/gconf.h>
 #include <glib.h>
 #include <gnome.h>
 
@@ -32,6 +33,7 @@
 #include "plug-in.h"
 #include "prefs.h"
 #include "timer.h"
+#include "toolbar.h"
 
 /* XXX these should not be externs, they should be part of
  * some app-global structure.
@@ -279,7 +281,6 @@ gtt_restore_reports_menu (GnomeApp *app)
 {
 	int i, num;
 	char s[120], *p;
-	GList *node;
 	GnomeUIInfo * reports_menu;
 	GConfClient *client;
 
@@ -324,12 +325,9 @@ gtt_restore_reports_menu (GnomeApp *app)
 void
 gtt_gconf_load (void)
 {
-	char s[256];
 	int i, num;
 	int _n, _c, _j, _p, _t, _o, _h, _e;
-	gboolean rc;
 	GConfClient *client;
-	GError *err_ret= NULL;
 
 	client = gconf_client_get_default ();
 	gconf_client_add_dir (client, GTT_GCONF, 

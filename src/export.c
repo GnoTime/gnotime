@@ -86,7 +86,7 @@ export_projects (export_format_t *xp)
 
 	/* Get the currently selected project */
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
+	if (!prj) return 0;
 
 	xp->ghtml = gtt_ghtml_new();
 	gtt_ghtml_set_stream (xp->ghtml, xp, 

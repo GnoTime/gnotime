@@ -752,7 +752,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
-		print_hours_elapsed (buff, 100, secs, TRUE);
+		qof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
 		node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, rpt);
 		
@@ -1054,7 +1054,7 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	char buff[100];
 
 	task_secs = gtt_task_get_secs_ever(tsk);
-	print_hours_elapsed (buff, 100, task_secs, TRUE);
+	qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
 	return gh_str2scm (buff, strlen (buff));
 }
 
@@ -1132,7 +1132,7 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	time_t elapsed;
 	elapsed = gtt_interval_get_stop (ivl);
 	elapsed -= gtt_interval_get_start (ivl);
-	print_hours_elapsed (buff, 100, elapsed, TRUE);
+	qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 	return gh_str2scm (buff, strlen (buff));
 }
 
@@ -1145,9 +1145,9 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	char buff[100];
 
 	if (prt_date) {
-		print_date_time (buff, 100, starp);
+		qof_print_date_time_buff (buff, 100, starp);
 	} else {
-		print_time (buff, 100, starp);
+		qof_print_time_buff (buff, 100, starp);
 	}
 
 	if (ghtml->show_links)
@@ -1182,7 +1182,7 @@ get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 
 	if (0 != prev_stop)
 	{
-		prt_date = is_same_day(start, prev_stop);
+		prt_date = qof_is_same_day(start, prev_stop);
 	}
 	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, prt_date);
 }
@@ -1202,7 +1202,7 @@ get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	ghtml->last_ivl_time = stop;
 	if (0 != prev_start)
 	{
-		prt_date = is_same_day(prev_start, stop);
+		prt_date = qof_is_same_day(prev_start, stop);
 	}
 	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, prt_date);
 }

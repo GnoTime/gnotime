@@ -47,6 +47,7 @@
 #include "menucmd.h"
 #include "prefs.h"
 #include "timer.h"
+#include "toolbar.h"
 #include "xml-gtt.h"
 
 
@@ -430,7 +431,7 @@ make_backup (const char * filename)
 	struct stat old_stat;
 	struct utimbuf ub;
 	int suffix=0;
-	int lm, i;
+	int lm;
 	int rc;
 
 	/* Figure out how far to back up.  This computes a
