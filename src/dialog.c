@@ -29,14 +29,12 @@
  * should be passed around in the data fields */
 extern GtkWidget *window;
 
-static void dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
+static void 
+dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 {
 	g_return_if_fail(dlg != NULL);
 
-	/* This is set up automatically by gnome dialog */
-	/* gtk_window_position(GTK_WINDOW(dlg), GTK_WIN_POS_MOUSE); */
-	/* gtk_window_position(GTK_WINDOW(dlg), GTK_WIN_POS_CENTER); */
-
+printf ("duude its a gnome dialog??=%d\n", GNOME_IS_DIALOG(dlg));
 	gnome_dialog_set_parent(GNOME_DIALOG(dlg), GTK_WINDOW(window));
 
 	gnome_dialog_set_close(dlg, TRUE);
@@ -46,7 +44,8 @@ static void dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 
 
 
-void new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
+void 
+new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
 		       const char *s, GtkSignalFunc sigfunc, gpointer data)
 {
 	GtkWidget *dia;
@@ -65,7 +64,8 @@ void new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
 }
 
 
-void new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
+void 
+new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 			  const char *s_ok, GtkSignalFunc sigfunc, gpointer data,
 			  const char *s_cancel, GtkSignalFunc c_sigfunc, gpointer c_data)
 {
@@ -95,7 +95,8 @@ void new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 }
 
 
-void msgbox_ok(const char *title, const char *text, const char *ok_text,
+void 
+msgbox_ok(const char *title, const char *text, const char *ok_text,
 	       GtkSignalFunc func)
 {
 	char *s;
@@ -115,7 +116,8 @@ void msgbox_ok(const char *title, const char *text, const char *ok_text,
 
 
 
-void msgbox_ok_cancel(const char *title, const char *text,
+void 
+msgbox_ok_cancel(const char *title, const char *text,
 		      const char *ok_text, const char *cancel_text,
 		      GtkSignalFunc func)
 {
@@ -135,7 +137,8 @@ void msgbox_ok_cancel(const char *title, const char *text,
 	g_free (s);
 }
 
-void qbox_ok_cancel(const char *title, const char *text,
+void 
+qbox_ok_cancel(const char *title, const char *text,
 			  const char *ok_text, GtkSignalFunc sigfunc, gpointer data,
 			  const char *cancel_text, GtkSignalFunc c_sigfunc, gpointer c_data)
 {
