@@ -144,7 +144,20 @@ void
 unlock_gtt(void)
 {
 	log_exit();
+	run_shell_command (cur_proj, FALSE);
 	unlink(build_lock_fname());
+
+	/* cleanup the guts. */
+#if 0
+/* Don't -- its currently buggy, recursive, will hang and whack data */
+	project_list_destroy ();
+#endif
+
+	/* Perform a clean shutdown of QOF subsystem. */
+	qof_query_shutdown ();
+	qof_object_shutdown ();
+	guid_shutdown ();
+	gnc_engine_string_cache_destroy ();
 }
 
 /* Return a 1 if the indicated directory did not exist, and
@@ -668,20 +681,7 @@ static void
 guile_inner_main(int argc, char **argv)
 {
 	gtk_main();
-
 	unlock_gtt();
-
-#if 0
-	/* Clean things up on exit.  But this is pretty pointless */
-	gtk_widget_destroy (app_window);
-	project_list_destroy ();
-#endif
-
-	/* Perform a clean shutdown of QOF subsystem. */
-	qof_query_shutdown ();
-	qof_object_shutdown ();
-	guid_shutdown ();
-	gnc_engine_string_cache_destroy ();
 }
 
 

@@ -139,7 +139,7 @@ update_status_bar(void)
 /* ============================================================= */
 /* Handle shell commands */
 
-static void
+void
 run_shell_command (GttProject *proj, gboolean do_start)
 {
 	char *cmd;
@@ -229,7 +229,8 @@ focus_row_set (GttProject *proj)
 
 /* ============================================================= */
 
-void app_new(int argc, char *argv[], const char *geometry_string)
+void 
+app_new(int argc, char *argv[], const char *geometry_string)
 {
 	GtkWidget *ctree;
 	GtkWidget *vbox;

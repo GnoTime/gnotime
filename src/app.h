@@ -50,5 +50,10 @@ void app_quit(GtkWidget *w, gpointer data);
 
 void focus_row_set (GttProject *);
 
+/** Run the start/stop shell command for the indicated project.
+ *  boolean is true for start, false for stop.  We export this
+ *  function only to handle application shutdown when getting signal.
+ */
+void run_shell_command (GttProject *, gboolean do_start);
 
 #endif /* __GTT_APP_H__ */
