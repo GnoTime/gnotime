@@ -27,7 +27,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gnc-date.h>
+#include <qof.h>
 
 #include "app.h"
 #include "ctree.h"
@@ -57,16 +57,31 @@
 GttGhtml *ghtml_guile_global_hack = NULL;   
 
 static SCM
+do_ret_did_query (GttGhtml *ghtml)
+{
+	return SCM_BOOL (ghtml->did_query);
+}
+
+static SCM
 ret_did_query (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	return do_ret_did_query (ghtml);
 }
 
+/* ============================================================== */
+
 static SCM
-do_ret_did_query (GttGhtml *ghtml)
+do_ret_kvp_str (GttGhtml *ghtml, SCM key)
 {
 	return SCM_BOOL (ghtml->did_query);
+}
+
+static SCM
+ret_kvp_str (SCM key)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_kvp_str (ghtml, key);
 }
 
 /* ============================================================== */
@@ -88,267 +103,168 @@ reverse_list (SCM node_list)
 }
 
 /* ============================================================== */
+/* A routine to recursively apply a scheme form to a list of 
+ * KVP key names.  It returns the result of the apply. */
+
+typedef enum
+{
+	GTT_NONE=0,
+	GTT_PRJ,
+	GTT_TASK,
+	GTT_IVL
+} PtrType;
+
+static SCM
+do_apply_based_on_type (GttGhtml *ghtml, SCM node, 
+             PtrType cur_type,				
+             SCM (*str_func)(GttGhtml *, const char *),
+             SCM (*prj_func)(GttGhtml *, GttProject *),
+             SCM (*tsk_func)(GttGhtml *, GttTask *),
+             SCM (*ivl_func)(GttGhtml *, GttInterval *))
+{
+		  
+	/* Either a 'symbol or a "quoted string" */
+	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
+	{
+		int len;
+		SCM rc = SCM_EOL;
+		char *str;
+		str = gh_scm2newstr (node, &len);
+		if (0<len) rc = str_func (ghtml, str);
+		free (str);
+		return rc;
+	}
+		
+	/* If its a number, its in fact a pointer to the C struct. */
+	if (SCM_NUMBERP(node))
+	{
+		SCM rc = SCM_EOL;
+		switch (cur_type)
+		{
+			case GTT_PRJ: {
+				GttProject *prj = (GttProject *) gh_scm2ulong (node);
+				if (prj_func) rc = prj_func (ghtml, prj);
+			}
+			case GTT_TASK: {
+				GttTask *tsk = (GttTask *) gh_scm2ulong (node);
+				if (tsk_func) rc = tsk_func (ghtml, tsk);
+			}
+			case GTT_IVL: {
+				GttInterval *ivl = (GttInterval *) gh_scm2ulong (node);
+				if (ivl_func) rc = ivl_func (ghtml, ivl);
+			}
+			case GTT_NONE:
+				rc = SCM_EOL;
+		}
+		return rc;
+	}
+
+	/* If its a list, then process the list */
+	if (SCM_CONSP(node))
+	{
+		SCM rc = SCM_EOL;
+		SCM node_list = node;
+
+		/* Check to see if there's a type-label of the appropriate 
+		 * type.  If so, then strip off the label, and pass back 
+		 * car to ourselves, and passing the corrected type.
+		 */
+		if (FALSE == SCM_NULLP(node))
+		{
+			SCM type;
+			type = gh_cdr (node);
+			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
+			{
+				cur_type = GTT_NONE;
+				char buff[20];
+				gh_get_substr (type, buff, 0, 20);
+
+				if ((!strncmp (buff, "gtt-project-ptr",15)) ||
+				    (!strncmp (buff, "gtt-project-list",16)))
+				{
+					cur_type = GTT_PRJ;
+				}
+				else if (!strncmp (buff, "gtt-task-list", 13))
+				{
+					cur_type = GTT_TASK;
+				}
+				else if (!strncmp (buff, "gtt-interval-list", 17))
+				{
+					cur_type = GTT_IVL;
+				}
+				else
+				{
+					g_warning ("Unknown GTT list type\n");
+					return SCM_EOL;
+				}
+				node_list = gh_car (node);
+				return do_apply_based_on_type (ghtml, node_list, cur_type, 
+				               str_func, prj_func, tsk_func, ivl_func);
+			}
+		}
+
+		/* Otherwise, we have just a list. Walk that list,
+		 * apply recursively to it.
+		 */
+		while (FALSE == SCM_NULLP(node_list))
+		{
+			SCM evl;
+			node = gh_car (node_list);
+			
+			evl = do_apply_based_on_type (ghtml, node, cur_type, 
+				               str_func, prj_func, tsk_func, ivl_func);
+			
+			if (FALSE == SCM_NULLP (evl))
+			{
+				rc = gh_cons (evl, rc);
+			}
+			node_list = gh_cdr (node_list);
+		}
+
+		/* reverse the list. Ughh */
+		/* gh_reverse (rc);  this doesn't work, to it manually */
+		rc = reverse_list (rc);
+		
+		return rc;
+	}
+
+	/* If its a null list, do nothing */
+	else if (SCM_NULLP (node))
+	{ 
+		return node;
+	}
+	
+	g_warning ("expecting a gtt data object,  got something else\n");
+	return SCM_EOL;
+}
+
+/* ============================================================== */
 /* A routine to recursively apply a scheme form to a hierarchical 
  * list of gtt projects.  It returns the result of the apply. */
-
-/* XXX all three do_apply_on_x routines are almost exactly the
- * same, except they differ in the types of thier arguments.
- * These three routines should be consolidated.
- */
 
 static SCM
 do_apply_on_project (GttGhtml *ghtml, SCM project, 
              SCM (*func)(GttGhtml *, GttProject *))
 {
-	GttProject * prj;
-	SCM rc;
-
-	/* If its a number, its in fact a pointer to the C struct. */
-	if (SCM_NUMBERP(project))
-	{
-		prj = (GttProject *) gh_scm2ulong (project);
-		rc = func (ghtml, prj);
-		return rc;
-	}
-
-	/* If its a list, then process the list */
-	else if (SCM_CONSP(project))
-	{
-		SCM proj_list = project;
-
-		/* Check to see if there's a type-label of the appropriate 
-		 * type.  If so, then strip off the label, and pass back 
-		 * car to ourselves.
-		 */
-		if (FALSE == SCM_NULLP(proj_list))
-		{
-			SCM type;
-			type = gh_cdr (proj_list);
-			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
-			{
-				char buff[20];
-				gh_get_substr (type, buff, 0, 15);
-				buff[15] = 0x0;
-				if ((!strcmp (buff, "gtt-project-ptr")) ||
-				    (!strcmp (buff, "gtt-project-lis")))
-				{
-					SCM evl;
-					evl = do_apply_on_project (ghtml, gh_car (proj_list), func);
-					return evl;
-				}
-				else
-				{
-					/* XXX actually, we should be dispatching on type, here */
-					g_warning ("expecting gtt-project-type, got something else\n");
-					return SCM_EOL;
-				}
-			}
-		}
-
-		/* Get a pointer to null */
-		rc = SCM_EOL;
-	
-		while (FALSE == SCM_NULLP(proj_list))
-		{
-			SCM evl;
-			project = gh_car (proj_list);
-			evl = do_apply_on_project (ghtml, project, func);
-			if (FALSE == SCM_NULLP (evl))
-			{
-				rc = gh_cons (evl, rc);
-			}
-			proj_list = gh_cdr (proj_list);
-		}
-
-		/* reverse the list. Ughh */
-		/* gh_reverse (rc);  this doesn't work, to it manually */
-		rc = reverse_list (rc);
-		
-		return rc;
-	}
-
-	/* If its a null list, do nothing */
-	else if (SCM_NULLP (project))
-	{ 
-		return project;
-	}
-	
-	g_warning ("expecting gtt project as argument, got something else\n");
-	return SCM_EOL;
+   return do_apply_based_on_type (ghtml, project,
+             GTT_PRJ, NULL, func, NULL, NULL);
 }
-
-/* ============================================================== */
-/* A routine to recursively apply a scheme form to a flat 
- * list of gtt tasks.  It returns the result of the apply. 
- * This routine also accepts a typed list and applies on that.
- * */
 
 static SCM
 do_apply_on_task (GttGhtml *ghtml, SCM task, 
              SCM (*func)(GttGhtml *, GttTask *))
 {
-	GttTask * tsk;
-	SCM rc;
-
-	/* If its a number, its in fact a pointer to the C struct. */
-	if (SCM_NUMBERP(task))
-	{
-		tsk = (GttTask *) gh_scm2ulong (task);
-		rc = func (ghtml, tsk);
-		return rc;
-	}
-
-	/* If its a list, then process the list */
-	else if (SCM_CONSP(task))
-	{
-		SCM task_list = task;
-		
-		/* Check to see if there's a type-label of the appropriate 
-		 * type.  If so, then strip off the label, and pass back 
-		 * car to ourselves.
-		 */
-		if (FALSE == SCM_NULLP(task_list))
-		{
-			SCM type;
-			type = gh_cdr (task_list);
-			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
-			{
-				char buff[15];
-				gh_get_substr (type, buff, 0, 14);
-				buff[13] = 0x0;
-				if (!strcmp (buff, "gtt-task-list"))
-				{
-					SCM evl;
-					evl = do_apply_on_task (ghtml, gh_car (task_list), func);
-					return evl;
-				}
-				else
-				{
-					/* XXX actually, we should be dispatching on type, here */
-					g_warning ("expecting gtt-task-type, got something else\n");
-					return SCM_EOL;
-				}
-			}
-		}
-
-		/* Get a pointer to null */
-		rc = SCM_EOL;
-	
-		while (FALSE == SCM_NULLP(task_list))
-		{
-			SCM evl;
-			task = gh_car (task_list);
-			evl = do_apply_on_task (ghtml, task, func);
-			if (FALSE == SCM_NULLP (evl))
-			{
-				rc = gh_cons (evl, rc);
-			}
-			task_list = gh_cdr (task_list);
-		}
-
-		/* reverse the list. Ughh */
-		/* gh_reverse (rc);  this doesn't work, do it manually */
-		rc = reverse_list (rc);
-		
-		return rc;
-	}
-
-	/* If its a null list, do nothing */
-	else if (SCM_NULLP (task))
-	{ 
-		return task;
-	}
-	
-	g_warning ("expecting gtt task as argument, got something else\n");
-	return SCM_EOL;
+   return do_apply_based_on_type (ghtml, task,
+             GTT_TASK, NULL, NULL, func, NULL);
 }
 
-/* ============================================================== */
-/* A routine to recursively apply a scheme form to a flat 
- * list of gtt intervals.  It returns the result of the apply. 
- * It is nearly identical to do_apply_on_task, except
- * for the typecasting, and should really be merged with that.
- */
 
 static SCM
 do_apply_on_interval (GttGhtml *ghtml, SCM invl, 
              SCM (*func)(GttGhtml *, GttInterval *))
 {
-	GttInterval * ivl;
-	SCM rc;
-
-	/* If its a number, its in fact a pointer to the C struct. */
-	if (SCM_NUMBERP(invl))
-	{
-		ivl = (GttInterval *) gh_scm2ulong (invl);
-		rc = func (ghtml, ivl);
-		return rc;
-	}
-
-	/* If its a list, then process the list */
-	else if (SCM_CONSP(invl))
-	{
-		SCM invl_list = invl;
-		
-		/* Check to see if there's a type-label of the appropriate 
-		 * type.  If so, then strip off the label, and pass back 
-		 * car to ourselves.
-		 */
-		if (FALSE == SCM_NULLP(invl_list))
-		{
-			SCM type;
-			type = gh_cdr (invl_list);
-			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
-			{
-				char buff[20];
-				gh_get_substr (type, buff, 0, 17);
-				buff[17] = 0x0;
-				if (!strcmp (buff, "gtt-interval-list"))
-				{
-					SCM evl;
-					evl = do_apply_on_interval (ghtml, gh_car (invl_list), func);
-					return evl;
-				}
-				else
-				{
-					/* XXX actually, we should be dispatching on type, here */
-					g_warning ("expecting gtt-interval-type, got something else\n");
-					return SCM_EOL;
-				}
-			}
-		}
-		
-		/* Get a pointer to null */
-		rc = SCM_EOL;
-	
-		while (FALSE == SCM_NULLP(invl_list))
-		{
-			SCM evl;
-			invl = gh_car (invl_list);
-			evl = do_apply_on_interval (ghtml, invl, func);
-			if (FALSE == SCM_NULLP (evl))
-			{
-				rc = gh_cons (evl, rc);
-			}
-			invl_list = gh_cdr (invl_list);
-		}
-
-		/* reverse the list. Ughh */
-		/* gh_reverse (rc);  this doesn't work, to it manually */
-		rc = reverse_list (rc);
-		
-		return rc;
-	}
-
-	/* If its a null list, do nothing */
-	else if (SCM_NULLP (invl))
-	{ 
-		return invl;
-	}
-	
-	
-	g_warning ("expecting gtt interval as argument, got something else\n");
-	return SCM_EOL;
+   return do_apply_based_on_type (ghtml, invl,
+             GTT_IVL, NULL, NULL, NULL, func);
 }
 
 /* ============================================================== */
@@ -1402,6 +1318,7 @@ static void
 register_procs (void)
 {
 	gh_new_procedure("gtt-show",               show_scm,               1, 0, 0);
+	gh_new_procedure("gtt-kvp-str",            ret_kvp_str,            1, 0, 0);
 	gh_new_procedure("gtt-linked-project",     ret_linked_project,     0, 0, 0);
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
@@ -1468,6 +1385,7 @@ gtt_ghtml_new (void)
 
 	p = g_new0 (GttGhtml, 1);
 
+	p->kvp = NULL;
 	p->prj = NULL;
 	p->query_result = NULL;
 	p->did_query = FALSE;

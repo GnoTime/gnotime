@@ -19,6 +19,8 @@
 #ifndef __GTT_GHTML_H__
 #define __GTT_GHTML_H__
 
+#include <qof.h>
+
 #include "proj.h"
 
 /* GHTML == guile-parsed html.  These routines will read in html
@@ -27,7 +29,7 @@
  *
  * By appropriately supplying the stream structure, gtt HTML data
  * can be sent anywhere desired. For example, this could, in theory
- * be used inside a cgi-bin script.  (this is a plannned, multi-user,
+ * be used inside a cgi-bin script.  (This is a plannned, multi-user,
  * web-based version that we hope to code up someday).  Currently, 
  * the stream is used to push data into GtkHTML, and also to fwrite()
  * for the save-to-file function.
@@ -46,6 +48,9 @@ struct gtt_ghtml_s
 	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
 	gpointer user_data;
 
+	/* Key-Value Pair data; includes HTML form GET/POST results. */
+	KvpFrame *kvp;
+	
 	/* The 'linked' project */
 	GttProject *prj;
 	

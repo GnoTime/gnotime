@@ -67,7 +67,7 @@ typedef struct wiggy_s
 	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
-static void do_show_report (const char *, GttProject *, gboolean, GList *);
+static void do_show_report (const char *, KvpFrame *, GttProject *, gboolean, GList *);
 
 
 /* ============================================================== */
@@ -574,7 +574,7 @@ html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 		wig->interval = NULL;
 
 		path = gtt_ghtml_resolve_path ("journal.ghtml", wig->filepath);
-		do_show_report (path, prj, FALSE, NULL);
+		do_show_report (path, NULL, prj, FALSE, NULL);
 	}
 	else
 	{
@@ -594,14 +594,41 @@ html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 
 static QofBook *book = NULL;
 
+/* Build a hard-wired query.  This is a place-holder until we 
+ * get SQL parsing in place, which should make this much more elegant.
+ * For now, we just call this 'bogus'.
+ */
 static GList *
-bogus_query (void)
+bogus_query (KvpFrame *kvpf)
 {
+	KvpValue *val;
+	char *str;
+	time_t earliest_end;
+	time_t latest_end;
 	QofQuery *q;
 	QofQueryPredData *pred_data;
 	GSList *param_list;
 	GList *results, *n;
 
+	if (!kvpf) return NULL;
+printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
+
+	/* work around highly bogus locale setting */
+   qof_date_format_set(QOF_DATE_FORMAT_US);
+
+	/* We expect the KVP to have some very particular values in it */
+	val = kvp_frame_get_slot (kvpf, "earliest-end-date");
+	str = kvp_value_get_string (val);
+printf ("duude got sttrig %s\n", str);
+   if (FALSE == qof_scan_date_secs (str, &earliest_end)) return NULL;
+	
+	val = kvp_frame_get_slot (kvpf, "latest-end-date");
+	str = kvp_value_get_string (val);
+printf ("duude got sttrig %s\n", str);
+   if (FALSE == qof_scan_date_secs (str, &latest_end)) return NULL;
+	
+printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(ctime (&latest_end)));
+	
 	/* Create a new query */
 	q =  qof_query_create ();
 
@@ -616,19 +643,21 @@ bogus_query (void)
 	 * and whose end date is less than y.
 	 */
 	 
+	/* Activity must preceed the 'latest end' */
 	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
 	                                            NULL);
 	pred_data = qof_query_int32_predicate (
 	                   QOF_COMPARE_LTE,         /* comparison to make */
-							 time(0)-8*24*3600);      /* time to match */
+							 latest_end);             /* time to match */
 	qof_query_add_term (q, param_list, pred_data,
 	            QOF_QUERY_FIRST_TERM);             /* How to combine terms */
 	
+	/* Activity must have occured after the 'earliest end' */
 	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
 	                                            NULL);
 	pred_data = qof_query_int32_predicate (
 	                   QOF_COMPARE_GTE,         /* comparison to make */
-							 time(0)-15*24*3600);     /* time to match */
+							 earliest_end);           /* time to match */
 	qof_query_add_term (q, param_list, pred_data,
 	            QOF_QUERY_AND);             /* How to combine terms */
 	
@@ -660,7 +689,6 @@ submit_clicked_cb(HtmlDocument *doc,
 	KvpFrame *kvpf;
 	GList *qresults;
 	
-
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
 	printf ("duude what the\n");
@@ -671,13 +699,11 @@ submit_clicked_cb(HtmlDocument *doc,
 	kvpf = kvp_frame_new ();
 	kvp_frame_add_url_encoding (kvpf, encoding);
 
-	printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
-
 	/* Build an ad-hoc query */
-	qresults = bogus_query ();
+	qresults = bogus_query (kvpf);
 	
 	/* Open a new window */
-	do_show_report (path, wig->prj, TRUE, qresults); 
+	do_show_report (path, kvpf, wig->prj, TRUE, qresults); 
 
 	/* XXX We cannnot reuse the same window from this callback, we 
 	 * have to let the callback return first, else we get a nasty error. 
@@ -694,7 +720,7 @@ submit_clicked_cb(HtmlDocument *doc,
 /* ============================================================== */
 
 static void
-do_show_report (const char * report, GttProject *prj, gboolean did_query, GList *prjlist)
+do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean did_query, GList *prjlist)
 {
 	GtkWidget *jnl_top, *jnl_viewport;
 	GladeXML  *glxml;
@@ -817,6 +843,11 @@ do_show_report (const char * report, GttProject *prj, gboolean did_query, GList 
 
 	wig->prj = prj;
 	wig->filepath = g_strdup (report);
+	if (kvpf) 
+	{ 
+		if (wig->gh->kvp) kvp_frame_delete (wig->gh->kvp);
+		wig->gh->kvp = kvpf;
+	}
 	wig->gh->did_query = did_query;
 	wig->gh->query_result = prjlist;
 
@@ -900,7 +931,7 @@ edit_journal(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("journal.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -912,7 +943,7 @@ edit_alldata(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("bigtable.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -924,7 +955,7 @@ edit_invoice(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("invoice.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -936,7 +967,7 @@ edit_primer(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("primer.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -948,7 +979,7 @@ edit_todolist (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("todo.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -960,7 +991,7 @@ edit_daily (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("daily.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -972,7 +1003,7 @@ edit_status (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("status.ghtml", NULL);
-	do_show_report (path, prj, FALSE, NULL);
+	do_show_report (path, NULL, prj, FALSE, NULL);
 }
 
 void
@@ -984,7 +1015,7 @@ invoke_report(GtkWidget *widget, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	/* Do not gnome-filepath this, this is for user-defined reports */
-	do_show_report (plg->path, prj, FALSE, NULL);
+	do_show_report (plg->path, NULL, prj, FALSE, NULL);
 }
 
 /* ===================== END OF FILE ==============================  */
