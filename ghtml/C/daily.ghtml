@@ -47,7 +47,9 @@
                  ''" -- " 
                  gtt-task-memo
                  ''"</b><br>\n" 
-                 gtt-task-notes
+                 ;; Don't just show plain task notes, html-beautify instead 
+                 ;; gtt-task-notes
+                 (lambda (task) (gtt-html-markup (gtt-task-notes task)))
                  ''"\n" 
                  )))
 
