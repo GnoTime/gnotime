@@ -67,12 +67,15 @@ Thanks go out to many people who e-mailed me with suggestions and
 bug fixes.  See the "about" window in the app for more details.
 
 
-Building
-========
-To build/install, you may need to manually adjust the paths
-to the guile libarires.  (I can't get configure to do this automatically).
+Required Packages for Building GnoTime
+======================================
+Besides the 'usual' Gnome2 development packages, the following are
+some of the packages required to build GnoTime:
 
-To build/install the documents subdirectory, you must have 'docbook-utils'
-installed.
+-- libguile-dev  
+-- libgtkhtml2-dev
+-- docbook-utils  (to build the documents subdirectory)
+
+
 
 
