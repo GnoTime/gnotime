@@ -117,11 +117,28 @@ timer_func(gpointer data)
 		idle_time = now - poll_last_activity (idt);
 		if (idle_time > config_idle_timeout) 
 		{
+			time_t stop;
 			char *msg;
+			GttInterval *ivl;
 			GttProject *prj = cur_proj;
 
-			/* stop the timer on teh current project */
+			/* stop the timer on the current project */
 			cur_proj_set (NULL);
+
+			/* The idle timer can trip because gtt was left running
+			 * on a laptop, which was them put in suspend mode (i.e.
+			 * by closing the cover).  When the laptop is resumed,
+			 * the poll_last_activity will return the many hours/days
+			 * tht the laptop has been shut down, and meremly stoping
+			 * the timer (as above) will credit hours/days to the 
+			 * current active project.  We don't want this, we need
+			 * to undo this damage.
+			 */
+			ivl = gtt_project_get_first_interval (prj);
+			stop = gtt_interval_get_stop (ivl);
+			stop -= idle_time;
+			stop += config_idle_timeout;
+			gtt_interval_set_stop (ivl, stop);
 
 			/* warn the user */
 			msg = g_strdup_printf (

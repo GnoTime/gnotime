@@ -294,9 +294,20 @@ int 		gtt_project_total_secs_ever (GttProject *proj);
 void gtt_project_list_compute_secs (void);
 
 
-/* return a list of the children of this project */
-GList * 	gtt_project_get_children (GttProject *);
-GList * 	gtt_project_get_tasks (GttProject *);
+/* The gtt_project_get_children() returns a list of the 
+ *    subprojects of this project 
+ * The gtt_project_get_tasks() routine returns a list of
+ *    tasks associated with this project.
+ * The gtt_project_get_first_task() returns the task at the head
+ *    of the queue (the currently active task).
+ * The gtt_project_get_first_interval() routine returns the 
+ *    interval at the head of the active task (i.e. the currenly
+ *    ticking interval, or the last interval to tick).
+ */
+GList       * gtt_project_get_children (GttProject *);
+GList       * gtt_project_get_tasks (GttProject *);
+GttTask     * gtt_project_get_first_task (GttProject *);
+GttInterval * gtt_project_get_first_interval (GttProject *);
 
 GttProject * 	gtt_project_get_parent (GttProject *);
 
@@ -417,7 +428,7 @@ GttBillStatus	gtt_task_get_billstatus (GttTask *);
 void		gtt_task_set_bill_unit (GttTask *, int);
 int		gtt_task_get_bill_unit (GttTask *);
 
-/* The gtt_task_remove() routine will remove teh task from its parent
+/* The gtt_task_remove() routine will remove the task from its parent
  *    project (presumably in preparation for reparenting).
  *
  * The gtt_task_new_insert() routine creates a new task with the same
@@ -442,7 +453,7 @@ gboolean	gtt_task_is_first_task (GttTask *);
 GttProject *	gtt_task_get_parent (GttTask *);
 
 
-GList *		gtt_task_get_intervals (GttTask *);
+GList *  gtt_task_get_intervals (GttTask *);
 void		gtt_task_add_interval (GttTask *, GttInterval *);
 void		gtt_task_append_interval (GttTask *, GttInterval *);
 
@@ -483,7 +494,7 @@ void		gtt_interval_set_running (GttInterval *, gboolean);
 void		gtt_interval_set_fuzz (GttInterval *, int);
 time_t		gtt_interval_get_start (GttInterval *);
 time_t		gtt_interval_get_stop (GttInterval *);
-gboolean	gtt_interval_get_running (GttInterval *);
+gboolean	gtt_interval_is_running (GttInterval *);
 int		gtt_interval_get_fuzz (GttInterval *);
 
 /* The gtt_interval_new_insert_after() routine creates a new interval 

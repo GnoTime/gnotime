@@ -143,7 +143,7 @@ gtt_xml_interval_to_dom_tree (GttInterval *ivl)
 	PUT_LONG("start", gtt_interval_get_start(ivl));
 	PUT_LONG("stop", gtt_interval_get_stop(ivl));
 	PUT_INT("fuzz", gtt_interval_get_fuzz(ivl));
-	PUT_BOOL("running", gtt_interval_get_running(ivl));
+	PUT_BOOL("running", gtt_interval_is_running(ivl));
 
 	return topnode;
 }

@@ -26,7 +26,9 @@ IdleTimeout * idle_timeout_new (void);
  * user activity on this X server.  i.e. the number of seconds since
  * last activity is given by (time(0) - poll_last_activity())
  */
-time_t poll_last_activity (IdleTimeout *si);
+time_t poll_last_activity (IdleTimeout *);
+
+/* XXX There should be an idle_timeout_destroy() func, but there isn't. */
 
 
 #endif /* __IDLE_TIMER_H__ */

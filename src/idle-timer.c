@@ -1,8 +1,8 @@
 /* 
- * idle-timer.c --- detecting when the user is idle, and other timer-related tasks.
- * Originally comes from xscreensaver:
- * xscreensaver, Copyright (c) 1991-1997, 1998 aJamie Zawinski <jwz@jwz.org>
- * hacked up for use with gtt, Copyright (c) 2001 Linas Vepstas <linas@linas.org>
+ * idle-timer.c -- detect that the user is idle, and other timer-related tasks.
+ * This code is originally comes from xscreensaver:
+ * xscreensaver, Copyright (c) 1991-1997, 1998 Jamie Zawinski <jwz@jwz.org>
+ * hacked for use with gtt, Copyright (c) 2001 Linas Vepstas <linas@linas.org>
  *
  * Permission to use, copy, modify, distribute, and sell this software and its
  * documentation for any purpose is hereby granted without fee, provided that
@@ -13,10 +13,12 @@
  * implied warranty.
  *
  * This version is a major restructuring of Zawiski's code, for two reasons:
- * 1) we want to poll how long system's been idle, (orig code blocked)
- * 2) the gdk event loop gobbles events, so we had to tap in.
+ * 1) we want to poll how long system's been idle, (the original
+ *    code blocked)
+ * 2) the gdk event loop gobbles up events, so we had to tap in to get
+ *    them before gdk made them disappear.
  *
- * NB the /proc/interrupts code is dead, but is being saved for 
+ * NB the /proc/interrupts code is currently dead, but is being saved for 
  * resurection on some rainy day.  Ditto the XIDLE extension code.
  */
 

@@ -922,6 +922,26 @@ gtt_project_get_tasks (GttProject *proj)
 	return proj->task_list;
 }
 
+GttTask *
+gtt_project_get_first_task (GttProject *proj)
+{
+	if (!proj) return NULL;
+	if (!proj->task_list) return NULL;
+	return (proj->task_list->data);
+}
+
+GttInterval *
+gtt_project_get_first_interval (GttProject *proj)
+{
+	GttTask *tsk;
+	if (!proj) return NULL;
+	if (!proj->task_list) return NULL;
+	tsk = proj->task_list->data;
+	if (!tsk) return NULL;
+	if (!tsk->interval_list) return NULL;
+	return (tsk->interval_list->data);
+}
+
 /* =========================================================== */
 /* get totals */
 
@@ -2105,7 +2125,7 @@ gtt_interval_get_fuzz (GttInterval * ivl)
 }
 
 gboolean 
-gtt_interval_get_running (GttInterval * ivl)
+gtt_interval_is_running (GttInterval * ivl)
 {
 	if (!ivl) return FALSE;
 	return (gboolean) ivl->running;
