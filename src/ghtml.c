@@ -519,6 +519,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 	{
 		GttProject *prj = n->data;
       SCM node;
+#if 0
 		GList *subprjs;
 		
 		/* Handle sub-projects, if any, before the project itself */
@@ -528,6 +529,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 			node = do_ret_project_list (ghtml, subprjs);
 			rc = gh_cons (node, rc);
 		}
+#endif 
 		node = gh_ulong2scm ((unsigned long) prj);
 		rc = gh_cons (node, rc);
 	}

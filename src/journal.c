@@ -851,7 +851,7 @@ do_show_report (const char * report, KvpFrame *kvpf, GttProject *prj, gboolean d
 	wig->gh->did_query = did_query;
 	wig->gh->query_result = prjlist;
 
-	/* XXX should add notifiers for prjlist too ?? */
+	/* XXX should add notifiers for prjlist too ?? Yes we should */
 	if (prj) gtt_project_add_notifier (prj, redraw, wig);
 	gtt_ghtml_display (wig->gh, report, prj);
 }
