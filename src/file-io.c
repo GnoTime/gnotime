@@ -535,7 +535,7 @@ gtt_load_config (void)
 	s = g_new (char, strlen (h) + 120);
 	strcpy (s, "=");
 	strcat (s, h);
-	strcat (s, "/gtt=/Misc");
+	strcat (s, "/.gnome/gtt=/Misc");
 	if (gnome_config_has_section (s))
 	{
 		strcpy (s, "=");
