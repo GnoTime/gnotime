@@ -61,6 +61,11 @@ task_memo_changed (GtkEntry *entry, NotesArea *na)
 	na->ignore_events = TRUE;
 	str = gtk_entry_get_text (entry);
 	tsk = gtt_project_get_first_task (na->proj);
+	if (NULL == tsk)
+	{
+		tsk = gtt_task_new();
+		gtt_project_prepend_task (na->proj, tsk);
+	}
 	gtt_task_set_memo (tsk, str);
 	na->ignore_events = FALSE;
 }
@@ -78,6 +83,11 @@ task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	na->ignore_events = TRUE;
 	str = xxxgtk_textview_get_text (na->task_notes);
 	tsk = gtt_project_get_first_task (na->proj);
+	if (NULL == tsk)
+	{
+		tsk = gtt_task_new();
+		gtt_project_prepend_task (na->proj, tsk);
+	}
 	gtt_task_set_notes (tsk, str);
 	na->ignore_events = FALSE;
 }
