@@ -461,7 +461,6 @@ click_column(GtkCList *clist, gint col, gpointer data)
 			break;
 	}
 	
-	ctree_save_expander_state (ptw);
 	ctree_setup(ptw);
 }
 
@@ -1400,7 +1399,10 @@ ctree_setup (ProjTreeWindow *ptw)
 	tree_w = ptw->ctree;
 	
 
-	/* first, add all projects to the ctree */
+	/* Save expander state before doing anything.  */
+	ctree_save_expander_state (ptw);
+
+	/* First, add all projects to the ctree. */
 	prjlist = gtt_get_project_list();
 	if (prjlist) {
 		gtk_clist_freeze(GTK_CLIST(tree_w));
