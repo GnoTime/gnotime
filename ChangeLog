@@ -1,3 +1,13 @@
+
+Sept 27 2003 Linas Vepstas <linas@linas.org>
+	* po/pt_BR.po: New pt_BR translation from Goedson Teixeira Paixao
+     (sourceforge patch #799089)
+	* lib/qof/*: sync with GnuCash CVS HEAD
+	* src/proj.c: fix core dump when sorting on empty window
+     (sourceforge bug #799077)
+	* src/mencmd.c: add cheesey usability hack/workaround to explain
+	  how to edit time intervals. (sourceforge bug #795361)
+
 Sun August 10 2003 Linas Vepstas <linas@linas.org>
 
 	* journal.c: port to gtkhtml-3.0
