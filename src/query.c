@@ -83,7 +83,7 @@ day_bin (GttInterval *ivl, gpointer data)
 }
 
 GArray *
-gtt_project_get_daily_time (GttProject *proj)
+gtt_project_get_daily_time (GttProject *proj, gboolean include_subprojects)
 {
 	DayArray da;
 	GArray *arr = NULL;
@@ -94,8 +94,8 @@ gtt_project_get_daily_time (GttProject *proj)
 	if (!proj) return NULL;
 	
 	/* Figure out how many days in the array */
-	start = gtt_project_get_earliest_start (proj);
-	stop = gtt_project_get_latest_stop (proj);
+	start = gtt_project_get_earliest_start (proj, include_subprojects);
+	stop = gtt_project_get_latest_stop (proj, include_subprojects);
 	num_days = (stop - start) / (24*3600);
 	num_days +=2;
 
@@ -104,16 +104,16 @@ gtt_project_get_daily_time (GttProject *proj)
 
 	da.arr = arr;
 	da.start_cday = yearday_to_centuryday (stm.tm_yday, stm.tm_year);
-	gtt_project_foreach_interval (proj, day_bin, &da);
+	if (include_subprojects)
+	{
+		gtt_project_foreach_subproject_interval (proj, day_bin, &da);
+	}
+	else
+	{
+		gtt_project_foreach_interval (proj, day_bin, &da);
+	}
 
 	/* Start filling in the array */
-	return arr;
-}
-
-GArray * 
-gtt_project_total_daily_time (GttProject *proj)
-{
-	GArray *arr;
 	return arr;
 }
 
@@ -182,54 +182,41 @@ static int cmp_latest (GttInterval *ivl, gpointer data)
 }
 
 time_t   
-gtt_project_get_earliest_start (GttProject *proj)
+gtt_project_get_earliest_start (GttProject *proj, gboolean include_subprojects)
 {
 	time_t earliest;
 	
 	earliest = time(0);
 	if (!proj) return  earliest;
 	
-	gtt_project_foreach_interval (proj, cmp_earliest, &earliest);
+	if (include_subprojects)
+	{
+		gtt_project_foreach_subproject_interval (proj, cmp_earliest, &earliest);
+	}
+	else
+	{
+		gtt_project_foreach_interval (proj, cmp_earliest, &earliest);
+	}
 	return earliest;
 }
 
 
 time_t   
-gtt_project_total_earliest_start (GttProject *proj)
-{
-	time_t earliest;
-	GList *pnode;
-	
-	earliest = time(0);
-	if (!proj) return  earliest;
-	
-	gtt_project_foreach_subproject_interval (proj, cmp_earliest, &earliest);
-	return earliest;
-}
-
-time_t   
-gtt_project_get_latest_stop (GttProject *proj)
+gtt_project_get_latest_stop (GttProject *proj, gboolean include_subprojects)
 {
 	time_t latest;
 	
 	latest = time(0);
 	if (!proj) return  latest;
 	
-	gtt_project_foreach_interval (proj, cmp_latest, &latest);
-	return latest;
-}
-
-
-time_t   
-gtt_project_total_latest_stop (GttProject *proj)
-{
-	time_t latest;
-	GList *pnode;
-	
-	latest = time(0);
-	if (!proj) return  latest;
-	
-	gtt_project_foreach_subproject_interval (proj, cmp_latest, &latest);
+	if (include_subprojects)
+	{
+		gtt_project_foreach_subproject_interval (proj, cmp_latest, &latest);
+	}
+	else
+	{
+		gtt_project_foreach_interval (proj, cmp_latest, &latest);
+	}
 	return latest;
 }
 
