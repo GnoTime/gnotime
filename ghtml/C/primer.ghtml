@@ -126,6 +126,17 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 <li> We have started implementing a way of getting the raw 
      project/task/interval data into scheme, but its rather
 	  primitive and incomplete at this time.
+	  However, some things do work, as below:
+	  <br><br>
+	  <tt>(gtt-projects)</tt> returns the tree of projects,
+	  which can be used with the getters: for example:
+     <tt>(gtt-show (gtt-project-title (gtt-projects)))</tt>
+	  shows:
+	  <br><br>
+	  <b><i>
+     <?scm (gtt-show (gtt-project-title (gtt-projects))) ?>
+	  </i></b>
+
 
 </ul>
 
