@@ -88,6 +88,7 @@ AM_CFLAGS = -g -Wall     \
 	@CFLAGS@              \
 	${GNOTIME_CFLAGS}     \
 	${GCONF_CFLAGS}       \
+	${LIBGNOMEVFS_CFLAGS} \
 	${LIBGTKHTML_CFLAGS}  \
 	${LIBGLADE_CFLAGS}    \
 	${LIBXML2_CFLAGS}
@@ -112,6 +113,7 @@ gnotime_LDADD =         \
 	../lib/libqofsql/libqofsql.la \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
+	${LIBGNOMEVFS_LIBS}  \
 	$(LIBXML2_LIBS)      \
 	${GUILE_LIBS}        \
 	$(INTLLIBS)
