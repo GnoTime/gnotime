@@ -27,7 +27,6 @@ void quit_app(GtkWidget *, gpointer);
 void about_box(GtkWidget *, gpointer);
 
 void new_project(GtkWidget *, gpointer);
-void init_project_list(GtkWidget *, gpointer);
 void save_project_list(GtkWidget *, gpointer);
 void export_current_state(GtkWidget *, gpointer);
 void cut_project(GtkWidget *w, gpointer data);

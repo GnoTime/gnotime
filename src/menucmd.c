@@ -189,68 +189,67 @@ new_project(GtkWidget *widget, gpointer data)
 }
 
 
+/* ======================================================= */
+/* The export-to-a-file code is turned off below, mostly
+ * because the actual export format is useless and ugly
+ * and not compatible with anything and was just cluttering 
+ * up the GUI.  But is you *DO* have a a reasonable format
+ * to export to, then you can turn the file-picker code 
+ * below on again, and do your stuff.   This code was working
+ * last I tried it.
+ */
+#if DATA_EXPORT_IS_TURNED_OFF_FOR_NOW_SINCE_FORMAT_IS_UGLY
+/* project list export */
 
-static void
-init_project_list_2(GtkWidget *widget, int button)
+static char *
+get_time (int secs)
 {
-	GttErrCode conf_errcode;
-
-	if (button != 0) return;
-
-	/* Try ... */
-	gtt_err_set_code (GTT_NO_ERR);
-	gtt_load_config (NULL);
-
-	/* Catch ... */
-	conf_errcode = gtt_err_get_code();
-	if (GTT_NO_ERR != conf_errcode)
-	{
-		const char *fp, *errmsg;
-		fp = gtt_get_config_filepath();
-		errmsg = gtt_err_to_string (conf_errcode, fp);
-		msgbox_ok(_("Warning"),
-			errmsg, GTK_STOCK_OK, NULL);
-
-		g_free ((gchar *) errmsg);
-	}
-	else
-	{
-
-		gtt_post_data_config ();
-		ctree_setup(global_ptw);
-		menus_add_plugins (GNOME_APP(window));
-		app_show();
-	}
+	/* Translators: This is a "time format", that is
+	 * format on how to print the elapsed time with
+	 * hours:minutes:seconds. */
+	return g_strdup_printf (_("%d:%02d:%02d"),
+				secs / (60*60),
+				(secs / 60) % 60,
+				secs % 60);
 }
 
-
-
-void
-init_project_list(GtkWidget *widget, gpointer data)
+static `;gboolean
+project_list_export (const char *fname)
 {
-	msgbox_ok_cancel(_("Reload Configuration File"),
-			 _("Do you really want to reload the configuration file?"),
-			 GTK_STOCK_YES, GTK_STOCK_NO,
-			 GTK_SIGNAL_FUNC(init_project_list_2));
-}
+	FILE *fp;
+	GList *node;
 
+	fp = fopen (fname, "w");
+	if (fp == NULL)
+		return FALSE;
 
+	/* Translators: this is the header of a table separated file,
+	 * it should really be all ASCII, or at least not multibyte,
+	 * I don't think most spreadsheets would handle that well. */
+	fprintf (fp, "Title\tDescription\tTotal time\tTime today\n");
 
-void
-save_project_list(GtkWidget *widget, gpointer data)
-{
-	const char * errmsg;
-
-	errmsg = save_all ();
-	if (errmsg)
+	for (node = gtt_get_project_list(); node; node = node->next) 
 	{
-		msgbox_ok(_("Warning"),
-		     errmsg,
-		     GTK_STOCK_OK,
-		     NULL);
-		g_free ((gchar *) errmsg);
+		GttProject *prj = node->data;
+		char *total_time, *time_today;
+		if (!gtt_project_get_title(prj)) continue;
+		total_time = get_time (gtt_project_total_secs_ever(prj));
+		time_today = get_time (gtt_project_total_secs_day(prj));
+		fprintf (fp, "%s\t%s\t%s\t%s\n",
+			 gtt_sure_string (gtt_project_get_title(prj)),
+			 gtt_sure_string (gtt_project_get_desc(prj)),
+			 total_time,
+			 time_today);
+		g_free (total_time);
+		g_free (time_today);
 	}
+
+	fclose (fp);
+
+	return TRUE;
 }
+
+/* ======================================================= */
 
 static void
 export_current_state_really (GtkWidget *widget, gpointer data)
@@ -314,6 +313,9 @@ export_current_state (GtkWidget *widget, gpointer data)
 
 	gtk_widget_show (dialog);
 }
+
+#endif /* DATA_EXPORT_IS_TURNED_OFF_FOR_NOW_SINCE_FORMAT_IS_UGLY */
+/* ======================================================= */
 
 
 GttProject *cutted_project = NULL;

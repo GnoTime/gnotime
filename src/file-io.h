@@ -21,6 +21,10 @@
 
 #include <glib.h>
 
+/* file-io.c and file-io.h is mostly involved in saving and restoring
+ * user preference data to the default user config file (in .gnome2/gnotime)
+ */
+
 
 
 /* The routine gtt_save_config() will save configuration/user-preference data
@@ -46,9 +50,5 @@ void gtt_post_data_config (void);
 
 /* returns the 'real path' to the config file that was/would be used */
 const char * gtt_get_config_filepath (void);
-
-/* ??? */
-gboolean project_list_export (const char *fname);
-
 
 #endif /* __GTT_FILEIO_H__ */
