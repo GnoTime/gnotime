@@ -25,6 +25,7 @@
 #include "app.h"
 #include "dialog.h"
 #include "journal.h"
+#include "gconf-io.h"
 #include "menus.h"
 #include "plug-in.h"
 #include "util.h"
@@ -129,7 +130,7 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
+	path = gnome_file_entry_get_full_path (dlg->plugin_path, FALSE);
 
 	if (!path)
 	{
@@ -234,7 +235,7 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 
 /* ============================================================ */
 /*  This callback is called whenever a user types into the 
- *  name, path or tooltip widgets, and causes the affected
+ *  name or tooltip widgets, and causes the affected
  *  ctree row to be redrawn.
  */
 
@@ -272,7 +273,7 @@ edit_plugin_setup (PluginEditorDialog *dlg)
 	/* Copy-in existing menus from the system */
 	sysmenus = gtt_get_reports_menu ();
 	for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
-	nitems = i;
+	nitems = i+1;
 
 	dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
 	dlg->menus = g_array_append_vals (dlg->menus, sysmenus, nitems);
@@ -323,7 +324,20 @@ static void
 edit_plugin_apply_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
-printf ("duude apply clicked\n");
+	GnomeUIInfo *dlgmenu, *sysmenu;
+	int i, nitems;
+
+
+	/* Copy from local copy to system menus */
+	dlgmenu = (GnomeUIInfo *) dlg->menus->data;
+	nitems = dlg->menus->len;
+	sysmenu = g_new0 (GnomeUIInfo, nitems);
+	memcpy (sysmenu, dlgmenu, nitems*sizeof(GnomeUIInfo));
+	for (i=0; i<nitems-1; i++)
+	{
+		sysmenu[i].user_data = gtt_plugin_copy (dlgmenu[i].user_data);
+	}
+	gtt_set_reports_menu (dlg->app, sysmenu);
 }
 
 static void 
@@ -332,7 +346,12 @@ edit_plugin_commit_cb (GtkWidget * w, gpointer data)
 	PluginEditorDialog *dlg = data;
 
 	edit_plugin_apply_cb (w, data);
+	edit_plugin_cleanup (dlg);
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
+
+	/* Save to file, too.  That way, if system core dumps later, 
+	 * at least we managed to get this set of changes saved. */
+	gtt_save_reports_menu();
 }
 
 /* ============================================================ */
