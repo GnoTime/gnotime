@@ -64,19 +64,22 @@ about_box(GtkWidget *w, gpointer data)
 {
 	static GtkWidget *about = NULL;
 	const gchar *authors[] = {
+		  "Linas Vepstas <linas@linas.org>",
 		  "Eckehard Berns <eb@berns.i-s-o.net>",
 		  "George Lebl <jirka@5z.com>",
-		  "Linas Vepstas <linas@linas.org>",
 		  " ",
 		  _("Bug-fixes from:"), 
+		  "Derek Atkins <warlord@mit.edu>",
 		  "Jonathan Blandford  <jrb@redhat.com>",
 		  "Miguel de Icaza  <miguel@nuclecu.unam.mx>",
 		  "John Fleck <jfleck@inkstain.net>",
 		  "Nat Friedman  <nat@nat.org>",
 		  "Mark Galassi  <rosalia@cygnus.com>",
 		  "Jeff Garzik  <jgarzik@pobox.com>",
+		  "Sven M. Hallberg <pesco@gmx.de>",
 		  "Raja R Harinath  <harinath@cs.umn.edu>",
 		  "Peter Hawkins <peterhawkins@ozemail.com.au>",
+		  "Egil Kvaleberg <egil@kvaleberg.no>",
 		  "Chris Lahey  <clahey@umich.edu>",
 		  "Gregory McLean <gregm@comstar.net>",
 		  "Kjartan Maraas  <kmaraas@gnome.org>",
