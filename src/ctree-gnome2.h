@@ -30,8 +30,10 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_CTREE_H__
-#define __GTT_CTREE_H__
+#ifndef __GTT_CTREE_GNOME2_H__
+#define __GTT_CTREE_GNOME2_H__
+
+#ifdef GTT_CTREE_GNOME2
 
 #include <gnome.h>
 #include "proj.h"
@@ -87,4 +89,5 @@ GtkWidget * ctree_get_widget(ProjTreeWindow *);
  */
 GttProject *ctree_get_focus_project (ProjTreeWindow *);
 
-#endif /* __GTT_CTREE_H__ */
+#endif /* GTT_CTREE_GNOME2 */
+#endif /* __GTT_CTREE_GNOME2_H__ */

@@ -21,6 +21,7 @@
 
 #include <gnome.h>
 #include "ctree.h"
+#include "ctree-gnome2.h"
 
 extern ProjTreeWindow *global_ptw;
 

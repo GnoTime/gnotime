@@ -26,6 +26,7 @@
 
 #include "app.h"
 #include "ctree.h"
+#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "gtt.h"
 #include "prefs.h"

@@ -29,6 +29,7 @@
 
 #include "app.h"
 #include "ctree.h"
+#include "ctree-gnome2.h"
 #include "journal.h"
 #include "ghtml.h"
 #include "proj.h"

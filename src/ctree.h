@@ -20,6 +20,8 @@
 #ifndef __GTT_CTREE_H__
 #define __GTT_CTREE_H__
 
+#ifndef GTT_CTREE_GNOME2
+
 #include <gnome.h>
 #include "proj.h"
 
@@ -74,4 +76,5 @@ GtkWidget * ctree_get_widget(ProjTreeWindow *);
  */
 GttProject *ctree_get_focus_project (ProjTreeWindow *);
 
+#endif /* GTT_CTREE_GNOME2 */
 #endif /* __GTT_CTREE_H__ */

@@ -4,6 +4,7 @@ bin_PROGRAMS = gnotime
 gnotime_SOURCES = 		\
 	app.c		\
 	ctree.c		\
+	ctree-gnome2.c		\
 	dialog.c	\
 	err.c		\
 	err-throw.c	\
@@ -33,6 +34,7 @@ gnotime_SOURCES = 		\
 noinst_HEADERS = 	\
 	app.h		\
 	ctree.h		\
+	ctree-gnome2.h		\
 	cur-proj.h	\
 	dialog.h	\
 	err-throw.h	\
@@ -61,6 +63,9 @@ noinst_HEADERS = 	\
 	
 
 # remove GTK_ENABLE_BROKEN when gnome-2.0 works for real
+#
+#	-DGTT_CTREE_GNOME2 
+
 CFLAGS = -g -DGTK_ENABLE_BROKEN	\
 	@CFLAGS@ 		\
 	${GNOTIME_CFLAGS}	\
