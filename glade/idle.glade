@@ -11,8 +11,6 @@
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="has_separator">True</property>
-  <signal name="close" handler="gtk_widget_hide" last_modification_time="Thu, 02 Jan 2003 19:51:10 GMT"/>
-  <signal name="destroy_event" handler="gtk_widget_hide" last_modification_time="Thu, 02 Jan 2003 20:04:39 GMT"/>
 
   <child internal-child="vbox">
     <widget class="GtkVBox" id="dialog box">
