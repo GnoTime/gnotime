@@ -77,6 +77,7 @@ dialog_kill (GObject *obj, GttIdleDialog *dlg)
 static void
 restart_proj (GObject *obj, GttIdleDialog *dlg)
 {
+	dlg->last_activity = time(0);  /* bug fix, sometimes events are lost */
 	ctree_start_timer (dlg->prj);
 	dialog_kill (obj, dlg);
 }
@@ -260,7 +261,7 @@ idle_dialog_new (void)
 void 
 show_idle_dialog (GttIdleDialog *id)
 {
-	time_t now;
+	time_t now, last;
 	time_t idle_time;
 	GttProject *prj = cur_proj;
 
@@ -269,7 +270,9 @@ show_idle_dialog (GttIdleDialog *id)
 	if (!prj) return;
 
 	now = time(0);
-	id->last_activity = poll_last_activity (id->idt);
+	last = poll_last_activity (id->idt);
+	/* bug fix -- make up for lost events */
+	if (id->last_activity < last) id->last_activity = last; 
 	idle_time = now - id->last_activity;
 	if (idle_time <= config_idle_timeout) return;
 
