@@ -1863,13 +1863,14 @@ prj_obj_foreach_helper (GList *prjlist, QofEntityForeachCB cb, gpointer data)
 	for (node=prjlist; node; node=node->next)
 	{
 		GttProject *prj = node->data;
-		cb (prj, data);
+		void (*ncb) (GttProject *, void *) = (void (*) (GttProject *, void *)) cb;
+		ncb (prj, data);
 		prj_obj_foreach_helper (prj->sub_projects, cb, data);
 	}
 }
 
 void
-gtt_project_obj_foreach (QofBook *book, QofEntityForeachCB cb, gpointer data)
+gtt_project_obj_foreach (QofCollection *coll, QofEntityForeachCB cb, gpointer data)
 {
 	prj_obj_foreach_helper (plist, cb, data);
 }
@@ -1883,7 +1884,7 @@ prj_obj_order (GttProject *a, GttProject *b)
 static QofObject prj_object_def =
 {
    interface_version: QOF_OBJECT_VERSION,
-   name:              GTT_PROJECT_ID,
+   e_type:            GTT_PROJECT_ID,
    type_label:        GTT_PROJECT_ID,
    book_begin:        NULL,
    book_end:          NULL,
@@ -1911,13 +1912,13 @@ gboolean
 gtt_project_obj_register (void)
 {
    /* Associate an ASCII name to each getter, as well as the return type */
-   static QofQueryObject params[] = {
-		{ GTT_PROJECT_EARLIEST, QOF_QUERYCORE_INT32, (QofAccessFunc)prj_obj_get_earliest},
-		{ GTT_PROJECT_LATEST, QOF_QUERYCORE_INT32, (QofAccessFunc)prj_obj_get_latest},
+   static QofParam params[] = {
+		{ GTT_PROJECT_EARLIEST, QOF_TYPE_INT32, (QofAccessFunc)prj_obj_get_earliest, NULL},
+		{ GTT_PROJECT_LATEST, QOF_TYPE_INT32, (QofAccessFunc)prj_obj_get_latest, NULL},
 		{ NULL },
 	};
 
-	qof_query_object_register (GTT_PROJECT_ID, (QofSortFunc)prj_obj_order, params);
+	qof_class_register (GTT_PROJECT_ID, (QofSortFunc)prj_obj_order, params);
 	return qof_object_register (&prj_object_def);
 }
 
