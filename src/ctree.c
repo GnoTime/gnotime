@@ -496,69 +496,69 @@ static void
 click_column(GtkCList *clist, gint col, gpointer data)
 {
 	ProjTreeWindow *ptw = data;
-	GList *plist;
+	GList *prlist;
 	ColType ct;
 
-	plist = ptw->proj_list;
+	prlist = ptw->proj_list;
 	if ((0 > col) || (ptw->ncols <= col)) return;
 	ct = ptw->cols[col];
 	switch (ct)
 	{
 		case TIME_EVER_COL:
-			plist = project_list_sort_ever (plist);
+			prlist = project_list_sort_ever (prlist);
 			break;
 		case TIME_CURRENT_COL:
-			plist = project_list_sort_current (plist);
+			prlist = project_list_sort_current (prlist);
 			break;
 		case TIME_TODAY_COL:
-			plist = project_list_sort_day (plist);
+			prlist = project_list_sort_day (prlist);
 			break;
 		case TIME_WEEK_COL:
-			plist = project_list_sort_week (plist);
+			prlist = project_list_sort_week (prlist);
 			break;
 		case TIME_MONTH_COL:
-			plist = project_list_sort_month (plist);
+			prlist = project_list_sort_month (prlist);
 			break;
 		case TIME_YEAR_COL:
-			plist = project_list_sort_year (plist);
+			prlist = project_list_sort_year (prlist);
 			break;
 		case TITLE_COL:
-			plist = project_list_sort_title (plist);
+			prlist = project_list_sort_title (prlist);
 			break;
 		case DESC_COL:
-			plist = project_list_sort_desc (plist);
+			prlist = project_list_sort_desc (prlist);
 			break;
 		case TASK_COL:
 			break;
 		case NULL_COL:
 			break;
 		case START_COL:
-			plist = project_list_sort_start (plist);
+			prlist = project_list_sort_start (prlist);
 			break;
 		case END_COL:
-			plist = project_list_sort_end (plist);
+			prlist = project_list_sort_end (prlist);
 			break;
 		case DUE_COL:
-			plist = project_list_sort_due (plist);
+			prlist = project_list_sort_due (prlist);
 			break;
 		case SIZING_COL:
-			plist = project_list_sort_sizing (plist);
+			prlist = project_list_sort_sizing (prlist);
 			break;
 		case PERCENT_COL:
-			plist = project_list_sort_percent (plist);
+			prlist = project_list_sort_percent (prlist);
 			break;
 		case URGENCY_COL:
-			plist = project_list_sort_urgency (plist);
+			prlist = project_list_sort_urgency (prlist);
 			break;
 		case IMPORTANCE_COL:
-			plist = project_list_sort_importance (plist);
+			prlist = project_list_sort_importance (prlist);
 			break;
 		case STATUS_COL:
-			plist = project_list_sort_status (plist);
+			prlist = project_list_sort_status (prlist);
 			break;
 	}
 	
-	ctree_setup(ptw, plist);
+	ctree_setup(ptw, prlist);
 }
 
 /* ============================================================== */
