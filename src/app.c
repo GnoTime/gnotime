@@ -1,6 +1,6 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003,2004 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-#include <gnc-date.h>
+#include <qof/gnc-date.h>
 
 #include "active-dialog.h"
 #include "app.h"
@@ -140,11 +143,58 @@ update_status_bar(void)
 /* Handle shell commands */
 
 void
+do_run_shell_command (const char * str)
+{
+	pid_t pid;
+	char *shell_path;
+	int rc;
+	struct stat shat;
+
+	/* XXX This whole thing needs to be reviewewed for security */
+
+   /* Provide minimal security by using only system shells */
+	shell_path = "/bin/sh";
+	rc = stat (shell_path, &shat);
+	if ((0 == rc) && S_ISREG (shat.st_mode) && (S_IXUSR & shat.st_mode))
+	{
+		goto do_run_shell;
+	}
+
+	shell_path = "/usr/bin/sh";
+	rc = stat (shell_path, &shat);
+	if ((0 == rc) && S_ISREG (shat.st_mode) && (S_IXUSR & shat.st_mode))
+	{
+		goto do_run_shell;
+	}
+	g_warning("%s: %d: do_run_shell_command: can't find shell\n", __FILE__, __LINE__);
+	return;
+
+do_run_shell:
+	pid = fork();
+	if (pid == 0) 
+	{
+		execlp(shell_path, shell_path, "-c", str, NULL);
+		g_warning("%s: %d: do_run_shell_command: couldn't exec\n", __FILE__, __LINE__);
+		exit(1);
+	}
+	if (pid < 0) 
+	{
+		g_warning("%s: %d: do_run_shell_command: couldn't fork\n", __FILE__, __LINE__);
+	}
+
+	/* Note that the forked processes might be scheduled by the operating
+	 * system 'out of order', if we've made rapid successive calls to this
+	 * routine.  So we try to ensure in-order execution by trying to let
+	 * the child process at least start running.  And we can do this by
+	 * yielding our time-slice ... */
+	sched_yield();
+}
+
+void
 run_shell_command (GttProject *proj, gboolean do_start)
 {
 	char *cmd;
 	const char *str;
-	pid_t pid;
 
 	cmd = (do_start) ? config_shell_start : config_shell_stop;
 
@@ -156,25 +206,8 @@ run_shell_command (GttProject *proj, gboolean do_start)
 	if (!proj) return;
 	
 	str = printf_project (cmd, proj);
-	pid = fork();
-	if (pid == 0) 
-	{
-		execlp("sh", "sh", "-c", str, NULL);
-		g_warning("%s: %d: cur_proj_set: couldn't exec\n", __FILE__, __LINE__);
-		exit(1);
-	}
-	if (pid < 0) 
-	{
-		g_warning("%s: %d: cur_proj_set: couldn't fork\n", __FILE__, __LINE__);
-	}
+   do_run_shell_command (str);
 	g_free ((gchar *) str);
-
-	/* Note that the forked processes might be scheduled by the operating
-	 * system 'out of order', if we've made rapid successive calls to this
-	 * routine.  So we try to ensure in-order execution by trying to let
-	 * the child process at least start running.  And we can do this by
-	 * yielding our time-slice ... */
-	sched_yield();
 }
 
 /* ============================================================= */

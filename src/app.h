@@ -56,4 +56,7 @@ void focus_row_set (GttProject *);
  */
 void run_shell_command (GttProject *, gboolean do_start);
 
+/** Run the shell command. */
+void do_run_shell_command (const char * str);
+
 #endif /* __GTT_APP_H__ */
