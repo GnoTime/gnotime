@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2002-12-23 00:06-0600\n"
+"POT-Creation-Date: 2002-12-26 07:26-0600\n"
 "PO-Revision-Date: 2002-05-31 09:13+0200\n"
 "Last-Translator: Stanislav Vi¹òovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0beta2\n"
 
-#: src/app.c:115 src/app.c:227
+#: src/app.c:104 src/app.c:220
 msgid "no project selected"
 msgstr "nevybraný projekt"
 
-#: src/app.c:217
+#: src/app.c:212
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:269
+#: src/app.c:249
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -32,181 +32,181 @@ msgstr ""
 "Nerozumiem umiestneniu (pozícii a veµkosti)\n"
 " uvedenému na príkazovom riadku"
 
-#: src/ctree.c:509
+#: src/ctree.c:608
 msgid "Total"
 msgstr "Celkom"
 
-#: src/ctree.c:511
+#: src/ctree.c:610
 msgid "Total time spent on this project."
 msgstr "Celkový èas pre tento projekt"
 
-#: src/ctree.c:516
+#: src/ctree.c:615
 msgid "Entry"
 msgstr "Polo¾ka"
 
-#: src/ctree.c:518
+#: src/ctree.c:617
 msgid "Time spent under the current diary entry."
 msgstr "Èas strávený pre aktuálnu polo¾ku denníka."
 
-#: src/ctree.c:524 glade/interval_edit.glade.h:14
+#: src/ctree.c:623 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Dnes"
 
-#: src/ctree.c:526
+#: src/ctree.c:625
 msgid "Time spent on this project today."
 msgstr "Èas strávený dnes pre tento projekt"
 
-#: src/ctree.c:531
+#: src/ctree.c:630
 msgid "Week"
 msgstr "Tý¾deò"
 
-#: src/ctree.c:533
+#: src/ctree.c:632
 msgid "Time spent on this project this week."
 msgstr "Èas strávený tento tý¾deò pre tento projekt."
 
-#: src/ctree.c:539
+#: src/ctree.c:638
 msgid "Month"
 msgstr "Mesiac"
 
-#: src/ctree.c:541
+#: src/ctree.c:640
 msgid "Time spent on this project this month."
 msgstr "Èas strávený tento mesiac pre tento projekt."
 
-#: src/ctree.c:547
+#: src/ctree.c:646
 msgid "Year"
 msgstr "Rok"
 
-#: src/ctree.c:549
+#: src/ctree.c:648
 msgid "Time spent on this project this year."
 msgstr "Èas strávený tento rok pre tento projekt."
 
-#: src/ctree.c:555
+#: src/ctree.c:654
 msgid "Title"
 msgstr "Titul"
 
-#: src/ctree.c:556 src/menucmd.c:155
+#: src/ctree.c:655 src/menucmd.c:262
 msgid "Project Title"
 msgstr "Titulok projektu"
 
-#: src/ctree.c:561 src/ctree.c:562 src/menucmd.c:156
+#: src/ctree.c:660 src/ctree.c:661 src/menucmd.c:263
 msgid "Description"
 msgstr "Popis"
 
-#: src/ctree.c:567 src/ghtml.c:103 src/ghtml.c:231
+#: src/ctree.c:666 src/ghtml.c:105 src/ghtml.c:243
 msgid "Diary Entry"
 msgstr "Polo¾ka denníka"
 
-#: src/ctree.c:569
+#: src/ctree.c:668
 msgid "The current diary entry"
 msgstr "Aktuálna polo¾ka denníka"
 
-#: src/ctree.c:574 src/ghtml.c:103 src/ghtml.c:280
+#: src/ctree.c:673 src/ghtml.c:105 src/ghtml.c:292
 #: glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "©tart"
 
-#: src/ctree.c:576
+#: src/ctree.c:675
 msgid "Estimated Project Start Date"
 msgstr "Predpokladaný termín zaèiatku projektu"
 
-#: src/ctree.c:581
+#: src/ctree.c:680
 msgid "End"
 msgstr "Koniec"
 
-#: src/ctree.c:583
+#: src/ctree.c:682
 msgid "Estimated Project Completion Date"
 msgstr "Predpokladaný termín dokonèenia projektu"
 
-#: src/ctree.c:588
+#: src/ctree.c:687
 msgid "Due"
 msgstr "Termín"
 
-#: src/ctree.c:590
+#: src/ctree.c:689
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr "Termín: dátum, kedy musí by» projekt urèite dokonèený."
 
-#: src/ctree.c:597
+#: src/ctree.c:696
 msgid "Size"
 msgstr "Veµkos»"
 
-#: src/ctree.c:599
+#: src/ctree.c:698
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "Veµkos»: Koµko práce bude treba pre dokonèenie tohto projektu."
 
-#: src/ctree.c:605
+#: src/ctree.c:704
 msgid "Done"
 msgstr "Hotovo"
 
-#: src/ctree.c:607
+#: src/ctree.c:706
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr "Percentuálna dokonèená èas»: Aká èas» projektu u¾ je dokonèená."
 
-#: src/ctree.c:614
+#: src/ctree.c:713
 msgid "U"
 msgstr "U"
 
-#: src/ctree.c:616
+#: src/ctree.c:715
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "Urgentnos»: Musí by» tento projekt dokonèený skoro a rýchlo?"
 
-#: src/ctree.c:622
+#: src/ctree.c:721
 msgid "Imp"
 msgstr "Dôl"
 
-#: src/ctree.c:624
+#: src/ctree.c:723
 msgid "Importance: How important is this project?"
 msgstr "Dôle¾itos»: Ako dôle¾itý je tento projekt?"
 
-#: src/ctree.c:630
+#: src/ctree.c:729
 msgid "Status"
 msgstr "Stav"
 
-#: src/ctree.c:632
+#: src/ctree.c:731
 msgid "The current status of this project."
 msgstr "Aktuálny stav projektu."
 
-#: src/ctree.c:951
+#: src/ctree.c:1050
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:952
+#: src/ctree.c:1051
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:953
+#: src/ctree.c:1052
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:963 glade/project_properties.glade.h:26
+#: src/ctree.c:1062 glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Nízka"
 
-#: src/ctree.c:964
+#: src/ctree.c:1063
 msgid "Med"
 msgstr "Stredná"
 
-#: src/ctree.c:965 glade/project_properties.glade.h:16
+#: src/ctree.c:1064 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "Veµká"
 
-#: src/ctree.c:974 glade/project_properties.glade.h:30
+#: src/ctree.c:1073 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Nezaèal"
 
-#: src/ctree.c:975 glade/project_properties.glade.h:22
+#: src/ctree.c:1074 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "Prebieha"
 
-#: src/ctree.c:976 glade/project_properties.glade.h:38
+#: src/ctree.c:1075 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Pozdr¾aný"
 
-#: src/ctree.c:977 glade/project_properties.glade.h:10
+#: src/ctree.c:1076 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Zru¹ený"
 
-#: src/ctree.c:978 glade/project_properties.glade.h:11
+#: src/ctree.c:1077 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Dokonèený"
 
@@ -286,7 +286,7 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "EChyba pri formátovaní stopy è.%d"
 
-#: src/export.c:133
+#: src/export.c:133 src/journal.c:169
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Súbor %s u¾ existuje. Prepísa»?"
@@ -304,124 +304,124 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:371
+#: src/file-io.c:372
 msgid "project %t started"
 msgstr "projekt %t spustený"
 
-#: src/file-io.c:374
+#: src/file-io.c:375
 msgid "stopped project %t"
 msgstr "zastavený projekt %t"
 
-#: src/ghtml.c:103 src/ghtml.c:283 glade/interval_edit.glade.h:13
+#: src/ghtml.c:105 src/ghtml.c:295 glade/interval_edit.glade.h:13
 msgid "Stop"
 msgstr "Stop"
 
-#: src/ghtml.c:103 src/ghtml.c:286
+#: src/ghtml.c:105 src/ghtml.c:298
 msgid "Elapsed"
 msgstr "Uplynulo"
 
-#: src/ghtml.c:121 src/ghtml.c:382 src/ghtml.c:391
+#: src/ghtml.c:125 src/ghtml.c:394 src/ghtml.c:403
 msgid "(empty)"
 msgstr "(prázne)"
 
-#: src/ghtml.c:236
+#: src/ghtml.c:248
 msgid "Notes"
 msgstr "Poznámky"
 
-#: src/ghtml.c:240
+#: src/ghtml.c:252
 msgid "Task Time"
 msgstr "Èas úlohy"
 
-#: src/ghtml.c:244
+#: src/ghtml.c:256
 msgid "Bill Status"
 msgstr "Stav úètovania"
 
-#: src/ghtml.c:248 src/ghtml.c:421 glade/task_properties.glade.h:5
+#: src/ghtml.c:260 src/ghtml.c:433 glade/task_properties.glade.h:5
 msgid "Billable"
 msgstr "Vyúètovateµná"
 
-#: src/ghtml.c:252
+#: src/ghtml.c:264
 msgid "Bill Rate"
 msgstr "Frekvencia úètovania"
 
-#: src/ghtml.c:256
+#: src/ghtml.c:268
 msgid "Value"
 msgstr "Hodnota"
 
-#: src/ghtml.c:260
+#: src/ghtml.c:272
 msgid "Billable Value"
 msgstr "Vyúètovateµná hodnota"
 
-#: src/ghtml.c:264 src/ghtml.c:292
+#: src/ghtml.c:276 src/ghtml.c:304
 msgid "No Default Value"
 msgstr "®iadna ¹tandardná hodnota"
 
-#: src/ghtml.c:289
+#: src/ghtml.c:301
 msgid "Start Time Fuzziness"
 msgstr "Nepresnos» poèiatoèného èasu"
 
-#: src/ghtml.c:405 glade/task_properties.glade.h:14
+#: src/ghtml.c:417 glade/task_properties.glade.h:14
 msgid "Hold"
 msgstr "Pozdr¾ané"
 
-#: src/ghtml.c:408 glade/task_properties.glade.h:4
+#: src/ghtml.c:420 glade/task_properties.glade.h:4
 msgid "Bill"
 msgstr "Vyúètovateµné"
 
-#: src/ghtml.c:411 glade/task_properties.glade.h:22
+#: src/ghtml.c:423 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr "Zaplatené"
 
-#: src/ghtml.c:424 glade/task_properties.glade.h:18
+#: src/ghtml.c:436 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "Nevyúètovateµné"
 
-#: src/ghtml.c:427 glade/task_properties.glade.h:17
+#: src/ghtml.c:439 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr "Bezplatne"
 
-#: src/ghtml.c:437 glade/task_properties.glade.h:23
+#: src/ghtml.c:449 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "Normálny"
 
-#: src/ghtml.c:440 glade/task_properties.glade.h:21
+#: src/ghtml.c:452 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "Cezèas"
 
-#: src/ghtml.c:443
+#: src/ghtml.c:455
 msgid "Double Overtime"
 msgstr "Dvojitý cezèas"
 
-#: src/ghtml.c:446 glade/task_properties.glade.h:13
+#: src/ghtml.c:458 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "Jednotná mzda"
 
-#: src/ghtml.c:466
+#: src/ghtml.c:478
 msgid "Error - Unknown"
 msgstr "Chyba - Neznáme"
 
-#: src/ghtml.c:729
+#: src/ghtml.c:741
 msgid "unknown token: >>>>"
 msgstr "neznámy token: >>>>"
 
-#: src/journal.c:107
+#: src/journal.c:110
 msgid "Error 404 Not Found"
 msgstr "Chyba 404 Nenájdené"
 
-#: src/journal.c:109
+#: src/journal.c:112
 #, c-format
 msgid "The file %s was not found."
 msgstr "Súbor %s nebol nájdený."
 
-#: src/journal.c:110
+#: src/journal.c:113
 msgid "(null)"
 msgstr "(null)"
 
-#: src/journal.c:119
+#: src/journal.c:122
 msgid "Unkown Error"
 msgstr "Neznáma chyba"
 
-#: src/journal.c:168 src/plug-in.c:90
+#: src/journal.c:184 src/plug-in.c:90
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -430,12 +430,12 @@ msgstr ""
 "Nepodarilo sa otvori» súbor %s\n"
 "%s"
 
-#: src/journal.c:260 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
-#: src/proj.c:1807
+#: src/journal.c:287 src/proj.c:716 src/proj.c:1559 src/proj.c:1687
+#: src/proj.c:1827
 msgid "New Diary Entry"
 msgstr "Nová polo¾ka denníka"
 
-#: src/journal.c:448
+#: src/journal.c:475
 msgid "Save HTML To File"
 msgstr "Ulo¾i» HTML do súboru"
 
@@ -462,7 +462,7 @@ msgstr "program spustený"
 msgid "program exited"
 msgstr "program skonèil"
 
-#: src/main.c:114
+#: src/main.c:115
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -471,43 +471,47 @@ msgstr ""
 "Stlaète OK, ak chcete spusti» GTimeTracker aj tak, inak stlaète Zru¹i» pre "
 "koniec."
 
-#: src/main.c:126
+#: src/main.c:127
 msgid "Cannot create pid-file!"
 msgstr "Nemô¾em vytvori» súbor pid!"
 
-#: src/main.c:219
+#: src/main.c:220
 msgid "Do you want to continue?"
 msgstr "Chcete pokraèova»?"
 
-#: src/main.c:222 src/main.c:275
+#: src/main.c:223 src/main.c:276
 msgid "Error"
 msgstr "Chyba"
 
-#: src/main.c:272
+#: src/main.c:273
 msgid "Shall I setup a new configuration?"
 msgstr "Mám nastavi» novú konfiguráciu?"
 
-#: src/main.c:363 src/main.c:388 src/main.c:535 src/menucmd.c:48
+#: src/main.c:364 src/main.c:389 src/main.c:530 src/menucmd.c:49
 msgid "Warning"
 msgstr "Varovanie"
 
-#: src/main.c:491
+#: src/main.c:486
 msgid "Specify geometry"
 msgstr "©pecifikuje umiestnenie"
 
-#: src/main.c:491
+#: src/main.c:486
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: src/main.c:493
+#: src/main.c:488
 msgid "Select a project on startup"
 msgstr "Výber projektu pri ¹tarte"
 
-#: src/main.c:493
+#: src/main.c:488
 msgid "PROJECT"
 msgstr "PROJEKT"
 
-#: src/menucmd.c:90
+#: src/menucmd.c:71
+msgid "Bug-fixes from:"
+msgstr ""
+
+#: src/menucmd.c:197
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -519,7 +523,7 @@ msgstr ""
 "na nejakej úlohe, pripoji» k nej poznámky, nastavi» spôsob úètovania, "
 "vytlaèi» faktúru a sledova» stav ostatných projektov."
 
-#: src/menucmd.c:149
+#: src/menucmd.c:256
 msgid "New Project..."
 msgstr "Nový projekt..."
 
@@ -634,7 +638,7 @@ msgstr "Staré úlohy GTT"
 msgid "empty"
 msgstr "prázdne"
 
-#: src/timer.c:127
+#: src/timer.c:148
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -647,67 +651,68 @@ msgstr ""
 "Momentálne be¾iaci projekt (%s - %s)\n"
 "bol zastavený. Chcete ho re¹tartova»?"
 
-#: src/timer.c:135
+#: src/timer.c:156
 msgid "System Idle"
 msgstr "Systém nevyu¾itý"
 
-#: src/toolbar.c:173
+#: src/toolbar.c:153
 msgid "Create a New Project..."
 msgstr "Vytvorí nový projekt..."
 
-#: src/toolbar.c:183
+#: src/toolbar.c:163
 msgid "Cut Selected Project"
 msgstr "Vystrihne vybraný projekt"
 
-#: src/toolbar.c:188
+#: src/toolbar.c:168
 msgid "Copy Selected Project"
 msgstr "Kopíruje vybraný projekt"
 
-#: src/toolbar.c:193
+#: src/toolbar.c:173
 msgid "Paste Project"
 msgstr "Vlo¾í projekt"
 
-#: src/toolbar.c:202 glade/journal.glade.h:2
+#: src/toolbar.c:185 glade/journal.glade.h:2
 msgid "Journal"
 msgstr "®urnál"
 
-#: src/toolbar.c:203
+#: src/toolbar.c:186
 msgid "View and Edit Timestamp Logs"
 msgstr "Zobrazí a upraví záznamy o èase"
 
-#: src/toolbar.c:212
+#: src/toolbar.c:195
 msgid "Edit Project Properties..."
 msgstr "Upraví vlastnosti projektu..."
 
-#: src/toolbar.c:219
+#: src/toolbar.c:211
 msgid "Timer"
 msgstr "Èasovaè"
 
-#: src/toolbar.c:220
+#: src/toolbar.c:212
 msgid "Start/Stop Timer"
 msgstr "Zapne/vypne èasovaè"
 
-#: src/toolbar.c:230
+#: src/toolbar.c:220
 msgid "Calendar"
 msgstr "Kalendár"
 
-#: src/toolbar.c:231
+#: src/toolbar.c:221
 msgid "View Calendar"
 msgstr "Zobrazi» kalendár"
 
-#: src/toolbar.c:251
+#: src/toolbar.c:241
 msgid "Edit Preferences..."
 msgstr "Upravi» nastavenie..."
 
-#: src/toolbar.c:259
+#: src/toolbar.c:249
 msgid "User's Guide and Manual"
 msgstr "Pou¾ívateµský manuál"
 
-#: src/toolbar.c:267
+#: src/toolbar.c:257
 #, fuzzy
 msgid "Quit Gnome TimeTracker"
 msgstr "Ukonèí GNOME Sledovaè èasu"
 
+#. ======================= END OF FILE =======================
 #: glade/interval_edit.glade.h:1
 msgid "1 Hour"
 msgstr "1 hodina"
@@ -1187,86 +1192,79 @@ msgstr "Minimálny iterval:"
 msgid "Not Set"
 msgstr "Nenastavené"
 
-#: glade/project_properties.glade.h:31
-#, fuzzy
-msgid ""
-"Notes:\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
+#: glade/project_properties.glade.h:31 glade/task_properties.glade.h:19
+msgid "Notes:"
 msgstr "Poznámky:"
 
-#: glade/project_properties.glade.h:39
+#: glade/project_properties.glade.h:33
 msgid "Overtime Rate:"
 msgstr "Mzda pre cezèas:"
 
-#: glade/project_properties.glade.h:40
+#: glade/project_properties.glade.h:34
 msgid "Planned Finish:"
 msgstr "Plánovaný koniec:"
 
-#: glade/project_properties.glade.h:41
+#: glade/project_properties.glade.h:35
 msgid "Planned Start:"
 msgstr "Plánovaný zaèiatok:"
 
-#: glade/project_properties.glade.h:42
+#: glade/project_properties.glade.h:36
 msgid "Planning"
 msgstr "Plánovanie"
 
-#: glade/project_properties.glade.h:43
+#: glade/project_properties.glade.h:37
 msgid "Project"
 msgstr "Projekt"
 
-#: glade/project_properties.glade.h:44
+#: glade/project_properties.glade.h:38
 msgid "Project Description:"
 msgstr "Popis projektu:"
 
-#: glade/project_properties.glade.h:45
+#: glade/project_properties.glade.h:39
 msgid "Project Title:"
 msgstr "Titulok projektu:"
 
-#: glade/project_properties.glade.h:46
+#: glade/project_properties.glade.h:40
 msgid "Rates"
 msgstr "Mzdy"
 
-#: glade/project_properties.glade.h:47
+#: glade/project_properties.glade.h:41
 msgid "Regular Rate:"
 msgstr "Normálna mzda:"
 
-#: glade/project_properties.glade.h:48
+#: glade/project_properties.glade.h:42
 msgid "Status:"
 msgstr "Stav:"
 
-#: glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:43
 msgid "The dollars per hour charged for overtime work on this project."
 msgstr "Dolárov za hodinu úètovaných pre cezèasy pre tento projekt."
 
-#: glade/project_properties.glade.h:50
+#: glade/project_properties.glade.h:44
 msgid "The dollars per hour normally charged for this project."
 msgstr "Dolárov za hodinu normálne úètovaných pre tento projekt."
 
-#: glade/project_properties.glade.h:51
+#: glade/project_properties.glade.h:45
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
 msgstr "Frekvencia pre dvojitý cezèas (nedele apod)"
 
-#: glade/project_properties.glade.h:52
+#: glade/project_properties.glade.h:46
 msgid "Time below which an interval is merged with its neighbors"
 msgstr "Doba, pod ktorú je interval spojený so súsediacimi intervalmi"
 
-#: glade/project_properties.glade.h:53
+#: glade/project_properties.glade.h:47
 msgid "Urgency:"
 msgstr "Urgentnos»:"
 
-#: glade/project_properties.glade.h:54
+#: glade/project_properties.glade.h:48
 msgid "What is the status of this project?"
 msgstr "Aký je stav tohto projektu?"
 
-#: glade/project_properties.glade.h:55
+#: glade/project_properties.glade.h:49
 msgid "a short description that will be printed on the invoice."
 msgstr "krátky popis vytlaèený na faktúre."
 
-#: glade/project_properties.glade.h:56
+#: glade/project_properties.glade.h:50
 msgid "seconds"
 msgstr "sekúnd"
 
@@ -1353,10 +1351,6 @@ msgstr ""
 "nasledujúcej faktúre. \"Zaplatené\" zamená, ¾e sa u¾ ne ïal¹ích faktúrach "
 "nemá objavi»."
 
-#: glade/task_properties.glade.h:19
-msgid "Notes:"
-msgstr "Poznámky:"
-
 #: glade/task_properties.glade.h:20
 msgid "OverOver"
 msgstr "Dvojitý"
@@ -1378,6 +1372,16 @@ msgstr "Nástroj na sledovanie èasu"
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Sledovaè èasu"
+
+#, fuzzy
+#~ msgid ""
+#~ "Notes:\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr "Poznámky:"
 
 #~ msgid "%d:%02d:%02d"
 #~ msgstr "%d:%02d:%02d"
