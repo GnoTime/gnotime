@@ -408,6 +408,40 @@ set_links_off (void)
 }
 
 /* ============================================================== */
+/** Converts a g_list of pointers into a typed SCM list.  This is 
+ *  a generic utility.  It returns rc, where (car rc) is a list of
+ *  pointers, and (cdr rc) is the type-string that identifies the 
+ *  type of the pointers. */
+
+static SCM
+g_list_to_scm (GList * gplist, const char * type)
+{
+	SCM rc, node;
+	GList *n;
+
+	/* Get a pointer to null */
+	rc = SCM_EOL;
+	if (!gplist) return rc;
+	
+	/* Get tail of g_list */
+	for (n= gplist; n->next; n=n->next) {}
+	gplist = n;
+	
+	/* Walk backwards, creating a scheme list */
+	for (n= gplist; n; n=n->prev)
+	{
+		node = gh_ulong2scm ((unsigned long) n->data);
+		rc = gh_cons (node, rc);
+	}
+
+	/* Prepend type label */
+	node = gh_str2scm (type, strlen (type));
+	rc = gh_cons (rc, node);
+	
+	return rc;
+}
+
+/* ============================================================== */
 /* Return a list of all of the projects */
 
 static SCM
@@ -420,6 +454,7 @@ do_ret_projects (GttGhtml *ghtml, GList *proj_list)
 	rc = SCM_EOL;
 	if (!proj_list) return rc;
 	
+	/* XXX should use g_list_to_scm() here */
 	/* find the tail */
 	for (n= proj_list; n->next; n=n->next) {}
 	proj_list = n;
@@ -472,6 +507,7 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
 	task_list = gtt_project_get_tasks (prj);
 	if (!task_list) return rc;
 	
+	/* XXX should use g_list_to_scm() here */
 	for (n= task_list; n->next; n=n->next) {}
 	task_list = n;
 	
@@ -510,6 +546,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 	rc = SCM_EOL;
 	if (!tsk) return rc;
 	
+	/* XXX should use g_list_to_scm() here */
 	/* Get list of intervals, then get tail */
 	ivl_list = gtt_task_get_intervals (tsk);
 	if (!ivl_list) return rc;
@@ -575,6 +612,13 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* Skip days for which no time has been spent */
 		if (0 == secs) continue;
 
+		/* Append the list of tasks and intervals for this day */
+		node = g_list_to_scm (bu->intervals, "interval-list");
+		rpt = gh_cons (node, rpt);
+		node = g_list_to_scm (bu->tasks, "task-list");
+		rpt = gh_cons (node, rpt);
+		
+		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
 		print_hours_elapsed (buff, 100, secs, TRUE);
 		node = gh_str2scm (buff, strlen (buff));
