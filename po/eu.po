@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.1.1\n"
-"POT-Creation-Date: 2002-12-27 11:41-0600\n"
+"POT-Creation-Date: 2002-12-30 00:48-0600\n"
 "PO-Revision-Date: 2001-05-25 13:35+0200\n"
 "Last-Translator: Josu Waliño <josu@elhuyar.com>\n"
 "Language-Team: Euskara\n"
@@ -30,182 +30,181 @@ msgstr ""
 "Ezin izan da komando-lerroan zehaztu duzun\n"
 " geometria (kokalekua eta tamaina) ulertu"
 
-#: src/ctree.c:608
+#: src/ctree.c:652
 msgid "Total"
 msgstr "Guztira"
 
-#: src/ctree.c:610
+#: src/ctree.c:654
 msgid "Total time spent on this project."
 msgstr "Proiektu honetan guztira erabilitako denbora."
 
-#: src/ctree.c:615
+#: src/ctree.c:659
 msgid "Entry"
 msgstr "Sarrera"
 
-#: src/ctree.c:617
+#: src/ctree.c:661
 msgid "Time spent under the current diary entry."
 msgstr "Agendako uneko sarreran emandako denbora."
 
-#: src/ctree.c:623 glade/interval_edit.glade.h:14
+#: src/ctree.c:667 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Gaur"
 
-#: src/ctree.c:625
+#: src/ctree.c:669
 msgid "Time spent on this project today."
 msgstr "Proiektu honetan gaur emandako denbora."
 
-#: src/ctree.c:630
+#: src/ctree.c:674
 msgid "Week"
 msgstr "Astea"
 
-#: src/ctree.c:632
+#: src/ctree.c:676
 msgid "Time spent on this project this week."
 msgstr "Proiektuan aste honetan emandako denbora."
 
-#: src/ctree.c:638
+#: src/ctree.c:682
 msgid "Month"
 msgstr "Hilabetea"
 
-#: src/ctree.c:640
+#: src/ctree.c:684
 msgid "Time spent on this project this month."
 msgstr "Proiektuan hilabete honetan emandako denbora."
 
-#: src/ctree.c:646
+#: src/ctree.c:690
 msgid "Year"
 msgstr "Urtea"
 
-#: src/ctree.c:648
+#: src/ctree.c:692
 msgid "Time spent on this project this year."
 msgstr "Proiektuan urte honetan emandako denbora."
 
-#: src/ctree.c:654 src/ghtml.c:732
+#: src/ctree.c:698
 msgid "Title"
 msgstr "Titulua"
 
-#: src/ctree.c:655 src/menucmd.c:262
+#: src/ctree.c:699 src/menucmd.c:265
 msgid "Project Title"
 msgstr "Proiektuaren izenburua"
 
-#: src/ctree.c:660 src/ctree.c:661 src/ghtml.c:735 src/menucmd.c:263
+#: src/ctree.c:704 src/ctree.c:705 src/menucmd.c:266
 msgid "Description"
 msgstr "Azalpena"
 
-#: src/ctree.c:666 src/ghtml.c:128 src/ghtml.c:349
+#: src/ctree.c:710
 msgid "Diary Entry"
 msgstr "Agendako sarrera"
 
-#: src/ctree.c:668
+#: src/ctree.c:712
 msgid "The current diary entry"
 msgstr "Agendako uneko sarrera "
 
-#: src/ctree.c:673 src/ghtml.c:128 src/ghtml.c:399
-#: glade/interval_edit.glade.h:11
+#: src/ctree.c:717 glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "Hasi"
 
-#: src/ctree.c:675
+#: src/ctree.c:719
 msgid "Estimated Project Start Date"
 msgstr "Proiektua noiz hasi behar den"
 
-#: src/ctree.c:680
+#: src/ctree.c:724
 msgid "End"
 msgstr "Amaitu"
 
-#: src/ctree.c:682
+#: src/ctree.c:726
 msgid "Estimated Project Completion Date"
 msgstr "Proiektua noizko amaitu behar den"
 
-#: src/ctree.c:687
+#: src/ctree.c:731
 msgid "Due"
 msgstr "Noizko"
 
-#: src/ctree.c:689
+#: src/ctree.c:733
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr "Epemuga: proiektua guztiz noizko bukatu behar den."
 
-#: src/ctree.c:696
+#: src/ctree.c:740
 msgid "Size"
 msgstr "Tamaina"
 
-#: src/ctree.c:698
+#: src/ctree.c:742
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "Kalkulatzen: Proiektua burutzeko egin beharreko lanak."
 
-#: src/ctree.c:704
+#: src/ctree.c:748
 msgid "Done"
 msgstr "Eginda"
 
-#: src/ctree.c:706
+#: src/ctree.c:750
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr "Egindakoaren ehunekoa: Orain arte zer egin den."
 
-#: src/ctree.c:713
+#: src/ctree.c:757
 msgid "U"
 msgstr "P"
 
-#: src/ctree.c:715
+#: src/ctree.c:759
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "Presa: Proiektu hau berehala egin behar da? Azkar egin behar da?"
 
-#: src/ctree.c:721
+#: src/ctree.c:765
 msgid "Imp"
 msgstr "Gar"
 
-#: src/ctree.c:723
+#: src/ctree.c:767
 msgid "Importance: How important is this project?"
 msgstr "Garrantzia: Zenbateko garrantzia du proiektuak?"
 
-#: src/ctree.c:729 src/ghtml.c:762
+#: src/ctree.c:773
 msgid "Status"
 msgstr "Egoera"
 
-#: src/ctree.c:731
+#: src/ctree.c:775
 msgid "The current status of this project."
 msgstr "Proiektu honen uneko egoera."
 
-#: src/ctree.c:1050
+#: src/ctree.c:1111
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:1051
+#: src/ctree.c:1112
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:1052
+#: src/ctree.c:1113
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1062 src/ghtml.c:893 src/ghtml.c:903
+#: src/ctree.c:1123 src/ghtml.c:541 src/ghtml.c:555
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Txikia"
 
-#: src/ctree.c:1063
+#: src/ctree.c:1124
 msgid "Med"
 msgstr "Ertaina"
 
-#: src/ctree.c:1064 glade/project_properties.glade.h:16
+#: src/ctree.c:1125 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "Handia"
 
-#: src/ctree.c:1073 src/ghtml.c:912 glade/project_properties.glade.h:30
+#: src/ctree.c:1134 src/ghtml.c:569 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Hasi gabe"
 
-#: src/ctree.c:1074 src/ghtml.c:913 glade/project_properties.glade.h:22
+#: src/ctree.c:1135 src/ghtml.c:570 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "Egiten"
 
-#: src/ctree.c:1075 src/ghtml.c:914 glade/project_properties.glade.h:32
+#: src/ctree.c:1136 src/ghtml.c:571 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Kontrolpean "
 
-#: src/ctree.c:1076 src/ghtml.c:915 glade/project_properties.glade.h:10
+#: src/ctree.c:1137 src/ghtml.c:572 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Bertan behera utzita"
 
-#: src/ctree.c:1077 src/ghtml.c:916 glade/project_properties.glade.h:11
+#: src/ctree.c:1138 src/ghtml.c:573 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Egina"
 
@@ -285,21 +284,21 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "EErrorea #%d pista formateatzean"
 
-#: src/export.c:133 src/journal.c:172
+#: src/export.c:123 src/journal.c:172
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "%s fitxategia badago lehendik, gainidatzi nahi duzu?"
 
-#: src/export.c:145
+#: src/export.c:135
 #, fuzzy
 msgid "File could not be opened"
 msgstr "Ezin izan da %s ireki."
 
-#: src/export.c:153
+#: src/export.c:143
 msgid "Error occured during export"
 msgstr ""
 
-#: src/export.c:170
+#: src/export.c:161
 msgid "Tab-Delimited Export"
 msgstr ""
 
@@ -311,156 +310,28 @@ msgstr "%t proiektua hasi da"
 msgid "stopped project %t"
 msgstr "%t proiektua gelditu da"
 
-#: src/ghtml.c:128 src/ghtml.c:402 glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "Gelditu"
-
-#: src/ghtml.c:128 src/ghtml.c:405
-msgid "Elapsed"
-msgstr "Igarota"
-
-#: src/ghtml.c:148 src/ghtml.c:502 src/ghtml.c:511 src/ghtml.c:844
-#: src/ghtml.c:851 src/ghtml.c:857
-msgid "(empty)"
-msgstr "(hutsik)"
-
-#: src/ghtml.c:354 src/ghtml.c:738
-msgid "Notes"
-msgstr "Oharrak"
-
-#: src/ghtml.c:358
-msgid "Task Time"
-msgstr "Ataza egiteko denbora"
-
-#: src/ghtml.c:362
-msgid "Bill Status"
-msgstr "Fakturaren egoera"
-
-#: src/ghtml.c:366 src/ghtml.c:542 glade/task_properties.glade.h:5
-msgid "Billable"
-msgstr "Fakturagarria"
-
-#: src/ghtml.c:370
-msgid "Bill Rate"
-msgstr "Fakturaren zenbatekoa"
-
-#: src/ghtml.c:374
-msgid "Value"
-msgstr "Balioa"
-
-#: src/ghtml.c:378
-msgid "Billable Value"
-msgstr "Balio fakturagarria"
-
-#: src/ghtml.c:382 src/ghtml.c:411 src/ghtml.c:765
-msgid "No Default Value"
-msgstr "Balio lehenetsi gabea"
-
-#: src/ghtml.c:408
-msgid "Start Time Fuzziness"
-msgstr "Hasierako ordua ez dago garbi"
-
-#: src/ghtml.c:526 glade/task_properties.glade.h:14
-msgid "Hold"
-msgstr "Mantendu"
-
-#: src/ghtml.c:529 glade/task_properties.glade.h:4
-msgid "Bill"
-msgstr "Faktura"
-
-#: src/ghtml.c:532 glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr "Ordaindua"
-
-#: src/ghtml.c:545 glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr "Ez fakturagarria"
-
-#: src/ghtml.c:548 glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr "Kargarik gabe"
-
-#: src/ghtml.c:558 glade/task_properties.glade.h:23
-msgid "Regular"
-msgstr "Erregularra"
-
-#: src/ghtml.c:561 glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr "Ordu estrak "
-
-#: src/ghtml.c:564
-msgid "Double Overtime"
-msgstr "Ordu estra bikoitzak"
-
-#: src/ghtml.c:567 glade/task_properties.glade.h:13
-msgid "Flat Fee"
-msgstr "Tarifa laua"
-
-#: src/ghtml.c:587
-msgid "Error - Unknown"
-msgstr "Errorea - Ezezaguna"
-
-#: src/ghtml.c:741
-#, fuzzy
-msgid "Estimated Start Date"
-msgstr "Proiektua noiz hasi behar den"
-
-#: src/ghtml.c:744
-#, fuzzy
-msgid "Estimated End Date"
-msgstr "Proiektua noiz hasi behar den"
-
-#: src/ghtml.c:747
-#, fuzzy
-msgid "Due Date"
-msgstr "Epemuga:"
-
-#: src/ghtml.c:750
-#, fuzzy
-msgid "Sizing"
-msgstr "Tamaina"
-
-#: src/ghtml.c:753
-#, fuzzy
-msgid "Percent Complete"
-msgstr "Erakutsi ehunekoa osoa"
-
-#: src/ghtml.c:756
-#, fuzzy
-msgid "Urgency"
-msgstr "Presa:"
-
-#: src/ghtml.c:759
-#, fuzzy
-msgid "Importance"
-msgstr "Garrantzia:"
-
-#: src/ghtml.c:892 src/ghtml.c:902
-msgid "Undefined"
-msgstr ""
-
-#: src/ghtml.c:894
+#: src/ghtml.c:542
 #, fuzzy
 msgid "Normal"
 msgstr "Egunkari-liburua"
 
-#: src/ghtml.c:895
+#: src/ghtml.c:543
 #, fuzzy
 msgid "Urgent"
 msgstr "Presa:"
 
-#: src/ghtml.c:904 glade/project_properties.glade.h:27
+#: src/ghtml.c:546 src/ghtml.c:560 src/ghtml.c:576
+msgid "Undefined"
+msgstr ""
+
+#: src/ghtml.c:556 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr "Tartekoa"
 
-#: src/ghtml.c:905
+#: src/ghtml.c:557
 #, fuzzy
 msgid "Important"
 msgstr "Garrantzia:"
-
-#: src/ghtml.c:1109
-msgid "unknown token: >>>>"
-msgstr "token ezezaguna: >>>>"
 
 #: src/journal.c:113
 msgid "Error 404 Not Found"
@@ -488,8 +359,8 @@ msgstr ""
 "Ezin da %s fitxategia ireki\n"
 "%s"
 
-#: src/journal.c:290 src/proj.c:716 src/proj.c:1559 src/proj.c:1687
-#: src/proj.c:1827
+#: src/journal.c:290 src/proj.c:716 src/proj.c:1591 src/proj.c:1719
+#: src/proj.c:1859
 msgid "New Diary Entry"
 msgstr "Agendako sarrera berria"
 
@@ -538,35 +409,35 @@ msgstr ""
 msgid "Cannot create pid-file!"
 msgstr "Ezin da pid fitxategia sortu!"
 
-#: src/main.c:220
+#: src/main.c:222
 msgid "Do you want to continue?"
 msgstr "Jarraitu nahi duzu?"
 
-#: src/main.c:223 src/main.c:276
+#: src/main.c:225 src/main.c:278
 msgid "Error"
 msgstr "Errorea"
 
-#: src/main.c:273
+#: src/main.c:275
 msgid "Shall I setup a new configuration?"
 msgstr "Konfigurazio berri bat hasi?"
 
-#: src/main.c:363 src/main.c:388 src/main.c:529 src/menucmd.c:49
+#: src/main.c:365 src/main.c:390 src/main.c:531 src/menucmd.c:49
 msgid "Warning"
 msgstr "Abisua"
 
-#: src/main.c:485
+#: src/main.c:487
 msgid "Specify geometry"
 msgstr "Zehaztu geometria"
 
-#: src/main.c:485
+#: src/main.c:487
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: src/main.c:487
+#: src/main.c:489
 msgid "Select a project on startup"
 msgstr "Hautatu proiektu bat abioan"
 
-#: src/main.c:487
+#: src/main.c:489
 msgid "PROJECT"
 msgstr "PROIEKTUA"
 
@@ -574,7 +445,7 @@ msgstr "PROIEKTUA"
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:197
+#: src/menucmd.c:200
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -586,7 +457,7 @@ msgstr ""
 "eginditzake: lan batean emandako denbora kalkulatu eta horri memo bat lotu,"
 "fakturazio-tasak zehaztu, fakturak inprimatu eta beste proiektuak kontrolatu."
 
-#: src/menucmd.c:256
+#: src/menucmd.c:259
 msgid "New Project..."
 msgstr "Proiektu berria..."
 
@@ -595,107 +466,112 @@ msgid "_New Project..."
 msgstr "Proiekt_u berria..."
 
 #: src/menus.c:37
-msgid "_Export Tab-Delimited"
+msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:56 src/menus.c:170
+#: src/menus.c:41
+#, fuzzy
+msgid "Export _Projects"
+msgstr "Itsatsi proiektua"
+
+#: src/menus.c:60 src/menus.c:174
 msgid "Clear _Daily Counter"
 msgstr "_Garbitu eguneroko kontagailua"
 
-#: src/menus.c:57 src/menus.c:171
+#: src/menus.c:61 src/menus.c:175
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "Ezarri kronometroa zeroan eta ezabatu gaurko denbora-erregistroak"
 
-#: src/menus.c:61 src/menus.c:80 src/menus.c:153
+#: src/menus.c:65 src/menus.c:84 src/menus.c:157
 msgid "_Journal..."
 msgstr "_Egunkari-liburua..."
 
-#: src/menus.c:62 src/menus.c:81 src/menus.c:154
+#: src/menus.c:66 src/menus.c:85 src/menus.c:158
 msgid "Show the timesheet journal for this project"
 msgstr "Erakutsi proiektu honen denbora-orrien egunkari-liburua"
 
-#: src/menus.c:65 src/menus.c:157
+#: src/menus.c:69 src/menus.c:161
 msgid "New Diary _Entry"
 msgstr "_Agendako sarrera berria"
 
-#: src/menus.c:66 src/menus.c:158
+#: src/menus.c:70 src/menus.c:162
 msgid "Change the current task for this project"
 msgstr "Aldatu uneko zeregina proiektu honetarako"
 
-#: src/menus.c:84
+#: src/menus.c:88
 msgid "_All Journal..."
 msgstr "_Egunkari-liburu guztia..."
 
-#: src/menus.c:85
+#: src/menus.c:89
 msgid "Show the verbose timesheet journal for this project"
 msgstr "Erakutsi proiektu honen denbora-orrien egunkari-liburu xehetua"
 
-#: src/menus.c:88
+#: src/menus.c:92
 msgid "_Invoice..."
 msgstr "_Faktura..."
 
-#: src/menus.c:89
+#: src/menus.c:93
 msgid "Show a sample invoice for this project"
 msgstr "Erakutsi proiektu honen mostrako faktura"
 
-#: src/menus.c:92
+#: src/menus.c:96
 msgid "_Primer..."
 msgstr "_Oinarrizko eredua..."
 
-#: src/menus.c:93
+#: src/menus.c:97
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr ""
 "Erakutsi mostrako oinarrizko eredu bat txosten pertsonalizatuak egiteko"
 
-#: src/menus.c:96
+#: src/menus.c:100
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:97
+#: src/menus.c:101
 #, fuzzy
 msgid "Show a sample to-do list"
 msgstr "Erakutsi proiektu honen mostrako faktura"
 
-#: src/menus.c:100
+#: src/menus.c:104
 msgid "_New Report..."
 msgstr "_Txosten berria..."
 
-#: src/menus.c:101
+#: src/menus.c:105
 #, fuzzy
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr "Zehaztu bide-izen bat GTT phtml txosten-fitxategi berriarentzat"
 
-#: src/menus.c:112
+#: src/menus.c:116
 msgid "St_art"
 msgstr "_Hasi"
 
-#: src/menus.c:113
+#: src/menus.c:117
 msgid "Start the timer running"
 msgstr "Kronometroa martxan jartzen du"
 
-#: src/menus.c:118
+#: src/menus.c:122
 msgid "Sto_p"
 msgstr "Ge_lditu"
 
-#: src/menus.c:119
+#: src/menus.c:123
 msgid "Stop the timer"
 msgstr "Kronometroa gelditzen du"
 
-#: src/menus.c:124
+#: src/menus.c:128
 msgid "_Timer Running"
 msgstr "Kronometroa mart_xan"
 
-#: src/menus.c:143
+#: src/menus.c:147
 msgid "_Reports"
 msgstr "_Txostenak"
 
-#: src/menus.c:144
+#: src/menus.c:148
 msgid "_Timer"
 msgstr "Krono_metroa"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:241
+#: src/menus.c:245
 msgid "Reports"
 msgstr "Txostenak "
 
@@ -832,6 +708,10 @@ msgstr "Ezarri hasiera-orduaren ziurtasun eza zenbatekoa den"
 #: glade/interval_edit.glade.h:12
 msgid "Start Fuzz"
 msgstr "Hasi Fuzz"
+
+#: glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Gelditu"
 
 #: glade/interval_popup.glade.h:1
 msgid "Delete Interval"
@@ -1386,6 +1266,14 @@ msgstr "Fakturan agertuko ez diren ohar pribatuak."
 msgid "A short description to attach to this block of time."
 msgstr "Denbora-bloke honi erantsiko zaion azalpen laburra."
 
+#: glade/task_properties.glade.h:4
+msgid "Bill"
+msgstr "Faktura"
+
+#: glade/task_properties.glade.h:5
+msgid "Billable"
+msgstr "Fakturagarria"
+
 #: glade/task_properties.glade.h:6
 msgid "Billable:"
 msgstr "Fakturagarria: "
@@ -1414,6 +1302,14 @@ msgstr "Agendako sarrera:"
 msgid "Fee rate to be charged for this task."
 msgstr "Zeregin honetan ordaindu beharreko tarifa."
 
+#: glade/task_properties.glade.h:13
+msgid "Flat Fee"
+msgstr "Tarifa laua"
+
+#: glade/task_properties.glade.h:14
+msgid "Hold"
+msgstr "Mantendu"
+
 #: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
@@ -1438,9 +1334,29 @@ msgstr ""
 "terminoak 'hurrengo fakturan inprimatu' esan nahi du.   \"Ordaindua\" "
 "terminoak fakturan ez dela gehiago ipini behar esan nahi du."
 
+#: glade/task_properties.glade.h:17
+msgid "No Charge"
+msgstr "Kargarik gabe"
+
+#: glade/task_properties.glade.h:18
+msgid "Not Billable"
+msgstr "Ez fakturagarria"
+
 #: glade/task_properties.glade.h:20
 msgid "OverOver"
 msgstr "AmaitutaAmaituta"
+
+#: glade/task_properties.glade.h:21
+msgid "Overtime"
+msgstr "Ordu estrak "
+
+#: glade/task_properties.glade.h:22
+msgid "Paid"
+msgstr "Ordaindua"
+
+#: glade/task_properties.glade.h:23
+msgid "Regular"
+msgstr "Erregularra"
 
 #: glade/task_properties.glade.h:24
 msgid ""
@@ -1460,6 +1376,73 @@ msgstr "Time Tracker tresna"
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Denbora kontrolatzeko tresna"
+
+#~ msgid "Elapsed"
+#~ msgstr "Igarota"
+
+#~ msgid "(empty)"
+#~ msgstr "(hutsik)"
+
+#~ msgid "Notes"
+#~ msgstr "Oharrak"
+
+#~ msgid "Task Time"
+#~ msgstr "Ataza egiteko denbora"
+
+#~ msgid "Bill Status"
+#~ msgstr "Fakturaren egoera"
+
+#~ msgid "Bill Rate"
+#~ msgstr "Fakturaren zenbatekoa"
+
+#~ msgid "Value"
+#~ msgstr "Balioa"
+
+#~ msgid "Billable Value"
+#~ msgstr "Balio fakturagarria"
+
+#~ msgid "No Default Value"
+#~ msgstr "Balio lehenetsi gabea"
+
+#~ msgid "Start Time Fuzziness"
+#~ msgstr "Hasierako ordua ez dago garbi"
+
+#~ msgid "Double Overtime"
+#~ msgstr "Ordu estra bikoitzak"
+
+#~ msgid "Error - Unknown"
+#~ msgstr "Errorea - Ezezaguna"
+
+#, fuzzy
+#~ msgid "Estimated Start Date"
+#~ msgstr "Proiektua noiz hasi behar den"
+
+#, fuzzy
+#~ msgid "Estimated End Date"
+#~ msgstr "Proiektua noiz hasi behar den"
+
+#, fuzzy
+#~ msgid "Due Date"
+#~ msgstr "Epemuga:"
+
+#, fuzzy
+#~ msgid "Sizing"
+#~ msgstr "Tamaina"
+
+#, fuzzy
+#~ msgid "Percent Complete"
+#~ msgstr "Erakutsi ehunekoa osoa"
+
+#, fuzzy
+#~ msgid "Urgency"
+#~ msgstr "Presa:"
+
+#, fuzzy
+#~ msgid "Importance"
+#~ msgstr "Garrantzia:"
+
+#~ msgid "unknown token: >>>>"
+#~ msgstr "token ezezaguna: >>>>"
 
 #~ msgid "no project selected"
 #~ msgstr "ez dago proiekturik hautatuta"

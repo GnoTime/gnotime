@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2002-12-27 11:41-0600\n"
+"POT-Creation-Date: 2002-12-30 00:48-0600\n"
 "PO-Revision-Date: 2001-11-19 17:18+0200\n"
 "Last-Translator: Artis Trops <hornet@navigators.lv>\n"
 "Language-Team: Latvian <peterisk@apollo.lv>\n"
@@ -30,192 +30,191 @@ msgstr ""
 "Nevarçja saprast komandrindâ noteikto\n"
 "ìeometriju (vietu un izmçru)"
 
-#: src/ctree.c:608
+#: src/ctree.c:652
 msgid "Total"
 msgstr "Kopâ"
 
-#: src/ctree.c:610
+#: src/ctree.c:654
 #, fuzzy
 msgid "Total time spent on this project."
 msgstr "Parâdît laika kontrolsarakstu ðim projektam"
 
-#: src/ctree.c:615
+#: src/ctree.c:659
 #, fuzzy
 msgid "Entry"
 msgstr "Ierakstu Apstâdinât:"
 
-#: src/ctree.c:617
+#: src/ctree.c:661
 msgid "Time spent under the current diary entry."
 msgstr ""
 
-#: src/ctree.c:623 glade/interval_edit.glade.h:14
+#: src/ctree.c:667 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Ðodien"
 
-#: src/ctree.c:625
+#: src/ctree.c:669
 #, fuzzy
 msgid "Time spent on this project today."
 msgstr "Nosaukums, kuru piedçvçt konkrçtajam projektam"
 
-#: src/ctree.c:630
+#: src/ctree.c:674
 msgid "Week"
 msgstr "Nedçïa"
 
-#: src/ctree.c:632
+#: src/ctree.c:676
 msgid "Time spent on this project this week."
 msgstr ""
 
-#: src/ctree.c:638
+#: src/ctree.c:682
 msgid "Month"
 msgstr "Mçnesis"
 
-#: src/ctree.c:640
+#: src/ctree.c:684
 msgid "Time spent on this project this month."
 msgstr ""
 
-#: src/ctree.c:646
+#: src/ctree.c:690
 msgid "Year"
 msgstr "Gads"
 
-#: src/ctree.c:648
+#: src/ctree.c:692
 msgid "Time spent on this project this year."
 msgstr ""
 
-#: src/ctree.c:654 src/ghtml.c:732
+#: src/ctree.c:698
 #, fuzzy
 msgid "Title"
 msgstr "Fails"
 
-#: src/ctree.c:655 src/menucmd.c:262
+#: src/ctree.c:699 src/menucmd.c:265
 msgid "Project Title"
 msgstr "Projekta Nosaukums"
 
-#: src/ctree.c:660 src/ctree.c:661 src/ghtml.c:735 src/menucmd.c:263
+#: src/ctree.c:704 src/ctree.c:705 src/menucmd.c:266
 msgid "Description"
 msgstr "Apraksts"
 
-#: src/ctree.c:666 src/ghtml.c:128 src/ghtml.c:349
+#: src/ctree.c:710
 msgid "Diary Entry"
 msgstr ""
 
-#: src/ctree.c:668
+#: src/ctree.c:712
 #, fuzzy
 msgid "The current diary entry"
 msgstr "Aizvçrt paðreizçjo dokumentu"
 
-#: src/ctree.c:673 src/ghtml.c:128 src/ghtml.c:399
-#: glade/interval_edit.glade.h:11
+#: src/ctree.c:717 glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "Sâkt"
 
-#: src/ctree.c:675
+#: src/ctree.c:719
 #, fuzzy
 msgid "Estimated Project Start Date"
 msgstr "Pagâjuðais Sâkuma Termiòð"
 
-#: src/ctree.c:680
+#: src/ctree.c:724
 #, fuzzy
 msgid "End"
 msgstr "Aktivizçts"
 
-#: src/ctree.c:682
+#: src/ctree.c:726
 #, fuzzy
 msgid "Estimated Project Completion Date"
 msgstr "Pagâjuðais Sâkuma Termiòð"
 
-#: src/ctree.c:687
+#: src/ctree.c:731
 msgid "Due"
 msgstr ""
 
-#: src/ctree.c:689
+#: src/ctree.c:733
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 
-#: src/ctree.c:696
+#: src/ctree.c:740
 msgid "Size"
 msgstr "Lielums"
 
-#: src/ctree.c:698
+#: src/ctree.c:742
 msgid "Sizing: How much work it will take to finish this project."
 msgstr ""
 
-#: src/ctree.c:704
+#: src/ctree.c:748
 #, fuzzy
 msgid "Done"
 msgstr "Nekas"
 
-#: src/ctree.c:706
+#: src/ctree.c:750
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
 
-#: src/ctree.c:713
+#: src/ctree.c:757
 msgid "U"
 msgstr ""
 
-#: src/ctree.c:715
+#: src/ctree.c:759
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr ""
 
-#: src/ctree.c:721
+#: src/ctree.c:765
 msgid "Imp"
 msgstr ""
 
-#: src/ctree.c:723
+#: src/ctree.c:767
 msgid "Importance: How important is this project?"
 msgstr ""
 
-#: src/ctree.c:729 src/ghtml.c:762
+#: src/ctree.c:773
 msgid "Status"
 msgstr "Statuss"
 
-#: src/ctree.c:731
+#: src/ctree.c:775
 #, fuzzy
 msgid "The current status of this project."
 msgstr "Mainît ðî projekta paðreizçjo uzdevumu"
 
-#: src/ctree.c:1050
+#: src/ctree.c:1111
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:1051
+#: src/ctree.c:1112
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:1052
+#: src/ctree.c:1113
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1062 src/ghtml.c:893 src/ghtml.c:903
+#: src/ctree.c:1123 src/ghtml.c:541 src/ghtml.c:555
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Zems"
 
-#: src/ctree.c:1063
+#: src/ctree.c:1124
 msgid "Med"
 msgstr "Vidçjs"
 
-#: src/ctree.c:1064 glade/project_properties.glade.h:16
+#: src/ctree.c:1125 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "Augsts"
 
-#: src/ctree.c:1073 src/ghtml.c:912 glade/project_properties.glade.h:30
+#: src/ctree.c:1134 src/ghtml.c:569 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Nesâkts"
 
-#: src/ctree.c:1074 src/ghtml.c:913 glade/project_properties.glade.h:22
+#: src/ctree.c:1135 src/ghtml.c:570 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "Procesâ"
 
-#: src/ctree.c:1075 src/ghtml.c:914 glade/project_properties.glade.h:32
+#: src/ctree.c:1136 src/ghtml.c:571 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Pieturçt"
 
-#: src/ctree.c:1076 src/ghtml.c:915 glade/project_properties.glade.h:10
+#: src/ctree.c:1137 src/ghtml.c:572 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Atcelts"
 
-#: src/ctree.c:1077 src/ghtml.c:916 glade/project_properties.glade.h:11
+#: src/ctree.c:1138 src/ghtml.c:573 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Izpildîts"
 
@@ -280,21 +279,21 @@ msgstr "Nevar izveidot pid-failu!"
 msgid "Error exporting data: %s"
 msgstr "EKïûda formatçjot celiòu #%d"
 
-#: src/export.c:133 src/journal.c:172
+#: src/export.c:123 src/journal.c:172
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Fails %s eksistç, pârrakstît?"
 
-#: src/export.c:145
+#: src/export.c:135
 #, fuzzy
 msgid "File could not be opened"
 msgstr "%s nevar tikt atvçrts."
 
-#: src/export.c:153
+#: src/export.c:143
 msgid "Error occured during export"
 msgstr ""
 
-#: src/export.c:170
+#: src/export.c:161
 msgid "Tab-Delimited Export"
 msgstr ""
 
@@ -306,158 +305,28 @@ msgstr "projekts %t palaists"
 msgid "stopped project %t"
 msgstr "projekts %t apstâdinâts"
 
-#: src/ghtml.c:128 src/ghtml.c:402 glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "Stop"
-
-#: src/ghtml.c:128 src/ghtml.c:405
-msgid "Elapsed"
-msgstr "Pagâjuðais"
-
-#: src/ghtml.c:148 src/ghtml.c:502 src/ghtml.c:511 src/ghtml.c:844
-#: src/ghtml.c:851 src/ghtml.c:857
-msgid "(empty)"
-msgstr "(tukðs)"
-
-#: src/ghtml.c:354 src/ghtml.c:738
-#, fuzzy
-msgid "Notes"
-msgstr "Piezîmes:"
-
-#: src/ghtml.c:358
-msgid "Task Time"
-msgstr "Uzdevuma Laiks"
-
-#: src/ghtml.c:362
-msgid "Bill Status"
-msgstr "Aprçíina Statuss"
-
-#: src/ghtml.c:366 src/ghtml.c:542 glade/task_properties.glade.h:5
-msgid "Billable"
-msgstr "Iekïaut Aprçíinâ"
-
-#: src/ghtml.c:370
-msgid "Bill Rate"
-msgstr "Aprçíina Likme"
-
-#: src/ghtml.c:374
-msgid "Value"
-msgstr "Vçrtîba"
-
-#: src/ghtml.c:378
-msgid "Billable Value"
-msgstr "Aprçíina Vçrtîba"
-
-#: src/ghtml.c:382 src/ghtml.c:411 src/ghtml.c:765
-msgid "No Default Value"
-msgstr "Nav Noklusçtâs Vçrtîbas"
-
-#: src/ghtml.c:408
-#, fuzzy
-msgid "Start Time Fuzziness"
-msgstr "Sâkt"
-
-#: src/ghtml.c:526 glade/task_properties.glade.h:14
-msgid "Hold"
-msgstr "Aizturçt"
-
-#: src/ghtml.c:529 glade/task_properties.glade.h:4
-msgid "Bill"
-msgstr "Aprçíinât"
-
-#: src/ghtml.c:532 glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr "Samaksâts"
-
-#: src/ghtml.c:545 glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr "Neiekïaut Aprçíinâ"
-
-#: src/ghtml.c:548 glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr "Bezmaksas"
-
-#: src/ghtml.c:558 glade/task_properties.glade.h:23
-msgid "Regular"
-msgstr "Regulârs"
-
-#: src/ghtml.c:561 glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr "Ârpuslaika"
-
-#: src/ghtml.c:564
-msgid "Double Overtime"
-msgstr "Dubukt Ârpuslaika"
-
-#: src/ghtml.c:567 glade/task_properties.glade.h:13
-msgid "Flat Fee"
-msgstr "Cietâ Maksa"
-
-#: src/ghtml.c:587
-msgid "Error - Unknown"
-msgstr "Kïûda - Nezinâma"
-
-#: src/ghtml.c:741
-#, fuzzy
-msgid "Estimated Start Date"
-msgstr "Pagâjuðais Sâkuma Termiòð"
-
-#: src/ghtml.c:744
-#, fuzzy
-msgid "Estimated End Date"
-msgstr "Pagâjuðais Sâkuma Termiòð"
-
-#: src/ghtml.c:747
-#, fuzzy
-msgid "Due Date"
-msgstr "Paredzçtais Laiks:"
-
-#: src/ghtml.c:750
-#, fuzzy
-msgid "Sizing"
-msgstr "Lielums"
-
-#: src/ghtml.c:753
-#, fuzzy
-msgid "Percent Complete"
-msgstr "Parâdît Izpildîjumu Procentuâli"
-
-#: src/ghtml.c:756
-#, fuzzy
-msgid "Urgency"
-msgstr "Steidzamîba:"
-
-#: src/ghtml.c:759
-#, fuzzy
-msgid "Importance"
-msgstr "Svarîgums:"
-
-#: src/ghtml.c:892 src/ghtml.c:902
-msgid "Undefined"
-msgstr ""
-
-#: src/ghtml.c:894
+#: src/ghtml.c:542
 #, fuzzy
 msgid "Normal"
 msgstr "Þurnâls"
 
-#: src/ghtml.c:895
+#: src/ghtml.c:543
 #, fuzzy
 msgid "Urgent"
 msgstr "Steidzamîba:"
 
-#: src/ghtml.c:904 glade/project_properties.glade.h:27
+#: src/ghtml.c:546 src/ghtml.c:560 src/ghtml.c:576
+msgid "Undefined"
+msgstr ""
+
+#: src/ghtml.c:556 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr "Vidçjais"
 
-#: src/ghtml.c:905
+#: src/ghtml.c:557
 #, fuzzy
 msgid "Important"
 msgstr "Svarîgums:"
-
-#: src/ghtml.c:1109
-msgid "unknown token: >>>>"
-msgstr "nezinâma zîme: >>>>"
 
 #: src/journal.c:113
 msgid "Error 404 Not Found"
@@ -485,8 +354,8 @@ msgstr ""
 "Nevar atvçrt failu %s\n"
 "%s"
 
-#: src/journal.c:290 src/proj.c:716 src/proj.c:1559 src/proj.c:1687
-#: src/proj.c:1827
+#: src/journal.c:290 src/proj.c:716 src/proj.c:1591 src/proj.c:1719
+#: src/proj.c:1859
 msgid "New Diary Entry"
 msgstr ""
 
@@ -535,35 +404,35 @@ msgstr ""
 msgid "Cannot create pid-file!"
 msgstr "Nevar izveidot pid-failu!"
 
-#: src/main.c:220
+#: src/main.c:222
 msgid "Do you want to continue?"
 msgstr "Vai vçlies turpinât?"
 
-#: src/main.c:223 src/main.c:276
+#: src/main.c:225 src/main.c:278
 msgid "Error"
 msgstr "Kïûda"
 
-#: src/main.c:273
+#: src/main.c:275
 msgid "Shall I setup a new configuration?"
 msgstr "Vai uzstâdît jaunu konfigurâciju?"
 
-#: src/main.c:363 src/main.c:388 src/main.c:529 src/menucmd.c:49
+#: src/main.c:365 src/main.c:390 src/main.c:531 src/menucmd.c:49
 msgid "Warning"
 msgstr "Brîdinâjums"
 
-#: src/main.c:485
+#: src/main.c:487
 msgid "Specify geometry"
 msgstr "Uzstâdît ìeometriju"
 
-#: src/main.c:485
+#: src/main.c:487
 msgid "GEOMETRY"
 msgstr "Ìeometrija"
 
-#: src/main.c:487
+#: src/main.c:489
 msgid "Select a project on startup"
 msgstr "Izvçlies projektu pie sâknçðanas"
 
-#: src/main.c:487
+#: src/main.c:489
 msgid "PROJECT"
 msgstr "PROJEKTS"
 
@@ -571,7 +440,7 @@ msgstr "PROJEKTS"
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:197
+#: src/menucmd.c:200
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -579,7 +448,7 @@ msgid ""
 "well as track that status of other projects."
 msgstr ""
 
-#: src/menucmd.c:256
+#: src/menucmd.c:259
 msgid "New Project..."
 msgstr "Jauns Projekts..."
 
@@ -588,106 +457,111 @@ msgid "_New Project..."
 msgstr "_Jauns Projekts..."
 
 #: src/menus.c:37
-msgid "_Export Tab-Delimited"
+msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:56 src/menus.c:170
+#: src/menus.c:41
+#, fuzzy
+msgid "Export _Projects"
+msgstr "Ivietot Projektu"
+
+#: src/menus.c:60 src/menus.c:174
 msgid "Clear _Daily Counter"
 msgstr "Attî_rît Dienas Pulksteni"
 
-#: src/menus.c:57 src/menus.c:171
+#: src/menus.c:61 src/menus.c:175
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "Iestatît uz nulli ðodienas taimeri, izdzçðot ðodienas laika ierakstus"
 
-#: src/menus.c:61 src/menus.c:80 src/menus.c:153
+#: src/menus.c:65 src/menus.c:84 src/menus.c:157
 msgid "_Journal..."
 msgstr "Þ_urunâls..."
 
-#: src/menus.c:62 src/menus.c:81 src/menus.c:154
+#: src/menus.c:66 src/menus.c:85 src/menus.c:158
 msgid "Show the timesheet journal for this project"
 msgstr "Parâdît laika kontrolsarakstu ðim projektam"
 
-#: src/menus.c:65 src/menus.c:157
+#: src/menus.c:69 src/menus.c:161
 msgid "New Diary _Entry"
 msgstr ""
 
-#: src/menus.c:66 src/menus.c:158
+#: src/menus.c:70 src/menus.c:162
 msgid "Change the current task for this project"
 msgstr "Mainît ðî projekta paðreizçjo uzdevumu"
 
-#: src/menus.c:84
+#: src/menus.c:88
 msgid "_All Journal..."
 msgstr "_Pievienot Þurnâlu..."
 
-#: src/menus.c:85
+#: src/menus.c:89
 msgid "Show the verbose timesheet journal for this project"
 msgstr "Parâdît vârdisku laika kontrolsarakstu ðim projektam"
 
-#: src/menus.c:88
+#: src/menus.c:92
 msgid "_Invoice..."
 msgstr "_Rçíins..."
 
-#: src/menus.c:89
+#: src/menus.c:93
 msgid "Show a sample invoice for this project"
 msgstr "Parâdît parauga rçíinu ðim projektam"
 
-#: src/menus.c:92
+#: src/menus.c:96
 msgid "_Primer..."
 msgstr "Â_bece..."
 
-#: src/menus.c:93
+#: src/menus.c:97
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr "Parâdît vienkârðu paraugpiemçru, lai izveidotu savas atskaites"
 
-#: src/menus.c:96
+#: src/menus.c:100
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:97
+#: src/menus.c:101
 #, fuzzy
 msgid "Show a sample to-do list"
 msgstr "Parâdît parauga rçíinu ðim projektam"
 
-#: src/menus.c:100
+#: src/menus.c:104
 msgid "_New Report..."
 msgstr "_Jauns Pârskats..."
 
-#: src/menus.c:101
+#: src/menus.c:105
 #, fuzzy
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr "Definçt ceïu uz jauno GTT phtml pârskata failu"
 
-#: src/menus.c:112
+#: src/menus.c:116
 msgid "St_art"
 msgstr "Star_tçt"
 
-#: src/menus.c:113
+#: src/menus.c:117
 msgid "Start the timer running"
 msgstr "Palaist taimeri"
 
-#: src/menus.c:118
+#: src/menus.c:122
 msgid "Sto_p"
 msgstr "I_zbeigt"
 
-#: src/menus.c:119
+#: src/menus.c:123
 msgid "Stop the timer"
 msgstr "Apstâdinât pulksteni"
 
-#: src/menus.c:124
+#: src/menus.c:128
 msgid "_Timer Running"
 msgstr "Pu_lkstenis Palaists"
 
-#: src/menus.c:143
+#: src/menus.c:147
 msgid "_Reports"
 msgstr "_Pârskati"
 
-#: src/menus.c:144
+#: src/menus.c:148
 msgid "_Timer"
 msgstr "P_ulkstenis"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:241
+#: src/menus.c:245
 msgid "Reports"
 msgstr "Pârskati"
 
@@ -825,6 +699,10 @@ msgstr "Iestati, cik Neprecîzs Ir Sâkðanas Laiks"
 #, fuzzy
 msgid "Start Fuzz"
 msgstr "Sâkt"
+
+#: glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Stop"
 
 #: glade/interval_popup.glade.h:1
 msgid "Delete Interval"
@@ -1388,6 +1266,14 @@ msgstr "Privâtu piezîmju kopums, kas netiks drukâts uz rçíina."
 msgid "A short description to attach to this block of time."
 msgstr "Îss apraksts, kuru pievienot ðim laika blokam."
 
+#: glade/task_properties.glade.h:4
+msgid "Bill"
+msgstr "Aprçíinât"
+
+#: glade/task_properties.glade.h:5
+msgid "Billable"
+msgstr "Iekïaut Aprçíinâ"
+
 #: glade/task_properties.glade.h:6
 msgid "Billable:"
 msgstr "Aprçíins:"
@@ -1418,6 +1304,14 @@ msgstr ""
 msgid "Fee rate to be charged for this task."
 msgstr "Brîvâ maksa, kura jâsaòem par ðo uzdevumu."
 
+#: glade/task_properties.glade.h:13
+msgid "Flat Fee"
+msgstr "Cietâ Maksa"
+
+#: glade/task_properties.glade.h:14
+msgid "Hold"
+msgstr "Aizturçt"
+
 #: glade/task_properties.glade.h:15
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
@@ -1440,9 +1334,29 @@ msgstr ""
 "nozîmç varbût, bet vçl nç, vajag pârskatît.   \"Aprçíinât\" nozîmç drukât to "
 "uz nâkamâ rçíina.   \"Samaksâts\" nozîmç, ka tas vairs nav jâiekïauj rçíinos."
 
+#: glade/task_properties.glade.h:17
+msgid "No Charge"
+msgstr "Bezmaksas"
+
+#: glade/task_properties.glade.h:18
+msgid "Not Billable"
+msgstr "Neiekïaut Aprçíinâ"
+
 #: glade/task_properties.glade.h:20
 msgid "OverOver"
 msgstr "PapildPapild"
+
+#: glade/task_properties.glade.h:21
+msgid "Overtime"
+msgstr "Ârpuslaika"
+
+#: glade/task_properties.glade.h:22
+msgid "Paid"
+msgstr "Samaksâts"
+
+#: glade/task_properties.glade.h:23
+msgid "Regular"
+msgstr "Regulârs"
 
 #: glade/task_properties.glade.h:24
 msgid ""
@@ -1460,6 +1374,75 @@ msgstr "Laika Uzraudzîtâjs"
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Laika uzraudzîðanas rîks"
+
+#~ msgid "Elapsed"
+#~ msgstr "Pagâjuðais"
+
+#~ msgid "(empty)"
+#~ msgstr "(tukðs)"
+
+#, fuzzy
+#~ msgid "Notes"
+#~ msgstr "Piezîmes:"
+
+#~ msgid "Task Time"
+#~ msgstr "Uzdevuma Laiks"
+
+#~ msgid "Bill Status"
+#~ msgstr "Aprçíina Statuss"
+
+#~ msgid "Bill Rate"
+#~ msgstr "Aprçíina Likme"
+
+#~ msgid "Value"
+#~ msgstr "Vçrtîba"
+
+#~ msgid "Billable Value"
+#~ msgstr "Aprçíina Vçrtîba"
+
+#~ msgid "No Default Value"
+#~ msgstr "Nav Noklusçtâs Vçrtîbas"
+
+#, fuzzy
+#~ msgid "Start Time Fuzziness"
+#~ msgstr "Sâkt"
+
+#~ msgid "Double Overtime"
+#~ msgstr "Dubukt Ârpuslaika"
+
+#~ msgid "Error - Unknown"
+#~ msgstr "Kïûda - Nezinâma"
+
+#, fuzzy
+#~ msgid "Estimated Start Date"
+#~ msgstr "Pagâjuðais Sâkuma Termiòð"
+
+#, fuzzy
+#~ msgid "Estimated End Date"
+#~ msgstr "Pagâjuðais Sâkuma Termiòð"
+
+#, fuzzy
+#~ msgid "Due Date"
+#~ msgstr "Paredzçtais Laiks:"
+
+#, fuzzy
+#~ msgid "Sizing"
+#~ msgstr "Lielums"
+
+#, fuzzy
+#~ msgid "Percent Complete"
+#~ msgstr "Parâdît Izpildîjumu Procentuâli"
+
+#, fuzzy
+#~ msgid "Urgency"
+#~ msgstr "Steidzamîba:"
+
+#, fuzzy
+#~ msgid "Importance"
+#~ msgstr "Svarîgums:"
+
+#~ msgid "unknown token: >>>>"
+#~ msgstr "nezinâma zîme: >>>>"
 
 #~ msgid "no project selected"
 #~ msgstr "neviens projekts nav izvçlçts"
