@@ -1272,7 +1272,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ghtml_guile_global_hack = ghtml;
 
 	/* Load predefined scheme forms */
-	gh_eval_file (gtt_ghtml_resolve_path("gtt.scm"));
+	gh_eval_file (gtt_ghtml_resolve_path("gtt.scm", NULL));
 	
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream)

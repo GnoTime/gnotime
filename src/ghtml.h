@@ -93,22 +93,27 @@ void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
                                        GttGhtmlCloseStream, 
                                        GttGhtmlError);
 
-/* The gtt_ghtml_display() routine will parse the indicated gtt file, 
+/** The gtt_ghtml_display() routine will parse the indicated gtt file, 
  *     and output standard HTML to the indicated stream.
  */
 void gtt_ghtml_display (GttGhtml *, const char *path_frag, GttProject *prj);
 
-/* The gtt_gthml_show_links() routine will set a flag indicating whether
+/** The gtt_gthml_show_links() routine will set a flag indicating whether
  *     the output html should include internal <a href> links.  Normally,
  *     this should be set to TRUE when displaying in the internal browser,
  *     and FALSE when printing.
  */
 void gtt_ghtml_show_links (GttGhtml *, gboolean);
 
-/* The gtt_ghtml_resolve_path() routine helps find the fully-qualified
+/** The gtt_ghtml_resolve_path() routine helps find the fully-qualified
  *     path name to the indicated filename, so that the file can be opened.
+ *     The 'reference path', if not null, is checked first.  It is checked 
+ *     by finding its trailing slash, and appending the path_frag to it,
+ *     and checking for existance.  If the reference is NULL, or the file
+ *     is not found, then the standard gnotime data dirs are checked. 
+ *     The checked data dirs are locale-dependent.
  */
-char * gtt_ghtml_resolve_path (const char *path_frag);
+char * gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path);
 
 #endif /* __GTT_GHTML_H__ */
 

@@ -163,7 +163,7 @@ export_file_picker (GtkWidget *widget, gpointer data)
 
 	xp = export_format_new ();
 	xp->picker = GTK_FILE_SELECTION (dialog);
-	xp->template = gtt_ghtml_resolve_path (template_filename);
+	xp->template = gtt_ghtml_resolve_path (template_filename, NULL);
 
 	g_signal_connect (G_OBJECT (dialog), "destroy",
 			    G_CALLBACK (gtk_widget_destroyed),

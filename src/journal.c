@@ -39,7 +39,7 @@
 #include "util.h"
 
 
-/* this struct is a random mish-mash of stuff, not well organized */
+/* This struct is a random mish-mash of stuff, not well organized */
 
 typedef struct wiggy_s {
 	GttGhtml *gh;    
@@ -569,7 +569,7 @@ html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 		wig->task = NULL;
 		wig->interval = NULL;
 
-		path = gtt_ghtml_resolve_path ("journal.ghtml");
+		path = gtt_ghtml_resolve_path ("journal.ghtml", wig->filepath);
 		do_show_report (path, prj);
 	}
 	else
@@ -586,7 +586,7 @@ html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 
 
 /* ============================================================== */
-/* form events */
+/* HTML form (method=GET, POST) events */
 
 static void
 submit_clicked_cb(HtmlDocument *doc, 
@@ -598,12 +598,23 @@ submit_clicked_cb(HtmlDocument *doc,
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
 
-
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path (url);
-	printf ("duude clocked m=%s url=%s path=%s enc=%s\n", method, url, path, encoding);
-	do_show_report (path, wig->prj);
+	printf ("duude what the\n");
+	path = gtt_ghtml_resolve_path (url, wig->filepath);
+	printf ("duude clocked m=%s url=%s resolvedpath=%s enc=%s\n", method, url, path, encoding);
+	printf ("duude old path = %s\n", wig->filepath);
+
+	/* We can reuse the same window, or we can open a new one */
+	do_show_report (path, wig->prj);  /* open a new window */
+
+	/* We cannnot resue the same window from this callback, we 
+	 * have to let the callback return first, else we get a nasty error. */
+#if 0
+	g_free (wig->filepath);
+	wig->filepath = path;
+	gtt_ghtml_display (wig->gh, path, wig->prj);
+#endif
 }
 
 /* ============================================================== */
@@ -737,7 +748,7 @@ do_show_report (const char * report, GttProject *prj)
 	if (!prj)
 	{
 		gtt_ghtml_display (wig->gh, 
-				gtt_ghtml_resolve_path("noproject.ghtml"), NULL);
+				gtt_ghtml_resolve_path("noproject.ghtml", NULL), NULL);
 	} 
 
 	if (prj) gtt_project_add_notifier (prj, redraw, wig);
@@ -747,24 +758,47 @@ do_show_report (const char * report, GttProject *prj)
 /* ============================================================== */
 
 char *
-gtt_ghtml_resolve_path (const char *path_frag)
+gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path)
 {
 	const GList *list;
 	char buff[PATH_MAX], *path;
 
+	if (!path_frag) return NULL;
+
+	/* First, look for path_frag in the reference path. */
+	if (reference_path)
+	{
+		char * p;
+		strncpy (buff, reference_path, PATH_MAX);
+		p = strrchr (buff, '/');
+		if (p)
+		{
+			p++;
+			strncpy (p, path_frag, PATH_MAX-(p-buff));
+			if (g_file_test ((buff), G_FILE_TEST_EXISTS)) return g_strdup (buff);
+		}
+	}
+
+	/* Next, check each language that the user is willing to look at. */
 	list = gnome_i18n_get_language_list ("LC_MESSAGES");
 	for ( ; list; list=list->next) 
 	{
 		const char *lang = list->data;
 
-		/* See if gtt/ghtml/<lang>/<path_frag> exists */
-		/* look in the local build dir first (for testing) */
+		/* See if gnotime/ghtml/<lang>/<path_frag> exists. */
+		/* Look in the local build dir first (for testing) */
 		
 		snprintf (buff, PATH_MAX, "ghtml/%s/%s", lang, path_frag);
 		path = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_DATADIR,
 						  buff, TRUE, NULL);
 		if (path) return path;
 
+		snprintf (buff, PATH_MAX, "gnotime/ghtml/%s/%s", lang, path_frag);
+		path = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_DATADIR,
+						  buff, TRUE, NULL);
+		if (path) return path;
+
+		/* Backwards compat, check the gtt dir, not just the gnotime dir */
 		snprintf (buff, PATH_MAX, "gtt/ghtml/%s/%s", lang, path_frag);
 		path = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_DATADIR,
 						  buff, TRUE, NULL);
@@ -778,7 +812,7 @@ gtt_ghtml_resolve_path (const char *path_frag)
 		 * -warlord 2001-11-29
 		 */
  		snprintf (buff, PATH_MAX, GTTDATADIR "/ghtml/%s/%s", lang, path_frag);
-		if (g_file_exists (buff)) return g_strdup (buff);
+		if (g_file_test ((buff), G_FILE_TEST_EXISTS)) return g_strdup (buff);
 	}
 	return g_strdup(path_frag);
 }
@@ -795,7 +829,7 @@ edit_journal(GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("journal.ghtml");
+	path = gtt_ghtml_resolve_path ("journal.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -807,7 +841,7 @@ edit_alldata(GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("bigtable.ghtml");
+	path = gtt_ghtml_resolve_path ("bigtable.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -819,7 +853,7 @@ edit_invoice(GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("invoice.ghtml");
+	path = gtt_ghtml_resolve_path ("invoice.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -831,7 +865,7 @@ edit_primer(GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("primer.ghtml");
+	path = gtt_ghtml_resolve_path ("primer.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -843,7 +877,7 @@ edit_todolist (GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("todo.ghtml");
+	path = gtt_ghtml_resolve_path ("todo.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -855,7 +889,7 @@ edit_daily (GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("daily.ghtml");
+	path = gtt_ghtml_resolve_path ("daily.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
@@ -867,7 +901,7 @@ edit_status (GtkWidget *w, gpointer data)
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	path = gtt_ghtml_resolve_path ("status.ghtml");
+	path = gtt_ghtml_resolve_path ("status.ghtml", NULL);
 	do_show_report (path, prj);
 }
 
