@@ -48,6 +48,7 @@ about_box(GtkWidget *w, gpointer data)
 		  "George Lebl <jirka@5z.com>",
 		  " ",
 		  _("Bug-fixes from:"), 
+		  "Eric Anderson <eric.anderson@cordata.net>",
 		  "Derek Atkins <warlord@mit.edu>",
 		  "Jonathan Blandford  <jrb@redhat.com>",
 		  "Miguel de Icaza  <miguel@nuclecu.unam.mx>",
