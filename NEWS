@@ -1,4 +1,71 @@
 
+
+                 GnoTime Application News
+                 ========================
+
+GnoTime, The Gnome Time Tracker, allows you to organize ideas,
+measure the time spent on to-do list items and generate invoices.
+
+The latest releases continues to focus on usability and convenience 
+features, making GnoTime easier to use and thus more powerful.
+
+New in the 2.1.4 release:
+-------------------------
+The scheme interface re-design has been finished.
+This means that the HTML reports are far, far more
+configurable, and can be made to look much prettier.
+The old, nasty table-formatting features have been removed.
+It also means that tab-delimited export now works cleanly,
+and other export formats can be easily added.
+
+
+New in the 2.1.3 release:
+-------------------------
+The time credited to a project after the keyboard inactivity 
+timer has tripped is now very easily adjustible.  Thus, if
+the timer tripped because you were on the phone, you can now
+trivially credit the project with any time, from zero to 
+the full interval since the last keyboard/mouse activity,
+by simply adjusting a slider in the timeout popup.
+
+Backup copies of data automatically saved, automatically
+pruned back, thus providing an archive of old data as well
+as avoiding catastrophic data loss.
+
+
+New in the 2.1.2 release:
+-------------------------
+A "major" change in the user interface: one must now
+double-click to start a project timer running.  This 
+makes navigation and task editing much easier and more
+robust than the single-click interface, which was prone
+to accidental-click problems, especially on laptop touchpads.
+This makes GnoTime much more usable on laptops.
+
+The 2.1.2 version is also the first offical stable, 
+non-beta release GnoTime. (December 27, 2002)
+
+The 2.1.2 version also included:
+-- Added new to-do list report
+-- Run shell commands when project started/stopped (fixed)
+-- Added tab-delimited export of to-do list
+-- Removed cause of possible crashes (buffer over-run
+   for large datasets).
+-- Remember what state tree was left in between sessions.
+-- Much improved scheme support in reports
+-- Language translations now included as part of dist
+-- Can now save html reports to file (again)
+-- Now detects inactivity due to laptop shutdown
+-- Fix start/stop timer icon in toolbar
+
+Project Stats
+-------------
+Version 1.4.0.0:   4.0 KLOC of *.c and 0.4 KLOC *.h
+Version 1.4.0.99:  9.2 KLOC of *.c and 1.2 KLOC *.h
+Version 2.1.4:    17.0 KLOC of *.c and 2.0 KLOC *.h and 0.2 KLOC *.scm
+
+News from the GTT, the Gnome Time-Tracker, Version 1.4:
+=======================================================
 August 2001
 ===========
 
