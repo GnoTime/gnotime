@@ -449,11 +449,11 @@ on_save_clicked_cb (GtkWidget *w, gpointer data)
 	fselw = gtk_file_selection_new (_("Save HTML To File"));
 	wig->filesel = GTK_FILE_SELECTION(fselw);
 
-	gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button), 
-		"clicked", GTK_SIGNAL_FUNC(filesel_ok_clicked_cb), wig);
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button), 
+		"clicked", G_CALLBACK(filesel_ok_clicked_cb), wig);
 
-	gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(fselw)->cancel_button), 
-		"clicked", GTK_SIGNAL_FUNC(filesel_cancel_clicked_cb), wig);
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->cancel_button), 
+		"clicked", G_CALLBACK(filesel_cancel_clicked_cb), wig);
 
 	gtk_widget_show (fselw);
 }
@@ -577,8 +577,8 @@ do_show_report (const char * report, GttProject *prj)
 			G_CALLBACK (html_link_clicked_cb), wig);
 	
 #if LATER
-	gtk_signal_connect(GTK_OBJECT(wig->html_doc), "on_url",
-		GTK_SIGNAL_FUNC(html_on_url_cb), wig);
+	g_signal_connect(G_OBJECT(wig->html_doc), "on_url",
+		G_CALLBACK(html_on_url_cb), wig);
 #endif
 
 

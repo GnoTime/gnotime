@@ -224,7 +224,7 @@ read_data(void)
 			 qmsg,
 			 GTK_STOCK_YES, 
 			 GTK_STOCK_NO,
-			 GTK_SIGNAL_FUNC(read_data_err_run_or_abort));
+			 G_CALLBACK(read_data_err_run_or_abort));
 		g_free ((gchar *) qmsg); 
 		g_free ((gchar *) errmsg);
 	}
@@ -277,7 +277,7 @@ read_config(void)
 			 qmsg,
 			 GTK_STOCK_YES, 
 			 GTK_STOCK_NO,
-			 GTK_SIGNAL_FUNC(read_config_err_run_or_abort));
+			 G_CALLBACK(read_config_err_run_or_abort));
 		g_free ((gchar *) qmsg); 
 		g_free ((gchar *) errmsg);
 	}
@@ -402,12 +402,6 @@ save_projects (void)
  * session management
  */
 
-#ifdef DEBUG
-#define GTT "/gtt-DEBUG/"
-#else /* not DEBUG */
-#define GTT "/gtt/"
-#endif /* not DEBUG */
-
 static int
 save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	   gint shutdown, GnomeInteractStyle interact_styyle, gint fast,
@@ -506,10 +500,10 @@ main(int argc, char *argv[])
 
 #ifdef USE_SM
 	client = gnome_master_client();
-	gtk_signal_connect(GTK_OBJECT(client), "save_yourself",
-			   GTK_SIGNAL_FUNC(save_state), (gpointer) argv[0]);
-	gtk_signal_connect(GTK_OBJECT(client), "die",
-			   GTK_SIGNAL_FUNC(session_die), NULL);
+	g_signal_connect(G_OBJECT(client), "save_yourself",
+			   G_CALLBACK(save_state), (gpointer) argv[0]);
+	g_signal_connect(G_OBJECT(client), "die",
+			   G_CALLBACK(session_die), NULL);
 #endif /* USE_SM */
 
 	glade_init();
@@ -523,8 +517,8 @@ main(int argc, char *argv[])
 	lock_gtt();
 	app_new(argc, argv, geometry_string);
 
-	gtk_signal_connect(GTK_OBJECT(window), "delete_event",
-			   GTK_SIGNAL_FUNC(quit_app), NULL);
+	g_signal_connect(G_OBJECT(window), "delete_event",
+			   G_CALLBACK(quit_app), NULL);
 
 	/*
 	 * Added by SMH 2000-03-22:
@@ -544,7 +538,7 @@ main(int argc, char *argv[])
 		"cvs -z3 -d :pserver:anonymous@anoncvs.gnome.org:/cvs/gnome "
 		"checkout -r gnome-utils-1-4 gnome-utils\n",
 	     "Continue", "Exit", 
-		GTK_SIGNAL_FUNC(beta_run_or_abort));
+		G_CALLBACK(beta_run_or_abort));
 #else
 	read_config();
 #endif

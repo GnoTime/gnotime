@@ -13,6 +13,10 @@
  *   -- unfinished drag-n-drop for reparenting
  *   -- unfinished expand/collapse
  *   -- unfinished column widths/text justification
+ *
+ *   Things I need to do, but can't figure out how:  I'd like
+ *   to be able to draw a given row with different colors/fonts/etc.
+ *   -- i.e. to effectively highlight it somehow.  How??
  *   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -112,9 +116,11 @@ struct ProjTreeWindow_s
 
 	/* stuff we need to have handy while dragging */
 	GdkDragContext *drag_context;
+#if XXX
 	GtkCTreeNode *source_ctree_node;
 	GtkCTreeNode *parent_ctree_node;
 	GtkCTreeNode *sibling_ctree_node;
+#endif
 };
 
 static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
@@ -189,11 +195,11 @@ stop_timer_for_row (ProjTreeWindow *ptw, GtkTreeIter *iter)
 static int
 widget_key_event(GtkTreeView *ctree, GdkEvent *event, gpointer data)
 {
-	GtkCTreeNode *rownode;
 	GdkEventKey *kev = (GdkEventKey *)event;
 
 printf ("duuude key eve\n");
 #if XXX
+	GtkCTreeNode *rownode;
 	if (event->type != GDK_KEY_RELEASE) return FALSE;
 	switch (kev->keyval)
 	{
@@ -359,27 +365,27 @@ ptn = get_ptn_from_path (ptw, path);
 
 /* ============================================================== */
 
+#if XXX
 static void 
 tree_expand (GtkCTree *ctree, GtkCTreeNode *row)
 {
 	int i;
-#if XXX
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
 	ctree_update_column_values (ptw, ptn, TRUE);
-#endif
 }
 
 static void 
 tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 {
 	int i;
-#if XXX
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
 	ctree_update_column_values (ptw, ptn, FALSE);
-#endif
 }
+#endif
 
 /* ============================================================== */
+
+#if XXX
 
 static void
 click_column(GtkCList *clist, gint col, gpointer data)
@@ -447,6 +453,7 @@ click_column(GtkCList *clist, gint col, gpointer data)
 	
 	ctree_setup(ptw);
 }
+#endif
 
 /* ============================================================== */
 /* Attempt to change pixmaps to indicate whether dragged project
@@ -456,6 +463,7 @@ click_column(GtkCList *clist, gint col, gpointer data)
 static GtkWidget *parent_pixmap = NULL;
 static GtkWidget *sibling_pixmap = NULL;
 
+#if XXX
 /* we need to drag context to flip the pixmaps */
 static void
 drag_begin (GtkWidget *widget, GdkDragContext *context, gpointer data)
@@ -583,6 +591,7 @@ printf ("before sibl %s\n\n", gtt_project_get_desc(
 
 	return FALSE;
 }
+#endif
 
 /* ============================================================== */
 /* note about column layout:
@@ -1240,10 +1249,12 @@ ctree_new(void)
 	int i;
 
 	ptw = g_new0 (ProjTreeWindow, 1);
+#if XXX
 	ptw->source_ctree_node = NULL;
 	ptw->parent_ctree_node = NULL;
 	ptw->sibling_ctree_node = NULL;
 	ptw->drag_context = NULL;
+#endif
 
 	ctree_init_cols (ptw);
 
@@ -1282,6 +1293,8 @@ ctree_new(void)
 			gtk_tree_view_set_expander_column (ptw->treeview, col);
 		}
 		/* XXX
+		 * there seems to be no way to set left/right justification in 
+		 * this widget set ?? 
 		gtk_clist_set_column_justification(GTK_CLIST(w), 
 			i, ptw->col_justify[i]);
 		*/
@@ -1332,23 +1345,23 @@ ctree_new(void)
 		                G_CALLBACK (tree_selection_changed_cb), ptw);
 
 	
-	gtk_signal_connect(GTK_OBJECT(w), "button_press_event",
-			   GTK_SIGNAL_FUNC(widget_button_event), ptw);
-	gtk_signal_connect(GTK_OBJECT(w), "key_release_event",
-			   GTK_SIGNAL_FUNC(widget_key_event), ptw);
+	g_signal_connect(G_OBJECT(w), "button_press_event",
+			   G_CALLBACK(widget_button_event), ptw);
+	g_signal_connect(G_OBJECT(w), "key_release_event",
+			   G_CALLBACK(widget_key_event), ptw);
 #if XXX
-	gtk_signal_connect(GTK_OBJECT(w), "click_column",
-			   GTK_SIGNAL_FUNC(click_column), ptw);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_expand",
-			   GTK_SIGNAL_FUNC(tree_expand), NULL);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_collapse",
-			   GTK_SIGNAL_FUNC(tree_collapse), NULL);
+	g_signal_connect(G_OBJECT(w), "click_column",
+			   G_CALLBACK(click_column), ptw);
+	g_signal_connect(G_OBJECT(w), "tree_expand",
+			   G_CALLBACK(tree_expand), NULL);
+	g_signal_connect(G_OBJECT(w), "tree_collapse",
+			   G_CALLBACK(tree_collapse), NULL);
 
-	gtk_signal_connect(GTK_OBJECT(w), "drag_begin",
-			   GTK_SIGNAL_FUNC(drag_begin), ptw);
+	g_signal_connect(G_OBJECT(w), "drag_begin",
+			   G_CALLBACK(drag_begin), ptw);
 
-	gtk_signal_connect(GTK_OBJECT(w), "drag_drop",
-			   GTK_SIGNAL_FUNC(drag_drop), ptw);
+	g_signal_connect(G_OBJECT(w), "drag_drop",
+			   G_CALLBACK(drag_drop), ptw);
 #endif
 
 	/* allow projects to be re-arranged by dragging */
@@ -1547,10 +1560,10 @@ void
 ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 {
 	ProjTreeNode *ptn;
+#if XXX
 	GtkCTreeNode *sibnode=NULL;
 	GtkCTreeNode *parentnode=NULL;
 
-#if XXX
 	if (sibling)
 	{
 		GttProject *parent = gtt_project_get_parent (sibling);
@@ -1588,10 +1601,10 @@ void
 ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 {
 	ProjTreeNode *ptn;
+#if XXX
 	GtkCTreeNode *parentnode=NULL;
 	GtkCTreeNode *next_sibling=NULL;
 
-#if XXX
 	if (sibling)
 	{
 		GttProject *parent = gtt_project_get_parent (sibling);

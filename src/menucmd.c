@@ -49,7 +49,7 @@ quit_app(GtkWidget *w, gpointer data)
 		msgbox_ok(_("Warning"),
 		     errmsg,
 		     GTK_STOCK_OK,
-		     GTK_SIGNAL_FUNC(gtk_main_quit));
+		     G_CALLBACK(gtk_main_quit));
 		g_free ((gchar *) errmsg);
 		return;
 	}
@@ -98,8 +98,8 @@ about_box(GtkWidget *w, gpointer data)
 				    documentors,
 				    "many translators",
 				    NULL);
-	gtk_signal_connect(GTK_OBJECT(about), "destroy",
-		         GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+	g_signal_connect(G_OBJECT(about), "destroy",
+		         G_CALLBACK(gtk_widget_destroyed), &about);
 	gtk_widget_show(about);
 }
 
@@ -149,7 +149,7 @@ new_project(GtkWidget *widget, gpointer data)
 
 	new_dialog_ok_cancel(_("New Project..."), &dlg, &vbox,
 			     GTK_STOCK_OK,
-			     GTK_SIGNAL_FUNC(project_name_desc),
+			     G_CALLBACK(project_name_desc),
 				 entries,
 			     GTK_STOCK_CANCEL, NULL, NULL);
 
@@ -176,14 +176,14 @@ new_project(GtkWidget *widget, gpointer data)
 	gtk_widget_grab_focus(entries[0]);
 
 	/* enter in first entry goes to next */
-	gtk_signal_connect_object (GTK_OBJECT (entries[0]), "activate",
-				   GTK_SIGNAL_FUNC (gtk_widget_grab_focus),
-				   GTK_OBJECT (entries[1]));
+	g_signal_connect_object (G_OBJECT (entries[0]), "activate",
+				   G_CALLBACK (gtk_widget_grab_focus),
+				   GTK_OBJECT (entries[1]), 0);
 	gnome_dialog_editable_enters(GNOME_DIALOG(dlg),
 				     GTK_EDITABLE(entries[1]));
 
-	gtk_signal_connect(GTK_OBJECT(dlg), "destroy",
-			   GTK_SIGNAL_FUNC(free_data),
+	g_signal_connect(G_OBJECT(dlg), "destroy",
+			   G_CALLBACK(free_data),
 			   entries);
 	
 	gtk_widget_show(dlg);

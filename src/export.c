@@ -173,16 +173,16 @@ export_file_picker (GtkWidget *widget, gpointer data)
 	xp = export_format_new ();
 	xp->picker = GTK_FILE_SELECTION (dialog);
 
-	gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
-			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+	g_signal_connect (G_OBJECT (dialog), "destroy",
+			    G_CALLBACK (gtk_widget_destroyed),
 			    &dialog);
 
-	gtk_signal_connect_object (GTK_OBJECT (xp->picker->cancel_button), "clicked",
-				   GTK_SIGNAL_FUNC (gtk_widget_destroy),
-				   GTK_OBJECT (xp->picker));
+	g_signal_connect_object (G_OBJECT (xp->picker->cancel_button), "clicked",
+				   G_CALLBACK (gtk_widget_destroy),
+				   G_OBJECT (xp->picker), 0);
 
-	gtk_signal_connect (GTK_OBJECT (xp->picker->ok_button), "clicked",
-			    GTK_SIGNAL_FUNC (export_really),
+	g_signal_connect (G_OBJECT (xp->picker->ok_button), "clicked",
+			    G_CALLBACK (export_really),
 			    xp);
 
 	gtk_widget_show (dialog);

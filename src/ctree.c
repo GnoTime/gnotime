@@ -1154,26 +1154,26 @@ ctree_new(void)
 		GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 	gtk_widget_show_all (sw);
 
-	gtk_signal_connect(GTK_OBJECT(w), "button_press_event",
-			   GTK_SIGNAL_FUNC(widget_button_event), ptw);
-	gtk_signal_connect(GTK_OBJECT(w), "key_release_event",
-			   GTK_SIGNAL_FUNC(widget_key_event), ptw);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_select_row",
-			   GTK_SIGNAL_FUNC(tree_select_row), NULL);
-	gtk_signal_connect(GTK_OBJECT(w), "click_column",
-			   GTK_SIGNAL_FUNC(click_column), ptw);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_unselect_row",
-			   GTK_SIGNAL_FUNC(tree_unselect_row), NULL);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_expand",
-			   GTK_SIGNAL_FUNC(tree_expand), NULL);
-	gtk_signal_connect(GTK_OBJECT(w), "tree_collapse",
-			   GTK_SIGNAL_FUNC(tree_collapse), NULL);
+	g_signal_connect(G_OBJECT(w), "button_press_event",
+			   G_CALLBACK(widget_button_event), ptw);
+	g_signal_connect(G_OBJECT(w), "key_release_event",
+			   G_CALLBACK(widget_key_event), ptw);
+	g_signal_connect(G_OBJECT(w), "tree_select_row",
+			   G_CALLBACK(tree_select_row), NULL);
+	g_signal_connect(G_OBJECT(w), "click_column",
+			   G_CALLBACK(click_column), ptw);
+	g_signal_connect(G_OBJECT(w), "tree_unselect_row",
+			   G_CALLBACK(tree_unselect_row), NULL);
+	g_signal_connect(G_OBJECT(w), "tree_expand",
+			   G_CALLBACK(tree_expand), NULL);
+	g_signal_connect(G_OBJECT(w), "tree_collapse",
+			   G_CALLBACK(tree_collapse), NULL);
 
-	gtk_signal_connect(GTK_OBJECT(w), "drag_begin",
-			   GTK_SIGNAL_FUNC(drag_begin), ptw);
+	g_signal_connect(G_OBJECT(w), "drag_begin",
+			   G_CALLBACK(drag_begin), ptw);
 
-	gtk_signal_connect(GTK_OBJECT(w), "drag_drop",
-			   GTK_SIGNAL_FUNC(drag_drop), ptw);
+	g_signal_connect(G_OBJECT(w), "drag_drop",
+			   G_CALLBACK(drag_drop), ptw);
 
 	/* allow projects to be re-arranged by dragging */
 	gtk_clist_set_reorderable(GTK_CLIST(w), TRUE);

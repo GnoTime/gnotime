@@ -62,11 +62,13 @@ noinst_HEADERS = 	\
 	xml-gtt.h
 	
 
-# remove GTK_ENABLE_BROKEN when gnome-2.0 works for real
+# disable depricated when we find work-around for ctree, property box.
 #
 #	-DGTT_CTREE_GNOME2 
+#	-DGTK_DISABLE_DEPRECATED	\
+#	-DGNOME_DISABLE_DEPRECATED	\
 
-CFLAGS = -g -DGTK_ENABLE_BROKEN	\
+CFLAGS = -g \
 	@CFLAGS@ 		\
 	${GNOTIME_CFLAGS}	\
 	${GCONF_CFLAGS} 	\
