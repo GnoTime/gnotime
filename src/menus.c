@@ -78,12 +78,12 @@ static GnomeUIInfo menu_main_settings[] = {
 
 static GnomeUIInfo menu_main_reports[] = {
 	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
-		N_("Show the timesheet journal for this project"),
+		N_("Show the journal for this project"),
 			       show_report, "journal.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Big Journal..."), 
-		N_("Show the verbose timesheet journal for this project"),
-			       show_report, "bigtable.ghtml",
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("Time _Interval..."), 
+		N_("Show the timesheet journal for this project"),
+			       show_report, "time-interval.ghtml",
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Invoice..."), 
 		N_("Show a sample invoice for this project"),
