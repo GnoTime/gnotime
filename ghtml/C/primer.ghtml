@@ -184,7 +184,7 @@ Some sample scheme forms, and their output:
      selected project:
      <ul>
      <?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
-               (list ''<li><b>   gtt-project-title   ''"</b> -- \n"
+               (list ''"<li><b>"  gtt-project-title   ''"</b> -- \n"
                         gtt-project-desc   ''" --\n"
                         gtt-project-notes   ''"</li>\n"
                  ))

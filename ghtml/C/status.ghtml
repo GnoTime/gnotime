@@ -21,9 +21,9 @@ Please edit this file to suit your particular reporting needs.
 <dl>
 <?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
       (list 
-		      ''<dt><b>   gtt-project-title   ''"</b>"
+		      ''"<dt><b>" gtt-project-title   ''"</b>"
 		      ''" -- "    gtt-project-desc    ''"</dt>\n"
-            ''<dd>      gtt-project-notes   ''"</dd>\n\n"
+            ''"<dd>"    gtt-project-notes   ''"</dd>\n\n"
             ))
 ?>
 </dl>

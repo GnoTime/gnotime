@@ -38,11 +38,11 @@ the menu item "Reports... New Report".
  -->
 
 <?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
-      (list ''<tr><td>          gtt-project-importance ''"</td>\n"
-            ''<td>              gtt-project-urgency    ''"</td>\n"
-            ''<td>              gtt-project-title-link ''"</td>\n"
+      (list ''"<tr><td>"        gtt-project-importance ''"</td>\n"
+            ''"<td>"            gtt-project-urgency    ''"</td>\n"
+            ''"<td>"            gtt-project-title-link ''"</td>\n"
             ''"<td align=left>" gtt-project-desc       ''"</td>\n"
-            ''<td>              gtt-project-status     ''"</td>\n"
+            ''"<td>"            gtt-project-status     ''"</td>\n"
             ''"</tr>\n"
             ))
 ?>
