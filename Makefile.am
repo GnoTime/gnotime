@@ -1,5 +1,5 @@
 
-SUBDIRS = doc glade ghtml src
+SUBDIRS = doc glade ghtml po src
 
 
 Productivitydir = $(datadir)/gnome/apps/Applications
