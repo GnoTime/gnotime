@@ -63,9 +63,9 @@ about_box(GtkWidget *w, gpointer data)
 {
 	static GtkWidget *about = NULL;
 	const gchar *authors[] = {
-		  "Eckehard Berns\n<eb@berns.i-s-o.net>",
-		  "George Lebl\n<jirka@5z.com>",
-		  "Linas Vepstas\n<linas@linas.org>",
+		  "Eckehard Berns <eb@berns.i-s-o.net>",
+		  "George Lebl <jirka@5z.com>",
+		  "Linas Vepstas <linas@linas.org>",
 		  "and dozens of bug-fixers",
 		  NULL
 	};
@@ -98,9 +98,7 @@ about_box(GtkWidget *w, gpointer data)
 				    "many translators",
 				    NULL);
 	gtk_signal_connect(GTK_OBJECT(about), "destroy",
-		GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
-     /* not required for an about box: */
-     /* gnome_dialog_set_parent(GNOME_ABOUT(about), GTK_WINDOW(window)); */
+		         GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
 	gtk_widget_show(about);
 }
 
