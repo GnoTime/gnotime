@@ -110,7 +110,10 @@ dnl *****************************
 dnl popt is needed 
 dnl *****************************
 
-AC_CHECK_LIB(popt, poptHelpOptions,, AC_MSG_ERROR([popt is required to build gnome-utils. You can download the latest version from ftp://people.redhat.com/sopwith/popt/]))
+# There is no popt under mac OSX but it still compiles ... 
+# so remove this check so that Mac OSX can work.
+#
+# AC_CHECK_LIB(popt, poptHelpOptions,, AC_MSG_ERROR([popt is required to build gnome-utils. You can download the latest version from ftp://people.redhat.com/sopwith/popt/]))
 
 
 
