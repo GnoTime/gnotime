@@ -3,18 +3,35 @@
 <title>Hello World!</title>
 </head>
 <body>
-<h1>Guile HTML Scheme Primer</h1>
+<h1>Custom Report Primer</h1>
 
-You can design custom reports rather easily if you know a bit
-of basic html.   And if you know scheme, then the world is at 
-your feet, since the report generator uses guile to interpret the
-embedded scheme in a report.  You can view the html source for
+<p>
+You can design and use custom reports with GnoTime 
+rather easily if you know a bit of basic HTML.   
+If you also know scheme, then the world is at 
+your feet, since the report generator uses guile 
+to interpret the embedded scheme in a report template.
+</p>
+<p>
+After designing your own report template, you can add it to 
+GnoTime by picking the menu entry 
+<b>'Reports' ... 'New Report'</b>
+and entering the filename for the  template.
+</p>
+<p>
+The report template consists of standard HTML markup
+(including newer HTML features, such as CSS), with 
+embedded scheme markup to provide project and diary display. 
+GnoTime includes some built-in scheme primitives
+for generating HTML tables for projects and diary entries. 
+This page shows some examples; you can view the HTML source for
 this example primer by viewing 'primer.ghtml' (probably installed
-at <tt>/usr/share/gtt/ghtml/C/primer.ghtml</tt>)
+at <tt>/usr/share/gnotime/ghtml/C/primer.ghtml</tt>)
+</p>
 <p>
 Some sample scheme expressions, and their output:
+</p>
 
-<p>
 <ul>
 <li> <tt>(gtt-hello)</tt>  prints the following:
      <?scm  (gtt-hello) ?>
@@ -67,12 +84,16 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      <?scm (gtt-show '(yabba dabba <i>do</i> (<b>eh duude</b>))) ?>
      <br><br>
 
-<li> <tt>(gtt-show (+ 2 2))</tt>  prints the following:
+<li> Scheme is a modern, advanced programming language, 
+     based on the newest and most advanced programming principles 
+	  today.  Scheme resembles LISP, somewhat.  For example,
+     <tt>(gtt-show (+ 2 2))</tt>  prints the following:
      <?scm (gtt-show (+ 2 2)) ?>
      <br><br>
 
 <li> The primitive <tt>gtt-show</tt> can be used anywhere,
      such as this Leibniz series expression for Pi:
+	  <br><br>
      <tt>(define (pi-sum a b) (if (> a b) 0 
      <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
      <br>
@@ -83,14 +104,15 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 2000)) )) ?>
      (pi-approx)
      </tt>
-     <br>
+     <br> <br>
 
      prints the following:
      <?scm (pi-approx) ?>
      <br><br>
 
-<li> We have not currently implemented a way of getting the raw project/task/interval
-     data into scheme, as there's no call for it yet. But it should be easy to add.
+<li> We have not currently implemented a way of getting the raw 
+     project/task/interval data into scheme, as there's no call 
+	  for it yet. But it should be easy to add.
 
 </ul>
 
