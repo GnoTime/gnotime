@@ -228,24 +228,32 @@ scan_time_string (const char *str)
 
 /* ============================================================== */
 
-#define ENTRY_TO_CHAR(a, b) { 			\
-	const char *s = gtk_entry_get_text(a); 	\
-	if (s[0]) {				\
-		if (b) g_free(b); 		\
-		b = g_strdup(s); 		\
-	} else { 				\
-		if (b) g_free(b); 		\
-		b = NULL; 			\
-	} 					\
+#define ENTRY_TO_CHAR(a, b) {                               \
+   const char *s = gtk_entry_get_text(a);                   \
+   if (s[0]) {                                              \
+      if (b) g_free(b);                                     \
+      b = g_strdup(s);                                      \
+   } else {                                                 \
+      if (b) g_free(b);                                     \
+      b = NULL;                                             \
+   }                                                        \
 }
 
-#define SHOW_CHECK(TOK) {					\
-	int state = GTK_TOGGLE_BUTTON(odlg->show_##TOK)->active;\
-	if (config_show_##TOK != state) {			\
-		change = 1;					\
-		config_show_##TOK = state;			\
-	}							\
+#define SHOW_CHECK(TOK) {                                   \
+   int state = GTK_TOGGLE_BUTTON(odlg->show_##TOK)->active; \
+   if (config_show_##TOK != state) {                        \
+      change = 1;                                           \
+      config_show_##TOK = state;                            \
+   }                                                        \
 }
+
+#define SET_VAL(to,from) {                                  \
+   if (to != from) {                                        \
+      change = 1;                                           \
+      to = from;                                            \
+   }                                                        \
+}
+
 
 static void 
 prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
@@ -364,14 +372,23 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 
 	if (5 == page)
 	{
+		int change = 0;
 		config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
 
 		/* Hunt for the hour-of night on which to start */
 		const char * buff = gtk_entry_get_text (odlg->daystart_secs);
-		config_daystart_offset = scan_time_string (buff);
+		int off = scan_time_string (buff);
+		SET_VAL (config_daystart_offset,off);
 
 		int day = get_optionmenu_item (odlg->weekstart_menu);
-		config_weekstart_offset = day;
+		SET_VAL (config_weekstart_offset, day);
+
+		if (change)
+		{
+			/* Need to recompute everything, including the bining */
+			gtt_project_list_compute_secs();
+			ctree_refresh (global_ptw);
+		}
 	}
 
 	/* Also save them the to file at this point */

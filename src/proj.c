@@ -616,15 +616,16 @@ get_midnight (time_t last)
 		last = time(0);
 	}
 
+	/* If config_daystart_offset == 3*3600 then the new day
+	 * will start at 3AM, for example.  */
+	last -= config_daystart_offset;
+
 	memcpy (&lt, localtime (&last), sizeof (struct tm));
 	lt.tm_sec = 0;
 	lt.tm_min = 0;
 	lt.tm_hour = 0;
 	midnight = mktime (&lt);
 
-	/* If config_daystart_offset == 3*3600 then the new day
-	 * will start at 3AM, for example.
-	 */
 	midnight += config_daystart_offset;
 
 	return midnight;
