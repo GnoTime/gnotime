@@ -50,7 +50,7 @@ new_dialog_ok(const char *title, GtkWidget **dlg, GtkBox **vbox,
 	GtkWidget *dia;
 	char *tmp;
 
-	tmp = g_strdup_printf(APP_NAME " - %s", title);
+	tmp = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
 	dia = gnome_dialog_new(tmp, s, NULL);
 	if (dlg) *dlg = dia;
 	dialog_setup(GNOME_DIALOG(dia), vbox);
@@ -75,7 +75,7 @@ new_dialog_ok_cancel(const char *title, GtkWidget **dlg, GtkBox **vbox,
 	g_return_if_fail(s_cancel != NULL);
 	g_return_if_fail(title != NULL);
 
-	tmp = g_strdup_printf(APP_NAME " - %s", title);
+	tmp = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
 	dia = gnome_dialog_new(tmp, s_ok, s_cancel, NULL);
 	if (dlg) *dlg = dia;
 	dialog_setup(GNOME_DIALOG(dia), vbox);
@@ -102,7 +102,7 @@ msgbox_ok(const char *title, const char *text, const char *ok_text,
 
 	GtkWidget *mbox;
 
-	s = g_strdup_printf(APP_NAME " - %s", title);
+	s = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
 	mbox = gnome_message_box_new(text, GNOME_MESSAGE_BOX_WARNING, ok_text, NULL, NULL);
 
 	if (func) g_signal_connect(G_OBJECT(mbox), "clicked", func, NULL);
@@ -123,7 +123,7 @@ msgbox_ok_cancel(const char *title, const char *text,
 	char *s;
 	GtkWidget *mbox;
 
-	s = g_strdup_printf(APP_NAME " - %s", title);
+	s = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
 
 	mbox = gnome_message_box_new(text, GNOME_MESSAGE_BOX_QUESTION, ok_text, cancel_text, NULL);
 	gnome_dialog_set_default(GNOME_DIALOG(mbox), 1);
@@ -144,7 +144,7 @@ qbox_ok_cancel(const char *title, const char *text,
 	char *s;
 	GtkWidget *mbox;
 
-	s = g_strdup_printf(APP_NAME " - %s", title);
+	s = g_strdup_printf(GTT_APP_PROPER_NAME " - %s", title);
 
 	mbox = gnome_message_box_new(text, GNOME_MESSAGE_BOX_QUESTION, ok_text, cancel_text, NULL);
 	gnome_dialog_set_default(GNOME_DIALOG(mbox), 1);

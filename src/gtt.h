@@ -22,11 +22,9 @@
 
 #include <gnome.h>
 
-#ifdef DEBUG
-#define APP_NAME "GTimeTracker DEBUG"
-#else
-#define APP_NAME "GTimeTracker"
-#endif
+#define GTT_APP_TITLE        "Gnome Time Tracker"
+#define GTT_APP_PROPER_NAME  "GnoTime"
+#define GTT_APP_NAME         "gnotime"
 
 #define XML_DATA_FILENAME "gnotime-data.xml"
 

@@ -81,7 +81,7 @@ about_box(GtkWidget *w, gpointer data)
 		gdk_window_raise(about->window);
 		return;
 	}
-	about = gnome_about_new(APP_NAME,
+	about = gnome_about_new(GTT_APP_TITLE,
 				    VERSION,
 				    "Copyright (C) 1997,98 Eckehard Berns\n"
 				    "Copyright (C) 2001,2002 Linas Vepstas",

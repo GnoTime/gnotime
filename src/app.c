@@ -38,17 +38,6 @@
 #include "util.h"
 
 
-/* I had some problems with the GtkStatusbar (frame and label didn't
-   get shown). So I defined this here */
-#define GTK_USE_STATUSBAR
-
-/* Due to the same problems I define this, if I want to include the
-   gtk_widget_show for the frame and the label of the statusbar */
-#ifdef GTK_USE_STATUSBAR
-#undef SB_USE_HACK
-#endif
-
-
 GttProject *cur_proj = NULL;
 
 ProjTreeWindow *global_ptw;
@@ -56,15 +45,10 @@ GtkWidget *window;
 GtkWidget *glist;
 GtkWidget *status_bar;
 
-#ifdef GTK_USE_STATUSBAR
 static GtkStatusbar *status_project = NULL;
 static GtkStatusbar *status_day_time = NULL;
 static GtkWidget *status_timer = NULL;
 static gint status_project_id = 1, status_day_time_id = 2;
-#else /* GTK_USE_STATUSBAR */
-static GtkLabel *status_project = NULL;
-static GtkLabel *status_day_time = NULL;
-#endif /* GTK_USE_STATUSBAR */
 
 char *config_command = NULL;
 char *config_command_null = NULL;
@@ -83,7 +67,8 @@ update_status_bar(void)
 	char *s;
 
 	if (!status_bar) return;
-	if (status_timer) {
+	if (status_timer) 
+	{
 		if (timer_is_running())
 			gtk_widget_show(status_timer);
 		else
@@ -96,40 +81,44 @@ update_status_bar(void)
 	gtt_project_list_total_secs_day(), config_show_secs);
 
 	s = g_strdup(day_total_str);
-	if (0 != strcmp(s, old_day_time)) {
-#ifdef GTK_USE_STATUSBAR
+	if (0 != strcmp(s, old_day_time)) 
+	{
 		gtk_statusbar_remove(status_day_time, 2, status_day_time_id);
 		status_day_time_id = gtk_statusbar_push(status_day_time, 2, s);
-#else /* not GTK_USE_STATUSBAR */
-		gtk_label_set(status_day_time, s);
-#endif /* not GTK_USE_STATUSBAR */
 		g_free(old_day_time);
 		old_day_time = s;
-	} else {
+	} 
+	else 
+	{
 		g_free(s);
 	}
-	if (cur_proj) {
+	
+	if (cur_proj) 
+	{
 		s = g_strdup_printf ("%s - %s", 
 		gtt_project_get_title(cur_proj),
 		gtt_project_get_desc(cur_proj));
-	} else {
+	} 
+	else 
+	{
 		s = g_strdup(_("no project selected"));
 	}
-	if (0 != strcmp(s, old_project)) {
-#ifdef GTK_USE_STATUSBAR
+
+	if (0 != strcmp(s, old_project)) 
+	{
 		gtk_statusbar_remove(status_project, 1, status_project_id);
 		status_project_id = gtk_statusbar_push(status_project, 1, s);
-#else /* not GTK_USE_STATUSBAR */
-		gtk_label_set(status_project, s);
-#endif /* not GTK_USE_STATUSBAR */
 		g_free(old_project);
 		old_project = s;
-	} else {
+	} 
+	else 
+	{
 		g_free(s);
 	}
 }
 
 
+/* ============================================================= */
 
 void 
 cur_proj_set(GttProject *proj)
@@ -184,6 +173,7 @@ cur_proj_set(GttProject *proj)
 }
 
 
+/* ============================================================= */
 
 void app_new(int argc, char *argv[], const char *geometry_string)
 {
@@ -191,52 +181,59 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	GtkWidget *widget;
 	gint x, y, w, h;
 
-	window = gnome_app_new("gtt", APP_NAME " " VERSION);
+	window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
 	gtk_window_set_wmclass(GTK_WINDOW(window),
-			       "gtt", "GTimeTracker");
+			       GTT_APP_NAME, GTT_APP_PROPER_NAME);
+
 	/* 320 x 220 seems to be a good size to default to */
 	gtk_window_set_default_size(GTK_WINDOW(window), 320, 220);
 	gtk_window_set_policy(GTK_WINDOW(window), TRUE, TRUE, FALSE);
+	
+	/* build menus */
 	menus_create(GNOME_APP(window));
+
+	/* build toolbar */
 	widget = build_toolbar();
 	gtk_widget_show(widget);
 	gnome_app_set_toolbar(GNOME_APP(window), GTK_TOOLBAR(widget));
+	
+	/* container holds status bar, main ctree widget */
 	vbox = gtk_vbox_new(FALSE, 0);
-
+	
+	/* build statusbar */
 	status_bar = gtk_hbox_new(FALSE, 0);
 	gtk_widget_show(status_bar);
 	gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
+	
+	/* put elapsed time into statusbar */
 	status_day_time = GTK_STATUSBAR(gtk_statusbar_new());
-#ifdef SB_USE_HACK
-	gtk_widget_show(GTK_WIDGET(status_day_time->frame));
-	gtk_widget_show(GTK_WIDGET(status_day_time->label));
-#endif /* SB_USE_HACK */
 	gtk_widget_show(GTK_WIDGET(status_day_time));
 	status_day_time_id = gtk_statusbar_push(status_day_time,
 						2, _("00:00"));
 	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_day_time),
 			   FALSE, FALSE, 1);
+	
+	/* put project name into statusbar */
 	status_project = GTK_STATUSBAR(gtk_statusbar_new());
-#ifdef SB_USE_HACK
-	gtk_widget_show(GTK_WIDGET(status_project->frame));
-	gtk_widget_show(GTK_WIDGET(status_project->label));
-#endif /* SB_USE_HACK */
 	gtk_widget_show(GTK_WIDGET(status_project));
 	status_project_id = gtk_statusbar_push(status_project,
 					       1, _("no project selected"));
 	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_project),
 			   TRUE, TRUE, 1);
+
+	/* put timer icon into statusbar */
 	status_timer = gtk_image_new_from_stock (GNOME_STOCK_TIMER, 
 			GTK_ICON_SIZE_MENU);
 	gtk_widget_show(status_timer);
 	gtk_box_pack_end(GTK_BOX(status_bar), GTK_WIDGET(status_timer),
 			 FALSE, FALSE, 1);
 
+	/* create the main columned tree for showing projects */
 	global_ptw = ctree_new();
 	glist = ctree_get_widget(global_ptw);
-
 	gtk_box_pack_end(GTK_BOX(vbox), glist->parent, TRUE, TRUE, 0);
 
+	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);
 	gnome_app_set_contents(GNOME_APP(window), vbox);
 

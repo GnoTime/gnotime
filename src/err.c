@@ -44,7 +44,7 @@ static void die(void)
 
 static void sig_handler(int signum)
 {
-	fprintf(stderr, "%s: Signal %d caught", APP_NAME, signum);
+	fprintf(stderr, "%s: Signal %d caught", GTT_APP_NAME, signum);
 	die();
 }
 
@@ -52,7 +52,7 @@ static void sig_handler(int signum)
 #ifdef DIE_ON_NORMAL_ERROR
 static int x11_error_handler(Display *d, XErrorEvent *e)
 {
-	fprintf(stderr, "%s: X11 error caight", APP_NAME);
+	fprintf(stderr, "%s: X11 error caight", GTT_APP_NAME);
 	die();
 	return 0; /* keep the compiler happy */
 }
@@ -60,7 +60,7 @@ static int x11_error_handler(Display *d, XErrorEvent *e)
 
 static int x11_io_error_handler(Display *d)
 {
-	fprintf(stderr, "%s: fatal X11 io error caight", APP_NAME);
+	fprintf(stderr, "%s: fatal X11 io error caight", GTT_APP_NAME);
 	die();
 	return 0; /* keep the compiler happy */
 }
