@@ -444,8 +444,9 @@ main(int argc, char *argv[])
 		{NULL, '\0', 0, NULL, 0}
 	};
 
-	gnome_init_with_popt_table("gtt", VERSION, argc, argv,
-				   geo_options, 0, NULL);
+	gnome_program_init(PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv, 
+		                   GNOME_PARAM_POPT_TABLE, geo_options, 
+		                   GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cromagnon.png");
 
 	bindtextdomain(GETTEXT_PACKAGE, GNOMELOCALEDIR);
@@ -460,7 +461,7 @@ main(int argc, char *argv[])
 			   GTK_SIGNAL_FUNC(session_die), NULL);
 #endif /* USE_SM */
 
-	glade_gnome_init();
+	glade_init();
 
 	/* gconf init is needed by gtkhtml */
 	gconf_init (argc, argv, NULL);

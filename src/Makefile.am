@@ -70,7 +70,11 @@ INCLUDES = 			\
 	-I$(includedir)		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\" \
+	-DPREFIX=\""$(prefix)"\" \
+	-DSYSCONFDIR=\""$(sysconfdir)/gnotime"\" \
 	-DGTTDATADIR=\""$(datadir)/gnotime"\" \
+	-DDATADIR=\""$(datadir)/gnotime"\" \
+	-DLIBDIR=\""$(libdir)/gnotime"\" \
 	${GNOME_INCLUDEDIR}	\
 	${GUILE_INCS}
 						 
