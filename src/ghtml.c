@@ -92,8 +92,8 @@ static GttGhtml *ghtml_guile_global_hack = NULL;
  * reports, but its a great place to understand how the other
  * code in this file works. */
 
-static void
-do_show_journal (GttGhtml *ghtml, GttProject*prj)
+static SCM
+do_show_journal (GttGhtml *ghtml, GttProject *prj)
 {
 	GList *node;
 	char *p;
@@ -192,6 +192,8 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 	
 	p = "</table>\n";
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
+
+	return SCM_UNSPECIFIED;  
 }
 
 /* ============================================================== */
@@ -218,7 +220,7 @@ reverse_list (SCM node_list)
 
 static SCM
 do_apply_on_project (GttGhtml *ghtml, SCM project, 
-             SCM (*func)(GttProject *))
+             SCM (*func)(GttGhtml *, GttProject *))
 {
 	GttProject * prj;
 	SCM rc;
@@ -227,7 +229,7 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 	if (SCM_NUMBERP(project))
 	{
 		prj = (GttProject *) gh_scm2ulong (project);
-		rc = func (prj);
+		rc = func (ghtml, prj);
 		return rc;
 	}
 
@@ -656,7 +658,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 static void
 do_show_project (GttGhtml *ghtml, GttProject *prj)
 {
-	(ghtml->write_stream) (ghtml, "duude", 5, ghtml->user_data);
+	(ghtml->write_stream) (ghtml, "like duude<br><br>", 5, ghtml->user_data);
 }
 
 /* ============================================================== */
@@ -674,22 +676,6 @@ gtt_hello (void)
 
 	/* maybe we should return something meaningful, like the string? */
 	return SCM_UNSPECIFIED;  
-}
-
-/* ============================================================== */
-
-static SCM 
-show_journal (void)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	GttProject *prj = ctree_get_focus_project (global_ptw);
-
-	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
-
-	do_show_journal (ghtml, prj);
-
-	/* I'm not sure returning the string is meaniful... */
-	return SCM_UNSPECIFIED;
 }
 
 /* ============================================================== */
@@ -1017,7 +1003,7 @@ ret_projects (void)
 
 #define RET_PROJECT_STR(RET_FUNC,GTT_GETTER)                        \
 static SCM                                                          \
-GTT_GETTER##_scm (GttProject *prj)                                  \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
 	return gh_str2scm (str, strlen (str));                           \
@@ -1033,6 +1019,16 @@ RET_FUNC (SCM proj_list)                                            \
 RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
 RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
 RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
+
+#define RET_PROJECT_TABLE(RET_FUNC,DO_TABLE)                        \
+static SCM                                                          \
+RET_FUNC (SCM proj_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_project (ghtml, proj_list, DO_TABLE);         \
+}
+
+RET_PROJECT_TABLE (show_journal, do_show_journal);
 
 /* ============================================================== */
 
@@ -1171,7 +1167,7 @@ static void
 register_procs (void)
 {
 	gh_new_procedure("gtt-hello",                gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
+	gh_new_procedure("gtt-show-journal",         show_journal,   1, 0, 0);
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
 	gh_new_procedure("gtt-show-export",          show_export,    1, 0, 0);
