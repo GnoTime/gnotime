@@ -56,7 +56,5 @@ void save_projects (void);
 void unlock_gtt(void);
 const char *gtt_gettext(const char *s);
 
-#define gtt_sure_string(x) ((x)?(x):"")
-
 
 #endif /* __GTT_H__ */

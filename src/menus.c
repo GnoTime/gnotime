@@ -20,6 +20,7 @@
 #include <gnome.h>
 #include <string.h>
 
+#include "export.h"
 #include "gtt.h"
 #include "journal.h"
 #include "menucmd.h"
@@ -32,15 +33,11 @@
 static GnomeUIInfo menu_main_file[] = {
 	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
 				  new_project, NULL),
-/*********** 
- * menu item for export --- but export is crufty so turn this off
- * *********
 	GNOMEUIINFO_SEPARATOR,
 	{GNOME_APP_UI_ITEM, N_("_Export Current State"), NULL,
-		export_current_state, NULL, NULL,
+		export_file_picker, NULL, NULL,
 		GNOME_APP_PIXMAP_STOCK, GTK_STOCK_SAVE,
 		'E', GDK_CONTROL_MASK, NULL},
- * *********/
 	GNOMEUIINFO_SEPARATOR,
 	GNOMEUIINFO_MENU_EXIT_ITEM(quit_app,NULL),
 	GNOMEUIINFO_END

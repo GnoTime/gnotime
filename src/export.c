@@ -17,28 +17,17 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-/*
 #include <config.h>
 #include <gnome.h>
 #include <string.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "cur-proj.h"
-#include "dialog.h"
-#include "err-throw.h"
-#include "file-io.h"
-#include "gtt.h"
-#include "menucmd.h"
-#include "menus.h"
-#include "prefs.h"
+#include "export.h"
 #include "proj.h"
-#include "props-proj.h"
-#include "timer.h"
-#include "xml-gtt.h"
-*/
 
 /* Project data export */
+
+#define gtt_sure_string(x) ((x)?(x):"")
 
 /* ======================================================= */
 
@@ -128,9 +117,9 @@ export_really (GtkWidget *widget, export_format_t *xp)
 		char *s;
 
 		s = g_strdup_printf (_("File %s exists, overwrite?"),
-				     filename);
+				     xp->uri);
 		w = gnome_question_dialog_parented (s, NULL, NULL,
-						    GTK_WINDOW (fsel));
+						    GTK_WINDOW (xp->picker));
 		g_free (s);
 
 		if (gnome_dialog_run (GNOME_DIALOG (w)) != 0)

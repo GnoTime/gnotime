@@ -7,6 +7,7 @@ gnotime_SOURCES = 		\
 	dialog.c	\
 	err.c		\
 	err-throw.c	\
+	export.c	\
 	file-io.c	\
 	ghtml.c		\
 	idle-timer.c	\
@@ -35,6 +36,7 @@ noinst_HEADERS = 	\
 	cur-proj.h	\
 	dialog.h	\
 	err-throw.h	\
+	export.h	\
 	file-io.h	\
 	ghtml.h		\
 	gtt.h		\
