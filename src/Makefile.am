@@ -11,6 +11,7 @@ gnotime_SOURCES = 		\
 	export.c	\
 	file-io.c	\
 	ghtml.c		\
+	ghtml-deprecated.c		\
 	idle-timer.c	\
 	journal.c	\
 	log.c		\
@@ -41,6 +42,7 @@ noinst_HEADERS = 	\
 	export.h	\
 	file-io.h	\
 	ghtml.h		\
+	ghtml-deprecated.h		\
 	gtt.h		\
 	idle-timer.h	\
 	journal.h	\

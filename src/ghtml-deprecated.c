@@ -735,7 +735,7 @@ decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 }
 
 static SCM
-show_journal (void)
+show_journal (SCM junk)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	do_show_journal (ghtml, ghtml->prj);
@@ -797,7 +797,7 @@ static void
 depr_register_procs (void)
 {
 	gh_new_procedure("gtt-hello",              gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-journal",       show_journal,   0, 0, 0);
+	gh_new_procedure("gtt-show-journal",       show_journal,   1, 0, 0);
 	gh_new_procedure("gtt-show-table",         show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",       show_invoice,   1, 0, 0);
 	gh_new_procedure("gtt-show-export",        show_export,    1, 0, 0);

@@ -35,6 +35,45 @@
 
 typedef struct gtt_ghtml_s GttGhtml;
 
+struct gtt_ghtml_s
+{
+	/* stream interface for writing */
+	void (*open_stream) (GttGhtml *, gpointer);
+	void (*write_stream) (GttGhtml *, const char *, size_t len, gpointer);
+	void (*close_stream) (GttGhtml *, gpointer);
+	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
+	gpointer user_data;
+
+	/* the 'linked' project */
+	GttProject *prj;
+	
+	gboolean show_links; /* Flag -- show internal <a href> links */
+
+	/* ------------------------------------------------------ */
+	/* deprecated portion of this struct -- will soon go away */
+	/* used only by ghtml-deprecated.c */
+	/* table layout info */
+
+	gboolean show_html;  /* Flag -- add html markup, or not */
+
+	/* field delimiter, for tab/comma delim */
+	char * delim;
+
+#define NCOL 30
+	int ntask_cols;
+	int task_cols[NCOL];
+	char * task_titles[NCOL];
+
+	int ninvl_cols;
+	int invl_cols[NCOL];
+	char * invl_titles[NCOL];
+
+	char **tp;
+};
+
+extern GttGhtml *ghtml_guile_global_hack;
+
+
 GttGhtml * gtt_ghtml_new (void);
 void gtt_ghtml_destroy (GttGhtml *p);
 
