@@ -115,11 +115,7 @@
 		      <child>
 			<widget class="GtkLabel" id="idle label">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">The timer has been idle hh:mm hours. Do you wish to restart it?
-
-(Translators: you do not need to translate this,
-it will be over-written by 
-another message).</property>
+			  <property name="label" translatable="yes">Dummy Text Do Not Translate</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -135,7 +131,7 @@ another message).</property>
 		  </child>
 		</widget>
 		<packing>
-		  <property name="padding">0</property>
+		  <property name="padding">5</property>
 		  <property name="expand">True</property>
 		  <property name="fill">False</property>
 		</packing>
@@ -168,9 +164,7 @@ another message).</property>
 		      <child>
 			<widget class="GtkLabel" id="credit label">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">The timer has already been credited with mm minutes since the last keyboard/mouse activity.  If you want to change the amount of time credited, use the slider below to adjust the value, and click &quot;Adjust&quot; to change it.
-
-(Translators: you do not need to translate this message, as it will be over-written by another)</property>
+			  <property name="label" translatable="yes">Dummy Text Do Not Translate</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -186,7 +180,7 @@ another message).</property>
 		  </child>
 		</widget>
 		<packing>
-		  <property name="padding">0</property>
+		  <property name="padding">5</property>
 		  <property name="expand">True</property>
 		  <property name="fill">False</property>
 		</packing>
@@ -213,7 +207,6 @@ another message).</property>
 	      <child>
 		<widget class="GtkLabel" id="time label">
 		  <property name="visible">True</property>
-		  <property name="sensitive">False</property>
 		  <property name="label" translatable="yes">hh:mm</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
