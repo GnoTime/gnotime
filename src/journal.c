@@ -33,6 +33,7 @@
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
+#include "dialog.h"
 #include "journal.h"
 #include "ghtml.h"
 #include "plug-in.h"
@@ -42,7 +43,9 @@
 #include "util.h"
 
 
-/* This struct is a random mish-mash of stuff, not well organized */
+/* This struct is a mish-mash of stuff relating to the
+ * HTML display window, and the various actions and etc.
+ * that can be taken from it. */
 
 typedef struct wiggy_s 
 {
@@ -50,25 +53,36 @@ typedef struct wiggy_s
 	GtkHTML   *html;
 	GtkHTMLStream  *html_stream;
 	GtkWidget *top;
+	GttProject  *prj;
+	char        *filepath;  /* file containing report template */
+
+	/* Interval edit menu widgets */
+	GttInterval * interval;
 	GtkWidget *interval_popup;
 	GtkWidget *interval_paste;
 	GtkWidget *interval_merge_up;
 	GtkWidget *interval_merge_down;
+	EditIntervalDialog *edit_ivl;
+
+	/* Task edit menu widgets */
+	GttTask     *task;
 	GtkWidget *task_popup;
 	GtkWidget *task_delete_memo;
 	GtkWidget *task_paste;
+
+	/* Mouse fly-over help */
 	GtkWidget *hover_help_window;
 	GtkLabel  *hover_label;
 	guint      hover_timeout_id;
-	GttPlugin   *plg;
-	char        *filepath;  /* file containing report template */
-	EditIntervalDialog *edit_ivl;
-	GttInterval * interval;
-	GttTask     *task;
-	GttProject  *prj;
 
+	/* Save-to-file dialog */
 	GtkFileSelection *filesel;
 	FILE        *fh;        /* file handle to save to */
+	GttPlugin   *plg;       /* file path save history */
+
+	/* Publish-to-URL dialog */
+	GtkWidget *publish_popup;
+	GtkWidget *publish_entry;
 } Wiggy;
 
 static void do_show_report (const char *, GttPlugin *, 
@@ -513,12 +527,40 @@ task_popup_cb (Wiggy *wig)
 
 /* ============================================================== */
 
+#if LATER
 static void 
 on_print_clicked_cb (GtkWidget *w, gpointer data)
 {
 	GladeXML  *glxml;
 	glxml = gtt_glade_xml_new ("glade/not-implemented.glade", "Not Implemented");
 }
+#endif
+
+/* ============================================================== */
+
+static void 
+on_publish_clicked_cb (GtkWidget *w, gpointer data)
+{
+	Wiggy *wig = data;
+	gtk_widget_show (wig->publish_popup);
+}
+
+static void 
+on_pub_cancel_clicked_cb (GtkWidget *w, gpointer data)
+{
+	Wiggy *wig = data;
+	gtk_widget_hide (wig->publish_popup);
+}
+
+static void 
+on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
+{
+	Wiggy *wig = data;
+printf ("duude ok %p\n", wig);
+	gtk_widget_hide (wig->publish_popup);
+}
+
+/* ============================================================== */
 
 static void 
 on_save_clicked_cb (GtkWidget *w, gpointer data)
@@ -958,7 +1000,7 @@ do_show_report (const char * report, GttPlugin *plg,
 		wiggy_close, wiggy_error);
 	
 	/* ---------------------------------------------------- */
-	/* signals for the browser, and the journal window */
+	/* Signals for the browser, and the Journal window */
 
 	glade_xml_signal_connect_data (glxml, "on_close_clicked",
 	        GTK_SIGNAL_FUNC (on_close_clicked_cb), wig);
@@ -966,8 +1008,13 @@ do_show_report (const char * report, GttPlugin *plg,
 	glade_xml_signal_connect_data (glxml, "on_save_clicked",
 	        GTK_SIGNAL_FUNC (on_save_clicked_cb), wig);
 	  
+#if LATER
 	glade_xml_signal_connect_data (glxml, "on_print_clicked",
 	        GTK_SIGNAL_FUNC (on_print_clicked_cb), wig);
+#endif
+	  
+	glade_xml_signal_connect_data (glxml, "on_publish_clicked",
+	        GTK_SIGNAL_FUNC (on_publish_clicked_cb), wig);
 	  
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
@@ -994,7 +1041,23 @@ do_show_report (const char * report, GttPlugin *plg,
 	gtk_widget_show (jnl_top);
 
 	/* ---------------------------------------------------- */
-	/* this is the popup menu that says 'edit/delete/merge' */
+	/* This is the popup for asking for the user to input an URL. */
+
+	glxml = gtt_glade_xml_new ("glade/journal.glade", "Publish Dialog");
+	wig->publish_popup = glade_xml_get_widget (glxml, "Publish Dialog");
+	wig->publish_entry = glade_xml_get_widget (glxml, "url entry");
+
+	glade_xml_signal_connect_data (glxml, "on_pub_help_clicked",
+	        GTK_SIGNAL_FUNC (gtt_help_popup), "gnotime.xml");
+	  
+	glade_xml_signal_connect_data (glxml, "on_pub_cancel_clicked",
+	        GTK_SIGNAL_FUNC (on_pub_cancel_clicked_cb), wig);
+	  
+	glade_xml_signal_connect_data (glxml, "on_pub_ok_clicked",
+	        GTK_SIGNAL_FUNC (on_pub_ok_clicked_cb), wig);
+	  
+	/* ---------------------------------------------------- */
+	/* This is the popup menu that says 'edit/delete/merge' */
 	/* for intervals */
 
 	glxml = gtt_glade_xml_new ("glade/interval_popup.glade", "Interval Popup");
