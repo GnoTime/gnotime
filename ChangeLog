@@ -1,7 +1,9 @@
 
 Thu Apr 1 2004 Linas Vepstas <linas@linas.org>
-   * (multiple) apply patch from Toshio Kuratomi <toshio@tiki-lounge.com>
-     sourceforge patch #871052
+   * Apply patch from Toshio Kuratomi <toshio@tiki-lounge.com>
+     sourceforge patch [ 871052 ] documentation build update
+   * Apply sourceforge patch [ 874752 ] I18N and install of gconf schema file
+     from Toshio Kuratomi - abadger1999
 
 Tue Dec  23 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* src/main.c: using signal(SIGCHLD, SIG_IGN) to reap zombie processes
