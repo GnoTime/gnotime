@@ -33,7 +33,7 @@ typedef struct _PropTaskDlg
 	GladeXML *gtxml;
 	GnomePropertyBox *dlg;
 	GtkEntry *memo;
-	GtkText *notes;
+	GtkTextView *notes;
 	GtkOptionMenu *billstatus;
 	GtkOptionMenu *billable;
 	GtkOptionMenu *billrate;
@@ -76,7 +76,7 @@ task_prop_set(GnomePropertyBox * pb, gint page, PropTaskDlg *dlg)
 			gtk_entry_set_text(dlg->memo, _("empty"));
 		}
 	
-		gtt_task_set_notes(dlg->task, xxxgtk_text_get_text(dlg->notes));
+		gtt_task_set_notes(dlg->task, xxxgtk_textview_get_text(dlg->notes));
 
 		ivl = (int) (60.0 * atof (gtk_entry_get_text(dlg->unit)));
 		gtt_task_set_bill_unit (dlg->task, ivl);
@@ -110,7 +110,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 
 		dlg->task = NULL;
 		gtk_entry_set_text(dlg->memo, "");
-		gtk_text_insert(dlg->notes, NULL, NULL, NULL, "", 0);
+		xxxgtk_textview_set_text(dlg->notes, "");
 		gtk_entry_set_text(dlg->unit, "0.0");
 		return;
 	}
@@ -120,7 +120,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	dlg->task = tsk;
 
 	gtk_entry_set_text(dlg->memo, gtt_task_get_memo(tsk));
-	xxxgtk_text_set_text(dlg->notes, gtt_task_get_notes (tsk));
+	xxxgtk_textview_set_text(dlg->notes, gtt_task_get_notes (tsk));
 
 	g_snprintf (buff, 132, "%g", ((double) gtt_task_get_bill_unit(tsk))/60.0);
 	gtk_entry_set_text(dlg->unit, buff);
@@ -204,7 +204,7 @@ prop_task_dialog_new (void)
 	/* grab the various entry boxes and hook them up */
 
 	dlg->memo       = GTK_ENTRY(TAGGED("memo box"));
-	dlg->notes      = GTK_TEXT(TAGGED("notes box"));
+	dlg->notes      = GTK_TEXT_VIEW(TAGGED("notes box"));
 	dlg->billstatus = MUGGED("billstatus menu");
 	dlg->billable   = MUGGED("billable menu");
 	dlg->billrate   = MUGGED("billrate menu");

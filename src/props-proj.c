@@ -35,7 +35,7 @@ typedef struct _PropDlg
 	GnomePropertyBox *dlg;
 	GtkEntry *title;
 	GtkEntry *desc;
-	GtkText  *notes;
+	GtkTextView *notes;
 
 	GtkEntry *regular;
 	GtkEntry *overtime;
@@ -96,7 +96,7 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 		}
 	
 		gtt_project_set_desc(dlg->proj, gtk_entry_get_text(dlg->desc));
-		gtt_project_set_notes(dlg->proj, xxxgtk_text_get_text(dlg->notes));
+		gtt_project_set_notes(dlg->proj, xxxgtk_textview_get_text(dlg->notes));
 		gtt_project_thaw (dlg->proj);
 	}
 
@@ -176,7 +176,7 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 		dlg->proj = NULL;
 		gtk_entry_set_text(dlg->title, "");
 		gtk_entry_set_text(dlg->desc, "");
-		gtk_text_insert(dlg->notes, NULL, NULL, NULL, "", 0);
+		xxxgtk_textview_set_text(dlg->notes, "");
 		gtk_entry_set_text(dlg->regular, "0.0");
 		gtk_entry_set_text(dlg->overtime, "0.0");
 		gtk_entry_set_text(dlg->overover, "0.0");
@@ -200,7 +200,7 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 
 	gtk_entry_set_text(dlg->title, gtt_project_get_title(proj));
 	gtk_entry_set_text(dlg->desc, gtt_project_get_desc(proj));
-	xxxgtk_text_set_text(dlg->notes, gtt_project_get_notes (proj));
+	xxxgtk_textview_set_text(dlg->notes, gtt_project_get_notes (proj));
 
 	/* hack alert should use local currencies for this */
 	g_snprintf (buff, 132, "%.2f", gtt_project_get_billrate(proj));
@@ -327,7 +327,7 @@ prop_dialog_new (void)
 
 	dlg->title      = GTK_ENTRY(TAGGED("title box"));
 	dlg->desc       = GTK_ENTRY(TAGGED("desc box"));
-	dlg->notes      = GTK_TEXT(TAGGED("notes box"));
+	dlg->notes      = GTK_TEXT_VIEW(TAGGED("notes box"));
 
 	dlg->regular    = GTK_ENTRY(TAGGED("regular box"));
 	dlg->overtime   = GTK_ENTRY(TAGGED("overtime box"));

@@ -228,20 +228,22 @@ is_same_day (time_t ta, time_t tb)
 /* ============================================================== */
 
 void
-xxxgtk_text_set_text (GtkText *text, const char *str)
+xxxgtk_textview_set_text (GtkTextView *text, const char *str)
 {
-	gint pos=0;
+	GtkTextBuffer *buff = gtk_text_view_get_buffer (text);
 	if (!str) str = "";
-	gtk_editable_delete_text (GTK_EDITABLE (text), 0, -1);
-	gtk_editable_insert_text (GTK_EDITABLE (text), str,
-                            strlen(str), &pos);
+	gtk_text_buffer_set_text (buff, str, strlen (str));
 
 }
 
 const char *
-xxxgtk_text_get_text (GtkText *text)
+xxxgtk_textview_get_text (GtkTextView *text)
 {
- 	return gtk_editable_get_chars (GTK_EDITABLE(text), 0, -1);
+	GtkTextIter start, end;
+	GtkTextBuffer *buff = gtk_text_view_get_buffer (text);
+	gtk_text_buffer_get_start_iter (buff, &start);
+	gtk_text_buffer_get_end_iter (buff, &end);
+	return gtk_text_buffer_get_text(buff, &start, &end, TRUE);
 }
 
 /* ============================================================== */
