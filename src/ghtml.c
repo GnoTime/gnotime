@@ -23,6 +23,7 @@
 #include <guile/gh.h>
 #include <libguile/backtrace.h>
 #include <libguile/debug.h>
+#include <libguile.h>
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -80,9 +81,9 @@ reverse_list (SCM node_list)
 
 	while (FALSE == SCM_NULLP(node_list))
 	{
-		node = gh_car (node_list);
-		rc = gh_cons (node, rc);
-		node_list = gh_cdr (node_list);
+		node = SCM_CAR (node_list);
+		rc = scm_cons (node, rc);
+		node_list = SCM_CDR (node_list);
 	}
 	return rc;
 }
@@ -160,7 +161,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		if (FALSE == SCM_NULLP(node))
 		{
 			SCM type;
-			type = gh_cdr (node);
+			type = SCM_CDR (node);
 			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
 			{
 				cur_type = GTT_NONE;
@@ -185,7 +186,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 					g_warning ("Unknown GTT list type\n");
 					return SCM_EOL;
 				}
-				node_list = gh_car (node);
+				node_list = SCM_CAR (node);
 				return do_apply_based_on_type (ghtml, node_list, cur_type, 
 				               str_func, prj_func, tsk_func, ivl_func);
 			}
@@ -196,16 +197,16 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		while (FALSE == SCM_NULLP(node_list))
 		{
 			SCM evl;
-			node = gh_car (node_list);
+			node = SCM_CAR (node_list);
 			
 			evl = do_apply_based_on_type (ghtml, node, cur_type, 
 				               str_func, prj_func, tsk_func, ivl_func);
 			
 			if (FALSE == SCM_NULLP (evl))
 			{
-				rc = gh_cons (evl, rc);
+				rc = scm_cons (evl, rc);
 			}
-			node_list = gh_cdr (node_list);
+			node_list = SCM_CDR (node_list);
 		}
 
 		/* reverse the list. Ughh */
@@ -274,7 +275,7 @@ kvp_cb (GttGhtml *ghtml, const char *key)
 	if (!val) return SCM_EOL;
 	str = kvp_value_get_string (val);
 	if (!str) return SCM_EOL;
-	return gh_str2scm (str, strlen (str));
+	return scm_mem2string (str, strlen (str));
 }
 
 static SCM
@@ -336,9 +337,9 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		SCM node_list = node;
 		do
 		{
-			node = gh_car (node_list);
+			node = SCM_CAR (node_list);
 			do_show_scm (ghtml, node);
-			node_list = gh_cdr (node_list);
+			node_list = SCM_CDR (node_list);
 		}
 		while (SCM_CONSP(node_list));
 		do_show_scm (ghtml, node_list);
@@ -391,8 +392,8 @@ do_ret_project (GttGhtml *ghtml, GttProject *prj)
 	rc = gh_ulong2scm ((unsigned long) prj);
 
 	/* Label the pointer with a type identifier */
-	node = gh_str2scm ("gtt-project-ptr", 15);
-	rc = gh_cons (rc, node);
+	node = scm_mem2string ("gtt-project-ptr", 15);
+	rc = scm_cons (rc, node);
 	
 	return rc;
 }
@@ -486,13 +487,13 @@ g_list_to_scm (GList * gplist, const char * type)
 		for (n= gplist; n; n=n->prev)
 		{
 			node = gh_ulong2scm ((unsigned long) n->data);
-			rc = gh_cons (node, rc);
+			rc = scm_cons (node, rc);
 		}
 	}
 	
 	/* Prepend type label */
-	node = gh_str2scm (type, strlen (type));
-	rc = gh_cons (rc, node);
+	node = scm_mem2string (type, strlen (type));
+	rc = scm_cons (rc, node);
 	
 	return rc;
 }
@@ -529,11 +530,11 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 		if (subprjs)
 		{
 			node = do_ret_project_list (ghtml, subprjs);
-			rc = gh_cons (node, rc);
+			rc = scm_cons (node, rc);
 		}
 #endif 
 		node = gh_ulong2scm ((unsigned long) prj);
-		rc = gh_cons (node, rc);
+		rc = scm_cons (node, rc);
 	}
 	return rc;
 }
@@ -605,7 +606,7 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
       SCM node;
 		
 		node = gh_ulong2scm ((unsigned long) tsk);
-		rc = gh_cons (node, rc);
+		rc = scm_cons (node, rc);
 	}
 	return rc;
 }
@@ -648,7 +649,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 		SCM node;
 		
 		node = gh_ulong2scm ((unsigned long) ivl);
-		rc = gh_cons (node, rc);
+		rc = scm_cons (node, rc);
 	}
 	return rc;
 }
@@ -702,28 +703,28 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		rpt = SCM_EOL;
 		/* Append the list of tasks and intervals for this day */
 		node = g_list_to_scm (bu->intervals, "gtt-interval-list");
-		rpt = gh_cons (node, rpt);
+		rpt = scm_cons (node, rpt);
 		node = g_list_to_scm (bu->tasks, "gtt-task-list");
-		rpt = gh_cons (node, rpt);
+		rpt = scm_cons (node, rpt);
 		
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
 		qof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
-		node = gh_str2scm (buff, strlen (buff));
-		rpt = gh_cons (node, rpt);
+		node = scm_mem2string (buff, strlen (buff));
+		rpt = scm_cons (node, rpt);
 		
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
 		qof_print_date_buff (buff, 100, rptdate);
-		node = gh_str2scm (buff, strlen (buff));
-		rpt = gh_cons (node, rpt);
+		node = scm_mem2string (buff, strlen (buff));
+		rpt = scm_cons (node, rpt);
 
 		/* Put a data type in the cdr slot */
-		node = gh_str2scm ("gtt-daily", 9);
-		rpt = gh_cons (rpt, node);
+		node = scm_mem2string ("gtt-daily", 9);
+		rpt = scm_cons (rpt, node);
 		
-		rc = gh_cons (rpt, rc);
+		rc = scm_cons (rpt, rc);
 	}
 	g_array_free (arr, TRUE);
 
@@ -763,7 +764,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
 	if (NULL == str) return SCM_EOL;                                 \
-	return gh_str2scm (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                           \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 		  
@@ -816,12 +817,12 @@ get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
 		g_string_append_printf (str, "<a href=\"gtt:proj:0x%lx\">", (long) prj);
 		g_string_append (str, gtt_project_get_title (prj)); 
 		g_string_append (str, "</a>");
-		return gh_str2scm (str->str, str->len);
+		return scm_mem2string (str->str, str->len);
 	}
 	else 
 	{
 		const char * str = gtt_project_get_title (prj); 
-		return gh_str2scm (str, strlen (str));
+		return scm_mem2string (str, strlen (str));
 	}
 }
 
@@ -899,7 +900,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
 {                                                                   \
 	const char * str = GTT_GETTER (tsk);                             \
-	return gh_str2scm (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                           \
 }                                                                   \
                                                                     \
 static SCM                                                          \
@@ -927,12 +928,12 @@ get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 		g_string_append_printf (str, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
 		g_string_append (str, gtt_task_get_memo (tsk)); 
 		g_string_append (str, "</a>");
-		return gh_str2scm (str->str, str->len);
+		return scm_mem2string (str->str, str->len);
 	}
 	else 
 	{
 		const char * str = gtt_task_get_memo (tsk); 
-		return gh_str2scm (str, strlen (str));
+		return scm_mem2string (str, strlen (str));
 	}
 }
 
@@ -1011,7 +1012,7 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 
 	task_secs = gtt_task_get_secs_ever(tsk);
 	qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
-	return gh_str2scm (buff, strlen (buff));
+	return scm_mem2string (buff, strlen (buff));
 }
 
 static SCM
@@ -1037,7 +1038,7 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	/* hack alert should use i18n currency/monetary printing */
 	snprintf (buff, 100, "$%.2f", value+0.0049);
 						
-	return gh_str2scm (buff, strlen (buff));
+	return scm_mem2string (buff, strlen (buff));
 }
 
 RET_TASK_STR (ret_task_billstatus, task_get_billstatus)
@@ -1062,7 +1063,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
 {                                                                   \
 	const char * str = GTT_GETTER (ivl);                             \
-	return gh_str2scm (str, strlen (str));                           \
+	return scm_mem2string (str, strlen (str));                           \
 }                                                                   \
 RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
 
@@ -1089,7 +1090,7 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	elapsed = gtt_interval_get_stop (ivl);
 	elapsed -= gtt_interval_get_start (ivl);
 	qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
-	return gh_str2scm (buff, strlen (buff));
+	return scm_mem2string (buff, strlen (buff));
 }
 
 RET_IVL_SIMPLE (ret_ivl_elapsed_str, get_ivl_elapsed_str);
@@ -1113,11 +1114,11 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 		g_string_append_printf (str, "<a href=\"gtt:interval:0x%lx\">", (long) ivl);
 		g_string_append (str, buff); 
 		g_string_append (str, "</a>");
-		return gh_str2scm (str->str, str->len);
+		return scm_mem2string (str->str, str->len);
 	}
 	else
 	{
-		return gh_str2scm (buff, strlen (buff));
+		return scm_mem2string (buff, strlen (buff));
 	}
 	
 	return SCM_EOL; /* Not reached */
@@ -1171,7 +1172,7 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	char buff[100];
 
 	qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
-	return gh_str2scm (buff, strlen (buff));
+	return scm_mem2string (buff, strlen (buff));
 }
 
 RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
