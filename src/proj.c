@@ -1399,11 +1399,26 @@ project_compute_secs (GttProject *proj)
 			 */
 			if (ivl->start >= midnight-24*3600)
 			{
-				total_yesterday += ivl->stop - ivl->start;
+				if (ivl->stop <= midnight)
+				{
+					total_yesterday += ivl->stop - ivl->start;
+				}
+				else 
+				{
+					total_yesterday += midnight - ivl->start;
+				}
 			}
-			else if (ivl->stop > midnight-24*3600)
+			else  /* else .. it started before midnight yesterday */
+			if (ivl->stop > midnight-24*3600)
 			{
-				total_yesterday += ivl->stop - midnight;
+				if (ivl->stop <= midnight)
+				{
+					total_yesterday += ivl->stop - (midnight-24*3600);
+				}
+				else 
+				{
+					total_yesterday += 24*3600;
+				}
 			}
 
 			/* Accum time last week. */
