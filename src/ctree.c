@@ -1323,13 +1323,13 @@ ctree_refresh (ProjTreeWindow *ptw)
 	if (!ptw) return;
 	tree_w = ptw->ctree;
 
-	/* freeze, in prep for a massive update */
+	/* Freeze, in prep for a massive update */
 	gtk_clist_freeze(GTK_CLIST(tree_w));
 
-	/* make sure the right set of columns are visibile */
+	/* Make sure the right set of columns are visibile */
 	ctree_update_column_visibility (ptw);
 
-	/* now, draw each project */
+	/* Now, draw each project */
 	prjlist = gtt_get_project_list();
 	refresh_list (ptw, prjlist);
 

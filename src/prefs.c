@@ -1,4 +1,4 @@
-/*   Global Preferences for GTimeTracker - a time tracker
+/*   GUI dialog for global application preferences for GTimeTracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
  *
