@@ -63,8 +63,6 @@ struct gtt_ghtml_s
 	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
 	gpointer user_data;
 
-	GttProject *prj;
-
 	gboolean show_html;  /* Flag -- add html markup, or not */
 	gboolean show_links; /* Flag -- show internal <a href> links */
 
@@ -89,7 +87,10 @@ struct gtt_ghtml_s
 static GttGhtml *ghtml_guile_global_hack = NULL;   
 
 /* ============================================================== */
-/* a simple, hard-coded version of show_table */
+/* This routine outputs a simple, hard-coded table showing the 
+ * project journal.  Its not terribly useful for use inside of
+ * reports, but its a great place to understand how the other
+ * code in this file works. */
 
 static void
 do_show_journal (GttGhtml *ghtml, GttProject*prj)
@@ -191,6 +192,72 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 	
 	p = "</table>\n";
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
+}
+
+/* ============================================================== */
+/* This routine will reverse the order of a scheme list */
+
+static SCM
+reverse_list (SCM node_list)
+{
+	SCM rc, node;
+	rc = gh_eval_str ("()");
+
+	while (FALSE == SCM_NULLP(node_list))
+	{
+		node = gh_car (node_list);
+		rc = gh_cons (node, rc);
+		node_list = gh_cdr (node_list);
+	}
+	return rc;
+}
+
+/* ============================================================== */
+/* A routine to recursively apply a scheme form to a hierarchical 
+ * list of gtt projects.  It returns the result of the apply. */
+
+static SCM
+do_apply_on_project (GttGhtml *ghtml, SCM project, 
+             SCM (*func)(GttProject *))
+{
+	GttProject * prj;
+	SCM rc;
+
+	/* If its a number, its in fact a pointer to the C struct. */
+	if (SCM_NUMBERP(project))
+	{
+		prj = (GttProject *) gh_scm2ulong (project);
+		rc = func (prj);
+		return rc;
+	}
+
+	/* if its a list, then process the list */
+	else if (SCM_CONSP(project))
+	{
+		SCM proj_list = project;
+		
+		/* Get a pointer to null */
+		rc = gh_eval_str ("()");
+	
+		while (FALSE == SCM_NULLP(proj_list))
+		{
+			SCM evl;
+			project = gh_car (proj_list);
+			evl = do_apply_on_project (ghtml, project, func);
+			rc = gh_cons (evl, rc);
+			proj_list = gh_cdr (proj_list);
+		}
+
+		/* reverse the list. Ughh */
+		/* gh_reverse (rc);  this doesn't work, to it manually */
+		rc = reverse_list (rc);
+		
+		return rc;
+	}
+	
+	g_warning ("expecting gtt project as argument, got something else\n");
+	rc = gh_eval_str ("()");
+	return rc;
 }
 
 /* ============================================================== */
@@ -610,65 +677,16 @@ gtt_hello (void)
 }
 
 /* ============================================================== */
-/* This routine is deprecated, and should be ripped out
- * when a suitable scheme replacement func has been written for 
- * (gtt-show-project-title).  In the meanwhile, we need to keep it
- * around so that we don't break existing reports that people
- * may have written.
- */
-
-static SCM 
-deprecated_show_project_title (void)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	GttProject *prj = ctree_get_focus_project (global_ptw);
-	const char *p;
-
-	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
-
-	p = gtt_project_get_title (prj);
-
-	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
-
-	/* maybe we should return something meaningful, like the string? */
-	return SCM_UNSPECIFIED;
-}
-
-/* ============================================================== */
-/* This routine is deprecated, and should be ripped out
- * when a suitable scheme replacement func has been written for 
- * (gtt-show-project-desc).  In the meanwhile, we need to keep it
- * around so that we don't break existing reports that people
- * may have written.
- */
-
-static SCM 
-deprecated_show_project_desc (void)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	GttProject *prj = ctree_get_focus_project (global_ptw);
-	const char *p;
-
-	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
-
-	p = gtt_project_get_desc (prj);
-	
-	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
-
-	/* maybe we should return something meaningful, like the string? */
-	return SCM_UNSPECIFIED;
-}
-
-/* ============================================================== */
 
 static SCM 
 show_journal (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
-	do_show_journal (ghtml, ghtml->prj);
+	do_show_journal (ghtml, prj);
 
 	/* I'm not sure returning the string is meaniful... */
 	return SCM_UNSPECIFIED;
@@ -810,9 +828,10 @@ show_table (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-table");
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_table (ghtml, ghtml->prj, FALSE);
+	do_show_table (ghtml, prj, FALSE);
 	return rc;
 }
 
@@ -821,9 +840,10 @@ show_invoice (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-invoice");
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_table (ghtml, ghtml->prj, TRUE);
+	do_show_table (ghtml, prj, TRUE);
 	return rc;
 }
 
@@ -834,6 +854,7 @@ show_export (SCM col_list)
 	gboolean save_show_html = ghtml->show_html;
 	char *save_delim = ghtml->delim;
 	
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-export");
 	rc = decode_scm_col_list (ghtml, col_list);
@@ -841,7 +862,7 @@ show_export (SCM col_list)
 	ghtml->show_html = FALSE;
 	ghtml->delim = "\t";
 	
-	do_show_table (ghtml, ghtml->prj, FALSE);
+	do_show_table (ghtml, prj, FALSE);
 	
 	ghtml->show_html = save_show_html;
 	ghtml->delim = save_delim;
@@ -854,9 +875,10 @@ show_project (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-project");
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_project (ghtml, ghtml->prj);
+	do_show_project (ghtml, prj);
 	return rc;
 }
 
@@ -984,78 +1006,28 @@ ret_projects (void)
 }
 
 /* ============================================================== */
-
-static SCM
-reverse_list (SCM node_list)
-{
-	SCM rc, node;
-	rc = gh_eval_str ("()");
-
-	while (FALSE == SCM_NULLP(node_list))
-	{
-		node = gh_car (node_list);
-		rc = gh_cons (node, rc);
-		node_list = gh_cdr (node_list);
-	}
-	return rc;
-}
-
-/* This routine will call a generic gtt project function (that 
- * takes a Gtt project as an argument), and return its string 
- * value as a scheme object.   It will also accept a scheme
- * list of projects, and output the appropriate strings for that.
+/* Define a set of subroutines that accept a scheme list of projects,
+ * applies the gtt_project function on each, and then returns a 
+ * scheme list containing the results.   
+ *
+ * For example, ret_project_title() takes a scheme list of gtt
+ * projects, gets the project title for each, and then returns
+ * a scheme list of the project titles.
  */
 
-static SCM
-do_ret_project_str (GttGhtml *ghtml, SCM node, 
-             const char * (*func)(GttProject *))
-{
-	const char * str;
-	GttProject * prj;
-	SCM rc;
-
-	/* If its a number, its in fact a pointer to the C struct. */
-	if (SCM_NUMBERP(node))
-	{
-		prj = (GttProject *) gh_scm2ulong (node);
-		str = func (prj);
-		rc = gh_str2scm (str, strlen (str));
-		return rc;
-	}
-
-	/* if its a list, then process the list */
-	else if (SCM_CONSP(node))
-	{
-		SCM node_list = node;
-		
-		/* Get a pointer to null */
-		rc = gh_eval_str ("()");
-	
-		while (FALSE == SCM_NULLP(node_list))
-		{
-			SCM evl;
-			node = gh_car (node_list);
-			evl = do_ret_project_str (ghtml, node, func);
-			rc = gh_cons (evl, rc);
-			node_list = gh_cdr (node_list);
-		}
-
-		/* reverse the list. Ughh */
-		/* gh_reverse (rc);  this doesn't work, to it manually */
-		rc = reverse_list (rc);
-		
-		return rc;
-	}
-	
-	g_warning ("expecting gtt project as argument, got something else\n");
-	rc = gh_str2scm ("(null)", 6);
-	return rc;
-}
-
-#define RET_PROJECT_STR(RET_FUNC,GTT_GETTER)                       \
-static SCM RET_FUNC (SCM node) {                                   \
-	GttGhtml *ghtml = ghtml_guile_global_hack;                      \
-	return do_ret_project_str (ghtml, node, GTT_GETTER);            \
+#define RET_PROJECT_STR(RET_FUNC,GTT_GETTER)                        \
+static SCM                                                          \
+GTT_GETTER##_scm (GttProject *prj)                                  \
+{                                                                   \
+	const char * str = GTT_GETTER (prj);                             \
+	return gh_str2scm (str, strlen (str));                           \
+}                                                                   \
+                                                                    \
+static SCM                                                          \
+RET_FUNC (SCM proj_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
 }
 
 RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
@@ -1091,11 +1063,13 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		}
 		return;
 	}
-	ghtml->prj = prj;
 	
 	/* ugh. gag. choke. puke. */
 	ghtml_guile_global_hack = ghtml;
 
+	/* Load predefined scheme forms */
+	gh_eval_file (gtt_ghtml_resolve_path("gtt.scm"));
+	
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream)
 	{
@@ -1187,10 +1161,8 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 }
 
 /* ============================================================== */
-/* Register callback handlers for various scheme forms.  We need to
- * keep the deprecated callbacks around until a suitable scheme
- * replacement has been written, so that we don't break any existing
- * custom reports that users may have written.
+/* Register callback handlers for various internally defined 
+ * scheme forms. 
  */
 
 static int is_inited = 0;
@@ -1199,8 +1171,6 @@ static void
 register_procs (void)
 {
 	gh_new_procedure("gtt-hello",                gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-project-title",   deprecated_show_project_title,  0, 0, 0);
-	gh_new_procedure("gtt-show-project-desc",    deprecated_show_project_desc,   0, 0, 0);
 	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
@@ -1235,7 +1205,6 @@ gtt_ghtml_new (void)
 	p->show_links = TRUE;
 	p->delim = "";
 
-	p->prj = NULL;
 	p->ninvl_cols = 0;
 	p->ntask_cols = 0;
 	p->tp = NULL;
