@@ -1,4 +1,21 @@
 
+Mon Dec 30 17:50:10 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* ctree.c: fix expander save-state bug
+	* *.c: fix misc minor memory leak bugs
+	* main.c: make automatic backups of data.
+	* menus.c: add 'edit task' menu entry to right-button project click
+	* ctree.c: fix focus-project bug when creating new projects
+	* idle.glade: start of a new idle-timeout message dialog
+
+Sun Dec 29 11:32:16 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* ghtml.c: add task getters for scheme
+	* primer.ghtml: demo use of task getters.
+	* ghtml.c: segragate out (soon-to-be) deprecated routines.
+	* gtt.scm: add utilities for displaying task lists.
+	* Release gnotime-2.1.2
+
 Sat Dec 28 19:54:39 CST 2002 Linas Vepstas <linas@linas.org>
 
    * gtt.scm: add utilities for display to-do list
