@@ -50,19 +50,6 @@ typedef enum {
 	ELAPSED,
 	FUZZ,
 
-	/* project things */
-	TITLE =200,
-	DESC,
-	PNOTES,
-	EST_START,
-	EST_END,
-	DUE_DATE,
-	SIZING,
-	PERCENT,
-	URGENCY,
-	IMPORTANCE,
-	STATUS
-
 } TableCol;
 
 #define NCOL 30
@@ -84,9 +71,6 @@ struct gtt_ghtml_s
 	char * delim;
 
 	/* table layout info */
-	int nproj_cols;
-	TableCol proj_cols[NCOL];
-	char * proj_titles[NCOL];
 
 	int ntask_cols;
 	TableCol task_cols[NCOL];
@@ -724,13 +708,6 @@ gtt_hello (void)
  * for later use.
  */
 
-#define PROJ_COL(TYPE) {                                        \
-        ghtml->proj_cols[ghtml->nproj_cols] = TYPE;             \
-        ghtml->tp = &(ghtml->proj_titles[ghtml->nproj_cols]);   \
-        *(ghtml->tp) = NULL;                                    \
-        if (NCOL-1 > ghtml->nproj_cols) ghtml->nproj_cols ++;   \
-}
-
 #define TASK_COL(TYPE) {                                        \
         ghtml->task_cols[ghtml->ntask_cols] = TYPE;             \
         ghtml->tp = &(ghtml->task_titles[ghtml->ntask_cols]);   \
@@ -755,61 +732,6 @@ decode_column (GttGhtml *ghtml, const char * tok)
 			if (*ghtml->tp) g_free (*ghtml->tp);
 			*ghtml->tp = g_strdup (tok);
 		}
-	}
-	else
-	if (0 == strncmp (tok, "$title", 6))
-	{
-		PROJ_COL (TITLE);
-	}
-	else
-	if (0 == strncmp (tok, "$desc", 5))
-	{
-		PROJ_COL (DESC);
-	}
-	else
-	if (0 == strncmp (tok, "$pnotes", 7))
-	{
-		PROJ_COL (PNOTES);
-	}
-	else
-	if (0 == strncmp (tok, "$est_start", 10))
-	{
-		PROJ_COL (EST_START);
-	}
-	else
-	if (0 == strncmp (tok, "$est_end", 8))
-	{
-		PROJ_COL (EST_END);
-	}
-	else
-	if (0 == strncmp (tok, "$due_date", 9))
-	{
-		PROJ_COL (DUE_DATE);
-	}
-	else
-	if (0 == strncmp (tok, "$sizing", 7))
-	{
-		PROJ_COL (SIZING);
-	}
-	else
-	if (0 == strncmp (tok, "$percent", 8))
-	{
-		PROJ_COL (PERCENT);
-	}
-	else
-	if (0 == strncmp (tok, "$urgency", 8))
-	{
-		PROJ_COL (URGENCY);
-	}
-	else
-	if (0 == strncmp (tok, "$importance", 11))
-	{
-		PROJ_COL (IMPORTANCE);
-	}
-	else
-	if (0 == strncmp (tok, "$status", 7))
-	{
-		PROJ_COL (STATUS);
 	}
 	else
 	if (0 == strncmp (tok, "$start_datime", 13))
@@ -895,7 +817,6 @@ decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 	/* reset the parser */
 	ghtml->ninvl_cols = 0;
 	ghtml->ntask_cols = 0;
-	ghtml->nproj_cols = 0;
 		
 	while (FALSE == SCM_NULLP(col_list))
 	{
@@ -1121,9 +1042,46 @@ RET_FUNC (SCM proj_list)                                            \
 	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
 }
 
-RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
-RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
-RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
+#define RET_PROJECT_LONG(RET_FUNC,GTT_GETTER)                       \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
+{                                                                   \
+	long i = GTT_GETTER (prj);                                       \
+	return gh_long2scm (i);                                          \
+}                                                                   \
+                                                                    \
+static SCM                                                          \
+RET_FUNC (SCM proj_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
+}
+
+#define RET_PROJECT_ULONG(RET_FUNC,GTT_GETTER)                      \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
+{                                                                   \
+	unsigned long i = GTT_GETTER (prj);                              \
+	return gh_ulong2scm (i);                                         \
+}                                                                   \
+                                                                    \
+static SCM                                                          \
+RET_FUNC (SCM proj_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_project (ghtml, proj_list, GTT_GETTER##_scm); \
+}
+
+
+RET_PROJECT_STR   (ret_project_title, gtt_project_get_title)
+RET_PROJECT_STR   (ret_project_desc,  gtt_project_get_desc)
+RET_PROJECT_STR   (ret_project_notes, gtt_project_get_notes)
+RET_PROJECT_ULONG (ret_project_est_start, gtt_project_get_estimated_start)
+RET_PROJECT_ULONG (ret_project_est_end,   gtt_project_get_estimated_end)
+RET_PROJECT_ULONG (ret_project_due_date,  gtt_project_get_due_date)
+
+RET_PROJECT_LONG  (ret_project_sizing,  gtt_project_get_sizing)
+RET_PROJECT_LONG  (ret_project_percent, gtt_project_get_percent_complete)
 
 
 /* ============================================================== */
@@ -1374,6 +1332,11 @@ register_procs (void)
 	gh_new_procedure("gtt-project-urgency",    ret_project_urgency,    1, 0, 0);
 	gh_new_procedure("gtt-project-importance", ret_project_importance, 1, 0, 0);
 	gh_new_procedure("gtt-project-status",     ret_project_status,     1, 0, 0);
+	gh_new_procedure("gtt-project-estimated-start", ret_project_est_start, 1, 0, 0);
+	gh_new_procedure("gtt-project-estimated-end", ret_project_est_end, 1, 0, 0);
+	gh_new_procedure("gtt-project-due-date",   ret_project_due_date, 1, 0, 0);
+	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
+	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
 }
 
 
@@ -1399,12 +1362,10 @@ gtt_ghtml_new (void)
 
 	p->ninvl_cols = 0;
 	p->ntask_cols = 0;
-	p->nproj_cols = 0;
 	p->tp = NULL;
 
 	for (i=0; i<NCOL; i++)
 	{
-		p->proj_titles[i] = NULL;
 		p->task_titles[i] = NULL;
 		p->invl_titles[i] = NULL;
 	}
