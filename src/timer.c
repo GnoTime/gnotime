@@ -39,7 +39,7 @@ int config_autosave_period = 60;
 int config_autosave_props_period = (4*3600);
 
 static gint main_timer = 0;
-static GttInactiveDialog *idt = NULL;
+static GttIdleDialog *idt = NULL;
 
 /* =========================================================== */
 /* zero out day counts if rolled past midnight */
@@ -109,8 +109,8 @@ timer_func(gpointer data)
 	{
 		if (0 < config_idle_timeout)
 		{
-			/* Make sure the inactive dialog is visible */
-			raise_inactive_dialog (idt);
+			/* Make sure the idle dialog is visible */
+			raise_idle_dialog (idt);
 		}
 		return 1;
 	}
@@ -132,7 +132,7 @@ timer_func(gpointer data)
 	/* Look for keyboard/mouse inactivity, and stop the timer if needed. */
 	if (0 < config_idle_timeout) 
 	{
-		show_inactive_dialog (idt);
+		show_idle_dialog (idt);
 	}
 	return 1;
 }
@@ -146,7 +146,7 @@ init_timer(void)
 	if (timer_inited) return;
 	timer_inited = TRUE;
 
-	idt = inactive_dialog_new();
+	idt = idle_dialog_new();
 	
 	/* The timer is measured in milliseconds, so 1000
 	 * means it pops once a second. */

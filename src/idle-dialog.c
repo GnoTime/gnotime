@@ -35,7 +35,7 @@
 
 int config_idle_timeout = -1;
 
-struct GttInactiveDialog_s 
+struct GttIdleDialog_s 
 {
 	GladeXML    *gtxml;
 	GtkDialog   *dlg;
@@ -56,7 +56,7 @@ struct GttInactiveDialog_s
 /* =========================================================== */
 
 static void
-dialog_close (GObject *obj, GttInactiveDialog *dlg)
+dialog_close (GObject *obj, GttIdleDialog *dlg)
 {
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
@@ -65,7 +65,7 @@ dialog_close (GObject *obj, GttInactiveDialog *dlg)
 /* =========================================================== */
 
 static void
-dialog_kill (GObject *obj, GttInactiveDialog *dlg)
+dialog_kill (GObject *obj, GttIdleDialog *dlg)
 {
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
@@ -75,7 +75,7 @@ dialog_kill (GObject *obj, GttInactiveDialog *dlg)
 /* =========================================================== */
 
 static void
-restart_proj (GObject *obj, GttInactiveDialog *dlg)
+restart_proj (GObject *obj, GttIdleDialog *dlg)
 {
 	ctree_start_timer (dlg->prj);
 	dialog_kill (obj, dlg);
@@ -84,7 +84,7 @@ restart_proj (GObject *obj, GttInactiveDialog *dlg)
 /* =========================================================== */
 
 static void
-adjust_timer (GttInactiveDialog *dlg, time_t adjustment)
+adjust_timer (GttIdleDialog *dlg, time_t adjustment)
 {
 	GttInterval *ivl;
 	time_t stop;
@@ -101,7 +101,7 @@ adjust_timer (GttInactiveDialog *dlg, time_t adjustment)
 /* =========================================================== */
 
 static void
-display_value (GttInactiveDialog *dlg, time_t credit)
+display_value (GttIdleDialog *dlg, time_t credit)
 {
 	char tbuff [30];
 	char mbuff [130];
@@ -184,7 +184,7 @@ display_value (GttInactiveDialog *dlg, time_t credit)
 /* =========================================================== */
 
 static void
-value_changed (GObject *obj, GttInactiveDialog *dlg)
+value_changed (GObject *obj, GttIdleDialog *dlg)
 {
 	double slider_value;
 	time_t credit;
@@ -207,7 +207,7 @@ value_changed (GObject *obj, GttInactiveDialog *dlg)
  */
 
 static void
-inactive_dialog_realize (GttInactiveDialog * id)
+idle_dialog_realize (GttIdleDialog * id)
 {
 	GladeXML *gtxml;
 
@@ -241,12 +241,12 @@ inactive_dialog_realize (GttInactiveDialog * id)
 
 /* =========================================================== */
 
-GttInactiveDialog *
-inactive_dialog_new (void)
+GttIdleDialog *
+idle_dialog_new (void)
 {
-	GttInactiveDialog *id;
+	GttIdleDialog *id;
 
-	id = g_new0 (GttInactiveDialog, 1);
+	id = g_new0 (GttIdleDialog, 1);
 	id->idt = idle_timeout_new ();
 	id->prj = NULL;
 
@@ -258,7 +258,7 @@ inactive_dialog_new (void)
 /* =========================================================== */
 
 void 
-show_inactive_dialog (GttInactiveDialog *id)
+show_idle_dialog (GttIdleDialog *id)
 {
 	time_t now;
 	time_t idle_time;
@@ -275,7 +275,7 @@ show_inactive_dialog (GttInactiveDialog *id)
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == id->gtxml)
 	{
-		inactive_dialog_realize (id);
+		idle_dialog_realize (id);
 	}
 
 	/* Stop the timer on the current project */
@@ -303,7 +303,7 @@ show_inactive_dialog (GttInactiveDialog *id)
 /* =========================================================== */
 
 void 
-raise_inactive_dialog (GttInactiveDialog *id)
+raise_idle_dialog (GttIdleDialog *id)
 {
 	time_t now;
 	time_t idle_time;

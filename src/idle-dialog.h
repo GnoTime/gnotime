@@ -16,34 +16,39 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GTT_INACTIVITY_DIALOG_H_
-#define GTT_INACTIVITY_DIALOG_H_
+#ifndef GTT_IDLE_DIALOG_H_
+#define GTT_IDLE_DIALOG_H_
 
-/* The Inactivity Dialog will check to see if the keyboard
- * and mouse have been inactive some set amount of time.
- * If so, it will stop the currently running timer, and 
- * pop up a dialog asking the user if they want to restart 
- * the idled project.  The dialog includes the ability to modify
- * the amount of idle time credited to the project.
+/* The Idle Dialog is popped up when a project is active (a project 
+ * timer is running), but the keyboard/mouse have been idle for some
+ * set amount of time.
+ *
+ * Do not confuse this with the "Activity Dialog", which pops up
+ * when NO project is running, but the keyboard/mouse IS active.
+ * The 'activity' project nags you to run a timer.
+ *
+ * The idle dialog asks the user if they want to restart the
+ * idled project, and allows user to credit a variable amount
+ * of time to it.
  */
 
-typedef struct GttInactiveDialog_s GttInactiveDialog;
+typedef struct GttIdleDialog_s GttIdleDialog;
 
-GttInactiveDialog * inactive_dialog_new (void);
+GttIdleDialog * idle_dialog_new (void);
 
 /** This routine will display the inactive dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
  */
-void show_inactive_dialog (GttInactiveDialog *id);
+void show_idle_dialog (GttIdleDialog *id);
 		  
 /** This routine will raise the inactive dialog to the top of the
  *  current screen. But it will do this only if the inactive dialog
- *  is already being diplayed, and if some mouse/keyboard events have
+ *  is already being displayed, and if some mouse/keyboard events have
  *  been detected recently.   The problem that this routine is trying
  *  to solve is that the inactive dialog often ends up obscured by
  *  another window, or it ends up on a different workspace than the
  *  current workspace, and so the user can't see it, can't find it.
  */
-void raise_inactive_dialog (GttInactiveDialog *id);
+void raise_idle_dialog (GttIdleDialog *id);
 
-#endif /* GTT_INACTIVITY_DIALOG_H_ */
+#endif /* GTT_IDLE_DIALOG_H_ */
