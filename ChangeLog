@@ -8,6 +8,12 @@ Fri Aug 20, 2004 Linas Vepstas <linas@linas.org>
 	  Fixes idle time so that it works with Linux 2.6 kernel /proc/interrupts
 	* Apply gnotime-fedora.patch from Toshio Kuratomi 
 	  Fixes the fedora build specs (sourceforge patch 995568)
+	* Apply sourceforge patch 1001144 from igive@free.fr
+	  use %e to see the estimated sizing of a project in the logfiles
+	* Apply new pt_BR translation from Goedson Teixeira Paixao 
+	  <goedson@debian.org> sourceforege patch 995929 
+	* Fix for Debian Bug #250776 per Goedson, change widget visibility
+	  in the edit interval dialog
 
 Sun May 23, 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.2.1 release: tag gnotime-2-2-1
