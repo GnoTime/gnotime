@@ -394,6 +394,7 @@ make_backup (const char * filename)
 	struct utimbuf ub;
 	int suffix=0;
 	int lm, i;
+	int rc;
 
 	/* Figure out how far to back up.  This computes a
 	 * logarithm base BK_FREQ */
@@ -424,18 +425,24 @@ make_backup (const char * filename)
 		sprintf (new_name+len, ".%d.%d", suffix, lm); 
 		sprintf (old_name+len, ".%d.2", suffix-1); 
 		stat (old_name, &old_stat);
-		rename (old_name, new_name);
-		ub.actime = old_stat.st_atime;
-		ub.modtime = old_stat.st_mtime;
-		utime (new_name, &ub);
+		rc = rename (old_name, new_name);
+		if (0 == rc)
+		{
+			ub.actime = old_stat.st_atime;
+			ub.modtime = old_stat.st_mtime;
+			utime (new_name, &ub);
+		}
 	}
 	
 	sprintf (new_name+len, ".0.%d",lm); 
 	stat (filename, &old_stat);
-	rename (filename, new_name);
-	ub.actime = old_stat.st_atime;
-	ub.modtime = old_stat.st_mtime;
-	utime (new_name, &ub);
+	rc = rename (filename, new_name);
+	if (0 == rc)
+	{
+		ub.actime = old_stat.st_atime;
+		ub.modtime = old_stat.st_mtime;
+		utime (new_name, &ub);
+	}
 
 	g_free (old_name);
 	g_free (new_name);
