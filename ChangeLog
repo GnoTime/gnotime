@@ -2,6 +2,10 @@
 Nov 10 2003 Linas Vepstas <linas@linas.org>
 
 	* idle-dialog.c: bug fix to work around missing/dropped X Events
+	* redhat/gnotime.spec.in: fix [ 834984 ] BuildPreReq in Redhat spec file
+	* app.c, main.c: fix [ 828170 ] [gt 2.1.7] does not exectute "stop project command" on exit
+	* journal.c,menucmd.c,menus.c,menus.h,plug-in.c: fix for
+	  [ 813021 ] Crashes when running local report
 
 Sept 27 2003 Linas Vepstas <linas@linas.org>
 
