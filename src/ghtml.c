@@ -1562,8 +1562,7 @@ gtt_ghtml_destroy (GttGhtml *p)
 	if (!p) return;
 
 	if (p->query_result) g_list_free (p->query_result);
-	// XXX memory leak, but otherwise mystery coredump due to this g_free
-	// g_free (p);
+	g_free (p);
 }
 
 void 
