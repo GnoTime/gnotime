@@ -49,6 +49,10 @@ typedef enum {
 	ELAPSED,
 	FUZZ,
 
+	/* project things */
+	TITLE =200,
+	DESC,
+
 } TableCol;
 
 #define NCOL 30
@@ -70,6 +74,10 @@ struct gtt_ghtml_s
 	char * delim;
 
 	/* table layout info */
+	int nproj_cols;
+	TableCol proj_cols[NCOL];
+	char * proj_titles[NCOL];
+
 	int ntask_cols;
 	TableCol task_cols[NCOL];
 	char * task_titles[NCOL];
@@ -655,10 +663,11 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 /* ============================================================== */
 
-static void
+static SCM
 do_show_project (GttGhtml *ghtml, GttProject *prj)
 {
-	(ghtml->write_stream) (ghtml, "like duude<br><br>", 5, ghtml->user_data);
+	(ghtml->write_stream) (ghtml, "like duude<br><br>", 18, ghtml->user_data);
+	return SCM_UNSPECIFIED;  
 }
 
 /* ============================================================== */
@@ -679,18 +688,30 @@ gtt_hello (void)
 }
 
 /* ============================================================== */
+/* This routine scans the character string for column names,
+ * such as '$fuzz', and sets them up in the ghtml C structure
+ * for later use.
+ */
 
-#define TASK_COL(TYPE)	{					\
-	ghtml->task_cols[ghtml->ntask_cols] = TYPE;		\
-	ghtml->tp = &(ghtml->task_titles[ghtml->ntask_cols]);	\
-	*(ghtml->tp) = NULL;					\
-	if (NCOL-1 > ghtml->ntask_cols) ghtml->ntask_cols ++;	\
+#define PROJ_COL(TYPE) {                                        \
+        ghtml->proj_cols[ghtml->nproj_cols] = TYPE;             \
+        ghtml->tp = &(ghtml->proj_titles[ghtml->nproj_cols]);   \
+        *(ghtml->tp) = NULL;                                    \
+        if (NCOL-1 > ghtml->nproj_cols) ghtml->nproj_cols ++;   \
 }
-#define INVL_COL(TYPE)	{					\
-	ghtml->invl_cols[ghtml->ninvl_cols] = TYPE;		\
-	ghtml->tp = &(ghtml->invl_titles[ghtml->ninvl_cols]);	\
-	*(ghtml->tp) = NULL;					\
-	if (NCOL-1 > ghtml->ninvl_cols) ghtml->ninvl_cols ++;	\
+
+#define TASK_COL(TYPE) {                                        \
+        ghtml->task_cols[ghtml->ntask_cols] = TYPE;             \
+        ghtml->tp = &(ghtml->task_titles[ghtml->ntask_cols]);   \
+        *(ghtml->tp) = NULL;                                    \
+        if (NCOL-1 > ghtml->ntask_cols) ghtml->ntask_cols ++;   \
+}
+
+#define INVL_COL(TYPE) {                                        \
+        ghtml->invl_cols[ghtml->ninvl_cols] = TYPE;             \
+        ghtml->tp = &(ghtml->invl_titles[ghtml->ninvl_cols]);   \
+        *(ghtml->tp) = NULL;                                    \
+        if (NCOL-1 > ghtml->ninvl_cols) ghtml->ninvl_cols ++;   \
 }
 
 static void
@@ -703,6 +724,16 @@ decode_column (GttGhtml *ghtml, const char * tok)
 			if (*ghtml->tp) g_free (*ghtml->tp);
 			*ghtml->tp = g_strdup (tok);
 		}
+	}
+	else
+	if (0 == strncmp (tok, "$title", 6))
+	{
+		PROJ_COL (TITLE);
+	}
+	else
+	if (0 == strncmp (tok, "$desc", 5))
+	{
+		PROJ_COL (DESC);
 	}
 	else
 	if (0 == strncmp (tok, "$start_datime", 13))
@@ -788,6 +819,7 @@ decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 	/* reset the parser */
 	ghtml->ninvl_cols = 0;
 	ghtml->ntask_cols = 0;
+	ghtml->nproj_cols = 0;
 		
 	while (FALSE == SCM_NULLP(col_list))
 	{
@@ -856,19 +888,41 @@ show_export (SCM col_list)
 	return rc;
 }
 
-static SCM 
-show_project (SCM col_list)
+static SCM
+show_project (SCM proj_list, SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
-	GttProject *prj = ctree_get_focus_project (global_ptw);
-	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-project");
+	
+	SCM_ASSERT ( SCM_CONSP (proj_list), proj_list, SCM_ARG1, "gtt-show-project");
+	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG2, "gtt-show-project");
+	
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_project (ghtml, prj);
+	rc = do_apply_on_project (ghtml, proj_list, do_show_project); 
+	return rc;
+}
+
+static SCM
+show_project_xxx (SCM proj_and_col_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	SCM proj_list, col_list, rc;
+	
+	SCM_ASSERT ( SCM_CONSP (proj_and_col_list), proj_and_col_list, 
+						 SCM_ARG1, "gtt-show-project");
+	
+	proj_list = gh_car (proj_and_col_list);
+	col_list = gh_cdr (proj_and_col_list);
+
+	rc = decode_scm_col_list (ghtml, col_list);
+	rc = do_apply_on_project (ghtml, proj_list, do_show_project); 
 	return rc;
 }
 
 /* ============================================================== */
+/* This routine accepts an SCM node, and 'prints' it out.
+ * (or tries to). It knows how to print numbers strings and lists.
+ */
 
 static SCM
 do_show_scm (GttGhtml *ghtml, SCM node)
@@ -908,6 +962,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		}
 	}
 
+	/* We could return the printed string, but I'm not sure why.. */
 	return SCM_UNSPECIFIED;
 }
 
@@ -920,12 +975,16 @@ show_scm (SCM node_list)
 
 /* ============================================================== */
 /* Cheesy hack, this returns a pointer to the currently
- * selected project as a ulong.  Its baaaad,  but achaives its 
+ * selected project as a ulong.  Its baaaad,  but acheives its 
  * purpose for now.   Its baad because it exposes a C pointer to
  * the schemers, which could be used for evil purposes, such
  * as propagating viruses, worms, etc.  It sure would be nice to be
  * able to check that the pointer is a valid pointer to a gtt
  * project.  But for now, I don't know of a better way.  --linas
+ */
+
+/* The 'selected project' is the project highlighted by the 
+ * focus row in the main window.
  */
 
 static SCM
@@ -1020,15 +1079,16 @@ RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
 RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
 RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
 
-#define RET_PROJECT_TABLE(RET_FUNC,DO_TABLE)                        \
+		  
+#define RET_PROJECT_SIMPLE(RET_FUNC,DO_SIMPLE)                      \
 static SCM                                                          \
 RET_FUNC (SCM proj_list)                                            \
 {                                                                   \
 	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
-	return do_apply_on_project (ghtml, proj_list, DO_TABLE);         \
+	return do_apply_on_project (ghtml, proj_list, DO_SIMPLE);        \
 }
 
-RET_PROJECT_TABLE (show_journal, do_show_journal);
+RET_PROJECT_SIMPLE (show_journal, do_show_journal);
 
 /* ============================================================== */
 
@@ -1171,7 +1231,7 @@ register_procs (void)
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
 	gh_new_procedure("gtt-show-export",          show_export,    1, 0, 0);
-	gh_new_procedure("gtt-show-project",         show_project,   1, 0, 0);
+	gh_new_procedure("gtt-show-project",         show_project,   2, 0, 0);
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
 	gh_new_procedure("gtt-projects",             ret_projects,   0, 0, 0);
@@ -1203,10 +1263,12 @@ gtt_ghtml_new (void)
 
 	p->ninvl_cols = 0;
 	p->ntask_cols = 0;
+	p->nproj_cols = 0;
 	p->tp = NULL;
 
 	for (i=0; i<NCOL; i++)
 	{
+		p->proj_titles[i] = NULL;
 		p->task_titles[i] = NULL;
 		p->invl_titles[i] = NULL;
 	}
