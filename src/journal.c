@@ -604,72 +604,52 @@ static QofBook *book = NULL;
 static GList *
 bogus_query (KvpFrame *kvpf)
 {
+	GList *results, *n;
 	KvpValue *val;
 	char *str;
 	time_t earliest_end, latest_start;
-	QofQuery *q;
-	QofQueryPredData *pred_data;
-	GSList *param_list;
-	GList *results, *n;
 
 	if (!kvpf) return NULL;
 printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
 	/* work around highly bogus locale setting */
-   qof_date_format_set(QOF_DATE_FORMAT_US);
+ 	qof_date_format_set(QOF_DATE_FORMAT_US);
 
 	/* We expect the KVP to have some very particular values in it */
 	val = kvp_frame_get_slot (kvpf, "earliest-end-date");
 	str = kvp_value_get_string (val);
 printf ("duude got sttrig %s\n", str);
-   if (FALSE == qof_scan_date_secs (str, &earliest_end)) return NULL;
+	if (FALSE == qof_scan_date_secs (str, &earliest_end)) return NULL;
 	
 	val = kvp_frame_get_slot (kvpf, "latest-start-date");
 	str = kvp_value_get_string (val);
 printf ("duude got sttrig %s\n", str);
-   if (FALSE == qof_scan_date_secs (str, &latest_start)) return NULL;
+	if (FALSE == qof_scan_date_secs (str, &latest_start)) return NULL;
 	
 printf ("duude parsed as %s and %s\n", strdup(ctime (&earliest_end)), strdup(ctime (&latest_start)));
 	
-	/* Create a new query */
-	q =  qof_query_create ();
+	QofSqlQuery *q = qof_sql_query_new();
 
 	if (!book) book = qof_book_new();
-	qof_query_set_book(q, book);
-			  
-	/* Set the object type to be searched for */
-	qof_query_search_for (q, GTT_PROJECT_ID);
+	qof_sql_query_set_book (q, book);
 
-	/* Describe the query to be performed.  We want to find all projects 
-	 * that had activity before the interval end, 
-	 * and had activity later than the interval start.
-	 */
-	 
-	/* Activity must preceed the 'latest start' */
-	param_list = qof_query_build_param_list (GTT_PROJECT_EARLIEST, 
-	                                            NULL);
-	pred_data = qof_query_int32_predicate (
-	                   QOF_COMPARE_LTE,         /* comparison to make */
-							 latest_start);             /* time to match */
-	qof_query_add_term (q, param_list, pred_data,
-	            QOF_QUERY_FIRST_TERM);             /* How to combine terms */
-	
-	/* Activity must have occured after the 'earliest end' */
-	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
-	                                            NULL);
-	pred_data = qof_query_int32_predicate (
-	                   QOF_COMPARE_GTE,         /* comparison to make */
-							 earliest_end);           /* time to match */
-	qof_query_add_term (q, param_list, pred_data,
-	            QOF_QUERY_AND);             /* How to combine terms */
-	
+	char *p, qstr[2000];
+	p = qstr;
+	p = stpcpy (p, "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
+	                    GTT_PROJECT_EARLIEST " <= ");
+	p += sprintf (p, "%ld", latest_start);
+	p = stpcpy (p, ") AND (" GTT_PROJECT_LATEST " >= ");
+	p += sprintf (p, "%ld", earliest_end);
+	p = stpcpy (p, ");");
+
+printf ("duude the query string is %s\n", qstr);
 	/* Run the query */
-   results = qof_query_run (q);
+	results = qof_sql_query_run (q, qstr);
 	
 	/* XXX free q after using it */
 
 printf ("duuude results=%p\n", results);
-   /* Print out the results */
+	/* Print out the results */
 	for (n=results; n; n=n->next)
 	{
 		GttProject *prj = n->data;
