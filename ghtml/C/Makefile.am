@@ -10,7 +10,7 @@ gttghtml_DATA =      \
 	journal.ghtml     \
 	noproject.ghtml   \
 	primer.ghtml      \
-	report.ghtml      \
+	query.ghtml       \
 	status.ghtml      \
 	tab-delim.ghtml   \
 	todo.ghtml	      \
