@@ -313,10 +313,15 @@ beta_run_or_abort(GtkWidget *w, gint butnum)
 /* The make_backup() routine save backup copies of the data file
  * every time that its called.  Its structured so that older copies
  * are saved exponentially less often.  This results in a logarithmic
- * distribution of backups; a very small number of files, of which
+ * distribution of backups; a realatively small number of files, of which
  * few are old, and most are younger.  The idea is that this 
  * should get you out of a jam, no matter how old your mistake is.
  * Sure wish I'd had this implemented earlier in my debugging cycle :-(
+ *
+ * Note on the algorithm: do *not* change this!  Its rather subtle,
+ * as to which copies it keeps, and which it discards; fiddling with
+ * the algo will result in the tail end copies being whacked incorrectly.
+ * It took me some work to get this right.
  */
 static void
 make_backup (const char * filename)
@@ -340,36 +345,31 @@ make_backup (const char * filename)
 		else break;
 		lm /= BK_FREQ;
 	}
-
-	suffix ++;
-	/* save on 0,1 not 2,3 */
-	/* the resulting sequence looks a little crazy but is regular */
-	for (i=2; i<BK_FREQ; i++)
-	{
-		if (lm%BK_FREQ == i) suffix = 0;
-	}
+	lm %= BK_FREQ;
 
 	/* Build filenames */
 	len = strlen (filename);
-	old_name = g_new0 (char, len+10);
-	new_name = g_new0 (char, len+10);
+	old_name = g_new0 (char, len+20);
+	new_name = g_new0 (char, len+20);
 	strcpy (old_name, filename);
 	strcpy (new_name, filename);
-	
-	/* Shuffle files, but preserve datestamps */
-	while (0 < suffix)
+		
+
+	if ((0 < suffix) && (0<lm))
 	{
-		sprintf (new_name+len, ".%d", suffix); 
-		sprintf (old_name+len, ".%d", suffix-1); 
+		/* Shuffle files, but preserve datestamps */
+		/* Don't report errors, as user may have erased 
+		 * some of these older files by hand */
+		sprintf (new_name+len, ".%d.%d", suffix, lm); 
+		sprintf (old_name+len, ".%d.2", suffix-1); 
 		stat (old_name, &old_stat);
 		rename (old_name, new_name);
 		ub.actime = old_stat.st_atime;
 		ub.modtime = old_stat.st_mtime;
 		utime (new_name, &ub);
-
-		suffix --;
 	}
-	sprintf (new_name+len, ".0"); 
+	
+	sprintf (new_name+len, ".0.%d",lm); 
 	stat (filename, &old_stat);
 	rename (filename, new_name);
 	ub.actime = old_stat.st_atime;
