@@ -58,38 +58,21 @@ Some sample scheme forms, and their output:
      statement (see below for more examples of <tt>gtt-show</tt>).
      <br><br>
 
-<li> <tt>(gtt-show-basic-journal)</tt>  prints a basic layout of the journal, 
-     see <tt>journal.ghtml</tt> for an example.
-     <br><br>
-
-<li> <tt>(gtt-show-table)</tt>  prints a configurable table showing the 
-     journal entries.  See <tt>bigtable.ghtml</tt> for an extended example. 
-     <br><br>
-     Here's a little example:
-     <br><br>
-     <tt>(gtt-show-table '($memo "blah blah memo" $billstatus "what's up
-      duude" $billable "bulbous blort" 
-      $billrate $value "da bucks" $bill_value))</tt>
-     <br><br>
-     will print: <br>
-     <?scm (gtt-show-table '($memo "blah blah memo" 
-                $billstatus "what's up duude" 
-                $billable "bulbous blort" 
-                $billrate $value "da bucks" $bill_value)) ?>
-     <br><br>
-<!-- 
-<?scm (gtt-show-table '($memo $billable $billrate $task_time $value $bill_value 
-$start_datime $stop_datime $elapsed $fuzz))  ?>
--->
-
-<li> <tt>(gtt-show-invoice)</tt>  prints a configurable invoice, see 
-     <tt>invoice.ghtml</tt> for an example.
+<li> Tables showing lists of projects, tasks and intervals can be
+     created and displayed.  The file <tt>todo.ghtml</tt> shows a 
+	  working example of a list of projects, while <tt>journal.ghtml</tt>
+	  and <tt>bigtable.ghtml</tt> show lists of tasks and intervals.
+	  The file <tt>invoice.ghtml</tt> shows how lists of tasks can be 
+	  selectively filtered, so that only certain tasks meeting certain
+	  criteria are displayed.
      <br><br>
 
 <li> The primitive <tt>gtt-show</tt> acts as the ghtml analog of the 
-     scheme primitive <tt>display</tt>, in that it merely prints an expression. 
+     scheme primitive <tt>display</tt>, in that it merely prints 
+	  the result of evaluating an expression. 
      It differs, however, in one important way: it omits parenthesis.
-     Note that html markup does pass through:
+	  This allows good-looking to be created.
+     Note that html markup does pass through transparently:
      <br><br> 
      <tt>(gtt-show '(yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
          duude&lt;/b&gt;)))</tt>  prints the following:
@@ -124,10 +107,13 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      <?scm (pi-approx) ?>
      <br><br>
 
-<li> We have started implementing a way of getting the raw 
-     project/task/interval data into scheme, but its 
-     incomplete at this time.
-     However, some things do work, as below:
+<li> You can get access to the raw project/task/interval data 
+     from scheme.  Currently, you can only have read-only access to the
+	  data from scheme, allowing reports to be generated, but not
+	  allowing data to be maniupulated.  The following show some of the
+	  available primitives:  (XXX this should be changed into a complete 
+	  list, for reference purposes).
+	  
      <br><br>
      <tt>(gtt-projects)</tt> returns the tree of projects,
      which can be used with the getters: for example:
