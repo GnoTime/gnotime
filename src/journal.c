@@ -636,7 +636,22 @@ static void
 html_url_requested_cb(GtkHTML *doc, const gchar * url, 
                       GtkHTMLStream *handle, gpointer data) 
 {
-	printf ("duuude url request=%s\n", url);
+	Wiggy *wig = data;
+	const char * path = gtt_ghtml_resolve_path (url, wig->filepath);
+	if (!path) return;
+
+	FILE *fh = fopen (path, "r");
+	if (!fh) return;
+	
+#define BSZ 16000
+	char buff[BSZ];
+	size_t sz = fread (buff, 1, BSZ, fh);
+	while (0 < sz)
+	{
+		gtk_html_write (doc, handle, buff, sz);
+		sz = fread (buff, 1, BSZ, fh);
+	}
+	fclose (fh);
 }
 
 /* ============================================================== */
