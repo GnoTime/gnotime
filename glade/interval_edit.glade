@@ -13,6 +13,7 @@
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="has_separator">True</property>
+  <signal name="close" handler="gtk_widget_hide" after="yes" last_modification_time="Sun, 22 Dec 2002 02:19:34 GMT"/>
 
   <child internal-child="vbox">
     <widget class="GtkVBox" id="dialog-vbox1">
