@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.2.1\n"
-"POT-Creation-Date: 2003-05-02 23:54-0500\n"
+"POT-Creation-Date: 2003-06-29 14:16-0500\n"
 "PO-Revision-Date: 2001-09-03 18:16+0200\n"
 "Last-Translator: András Tímár <timar@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
@@ -306,7 +306,7 @@ msgstr "Nem sikerült írni a konfigurációs fájlt!"
 msgid "Error exporting data: %s"
 msgstr "Hiba a %d track formázásakor"
 
-#: src/export.c:123 src/journal.c:172
+#: src/export.c:123 src/journal.c:173
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "%s fájl létezik, felülírod?"
@@ -324,11 +324,11 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:383
+#: src/file-io.c:401
 msgid "project %t started"
 msgstr "%t projekt elindult"
 
-#: src/file-io.c:386
+#: src/file-io.c:404
 msgid "stopped project %t"
 msgstr "%t projekt megállt"
 
@@ -447,37 +447,37 @@ msgid ""
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
 
-#: src/journal.c:113
+#: src/journal.c:114
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: src/journal.c:115
+#: src/journal.c:116
 #, fuzzy, c-format
 msgid "The file %s was not found."
 msgstr "Nem találom a tappancsot"
 
-#: src/journal.c:116
+#: src/journal.c:117
 msgid "(null)"
 msgstr "(null)"
 
-#: src/journal.c:125
+#: src/journal.c:126
 #, fuzzy
 msgid "Unkown Error"
 msgstr "Ismeretlen hiba történt"
 
-#: src/journal.c:187 src/plug-in.c:90
+#: src/journal.c:188 src/plug-in.c:109
 #, fuzzy, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr "Nem lehet megnyitni a naplófájlt!\n"
 
-#: src/journal.c:290 src/proj.c:718 src/proj.c:1732 src/proj.c:1860
+#: src/journal.c:291 src/proj.c:718 src/proj.c:1732 src/proj.c:1860
 #: src/proj.c:2000 glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:493
+#: src/journal.c:494
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "Fájl mentése"
@@ -523,35 +523,35 @@ msgstr ""
 msgid "Cannot create pid-file!"
 msgstr "Nem sikerült létrehozni a pid fájlt"
 
-#: src/main.c:291
+#: src/main.c:325
 msgid "Do you want to continue?"
 msgstr ""
 
-#: src/main.c:294 src/main.c:344
+#: src/main.c:328 src/main.c:378
 msgid "Error"
 msgstr "Hiba"
 
-#: src/main.c:341
+#: src/main.c:375
 msgid "Shall I setup a new configuration?"
 msgstr ""
 
-#: src/main.c:515 src/main.c:554 src/main.c:696
+#: src/main.c:546 src/main.c:585 src/main.c:727
 msgid "Warning"
 msgstr "Figyelem"
 
-#: src/main.c:658
+#: src/main.c:689
 msgid "Specify geometry"
 msgstr "Geometria megadása"
 
-#: src/main.c:658
+#: src/main.c:689
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: src/main.c:660
+#: src/main.c:691
 msgid "Select a project on startup"
 msgstr "Projekt kiválasztása indításnál"
 
-#: src/main.c:660
+#: src/main.c:691
 msgid "PROJECT"
 msgstr "PROJECT"
 
@@ -584,19 +584,19 @@ msgstr "Projekt beszúrása"
 msgid "_New Project..."
 msgstr "_Új projekt"
 
-#: src/menus.c:61 src/menus.c:187
+#: src/menus.c:61 src/menus.c:191
 msgid "Clear _Daily Counter"
 msgstr "Napi számláló törlése"
 
-#: src/menus.c:62 src/menus.c:188
+#: src/menus.c:62 src/menus.c:192
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr ""
 
-#: src/menus.c:66 src/menus.c:85 src/menus.c:166
+#: src/menus.c:66 src/menus.c:85 src/menus.c:170
 msgid "_Journal..."
 msgstr "_Napló..."
 
-#: src/menus.c:67 src/menus.c:86 src/menus.c:167
+#: src/menus.c:67 src/menus.c:86 src/menus.c:171
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
@@ -676,61 +676,70 @@ msgstr "_Új projekt"
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr ""
 
-#: src/menus.c:125
+#: src/menus.c:117
+#, fuzzy
+msgid "_Edit Reports..."
+msgstr "_Új projekt"
+
+#: src/menus.c:118
+msgid "Edit the entries in the Reports pulldown menu (this menu)"
+msgstr ""
+
+#: src/menus.c:129
 msgid "St_art"
 msgstr "_Indítás"
 
-#: src/menus.c:126
+#: src/menus.c:130
 msgid "Start the timer running"
 msgstr ""
 
-#: src/menus.c:131
+#: src/menus.c:135
 msgid "Sto_p"
 msgstr "Me_gállítás"
 
-#: src/menus.c:132
+#: src/menus.c:136
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Szeptember"
 
-#: src/menus.c:137
+#: src/menus.c:141
 msgid "_Timer Running"
 msgstr "Ó_ra fut"
 
-#: src/menus.c:156
+#: src/menus.c:160
 msgid "_Reports"
 msgstr ""
 
-#: src/menus.c:157
+#: src/menus.c:161
 msgid "_Timer"
 msgstr "Ór_ák"
 
-#: src/menus.c:170
+#: src/menus.c:174
 msgid "New Diary _Entry"
-msgstr ""
-
-#: src/menus.c:171
-#, fuzzy
-msgid "Change the current task for this project"
-msgstr "A projekthez rendelt cím"
-
-#: src/menus.c:174 glade/task_popup.glade.h:4
-msgid "_Edit Diary Entry"
 msgstr ""
 
 #: src/menus.c:175
 #, fuzzy
+msgid "Change the current task for this project"
+msgstr "A projekthez rendelt cím"
+
+#: src/menus.c:178 glade/task_popup.glade.h:4
+msgid "_Edit Diary Entry"
+msgstr ""
+
+#: src/menus.c:179
+#, fuzzy
 msgid "Edit task header for this project"
 msgstr "A projekthez rendelt cím"
 
-#. deal with the i18n menu path ...
+#. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:258
+#: src/menus.c:241
 #, fuzzy
 msgid "Reports"
 msgstr "Újraindítás"
 
-#: src/plug-in.c:121
+#: src/plug-in.c:140
 msgid "Reports/<Separator>"
 msgstr ""
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.1\n"
-"POT-Creation-Date: 2003-05-02 23:54-0500\n"
+"POT-Creation-Date: 2003-06-29 14:16-0500\n"
 "PO-Revision-Date: 2002-05-24 04:05+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Error exporting data: %s"
 msgstr "Erro ao formatar a pista #%d"
 
-#: src/export.c:123 src/journal.c:172
+#: src/export.c:123 src/journal.c:173
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Ficheiro %s existe, sobrepor?"
@@ -325,11 +325,11 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:383
+#: src/file-io.c:401
 msgid "project %t started"
 msgstr "projecto %t iniciado"
 
-#: src/file-io.c:386
+#: src/file-io.c:404
 msgid "stopped project %t"
 msgstr "projecto %t parado"
 
@@ -455,24 +455,24 @@ msgstr ""
 "foi parado.\n"
 "Deseja reinicia-lo?"
 
-#: src/journal.c:113
+#: src/journal.c:114
 msgid "Error 404 Not Found"
 msgstr "Erro 404 Não Encontrado"
 
-#: src/journal.c:115
+#: src/journal.c:116
 #, c-format
 msgid "The file %s was not found."
 msgstr "O ficheiro %s não foi encontrado."
 
-#: src/journal.c:116
+#: src/journal.c:117
 msgid "(null)"
 msgstr "(nulo)"
 
-#: src/journal.c:125
+#: src/journal.c:126
 msgid "Unkown Error"
 msgstr "Erro Desconhecido"
 
-#: src/journal.c:187 src/plug-in.c:90
+#: src/journal.c:188 src/plug-in.c:109
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -481,12 +481,12 @@ msgstr ""
 "Incapaz de abrir o ficheiro %s\n"
 "%s"
 
-#: src/journal.c:290 src/proj.c:718 src/proj.c:1732 src/proj.c:1860
+#: src/journal.c:291 src/proj.c:718 src/proj.c:1732 src/proj.c:1860
 #: src/proj.c:2000 glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr "Nova Entrada de Diário"
 
-#: src/journal.c:493
+#: src/journal.c:494
 msgid "Save HTML To File"
 msgstr "Gravar HTML para Ficheiro"
 
@@ -531,35 +531,35 @@ msgstr ""
 msgid "Cannot create pid-file!"
 msgstr "Incapaz de criar o ficheiro-pid!"
 
-#: src/main.c:291
+#: src/main.c:325
 msgid "Do you want to continue?"
 msgstr "Deseja continuar?"
 
-#: src/main.c:294 src/main.c:344
+#: src/main.c:328 src/main.c:378
 msgid "Error"
 msgstr "Erro"
 
-#: src/main.c:341
+#: src/main.c:375
 msgid "Shall I setup a new configuration?"
 msgstr "Deverá ser definida uma nova configuração?"
 
-#: src/main.c:515 src/main.c:554 src/main.c:696
+#: src/main.c:546 src/main.c:585 src/main.c:727
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/main.c:658
+#: src/main.c:689
 msgid "Specify geometry"
 msgstr "Especificar geometria"
 
-#: src/main.c:658
+#: src/main.c:689
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: src/main.c:660
+#: src/main.c:691
 msgid "Select a project on startup"
 msgstr "Seleccione um projecto ao iniciar"
 
-#: src/main.c:660
+#: src/main.c:691
 msgid "PROJECT"
 msgstr "PROJECTO"
 
@@ -597,19 +597,19 @@ msgstr "Colar Projecto"
 msgid "_New Project..."
 msgstr "_Novo Projecto..."
 
-#: src/menus.c:61 src/menus.c:187
+#: src/menus.c:61 src/menus.c:191
 msgid "Clear _Daily Counter"
 msgstr "Limpar Contador _Diário"
 
-#: src/menus.c:62 src/menus.c:188
+#: src/menus.c:62 src/menus.c:192
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "Pôr a zeros o contador de hoje apagando os logs de hoje"
 
-#: src/menus.c:66 src/menus.c:85 src/menus.c:166
+#: src/menus.c:66 src/menus.c:85 src/menus.c:170
 msgid "_Journal..."
 msgstr "Diári_o..."
 
-#: src/menus.c:67 src/menus.c:86 src/menus.c:167
+#: src/menus.c:67 src/menus.c:86 src/menus.c:171
 msgid "Show the timesheet journal for this project"
 msgstr "Mostrar a folha de horas em diário para este projecto"
 
@@ -686,58 +686,67 @@ msgstr "_Novo Relatório..."
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr "Defina um caminho para o novo ficheiro phtml de relatório GTT"
 
-#: src/menus.c:125
+#: src/menus.c:117
+#, fuzzy
+msgid "_Edit Reports..."
+msgstr "_Novo Relatório..."
+
+#: src/menus.c:118
+msgid "Edit the entries in the Reports pulldown menu (this menu)"
+msgstr ""
+
+#: src/menus.c:129
 msgid "St_art"
 msgstr "Inici_ar"
 
-#: src/menus.c:126
+#: src/menus.c:130
 msgid "Start the timer running"
 msgstr "Iniciar o contador de tempo"
 
-#: src/menus.c:131
+#: src/menus.c:135
 msgid "Sto_p"
 msgstr "_Parar"
 
-#: src/menus.c:132
+#: src/menus.c:136
 msgid "Stop the timer"
 msgstr "Parar o contador de tempo"
 
-#: src/menus.c:137
+#: src/menus.c:141
 msgid "_Timer Running"
 msgstr "Con_tador a Marcar"
 
-#: src/menus.c:156
+#: src/menus.c:160
 msgid "_Reports"
 msgstr "_Relatórios"
 
-#: src/menus.c:157
+#: src/menus.c:161
 msgid "_Timer"
 msgstr "Con_tador"
 
-#: src/menus.c:170
+#: src/menus.c:174
 msgid "New Diary _Entry"
 msgstr "Nova _Entrada de Diário"
 
-#: src/menus.c:171
+#: src/menus.c:175
 msgid "Change the current task for this project"
 msgstr "Modificar a tarefa actual para este projecto"
 
-#: src/menus.c:174 glade/task_popup.glade.h:4
+#: src/menus.c:178 glade/task_popup.glade.h:4
 msgid "_Edit Diary Entry"
 msgstr "_Editar Entrada de Diário"
 
-#: src/menus.c:175
+#: src/menus.c:179
 #, fuzzy
 msgid "Edit task header for this project"
 msgstr "Mostrar a folha de horas em diário para este projecto"
 
-#. deal with the i18n menu path ...
+#. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:258
+#: src/menus.c:241
 msgid "Reports"
 msgstr "Relatórios"
 
-#: src/plug-in.c:121
+#: src/plug-in.c:140
 msgid "Reports/<Separator>"
 msgstr "Relatórios/<Separador>"
 
