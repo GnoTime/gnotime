@@ -18,6 +18,12 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* src/idle-timer.c: fix bug: use /proc/interrupts to detect 
 	  keyboard activity. Fixes excessive poping up of timeout 
 	  reminders.
+	* src/menucmd.c: add infinite undo for excessive cut errors.
+	  Implments sourceforge feature request
+	  [ 832174 ] full undo (accidental deletion w/ctrl-x)
+	* (various): implement the following two sourceforge featues:
+	  [ 899397 ] Monday := Monday 03:00 to Tuesday 03:00
+	  [ 834919 ] Choice for start of week
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
