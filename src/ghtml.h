@@ -46,11 +46,12 @@ struct gtt_ghtml_s
 	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
 	gpointer user_data;
 
-	/* the 'linked' project */
+	/* The 'linked' project */
 	GttProject *prj;
 	
 	/* List of projects, returned as query result */
 	GList *query_result;
+	gboolean did_query; /* TRUE if query was run */
 	
 	gboolean show_links; /* Flag -- show internal <a href> links */
 	gboolean really_hide_links; /* Flag -- show internal <a href> links */

@@ -29,6 +29,18 @@
 
 
 ;; ---------------------------------------------------------     
+
+;; If a report query was run, use results from that; 
+;; show selected project & subprojects
+;
+(define (gtt-selected-or-query-results)
+        (if (gtt-did-query) 
+            (gtt-query-results)
+            (gtt-project-subprojects (gtt-selected-project))
+        )
+)
+
+;; ---------------------------------------------------------     
 ; Define primitives as per generic scheme
 ; surely these are defined in somewhere else (slib ??)
 (define (xtagged-list? exp tag)

@@ -56,6 +56,19 @@
 
 GttGhtml *ghtml_guile_global_hack = NULL;   
 
+static SCM
+ret_did_query (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_did_query (ghtml);
+}
+
+static SCM
+do_ret_did_query (GttGhtml *ghtml)
+{
+	return SCM_BOOL (ghtml->did_query);
+}
+
 /* ============================================================== */
 /* This routine will reverse the order of a scheme list */
 
@@ -1393,6 +1406,7 @@ register_procs (void)
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
 	gh_new_procedure("gtt-query-results",      ret_query_projects,     0, 0, 0);
+	gh_new_procedure("gtt-did-query",          ret_did_query,          0, 0, 0);
 
 	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
 	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
@@ -1456,6 +1470,7 @@ gtt_ghtml_new (void)
 
 	p->prj = NULL;
 	p->query_result = NULL;
+	p->did_query = FALSE;
 	p->show_links = TRUE;
 	p->really_hide_links = FALSE;
 	p->last_ivl_time = 0;

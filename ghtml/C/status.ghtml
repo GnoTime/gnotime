@@ -19,7 +19,7 @@ Please edit this file to suit your particular reporting needs.
 <p>
 
 <dl>
-<?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
+<?scm (gtt-show-projects (gtt-selected-or-query-results)
       (list 
 		      ''"<dt><b>" gtt-project-title   ''"</b>"
 		      ''" -- "    gtt-project-desc    ''"</dt>\n"
