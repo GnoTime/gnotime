@@ -820,6 +820,18 @@ edit_todolist (GtkWidget *w, gpointer data)
 }
 
 void
+edit_daily (GtkWidget *w, gpointer data)
+{
+	GttProject *prj;
+	char * path;
+
+	prj = ctree_get_focus_project (global_ptw);
+
+	path = gtt_ghtml_resolve_path ("daily.ghtml");
+	do_show_report (path, prj);
+}
+
+void
 invoke_report(GtkWidget *widget, gpointer data)
 {
 	GttProject *prj;

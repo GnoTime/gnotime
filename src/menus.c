@@ -96,7 +96,7 @@ static GnomeUIInfo menu_main_reports[] = {
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("_Daily..."), 
 		N_("Show the total time spent on a project, day by day"),
-			       edit_alldata,
+			       edit_daily,
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("_To Do..."), 
 		N_("Show a sample to-do list"),
