@@ -16,7 +16,9 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include <config.h>
+#include "config.h"
+
+#include <glade/glade.h>
 #include <gnome.h>
 #include <string.h>
 
@@ -26,15 +28,84 @@
 #include "idle-dialog.h"
 #include "idle-timer.h"
 #include "proj.h"
+#include "util.h"
 
 
 int config_idle_timeout = -1;
 
 struct GttInactiveDialog_s 
 {
+	GladeXML    *gtxml;
+	GtkDialog   *dlg;
+	GtkButton   *yes_btn;
+	GtkButton   *no_btn;
+	
+	GttProject  *prj;
 	IdleTimeout *idt;
 };
 
+
+/* =========================================================== */
+
+static void
+dialog_close (GObject *obj, GttInactiveDialog *dlg)
+{
+	dlg->dlg = NULL;
+	dlg->gtxml = NULL;
+}
+
+/* =========================================================== */
+
+static void
+adjust_credit (GObject *obj, GttInactiveDialog *dlg)
+{
+	printf ("duude adjusting credit\n");
+	gtk_widget_destroy (dlg->dlg);
+	dlg->dlg = NULL;
+	dlg->gtxml = NULL;
+}
+
+/* =========================================================== */
+
+static void
+restart_proj (GObject *obj, GttInactiveDialog *dlg)
+{
+	adjust_credit (obj, dlg);
+	ctree_start_timer (dlg->prj);
+	dlg->prj = NULL;
+}
+
+/* =========================================================== */
+/* XXX the new GtkDialog is broken; it can't hide-on-close,
+ * unlike to old, deprecated GnomeDialog.  Thus, we have to
+ * do a heavyweight re-initialization each time.  Urgh.
+ */
+
+static void
+inactive_dialog_realize (GttInactiveDialog * id)
+{
+	GladeXML *gtxml;
+
+	id->prj = NULL;
+
+	gtxml = gtt_glade_xml_new ("glade/idle.glade", "Idle Dialog");
+	id->gtxml = gtxml;
+
+	id->dlg = GTK_DIALOG (glade_xml_get_widget (gtxml, "Idle Dialog"));
+
+	id->yes_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "yes button"));
+	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
+
+	g_signal_connect(G_OBJECT(id->dlg), "destroy",
+	          G_CALLBACK(dialog_close), id);
+
+	g_signal_connect(G_OBJECT(id->yes_btn), "clicked",
+	          G_CALLBACK(restart_proj), id);
+
+	g_signal_connect(G_OBJECT(id->no_btn), "clicked",
+	          G_CALLBACK(adjust_credit), id);
+
+}
 
 /* =========================================================== */
 
@@ -42,20 +113,18 @@ GttInactiveDialog *
 inactive_dialog_new (void)
 {
 	GttInactiveDialog *id;
+	GladeXML *gtxml;
 
 	id = g_new0 (GttInactiveDialog, 1);
-	id ->idt = idle_timeout_new ();
+	id->idt = idle_timeout_new ();
+	id->prj = NULL;
+
+	id->gtxml = NULL;
+
 	return id;
 }
 
 /* =========================================================== */
-
-static void
-restart_proj (GtkWidget *w, gpointer data)
-{
-	GttProject *prj = data;
-	ctree_start_timer (prj);
-}
 
 void 
 show_inactive_dialog (GttInactiveDialog *id)
@@ -92,6 +161,11 @@ show_inactive_dialog (GttInactiveDialog *id)
 	stop += config_idle_timeout;
 	gtt_interval_set_stop (ivl, stop);
 
+	if (NULL == id->gtxml)
+	{
+		inactive_dialog_realize (id);
+	}
+
 	/* warn the user */
 	msg = g_strdup_printf (
 		_("The keyboard and mouse have been idle\n"
@@ -102,9 +176,9 @@ show_inactive_dialog (GttInactiveDialog *id)
 		(config_idle_timeout+30)/60,
 		gtt_project_get_title(prj),
 		gtt_project_get_desc(prj));
-	qbox_ok_cancel (_("System Idle"), msg,
-		GTK_STOCK_YES, restart_proj, prj, 
-		GTK_STOCK_NO, NULL, NULL);
+
+	id->prj = prj;
+	gtk_widget_show (GTK_WIDGET(id->dlg));
 }
 
 /* =========================== END OF FILE ============================== */
