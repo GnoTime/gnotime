@@ -609,16 +609,23 @@ gtt_hello (void)
 }
 
 /* ============================================================== */
+/* This routine is deprecated, and should be ripped out
+ * when a suitable scheme replacement func has been written for 
+ * (gtt-show-project-title).  In the meanwhile, we need to keep it
+ * around so that we don't break existing reports that people
+ * may have written.
+ */
 
 static SCM 
-project_title (void)
+deprecated_show_project_title (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	const char *p;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
-	p = gtt_project_get_title (ghtml->prj);
+	p = gtt_project_get_title (prj);
 
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 
@@ -627,16 +634,23 @@ project_title (void)
 }
 
 /* ============================================================== */
+/* This routine is deprecated, and should be ripped out
+ * when a suitable scheme replacement func has been written for 
+ * (gtt-show-project-desc).  In the meanwhile, we need to keep it
+ * around so that we don't break existing reports that people
+ * may have written.
+ */
 
 static SCM 
-project_desc (void)
+deprecated_show_project_desc (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	const char *p;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
-	p = gtt_project_get_desc (ghtml->prj);
+	p = gtt_project_get_desc (prj);
 	
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 
@@ -856,7 +870,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
 	/* Need to test for numbers first, since later tests 
-	 * may core-dump guile-1.3.4 */
+	 * may core-dump guile-1.3.4 if the node was in fact a number. */
 	if (SCM_NUMBERP(node))
 	{
 		char buf[132];
@@ -900,8 +914,9 @@ show_scm (SCM node_list)
  * selected project as a ulong.  Its baaaad,  but achaives its 
  * purpose for now.   Its baad because it exposes a C pointer to
  * the schemers, which could be used for evil purposes, such
- * as propagating viruses, worms, etc.  But for now, I don't know
- * of a better way.  --linas
+ * as propagating viruses, worms, etc.  It sure would be nice to be
+ * able to check that the pointer is a valid pointer to a gtt
+ * project.  But for now, I don't know of a better way.  --linas
  */
 
 static SCM
@@ -921,9 +936,14 @@ ret_selected_project (void)
 }
 
 /* ============================================================== */
+/* This routine will call a generic gtt project function (that 
+ * takes a Gtt project as an argument, and return its string 
+ * value as a scheme object.
+ */
 
 static SCM
-do_ret_project_str (GttGhtml *ghtml, SCM node, const char * (*func)(GttProject *))
+do_ret_project_str (GttGhtml *ghtml, SCM node, 
+             const char * (*func)(GttProject *))
 {
 	const char * str;
 	GttProject * prj;
@@ -940,19 +960,15 @@ do_ret_project_str (GttGhtml *ghtml, SCM node, const char * (*func)(GttProject *
 	return rc;
 }
 
-static SCM
-ret_project_desc (SCM node)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_ret_project_str (ghtml, node, gtt_project_get_desc);
+#define RET_PROJECT_STR(RET_FUNC,GTT_GETTER)                       \
+static SCM RET_FUNC (SCM node) {                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                      \
+	return do_ret_project_str (ghtml, node, GTT_GETTER);            \
 }
 
-static SCM
-ret_project_title (SCM node)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_ret_project_str (ghtml, node, gtt_project_get_title);
-}
+RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
+RET_PROJECT_STR (ret_project_desc,  gtt_project_get_desc)
+RET_PROJECT_STR (ret_project_notes, gtt_project_get_notes)
 
 /* ============================================================== */
 
@@ -1079,6 +1095,11 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 }
 
 /* ============================================================== */
+/* Register callback handlers for various scheme forms.  We need to
+ * keep the deprecated callbacks around until a suitable scheme
+ * replacement has been written, so that we don't break any existing
+ * custom reports that users may have written.
+ */
 
 static int is_inited = 0;
 
@@ -1086,8 +1107,8 @@ static void
 register_procs (void)
 {
 	gh_new_procedure("gtt-hello",                gtt_hello,      0, 0, 0);
-	gh_new_procedure("gtt-show-project-title",   project_title,  0, 0, 0);
-	gh_new_procedure("gtt-show-project-desc",    project_desc,   0, 0, 0);
+	gh_new_procedure("gtt-show-project-title",   deprecated_show_project_title,  0, 0, 0);
+	gh_new_procedure("gtt-show-project-desc",    deprecated_show_project_desc,   0, 0, 0);
 	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
@@ -1095,8 +1116,9 @@ register_procs (void)
 	gh_new_procedure("gtt-show-project",         show_project,   1, 0, 0);
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
-	gh_new_procedure("gtt-project-title",        ret_project_title,  1, 0, 0);
+	gh_new_procedure("gtt-project-title",        ret_project_title, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",         ret_project_desc,  1, 0, 0);
+	gh_new_procedure("gtt-project-notes",        ret_project_notes, 1, 0, 0);
 }
 
 
