@@ -2,6 +2,10 @@ Sat June 21 2003 Linas Vepstas <linas@linas.org>
 
 	* file-io.c, file-io.h, main.c: attempt to fix gnome-1.4 file format
 	  backwards compat.
+	* *.ghtml: fix for german umlauts, cyrillic, from Helge Hielscher
+	  <hhielscher@unternehmen.com> should fix sourceforge bug #'s
+	  758851, 714684
+	* gtt.scm: patch fixes sourceforge bug 746365
 
 Sat May  3 12:00:06 CDT 2003 Linas Vepstas <linas@linas.org>
 
