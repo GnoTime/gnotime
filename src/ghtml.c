@@ -238,8 +238,11 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	if (SCM_NUMBERP(node))
 	{
 		char buf[132];
-		double x = gh_scm2double (node);
-		long  ix = gh_scm2long (node);
+		double x;
+		long  ix;
+
+		x = gh_scm2double (node);
+		ix = (long) x;
 
 		/* If the number is representable in 32 bits,
 		 * and if the fractional part is so small its
