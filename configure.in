@@ -1,6 +1,6 @@
-AC_INIT(gcalc)
+AC_INIT(gnotime)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-utils, 2.0.0)
+AM_INIT_AUTOMAKE(gnotime, 2.0.0)
 
 AM_MAINTAINER_MODE
 
@@ -27,10 +27,6 @@ dnl *****************************************
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.0
 LIBGLADE_REQUIRED=2.0.0
-LIBBONOBOUI_REQUIRED=2.0.0
-GNOMEVFS_REQUIRED=1.9.16
-GNOMEVFSMODULE_REQUIRED=1.9.16
-LIBPANEL_APPLET_REQUIRED=2.0.0
 
 dnl *****************************************
 dnl libgnome, libgnomeui needed for all utils
@@ -41,95 +37,18 @@ AC_SUBST(GNOME_UTILS_CFLAGS)
 AC_SUBST(GNOME_UTILS_LIBS)
 
 dnl *****************************************
-dnl floppy-buddy needs libglade
+dnl gtt needs libglade
 dnl *****************************************
 PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
 
 dnl *****************************
-dnl popt is needed for most utils
+dnl popt is needed 
 dnl *****************************
 
 AC_CHECK_LIB(popt, poptHelpOptions,, AC_MSG_ERROR([popt is required to build gnome-utils. You can download the latest version from ftp://people.redhat.com/sopwith/popt/]))
 
-dnl *********************************************
-dnl gnome-vfs/mime-data is need for gsearchtool
-dnl *********************************************
-
-PKG_CHECK_MODULES(GNOMEVFS, gnome-vfs-2.0 >= $GNOMEVFS_REQUIRED gnome-vfs-module-2.0 >= $GNOMEVFS_REQUIRED)
-AC_SUBST(GNOMEVFS_CFLAGS)
-AC_SUBST(GNOMEVFS_LIBS)
-
-dnl *********************************************
-dnl libbonobui is needed for gcharmap
-dnl *********************************************
-
-PKG_CHECK_MODULES(LIBBONOBOUI, libbonoboui-2.0 >= $LIBBONOBOUI_REQUIRED)
-AC_SUBST(LIBBONOBOUI_CFLAGS)
-AC_SUBST(LIBBONOBOUI_LIBS)
-
-dnl *********************************************
-dnl for anything which calls gconftool-2 correctly
-dnl *********************************************
-
-
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-
-if test x"$GCONFTOOL" = xno; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-
-AM_GCONF_SOURCE_2
-
-
-dnl *******************************
-dnl Applet checks
-dnl *******************************
-
-PKG_CHECK_MODULES(APPLET, libpanelapplet-2.0 >= $LIBPANEL_APPLET_REQUIRED)
-AC_SUBST(APPLET_LIBS)
-AC_SUBST(APPLET_CFLAGS)
-
-dnl ***************************************************************
-dnl Other miscellaneous checks 
-dnl ***************************************************************
-
-dnl Check to see if the user wants gdialog. Turn it off by default
-dnl due to lack of maintainance and somewhat bad documentation
-
-AC_ARG_ENABLE(gdialog, 
-  [  --enable-gdialog=[no/yes]		Build gdialog [ default=no ]],
-   enable_gdialog="$enableval", enable_gdialog=no)
-
-AM_CONDITIONAL(BUILD_GDIALOG, test "$enable_gdialog" = yes)
-
-AC_ARG_ENABLE(console-helper,
-  [  --enable-console-helper=[no/yes]  	Enable PAM console helper [ default=no ]],,
-  enable_console_helper=no)
-
-dnl ***********
-dnl PAM prefix
-dnl ***********
-
-withval=""
-AC_ARG_WITH(pam-prefix,
-[      --with-pam-prefix=<prefix>   specify where pam files go],[
-if test x$withval != x; then
-   AC_MSG_RESULT("PAM files will be installed in prefix ${withval}.")
-fi])
-if test x$withval != x; then
-	PAM_PREFIX_UNEXPANDED="$withval"
-	PAM_PREFIX=`eval echo $PAM_PREFIX_UNEXPANDED`
-else
-	PAM_PREFIX="\$(sysconfdir)"
-fi
-AC_SUBST(PAM_PREFIX)
-    
-AC_PATH_PROG(CONSOLE_HELPER,consolehelper,no)
-if test "x$CONSOLE_HELPER" = "xno" -a "x$enable_console_helper" = "xyes" ; then
-	AC_MSG_ERROR(Console helper requested but consolehelper binary not found)
-fi
 
 dnl **************************************************************
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -149,22 +68,8 @@ dnl *****************************
 dnl Checks for library functions.
 dnl *****************************
 
-AC_FUNC_ALLOCA
-AC_FUNC_MMAP
-AC_TYPE_SIGNAL
 AC_FUNC_STRFTIME
-AC_CHECK_FUNCS(getcwd gettimeofday getwd putenv strdup strtoul uname logf)
-
-dnl *****************************************************************
-dnl Allow users to run logview using the console helper 
-dnl PAM stuff.
-dnl *****************************************************************
-
-if test "x$enable_console_helper" = "xyes"; then
-  AM_CONDITIONAL(CONSOLE_HELPER, true)
-else
-  AM_CONDITIONAL(CONSOLE_HELPER, false)
-fi
+AC_CHECK_FUNCS(getcwd gettimeofday getwd strdup strtoul)
 
 dnl ************************************************
 dnl X development libraries check
@@ -195,74 +100,12 @@ fi
 AC_SUBST(X_LIBS)
 
 
-dnl *************************************************
-dnl Individual gnome-utils checks 
-dnl *************************************************
-
-
-dnl ******************** 
-dnl gfloppy checks
-dnl ********************
-
-build_gfloppy=true
-AC_CHECK_HEADER(linux/fd.h, AC_DEFINE(HAVE_LINUX_FD_H),
-		build_gfloppy=false
-                AC_MSG_WARN([*** gfloppy will not be built.]))
-# Check for the ext2fs library
-AC_CHECK_LIB(ext2fs, ext2fs_mkdir, x_libs="-lext2fs",
-  build_gfloppy=false
-  AC_MSG_WARN([
-*** libext2fs not found. You need e2fsprogs and e2fsprogs-devel installed to build gfloppy.]))
-# check for ext2fs header specific includes
-AC_CHECK_HEADER(ext2fs/ext2_io.h, ,
-  build_gfloppy=false
-  AC_MSG_WARN([
-*** ext2fs/ext2_io.h not found.  You need e2fsprogs-devel installed.]))
-AM_CONDITIONAL(BUILD_GFLOPPY, test "$build_gfloppy" = true)
-
-
-dnl ********************
-dnl logview checks
-dnl ********************
-
-dnl This is where the binary actually resides,
-dnl not the console helper link
-if test "x$enable_console_helper" = "xyes"; then
-	LOGVIEWDIR_TMP="$sbindir"
-else
-	LOGVIEWDIR_TMP="$bindir"
-fi
-EXPANDED_LOGVIEWDIR=`eval echo $LOGVIEWDIR_TMP`
-AC_SUBST(EXPANDED_LOGVIEWDIR)
-
-
-dnl ******************
-dnl gdialog checks
-dnl ******************
-
-if test "x$enable_gdialog" = "xyes"; then
-  AC_CHECK_CURSES
-  AC_SUBST(CURSES_INCLUDEDIR)
-  AC_SUBST(CURSES_LIBS)
-fi
-
-
-dnl ********************
-dnl scrollkeeper checks 
-dnl ********************
-
-AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
-if test x$SCROLLKEEPER_CONFIG = xno; then
-  AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
-fi
-
-
 dnl *******************************
 dnl Internationalization
 dnl ******************************* 
 
 ALL_LINGUAS="az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl nn no pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW"
-GETTEXT_PACKAGE=gnome-utils-2.0
+GETTEXT_PACKAGE=gnotime-2.0
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 
@@ -271,9 +114,9 @@ AM_GLIB_GNU_GETTEXT
 gnomeutilslocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(gnomeutilslocaledir)
 
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+# AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
-AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
+# AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
 
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
@@ -281,43 +124,24 @@ AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
 Makefile
-gnome-utils.spec
+gtt.desktop
+doc/C/Makefile
+doc/C/man/Makefile
+doc/de/Makefile
+doc/Makefile
+doc/es/Makefile
+ghtml/C/Makefile
+ghtml/Makefile
+glade/Makefile
 po/Makefile.in
-gcalc/Makefile
-gcalc/help/Makefile
-gcalc/help/C/Makefile
-logview/Makefile
-logview/gnome-system-log-security
-logview/pixmaps/Makefile
-logview/help/Makefile
-logview/help/C/Makefile
-gcharmap/Makefile
-gcharmap/src/Makefile
-gcharmap/pixmaps/Makefile
-gcharmap/help/Makefile
-gcharmap/help/C/Makefile
-gsearchtool/Makefile
-gsearchtool/help/Makefile
-gsearchtool/help/C/Makefile
-gdialog/Makefile
-gdialog/help/Makefile
-gdialog/help/C/Makefile
-gdictsrc/Makefile
-gdictsrc/help/Makefile
-gdictsrc/help/C/Makefile
-gfloppy/Makefile
-gfloppy/doc/Makefile
-gfloppy/doc/C/Makefile
-gfloppy/src/Makefile
-meat-grinder/Makefile
-meat-grinder/help/Makefile
-meat-grinder/help/C/Makefile
+src/Makefile
+
 ])
 
 dnl <= Configuration summary =>
 
 echo ""
-echo "gnome-utils configuration summary:"
+echo "gnotime configuration summary:"
 echo "=================================="
 echo ""
 
@@ -332,37 +156,9 @@ echo "prefix : $prefix"
 echo "sysconf dir : "`eval echo $sysconfdir`
 echo "bin dir : "`eval echo $bindir`
 echo "sbin dir : "`eval echo $sbindir`
-echo "PAM prefix : $PAM_PREFIX"
 echo "data dir : "`eval echo $datadir`
 echo ""
 
-echo ""
-echo "The following will be built -"
-echo "============================="
-echo ""
-dnl <= Console Helper =>
-if test "x$enable_console_helper" = "xyes"; then
-	echo "Console helper (logview)          : YES"
-else
-	echo "Console helper (logview)          : NO"
-fi
-
-dnl <= message file =>
-echo "Logview default message file      : $messages_file"
-
-dnl <= gfloppy =>
-if test "x$build_gfloppy" = "xtrue"; then
-	echo "Build gfloppy                     : YES"
-else
-	echo "Build gfloppy                     : NO"
-fi
-
-dnl <= gdialog =>
-if test "x$enable_gdialog" = "xyes"; then
-	echo "Build gdialog                     : YES"
-else
-	echo "Build gdialog                     : NO"
-fi
 
 echo ""
 dnl <= End of configuration summary =>
