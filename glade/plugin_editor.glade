@@ -6,7 +6,7 @@
 
 <widget class="GtkDialog" id="Plugin Editor">
   <property name="visible">True</property>
-  <property name="title" translatable="yes">dialog1</property>
+  <property name="title" translatable="yes">GnoTime Report Menu Editor</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -40,6 +40,7 @@
 	  <child>
 	    <widget class="GtkButton" id="cancelbutton1">
 	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Abandom all changes and close this dialog window.</property>
 	      <property name="can_default">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="label">gtk-cancel</property>
@@ -53,6 +54,7 @@
 	  <child>
 	    <widget class="GtkButton" id="applybutton1">
 	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Apply the changes the the reports menu.</property>
 	      <property name="can_default">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="label">gtk-apply</property>
@@ -66,6 +68,7 @@
 	  <child>
 	    <widget class="GtkButton" id="okbutton1">
 	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Apply the changes to the reports menu, and close this dialog window.</property>
 	      <property name="can_default">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="label">gtk-ok</property>
@@ -130,86 +133,48 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkButton" id="button1">
+		    <widget class="GtkButton" id="up button">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Move the selected menu item up by one entry.</property>
 		      <property name="can_default">True</property>
 		      <property name="can_focus">True</property>
+		      <property name="label">gtk-go-up</property>
+		      <property name="use_stock">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
-
-		      <child>
-			<widget class="GtkImage" id="image5">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-go-up</property>
-			  <property name="icon_size">4</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button2">
+		    <widget class="GtkButton" id="down button">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Move the selected menu item down by one entry.</property>
 		      <property name="can_default">True</property>
 		      <property name="can_focus">True</property>
+		      <property name="label">gtk-go-down</property>
+		      <property name="use_stock">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
-
-		      <child>
-			<widget class="GtkImage" id="image2">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-go-down</property>
-			  <property name="icon_size">4</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button3">
+		    <widget class="GtkButton" id="left button">
 		      <property name="visible">True</property>
 		      <property name="can_default">True</property>
 		      <property name="can_focus">True</property>
+		      <property name="label">gtk-go-back</property>
+		      <property name="use_stock">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
-
-		      <child>
-			<widget class="GtkImage" id="image3">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-go-back</property>
-			  <property name="icon_size">4</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button4">
+		    <widget class="GtkButton" id="right button">
 		      <property name="visible">True</property>
 		      <property name="can_default">True</property>
 		      <property name="can_focus">True</property>
+		      <property name="label">gtk-go-forward</property>
+		      <property name="use_stock">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
-
-		      <child>
-			<widget class="GtkImage" id="image4">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-go-forward</property>
-			  <property name="icon_size">4</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 		</widget>
@@ -245,6 +210,7 @@
 		  <child>
 		    <widget class="GtkEntry" id="plugin tooltip">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Enter the popup hint for the menu item here.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -275,6 +241,7 @@
 		      <child internal-child="entry">
 			<widget class="GtkEntry" id="combo-entry1">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Enter the file path to the report here.</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -298,6 +265,7 @@
 		  <child>
 		    <widget class="GtkEntry" id="plugin name">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Enter the name for the menu item here.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -427,6 +395,7 @@
 		      <child internal-child="entry">
 			<widget class="GtkEntry" id="combo-entry2">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Pick an icon to decorate the menu entry.</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -466,6 +435,7 @@
 		  <child>
 		    <widget class="GtkButton" id="add button">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Add a new menu entry at the selected position.</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Add</property>
 		      <property name="use_underline">True</property>
@@ -482,8 +452,9 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button7">
+		    <widget class="GtkButton" id="separator button">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Add a horizontal bar (separator) to the menu.</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Add Separator</property>
 		      <property name="use_underline">True</property>
@@ -499,7 +470,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button6">
+		    <widget class="GtkButton" id="child button">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Add Child</property>
@@ -518,6 +489,7 @@
 		  <child>
 		    <widget class="GtkButton" id="delete button">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Delete the selected menu entry.</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Delete</property>
 		      <property name="use_underline">True</property>
@@ -671,6 +643,7 @@
 			  <child>
 			    <widget class="GtkEntry" id="entry4">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Enter the keyboard shortcut for this menu item.</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
 			      <property name="visibility">True</property>
