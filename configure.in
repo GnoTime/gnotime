@@ -1,5 +1,5 @@
 AC_INIT(src)
-AM_INIT_AUTOMAKE(gnotime, 2.1.9)
+AM_INIT_AUTOMAKE(gnotime, 2.1.10)
 
 AC_PROG_INTLTOOL
 
@@ -44,6 +44,7 @@ dnl *****************************************
 
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.3
+LIBGNOMEVFS_REQUIRED=2.0.0
 LIBGLADE_REQUIRED=2.0.0
 LIBGTKHTML_REQUIRED=3.0.0
 LIBXML2_REQUIRED=2.0.0
@@ -150,6 +151,15 @@ if test x"$GCONFTOOL" = xno; then
 fi
 
 AM_GCONF_SOURCE_2
+
+
+dnl *******************************
+dnl Gnome VFS
+dnl *******************************
+
+PKG_CHECK_MODULES(LIBGNOMEVFS, gnome-vfs-2.0 >= $LIBGNOMEVFS_REQUIRED)
+AC_SUBST(LIBGNOMEVFS_CFLAGS)
+AC_SUBST(LIBGNOMEVFS_LIBS)
 
 
 dnl *******************************
