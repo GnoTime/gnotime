@@ -74,6 +74,11 @@ reverse_list (SCM node_list)
 /* A routine to recursively apply a scheme form to a hierarchical 
  * list of gtt projects.  It returns the result of the apply. */
 
+/* XXX all three do_apply_on_x routines are almost exactly the
+ * same, except they differ in the types of thier arguments.
+ * These three routines should be consolidated.
+ */
+
 static SCM
 do_apply_on_project (GttGhtml *ghtml, SCM project, 
              SCM (*func)(GttGhtml *, GttProject *))
@@ -93,7 +98,36 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 	else if (SCM_CONSP(project))
 	{
 		SCM proj_list = project;
-		
+
+		/* Check to see if there's a type-label of the appropriate 
+		 * type.  If so, then strip off the label, and pass back 
+		 * car to ourselves.
+		 */
+		if (FALSE == SCM_NULLP(proj_list))
+		{
+			SCM type;
+			type = gh_cdr (proj_list);
+			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
+			{
+				char buff[20];
+				gh_get_substr (type, buff, 0, 15);
+				buff[15] = 0x0;
+				if ((!strcmp (buff, "gtt-project-ptr")) ||
+				    (!strcmp (buff, "gtt-project-lis")))
+				{
+					SCM evl;
+					evl = do_apply_on_project (ghtml, gh_car (proj_list), func);
+					return evl;
+				}
+				else
+				{
+					/* XXX actually, we should be dispatching on type, here */
+					g_warning ("expecting gtt-project-type, got something else\n");
+					return SCM_EOL;
+				}
+			}
+		}
+
 		/* Get a pointer to null */
 		rc = SCM_EOL;
 	
@@ -919,6 +953,31 @@ ret_task_memo (SCM task_list)
 }
 
 /* ============================================================== */
+/* Handle ret_task_parent in the almost-standard way,
+ * except that we return a pointer object.
+ */
+static SCM
+get_task_parent_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	GttProject *prj = gtt_task_get_parent (tsk);
+	SCM node, rc;
+
+	/* Label the pointer with a type identifier */
+	node = gh_str2scm ("gtt-project-ptr", 15);
+	rc = gh_ulong2scm ((unsigned long) prj);
+	rc = gh_cons (rc, node);
+	
+	return rc;
+}
+
+static SCM
+ret_task_parent (SCM task_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_task (ghtml, task_list, get_task_parent_scm);
+}
+
+/* ============================================================== */
 
 static const char *
 task_get_billstatus (GttTask *tsk)
@@ -1313,6 +1372,7 @@ register_procs (void)
 	gh_new_procedure("gtt-task-billrate",      ret_task_billrate,      1, 0, 0);
 	gh_new_procedure("gtt-task-time-str",      ret_task_time_str,      1, 0, 0);
 	gh_new_procedure("gtt-task-value-str",     ret_task_value_str,     1, 0, 0);
+	gh_new_procedure("gtt-task-parent",        ret_task_parent,        1, 0, 0);
 	
 	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
 	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
