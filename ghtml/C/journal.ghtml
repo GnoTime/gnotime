@@ -33,9 +33,9 @@ Here it is:
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
         ''"<tr><td colspan=4><br>"  
-		         gtt-task-memo 
-					''"<br><tt>" gtt-task-notes ''"</tt><br><br>"
-		  ''"</td></tr>\n"
+               gtt-task-memo 
+               ''"<br><tt>" gtt-task-notes ''"</tt><br><br>"
+        ''"</td></tr>\n"
          (lambda (task) (gtt-ivls task
          (list
 
