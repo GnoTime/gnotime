@@ -36,12 +36,20 @@ typedef struct _MyToolbar MyToolbar;
 struct _MyToolbar 
 {
 	GtkToolbar *tbar;
+	GtkWidget *new_w;
 	GtkWidget *cut, *copy, *paste; /* to make them sensible as needed */
 	GtkWidget *journal_button;
 	GtkWidget *prop_w;
 	GtkWidget *timer_button;
 	GtkImage  *timer_button_image;
 	GtkWidget *calendar_w;
+	GtkWidget *pref;
+	GtkWidget *help;
+	GtkWidget *exit;
+
+	int spa;
+	int spb;
+	int spc;
 };
 
 MyToolbar *mytbar = NULL;
@@ -139,18 +147,21 @@ GtkWidget *
 build_toolbar(void)
 {
 	int position = 0;
-	if (mytbar) return GTK_WIDGET(mytbar->tbar);
-	mytbar = g_malloc0(sizeof(MyToolbar));
-	mytbar->tbar = GTK_TOOLBAR(gtk_toolbar_new());
+	if (!mytbar) 
+	{
+		mytbar = g_malloc0(sizeof(MyToolbar));
+		mytbar->tbar = GTK_TOOLBAR(gtk_toolbar_new());
+	}
 
 	if (config_show_tb_new) 
 	{
-		gtk_toolbar_insert_stock (mytbar->tbar, 
+		mytbar->new_w = gtk_toolbar_insert_stock (mytbar->tbar, 
 			GTK_STOCK_NEW,
 			_("Create a New Project..."), NULL,
 			(GtkSignalFunc)new_project, NULL,
 			position++);
 		gtk_toolbar_append_space(mytbar->tbar);
+		mytbar->spa = position;
 		position ++;
 	}
 	if (config_show_tb_ccp) 
@@ -171,6 +182,8 @@ build_toolbar(void)
 				(GtkSignalFunc)paste_project, NULL,
 				position ++);
 		gtk_toolbar_append_space(mytbar->tbar);
+		mytbar->spb = position;
+		if (mytbar->spa) mytbar->spb--;
 		position ++;
 	}
 	if (config_show_tb_journal) 
@@ -230,11 +243,14 @@ build_toolbar(void)
 	     (config_show_tb_exit)))
 	{
 		gtk_toolbar_append_space(mytbar->tbar);
+		mytbar->spc = position;
+		if (mytbar->spa) mytbar->spc--;
+		if (mytbar->spb) mytbar->spc--;
 		position ++;
 	}
 	if (config_show_tb_pref)
 	{
-		gtk_toolbar_insert_stock (mytbar->tbar, 
+		mytbar->pref = gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_PREFERENCES,
 				_("Edit Preferences..."), NULL,
 				(GtkSignalFunc)menu_options, NULL,
@@ -242,7 +258,7 @@ build_toolbar(void)
 	}
 	if (config_show_tb_help) 
 	{
-		gtk_toolbar_insert_stock (mytbar->tbar, 
+		mytbar->help = gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_HELP,
 				_("User's Guide and Manual"), NULL,
 				(GtkSignalFunc)gtt_help_popup, NULL,
@@ -250,7 +266,7 @@ build_toolbar(void)
 	}
 	if (config_show_tb_exit) 
 	{
-		gtk_toolbar_insert_stock (mytbar->tbar, 
+		mytbar->exit = gtk_toolbar_insert_stock (mytbar->tbar, 
 				GTK_STOCK_QUIT,
 				_("Quit GnoTime"), NULL,
 				 (GtkSignalFunc)app_quit, NULL,
@@ -265,34 +281,41 @@ build_toolbar(void)
 /* ================================================================= */
 /* TODO: I have to completely rebuild the toolbar, when I want to add or
    remove items. There should be a better way now */
+
+#define ZAP(w)                                      \
+   if (w) { gtk_container_remove(tbc, (w)); (w) = NULL; }
+
+#define ZING(pos)                                   \
+   if (pos) { gtk_toolbar_remove_space (mytbar->tbar, (pos)); (pos)=0; }
+
 void
 update_toolbar_sections(void)
 {
-	GtkWidget *otb;
+	GtkContainer *tbc;
 	GtkWidget *tb;
-	GtkWidget *w;
 
 	if (!app_window) return;
 	if (!mytbar) return;
 
-	otb = GTK_WIDGET(mytbar->tbar);
-	w = otb->parent;
-	if (w) 
-	{
-		gtk_container_remove(GTK_CONTAINER(w), otb);
-	}
+	tbc = GTK_CONTAINER(mytbar->tbar);
+	ZING (mytbar->spa);
+	ZING (mytbar->spb);
+	ZING (mytbar->spc);
 
-	/* XXX I think we have a memory leak here, I think we need to
-	 * free/destroy all the toolbar widgets first ... ?? */
-	g_free(mytbar);
-	mytbar = NULL;
+	ZAP (mytbar->new_w);
+	ZAP (mytbar->cut);
+	ZAP (mytbar->copy);
+	ZAP (mytbar->paste);
+	ZAP (mytbar->journal_button);
+	ZAP (mytbar->prop_w);
+	ZAP (mytbar->timer_button);
+	ZAP (mytbar->calendar_w);
+	ZAP (mytbar->pref);
+	ZAP (mytbar->help);
+	ZAP (mytbar->exit);
+
 	tb = build_toolbar();
-
-	// XXX this sure looks wrong, shouldn't we be adding to tb, not w ??
-	// XXX what if w is null ??
-	gtk_container_add(GTK_CONTAINER(w), otb);
-	gtk_widget_show(GTK_WIDGET(tb));
+	gtk_widget_show(tb);
 }
-
 
 /* ======================= END OF FILE ======================= */
