@@ -1,7 +1,15 @@
+Sun August 10 2003 Linas Vepstas <linas@linas.org>
+
+	* journal.c: port to gtkhtml-3.0
+	* query.ghtml, journal.c: allow user to specify report to run
+	* *.ghtml: add HTMLDOC type
+	* plug-edit.c: get the menu up/down buttons to work
+
 Sun July 13 2003 Linas Vepstas <linas@linas.org>
 
 	* idle-dalog.[ch], timer.c: make sure that stopped-project dialog
 	  is presented to the user if keyboard/mouse activity is detected again.
+	* active-dialog.[ch]: new dialog to indicate activity but no project.
 	* journal.[ch], menus.c: cleanup the report-launching menus
 	* query.ghtml: add prototype of report query page.
 
