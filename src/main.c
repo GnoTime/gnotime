@@ -287,7 +287,8 @@ read_config(void)
 }
 
 
-#if 0
+#define DEVEL_VERSION_WARNING 1
+#if DEVEL_VERSION_WARNING
 /* used only to display development version warning messsage */
 static void 
 beta_run_or_abort(GtkWidget *w, gint butnum)
@@ -479,18 +480,17 @@ main(int argc, char *argv[])
 	 */
 	connect_short_cuts();
 
-#if 0
+#if DEVEL_VERSION_WARNING
 	msgbox_ok_cancel(_("Warning"),
 		"WARNING !!! Achtung !!! Avertisment !!!\n"
 		"\n"
-		"This is a development version of GTT.  It uses a new\n"
-		"file format that may leave your old data damaged and\n"
-		"unrecoverable.  There may be incompatible file format\n"
-		"changes in the near future. Use at own risk!\n"
+		"This is a development version of GTT.  "
+		"It probably crashes. Use at own risk!\n"
 		"\n"
 		"The last stable, working version can be obtained from\n"
-		"version 1.4.0.2 of gnome-utils or from cvs with\n"
-		"cvs checkout -D \"Aug 27 2001\" gnome-utils/gtt\n",
+		"the www.gnome.org gnome-utils cvs with\n"
+		"cvs -z3 -d :pserver:anonymous@anoncvs.gnome.org:/cvs/gnome "
+		"checkout -r gnome-utils-1-4 gnome-utils\n",
 	     "Continue", "Exit", 
 		GTK_SIGNAL_FUNC(beta_run_or_abort));
 #else
