@@ -1,6 +1,7 @@
 
 /*
  * stub routines for maybe some future gnotime vfs module
+ * This module will serve up gtt data
 
 To Build:
      cc vfs-module.c -c -fPIC  \
@@ -15,9 +16,18 @@ And also: install conf file in /etc/gnome-vfs-2.0/modules
 	To Test:
 	/usr/bin/gnomevfs-ls gtt:/
 	/usr/bin/gnomevfs-cat gtt:/file-duude-5
-
-
  */
+
+
+/* See http://developer.gnome.org/doc/API/2.0/gnome-vfs-2.0/
+ * for a good set of API documentation for GnomeVFS clients.
+ *
+ * See http://www-106.ibm.com/developerworks/linux/library/l-gnvfs/?ca=dnt-435
+ * for an example on how to write a gnomevfs server aka 'module'
+ *
+ * http://www.stafford.uklinux.net/libesmtp/
+ */
+
 
 //  #include <libgnomevfs/gnome-vfs.h>
 #include <libgnomevfs/gnome-vfs-module.h>
