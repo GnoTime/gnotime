@@ -32,9 +32,6 @@
 
 
 static GnomeUIInfo menu_main_file[] = {
-	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
-				  new_project, NULL),
-	GNOMEUIINFO_SEPARATOR,
 	{GNOME_APP_UI_ITEM, N_("_Export Tasks"), NULL,
 		export_file_picker, "tab-delim.ghtml", NULL,
 		GNOME_APP_PIXMAP_STOCK, GTK_STOCK_SAVE,
@@ -50,28 +47,31 @@ static GnomeUIInfo menu_main_file[] = {
 
 
 static GnomeUIInfo menu_main_edit[] = {
-#define MENU_EDIT_CUT_POS 0
+	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
+				  new_project, NULL),
+	GNOMEUIINFO_SEPARATOR,
+#define MENU_EDIT_CUT_POS 2
 	GNOMEUIINFO_MENU_CUT_ITEM(cut_project,NULL),
-#define MENU_EDIT_COPY_POS 1
+#define MENU_EDIT_COPY_POS 3
 	GNOMEUIINFO_MENU_COPY_ITEM(copy_project,NULL),
-#define MENU_EDIT_PASTE_POS 2
+#define MENU_EDIT_PASTE_POS 4
 	GNOMEUIINFO_MENU_PASTE_ITEM(paste_project,NULL),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_EDIT_CDC_POS 4
+#define MENU_EDIT_CDC_POS 6
 	GNOMEUIINFO_ITEM_STOCK(N_("Clear _Daily Counter"), 
 		N_("Zero out todays timer by deleting todays time logs"),
 			       menu_clear_daily_counter,
 			       GNOME_STOCK_BLANK),
-#define MENU_EDIT_JNL_POS 5
+#define MENU_EDIT_JNL_POS 7
 	GNOMEUIINFO_ITEM_STOCK(N_("_Journal..."), 
 		N_("Show the timesheet journal for this project"),
 			       edit_journal,
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_New Diary Entry"),
+	GNOMEUIINFO_ITEM_STOCK(N_("New _Diary Entry"),
 		N_("Create new task header for this project"),
 			       new_task_ui,
 			       GNOME_STOCK_BLANK),
-#define MENU_EDIT_PROP_POS 7
+#define MENU_EDIT_PROP_POS 9
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
 	GNOMEUIINFO_END
 };
