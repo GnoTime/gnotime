@@ -82,21 +82,20 @@
           (next_func  (cdr func_list)) 
         )
    (let (
-        ; result is the result of the evaluation. 
-        ; We compute it here to make sure we apply only once;
-        ; we can use the result for tests.
-        (result (if (xquoted? first_func) 
-                      (cdr first_func) (first_func obj)))
+          ; result is the result of the evaluation. 
+          ; We compute it here to make sure we apply only once;
+          ; we can use the result for tests.
+          (result (if (xquoted? first_func) 
+                        (cdr first_func)  ;; just something quoted
+                        (first_func obj)))
         )
-        (if (null? next_func)
-           result
-           ; if result was null, do not put it into list! 
-           (if (null? result)
-              (gtt-apply-func-list-to-obj next_func obj)
-              (list 
-                result
-                (gtt-apply-func-list-to-obj next_func obj)))
-        )
+   (if (null? next_func)
+      (list result)
+      ; if result was null, do not put it into list! 
+      (if (null? result)
+        (gtt-apply-func-list-to-obj next_func obj)
+        (list result (gtt-apply-func-list-to-obj next_func obj)))
+   )
 )))
            
 ; The gtt-apply-func-list-to-obj-list routine is a simple 
@@ -113,22 +112,22 @@
           (next_obj   (cdr obj_list))
         )
    (let (
-        ; appres is the result of the evaluation. 
-        ; We compute it here to make sure we apply only once;
-        ; we can use the result for tests.
-        (appres (if (list? parent_obj)
-                    (gtt-apply-func-list-to-obj-list func_list parent_obj)
-                    (gtt-apply-func-list-to-obj func_list parent_obj)) 
-                )
+          ; appres is the result of the evaluation. 
+          ; We compute it here to make sure we apply only once;
+          ; we can use the result for tests.
+          (appres (if (list? parent_obj)
+                      (gtt-apply-func-list-to-obj-list func_list parent_obj)
+                      (gtt-apply-func-list-to-obj func_list parent_obj)) 
+                  )
         )
-        (if (null? next_obj)
-            appres
-            (if (null? appres)
-                (gtt-apply-func-list-to-obj-list func_list next_obj)
-                (list appres
-                     (gtt-apply-func-list-to-obj-list func_list next_obj))
-            )
-         )
+   (if (null? next_obj)
+       (list appres)
+       (if (null? appres)
+           (gtt-apply-func-list-to-obj-list func_list next_obj)
+           (list appres
+                (gtt-apply-func-list-to-obj-list func_list next_obj))
+       )
+    )
 ))))
 
 ;; ---------------------------------------------------------     
