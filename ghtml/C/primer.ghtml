@@ -141,35 +141,35 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 	  The following project attributes are supported:
 	  <ul>
 	  <li><tt>(gtt-project-title prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-title-link prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title-link (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-title-link (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-desc prj)</tt>:
-	      <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-desc (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-notes prj)</tt>:
-	      <?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-notes (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-urgency prj)</tt>:
-	      <?scm (gtt-show (gtt-project-urgency (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-urgency (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-importance prj)</tt>:
-	      <?scm (gtt-show (gtt-project-importance (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-importance (gtt-linked-project))) ?>
 	  <li><tt>(gtt-project-status prj)</tt>:
-	      <?scm (gtt-show (gtt-project-status (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-status (gtt-linked-project))) ?>
 			
 	  <li><tt>(gtt-project-estimated-start prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-start (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-estimated-start (gtt-linked-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 	  <li><tt>(gtt-project-estimated-end prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-end (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-estimated-end (gtt-linked-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 	  <li><tt>(gtt-project-due-date prj)</tt>:
-	      <?scm (gtt-show (gtt-project-due-date (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-due-date (gtt-linked-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 
 	  <li><tt>(gtt-project-sizing prj)</tt>:
-	      <?scm (gtt-show (gtt-project-sizing (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-sizing (gtt-linked-project))) ?>
 			<i>(seconds)</i>
 	  <li><tt>(gtt-project-percent-complete prj)</tt>:
-	      <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
+	      <?scm (gtt-show (gtt-project-percent-complete (gtt-linked-project))) ?>
 	  </ul>
 
 
