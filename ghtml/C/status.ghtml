@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<title>Project Status</title>
+</head>
+<body>
+<center>
+<h1>Project Status</h1>
+</center>
+Status and notes for subprojects of the 
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+--
+<?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+project.
+<p>
+Please edit this file to suit your particular reporting needs.
+
+<p>
+
+<dl>
+<?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
+      (list 
+		      ''<dt><b>   gtt-project-title   ''"</b>\n"
+		      ''" -- "    gtt-project-desc    ''"</dt>\n"
+            ''<dd>      gtt-project-notes   ''"</dd>\n"
+            ))
+?>
+</dl>
+
+
+<br><br>
+That's all Folks!
+</body>
+</html>
+
+
+                                         
