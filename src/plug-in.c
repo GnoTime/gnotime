@@ -136,6 +136,9 @@ new_plugin_cancel_cb (GtkWidget * w, gpointer data)
 
 /* ============================================================ */
 
+
+/* XXX: This is our main window.  It is ugly that its a global, and
+ * it should be passed around in the data fields instead. */
 extern GtkWidget *window;
 
 NewPluginDialog *

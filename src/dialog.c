@@ -22,25 +22,13 @@
 #include "dialog.h"
 #include "gtt.h"
 
-
-#define DEFBUTTON_TEST
-
-/* XXX: this is our main window, perhaps it is a bit ugly this way and
- * should be passed around in the data fields */
-extern GtkWidget *window;
-
 static void 
 dialog_setup(GnomeDialog *dlg, GtkBox **vbox_return)
 {
 	g_return_if_fail(dlg != NULL);
-
-	gnome_dialog_set_parent(GNOME_DIALOG(dlg), GTK_WINDOW(window));
-
 	gnome_dialog_set_close(dlg, TRUE);
-
 	if (vbox_return) *vbox_return = GTK_BOX(dlg->vbox);
 }
-
 
 
 void 
@@ -107,7 +95,6 @@ msgbox_ok(const char *title, const char *text, const char *ok_text,
 
 	if (func) g_signal_connect(G_OBJECT(mbox), "clicked", func, NULL);
 	gtk_window_set_title(GTK_WINDOW(mbox), s);
-	gnome_dialog_set_parent(GNOME_DIALOG(mbox), GTK_WINDOW(window));
 	gtk_widget_show(mbox);
 
 	g_free (s);
@@ -130,7 +117,6 @@ msgbox_ok_cancel(const char *title, const char *text,
 	if (func) g_signal_connect(G_OBJECT(mbox), "clicked",
 			   func, NULL);
 	gtk_window_set_title(GTK_WINDOW(mbox), s);
-	gnome_dialog_set_parent(GNOME_DIALOG(mbox), GTK_WINDOW(window));
 	gtk_widget_show(mbox);
 
 	g_free (s);
@@ -149,7 +135,6 @@ qbox_ok_cancel(const char *title, const char *text,
 	mbox = gnome_message_box_new(text, GNOME_MESSAGE_BOX_QUESTION, ok_text, cancel_text, NULL);
 	gnome_dialog_set_default(GNOME_DIALOG(mbox), 1);
 	gtk_window_set_title(GTK_WINDOW(mbox), s);
-	gnome_dialog_set_parent(GNOME_DIALOG(mbox), GTK_WINDOW(window));
 
 	if (sigfunc)
 		gnome_dialog_button_connect(GNOME_DIALOG(mbox), 0,

@@ -244,10 +244,6 @@ prop_task_dialog_new (void)
 	MENTRY (dlg->billrate, "billrate", 3, GTT_FLAT_FEE);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
-/*
-	gnome_dialog_set_parent(GNOME_DIALOG(dlg->dlg), GTK_WINDOW(window));
-
-*/
 	return dlg;
 }
 
@@ -263,7 +259,6 @@ prop_task_dialog_show (GttTask *task)
 
 	do_set_task(task, dlog);
 	gtk_widget_show(GTK_WIDGET(dlog->dlg));
-	
 }
 
 /* ================= END OF FILE ================================ */

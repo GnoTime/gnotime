@@ -391,10 +391,7 @@ prop_dialog_new (void)
 	MENTRY (dlg->status, "status", 4, GTT_COMPLETED);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
-/*
-	gnome_dialog_set_parent(GNOME_DIALOG(dlg->dlg), GTK_WINDOW(window));
 
-*/
 	return dlg;
 }
 
