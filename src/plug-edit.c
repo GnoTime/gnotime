@@ -88,14 +88,15 @@ edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
 	int i,rc;
 	GtkTreeIter iter;
 	GtkTreeModel *model;
+	GnomeUIInfo *uientry;
 
 	/* Walk the current menu list */
 	model = GTK_TREE_MODEL(ped->treestore);
+	uientry = (GnomeUIInfo *)ped->menus->data;
 
 	rc = gtk_tree_model_get_iter_first (model, &iter);
 	for (i=0; i<ped->menus->len; i++)
 	{
-		GnomeUIInfo *uientry = (GnomeUIInfo *)ped->menus->data;
 		if (GNOME_APP_UI_ENDOFINFO == uientry[i].type) break;
 
    	if (0 == rc)
@@ -349,6 +350,7 @@ edit_plugin_cancel_cb (GtkWidget * w, gpointer data)
 }
 
 /* ============================================================ */
+/* Get numeric index of the selected row */
 
 static int 
 edit_plugin_get_index_of_selected_item (PluginEditorDialog *dlg)
@@ -375,30 +377,67 @@ edit_plugin_get_index_of_selected_item (PluginEditorDialog *dlg)
 }
 
 /* ============================================================ */
+/* Get the Iter, in the tree, of the indicated item */
+static void 
+edit_plugin_get_iter_of_item (PluginEditorDialog *dlg, 
+                GnomeUIInfo *item,
+                GtkTreeIter *iter)
+{
+	int i, rc;
+	GnomeUIInfo *uientry;
+	GtkTreeModel *model;
+
+	model = GTK_TREE_MODEL(dlg->treestore);
+	rc = gtk_tree_model_get_iter_first (model, iter);
+	
+	if (! dlg->menus) return;
+	uientry = (GnomeUIInfo *)dlg->menus->data;
+
+	for (i=0; i<dlg->menus->len; i++)
+	{
+		if (GNOME_APP_UI_ENDOFINFO == uientry[i].type) break;
+
+   	if (0 == rc) break;
+		if (item == &uientry[i]) return;
+		
+		rc = gtk_tree_model_iter_next (model, iter);
+	}
+}
+
+/* ============================================================ */
 /* Add and delete menu items callbacks */
 
 static void 
 edit_plugin_add_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
-	GnomeUIInfo item;
+	GnomeUIInfo item, *uientry;
+	GtkTreeIter iter;
 	int index;
 	GttPlugin *plg;
-printf ("add clicked dlg=%x\n",dlg);
 
-   index = 0; /* XXX should be current in ctree */
-
-	/* Create a plugin */
+	/* Create a plugin, copy widget values into it. */
 	plg = gtt_plugin_new ("x", "/x");
 	if (!plg) return;
-
+	
 	item.user_data = plg;
 	edit_plugin_widgets_to_item (dlg, &item);
+	
+	/* Insert item into list, or, if no selection, append */
+	index = edit_plugin_get_index_of_selected_item (dlg);
+	if (0 > index) index = dlg->menus->len -1;
+
 	g_array_insert_val (dlg->menus, index, item);
 	
 	/* Redraw the tree */
 	edit_plugin_redraw_tree (dlg);
-	/* XXX set the new thing to selected row */
+	
+	/* Select the new row. Not strictly needed, unless there
+	 * had not been any selection previously.  
+	 */
+	uientry = (GnomeUIInfo *) dlg->menus->data;
+	edit_plugin_get_iter_of_item (dlg, &uientry[index], &iter);
+	gtk_tree_selection_select_iter (dlg->selection, &iter);
 }
 
 static void 
@@ -421,7 +460,6 @@ edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 	sysmenus = (GnomeUIInfo *) dlg->menus->data;
 	if (GNOME_APP_UI_ENDOFINFO == sysmenus[row].type) return;
 
-printf ("delete clicked row=%d\n", row);
 	dlg->menus = g_array_remove_index (dlg->menus, row);
 
 	/* Redraw the tree */
