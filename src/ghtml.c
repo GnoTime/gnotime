@@ -1245,8 +1245,11 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	/* ugh. gag. choke. puke. */
 	ghtml_guile_global_hack = ghtml;
 
-	/* Load predefined scheme forms */
+#ifdef DEBUG
+	/* Load predefined scheme forms. We do this here only when debugging, 
+	 * since they may have changed since just a few minutes ago. */
 	scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
+#endif
 	
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream)
@@ -1403,6 +1406,9 @@ gtt_ghtml_new (void)
 		/* I think I neeed to do this, not sure */
 		scm_init_debug();
 		scm_init_backtrace();
+		
+		/* Load predefined scheme forms */
+		scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
 	}
 
 	p = g_new0 (GttGhtml, 1);
