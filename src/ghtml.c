@@ -585,7 +585,6 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 			node = do_ret_project_list (ghtml, subprjs);
 			rc = gh_cons (node, rc);
 		}
-
 		node = gh_ulong2scm ((unsigned long) prj);
 		rc = gh_cons (node, rc);
 	}
@@ -600,6 +599,14 @@ ret_projects (void)
 	/* Get list of all top-level projects */
 	GList *proj_list = gtt_get_project_list();
 	return do_ret_project_list (ghtml, proj_list);
+}
+
+static SCM
+ret_query_projects (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	
+	return do_ret_project_list (ghtml, ghtml->query_result);
 }
 
 /* ============================================================== */
@@ -1385,6 +1392,7 @@ register_procs (void)
 	gh_new_procedure("gtt-linked-project",     ret_linked_project,     0, 0, 0);
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
+	gh_new_procedure("gtt-query-results",      ret_query_projects,     0, 0, 0);
 
 	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
 	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
@@ -1447,6 +1455,7 @@ gtt_ghtml_new (void)
 	p = g_new0 (GttGhtml, 1);
 
 	p->prj = NULL;
+	p->query_result = NULL;
 	p->show_links = TRUE;
 	p->really_hide_links = FALSE;
 	p->last_ivl_time = 0;
@@ -1460,6 +1469,8 @@ void
 gtt_ghtml_destroy (GttGhtml *p)
 {
 	if (!p) return;
+
+	if (p->query_result) g_list_free (p->query_result);
 	// XXX memory leak, but otherwise mystery coredump due to this g_free
 	// g_free (p);
 }

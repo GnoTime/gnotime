@@ -49,10 +49,13 @@ struct gtt_ghtml_s
 	/* the 'linked' project */
 	GttProject *prj;
 	
+	/* List of projects, returned as query result */
+	GList *query_result;
+	
 	gboolean show_links; /* Flag -- show internal <a href> links */
 	gboolean really_hide_links; /* Flag -- show internal <a href> links */
 
-	time_t last_ivl_time;  /* hackl for pretty-printing interval dates */
+	time_t last_ivl_time;  /* hack for pretty-printing interval dates */
 
 	/* ------------------------------------------------------ */
 	/* Deprecated portion of this struct -- will go away someday. */

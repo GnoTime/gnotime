@@ -66,7 +66,7 @@ typedef struct wiggy_s {
 	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
-static void do_show_report (const char *, GttProject *);
+static void do_show_report (const char *, GttProject *, GList *);
 
 
 /* ============================================================== */
@@ -573,7 +573,7 @@ html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 		wig->interval = NULL;
 
 		path = gtt_ghtml_resolve_path ("journal.ghtml", wig->filepath);
-		do_show_report (path, prj);
+		do_show_report (path, prj, NULL);
 	}
 	else
 	{
@@ -593,7 +593,7 @@ html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 
 static QofBook *book = NULL;
 
-static void 
+static GList *
 bogus_query (void)
 {
 	QofQuery *q;
@@ -615,11 +615,11 @@ bogus_query (void)
 	 * and whose end date is less than y.
 	 */
 	 
-	param_list = qof_query_build_param_list (GTT_PROJECT_EARLIEST, 
+	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
 	                                            NULL);
 	pred_data = qof_query_int32_predicate (
-	                   QOF_COMPARE_GTE,         /* comparison to make */
-							 5);                      /* time to match */
+	                   QOF_COMPARE_LTE,         /* comparison to make */
+							 time(0)-8*24*3600);      /* time to match */
 	qof_query_add_term (q, param_list, pred_data,
 	            QOF_QUERY_FIRST_TERM);             /* How to combine terms */
 	
@@ -634,6 +634,8 @@ bogus_query (void)
 	/* Run the query */
    results = qof_query_run (q);
 	
+	/* XXX free q after using it */
+
 printf ("duuude results=%p\n", results);
    /* Print out the results */
 	for (n=results; n; n=n->next)
@@ -641,6 +643,8 @@ printf ("duuude results=%p\n", results);
 		GttProject *prj = n->data;
 		printf ("duude prj=%s\n", gtt_project_get_title(prj));
 	}
+
+	return results;
 }
 
 static void
@@ -653,6 +657,7 @@ submit_clicked_cb(HtmlDocument *doc,
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
 	KvpFrame *kvpf;
+	GList *qresults;
 	
 
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
@@ -668,10 +673,10 @@ submit_clicked_cb(HtmlDocument *doc,
 	printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
 	/* Build an ad-hoc query */
-	bogus_query ();
+	qresults = bogus_query ();
 	
 	/* We can reuse the same window, or we can open a new one */
-	do_show_report (path, wig->prj);  /* open a new window */
+	do_show_report (path, wig->prj, qresults);  /* open a new window */
 
 	/* We cannnot resue the same window from this callback, we 
 	 * have to let the callback return first, else we get a nasty error. */
@@ -685,7 +690,7 @@ submit_clicked_cb(HtmlDocument *doc,
 /* ============================================================== */
 
 static void
-do_show_report (const char * report, GttProject *prj)
+do_show_report (const char * report, GttProject *prj, GList *prjlist)
 {
 	GtkWidget *jnl_top, *jnl_viewport;
 	GladeXML  *glxml;
@@ -808,6 +813,7 @@ do_show_report (const char * report, GttProject *prj)
 
 	wig->prj = prj;
 	wig->filepath = g_strdup (report);
+	wig->gh->query_result = prjlist;
 
 	/* XXX not all reports need to have a project ?? */
 	if (!prj)
@@ -895,7 +901,7 @@ edit_journal(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("journal.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -907,7 +913,7 @@ edit_alldata(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("bigtable.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -919,7 +925,7 @@ edit_invoice(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("invoice.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -931,7 +937,7 @@ edit_primer(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("primer.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -943,7 +949,7 @@ edit_todolist (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("todo.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -955,7 +961,7 @@ edit_daily (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("daily.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -967,7 +973,7 @@ edit_status (GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("status.ghtml", NULL);
-	do_show_report (path, prj);
+	do_show_report (path, prj, NULL);
 }
 
 void
@@ -979,7 +985,7 @@ invoke_report(GtkWidget *widget, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	/* Do not gnome-filepath this, this is for user-defined reports */
-	do_show_report (plg->path, prj);
+	do_show_report (plg->path, prj, NULL);
 }
 
 /* ===================== END OF FILE ==============================  */
