@@ -271,7 +271,9 @@ kvp_cb (GttGhtml *ghtml, const char *key)
 	const char * str;
 	if (!ghtml->kvp) return SCM_EOL;
 	val = kvp_frame_get_slot (ghtml->kvp, key);
+	if (!val) return SCM_EOL;
 	str = kvp_value_get_string (val);
+	if (!str) return SCM_EOL;
 	return gh_str2scm (str, strlen (str));
 }
 
