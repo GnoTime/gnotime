@@ -535,22 +535,28 @@ static void
 on_close_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
+	if (NULL == wig->prj) return;  /* avoid double-free */
 
 	/* close the main journal window ... everything */
 	if (wig->prj) gtt_project_remove_notifier (wig->prj, redraw, wig);
 	edit_interval_dialog_destroy (wig->edit_ivl);
+	wig->prj = NULL;
 
-	/* XXX if we call destroy here, we get some insane hang
-	 * in mallopt deep in pango.  So don't destroy; although
-	 * this might leak memory?  Hide instead. */
-	// gtk_widget_destroy (wig->top);
-	gtk_widget_hide (wig->top);
-	gtk_widget_destroy (wig->hover_help_window);
+	gtk_widget_destroy (wig->top);
 	gtt_ghtml_destroy (wig->gh);
 	g_free (wig->filepath);
 	
+	wig->gh = NULL;
+	wig->top = NULL;
+	wig->html = NULL;
 	g_free (wig);
 }
+
+static void
+destroy_cb(GtkObject *ob, gpointer data)
+{
+}
+
 
 static void 
 on_refresh_clicked_cb (GtkWidget *w, gpointer data)
@@ -710,6 +716,8 @@ static void
 html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data) 
 {
 	Wiggy *wig = data;
+	if (NULL == wig->top) return;
+
 	/* Create and initialize the hover-help window */
 	if (!wig->hover_help_window)
 	{
@@ -932,6 +940,9 @@ do_show_report (const char * report, const char * title,
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
 	  
+	g_signal_connect (G_OBJECT(wig->top), "destroy",
+			G_CALLBACK (destroy_cb), wig);
+	
 	g_signal_connect (G_OBJECT(wig->html), "link_clicked",
 			G_CALLBACK (html_link_clicked_cb), wig);
 	
