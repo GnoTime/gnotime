@@ -48,7 +48,7 @@ gtt_plugin_new (const char * nam, const char * pth)
 
 	if (!nam || !pth) return NULL;
 
-	plg = g_new (GttPlugin, 1);
+	plg = g_new0 (GttPlugin, 1);
 	plg->name = g_strdup(nam);
 	plg->path = g_strdup(pth);
 	plg->tooltip = NULL;
@@ -63,7 +63,7 @@ gtt_plugin_copy (GttPlugin *orig)
 
 	if (!orig) return NULL;
 
-	plg = g_new (GttPlugin, 1);
+	plg = g_new0 (GttPlugin, 1);
 	plg->name = NULL;
 	if (orig->name) plg->name = g_strdup(orig->name);
 	
@@ -72,6 +72,9 @@ gtt_plugin_copy (GttPlugin *orig)
 	
 	plg->tooltip = NULL;
 	if (orig->tooltip) plg->tooltip = g_strdup(orig->tooltip);
+	
+	plg->last_url = NULL;
+	if (orig->last_url) plg->last_url = g_strdup(orig->last_url);
 	
 	return plg;
 }
@@ -83,6 +86,7 @@ gtt_plugin_free (GttPlugin *plg)
 	if (plg->name) g_free (plg->name);
 	if (plg->path) g_free (plg->path);
 	if (plg->tooltip) g_free (plg->tooltip);
+	if (plg->last_url) g_free (plg->last_url);
 }
 
 /* ============================================================ */
@@ -106,7 +110,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 		gchar *msg;
 		GtkWidget *mb;
 		int nerr = errno;
-		msg = g_strdup_printf (_("Unable to open the file %s\n%s"),
+		msg = g_strdup_printf (_("Unable to open the report file %s\n%s"),
 			path, strerror (nerr)); 
 		mb = gnome_message_box_new (msg,
 			GNOME_MESSAGE_BOX_ERROR, 

@@ -60,6 +60,7 @@ typedef struct wiggy_s
 	GtkWidget *hover_help_window;
 	GtkLabel  *hover_label;
 	guint      hover_timeout_id;
+	GttPlugin   *plg;
 	char        *filepath;  /* file containing report template */
 	EditIntervalDialog *edit_ivl;
 	GttInterval * interval;
@@ -70,7 +71,7 @@ typedef struct wiggy_s
 	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
-static void do_show_report (const char *, const char *, 
+static void do_show_report (const char *, GttPlugin *, 
                 KvpFrame *, GttProject *, gboolean, GList *);
 
 
@@ -173,6 +174,15 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	const char * filename;
 
 	filename = gtk_file_selection_get_filename (wig->filesel);
+
+	/* Remember history, on a per-report basis */
+	if (wig->plg && ((NULL == wig->plg->last_url) || 
+	                 (0==wig->plg->last_url[0]) ||
+	                 (0==strncmp (wig->plg->last_url, "file:/", 6))))
+	{
+		if (wig->plg->last_url) g_free (wig->plg->last_url);
+		wig->plg->last_url = g_strdup_printf ("file:%s", filename);
+	}
 
 	/* Don't clobber the file, ask user for permission */
 	if (0 == access (filename, F_OK))
@@ -516,12 +526,18 @@ on_save_clicked_cb (GtkWidget *w, gpointer data)
 	GtkWidget *fselw;
 	Wiggy *wig = (Wiggy *) data;
 
-	/* don't show dialog more than once */
+	/* Don't show dialog more than once */
 	if (wig->filesel) return;
 
 	fselw = gtk_file_selection_new (_("Save HTML To File"));
 	wig->filesel = GTK_FILE_SELECTION(fselw);
 
+	/* Manually set a per-report history thingy */
+	if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
+	{
+		char * path = wig->plg->last_url + 5; /* skip past "file:" */
+		gtk_file_selection_set_filename(wig->filesel, path);
+	}
 	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button), 
 		"clicked", G_CALLBACK(filesel_ok_clicked_cb), wig);
 
@@ -894,7 +910,7 @@ submit_clicked_cb(GtkHTML * doc,
 /* ============================================================== */
 
 static void
-do_show_report (const char * report, const char * title, 
+do_show_report (const char * report, GttPlugin *plg, 
                 KvpFrame *kvpf, GttProject *prj, 
                 gboolean did_query, GList *prjlist)
 {
@@ -913,8 +929,9 @@ do_show_report (const char * report, const char * title,
 	wig->fh = NULL;
 
 	wig->top = jnl_top;
+	wig->plg = plg;
 
-	if (title) gtk_window_set_title (GTK_WINDOW(jnl_top), title);
+	if (plg) gtk_window_set_title (GTK_WINDOW(jnl_top), plg->name);
 
 	/* Create browser, plug it into the viewport */
 	wig->html = GTK_HTML(gtk_html_new());
@@ -1136,7 +1153,7 @@ invoke_report(GtkWidget *widget, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	/* Do not gnome-filepath this, this is for user-defined reports */
-	do_show_report (plg->path, plg->name, NULL, prj, FALSE, NULL);
+	do_show_report (plg->path, plg, NULL, prj, FALSE, NULL);
 }
 
 /* ===================== END OF FILE ==============================  */

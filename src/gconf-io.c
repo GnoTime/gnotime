@@ -74,6 +74,9 @@ gtt_save_reports_menu (void)
 	   strcpy (p, "Tooltip");
 		F_SETSTR (s, plg->tooltip);
 
+	   strcpy (p, "LastSaveURL");
+		F_SETSTR (s, plg->last_url);
+
 	   *p = 0;
 		gtt_save_gnomeui_to_gconf (client, s, &reports_menu[i]); 
 	}
@@ -82,7 +85,7 @@ gtt_save_reports_menu (void)
 
 /* ======================================================= */
 /* Save only the GUI configuration info, not the actual data */
-/* XXX this should really use GConfChangeSet */
+/* XXX fixme -- this should really use GConfChangeSet */
 
 void
 gtt_gconf_save (void)
@@ -287,7 +290,7 @@ gtt_restore_reports_menu (GnomeApp *app)
 	for (i = 0; i < num; i++) 
 	{
 		GttPlugin *plg;
-		const char * name, *path, *tip;
+		const char * name, *path, *tip, *url;
 
 	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
 		p = s + strlen(s);
@@ -300,8 +303,13 @@ gtt_restore_reports_menu (GnomeApp *app)
 		
 	   strcpy (p, "Tooltip");
 		tip = F_GETSTR(s, "");
+
+	   strcpy (p, "LastSaveURL");
+		url = F_GETSTR(s, "");
+
 		plg = gtt_plugin_new (name, path);
 		plg->tooltip = g_strdup (tip);
+		plg->last_url = g_strdup (url);
 
 	   *p = 0;
 		gtt_restore_gnomeui_from_gconf (client, s, &reports_menu[i]); 

@@ -22,11 +22,18 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
+/**
+ * Somewhat misnamed, this is really just a description of the
+ * reports & report menu that the user can customize.  Each
+ * 'plugin' is just an entry in the report menu.
+ */
+
 typedef struct GttPlugin_s
 {
-	char * name;
+	char * name;      /* Name of report, shows up in menu */
 	char * tooltip;
-	char * path;
+	char * path;      /* Path to report in file system */
+	char * last_url;  /* Place where user last saved this report */
 
 } GttPlugin;
 
