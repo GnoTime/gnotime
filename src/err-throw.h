@@ -51,7 +51,7 @@ void gtt_err_set_code (GttErrCode);
  *    string using g_free when done.
  */
 	
-const char * gtt_err_to_string (GttErrCode code, const char * filename);
+char * gtt_err_to_string (GttErrCode code, const char * filename);
  
 
 /* =========================== END OF FILE ======================== */

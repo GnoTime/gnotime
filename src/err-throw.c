@@ -51,10 +51,10 @@ gtt_err_get_code (void)
 
 /* ================================================================ */
 
-const char *
+char *
 gtt_err_to_string (GttErrCode code, const char * filename)
 {
-	const char * ret = NULL;
+	char * ret = NULL;
 	switch (code)
 	{
 		case GTT_NO_ERR:
