@@ -9,6 +9,24 @@ measure the time spent on to-do list items and generate invoices.
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
 
+New in the 2.1.9 Release:
+-------------------------
+This release fixes a number of bugs, the most serious of which were:
+-- Keyboard events were not resetting the timeout
+-- Fix Help system so that help actually starts up.
+-- Fix old, multiple scheme bugs affecting billing reports.
+-- Provides 'infinite undo' for cut projects.
+-- Keyboard cut (ctrl-x) fixed so that it cuts only if project 
+   window has focus.
+-- Can now specify day-of-week for the start of a new week.
+   Also, end-of-day need not be midnight - its now configurable.
+-- Remove obsolete menu entries (clear daily counters)
+-- Fix flyover help on HTML reports
+-- Fix order of yesterday/today columns.
+-- Improve checks for Guile during builds
+-- New whiz-bang SQL for reports.
+
+
 New in the 2.1.8 release:
 -------------------------
 This release adds support for simple report queries.  In particular,
