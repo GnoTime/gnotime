@@ -234,9 +234,10 @@ filesel_cancel_clicked_cb (GtkWidget *w, gpointer data)
 }
 
 /* ============================================================== */
-/* global clipboard, allows cut task to be reparented to a different project */
+/* Global clipboard, allows cut task to be reparented to a different 
+ * project.  List of cut tasks allows for infinite undo. */
 
-static GttTask * cutted_task = NULL;
+static GList * cutted_task_list = NULL;
 
 /* ============================================================== */
 /* interval popup actions */
@@ -308,11 +309,22 @@ static void
 interval_paste_memo_cb(GtkWidget * w, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
-	GttTask *newtask;
+	GttTask *newtask = NULL;
 
-	if (!cutted_task || !wig->interval) return;
-	newtask = cutted_task;
-	cutted_task = gtt_task_dup (newtask);
+	if (!cutted_task_list || !wig->interval) return;
+
+	/* Pop one off the stack, if stack has any depth to it */
+	if (NULL == cutted_task_list->next)
+	{
+		newtask = gtt_task_dup (cutted_task_list->data);
+	}
+	else
+	{
+		newtask = cutted_task_list->data;
+		cutted_task_list->data = NULL;
+		cutted_task_list = 
+		   g_list_delete_link (cutted_task_list, cutted_task_list);
+	}
 	
 	gtt_interval_split (wig->interval, newtask);
 }
@@ -322,7 +334,7 @@ interval_popup_cb (Wiggy *wig)
 {
 	gtk_menu_popup(GTK_MENU(wig->interval_popup), 
 		NULL, NULL, NULL, wig, 1, 0);
-	if (cutted_task)
+	if (cutted_task_list)
 	{
 		gtk_widget_set_sensitive (wig->interval_paste, TRUE);
 	}
@@ -410,37 +422,43 @@ task_delete_memo_clicked_cb(GtkWidget * w, gpointer data)
 
 	gtt_task_merge_up (wig->task);
 
-	if (cutted_task)
-	{
-		gtt_task_destroy (cutted_task);
-	}
-	cutted_task = wig->task;
-	gtt_task_remove (cutted_task);
+	GList * ctl = g_list_prepend(cutted_task_list, wig->task);
+	gtt_task_remove (wig->task);
+	cutted_task_list = ctl;
 }
 
 static void
 task_delete_times_clicked_cb(GtkWidget * w, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
-	if (cutted_task)
-	{
-		gtt_task_destroy (cutted_task);
-	}
-	cutted_task = wig->task;
-	gtt_task_remove (cutted_task);
+
+	GList * ctl = g_list_prepend(cutted_task_list, wig->task);
+	gtt_task_remove (wig->task);
+	cutted_task_list = ctl;
 }
 
 static void
 task_paste_clicked_cb(GtkWidget * w, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
-	GttTask *task;
+	GttTask *newtask = NULL;
 
-	if (!cutted_task || !wig->task) return;
-	task = cutted_task;
-	cutted_task = gtt_task_dup (task);
+	if (!cutted_task_list || !wig->task) return;
+
+	/* Pop one off the stack, if stack has any depth to it */
+	if (NULL == cutted_task_list->next)
+	{
+		newtask = gtt_task_dup (cutted_task_list->data);
+	}
+	else
+	{
+		newtask = cutted_task_list->data;
+		cutted_task_list->data = NULL;
+		cutted_task_list = 
+		   g_list_delete_link (cutted_task_list, cutted_task_list);
+	}
 	
-	gtt_task_insert (wig->task, task);
+	gtt_task_insert (wig->task, newtask);
 }
 
 static void
@@ -471,7 +489,7 @@ task_popup_cb (Wiggy *wig)
 		gtk_widget_set_sensitive (wig->task_delete_memo, TRUE);
 	}
 
-	if (cutted_task)
+	if (cutted_task_list)
 	{
 		gtk_widget_set_sensitive (wig->task_paste, TRUE);
 	}

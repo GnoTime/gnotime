@@ -286,42 +286,64 @@ new_project(GtkWidget *widget, gpointer data)
 }
 
 /* ======================================================= */
+/* Project cut-n-paste GUI interactions. Support infinite
+ * undo by using glist to store list of cuts. */
 
+/* XXX hack alert -- we should delete this list during shutdown. */
+static GList *cutted_project_list = NULL;
 
-GttProject *cutted_project = NULL;
+gboolean 
+have_cutted_project (void)
+{
+	return (NULL==cutted_project_list) ? FALSE : TRUE;
+}
+
+void
+debug_print_cutted_proj_list (char * str)
+{
+	GList *n;
+	printf ("proj list --- \n");
+	if (NULL == cutted_project_list)
+	{
+		printf ("%s: project list is empty\n", str);
+	}
+	for (n=cutted_project_list; n; n=n->next)
+	{
+		GttProject *p = n->data;
+		printf ("%s: n=%p prj=%p title=%s\n", str,n,p,gtt_project_get_title(p));
+	}
+	printf ("\n");
+}
 
 void
 cut_project(GtkWidget *w, gpointer data)
 {
-	GttProject *prj;
+	GttProject *cut_prj;
 
 	/* Do NOT cut unless the ctree window actually has focus.
-	 * Otherwise, it will lead to cutting mayhem. */
+	 * Otherwise, it will lead to cutting mayhem. 
+	 * (We might have gotten the ctrl-x cut event by accident) */
 	if (0 == ctree_has_focus (global_ptw)) return;
 	
-	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
-	if (cutted_project)
-	{
-		/* Wipe out whatever was previously in our cut buffer. */
-		gtt_project_destroy(cutted_project);
-	}
+	cut_prj = ctree_get_focus_project (global_ptw);
+	if (!cut_prj) return;
 	
-	cutted_project = prj;
+	cutted_project_list = g_list_prepend (cutted_project_list, cut_prj);
+	debug_print_cutted_proj_list ("cut");
 
 	/* Clear out relevent GUI elements. */
 	prop_dialog_set_project(NULL);
 
-	if (cutted_project == cur_proj) ctree_stop_timer (cur_proj);
-	gtt_project_remove(cutted_project);
-	ctree_remove(global_ptw, cutted_project);
+	if (cut_prj == cur_proj) ctree_stop_timer (cur_proj);
+	gtt_project_remove(cut_prj);
+	ctree_remove(global_ptw, cut_prj);
 
 	/* Update various subsystems */
 	/* Set the notes are to whatever the new focus project is. */
-	prj = ctree_get_focus_project (global_ptw);
+	GttProject *prj = ctree_get_focus_project (global_ptw);
 	notes_area_set_project (global_na, prj);
 						 
-	menu_set_states();      /* to enable paste menu item */
+	menu_set_states();      /* To enable paste menu item */
 	toolbar_set_states();
 }
 
@@ -335,13 +357,26 @@ paste_project(GtkWidget *w, gpointer data)
 	
 	sib_prj = ctree_get_focus_project (global_ptw);
 
-	if (!cutted_project) return;
-	p = cutted_project;
+	debug_print_cutted_proj_list ("pre paste");
 
-	/* if we paste a second time, we better paste a copy ... */
-	cutted_project = gtt_project_dup(cutted_project);
+	if (!cutted_project_list) return;
+	p = cutted_project_list->data;
 
-	/* insert before the focus proj */
+	if (NULL == cutted_project_list->next)
+	{
+		/* If we paste a second time, we better paste a copy ... */
+		cutted_project_list->data = gtt_project_dup(p);
+	}
+	else
+	{
+		/* Pop element off the top. */
+		cutted_project_list->data = NULL;
+		cutted_project_list = 
+		     g_list_delete_link(cutted_project_list, cutted_project_list);
+	}
+	debug_print_cutted_proj_list ("post paste");
+
+	/* Insert before the focus proj */
 	gtt_project_insert_before (p, sib_prj);
 
 	if (!sib_prj) 
@@ -369,11 +404,22 @@ copy_project(GtkWidget *w, gpointer data)
 
 	if (!prj) return;
 
-	if (cutted_project) 
+	prj = gtt_project_dup(prj);
+
+	/* Hitting copy has effect of completely trashing
+	 * the list of earlier cut projects.  We do this in order
+	 * to allow the most recently copied project to be pasted
+	 * multiple times.  */
+	GList *n = cutted_project_list;
+	for (n=cutted_project_list; n; n=n->next)
 	{
-		gtt_project_destroy(cutted_project);
+		GttProject *p = n->data;
+		gtt_project_destroy (p);
 	}
-	cutted_project = gtt_project_dup(prj);
+	g_list_free (cutted_project_list);
+
+	cutted_project_list = g_list_prepend (NULL, prj);
+	debug_print_cutted_proj_list ("copy");
 	
 	/* Update various subsystems */
 	menu_set_states();      /* to enable paste menu item */
@@ -381,11 +427,8 @@ copy_project(GtkWidget *w, gpointer data)
 }
 
 
-
-
-/*
- * timer related menu functions
- */
+/* ======================================================= */
+/* Timer related menu functions */
 
 void
 menu_start_timer(GtkWidget *w, gpointer data)
@@ -394,7 +437,6 @@ menu_start_timer(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 	ctree_start_timer (prj);
 }
-
 
 
 void

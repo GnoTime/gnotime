@@ -72,8 +72,7 @@ toolbar_set_states(void)
 	
 	if (mytbar->paste)
 	{
-		gtk_widget_set_sensitive(mytbar->paste,
-					 (cutted_project != NULL));
+		gtk_widget_set_sensitive(mytbar->paste, have_cutted_project());
 	}
 
 	if (mytbar->timer_button_image)

@@ -21,16 +21,16 @@
 
 #include "proj.h"
 
-extern GttProject *cutted_project;
-
 void about_box(GtkWidget *, gpointer);
 
 void new_project(GtkWidget *, gpointer);
 void save_project_list(GtkWidget *, gpointer);
 void export_current_state(GtkWidget *, gpointer);
+
 void cut_project(GtkWidget *w, gpointer data);
 void paste_project(GtkWidget *w, gpointer data);
 void copy_project(GtkWidget *w, gpointer data);
+gboolean have_cutted_project (void);
 
 void menu_start_timer(GtkWidget *w, gpointer data);
 void menu_stop_timer(GtkWidget *w, gpointer data);

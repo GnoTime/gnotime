@@ -326,12 +326,12 @@ menu_set_states(void)
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_STOP_POS].widget,
 				 (timer_is_running()) );
 	gtk_widget_set_sensitive(menu_main_edit[MENU_EDIT_PASTE_POS].widget,
-				 (cutted_project) ? 1 : 0);
+				 (have_cutted_project()) );
 
 	if (menu_popup[MENU_POPUP_CUT_POS].widget)
 	{
 		gtk_widget_set_sensitive(menu_popup[MENU_POPUP_PASTE_POS].widget,
-				 (cutted_project) ? 1 : 0);
+				 (have_cutted_project()) );
 	}
 }
 
