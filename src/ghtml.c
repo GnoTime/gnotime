@@ -19,6 +19,7 @@
 #include "config.h"
 
 #define _GNU_SOURCE
+#include <glib.h>
 #include <guile/gh.h>
 #include <stdio.h>
 #include <string.h>
@@ -103,20 +104,21 @@ static GttGhtml *ghtml_guile_global_hack = NULL;
 static SCM
 do_show_journal (GttGhtml *ghtml, GttProject *prj)
 {
+	char buff[100];
 	GList *node;
-	char *p;
+	GString *p;
+	char * ps;
 	gboolean show_links = ghtml->show_links;
-	char prn[8000];  /* XXX danger buffer overflow !! */
 
 	if (NULL == ghtml->write_stream) return;
 
-	p = prn;
-	p += sprintf (p, "<table border=1>\n"
+	p = g_string_new(NULL);
+	g_string_append_printf (p, "<table border=1>\n"
 		"<tr><th colspan=4>%s</th></tr>\n"
 		"<tr><th>&nbsp;</th><th>%s</th><th>%s</th><th>%s</th></tr>\n",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
 
-	(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 
 	for (node = gtt_project_get_tasks(prj); node; node=node->next)
 	{
@@ -126,20 +128,20 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 		GList *in;
 		GttTask *tsk = node->data;
 		
-		p = prn;
-		p = g_stpcpy (p, "<tr><td colspan=4>");
+		p = g_string_truncate (p, 0);
+		p = g_string_append (p, "<tr><td colspan=4>");
 		if (show_links) 
 		{
-			p += sprintf (p, "<a href=\"gtt:task:0x%x\">", tsk);
+			g_string_append_printf (p, "<a href=\"gtt:task:0x%x\">", tsk);
 		}
 
 		pp = gtt_task_get_memo(tsk);
 		if (!pp || !pp[0]) pp = _("(empty)");
-		p = g_stpcpy (p, pp);
-		if (show_links) p = g_stpcpy (p, "</a>");
-		p = g_stpcpy (p, "</td></tr>\n");
+		p = g_string_append (p, pp);
+		if (show_links) p = g_string_append (p, "</a>");
+		p = g_string_append (p, "</td></tr>\n");
 
-		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+		(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 
 		
 		for (in=gtt_task_get_intervals(tsk); in; in=in->next)
@@ -151,13 +153,13 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 			stop = gtt_interval_get_stop (ivl);
 			elapsed = stop - start;
 			
-			p = prn;
-			p = g_stpcpy (p, 
+			p = g_string_truncate (p, 0);
+			p = g_string_append (p, 
 				"<tr><td>&nbsp;&nbsp;&nbsp;</td>"
 				"<td align=right>&nbsp;&nbsp;");
 			if (show_links) 
 			{
-				p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
 			}
 
 			/* print hour only or date too? */
@@ -165,41 +167,48 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 				prt_date = is_same_day(start, prev_stop);
 			}
 			if (prt_date) {
-				p = print_date_time (p, 100, start);
+				print_date_time (buff, 100, start);
+				p = g_string_append (p, buff);
 			} else {
-				p = print_time (p, 100, start);
+				print_time (buff, 100, start);
+				p = g_string_append (p, buff);
 			}
 
 			/* print hour only or date too? */
 			prt_date = is_same_day(start, stop);
-			if (show_links) p = g_stpcpy (p, "</a>");
-			p = g_stpcpy (p, 
+			if (show_links) p = g_string_append (p, "</a>");
+			p = g_string_append (p, 
 				"&nbsp;&nbsp;</td>"
 				"<td>&nbsp;&nbsp;");
 			if (show_links)
 			{
-				p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
+				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
 			}
 			if (prt_date) {
-				p = print_date_time (p, 70, stop);
+				print_date_time (buff, 100, stop);
+				p = g_string_append (p, buff);
 			} else {
-				p = print_time (p, 70, stop);
+				print_time (buff, 100, stop);
+				p = g_string_append (p, buff);
 			}
 
 			prev_stop = stop;
 
-			if (show_links) p = g_stpcpy (p, "</a>");
-			p = g_stpcpy (p, "&nbsp;&nbsp;</td><td>&nbsp;&nbsp;");
-			p = print_hours_elapsed (p, 40, elapsed, TRUE);
-			p = g_stpcpy (p, "&nbsp;&nbsp;</td></tr>\n");
-			len = p - prn;
-			(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
+			if (show_links) p = g_string_append (p, "</a>");
+			p = g_string_append (p, "&nbsp;&nbsp;</td><td>&nbsp;&nbsp;");
+			print_hours_elapsed (buff, 100, elapsed, TRUE);
+			p = g_string_append (p, buff);
+			p = g_string_append (p, "&nbsp;&nbsp;</td></tr>\n");
+			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 		}
 
 	}
 	
-	p = "</table>\n";
-	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
+	ps = "</table>\n";
+	(ghtml->write_stream) (ghtml, ps, strlen(ps), ghtml->user_data);
+
+	/* should the free-segment be false or true ??? */
+	g_string_free (p, FALSE);
 
 	return SCM_UNSPECIFIED;  
 }
