@@ -46,7 +46,7 @@ struct GttInactiveDialog_s
 	
 	GttProject  *prj;
 	IdleTimeout *idt;
-	time_t      idle_time;
+	time_t      last_activity;
 	time_t      previous_credit;
 };
 
@@ -153,10 +153,11 @@ value_changed (GObject *obj, GttInactiveDialog *dlg)
 {
 	double slider_value;
 	time_t credit;
+	time_t now = time(0);
 
 	slider_value = gtk_range_get_value (dlg->scale);
 	slider_value /= 90.0;
-	slider_value *= dlg->idle_time;
+	slider_value *= (now - dlg->last_activity);
 
 	credit = (time_t) slider_value;
 	
@@ -226,6 +227,7 @@ void
 show_inactive_dialog (GttInactiveDialog *id)
 {
 	time_t now;
+	time_t idle_time;
 	char *msg;
 	GttProject *prj = cur_proj;
 
@@ -233,8 +235,9 @@ show_inactive_dialog (GttInactiveDialog *id)
 	if (0 > config_idle_timeout) return;
 
 	now = time(0);
-	id->idle_time = now - poll_last_activity (id->idt);
-	if (id->idle_time <= config_idle_timeout) return;
+	id->last_activity = poll_last_activity (id->idt);
+	idle_time = now - id->last_activity;
+	if (idle_time <= config_idle_timeout) return;
 
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == id->gtxml)
@@ -255,7 +258,7 @@ show_inactive_dialog (GttInactiveDialog *id)
 	 * current active project.  We don't want this, we need
 	 * to undo this damage.
 	 */
-	id->previous_credit = id->idle_time;
+	id->previous_credit = idle_time;
 	adjust_timer (id, config_idle_timeout);
 
 	display_value (id, config_idle_timeout);
@@ -267,7 +270,7 @@ show_inactive_dialog (GttInactiveDialog *id)
 		  "project (%s - %s) "
 		  "has been stopped. "
 		  "Do you want to restart it?"),
-		(id->idle_time+30)/60,
+		(idle_time+30)/60,
 		gtt_project_get_title(prj),
 		gtt_project_get_desc(prj));
 	
