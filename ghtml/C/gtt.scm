@@ -5,7 +5,12 @@
 ; FUNCTION:
 ; Miscellaneous definitions for generating reports
 ;
+; HISTORY:
+; Copyright (c) 2002 Linas Vepstas <linas@linas.org>
 ;
+; This file is covered by the GPL.  Please refer to the
+; GPL license for details.
+
 
 ; Various bits of syntactic sugar for showing the current (selected)
 ; project title and other stuff of that sort.
