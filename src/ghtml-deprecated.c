@@ -78,7 +78,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 	p = g_string_new(NULL);
 	g_string_append_printf (p, "<table border=1>\n"
 		"<tr><th colspan=4>%s</th></tr>\n"
-		"<tr><th>&nbsp;</th><th>%s</th><th>%s</th><th>%s</th></tr>\n",
+		"<tr><th> &nbsp; </th><th>%s</th><th>%s</th><th>%s</th></tr>\n",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
 
 	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
@@ -102,7 +102,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 		if (!pp || !pp[0]) pp = _("(empty)");
 		p = g_string_append (p, pp);
 		if (show_links) p = g_string_append (p, "</a>");
-		p = g_string_append (p, "</td></tr>\n");
+		p = g_string_append (p, "</td>\n</tr>\n");
 
 		(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 
@@ -117,8 +117,8 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 			
 			p = g_string_truncate (p, 0);
 			p = g_string_append (p, 
-				"<tr><td>&nbsp;&nbsp;&nbsp;</td>"
-				"<td align=right>&nbsp;&nbsp;");
+				"<tr><td> &nbsp; &nbsp; &nbsp; </td>\n"
+				"<td align=right> &nbsp; &nbsp; ");
 			if (show_links) 
 			{
 				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
@@ -140,8 +140,8 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 			prt_date = is_same_day(start, stop);
 			if (show_links) p = g_string_append (p, "</a>");
 			p = g_string_append (p, 
-				"&nbsp;&nbsp;</td>"
-				"<td>&nbsp;&nbsp;");
+				" &nbsp; &nbsp; </td>\n"
+				"<td> &nbsp; &nbsp; ");
 			if (show_links)
 			{
 				g_string_append_printf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
@@ -157,10 +157,10 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 			prev_stop = stop;
 
 			if (show_links) p = g_string_append (p, "</a>");
-			p = g_string_append (p, "&nbsp;&nbsp;</td><td>&nbsp;&nbsp;");
+			p = g_string_append (p, " &nbsp; &nbsp; </td>\n<td> &nbsp; &nbsp; ");
 			print_hours_elapsed (buff, 100, elapsed, TRUE);
 			p = g_string_append (p, buff);
-			p = g_string_append (p, "&nbsp;&nbsp;</td></tr>\n");
+			p = g_string_append (p, " &nbsp; &nbsp; </td></tr>\n");
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 		}
 
@@ -262,9 +262,8 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 				TASK_COL_TITLE (_("No Default Value"));
 		}
 		p = g_string_append (p, ghtml->delim);	
-		if (output_html) p = g_string_append (p, "</th>");
+		if (output_html) p = g_string_append (p, "</th>\n");
 	}
-	p = g_string_append (p, "\r\n");
 
 	if (output_html && (0 < ghtml->ninvl_cols))
 	{
@@ -290,13 +289,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			default:
 				TASK_COL_TITLE (_("No Default Value"));
 		}
-		if (output_html) p = g_string_append (p, "</th>");
+		if (output_html) p = g_string_append (p, "</th>\n");
 	}
 	if (output_html && (0 < ghtml->ninvl_cols))
 	{
 		p = g_string_append (p, "</tr>");
 	}
-	p = g_string_append (p, "\r\n");
+	p = g_string_append (p, "\n");
 
 	(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 
@@ -467,13 +466,13 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 					p = g_string_append (p, _("Error - Unknown"));
 			}
 			p = g_string_append (p, ghtml->delim);
-			if (output_html) p = g_string_append (p, "</td>");
+			if (output_html) p = g_string_append (p, "</td>\n");
 		}
 
 		if (0 < ghtml->ntask_cols)
 		{
 			if (output_html) p = g_string_append (p, "</tr>");
-			p = g_string_append (p, "\r\n");
+			p = g_string_append (p, "\n");
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
 		}
 		
@@ -500,7 +499,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 			/* -------------------------- */
 			p = g_string_truncate (p,0);
-			if (output_html) p = g_string_append (p, "<tr>");
+			if (output_html && (0<ghtml->ninvl_cols)) p = g_string_append (p, "<tr>");
 			for (i=0; i<ghtml->ninvl_cols; i++)
 			{
 
@@ -561,12 +560,15 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	default:
 		if (output_html) p = g_string_append (p, "<td>");
 				}
-				if (output_html) p = g_string_append (p, "</td>");
+				if (output_html) p = g_string_append (p, "</td>\n");
 			}
 
-			if (output_html) p = g_string_append (p, "</tr>");
+			if (output_html && (0<ghtml->ninvl_cols)) p = g_string_append (p, "</tr>\n");
 			p = g_string_append (p, ghtml->delim);
-			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
+			if (0 < p->len) 
+			{
+				(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
+			}
 		}
 
 		p = g_string_append (p, "\n");
@@ -818,8 +820,6 @@ gtt_ghtml_deprecated_init (GttGhtml *p)
 		depr_register_procs();
 	}
 
-	p = g_new0 (GttGhtml, 1);
-
 	p->show_html = TRUE;
 	p->delim = "";
 
@@ -833,7 +833,5 @@ gtt_ghtml_deprecated_init (GttGhtml *p)
 		p->invl_titles[i] = NULL;
 	}
 }
-
-
 
 /* ===================== END OF FILE ==============================  */
