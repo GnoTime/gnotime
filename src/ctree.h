@@ -84,5 +84,13 @@ GtkWidget * ctree_get_widget(ProjTreeWindow *);
  */
 GttProject *ctree_get_focus_project (ProjTreeWindow *);
 
+/* The ctree_get_expander_state() routine returns the state of
+ *    the row expanders as an ascii string.
+ * The ctree_set_expander_state() routine takes this ascii string,
+ *    and sets the expanders to match.
+ */
+const char * ctree_get_expander_state (ProjTreeWindow *);
+void  ctree_set_expander_state (ProjTreeWindow *ptw, const char *expn);
+
 #endif /* GTT_CTREE_GNOME2 */
 #endif /* __GTT_CTREE_H__ */

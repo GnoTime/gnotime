@@ -1735,5 +1735,76 @@ ctree_get_col_width (ProjTreeWindow *ptw, int col)
 	return width;
 }
 
+/* ============================================================== */
+
+const char *
+ctree_get_expander_state (ProjTreeWindow *ptw)
+{
+	int i = 0;
+	GtkCTree *ctree;
+	GtkCTreeNode *ctn;
+	ProjTreeNode *ptn;
+	gboolean expanded, is_leaf;
+
+	if (!ptw) return;
+	ctree = ptw->ctree;
+
+	ptw->num_rows = gtt_project_list_total();
+	if (ptw->expander_state) g_free (ptw->expander_state);
+	ptw->expander_state = g_new0 (char, ptw->num_rows+1);
+	
+	for (i=0; i<ptw->num_rows; i++)
+	{
+		ctn = gtk_ctree_node_nth (ctree, i);
+		if (!ctn) break;
+		ptn = gtk_ctree_node_get_row_data(ctree, ctn);
+		gtk_ctree_get_node_info (ctree, ctn, 
+		                NULL, NULL, NULL, NULL, NULL, NULL,
+		                &is_leaf, &expanded);
+
+		if (expanded)
+		{
+			ptw->expander_state[i] = 'y';
+		}
+		else
+		{
+			ptw->expander_state[i] = 'n';
+		}
+	}
+	ptw->expander_state[i] = 0x0;
+	return ptw->expander_state;
+}
+
+/* ============================================================== */
+
+void
+ctree_set_expander_state (ProjTreeWindow *ptw, const char *expn)
+{
+	GtkCTree *ctree;
+	GtkCTreeNode *ctn;
+	int i = 0;
+
+	if (!ptw || !expn) return;
+	
+	ctree = ptw->ctree;
+
+	while (expn[i])
+	{
+		ctn = gtk_ctree_node_nth (ctree, i);
+		if (!ctn) break;
+
+		if ('y' == expn[i])
+		{
+			gtk_ctree_expand (ctree, ctn);
+		}
+		else if ('n' == expn[i])
+		{
+			gtk_ctree_collapse (ctree, ctn);
+		}
+				  
+		i++;
+	}
+}
+
 #endif /* GTT_CTREE_GNOME2 */
 /* ===================== END OF FILE ==============================  */

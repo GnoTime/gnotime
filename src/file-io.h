@@ -44,9 +44,14 @@ void gtt_load_config (const char *fname);
  *    project data has been loaded. It performs some final configuration
  *    and setup, such as setting the last (current) active project,
  *    starting timers, etc.
+ *
+ * The gtt_post_ctree_config() routine should be called *after* the
+ *    ctree is mostly set up.  It does a final bit of ctree setup,
+ *    viz. restoring expander state.
  */
 
 void gtt_post_data_config (void);
+void gtt_post_ctree_config (void);
 
 /* returns the 'real path' to the config file that was/would be used */
 const char * gtt_get_config_filepath (void);

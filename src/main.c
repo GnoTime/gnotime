@@ -146,6 +146,7 @@ post_read_data(void)
 
 	err_init();
 	ctree_setup(global_ptw);
+	gtt_post_ctree_config();
 	menu_set_states();
 	init_timer();
 

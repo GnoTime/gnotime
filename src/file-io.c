@@ -520,6 +520,20 @@ gtt_post_data_config (void)
 		cur_proj_set (NULL);
 	}
 }
+	
+void 
+gtt_post_ctree_config (void)
+{
+	char * xpn;
+
+	/* Assume the ctree has been set up.  Now punch in the final
+	 * bit of ctree state.
+	 */
+
+	/* Restore the expander state */
+	xpn = gnome_config_get_string(GTT_CONF"/Display/ExpanderState");
+	ctree_set_expander_state (global_ptw, xpn);
+}
 
 /* ======================================================= */
 /* save only the GUI configuration info, not the actual data */
@@ -531,6 +545,7 @@ gtt_save_config(const char *fname)
 	char s[120];
 	int i, old_num;
 	int x, y, w, h;
+	const char *xpn;
 
 	old_num = gnome_config_get_int(GTT_CONF"/Misc/NumProjects=0");
 
@@ -565,6 +580,9 @@ gtt_save_config(const char *fname)
 	gnome_config_set_bool(GTT_CONF"/Display/ShowUrgency", config_show_title_urgency);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowImportance", config_show_title_importance);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowStatus", config_show_title_status);
+
+	xpn = ctree_get_expander_state (global_ptw);
+	gnome_config_set_string(GTT_CONF"/Display/ExpanderState", xpn);
 
 	/* ------------- */
 	gnome_config_set_bool(GTT_CONF"/Toolbar/ShowIcons", config_show_tb_icons);
