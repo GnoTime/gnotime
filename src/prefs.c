@@ -21,6 +21,7 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
+#include <qof.h>
 #include <string.h>
 
 #include "app.h"
@@ -142,6 +143,88 @@ typedef struct _PrefsDialog
 	GtkOptionMenu  *weekstart_menu;
 } PrefsDialog;
 
+
+/* ============================================================== */
+/** Get and set the nth menu item */
+
+static int
+get_optionmenu_item (GtkOptionMenu *opt_menu)
+{
+	GList *node;
+
+	/* Hunt for the selected item */
+	GtkWidget *menu = gtk_option_menu_get_menu (opt_menu);
+	int i=0;
+	GtkWidget *w = gtk_menu_get_active (GTK_MENU(menu));
+	for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
+	{
+		if (w == node->data)
+		{
+			return i;
+		}
+		i++;
+	}
+	return 0;  /* can't possible reach this ... */
+}
+
+static void 
+set_optionmenu_item (GtkOptionMenu *opt_menu, int item)
+{
+	int i;
+	GList *node;
+	GtkWidget *w;
+	GtkMenuShell *menu;
+
+	/* Set the correct menu item based on current values */
+	w = gtk_option_menu_get_menu (opt_menu);
+	menu = GTK_MENU_SHELL(w);
+	i = 0;
+	for (node = menu->children; node; node=node->next)
+	{
+		if (item == i)
+		{
+			gtk_menu_shell_select_item (menu, node->data);
+			gtk_menu_shell_activate_item (menu, node->data, 1);
+			break;
+		}
+		i++;
+	}
+}
+
+/* ============================================================== */
+/** parse an HH:MM:SS string for the time returning seconds 
+ * XXX should probably use getdate or fdate or something like that 
+ */
+
+static int
+scan_time_string (const char *str)
+{
+	int hours=0, minutes=0, seconds = 0;
+	char buff[24];
+	strncpy (buff, str, 24);
+	buff[23]=0;
+	char * p = strchr (buff, ':');
+	if (p) *p = 0;
+	hours = atoi (buff);
+	if (p)
+	{
+		char *m = ++p;
+		p = strchr (m, ':');
+		if (p) *p = 0;
+		minutes = atoi (m);
+		if (p)
+		{
+			seconds = atoi(++p);
+		}
+	}
+	seconds %= 60;
+	minutes %= 60;
+	hours %= 24;
+
+	int totalsecs = hours*3600 + minutes*60 + seconds;
+	if (12*3600 < totalsecs) totalsecs -= 24*3600;
+	return totalsecs;
+}
 
 /* ============================================================== */
 
@@ -281,37 +364,14 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 
 	if (5 == page)
 	{
-		GList *node;
-		GtkWidget *menu, *w;
-
 		config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
 
 		/* Hunt for the hour-of night on which to start */
-		menu = gtk_option_menu_get_menu (odlg->daystart_menu);
-		int hour=-3;  /* menu starts at 9PM */
-		w = gtk_menu_get_active (GTK_MENU(menu));
-		for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
-		{
-			if (w == node->data)
-			{
-				config_daystart_offset = 3600*hour;
-				break;
-			}
-			hour++;
-		}
+		const char * buff = gtk_entry_get_text (odlg->daystart_secs);
+		config_daystart_offset = scan_time_string (buff);
 
-		menu = gtk_option_menu_get_menu (odlg->weekstart_menu);
-		int day=0;  /* menu starts at Sunday */
-		w = gtk_menu_get_active (GTK_MENU(menu));
-		for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
-		{
-			if (w == node->data)
-			{
-				config_weekstart_offset = day;
-				break;
-			}
-			day++;
-		}
+		int day = get_optionmenu_item (odlg->weekstart_menu);
+		config_weekstart_offset = day;
 	}
 
 	/* Also save them the to file at this point */
@@ -417,42 +477,31 @@ options_dialog_set(PrefsDialog *odlg)
 	g_snprintf(s, sizeof (s), "%d", config_idle_timeout);
 	gtk_entry_set_text(GTK_ENTRY(odlg->idle_secs), s);
 
-	int i;
-	GList *node;
-	GtkWidget *w;
-	GtkMenuShell *menu;
-
 	/* Set the correct menu item based on current values */
-	w = gtk_option_menu_get_menu (odlg->daystart_menu);
-	menu = GTK_MENU_SHELL(w);
-	i = -3; /* menu starts at 9PM */
-	int hour = (config_daystart_offset +1800)/3600;
-	for (node = menu->children; node; node=node->next)
+	int hour;
+	if (0<config_daystart_offset)
 	{
-		if (hour == i)
-		{
-			gtk_menu_shell_select_item (menu, node->data);
-			gtk_menu_shell_activate_item (menu, node->data, 1);
-			break;
-		}
-		i++;
+		hour = (config_daystart_offset +1800)/3600;
 	}
+	else
+	{
+		hour = (config_daystart_offset -1800)/3600;
+	}
+	if (-3 > hour) hour = -3; /* menu runs from 9pm */
+	if (6 < hour) hour = 6;   /* menu runs till 6am */
+	hour += 3;  /* menu starts at 9PM */
+	set_optionmenu_item (odlg->daystart_menu, hour);
+
+	/* Print the daystart offset as a string in 24 hour time */
+	int secs = config_daystart_offset;
+	if (0 > secs) secs += 24*3600;
+	char buff[24];
+	qof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	gtk_entry_set_text (odlg->daystart_secs, buff);
 
 	/* Set the correct menu item based on current values */
-	w = gtk_option_menu_get_menu (odlg->weekstart_menu);
-	menu = GTK_MENU_SHELL(w);
-	i = 0; /* menu starts on Sunday */
 	int day = config_weekstart_offset;
-	for (node = menu->children; node; node=node->next)
-	{
-		if (day == i)
-		{
-			gtk_menu_shell_select_item (menu, node->data);
-			gtk_menu_shell_activate_item (menu, node->data, 1);
-			break;
-		}
-		i++;
-	}
+	set_optionmenu_item (odlg->weekstart_menu, day);
 
 	/* set to unmodified as it reflects the current state of the app */
 	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(odlg->dlg), FALSE);
@@ -460,24 +509,41 @@ options_dialog_set(PrefsDialog *odlg)
 
 /* ============================================================== */
 
-#define GETWID(strname) 						\
-({									\
-	GtkWidget *e;							\
-	e = glade_xml_get_widget (gtxml, strname);			\
-	gtk_signal_connect_object(GTK_OBJECT(e), "changed",		\
-			  GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-			  GTK_OBJECT(dlg->dlg));			\
-	e;								\
+static void 
+daystart_menu_changed (gpointer data, GtkOptionMenu *w)
+{
+	PrefsDialog *dlg = data;
+
+	int hour = get_optionmenu_item (dlg->daystart_menu);
+	hour += -3;  /* menu starts at 9PM */
+
+	int secs = hour * 3600;
+	if (0 > secs) secs += 24*3600;
+	char buff[24];
+	qof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	gtk_entry_set_text (dlg->daystart_secs, buff);
+}
+
+/* ============================================================== */
+
+#define GETWID(strname)                                            \
+({                                                                 \
+	GtkWidget *e;                                                   \
+	e = glade_xml_get_widget (gtxml, strname);                      \
+	gtk_signal_connect_object(GTK_OBJECT(e), "changed",             \
+	                  GTK_SIGNAL_FUNC(gnome_property_box_changed),  \
+	                  GTK_OBJECT(dlg->dlg));                        \
+	e;                                                              \
 })
 
-#define GETCHWID(strname) 						\
-({									\
-	GtkWidget *e;							\
-	e = glade_xml_get_widget (gtxml, strname);			\
-	gtk_signal_connect_object(GTK_OBJECT(e), "toggled",		\
-			  GTK_SIGNAL_FUNC(gnome_property_box_changed), 	\
-			  GTK_OBJECT(dlg->dlg));			\
-	e;								\
+#define GETCHWID(strname)                                          \
+({                                                                 \
+	GtkWidget *e;                                                   \
+	e = glade_xml_get_widget (gtxml, strname);                      \
+	gtk_signal_connect_object(GTK_OBJECT(e), "toggled",             \
+	                  GTK_SIGNAL_FUNC(gnome_property_box_changed),  \
+	                  GTK_OBJECT(dlg->dlg));                        \
+	e;                                                              \
 })
 
 static void 
@@ -618,6 +684,10 @@ misc_options(PrefsDialog *dlg)
 
 	w = GETWID ("daystart optionmenu");
 	dlg->daystart_menu = GTK_OPTION_MENU(w);
+
+	gtk_signal_connect_object(GTK_OBJECT(w), "changed",
+	                  GTK_SIGNAL_FUNC(daystart_menu_changed),
+	                  dlg);
 
 	w = GETWID ("weekstart optionmenu");
 	dlg->weekstart_menu = GTK_OPTION_MENU(w);
