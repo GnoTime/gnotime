@@ -198,7 +198,7 @@ post_read_data(void)
 	toolbar_set_states();
 	init_timer();
 
-	/* plugins need to be added to the main menus dynamically,
+	/* Plugins need to be added to the main menus dynamically,
 	 * after the config file has been read */
 	menus_add_plugins (GNOME_APP(app_window));
 	log_start();

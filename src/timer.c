@@ -21,6 +21,7 @@
 #include <gnome.h>
 #include <string.h>
 
+#include "active-dialog.h"
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
@@ -37,6 +38,7 @@
 
 int config_autosave_period = 60;
 int config_autosave_props_period = (4*3600);
+GttActiveDialog *act = NULL;
 
 static gint main_timer = 0;
 static GttIdleDialog *idt = NULL;
@@ -103,7 +105,8 @@ timer_func(gpointer data)
 	gtt_notes_timer_callback (global_na);
 	
 	/* If no project is running, but there is keyboard/mouse activity, 
-	 * remind user to start the timer.
+	 * remind user to either restart the timer on an expired project,
+	 * or to pick a new project, as appropriate.
 	 */
 	if (!cur_proj) 
 	{
@@ -111,6 +114,7 @@ timer_func(gpointer data)
 		{
 			/* Make sure the idle dialog is visible */
 			raise_idle_dialog (idt);
+			show_active_dialog (act);
 		}
 		return 1;
 	}
@@ -129,10 +133,12 @@ timer_func(gpointer data)
 		ctree_update_label(global_ptw, cur_proj);
 	}
 
-	/* Look for keyboard/mouse inactivity, and stop the timer if needed. */
+	/* Look for keyboard/mouse inactivity, and expire (stop) 
+	 * the timer if needed. */
 	if (0 < config_idle_timeout) 
 	{
 		show_idle_dialog (idt);
+		cancel_active_dialog (act);
 	}
 	return 1;
 }
@@ -147,6 +153,7 @@ init_timer(void)
 	timer_inited = TRUE;
 
 	idt = idle_dialog_new();
+	act = active_dialog_new();
 	
 	/* The timer is measured in milliseconds, so 1000
 	 * means it pops once a second. */

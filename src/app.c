@@ -27,6 +27,7 @@
 
 #include <gnc-date.h>
 
+#include "active-dialog.h"
 #include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
@@ -43,9 +44,9 @@
 #include "util.h"
 
 
-/* XXX Most of the globals below should be placed into thier
- * own top-level structure, rather than being allows to be 
- * globals.
+/* XXX Most of the globals below should be placed into a single
+ * application-wide top-level structure, rather than being allowed
+ * to be globals. But, for now, its OK ... 
  */
 GttProject *cur_proj = NULL;
 
@@ -63,6 +64,9 @@ char *config_shell_stop = NULL;
 
 gboolean geom_place_override = FALSE;
 gboolean geom_size_override = FALSE;
+
+
+extern GttActiveDialog *act;
 
 /* ============================================================= */
 
@@ -195,6 +199,7 @@ cur_proj_set (GttProject *proj)
 	else
 	{
 		cur_proj = NULL;
+		arm_active_dialog (act);
 	}
 	log_proj(proj);
 

@@ -266,6 +266,7 @@ show_idle_dialog (GttIdleDialog *id)
 
 	if (!id) return;
 	if (0 > config_idle_timeout) return;
+	if (!prj) return;
 
 	now = time(0);
 	id->last_activity = poll_last_activity (id->idt);

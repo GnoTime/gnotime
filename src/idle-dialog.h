@@ -21,7 +21,7 @@
 
 /* The Idle Dialog is popped up when a project is active (a project 
  * timer is running), but the keyboard/mouse have been idle for some
- * set amount of time.
+ * set amount of time.  
  *
  * Do not confuse this with the "Activity Dialog", which pops up
  * when NO project is running, but the keyboard/mouse IS active.
@@ -30,22 +30,29 @@
  * The idle dialog asks the user if they want to restart the
  * idled project, and allows user to credit a variable amount
  * of time to it.
+ *
+ * Terminology: a project that used to be running, but was auto-stopped
+ * due to keyboard inactivity, is called an 'expired' project.  This
+ * dialog allows the user to restart expired projects.
  */
 
 typedef struct GttIdleDialog_s GttIdleDialog;
 
 GttIdleDialog * idle_dialog_new (void);
 
-/** This routine will display the inactive dialog, but only
+/** This routine will display the idle dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
+ *  It will cause the timer for the currently active project to 
+ *  be stopped (and the ctree display to be updated to reflect the
+ *  stopped project).  
  */
 void show_idle_dialog (GttIdleDialog *id);
 		  
-/** This routine will raise the inactive dialog to the top of the
- *  current screen. But it will do this only if the inactive dialog
+/** This routine will raise the idle dialog to the top of the
+ *  current screen. But it will do this only if the idle dialog
  *  is already being displayed, and if some mouse/keyboard events have
  *  been detected recently.   The problem that this routine is trying
- *  to solve is that the inactive dialog often ends up obscured by
+ *  to solve is that the idle dialog often ends up obscured by
  *  another window, or it ends up on a different workspace than the
  *  current workspace, and so the user can't see it, can't find it.
  */

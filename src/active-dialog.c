@@ -33,17 +33,22 @@
 #include "util.h"
 
 
-int config_active_timeout = -1;
+extern int config_idle_timeout;
 
 struct GttActiveDialog_s 
 {
+	gboolean    armed;
 	GladeXML    *gtxml;
 	GtkDialog   *dlg;
 	GtkButton   *yes_btn;
 	GtkButton   *no_btn;
+	GtkLabel    *active_label;
+	GtkLabel    *credit_label;
+	GtkOptionMenu *project_menu;
 	
 	GttProject  *prj;
 	IdleTimeout *idt;
+	time_t      time_armed;
 };
 
 
@@ -54,6 +59,7 @@ dialog_close (GObject *obj, GttActiveDialog *dlg)
 {
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
+	dlg->armed = FALSE;
 }
 
 /* =========================================================== */
@@ -64,6 +70,7 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
+	dlg->armed = FALSE;
 }
 
 /* =========================================================== */
@@ -71,8 +78,30 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 static void
 start_proj (GObject *obj, GttActiveDialog *dlg)
 {
-		  printf ("duude start proj\n");
+		  printf ("duude start proj (not really, nothing done yet)\n");
 	dialog_kill (obj, dlg);
+}
+
+/* =========================================================== */
+
+static void
+setup_menus (GttActiveDialog *dlg)
+{
+	char * msg;
+
+	msg = _("No project timer is currently running in GnoTime.  "
+	        "Do you want to start a project timer running?  "
+	        "If so, you can select a project from the menu below, "
+	        "and click 'Start' to start the project running.  "
+	        "Otherwise, just click 'Cancel' to do nothing.");
+
+	gtk_label_set_text (dlg->active_label, msg);
+
+	msg = _("You can credit this project with the time that you worked "
+	        "on it but were away from the keyboard.  Enter a time below, "
+	        "the project will be credited when you click 'Start'");
+						 
+	gtk_label_set_text (dlg->credit_label, msg);
 }
 
 /* =========================================================== */
@@ -95,6 +124,9 @@ active_dialog_realize (GttActiveDialog * id)
 
 	id->yes_btn = GTK_BUTTON(glade_xml_get_widget (gtxml, "yes button"));
 	id->no_btn  = GTK_BUTTON(glade_xml_get_widget (gtxml, "no button"));
+	id->active_label = GTK_LABEL (glade_xml_get_widget (gtxml, "active label"));
+	id->credit_label = GTK_LABEL (glade_xml_get_widget (gtxml, "credit label"));
+	id->project_menu = GTK_OPTION_MENU (glade_xml_get_widget (gtxml, "project menu"));
 
 	g_signal_connect(G_OBJECT(id->dlg), "destroy",
 	          G_CALLBACK(dialog_close), id);
@@ -112,57 +144,97 @@ active_dialog_realize (GttActiveDialog * id)
 GttActiveDialog *
 active_dialog_new (void)
 {
-	GttActiveDialog *id;
+	GttActiveDialog *ad;
 
-	id = g_new0 (GttActiveDialog, 1);
-	id->idt = idle_timeout_new ();
-	id->prj = NULL;
+	ad = g_new0 (GttActiveDialog, 1);
+	ad->armed = TRUE;
+	ad->time_armed = time(0);
+	ad->idt = idle_timeout_new ();
+	ad->prj = NULL;
 
-	id->gtxml = NULL;
+	ad->gtxml = NULL;
 
-	return id;
+	return ad;
 }
 
 /* =========================================================== */
 
 void 
-show_active_dialog (GttActiveDialog *id)
+show_active_dialog (GttActiveDialog *ad)
 {
-	if (!id) return;
+	time_t now, idle_time;
+	if (!ad) return;
 
+	/* If there is a project currently running, or if the dialog
+	 * isn't armed, or the timeout isn't configured, then do nothing.
+	 */
+	if (cur_proj) return;
+	if (FALSE == ad->armed) return;
+	if (0 > config_idle_timeout) return;
+
+	/* If there hasn't been a project running in a while, then pop. */
+	now = time(0);
+	idle_time = now - ad->time_armed;
+// printf ("duude armed, waiting %d %d\n", idle_time, config_idle_timeout);
+	if (idle_time <= config_idle_timeout) return;
+					
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
-	if (NULL == id->gtxml)
+	if (NULL == ad->gtxml)
 	{
-		active_dialog_realize (id);
+		active_dialog_realize (ad);
+		setup_menus (ad);
+	
+		gtk_widget_show (GTK_WIDGET(ad->dlg));
 	}
-
-	gtk_widget_show (GTK_WIDGET(id->dlg));
+	else
+	{
+		raise_active_dialog (ad);
+	}
 }
 
 /* =========================================================== */
 
 void 
-raise_active_dialog (GttActiveDialog *id)
+raise_active_dialog (GttActiveDialog *ad)
 {
 	time_t now;
 	time_t active_time;
 
-	if (!id) return;
-	if (NULL == id->gtxml) return;
+	if (!ad) return;
+	if (NULL == ad->gtxml) return;
 
 	/* If there has not been any activity recently, then leave things
 	 * alone. Otherwise, work real hard to put the dialog where the
 	 * user will see it.
 	 */
 	now = time(0);
-	active_time = now - poll_last_activity (id->idt);
+	active_time = now - poll_last_activity (ad->idt);
 	if (15 < active_time) return;
 
 	/* The following will raise the window, and put it on the current
 	 * workspace, at least if the metacity WM is used. Haven't tried
 	 * other window managers.
 	 */
-	gtk_window_present (GTK_WINDOW (id->dlg));
+	gtk_window_present (GTK_WINDOW (ad->dlg));
+}
+
+/* =========================================================== */
+
+void 
+arm_active_dialog (GttActiveDialog *ad)
+{
+	if (!ad) return;
+	ad->time_armed = time(0);
+	ad->armed = TRUE;
+}
+
+/* =========================================================== */
+
+void 
+cancel_active_dialog (GttActiveDialog *ad)
+{
+	if (!ad) return;
+	ad->armed = FALSE;
 }
 
 /* =========================== END OF FILE ============================== */

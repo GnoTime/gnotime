@@ -24,9 +24,15 @@
  * (after a long period of idleness).  It nags the user
  * to pick a project, and start a timer.
  *
- * Do not confuse the Acitivity Dialog with the Idle Dialog,
+ * Do not confuse the Activity Dialog with the Idle Dialog,
  * which is poped up when there is a running project, but the
  * keyboard/mouse has gone idle.
+ *
+ * Terminology:  A project which had been running, but was stopped
+ * by the Idle Dialog, is called an 'expired' project.  If there
+ * is an expired project, then the Idle Dialog is used to restart it.
+ * If there is no expired project (and no currently-running project),
+ * then the Activity Dialog is used to nag the user to start a timer.
  */
 
 typedef struct GttActiveDialog_s GttActiveDialog;
@@ -47,5 +53,16 @@ void show_active_dialog (GttActiveDialog *id);
  *  current workspace, and so the user can't see it, can't find it.
  */
 void raise_active_dialog (GttActiveDialog *id);
+
+/** The arm routine is used to indicate that there is neither
+ *  an active, nor an expired project, which is a necessary 
+ *  precondition for starting the activity timer.
+ *
+ *  The cancel routine is used to disarm the activity dialog
+ *  (to prevent it from accidentally popping, in case there 
+ *  is an expired project that needs to be started.)
+ */
+void arm_active_dialog (GttActiveDialog *id);
+void cancel_active_dialog (GttActiveDialog *id);
 
 #endif /* GTT_ACTIVITY_DIALOG_H_ */
