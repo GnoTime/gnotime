@@ -276,15 +276,55 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 }
 
 /* ============================================================== */
+/* A routine to recursively apply a scheme form to a hierarchical 
+ * list of gtt tasks.  It returns the result of the apply. */
 
-#define PROJ_COL_TITLE(DEFAULT_STR)                        \
-{                                                          \
-   if (ghtml->proj_titles[i]) {                            \
-      p = g_string_append (p, ghtml->proj_titles[i]);      \
-   } else {                                                \
-      p = g_string_append (p, DEFAULT_STR);                \
-   }                                                       \
+static SCM
+do_apply_on_task (GttGhtml *ghtml, SCM task, 
+             SCM (*func)(GttGhtml *, GttTask *))
+{
+	GttTask * tsk;
+	SCM rc;
+
+	/* If its a number, its in fact a pointer to the C struct. */
+	if (SCM_NUMBERP(task))
+	{
+		tsk = (GttTask *) gh_scm2ulong (task);
+		rc = func (ghtml, tsk);
+		return rc;
+	}
+
+	/* if its a list, then process the list */
+	else if (SCM_CONSP(task))
+	{
+		SCM task_list = task;
+		
+		/* Get a pointer to null */
+		rc = gh_eval_str ("()");
+	
+		while (FALSE == SCM_NULLP(task_list))
+		{
+			SCM evl;
+			task = gh_car (task_list);
+			evl = do_apply_on_task (ghtml, task, func);
+			rc = gh_cons (evl, rc);
+			task_list = gh_cdr (task_list);
+		}
+
+		/* reverse the list. Ughh */
+		/* gh_reverse (rc);  this doesn't work, to it manually */
+		rc = reverse_list (rc);
+		
+		return rc;
+	}
+	
+	g_warning ("expecting gtt task as argument, got something else\n");
+	rc = gh_eval_str ("()");
+	return rc;
 }
+
+/* ============================================================== */
+
 
 #define TASK_COL_TITLE(DEFAULT_STR)                        \
 {                                                          \
@@ -946,11 +986,13 @@ show_scm (SCM node_list)
 /* ============================================================== */
 /* Cheesy hack, this returns a pointer to the currently
  * selected project as a ulong.  Its baaaad,  but acheives its 
- * purpose for now.   Its baad because it exposes a C pointer to
- * the schemers, which could be used for evil purposes, such
- * as propagating viruses, worms, etc.  It sure would be nice to be
+ * purpose for now.   Its baad because the C pointer is not
+ * currently checked before use.  This could lead to core dumps
+ * if the scheme code was bad.  It sure would be nice to be
  * able to check that the pointer is a valid pointer to a gtt
- * project.  But for now, I don't know of a better way.  --linas
+ * project.  For example, maybe projects and tasks should be
+ * GObjects, and then would could check the cast.  Later. 
+ * --linas
  */
 
 /* The 'selected project' is the project highlighted by the 
@@ -988,7 +1030,8 @@ ret_linked_project (void)
 	return do_ret_linked_project (ghtml);
 }
 
-/* return a list of all of the projects */
+/* ============================================================== */
+/* Return a list of all of the projects */
 
 static SCM
 do_ret_projects (GttGhtml *ghtml, GList *proj_list)
@@ -998,15 +1041,13 @@ do_ret_projects (GttGhtml *ghtml, GList *proj_list)
 
 	/* Get a pointer to null */
 	rc = gh_eval_str ("()");
-	
-	/* Get list of all top-level projects, then get tail */
 	if (!proj_list) return rc;
 	
 	/* find the tail */
 	for (n= proj_list; n->next; n=n->next) {}
 	proj_list = n;
 	
-	/* walk backwards, creating a scheme list */
+	/* Walk backwards, creating a scheme list */
 	for (n= proj_list; n; n=n->prev)
 	{
 		GttProject *prj = n->data;
@@ -1031,9 +1072,51 @@ static SCM
 ret_projects (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
+	
+	/* Get list of all top-level projects */
 	GList *proj_list = gtt_get_project_list();
 	return do_ret_projects (ghtml, proj_list);
 }
+
+/* ============================================================== */
+/* Return a list of all of the tasks of a project */
+
+static SCM
+do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
+{
+	SCM rc;
+	GList *n, *task_list;
+
+	/* Get a pointer to null */
+	rc = gh_eval_str ("()");
+	if (!prj) return rc;
+	
+	/* Get list of tasks, then get tail */
+	task_list = gtt_project_get_tasks (prj);
+	if (!task_list) return rc;
+	
+	for (n= task_list; n->next; n=n->next) {}
+	task_list = n;
+	
+	/* Walk backwards, creating a scheme list */
+	for (n= task_list; n; n=n->prev)
+	{
+		GttTask *tsk = n->data;
+      SCM node;
+		
+		node = gh_ulong2scm ((unsigned long) tsk);
+		rc = gh_cons (node, rc);
+	}
+	return rc;
+}
+
+static SCM
+ret_tasks (SCM proj_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_project (ghtml, proj_list, do_ret_tasks);
+}
+
 
 /* ============================================================== */
 /* Define a set of subroutines that accept a scheme list of projects,
@@ -1195,6 +1278,34 @@ RET_FUNC (SCM proj_list)                                            \
 RET_PROJECT_SIMPLE (show_journal, do_show_journal);
 
 /* ============================================================== */
+/* Define a set of subroutines that accept a scheme list of tasks,
+ * applies the gtt_task function on each, and then returns a 
+ * scheme list containing the results.   
+ *
+ * For example, ret_task_memo() takes a scheme list of gtt
+ * tasks, gets the task memo for each, and then returns
+ * a scheme list of the task memos.
+ */
+
+#define RET_TASK_STR(RET_FUNC,GTT_GETTER)                           \
+static SCM                                                          \
+GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
+{                                                                   \
+	const char * str = GTT_GETTER (tsk);                             \
+	return gh_str2scm (str, strlen (str));                           \
+}                                                                   \
+                                                                    \
+static SCM                                                          \
+RET_FUNC (SCM task_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_task (ghtml, task_list, GTT_GETTER##_scm);    \
+}
+
+RET_TASK_STR (ret_task_memo,    gtt_task_get_memo)
+RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
+		  
+/* ============================================================== */
 
 void
 gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
@@ -1345,6 +1456,8 @@ register_procs (void)
 	gh_new_procedure("gtt-linked-project",     ret_linked_project,     0, 0, 0);
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
+
+	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
 	gh_new_procedure("gtt-project-title-link", ret_project_title_link, 1, 0, 0);
 	gh_new_procedure("gtt-project-desc",       ret_project_desc,       1, 0, 0);
@@ -1357,6 +1470,8 @@ register_procs (void)
 	gh_new_procedure("gtt-project-due-date",   ret_project_due_date, 1, 0, 0);
 	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
 	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
+	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
+	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
 }
 
 
