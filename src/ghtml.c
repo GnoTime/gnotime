@@ -70,21 +70,6 @@ ret_did_query (void)
 }
 
 /* ============================================================== */
-
-static SCM
-do_ret_kvp_str (GttGhtml *ghtml, SCM key)
-{
-	return SCM_BOOL (ghtml->did_query);
-}
-
-static SCM
-ret_kvp_str (SCM key)
-{
-	GttGhtml *ghtml = ghtml_guile_global_hack;
-	return do_ret_kvp_str (ghtml, key);
-}
-
-/* ============================================================== */
 /* This routine will reverse the order of a scheme list */
 
 static SCM
@@ -122,7 +107,6 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
              SCM (*tsk_func)(GttGhtml *, GttTask *),
              SCM (*ivl_func)(GttGhtml *, GttInterval *))
 {
-		  
 	/* Either a 'symbol or a "quoted string" */
 	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
 	{
@@ -144,17 +128,21 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 			case GTT_PRJ: {
 				GttProject *prj = (GttProject *) gh_scm2ulong (node);
 				if (prj_func) rc = prj_func (ghtml, prj);
+				break;
 			}
 			case GTT_TASK: {
 				GttTask *tsk = (GttTask *) gh_scm2ulong (node);
 				if (tsk_func) rc = tsk_func (ghtml, tsk);
+				break;
 			}
 			case GTT_IVL: {
 				GttInterval *ivl = (GttInterval *) gh_scm2ulong (node);
 				if (ivl_func) rc = ivl_func (ghtml, ivl);
+				break;
 			}
 			case GTT_NONE:
 				rc = SCM_EOL;
+				break;
 		}
 		return rc;
 	}
@@ -202,7 +190,6 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 				               str_func, prj_func, tsk_func, ivl_func);
 			}
 		}
-
 		/* Otherwise, we have just a list. Walk that list,
 		 * apply recursively to it.
 		 */
@@ -229,7 +216,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 	}
 
 	/* If its a null list, do nothing */
-	else if (SCM_NULLP (node))
+	if (SCM_NULLP (node))
 	{ 
 		return node;
 	}
@@ -241,6 +228,14 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 /* ============================================================== */
 /* A routine to recursively apply a scheme form to a hierarchical 
  * list of gtt projects.  It returns the result of the apply. */
+
+static SCM
+do_apply_on_string (GttGhtml *ghtml, SCM strs, 
+             SCM (*func)(GttGhtml *, const char *))
+{
+   return do_apply_based_on_type (ghtml, strs,
+             GTT_NONE, func, NULL, NULL, NULL);
+}
 
 static SCM
 do_apply_on_project (GttGhtml *ghtml, SCM project, 
@@ -268,6 +263,26 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 }
 
 /* ============================================================== */
+
+static SCM
+kvp_cb (GttGhtml *ghtml, const char *key)
+{
+	KvpValue *val;
+	const char * str;
+	if (!ghtml->kvp) return SCM_EOL;
+	val = kvp_frame_get_slot (ghtml->kvp, key);
+	str = kvp_value_get_string (val);
+	return gh_str2scm (str, strlen (str));
+}
+
+static SCM
+ret_kvp_str (SCM key)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_string (ghtml, key, kvp_cb);
+}
+
+/* ============================================================== */
 /* This routine accepts an SCM node, and 'prints' it out.
  * (or tries to). It knows how to print numbers strings and lists.
  */
@@ -277,7 +292,6 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 {
 	size_t len;
 	char * str = NULL;
-
 	if (NULL == ghtml->write_stream) return SCM_EOL;
 
 	/* Need to test for numbers first, since later tests 
@@ -744,7 +758,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
-	if (NULL == str) return SCM_EOL;                             \
+	if (NULL == str) return SCM_EOL;                                 \
 	return gh_str2scm (str, strlen (str));                           \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
