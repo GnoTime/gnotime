@@ -63,7 +63,16 @@ dnl *******************************
 
 # argh ... its in /usr/share/aclocal/gnome-macros/gnome-guile-checks.m4
 # but I can't get configure to find this ...
-# GNOME_CHECK_GUILE("fail")
+# GNOME_CHECK_GUILE ("fail")
+# AS_SCRUB_INCLUDE(GUILE_INCS)
+# AM_GUILE_VERSION_CHECK(1.3.4, 1.5.0, , [AC_MSG_ERROR([
+# 
+#   guile  does not appear to be installed correctly, or is not in the
+#   correct version range.  Perhaps you have not installed the guile
+#   development packages?  Right now gnotime requires at least version
+#   1.3.4 to build, but does not work with 1.5 or greater.
+# ])])
+		  
 
 # glurg really wrong ...
 # GUILE_LIBS='-lguile -lsocket -lnsl -ldl'
