@@ -1,4 +1,4 @@
-/*   file input/output handling for GTimeTracker - a time tracker
+/*   Config file input/output handling for GnoTime 
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
@@ -59,7 +59,7 @@ extern char *first_proj_title;	/* command line flag */
 int save_count = 0;
 
 /* ============================================================= */
-/* File I/O routines:
+/* Configuration file I/O routines:
  * Note that this file supports reading from several old, 'obsolete'
  * config file formats taht GTT has used over the years.  We support
  * these reads so that users do not get left out in the cold when 
@@ -71,6 +71,10 @@ int save_count = 0;
  * 2) Next is Gnome-1 Gnome-Config files in ~/.gnome/gtt
  * 3) Next is Gnome-2 Gnome-Config files in ~/.gnome2/GnoTime
  * 4) Current is GConf2 system.
+ *
+ * Note that some of the older config files also contained project
+ * data in them.  The newer versions stored project data seperately
+ * from the app config data.
  */
 
 /* RC_NAME is old, depricated; stays here for backwards compat. */
