@@ -1346,7 +1346,13 @@ ctree_refresh (ProjTreeWindow *ptw)
 	tree_w = ptw->ctree;
 
 	/* Freeze, in prep for a massive update */
-	gtk_clist_freeze(GTK_CLIST(tree_w));
+	/* XXX As of gtk 2.2.1, doing a freeze-thaw cycle
+	 * fails to redraw the window correctly.  
+	 * Actually, if the window gets an expose events,
+	 * then it will show the right thing. Until then, work
+	 * around by not calling freeze-thaw.
+	 */
+	/* gtk_clist_freeze(GTK_CLIST(tree_w)); */
 
 	/* Make sure the right set of columns are visibile */
 	ctree_update_column_visibility (ptw);
@@ -1355,7 +1361,7 @@ ctree_refresh (ProjTreeWindow *ptw)
 	prjlist = gtt_get_project_list();
 	refresh_list (ptw, prjlist);
 
-	gtk_clist_thaw(GTK_CLIST(tree_w));
+	/* gtk_clist_thaw(GTK_CLIST(tree_w)); */
 }
 
 /* ============================================================== */
