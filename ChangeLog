@@ -1,6 +1,12 @@
+Mon Dec 23 13:43:14 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* timer.c: fix idle-timeout bug when laptop is put in suspend mode
 
 Sun Dec 22 23:47:17 CST 2002 Linas Vepstas <linas@linas.org>
+
 	* configure.in: fix guile detection problem
+	* ctree-gnome2.c: continue porting to gnome2 treview widget
+	* publish gnotime-2.0.2
 
 Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
 
@@ -12,6 +18,7 @@ Sat Dec 21 15:12:01 CST 2002 Linas Vepstas <linas@linas.org>
 	* src/props-invl.c: fix hide-on-close buglet
 	* src/gtt.h, file-io.h: modernize the file names
 	* src/*.c: autosave data; remove save/load from menu
+	* publish gnotime-2.0.1
 	
 Thu Nov  7 01:12:27 CST 2002 Linas Vepstas <linas@linas.org>
 
