@@ -649,6 +649,14 @@ RET_PROJECT_STR (ret_project_status,     get_status)
  * a scheme list of the task memos.
  */
 
+#define RET_TASK_SIMPLE(RET_FUNC,GTT_GETTER)                        \
+static SCM                                                          \
+RET_FUNC (SCM task_list)                                            \
+{                                                                   \
+	GttGhtml *ghtml = ghtml_guile_global_hack;                       \
+	return do_apply_on_task (ghtml, task_list, GTT_GETTER##_scm);    \
+}
+
 #define RET_TASK_STR(RET_FUNC,GTT_GETTER)                           \
 static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
@@ -697,6 +705,91 @@ ret_task_memo (SCM task_list)
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	return do_apply_on_task (ghtml, task_list, get_task_memo_scm);
 }
+
+/* ============================================================== */
+
+static const char *
+task_get_billstatus (GttTask *tsk)
+{
+	switch (gtt_task_get_billstatus (tsk))
+	{
+		case GTT_HOLD: return _("Hold");
+		case GTT_BILL: return _("Bill");
+		case GTT_PAID: return _("Paid");
+		default: return "";
+	}
+	return "";
+};
+
+static const char *
+task_get_billable (GttTask *tsk)
+{
+	switch (gtt_task_get_billable (tsk))
+	{
+		case GTT_BILLABLE: return _("Billable");
+		case GTT_NOT_BILLABLE: return _("Not Billable");
+		case GTT_NO_CHARGE: return _("No Charge");
+		default: return "";
+	}
+	return "";
+};
+
+static const char *
+task_get_billrate (GttTask *tsk)
+{
+	switch (gtt_task_get_billrate (tsk))
+	{
+		case GTT_REGULAR: return _("Regular");
+		case GTT_OVERTIME: return _("Overtime");
+		case GTT_OVEROVER: return _("Double Overtime");
+		case GTT_FLAT_FEE: return _("Flat Fee");
+		default: return "";
+	}
+	return "";
+};
+
+static SCM
+task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	time_t task_secs;
+	char buff[100];
+
+	task_secs = gtt_task_get_secs_ever(tsk);
+	print_hours_elapsed (buff, 100, task_secs, TRUE);
+	return gh_str2scm (buff, strlen (buff));
+}
+
+static SCM
+task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	time_t task_secs;
+	char buff[100];
+	double value;
+	GttProject *prj;
+
+	task_secs = gtt_task_get_secs_ever(tsk);
+	value = ((double) task_secs) / 3600.0;
+	
+	prj = gtt_task_get_parent (tsk);
+	switch (gtt_task_get_billrate (tsk))
+	{
+		case GTT_REGULAR: value *= gtt_project_get_billrate (prj); break;
+		case GTT_OVERTIME: value *= gtt_project_get_overtime_rate (prj); break;
+		case GTT_OVEROVER: value *= gtt_project_get_overover_rate (prj); break;
+		case GTT_FLAT_FEE: value = gtt_project_get_flat_fee (prj); break;
+		default: value = 0.0;
+	}
+	/* hack alert should use i18n currency/monetary printing */
+	snprintf (buff, 100, "$%.2f", value+0.0049);
+						
+	return gh_str2scm (buff, strlen (buff));
+}
+
+RET_TASK_STR (ret_task_billstatus, task_get_billstatus)
+RET_TASK_STR (ret_task_billable,   task_get_billable)
+RET_TASK_STR (ret_task_billrate,   task_get_billrate)
+RET_TASK_SIMPLE (ret_task_time_str,  task_get_time_str)
+RET_TASK_SIMPLE (ret_task_value_str, task_get_value_str)
 
 /* ============================================================== */
 
@@ -819,6 +912,18 @@ get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, prt_date);
 }
 RET_IVL_SIMPLE (ret_ivl_stop_str, get_ivl_stop_str);
+
+
+static SCM
+get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	char buff[100];
+
+	print_time (buff, 100, gtt_interval_get_fuzz (ivl));
+	return gh_str2scm (buff, strlen (buff));
+}
+
+RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
 /* ============================================================== */
 
@@ -989,6 +1094,11 @@ register_procs (void)
 	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
 	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
 	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
+	gh_new_procedure("gtt-task-billstatus",    ret_task_billstatus,    1, 0, 0);
+	gh_new_procedure("gtt-task-billable",      ret_task_billable,      1, 0, 0);
+	gh_new_procedure("gtt-task-billrate",      ret_task_billrate,      1, 0, 0);
+	gh_new_procedure("gtt-task-time-str",      ret_task_time_str,      1, 0, 0);
+	gh_new_procedure("gtt-task-value-str",     ret_task_value_str,     1, 0, 0);
 	
 	gh_new_procedure("gtt-interval-start",     ret_ivl_start,          1, 0, 0);
 	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
@@ -996,6 +1106,7 @@ register_procs (void)
 	gh_new_procedure("gtt-interval-elapsed-str", ret_ivl_elapsed_str,  1, 0, 0);
 	gh_new_procedure("gtt-interval-start-str",  ret_ivl_start_str,     1, 0, 0);
 	gh_new_procedure("gtt-interval-stop-str",   ret_ivl_stop_str,      1, 0, 0);
+	gh_new_procedure("gtt-interval-fuzz-str",   ret_ivl_fuzz_str,      1, 0, 0);
 }
 
 
