@@ -44,6 +44,7 @@
         ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
         ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
         ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
+        ''"<td class=gnotime-start-stop-table-header-fuzz><b>Fuzz</b></td>\n"
         ''"</tr>\n"
          (lambda (task) (gtt-ivls task
          (list
@@ -62,6 +63,11 @@
                ''"<td class=gnotime-start-stop-table-elapsed>"  
                    gtt-interval-elapsed-str  
                ''"</td>\n</tr>\n"
+
+               ; the fourth html table column shows the start/stop time uncertainty
+               ''"<td class=gnotime-start-stop-table-fuzz>"  
+                   gtt-interval-fuzz-str  
+               ''"</td>\n</tr>\n"
          )))
         ''"</table>"
         ''"</td></tr></table><br><br>\n"
@@ -72,7 +78,9 @@
 
 <div align=right>
 Brought to you by ...  <br>
-<img src="gnotime-logo.png">
+<a href="http://gttr.sourceforge.net/">
+<img src="gnotime-logo.png" border="0" width="155" height="28">
+</a>
 </div>
 </body>
 </html>
