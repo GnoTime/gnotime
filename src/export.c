@@ -39,6 +39,8 @@ struct export_format_s
 	GtkFileSelection *picker;    /* URI picker (file selection) */
 	const char       *uri;       /* aka filename */
 	FILE             *fp;        /* file handle */
+	GttGhtml         *ghtml;     /* output device */
+	const char       *template;  /* output template */
 };
 
 static export_format_t *
@@ -48,20 +50,21 @@ export_format_new (void)
 	rc = g_new (export_format_t, 1);
 	rc->picker = NULL;
 	rc->uri = NULL;
+	rc->ghtml = NULL;
+	rc->template = NULL;
 	return rc;
 }
 
 /* ======================================================= */
-/* XXXX
- * This project printer should be replaced by a guile-based 
- * thingy in parallel to the ghtml stuff.
+/* 
+ * Print out the projects using the standard guile-based
+ * printing infrastructure.
  */
 
 static void 
 export_write (GttGhtml *gxp, const char *str, size_t len, 
 					 export_format_t *xp)
 {
-	printf ("duuude %s\n", str);
 	fprintf (xp->fp, "%s", str);
 }
 
@@ -69,26 +72,46 @@ static void
 export_err (GttGhtml *gxp, int errcode, const char *msg,
 					 export_format_t *xp)
 {
-	printf ("duuude uhh oh %s\n", msg);
+	GtkWidget *w;
+	char *s = g_strdup_printf (_("Error exporting data: %s"), msg);
+	w = gnome_error_dialog (s);
+	gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
+	g_free (s);
+}
+
+static void
+export_subprojects (export_format_t *xp, GList *proj_list)
+{
+	GList *node;
+
+	for (node = proj_list; node; node = node->next) 
+	{
+	
+		GttProject *prj = node->data;
+		gtt_ghtml_display (xp->ghtml, xp->template, prj);
+		export_subprojects (xp, gtt_project_get_children (prj));
+	}
 }
 
 static gint
 export_projects (export_format_t *xp)
 {
-	GList *node;
-	GttGhtml *gxp;
+	xp->template = gtt_ghtml_resolve_path ("tab-delim.ghtml");
 
-	gxp = gtt_ghtml_new();
-	gtt_ghtml_set_stream (gxp, xp, NULL, (GttGhtmlWriteStream) export_write,
-						 NULL, (GttGhtmlError) export_err);
+	xp->ghtml = gtt_ghtml_new();
+	gtt_ghtml_set_stream (xp->ghtml, xp, 
+						 NULL, 
+						 (GttGhtmlWriteStream) export_write,
+						 NULL, 
+						 (GttGhtmlError) export_err);
 
-	for (node = gtt_get_project_list(); node; node = node->next) 
-	{
+	export_subprojects (xp, gtt_get_project_list());
 	
-		GttProject *prj = node->data;
-		gtt_ghtml_display (gxp, "/tmp/tab-delim.ghtml", prj);
-	}
-	gtt_ghtml_destroy (gxp);
+	gtt_ghtml_destroy (xp->ghtml);
+	xp->ghtml = NULL;
+
+	g_free(xp->template);
+	xp->template = NULL;
 
 	return 0;
 }
@@ -113,8 +136,7 @@ export_really (GtkWidget *widget, export_format_t *xp)
 						    GTK_WINDOW (xp->picker));
 		g_free (s);
 
-		if (gnome_dialog_run (GNOME_DIALOG (w)) != 0)
-			return;
+		if (0 == gnome_dialog_run (GNOME_DIALOG (w))) return;
 	}
 
 	xp->fp = fopen (xp->uri, "w");
