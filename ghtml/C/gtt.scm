@@ -11,6 +11,12 @@
 ; This file is covered by the GPL.  Please refer to the
 ; GPL license for details.
 
+; -- debugging support XXX using these crashes guile, don't know why.
+; (use-modules (ice-9 debug))
+; (use-modules (ice-9 stack-catch))
+;  (debug-enable 'backtrace)
+;  (debug-enable 'debug)
+;  (read-enable 'positions)
 
 ; Various bits of syntactic sugar for showing the current (linked)
 ; project title and other stuff of that sort.
