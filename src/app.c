@@ -48,7 +48,6 @@ GtkWidget *status_bar;
 static GtkStatusbar *status_project = NULL;
 static GtkStatusbar *status_day_time = NULL;
 static GtkWidget *status_timer = NULL;
-static gint status_project_id = 1, status_day_time_id = 2;
 
 char *config_command = NULL;
 char *config_command_null = NULL;
@@ -67,6 +66,9 @@ update_status_bar(void)
 	char *s;
 
 	if (!status_bar) return;
+
+	/* Make the little clock item appear/disappear
+	 * when the project is started/stopped */
 	if (status_timer) 
 	{
 		if (timer_is_running())
@@ -74,17 +76,19 @@ update_status_bar(void)
 		else
 			gtk_widget_hide(status_timer);
 	}
+	
 	if (!old_day_time) old_day_time = g_strdup("");
 	if (!old_project) old_project = g_strdup("");
 
+	/* update timestamp */
 	print_hours_elapsed (day_total_str, 25, 
-	gtt_project_list_total_secs_day(), config_show_secs);
+	         gtt_project_list_total_secs_day(), config_show_secs);
 
 	s = g_strdup(day_total_str);
 	if (0 != strcmp(s, old_day_time)) 
 	{
-		gtk_statusbar_remove(status_day_time, 2, status_day_time_id);
-		status_day_time_id = gtk_statusbar_push(status_day_time, 2, s);
+	   gtk_statusbar_pop(status_day_time, 0);
+		gtk_statusbar_push(status_day_time, 0, s);
 		g_free(old_day_time);
 		old_day_time = s;
 	} 
@@ -93,6 +97,7 @@ update_status_bar(void)
 		g_free(s);
 	}
 	
+	/* Display the project title */
 	if (cur_proj) 
 	{
 		s = g_strdup_printf ("%s - %s", 
@@ -101,13 +106,13 @@ update_status_bar(void)
 	} 
 	else 
 	{
-		s = g_strdup(_("no project selected"));
+		s = g_strdup(_("Timer is not running"));
 	}
 
 	if (0 != strcmp(s, old_project)) 
 	{
-		gtk_statusbar_remove(status_project, 1, status_project_id);
-		status_project_id = gtk_statusbar_push(status_project, 1, s);
+		gtk_statusbar_pop(status_project, 0);
+		gtk_statusbar_push(status_project, 0, s);
 		g_free(old_project);
 		old_project = s;
 	} 
@@ -202,22 +207,27 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	
 	/* build statusbar */
 	status_bar = gtk_hbox_new(FALSE, 0);
+	gtk_box_set_homogeneous (GTK_BOX(status_bar), FALSE);
 	gtk_widget_show(status_bar);
 	gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
 	
 	/* put elapsed time into statusbar */
 	status_day_time = GTK_STATUSBAR(gtk_statusbar_new());
+	gtk_statusbar_set_has_resize_grip (status_day_time, FALSE);
 	gtk_widget_show(GTK_WIDGET(status_day_time));
-	status_day_time_id = gtk_statusbar_push(status_day_time,
-						2, _("00:00"));
+	gtk_statusbar_push(status_day_time, 0, _("00:00"));
+
+	/* XXX hack alert: the timer box is not being correctly sized;
+	 * I suspect this is either a gtk bug or a usage bug.
+	 * this needs fixing */
 	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_day_time),
-			   FALSE, FALSE, 1);
+			   FALSE, TRUE, 1);
 	
 	/* put project name into statusbar */
 	status_project = GTK_STATUSBAR(gtk_statusbar_new());
 	gtk_widget_show(GTK_WIDGET(status_project));
-	status_project_id = gtk_statusbar_push(status_project,
-					       1, _("no project selected"));
+	
+	gtk_statusbar_push(status_project, 0, _("Timer is not running"));
 	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_project),
 			   TRUE, TRUE, 1);
 
