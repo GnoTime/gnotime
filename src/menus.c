@@ -250,7 +250,9 @@ gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
 		{
 			for (i=0; i<nreports; i++)
 			{
-				gtt_plugin_free(reports_menu[i].user_data);
+				// XXX can't free this, since 'append' recycles old pointers !!
+				// there's probably a minor memory leak here ... 
+				// gtt_plugin_free(reports_menu[i].user_data);
 			}
 			g_free (reports_menu);
 		}
