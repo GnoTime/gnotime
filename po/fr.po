@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.1.2\n"
-"POT-Creation-Date: 2002-12-30 00:48-0600\n"
+"POT-Creation-Date: 2003-01-02 20:18-0600\n"
 "PO-Revision-Date: 2002-02-03 17:53+0100\n"
 "Last-Translator: Christophe Fergeau <teuf@users.sourceforge.net\n"
 "Language-Team: GNOME French Team <gnomefr@gnomefr.traduc.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:247
+#: src/app.c:108 src/app.c:248
 #, fuzzy
 msgid "Timer is not running"
 msgstr "Chronomè_tre lancé"
 
-#: src/app.c:235
+#: src/app.c:236
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:276
+#: src/app.c:277
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -34,183 +34,183 @@ msgstr ""
 "Ne peut comprendre la géométrie (position et taille)\n"
 "spécifiée sur la ligne de commande"
 
-#: src/ctree.c:652
+#: src/ctree.c:678
 msgid "Total"
 msgstr "Total"
 
-#: src/ctree.c:654
+#: src/ctree.c:680
 msgid "Total time spent on this project."
 msgstr "Temps total passé sur ce projet."
 
-#: src/ctree.c:659
+#: src/ctree.c:685
 #, fuzzy
 msgid "Entry"
 msgstr "Fin de l'entrée:"
 
-#: src/ctree.c:661
+#: src/ctree.c:687
 msgid "Time spent under the current diary entry."
 msgstr ""
 
-#: src/ctree.c:667 glade/interval_edit.glade.h:14
+#: src/ctree.c:693 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: src/ctree.c:669
+#: src/ctree.c:695
 msgid "Time spent on this project today."
 msgstr "Temps passé aujourd'hui sur ce projet."
 
-#: src/ctree.c:674
+#: src/ctree.c:700
 msgid "Week"
 msgstr "Semaine"
 
-#: src/ctree.c:676
+#: src/ctree.c:702
 msgid "Time spent on this project this week."
 msgstr "Temps passé sur ce projet cette semaine."
 
-#: src/ctree.c:682
+#: src/ctree.c:708
 msgid "Month"
 msgstr "Mois"
 
-#: src/ctree.c:684
+#: src/ctree.c:710
 msgid "Time spent on this project this month."
 msgstr "Temps passé sur ce projet ce mois-ci."
 
-#: src/ctree.c:690
+#: src/ctree.c:716
 msgid "Year"
 msgstr "Année"
 
-#: src/ctree.c:692
+#: src/ctree.c:718
 msgid "Time spent on this project this year."
 msgstr "Temps passé sur ce projet cette année."
 
-#: src/ctree.c:698
+#: src/ctree.c:724
 msgid "Title"
 msgstr "Titre"
 
-#: src/ctree.c:699 src/menucmd.c:265
+#: src/ctree.c:725 src/menucmd.c:244
 msgid "Project Title"
 msgstr "Titre du projet"
 
-#: src/ctree.c:704 src/ctree.c:705 src/menucmd.c:266
+#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:245
 msgid "Description"
 msgstr "Description"
 
-#: src/ctree.c:710
+#: src/ctree.c:736
 msgid "Diary Entry"
 msgstr "Entrée de journal"
 
-#: src/ctree.c:712
+#: src/ctree.c:738
 msgid "The current diary entry"
 msgstr "L'entrée de journal courante"
 
-#: src/ctree.c:717 glade/interval_edit.glade.h:11
+#: src/ctree.c:743 glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "Démarrer"
 
-#: src/ctree.c:719
+#: src/ctree.c:745
 msgid "Estimated Project Start Date"
 msgstr "Estimation de la date du début du projet"
 
-#: src/ctree.c:724
+#: src/ctree.c:750
 msgid "End"
 msgstr "Fin"
 
-#: src/ctree.c:726
+#: src/ctree.c:752
 msgid "Estimated Project Completion Date"
 msgstr "Estimation de la date d'achèvement du projet"
 
-#: src/ctree.c:731
+#: src/ctree.c:757
 msgid "Due"
 msgstr ""
 
-#: src/ctree.c:733
+#: src/ctree.c:759
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 
-#: src/ctree.c:740
+#: src/ctree.c:766
 msgid "Size"
 msgstr "Taille"
 
-#: src/ctree.c:742
+#: src/ctree.c:768
 msgid "Sizing: How much work it will take to finish this project."
 msgstr ""
 
-#: src/ctree.c:748
+#: src/ctree.c:774
 #, fuzzy
 msgid "Done"
 msgstr "Aucun"
 
-#: src/ctree.c:750
+#: src/ctree.c:776
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr "Pourcentage achevé : indique l'état d'avancement du projet à ce jour."
 
-#: src/ctree.c:757
+#: src/ctree.c:783
 msgid "U"
 msgstr "U"
 
-#: src/ctree.c:759
+#: src/ctree.c:785
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "Urgence : ce projet doit-il être fini bientôt, rapidement ?"
 
-#: src/ctree.c:765
+#: src/ctree.c:791
 msgid "Imp"
 msgstr "Imp"
 
-#: src/ctree.c:767
+#: src/ctree.c:793
 msgid "Importance: How important is this project?"
 msgstr "Importance : importance du projet"
 
-#: src/ctree.c:773
+#: src/ctree.c:799
 msgid "Status"
 msgstr "État"
 
-#: src/ctree.c:775
+#: src/ctree.c:801
 msgid "The current status of this project."
 msgstr "Le statut actuel du projet."
 
-#: src/ctree.c:1111
+#: src/ctree.c:1137
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:1112
+#: src/ctree.c:1138
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:1113
+#: src/ctree.c:1139
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1123 src/ghtml.c:541 src/ghtml.c:555
+#: src/ctree.c:1149 src/ghtml.c:541 src/ghtml.c:555
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Bas"
 
-#: src/ctree.c:1124
+#: src/ctree.c:1150
 msgid "Med"
 msgstr "Moyen"
 
-#: src/ctree.c:1125 glade/project_properties.glade.h:16
+#: src/ctree.c:1151 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "Haut"
 
-#: src/ctree.c:1134 src/ghtml.c:569 glade/project_properties.glade.h:30
+#: src/ctree.c:1160 src/ghtml.c:569 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Non démarré"
 
-#: src/ctree.c:1135 src/ghtml.c:570 glade/project_properties.glade.h:22
+#: src/ctree.c:1161 src/ghtml.c:570 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "En cours"
 
-#: src/ctree.c:1136 src/ghtml.c:571 glade/project_properties.glade.h:32
+#: src/ctree.c:1162 src/ghtml.c:571 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Suspendu"
 
-#: src/ctree.c:1137 src/ghtml.c:572 glade/project_properties.glade.h:10
+#: src/ctree.c:1163 src/ghtml.c:572 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Annulé"
 
-#: src/ctree.c:1138 src/ghtml.c:573 glade/project_properties.glade.h:11
+#: src/ctree.c:1164 src/ghtml.c:573 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Achevé"
 
@@ -306,11 +306,11 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:372
+#: src/file-io.c:374
 msgid "project %t started"
 msgstr "Projet %t démarré"
 
-#: src/file-io.c:375
+#: src/file-io.c:377
 msgid "stopped project %t"
 msgstr "Projet stoppé %t"
 
@@ -366,7 +366,7 @@ msgstr "Ne peut ouvrir le fichier d'historique !\n"
 msgid "New Diary Entry"
 msgstr "Nouvelle entrée de journal"
 
-#: src/journal.c:478
+#: src/journal.c:493
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "_Enregistrer la palette"
@@ -390,16 +390,16 @@ msgstr "Titre"
 msgid "no description"
 msgstr "Pas de description"
 
-#: src/log.c:169 src/log.c:260
+#: src/log.c:171 src/log.c:263
 msgid "program started"
 msgstr "Programme lancé"
 
 #. log_if_equal
-#: src/log.c:252
+#: src/log.c:255
 msgid "program exited"
 msgstr "Programme terminé"
 
-#: src/main.c:115
+#: src/main.c:121
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -408,171 +408,189 @@ msgstr ""
 "Cliquez sur « Valider » pour démarrer GTimeTracker tout de même\n"
 "ou « Annuler » pour quitter."
 
-#: src/main.c:127
+#: src/main.c:133
 msgid "Cannot create pid-file!"
 msgstr "Ne peut créer le fichier-pid !"
 
-#: src/main.c:222
+#: src/main.c:291
 msgid "Do you want to continue?"
 msgstr "Voulez-vous continuer ?"
 
-#: src/main.c:225 src/main.c:278
+#: src/main.c:294 src/main.c:344
 msgid "Error"
 msgstr "Erreur"
 
-#: src/main.c:275
+#: src/main.c:341
 msgid "Shall I setup a new configuration?"
 msgstr "Créer une nouvelle configuration ?"
 
-#: src/main.c:365 src/main.c:390 src/main.c:531 src/menucmd.c:49
+#: src/main.c:508 src/main.c:547 src/main.c:696
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src/main.c:487
+#: src/main.c:652
 msgid "Specify geometry"
 msgstr "Spécifie la géométrie"
 
-#: src/main.c:487
+#: src/main.c:652
 msgid "GEOMETRY"
 msgstr "GÉOMÉTRIE"
 
-#: src/main.c:489
+#: src/main.c:654
 msgid "Select a project on startup"
 msgstr "Choisir un projet au lancement de l'application"
 
-#: src/main.c:489
+#: src/main.c:654
 msgid "PROJECT"
 msgstr "PROJET"
 
-#: src/menucmd.c:71
+#: src/menucmd.c:50
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:200
+#: src/menucmd.c:179
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
 "task, associate a memo with it, set a billing rate, print an invoice, as "
-"well as track that status of other projects."
+"well as track the status of other projects."
 msgstr ""
 
-#: src/menucmd.c:259
+#: src/menucmd.c:238
 msgid "New Project..."
 msgstr "Nouveau projet..."
 
-#: src/menus.c:34
+#: src/menus.c:35
 msgid "_New Project..."
 msgstr "_Nouveau projet..."
 
-#: src/menus.c:37
+#: src/menus.c:38
 msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:41
+#: src/menus.c:42
 #, fuzzy
 msgid "Export _Projects"
 msgstr "Coller le projet"
 
-#: src/menus.c:60 src/menus.c:174
+#: src/menus.c:61 src/menus.c:179
 msgid "Clear _Daily Counter"
 msgstr "Ré_initialiser le compteur journalier"
 
-#: src/menus.c:61 src/menus.c:175
+#: src/menus.c:62 src/menus.c:180
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr ""
 
-#: src/menus.c:65 src/menus.c:84 src/menus.c:157
+#: src/menus.c:66 src/menus.c:85 src/menus.c:158
 msgid "_Journal..."
 msgstr "_Journal..."
 
-#: src/menus.c:66 src/menus.c:85 src/menus.c:158
+#: src/menus.c:67 src/menus.c:86 src/menus.c:159
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
-#: src/menus.c:69 src/menus.c:161
-msgid "New Diary _Entry"
-msgstr "Nouvelle _entrée de journal"
+#: src/menus.c:70 glade/task_popup.glade.h:5
+msgid "_New Diary Entry"
+msgstr ""
 
-#: src/menus.c:70 src/menus.c:162
-msgid "Change the current task for this project"
+#: src/menus.c:71
+#, fuzzy
+msgid "Create new task header for this project"
 msgstr "Changer la tâche courante pour ce projet"
 
-#: src/menus.c:88
+#: src/menus.c:89
 msgid "_All Journal..."
 msgstr "_Tout le journal..."
 
-#: src/menus.c:89
+#: src/menus.c:90
 msgid "Show the verbose timesheet journal for this project"
 msgstr ""
 
-#: src/menus.c:92
+#: src/menus.c:93
 msgid "_Invoice..."
 msgstr ""
 
-#: src/menus.c:93
+#: src/menus.c:94
 msgid "Show a sample invoice for this project"
 msgstr ""
 
-#: src/menus.c:96
+#: src/menus.c:97
 #, fuzzy
 msgid "_Primer..."
 msgstr "Préfs..."
 
-#: src/menus.c:97
+#: src/menus.c:98
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr ""
 
-#: src/menus.c:100
+#: src/menus.c:101
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:101
+#: src/menus.c:102
 msgid "Show a sample to-do list"
 msgstr ""
 
-#: src/menus.c:104
+#: src/menus.c:105
 #, fuzzy
 msgid "_New Report..."
 msgstr "_Nouveau projet..."
 
-#: src/menus.c:105
+#: src/menus.c:106
 #, fuzzy
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr ""
 "Indique le chemin vers un nouveau fichier de rapport GTT au format phtml"
 
-#: src/menus.c:116
+#: src/menus.c:117
 msgid "St_art"
 msgstr "Dém_arrer"
 
-#: src/menus.c:117
+#: src/menus.c:118
 msgid "Start the timer running"
 msgstr ""
 
-#: src/menus.c:122
+#: src/menus.c:123
 msgid "Sto_p"
 msgstr "Sto_p"
 
-#: src/menus.c:123
+#: src/menus.c:124
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Septembre"
 
-#: src/menus.c:128
+#: src/menus.c:129
 msgid "_Timer Running"
 msgstr "Chronomè_tre lancé"
 
-#: src/menus.c:147
+#: src/menus.c:148
 msgid "_Reports"
 msgstr "_Rapports"
 
-#: src/menus.c:148
+#: src/menus.c:149
 msgid "_Timer"
 msgstr "Chronomè_tre"
 
+#: src/menus.c:162
+msgid "New Diary _Entry"
+msgstr "Nouvelle _entrée de journal"
+
+#: src/menus.c:163
+msgid "Change the current task for this project"
+msgstr "Changer la tâche courante pour ce projet"
+
+#: src/menus.c:166 glade/task_popup.glade.h:4
+msgid "_Edit Diary Entry"
+msgstr ""
+
+#: src/menus.c:167
+#, fuzzy
+msgid "Edit task header for this project"
+msgstr "Titre à donner à ce projet"
+
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:245
+#: src/menus.c:250
 #, fuzzy
 msgid "Reports"
 msgstr "Redémarrage"
@@ -585,30 +603,10 @@ msgstr "Rapports/<Séparateur>"
 msgid "Old GTT Tasks"
 msgstr "Vieilles tâches GTT"
 
-#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
-#: src/props-task.c:76
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
+#: src/props-task.c:77
 msgid "empty"
 msgstr "vide"
-
-#: src/timer.c:148
-#, c-format
-msgid ""
-"The keyboard and mouse have been idle\n"
-"for %d minutes.  The currently running\n"
-"project (%s - %s)\n"
-"has been stopped.\n"
-"Do you want to restart it?"
-msgstr ""
-"Le clavier et la souris ont été inactifs\n"
-"pendant %d minutes. Le projet en cours\n"
-"(%s - %s) \n"
-"a été arrêté.\n"
-"Voulez-vous le redémarrer ?"
-
-#: src/timer.c:156
-#, fuzzy
-msgid "System Idle"
-msgstr "Informations système"
 
 #: src/toolbar.c:153
 #, fuzzy
@@ -1287,14 +1285,6 @@ msgstr "Général"
 msgid "_Cut Diary Entry"
 msgstr "Supprimer le paramètre"
 
-#: glade/task_popup.glade.h:4
-msgid "_Edit Diary Entry"
-msgstr ""
-
-#: glade/task_popup.glade.h:5
-msgid "_New Diary Entry"
-msgstr ""
-
 #: glade/task_popup.glade.h:6
 msgid "_Paste Diary Entry"
 msgstr ""
@@ -1414,6 +1404,23 @@ msgstr "Gestion du temps passé sur des projets"
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Gestionnaire de projets"
+
+#~ msgid ""
+#~ "The keyboard and mouse have been idle\n"
+#~ "for %d minutes.  The currently running\n"
+#~ "project (%s - %s)\n"
+#~ "has been stopped.\n"
+#~ "Do you want to restart it?"
+#~ msgstr ""
+#~ "Le clavier et la souris ont été inactifs\n"
+#~ "pendant %d minutes. Le projet en cours\n"
+#~ "(%s - %s) \n"
+#~ "a été arrêté.\n"
+#~ "Voulez-vous le redémarrer ?"
+
+#, fuzzy
+#~ msgid "System Idle"
+#~ msgstr "Informations système"
 
 #~ msgid "Elapsed"
 #~ msgstr "Écoulé"

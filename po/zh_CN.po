@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils-0.99.6\n"
-"POT-Creation-Date: 2002-12-30 00:48-0600\n"
+"POT-Creation-Date: 2003-01-02 20:18-0600\n"
 "PO-Revision-Date: 2002-06-23 02:09+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -12,16 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:247
+#: src/app.c:108 src/app.c:248
 #, fuzzy
 msgid "Timer is not running"
 msgstr "计时器正在运行(_T)"
 
-#: src/app.c:235
+#: src/app.c:236
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:276
+#: src/app.c:277
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -29,182 +29,182 @@ msgstr ""
 "无法识别在指令列指定的\n"
 " geometry (位置和大小)"
 
-#: src/ctree.c:652
+#: src/ctree.c:678
 msgid "Total"
 msgstr "合计"
 
-#: src/ctree.c:654
+#: src/ctree.c:680
 msgid "Total time spent on this project."
 msgstr "花在该计划上的总时间。"
 
-#: src/ctree.c:659
+#: src/ctree.c:685
 msgid "Entry"
 msgstr "条目"
 
-#: src/ctree.c:661
+#: src/ctree.c:687
 msgid "Time spent under the current diary entry."
 msgstr "花在当前日记条目上的时间。"
 
-#: src/ctree.c:667 glade/interval_edit.glade.h:14
+#: src/ctree.c:693 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "今天"
 
-#: src/ctree.c:669
+#: src/ctree.c:695
 msgid "Time spent on this project today."
 msgstr "今天花在该计划上的时间。"
 
-#: src/ctree.c:674
+#: src/ctree.c:700
 msgid "Week"
 msgstr "周"
 
-#: src/ctree.c:676
+#: src/ctree.c:702
 msgid "Time spent on this project this week."
 msgstr "本周花在该计划上的时间。"
 
-#: src/ctree.c:682
+#: src/ctree.c:708
 msgid "Month"
 msgstr "月"
 
-#: src/ctree.c:684
+#: src/ctree.c:710
 msgid "Time spent on this project this month."
 msgstr "本月花在该计划上的时间。"
 
-#: src/ctree.c:690
+#: src/ctree.c:716
 msgid "Year"
 msgstr "年"
 
-#: src/ctree.c:692
+#: src/ctree.c:718
 msgid "Time spent on this project this year."
 msgstr "今年花在该计划上的时间。"
 
-#: src/ctree.c:698
+#: src/ctree.c:724
 msgid "Title"
 msgstr "标题"
 
-#: src/ctree.c:699 src/menucmd.c:265
+#: src/ctree.c:725 src/menucmd.c:244
 msgid "Project Title"
 msgstr "计划标题"
 
-#: src/ctree.c:704 src/ctree.c:705 src/menucmd.c:266
+#: src/ctree.c:730 src/ctree.c:731 src/menucmd.c:245
 msgid "Description"
 msgstr "描述"
 
-#: src/ctree.c:710
+#: src/ctree.c:736
 #, fuzzy
 msgid "Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/ctree.c:712
+#: src/ctree.c:738
 msgid "The current diary entry"
 msgstr "当前日记条目"
 
-#: src/ctree.c:717 glade/interval_edit.glade.h:11
+#: src/ctree.c:743 glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "开始"
 
-#: src/ctree.c:719
+#: src/ctree.c:745
 msgid "Estimated Project Start Date"
 msgstr "估计计划开始日期"
 
-#: src/ctree.c:724
+#: src/ctree.c:750
 msgid "End"
 msgstr "结束"
 
-#: src/ctree.c:726
+#: src/ctree.c:752
 msgid "Estimated Project Completion Date"
 msgstr "估计计划完成日期"
 
-#: src/ctree.c:731
+#: src/ctree.c:757
 msgid "Due"
 msgstr "截止"
 
-#: src/ctree.c:733
+#: src/ctree.c:759
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr "截止日期：计划绝对必须在该日期以前完成。"
 
-#: src/ctree.c:740
+#: src/ctree.c:766
 msgid "Size"
 msgstr "大小"
 
-#: src/ctree.c:742
+#: src/ctree.c:768
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "大小：完成该计划必须的工作量。"
 
-#: src/ctree.c:748
+#: src/ctree.c:774
 msgid "Done"
 msgstr "完成度"
 
-#: src/ctree.c:750
+#: src/ctree.c:776
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr "完成百分比：迄今为止该计划已经完成的比例。"
 
-#: src/ctree.c:757
+#: src/ctree.c:783
 msgid "U"
 msgstr "紧急度"
 
-#: src/ctree.c:759
+#: src/ctree.c:785
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "紧急度：该计划是否需要尽快完成？"
 
-#: src/ctree.c:765
+#: src/ctree.c:791
 msgid "Imp"
 msgstr "重要性"
 
-#: src/ctree.c:767
+#: src/ctree.c:793
 msgid "Importance: How important is this project?"
 msgstr "重要性：该计划有多重要？"
 
-#: src/ctree.c:773
+#: src/ctree.c:799
 msgid "Status"
 msgstr "状态"
 
-#: src/ctree.c:775
+#: src/ctree.c:801
 msgid "The current status of this project."
 msgstr "该计划当前的状态。"
 
-#: src/ctree.c:1111
+#: src/ctree.c:1137
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:1112
+#: src/ctree.c:1138
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:1113
+#: src/ctree.c:1139
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1123 src/ghtml.c:541 src/ghtml.c:555
+#: src/ctree.c:1149 src/ghtml.c:541 src/ghtml.c:555
 #: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "低"
 
-#: src/ctree.c:1124
+#: src/ctree.c:1150
 msgid "Med"
 msgstr "中"
 
-#: src/ctree.c:1125 glade/project_properties.glade.h:16
+#: src/ctree.c:1151 glade/project_properties.glade.h:16
 msgid "High"
 msgstr "高"
 
-#: src/ctree.c:1134 src/ghtml.c:569 glade/project_properties.glade.h:30
+#: src/ctree.c:1160 src/ghtml.c:569 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "尚未开始"
 
-#: src/ctree.c:1135 src/ghtml.c:570 glade/project_properties.glade.h:22
+#: src/ctree.c:1161 src/ghtml.c:570 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "正在进行"
 
-#: src/ctree.c:1136 src/ghtml.c:571 glade/project_properties.glade.h:32
+#: src/ctree.c:1162 src/ghtml.c:571 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "暂停"
 
-#: src/ctree.c:1137 src/ghtml.c:572 glade/project_properties.glade.h:10
+#: src/ctree.c:1163 src/ghtml.c:572 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/ctree.c:1138 src/ghtml.c:573 glade/project_properties.glade.h:11
+#: src/ctree.c:1164 src/ghtml.c:573 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "已完成"
 
@@ -302,11 +302,11 @@ msgstr ""
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:372
+#: src/file-io.c:374
 msgid "project %t started"
 msgstr "计划 %t 启动"
 
-#: src/file-io.c:375
+#: src/file-io.c:377
 msgid "stopped project %t"
 msgstr "停止计划 %t"
 
@@ -364,7 +364,7 @@ msgstr ""
 msgid "New Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/journal.c:478
+#: src/journal.c:493
 msgid "Save HTML To File"
 msgstr "将 HTML 保存到文件"
 
@@ -388,16 +388,16 @@ msgstr "标题"
 msgid "no description"
 msgstr "无描述"
 
-#: src/log.c:169 src/log.c:260
+#: src/log.c:171 src/log.c:263
 msgid "program started"
 msgstr "程序已启动"
 
 #. log_if_equal
-#: src/log.c:252
+#: src/log.c:255
 msgid "program exited"
 msgstr "程序已退出"
 
-#: src/main.c:115
+#: src/main.c:121
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -405,169 +405,189 @@ msgstr ""
 "似乎有另一个 GTimeTracker 正在执行中。\n"
 "按下 确认 强行启动 GTimeTracker，或按下 取消 结束。"
 
-#: src/main.c:127
+#: src/main.c:133
 msgid "Cannot create pid-file!"
 msgstr "无法创建 pid-file！"
 
-#: src/main.c:222
+#: src/main.c:291
 msgid "Do you want to continue?"
 msgstr "您希望继续吗？"
 
-#: src/main.c:225 src/main.c:278
+#: src/main.c:294 src/main.c:344
 msgid "Error"
 msgstr "错误"
 
-#: src/main.c:275
+#: src/main.c:341
 msgid "Shall I setup a new configuration?"
 msgstr "我该设置新配置吗？"
 
-#: src/main.c:365 src/main.c:390 src/main.c:531 src/menucmd.c:49
+#: src/main.c:508 src/main.c:547 src/main.c:696
 msgid "Warning"
 msgstr "警告"
 
-#: src/main.c:487
+#: src/main.c:652
 msgid "Specify geometry"
 msgstr "指定 geometry"
 
-#: src/main.c:487
+#: src/main.c:652
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: src/main.c:489
+#: src/main.c:654
 msgid "Select a project on startup"
 msgstr "在启动时选取一个计划"
 
-#: src/main.c:489
+#: src/main.c:654
 msgid "PROJECT"
 msgstr "计划"
 
-#: src/menucmd.c:71
+#: src/menucmd.c:50
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:200
+#: src/menucmd.c:179
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
 "task, associate a memo with it, set a billing rate, print an invoice, as "
-"well as track that status of other projects."
+"well as track the status of other projects."
 msgstr ""
 
-#: src/menucmd.c:259
+#: src/menucmd.c:238
 msgid "New Project..."
 msgstr "新增计划..."
 
-#: src/menus.c:34
+#: src/menus.c:35
 msgid "_New Project..."
 msgstr "新增计划 _N..."
 
-#: src/menus.c:37
+#: src/menus.c:38
 msgid "_Export Tasks"
 msgstr ""
 
-#: src/menus.c:41
+#: src/menus.c:42
 #, fuzzy
 msgid "Export _Projects"
 msgstr "粘贴计划"
 
-#: src/menus.c:60 src/menus.c:174
+#: src/menus.c:61 src/menus.c:179
 msgid "Clear _Daily Counter"
 msgstr "清除 Daily 计数器(_D)"
 
-#: src/menus.c:61 src/menus.c:175
+#: src/menus.c:62 src/menus.c:180
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "通过删除今天的时间日志清除今天的计数器"
 
-#: src/menus.c:65 src/menus.c:84 src/menus.c:157
+#: src/menus.c:66 src/menus.c:85 src/menus.c:158
 msgid "_Journal..."
 msgstr "日记(_J)..."
 
-#: src/menus.c:66 src/menus.c:85 src/menus.c:158
+#: src/menus.c:67 src/menus.c:86 src/menus.c:159
 msgid "Show the timesheet journal for this project"
 msgstr "为该计划显示时间表单日记"
 
-#: src/menus.c:69 src/menus.c:161
-msgid "New Diary _Entry"
+#: src/menus.c:70 glade/task_popup.glade.h:5
+#, fuzzy
+msgid "_New Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: src/menus.c:70 src/menus.c:162
-msgid "Change the current task for this project"
+#: src/menus.c:71
+#, fuzzy
+msgid "Create new task header for this project"
 msgstr "改变该计划的当前任务"
 
-#: src/menus.c:88
+#: src/menus.c:89
 msgid "_All Journal..."
 msgstr "所有日记(_A)..."
 
-#: src/menus.c:89
+#: src/menus.c:90
 msgid "Show the verbose timesheet journal for this project"
 msgstr "为该计划显示详细时间表单日记"
 
-#: src/menus.c:92
+#: src/menus.c:93
 msgid "_Invoice..."
 msgstr "支票(_I)..."
 
-#: src/menus.c:93
+#: src/menus.c:94
 msgid "Show a sample invoice for this project"
 msgstr "为该计划显示示例支票"
 
-#: src/menus.c:96
+#: src/menus.c:97
 msgid "_Primer..."
 msgstr "初级读本(_P)..."
 
-#: src/menus.c:97
+#: src/menus.c:98
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr "显示关于设计定制报告的介绍性读本的示例"
 
-#: src/menus.c:100
+#: src/menus.c:101
 msgid "_To Do..."
 msgstr ""
 
-#: src/menus.c:101
+#: src/menus.c:102
 #, fuzzy
 msgid "Show a sample to-do list"
 msgstr "为该计划显示示例支票"
 
-#: src/menus.c:104
+#: src/menus.c:105
 msgid "_New Report..."
 msgstr "新建报告(_N)..."
 
-#: src/menus.c:105
+#: src/menus.c:106
 #, fuzzy
 msgid "Define a path to a new GnoTime ghtml report file"
 msgstr "定义一个到新建 GTT phtml 报告文件的路径"
 
-#: src/menus.c:116
+#: src/menus.c:117
 msgid "St_art"
 msgstr "开始(_A)"
 
-#: src/menus.c:117
+#: src/menus.c:118
 msgid "Start the timer running"
 msgstr "启动计时器的运行"
 
-#: src/menus.c:122
+#: src/menus.c:123
 msgid "Sto_p"
 msgstr "停止(_P)"
 
-#: src/menus.c:123
+#: src/menus.c:124
 #, fuzzy
 msgid "Stop the timer"
 msgstr "设定端口号"
 
-#: src/menus.c:128
+#: src/menus.c:129
 msgid "_Timer Running"
 msgstr "计时器正在运行(_T)"
 
-#: src/menus.c:147
+#: src/menus.c:148
 msgid "_Reports"
 msgstr "报告(_R)"
 
-#: src/menus.c:148
+#: src/menus.c:149
 msgid "_Timer"
 msgstr "计时器(_T)"
 
+#: src/menus.c:162
+msgid "New Diary _Entry"
+msgstr "新建日记条目(_E)"
+
+#: src/menus.c:163
+msgid "Change the current task for this project"
+msgstr "改变该计划的当前任务"
+
+#: src/menus.c:166 glade/task_popup.glade.h:4
+#, fuzzy
+msgid "_Edit Diary Entry"
+msgstr "新建日记条目(_E)"
+
+#: src/menus.c:167
+#, fuzzy
+msgid "Edit task header for this project"
+msgstr "为该计划显示时间表单日记"
+
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:245
+#: src/menus.c:250
 msgid "Reports"
 msgstr "报告"
 
@@ -579,29 +599,10 @@ msgstr "报告/<分隔符>"
 msgid "Old GTT Tasks"
 msgstr "老式 GTT 任务"
 
-#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
-#: src/props-task.c:76
+#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:76
+#: src/props-task.c:77
 msgid "empty"
 msgstr "空"
-
-#: src/timer.c:148
-#, c-format
-msgid ""
-"The keyboard and mouse have been idle\n"
-"for %d minutes.  The currently running\n"
-"project (%s - %s)\n"
-"has been stopped.\n"
-"Do you want to restart it?"
-msgstr ""
-"键盘和鼠标已经空闲\n"
-" %d 分钟了。当前运行\n"
-"的计划 (%s - %s)\n"
-" 已被停止。您希望\n"
-"重新启动它吗？"
-
-#: src/timer.c:156
-msgid "System Idle"
-msgstr "系统空闲"
 
 #: src/toolbar.c:153
 msgid "Create a New Project..."
@@ -1279,16 +1280,6 @@ msgstr "slider 更新间隔"
 msgid "_Cut Diary Entry"
 msgstr "新建日记条目(_E)"
 
-#: glade/task_popup.glade.h:4
-#, fuzzy
-msgid "_Edit Diary Entry"
-msgstr "新建日记条目(_E)"
-
-#: glade/task_popup.glade.h:5
-#, fuzzy
-msgid "_New Diary Entry"
-msgstr "新建日记条目(_E)"
-
 #: glade/task_popup.glade.h:6
 #, fuzzy
 msgid "_Paste Diary Entry"
@@ -1409,6 +1400,22 @@ msgstr ""
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr ""
+
+#~ msgid ""
+#~ "The keyboard and mouse have been idle\n"
+#~ "for %d minutes.  The currently running\n"
+#~ "project (%s - %s)\n"
+#~ "has been stopped.\n"
+#~ "Do you want to restart it?"
+#~ msgstr ""
+#~ "键盘和鼠标已经空闲\n"
+#~ " %d 分钟了。当前运行\n"
+#~ "的计划 (%s - %s)\n"
+#~ " 已被停止。您希望\n"
+#~ "重新启动它吗？"
+
+#~ msgid "System Idle"
+#~ msgstr "系统空闲"
 
 #~ msgid "Elapsed"
 #~ msgstr "已用时间"
