@@ -654,7 +654,10 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		gtk_window_set_focus (GTK_WINDOW(wig->top), GTK_WIDGET(wig->html));
 
 		/* Set up in initial default, so later move works. */
-		gtk_window_move (GTK_WINDOW(wig->hover_help_window), 300,300);
+		int px=0, py=0, rx=0, ry=0;
+		gtk_widget_get_pointer (GTK_WIDGET(wig->top), &px, &py);
+		gtk_window_get_position (GTK_WINDOW(wig->top), &rx, &ry);
+		gtk_window_move (GTK_WINDOW(wig->hover_help_window), rx+px, ry+py);
 	}
 
 	/* If hovering over a URL, bring up the help popup after one second. */
