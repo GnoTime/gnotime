@@ -5,7 +5,11 @@
 </head>
 <body>
 <center>
-<h1>Invoice for <?scm (gtt-show-project-title) ?> - <?scm (gtt-show-project-desc) ?></h1>
+<h1>Invoice for 
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+ - 
+<?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+</h1>
 
 This is a sample invoice
 It only shows billable and no-charge hours.

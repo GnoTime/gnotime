@@ -21,8 +21,15 @@ the menu item "Reports... New Report".
 This is commented out and not visible
 <?scm (gtt-show-project '($memo  $start_datime $stop_datime $elapsed)) ?>
 -->
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
 
 <?scm (gtt-show-project '($memo $task_time $billable $bill_value))  ?>
+
+<h1> this is titile
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+ - 
+<?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+</h1>
 
 <br><br>
 That's all Folks!
