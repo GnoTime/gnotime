@@ -25,13 +25,20 @@ the menu item "Reports... New Report".
     <th>Status</th>
     </tr>
 
+<!-- Note that in order to include blank spaces or standard ascii 
+     escapes in the scheme markup, you must use double quotes:
+	  for example "\t tabbed line followed by newline\n".  If
+	  you don't need any blanks or tabs, etc, then you don't need 
+	  to quote the string.
+ -->
+
 <?scm (gtt-show-projects (gtt-projects) 
-      (list ''<tr><td>          gtt-project-importance ''</td>
-            ''<td>              gtt-project-urgency    ''</td>
-            ''<td>              gtt-project-title-link ''</td>
-            ''"<td align=left>" gtt-project-desc       ''</td>
-            ''<td>              gtt-project-status     ''</td>
-            ''</tr>
+      (list ''<tr><td>          gtt-project-importance ''"</td>\n"
+            ''<td>              gtt-project-urgency    ''"</td>\n"
+            ''<td>              gtt-project-title-link ''"</td>\n"
+            ''"<td align=left>" gtt-project-desc       ''"</td>\n"
+            ''<td>              gtt-project-status     ''"</td>\n"
+            ''"</tr>\n"
             ))
 ?>
 </table>
@@ -44,8 +51,8 @@ because your project notes are not filled out or are
 breif and cryptic:
 <dl>
 <?scm (gtt-show-projects (gtt-projects) 
-      (list ''<dt><b>  gtt-project-title ''</b></dt>
-            ''<dd>     gtt-project-notes ''</dd>
+      (list ''<dt><b>   gtt-project-title   ''"</b></dt>\n"
+            ''<dd>      gtt-project-notes   ''"</dd>\n"
             ))
 ?>
 </dl>
