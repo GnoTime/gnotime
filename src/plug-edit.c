@@ -41,10 +41,12 @@ struct PluginEditorDialog_s
 	GtkTreeSelection *selection;
 	gboolean have_selection;
 	GtkTreeIter curr_selection;
+	gboolean do_redraw;
 	
 	GtkEntry  *plugin_name;    /* AKA 'Label' */
 	GnomeFileEntry  *plugin_path;
 	GtkEntry  *plugin_tooltip;
+
 	GnomeApp  *app;
 };
 
@@ -120,7 +122,8 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	{
 		msgbox_ok(_("Warning"),
 	   	          _("You must specify a complete filepath to the report, "
-	   	            "including a leading slash."),
+	   	            "including a leading slash.  The file that you specify "
+	   	            "must exist."),
 	      	       GTK_STOCK_OK,
 	         	    NULL);
 	}
@@ -174,6 +177,7 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 
 	have_selection = gtk_tree_selection_get_selected (selection, &model, &iter);
 	
+	dlg->do_redraw = FALSE;
 	if (dlg->have_selection)
 	{
 		GnomeUIInfo *curr_item;
@@ -196,8 +200,7 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 		dlg->curr_selection = iter;
 		edit_plugin_item_to_widgets (dlg, curr_item);
 	}
-
-	/* XXX if dlg->changed redraw */
+	dlg->do_redraw = TRUE;
 }
 
 /* ============================================================ */
@@ -291,6 +294,27 @@ edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 printf ("delete clicked\n");
 }
 
+static void 
+edit_plugin_changed_cb (GtkWidget * w, gpointer data)
+{
+	PluginEditorDialog *dlg = data;
+
+	if (!dlg->do_redraw) return;
+printf ("duude changed\n");
+	if (dlg->have_selection)
+	{
+		GnomeUIInfo *curr_item;
+		GValue val = {G_TYPE_INVALID};
+		gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore), 
+		                &dlg->curr_selection, PTRCOL, &val);
+		curr_item = g_value_get_pointer(&val);
+
+		/* Save current values of widgets to current item */
+		edit_plugin_widgets_to_item (dlg, curr_item);
+		edit_plugin_redraw_row (dlg, &dlg->curr_selection, curr_item);
+	}
+}
+
 /* ============================================================ */
 
 
@@ -330,6 +354,17 @@ edit_plugin_dialog_new (void)
 	  
 	glade_xml_signal_connect_data (gtxml, "on_delete_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_delete_cb), dlg);
+	  
+	/* ------------------------------------------------------ */
+	/* Inpout widget changed events */
+	glade_xml_signal_connect_data (gtxml, "on_plugin_name_changed",
+		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_plugin_path_changed",
+		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_plugin_tooltip_changed",
+		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
 	  
 	/* ------------------------------------------------------ */
 	/* Set up the Treeview Widget */
