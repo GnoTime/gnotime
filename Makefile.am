@@ -1,5 +1,5 @@
 
-SUBDIRS = debian doc gconf glade ghtml lib po redhat src
+SUBDIRS = debian doc gconf glade ghtml lib po redhat fedora src
 
 Productivitydir = $(datadir)/gnome/apps/Applications
 Productivity_in_files = gnotime.desktop.in
@@ -19,5 +19,6 @@ EXTRA_DIST =                   \
 	intltool-update.in          \
 	$(Productivity_in_files)    \
 	$(Productivity_DATA)        \
-	$(top_srcdir)/sgmldocs.make
-
+	$(top_srcdir)/omf.make      \
+	$(top_srcdir)/xmldocs.make
+	

@@ -1,10 +1,12 @@
-<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.1//EN"[
+<?xml version="1.0" encoding="latin1" standalone="no"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
 <!ENTITY version "1.2">
 ]>
-
+ 
 <article id="index" lang="es"> <!-- please do not change the id-->
 
-  <artheader> 
+  <articleinfo> 
     <title>Manual de la Herramienta del Supervisor de Tiempos de GNOME
 </title>
     <copyright>
@@ -14,7 +16,6 @@
     <copyright>
       <year>2000</year>
       <holder>Helix Code, Inc.</holder>
-
     </copyright>
 
     <legalnotice id="legalnotice">
@@ -38,7 +39,7 @@
 	 Esta es la versión del manual del  Supervisor de Tiempos de GNOME.
      </releaseinfo> 
 <!-- this is version of manual, not application --> 
-  </artheader>
+  </articleinfo>
 
 <!-- =============Document Body ============================= -->
 
@@ -110,7 +111,7 @@
 	  <screenshot>
 	    <screeninfo>Ventana Principal del Supervisor de Tiempos de GNOME,
 	    con un proyecto seleccionado</screeninfo>
-	    <graphic fileref="gtt_mainwin.png"></graphic>
+      <graphic fileref="gtt_mainwin.png" />
 	  </screenshot>
 	</figure>
 <!-- ==============End of Figure=================================== -->
@@ -555,8 +556,7 @@ Puede seleccionar que funciones aparecerán en la barra de herramientas del diálo
 	  <title>Diálogo Preferencias</title>
 	  <screenshot>
 	    <screeninfo>Diálogo Preferencias</screeninfo>
-	    <graphic fileref="gtt_prefswin.png">
-	    </graphic>
+      <graphic fileref="gtt_prefswin.png" />
 	  </screenshot>
 	</figure>
 <!-- ==============End of Figure=================================== -->
@@ -629,7 +629,7 @@ Puede seleccionar que funciones aparecerán en la barra de herramientas del diálo
 	        <term><guilabel>Órdenes de la Línea de Comandos (Shell)</guilabel></term>
                 <listitem>
                    <para>
-                     <anchor id="shellcmd">
+                     <anchor id="shellcmd" />
 		      Hay tres órdenes de la línea de comandos ejecutados por el 
 		  <application>Supervisor de Tiempos de GNOME</application>. Uno se ejecuta cuando Vd, cambia entre proyectos, y el otro cuando de-selecciona un proyecto o sale de la aplicación.
                       <itemizedlist>

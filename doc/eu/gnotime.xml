@@ -1,10 +1,12 @@
-<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
 <!ENTITY version "1.4">
 ]>
 
-<article id="index"> <!-- please do not change the id-->
+<article id="index" lang="eu"> <!-- please do not change the id-->
 
-  <artheader> 
+  <articleinfo> 
     <title>GNOMEren denboraren kontrol-tresnaren eskuliburua </title>
     <copyright><year>1997-2000</year> <holder>Eckehard Berns</holder></copyright> <copyright><year>2000</year> <holder>Helix Code, Inc.</holder>
 
@@ -12,7 +14,7 @@
 
     <legalnotice id="legalnotice"><para>Baimena ematen da dokumentu hau kopiatu, banatu edota aldatzeko Free Software Foundation-ek argitaratutako <ulink type="help" url="gnome-help:fdl"><citetitle>GNU Dokumentazio Librearen Lizentzia</citetitle></ulink>ren 1.1 bertsioan edo berriago batean ezarritako baldintzak betetzen badira; Atal Aldaezinik, Aurreko azaleko testurik eta Atzeko azaleko testurik gabe.  Lizentziaren kopia <ulink type="help" url="gnome-help:fdl">hemen</ulink> aurkituko duzu.</para> <para>Enpresek euren produktu eta zerbitzuak bereizteko erabiltzen dituzten izen asko marka erregistratu moduan hartu behar dira. Izen horiek GNOMEren edozein agiritan agertzen direnean, GNOMEren dokumentazio-proiektuko kideak marka erregistratuak direla konturatu badira, izen horiek osorik maiuskulaz edo hasierako letra maiuskulaz idatzi dituzte.</para></legalnotice>
 
-    <releaseinfo>GNOME Time Tracker-en eskuliburuaren 2.0 bertsioa duzu hau.</releaseinfo> <!-- this is version of manual, not application --></artheader>
+    <releaseinfo>GNOME Time Tracker-en eskuliburuaren 2.0 bertsioa duzu hau.</releaseinfo> <!-- this is version of manual, not application --></articleinfo>
 
 <!-- =============Document Body ============================= -->
 
@@ -33,14 +35,14 @@
       <title>GNOME Time Tracker-ekin lanean </title>
       <para> <application>GNOME Time Tracker</application>-a zeregin desberdinetan pasatzen duzun denbora kontrolatzeko erabil dezakezu. Horretarako hainbat proiektu definitu eta, eguna aurrera doan moduan, <application>GNOME Time Tracker</application>-i zer proiektutan ari zaren lanean jakinarazi behar diozu.  Programak ondokoa jakinaraziko dizu: zenbat denbora erabili duzun proiektu bakoitzean egunero, proiektu bakoitzean guztira erabilitako denbora,  eta proiektu denetan egunero erabilitako denbora.</para>
 
-    <para>Tamalez, <application>GNOME Time Tracker</application>-a ez da oso azkarra: ez du kronometroa desaktibatuko solitarioan jolasten hasten bazara geldialdi txiki bat egiteko eta azkenean ordu asko pasatzen badituzu. Proiektu bateko lana uzten baduzu, ziurta ezazu kronometroa desaktibatu duzula <guibutton>Kronometroa</guibutton> botoian klik eginez edo <guimenuitem>Gelditu</guimenuitem> elementuaren bidez <guimenu>Kronometroa</guimenu> menuan.  Hori egiten duzun bitartean, zure lana behar bezala gordeko da.  Hala ere, <interface>Propietateak</interface> elkarrizketa-koadroan denbora alda dezakezu zuzena ez denean.  Ikus<link linkend="properties"></link> informazio gehiago lortzeko.
+      <para>Tamalez, <application>GNOME Time Tracker</application>-a ez da oso azkarra: ez du kronometroa desaktibatuko solitarioan jolasten hasten bazara geldialdi txiki bat egiteko eta azkenean ordu asko pasatzen badituzu. Proiektu bateko lana uzten baduzu, ziurta ezazu kronometroa desaktibatu duzula <guibutton>Kronometroa</guibutton> botoian klik eginez edo <guimenuitem>Gelditu</guimenuitem> elementuaren bidez <guimenu>Kronometroa</guimenu> menuan.  Hori egiten duzun bitartean, zure lana behar bezala gordeko da.  Hala ere, <interface>Propietateak</interface> elkarrizketa-koadroan denbora alda dezakezu zuzena ez denean.  Ikus<link linkend="properties"></link> informazio gehiago lortzeko.</para>
  
 <para id="timer"><application>GNOME Time Tracker</application>-ek zure proiektuen denborari buruzko informazioa modu desberdinetan eman diezazuke. Proiektu bakoitzarentzat, egun berean erabilitako denboraren eta guztira erabilitako denboraren kronometroa dauka. Horrez gain, <application>GNOME Time Tracker</application>-ek egun berean proiektu denetan erabili duzun denbora neurtzen du.  Azken kopurua egoera-barraren beheko ezkerreko izkinan bistaratutakoa da.</para>
 
 <para><application>GNOME Time Tracker</application>-a hastean, <interface>Leiho nagusia</interface> ikusiko duzu, hemen erakusten den bezala: 
 	<link linkend="mainwindowfig"></link>. <!-- ==============Figure=================================== --> <figure id="mainwindowfig">
 	  <title>GNOME Time Tracker-en leiho nagusia </title>
-	  <screenshot><screeninfo>GNOME Time Tracker-en leiho nagusia, proiektu bat hautatuta duzula</screeninfo> <graphic fileref="figures/gtt_mainwin"></graphic></screenshot></figure> <!-- ==============End of Figure=================================== -->
+    <screenshot><screeninfo>GNOME Time Tracker-en leiho nagusia, proiektu bat hautatuta duzula</screeninfo> <graphic fileref="figures/gtt_mainwin.png" /></screenshot></figure> <!-- ==============End of Figure=================================== -->
       
 
 
@@ -60,7 +62,15 @@
 
    <para>Menu-barra lau menuz osatua dago: <guimenu>Fitxategia</guimenu>, <guimenu>Editatu</guimenu>, <guimenu>Kronometroa</guimenu> eta <guimenu>Laguntza</guimenu>.</para>
 
-      <!-- =========List=========================== --> <variablelist><varlistentry><term><guimenu>Fitxategia</guimenu></term> <listitem><para>Menu honek ondorengo komandoak ditu: <para><menuchoice><shortcut><keysym>Ktrl + N</keysym></shortcut> 
+   <!-- =========List=========================== -->
+   <variablelist>
+     <varlistentry>
+       <term><guimenu>Fitxategia</guimenu></term>
+        <listitem>
+          <para>
+            Menu honek ondorengo komandoak ditu:
+          </para>
+          <para><menuchoice><shortcut><keysym>Ktrl + N</keysym></shortcut> 
 		
 		    <guimenuitem>&mdash; Proiektu berria</guimenuitem></menuchoice> Proiektu berriak <interface>Proiektu berria</interface>ren elkarrizketa-koadroa irekitzen du zuk proiektu berria has dezazun.</para> <para><menuchoice><shortcut><keysym>Ktrl-L</keysym></shortcut> <guimenuitem> &mdash; Birkargatu konfigurazio-fitxategia</guimenuitem></menuchoice>
 	      
@@ -80,10 +90,24 @@
 
 		<para><menuchoice><guimenuitem>Garbitu eguneroko kontagailua</guimenuitem></menuchoice> &mdash; Funtzio hori eguneroko kontagailua orain hautatutako proiekturako garbitzeko modu bizkorra da. Funtzio hori erabil dezakezu prozesu batean denbora behin baino gehiagotan kalkulatu nahi baduzu .  Hori erabilgarria da, PPP konexioak internetekin zenbat irauten duen kontrolatzeko edo konpilazioa eta errepikatzen diren bestelako zereginen denbora kalkulatzeko.  Komando horrek ez du kronometro orokorrean eragiten.</para>
 
-		 <para><menuchoice><guimenuitem>Propietateak...</guimenuitem></menuchoice> &mdash; Hautaketa honek unean hautatutako proiektuaren <interface>Propietateak</interface> elkarrizketa-koadroa irekitzen du .  Hemen zure proiektuaren izena, deskribapena eta denbora ikus eta edita ditzakezu.  Kontuan hartu hori tresna-barrako <guibutton>Propietateak</guibutton> botoiarekin lortzen den ekintza bera dela.  Ikus<link linkend="properties"></link> informazio gehiago lortzeko.
-
-	<varlistentry><term><guimenu>Ezarpenak</guimenu></term> <listitem><para>Menu honek komando bakarra dauka:  <guimenuitem>Hobespenak</guimenuitem> elementuak <interface>Hobespenen elkarrizketa-koadroa</interface> abiarazten du.  Ikus<link linkend="preferences"></link>
-                 informazio gehiago lortzeko.
+    <para>
+      <menuchoice><guimenuitem>Propietateak...</guimenuitem></menuchoice>
+      &mdash; Hautaketa honek unean hautatutako proiektuaren
+      <interface>Propietateak</interface> elkarrizketa-koadroa irekitzen du .  Hemen zure proiektuaren izena, deskribapena eta denbora ikus eta edita ditzakezu.  Kontuan hartu hori tresna-barrako <guibutton>Propietateak</guibutton> botoiarekin lortzen den ekintza bera dela.  Ikus<link linkend="properties"></link> informazio gehiago lortzeko.
+    </para>
+  </listitem>
+</varlistentry>
+       <varlistentry>
+         <term><guimenu>Ezarpenak</guimenu></term>
+         <listitem>
+           <para>
+             Menu honek komando bakarra dauka:
+             <guimenuitem>Hobespenak</guimenuitem> elementuak
+             <interface>Hobespenen elkarrizketa-koadroa</interface> abiarazten du.  Ikus<link linkend="preferences"></link>
+             informazio gehiago lortzeko.
+           </para>
+         </listitem>
+       </varlistentry>
 
 	<varlistentry><term><guimenu>Kronometroa</guimenu></term> <listitem><para>Menu honek ondorengo komandoak ditu: <menuchoice><shortcut><keysym>Ktrl-A</keysym></shortcut> <guimenuitem>Hasi</guimenuitem></menuchoice> &mdash; Funtzio honek hautatutako proiektuan kronometroa abiarazten du.</para>
 
@@ -177,7 +201,7 @@ Aukera dezakezu <interface>Hobespenak</interface> elkarrizketa-koadroko tresna-b
       <title>Pertsonalizazioa</title> 
       <para>Lehenetsitako ezarpenak aldatzeko, hautatu <guimenuitem>Propietateak</guimenuitem> komandoa <guimenu>Ezarpenak</guimenu> menuan. Horrek <interface>Hobespenen elkarrizketa-koadroa</interface> abiarazten du, hemen erakusten den bezala:  <link linkend="prefsfigure"></link>. Hobespenen bi fitxa daude leihoan.</para> <!-- ==============Figure=================================== --> <figure id="prefsfigure">
 	  <title>Hobespenen elkarrizketa-koadroa</title>
-	  <screenshot><screeninfo>Hobespenen elkarrizketa-koadroa</screeninfo> <graphic fileref="figures/gtt_prefswin"></graphic></screenshot></figure>
+	  <screenshot><screeninfo>Hobespenen elkarrizketa-koadroa</screeninfo> <graphic fileref="figures/gtt_prefswin.png"></graphic></screenshot></figure>
  
  <sect2 id="toolbar-prefs">
       <title>Tresna-barrako hobespenen fitxa</title>
@@ -189,7 +213,7 @@ Aukera dezakezu <interface>Hobespenak</interface> elkarrizketa-koadroko tresna-b
            
            <varlistentry><term><guilabel>Bistaratu</guilabel></term> <listitem><para>Bistaratu koadroak hiru kontrol-lauki ditu: <simplelist><member><guilabel> Erakutsi segundoak </guilabel></member> <member><guilabel> Erakutsi egoera-barra </guilabel> </member> <member><guilabel> Erakutsi taularen goiburukoa </guilabel></member></simplelist> Kontrol-lauki horiek ondokoa zehazten dute: kronometroaren bistaratzean segundoak eta <interface>Leiho nagusia</interface>n egoera-barra eta taularen goiburukoa azalduko diren</para></listitem></varlistentry>
 
-	    <varlistentry><term><guilabel>Shell komandoak</guilabel></term> <listitem><para><anchor id="shellcmd"><application>GNOME Time Tracker</application>-ek bi shell komando exekutatzen ditu. Horietako bat proiektu batetik bestera aldatzean exekutatzen du, eta bestea proiektua desautatu edo aplikaziotik irteten zarenean. <itemizedlist><listitem><para><guilabel>Konektatu proiektuaren komandoa</guilabel>: Shell komandoa lehendik hautatu gabe zegoen proiektu bat hautatzen duzun bakoitzean exekutatzen da. Komando horrekin <literal>&percnt;s</literal> erabiltzen baduzu, <application>GNOME Time Tracker</application>-ek hautatutako proiektuaren izenburuarekin ordezkatuko du. Honako sarrera erabiliko dut <filename>.project</filename> fitxategia eguneratzeko: <userinput>echo '&percnt;s' &gt;~/.project</userinput></para></listitem> <listitem><para><guilabel>Ez dago proiektuaren komandorik</guilabel> Shell komando hori proiektu bat desautatu edo <application>GNOME Time Tracker</application> programatik irteten zaren bakoitzean exekutatuko da. Goiko adibidea osatzeko, komando hau erabiliko dut: <userinput>rm -f ~/.project</userinput></para></listitem></itemizedlist></para></listitem></varlistentry>
+           <varlistentry><term><guilabel>Shell komandoak</guilabel></term> <listitem><para><anchor id="shellcmd" /><application>GNOME Time Tracker</application>-ek bi shell komando exekutatzen ditu. Horietako bat proiektu batetik bestera aldatzean exekutatzen du, eta bestea proiektua desautatu edo aplikaziotik irteten zarenean. <itemizedlist><listitem><para><guilabel>Konektatu proiektuaren komandoa</guilabel>: Shell komandoa lehendik hautatu gabe zegoen proiektu bat hautatzen duzun bakoitzean exekutatzen da. Komando horrekin <literal>&percnt;s</literal> erabiltzen baduzu, <application>GNOME Time Tracker</application>-ek hautatutako proiektuaren izenburuarekin ordezkatuko du. Honako sarrera erabiliko dut <filename>.project</filename> fitxategia eguneratzeko: <userinput>echo '&percnt;s' &gt;~/.project</userinput></para></listitem> <listitem><para><guilabel>Ez dago proiektuaren komandorik</guilabel> Shell komando hori proiektu bat desautatu edo <application>GNOME Time Tracker</application> programatik irteten zaren bakoitzean exekutatuko da. Goiko adibidea osatzeko, komando hau erabiliko dut: <userinput>rm -f ~/.project</userinput></para></listitem></itemizedlist></para></listitem></varlistentry>
 
 	 <varlistentry><term><guilabel>Egunkari-fitxategiaren hobespenak</guilabel></term> <listitem><para>Egunkari-fitxategiaren hobespenak areak <guibutton>Erabili egunkari-fitxategia</guibutton> kontrol-laukia dauka. Lauki horrek egunkari-fitxategia eta jarraian agertzen diren testuen sarrera-laukiak erabiltzen ari zaren zehazten du, fitxategiaren jokabidea zuzenduz: <itemizedlist>
 	     
@@ -242,9 +266,28 @@ Aukera dezakezu <interface>Hobespenak</interface> elkarrizketa-koadroko tresna-b
 
 
 
-<!-- =============New section============================= --> <sect1 id="bugs">
+<!-- =============New section============================= -->
+  <sect1 id="bugs">
     <title>Ezagutzen diren akats eta mugak</title>
-      <para><itemizedlist><listitem><para>Proiektuaren propietateak leihoan eguneko ordua aldatzen baduzu, ez du eraginik edukiko guztizko denboran.</para></listitem> <listitem><para>Proiektuentzat ordu negatiboak sar ditzakezu; ordu negatiboak modu arraroan bistaratuko dira.</para></listitem> <listitem><para>Blokeatzen ari diren X zerbitzariak berreskuratzen saiatu gara, baina aplikazioa uste gabe blokeatzen bada, ez da bermatzen balioak gordeko direnik.  Ez dago automatikoki gordetzeko funtziorik. <listitem><para>Baliteke hobespenen elkarrizketa-koadroko <guibutton>Ados</guibutton> botoia ez ibiltzea &mdash; grisa mantentzen da, nahiz eta lehenetsitako balioak aldatu diren.  Aldatu dituzun balioak mantentzeko, egin klik <guibutton>Aplikatu</guibutton> eta gero <guibutton>Itxi</guibutton> botoietan.</para></listitem> <listitem><para>Orduak segundo-kopuru osoko zenbaki moduan adierazita daude barnean. Teorian, beraz, ordenagailu batzuetan programak onar dezakeen gehienezko denbora kopurua gaindi daiteke.  Hori gertatzeko, ordenagailu gehienetan proiektu batek 68 urte baino gehiagotan egon beharko luke martxan .</para></listitem></itemizedlist></para></sect1>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>Proiektuaren propietateak leihoan eguneko ordua aldatzen baduzu, ez du eraginik edukiko guztizko denboran.</para>
+        </listitem>
+        <listitem>
+          <para>Proiektuentzat ordu negatiboak sar ditzakezu; ordu negatiboak modu arraroan bistaratuko dira.</para>
+        </listitem>
+        <listitem>
+          <para>Blokeatzen ari diren X zerbitzariak berreskuratzen saiatu gara, baina aplikazioa uste gabe blokeatzen bada, ez da bermatzen balioak gordeko direnik.  Ez dago automatikoki gordetzeko funtziorik.</para>
+        </listitem>
+        <listitem>
+          <para>Baliteke hobespenen elkarrizketa-koadroko <guibutton>Ados</guibutton> botoia ez ibiltzea &mdash; grisa mantentzen da, nahiz eta lehenetsitako balioak aldatu diren.  Aldatu dituzun balioak mantentzeko, egin klik <guibutton>Aplikatu</guibutton> eta gero <guibutton>Itxi</guibutton> botoietan.</para>
+        </listitem>
+        <listitem>
+          <para>Orduak segundo-kopuru osoko zenbaki moduan adierazita daude barnean. Teorian, beraz, ordenagailu batzuetan programak onar dezakeen gehienezko denbora kopurua gaindi daiteke.  Hori gertatzeko, ordenagailu gehienetan proiektu batek 68 urte baino gehiagotan egon beharko luke martxan .</para>
+        </listitem>
+      </itemizedlist>
+  </para></sect1>
 
 <!-- =============Authors Section============================= -->
 
@@ -262,23 +305,10 @@ Aukera dezakezu <interface>Hobespenak</interface> elkarrizketa-koadroko tresna-b
 
  <sect1 id="license">
   <title>Lizentzia</title>
-  <para>Programa hau software librea da; birbana edota alda dezakezu, Free Software Foundation-ek argitaratutako <ulink url="gnome-help:gpl">GNU Lizentzia Publiko Orokorra</ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio berriago batean, jasotako baldintzak betez gero.</para> <para>Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO BERMERIK gabe; era berean, ez da bermatzen EGOKITASUNA MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO.  Argibide gehiago nahi izanez gero, ikus <citetitle>GNU Lizentzia Publiko Orokorra</citetitle></para>. <citetitle>GNU Lizentzia Publiko Orokorra</citetitle>ren kopia Free Software Foundation-en bidez ere lor dezakezu <ulink type="http"       url="http://www.fsf.org">haren Web gunea</ulink> bisitatuz edo hona idatziz:
+  <para>Programa hau software librea da; birbana edota alda dezakezu, Free Software Foundation-ek argitaratutako <ulink url="gnome-help:gpl">GNU Lizentzia Publiko Orokorra</ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio berriago batean, jasotako baldintzak betez gero.</para>
+  <para>Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO BERMERIK gabe; era berean, ez da bermatzen EGOKITASUNA MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO.  Argibide gehiago nahi izanez gero, ikus <citetitle>GNU Lizentzia Publiko Orokorra</citetitle>.</para>
+  <para><citetitle>GNU Lizentzia Publiko Orokorra</citetitle>ren kopia Free Software Foundation-en bidez ere lor dezakezu <ulink type="http"       url="http://www.fsf.org">haren Web gunea</ulink> bisitatuz edo hona idatziz:
       <address>
 	Free Software Foundation, Inc. <street>59 Temple Place</street> - Suite 330 <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode> <country>USA</country>
    </address>
   </para></sect1></article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,60 @@
 
+Thu Apr 1 2004 Linas Vepstas <linas@linas.org>
+   * (multiple) apply patch from Toshio Kuratomi <toshio@tiki-lounge.com>
+     sourceforge patch #871052
+
+Tue Dec  23 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+	* src/main.c: using signal(SIGCHLD, SIG_IGN) to reap zombie processes
+	  is not portable and was causing yelp, the gnome help browser to
+	  crash when it was invoked to handle gnotime help.  Create two
+	  alternate methods with configure idefs to choose between them.
+	* configure.in: New tests to select which method to use to reap
+	  zombie processes.  Each test relies on certain functions in the
+	  standarc libc.
+
+Fri Dec  20 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+	* src/toolbar.c: Call to gnome_help_display was wrong for GNOME2.
+	  Changed it to follow the new syntax.
+	* src/menus.c: Change the GNOMEUIINFO_HELP to reference gnotime instead
+	  of gtt.
+
+Fri Dec  19 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+	* doc/C/gnotime.xml: The graphic tags were attempting to access the
+	  screenshots with filenames without extensions.  I added the .png
+	  extension and it all works now.
+	* autogen.sh: Add some env variable definitions to the invocation of
+	  gnome-autogen.sh.  REQUIRED_AUTOMAKE_VERSION allows automake 1.5+
+	  (rather than only 1.4).  USE_COMMON_DOC_BUILD specifies creating the
+	  documentation creation installation via scrollkeeper.
+
+Thu Dec  18 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+	* doc: Major rewrite of the documentation building.  Uses a newer
+	  scrollkeeper omf format and uses and copies docbook XML rather than
+	  SGML=>HTML conversion. 
+	  - doc/C/Makefile.am: Adjusted to the GNOME2 doc build process.
+	  - doc/C/gnotime-C.omf: Updated to the new OMF format.
+	  - doc/C/gnotime.sgml: moved to doc/C/gnotime.xml and fixed up to be
+	    proper XML docbook-4.2.
+	  - doc/C/gnotime: Removed as the GNOME2 help scheme operates on XML
+	    docbook rather than HTML.
+	  - doc/C/index.html: ditto.
+	  - doc/C/topic.dat: ditto.
+	  - and the same files in doc/es doc/eu.
+	  - doc/es/gnotime-C.omf: moved to doc/es/gnotime-es.omf
+	* sgmldocs.make, Makefile.am: replaced with xmldocs.make and omf.make.
+	* configure.in: Wrote proper checks for libxml2.
+	  - Wrote check for scrollkeeper
+	  - Remove doc/de/ from the build as the documentation is no longer
+	    around.
+	* src/Makefile.am: Take advantage of the proper libxml2 checks
+	  - Change CFLAGS to AM_CFLAGS since user can override CFLAGS
+	* fedora, Makefile.am: New directory with a specfile suitable for
+	  inclusion in the Fedora Extras add-on packages to Redhat/Fedora
+	  Core.  Modeled after the redhat directory.
+	* doc/de, doc/Makefile.am: Removed the de directory of the
+	  documentation since no translation resided there (just a topics.dat
+	  that no longer works in a Gnome2 environment.)
+  
 Nov 10 2003 Linas Vepstas <linas@linas.org>
 
 	* idle-dialog.c: bug fix to work around missing/dropped X Events

@@ -31,6 +31,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <utime.h>
+#if defined(HAVE_DECL_WNOHANG) && defined(HAVE_WAITPID)
+#include <wait.h>
+#endif
 
 #include <qof.h>
 
@@ -49,7 +52,6 @@
 #include "timer.h"
 #include "toolbar.h"
 #include "xml-gtt.h"
-
 
 char *first_proj_title = NULL;  /* command line over-ride */
 
@@ -684,11 +686,22 @@ guile_inner_main(int argc, char **argv)
 	unlock_gtt();
 }
 
+#if defined (HAVE_DECL_WNOHANG) && defined (HAVE_WAITPID)
+inline RETSIGTYPE sigchld_handler(int unused) {
+    while(waitpid(-1, NULL, WNOHANG) > 0) {}
+}
+#endif
 
 int 
 main(int argc, char *argv[])
 {
 	static char *geometry_string = NULL;
+#if defined (HAVE_DECL_WNOHANG) || defined (HAVE_DECL_SA_NOCLDWAIT)
+    struct sigaction reapchildren;
+   
+    memset(&reapchildren, 0, sizeof reapchildren);
+#endif /*  WNOHANG/SA_NOCLDWAIT */
+
 #ifdef USE_SM
 	GnomeClient *client;
 #endif /* USE_SM */
@@ -723,7 +736,21 @@ main(int argc, char *argv[])
 	/* gconf init is needed by gtkhtml */
 	gconf_init (argc, argv, NULL);
 
+#ifdef HAVE_DECL_WNOHANG
+    /* Create a signal handler to reap zombie processes.  Most portable */
+    reapchildren.sa_flags=SA_NOCLDSTOP;
+    reapchildren.sa_handler=sigchld_handler;
+    sigaction(SIGCHLD, &reapchildren, NULL);
+#elif defined (HAVE_DECL_SA_NOCLDWAIT)
+    /* Specify autoreaping using sigaction flag.  Next most portable */
+    memset(&reapchildren, 0, sizeof reapchildren);
+    reapchildren.sa_flags = SA_NOCLDWAIT;
+    sigaction(SIGCHLD, &reapchildren, NULL);
+#else
+    /* Old SysVr3 way of specifying auto reaping.  Inconsistently supported */
 	signal (SIGCHLD, SIG_IGN);
+#endif /* Signal handler to auto-reap zombies */
+
 	signal (SIGINT, got_signal);
 	signal (SIGTERM, got_signal);
 	lock_gtt();

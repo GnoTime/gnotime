@@ -89,7 +89,8 @@ AM_CFLAGS = -g -Wall     \
 	${GNOTIME_CFLAGS}     \
 	${GCONF_CFLAGS}       \
 	${LIBGTKHTML_CFLAGS}  \
-	${LIBGLADE_CFLAGS} 
+	${LIBGLADE_CFLAGS}    \
+	${LIBXML2_CFLAGS}
 
 INCLUDES =                                   \
 	-I../lib                                  \
@@ -110,6 +111,7 @@ gnotime_LDADD =         \
 	../lib/qof/libqof.la \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
+	$(LIBXML2_LIBS)      \
 	${GUILE_LIBS}        \
 	$(INTLLIBS)
 
@@ -121,4 +123,6 @@ EXTRA_DIST = 			\
 	left.xpm		\
 	design.txt
 
+
+                                                                                
 

@@ -1,10 +1,12 @@
-<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
 <!ENTITY version "1.4">
 ]>
 
-<article id="index"> <!-- please do not change the id-->
+<article id="index" lang="en"> <!-- please do not change the id-->
 
-  <artheader> 
+  <articleinfo> 
     <title>GNOME Time Tracker Manual</title>
     <copyright>
       <year>1997-2000</year>
@@ -22,11 +24,11 @@
     <legalnotice id="legalnotice">
       <para>Permission is granted to copy, distribute and/or modify this document
 	under the terms of the <ulink type="help"
-	url="gnome-help:fdl"><citetitle>GNU Free Documentation
+	url="ghelp:fdl"><citetitle>GNU Free Documentation
 	    License</citetitle></ulink>, Version 1.1 or any later version 
 	published by the Free Software Foundation with no Invariant Sections, 
 	no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
-	can be found <ulink type="help" url="gnome-help:fdl">here</ulink>.
+	can be found <ulink type="help" url="ghelp:fdl">here</ulink>.
       </para>
       <para>Many of the names used by companies to distinguish their products and
 	services are claimed as trademarks. Where those names appear in any
@@ -40,7 +42,7 @@
 	 This is version 2.0.1 of the GNOME Time Tracker manual.
      </releaseinfo> 
 <!-- this is version of manual, not application --> 
-  </artheader>
+  </articleinfo>
 
 <!-- =============Document Body ============================= -->
 
@@ -94,7 +96,7 @@
         <listitem>
           <para>
     <emphasis>Basic Billing/Invoicing Support</emphasis>
-    Infrastructure for storing price & billing information has been
+    Infrastructure for storing price &amp; billing information has been
      put into place.  This allows billing invoices to be generated.
      Tasks can be marked as billable, non-billable, on-hold, or
      free-of-charge. Billing rates for regular, overtime,
@@ -118,7 +120,7 @@
           <para>
     <emphasis>Simpler Navigation</emphasis>
     Arrow keys and carriage return now work in the main window.
-     Up/down keys can be used to move up & down.  The left/right arrow
+     Up/down keys can be used to move up &amp; down.  The left/right arrow
      keys expand/collapse a sub-project list.  Hitting return selects
      the project.
           </para> 
@@ -156,7 +158,7 @@
      User-defined reports (contained in ghtml files) can be added to the
      menus by typing in the filename into the 'new report' GUI dialog.
      Typically, a 'user-defined report' is one with customized layout,
-     maybe a logo added, all-spiffed up & such.
+     maybe a logo added, all-spiffed up &amp; such.
           </para> 
         </listitem>
 
@@ -216,7 +218,7 @@
       selecting <guimenuitem>Time Tracking Tool</guimenuitem> from
       the <guisubmenu>Applications</guisubmenu> submenu of the <guimenu>Main 
       Menu</guimenu>, or by running the command
-      <command>gtt</command> on the commandline.  
+      <command>gnotime</command> on the commandline.  
     </para>
   </sect2>
 </sect1>
@@ -256,7 +258,7 @@ slightly differently in this new version.
       the timer by clicking the <guibutton>Timer</guibutton> button or using <guimenuitem>
       Stop</guimenuitem> from the <guimenu>Timer</guimenu> menu.  As long as you remember to do 
       this, your work will be recorded effectively.  You can, however, alter the times from the
-      <interface>Properties</interface> dialog if they are incorrect.  See <link linkend="properties"></link> for more information.
+      <interface>Properties</interface> dialog if they are incorrect.  See <xref linkend="properties" /> for more information.
     </para>
  
 <para id="timer"><application>GNOME Time Tracker</application> can inform you about your
@@ -272,13 +274,13 @@ slightly differently in this new version.
 <para>
 	When you first start <application>GNOME Time Tracker</application>, you see
 	the <interface>Main window</interface>, as shown in 
-	<link linkend="mainwindowfig"></link>.
+  <xref linkend="mainwindowfig"/>.
 <!-- ==============Figure=================================== -->
-	<figure id="mainwindowfig">
+	<figure id="mainwindowfig" xreflabel="GNOME Time Tracker Main Window">
 	  <title>GNOME Time Tracker Main Window</title>
 	  <screenshot>
 	    <screeninfo>GNOME Time Tracker Main Window, with a project selected</screeninfo>
-	    <graphic fileref="figures/gtt_mainwin"></graphic>
+      <graphic fileref="figures/gtt_mainwin.png" />
 	  </screenshot>
 	</figure>
 <!-- ==============End of Figure=================================== -->
@@ -286,11 +288,11 @@ slightly differently in this new version.
 
 
 
-      The main window consists of four areas. There is a menu bar (see <link linkend="menubar"></link>) and
-      a toolbar (see <link linkend="toolbar"></link>) at the top of the window, 
-      a status bar (see <link linkend="statusbar"></link>) at the bottom of the window,
+The main window consists of four areas. There is a menu bar (see <xref linkend="menubar"/>) and
+a toolbar (see <xref linkend="toolbar"/>) at the top of the window, 
+a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
  and between the toolbar and the status bar,
-      a scrollable project list (see <link linkend="projlist"></link>).
+ a scrollable project list (see <xref linkend="projlist"/>).
       When you start<application>GNOME Time Tracker</application> for the first time, this area will
       show just one project, which is titled "empty".
    </para>		    
@@ -299,7 +301,7 @@ slightly differently in this new version.
    <tip>
    <para>
       You can customize the appearance of the main window in the 
-      <interface>preferences dialog</interface>. See <link linkend="preferences"></link>
+      <interface>preferences dialog</interface>. See <xref linkend="preferences"/>
       for more information about changing the toolbar, project list, and time display.
    </para>
   </tip>
@@ -307,7 +309,7 @@ slightly differently in this new version.
 
 
       <!-- =========Subsection=========================== -->   
-    <sect2 id="menubar">
+    <sect2 id="menubar" xreflabel="Menus">
       <title>Menus</title>
 
 
@@ -356,7 +358,7 @@ slightly differently in this new version.
 		  </menuchoice>
 	      
 	      This loads the last saved version of the configuration file, 
-		<filename>$HOME/.gnome/gtt</filename>.  This file is saved every time
+        <filename>$HOME/.gnome2/gnotime</filename>.  This file is saved every time
 		<application>GNOME Time Tracker</application> quits, and it holds information about your
 		preferences and projects.
 	        If you choose this menu item, your projects will revert
@@ -370,7 +372,7 @@ slightly differently in this new version.
 		<guimenuitem> &mdash; Save Configuration File</guimenuitem>
 	      </menuchoice>
 	      This function saves information about your projects and preferences in 
-	      the configuration file <filename>$HOME/.gnome/gtt</filename>.
+	      the configuration file <filename>$HOME/.gnome/gnotime</filename>.
 	      <application>GNOME Time Tracker</application> saves this information automatically every time you quit,
               and tries to do so even when it crashes.  Still, it never hurts to save
               your project information from time to time.
@@ -437,7 +439,7 @@ slightly differently in this new version.
 		 &mdash; This selection opens the <interface>Properties</interface> dialog for
 		 the currently selected project.  Here you can view and edit the name,
 		 description, and times for your project.  Note that this is the same action
-                 as the <guibutton>Props</guibutton> button on the toolbar.  See <link linkend="properties"></link> for more information.
+     as the <guibutton>Props</guibutton> button on the toolbar.  See <xref linkend="properties"/> for more information.
 		 </para>
 	    </listitem>
 	</varlistentry>
@@ -448,7 +450,7 @@ slightly differently in this new version.
                <para>
                  This menu contains only one command:
 	         <guimenuitem>Preferences</guimenuitem>, which launches the
-	         <interface>Preferences Dialog</interface>.  See <link linkend="preferences"></link>
+           <interface>Preferences Dialog</interface>.  See <xref linkend="preferences"/>
                  for more information.
                </para>
              </listitem>
@@ -531,7 +533,7 @@ slightly differently in this new version.
 
 
 
-	<sect2 id="toolbar">
+	<sect2 id="toolbar" xreflabel="The Toolbar">
 	<title>The Toolbar</title>
         <para>
         The toolbar is another way to speed up your most frequently performed operations in
@@ -576,18 +578,18 @@ slightly differently in this new version.
      </itemizedlist>
 
 You can choose which functions appear in the toolbar from the <interface>Preferences</interface> dialog.  
-See <link linkend="preferences"></link> for more information.
+See <xref linkend="preferences"/> for more information.
 	</para>
 	</sect2>   
 
 
-    <sect2 id="projlist">
+    <sect2 id="projlist" xreflabel="Project List">
       <title>The Project List</title>
       <para>
       The Project List contains a list of all your projects
       and indicates which project is active at any given time.  It also
       shows the attributes of each project.  You can alter those attributes
-      from the <interface>Preferences</interface> dialog (see <link linkend="preferences"></link>).
+      from the <interface>Preferences</interface> dialog (see <xref linkend="preferences"/>).
       </para>
       
       <sect3 id="projwhat">
@@ -642,7 +644,7 @@ See <link linkend="preferences"></link> for more information.
 	  </para>
 
 	  <para>This might be confusing at first, but in combination with 
-	  the shell commands (see <link linkend="shellcmd"></link>) you can
+      the shell commands (see <xref linkend="shellcmd"/>) you can
           use the variations in state to maintain more accurate and readable
           project logs.
           </para>
@@ -688,7 +690,7 @@ See <link linkend="preferences"></link> for more information.
 	
 	</sect2>
 
-	<sect2 id="statusbar">
+	<sect2 id="statusbar" xreflabel="The Status Bar">
 	 <title>The Status Bar</title>
 
 	<para>
@@ -711,7 +713,7 @@ See <link linkend="preferences"></link> for more information.
 
 
 <!-- =============New section============================= --> 
-  <sect1 id="preferences">
+  <sect1 id="preferences" xreflabel="Customization">
       <title>Customization</title> 
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 <para>
@@ -726,16 +728,15 @@ slightly differently in this new version.
       To change default settings, select the
       <guimenuitem>Preferences</guimenuitem> command in
       <guimenu>Settings</guimenu> menu. This launches the
-      <interface>Preferences dialog</interface>, shown in <link linkend="prefsfigure"></link>.
+      <interface>Preferences dialog</interface>, shown in <xref linkend="prefsfigure"/>.
        There are two tabs of preferences in the window.
      </para>
 <!-- ==============Figure=================================== -->
-	<figure id="prefsfigure">
+	<figure id="prefsfigure" xreflabel="Preferences Dialog">
 	  <title>Preferences Dialog</title>
 	  <screenshot>
 	    <screeninfo>Preferences dialog</screeninfo>
-	    <graphic fileref="figures/gtt_prefswin">
-	    </graphic>
+      <graphic fileref="figures/gtt_prefswin.png" />
 	  </screenshot>
 	</figure>
 <!-- ==============End of Figure=================================== -->
@@ -811,7 +812,7 @@ slightly differently in this new version.
 	        <term><guilabel>Shell Commands</guilabel></term>
                 <listitem>
                    <para>
-                     <anchor id="shellcmd">
+                     <anchor id="shellcmd" xreflabel="Shell Commands"/>
                       There are two shell commands
                       executed by <application>GNOME Time Tracker</application>.
                       One is executed when you switch between projects, and the other when you deselect a project or
@@ -948,7 +949,7 @@ slightly differently in this new version.
 
 <sect1 id="dialogs">
        <title>Additional GNOME Time Tracker Dialogs</title>
-         <sect2 id="properties">  
+         <sect2 id="properties" xreflabel="Properties Dialog">  
 	<title>The Properties Dialog</title>
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 <para>
@@ -1009,7 +1010,7 @@ slightly differently in this new version.
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 <para>
 <emphasis>
-Notice:  The current version of GTT has many, many new features which are not
+Notice:  The current version of GnoTime has many, many new features which are not
 documented in this manual.  A few of the features documented below might work 
 slightly differently in this new version.
 </emphasis>
@@ -1097,7 +1098,7 @@ slightly differently in this new version.
   <title>License</title>
   <para>
    This program is free software; you can redistribute it and/or
-   modify it under the terms of the<ulink url="gnome-help:gpl">
+   modify it under the terms of the<ulink url="ghelp:gpl" type="help">
    GNU General Public License</ulink> as published by the Free Software Foundation;
    either version 2 of the License, or (at your option) any later
    version.

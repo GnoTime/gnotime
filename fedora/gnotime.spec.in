@@ -1,0 +1,81 @@
+Name:           @PACKAGE@
+Version:        @VERSION@
+Release:        0.fdr.1
+Epoch:          0
+Summary:        Tracks and reports time spent
+
+Group:          Applications/Productivity
+License:        GPL
+URL:            http://gttr.sourceforge.net/
+Source0:        http://umn.dl.sourceforge.net/sourceforge/gttr/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires:  gtkhtml2-devel >= 0:2.0 libgnome-devel >= 0:2.0 libgnomeui-devel >= 0:2.0.3 libglade2-devel >= 0:2.0 guile >= 0:1.3.4 GConf2 libxml2-devel popt pango-devel XFree86-devel gettext scrollkeeper >= 0:0.3.5 perl >= 0:5.0 esound-devel libgnomecanvas-devel >= 0:2.0 GConf2-devel gnome-vfs2-devel >= 0:2.0 gtk2-devel >= 0:2.0 libIDL-devel fontconfig-devel >= 0:2.0 glib2-devel >= 0:2.0 libbonobo-devel >= 0:2.0 libbonoboui-devel >= 0:2.0 atk-devel libart_lgpl-devel >= 0:2.0 ORBit2-devel >= 0:2.0 libxslt-devel audiofile-devel freetype-devel gail-devel >= 0:1.3 libtool gettext automake autoconf
+#Requires:
+#Conflicts:      
+#Obsoletes:      
+#BuildConflicts: 
+#Requires(pre,post): 
+
+%description
+A combination of stop-watch, diary, consultant billing system, and project
+manager.  Gnotime allows you to track the amount of time you spend on a task,
+associate a memo with it, set a billing rate, print na invoice, as well as
+track the status of other projects.
+
+Some people may remember GnoTime in its previous incarnations as GTT
+(Gnome Time Tracker) when it was part of the Gnome Utils package.  It has
+been split out, renamed, and greatly enhanced since then.
+
+%prep
+%setup -q
+
+%build
+%GNUconfigure
+make %{?_smp_mflags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+%makeinstall
+%find_lang  %{name} --with-gnome
+# GnoTime puts it's locale translations into gnotime-2.0.mo but it's gnome
+# help files into html/gnotime....
+%find_lang  %{name}-2.0 --with-gnome
+cat %{name}-2.0.lang >> %{name}.lang
+
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
+# Gnotime uses scrollkeeper to track data.  Unfortunately, it installs itself
+# so we have to uninstall it
+rm -rf $RPM_BUILD_ROOT%{_localstatedir}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+# Scrollkeeper will update its own catalog if it's installed after this.
+# If it's already installed, then we need to explicitly ask it to update its
+# catalog.
+if which scrollkeeper-update >/dev/null 2>&1; then scrollkeeper-update -q -o %{_datadir}/omf/gnotime;fi
+
+%postun
+# Scrollkeeper will update its own catalog if it's installed after this.
+# If it's already installed, then we need to explicitly ask it to update its
+# catalog.
+if which scrollkeeper-update >/dev/null 2>&1; then scrollkeeper-update -q;fi
+
+%files -f %{name}.lang
+%defattr(-,root,root,-)
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%{_bindir}/*
+%{_datadir}/%{name}
+%{_datadir}/omf/*
+%{_datadir}/gnome/apps/Applications/%{name}.desktop
+%{_mandir}/man[^3]/*
+
+%changelog
+* Mon Dec 15 2003 Toshio Kuratomi <toshio@tiki-lounge.com> - 0:2.1.7-0.fdr.1
+- Initial Fedora RPM release.
+- Partially adapted from the gnotime.spec.in by Eric Anderson 
+  <eric.anderson@cordata.net> from the redhat directory in the gnotime
+  distribution.

@@ -24,6 +24,21 @@ GNOME_COMPILE_WARNINGS
 AC_PATH_XTRA
 
 dnl *****************************************
+dnl Look for a portable way to reap zombie processes
+dnl *****************************************
+AC_CHECK_HEADER([signal.h], AC_DEFINE([HAVE_SIGNAL_H], [1], [Define to 1 if we have signal.h on our system.]),
+	AC_ERROR([signal.h is needed to compile this program.]))
+AC_CHECK_HEADERS([wait.h])
+if test x$ac_cv_header_wait_h != "x"; then
+	AC_CHECK_FUNCS(waitpid)
+	AC_CHECK_DECLS(WNOHANG,,,[#include<wait.h>])
+
+	dnl This causes RETSIGTYPE to contain a signal handler's return type.
+	AC_TYPE_SIGNAL()
+fi
+AC_CHECK_DECLS(SA_NOCLDWAIT,,,[#include<signal.h>])
+
+dnl *****************************************
 dnl pkg-config check time
 dnl *****************************************
 
@@ -99,13 +114,25 @@ dnl The libxml2 library is required
 dnl ********************
 dnl XXX this is the wrong macro
 
-GNOME_XML_CHECK
-AM_CONDITIONAL(HAVE_LIBXML, test "x$GNOME_XML_LIB" != "x")
-AC_SUBST(HAVE_LIBXML)
+dnl GNOME_XML_CHECK
+dnl AM_CONDITIONAL(HAVE_LIBXML, test "x$GNOME_XML_LIB" != "x")
+dnl AC_SUBST(HAVE_LIBXML)
 
-					 
+PKG_CHECK_MODULES(LIBXML2, libxml-2.0 >= $LIBXML2_REQUIRED)
+AC_SUBST(LIBXML2_CFLAGS)
+AC_SUBST(LIBXML2_LIBS)
 
-					 
+dnl *****************************
+dnl scrollkeeper
+dnl *****************************
+dnl To substitute into the gnotime.spec
+AC_SUBST(SCROLLKEEPER_BUILD_REQUIRED)
+AC_PATH_PROG(SK_CONFIG, scrollkeeper-config,no)
+if test x$SK_CONFIG = xno; then
+	AC_MSG_ERROR(cannot find scrollkeeper-config.  In order to properly install the documentation please install the scrollkeeper package: http://scrollkeeper.sourceforge.net)
+fi
+AC_SUBST(SK_CONFIG)
+
 dnl *****************************
 dnl popt is needed 
 dnl *****************************
@@ -198,7 +225,6 @@ debian/Makefile
 doc/C/Makefile
 doc/C/man/Makefile
 doc/Makefile
-doc/de/Makefile
 doc/es/Makefile
 doc/eu/Makefile
 gconf/Makefile
@@ -210,6 +236,8 @@ lib/qof/Makefile
 po/Makefile.in
 redhat/Makefile
 redhat/gnotime.spec
+fedora/Makefile
+fedora/gnotime.spec
 src/Makefile
 
 ])

@@ -160,7 +160,7 @@ static GnomeUIInfo menu_main_timer[] = {
 
 
 static GnomeUIInfo menu_main_help[] = {
-	GNOMEUIINFO_HELP("gtt"),
+	GNOMEUIINFO_HELP("gnotime"),
 	GNOMEUIINFO_MENU_ABOUT_ITEM(about_box,NULL),
 	GNOMEUIINFO_END
 };

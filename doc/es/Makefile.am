@@ -1,10 +1,7 @@
-figs = \
-	figures/gtt_mainwin.png  \
-	figures/gtt_prefswin.png
-
+figdir=figures
 docname = gnotime
 lang = es
-omffile = gnotime-C.omf
-sgml_ents =
-include $(top_srcdir)/sgmldocs.make
+omffile = gnotime-es.omf
+entities =
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
