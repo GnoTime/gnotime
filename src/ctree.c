@@ -1357,8 +1357,10 @@ ctree_refresh (ProjTreeWindow *ptw)
 	 * Actually, if the window gets an expose events,
 	 * then it will show the right thing. Until then, work
 	 * around by not calling freeze-thaw.
+	 * Glurg. Failing to freeze-thaw causes some pretty
+	 * nasty cpu-cycle sucking sucks. Ughh.
 	 */
-	/* gtk_clist_freeze(GTK_CLIST(tree_w)); */
+	gtk_clist_freeze(GTK_CLIST(tree_w)); 
 
 	/* Make sure the right set of columns are visibile */
 	ctree_update_column_visibility (ptw);
@@ -1367,7 +1369,7 @@ ctree_refresh (ProjTreeWindow *ptw)
 	prjlist = gtt_get_project_list();
 	refresh_list (ptw, prjlist);
 
-	/* gtk_clist_thaw(GTK_CLIST(tree_w)); */
+	gtk_clist_thaw(GTK_CLIST(tree_w));
 }
 
 /* ============================================================== */
