@@ -186,6 +186,7 @@ Some sample scheme forms, and their output:
          <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
          <i>(percentage)</i>
      </ul>
+     <br><br>
 
      Subprojects of a project can be obtained with the 
      <tt>(gtt-project-subprojects prj)</tt> routine.
@@ -199,6 +200,23 @@ Some sample scheme forms, and their output:
                  ))
      ?>
      </ul>
+     <br><br>
+     Here's the title of the parent of this project: 
+     <b><?scm (gtt-show 
+                (gtt-project-title (gtt-project-parent (gtt-selected-project)))) ?></b>
+     <br>
+     Here's a list of peer projects (that is, a list of all of the children of the
+     parent project):
+     <ul>
+     <?scm (gtt-show-projects 
+             (gtt-project-subprojects (gtt-project-parent (gtt-selected-project)))
+               (list ''"<li><b>"  gtt-project-title   ''"</b> -- \n"
+                        gtt-project-desc   ''" --\n"
+                        gtt-project-notes   ''"</li>\n"
+                 ))
+     ?>
+     </ul>
+
 
      <p>
      Tasks (aka 'diary entries') can be obtained with the 
