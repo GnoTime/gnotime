@@ -5,6 +5,7 @@ gttghtmldir = $(datadir)/gnotime/ghtml/C
 
 gttghtml_DATA =         \
 	basic-journal.ghtml  \
+	basic-todo.ghtml     \
 	daily.ghtml          \
 	invoice.ghtml        \
 	journal.ghtml        \

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>To-Do List for
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+</title>
+</head>
+<body>
+<center>
+<h1>To-Do List for
+<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+</h1>
+
+This is a sample To-Do list for the project 
+"<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>".
+<br><br>
+The displayed columns, and the order in which they are displayed,
+can be changed by making a copy of the file <tt>"basic-todo.ghtml"</tt>
+(probably in <tt>/usr/share/gtt/ghtml/C/todo.ghtml</tt>) 
+and editing the copy to suit your needs.  When finished, you can 
+add the new copy to your system by picking 
+the menu item "Reports... New Report".
+<br><br>
+
+<table border=1>
+<tr><th>Importance</th>
+    <th>Urgency</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    </tr>
+
+<!-- Note that in order to include blank spaces or standard ascii 
+     escapes in the scheme markup, you must use double quotes:
+     for example "\t tabbed line followed by newline\n".  If
+     you don't need any blanks or tabs, etc, then you don't need 
+     to quote the string.
+ -->
+
+<?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
+      (list ''"<tr><td>"        gtt-project-importance ''"</td>\n"
+            ''"<td>"            gtt-project-urgency    ''"</td>\n"
+            ''"<td>"            gtt-project-title-link ''"</td>\n"
+            ''"<td align=left>" gtt-project-desc       ''"</td>\n"
+            ''"<td>"            gtt-project-status     ''"</td>\n"
+            ''"</tr>\n"
+            ))
+?>
+</table>
+<br><br>
+</center>
+
+<br><br>
+That's all Folks!
+</body>
+</html>
