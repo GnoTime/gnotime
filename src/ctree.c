@@ -232,6 +232,33 @@ get_focus_row (GtkCTree *ctree)
 	return rownode;
 }
 
+static void
+set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
+{
+	GtkCTree *ctree;
+	ProjTreeNode *ptn;
+	int i;
+	
+	ptn = gtt_project_get_private_data (prj);
+	if (!ptn) return;
+		
+	/* Set the focus row.  Seems like the only way
+	 * to get the row number is to search for it. */
+	ctree = ptw->ctree;
+	i = 0;
+	while (1) 
+	{
+		GtkCTreeNode * ctn = gtk_ctree_node_nth (ctree, i);
+		if (!ctn) break;
+		if (gtk_ctree_node_get_row_data(ctree, ctn) == ptn)
+		{
+    		GTK_CLIST(ctree)->focus_row = i;
+			break;
+		}
+		i++;
+	}
+}
+
 /* ============================================================== */
 
 static int
@@ -1461,27 +1488,16 @@ ctree_setup (ProjTreeWindow *ptw)
 
 	if (cur_proj) 
 	{
-		int i=0;
 		ProjTreeNode *ptn;
 		ptn = gtt_project_get_private_data (cur_proj);
 
 		/* Make sure that the active row is in view */
 		gtk_ctree_node_moveto(tree_w, ptn->ctnode, -1, 0.5, 0.0);
 
-		/* Set the focus row here as well.  Seems like the 
-		 * only way to get the row number is to search for it. */
-		while (1) 
-		{
-			GtkCTreeNode * ctn = gtk_ctree_node_nth (tree_w, i);
-			if (!ctn) break;
-			if (gtk_ctree_node_get_row_data(tree_w, ctn) == ptn)
-			{
-	    		GTK_CLIST(ptw->ctree)->focus_row = i;
-				break;
-			}
-			i++;
-		}
+		/* Set the focus row here as well. */
+		set_focus_project (ptw, cur_proj);
 	}
+
 	gtk_widget_grab_focus (GTK_WIDGET(tree_w));
 	gtk_widget_queue_draw (GTK_WIDGET(tree_w));
 }
@@ -1600,6 +1616,9 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
                                FALSE, FALSE);
 
 	gtk_ctree_node_set_row_data(ptw->ctree, ptn->ctnode, ptn);
+
+	/* Set the focus row to the newly inserted project. */
+	set_focus_project (ptw, p);
 }
 
 /* ============================================================== */
@@ -1646,6 +1665,9 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
                                FALSE, FALSE);
 
 	gtk_ctree_node_set_row_data(ptw->ctree, ptn->ctnode, ptn);
+
+	/* Set the focus row to the newly inserted project. */
+	set_focus_project (ptw, p);
 }
 
 /* ============================================================== */
