@@ -27,6 +27,7 @@ extern int config_show_clist_titles;
 extern int config_show_subprojects;
 extern int config_show_title_ever;
 extern int config_show_title_day;
+extern int config_show_title_yesterday;
 extern int config_show_title_week;
 extern int config_show_title_month;
 extern int config_show_title_year;

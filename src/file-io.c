@@ -339,6 +339,7 @@ gtt_load_config (const char *fname)
 
 	config_show_title_ever = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeEver=true");
 	config_show_title_day = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeDay=true");
+	config_show_title_yesterday = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeYesterday=false");
 	config_show_title_week = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeWeek=false");
 	config_show_title_month = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeMonth=false");
 	config_show_title_year = gnome_config_get_bool(GTT_CONF"/Display/ShowTimeYear=false");
@@ -582,6 +583,7 @@ gtt_save_config(const char *fname)
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTableHeader", config_show_clist_titles);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeCurrent", config_show_title_current);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeDay", config_show_title_day);
+	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeYesterday", config_show_title_yesterday);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeWeek", config_show_title_week);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeMonth", config_show_title_month);
 	gnome_config_set_bool(GTT_CONF"/Display/ShowTimeYear", config_show_title_year);

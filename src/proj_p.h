@@ -81,6 +81,7 @@ struct gtt_project_s
 	int secs_month;  /* seconds spent on this project this month */
 	int secs_week;   /* seconds spent on this project this week */
 	int secs_day;    /* seconds spent on this project today */
+	int secs_yesterday;    /* seconds spent on this project yesterday */
 };
 
 

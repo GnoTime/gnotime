@@ -6,6 +6,10 @@ by Linas Vepstas, January 2003
 
 Overall Structure
 -----------------
+GTT is, today, a fairly small, simple application.  It is big enough to
+have a handful of semi-independent components, but small enough that it
+is manageable by one developer.
+
 GTT four basic parts:
 1) the 'engine', a set of C objects that encapsulate 
    project, task and time interval data with a set of 
@@ -109,4 +113,22 @@ The algorithm seems safe: the code never actually deletes files,
 it only renames them: The pruning works by copying a newer file on top
 of an older file.  Thus, even if the app goes totally wacko, it can't
 wack much: there's no chance of an 'rm *' happening by accident.
+
+
+Future Plans
+------------
+GTT is as much an application as an experimental platform for application
+development.  I would like to explore the following with GTT:
+
+-- Make the interface highly user-configurable.  There are many application
+   development frameworks that try to provide this but none are defacto
+   market leaders, and none offer the right mix between domain ontology
+   (the stuff that should be 'hard cocded') and what should be user
+   configurable.
+
+   One thing I want to explore is how to build and integrate an 'application
+   designer' into gtt.  The point being that a highly-configurable app
+   requires a rather complex preferences dialog.  This should be split
+   off as a stand-alone application, so that naive users aren't bothered
+   by it, but power users can make use of it.
 

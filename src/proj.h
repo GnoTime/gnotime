@@ -307,10 +307,14 @@ void 		gtt_project_timer_stop (GttProject *);
  * The gtt_project_total_secs_ever() routine returns the
  *    total number of seconds spent on this project,
  *    including a total of all its sub-projects.
+ *
+ * Design Note: These routines should probably be replaced 
+ * by a generic query mechanism at some point.
  */
 
 int 		gtt_project_get_secs_current (GttProject *proj);
 int 		gtt_project_get_secs_day (GttProject *proj);
+int 		gtt_project_get_secs_yesterday (GttProject *proj);
 int 		gtt_project_get_secs_week (GttProject *proj);
 int 		gtt_project_get_secs_month (GttProject *proj);
 int 		gtt_project_get_secs_year (GttProject *proj);
@@ -318,6 +322,7 @@ int 		gtt_project_get_secs_ever (GttProject *proj);
 
 int 		gtt_project_total_secs_current (GttProject *proj);
 int 		gtt_project_total_secs_day (GttProject *proj);
+int 		gtt_project_total_secs_yesterday (GttProject *proj);
 int 		gtt_project_total_secs_week (GttProject *proj);
 int 		gtt_project_total_secs_month (GttProject *proj);
 int 		gtt_project_total_secs_year (GttProject *proj);
@@ -422,6 +427,7 @@ void project_list_destroy(void);
  */
 GList * project_list_sort_current(GList *);
 GList * project_list_sort_day(GList *);
+GList * project_list_sort_yesterday(GList *);
 GList * project_list_sort_week(GList *);
 GList * project_list_sort_month(GList *);
 GList * project_list_sort_year(GList *);
