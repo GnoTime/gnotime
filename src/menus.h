@@ -27,10 +27,15 @@ void menus_set_states(void);
 
 void menus_add_plugins(GnomeApp *app);
 
-/* Return pointer to user-defined reports menu */
+/** Return pointer to user-defined reports menu */
 GnomeUIInfo * gtt_get_reports_menu (void);
 
-/* Install the indicate user reports menu */
+/** Install the indicate user reports menu */
 void gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus);
 
+/** Prepend the indicated user-defined report entry into the 
+ *   user-defined reports menu.
+ */
+void gtt_reports_menu_prepend_entry (GnomeApp *app, GnomeUIInfo *new_entry);
+		  
 #endif /* __GTT_MENUS_H__ */

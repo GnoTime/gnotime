@@ -444,6 +444,7 @@ menu_clear_daily_counter(GtkWidget *w, gpointer data)
 
 /* Cheesey usability hack to tell the user how to edit the timer
  * intervals.  Replace with something intuitive at earliest convenience.
+ * (Yes this generates compiler warnings ... thats the point !!!
  */
 
 static void show_j (GtkWidget *w) { show_report (w, "journal.ghtml"); }
@@ -457,7 +458,7 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	        "open the Journal window and click on a link.\n"
 	        "This will bring up a menu of time editing options.\n");
 
-	msgbox_ok (_("Info"), msg, GTK_STOCK_OK, show_j);
+	msgbox_ok (_("Info"), msg, GTK_STOCK_OK, (GCallback) show_j);
 }
 
 /* ============================ END OF FILE ======================= */

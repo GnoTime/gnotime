@@ -291,6 +291,28 @@ gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
 	gnome_app_insert_menus (app, path, reports_menu);
 }
 
+/* ============================================================ */
+/* Slide a new menu entry into first place */
+
+void
+gtt_reports_menu_prepend_entry (GnomeApp *app, GnomeUIInfo *new_entry)
+{
+	int i, nitems;
+	GnomeUIInfo * current_sysmenu, *new_sysmenu;
+
+	current_sysmenu = gtt_get_reports_menu ();
+	for (i=0; GNOME_APP_UI_ENDOFINFO != current_sysmenu[i].type; i++) {}
+	nitems = i+1;
+
+	new_sysmenu = g_new0 (GnomeUIInfo, nitems+1);
+	new_sysmenu[0] = *new_entry;
+
+	memcpy (&new_sysmenu[1], current_sysmenu, nitems*sizeof(GnomeUIInfo));
+	gtt_set_reports_menu (app, new_sysmenu);
+}
+
+/* ============================================================ */
+
 void
 menus_add_plugins (GnomeApp *app)
 {

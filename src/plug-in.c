@@ -24,6 +24,7 @@
 
 #include "app.h"
 #include "journal.h"
+#include "menus.h"
 #include "plug-in.h"
 #include "util.h"
 
@@ -50,6 +51,7 @@ gtt_plugin_new (const char * nam, const char * pth)
 	plg->name = g_strdup(nam);
 	plg->path = g_strdup(pth);
 	plg->tooltip = NULL;
+printf ("duuuude new plugin at %p name=%p path=%p\n", plg, plg->name, plg->path);
 
 	return plg;
 }
@@ -78,6 +80,7 @@ void
 gtt_plugin_free (GttPlugin *plg)
 {
 	if (!plg) return;
+printf ("duuuude delete plugin at %p name=%p path=%p\n", plg, plg->name, plg->path);
 	if (plg->name) g_free (plg->name);
 	if (plg->path) g_free (plg->path);
 	if (plg->tooltip) g_free (plg->tooltip);
@@ -89,10 +92,8 @@ static void
 new_plugin_create_cb (GtkWidget * w, gpointer data)
 {
 	FILE *fh;
-	GnomeUIInfo entry[2];
 	const char *title, *path, *tip;
 	NewPluginDialog *dlg = data;
-	GttPlugin *plg;
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
@@ -117,6 +118,9 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	}
 	else
 	{
+		GttPlugin *plg;
+		GnomeUIInfo entry[2];
+		
 		fclose (fh);
 
 		/* create the plugin */
@@ -128,7 +132,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 		entry[0].label = plg->name;
 		entry[0].hint = plg->tooltip;
 		entry[0].moreinfo = invoke_report;
-		entry[0].user_data = plg->path;
+		entry[0].user_data = plg;
 		entry[0].unused_data = NULL;
 		entry[0].pixmap_type = GNOME_APP_PIXMAP_STOCK;
 		entry[0].pixmap_info = GNOME_STOCK_MENU_BLANK;
@@ -137,8 +141,14 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	
 		entry[1].type = GNOME_APP_UI_ENDOFINFO;
 	
-		gnome_app_insert_menus (dlg->app,  N_("Reports/<Separator>"), entry);
-	
+		// gnome_app_insert_menus (dlg->app,  N_("Reports/<Separator>"), entry);
+
+		gtt_reports_menu_prepend_entry(dlg->app, entry);
+
+	   /* Save to file, too.  That way, if system core dumps later,
+		 * at least we managed to get this set of changes saved. */
+		gtt_save_reports_menu();
+
 		/* zero-out entries, so next time user doesn't see them again */
 		/*
 		gtk_entry_set_text (dlg->plugin_name, "");
