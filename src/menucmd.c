@@ -92,8 +92,10 @@ about_box(GtkWidget *w, gpointer data)
 		  "Sebastian Wilhelmi  <wilhelmi@ira.uka.de>",
 		  NULL
 	};
+
 	const gchar *documentors[] = {
-		"many documentors...",
+		  "Eckehard Berns <eb@berns.i-s-o.net>",
+		  "Linas Vepstas <linas@linas.org>",
 		  NULL
 	};
 
