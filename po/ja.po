@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.1\n"
-"POT-Creation-Date: 2002-12-26 23:56-0600\n"
+"POT-Creation-Date: 2002-12-27 11:41-0600\n"
 "PO-Revision-Date: 2001-08-13 01:41+0900\n"
 "Last-Translator: Takayuki KUSNAO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -16,16 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=euc-jp\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:230
+#: src/app.c:109 src/app.c:247
 #, fuzzy
 msgid "Timer is not running"
 msgstr "タイマー起動中(_T)"
 
-#: src/app.c:218
+#: src/app.c:235
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:259
+#: src/app.c:276
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -520,16 +520,21 @@ msgstr "追加先のログファイル %s を開けません "
 msgid "%b %d %H:%M:%S"
 msgstr "%m/%d %H:%M:%S"
 
-#: src/log.c:102
+#: src/log.c:97
+#, fuzzy
+msgid "no title"
+msgstr "ファイル(_F)"
+
+#: src/log.c:106
 msgid "no description"
 msgstr "説明なし"
 
-#: src/log.c:167 src/log.c:258
+#: src/log.c:169 src/log.c:260
 msgid "program started"
 msgstr "プログラム始動中"
 
 #. log_if_equal
-#: src/log.c:250
+#: src/log.c:252
 msgid "program exited"
 msgstr "プログラム終了済"
 
@@ -991,167 +996,169 @@ msgid "Misc"
 msgstr "その他"
 
 #: glade/prefs.glade.h:18
-msgid "No Project Command:"
-msgstr "プロジェクトがない時の命令:"
-
-#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Project List Display"
 msgstr "プロジェクト名"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Shell"
 msgstr "スペル"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "シェルコマンド"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:23
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr ""
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:26
 #, fuzzy
 msgid "Show Project Description"
 msgstr "プロジェクトの説明:"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "プロジェクトがない時の命令:"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Status"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "秒を表示"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "ステータスバーを表示"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:33
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "テーブル見出しを表示"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr ""
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr ""
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:38
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "`タイマー'の表示"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time Today"
 msgstr "`タイマー'の表示"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "ツールバーにアイコンを表示"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "ツールバーにテキストを表示"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "ツールチップの表示"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:43
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "テーブル見出しを表示"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "`切り出し'、`コピー'、`貼り付け'の表示"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "`ヘルプ'の表示"
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:46
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "`ヘルプ'の表示"
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "`新規'の表示"
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "`好み'の表示"
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "`設定'の表示"
 
-#: glade/prefs.glade.h:51
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "`終了'の表示"
 
-#: glade/prefs.glade.h:52
+#: glade/prefs.glade.h:51
 msgid "Show `Timer'"
 msgstr "`タイマー'の表示"
 
-#: glade/prefs.glade.h:53
+#: glade/prefs.glade.h:52
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
 msgstr ""
 
-#: glade/prefs.glade.h:54
-msgid "Switch Project Command:"
+#: glade/prefs.glade.h:53
+#, fuzzy
+msgid "Start Project Command:"
 msgstr "プロジェクト切替え時の命令:"
+
+#: glade/prefs.glade.h:54
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "プロジェクトがない時の命令:"
 
 #: glade/prefs.glade.h:55
 msgid ""
@@ -1181,6 +1188,18 @@ msgstr "ログファイルを使う"
 #, fuzzy
 msgid "View Project Fields"
 msgstr "ビュー"
+
+#: glade/prefs.glade.h:62
+#, no-c-format
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: glade/prefs.glade.h:64
+#, no-c-format
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
 
 #: glade/project_properties.glade.h:1
 msgid "        "

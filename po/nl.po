@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2002-12-26 23:56-0600\n"
+"POT-Creation-Date: 2002-12-27 11:41-0600\n"
 "PO-Revision-Date: 2000-02-25 16:35+0100\n"
 "Last-Translator: Dennis Smit <area101.penguin.nl>\n"
 "Language-Team: Dutch <NL@li.org>, Dennis Smit <area101.penguin.nl>\n"
@@ -16,16 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/app.c:109 src/app.c:230
+#: src/app.c:109 src/app.c:247
 #, fuzzy
 msgid "Timer is not running"
 msgstr "_Tijdmeter loopt"
 
-#: src/app.c:218
+#: src/app.c:235
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:259
+#: src/app.c:276
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -522,16 +522,22 @@ msgstr "Kan bestand niet openen om te schrijven"
 msgid "%b %d %H:%M:%S"
 msgstr ""
 
-#: src/log.c:102
+#
+#: src/log.c:97
+#, fuzzy
+msgid "no title"
+msgstr "Bestand"
+
+#: src/log.c:106
 msgid "no description"
 msgstr "geen omschrijving"
 
-#: src/log.c:167 src/log.c:258
+#: src/log.c:169 src/log.c:260
 msgid "program started"
 msgstr "programma gestart"
 
 #. log_if_equal
-#: src/log.c:250
+#: src/log.c:252
 msgid "program exited"
 msgstr "programma beëindigd"
 
@@ -993,167 +999,169 @@ msgid "Misc"
 msgstr "Overige"
 
 #: glade/prefs.glade.h:18
-msgid "No Project Command:"
-msgstr "Geen Projectopdracht"
-
-#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Project List Display"
 msgstr "Projecttitel"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Shell"
 msgstr "Spelling"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Shell Opdrachten"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:23
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr ""
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:26
 #, fuzzy
 msgid "Show Project Description"
 msgstr "Project Omschrijving:"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "Geen Projectopdracht"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Status"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Toon Seconden"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Toon Statusbalk"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:33
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Toon Tabelkopregel"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr ""
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr ""
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:38
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "Toon `Tijdmeter'"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time Today"
 msgstr "Toon `Tijdmeter'"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Toon Werkbalkpictogrammen"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Toon Werkbalkteksten"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Toon Tooltips"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:43
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "Toon Tabelkopregel"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Toon `Knippen', `Kopiëren', `Plakken'"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "Toon `Help'"
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:46
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "Toon `Help'"
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "Toon `Nieuw'"
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "Toon `Voorkeuren'"
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "Toon `Eigenschappen'"
 
-#: glade/prefs.glade.h:51
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "Toon `Afsluiten'"
 
-#: glade/prefs.glade.h:52
+#: glade/prefs.glade.h:51
 msgid "Show `Timer'"
 msgstr "Toon `Tijdmeter'"
 
-#: glade/prefs.glade.h:53
+#: glade/prefs.glade.h:52
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
 msgstr ""
 
-#: glade/prefs.glade.h:54
-msgid "Switch Project Command:"
+#: glade/prefs.glade.h:53
+#, fuzzy
+msgid "Start Project Command:"
 msgstr "Commando voor Project Omschakelen:"
+
+#: glade/prefs.glade.h:54
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "Geen Projectopdracht"
 
 #: glade/prefs.glade.h:55
 msgid ""
@@ -1184,6 +1192,18 @@ msgstr "Gebruik Logbestand"
 #, fuzzy
 msgid "View Project Fields"
 msgstr "bekijk instellingen"
+
+#: glade/prefs.glade.h:62
+#, no-c-format
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: glade/prefs.glade.h:64
+#, no-c-format
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
 
 #: glade/project_properties.glade.h:1
 msgid "        "

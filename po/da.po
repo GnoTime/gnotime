@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.99\n"
-"POT-Creation-Date: 2002-12-26 23:56-0600\n"
+"POT-Creation-Date: 2002-12-27 11:41-0600\n"
 "PO-Revision-Date: 2001-12-20 16:52+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Dansk/Danish <dansk@klid.dk>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:230
+#: src/app.c:109 src/app.c:247
 #, fuzzy
 msgid "Timer is not running"
 msgstr "_Tidstæller kører"
 
-#: src/app.c:218
+#: src/app.c:235
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:259
+#: src/app.c:276
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -498,16 +498,21 @@ msgstr "Kan ikke åbne logfilen %s til tilføjelse"
 msgid "%b %d %H:%M:%S"
 msgstr "%d. %b %H:%M:%S"
 
-#: src/log.c:102
+#: src/log.c:97
+#, fuzzy
+msgid "no title"
+msgstr "Titel"
+
+#: src/log.c:106
 msgid "no description"
 msgstr "ingen beskrivelse"
 
-#: src/log.c:167 src/log.c:258
+#: src/log.c:169 src/log.c:260
 msgid "program started"
 msgstr "program startet"
 
 #. log_if_equal
-#: src/log.c:250
+#: src/log.c:252
 msgid "program exited"
 msgstr "program afsluttet"
 
@@ -960,146 +965,142 @@ msgid "Misc"
 msgstr "Divs."
 
 #: glade/prefs.glade.h:18
-msgid "No Project Command:"
-msgstr "Ingen projektkommando:"
-
-#: glade/prefs.glade.h:19
 msgid "Project List Display"
 msgstr "Visning af projektliste"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:19
 msgid "Shell"
 msgstr "Skal"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Skalkommandoer"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr "Vis aktuelle kalenderindgang"
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr "Vis anslået indsats"
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:23
 msgid "Show Percent Complete"
 msgstr "Vis procent færdiggjort"
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr "Vis planlagt slutdato for projekt"
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr "Vis planlagt startdato for projekt"
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:26
 msgid "Show Project Description"
 msgstr "Vis projektbeskrivelse"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:27
 msgid "Show Project Due Date"
 msgstr "Vis projektafleveringsdato"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:28
 msgid "Show Project Importance"
 msgstr "Vis projektvigtighed"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:29
 msgid "Show Project Status"
 msgstr "Vis projektstatus"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:30
 msgid "Show Project Urgency"
 msgstr "Vis projekthastende"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Vis sekunder"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Vis statuslinje"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:33
 msgid "Show Sub-Projects"
 msgstr "Vis underprojekter"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Vis tabelhoved"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr "Vis tid for aktuelle kalenderindgang"
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr "Vis tid i denne måned"
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr "Vis tid i denne uge"
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:38
 msgid "Show Time This Year"
 msgstr "Vis tid i dette år"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:39
 msgid "Show Time Today"
 msgstr "Vis tid i dag"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Vis ikoner på værktøjslinjen"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Vis tekst på værktøjslinjen"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Vis hjælpetekster"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:43
 msgid "Show Total Time Ever"
 msgstr "Vis total tid ialt"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Vis 'Klip', 'Kopiér', 'Indsæt'"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "Vis 'Hjælp'"
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:46
 msgid "Show `Journal'"
 msgstr "Vis 'Journal'"
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "Vis 'Ny'"
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "Vis 'Opsætning'"
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "Vis 'Egenskaber'"
 
-#: glade/prefs.glade.h:51
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "Vis 'Afslut'"
 
-#: glade/prefs.glade.h:52
+#: glade/prefs.glade.h:51
 msgid "Show `Timer'"
 msgstr "Vis 'Tidstæller'"
 
-#: glade/prefs.glade.h:53
+#: glade/prefs.glade.h:52
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
@@ -1107,9 +1108,15 @@ msgstr ""
 "Vis 'szing', dvs. den anslåede mængde arbejde, det vil tage at udføre dette "
 "projekt."
 
-#: glade/prefs.glade.h:54
-msgid "Switch Project Command:"
+#: glade/prefs.glade.h:53
+#, fuzzy
+msgid "Start Project Command:"
 msgstr "Skift projektkommando:"
+
+#: glade/prefs.glade.h:54
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "Ingen projektkommando:"
 
 #: glade/prefs.glade.h:55
 msgid ""
@@ -1143,6 +1150,18 @@ msgstr "Brug logfil"
 #: glade/prefs.glade.h:60
 msgid "View Project Fields"
 msgstr "Vis projektfelter"
+
+#: glade/prefs.glade.h:62
+#, no-c-format
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: glade/prefs.glade.h:64
+#, no-c-format
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
 
 #: glade/project_properties.glade.h:1
 msgid "        "

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2002-12-26 23:56-0600\n"
+"POT-Creation-Date: 2002-12-27 11:41-0600\n"
 "PO-Revision-Date: 2001-11-19 17:18+0200\n"
 "Last-Translator: Artis Trops <hornet@navigators.lv>\n"
 "Language-Team: Latvian <peterisk@apollo.lv>\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-13\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:230
+#: src/app.c:109 src/app.c:247
 #, fuzzy
 msgid "Timer is not running"
 msgstr "Pu_lkstenis Palaists"
 
-#: src/app.c:218
+#: src/app.c:235
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:259
+#: src/app.c:276
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -504,16 +504,21 @@ msgstr "Nevar atvçrt append þurnâlfailu %s"
 msgid "%b %d %H:%M:%S"
 msgstr "%b %d %H:%M:%S"
 
-#: src/log.c:102
+#: src/log.c:97
+#, fuzzy
+msgid "no title"
+msgstr "Fails"
+
+#: src/log.c:106
 msgid "no description"
 msgstr "nav apraksta"
 
-#: src/log.c:167 src/log.c:258
+#: src/log.c:169 src/log.c:260
 msgid "program started"
 msgstr "programma sâkta"
 
 #. log_if_equal
-#: src/log.c:250
+#: src/log.c:252
 msgid "program exited"
 msgstr "programma izbeidzâs"
 
@@ -966,149 +971,145 @@ msgid "Misc"
 msgstr "Daþâdi"
 
 #: glade/prefs.glade.h:18
-msgid "No Project Command:"
-msgstr "Nav-Projekta Komanda:"
-
-#: glade/prefs.glade.h:19
 msgid "Project List Display"
 msgstr "Projekta Sarakstu Ekrâns"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:19
 msgid "Shell"
 msgstr "Èaula"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Èaulas Komandas"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:21
 #, fuzzy
 msgid "Show Current Diary Entry"
 msgstr "Parâdît Paðreizçjo uzdevumu"
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr "Parâdît Atlikuðâs Pûles"
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:23
 msgid "Show Percent Complete"
 msgstr "Parâdît Izpildîjumu Procentuâli"
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr "Parâdît Plânotâ Projekta Beigu Datumu"
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr "Parâdît Plânotâ Projekta Sâkuma Datumu"
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:26
 msgid "Show Project Description"
 msgstr "Parâdît Projekta Aprakstu"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:27
 msgid "Show Project Due Date"
 msgstr "Parâdît Projekta Paredzçto Laiku"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:28
 msgid "Show Project Importance"
 msgstr "Parâdît Projekta Svarîgumu"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:29
 msgid "Show Project Status"
 msgstr "Parâdît Projekta Statusu"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:30
 msgid "Show Project Urgency"
 msgstr "Parâdît Projekta Svarîgumu"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Parâdît Sekundes"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Parâdît Statusa Joslu"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:33
 msgid "Show Sub-Projects"
 msgstr "Parâdît Pakârtotos Projektus"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Parâdît Tabulas Galveni"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:35
 #, fuzzy
 msgid "Show Time For The Current Diary Entry"
 msgstr "Parâdît Paðreizçjâ Uzdevuma Laiku"
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr "Parâdît Laiku Ðim Mçnesim"
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr "Parâdît Laiku Ðai Nedçïai"
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:38
 msgid "Show Time This Year"
 msgstr "Parâdît Ðî Gada Laiku"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:39
 msgid "Show Time Today"
 msgstr "Parâdît Ðodienas Laiku"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Parâdît Rîkjoslas Ikonas"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Parâdît Rîkjoslas Tekstu"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Parâdît Knifus"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:43
 msgid "Show Total Time Ever"
 msgstr "Parâdît Visu Kopçjo Laiku"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Parâdît `Izgriezt', `Kopçt', `Ievietot'"
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "Parâdît `Palîdzîba'"
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:46
 msgid "Show `Journal'"
 msgstr "Parâdît `Þurnâlu'"
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "Parâdît `Jauns'"
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "Parâdît `Uzstâdîjumi'"
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "Parâdît `Rekvizîti'"
 
-#: glade/prefs.glade.h:51
+#: glade/prefs.glade.h:50
 #, fuzzy
 msgid "Show `Quit'"
 msgstr "Parâdît `Pulkstenis'"
 
-#: glade/prefs.glade.h:52
+#: glade/prefs.glade.h:51
 msgid "Show `Timer'"
 msgstr "Parâdît `Pulkstenis'"
 
-#: glade/prefs.glade.h:53
+#: glade/prefs.glade.h:52
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
@@ -1116,9 +1117,15 @@ msgstr ""
 "Parâdît 'szing', tas ir, atlikuðo darba apjomu, kas bûs nepiecieðams, lai "
 "pabeigtu ðo projektu."
 
-#: glade/prefs.glade.h:54
-msgid "Switch Project Command:"
+#: glade/prefs.glade.h:53
+#, fuzzy
+msgid "Start Project Command:"
 msgstr "Projekta Pârslçgðanas Komanda:"
+
+#: glade/prefs.glade.h:54
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "Nav-Projekta Komanda:"
 
 #: glade/prefs.glade.h:55
 msgid ""
@@ -1152,6 +1159,18 @@ msgstr "Lietot Þurnâlfailu"
 #: glade/prefs.glade.h:60
 msgid "View Project Fields"
 msgstr "Parâdît Projekta Laukumus"
+
+#: glade/prefs.glade.h:62
+#, no-c-format
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: glade/prefs.glade.h:64
+#, no-c-format
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
 
 #: glade/project_properties.glade.h:1
 msgid "        "

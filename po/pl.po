@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2002-12-26 23:56-0600\n"
+"POT-Creation-Date: 2002-12-27 11:41-0600\n"
 "PO-Revision-Date: 2002-01-07 02:00+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:109 src/app.c:230
+#: src/app.c:109 src/app.c:247
 #, fuzzy
 msgid "Timer is not running"
 msgstr "W³±czony zegar"
 
-#: src/app.c:218
+#: src/app.c:235
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:259
+#: src/app.c:276
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -498,16 +498,21 @@ msgstr "Nie mo¿na dopisaæ danych na koñcu pliku dziennika %s"
 msgid "%b %d %H:%M:%S"
 msgstr "%d %b %H:%M:%S"
 
-#: src/log.c:102
+#: src/log.c:97
+#, fuzzy
+msgid "no title"
+msgstr "Nazwa"
+
+#: src/log.c:106
 msgid "no description"
 msgstr "brak opisu"
 
-#: src/log.c:167 src/log.c:258
+#: src/log.c:169 src/log.c:260
 msgid "program started"
 msgstr "uruchomienie programu"
 
 #. log_if_equal
-#: src/log.c:250
+#: src/log.c:252
 msgid "program exited"
 msgstr "zakoñczenie programu"
 
@@ -942,155 +947,157 @@ msgid "Misc"
 msgstr "Ró¿ne"
 
 #: glade/prefs.glade.h:18
-msgid "No Project Command:"
-msgstr "Polecenie wykonywane po odznaczeniu projektu:"
-
-#: glade/prefs.glade.h:19
 msgid "Project List Display"
 msgstr "Widok listy projektów"
 
-#: glade/prefs.glade.h:20
+#: glade/prefs.glade.h:19
 msgid "Shell"
 msgstr "Pow³oka"
 
-#: glade/prefs.glade.h:21
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Wykonywanie poleceñ"
 
-#: glade/prefs.glade.h:22
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:23
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: glade/prefs.glade.h:24
+#: glade/prefs.glade.h:23
 msgid "Show Percent Complete"
 msgstr "Wy¶wietlanie procentu zakoñczenia"
 
-#: glade/prefs.glade.h:25
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr "Wy¶wietlanie planowanej daty zakoñczenia projektu"
 
-#: glade/prefs.glade.h:26
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr "Wy¶wietlanie planowanej daty rozpoczêcia projektu"
 
-#: glade/prefs.glade.h:27
+#: glade/prefs.glade.h:26
 msgid "Show Project Description"
 msgstr "Wy¶wietlanie opisu projektu"
 
-#: glade/prefs.glade.h:28
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "Wy¶wietlanie podprojektów"
 
-#: glade/prefs.glade.h:29
+#: glade/prefs.glade.h:28
 msgid "Show Project Importance"
 msgstr "Wy¶wietlanie wa¿no¶ci projektu"
 
-#: glade/prefs.glade.h:30
+#: glade/prefs.glade.h:29
 msgid "Show Project Status"
 msgstr "Wy¶wietlanie stanu projektu"
 
-#: glade/prefs.glade.h:31
+#: glade/prefs.glade.h:30
 msgid "Show Project Urgency"
 msgstr "Wy¶wietlanie pilno¶ci projektu"
 
-#: glade/prefs.glade.h:32
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Wy¶wietlanie sekund"
 
-#: glade/prefs.glade.h:33
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Wy¶wietlanie paska stanu"
 
-#: glade/prefs.glade.h:34
+#: glade/prefs.glade.h:33
 msgid "Show Sub-Projects"
 msgstr "Wy¶wietlanie podprojektów"
 
-#: glade/prefs.glade.h:35
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Wy¶wietlanie nag³ówka tabeli"
 
-#: glade/prefs.glade.h:36
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: glade/prefs.glade.h:37
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr "Wy¶wietlanie czasu w tym miesi±cu"
 
-#: glade/prefs.glade.h:38
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr "Wy¶wietlanie czasu w tym tygodniu"
 
-#: glade/prefs.glade.h:39
+#: glade/prefs.glade.h:38
 msgid "Show Time This Year"
 msgstr "Wy¶wietlanie czasu w tym roku"
 
-#: glade/prefs.glade.h:40
+#: glade/prefs.glade.h:39
 msgid "Show Time Today"
 msgstr "Wy¶wietlanie czasu dzisiaj"
 
-#: glade/prefs.glade.h:41
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Wy¶wietlanie ikon na pasku narzêdziowym"
 
-#: glade/prefs.glade.h:42
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Wy¶wietlanie podpisów pod ikonami na pasku narzêdziowym"
 
-#: glade/prefs.glade.h:43
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Wy¶wietlanie podpowiedzi"
 
-#: glade/prefs.glade.h:44
+#: glade/prefs.glade.h:43
 msgid "Show Total Time Ever"
 msgstr "Wy¶wietlanie ³±cznego czasu od zawsze"
 
-#: glade/prefs.glade.h:45
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Wy¶wietlanie elementów \"Wytnij\", \"Skopiuj\", \"Wklej\""
 
-#: glade/prefs.glade.h:46
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "Wy¶wietlanie elementu \"Pomoc\""
 
-#: glade/prefs.glade.h:47
+#: glade/prefs.glade.h:46
 msgid "Show `Journal'"
 msgstr "Wy¶wietlanie elementu \"Dziennik\""
 
-#: glade/prefs.glade.h:48
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "Wy¶wietlanie elementu \"Nowy\""
 
-#: glade/prefs.glade.h:49
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "Wy¶wietlanie elementu \"Preferencje\""
 
-#: glade/prefs.glade.h:50
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "Wy¶wietlanie elementu \"W³a¶ciwo¶ci\""
 
-#: glade/prefs.glade.h:51
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "Wy¶wietlanie elementu \"Zakoñcz\""
 
-#: glade/prefs.glade.h:52
+#: glade/prefs.glade.h:51
 msgid "Show `Timer'"
 msgstr "Wy¶wietlanie elementu \"Zegar\""
 
-#: glade/prefs.glade.h:53
+#: glade/prefs.glade.h:52
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
 msgstr ""
 
-#: glade/prefs.glade.h:54
-msgid "Switch Project Command:"
+#: glade/prefs.glade.h:53
+#, fuzzy
+msgid "Start Project Command:"
 msgstr "Polecenie wykonywane po zaznaczeniu projektu:"
+
+#: glade/prefs.glade.h:54
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "Polecenie wykonywane po odznaczeniu projektu:"
 
 #: glade/prefs.glade.h:55
 msgid ""
@@ -1119,6 +1126,18 @@ msgstr "Wykorzystywanie dziennika"
 #: glade/prefs.glade.h:60
 msgid "View Project Fields"
 msgstr "Wy¶wietlane pola projektu"
+
+#: glade/prefs.glade.h:62
+#, no-c-format
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: glade/prefs.glade.h:64
+#, no-c-format
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
 
 #: glade/project_properties.glade.h:1
 msgid "        "
