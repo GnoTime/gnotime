@@ -2,7 +2,9 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* lib/libqofsql/*: All new SQL expression parsing code.
 	* lib/qof/*: Sync with QOF source trees.
 	* src/journal.c. ghtml/C/query.ghtml: Start using SQL and 
-     SQL parser to construct user-defined report queries.
+	  SQL parser to construct user-defined report queries.
+	* src/menucmd.c, src/ctree.c: fix sourceforge bug
+	  [ 898481 ] inconsistency with Cut and Paste
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
