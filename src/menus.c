@@ -236,25 +236,35 @@ gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
 	int i;
 	char * path;
 	
-	if (reports_menu && (new_menus != reports_menu)) 
+	/* Build the i18n menu path ... */
+	/* (is this right ??? or is this pre-i18n ???) */
+	path = g_strdup_printf ("%s/<Separator>", _("Reports"));
+	
+	/* If there are old menu items, remove them and free them. */
+	if (reports_menu)
 	{
-		for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+		int nreports;
+		for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++) {}
+		nreports = i;
+		gnome_app_remove_menu_range (app, path, 1, nreports);
+		
+		if (new_menus != reports_menu)
 		{
-			gtt_plugin_free(reports_menu[i].user_data);
+			for (i=0; i<nreports; i++)
+			{
+				gtt_plugin_free(reports_menu[i].user_data);
+			}
+			g_free (reports_menu);
 		}
-		g_free (reports_menu);
 	}
 
+	/* Now install the new menu items. */
 	reports_menu = new_menus;
 	if (!reports_menu)
 	{
 		reports_menu = g_new0 (GnomeUIInfo, 1);
 		reports_menu[0].type = GNOME_APP_UI_ENDOFINFO;
 	}
-
-	/* Deal with the i18n menu path ...*/
-	/* (is this right ??? or is this pre-i18n ???) */
-	path = g_strdup_printf ("%s/<Separator>", _("Reports"));
 
 	/* fixup */
 	for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
