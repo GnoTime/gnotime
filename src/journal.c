@@ -52,16 +52,18 @@ typedef struct wiggy_s {
 	GtkWidget *task_popup;
 	GtkWidget *task_delete_memo;
 	GtkWidget *task_paste;
-	GtkFileSelection *filesel;
+	char        *filepath;  /* file containing report template */
 	EditIntervalDialog *edit_ivl;
-	char * filepath;
 	GttInterval * interval;
-	GttTask * task;
-	GttProject *prj;
+	GttTask     *task;
+	GttProject  *prj;
+
+	GtkFileSelection *filesel;
+	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
 /* ============================================================== */
-/* html i/o routines */
+/* Routines that take html and mash it into browser. */
 
 static void
 wiggy_open (GttGhtml *pl, gpointer ud)
@@ -127,6 +129,16 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 }
 
 /* ============================================================== */
+/* Routines that take html and mash it into a file. */
+
+static void
+file_write (GttGhtml *pl, const char *str, size_t len, gpointer data)
+{
+	Wiggy *wig = (Wiggy *) data;
+	fwrite (str, len, 1, wig->fh);
+}
+
+/* ============================================================== */
 /* engine callbacks */
 
 static void 
@@ -140,28 +152,16 @@ redraw (GttProject * prj, gpointer data)
 /* ============================================================== */
 /* file selection callbacks */
 
-static gboolean
-raw_html_receiver (gpointer     engine,
-                   const gchar *data,
-                   size_t       len,
-                   gpointer     user_data) 
-{
-	FILE *fh = (FILE *) user_data;
-	fwrite (data, len, 1, fh);
-	return TRUE;
-}
-
 static void 
 filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
-	FILE *fh;
 	const char * filename;
 
 	filename = gtk_file_selection_get_filename (wig->filesel);
 
-	fh = fopen (filename, "w");
-	if (!fh) 
+	wig->fh = fopen (filename, "w");
+	if (!wig->fh) 
 	{
 		gchar *msg;
 		GtkWidget *mb;
@@ -173,13 +173,24 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 			GTK_STOCK_CLOSE,
 			NULL);
 		gtk_widget_show (mb);
-		// g_free (msg);
+		/* g_free (msg); don't free -- avoid mystery coredump */
 	}
 	else
 	{
-		// gtk_html_save (wig->htmlw, raw_html_receiver, fh);
-		g_warning ("save to file not currently supported\n");
-		fclose (fh);
+		/* Cuase ghtml to output the html again, but this time
+		 * using raw file-io handlers instead. */
+		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write, 
+			NULL, wiggy_error);
+		gtt_ghtml_show_links (wig->gh, FALSE);
+		gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
+		gtt_ghtml_show_links (wig->gh, TRUE);
+
+		fclose (wig->fh);
+		wig->fh = NULL;
+
+		/* Reset the html out handlers back to the browser */
+		gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
+		   wiggy_close, wiggy_error);
 	}
 
 	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
@@ -545,6 +556,7 @@ do_show_report (const char * report, GttProject *prj)
 	wig = g_new0 (Wiggy, 1);
 	wig->edit_ivl = NULL;
 	wig->filesel = NULL;
+	wig->fh = NULL;
 
 	wig->top = jnl_top;
 

@@ -49,12 +49,19 @@ void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
                                        GttGhtmlError);
 
 /* The gtt_ghtml_display() routine will parse the indicated gtt file, 
- * and output standard HTML to the indicated stream.
+ *     and output standard HTML to the indicated stream.
  */
 void gtt_ghtml_display (GttGhtml *, const char *path_frag, GttProject *prj);
 
+/* The gtt_gthml_show_links() routine will set a flag indicating whether
+ *     the output html should include internal <a href> links.  Normally,
+ *     this should be set to TRUE when displaying in the internal browser,
+ *     and FALSE when printing.
+ */
+void gtt_ghtml_show_links (GttGhtml *, gboolean);
+
 /* The gtt_ghtml_resolve_path() routine helps find the fully-qualified
- * path name to the indicated filename, so that the file can be opened.
+ *     path name to the indicated filename, so that the file can be opened.
  */
 char * gtt_ghtml_resolve_path (const char *path_frag);
 

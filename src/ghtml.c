@@ -63,8 +63,8 @@ struct gtt_ghtml_s
 
 	GttProject *prj;
 
-	/* Flag -- add html markup, or not */
-	gboolean show_html;
+	gboolean show_html;  /* Flag -- add html markup, or not */
+	gboolean show_links; /* Flag -- show internal <a href> links */
 
 	/* field delimiter, for tab/comma delim */
 	char * delim;
@@ -200,13 +200,14 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 }
 
 static void
-do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
+do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 {
 	int i;
 	GList *node;
 	char *p;
 	char buff[2000];  /* XXX danger buffer overflow !! */
 	gboolean output_html = ghtml->show_html;
+	gboolean show_links = ghtml->show_links;
 
 	if (NULL == ghtml->write_stream) return;
 
@@ -775,7 +776,7 @@ show_table (SCM col_list)
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-table");
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_table (ghtml, ghtml->prj, TRUE, FALSE);
+	do_show_table (ghtml, ghtml->prj, FALSE);
 	return rc;
 }
 
@@ -786,7 +787,7 @@ show_invoice (SCM col_list)
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-invoice");
 	rc = decode_scm_col_list (ghtml, col_list);
-	do_show_table (ghtml, ghtml->prj, TRUE, TRUE);
+	do_show_table (ghtml, ghtml->prj, TRUE);
 	return rc;
 }
 
@@ -804,7 +805,7 @@ show_export (SCM col_list)
 	ghtml->show_html = FALSE;
 	ghtml->delim = "\t";
 	
-	do_show_table (ghtml, ghtml->prj, FALSE, FALSE);
+	do_show_table (ghtml, ghtml->prj, FALSE);
 	
 	ghtml->show_html = save_show_html;
 	ghtml->delim = save_delim;
@@ -1021,6 +1022,7 @@ gtt_ghtml_new (void)
 	p = g_new0 (GttGhtml, 1);
 
 	p->show_html = TRUE;
+	p->show_links = TRUE;
 	p->delim = "";
 
 	p->prj = NULL;
@@ -1045,11 +1047,12 @@ gtt_ghtml_destroy (GttGhtml *p)
 	// g_free (p);
 }
 
-void gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
-                                        GttGhtmlOpenStream op, 
-                                        GttGhtmlWriteStream wr,
-                                        GttGhtmlCloseStream cl, 
-                                        GttGhtmlError er)
+void 
+gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
+                                   GttGhtmlOpenStream op, 
+                                   GttGhtmlWriteStream wr,
+                                   GttGhtmlCloseStream cl, 
+                                   GttGhtmlError er)
 {
 	if (!p) return;
 	p->user_data = ud;
@@ -1057,6 +1060,13 @@ void gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
 	p->write_stream = wr;
 	p->close_stream = cl;
 	p->error = er;
+}
+
+void 
+gtt_ghtml_show_links (GttGhtml *p, gboolean sl)
+{
+	if (!p) return;
+	p->show_links = sl;
 }
 
 /* ===================== END OF FILE ==============================  */
