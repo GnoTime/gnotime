@@ -99,7 +99,6 @@ edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
 	for (i=0; i<ped->menus->len; i++)
 	{
 		if (GNOME_APP_UI_ENDOFINFO == uientry[i].type) break;
-
    	if (0 == rc)
 		{
 			gtk_tree_store_append (ped->treestore, &iter, NULL);
@@ -201,7 +200,6 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 	gboolean have_selection;
 
 	have_selection = gtk_tree_selection_get_selected (selection, &model, &iter);
-	
 	dlg->do_redraw = FALSE;
 	if (dlg->have_selection)
 	{
@@ -491,6 +489,7 @@ edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 	if (GNOME_APP_UI_ENDOFINFO == sysmenus[row].type) return;
 
 	dlg->menus = g_array_remove_index (dlg->menus, row);
+	/* XXX mem leak .. should delete ui item */
 
 	/* Redraw the tree */
 	edit_plugin_redraw_tree (dlg);
@@ -498,6 +497,129 @@ edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 	/* Update selected row, as appropriate */
 	dlg->have_selection = FALSE;
 	edit_plugin_tree_selection_changed_cb (dlg->selection, dlg);
+}
+
+/* ============================================================ */
+#define ITER_EQ(a,b) (((a).stamp == (b).stamp) && \
+                      ((a).user_data == (b).user_data) && \
+                      ((a).user_data2 == (b).user_data2) && \
+                      ((a).user_data3 == (b).user_data3))
+
+static gboolean
+gtk_tree_model_iter_prev (GtkTreeModel *tree_model, GtkTreeIter  *iter)
+{
+	int rc;
+	GtkTreeIter cur, prev;
+
+	rc = gtk_tree_model_get_iter_first (tree_model, &cur);
+	if (ITER_EQ (cur, *iter)) return 0;
+	while (rc)
+	{
+		prev = cur;
+		rc = gtk_tree_model_iter_next (tree_model, &cur);
+		if (0 == rc) break;
+		if (ITER_EQ (cur, *iter))
+		{
+			*iter = prev;
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static void
+edit_plugin_set_selection (PluginEditorDialog *dlg, int offset)
+{
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	gboolean have_sel;
+	int rc;
+
+	have_sel = gtk_tree_selection_get_selected (dlg->selection, &model, &iter);
+	if (!have_sel) return;
+
+	if (0 < offset)
+	{
+		while (offset) 
+		{
+			rc = gtk_tree_model_iter_next (model, &iter);
+			if (0 == rc) return;
+			offset --;
+		}
+		gtk_tree_selection_select_iter (dlg->selection, &iter);
+	}
+	else
+	{
+		while (offset) 
+		{
+			rc = gtk_tree_model_iter_prev (model, &iter);
+			if (0 == rc) return;
+			offset ++;
+		}
+		gtk_tree_selection_select_iter (dlg->selection, &iter);
+	}
+}
+
+/* ============================================================ */
+/* Swap current selection with menu item at offset */
+
+static void 
+edit_plugin_move_menu_item (PluginEditorDialog *dlg, int offset)
+{
+	int row, rowb;
+	GnomeUIInfo *sysmenus, itema, itemb;
+
+	if (FALSE == dlg->have_selection) return;
+
+	/* Get selected item */
+	row = edit_plugin_get_index_of_selected_item (dlg);
+	if (-1 == row) return;
+
+	/* DO NOT move the end-of-array marker */
+	sysmenus = (GnomeUIInfo *) dlg->menus->data;
+	if (GNOME_APP_UI_ENDOFINFO == sysmenus[row].type) return;
+
+	rowb = row + offset;
+	if ((0 > rowb) || (rowb >= dlg->menus->len)) return;
+
+	itema = g_array_index (dlg->menus, GnomeUIInfo, row);
+	itemb = g_array_index (dlg->menus, GnomeUIInfo, rowb);
+	
+	g_array_index (dlg->menus, GnomeUIInfo, row) = itemb;
+	g_array_index (dlg->menus, GnomeUIInfo, rowb) = itema;
+
+	/* Redraw the tree */
+	dlg->have_selection = FALSE;
+	edit_plugin_redraw_tree (dlg);
+	edit_plugin_set_selection (dlg, offset);
+}
+
+static void 
+edit_plugin_up_button_cb (GtkWidget * w, gpointer data)
+{
+	edit_plugin_move_menu_item (data, -1);
+}
+
+static void 
+edit_plugin_down_button_cb (GtkWidget * w, gpointer data)
+{
+	edit_plugin_move_menu_item (data, 1);
+}
+
+/* ============================================================ */
+
+static void 
+edit_plugin_left_button_cb (GtkWidget * w, gpointer data)
+{
+	printf ("left button clicked\n");
+}
+
+/* ============================================================ */
+
+static void 
+edit_plugin_right_button_cb (GtkWidget * w, gpointer data)
+{
+	printf ("right button clicked\n");
 }
 
 /* ============================================================ */
@@ -561,6 +683,21 @@ edit_plugin_dialog_new (void)
 	  
 	glade_xml_signal_connect_data (gtxml, "on_plugin_tooltip_changed",
 		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
+	  
+	/* ------------------------------------------------------ */
+	/* Menu order change buttons */
+	
+	glade_xml_signal_connect_data (gtxml, "on_up_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_up_button_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_down_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_down_button_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_left_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_left_button_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_right_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_right_button_cb), dlg);
 	  
 	/* ------------------------------------------------------ */
 	/* Set up the Treeview Widget */
