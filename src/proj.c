@@ -651,7 +651,7 @@ get_sunday (time_t last)
 
 	/* If config_weekstart_offset == 1 then a new week starts
 	 * on monday, not sunday. */
-	sunday += 24*3600* config_weekstart_offset;
+	sunday += 24*3600* config_weekstart_offset + config_daystart_offset;
 
 	return sunday;
 }
@@ -674,6 +674,7 @@ get_month (time_t last)
 	lt.tm_mday = 1;
 	first = mktime (&lt);
 
+	first += config_daystart_offset;
 	return first;
 }
 
@@ -695,6 +696,7 @@ get_newyear (time_t last)
 	lt.tm_mday -= lt.tm_yday;
 	newyear = mktime (&lt);
 
+	newyear += config_daystart_offset;
 	return newyear;
 }
 
