@@ -18,10 +18,9 @@
  * 2) the gdk event loop gobbles up events, so we had to tap in to get
  *    them before gdk made them disappear.
  *
- * NB the /proc/interrupts code is currently dead, but is being saved for 
- * resurection on some rainy day.  Ditto the XIDLE extension code.
+ * Note Bene: The XIDLE code is currently dead, but is being saved for 
+ * resurection on some rainy day.  
  */
-
 
 /* methods of detecting idleness:
 
@@ -50,6 +49,9 @@
 # include "config.h"
 
 /* #define DEBUG_TIMERS */
+
+/* Its OK to define this for all OS's,  even those that don't have one */
+#define HAVE_PROC_INTERRUPTS
 
 #include <errno.h>
 #include <gdk/gdk.h>
@@ -142,12 +144,12 @@ struct IdleTimeoutScreen_s
 
 
 /* ===================================================================== */
+
 #ifdef HAVE_PROC_INTERRUPTS
 static Bool proc_interrupts_activity_p (IdleTimeout *si);
 #endif /* HAVE_PROC_INTERRUPTS */
 
 static void check_for_clock_skew (IdleTimeout *si);
-
 
 /* ===================================================================== */
 /* This routine will install event masks on the indicated window, 
@@ -500,7 +502,29 @@ poll_last_activity (IdleTimeout *si)
 
 #define PROC_INTERRUPTS "/proc/interrupts"
 
-Bool
+static Bool 
+display_is_on_console_p (IdleTimeout *si)
+{
+  char * dpy_name = XDisplayName (NULL);
+  
+  if (!dpy_name) return True;
+
+  /* If no hostname or IP address, assume its a local server,
+   * and that polling /proc/interrupts is possible.  */
+  if (':' == dpy_name[0]) return True;
+  
+  /* If IP address is 127.0.0.1 or 127.x.x.x then its local */
+  if (!strncmp (dpy_name, "127.", 4)) return True;
+
+  /* If its the Unix-standard localhost, then its local */
+  if (!strncmp (dpy_name, "localhost", 9)) return True;
+
+  return False;
+}
+
+/* ===================================================================== */
+
+static Bool
 query_proc_interrupts_available (IdleTimeout *si, const char **why)
 {
   /* We can use /proc/interrupts if $DISPLAY points to :0, and if the
@@ -508,7 +532,6 @@ query_proc_interrupts_available (IdleTimeout *si, const char **why)
    */
   FILE *f;
   if (why) *why = 0;
-
   if (!display_is_on_console_p (si))
     {
       if (why) *why = "not on primary console";
@@ -525,6 +548,7 @@ query_proc_interrupts_available (IdleTimeout *si, const char **why)
 
 
 /* ===================================================================== */
+
 static Bool
 proc_interrupts_activity_p (IdleTimeout *si)
 {
@@ -544,7 +568,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
       if (!f0)
         {
           char buf[255];
-          sprintf(buf, "%s: error opening %s", blurb(), PROC_INTERRUPTS);
+          sprintf(buf, "%s: error opening %s", PACKAGE, PROC_INTERRUPTS);
           perror (buf);
           goto FAIL;
         }
@@ -557,7 +581,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
   if (fd < 0)
     {
       char buf[255];
-      sprintf(buf, "%s: could not dup() the %s fd", blurb(), PROC_INTERRUPTS);
+      sprintf(buf, "%s: could not dup() the %s fd", PACKAGE, PROC_INTERRUPTS);
       perror (buf);
       goto FAIL;
     }
@@ -566,7 +590,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
   if (!f1)
     {
       char buf[255];
-      sprintf(buf, "%s: could not fdopen() the %s fd", blurb(),
+      sprintf(buf, "%s: could not fdopen() the %s fd", PACKAGE,
               PROC_INTERRUPTS);
       perror (buf);
       goto FAIL;
@@ -577,7 +601,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
   if (fseek (f1, 0, SEEK_SET) != 0)
     {
       char buf[255];
-      sprintf(buf, "%s: error rewinding %s", blurb(), PROC_INTERRUPTS);
+      sprintf(buf, "%s: error rewinding %s", PACKAGE, PROC_INTERRUPTS);
       perror (buf);
       goto FAIL;
     }
@@ -613,7 +637,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
   /* If we got here, we didn't find either a "keyboard" or a "PS/2 Mouse"
      line in the file at all. */
   fprintf (stderr, "%s: no keyboard or mouse data in %s?\n",
-           blurb(), PROC_INTERRUPTS);
+           PACKAGE, PROC_INTERRUPTS);
 
  FAIL:
   if (f1)
@@ -740,11 +764,18 @@ idle_timeout_new (void)
   si = g_new0 (IdleTimeout, 1);
   si->dpy = GDK_DISPLAY();
 
-  /* hack alert xxx we should grep all screens */
+  /* hack alert XXXX we should grep all screens */
   si->nscreens = 1;
   si->screens = g_new0 (IdleTimeoutScreen, 1);
   si->screens->global = si;
   si->screens->screen = DefaultScreenOfDisplay (si->dpy);
+
+  /* We use /proc/interrupts because we are not otherwise getting 
+   * keyboard events for some reason.  Note that Mac OSX won't have 
+   * the /proc filesystem, and so won't have this ability; they'll
+   * be screwed.  XXX Need to fix root cause of missing keybd events ... 
+   */
+  si->using_proc_interrupts = query_proc_interrupts_available (si, NULL);
 
   /* how often we observe mouse  */
   si->pointer_timeout = 5;
