@@ -32,6 +32,7 @@ typedef struct GttPlugin_s
 
 /* Simple allocator */
 GttPlugin * gtt_plugin_new (const char * name, const char * path);
+GttPlugin * gtt_plugin_copy (GttPlugin *orig);
 void gtt_plugin_free (GttPlugin *plg);
 
 /*-------------------------------------------- */

@@ -54,6 +54,26 @@ gtt_plugin_new (const char * nam, const char * pth)
 	return plg;
 }
 
+GttPlugin *
+gtt_plugin_copy (GttPlugin *orig)
+{
+	GttPlugin *plg;
+
+	if (!orig) return NULL;
+
+	plg = g_new (GttPlugin, 1);
+	plg->name = NULL;
+	if (orig->name) plg->name = g_strdup(orig->name);
+	
+	plg->path = NULL;
+	if (orig->path) plg->path = g_strdup(orig->path);
+	
+	plg->tooltip = NULL;
+	if (orig->tooltip) plg->tooltip = g_strdup(orig->tooltip);
+	
+	return plg;
+}
+
 void 
 gtt_plugin_free (GttPlugin *plg)
 {
