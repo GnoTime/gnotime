@@ -28,4 +28,8 @@
  */
 void prop_task_dialog_show(GttTask *task);
 
+/* priavte timer func for dealing with fast typeists */
+void gtt_diary_timer_callback (gpointer);
+
+
 #endif /* __PROPS_TASK_H__ */

@@ -32,6 +32,7 @@
 #include "notes-area.h"
 #include "prefs.h"
 #include "proj.h"
+#include "props-task.h"
 #include "timer.h"
 
 
@@ -102,6 +103,7 @@ timer_func(gpointer data)
 
 	/* Wake up the notes area GUI, if needed. */
 	gtt_notes_timer_callback (global_na);
+	gtt_diary_timer_callback (NULL);
 	
 	/* If no project is running, but there is keyboard/mouse activity, 
 	 * remind user to either restart the timer on an expired project,

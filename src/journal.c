@@ -335,7 +335,7 @@ redraw (GttProject * prj, gpointer data)
 static GList * cutted_task_list = NULL;
 
 /* ============================================================== */
-/* interval popup actions */
+/* Interval Popup Menu actions */
 
 static void
 interval_new_clicked_cb (GtkWidget * w, gpointer data)
@@ -458,6 +458,7 @@ interval_popup_cb (Wiggy *wig)
 }
 
 /* ============================================================== */
+/* Task Popup Menu Actions */
 
 void
 new_task_ui(GtkWidget *w, gpointer data)
@@ -617,6 +618,7 @@ on_print_clicked_cb (GtkWidget *w, gpointer data)
 #endif
 
 /* ============================================================== */
+/* Publish Button handlers */
 
 static void 
 on_publish_clicked_cb (GtkWidget *w, gpointer data)

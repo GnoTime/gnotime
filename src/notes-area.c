@@ -54,7 +54,7 @@ struct NotesArea_s
 	/* The goal of the freezes is to prevent more than one update
 	 * of windows per second.  The problem is that without this,
 	 * there would be one event per keystroke, which could cause
-	 * a redraw of e.g. the journal window.  In sucha case, even
+	 * a redraw of e.g. the journal window.  In such a case, even
 	 * moderate typists on a slow CPU could saturate the CPU entirely.
 	 */
 	gboolean proj_freeze;
