@@ -306,9 +306,21 @@ set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
 static int
 widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 {
+	static int return_key_pressed = FALSE;
 	ProjTreeNode *ptn;
 	GtkCTreeNode *rownode;
 	GdkEventKey *kev = (GdkEventKey *)event;
+
+	if ((GDK_KEY_PRESS == event->type)  &&
+	     gtk_widget_is_focus (GTK_WIDGET(ctree)) &&
+	    (kev->keyval == GDK_Return)) 
+	{ 
+		/* Avoid toggling timer when receiving a KEY_RELEASE
+		 * if the KEY_PRESS was not received previously. 
+		 * (because KEY_PRESS went to another window.) */
+		return_key_pressed = TRUE;
+		return TRUE;
+	}
 
 	if (GDK_KEY_RELEASE != event->type) return FALSE;
 	if (FALSE == gtk_widget_is_focus (GTK_WIDGET(ctree))) return FALSE;
@@ -317,10 +329,11 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 	{
 		case GDK_Return:
 			rownode = get_focus_row(ctree);
-			if (rownode)
+			if (rownode && return_key_pressed)
 			{
 				ptn = gtk_ctree_node_get_row_data(ctree, rownode);
 				toggle_timer_for_row (ptn->ptw, ptn);
+				return_key_pressed = FALSE;
 			}
 			return TRUE;
 		case GDK_Up:
@@ -1476,6 +1489,8 @@ ctree_new(void)
 	g_signal_connect(G_OBJECT(w), "button_press_event",
 			   G_CALLBACK(widget_button_event), ptw);
 	g_signal_connect(G_OBJECT(w), "key_release_event",
+			   G_CALLBACK(widget_key_event), ptw);
+	g_signal_connect(G_OBJECT(w), "key_press_event",
 			   G_CALLBACK(widget_key_event), ptw);
 	g_signal_connect(G_OBJECT(w), "tree_select_row",
 			   G_CALLBACK(tree_select_row), NULL);

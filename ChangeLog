@@ -1,9 +1,14 @@
 
-Thu Apr 1 2004 Linas Vepstas <linas@linas.org>
-   * Apply patch from Toshio Kuratomi <toshio@tiki-lounge.com>
-     sourceforge patch [ 871052 ] documentation build update
-   * Apply sourceforge patch [ 874752 ] I18N and install of gconf schema file
-     from Toshio Kuratomi - abadger1999
+Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
+	* Prep for 2.1.8 release: tag gnotime-2-1-8
+	* ghtml.c, main.c: port from deprecated guile gh_* interface to 
+	  new shiny scm_* interface.
+	* Apply patch from Toshio Kuratomi <toshio@tiki-lounge.com>
+	  sourceforge patch [ 871052 ] documentation build update
+	* Apply sourceforge patch [ 874752 ] I18N and install of gconf schema file
+	  from Toshio Kuratomi - abadger1999
+	* Apply sourceforge patch [ 927843 ] Fixes handling of return key
+	  from Goedson Teixeira Paixao <goedson@debian.org>
 
 Tue Dec  23 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* src/main.c: using signal(SIGCHLD, SIG_IGN) to reap zombie processes

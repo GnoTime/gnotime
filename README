@@ -53,8 +53,9 @@ support the keyboard/mouse mannerisms of GnoTime, thereby making
 a full port impossible (although one is attempted in src/ctree-gnome2.c).
 (The notes at the top of that file describe what's wrong.)
 
-There are still numerous areas of gtt that lack polish.  Exporting
-a to-do list is one of them.
+There are still numerous areas of gtt that lack polish.  Please
+submit patches that polish up those things that irk you the most.
+(Post patches at sourceforge).
 
 
 Authors
@@ -72,10 +73,9 @@ Required Packages for Building GnoTime
 Besides the 'usual' Gnome2 development packages, the following are
 some of the packages required to build GnoTime:
 
--- libguile-dev  
--- libgtkhtml2-dev
+-- guile-1.6-dev
+-- guile-1.6-slib
+-- libgtkhtml3-dev
 -- docbook-utils  (to build the documents subdirectory)
-
-
 
 
