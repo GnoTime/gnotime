@@ -1,5 +1,5 @@
 
-SUBDIRS = doc glade ghtml po src
+SUBDIRS = debian doc glade ghtml po src
 
 Productivitydir = $(datadir)/gnome/apps/Applications
 Productivity_in_files = gnotime.desktop.in
