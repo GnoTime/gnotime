@@ -57,10 +57,6 @@ Some sample scheme forms, and their output:
      notes on that project.  <tt>gtt-show</tt> is a kind of 'print'
      statement (see below for more examples of <tt>gtt-show</tt>).
      <br><br>
-	  Note also that there is a <tt>(gtt-linked-project)</tt>
-	  which is the projected refered to in a link.  It is 
-	  frequenctly the same as the selected project, but need not be.
-     <br><br>
 
 <li> <tt>(gtt-show-basic-journal)</tt>  prints a basic layout of the journal, 
      see <tt>journal.ghtml</tt> for an example.
@@ -142,38 +138,55 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
      </i></b>
 
      <br><br>
+	  We've already mentioned <tt>(gtt-selected-project)</tt>
+	  before; it returns the project that is currently selected
+	  in the main window.  There is also the <tt>(gtt-linked-project)</tt>
+	  primitive, which returns the project that was linked to create
+	  this report.  The are frequently the same, but need not be.
+	  For example, select a different project, and then hit the 
+	  refresh button on this page:
+	  <br><br>
+	  This is the linked project:
+	      <b><?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?></b>
+	  
+	  <br>
+	  This is the selected project:
+	      <b><?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?></b>
+     <br><br>
+
+     <br><br>
 	  The following project attributes are supported:
 	  <ul>
 	  <li><tt>(gtt-project-title prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-title-link prj)</tt>:
-	      <?scm (gtt-show (gtt-project-title-link (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-title-link (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-desc prj)</tt>:
-	      <?scm (gtt-show (gtt-project-desc (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-notes prj)</tt>:
-	      <?scm (gtt-show (gtt-project-notes (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-urgency prj)</tt>:
-	      <?scm (gtt-show (gtt-project-urgency (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-urgency (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-importance prj)</tt>:
-	      <?scm (gtt-show (gtt-project-importance (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-importance (gtt-selected-project))) ?>
 	  <li><tt>(gtt-project-status prj)</tt>:
-	      <?scm (gtt-show (gtt-project-status (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-status (gtt-selected-project))) ?>
 			
 	  <li><tt>(gtt-project-estimated-start prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-start (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-estimated-start (gtt-selected-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 	  <li><tt>(gtt-project-estimated-end prj)</tt>:
-	      <?scm (gtt-show (gtt-project-estimated-end (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-estimated-end (gtt-selected-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 	  <li><tt>(gtt-project-due-date prj)</tt>:
-	      <?scm (gtt-show (gtt-project-due-date (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-due-date (gtt-selected-project))) ?>
 			<i>(seconds since January 1, 1970)</i>
 
 	  <li><tt>(gtt-project-sizing prj)</tt>:
-	      <?scm (gtt-show (gtt-project-sizing (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-sizing (gtt-selected-project))) ?>
 			<i>(seconds)</i>
 	  <li><tt>(gtt-project-percent-complete prj)</tt>:
-	      <?scm (gtt-show (gtt-project-percent-complete (gtt-linked-project))) ?>
+	      <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
 	  </ul>
 
 
