@@ -1,0 +1,48 @@
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Custom Report Generator</title>
+</head>
+<body>
+<center>
+<h1>resulkts shower</h1>
+
+HACKING PARTY !!!!
+<p>
+
+Run report on
+<?scm (gtt-show-project-title) ?>
+ - 
+<?scm (gtt-show-project-desc) ?>
+
+
+</center>
+<br><br>
+
+Results between dates 
+<?scm (gtt-show (gtt-kvp-str '"earliest-end-date")) ?>
+and 
+<?scm (gtt-show (gtt-kvp-str '"latest-end-date")) ?>
+
+
+
+<dl>
+<?scm
+
+      (gtt-show-projects (gtt-selected-or-query-results)
+      (list
+            ''"\n<dt><b>"   gtt-project-title   ''"</b>"
+            ''" -- "    gtt-project-desc    ''"</dt>\n"
+            ''"    <dd>"      gtt-project-notes   ''"</dd>\n\n"
+            )
+       )
+
+?>
+</dl>
+
+
+<br><br>
+That's all Folks!
+</body>
+</html>
