@@ -10,6 +10,7 @@
  - 
 <?scm (gtt-show-project-desc) ?>
 </h1>
+</center>
 
 This is a sample invoice
 It only shows billable and no-charge hours.
@@ -21,21 +22,47 @@ and editing the copy to suit your needs.  When finished, you can
 add the new copy to your system by picking 
 the menu item "Reports... New Report".
 <br><br>
+Note that this table shows tasks that are marked 'free of charge'
+as well as those marked 'paid'.  You can modify which tasks are
+included in this list by creating your own filter.  Make a copy
+of the <tt>'gtt-billable-tasks'</tt> routine, use it as an
+example, and modify it to create your own custom list.
+(Coming soon -- a more complete set of predefined filters)
 
-<!-- 
-The below shows all of the column names that can be displayed with 
-the the show-invoice command:
 
-<?scm (gtt-show-invoice '($memo $task_time 
-                          $billable $billrate $value $bill_value 
-								  $start_datime $stop_datime $elapsed)) ?>
+<br><br>
+<center>
 
-Typically, you will want to show only some of these columns.
--->
+<table border=1>
+<tr>
+<th>Diary Entry</th>
+<th>Billing Status</th>
+<th>Billable</th>
+<th>Bill Rate</th>
+<th>Total Time</th>
+<th>Value</th>
+<th>Billable Value</th>
+</tr>
+<?scm
 
-<?scm (gtt-show-invoice '($memo $task_time $billable 
-$billrate "Sample Configurable Alternate Column Title for the Billing Rate" 
-$value $bill_value))  ?>
+(gtt-show-tasks (gtt-billable-tasks (gtt-tasks (gtt-linked-project)))
+    (list   
+        ''"<tr>"
+		  ''"<td>"  gtt-task-memo       ''"</td>\n"
+        ''"<td>"  gtt-task-billstatus ''"</td>\n"
+        ''"<td>"  gtt-task-billable   ''"</td>\n"
+        ''"<td>"  gtt-task-billrate   ''"</td>\n"
+        ''"<td>"  gtt-task-time-str   ''"</td>\n"
+        ''"<td>"  gtt-task-value-str  ''"</td>\n"
+        ''"<td>"  gtt-task-billable-value-str  ''"</td>\n"
+		  ''</tr>
+    )
+)
+
+
+?>
+</table>
+
 
 <br><br>
 That's all Folks!
