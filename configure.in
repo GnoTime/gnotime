@@ -61,7 +61,7 @@ PKG_CHECK_MODULES(GNOTIME, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= 
 AC_SUBST(GNOTIME_CFLAGS)
 AC_SUBST(GNOTIME_LIBS)
 
-AM_PATH_GLIB
+AM_PATH_GLIB_2_0
 
 dnl *****************************************
 dnl need libglade
