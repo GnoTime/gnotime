@@ -107,7 +107,7 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 		p = prn;
 		p = g_stpcpy (p, "<tr><td colspan=4>"
 			"<a href=\"gtt:task:");
-		p += sprintf (p, "%p\">", tsk);
+		p += sprintf (p, "0x%x\">", tsk);
 
 		pp = gtt_task_get_memo(tsk);
 		if (!pp || !pp[0]) pp = _("(empty)");
@@ -131,7 +131,7 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 				"<tr><td>&nbsp;&nbsp;&nbsp;"
 				"<td align=right>&nbsp;&nbsp;"
 				"<a href=\"gtt:interval:");
-			p += sprintf (p, "%p\">", ivl);
+			p += sprintf (p, "0x%x\">", ivl);
 
 			/* print hour only or date too? */
 			if (0 != prev_stop) {
@@ -149,7 +149,7 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 				"</a>&nbsp;&nbsp;"
 				"<td>&nbsp;&nbsp;"
 				"<a href=\"gtt:interval:");
-			p += sprintf (p, "%p\">", ivl);
+			p += sprintf (p, "0x%x\">", ivl);
 			if (prt_date) {
 				p = print_date_time (p, 70, stop);
 			} else {
@@ -363,7 +363,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					if (show_links) 
 					{
 						p = g_stpcpy (p, "<a href=\"gtt:task:");
-						p += sprintf (p, "%p\">", tsk);
+						p += sprintf (p, "0x%x\">", tsk);
 					}
 					pp = gtt_task_get_memo(tsk);
 					if (!pp || !pp[0]) pp = _("(empty)");
@@ -495,7 +495,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 		p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
-			p += sprintf (p, "<a href=\"gtt:interval:%p\">", ivl);
+			p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
 		}
 		if (prt_start_date) {
 			p = print_date_time (p, 100, start);
@@ -511,7 +511,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 		p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
-			p += sprintf (p, "<a href=\"gtt:interval:%p\">", ivl);
+			p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
 		}
 		if (prt_stop_date) {
 			p = print_date_time (p, 100, stop);
