@@ -67,9 +67,9 @@ static GnomeUIInfo menu_main_edit[] = {
 		N_("Show the timesheet journal for this project"),
 			       edit_journal,
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("New Diary _Entry"),
-		N_("Change the current task for this project"),
-			       change_task,
+	GNOMEUIINFO_ITEM_STOCK(N_("_New Diary Entry"),
+		N_("Create new task header for this project"),
+			       new_task_ui,
 			       GNOME_STOCK_BLANK),
 #define MENU_EDIT_PROP_POS 7
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
@@ -161,22 +161,26 @@ static GnomeUIInfo menu_popup[] = {
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("New Diary _Entry"),
 		N_("Change the current task for this project"),
-			       change_task,
+			       new_task_ui,
+			       GNOME_STOCK_BLANK),
+	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Diary Entry"),
+		N_("Edit task header for this project"),
+			       edit_task_ui,
 			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_CUT_POS 3
+#define MENU_POPUP_CUT_POS 4
 	GNOMEUIINFO_MENU_CUT_ITEM(cut_project,NULL),
-#define MENU_POPUP_COPY_POS 4
+#define MENU_POPUP_COPY_POS 5
 	GNOMEUIINFO_MENU_COPY_ITEM(copy_project,NULL),
-#define MENU_POPUP_PASTE_POS 5
+#define MENU_POPUP_PASTE_POS 6
 	GNOMEUIINFO_MENU_PASTE_ITEM(paste_project,NULL),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_CDC_POS 7
+#define MENU_POPUP_CDC_POS 8
 	GNOMEUIINFO_ITEM_STOCK(N_("Clear _Daily Counter"),
 		N_("Zero out todays timer by deleting todays time logs"),
 			       menu_clear_daily_counter,
 			       GNOME_STOCK_BLANK),
-#define MENU_POPUP_PROP_POS 8
+#define MENU_POPUP_PROP_POS 9
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
 	GNOMEUIINFO_END
 };

@@ -19,6 +19,7 @@
 #ifndef __GTT_JOURNAL_H__
 #define __GTT_JOURNAL_H__
 
+/* Callbacks to put iup various journal-related ui dialogs. */
 void edit_journal  (GtkWidget *, gpointer);
 void edit_alldata  (GtkWidget *, gpointer);
 void edit_invoice  (GtkWidget *, gpointer);
@@ -26,6 +27,15 @@ void edit_primer   (GtkWidget *, gpointer);
 void edit_todolist (GtkWidget *, gpointer);
 void invoke_report (GtkWidget *, gpointer);
 
-void change_task (GtkWidget *, gpointer);
+/* The new_task_ui() routine will create a new task at the head 
+ *    of the project, and pop up a dialog to edit it.  This 
+ *    routine is a callback.
+ */
+void new_task_ui (GtkWidget *, gpointer);
+
+/* The edit_task_ui() routine will pop up a dialog to edit the task 
+ *    currently at the head of the project.
+ */
+void edit_task_ui (GtkWidget *, gpointer);
 
 #endif /* __GTT_JOURNAL_H__ */

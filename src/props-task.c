@@ -257,6 +257,7 @@ static PropTaskDlg *dlog = NULL;
 void 
 prop_task_dialog_show (GttTask *task)
 {
+	if (!task) return;
 	if (!dlog) dlog = prop_task_dialog_new();
 
 	do_set_task(task, dlog);

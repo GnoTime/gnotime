@@ -343,7 +343,7 @@ interval_popup_cb (Wiggy *wig)
 /* ============================================================== */
 
 void
-change_task(GtkWidget *w, gpointer data)
+new_task_ui(GtkWidget *w, gpointer data)
 {
 	GttProject *prj;
 	GttTask *newtask;
@@ -354,6 +354,21 @@ change_task(GtkWidget *w, gpointer data)
 	newtask = gtt_task_new ();
 	gtt_project_prepend_task (prj, newtask);
 	prop_task_dialog_show (newtask);
+}
+
+/* ============================================================== */
+
+void
+edit_task_ui(GtkWidget *w, gpointer data)
+{
+	GttProject *prj;
+	GttTask *task;
+
+	prj = ctree_get_focus_project (global_ptw);
+	if (!prj) return;
+
+	task = gtt_project_get_first_task(prj);
+	prop_task_dialog_show (task);
 }
 
 /* ============================================================== */
