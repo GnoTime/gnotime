@@ -58,6 +58,7 @@ typedef struct wiggy_s
 	GtkWidget *task_delete_memo;
 	GtkWidget *task_paste;
 	GtkWidget *hover_help_window;
+	GtkLabel  *hover_label;
 	guint      hover_timeout_id;
 	char        *filepath;  /* file containing report template */
 	EditIntervalDialog *edit_ivl;
@@ -568,6 +569,7 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 	gpointer addr = NULL;
 	char *str;
 
+	/* h4x0r al3rt -- bare-naked pointer refernces ! */
 	/* decode the address buried in the URL (if its there) */
 	str = strstr (url, "0x");
 	if (str)
@@ -607,13 +609,69 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 }
 
 /* ============================================================== */
+
+static void
+html_url_requested_cb(GtkHTML *doc, const gchar * url, 
+                      GtkHTMLStream *handle, gpointer data) 
+{
+	printf ("duuude url request=%s\n", url);
+}
+
+/* ============================================================== */
 /* Display a tool-tip type of message when the user pauses thier 
  * mouse over a URL.   If mouse pointer doesn't move for a 
  * second, popup a window.
  *
  * XXX we were going to do something fancy with this, but now I 
  * forget what ... 
+ * XXX we should display memos, etc.
  */
+
+static char * 
+get_hover_msg (const gchar *url)
+{
+	char * str;
+	gpointer addr = NULL;
+
+	/* h4x0r al3rt bare-naked pointer parsing! */
+	str = strstr (url, "0x");
+	if (str)
+	{
+		addr = (gpointer) strtoul (str, NULL, 16);
+	}
+
+	/* XXX todo- -- it would be nice to make these popups 
+	 * depend on the type of report tht the user is viewing.
+	 * should we pull them out of a scheme markup ??
+	 *
+	 * See http://developer.gnome.org/doc/API/2.4/pango/PangoMarkupFormat.html
+	 * for allowed markup contents.
+	 */
+	if (addr && (0 == strncmp ("gtt:task:", url, 9)))
+	{
+		GttTask *task = addr;
+		const char * memo = gtt_task_get_memo(task);
+		const char * notes = gtt_task_get_notes(task);
+		char * msg = g_strdup_printf ("<b><big>%s</big></b>\n%s\n", memo, notes);
+		return msg;
+	}
+
+	if (0 == strncmp (url, "gtt:proj:", 9))
+	{
+		GttProject *prj = addr;
+		const char * title = gtt_project_get_title (prj);
+		const char * desc = gtt_project_get_desc (prj);
+		const char * notes = gtt_project_get_notes (prj);
+		char * msg = g_strdup_printf ("<b><big>%s</big></b>\n"
+		                              "<b>%s</b>\n"
+		                              "%s", title, desc, notes);
+		return msg;
+	}
+
+	char * msg = _("Left-click to bring up menu");
+	return g_strdup (msg);
+}
+
 static gint
 hover_timer_func(gpointer data)
 {
@@ -652,20 +710,19 @@ static void
 html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data) 
 {
 	Wiggy *wig = data;
-
 	/* Create and initialize the hover-help window */
 	if (!wig->hover_help_window)
 	{
-		char * msg = _("Left-click to bring up menu");
-
 		wig->hover_help_window = gtk_window_new(GTK_WINDOW_POPUP);
-		gtk_window_set_decorated (GTK_WINDOW(wig->hover_help_window), FALSE);
-		gtk_window_set_destroy_with_parent (GTK_WINDOW(wig->hover_help_window), TRUE);
-		gtk_window_set_transient_for (GTK_WINDOW(wig->hover_help_window), 
-							 GTK_WINDOW(wig->top));
+		GtkWindow *wino = GTK_WINDOW (wig->hover_help_window);
+		gtk_window_set_decorated (wino, FALSE);
+		gtk_window_set_destroy_with_parent (wino, TRUE);
+		gtk_window_set_transient_for (wino, GTK_WINDOW(wig->top));
+		gtk_window_set_type_hint (wino, GDK_WINDOW_TYPE_HINT_SPLASHSCREEN);
 
-		GtkWidget *label = gtk_label_new (msg);
-		gtk_container_add(GTK_CONTAINER(wig->hover_help_window), label);
+		GtkWidget *label = gtk_label_new ("xxx");
+		wig->hover_label = GTK_LABEL (label);
+		gtk_container_add(GTK_CONTAINER(wino), label);
 		gtk_widget_show (label);
 
 		/* So that we can loose focus later */
@@ -675,7 +732,15 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		int px=0, py=0, rx=0, ry=0;
 		gtk_widget_get_pointer (GTK_WIDGET(wig->top), &px, &py);
 		gtk_window_get_position (GTK_WINDOW(wig->top), &rx, &ry);
-		gtk_window_move (GTK_WINDOW(wig->hover_help_window), rx+px, ry+py);
+		gtk_window_move (wino, rx+px, ry+py);
+	}
+
+	if (url)
+	{
+		char * msg = get_hover_msg (url);
+		gtk_label_set_markup (wig->hover_label, msg);
+		gtk_container_resize_children (GTK_CONTAINER(wig->hover_help_window));
+		g_free (msg);
 	}
 
 	/* If hovering over a URL, bring up the help popup after one second. */
@@ -858,6 +923,9 @@ do_show_report (const char * report, const char * title,
 	g_signal_connect (G_OBJECT(wig->html), "submit",
 			G_CALLBACK (submit_clicked_cb), wig);
 	
+	g_signal_connect (G_OBJECT(wig->html), "url_requested",
+			G_CALLBACK (html_url_requested_cb), wig);
+	
 	g_signal_connect(G_OBJECT(wig->html), "on_url",
 		G_CALLBACK(html_on_url_cb), wig);
 
@@ -900,7 +968,7 @@ do_show_report (const char * report, const char * title,
 	        GTK_SIGNAL_FUNC (interval_paste_memo_cb), wig);
 	  
 	/* ---------------------------------------------------- */
-	/* this is the popup menu that says 'edit/delete/merge' */
+	/* This is the popup menu that says 'edit/delete/merge' */
 	/* for tasks */
 
 	glxml = gtt_glade_xml_new ("glade/task_popup.glade", "Task Popup");
@@ -932,7 +1000,7 @@ do_show_report (const char * report, const char * title,
 	wig->hover_timeout_id = 0;
 
 	/* ---------------------------------------------------- */
-	/* finally ... display the actual journal */
+	/* Finally ... display the actual journal */
 
 	wig->prj = prj;
 	wig->filepath = g_strdup (report);
