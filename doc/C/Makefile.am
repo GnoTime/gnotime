@@ -13,9 +13,9 @@ figs = \
 	figures/gtt_mainwin.png  \
 	figures/gtt_prefswin.png
 
-docname = gtt
+docname = gnotime
 lang = C
-omffile = gtt-C.omf
+omffile = gnotime-C.omf
 sgml_ents =
 include $(top_srcdir)/sgmldocs.make
 dist-hook: app-dist-hook
