@@ -19,12 +19,13 @@
 #ifndef __GTT_JOURNAL_H__
 #define __GTT_JOURNAL_H__
 
-void edit_journal(GtkWidget *, gpointer);
-void edit_alldata(GtkWidget *, gpointer);
-void edit_invoice(GtkWidget *, gpointer);
-void edit_primer(GtkWidget *, gpointer);
-void invoke_report(GtkWidget *, gpointer);
+void edit_journal  (GtkWidget *, gpointer);
+void edit_alldata  (GtkWidget *, gpointer);
+void edit_invoice  (GtkWidget *, gpointer);
+void edit_primer   (GtkWidget *, gpointer);
+void edit_todolist (GtkWidget *, gpointer);
+void invoke_report (GtkWidget *, gpointer);
 
-void change_task(GtkWidget *, gpointer);
+void change_task (GtkWidget *, gpointer);
 
 #endif /* __GTT_JOURNAL_H__ */

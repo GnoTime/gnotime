@@ -62,6 +62,9 @@ typedef struct wiggy_s {
 	FILE        *fh;        /* file handle to save to */
 } Wiggy;
 
+static void do_show_report (const char *, GttProject *);
+
+
 /* ============================================================== */
 /* Routines that take html and mash it into browser. */
 
@@ -542,6 +545,18 @@ html_link_clicked_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 		if (addr) task_popup_cb (wig);
 	}
 	else
+	if (0 == strncmp (url, "gtt:proj", 8))
+	{
+		GttProject *prj = addr;
+		char * path;
+
+		wig->task = NULL;
+		wig->interval = NULL;
+
+		path = gtt_ghtml_resolve_path ("journal.ghtml");
+		do_show_report (path, prj);
+	}
+	else
 	{
 		g_warning ("clicked on unknown link %s\n", url);
 	}
@@ -677,16 +692,16 @@ do_show_report (const char * report, GttProject *prj)
 
 	wig->prj = prj;
 	wig->filepath = g_strdup (report);
+
+	/* XXX not all reports need to have a project ?? */
 	if (!prj)
 	{
 		gtt_ghtml_display (wig->gh, 
 				gtt_ghtml_resolve_path("noproject.ghtml"), NULL);
 	} 
-	else 
-	{
-		gtt_project_add_notifier (prj, redraw, wig);
-		gtt_ghtml_display (wig->gh, report, prj);
-	}
+
+	if (prj) gtt_project_add_notifier (prj, redraw, wig);
+	gtt_ghtml_display (wig->gh, report, prj);
 }
 
 /* ============================================================== */
@@ -727,6 +742,7 @@ gtt_ghtml_resolve_path (const char *path_frag)
 	}
 	return g_strdup(path_frag);
 }
+
 
 void
 edit_journal(GtkWidget *w, gpointer data)
@@ -773,6 +789,18 @@ edit_primer(GtkWidget *w, gpointer data)
 	prj = ctree_get_focus_project (global_ptw);
 
 	path = gtt_ghtml_resolve_path ("primer.ghtml");
+	do_show_report (path, prj);
+}
+
+void
+edit_todolist (GtkWidget *w, gpointer data)
+{
+	GttProject *prj;
+	char * path;
+
+	prj = ctree_get_focus_project (global_ptw);
+
+	path = gtt_ghtml_resolve_path ("todo.ghtml");
 	do_show_report (path, prj);
 }
 
