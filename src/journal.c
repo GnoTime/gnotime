@@ -597,17 +597,31 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 
 static QofBook *book = NULL;
 
-/* Build a hard-wired query.  This is a place-holder until we 
- * get SQL parsing in place, which should make this much more elegant.
- * For now, we just call this 'bogus'.
+/* Obtain an SQL query string from the HTML page, and submit
+ * it to the query engnine, returning a list of projects.
+ *
+ * XXX right now, the only kind of queries that are allowed
+ * are those that return lists of projects.  This should be fixed.
+ * Part of the problem is that we can't currently identify the type
+ * of the returned list.  I think we can fix this by returning
+ * lists of qof entities, and using that to figure out the returned 
+ * type.  Need to change GttProject to derive from QofEntity.
  */
 static GList *
-bogus_query (KvpFrame *kvpf)
+perform_form_query (KvpFrame *kvpf)
 {
 	GList *results, *n;
 
 	if (!kvpf) return NULL;
-printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
+
+	/* Allow the user to enable form debugging by adding the following html:
+	 * <input type="hidden" name="debug" value="1">
+	 */
+	char *user_debug = kvp_frame_get_string (kvpf, "debug");
+	if (user_debug)
+	{
+		printf ("Debug: HTML Form Input=%s\n", kvp_frame_to_string (kvpf));
+	}
 
 	QofSqlQuery *q = qof_sql_query_new();
 
@@ -615,26 +629,29 @@ printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 	qof_sql_query_set_book (q, book);
 	qof_sql_query_set_kvp (q, kvpf);
 
-	/* XXX eventually, we should be pulling this query out of
-	 * the web page itself, instead of hard-coding it in C. */
-	char qstr[2000];
-	strcpy (qstr, 
-	   "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
-	       GTT_PROJECT_EARLIEST " <= \'kvp://earliest-end-date\') AND ("
-	       GTT_PROJECT_LATEST " >= \'kvp://latest-start-date\');");
+	char *query_string = kvp_frame_get_string (kvpf, "query");
+	if (!query_string) return NULL;
+	if (0 == query_string[0]) return NULL;
 
-printf ("duude the query string is %s\n", qstr);
+	if (user_debug)
+	{
+		printf ("Debug: Will run the query %s\n", query_string);
+	}
+	
 	/* Run the query */
-	results = qof_sql_query_run (q, qstr);
+	results = qof_sql_query_run (q, query_string);
 	
 	/* XXX free q after using it */
 
-printf ("duuude results=%p\n", results);
-	/* Print out the results */
-	for (n=results; n; n=n->next)
+	if (user_debug)
 	{
-		GttProject *prj = n->data;
-		printf ("duude prj=%s\n", gtt_project_get_title(prj));
+		printf ("Debug: Query returned the following matching projects:\n");
+		/* Print out the results */
+		for (n=results; n; n=n->next)
+		{
+			GttProject *prj = n->data;
+			printf ("\t%s\n", gtt_project_get_title(prj));
+		}
 	}
 
 	return results;
@@ -655,9 +672,6 @@ submit_clicked_cb(GtkHTML * doc,
 	
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
-printf ("duude clocked m=%s url=%s enc=%s\n", method, url, encoding);
-printf ("duude old path = %s\n", wig->filepath);
-
 	kvpf = kvp_frame_new ();
 	kvp_frame_add_url_encoding (kvpf, encoding);
 
@@ -669,7 +683,7 @@ printf ("duude old path = %s\n", wig->filepath);
 	path = gtt_ghtml_resolve_path (path, wig->filepath);
 	
 	/* Build an ad-hoc query */
-	qresults = bogus_query (kvpf);
+	qresults = perform_form_query (kvpf);
 	
 	/* Open a new window */
 	do_show_report (path, NULL, kvpf, wig->prj, TRUE, qresults); 
@@ -677,7 +691,7 @@ printf ("duude old path = %s\n", wig->filepath);
 	/* XXX We cannnot reuse the same window from this callback, we 
 	 * have to let the callback return first, else we get a nasty error. 
 	 * This should be fixed: if the query and the result form is the 
-	 * same, we should resuse the same window.
+	 * same, we should re-use the same window.
 	 */
 #if 0
 	g_free (wig->filepath);
