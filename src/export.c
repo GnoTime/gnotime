@@ -79,24 +79,14 @@ export_err (GttGhtml *gxp, int errcode, const char *msg,
 	g_free (s);
 }
 
-static void
-export_subprojects (export_format_t *xp, GList *proj_list)
-{
-	GList *node;
-
-	for (node = proj_list; node; node = node->next) 
-	{
-	
-		GttProject *prj = node->data;
-		gtt_ghtml_display (xp->ghtml, xp->template, prj);
-		export_subprojects (xp, gtt_project_get_children (prj));
-	}
-}
-
 static gint
 export_projects (export_format_t *xp)
 {
-	xp->template = gtt_ghtml_resolve_path ("tab-delim.ghtml");
+	GttProject *prj;
+
+	/* Get the currently selected project */
+	prj = ctree_get_focus_project (global_ptw);
+	if (!prj) return;
 
 	xp->ghtml = gtt_ghtml_new();
 	gtt_ghtml_set_stream (xp->ghtml, xp, 
@@ -105,7 +95,7 @@ export_projects (export_format_t *xp)
 						 NULL, 
 						 (GttGhtmlError) export_err);
 
-	export_subprojects (xp, gtt_get_project_list());
+	gtt_ghtml_display (xp->ghtml, xp->template, prj);
 	
 	gtt_ghtml_destroy (xp->ghtml);
 	xp->ghtml = NULL;
@@ -166,12 +156,14 @@ export_file_picker (GtkWidget *widget, gpointer data)
 {
 	export_format_t *xp;
 	GtkWidget *dialog;
+	const char * template_filename = data;
 
 	dialog = gtk_file_selection_new (_("Tab-Delimited Export"));
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 
 	xp = export_format_new ();
 	xp->picker = GTK_FILE_SELECTION (dialog);
+	xp->template = gtt_ghtml_resolve_path (template_filename);
 
 	g_signal_connect (G_OBJECT (dialog), "destroy",
 			    G_CALLBACK (gtk_widget_destroyed),
