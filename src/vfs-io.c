@@ -1,4 +1,10 @@
 
+/* This file contains sample/experimental hacking code for a gnomevfs client.
+ * it allows playing with the API.  It shows how to use the GnomeVFS API
+ * in a client such as GnoTime.
+ *
+ * This is not a part of the standard GnoTime distribution, its just for hacking around.
+ */
 /* ------------------------------------------------------------------ */
 #include <sys/types.h>
 #include <glib.h>
