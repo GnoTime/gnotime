@@ -48,11 +48,14 @@ interval_edit_apply_cb(GtkWidget * w, gpointer data)
 	GtkWidget *menu, *menu_item;
 	GttTask * task;
 	GttProject * prj;
-	time_t start, stop;
+	time_t start, stop, tmp;
 	int fuzz, min_invl;
 
 	start = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->start_widget));
 	stop = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->stop_widget));
+
+	/* If user reversed start and stop, flip them back */
+	if (start > stop) { tmp=start; start=stop; stop=tmp; }
 
 	/* Caution: we must avoid setting very short time intervals
 	 * through this interface; otherwise the interval will get
