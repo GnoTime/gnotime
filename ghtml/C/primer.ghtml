@@ -71,8 +71,8 @@ Some sample scheme forms, and their output:
 
 <li> Tables showing lists of projects, tasks and intervals can be
      created and displayed.  The file <tt>todo.ghtml</tt> shows a 
-     working example of a list of projects, while <tt>journal.ghtml</tt>
-     and <tt>bigtable.ghtml</tt> show lists of tasks and intervals.
+     working example of a list of projects, while <tt>basic-journal.ghtml</tt>
+     and <tt>basic-daily.ghtml</tt> show lists of tasks and intervals.
      The file <tt>invoice.ghtml</tt> shows how lists of tasks can be 
      selectively filtered, so that only certain tasks meeting certain
      criteria are displayed.
@@ -116,14 +116,15 @@ Some sample scheme forms, and their output:
 
      prints the following:
      <?scm (pi-approx) ?>
+     (Yes, the value printed is 'wrong', but that's because we didn't
+     let the series expansion run long enough.)
      <br><br>
 
 <li> You can get access to the raw project/task/interval data 
      from scheme.  Currently, you can only have read-only access to the
      data from scheme, allowing reports to be generated, but not
-     allowing data to be maniupulated.  The following show some of the
-     available primitives:  (XXX this should be changed into a complete 
-     list, for reference purposes).
+     allowing core data to be changed.  The following show some of the
+     available primitives:  
      <br><br>
      <tt>(gtt-projects)</tt> returns the tree of projects,
      which can be used with the getters: for example:
