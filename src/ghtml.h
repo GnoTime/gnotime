@@ -48,6 +48,10 @@ struct gtt_ghtml_s
 	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
 	gpointer user_data;
 
+	/* open_count and ref_path used for recursive file includes */
+	int open_count;  
+	const char * ref_path;
+
 	/* Key-Value Pair data; includes HTML form GET/POST results. */
 	KvpFrame *kvp;
 	

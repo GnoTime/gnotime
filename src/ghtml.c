@@ -462,6 +462,52 @@ set_links_off (void)
 }
 
 /* ============================================================== */
+
+static SCM
+do_include_file_scm (GttGhtml *ghtml, SCM node)
+{
+	/* either a 'symbol or a "quoted string" */
+	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
+	{
+		const char * filepath = SCM_STRING_CHARS (node);
+		filepath = gtt_ghtml_resolve_path(filepath, ghtml->ref_path);
+		gtt_ghtml_display (ghtml, filepath, NULL);
+	}
+	else
+	if (SCM_CONSP(node))
+	{
+		SCM node_list = node;
+		do
+		{
+			node = SCM_CAR (node_list);
+			do_include_file_scm (ghtml, node);
+			node_list = SCM_CDR (node_list);
+		}
+		while (SCM_CONSP(node_list));
+		do_include_file_scm (ghtml, node_list);
+	}
+	else
+	if (SCM_NULLP(node))  
+	{
+		/* No op; maybe this should be a warning? */
+	}
+	else
+	{
+		g_warning ("Don't know how to gtt-include this type\n");
+	}
+
+	/* We could return the printed string, but I'm not sure why.. */
+	return SCM_EOL;
+}
+
+static SCM
+include_file_scm (SCM node_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_include_file_scm (ghtml, node_list);
+}
+
+/* ============================================================== */
 /** Converts a g_list of pointers into a typed SCM list.  This is 
  *  a generic utility.  It returns rc, where (car rc) is a list of
  *  pointers, and (cdr rc) is the type-string that identifies the 
@@ -1226,9 +1272,9 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	size_t nr;
 
 	if (!ghtml) return;
-	ghtml->prj = prj;
+	if (prj) ghtml->prj = prj;
 
-	if (!filepath)
+	if (!filepath && (0==ghtml->open_count))
 	{
 		if (ghtml->error)
 		{
@@ -1239,7 +1285,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 
 	/* Try to get the ghtml file ... */
 	ph = fopen (filepath, "r");
-	if (!ph)
+	if (!ph && (0==ghtml->open_count))
 	{
 		if (ghtml->error)
 		{
@@ -1247,6 +1293,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		}
 		return;
 	}
+	ghtml->ref_path = filepath;
 
 	/* Read in the whole file.  Hopefully its not huge */
 	template = g_string_new (NULL);
@@ -1272,10 +1319,12 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 #endif
 	
 	/* Now open the output stream for writing */
-	if (ghtml->open_stream)
+	if (ghtml->open_stream && (0==ghtml->open_count))
 	{
 		(ghtml->open_stream) (ghtml, ghtml->user_data);
 	}
+
+	ghtml->open_count ++;
 
 	/* Loop over input text, looking for scheme markup and 
 	 * sgml comments. */
@@ -1373,7 +1422,8 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 		break;
 	}
 
-	if (ghtml->close_stream)
+	ghtml->open_count --;
+	if (ghtml->close_stream && (0==ghtml->open_count))
 	{
 		(ghtml->close_stream) (ghtml, ghtml->user_data);
 	}
@@ -1390,6 +1440,7 @@ static void
 register_procs (void)
 {
 	scm_c_define_gsubr("gtt-show",               1, 0, 0, show_scm);
+	scm_c_define_gsubr("gtt-include",            1, 0, 0, include_file_scm);
 	scm_c_define_gsubr("gtt-kvp-str",            1, 0, 0, ret_kvp_str);
 	scm_c_define_gsubr("gtt-linked-project",     0, 0, 0, ret_linked_project);
 	scm_c_define_gsubr("gtt-selected-project",   0, 0, 0, ret_selected_project);
@@ -1460,6 +1511,7 @@ gtt_ghtml_new (void)
 
 	p = g_new0 (GttGhtml, 1);
 
+	p->open_count = 0;
 	p->kvp = NULL;
 	p->prj = NULL;
 	p->query_result = NULL;
