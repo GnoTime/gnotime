@@ -177,6 +177,19 @@ Some sample scheme forms, and their output:
          <i>(percentage)</i>
      </ul>
 
+     Subprojects of a project can be obtained with the 
+     <tt>(gtt-project-subprojects prj)</tt> routine.
+     For example, here is a listing of the subprojects of the currently
+     selected project:
+     <ul>
+     <?scm (gtt-show-projects (gtt-project-subprojects (gtt-selected-project))
+               (list ''<li><b>   gtt-project-title   ''"</b>\n"
+                        gtt-project-notes   ''"</li>\n"
+                 ))
+     ?>
+     </ul>
+
+     <p>
      Tasks (aka 'diary entries') can be obtained with the 
      <tt>(gtt-tasks prj)</tt> routine.
      The various task attributes can be obtained with getters that take
