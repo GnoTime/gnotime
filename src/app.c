@@ -240,28 +240,12 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 	gtk_widget_show(vbox);
 	gnome_app_set_contents(GNOME_APP(window), vbox);
 
-	if (!geometry_string) {
-		return;
-	}
-#if OLD_GNOME_12_CODE
-	/* XXX get rid of this at earliest convenience, 
-	 * after testing, of course ...  */
-	if (gnome_parse_geometry(geometry_string, &x, &y, &w, &h)) {
-		if ((x != -1) && (y != -1)) {
-			gtk_widget_set_uposition(GTK_WIDGET(window), x, y);
-			geom_place_override=TRUE;
-		}
-		if ((w != -1) && (h != -1)) {
-			gtk_window_set_default_size(GTK_WINDOW(window), w, h);
-			geom_size_override=TRUE;
-		}
-	} 
-#else
+	if (!geometry_string) return;
+	
 	if (gtk_window_parse_geometry(GTK_WINDOW(window),geometry_string))
 	{
 		geom_size_override=TRUE;
 	}
-#endif
 	else 
 	{
 		gnome_app_error(GNOME_APP(window),
