@@ -306,6 +306,11 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		(ghtml->write_stream) (ghtml, str, strlen(str), ghtml->user_data);
 	}
 	else
+	if (SCM_NULLP(node))  
+	{
+		/* No op; maybe this should be a warning? */
+	}
+	else
 	{
 		g_warning ("Don't know how to gtt-show this type\n");
 	}
@@ -516,7 +521,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 	for (n= ivl_list; n; n=n->prev)
 	{
 		GttInterval *ivl = n->data;
-      SCM node;
+		SCM node;
 		
 		node = gh_ulong2scm ((unsigned long) ivl);
 		rc = gh_cons (node, rc);
@@ -622,6 +627,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
+	if (NULL == str) return SCM_EOL;                             \
 	return gh_str2scm (str, strlen (str));                           \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
