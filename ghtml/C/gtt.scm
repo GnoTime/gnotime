@@ -133,8 +133,13 @@
         )
    
         (list
-           ; if parent is a list, then error
-           (if (list? parent_obj) ())
+           ; If parent is a list, then tehcnically, its an error.
+			  ; but sometimes things seem to get oddly nested, so
+			  ; just handle this without blinking.  Although its
+			  ; probably hiding errors elsewhere.   XXX
+			  ; (maybe this should be fixed someday ?)
+           (if (list? parent_obj) 
+                (gtt-apply-func-list-to-obj-list func_list parent_obj))
 
            ; if parent is a singleton, then its a obj 
            ; apply the column functions to it
