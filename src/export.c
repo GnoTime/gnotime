@@ -1,4 +1,4 @@
-/*   GTimeTracker - a time tracker
+/*   ASCII/tab/delim/etc. data export for GnoTime
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
  *
@@ -20,6 +20,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <string.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include "app.h"
 #include "export.h"
@@ -38,7 +39,7 @@ struct export_format_s
 {
 	GtkFileSelection *picker;    /* URI picker (file selection) */
 	const char       *uri;       /* aka filename */
-	FILE             *fp;        /* file handle */
+	GnomeVFSHandle   *handle;    /* file handle */
 	GttGhtml         *ghtml;     /* output device */
 	const char       *template;  /* output template */
 };
@@ -47,7 +48,7 @@ static export_format_t *
 export_format_new (void)
 {
 	export_format_t * rc;
-	rc = g_new (export_format_t, 1);
+	rc = g_new0 (export_format_t, 1);
 	rc->picker = NULL;
 	rc->uri = NULL;
 	rc->ghtml = NULL;
@@ -65,7 +66,18 @@ static void
 export_write (GttGhtml *gxp, const char *str, size_t len, 
 					 export_format_t *xp)
 {
-	fprintf (xp->fp, "%s", str);
+	GnomeVFSFileSize buflen  = len;
+	GnomeVFSFileSize bytes_written = 0;
+	size_t off = 0;
+	while (1)
+	{
+		GnomeVFSResult result = gnome_vfs_write (xp->handle,
+		                &str[off], buflen, &bytes_written);
+		off += bytes_written;
+		buflen -= bytes_written;
+		if (0>= buflen) break;
+		if (GNOME_VFS_OK != result) break;
+	}
 }
 
 static void 
@@ -115,7 +127,10 @@ export_really (GtkWidget *widget, export_format_t *xp)
 
 	xp->uri = gtk_file_selection_get_filename (xp->picker);
 
-	if (0 == access (xp->uri, F_OK)) 
+	GnomeVFSURI *parsed_uri;
+	parsed_uri = gnome_vfs_uri_new (xp->uri);
+	gboolean exists = gnome_vfs_uri_exists (parsed_uri);
+	if (exists) 
 	{
 		GtkWidget *w;
 		char *s;
@@ -129,11 +144,16 @@ export_really (GtkWidget *widget, export_format_t *xp)
 		if (0 == gnome_dialog_run (GNOME_DIALOG (w))) return;
 	}
 
-	xp->fp = fopen (xp->uri, "w");
-	if (NULL == xp->fp)
+	GnomeVFSResult result;
+	result = gnome_vfs_create (&xp->handle, xp->uri, GNOME_VFS_OPEN_WRITE,
+	                 FALSE, 0644);
+	if (GNOME_VFS_OK != result)
 	{
-		GtkWidget *w = gnome_error_dialog (_("File could not be opened"));
+		char *s;
+		s = g_strdup_printf (_("File %s dould not be opened"), xp->uri);
+		GtkWidget *w = gnome_error_dialog (s);
 		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
+		g_free (s);
 		return;
 	}
 	
@@ -145,7 +165,7 @@ export_really (GtkWidget *widget, export_format_t *xp)
 		return;
 	}
 
-	fclose (xp->fp);
+	gnome_vfs_close (xp->handle);
 	gtk_widget_destroy (GTK_WIDGET (xp->picker));
 }
 
@@ -169,9 +189,14 @@ export_file_picker (GtkWidget *widget, gpointer data)
 			    G_CALLBACK (gtk_widget_destroyed),
 			    &dialog);
 
+#if 0
 	g_signal_connect_object (G_OBJECT (xp->picker->cancel_button), "clicked",
 				   G_CALLBACK (gtk_widget_destroy),
 				   G_OBJECT (xp->picker), 0);
+#endif
+	g_signal_connect (G_OBJECT (xp->picker->cancel_button), "clicked",
+			    G_CALLBACK (gtk_widget_destroy),
+			    dialog);
 
 	g_signal_connect (G_OBJECT (xp->picker->ok_button), "clicked",
 			    G_CALLBACK (export_really),
