@@ -34,7 +34,7 @@ static GnomeUIInfo menu_main_file[] = {
 	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
 				  new_project, NULL),
 	GNOMEUIINFO_SEPARATOR,
-	{GNOME_APP_UI_ITEM, N_("_Export Current State"), NULL,
+	{GNOME_APP_UI_ITEM, N_("_Export Tab-Delimited"), NULL,
 		export_file_picker, NULL, NULL,
 		GNOME_APP_PIXMAP_STOCK, GTK_STOCK_SAVE,
 		'E', GDK_CONTROL_MASK, NULL},

@@ -77,10 +77,10 @@ export_projects (export_format_t *xp)
 	GList *node;
 
 
-	/* XXX default tab delimited */
-	/* Translators: this is the header of a table separated file,
+	/* Translators: this is the header of a tab-separated file,
 	 * it should really be all ASCII, or at least not multibyte,
-	 * I don't think most spreadsheets would handle that well. */
+	 * I don't think most spreadsheets would handle multi-byte well.
+	 */
 	fprintf (xp->fp, "Title\tDescription\tTotal time\tTime today\n");
 
 	for (node = gtt_get_project_list(); node; node = node->next) 
@@ -151,16 +151,8 @@ export_really (GtkWidget *widget, export_format_t *xp)
 void
 export_file_picker (GtkWidget *widget, gpointer data)
 {
-	static export_format_t *xp = NULL;
+	export_format_t *xp;
 	GtkWidget *dialog;
-
-	if (xp && xp->picker) 
-	{
-		dialog = GTK_WIDGET(xp->picker);
-		gtk_widget_show_now (dialog);
-		gdk_window_raise (dialog->window);
-		return;
-	}
 
 	dialog = gtk_file_selection_new (_("Tab-Delimited Export"));
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
@@ -172,7 +164,6 @@ export_file_picker (GtkWidget *widget, gpointer data)
 			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
 			    &dialog);
 
-	/* XXX is destroy really the right thing here ?? */
 	gtk_signal_connect_object (GTK_OBJECT (xp->picker->cancel_button), "clicked",
 				   GTK_SIGNAL_FUNC (gtk_widget_destroy),
 				   GTK_OBJECT (xp->picker));
