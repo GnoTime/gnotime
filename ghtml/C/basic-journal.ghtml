@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Journal - <?scm (gtt-show-project-title) ?></title>
+</head>
+<body>
+<center>
+<h1>Journal for 
+<?scm (gtt-show-project-title) ?>
+ - 
+<?scm (gtt-show-project-desc) ?>
+</h1>
+</center>
+
+<!-- This file is meant to be a simple starting point for creating 
+     your own customized journal reports.  Make a copy of this file 
+     and change it to suit your tastes.  The markup below is 
+     hopefully not too confusing.  Just remember to start string
+     literals with ''" and end them with ".  \n is the usual new-line
+     escape character; other C-langauage escapes apply: \t for tab,
+     \r for carriage return, etc.
+
+     Note also you can get pure-ascii output by removing all the html
+     markup! Or you can get other file formats by inserting appropriate 
+     markup.  This file does *not* have to be/use HTML!
+-->
+
+<?scm
+
+(gtt-show-tasks (gtt-tasks (gtt-linked-project))
+    (list   
+        ''"<b>"
+               gtt-task-memo 
+        ''"</b><br><br>\n"
+               gtt-task-notes 
+        ''"<br><br>\n"
+        ''"<table border=1px cellpadding=4px>\n"
+        ''"<tr>\n"
+        ''"<td>Start</td>\n"
+        ''"<td>Stop</td>\n"
+        ''"<td>Elapsed</td>\n"
+        ''"</tr>\n"
+         (lambda (task) (gtt-ivls task
+         (list
+               ''"<tr>\n"
+               ; the first html table column shows the start date/time
+               ''"<td>"  
+                     gtt-interval-start-str 
+               ''"</td>\n"
+               
+               ; the second html table column shows the stop date/time
+               ''"<td>"  
+                     gtt-interval-stop-str 
+               ''"</td>\n"
+               
+               ; the third html table column shows the elapsed time
+               ''"<td>"  
+                   gtt-interval-elapsed-str  
+               ''"</td>\n</tr>\n"
+         )))
+        ''"</table>"
+        ''"<br><br><br>"
+    )
+)
+
+?>
+
+<br><br>
+That's all Folks!
+</body>
+</html>
