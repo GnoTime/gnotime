@@ -64,11 +64,15 @@ struct gtt_ghtml_s
 	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
 	gpointer user_data;
 
+	/* the 'linked' project */
+	GttProject *prj;
+	
 	gboolean show_html;  /* Flag -- add html markup, or not */
 	gboolean show_links; /* Flag -- show internal <a href> links */
 
 	/* field delimiter, for tab/comma delim */
 	char * delim;
+
 
 	/* table layout info */
 
@@ -969,6 +973,21 @@ ret_selected_project (void)
 	return do_ret_selected_project (ghtml);
 }
 
+static SCM
+do_ret_linked_project (GttGhtml *ghtml)
+{
+	SCM rc;
+	rc = gh_ulong2scm ((unsigned long) ghtml->prj);
+	return rc;
+}
+
+static SCM
+ret_linked_project (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_linked_project (ghtml);
+}
+
 /* return a list of all of the projects */
 
 static SCM
@@ -1187,6 +1206,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	size_t nr;
 
 	if (!ghtml) return;
+	ghtml->prj = prj;
 
 	if (!filepath)
 	{
@@ -1322,6 +1342,7 @@ register_procs (void)
 	gh_new_procedure("gtt-show-invoice",       show_invoice,   1, 0, 0);
 	gh_new_procedure("gtt-show-export",        show_export,    1, 0, 0);
 	gh_new_procedure("gtt-show",               show_scm,       1, 0, 0);
+	gh_new_procedure("gtt-linked-project",     ret_linked_project,     0, 0, 0);
 	gh_new_procedure("gtt-selected-project",   ret_selected_project,   0, 0, 0);
 	gh_new_procedure("gtt-projects",           ret_projects,           0, 0, 0);
 	gh_new_procedure("gtt-project-title",      ret_project_title,      1, 0, 0);
@@ -1355,6 +1376,7 @@ gtt_ghtml_new (void)
 
 	p = g_new0 (GttGhtml, 1);
 
+	p->prj = NULL;
 	p->show_html = TRUE;
 	p->show_links = TRUE;
 	p->delim = "";
