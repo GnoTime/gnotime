@@ -33,6 +33,7 @@
 #include "log.h"
 #include "proj.h"
 #include "proj_p.h"
+#include "query.h"  /* temp hack for query */
 
 typedef struct notif_s 
 {
@@ -1879,8 +1880,6 @@ prj_obj_order (GttProject *a, GttProject *b)
 	return 0;
 }
 
-#define GTT_PROJECT_ID "GttProjectId"
-
 static QofObject prj_object_def =
 {
    interface_version: QOF_OBJECT_VERSION,
@@ -1894,11 +1893,27 @@ static QofObject prj_object_def =
    printable:         NULL,
 };
 
+/* =========================================================== */
+/* bogus wrappers */
+static int 
+prj_obj_get_earliest (GttProject *prj)
+{
+	return gtt_project_get_earliest_start (prj, TRUE);
+}
+
+static int 
+prj_obj_get_latest (GttProject *prj)
+{
+	return gtt_project_get_latest_stop (prj, TRUE);
+}
+
 gboolean 
 gtt_project_obj_register (void)
 {
    /* Associate an ASCII name to each getter, as well as the return type */
    static QofQueryObject params[] = {
+		{ GTT_PROJECT_EARLIEST, QOF_QUERYCORE_INT32, (QofAccessFunc)prj_obj_get_earliest},
+		{ GTT_PROJECT_LATEST, QOF_QUERYCORE_INT32, (QofAccessFunc)prj_obj_get_latest},
 		{ NULL },
 	};
 

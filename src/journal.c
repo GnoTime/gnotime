@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include <kvp_frame.h>
+#include <qof.h>
 
 #include "app.h"
 #include "ctree.h"
@@ -590,6 +591,58 @@ html_on_url_cb(HtmlDocument *doc, const gchar * url, gpointer data)
 /* ============================================================== */
 /* HTML form (method=GET, POST) events */
 
+static QofBook *book = NULL;
+
+static void 
+bogus_query (void)
+{
+	QofQuery *q;
+	QofQueryPredData *pred_data;
+	GSList *param_list;
+	GList *results, *n;
+
+	/* Create a new query */
+	q =  qof_query_create ();
+
+	if (!book) book = qof_book_new();
+	qof_query_set_book(q, book);
+			  
+	/* Set the object type to be searched for */
+	qof_query_search_for (q, GTT_PROJECT_ID);
+
+	/* Describe the query to be performed.
+	 * We want to find all proejcts start date is later than x
+	 * and whose end date is less than y.
+	 */
+	 
+	param_list = qof_query_build_param_list (GTT_PROJECT_EARLIEST, 
+	                                            NULL);
+	pred_data = qof_query_int32_predicate (
+	                   QOF_COMPARE_GTE,         /* comparison to make */
+							 5);                      /* time to match */
+	qof_query_add_term (q, param_list, pred_data,
+	            QOF_QUERY_FIRST_TERM);             /* How to combine terms */
+	
+	param_list = qof_query_build_param_list (GTT_PROJECT_LATEST, 
+	                                            NULL);
+	pred_data = qof_query_int32_predicate (
+	                   QOF_COMPARE_GTE,         /* comparison to make */
+							 time(0)-15*24*3600);     /* time to match */
+	qof_query_add_term (q, param_list, pred_data,
+	            QOF_QUERY_AND);             /* How to combine terms */
+	
+	/* Run the query */
+   results = qof_query_run (q);
+	
+printf ("duuude results=%p\n", results);
+   /* Print out the results */
+	for (n=results; n; n=n->next)
+	{
+		GttProject *prj = n->data;
+		printf ("duude prj=%s\n", gtt_project_get_title(prj));
+	}
+}
+
 static void
 submit_clicked_cb(HtmlDocument *doc, 
                   const gchar * url, 
@@ -600,6 +653,7 @@ submit_clicked_cb(HtmlDocument *doc,
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
 	KvpFrame *kvpf;
+	
 
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
@@ -613,6 +667,9 @@ submit_clicked_cb(HtmlDocument *doc,
 
 	printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 
+	/* Build an ad-hoc query */
+	bogus_query ();
+	
 	/* We can reuse the same window, or we can open a new one */
 	do_show_report (path, wig->prj);  /* open a new window */
 

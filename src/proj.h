@@ -84,7 +84,15 @@ typedef enum
 	GTT_COMPLETED
 } GttProjectStatus;
 		
+/* -------------------------------------------------------- */
+/* Query related things -- under construction */
 
+#define GTT_PROJECT_ID "GttProjectId"
+
+#define GTT_PROJECT_EARLIEST "GttProjectEarliet"
+#define GTT_PROJECT_LATEST   "GttProjectLatest"
+
+/* -------------------------------------------------------- */
 /* The three basic structures */
 typedef struct gtt_project_s GttProject;
 typedef struct gtt_task_s GttTask;

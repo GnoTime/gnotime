@@ -14,43 +14,43 @@ gnotime_SOURCES = 		\
 	gconf-io.c	\
 	ghtml.c		\
 	ghtml-deprecated.c		\
-	idle-dialog.c	\
-	idle-timer.c	\
-	journal.c	\
-	log.c		\
-	main.c		\
-	menucmd.c	\
-	menus.c		\
-	myoaf.c		\
-	notes-area.c	\
-	plug-edit.c	\
-	plug-in.c	\
-	prefs.c		\
-	proj.c          \
-	props-invl.c    \
-	props-proj.c    \
-	props-task.c    \
-	query.c         \
-	timer.c         \
-	toolbar.c       \
-	util.c          \
-	xml-read.c      \
+	idle-dialog.c      \
+	idle-timer.c       \
+	journal.c          \
+	log.c              \
+	main.c             \
+	menucmd.c          \
+	menus.c            \
+	myoaf.c            \
+	notes-area.c       \
+	plug-edit.c        \
+	plug-in.c          \
+	prefs.c            \
+	proj.c             \
+	props-invl.c       \
+	props-proj.c       \
+	props-task.c       \
+	query.c            \
+	timer.c            \
+	toolbar.c          \
+	util.c             \
+	xml-read.c         \
 	xml-write.c
 
-noinst_HEADERS = 	\
-	app.h		\
-	ctree.h		\
-	ctree-gnome2.h		\
-	cur-proj.h	\
-	dialog.h	\
-	err-throw.h	\
-	export.h	\
-	file-io.h	\
-	gconf-gnomeui.h \
-	gconf-io.h		\
-	gconf-io-p.h		\
-	ghtml.h		\
-	ghtml-deprecated.h		\
+noinst_HEADERS =      \
+	app.h              \
+	ctree.h            \
+	ctree-gnome2.h     \
+	cur-proj.h         \
+	dialog.h           \
+	err-throw.h        \
+	export.h           \
+	file-io.h          \
+	gconf-gnomeui.h    \
+	gconf-io.h         \
+	gconf-io-p.h       \
+	ghtml.h            \
+	ghtml-deprecated.h \
 	gtt.h		\
 	idle-dialog.h	\
 	idle-timer.h	\
@@ -88,6 +88,7 @@ AM_CFLAGS = -g -Wall     \
 	${LIBGLADE_CFLAGS} 
 
 INCLUDES =                                   \
+	-I../lib                                  \
 	-I../lib/qof                              \
 	-I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \

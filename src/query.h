@@ -26,6 +26,10 @@
  * the data in the system.  In some fancier world, these would
  * be replaced by a generic query mechanism; but for right now,
  * these are some hard-coded routines that return what we need.
+ *
+ * (The port to a fancier query system is in progress, but far 
+ * from complete.  Some of the routines here may go away in the 
+ * future.)
  */
 
 /* The following struct is returned as the result of a query.

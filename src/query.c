@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <glib.h>
+#include <limits.h>
 
 #include "proj.h"
 #include "proj_p.h"
@@ -301,7 +302,7 @@ gtt_project_get_earliest_start (GttProject *proj, gboolean include_subprojects)
 {
 	time_t earliest;
 	
-	earliest = time(0);
+	earliest = INT_MAX;
 	if (!proj) return  earliest;
 	
 	if (include_subprojects)
@@ -321,7 +322,7 @@ gtt_project_get_latest_stop (GttProject *proj, gboolean include_subprojects)
 {
 	time_t latest;
 	
-	latest = time(0);
+	latest = 0;
 	if (!proj) return  latest;
 	
 	if (include_subprojects)
