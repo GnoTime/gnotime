@@ -281,7 +281,6 @@ menu_set_states(void)
 	gtk_widget_set_sensitive(menu_main_edit[MENU_EDIT_PASTE_POS].widget,
 				 (cutted_project) ? 1 : 0);
 
-printf ("duuude cutted project=%p\n", cutted_project);
 	if (menu_popup[MENU_POPUP_CUT_POS].widget)
 	{
 		gtk_widget_set_sensitive(menu_popup[MENU_POPUP_PASTE_POS].widget,
