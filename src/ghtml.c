@@ -31,6 +31,7 @@
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
 #include "proj.h"
+#include "query.h"
 #include "util.h"
 
 
@@ -508,6 +509,68 @@ ret_intervals (SCM task_list)
 
 
 /* ============================================================== */
+/* Return a list of date handles for accessing daily totals */
+
+static SCM
+do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
+{
+	SCM rc, rpt;
+	int i;
+	GArray *arr;  
+	time_t earliest;
+	struct tm tday;
+	
+	/* Get a pointer to null */
+	rc = SCM_EOL;
+	if (!prj) return rc;
+	
+	/* get the project data */
+	arr = gtt_project_get_daily_time (prj, FALSE);
+	earliest = gtt_project_get_earliest_start (prj, FALSE);
+	
+	/* format the start date */
+	localtime_r (&earliest, &tday);
+	tday.tm_mday --;
+
+	for (i=0; i< arr->len; i++)
+	{
+		char buff[100];
+		SCM node;
+		time_t rptdate, secs;
+		
+		tday.tm_mday ++;
+		secs = g_array_index (arr, time_t, i);
+
+		/* Skip days for which no time has been spent */
+		if (0 == secs) continue;
+
+		/* Print time spent on project this day */
+		print_time (buff, 100, secs);
+	   node = gh_str2scm (buff, strlen (buff));
+		rpt = gh_cons (node, SCM_EOL);
+		
+		/* print date */
+		rptdate = mktime (&tday);
+		print_date (buff, 100, rptdate);
+	   node = gh_str2scm (buff, strlen (buff));
+		rpt = gh_cons (node, rpt);
+		
+		rc = gh_cons (rpt, rc);
+	}
+	g_array_free (arr, TRUE);
+
+	return rc;
+}
+
+static SCM
+ret_daily_totals (SCM proj_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_apply_on_project (ghtml, proj_list, do_ret_daily_totals);
+}
+
+
+/* ============================================================== */
 /* Define a set of subroutines that accept a scheme list of projects,
  * applies the gtt_project function on each, and then returns a 
  * scheme list containing the results.   
@@ -678,7 +741,7 @@ RET_FUNC (SCM task_list)                                            \
 RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
 		  
 /* ============================================================== */
-/* Handle ret_task_memo_link in the almost-standard way,
+/* Handle ret_task_memo in the almost-standard way,
  * i.e. as
  * RET_TASK_STR (ret_task_memo, gtt_task_get_memo) 
  * except that we need to handle url links as well. 
@@ -1079,6 +1142,7 @@ register_procs (void)
 
 	gh_new_procedure("gtt-tasks",              ret_tasks,              1, 0, 0);
 	gh_new_procedure("gtt-intervals",          ret_intervals,          1, 0, 0);
+	gh_new_procedure("gtt-daily-totals",       ret_daily_totals,       1, 0, 0);
 	
 	gh_new_procedure("gtt-links-on",           set_links_on,           0, 0, 0);
 	gh_new_procedure("gtt-links-off",          set_links_off,          0, 0, 0);
@@ -1095,6 +1159,7 @@ register_procs (void)
 	gh_new_procedure("gtt-project-due-date",   ret_project_due_date, 1, 0, 0);
 	gh_new_procedure("gtt-project-sizing",     ret_project_sizing, 1, 0, 0);
 	gh_new_procedure("gtt-project-percent-complete", ret_project_percent, 1, 0, 0);
+	
 	gh_new_procedure("gtt-task-memo",          ret_task_memo,          1, 0, 0);
 	gh_new_procedure("gtt-task-notes",         ret_task_notes,         1, 0, 0);
 	gh_new_procedure("gtt-task-billstatus",    ret_task_billstatus,    1, 0, 0);
@@ -1107,9 +1172,10 @@ register_procs (void)
 	gh_new_procedure("gtt-interval-stop",      ret_ivl_stop,           1, 0, 0);
 	gh_new_procedure("gtt-interval-fuzz",      ret_ivl_fuzz,           1, 0, 0);
 	gh_new_procedure("gtt-interval-elapsed-str", ret_ivl_elapsed_str,  1, 0, 0);
-	gh_new_procedure("gtt-interval-start-str",  ret_ivl_start_str,     1, 0, 0);
-	gh_new_procedure("gtt-interval-stop-str",   ret_ivl_stop_str,      1, 0, 0);
-	gh_new_procedure("gtt-interval-fuzz-str",   ret_ivl_fuzz_str,      1, 0, 0);
+	gh_new_procedure("gtt-interval-start-str", ret_ivl_start_str,      1, 0, 0);
+	gh_new_procedure("gtt-interval-stop-str",  ret_ivl_stop_str,       1, 0, 0);
+	gh_new_procedure("gtt-interval-fuzz-str",  ret_ivl_fuzz_str,       1, 0, 0);
+	
 }
 
 
