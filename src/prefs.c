@@ -78,6 +78,9 @@ char *config_logfile_stop = NULL;
 int config_logfile_use = 0;
 int config_logfile_min_secs = 0;
 
+int config_daystart_offset = 0;
+int config_weekstart_offset = 0;
+
 char * config_data_url = NULL;
 
 typedef struct _PrefsDialog 
@@ -134,6 +137,9 @@ typedef struct _PrefsDialog
 	GtkCheckButton *show_tb_exit;
 
 	GtkEntry       *idle_secs;
+	GtkEntry       *daystart_secs;
+	GtkOptionMenu  *daystart_menu;
+	GtkOptionMenu  *weekstart_menu;
 } PrefsDialog;
 
 
@@ -275,7 +281,37 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 
 	if (5 == page)
 	{
+		GList *node;
+		GtkWidget *menu, *w;
+
 		config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
+
+		/* Hunt for the hour-of night on which to start */
+		menu = gtk_option_menu_get_menu (odlg->daystart_menu);
+		int hour=-3;  /* menu starts at 9PM */
+		w = gtk_menu_get_active (GTK_MENU(menu));
+		for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
+		{
+			if (w == node->data)
+			{
+				config_daystart_offset = 3600*hour;
+				break;
+			}
+			hour++;
+		}
+
+		menu = gtk_option_menu_get_menu (odlg->weekstart_menu);
+		int day=0;  /* menu starts at Sunday */
+		w = gtk_menu_get_active (GTK_MENU(menu));
+		for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
+		{
+			if (w == node->data)
+			{
+				config_weekstart_offset = day;
+				break;
+			}
+			day++;
+		}
 	}
 
 	/* Also save them the to file at this point */
@@ -380,6 +416,43 @@ options_dialog_set(PrefsDialog *odlg)
 	/* misc section */
 	g_snprintf(s, sizeof (s), "%d", config_idle_timeout);
 	gtk_entry_set_text(GTK_ENTRY(odlg->idle_secs), s);
+
+	int i;
+	GList *node;
+	GtkWidget *w;
+	GtkMenuShell *menu;
+
+	/* Set the correct menu item based on current values */
+	w = gtk_option_menu_get_menu (odlg->daystart_menu);
+	menu = GTK_MENU_SHELL(w);
+	i = -3; /* menu starts at 9PM */
+	int hour = (config_daystart_offset +1800)/3600;
+	for (node = menu->children; node; node=node->next)
+	{
+		if (hour == i)
+		{
+			gtk_menu_shell_select_item (menu, node->data);
+			gtk_menu_shell_activate_item (menu, node->data, 1);
+			break;
+		}
+		i++;
+	}
+
+	/* Set the correct menu item based on current values */
+	w = gtk_option_menu_get_menu (odlg->weekstart_menu);
+	menu = GTK_MENU_SHELL(w);
+	i = 0; /* menu starts on Sunday */
+	int day = config_weekstart_offset;
+	for (node = menu->children; node; node=node->next)
+	{
+		if (day == i)
+		{
+			gtk_menu_shell_select_item (menu, node->data);
+			gtk_menu_shell_activate_item (menu, node->data, 1);
+			break;
+		}
+		i++;
+	}
 
 	/* set to unmodified as it reflects the current state of the app */
 	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(odlg->dlg), FALSE);
@@ -539,6 +612,15 @@ misc_options(PrefsDialog *dlg)
 
 	w = GETWID ("idle secs");
 	dlg->idle_secs = GTK_ENTRY(w);
+
+	w = GETWID ("daystart entry");
+	dlg->daystart_secs = GTK_ENTRY(w);
+
+	w = GETWID ("daystart optionmenu");
+	dlg->daystart_menu = GTK_OPTION_MENU(w);
+
+	w = GETWID ("weekstart optionmenu");
+	dlg->weekstart_menu = GTK_OPTION_MENU(w);
 }
 
 /* ============================================================== */

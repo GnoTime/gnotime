@@ -21,6 +21,7 @@
 #include <glib.h>
 #include <limits.h>
 
+#include "prefs.h"  /* XXX tmp hack for global config_daystart */
 #include "proj.h"
 #include "proj_p.h"
 #include "query.h"
@@ -82,6 +83,8 @@ day_bin (GttInterval *ivl, gpointer data)
 
 		stm.tm_mday ++;
 		end_of_day = mktime (&stm);
+		/* config_daystart_offset==3*3600 means new day starts at 3AM */
+		end_of_day += config_daystart_offset;
 		
 		if (stop < end_of_day)
 		{
@@ -197,6 +200,8 @@ init_bins (DayArray *da)
 	stm.tm_hour = 0;
 
 	end_of_day = mktime (&stm);
+	/* config_daystart_offset==3*3600 means new day starts at 3AM */
+	end_of_day += config_daystart_offset;
 	for (i=0; i<da->array_len; i++)
 	{
 		GttBucket *bu;
@@ -205,6 +210,7 @@ init_bins (DayArray *da)
 		start_of_day = end_of_day;
 		stm.tm_mday ++;
 		end_of_day = mktime (&stm);
+		end_of_day += config_daystart_offset;
 		
 		bu->start = start_of_day;
 		bu->end = end_of_day;

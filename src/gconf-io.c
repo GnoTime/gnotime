@@ -218,6 +218,9 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
 	SETINT ("/Misc/NumProjects", -1);
 
+	SETINT ("/Misc/DayStartOffset", config_daystart_offset);
+	SETINT ("/Misc/WeekStartOffset", config_weekstart_offset);
+
 	/* Write out the user's report menu structure */
 	gtt_save_reports_menu ();
 
@@ -348,6 +351,8 @@ gtt_gconf_load (void)
 
    config_idle_timeout = GETINT ("/Misc/IdleTimeout", 300);
    config_autosave_period = GETINT ("/Misc/AutosavePeriod", 60);
+   config_daystart_offset = GETINT ("/Misc/DayStartOffset", 0);
+   config_weekstart_offset = GETINT ("/Misc/WeekStartOffset", 0);
 
 	/* Reset the main window width and height to the values 
 	 * last stored in the config file.  Note that if the user 

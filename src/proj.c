@@ -31,6 +31,7 @@
 
 #include "err-throw.h"
 #include "log.h"
+#include "prefs.h"  /* XXX tmp hack for config_* */
 #include "proj.h"
 #include "proj_p.h"
 #include "query.h"  /* temp hack for query */
@@ -621,6 +622,11 @@ get_midnight (time_t last)
 	lt.tm_hour = 0;
 	midnight = mktime (&lt);
 
+	/* If config_daystart_offset == 3*3600 then the new day
+	 * will start at 3AM, for example.
+	 */
+	midnight += config_daystart_offset;
+
 	return midnight;
 }
 
@@ -641,6 +647,10 @@ get_sunday (time_t last)
 	lt.tm_hour = 0;
 	lt.tm_mday -= lt.tm_wday;
 	sunday = mktime (&lt);
+
+	/* If config_weekstart_offset == 1 then a new week starts
+	 * on monday, not sunday. */
+	sunday += 24*3600* config_weekstart_offset;
 
 	return sunday;
 }
@@ -694,10 +704,10 @@ gtt_project_compat_set_secs (GttProject *proj, int sever, int sday, time_t last)
 	GttTask *tsk;
 	GttInterval *ivl;
 
-	/* get the midnight of the last update */
+	/* Get the midnight of the last update */
 	midnight = get_midnight (last);
 
-	/* old GTT data will just be one big interval 
+	/* Old GTT data will just be one big interval 
 	 * lumped under one task */
 	tsk = gtt_task_new ();
 	gtt_task_set_memo (tsk, _("Old GTT Tasks"));
@@ -1337,7 +1347,7 @@ scrub_intervals (GttTask *tsk, GttInterval *handle)
 			{
 				GttInterval *nivl = node->next->data;
 
-				/* merge only if the intervals are in the same day */
+				/* Merge only if the intervals are in the same day */
 				if (get_midnight (ivl->start) == get_midnight (nivl->stop))
 				{
 					gap_down = ivl->start - nivl->stop;

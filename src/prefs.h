@@ -66,6 +66,9 @@ extern int config_logfile_min_secs;
 
 extern char *config_data_url;
 
+extern int config_daystart_offset;
+extern int config_weekstart_offset;
+
 /* Pop up a dialog box for setting user preferences */
 void prefs_dialog_show (void);
 
