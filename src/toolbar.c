@@ -179,10 +179,10 @@ build_toolbar(void)
 		 * instead we draw our own button, and use a stock 
 		 * image. */
 		mytbar->journal_button = toolbar_append_stock_button(mytbar->tbar, 
-				 _("Journal"),
+				 _("Activity Journal"),
 				 _("View and Edit Timestamp Logs"),
 				 GNOME_STOCK_BOOK_OPEN,
-				 (GtkSignalFunc) show_report, "journal.ghtml");
+				 (GtkSignalFunc) show_report, "time-interval.ghtml");
 		position ++;
 	}
 	if (config_show_tb_prop) 
