@@ -717,8 +717,9 @@ proc_interrupts_activity_p (IdleTimeout *si)
 
 
  FAIL:
-  if (f1)
+  if (f1 && (f1 != f0))
     fclose (f1);
+  f1 = NULL;
 
   if (f0 && f0 != (FILE *) -1)
     fclose (f0);
