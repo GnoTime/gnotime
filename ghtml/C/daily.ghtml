@@ -1,0 +1,48 @@
+
+<html>
+<head>
+<title>Daily Report</title>
+</head>
+<body>
+<center>
+<h1>Daily Report for 
+<?scm (gtt-show-project-title) ?>
+ - 
+<?scm (gtt-show-project-desc) ?>
+</h1>
+
+This is an example of a daily report.  This is stil under construction.
+Make a copy of this file, and edit it
+to create your own custom reports.
+
+<br><br>
+
+
+<table border=1>
+<tr>
+<th>Date</th>
+<th>Total Time</th>
+</tr>
+
+<?scm
+
+   (gtt-show-daily (gtt-daily-totals (gtt-linked-project))
+
+   (list 
+      ''"<tr>"
+      ''"<td> &nbsp; " gtt-daily-day-str  ''" &nbsp; </td>"
+      ''"<td align='right'> &nbsp; "     gtt-daily-time-str ''" &nbsp; </td>"
+      
+      ''"</tr>"
+     ))
+
+
+?>
+</table>
+
+
+                                         
+<br><br>
+That's all Folks!
+</body>
+</html>
