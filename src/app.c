@@ -149,13 +149,11 @@ cur_proj_set(GttProject *proj)
 	{
 		cur_proj = proj;
 		gtt_project_timer_start (proj); 
-		ctree_select (global_ptw, proj);
 	}
 	else
 	{
 		prev_proj = cur_proj;
 		cur_proj = NULL;
-		if (prev_proj) ctree_unselect (global_ptw, prev_proj);
 	}
 	log_proj(proj);
 	menu_set_states();

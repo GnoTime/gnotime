@@ -33,10 +33,6 @@
 #include "timer.h"
 #include "util.h"
 
-/* There is a bug in clist which makes all but the last column headers
- * 0 pixels wide. This hack fixes this. */
-// #define CLIST_HEADER_HACK 1
-
 /* column types */
 typedef enum {
 	NULL_COL = 0,
@@ -101,6 +97,13 @@ struct ProjTreeWindow_s
 	GtkCTreeNode *source_ctree_node;
 	GtkCTreeNode *parent_ctree_node;
 	GtkCTreeNode *sibling_ctree_node;
+
+	/* colors to use to indicate active project */
+	GdkColor active_bgcolor;
+	GdkColor neutral_bgcolor;
+
+	/* Should the select row be shown? */
+	gboolean show_select_row;
 };
 
 static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
@@ -111,90 +114,85 @@ static void ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn);
 
 /* ============================================================== */
 
-static int
-widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
+static void
+start_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
-	GtkCTreeNode *rownode;
-	GdkEventKey *kev = (GdkEventKey *)event;
+	GtkCTree *ctree = ptw->ctree;
+	GttProject *prj = ptn->prj;
+	
+	cur_proj_set(prj);
+	gtt_project_timer_update (prj);
+	
+	ctree_update_label (ptw, prj);
 
-	if (event->type != GDK_KEY_RELEASE) return FALSE;
-	switch (kev->keyval)
-	{
-		case GDK_Return:
-			rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
-			if (rownode)
-			{
-				ProjTreeNode *ptn;
-				ptn = gtk_ctree_node_get_row_data(ctree, rownode);
-				if ((ptn->prj == cur_proj) && timer_is_running())
-				{
-					gtk_ctree_unselect (ctree, rownode);
-					cur_proj_set (NULL);
-				}
-				else
-				{
-					gtk_ctree_select (ctree, rownode);
-					cur_proj_set (ptn->prj);
-				}
-				gtt_project_timer_update (ptn->prj);
-				ctree_update_label (ptn->ptw, ptn->prj);
-			}
-			return TRUE;
-		case GDK_Up:
-		case GDK_Down:
-			return FALSE;
-		case GDK_Left:
-			rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
-			gtk_ctree_collapse (ctree, rownode);
-			return TRUE;
-		case GDK_Right:
-			rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
-			gtk_ctree_expand (ctree, rownode);
-			return TRUE;
-		default:
-			return FALSE;
-	}
-	return FALSE;
+	gtk_ctree_node_set_background (ctree, ptn->ctnode, &ptw->active_bgcolor);
+	
+	/* unselect so that select color doesn't block the active color */
+	/* toggle to make it the focus row */
+	gtk_ctree_select (ctree, ptn->ctnode);
+	gtk_ctree_unselect (ctree, ptn->ctnode);
 }
 
-static int
-widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
+
+
+static void
+stop_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
-	ProjTreeWindow *ptw = data;
-	int row,column;
-	GdkEventButton *bevent = (GdkEventButton *)event;
-	GtkWidget *menu;
+	GtkCTree *ctree = ptw->ctree;
+	GttProject *prj = ptn->prj;
 	
-	/* The only button event we handle are right-mouse-button,
-	 * end double-click-left-mouse-button. */
-	if (!((event->type == GDK_2BUTTON_PRESS && bevent->button==1) ||
-	      (event->type == GDK_BUTTON_PRESS && bevent->button==3)))
-		return FALSE;
-
-	gtk_clist_get_selection_info(clist,bevent->x,bevent->y,&row,&column);
-	if (0 > row) return FALSE;
+	if (prj != cur_proj) return;
+	cur_proj_set(NULL);
 	
-	/* change the focus row */
-	gtk_clist_freeze(clist);
-	clist->focus_row = row;
-	gtk_clist_thaw(clist);
-
-	if (event->type == GDK_2BUTTON_PRESS) 
+	gtt_project_timer_update (prj);
+	ctree_update_label (ptw, prj);
+	gtk_ctree_node_set_background (ctree, ptn->ctnode, &ptw->neutral_bgcolor);
+	
+	/* Use the select color, if its desired */
+	if (ptn->ptw->show_select_row)
 	{
-		/* double-click left mouse edits the project.
-		 * but maybe we want to change double-click to 
-		 * something more useful ... */
-		GttProject *prj;
-		prj = ctree_get_focus_project (ptw);
-		prop_dialog_show (prj);
-	} 
-	else 
-	{
-		/* right mouse button brings up popup menu */
-		menu = menus_get_popup();
-		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, bevent->time);
+		gtk_ctree_select (ctree, ptn->ctnode);
 	}
-	return TRUE;
+}
+
+static void
+toggle_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
+{
+	gboolean running = timer_is_running();
+	if ((ptn->prj == cur_proj) && running)
+	{
+		stop_timer_for_row (ptw, ptn);
+	}
+	else
+	{
+		if (running)
+		{
+			ProjTreeNode *curr_ptn;
+			curr_ptn = gtt_project_get_private_data (cur_proj);
+			stop_timer_for_row (ptw, curr_ptn);
+		}
+		start_timer_for_row (ptw, ptn);
+	}
+}
+
+void 
+ctree_start_timer (GttProject *prj)
+{
+	ProjTreeNode *ptn;
+	if (!prj) return;
+	ptn = gtt_project_get_private_data (prj);
+	if (!ptn) return;
+	start_timer_for_row (ptn->ptw, ptn);
+}
+
+void 
+ctree_stop_timer (GttProject *prj)
+{
+	ProjTreeNode *ptn;
+	if (!prj) return;
+	ptn = gtt_project_get_private_data (prj);
+	if (!ptn) return;
+	stop_timer_for_row (ptn->ptw, ptn);
 }
 
 /* ============================================================== */
@@ -217,6 +215,99 @@ ctree_get_focus_project (ProjTreeWindow *ptw)
 	return proj;
 }
 
+
+static GtkCTreeNode *
+get_focus_row (GtkCTree *ctree)
+{
+	GtkCTreeNode *rownode;
+	rownode = gtk_ctree_node_nth (ctree,  GTK_CLIST(ctree)->focus_row);
+	return rownode;
+}
+
+/* ============================================================== */
+
+static int
+widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
+{
+	ProjTreeNode *ptn;
+	GtkCTreeNode *rownode;
+	GdkEventKey *kev = (GdkEventKey *)event;
+
+	if (event->type != GDK_KEY_RELEASE) return FALSE;
+	switch (kev->keyval)
+	{
+		case GDK_Return:
+			rownode = get_focus_row(ctree);
+			if (rownode)
+			{
+				ptn = gtk_ctree_node_get_row_data(ctree, rownode);
+				toggle_timer_for_row (ptn->ptw, ptn);
+			}
+			return TRUE;
+		case GDK_Up:
+		case GDK_Down:
+			rownode = get_focus_row(ctree);
+			if (rownode)
+			{
+				ptn = gtk_ctree_node_get_row_data(ctree, rownode);
+			   if (ptn->ptw->show_select_row) gtk_ctree_select (ctree, rownode);
+			}
+			return FALSE;
+		case GDK_Left:
+			rownode = get_focus_row(ctree);
+			gtk_ctree_collapse (ctree, rownode);
+			return TRUE;
+		case GDK_Right:
+			rownode = get_focus_row(ctree);
+			gtk_ctree_expand (ctree, rownode);
+			return TRUE;
+		default:
+			return FALSE;
+	}
+	return FALSE;
+}
+
+static int
+widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
+{
+	ProjTreeWindow *ptw = data;
+	int row,column;
+	GdkEventButton *bevent = (GdkEventButton *)event;
+	GtkWidget *menu;
+	ProjTreeNode *ptn;
+	GtkCTreeNode *rownode;
+	
+	/* The only button event we handle are right-mouse-button,
+	 * end double-click-left-mouse-button. */
+	if (!((event->type == GDK_2BUTTON_PRESS && bevent->button==1) ||
+	      (event->type == GDK_BUTTON_PRESS && bevent->button==3)))
+		return FALSE;
+
+	gtk_clist_get_selection_info(clist,bevent->x,bevent->y,&row,&column);
+	if (0 > row) return FALSE;
+	
+	/* change the focus row */
+	gtk_clist_freeze(clist);
+	clist->focus_row = row;
+	gtk_clist_thaw(clist);
+
+	rownode = get_focus_row(ptw->ctree);
+	if (event->type == GDK_2BUTTON_PRESS) 
+	{
+		/* double-click left mouse toggles the project timer. */
+		ptn = gtk_ctree_node_get_row_data(ptw->ctree, rownode);
+		toggle_timer_for_row (ptw, ptn);
+	} 
+	else 
+	{
+		/* right mouse button brings up popup menu */
+		menu = menus_get_popup();
+		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, bevent->time);
+	   if (ptw->show_select_row) gtk_ctree_select (GTK_CTREE(clist), rownode);
+	}
+	return TRUE;
+}
+
 /* ============================================================== */
 
 static void
@@ -224,9 +315,19 @@ tree_select_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 {
 	ProjTreeNode *ptn;
 	ptn = gtk_ctree_node_get_row_data(ctree, rownode);
-	cur_proj_set(ptn->prj);
-	gtt_project_timer_update (ptn->prj);
-	ctree_update_label (ptn->ptw, ptn->prj);
+	
+	/* Make sure that the blue of the select doesn't clobber
+	 * the active color */
+	if ((ptn->prj == cur_proj) && timer_is_running())
+	{
+		gtk_ctree_unselect (ctree, ptn->ctnode);
+	}
+
+	/* don't show the row no matter what, if its not desired */
+	if (FALSE == ptn->ptw->show_select_row)
+	{
+		gtk_ctree_unselect (ctree, ptn->ctnode);
+	}
 }
 
 
@@ -234,12 +335,7 @@ tree_select_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 static void
 tree_unselect_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 {
-	ProjTreeNode *ptn;
-	ptn = gtk_ctree_node_get_row_data(ctree, rownode);
-	if (ptn->prj != cur_proj) return;
-	cur_proj_set(NULL);
-	gtt_project_timer_update (ptn->prj);
-	ctree_update_label (ptn->ptw, ptn->prj);
+	/* nothing in this incarnation */
 }
 
 static void 
@@ -1202,11 +1298,26 @@ ctree_new(void)
 		gtk_container_add (GTK_CONTAINER(sibling_pixmap), wimg);
 	}
 
+	/* Set up background colors that will be used to mark the active
+	 * project */
+	gdk_color_parse("green", &ptw->active_bgcolor);
+	gdk_color_alloc(gdk_colormap_get_system(), &ptw->active_bgcolor);
+
+	gdk_color_parse("white", &ptw->neutral_bgcolor);
+	gdk_color_alloc(gdk_colormap_get_system(), &ptw->neutral_bgcolor);
+
+	ptw->show_select_row = FALSE;
+
 	return ptw;
 }
 
 
 /* ========================================================= */
+/* The ctree_setup routine runs once, during initialization,
+ * to set up the state of the ctree widget infrastructure.
+ * It can't be run until after the project data has been
+ * read in.
+ */
 
 void
 ctree_setup (ProjTreeWindow *ptw)
@@ -1234,7 +1345,7 @@ ctree_setup (ProjTreeWindow *ptw)
 		gtk_clist_clear(GTK_CLIST(tree_w));
 	}
 
-	/* next, highlight the current project, and expand 
+	/* Next, highlight the current project, and expand 
 	 * the tree branches to it, if needed */
 	if (running_project) cur_proj_set (running_project);
 	if (cur_proj) 
@@ -1243,7 +1354,11 @@ ctree_setup (ProjTreeWindow *ptw)
 		ProjTreeNode *ptn;
 
 		ptn = gtt_project_get_private_data (cur_proj);
-		gtk_ctree_select(tree_w, ptn->ctnode);
+		
+		/* Select to set initial focus row */
+		gtk_ctree_select (tree_w, ptn->ctnode);  
+		
+		start_timer_for_row (ptn->ptw, ptn);
 		parent = gtt_project_get_parent (cur_proj);
 		while (parent) 
 		{
@@ -1252,10 +1367,6 @@ ctree_setup (ProjTreeWindow *ptw)
 			parent = gtt_project_get_parent (parent);
 		}
 	}
-
-#ifdef CLIST_HEADER_HACK
-	clist_header_hack(GTK_WIDGET(tree_w));
-#endif /* CLIST_HEADER_HACK */
 
 	menu_set_states();
 
@@ -1283,12 +1394,15 @@ ctree_setup (ProjTreeWindow *ptw)
 	{
 		ProjTreeNode *ptn;
 		ptn = gtt_project_get_private_data (cur_proj);
-		gtk_ctree_node_moveto(tree_w, ptn->ctnode, -1,
-				 0.5, 0.0);
-		/* hack alert -- we should set the focus row 
+
+		/* Make sure that the active row is visible */
+		gtk_ctree_node_moveto(tree_w, ptn->ctnode, -1, 0.5, 0.0);
+
+		/* XXX hack alert -- we should set the focus row 
 		 * here as well */
 	}
-	gtk_widget_queue_draw(GTK_WIDGET(tree_w));
+	gtk_widget_grab_focus (GTK_WIDGET(tree_w));
+	gtk_widget_queue_draw (GTK_WIDGET(tree_w));
 }
 
 /* ========================================================= */
@@ -1458,30 +1572,6 @@ ctree_update_label(ProjTreeWindow *ptw, GttProject *p)
 
 	ctree_update_row (ptw, ptn);
 	update_status_bar();
-}
-
-/* ============================================================== */
-
-void 
-ctree_unselect (ProjTreeWindow *ptw, GttProject *p)
-{
-	ProjTreeNode *ptn;
-	if (!ptw || !p) return;
-	ptn = gtt_project_get_private_data (p);
-	if (!ptn) return;
-
-	gtk_ctree_unselect(ptw->ctree, ptn->ctnode);
-}
-
-void 
-ctree_select (ProjTreeWindow *ptw, GttProject *p)
-{
-	ProjTreeNode *ptn;
-	if (!ptw || !p) return;
-	ptn = gtt_project_get_private_data (p);
-	if (!ptn) return;
-
-	gtk_ctree_select(ptw->ctree, ptn->ctnode);
 }
 
 /* ============================================================== */

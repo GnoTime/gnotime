@@ -1682,30 +1682,6 @@ ctree_update_label(ProjTreeWindow *ptw, GttProject *p)
 /* ============================================================== */
 
 void 
-ctree_unselect (ProjTreeWindow *ptw, GttProject *p)
-{
-	ProjTreeNode *ptn;
-	if (!ptw || !p) return;
-	ptn = gtt_project_get_private_data (p);
-	if (!ptn) return;
-
-	gtk_tree_selection_unselect_iter (ptw->selection, &ptn->iter);
-}
-
-void 
-ctree_select (ProjTreeWindow *ptw, GttProject *p)
-{
-	ProjTreeNode *ptn;
-	if (!ptw || !p) return;
-	ptn = gtt_project_get_private_data (p);
-	if (!ptn) return;
-
-	gtk_tree_selection_select_iter (ptw->selection, &ptn->iter);
-}
-
-/* ============================================================== */
-
-void 
 ctree_titles_show (ProjTreeWindow *ptw)
 {
 	if (!ptw) return;

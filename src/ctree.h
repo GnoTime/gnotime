@@ -51,12 +51,20 @@ void ctree_add(ProjTreeWindow *, GttProject *p, GtkCTreeNode *parent);
 void ctree_insert_before(ProjTreeWindow *, GttProject *p, GttProject *insert_before_me);
 void ctree_insert_after(ProjTreeWindow *, GttProject *p, GttProject *insert_after_me);
 
+/* The ctree_start_timer() routine handles all of the ctree-related
+ *    work for starting a project running.  This will not only color
+ *    the project as 'active', but it will also actually start the 
+ *    project timer ticking.
+ *
+ * The ctree_stop_timer() routine stop the project timer.
+ */
+void ctree_start_timer (GttProject *prj);
+void ctree_stop_timer (GttProject *prj);
+
 void ctree_remove(ProjTreeWindow *, GttProject *p);
 void ctree_update_label(ProjTreeWindow *, GttProject *p);
 void ctree_update_title(ProjTreeWindow *, GttProject *p);
 void ctree_update_desc(ProjTreeWindow *, GttProject *p);
-void ctree_unselect(ProjTreeWindow *, GttProject *p);
-void ctree_select(ProjTreeWindow *, GttProject *p);
 
 void ctree_set_col_width (ProjTreeWindow *ptw, int col, int width);
 int  ctree_get_col_width (ProjTreeWindow *ptw, int col);

@@ -68,8 +68,6 @@ void ctree_remove(ProjTreeWindow *, GttProject *p);
 void ctree_update_label(ProjTreeWindow *, GttProject *p);
 void ctree_update_title(ProjTreeWindow *, GttProject *p);
 void ctree_update_desc(ProjTreeWindow *, GttProject *p);
-void ctree_unselect(ProjTreeWindow *, GttProject *p);
-void ctree_select(ProjTreeWindow *, GttProject *p);
 
 void ctree_set_col_width (ProjTreeWindow *ptw, int col, int width);
 int  ctree_get_col_width (ProjTreeWindow *ptw, int col);
