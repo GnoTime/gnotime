@@ -39,10 +39,10 @@
 ;; If a report query was run, use results from that; 
 ;; show selected project & subprojects
 ;
-(define (gtt-selected-or-query-results)
+(define (gtt-linked-or-query-results)
         (if (gtt-did-query) 
             (gtt-query-results)
-            (gtt-project-subprojects (gtt-selected-project))
+            (gtt-project-subprojects (gtt-linked-project))
         )
 )
 

@@ -4,16 +4,17 @@
   -  This file is meant to be inlined with the web pages!
   -->
 <style type="text/css">
-   body
-   {
-   background: #c8c8d3;
-   font-color: #000000;
-   }
-	.gnotime-diary-entry
+	body
 	{
-   background: #e0e0e0;
+	background: #c8c8d3;
+	font-color: #000000;
+	}
+	.gnotime-diary-entry,
+	.gnotime-project-status
+	{
+	background: #e0e0e0;
 	display: block;
-	width: 500px;
+	width: 98%;
 	margin: 4px 2px 4px 8px;
 	border: solid 2px #000000;
 	margin: 4px 2px 4px 8px;
@@ -25,19 +26,25 @@
 	font-stretch: wider;
 	margin: 4px 2px 1px 6px;
 	}
-	.gnotime-diary-notes
+	.gnotime-diary-notes,
+	.gnotime-project-status-notes
 	{
+	background: #f8f8f0;
+	width: 100%;
+	border: 0px;
 	margin: 4px 2px 1px 6px;
 	}
 	.gnotime-start-stop-table
 	{
-   background: #f8f8f0;
+	background: #f8f8f0;
 	margin: 4px 4px 4px 4px;
 	border: solid 1px #9999a9
 	}
-	.gnotime-start-stop-table-header
+	.gnotime-start-stop-table-header,
+	.gnotime-project-status-overview
 	{
-   background: #ebebeb;
+	background: #ebebeb;
+	display: block;
 	font-size: 105%;
 	font-weight: bold;
 	}

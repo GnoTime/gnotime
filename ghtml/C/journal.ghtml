@@ -31,7 +31,7 @@
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
-        ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=500 border=0 cellpadding=4><tr><td>\n"
+        ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=100% border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-memo>"
         ''"<b><big>"
                gtt-task-memo 
@@ -45,7 +45,7 @@
                gtt-task-latest-str
         ''"</b></div>\n"
         ''"<br><br>\n"
-        ''"<table class=gnotime-diary-notes bgcolor=#f8f8f8 width=490 border=0 cellpadding=4><tr><td>\n"
+        ''"<table class=gnotime-diary-notes bgcolor=#f8f8f8 width=100% border=0 cellpadding=4><tr><td>\n"
         ''"<div class=gnotime-diary-notes>\n"
                gtt-task-notes 
         ''"\n</div></td></tr></table>\n"

@@ -3,37 +3,49 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>
-<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+<?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?>
 Project Status</title>
 <?scm (gtt-include "gtt-style.css") ?>
 </head>
 <body bgcolor="#c8c8d3">
 <div id="gnotime-body">
 <h1>
-<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
+<?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?>
 --
-<?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
+<?scm (gtt-show (gtt-project-desc (gtt-linked-project))) ?>
 </h1>
-<?scm (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+<div id="gnotime-project-status-overview">
+<?scm (gtt-show (gtt-project-notes (gtt-linked-project))) ?>
+</div>
 
 <h2>Project Status</h2>
 <p>
-Results shown for projects that were active between dates
-<?scm (gtt-show (gtt-kvp-str '"earliest-end-date")) ?>
-and
-<?scm (gtt-show (gtt-kvp-str '"latest-start-date")) ?>.
+<?scm 
+   ;; print out a header showing the query status, 
+   ;; but only if this report was invoked by the query generator.
+
+   (if (gtt-did-query)
+       (gtt-show (list
+          ''"Results shown for projects that were active between dates"
+                (gtt-kvp-str '"earliest-end-date")
+          ''"and"
+                (gtt-kvp-str '"latest-start-date")
+          ''".\n"
+        )))
+?>
 
 <br><br>
 
-<?scm (gtt-show-projects (gtt-selected-or-query-results)
+<?scm (gtt-show-projects (gtt-linked-or-query-results)
       (list 
-            ''"<table class=gnotime-project-status bgcolor=#e0e0e0 width=500 border=0 cellpadding=4><tr><td>\n"
+            ''"<table class=gnotime-project-status bgcolor=#e0e0e0 width=98% border=0 cellpadding=4><tr><td>\n"
             ''"<b>"       gtt-project-title   ''"</b>"
             ''" -- "      gtt-project-desc    ''"\n"
-            ''"<table class=gnotime-project-status--notes bgcolor=#f8f8f8 width=490 border=0 cellpadding=4><tr><td>\n"
+            ''"<table class=gnotime-project-status-notes bgcolor=#f8f8f8 width=100% border=0 cellpadding=4><tr><td>\n"
                           gtt-project-notes   
             ''"</td></tr></table>\n\n"
             ''"</td></tr></table>\n\n"
+            ''"<br><br>\n\n"
             ))
 ?>
 
