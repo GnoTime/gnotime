@@ -1,6 +1,7 @@
 
 Enhancements
 ------------
+Create ability to import to-do lists like this into GTT.
 
 Create feature to (auto-)prune old entries from the log.
 
@@ -30,9 +31,10 @@ creates a new task with that activity as the memo.
 Feature request: is it possible to make gtt change the project depending 
 on which window has the focus ? Like if i I am in evolution I'd like 
 to mark that time as email, if I am in emacs to "hacking" etc.
+To do this, we'd need to find out which window has focus ...
 
 Support URL format for the data file: e.g.  postgres://some.host.com/some_db
-for sql access.  Have the config file remember the last-accessed URL.
+for sql access.  More generally, use Gnome VFS ?? Why?
 
 Add support for configurable project states, for example, 
 such as adding cost estimates to the project sizing.
@@ -40,7 +42,7 @@ Allow user to configure additional states for project status,
 in addtion to/instead of the pre-defined ones.  etc.
 This could be hard ...
 
-Use Gnome MDI for the top-level windows.
+Use Gnome MDI for the top-level windows.  (why?)
 
 Later:
 ~~~~~~
@@ -65,23 +67,12 @@ Bugs -- High Priority
 ---------------------
 Documentation has to be updated/finished.
 
-When a project times out due to inactivity, set back the clock by 
-the inactivity timeout.
-
-implement 'print' journal for html window ...
+Implement 'print' journal for html window ...
 
 support for 'minimum billing blocks' is everywhere, exept in the actual invoice
 report. Add it there.
 
 fix annoying cursor shape when dragging projects around
-
-drag-n-drop ir crippled under the sawmill window manager .. not just for
-gtt, but for *all* apps that allow dragging within ctree.  Sigh.
-
-export is broken with new heirarchy. Should probably be 
-reworked to use ghtml infrastructure, and output to file, 
-instead of html viewer.  That way user gets total flexibility 
-over export formats.
 
 Bugs -- Low Priority
 --------------------
@@ -89,8 +80,6 @@ overdue projects should be highlighted in red
 
 During read of data,  don't destroy old project list until we are sure 
 that read of new project list succeeded.
-
-auto-save every xxx minutes
 
 grep for xxx fixme hack alert for additional todo items ... 
 
@@ -149,30 +138,3 @@ Display sub-projects in journal as well
 >>  preference for whether to include children or not.
 >>  
 
-invoice table display:
-
->>  I was also expecting the journal entries to be of the form:
->>  
->>          Memo1   Start   Stop    Total
->>          Memo2   Start   Stop    Total
->>          Memo3   Start   Stop    Total
->>  
->>  not
->>          Memo1
->>          Start   Stop    Total
->>          Memo2
->>          Start   Stop    Total
->>          Memo3
->>          Start   Stop    Total
->>  
->>  Then in the journal:
->>  
->>                          Journal for - Jim's Deli
->>  
->>          Memo                    Date            Start   Stop    Total
->>          Initial Install         11/09/01        15:00   18:00   03:00
->>                                  11/10/01        11:00   19:00   08:00
->>                                  11/12/01        12:00   14:00   02:00
->>          Network Configuration   11/12/01        14:00   17:00   03:00
->>                                  11/13/01        14:00   18:00   04:00
->>  
