@@ -31,8 +31,6 @@
 #include "timer.h"
 #include "toolbar.h"
 
-
-typedef struct _MyToggle MyToggle;
 typedef struct _MyToolbar MyToolbar;
 
 struct _MyToolbar 
@@ -266,6 +264,7 @@ build_toolbar(void)
 
 
 
+/* ================================================================= */
 /* TODO: I have to completely rebuild the toolbar, when I want to add or
    remove items. There should be a better way now */
 void
@@ -283,6 +282,8 @@ update_toolbar_sections(void)
 				     GTK_WIDGET(mytbar->tbar));
 	}
 
+	/* XXX probably a memory leak if we don't free/destroy
+	 * all the toolbar widgets first ... */
 	g_free(mytbar);
 	mytbar = NULL;
 	tb = build_toolbar();
