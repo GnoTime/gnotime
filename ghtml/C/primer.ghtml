@@ -136,6 +136,13 @@ $start_datime $stop_datime $elapsed $fuzz))  ?>
 	  <b><i>
      <?scm (gtt-show (gtt-project-title (gtt-projects))) ?>
 	  </i></b>
+	  <! -- 
+	  (define (purty x) (gtt-show (gtt-project-title (car x)))
+	                    (gtt-show '<br>)
+							  (purty (cdr x)) )
+	  (purty (gtt-projects))
+      -->
+													  
 
 
 </ul>

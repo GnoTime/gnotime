@@ -23,13 +23,30 @@ This is commented out and not visible
 -->
 <?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
 
+<b>
 <?scm (gtt-show-project '($memo $task_time $billable $bill_value))  ?>
+</b>
+<br><br>
 
-<h1> this is titile
-<?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?>
- - 
-<?scm (gtt-show (gtt-project-desc (gtt-selected-project))) ?>
-</h1>
+its this: 
+<?scm 
+
+(gtt-show-project-title)
+
+(define (party x) (gtt-show (gtt-project-title (car x))) 
+                  (gtt-show '<br>)  
+						(party (cdr x)) )
+
+; (define (perty x) (if (cdr x)  (perty (car x)) (gtt-show 'asdf))
+;                   (gtt-show '<br>)  
+;						(perty (cdr x)) )
+
+; (perty (gtt-projects))
+
+?>
+yeahhhhh
+
+<?scm (gtt-show-journal (gtt-projects)) ?>
 
 <br><br>
 That's all Folks!

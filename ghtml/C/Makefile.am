@@ -10,7 +10,8 @@ gttghtml_DATA =      \
 	noproject.ghtml   \
 	primer.ghtml      \
 	tab-delim.ghtml   \
-	todo.ghtml	    
+	todo.ghtml	      \
+	gtt.scm
 
 
 EXTRA_DIST =         \
