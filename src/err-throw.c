@@ -73,7 +73,7 @@ gtt_err_to_string (GttErrCode code, const char * filename)
 		case GTT_NOT_A_GTT_FILE:
 			ret = g_strdup_printf (
 				_("The file\n\t%s\n"
-				  "doesn't seem to be a GTT project data file\n"),
+				  "doesn't seem to be a GnoTime project data file\n"),
 				filename);
 			break;
 		case GTT_FILE_CORRUPT:

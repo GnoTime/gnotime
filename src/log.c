@@ -60,7 +60,7 @@ log_write(time_t t, const char *s)
 	if (t < 0)
 		t = time(NULL);
 
-	/* Translators: Format to use in the gtt logfile */
+	/* Translators: Format to use in the gnotime logfile */
 	if (strftime (date, sizeof (date), _("%b %d %H:%M:%S"),
 		      localtime(&t)) <= 0)
 		strcpy (date, "???");
