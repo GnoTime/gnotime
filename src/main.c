@@ -71,7 +71,7 @@ static char *build_lock_fname(void)
 
 	/* note it will handle unset "HOME" fairly gracefully */
 	str = g_string_new (g_getenv ("HOME"));
-	g_string_append (str, "/.gtimetracker");
+	g_string_append (str, "/.gnotime");
 #ifdef DEBUG
 	g_string_append (str, "-" VERSION);
 #endif
