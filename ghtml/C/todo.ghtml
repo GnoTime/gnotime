@@ -7,7 +7,7 @@
 <center>
 <h1>To-Do List</h1>
 
-This is a sample to-do list
+This is a sample To-Do list
 <br><br>
 The displayed columns, and the order in which they are displayed,
 can be changed by making a copy of the file <tt>"todo.ghtml"</tt>
@@ -36,11 +36,23 @@ the menu item "Reports... New Report".
 ?>
 </table>
 <br><br>
+</center>
+
+Below are the project notes, displayed as an ordinary html list.
+This list is probably not too pretty-looking, mostly
+because your project notes are not filled out or are 
+breif and cryptic:
+<dl>
+<?scm (gtt-show-projects (gtt-projects) 
+      (list ''<dt><b>  gtt-project-title ''</b></dt>
+            ''<dd>     gtt-project-notes ''</dd>
+            ))
+?>
+</dl>
 
 
 <br><br>
 That's all Folks!
-</center>
 </body>
 </html>
 
