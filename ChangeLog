@@ -1,13 +1,15 @@
 Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
 	* prefs.c, props-proj.c props-task.c: Fix core dump 
 	  when user clicks on 'help' button.
-	* journal.c: Fix flyover help so that it actually shows project text.
+	* journal.c: Fix coredump/hang due to double-free
 	* menus.c: Fix memory-corruption/core-dump bug.
 	* gconf-io-p.h: Fix core dump when saving NULL strings.
+	* journal.c: Fix flyover help so that it actually shows project text.
 	* journal.c: remember last file that user saved to.
 	* journal.c: add support for images (png/jpeg/gif/etc.)
 	* ghtml.c, ghtml.h: add support for include files
 	* gtt.css: add rudimentary CSS Cascading Style Sheet.
+	* *.ghtml: rework all reports to use a new style
 	* journal.ghtml: create new nicer display style.
 	* journal.c: add report publication dialog.
 	* Makefile.am: install gnotime.desktop in the correct directory.
