@@ -13,6 +13,9 @@ Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
 	* Makefile.am: install gnotime.desktop in the correct directory.
 	* plug-in.c: use GnomeVFS for user-specified reports.
 	* export.c: use GnomeVFS for data export.
+	* ghtml.c: use GnomeVFS for report template input.
+	* journal.c: use GnomeVFS for HTML output save.
+	* log.c: use GnomeVFS for output logging.
 
 Tues Apr 20 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.9 release: tag gnotime-2-1-9
