@@ -63,6 +63,8 @@ typedef struct wiggy_s
 	GtkWidget *interval_paste;
 	GtkWidget *interval_merge_up;
 	GtkWidget *interval_merge_down;
+	GtkWidget *interval_move_up;
+	GtkWidget *interval_move_down;
 	EditIntervalDialog *edit_ivl;
 
 	/* Task edit menu widgets */
@@ -384,6 +386,38 @@ interval_merge_down_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
+interval_move_up_clicked_cb(GtkWidget * w, gpointer data) 
+{
+	Wiggy *wig = (Wiggy *) data;
+	GttTask *tsk = gtt_interval_get_parent (wig->interval);
+	GttProject *prj = gtt_task_get_parent (tsk);
+	GList *tasks = gtt_project_get_tasks (prj);
+	if (!tasks) return;
+	GList *this_task = g_list_find (tasks, tsk);
+	if (!this_task) return;
+	GList *prev_task = this_task->prev;
+	if (!prev_task) return;
+	GttTask *newtask = prev_task->data;
+	gtt_task_append_interval (newtask, wig->interval);
+}
+
+static void
+interval_move_down_clicked_cb(GtkWidget * w, gpointer data) 
+{
+	Wiggy *wig = (Wiggy *) data;
+	GttTask *tsk = gtt_interval_get_parent (wig->interval);
+	GttProject *prj = gtt_task_get_parent (tsk);
+	GList *tasks = gtt_project_get_tasks (prj);
+	if (!tasks) return;
+	GList *this_task = g_list_find (tasks, tsk);
+	if (!this_task) return;
+	GList *next_task = this_task->next;
+	if (!next_task) return;
+	GttTask *newtask = next_task->data;
+	gtt_task_add_interval (newtask, wig->interval);
+}
+
+static void
 interval_insert_memo_cb(GtkWidget * w, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -441,19 +475,33 @@ interval_popup_cb (Wiggy *wig)
 	if (gtt_interval_is_first_interval (wig->interval))
 	{
 		gtk_widget_set_sensitive (wig->interval_merge_up, FALSE);
+		gtk_widget_set_sensitive (wig->interval_move_up, TRUE);
 	}
 	else
 	{
 		gtk_widget_set_sensitive (wig->interval_merge_up, TRUE);
+		gtk_widget_set_sensitive (wig->interval_move_up, FALSE);
 	}
 
 	if (gtt_interval_is_last_interval (wig->interval))
 	{
 		gtk_widget_set_sensitive (wig->interval_merge_down, FALSE);
+		gtk_widget_set_sensitive (wig->interval_move_down, TRUE);
 	}
 	else
 	{
 		gtk_widget_set_sensitive (wig->interval_merge_down, TRUE);
+		gtk_widget_set_sensitive (wig->interval_move_down, FALSE);
+	}
+
+	GttTask *tsk = gtt_interval_get_parent(wig->interval);
+	if (gtt_task_is_first_task (tsk))
+	{
+		gtk_widget_set_sensitive (wig->interval_move_up, FALSE);
+	}
+	if (gtt_task_is_last_task (tsk))
+	{
+		gtk_widget_set_sensitive (wig->interval_move_down, FALSE);
 	}
 }
 
@@ -1194,6 +1242,8 @@ do_show_report (const char * report, GttPlugin *plg,
 	wig->interval_paste = glade_xml_get_widget (glxml, "paste_memo");
 	wig->interval_merge_up = glade_xml_get_widget (glxml, "merge_up");
 	wig->interval_merge_down = glade_xml_get_widget (glxml, "merge_down");
+	wig->interval_move_up = glade_xml_get_widget (glxml, "move_up");
+	wig->interval_move_down = glade_xml_get_widget (glxml, "move_down");
 	wig->interval=NULL;
 
 	glade_xml_signal_connect_data (glxml, "on_new_interval_activate",
@@ -1210,6 +1260,12 @@ do_show_report (const char * report, GttPlugin *plg,
 	  
 	glade_xml_signal_connect_data (glxml, "on_merge_down_activate",
 	        GTK_SIGNAL_FUNC (interval_merge_down_clicked_cb), wig);
+	  
+	glade_xml_signal_connect_data (glxml, "on_move_up_activate",
+	        GTK_SIGNAL_FUNC (interval_move_up_clicked_cb), wig);
+	  
+	glade_xml_signal_connect_data (glxml, "on_move_down_activate",
+	        GTK_SIGNAL_FUNC (interval_move_down_clicked_cb), wig);
 	  
 	glade_xml_signal_connect_data (glxml, "on_insert_memo_activate",
 	        GTK_SIGNAL_FUNC (interval_insert_memo_cb), wig);

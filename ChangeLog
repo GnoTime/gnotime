@@ -6,6 +6,8 @@ Tue Apr 27, 2004 Linas Vepstas <linas@linas.org>
 	  HTML diary display resemble the plain-text diary markup.
 	* idle-dialog.c: if project names had a bare & in them, then
 	  Pango would not display properly.  Change to escape & into &amp;
+	* journal.c: add to interval menu, to reparent intervals
+	  to tasks above or below.  Makes time management easier.
 
 Sun Apr 25 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.2.0 release: tag gnotime-2-2-0

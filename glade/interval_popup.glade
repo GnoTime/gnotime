@@ -2,6 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
+<requires lib="gnome"/>
 
 <widget class="GtkMenu" id="Interval Popup">
   <property name="visible">True</property>
@@ -14,10 +15,10 @@
       <signal name="activate" handler="on_new_interval_activate"/>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="convertwidget1">
+	<widget class="GtkImage" id="image14">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-new</property>
-	  <property name="icon_size">4</property>
+	  <property name="icon_size">1</property>
 	  <property name="xalign">0.5</property>
 	  <property name="yalign">0.5</property>
 	  <property name="xpad">0</property>
@@ -44,10 +45,10 @@
       <signal name="activate" handler="on_delete_activate"/>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="convertwidget2">
+	<widget class="GtkImage" id="image15">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-cut</property>
-	  <property name="icon_size">4</property>
+	  <property name="icon_size">1</property>
 	  <property name="xalign">0.5</property>
 	  <property name="yalign">0.5</property>
 	  <property name="xpad">0</property>
@@ -88,6 +89,54 @@
   </child>
 
   <child>
+    <widget class="GtkImageMenuItem" id="move_up">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Move Up</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_move_up_activate" last_modification_time="Fri, 07 May 2004 15:24:49 GMT"/>
+
+      <child internal-child="image">
+	<widget class="GtkImage" id="image16">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-go-up</property>
+	  <property name="icon_size">1</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkImageMenuItem" id="move_down">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Move Down</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_move_down_activate" last_modification_time="Fri, 07 May 2004 15:24:49 GMT"/>
+
+      <child internal-child="image">
+	<widget class="GtkImage" id="image17">
+	  <property name="visible">True</property>
+	  <property name="stock">gtk-go-down</property>
+	  <property name="icon_size">1</property>
+	  <property name="xalign">0.5</property>
+	  <property name="yalign">0.5</property>
+	  <property name="xpad">0</property>
+	  <property name="ypad">0</property>
+	</widget>
+      </child>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="separator3">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
     <widget class="GtkImageMenuItem" id="insert_memo">
       <property name="visible">True</property>
       <property name="label" translatable="yes">Insert Diary Entry</property>
@@ -95,10 +144,10 @@
       <signal name="activate" handler="on_insert_memo_activate"/>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="convertwidget3">
+	<widget class="GtkImage" id="image18">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-new</property>
-	  <property name="icon_size">4</property>
+	  <property name="icon_size">1</property>
 	  <property name="xalign">0.5</property>
 	  <property name="yalign">0.5</property>
 	  <property name="xpad">0</property>
@@ -116,10 +165,10 @@
       <signal name="activate" handler="on_paste_memo_activate"/>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="convertwidget4">
+	<widget class="GtkImage" id="image19">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-paste</property>
-	  <property name="icon_size">4</property>
+	  <property name="icon_size">1</property>
 	  <property name="xalign">0.5</property>
 	  <property name="yalign">0.5</property>
 	  <property name="xpad">0</property>

@@ -53,6 +53,7 @@ QofBook *global_book = NULL;
 static void proj_refresh_time (GttProject *proj);
 static void proj_modified (GttProject *proj);
 static int task_suspend (GttTask *tsk);
+static void gtt_interval_unhook (GttInterval * ivl);
 
 /* ============================================================= */
 
@@ -2151,6 +2152,7 @@ void
 gtt_task_add_interval (GttTask *tsk, GttInterval *ival)
 {
 	if (!tsk || !ival) return;
+	gtt_interval_unhook (ival);
 	tsk->interval_list = g_list_prepend (tsk->interval_list, ival);
 	ival->parent = tsk;
 	proj_refresh_time (tsk->parent);
@@ -2160,6 +2162,7 @@ void
 gtt_task_append_interval (GttTask *tsk, GttInterval *ival)
 {
 	if (!tsk || !ival) return;
+	gtt_interval_unhook (ival);
 	tsk->interval_list = g_list_append (tsk->interval_list, ival);
 	ival->parent = tsk;
 	proj_refresh_time (tsk->parent);
@@ -2283,6 +2286,16 @@ gtt_task_is_first_task (GttTask *tsk)
 	return FALSE;
 }
 
+gboolean
+gtt_task_is_last_task (GttTask *tsk)
+{
+	if (!tsk || !tsk->parent || !tsk->parent->task_list) return TRUE;
+	
+	GList *last = g_list_last (tsk->parent->task_list);
+	if ((GttTask *) last->data == tsk) return TRUE;
+	return FALSE;
+}
+
 GttProject * 
 gtt_task_get_parent (GttTask *tsk)
 {
@@ -2387,15 +2400,20 @@ void
 gtt_interval_destroy (GttInterval * ivl)
 {
 	if (!ivl) return;
-	if (ivl->parent)
-	{
-		/* Unhook myself from the chain */
-		ivl->parent->interval_list = 
-			g_list_remove (ivl->parent->interval_list, ivl);
-		proj_refresh_time (ivl->parent->parent);
-	}
-	ivl->parent = NULL;
+	gtt_interval_unhook (ivl);
 	g_free (ivl);
+}
+
+static void 
+gtt_interval_unhook (GttInterval * ivl)
+{
+	if (NULL == ivl->parent) return;
+
+	/* Unhook myself from the chain */
+	ivl->parent->interval_list = 
+		g_list_remove (ivl->parent->interval_list, ivl);
+	proj_refresh_time (ivl->parent->parent);
+	ivl->parent = NULL;
 }
 
 void

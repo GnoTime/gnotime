@@ -531,12 +531,16 @@ int		gtt_task_get_bill_unit (GttTask *);
  *
  * The gtt_task_is_first_task() routine returns True if this task
  *    is the leading task of the project.
+ *    
+ * The gtt_task_is_last_task() routine returns True if this task
+ *    is the last task of the project.
  */
 void         gtt_task_remove (GttTask *);
 GttTask *    gtt_task_new_insert (GttTask *);
 void         gtt_task_insert (GttTask *where, GttTask *insertee);
 void         gtt_task_merge_up (GttTask *);
 gboolean     gtt_task_is_first_task (GttTask *);
+gboolean     gtt_task_is_last_task (GttTask *);
 GttProject * gtt_task_get_parent (GttTask *);
 
 
