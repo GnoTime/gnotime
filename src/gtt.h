@@ -28,7 +28,7 @@
 #define APP_NAME "GTimeTracker"
 #endif
 
-#define XML_DATA_FILENAME "gtt-xml.gttml"
+#define XML_DATA_FILENAME "gnotime-data.xml"
 
 /* err.c */
 

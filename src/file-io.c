@@ -41,7 +41,7 @@
 #ifdef DEBUG
 #define GTT "/gtt-DEBUG/"
 #else /* not DEBUG */
-#define GTT "/gtt/"
+#define GTT "/gnotime/"
 #endif /* not DEBUG */
 
 
@@ -56,7 +56,7 @@ extern char *first_proj_title;	/* command line flag */
 /* ============================================================= */
 /* file I/O routines */
 
-/* RC_NAME is old depricated */
+/* RC_NAME is old, depricated; stays here for backwards compat. */
 #define RC_NAME ".gtimetrackerrc"
 
 static const char *
