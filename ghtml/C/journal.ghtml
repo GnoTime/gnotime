@@ -27,7 +27,7 @@ Here it is:
 
 <table border=1>
 <tr><th colspan=4>Diary Entry</th></tr>
-<tr><th>&nbsp;</th><th>Start</th><th>Stop</th><th>Elapsed</th></tr>
+<tr><th> xx </th><th>Start</th><th>Stop</th><th>Elapsed</th></tr>
 <?scm
 
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
@@ -40,7 +40,7 @@ Here it is:
          (list
 
                ; the first html table column is blank
-               ''"<tr><td> &nbsp; &nbsp; </td>\n"
+               ''"<tr><td> </td>\n"
 
 
                ; the second html table column shows the start date/time
