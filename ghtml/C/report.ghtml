@@ -13,37 +13,26 @@ Run report on
  - 
 <?scm (gtt-show-project-desc) ?>
 
+<p>
+Find all projects that:
 <form method="get" action="party.ghtml">
 <table>
 <tr>
-<td>start Date: <input name="start-date" size="12"> </td>
-<td>End Date: <input name="end-date" size="12"> </td>
+<td>Showed activity more recently than:</td>
+<td><input name="earliest-end-date" size="12"> </td>
 </tr>
 <tr>
+<td>Showed activity no later than:</td>
+<td><input name="latest-end-date" size="12"> </td>
+<tr>
+<td> </td>
 <td>
-<input type="submit" value="Redo">
+<input type="submit" value="Find">
 </td>
 </tr>
 </table>
+<input type="hidden" name="report" value="status.ghtml">
 </form>
-Report of Active projects for Linas Vepstas
-
-</center>
-<br><br>
-
-
-<dl>
-<?scm
-
-      (gtt-show-projects (gtt-query-results)
-      (list
-            ''"\n<dt><b>"   gtt-project-title   ''"</b>"
-            ''" -- "    gtt-project-desc    ''"</dt>\n"
-            ''"    <dd>"      gtt-project-notes   ''"</dd>\n\n"
-            )
-       )
-
-?>
 </dl>
 
 
