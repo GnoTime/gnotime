@@ -26,7 +26,10 @@
 #include <libgnomeui/gnome-window-icon.h>
 #include <signal.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <utime.h>
 
 #include "app.h"
 #include "ctree.h"
@@ -307,7 +310,71 @@ beta_run_or_abort(GtkWidget *w, gint butnum)
 }
 #endif
 
-/* save_all() is a bit sloppy, in that if we get two errors in a row,
+/* The make_backup() routine save backup copies of the data file
+ * every time that its called.  Its structured so that older copies
+ * are saved exponentially less often.  This results in a logarithmic
+ * distribution of backups; a very small number of files, of which
+ * few are old, and most are younger.  The idea is that this 
+ * should get you out of a jam, no matter how old your mistake is.
+ * Sure wish I'd had this implemented earlier in my debugging cycle :-(
+ */
+static void
+make_backup (const char * filename)
+{
+	extern int save_count;
+	char *old_name, *new_name;
+	size_t len;
+	struct stat old_stat;
+	struct utimbuf ub;
+	int suffix=0;
+	int lm;
+
+	/* Figure out how far to back up.  This computes a
+	 * logarithm base BK_FREQ */
+	save_count ++;
+	lm = save_count;
+	while (lm)
+	{
+#define BK_FREQ 4
+		if (0 == lm%BK_FREQ) suffix ++;
+		else break;
+		lm /= BK_FREQ;
+	}
+
+	/* Build filenames */
+	len = strlen (filename);
+	old_name = g_new0 (char, len+10);
+	new_name = g_new0 (char, len+10);
+	strcpy (old_name, filename);
+	strcpy (new_name, filename);
+	
+	/* Shuffle files, but preserve datestamps */
+	while (0 < suffix)
+	{
+		sprintf (new_name+len, ".%d", suffix); 
+		sprintf (old_name+len, ".%d", suffix-1); 
+		stat (old_name, &old_stat);
+		rename (old_name, new_name);
+		ub.actime = old_stat.st_atime;
+		ub.modtime = old_stat.st_mtime;
+		utime (new_name, &ub);
+
+		suffix --;
+	}
+	sprintf (new_name+len, ".0"); 
+	stat (filename, &old_stat);
+	rename (filename, new_name);
+	ub.actime = old_stat.st_atime;
+	ub.modtime = old_stat.st_mtime;
+	utime (new_name, &ub);
+
+	g_free (old_name);
+	g_free (new_name);
+}
+
+/* save_all() saves both data and config file, and does this 
+ * without involving the GUI.
+ * It is a bit sloppy, in that if we get two errors in a row,
  * we'll miss the second one ... but what the hey, who cares.
  */
 
@@ -319,6 +386,9 @@ save_all (void)
 	const char * xml_filepath;
 
 	xml_filepath = resolve_path (config_data_url);
+
+	make_backup (xml_filepath);
+
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_write_file (xml_filepath);
@@ -347,6 +417,7 @@ save_all (void)
 	return errmsg;
 }
 
+/* Save application properties, use GUI to indicate problem */
 
 void
 save_properties (void)
@@ -372,6 +443,8 @@ save_properties (void)
 	}
 }
 
+/* Save project data, use GUI to indicate problem */
+
 void
 save_projects (void)
 {
@@ -380,6 +453,8 @@ save_projects (void)
 
 	/* Try ... */
 	xml_filepath = resolve_path (config_data_url);
+	make_backup (xml_filepath);
+
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_write_file (xml_filepath);
 
@@ -395,6 +470,7 @@ save_projects (void)
 		     NULL);
 		g_free ((gchar *) errmsg);
 	}
+
 	g_free ((gchar *) xml_filepath);
 }
 

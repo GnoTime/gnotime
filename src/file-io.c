@@ -46,13 +46,15 @@
 #endif /* not DEBUG */
 
 
-/* FIXME: we should not extern this; but for now its ok */
+/* FIXME: we should not extern plist; but for now its ok */
 extern GList * plist;
+
 
 static int cur_proj_id = -1;
 static int run_timer = FALSE;
 static time_t last_timer = -1;
 extern char *first_proj_title;	/* command line flag */
+int save_count = 0;
 
 /* ============================================================= */
 /* file I/O routines */
@@ -376,6 +378,7 @@ gtt_load_config (const char *fname)
 	config_logfile_min_secs = gnome_config_get_int(GTT_CONF"/LogFile/MinSecs");
 
 	/* ------------ */
+	save_count = gnome_config_get_int(GTT_CONF"/Data/SaveCount=0");
 	config_data_url = gnome_config_get_string(GTT_CONF"/Data/URL=" XML_DATA_FILENAME);
 	if (NULL == config_data_url) 
 	{
@@ -626,6 +629,7 @@ gtt_save_config(const char *fname)
 
 	/* ------------- */
 	gnome_config_set_string(GTT_CONF"/Data/URL", config_data_url);
+	gnome_config_set_int(GTT_CONF"/Data/SaveCount", save_count);
 
 	/* ------------- */
 	w = 0;
