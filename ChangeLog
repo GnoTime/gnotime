@@ -5,6 +5,9 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	  SQL parser to construct user-defined report queries.
 	* src/menucmd.c, src/ctree.c: fix sourceforge bug
 	  [ 898481 ] inconsistency with Cut and Paste
+	* ghtml/C/gtt.scm: fix sourceforge bugs
+	  [ 667286 ] filter failing in invoice
+	  [ 847917 ] Bill/Paid/Hold Filter fails when 1 item is not Billable
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
