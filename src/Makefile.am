@@ -28,6 +28,7 @@ gnotime_SOURCES =     \
 	plug-in.c          \
 	prefs.c            \
 	proj.c             \
+	proj-query.c       \
 	props-invl.c       \
 	props-proj.c       \
 	props-task.c       \
@@ -66,6 +67,7 @@ noinst_HEADERS =      \
 	prefs.h            \
 	proj.h             \
 	proj_p.h           \
+	proj-query.h       \
 	props-invl.h       \
 	props-proj.h       \
 	props-task.h       \

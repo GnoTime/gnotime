@@ -30,6 +30,7 @@
 #include "active-dialog.h"
 #include "idle-timer.h"
 #include "proj.h"
+#include "proj-query.h"
 #include "util.h"
 
 
@@ -81,11 +82,10 @@ start_proj (GObject *obj, GttActiveDialog *dlg)
 	GtkWidget *w;
 	GttProject *prj;
 	
+	/* Start the project that the user has selected from the menu */
 	menu = GTK_MENU (gtk_option_menu_get_menu (dlg->project_menu));
 	w = gtk_menu_get_active (menu);
 	prj = g_object_get_data (G_OBJECT (w), "prj");
-
-printf ("duude start proj=%p %s\n", prj, gtt_project_get_title(prj));
 
 	ctree_start_timer (prj);
 	dlg->armed = FALSE;
@@ -117,8 +117,9 @@ setup_menus (GttActiveDialog *dlg)
 
 	menushell = GTK_MENU_SHELL (gtk_menu_new());
 
-	/* XXX should be query */
-	prjlist = gtt_get_project_list ();
+	/* Give user a list only of the unfinished projects, 
+	 * so that there isn't too much clutter ... */
+	prjlist = gtt_project_get_unfinished ();
 	for (node = prjlist; node; node=node->next)
 	{
 		GttProject *prj = node->data;
