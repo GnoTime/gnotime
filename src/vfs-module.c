@@ -1,13 +1,31 @@
 
 /*
- * scaffolding for a gnotime vfs module
-copy to /usr/lib/gnome-vfs-2.0/modules/
+ * stub routines for maybe some future gnotime vfs module
+
+To Build:
+     cc vfs-module.c -c -fPIC  \
+   `pkg-config --cflags glib-2.0 gnome-vfs-module-2.0`
+
+   cc vfs-module.o -shared -Wl,-soname,-libgtt.so -o libgtt.so \
+      `pkg-config --libs glib-2.0 gnome-vfs-module-2.0`
+                                                                                                                  
+	install into /usr/lib/gnome-vfs-2.0/modules/libgtt.so
+And also: install conf file in /etc/gnome-vfs-2.0/modules
+
+	To Test:
+	/usr/bin/gnomevfs-ls gtt:/
+	/usr/bin/gnomevfs-cat gtt:/file-duude-5
+
 
  */
 
 //  #include <libgnomevfs/gnome-vfs.h>
-// #include <gnome-vfs-module-2.0/libgnomevfs/gnome-vfs-module.h>
 #include <libgnomevfs/gnome-vfs-module.h>
+
+#define MYSTR "ho ho ho and a bottle of rum\n"
+
+/* ------------------------------------------------------------- */
+/* dir ops */
 
 static GnomeVFSResult
 gtt_opendir (GnomeVFSMethod           *method,
@@ -33,8 +51,8 @@ gtt_readdir (GnomeVFSMethod       *method,
 {
 	int *x = (int *) method_handle;
 	
-	printf ("duude x=%d\n", *x);
-	*x++;
+	printf ("readdir duude x=%d\n", *x);
+	(*x)++;
 	if (10 < *x) 
 	{
 		*x = 0;
@@ -46,15 +64,17 @@ gtt_readdir (GnomeVFSMethod       *method,
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_TYPE;
       file_info->mime_type = g_strdup ("x-directory/normal");
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
+
    } else {
       file_info->type = GNOME_VFS_FILE_TYPE_REGULAR;
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_TYPE;
       file_info->mime_type = g_strdup ("text/plain");
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
-      file_info->size = 123;
+      file_info->size = strlen (MYSTR);
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_SIZE;
+
+		file_info->name = g_strdup_printf ("file-duude-%d", *x);
    }
-	file_info->name = g_strdup_printf ("file-duude-%d", *x);
 	
 	return GNOME_VFS_OK;
 }
@@ -76,6 +96,9 @@ gtt_is_local (GnomeVFSMethod    *method,
 {
    return TRUE;
 }
+
+/* ------------------------------------------------------------- */
+/* file ops */
 
 static GnomeVFSResult
 gtt_file_info (GnomeVFSMethod          *method,
@@ -101,13 +124,56 @@ gtt_file_info (GnomeVFSMethod          *method,
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_TYPE;
       file_info->mime_type = g_strdup ("text/plain");
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
-      file_info->size = 123;
+      file_info->size = strlen (MYSTR);
       file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_SIZE;
    }
 #endif
     
    return GNOME_VFS_OK;
 }
+
+static GnomeVFSResult
+gtt_open (GnomeVFSMethod        *method,
+          GnomeVFSMethodHandle **method_handle,
+          GnomeVFSURI           *uri,
+          GnomeVFSOpenMode       mode,
+          GnomeVFSContext       *context)
+{
+	static int l=0;
+	*method_handle = (GnomeVFSMethodHandle *) &l;
+
+   return GNOME_VFS_OK;
+}
+
+static GnomeVFSResult
+gtt_read (GnomeVFSMethod       *method,
+          GnomeVFSMethodHandle *method_handle,
+          gpointer              buffer,
+          GnomeVFSFileSize      bytes,
+          GnomeVFSFileSize     *bytes_read,
+          GnomeVFSContext      *context)
+{
+	int *l = (int *) method_handle;
+
+	if (1 == *l) { *l=0; *bytes_read=0; return GNOME_VFS_ERROR_EOF; }
+   *bytes_read = MIN (bytes, strlen (MYSTR));
+
+   memcpy (buffer, MYSTR, *bytes_read);
+	*l = 1;
+
+   return GNOME_VFS_OK;
+}
+
+static GnomeVFSResult
+gtt_close (GnomeVFSMethod       *method,
+           GnomeVFSMethodHandle *method_handle,
+           GnomeVFSContext      *context)
+{
+   return GNOME_VFS_OK;
+}
+
+/* ------------------------------------------------------------- */
+/* module setup */
 
 static GnomeVFSMethod gtt_method = 
 {
@@ -118,6 +184,9 @@ static GnomeVFSMethod gtt_method =
 	
 	is_local:   gtt_is_local,
 	
+	open:  gtt_open,
+	read:  gtt_read,
+	close:  gtt_close,
 };
 
 
