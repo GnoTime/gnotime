@@ -1,7 +1,7 @@
 
 lang = C
 
-gttghtmldir = $(datadir)/gtt/ghtml/C
+gttghtmldir = $(datadir)/gnotime/ghtml/C
 
 gttghtml_DATA =		\
 	bigtable.ghtml	\

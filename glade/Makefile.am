@@ -1,5 +1,5 @@
 
-gttgladedir = $(datadir)/gtt/glade
+gttgladedir = $(datadir)/gnotime/glade
 
 gttglade_DATA =			\
   interval_edit.glade		\
