@@ -8,6 +8,9 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	* ghtml/C/gtt.scm: fix sourceforge bugs
 	  [ 667286 ] filter failing in invoice
 	  [ 847917 ] Bill/Paid/Hold Filter fails when 1 item is not Billable
+	* src/menucmd.c: add author/translator credits
+	* src/menucmd.c, src/menus.c: Remove obsolete cruddy 'clear daily
+	  counter', and otherwise try to simplify a bit.
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	* Prep for 2.1.8 release: tag gnotime-2-1-8

@@ -60,12 +60,14 @@ about_box(GtkWidget *w, gpointer data)
 		  "Sven M. Hallberg <pesco@gmx.de>",
 		  "Raja R Harinath  <harinath@cs.umn.edu>",
 		  "Peter Hawkins <peterhawkins@ozemail.com.au>",
+	     "Toshio Kuratomi <toshio@tiki-lounge.com>",
 		  "Egil Kvaleberg <egil@kvaleberg.no>",
 		  "Chris Lahey  <clahey@umich.edu>",
 		  "Gregory McLean <gregm@comstar.net>",
 		  "Kjartan Maraas  <kmaraas@gnome.org>",
 		  "Federico Mena Quintero  <federico@nuclecu.unam.mx>",
 		  "Tomas Ogren  <stric@ing.umu.se>",
+	     "Goedson Teixeira Paixao <goedson@debian.org>",
 		  "Gediminas Paulauskas <menesis@delfi.lt>",
 		  "Havoc Pennington  <hp@pobox.com>",
 		  "Ettore Perazzoli  <ettore@comm2000.it>",
@@ -143,10 +145,11 @@ about_box(GtkWidget *w, gpointer data)
 		"Egil Kvaleberg <egil@kvaleberg.no> - no\n"
 		"GNOME PL Team <translators@gnome.pl> - pl\n"
 		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt> - pt\n"
+		"Francisco Petrecio Cavalcante Junior <fpcj@impa.br> - pt\n"
 		"Duarte Loreto <happyguy_pt@hotmail.com> - pt\n"
 		"Alexandre Hautequest <hquest@fesppr.br> - pt_BR\n"
 		"Ariel Bressan da Silva <ariel@conectiva.com.br> - pt_BR\n"
-		"Francisco Petrecio Cavalcante Junior <fpcj@impa.br> - pt\n"
+	   "Goedson Teixeira Paixao <goedson@debian.org> - pt_BR\n"
 		"Iustin Pop <iusty@geocities.com> - ro\n"
 		"Dan Damian <dand@dnttm.ro> - ro\n"
 		"Valek Filppov <frob@df.ru> - ru\n"
@@ -434,17 +437,6 @@ menu_properties(GtkWidget *w, gpointer data)
 	}
 }
 
-
-
-void
-menu_clear_daily_counter(GtkWidget *w, gpointer data)
-{
-	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
-
-	gtt_clear_daily_counter (prj);
-	ctree_update_label(global_ptw, prj);
-}
 
 /* Cheesey usability hack to tell the user how to edit the timer
  * intervals.  Replace with something intuitive at earliest convenience.

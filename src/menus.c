@@ -61,25 +61,11 @@ static GnomeUIInfo menu_main_edit[] = {
 #define MENU_EDIT_PASTE_POS 4
 	GNOMEUIINFO_MENU_PASTE_ITEM(paste_project,NULL),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_EDIT_CDC_POS 6
-	GNOMEUIINFO_ITEM_STOCK(N_("Clear _Daily Counter"), 
-		N_("Zero out todays timer by deleting todays time logs"),
-			       menu_clear_daily_counter,
-			       GNOME_STOCK_BLANK),
-#define MENU_EDIT_JNL_POS 7
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
-		N_("Show the timesheet journal for this project"),
-			       show_report, "journal.ghtml",
-			       GNOME_STOCK_BLANK),
 	GNOMEUIINFO_ITEM_STOCK(N_("Edit _Times"),
 		N_("Edit the time interval associated with this project"),
 			       menu_howto_edit_times,
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("New _Diary Entry"),
-		N_("Create new task header for this project"),
-			       new_task_ui,
-			       GNOME_STOCK_BLANK),
-#define MENU_EDIT_PROP_POS 10
+#define MENU_EDIT_PROP_POS 7
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
 	GNOMEUIINFO_END
 };
@@ -204,12 +190,7 @@ static GnomeUIInfo menu_popup[] = {
 #define MENU_POPUP_PASTE_POS 7
 	GNOMEUIINFO_MENU_PASTE_ITEM(paste_project,NULL),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_CDC_POS 9
-	GNOMEUIINFO_ITEM_STOCK(N_("Clear _Daily Counter"),
-		N_("Zero out todays timer by deleting todays time logs"),
-			       menu_clear_daily_counter,
-			       GNOME_STOCK_BLANK),
-#define MENU_POPUP_PROP_POS 10
+#define MENU_POPUP_PROP_POS 9
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
 	GNOMEUIINFO_END
 };
