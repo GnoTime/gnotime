@@ -94,7 +94,10 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 		"<tr><th>&nbsp;<th>%s<th>%s<th>%s",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
 
-	(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+	if (ghtml->write_stream)
+	{
+		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+	}
 
 	for (node = gtt_project_get_tasks(prj); node; node=node->next)
 	{
@@ -114,7 +117,10 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 		p = g_stpcpy (p, pp);
 		p = g_stpcpy (p, "</a>");
 
-		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+		if (ghtml->write_stream)
+		{
+			(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
+		}
 
 		
 		for (in=gtt_task_get_intervals(tsk); in; in=in->next)
@@ -162,13 +168,19 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 			p = print_hours_elapsed (p, 40, elapsed, TRUE);
 			p = g_stpcpy (p, "&nbsp;&nbsp;");
 			len = p - prn;
-			(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
+			if (ghtml->write_stream)
+			{
+				(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
+			}
 		}
 
 	}
 	
 	p = "</table>";
-	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
+	if (ghtml->write_stream)
+	{
+		(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
+	}
 }
 
 /* ============================================================== */
@@ -198,6 +210,8 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 	GList *node;
 	char *p;
 	char buff[2000];
+
+	if (NULL == ghtml->write_stream) return;
 
 	p = buff;
 	p = g_stpcpy (p, "<table border=1>");
@@ -550,7 +564,6 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 	
 	p = "</table>";
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
-
 }
 
 /* ============================================================== */
@@ -560,8 +573,10 @@ gtt_hello (void)
 {
 	GttGhtml *ghtml = ghtml_global_hack;
 	char *p;
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
 	p = "Hello World!";
+
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 
 	/* maybe we should return something meaningful, like the string? */
@@ -576,7 +591,10 @@ project_title (void)
 	GttGhtml *ghtml = ghtml_global_hack;
 	const char *p;
 
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
+
 	p = gtt_project_get_title (ghtml->prj);
+
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 
 	/* maybe we should return something meaningful, like the string? */
@@ -591,7 +609,10 @@ project_desc (void)
 	GttGhtml *ghtml = ghtml_global_hack;
 	const char *p;
 
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
+
 	p = gtt_project_get_desc (ghtml->prj);
+	
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 
 	/* maybe we should return something meaningful, like the string? */
@@ -604,6 +625,8 @@ static SCM
 show_journal (void)
 {
 	GttGhtml *ghtml = ghtml_global_hack;
+
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
 	do_show_journal (ghtml, ghtml->prj);
 
@@ -697,7 +720,7 @@ decode_column (GttGhtml *ghtml, const char * tok)
 	{
 		TASK_COL(BILLABLE_VALUE);
 	}
-	else
+	else if (ghtml->write_stream)
 	{
 		const char * str;
 		str = _("unknown token: >>>>");
@@ -772,6 +795,8 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	int len;
 	char * str = NULL;
 
+	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
+
 	/* Need to test for numbers first, since later tests 
 	 * may core-dump guile-1.3.4 */
 	if (SCM_NUMBERP(node))
@@ -824,7 +849,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 
 	if (!filepath)
 	{
-		(ghtml->error) (ghtml, 404, NULL, ghtml->user_data);
+		if (ghtml->error)
+		{
+			(ghtml->error) (ghtml, 404, NULL, ghtml->user_data);
+		}
 		return;
 	}
 
@@ -832,7 +860,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ph = fopen (filepath, "r");
 	if (!ph)
 	{
-		(ghtml->error) (ghtml, 404, filepath, ghtml->user_data);
+		if (ghtml->error)
+		{
+			(ghtml->error) (ghtml, 404, filepath, ghtml->user_data);
+		}
 		return;
 	}
 	ghtml->prj = prj;
@@ -841,7 +872,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ghtml_global_hack = ghtml;
 
 	/* Now open the output stream for writing */
-	(ghtml->open_stream) (ghtml, ghtml->user_data);
+	if (ghtml->open_stream)
+	{
+		(ghtml->open_stream) (ghtml, ghtml->user_data);
+	}
 
 	while (!feof (ph))
 	{
@@ -877,8 +911,12 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 					nr = strlen (start);
 					end = NULL;
 				}
+				
 				/* write everything that we got before the markup */
-				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+				if (ghtml->write_stream)
+				{
+					(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+				}
 				start = end;
 				continue;
 			}
@@ -902,7 +940,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 			}
 			
 			/* write everything that we got before the markup */
-			(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+			if (ghtml->write_stream)
+			{
+				(ghtml->write_stream) (ghtml, start, nr, ghtml->user_data);
+			}
 
 			/* if there is markup, then dispatch */
 			if (scmstart)
@@ -914,8 +955,10 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	}
 	fclose (ph);
 
-	(ghtml->close_stream) (ghtml, ghtml->user_data);
-
+	if (ghtml->close_stream)
+	{
+		(ghtml->close_stream) (ghtml, ghtml->user_data);
+	}
 }
 
 /* ============================================================== */
@@ -926,12 +969,12 @@ static void
 register_procs (void)
 {
 	gh_new_procedure("gtt-hello",   gtt_hello,   0, 0, 0);
-	gh_new_procedure("gtt-show-project-title",   project_title,   0, 0, 0);
-	gh_new_procedure("gtt-show-project-desc",   project_desc,   0, 0, 0);
+	gh_new_procedure("gtt-show-project-title",   project_title,  0, 0, 0);
+	gh_new_procedure("gtt-show-project-desc",    project_desc,   0, 0, 0);
 	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
-	gh_new_procedure("gtt-show-table",   show_table,   1, 0, 0);
-	gh_new_procedure("gtt-show-invoice",   show_invoice,   1, 0, 0);
-	gh_new_procedure("gtt-show",   show_scm,   1, 0, 0);
+	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
+	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
+	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 }
 
 
@@ -987,4 +1030,3 @@ void gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
 }
 
 /* ===================== END OF FILE ==============================  */
-
