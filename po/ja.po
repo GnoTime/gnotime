@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.1\n"
-"POT-Creation-Date: 2001-11-30 16:14-0600\n"
+"POT-Creation-Date: 2002-09-06 18:10-0500\n"
 "PO-Revision-Date: 2001-08-13 01:41+0900\n"
 "Last-Translator: Takayuki KUSNAO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -16,891 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=euc-jp\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gcalc/gcalc.c:41
-msgid "The Gnome Calculator"
-msgstr "GNOME電卓"
-
-#: gcalc/gcalc.c:44
-msgid "Simple double precision calculator similiar to xcalc"
-msgstr "xcalc同様シンプルな倍精度計算機"
-
-#: gcalc/gcalc.c:124
-msgid "Run in analog (slide rule) mode"
-msgstr "アナログモード(目盛りをスライド)で実行"
-
-#: gcalc/gcalc.c:152
-msgid "Gnome Calculator"
-msgstr "GNOME電卓"
-
-#: gcalc/gnome-calc.c:517 gcalc/gnome-calc.c:1185
-msgid "DEG"
-msgstr "DEG"
-
-#: gcalc/gnome-calc.c:519
-msgid "RAD"
-msgstr "RAD"
-
-#: gcalc/gnome-calc.c:521
-msgid "GRAD"
-msgstr "GRAD"
-
-#: gcalc/gnome-calc.c:1175
-msgid "1/x"
-msgstr "逆数"
-
-#: gcalc/gnome-calc.c:1176
-msgid "x^2"
-msgstr "自乗"
-
-#: gcalc/gnome-calc.c:1177
-msgid "SQRT"
-msgstr "√"
-
-#: gcalc/gnome-calc.c:1178
-msgid "CE/C"
-msgstr "CE/C"
-
-#: gcalc/gnome-calc.c:1179
-msgid "AC"
-msgstr "AC"
-
-#: gcalc/gnome-calc.c:1181 gcalc/gnome-calc.c:1379
-msgid "INV"
-msgstr "INV"
-
-#. inverse button
-#: gcalc/gnome-calc.c:1182
-msgid "sin"
-msgstr "sin"
-
-#: gcalc/gnome-calc.c:1183
-msgid "cos"
-msgstr "cos"
-
-#: gcalc/gnome-calc.c:1184
-msgid "tan"
-msgstr "tan"
-
-#: gcalc/gnome-calc.c:1187
-msgid "e"
-msgstr "e"
-
-#: gcalc/gnome-calc.c:1188
-msgid "EE"
-msgstr "EE"
-
-#: gcalc/gnome-calc.c:1189
-msgid "log"
-msgstr "log"
-
-#: gcalc/gnome-calc.c:1190
-msgid "ln"
-msgstr "ln"
-
-#: gcalc/gnome-calc.c:1191
-msgid "x^y"
-msgstr "x^y"
-
-#: gcalc/gnome-calc.c:1193
-msgid "PI"
-msgstr "π"
-
-#: gcalc/gnome-calc.c:1194
-msgid "x!"
-msgstr "階乗"
-
-#: gcalc/gnome-calc.c:1195
-msgid "("
-msgstr "("
-
-#: gcalc/gnome-calc.c:1196
-msgid ")"
-msgstr ")"
-
-#: gcalc/gnome-calc.c:1197
-msgid "/"
-msgstr "÷"
-
-#: gcalc/gnome-calc.c:1199
-msgid "STO"
-msgstr "STO"
-
-#: gcalc/gnome-calc.c:1200
-msgid "7"
-msgstr "7"
-
-#: gcalc/gnome-calc.c:1201
-msgid "8"
-msgstr "8"
-
-#: gcalc/gnome-calc.c:1202
-msgid "9"
-msgstr "9"
-
-#: gcalc/gnome-calc.c:1203
-msgid "*"
-msgstr "×"
-
-#: gcalc/gnome-calc.c:1205
-msgid "RCL"
-msgstr "RCL"
-
-#: gcalc/gnome-calc.c:1206
-msgid "4"
-msgstr "4"
-
-#: gcalc/gnome-calc.c:1207
-msgid "5"
-msgstr "5"
-
-#: gcalc/gnome-calc.c:1208
-msgid "6"
-msgstr "6"
-
-#: gcalc/gnome-calc.c:1209
-msgid "-"
-msgstr "-"
-
-#: gcalc/gnome-calc.c:1211
-msgid "SUM"
-msgstr "SUM"
-
-#: gcalc/gnome-calc.c:1212 gtt/ctree.c:959
-msgid "1"
-msgstr "1"
-
-#: gcalc/gnome-calc.c:1213 gtt/ctree.c:958
-msgid "2"
-msgstr "2"
-
-#: gcalc/gnome-calc.c:1214 gtt/ctree.c:957
-msgid "3"
-msgstr "3"
-
-#: gcalc/gnome-calc.c:1215
-msgid "+"
-msgstr "+"
-
-#: gcalc/gnome-calc.c:1217
-msgid "EXC"
-msgstr "EXC"
-
-#: gcalc/gnome-calc.c:1218
-msgid "0"
-msgstr "0"
-
-#: gcalc/gnome-calc.c:1219
-msgid "."
-msgstr "."
-
-#: gcalc/gnome-calc.c:1220
-msgid "+/-"
-msgstr "±"
-
-#: gcalc/gnome-calc.c:1221
-msgid "="
-msgstr "="
-
-#. Translators:  This allows you to create translated font pngs,
-#. * though probably won't be necessary
-#: gcalc/gnome-calc.c:1246
-msgid "calculator-font.png"
-msgstr "calculator-font.png"
-
-#: gcharmap/src/asciiselect.c:96
-msgid "Select Character"
-msgstr "文字を選択"
-
-#: gcharmap/src/asciiselect.c:97 gcharmap/src/menus.c:99
-msgid "Insert"
-msgstr "挿入"
-
-#: gcharmap/src/asciiselect.c:105
-msgid "Character code:"
-msgstr "文字コード:"
-
-#: gcharmap/src/asciiselect.c:115
-msgid "Character:"
-msgstr "文字:"
-
-#: gcharmap/src/asciiselect.c:123
-msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr ""
-"-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
-"normal-*-10-*-*-*-*-*-*-*,*-r-*"
-
-#: gcharmap/src/callbacks.c:43 gcharmap/src/interface.c:141
-msgid "Gnome Character Map"
-msgstr "GNOME 文字選択"
-
-#: gcharmap/src/callbacks.c:47
-msgid ""
-"The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
-"contain bad English."
-msgstr ""
-"Microsoft Windows の文字コード表の GNOME 版です。 注意：変な英語が入っている"
-"かもしれません。"
-
-#: gcharmap/src/callbacks.c:63 gcharmap/src/callbacks.c:101
-#: gcharmap/src/interface.c:65
-msgid "del"
-msgstr "del"
-
-#: gcharmap/src/callbacks.c:107
-#, c-format
-msgid " %s: Character code %d"
-msgstr "%s: 文字コード %d"
-
-#: gcharmap/src/callbacks.c:134
-msgid "Text copied to clipboard..."
-msgstr "コピーしてクリップボードに送ったテキスト..."
-
-#: gcharmap/src/callbacks.c:146
-msgid "Text cut to clipboard..."
-msgstr "切り出してクリップボードに送ったテキスト..."
-
-#: gcharmap/src/callbacks.c:199
-msgid "Text pasted from clipboard..."
-msgstr "クリップボードから貼り付けられたテキスト..."
-
-#: gcharmap/src/interface.c:170
-msgid "Action Toolbar"
-msgstr "アクション・ツールバー"
-
-#: gcharmap/src/interface.c:189
-msgid "Text to copy:"
-msgstr "コピーするテキスト:"
-
-#: gcharmap/src/interface.c:215
-msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
-msgstr ""
-"-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-"
-"*-12-*-*-*-*-*-*,*-r-*"
-
-#: gcharmap/src/interface.c:238 gcharmap/src/menus.c:114 logview/logview.c:100
-#: mini-utils/gcolorsel/menus.c:921 stripchart/chart-app.c:258
-msgid "Exit"
-msgstr "終了"
-
-#: gcharmap/src/interface.c:239 gcharmap/src/menus.c:104
-#: gdictsrc/gdict-app.c:519 gtt/toolbar.c:181
-msgid "Copy"
-msgstr "コピー"
-
-#: gcharmap/src/interface.c:243 gcharmap/src/menus.c:111
-#: mini-utils/gcolorsel/menus.c:919 mini-utils/gshutdown/gshutdown.c:321
-#: stripchart/chart-app.c:232 stripchart/params.c:1013
-#: stripchart/stripchart-applet.c:89
-msgid "About"
-msgstr "情報"
-
-#: gcharmap/src/interface.c:245 gcharmap/src/menus.c:109
-#: gdictsrc/gdict-applet.c:284 stripchart/chart-app.c:227
-#: stripchart/params.c:1048 stripchart/params.c:1051
-#: stripchart/stripchart-applet.c:86
-msgid "Help"
-msgstr "ヘルプ"
-
-#: gcharmap/src/interface.c:264
-msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr ""
-"-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
-"normal-*-10-*-*-*-*-*-*-*,*-r-*"
-
-#: gcharmap/src/menus.c:51
-msgid "Insert Character..."
-msgstr "文字の挿入..."
-
-#: gcharmap/src/menus.c:52
-msgid "Insert character(s) by choosing character codes."
-msgstr "文字コードを選んで文字を挿入"
-
-#: gcharmap/src/menus.c:59
-msgid "_Action Toolbar"
-msgstr "_アクション・ツールバー(_A)"
-
-#: gcharmap/src/menus.c:59
-msgid "View or hide the action toolbar"
-msgstr "アクション・ツールバーの表示／非表示"
-
-#: gcharmap/src/menus.c:61
-msgid "_Text Toolbar"
-msgstr "テキスト・ツールバー(_T)"
-
-#: gcharmap/src/menus.c:61
-msgid "View or hide the text toolbar"
-msgstr "ツールバーの表示／非表示"
-
-#: gcharmap/src/menus.c:63
-msgid "_Statusbar"
-msgstr "ステータスバー(_S)"
-
-#: gcharmap/src/menus.c:63
-msgid "View or hide the statusbar"
-msgstr "ステータスバーの表示／非表示"
-
-#: gcharmap/src/menus.c:70
-msgid "Character Table's Font..."
-msgstr "文字テーブルのフォント..."
-
-#: gcharmap/src/menus.c:70
-msgid "Set the character table's font."
-msgstr "文字テーブルのフォントを設定。"
-
-#: gcharmap/src/menus.c:73
-msgid "_Insert at end"
-msgstr "末尾に挿入(_I)"
-
-#: gcharmap/src/menus.c:73
-msgid "Insert every selected character at the end of the text entry"
-msgstr "選択した文字はテキストエントリの末尾に挿入"
-
-#: gcharmap/src/menus.c:75
-msgid "_Focusable Buttons"
-msgstr "フォーカス可能なボタン(_F)"
-
-#: gcharmap/src/menus.c:75
-msgid "Set the buttons to be focusable or not"
-msgstr "ボタンごとにフォーカス可能かどうか設定"
-
-#: gcharmap/src/menus.c:99
-msgid "Insert character(s) by choosing character codes"
-msgstr "文字コードを選んで文字を挿入"
-
-#: gcharmap/src/menus.c:102 gdictsrc/gdict-app.c:516 gtt/toolbar.c:177
-msgid "Cut"
-msgstr "切り出し"
-
-#: gcharmap/src/menus.c:102
-msgid "Cut the selection"
-msgstr "選択範囲を切り出し"
-
-#: gcharmap/src/menus.c:104
-msgid "Copy the selection"
-msgstr "選択範囲をコピー"
-
-#: gcharmap/src/menus.c:106 gdictsrc/gdict-app.c:522 gtt/toolbar.c:185
-msgid "Paste"
-msgstr "貼り付け"
-
-#: gcharmap/src/menus.c:106
-msgid "Paste the clipboard"
-msgstr "クリップボードから貼り付け"
-
-#: gcharmap/src/menus.c:109
-msgid "Show Gnome Character Map's manual"
-msgstr "GNOME 文字選択のマニュアルを表示"
-
-#: gcharmap/src/menus.c:111 mini-utils/gcolorsel/menus.c:919
-msgid "About this application"
-msgstr "このアプリケーションについて"
-
-#: gcharmap/src/menus.c:114 mini-utils/gcolorsel/menus.c:921
-msgid "Exit the program"
-msgstr "プログラムの終了"
-
-#: gdictsrc/main.c:93
-msgid ""
-"Couldn't start the dictionary; most likely, http://www.dict.org could not be "
-"contacted."
-msgstr ""
-"辞書を開けませんでした。http://www.dict.org/ に接続できなかったと思われます"
-
-#. Could not look up search strategies, so just display a
-#. * label; FIXME: Memory leak
-#.
-#: gdictsrc/dict.c:637 gdictsrc/gdict-pref-dialog.c:502
-#: gdictsrc/gdict-pref-dialog.c:546 gdictsrc/gdict-speller.c:393
-msgid "Cannot connect to server"
-msgstr "サーバに接続できません"
-
-#: gdictsrc/gdict-about.c:40
-msgid ""
-"Client for MIT dictionary server.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-msgstr ""
-"MIT辞書サーバのためのクライアント。\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-
-#: gdictsrc/gdict-app.c:117
-msgid "Spell-checking..."
-msgstr "スペルチェック中..."
-
-#: gdictsrc/gdict-app.c:125
-msgid "Spell check done"
-msgstr "スペルチェック完了"
-
-#: gdictsrc/gdict-app.c:133 gdictsrc/gdict-app.c:266
-msgid "No matches found"
-msgstr "一致するものは見つかりません"
-
-#: gdictsrc/gdict-app.c:250
-msgid "Looking up word..."
-msgstr "単語を検索しています..."
-
-#: gdictsrc/gdict-app.c:258
-msgid "Lookup done"
-msgstr "検索完了"
-
-#: gdictsrc/gdict-app.c:278
-msgid "String not found"
-msgstr "文字が見つかりません"
-
-#: gdictsrc/gdict-app.c:381
-msgid "Find:"
-msgstr "検索"
-
-#: gdictsrc/gdict-app.c:413
-msgid ""
-"Unable to perform requested operation, either because the server\n"
-"you are using is down or because you are not connected to the\n"
-"Internet. If you are not already connected to the Internet, please\n"
-"do so and try again."
-msgstr ""
-"要求された操作を実行できません。使っているサーバがダウンしているか、\n"
-"インターネットに接続されていないのが原因です。もしまだインターネットに\n"
-"接続していないなら、接続してもう一度試してみてください。"
-
-#: gdictsrc/gdict-app.c:452 gdictsrc/gdict-app.c:509
-#: gdictsrc/gdict-applet.c:313
-#, fuzzy
-msgid "Look up"
-msgstr "検索"
-
-#: gdictsrc/gdict-app.c:453 gdictsrc/gdict-app.c:510
-#, fuzzy
-msgid "Look up word in dictionary"
-msgstr "辞書で単語を検索します"
-
-#: gdictsrc/gdict-app.c:455 gdictsrc/gdict-app.c:512
-msgid "Spell"
-msgstr "スペル"
-
-#: gdictsrc/gdict-app.c:456 gdictsrc/gdict-app.c:513
-msgid "Check word spelling"
-msgstr "単語のスペルチェック"
-
-#: gdictsrc/gdict-app.c:517
-msgid "Cut to Clipboard"
-msgstr "切り出してクリップボードに送る"
-
-#: gdictsrc/gdict-app.c:520
-msgid "Copy to Clipboard"
-msgstr "クリップボードにコピー"
-
-#: gdictsrc/gdict-app.c:523
-msgid "Paste Clipboard Contents"
-msgstr "クリップボードの内容を貼り付け"
-
-#: gdictsrc/gdict-app.c:526
-msgid "Settings"
-msgstr "設定"
-
-#: gdictsrc/gdict-app.c:527
-msgid "Server to use, default search strategy, fonts"
-msgstr "使用するサーバ、デフォルトの検索方法、フォント"
-
-#: gdictsrc/gdict-app.c:588
-msgid "Word definition"
-msgstr "単語の定義"
-
-#: gdictsrc/gdict-applet.c:280 logview/logview.c:136
-msgid "About..."
-msgstr "情報..."
-
-#: gdictsrc/gdict-applet.c:289 logview/logview.c:116
-msgid "Preferences..."
-msgstr "設定..."
-
-#: gdictsrc/gdict-applet.c:293
-msgid "Show/Hide Definition Window..."
-msgstr "定義ウィンドウの表示／非表示..."
-
-#: gdictsrc/gdict-applet.c:297
-msgid "Spell Check..."
-msgstr "スペルチェック..."
-
-#: gdictsrc/gdict-applet.c:309
-msgid "Cannot create applet!\n"
-msgstr "アプレットを作成できません!\n"
-
-#: gdictsrc/gdict-defbox.c:524 gdictsrc/gdict-speller.c:417
-#, c-format
-msgid "Error invoking query: %s"
-msgstr "%s の問い合わせでエラー"
-
-#: gdictsrc/gdict-pref-dialog.c:38
-msgid "Headword:"
-msgstr "先頭の単語:"
-
-#: gdictsrc/gdict-pref-dialog.c:39
-msgid "Sub-number:"
-msgstr "サブ番号:"
-
-#: gdictsrc/gdict-pref-dialog.c:40
-msgid "Pronunciation:"
-msgstr "発音:"
-
-#: gdictsrc/gdict-pref-dialog.c:41
-msgid "Etymology:"
-msgstr "語源:"
-
-#: gdictsrc/gdict-pref-dialog.c:42
-msgid "Part of speech:"
-msgstr "品詞:"
-
-#: gdictsrc/gdict-pref-dialog.c:43
-msgid "Example:"
-msgstr "例:"
-
-#: gdictsrc/gdict-pref-dialog.c:44
-msgid "Main body:"
-msgstr "本体:"
-
-#: gdictsrc/gdict-pref-dialog.c:45
-msgid "Cross-reference:"
-msgstr "参照:"
-
-#. Fixme these should be stock buttons
-#: gdictsrc/gdict-pref-dialog.c:129 mini-utils/gshutdown/gshutdown.c:316
-#: stripchart/prefs.c:195
-msgid "Preferences"
-msgstr "設定"
-
-#: gdictsrc/gdict-pref-dialog.c:147
-msgid "Smart lookup"
-msgstr "スマート検索"
-
-#: gdictsrc/gdict-pref-dialog.c:156
-msgid "Server:"
-msgstr "サーバ:"
-
-#: gdictsrc/gdict-pref-dialog.c:161
-msgid "Port:"
-msgstr "ポート:"
-
-#: gdictsrc/gdict-pref-dialog.c:171
-msgid "Database:"
-msgstr "データベース:"
-
-#: gdictsrc/gdict-pref-dialog.c:178
-msgid "Default strategy:"
-msgstr "デフォルトの検索方法:"
-
-#: gdictsrc/gdict-pref-dialog.c:185
-msgid "Server"
-msgstr "サーバ"
-
-#: gdictsrc/gdict-pref-dialog.c:235
-msgid "Fonts"
-msgstr "フォント"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Display handle bar"
-msgstr "バーの表示"
-
-#: gdictsrc/gdict-pref-dialog.c:256
-msgid ""
-"You have to restart GDict for these\n"
-"settings to become active."
-msgstr ""
-"これらの設定を有効にするには、\n"
-"GDictを再起動して下さい。"
-
-#: gdictsrc/gdict-pref-dialog.c:263
-msgid "Applet"
-msgstr "アプレット"
-
-#: gdictsrc/gdict-pref-dialog.c:494
-msgid "Search all databases"
-msgstr "すべてのデーターベースを検索"
-
-#: gdictsrc/gdict-pref-dialog.c:585
-msgid "The server you specified could not be found."
-msgstr "指定されたサーバは見つかりませんでした。"
-
-#: gdictsrc/gdict-speller.c:118
-msgid "Word:"
-msgstr "単語:"
-
-#: gdictsrc/gdict-speller.c:127
-msgid "Search Strategy:"
-msgstr "検索方法:"
-
-#: gdictsrc/gdict-speller.c:150
-msgid "Find Words..."
-msgstr "単語を検索..."
-
-#: gdictsrc/gdict-speller.c:151
-#, fuzzy
-msgid "Look up Word..."
-msgstr "単語を問い合わせ..."
-
-#: gdictsrc/gdict-speller.c:163
-msgid "Spell checker"
-msgstr "スペルチェッカー"
-
-#: gdiskfree/gdiskfree_app.c:53 gdiskfree/gdiskfree_menus.c:108
-msgid "GDiskFree"
-msgstr "Gディスクフリー"
-
-#: gdiskfree/gdiskfree_app.c:73
-#, c-format
-msgid "Unable to parse the geometry string '%s'"
-msgstr "ジオメトリ情報 '%s' が正しくありません"
-
-#: gdiskfree/gdiskfree.c:58
-msgid "Specify the geometry of the window."
-msgstr "ウィンドウの位置を指定する"
-
-#: gdiskfree/gdiskfree.c:59 gtt/main.c:439 mini-utils/gless/gless.c:130
-msgid "GEOMETRY"
-msgstr "ジオメトリ"
-
-#: gdiskfree/gdiskfree_menus.c:111
-msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
-msgstr "Gディスクフリーは 'df' コマンドのGNOME版プログラムです"
-
-#: gdiskfree/gdiskfree_options.c:222
-msgid "GDiskFree Properties"
-msgstr "Gディスクフリーの設定"
-
-#: gdiskfree/gdiskfree_options.c:227
-msgid "Invoke sync before getting usage info"
-msgstr "利用状況を表示する前にディスクの同期を行なう"
-
-#: gdiskfree/gdiskfree_options.c:239
-msgid "Show drive mount points"
-msgstr "マウントポイントを表示する"
-
-#: gdiskfree/gdiskfree_options.c:250
-msgid "Show drive size"
-msgstr "ドライブ容量の表示"
-
-#: gdiskfree/gdiskfree_options.c:260
-msgid "Dial Orientation"
-msgstr "メーターの表示方向"
-
-#: gdiskfree/gdiskfree_options.c:265
-msgid "Vertical"
-msgstr "垂直方向"
-
-#: gdiskfree/gdiskfree_options.c:278
-msgid "Horizontal"
-msgstr "水平方向"
-
-#: gdiskfree/gdiskfree_options.c:297
-msgid "Update interval (ms)"
-msgstr "更新間隔 (ms)"
-
-#: gdiskfree/gdiskfree_options.c:308
-msgid "General Settings"
-msgstr "一般的な設定"
-
-#: gsearchtool/gsearchtool.c:33
-msgid "File name"
-msgstr "ファイル名"
-
-#: gsearchtool/gsearchtool.c:35
-msgid "Don't search subdirectories"
-msgstr "サブディレクトリの下を探索しない"
-
-#: gsearchtool/gsearchtool.c:36
-msgid "File owner"
-msgstr "ファイルの所有者"
-
-#: gsearchtool/gsearchtool.c:37
-msgid "File owner group"
-msgstr "ファイルの所有グループ"
-
-#: gsearchtool/gsearchtool.c:38
-msgid "Last modification time"
-msgstr "最終変更時間"
-
-#: gsearchtool/gsearchtool.c:40
-msgid "Don't search mounted filesystems"
-msgstr "マウント済みのファイルシステムは探索しない"
-
-#: gsearchtool/gsearchtool.c:41
-msgid "Empty file"
-msgstr "空のファイル"
-
-#: gsearchtool/gsearchtool.c:43
-msgid "Invalid user or group"
-msgstr "不正なユーザまたはグループ"
-
-#: gsearchtool/gsearchtool.c:44
-msgid "Filenames except"
-msgstr "このファイル名を除く"
-
-#: gsearchtool/gsearchtool.c:45
-msgid "Follow symbolic links"
-msgstr "シンボリックリンクを追跡する"
-
-#: gsearchtool/gsearchtool.c:46
-msgid "Simple substring search"
-msgstr "単純な文字列の探索"
-
-#: gsearchtool/gsearchtool.c:47
-msgid "Regular expression search"
-msgstr "正規表現を使った文字列の探索"
-
-#: gsearchtool/gsearchtool.c:49
-msgid "Extended regular expression search"
-msgstr "拡張正規表現を使った探索"
-
-#: gsearchtool/gsearchtool.c:151
-msgid "grep options found in find list bad bad!"
-msgstr "findリスト中にgrepのオプションが入っていたらダメダメです!"
-
-#: gsearchtool/gsearchtool.c:165
-msgid "non-grep option found in grep list, bad bad!"
-msgstr "grepリスト中にgrepのものでないオプションが入っていたらダメダメです!"
-
-#: gsearchtool/gsearchtool.c:219
-msgid "Search already running on another page"
-msgstr "別のページで探索中です"
-
-#. create the results box
-#. FIXME: add an option to autoclear result box and pass TRUE in that
-#. case
-#: gsearchtool/gsearchtool.c:229
-msgid "Search Results"
-msgstr "探索結果"
-
-#: gsearchtool/gsearchtool.c:336
-msgid ""
-"\n"
-"... Too many errors to display ..."
-msgstr ""
-"\n"
-"...エラーが多すぎて表示でません..."
-
-#: gsearchtool/gsearchtool.c:369 gsearchtool/gsearchtool.c:400
-msgid "Start directory does not exist"
-msgstr "起点ディレクトリが存在しません"
-
-#: gsearchtool/gsearchtool.c:409
-msgid "Search command line"
-msgstr "コマンドラインで検索"
-
-#: gsearchtool/gsearchtool.c:415
-msgid ""
-"This is the command line that can be used to execute this search from the "
-"console:\n"
-"(Note: to print one file per line rather then null separated,\n"
-"append \"| tr '\\000' '\\n'\" to the line below)"
-msgstr ""
-"これはコンソールからこの検索を実行するときに使うコマンドです:\n"
-"(注意: ヌル文字での分割ではなく行ごとにファイルを出力したいときは、\n"
-"下のコマンド行に\"| tr '\\000' '\\n'\"を追加して下さい)"
-
-#: gsearchtool/gsearchtool.c:502
-msgid "Entry changed called for a non entry option!"
-msgstr "エントリオプションのないエントリに変更されました!"
-
-#: gsearchtool/gsearchtool.c:568
-msgid "Enable"
-msgstr "許可"
-
-#: gsearchtool/gsearchtool.c:576 logview/actions.c:163
-#: meat-grinder/meat-grinder.c:702
-msgid "Remove"
-msgstr "削除"
-
-#: gsearchtool/gsearchtool.c:628
-msgid "Start in directory:"
-msgstr "起点ディレクトリ:"
-
-#: gsearchtool/gsearchtool.c:630
-msgid "Browse"
-msgstr "参照"
-
-#: gsearchtool/gsearchtool.c:650 mini-utils/gw/gw.c:494
-msgid "Add"
-msgstr "追加"
-
-#: gsearchtool/gsearchtool.c:661
-msgid "Show Command"
-msgstr "コマンドの表示"
-
-#: gsearchtool/gsearchtool.c:666 gsearchtool/gsearchtool.c:759 gtt/ctree.c:576
-#: gtt/ghtml.c:95 gtt/ghtml.c:267 gtt/glade/interval_edit.glade.h:11
-msgid "Start"
-msgstr "開始"
-
-#: gsearchtool/gsearchtool.c:667 gsearchtool/gsearchtool.c:760 gtt/ghtml.c:95
-#: gtt/ghtml.c:270 gtt/glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "停止"
-
-#: gsearchtool/gsearchtool.c:700
-msgid "Nothing to locate"
-msgstr "ファイル名を入力してください"
-
-#: gsearchtool/gsearchtool.c:735
-msgid ""
-"This is an interface to locate.  If you type in a simple string it\n"
-"will be matched as a subset of the full path, and if you type\n"
-"in a string with wildcards, it will have to match the full path."
-msgstr ""
-"これは locate コマンドのインターフェースです. 簡単な文字列を入力して,\n"
-"フルパスの一部にマッチすればそれが表示されます. また, ワイルドカード\n"
-"を用いた探索も行なうことができます."
-
-#: gsearchtool/gsearchtool.c:744
-msgid "Locate file: "
-msgstr "文字列: "
-
-#: gsearchtool/gsearchtool.c:781
-msgid "Full find (find)"
-msgstr "全探索(find)"
-
-#: gsearchtool/gsearchtool.c:783
-msgid "Quick find (locate)"
-msgstr "簡易探索(locate)"
-
-#: gsearchtool/gsearchtool.c:804
-msgid "The Gnome Search Tool"
-msgstr "GNOME探索ツール"
-
-#: gsearchtool/gsearchtool.c:805
-msgid "(C) 1998,2000 the Free Software Foundation"
-msgstr "(C) 1998,2000 the Free Software Foundation"
-
-#: gsearchtool/gsearchtool.c:807
-msgid "Frontend to the unix find/grep/locate commands"
-msgstr "UNIX コマンド find / grep / locate のフロントエンドです"
-
-#: gsearchtool/gsearchtool.c:865
-msgid "Gnome Search Tool"
-msgstr "GNOME探索ツール"
-
-#: gsearchtool/outdlg.c:51
-msgid "Cannot save file"
-msgstr "ファイルを保存できません"
-
-#: gsearchtool/outdlg.c:69 meat-grinder/meat-grinder.c:476
-msgid "Save Results"
-msgstr "探索結果"
-
-#: gsearchtool/outdlg.c:130
-msgid "Command mangled"
-msgstr "コマンドライン"
-
-#: gsearchtool/outdlg.c:159
-msgid "No command for this mime type"
-msgstr "このファイルシステムの情報はありません"
-
-#: gtt/app.c:115 gtt/app.c:227
+#: src/app.c:116 src/app.c:228
 msgid "no project selected"
 msgstr "プロジェクトが選択されていません"
 
-#: gtt/app.c:217
+#: src/app.c:218
 msgid "00:00"
 msgstr "00:00"
 
-#: gtt/app.c:259 mini-utils/gless/gless.c:423
+#: src/app.c:270
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -908,360 +32,435 @@ msgstr ""
 "コマンドラインで指定されたジオメトリ情報(位置と大きさ)\n"
 "を理解できません"
 
-#: gtt/ctree.c:511
+#: src/ctree.c:517
 msgid "Total"
 msgstr "トータル"
 
-#: gtt/ctree.c:513
+#: src/ctree.c:519
 msgid "Total time spent on this project."
 msgstr ""
 
-#: gtt/ctree.c:518
+#: src/ctree.c:524
 #, fuzzy
 msgid "Entry"
 msgstr "停止時のエントリ:"
 
-#: gtt/ctree.c:520
+#: src/ctree.c:526
 msgid "Time spent under the current diary entry."
 msgstr ""
 
-#: gtt/ctree.c:526 gtt/glade/interval_edit.glade.h:14
+#: src/ctree.c:532 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "今日"
 
-#: gtt/ctree.c:528
+#: src/ctree.c:534
 msgid "Time spent on this project today."
 msgstr ""
 
-#: gtt/ctree.c:533
+#: src/ctree.c:539
 msgid "Week"
 msgstr ""
 
-#: gtt/ctree.c:535
+#: src/ctree.c:541
 msgid "Time spent on this project this week."
 msgstr ""
 
-#: gtt/ctree.c:541
+#: src/ctree.c:547
 #, fuzzy
 msgid "Month"
 msgstr "モニタ"
 
-#: gtt/ctree.c:543
+#: src/ctree.c:549
 msgid "Time spent on this project this month."
 msgstr ""
 
-#: gtt/ctree.c:549
+#: src/ctree.c:555
 #, fuzzy
 msgid "Year"
 msgstr "線型"
 
-#: gtt/ctree.c:551
+#: src/ctree.c:557
 msgid "Time spent on this project this year."
 msgstr ""
 
-#: gtt/ctree.c:557
+#: src/ctree.c:563
 #, fuzzy
 msgid "Title"
 msgstr "ファイル(_F)"
 
-#: gtt/ctree.c:558 gtt/menucmd.c:148
+#: src/ctree.c:564 src/menucmd.c:155
 msgid "Project Title"
 msgstr "プロジェクト名"
 
-#: gtt/ctree.c:563 gtt/ctree.c:564 gtt/menucmd.c:149 stripchart/params.c:654
+#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
 msgid "Description"
 msgstr "説明"
 
-#: gtt/ctree.c:569 gtt/ghtml.c:95 gtt/ghtml.c:220
+#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
 msgid "Diary Entry"
 msgstr ""
 
-#: gtt/ctree.c:571
+#: src/ctree.c:577
 #, fuzzy
 msgid "The current diary entry"
 msgstr "現在のドキュメントを閉じる"
 
-#: gtt/ctree.c:578
+#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: glade/interval_edit.glade.h:11
+msgid "Start"
+msgstr "開始"
+
+#: src/ctree.c:584
 msgid "Estimated Project Start Date"
 msgstr ""
 
-#: gtt/ctree.c:583
+#: src/ctree.c:589
 #, fuzzy
 msgid "End"
 msgstr "許可"
 
-#: gtt/ctree.c:585
+#: src/ctree.c:591
 #, fuzzy
 msgid "Estimated Project Completion Date"
 msgstr "設定の編集..."
 
-#: gtt/ctree.c:590
+#: src/ctree.c:596
 msgid "Due"
 msgstr ""
 
-#: gtt/ctree.c:592
+#: src/ctree.c:598
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 
-#: gtt/ctree.c:599 mini-utils/guname/info.c:61
+#: src/ctree.c:605
 msgid "Size"
 msgstr "サイズ"
 
-#: gtt/ctree.c:601
+#: src/ctree.c:607
 msgid "Sizing: How much work it will take to finish this project."
 msgstr ""
 
-#: gtt/ctree.c:607
+#: src/ctree.c:613
 #, fuzzy
 msgid "Done"
 msgstr "なし"
 
-#: gtt/ctree.c:609
+#: src/ctree.c:615
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
 
-#: gtt/ctree.c:616
+#: src/ctree.c:622
 msgid "U"
 msgstr ""
 
-#: gtt/ctree.c:618
+#: src/ctree.c:624
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr ""
 
-#: gtt/ctree.c:624
+#: src/ctree.c:630
 msgid "Imp"
 msgstr ""
 
-#: gtt/ctree.c:626
+#: src/ctree.c:632
 msgid "Importance: How important is this project?"
 msgstr ""
 
-#: gtt/ctree.c:632 mini-utils/idetool/idetool.c:317
-#: mini-utils/idetool/idetool.c:319
+#: src/ctree.c:638
 msgid "Status"
 msgstr "状態"
 
-#: gtt/ctree.c:634
+#: src/ctree.c:640
 msgid "The current status of this project."
 msgstr ""
 
-#: gtt/ctree.c:969 gtt/glade/project_properties.glade.h:25
+#: src/ctree.c:959
+msgid "3"
+msgstr "3"
+
+#: src/ctree.c:960
+msgid "2"
+msgstr "2"
+
+#: src/ctree.c:961
+msgid "1"
+msgstr "1"
+
+#: src/ctree.c:971 glade/project_properties.glade.h:25
 #, fuzzy
 msgid "Low"
 msgstr "ログファイル"
 
-#: gtt/ctree.c:970
+#: src/ctree.c:972
 #, fuzzy
 msgid "Med"
 msgstr "赤"
 
-#: gtt/ctree.c:971 gtt/glade/project_properties.glade.h:15
+#: src/ctree.c:973 glade/project_properties.glade.h:15
 #, fuzzy
 msgid "High"
 msgstr "右"
 
-#: gtt/ctree.c:980 gtt/glade/project_properties.glade.h:29
+#: src/ctree.c:982 glade/project_properties.glade.h:29
 #, fuzzy
 msgid "Not Started"
 msgstr "開始"
 
-#: gtt/ctree.c:981 gtt/glade/project_properties.glade.h:21
+#: src/ctree.c:983 glade/project_properties.glade.h:21
 #, fuzzy
 msgid "In Progress"
 msgstr "プロセス:"
 
-#: gtt/ctree.c:982 gtt/glade/project_properties.glade.h:31
+#: src/ctree.c:984 glade/project_properties.glade.h:31
 #, fuzzy
 msgid "On Hold"
 msgstr "実線"
 
-#: gtt/ctree.c:983 gtt/glade/project_properties.glade.h:9
+#: src/ctree.c:985 glade/project_properties.glade.h:9
 #, fuzzy
 msgid "Cancelled"
 msgstr "キャンセル"
 
-#: gtt/ctree.c:984 gtt/glade/project_properties.glade.h:10
+#: src/ctree.c:986 glade/project_properties.glade.h:10
 msgid "Completed"
 msgstr ""
 
-#: gtt/file-io.c:376
+#: src/err-throw.c:61
+#, fuzzy
+msgid "No Error"
+msgstr "エラー"
+
+#: src/err-throw.c:65
+#, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:70
+#, c-format
+msgid ""
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:75
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GTT project data file\n"
+msgstr ""
+
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
+
+#: src/err-throw.c:87
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:92
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:97
+#, fuzzy, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr "設定ファイルを保存できません!"
+
+#: src/file-io.c:376
 msgid "project %t started"
 msgstr "プロジェクト %t 開始しました"
 
-#: gtt/file-io.c:379
+#: src/file-io.c:379
 msgid "stopped project %t"
 msgstr "プロジェクト %t を停止しました"
 
 #. Translators: This is a "time format", that is
 #. * format on how to print the elapsed time with
 #. * hours:minutes:seconds.
-#: gtt/file-io.c:677
+#: src/file-io.c:677
 #, c-format
 msgid "%d:%02d:%02d"
 msgstr "%d:%02d:%02d"
 
-#: gtt/ghtml.c:95 gtt/ghtml.c:273
+#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "停止"
+
+#: src/ghtml.c:95 src/ghtml.c:273
 msgid "Elapsed"
 msgstr ""
 
-#: gtt/ghtml.c:113 gtt/ghtml.c:369 gtt/ghtml.c:378
+#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
 #, fuzzy
 msgid "(empty)"
 msgstr "空"
 
-#: gtt/ghtml.c:225
+#: src/ghtml.c:225
 #, fuzzy
 msgid "Notes"
 msgstr "ノートパッド"
 
-#: gtt/ghtml.c:229
+#: src/ghtml.c:229
 msgid "Task Time"
 msgstr ""
 
-#: gtt/ghtml.c:233
+#: src/ghtml.c:233
 #, fuzzy
 msgid "Bill Status"
 msgstr "状態"
 
-#: gtt/ghtml.c:237 gtt/ghtml.c:408 gtt/glade/task_properties.glade.h:4
+#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
 #, fuzzy
 msgid "Billable"
 msgstr "不許可"
 
-#: gtt/ghtml.c:241
+#: src/ghtml.c:241
 #, fuzzy
 msgid "Bill Rate"
 msgstr "不許可"
 
-#: gtt/ghtml.c:245 mini-utils/gcolorsel/view-color-list.c:197
-#: mini-utils/guname/moreinfo.c:227
+#: src/ghtml.c:245
 msgid "Value"
 msgstr "値"
 
-#: gtt/ghtml.c:249
+#: src/ghtml.c:249
 #, fuzzy
 msgid "Billable Value"
 msgstr "不許可"
 
-#: gtt/ghtml.c:253 gtt/ghtml.c:279
+#: src/ghtml.c:253 src/ghtml.c:279
 #, fuzzy
 msgid "No Default Value"
 msgstr "デフォルト"
 
-#: gtt/ghtml.c:276
+#: src/ghtml.c:276
 #, fuzzy
 msgid "Start Time Fuzziness"
 msgstr "開始"
 
-#: gtt/ghtml.c:392 gtt/glade/task_properties.glade.h:13
+#: src/ghtml.c:392 glade/task_properties.glade.h:13
 #, fuzzy
 msgid "Hold"
 msgstr "実線"
 
-#: gtt/ghtml.c:395 gtt/glade/task_properties.glade.h:3
+#: src/ghtml.c:395 glade/task_properties.glade.h:3
 #, fuzzy
 msgid "Bill"
 msgstr "不許可"
 
-#: gtt/ghtml.c:398 gtt/glade/task_properties.glade.h:21
+#: src/ghtml.c:398 glade/task_properties.glade.h:21
 msgid "Paid"
 msgstr ""
 
-#: gtt/ghtml.c:411 gtt/glade/task_properties.glade.h:17
+#: src/ghtml.c:411 glade/task_properties.glade.h:17
 msgid "Not Billable"
 msgstr ""
 
-#: gtt/ghtml.c:414 gtt/glade/task_properties.glade.h:16
+#: src/ghtml.c:414 glade/task_properties.glade.h:16
 msgid "No Charge"
 msgstr ""
 
-#: gtt/ghtml.c:424 gtt/glade/task_properties.glade.h:22
+#: src/ghtml.c:424 glade/task_properties.glade.h:22
 #, fuzzy
 msgid "Regular"
 msgstr "読み直し"
 
-#: gtt/ghtml.c:427 gtt/glade/task_properties.glade.h:20
+#: src/ghtml.c:427 glade/task_properties.glade.h:20
 msgid "Overtime"
 msgstr ""
 
-#: gtt/ghtml.c:430
+#: src/ghtml.c:430
 msgid "Double Overtime"
 msgstr ""
 
-#: gtt/ghtml.c:433 gtt/glade/task_properties.glade.h:12
+#: src/ghtml.c:433 glade/task_properties.glade.h:12
 #, fuzzy
 msgid "Flat Fee"
 msgstr "浮動小数値"
 
-#: gtt/ghtml.c:453
+#: src/ghtml.c:453
 #, fuzzy
 msgid "Error - Unknown"
 msgstr "不明"
 
-#: gtt/ghtml.c:703
+#: src/ghtml.c:703
 msgid "unknown token: >>>>"
 msgstr ""
 
-#: gtt/journal.c:108
+#: src/journal.c:111
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: gtt/journal.c:110
+#: src/journal.c:113
 #, fuzzy, c-format
 msgid "The file %s was not found."
 msgstr "ロゴが見つかりません"
 
-#: gtt/journal.c:111
+#: src/journal.c:114
 msgid "(null)"
 msgstr ""
 
-#: gtt/journal.c:120
+#: src/journal.c:124
 #, fuzzy
 msgid "Unkown Error"
 msgstr "不明"
 
-#: gtt/journal.c:169 gtt/plug-in.c:90
+#: src/journal.c:175 src/plug-in.c:90
 #, fuzzy, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr "ログファイルを開けません!\n"
 
-#: gtt/journal.c:248 gtt/proj.c:716 gtt/proj.c:1539 gtt/proj.c:1667
-#: gtt/proj.c:1807
+#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/proj.c:1807
 msgid "New Diary Entry"
 msgstr ""
 
-#: gtt/journal.c:436
+#: src/journal.c:455
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "パレットの保存(_S)"
 
-#: gtt/log.c:55
+#: src/log.c:55
 #, c-format
 msgid "Cannot open logfile %s for append"
 msgstr "追加先のログファイル %s を開けません "
 
 #. Translators: Format to use in the gtt logfile
-#: gtt/log.c:64
+#: src/log.c:64
 msgid "%b %d %H:%M:%S"
 msgstr "%m/%d %H:%M:%S"
 
-#: gtt/log.c:102
+#: src/log.c:102
 msgid "no description"
 msgstr "説明なし"
 
-#: gtt/log.c:167 gtt/log.c:258
+#: src/log.c:167 src/log.c:258
 msgid "program started"
 msgstr "プログラム始動中"
 
 #. log_if_equal
-#: gtt/log.c:250
+#: src/log.c:250
 msgid "program exited"
 msgstr "プログラム終了済"
 
-#: gtt/main.c:114
+#: src/main.c:114
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -1269,39 +468,43 @@ msgstr ""
 "別の時間追跡ツールが動いているようです.\n"
 "それでもプログラムを起動するときはOKを, そうでなければ中止して下さい."
 
-#: gtt/main.c:126
+#: src/main.c:126
 msgid "Cannot create pid-file!"
 msgstr "pid ファイルを作成できません!"
 
-#: gtt/main.c:219
+#: src/main.c:219
 msgid "Do you want to continue?"
 msgstr ""
 
-#: gtt/main.c:222 gtt/main.c:275
+#: src/main.c:222 src/main.c:275
 msgid "Error"
 msgstr "エラー"
 
-#: gtt/main.c:272
+#: src/main.c:272
 msgid "Shall I setup a new configuration?"
 msgstr ""
 
-#: gtt/main.c:439
+#: src/main.c:440
 msgid "Specify geometry"
 msgstr "ジオメトリ情報"
 
-#: gtt/main.c:441
+#: src/main.c:440
+msgid "GEOMETRY"
+msgstr "ジオメトリ"
+
+#: src/main.c:442
 msgid "Select a project on startup"
 msgstr "起動時にプロジェクトを選択"
 
-#: gtt/main.c:441
+#: src/main.c:442
 msgid "PROJECT"
 msgstr "プロジェクト"
 
-#: gtt/main.c:481 gtt/menucmd.c:48 gtt/menucmd.c:204 gtt/menucmd.c:240
+#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
 msgid "Warning"
 msgstr "警告"
 
-#: gtt/menucmd.c:85
+#: src/menucmd.c:89
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -1309,157 +512,157 @@ msgid ""
 "well as track that status of other projects."
 msgstr ""
 
-#: gtt/menucmd.c:142
+#: src/menucmd.c:149
 msgid "New Project..."
 msgstr "新規プロジェクト..."
 
-#: gtt/menucmd.c:224 gtt/toolbar.c:167
+#: src/menucmd.c:231 src/toolbar.c:179
 msgid "Reload Configuration File"
 msgstr "設定ファイルの読み直し"
 
-#: gtt/menucmd.c:225
+#: src/menucmd.c:232
 #, fuzzy
 msgid "Do you really want to reload the configuration file?"
 msgstr "設定ファイルを読み込めません"
 
-#: gtt/menucmd.c:260
+#: src/menucmd.c:267
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "ファイル %s が存在します。上書きしますか?"
 
-#: gtt/menucmd.c:271
+#: src/menucmd.c:278
 msgid "File cannot be written"
 msgstr "ファイルに書けません"
 
-#: gtt/menucmd.c:291
+#: src/menucmd.c:298
 msgid "Export Current State"
 msgstr "現在の状態をエクスポート"
 
-#: gtt/menus.c:33
+#: src/menus.c:33
 msgid "_New Project..."
 msgstr "新規プロジェクト(_N)..."
 
-#: gtt/menus.c:36
+#: src/menus.c:36
 msgid "_Reload Configuration File"
 msgstr "設定ファイルの読み直し(_R)"
 
-#: gtt/menus.c:40
+#: src/menus.c:40
 msgid "_Save Configuration File"
 msgstr "設定ファイルの保存(_S)"
 
-#: gtt/menus.c:44
+#: src/menus.c:44
 msgid "_Export Current State"
 msgstr "現在の状態をエクスポート(_E)"
 
-#: gtt/menus.c:63 gtt/menus.c:173
+#: src/menus.c:63 src/menus.c:173
 msgid "Clear _Daily Counter"
 msgstr "デイリーカウンターの初期化(_D)"
 
-#: gtt/menus.c:64 gtt/menus.c:174
+#: src/menus.c:64 src/menus.c:174
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr ""
 
-#: gtt/menus.c:68 gtt/menus.c:87 gtt/menus.c:156
+#: src/menus.c:68 src/menus.c:87 src/menus.c:156
 msgid "_Journal..."
 msgstr ""
 
-#: gtt/menus.c:69 gtt/menus.c:88 gtt/menus.c:157
+#: src/menus.c:69 src/menus.c:88 src/menus.c:157
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
-#: gtt/menus.c:72 gtt/menus.c:160
+#: src/menus.c:72 src/menus.c:160
 msgid "New Diary _Entry"
 msgstr ""
 
-#: gtt/menus.c:73 gtt/menus.c:161
+#: src/menus.c:73 src/menus.c:161
 msgid "Change the current task for this project"
 msgstr ""
 
-#: gtt/menus.c:91
+#: src/menus.c:91
 msgid "_All Journal..."
 msgstr ""
 
-#: gtt/menus.c:92
+#: src/menus.c:92
 msgid "Show the verbose timesheet journal for this project"
 msgstr ""
 
-#: gtt/menus.c:95
+#: src/menus.c:95
 #, fuzzy
 msgid "_Invoice..."
 msgstr "保存(_S)..."
 
-#: gtt/menus.c:96
+#: src/menus.c:96
 msgid "Show a sample invoice for this project"
 msgstr ""
 
-#: gtt/menus.c:99
+#: src/menus.c:99
 #, fuzzy
 msgid "_Primer..."
 msgstr "設定..."
 
-#: gtt/menus.c:100
+#: src/menus.c:100
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr ""
 
-#: gtt/menus.c:103
+#: src/menus.c:103
 #, fuzzy
 msgid "_New Report..."
 msgstr "新規プロジェクト(_N)..."
 
-#: gtt/menus.c:104
+#: src/menus.c:104
 msgid "Define a path to a new GTT phtml report file"
 msgstr ""
 
-#: gtt/menus.c:115
+#: src/menus.c:115
 msgid "St_art"
 msgstr "始動(_A)"
 
-#: gtt/menus.c:116
+#: src/menus.c:116
 msgid "Start the timer running"
 msgstr ""
 
-#: gtt/menus.c:121
+#: src/menus.c:121
 msgid "Sto_p"
 msgstr "停止(_P)"
 
-#: gtt/menus.c:122
+#: src/menus.c:122
 #, fuzzy
 msgid "Stop the timer"
 msgstr "9月"
 
-#: gtt/menus.c:127
+#: src/menus.c:127
 msgid "_Timer Running"
 msgstr "タイマー起動中(_T)"
 
-#: gtt/menus.c:146
+#: src/menus.c:146
 msgid "_Reports"
 msgstr ""
 
-#: gtt/menus.c:147
+#: src/menus.c:147
 msgid "_Timer"
 msgstr "タイマー(_T)"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: gtt/menus.c:244
+#: src/menus.c:244
 #, fuzzy
 msgid "Reports"
 msgstr "リブート"
 
-#: gtt/plug-in.c:121
+#: src/plug-in.c:121
 msgid "Reports/<Separator>"
 msgstr ""
 
-#: gtt/proj.c:697
+#: src/proj.c:697
 msgid "Old GTT Tasks"
 msgstr ""
 
-#: gtt/props-proj.c:94 gtt/props-proj.c:95 gtt/props-task.c:75
-#: gtt/props-task.c:76
+#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
+#: src/props-task.c:76
 msgid "empty"
 msgstr "空"
 
-#: gtt/timer.c:117
+#: src/timer.c:117
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -1469,784 +672,766 @@ msgid ""
 "Do you want to restart it?"
 msgstr ""
 
-#: gtt/timer.c:125
+#: src/timer.c:125
 #, fuzzy
 msgid "System Idle"
 msgstr "システム情報"
 
-#. Note to translators: just skip the `[GTT]'
-#: gtt/toolbar.c:159
-msgid "[GTT]New"
-msgstr "新規"
-
-#: gtt/toolbar.c:160
+#: src/toolbar.c:169
 #, fuzzy
 msgid "Create a New Project..."
 msgstr "新規プロジェクト..."
 
-#: gtt/toolbar.c:166
-msgid "Reload"
-msgstr "読み直し"
-
-#: gtt/glade/journal.glade.h:7 gtt/toolbar.c:170 stripchart/params.c:939
-msgid "Save"
-msgstr "保存"
-
-#: gtt/toolbar.c:171
+#: src/toolbar.c:184
 msgid "Save Configuration File"
 msgstr "設定ファイルの保存"
 
-#: gtt/toolbar.c:178
+#: src/toolbar.c:194
 msgid "Cut Selected Project"
 msgstr "選択したプロジェクトを切り出し"
 
-#: gtt/toolbar.c:182
+#: src/toolbar.c:199
 msgid "Copy Selected Project"
 msgstr "選択したプロジェクトをコピー"
 
-#: gtt/toolbar.c:186
+#: src/toolbar.c:204
 msgid "Paste Project"
 msgstr "プロジェクトの貼り付け"
 
-#: gtt/glade/journal.glade.h:2 gtt/toolbar.c:193
+#: src/toolbar.c:213 glade/journal.glade.h:2
 msgid "Journal"
 msgstr ""
 
-#: gtt/toolbar.c:194
+#: src/toolbar.c:214
 msgid "View and Edit Timestamp Logs"
 msgstr ""
 
-#: gtt/toolbar.c:199
-msgid "Props"
-msgstr "設定"
-
-#: gtt/toolbar.c:200
+#: src/toolbar.c:223
 #, fuzzy
 msgid "Edit Project Properties..."
 msgstr "設定の編集..."
 
-#: gtt/toolbar.c:204
+#: src/toolbar.c:230
 msgid "Timer"
 msgstr "タイマー"
 
-#: gtt/toolbar.c:205
+#: src/toolbar.c:231
 msgid "Start/Stop Timer"
 msgstr "タイマーの始動/停止"
 
-#: gtt/toolbar.c:211 logview/calendar.c:112 logview/logview.c:107
+#: src/toolbar.c:241
 msgid "Calendar"
 msgstr "カレンダ"
 
-#: gtt/toolbar.c:212
+#: src/toolbar.c:242
 #, fuzzy
 msgid "View Calendar"
 msgstr "カレンダを表示しない"
 
-#: gtt/toolbar.c:225
-msgid "Prefs"
-msgstr "好み"
-
-#: gtt/toolbar.c:226
+#: src/toolbar.c:262
 msgid "Edit Preferences..."
 msgstr "好みの編集..."
 
-#: gtt/toolbar.c:230
-msgid "Manual"
-msgstr "説明"
-
-#: gtt/toolbar.c:231
+#: src/toolbar.c:270
 msgid "User's Guide and Manual"
 msgstr ""
 
-#: gtt/toolbar.c:236
-msgid "Quit"
-msgstr "終了"
-
-#: gtt/toolbar.c:236
-msgid "Quit GTimeTracker"
+#: src/toolbar.c:278
+#, fuzzy
+msgid "Quit Gnome TimeTracker"
 msgstr "時間追跡ツールの終了"
 
-#: gtt/glade/interval_edit.glade.h:1
+#: glade/interval_edit.glade.h:1
 msgid "1 Hour"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:2
+#: glade/interval_edit.glade.h:2
 #, fuzzy
 msgid "10 Min"
 msgstr "最小"
 
-#: gtt/glade/interval_edit.glade.h:3
+#: glade/interval_edit.glade.h:3
 #, fuzzy
 msgid "15 Min"
 msgstr "最小"
 
-#: gtt/glade/interval_edit.glade.h:4
+#: glade/interval_edit.glade.h:4
 #, fuzzy
 msgid "2 Hours"
 msgstr "時間"
 
-#: gtt/glade/interval_edit.glade.h:5
+#: glade/interval_edit.glade.h:5
 #, fuzzy
 msgid "20 Min"
 msgstr "最小"
 
-#: gtt/glade/interval_edit.glade.h:6
+#: glade/interval_edit.glade.h:6
 #, fuzzy
 msgid "3 Hours"
 msgstr "時間"
 
-#: gtt/glade/interval_edit.glade.h:7
+#: glade/interval_edit.glade.h:7
 #, fuzzy
 msgid "30 Min"
 msgstr "最小"
 
-#: gtt/glade/interval_edit.glade.h:8
+#: glade/interval_edit.glade.h:8
 #, fuzzy
 msgid "5 Min"
 msgstr "最小"
 
-#: gtt/glade/interval_edit.glade.h:9
+#: glade/interval_edit.glade.h:9
 msgid "Exact Time"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:10
+#: glade/interval_edit.glade.h:10
 msgid "Set how Uncertain the Start Time Is"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:12
+#: glade/interval_edit.glade.h:12
 #, fuzzy
 msgid "Start Fuzz"
 msgstr "開始"
 
-#: gtt/glade/interval_popup.glade.h:1
+#: glade/interval_popup.glade.h:1
+#, fuzzy
+msgid "Add a new time interval."
+msgstr "更新間隔 (ms)"
+
+#: glade/interval_popup.glade.h:2
 #, fuzzy
 msgid "Delete Interval"
 msgstr "スライダーの更新間隔"
 
-#: gtt/glade/interval_popup.glade.h:2
+#: glade/interval_popup.glade.h:3
 #, fuzzy
 msgid "Delete This Interval"
 msgstr "スライダーの更新間隔"
 
-#: gtt/glade/interval_popup.glade.h:3
+#: glade/interval_popup.glade.h:4
 #, fuzzy
 msgid "Edit Interval"
 msgstr "一般"
 
-#: gtt/glade/interval_popup.glade.h:4
+#: glade/interval_popup.glade.h:5
 #, fuzzy
 msgid "Edit the Start & Stop Times"
 msgstr "タイマーの始動/停止"
 
-#: gtt/glade/interval_popup.glade.h:5
+#: glade/interval_popup.glade.h:6
 #, fuzzy
 msgid "Insert Diary Entry"
 msgstr "末尾に挿入(_I)"
 
-#: gtt/glade/interval_popup.glade.h:6
+#: glade/interval_popup.glade.h:7
 msgid "Insert a new diary entry above this time interval."
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:8
 msgid "Merge Down"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:8
+#: glade/interval_popup.glade.h:9
 msgid "Merge Into Interval Above"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:9
+#: glade/interval_popup.glade.h:10
 msgid "Merge Into Interval Below"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:10
+#: glade/interval_popup.glade.h:11
 msgid "Merge Up"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:11
+#: glade/interval_popup.glade.h:12
+#, fuzzy
+msgid "New Interval"
+msgstr "スライダーの更新間隔"
+
+#: glade/interval_popup.glade.h:13
 msgid "Paste Diary Entry"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:12 gtt/glade/task_popup.glade.h:8
+#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
 msgid "Paste a previously cut diary entry."
 msgstr ""
 
-#: gtt/glade/journal.glade.h:1 mini-utils/gcolorsel/menus.c:89
-#: mini-utils/gcolorsel/menus.c:913 mini-utils/gshutdown/gshutdown.c:155
-#: mini-utils/gshutdown/gshutdown.c:631 stripchart/params.c:953
+#: glade/journal.glade.h:1
 msgid "Close"
 msgstr "閉じる"
 
-#: gtt/glade/journal.glade.h:3
+#: glade/journal.glade.h:3
 #, fuzzy
 msgid "New File"
 msgstr "新規ビュー"
 
-#: gtt/glade/journal.glade.h:4
+#: glade/journal.glade.h:4
 #, fuzzy
 msgid "Open File"
 msgstr "ログを開く"
 
-#: gtt/glade/journal.glade.h:5
+#: glade/journal.glade.h:5
 #, fuzzy
 msgid "Print"
 msgstr "点"
 
-#: gtt/glade/journal.glade.h:6
+#: glade/journal.glade.h:6
 msgid "Refresh"
 msgstr ""
 
-#: gtt/glade/journal.glade.h:8
+#: glade/journal.glade.h:7
+msgid "Save"
+msgstr "保存"
+
+#: glade/journal.glade.h:8
 #, fuzzy
 msgid "Save File"
 msgstr "パレットの保存(_S)"
 
-#: gtt/glade/not-implemented.glade.h:1
+#: glade/not-implemented.glade.h:1
 #, fuzzy
 msgid "Information"
 msgstr "CPU情報"
 
-#: gtt/glade/not-implemented.glade.h:2
+#: glade/not-implemented.glade.h:2
 msgid ""
 "This function is not yet implemented!\n"
 "Coming Soon, I hope!"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:1
+#: glade/prefs.glade.h:1
 msgid "Display"
 msgstr "表示"
 
-#: gtt/glade/prefs.glade.h:2
+#: glade/prefs.glade.h:2
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:3
+#: glade/prefs.glade.h:3
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:4
+#: glade/prefs.glade.h:4
 msgid "Entry Start:"
 msgstr "始動時のエントリ:"
 
-#: gtt/glade/prefs.glade.h:5
+#: glade/prefs.glade.h:5
 msgid "Entry Stop:"
 msgstr "停止時のエントリ:"
 
-#: gtt/glade/prefs.glade.h:7
+#: glade/prefs.glade.h:7
 #, no-c-format
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
 "title, %d for the description, etc. See the manual for more options."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:9
+#: glade/prefs.glade.h:9
 #, no-c-format
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
 "title, %d for the project description, etc. See the manual for more options."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:10
+#: glade/prefs.glade.h:10
 #, fuzzy
 msgid "Fields"
 msgstr "検索"
 
-#: gtt/glade/prefs.glade.h:11
+#: glade/prefs.glade.h:11
 msgid "Filename:"
 msgstr "ファイル名:"
 
-#: gtt/glade/prefs.glade.h:12
+#: glade/prefs.glade.h:12
 #, fuzzy
 msgid "Idle Seconds:"
 msgstr "秒を表示"
 
-#: gtt/glade/prefs.glade.h:13
+#: glade/prefs.glade.h:13
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:14
+#: glade/prefs.glade.h:14
 msgid "Logfile"
 msgstr "ログファイル"
 
-#: gtt/glade/prefs.glade.h:15
+#: glade/prefs.glade.h:15
 #, fuzzy
 msgid "Min Recorded:"
 msgstr "本体:"
 
-#: gtt/glade/prefs.glade.h:16
+#: glade/prefs.glade.h:16
 msgid "Misc"
 msgstr "その他"
 
-#: gtt/glade/prefs.glade.h:17
+#: glade/prefs.glade.h:17
 msgid "No Project Command:"
 msgstr "プロジェクトがない時の命令:"
 
-#: gtt/glade/prefs.glade.h:18
+#: glade/prefs.glade.h:18
 #, fuzzy
 msgid "Project List Display"
 msgstr "プロジェクト名"
 
-#: gtt/glade/prefs.glade.h:19
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Shell"
 msgstr "スペル"
 
-#: gtt/glade/prefs.glade.h:20
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "シェルコマンド"
 
-#: gtt/glade/prefs.glade.h:21
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:22
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:23
+#: glade/prefs.glade.h:23
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:24
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:25
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:26
+#: glade/prefs.glade.h:26
 #, fuzzy
 msgid "Show Project Description"
 msgstr "プロジェクトの説明:"
 
-#: gtt/glade/prefs.glade.h:27
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:28
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "プロジェクトがない時の命令:"
 
-#: gtt/glade/prefs.glade.h:29
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Status"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:30
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:31
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "秒を表示"
 
-#: gtt/glade/prefs.glade.h:32
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "ステータスバーを表示"
 
-#: gtt/glade/prefs.glade.h:33
+#: glade/prefs.glade.h:33
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:34
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "テーブル見出しを表示"
 
-#: gtt/glade/prefs.glade.h:35
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:36
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:37
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:38
+#: glade/prefs.glade.h:38
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "`タイマー'の表示"
 
-#: gtt/glade/prefs.glade.h:39
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time Today"
 msgstr "`タイマー'の表示"
 
-#: gtt/glade/prefs.glade.h:40
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "ツールバーにアイコンを表示"
 
-#: gtt/glade/prefs.glade.h:41
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "ツールバーにテキストを表示"
 
-#: gtt/glade/prefs.glade.h:42
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "ツールチップの表示"
 
-#: gtt/glade/prefs.glade.h:43
+#: glade/prefs.glade.h:43
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "テーブル見出しを表示"
 
-#: gtt/glade/prefs.glade.h:44
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "`切り出し'、`コピー'、`貼り付け'の表示"
 
-#: gtt/glade/prefs.glade.h:45
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "`ヘルプ'の表示"
 
-#: gtt/glade/prefs.glade.h:46
+#: glade/prefs.glade.h:46
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "`ヘルプ'の表示"
 
-#: gtt/glade/prefs.glade.h:47
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "`新規'の表示"
 
-#: gtt/glade/prefs.glade.h:48
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "`好み'の表示"
 
-#: gtt/glade/prefs.glade.h:49
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "`設定'の表示"
 
-#: gtt/glade/prefs.glade.h:50
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "`終了'の表示"
 
-#: gtt/glade/prefs.glade.h:51
+#: glade/prefs.glade.h:51
 msgid "Show `Save', `Reload'"
 msgstr "`保存'、`読み直し'の表示"
 
-#: gtt/glade/prefs.glade.h:52
+#: glade/prefs.glade.h:52
 msgid "Show `Timer'"
 msgstr "`タイマー'の表示"
 
-#: gtt/glade/prefs.glade.h:53
+#: glade/prefs.glade.h:53
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:54
+#: glade/prefs.glade.h:54
 msgid "Switch Project Command:"
 msgstr "プロジェクト切替え時の命令:"
 
-#: gtt/glade/prefs.glade.h:55
+#: glade/prefs.glade.h:55
 msgid ""
 "Switches between projects that happen faster than this will not be logged "
 "(enter the number of seconds)"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:56
+#: glade/prefs.glade.h:56
 msgid ""
 "The current active project will be made inactive after there has been no "
 "keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:57
+#: glade/prefs.glade.h:57
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: gtt/glade/prefs.glade.h:58
+#: glade/prefs.glade.h:58
 msgid "Toolbar Segments"
 msgstr "ツールバーの領域"
 
-#: gtt/glade/prefs.glade.h:59
+#: glade/prefs.glade.h:59
 msgid "Use Logfile"
 msgstr "ログファイルを使う"
 
-#: gtt/glade/prefs.glade.h:60
+#: glade/prefs.glade.h:60
 #, fuzzy
 msgid "View Project Fields"
 msgstr "ビュー"
 
-#: gtt/glade/project_properties.glade.h:1
+#: glade/project_properties.glade.h:1
 msgid "        "
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:2
+#: glade/project_properties.glade.h:2
 #, fuzzy
 msgid "            "
 msgstr "ログを開く...            "
 
-#: gtt/glade/project_properties.glade.h:3
+#: glade/project_properties.glade.h:3
 #, fuzzy
 msgid "                        "
 msgstr "拡大                    "
 
-#: gtt/glade/project_properties.glade.h:5
+#: glade/project_properties.glade.h:5
 #, no-c-format
 msgid "% Complete"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:6
+#: glade/project_properties.glade.h:6
 msgid "A title to assign to this project"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:7
+#: glade/project_properties.glade.h:7
 msgid "Auto-merge Gap:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:8
+#: glade/project_properties.glade.h:8
 msgid "Auto-merge Interval:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:11
+#: glade/project_properties.glade.h:11
 msgid ""
 "Does this item need immediate attention? Note that some urgent tasks might "
 "not be important.  For example, Bill may want you to answer his email today, "
 "but you may have better things to do today."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:12
+#: glade/project_properties.glade.h:12
 msgid "Double-Overtime Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:13
+#: glade/project_properties.glade.h:13
 #, fuzzy
 msgid "Due Date:"
 msgstr "日付:"
 
-#: gtt/glade/project_properties.glade.h:14
+#: glade/project_properties.glade.h:14
 msgid "Flat Fee:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:16
+#: glade/project_properties.glade.h:16
 msgid "Hours to Finish:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:17
+#: glade/project_properties.glade.h:17
 msgid ""
 "How important is it to perform this task?  Not everything important is "
 "urgent.  For example, it is important to file a tax return every year, but "
 "you have a lot of time to get ready to do this."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:18
+#: glade/project_properties.glade.h:18
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:19
+#: glade/project_properties.glade.h:19
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:20
+#: glade/project_properties.glade.h:20
 #, fuzzy
 msgid "Importance:"
 msgstr "許容誤差 :"
 
-#: gtt/glade/project_properties.glade.h:22
+#: glade/project_properties.glade.h:22
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:23
+#: glade/project_properties.glade.h:23
 #, fuzzy
 msgid "Intervals"
 msgstr "一般"
 
-#: gtt/glade/project_properties.glade.h:24
+#: glade/project_properties.glade.h:24
 msgid "Intervals smaller than this will be discarded"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:26
+#: glade/project_properties.glade.h:26
 msgid "Medium"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:27
+#: glade/project_properties.glade.h:27
 msgid "Minimum Interval: "
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:28
+#: glade/project_properties.glade.h:28
 #, fuzzy
 msgid "Not Set"
 msgstr "フォントセレクタ"
 
-#: gtt/glade/project_properties.glade.h:30
-#: gtt/glade/task_properties.glade.h:18
+#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
 msgid "Notes:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:32
+#: glade/project_properties.glade.h:32
 msgid "Overtime Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:33
+#: glade/project_properties.glade.h:33
 msgid "Planned Finish:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:34
+#: glade/project_properties.glade.h:34
 #, fuzzy
 msgid "Planned Start:"
 msgstr "始動時のエントリ:"
 
-#: gtt/glade/project_properties.glade.h:35
+#: glade/project_properties.glade.h:35
 #, fuzzy
 msgid "Planning"
 msgstr "警告"
 
-#: gtt/glade/project_properties.glade.h:36
+#: glade/project_properties.glade.h:36
 msgid "Project"
 msgstr "プロジェクト"
 
-#: gtt/glade/project_properties.glade.h:37
+#: glade/project_properties.glade.h:37
 msgid "Project Description:"
 msgstr "プロジェクトの説明:"
 
-#: gtt/glade/project_properties.glade.h:38
+#: glade/project_properties.glade.h:38
 msgid "Project Title:"
 msgstr "プロジェクト名:"
 
-#: gtt/glade/project_properties.glade.h:39
+#: glade/project_properties.glade.h:39
 msgid "Rates"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:40
+#: glade/project_properties.glade.h:40
 msgid "Regular Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:41
+#: glade/project_properties.glade.h:41
 #, fuzzy
 msgid "Status:"
 msgstr "状態"
 
-#: gtt/glade/project_properties.glade.h:42
+#: glade/project_properties.glade.h:42
 msgid "The dollars per hour charged for overtime work on this project."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:43
+#: glade/project_properties.glade.h:43
 msgid "The dollars per hour normally charged for this project."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:44
+#: glade/project_properties.glade.h:44
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:45
+#: glade/project_properties.glade.h:45
 msgid "Time below which an interval is merged with its neighbors"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:46
+#: glade/project_properties.glade.h:46
 msgid "Urgency:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:47
+#: glade/project_properties.glade.h:47
 msgid "What is the status of this project?"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:48
+#: glade/project_properties.glade.h:48
 msgid "a short description that will be printed on the invoice."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:49
 #, fuzzy
 msgid "seconds"
 msgstr "秒"
 
-#: gtt/glade/task_popup.glade.h:1
+#: glade/task_popup.glade.h:1
 #, fuzzy
 msgid "Add a new time interval"
 msgstr "更新間隔 (ms)"
 
-#: gtt/glade/task_popup.glade.h:2
-#, fuzzy
-msgid "Delete _Times"
-msgstr "削除"
+#: glade/task_popup.glade.h:2
+msgid "Cut Entry & _Times"
+msgstr ""
 
-#: gtt/glade/task_popup.glade.h:3
+#: glade/task_popup.glade.h:3
 msgid "Delete the diary entry only, keep the time intervals"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:4
+#: glade/task_popup.glade.h:4
 msgid "Delete the diary entry, and the time intervals below it."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:5
+#: glade/task_popup.glade.h:5
 msgid "Edit the diary entry and other task properties."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:6
+#: glade/task_popup.glade.h:6
 msgid "Insert a new diary entry above this one."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:7
+#: glade/task_popup.glade.h:7
 #, fuzzy
 msgid "New Time Interval"
 msgstr "スライダーの更新間隔"
 
-#: gtt/glade/task_popup.glade.h:9
+#: glade/task_popup.glade.h:9
 #, fuzzy
-msgid "_Delete Diary Entry"
+msgid "_Cut Diary Entry"
 msgstr "パラメータを削除"
 
-#: gtt/glade/task_popup.glade.h:10
+#: glade/task_popup.glade.h:10
 msgid "_Edit Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:11
+#: glade/task_popup.glade.h:11
 msgid "_New Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:12
+#: glade/task_popup.glade.h:12
 msgid "_Paste Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:1
+#: glade/task_properties.glade.h:1
 msgid "A set of private notes that will not be printed on an invoice."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:2
+#: glade/task_properties.glade.h:2
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:5
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:6
 msgid "Billing Block:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:7
+#: glade/task_properties.glade.h:7
 msgid "Billing Rate:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:8
+#: glade/task_properties.glade.h:8
 msgid "Billing Status:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:9
+#: glade/task_properties.glade.h:9
 #, fuzzy
 msgid "Diary Entry Properties"
 msgstr "Gディスクフリーの設定"
 
-#: gtt/glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:10
 #, fuzzy
 msgid "Diary Entry:"
 msgstr "起点ディレクトリ:"
 
-#: gtt/glade/task_properties.glade.h:11
+#: glade/task_properties.glade.h:11
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:14
+#: glade/task_properties.glade.h:14
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
 "the normal fashion.   \"Not Billable\" means we can't ask for money for "
@@ -2254,2754 +1439,2685 @@ msgid ""
 "as 'free/no-charge'."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:15
+#: glade/task_properties.glade.h:15
 msgid ""
 "Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:19
+#: glade/task_properties.glade.h:19
 #, fuzzy
 msgid "OverOver"
 msgstr "サーバ"
 
-#: gtt/glade/task_properties.glade.h:23
+#: glade/task_properties.glade.h:23
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:24
+#: glade/task_properties.glade.h:24
 #, fuzzy
 msgid "minutes"
 msgstr "分"
 
-#: logview/about.c:41
-msgid "Cesar Miquel (miquel@df.uba.ar)"
-msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#: logview/about.c:42
-#, fuzzy
-msgid ""
-"This  program  is  part of  the  GNOME  project. Logview comes with "
-"ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
-"redistribute it under the conditions of the GNU General Public Licence. The "
-"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-msgstr ""
-"このプログラムは GNOME プロジェクトの一部です。 logview はまったく無保証で"
-"す。これはフリーソフト ウェアで、GNU一般公有使用許諾書にもとづいて 再配布する"
-"ことができます。ログのアイコンは Tuomas Kuosmanen(tigert) 氏のご好意によるも"
-"のです。"
-
-#. go get logview.xpm in $(prefix)/share/pixmaps/logview
-#: logview/about.c:55
-msgid "Logview"
-msgstr "ログファイル"
-
-#: logview/about.c:56
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998,1999 John Kodis"
-
-#: logview/actions.c:92
-msgid "Action database"
-msgstr "アクションデータベース"
-
-#: logview/actions.c:97 logview/monitor.c:110
-msgid "Monitor options"
-msgstr "マウントポイント"
-
-#: logview/actions.c:151
-msgid "Add..."
-msgstr "追加"
-
-#: logview/actions.c:157
-msgid "Edit..."
-msgstr "編集..."
-
-#: logview/actions.c:278
-#, c-format
-msgid "Cannot open action data base <%s>! Open failed."
-msgstr "アクションデーターベース <%s>を開けません!"
-
-#: logview/actions.c:313 logview/actions.c:326 logview/actions.c:337
-#: logview/actions.c:348 logview/actions.c:359 logview/actions.c:370
-msgid "Error parsing actions data base"
-msgstr "アクションデータベースのパースでエラー"
-
-#: logview/actions.c:404
-msgid "Can't write to actions database!"
-msgstr "アクションデータベースに書き込めません!"
-
-#: logview/actions.c:511
-msgid "<empty>"
-msgstr "空"
-
-#: logview/actions.c:512
-msgid "log name regexp"
-msgstr "ログ名称 正規表現"
-
-#: logview/actions.c:513
-msgid "process regexp"
-msgstr "プロセス 正規表現:"
-
-#: logview/actions.c:514
-msgid "message regexp"
-msgstr "メッセージ 正規表現"
-
-#: logview/actions.c:515
-msgid "action to execute when regexps are TRUE"
-msgstr "正規表現が真のときに実行するアクション"
-
-#: logview/actions.c:516
-msgid "description"
-msgstr "説明"
-
-#: logview/actions.c:746
-msgid "description:"
-msgstr "説明:"
-
-#: logview/actions.c:754
-msgid "Description of this entry."
-msgstr "このエントリの説明。"
-
-#: logview/actions.c:810
-#, c-format
-msgid ""
-"tag: [%s]\n"
-"log_name: [%s]\n"
-"process: [%s]\n"
-"message: [%s]\n"
-"description: [%s]\n"
-"action: [%s]\n"
-msgstr ""
-"タグ: [%s]\n"
-"ログ名: [%s]\n"
-"プロセス: [%s]\n"
-"メッセージ: [%s]\n"
-"説明: [%s]\n"
-"アクション: [%s]\n"
-
-#: logview/info.c:79 logview/logview.c:110
-msgid "Log stats"
-msgstr "ログの状態"
-
-#: logview/info.c:139
-msgid "Log information"
-msgstr "ログ情報"
-
-#: logview/info.c:156
-msgid "Log:"
-msgstr "ログ:"
-
-#: logview/info.c:158
-msgid "Size:"
-msgstr "サイズ:"
-
-#: logview/info.c:160
-msgid "Modified:"
-msgstr "修正:"
-
-#: logview/info.c:162
-msgid "Start date:"
-msgstr "開始日時:"
-
-#: logview/info.c:164
-msgid "Last date:"
-msgstr "最終日時:"
-
-#: logview/info.c:166
-msgid "Num. lines:"
-msgstr "行数:"
-
-#: logview/info.c:183
-#, c-format
-msgid "%ld bytes"
-msgstr "%ld バイト"
-
-#: logview/log_repaint.c:86
-msgid "January"
-msgstr "1月"
-
-#: logview/log_repaint.c:86
-msgid "February"
-msgstr "2月"
-
-#: logview/log_repaint.c:86
-msgid "March"
-msgstr "3月"
-
-#: logview/log_repaint.c:86
-msgid "April"
-msgstr "4月"
-
-#: logview/log_repaint.c:86
-msgid "May"
-msgstr "5月"
-
-#: logview/log_repaint.c:87
-msgid "June"
-msgstr "6月"
-
-#: logview/log_repaint.c:87
-msgid "July"
-msgstr "7月"
-
-#: logview/log_repaint.c:87
-msgid "August"
-msgstr "8月"
-
-#: logview/log_repaint.c:87
-msgid "September"
-msgstr "9月"
-
-#: logview/log_repaint.c:87
-msgid "October"
-msgstr "10月"
-
-#: logview/log_repaint.c:88
-msgid "November"
-msgstr "11月"
-
-#: logview/log_repaint.c:88
-msgid "December"
-msgstr "12月"
-
-#. Translators: Date only format, %x should well do really
-#: logview/log_repaint.c:477
-#, c-format
-msgid "%x"
-msgstr "%x"
-
-#. Translators: should be only the time, date could be bogus
-#: logview/log_repaint.c:587
-#, c-format
-msgid "%X"
-msgstr "%X"
-
-#. bogus
-#. Translators: Make sure this is only Month and Day format, year
-#. * will be bogus here
-#: logview/log_repaint.c:671
-msgid "%B %e"
-msgstr "%B %e"
-
-#: logview/logrtns.c:199
-msgid "Not enough memory!\n"
-msgstr "十分なメモリがありません!\n"
-
-#: logview/logrtns.c:207
-msgid "Out of memory!\n"
-msgstr "メモリ不足です!\n"
-
-#: logview/logrtns.c:233
-msgid "Unable to open logfile!\n"
-msgstr "ログファイルを開けません!\n"
-
-#: logview/logrtns.c:288
-#, c-format
-msgid "%s is not a regular file."
-msgstr "%sは通常のファイルではありません。"
-
-#: logview/logrtns.c:296
-#, c-format
-msgid ""
-"%s is not user readable. Either run the program as root or ask the sysadmin "
-"to change the permissions on the file."
-msgstr ""
-"ユーザは %s を読めません。root でプログラムを起動するか、管理者に頼んでファイ"
-"ルのパーミッションを変更してもらって下さい。"
-
-#: logview/logrtns.c:309
-#, c-format
-msgid "%s could not be opened."
-msgstr "%s は開けませんでした。"
-
-#: logview/logrtns.c:332
-#, c-format
-msgid "%s not a log file."
-msgstr "%s はログファイルではありません。"
-
-#: logview/logrtns.c:756 logview/logrtns.c:787 logview/logrtns.c:918
-msgid "ReadLogStats: out of memory"
-msgstr "ログの読み込み: メモリ不足"
-
-#: logview/logview.c:85
-msgid "Open log..."
-msgstr "ログを開く..."
-
-#: logview/logview.c:86
-msgid "Open log"
-msgstr "ログを開く"
-
-#: logview/logview.c:88
-msgid "Export log..."
-msgstr "ログのエクスポート..."
-
-#: logview/logview.c:89
-msgid "Export log"
-msgstr "ログのエクスポート"
-
-#: logview/logview.c:91 logview/logview.c:92
-msgid "Close log"
-msgstr "ログを閉じる"
-
-#: logview/logview.c:94 logview/logview.c:95
-msgid "Switch log"
-msgstr "ログを切替える"
-
-#: logview/logview.c:97
-msgid "Monitor..."
-msgstr "モニタ..."
-
-#: logview/logview.c:98
-msgid "Monitor log"
-msgstr "ログのモニタ"
-
-#: logview/logview.c:101
-msgid "Exit program"
-msgstr "プログラムの終了"
-
-#: logview/logview.c:108
-msgid "Show calendar log"
-msgstr "カレンダーログの表示"
-
-#: logview/logview.c:111
-msgid "Show log stats"
-msgstr "ステータスバーを表示"
-
-#: logview/logview.c:113
-msgid "Zoom"
-msgstr "拡大"
-
-#: logview/logview.c:114
-msgid "Show line info"
-msgstr "行の情報を表示"
-
-#: logview/logview.c:117
-msgid "Show user preferences"
-msgstr "ユーザ設定の表示"
-
-#: logview/logview.c:124
-msgid "Select...               "
-msgstr "選択...               "
-
-#: logview/logview.c:125
-msgid "Select log events"
-msgstr "ログイベントの選択"
-
-#: logview/logview.c:127
-msgid "Filter..                "
-msgstr "フィルタ..                "
-
-#: logview/logview.c:128
-msgid "Filter log events"
-msgstr "ログイベントフィルタ"
-
-#: logview/logview.c:137
-msgid "Info about logview"
-msgstr "logviewについての情報"
-
-#: logview/logview.c:241
-msgid "No log files to open"
-msgstr "ロゴが見つかりません"
-
-#. Create App
-#: logview/logview.c:264
-msgid "System Log Viewer"
-msgstr "システムログビューア"
-
-#: logview/logview.c:368
-msgid "Filename: "
-msgstr "ファイル名:"
-
-#: logview/logview.c:384
-msgid "Date: "
-msgstr "日付:"
-
-#: logview/logview.c:619
-msgid "Too many open logs. Close one and try again"
-msgstr "ログを開きすぎです。一つ閉じてもう一度やってみてください"
-
-#: logview/logview.c:676
-msgid "Open new logfile"
-msgstr "テキストファイルを開く..."
-
-#: logview/misc.c:55
-#, c-format
-msgid "Error: [%s]\n"
-msgstr "エラー: [%s]\n"
-
-#: logview/monitor.c:124
-msgid "Choose logs to monitor"
-msgstr "モニタするログを選択してください"
-
-#. Arrowed buttons
-#: logview/monitor.c:168
-msgid "Add >>"
-msgstr "追加 >>"
-
-#. Remove button
-#: logview/monitor.c:176
-msgid "Remove <<"
-msgstr "削除 <<"
-
-#. Check boxes
-#: logview/monitor.c:207
-msgid "Hide app"
-msgstr "アプリを表示しない"
-
-#: logview/monitor.c:215
-msgid "Exec actions"
-msgstr "アクションの実行"
-
-#. Actions button
-#: logview/monitor.c:227
-msgid "Actions..."
-msgstr "アクション..."
-
-#: logview/monitor.c:282 logview/monitor.c:329
-msgid "tmp_list is NULL\n"
-msgstr "tmp_listはNULLです\n"
-
-#: logview/monitor.c:456
-msgid "Monitoring logs..."
-msgstr "ログのモニタリング..."
-
-#: logview/monitor.c:638
-msgid "TOUCHED!!\n"
-msgstr "TOUCHED!!\n"
-
-#: logview/userprefsdialog.c:65
-msgid "hostname column width ( 0 to hide this column ): "
-msgstr "ホスト名の文字数(0 だとこの項目を表示しません): "
-
-#: logview/userprefsdialog.c:66
-msgid "Columns"
-msgstr "項目"
-
-#: logview/zoom.c:78
-msgid "Zoom view"
-msgstr "拡大表示"
-
-#: logview/zoom.c:154
-#, c-format
-msgid "Log line detail for %s"
-msgstr "ログ%sについて詳細"
-
-#: logview/zoom.c:157
-msgid "Log line detail for <No log loaded>"
-msgstr "<ログがロードされていません>についてログの詳細"
-
-#: logview/zoom.c:180
-msgid "Date:"
-msgstr "日付:"
-
-#: logview/zoom.c:182
-msgid "Process:"
-msgstr "プロセス:"
-
-#: logview/zoom.c:184
-msgid "Message:"
-msgstr "メッセージ:"
-
-#: logview/zoom.c:186
-msgid "Description:"
-msgstr "説明:"
-
-#. Translators: do not include year, it would be bogus
-#: logview/zoom.c:212
-msgid "%B %e %X"
-msgstr "%B %e %X"
-
-#.
-#. * 	-------------------
-#. * 	     Defines
-#. * 	-------------------
-#.
-#: logview/config.c:34
-msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr ""
-"-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-r-"
-"normal-*-12-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:35
-msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-misc-fixed-medium-r-normal--12-*-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:36
-msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr ""
-"-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*,-*-fixed-medium-"
-"r-normal-*-10-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:37
-msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr ""
-"-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*,-misc-fixed-medium-"
-"r-normal--10-*-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:39
-msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr ""
-"-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-"
-"*-14-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:40
-msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr "-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:41
-msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr ""
-"-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-"
-"*-12-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:42
-msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr ""
-"-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*,-misc-fixed-medium-r-normal--"
-"14-*-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:43
-msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr ""
-"-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-"
-"*-10-*-*-*-*-*-*,*-r-*"
-
-#: logview/config.c:44
-msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr ""
-"-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
-"normal-*-10-*-*-*-*-*-*-*,*-r-*"
-
-#: logview/desc_db.c:37
-#, c-format
-msgid "Cannot open regexp data base <%s>! Open failed."
-msgstr "正規表現データベース <%s> をオープンできません!"
-
-#: logview/desc_db.c:147
-#, c-format
-msgid "Cannot open description data base <%s>! Open failed."
-msgstr "説明データベース <%s> をオープンできません!"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:119
-msgid "Do nothing"
-msgstr "なにもしない"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:124
-msgid "Append it to ->"
-msgstr "追加 ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:129
-msgid "Search it in ->"
-msgstr "検索 ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:135
-msgid "Edit it"
-msgstr "編集する"
-
-#. First view is considered as the default view ...
-#: mini-utils/gcolorsel/gcolorsel.c:24
-msgid "List"
-msgstr "リスト"
-
-#: mini-utils/gcolorsel/gcolorsel.c:28
-msgid "Grid"
-msgstr "グリッド"
-
-#: mini-utils/gcolorsel/gcolorsel.c:32 mini-utils/gcolorsel/menus.c:573
-#: mini-utils/gcolorsel/menus.c:660 stripchart/params.c:1041
-#: stripchart/params.c:1044
-msgid "Edit"
-msgstr "終了"
-
-#: mini-utils/gcolorsel/gcolorsel.c:40 stripchart/params.c:1034
-#: stripchart/params.c:1037
-msgid "File"
-msgstr "ファイル(_F)"
-
-#: mini-utils/gcolorsel/gcolorsel.c:42
-msgid "Search RGB"
-msgstr "RGBの検索"
-
-#: mini-utils/gcolorsel/gcolorsel.c:44
-msgid "Monitor"
-msgstr "モニタ"
-
-#: mini-utils/gcolorsel/gcolorsel.c:46
-msgid "Concat"
-msgstr "結合"
-
-#: mini-utils/gcolorsel/gcolorsel.c:96
-#, c-format
-msgid "'%s' document has been modified; do you wish to save it ?"
-msgstr "'%s'ドキュメントは変更されました。保存しますか?"
-
-#: mini-utils/gcolorsel/gcolorsel.c:206
-msgid "GColorsel was unable to paste colors from the clipboard."
-msgstr "GColorselはクリップボードからカラーを貼り付けられませんでした。"
-
-#: mini-utils/gcolorsel/gcolorsel.c:220
-msgid "Please select a file document before."
-msgstr "先にファイルを選択して下さい。"
-
-#: mini-utils/gcolorsel/gcolorsel.c:398
-msgid ""
-"I can't execute this action. Check that :\n"
-"\n"
-"1. You have associated an action with this event.\n"
-"2. The associated document still exists.\n"
-"3. The type of the associated document.\n"
-"\n"
-"Go to preferences, in the edit menu."
-msgstr ""
-"このアクションを実行できません:\n"
-"1. このイベントにアクションを関連づけていた。\n"
-"2. 関連するドキュメントがまだ存在する。\n"
-"3. 関連するドキュメントのタイプ。\n"
-"\n"
-"をチェックしてみて下さい。\n"
-"編集メニューにある、設定を見て下さい。"
-
-#. Init GnomeMDI
-#: mini-utils/gcolorsel/gcolorsel.c:505
-msgid "GColorsel"
-msgstr "GColorsel"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:1
-msgid "<- Remove"
-msgstr "<- 削除"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:2
-msgid "<- Remove all"
-msgstr "<- 全て削除"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:3
-msgid "Add ->"
-msgstr "追加 ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:4
-msgid "Add all ->"
-msgstr "全て追加 ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:5
-msgid "Available documents"
-msgstr "使用可能なドキュメント"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:6
-msgid "Available views"
-msgstr "使用可能なビュー"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:7
-msgid "Connect to"
-msgstr "接続"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:8
-msgid "Create a document"
-msgstr "ドキュメントの作成"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:9
-msgid "Create views"
-msgstr "ビューの作成"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:10
-msgid "Description :"
-msgstr "説明 :"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:11
-msgid ""
-"Please, select the type of document to create.\n"
-"You can choose a short name, do not confuse it with the file name."
-msgstr ""
-"作成するドキュメントのタイプを選択して下さい。\n"
-"略称も選択できますが、ファイル名と混同しないで下さい。"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:13
-msgid "Select source document"
-msgstr "ソースドキュメントの選択"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:14
-msgid "Select type"
-msgstr "タイプの選択"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:15
-msgid "Short name : "
-msgstr "略称 : "
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:16
-msgid ""
-"This document read document from one or more other document. Please, choose "
-"these documents."
-msgstr ""
-"このドキュメントは一つかそれ以上のドキュメントを読んでいます。それらのドキュ"
-"メントを選択して下さい。"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:17
-msgid ""
-"You can create one or more views for this document. Note that you have to "
-"create at least one view."
-msgstr ""
-"このドキュメントについて、一つかそれ以上のビューを作成できます。少なくとも一"
-"つはビューを作らなければなりません。"
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:1
-msgid "Create a new view"
-msgstr "新規ビューの作成"
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:2
-msgid "Please, select the type of view you want to create."
-msgstr "作成するビューのタイプを選択して下さい。"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:1
-msgid "Actions"
-msgstr "アクション"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:2 stripchart/params.c:732
-msgid "Bottom"
-msgstr "下"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:3
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Default"
-msgstr "デフォルト"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:4
-msgid "Display documents menu (restart required)."
-msgstr "ドキュメントメニューを表示(再起動が必要)する。"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:5
-msgid "Documents"
-msgstr "ドキュメント"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:6
-msgid "DoubleClick in previews:"
-msgstr "プレビューでのダブルクリック:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:7
-msgid "DoubleClick in views:"
-msgstr "ビューでのダブルクリック:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:8
-msgid "Drop:"
-msgstr "落下:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:9
-#: mini-utils/gshutdown/gshutdown.c:398
-msgid "General"
-msgstr "一般"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:10
-msgid "Grab:"
-msgstr "取得:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:11
-msgid "Left"
-msgstr "左"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:12
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (複数ドキュメント表示)"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:13
-msgid "Modal"
-msgstr "モーダル"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:14
-msgid "Mode:"
-msgstr "モード:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:15
-msgid "Notebook"
-msgstr "ノートブック"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:16
-msgid "Notebook Tab position:"
-msgstr "ノートのタブ位置:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:17
-msgid "On ... execute ..."
-msgstr "実行..."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:18
-msgid "Right"
-msgstr "右"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:19
-msgid "Save session on exit."
-msgstr "終了時にセッションを保存する"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:20
-msgid "Session"
-msgstr "セッション"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:21
-#: stripchart/chart-app.c:162 stripchart/params.c:704
-msgid "Top"
-msgstr "上"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:22
-msgid "Toplevel"
-msgstr "トップレベル"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:1
-msgid ""
-"Begin\n"
-"Comments :"
-msgstr ""
-"開始\n"
-"コメント :"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:3
-msgid ""
-"End\n"
-"Comments :"
-msgstr ""
-"完了\n"
-"コメント :"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:5
-msgid "File name :"
-msgstr "ファイル名:"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:6
-msgid "Header :"
-msgstr "ヘッダ : "
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:7
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:3
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:4
-msgid "Special properties"
-msgstr "特殊プロパティ"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:2
-msgid "Common properties"
-msgstr "共通プロパティ"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:3
-msgid "Name :"
-msgstr "名前 :"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:1
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:106
-msgid "Blue :"
-msgstr "青 :"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:2
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:102
-msgid "Green :"
-msgstr "緑 :"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:4
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:98
-msgid "Red :"
-msgstr "赤 :"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:1
-msgid "Colors format :"
-msgstr "カラーフォーマット :"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:3
-msgid "Display document control (if exists)"
-msgstr "ドキュメントコントロールの表示(もしあれば)"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:1
-msgid "Color height :"
-msgstr "カラー高さ :"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:2
-msgid "Color width :"
-msgstr "カラー幅 :"
-
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:3
-msgid "Draw numbers"
-msgstr "数字の描画"
-
-#: mini-utils/gcolorsel/menus.c:52
-msgid "New Document"
-msgstr "新規ドキュメント"
-
-#: mini-utils/gcolorsel/menus.c:53
-msgid "Create a new document"
-msgstr "新規ドキュメントの作成"
-
-#: mini-utils/gcolorsel/menus.c:55
-msgid "New View"
-msgstr "新規ビュー"
-
-#: mini-utils/gcolorsel/menus.c:56
-msgid "Create a new view for a document"
-msgstr "ドキュメントの新規ビューの作成"
-
-#: mini-utils/gcolorsel/menus.c:62
-msgid "Close document"
-msgstr "ドキュメントを閉じる"
-
-#: mini-utils/gcolorsel/menus.c:63
-msgid "Close the current document"
-msgstr "現在のドキュメントを閉じる"
-
-#: mini-utils/gcolorsel/menus.c:65
-msgid "Close view"
-msgstr "ビューを閉じる"
-
-#: mini-utils/gcolorsel/menus.c:66 mini-utils/gcolorsel/menus.c:913
-msgid "Close the current view"
-msgstr "現在のビューを閉じる"
-
-#: mini-utils/gcolorsel/menus.c:76
-msgid "_Open palette..."
-msgstr "パレットを開く(_O)"
-
-#: mini-utils/gcolorsel/menus.c:77
-msgid "Load a palette"
-msgstr "パレットを読み込む"
-
-#: mini-utils/gcolorsel/menus.c:79
-msgid "_Save palette"
-msgstr "パレットの保存(_S)"
-
-#: mini-utils/gcolorsel/menus.c:80
-msgid "Save the current palette in a file"
-msgstr "現在のパレットをファイルに保存"
-
-#: mini-utils/gcolorsel/menus.c:82
-msgid "Save palette _As..."
-msgstr "名前を変えてパレットを保存(_A)"
-
-#: mini-utils/gcolorsel/menus.c:83
-msgid "Save the current palette with a different name"
-msgstr "現在のパレットを別の名前で保存"
-
-#: mini-utils/gcolorsel/menus.c:105
-msgid "Insert color"
-msgstr "カラーの挿入"
-
-#: mini-utils/gcolorsel/menus.c:107
-msgid "Remove selected colors"
-msgstr "選択したカラーの削除"
-
-#: mini-utils/gcolorsel/menus.c:109
-msgid "Edit selected colors ..."
-msgstr "好みの編集..."
-
-#: mini-utils/gcolorsel/menus.c:113
-msgid "Document/View properties"
-msgstr "ドキュメント/ビューのプロパティ"
-
-#: mini-utils/gcolorsel/menus.c:179
-#, c-format
-msgid ""
-"GColorsel was unable to save the file :\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have the approprate write permissions.\n"
-"\n"
-"Do you want to retry ?"
-msgstr ""
-"GColorselはファイルを保存できません :\n"
-"\n"
-"%s\n"
-"指定したパスが存在するか確認して下さい。\n"
-"そして書き込み権限があるか確認して下さい。\n"
-"\n"
-"もう一度実行しますか?"
-
-#: mini-utils/gcolorsel/menus.c:198
-#, c-format
-msgid ""
-"GColorsel was unable to load the file:\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have permissions for opening the file."
-msgstr ""
-"GColorselはファイルを読み込むことができません:\n"
-"\n"
-"%s\n"
-"\n"
-"指定したパスが存在するか確認して下さい。\n"
-"そして読み込み権限があるか確認して下さい。"
-
-#: mini-utils/gcolorsel/menus.c:217
-msgid "Open Palette"
-msgstr "パレットを開く"
-
-#: mini-utils/gcolorsel/menus.c:242
-msgid "Loading file, please wait ..."
-msgstr "ファイルを読み込んでいます、お待ち下さい..."
-
-#: mini-utils/gcolorsel/menus.c:273
-msgid "Save Palette as"
-msgstr "テキストに名前をつけて保存..."
-
-#: mini-utils/gcolorsel/menus.c:320
-msgid "File not saved ..."
-msgstr "ファイルは保存されませんでした..."
-
-#: mini-utils/gcolorsel/menus.c:330
-msgid "File saved ..."
-msgstr "ファイルは保存されました..."
-
-#: mini-utils/gcolorsel/menus.c:408
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?\n"
-"\n"
-"Please note that %d virtual document use data from this document."
-msgstr ""
-"'%s'の最後のビューを閉じようとしています。\n"
-"\n"
-"このドキュメントも閉じますが、よろしいですか ?\n"
-"\n"
-"%dの仮想的なドキュメントがこのドキュメントからのデータを使っていることに注意"
-"してください。"
-
-#: mini-utils/gcolorsel/menus.c:410
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?"
-msgstr ""
-"'%s'の最後のビューを閉じようとしています。\n"
-"\n"
-"このドキュメントも閉じますが、よろしいですか ?"
-
-#: mini-utils/gcolorsel/menus.c:444
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed,\n"
-"and that %d virtual document use data from this document.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"'%s'を閉じようとしています。\n"
-"%dのビューが閉じられます。\n"
-"そして%dの仮想的なドキュメントがこのドキュメントからのデータを\n"
-"使っています。\n"
-"\n"
-"よろしいですか ?"
-
-#: mini-utils/gcolorsel/menus.c:446
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"'%s'を閉じようとしています。\n"
-"\n"
-"%dのビューが閉じられます。\n"
-"\n"
-"よろしいですか ?"
-
-#: mini-utils/gcolorsel/menus.c:493
-msgid "Gnome Color Browser"
-msgstr "GNOME色ブラウザ"
-
-#: mini-utils/gcolorsel/menus.c:496
-msgid "Small utility to browse available X11 colors."
-msgstr "X11で定義された色を参照するための 簡単なユーティリティです。"
-
-#: mini-utils/gcolorsel/menus.c:606
-msgid "New Color"
-msgstr "新規カラー"
-
-#: mini-utils/gcolorsel/menus.c:863
-msgid "View properties"
-msgstr "ビュー"
-
-#: mini-utils/gcolorsel/menus.c:878
-msgid "Document properties"
-msgstr "ドキュメント"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open"
-msgstr "開く"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open a palette"
-msgstr "パレットを開く"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab"
-msgstr "取得"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab a color on the screen"
-msgstr "面から色を取得します"
-
-#: mini-utils/gcolorsel/session.c:305
-msgid ""
-"Your config file is corrupted.\n"
-"Do you want to create a new session ?"
-msgstr ""
-"設定ファイルが壊れています。\n"
-"新規セッションを作成しますか ?"
-
-#: mini-utils/gcolorsel/session.c:358
-msgid "Loading files, please wait ..."
-msgstr "ファイルを読み込んでいます。お待ち下さい..."
-
-#: mini-utils/gcolorsel/session.c:383
-msgid ""
-"One or more files can not be restored :\n"
-"\n"
-msgstr ""
-"一つまたはそれ以上のファイルが読み込めませんでした :\n"
-"\n"
-
-#: mini-utils/gcolorsel/session.c:409
-msgid "System Colors"
-msgstr "システムカラー"
-
-#: mini-utils/gcolorsel/session.c:430
-msgid "User Colors"
-msgstr "ユーザカラー"
-
-#: mini-utils/gcolorsel/session.c:438
-msgid "Search"
-msgstr "検索"
-
-#: mini-utils/gcolorsel/view-color-generic.c:16
-msgid "Decimal 8 bits"
-msgstr "10進数 (8ビット)"
-
-#: mini-utils/gcolorsel/view-color-generic.c:17
-msgid "Decimal 16 bits"
-msgstr "10進数 (16ビット)"
-
-#: mini-utils/gcolorsel/view-color-generic.c:18
-msgid "Hex 8 bits"
-msgstr "16進数 (8ビット)"
-
-#: mini-utils/gcolorsel/view-color-generic.c:19
-msgid "Hex 16 bits"
-msgstr "16進数 (16ビット)"
-
-#: mini-utils/gcolorsel/view-color-generic.c:20
-msgid "Float"
-msgstr "浮動小数値"
-
-#: mini-utils/gcolorsel/view-color-list.c:196 stripchart/params.c:827
-msgid "Color"
-msgstr "色"
-
-#. Create everything.
-#: mini-utils/gcolorsel/view-color-list.c:198 mini-utils/guname/moreinfo.c:225
-#: mini-utils/gw/gw.c:490 mini-utils/gw/gw.c:560
-msgid "Name"
-msgstr "名前"
-
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:110
-msgid "Tolerance :"
-msgstr "許容誤差 :"
-
-#: mini-utils/gfontsel/gfontsel.c:162
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:1
-msgid "Font Selector"
-msgstr "フォントセレクタ"
-
-#: mini-utils/gfontsel/gfontsel.c:190
-msgid "Selection:"
-msgstr "選択:"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "Font to load"
-msgstr "読み込むフォント"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "FONTSPEC"
-msgstr "FONTSPEC"
-
-#: mini-utils/gfontsel/gfontsel.c:274
-msgid "Print selected font name on exit"
-msgstr "終了時に選択したフォント名を表示する"
-
-#: mini-utils/gfontsel/gfontsel.c:275
-msgid "Inhibit remembering selected font for next run"
-msgstr "選択したフォントを次回の起動時まで記憶しない"
-
-#: mini-utils/gfontsel/gfontsel.c:276
-msgid "Inhibit loading of last font"
-msgstr "最後のフォントを読み込まない"
-
-#: mini-utils/gless/gless.c:115
-#, c-format
-msgid "Reason %d\n"
-msgstr "理由 %d\n"
-
-#: mini-utils/gless/gless.c:130
-msgid "Where to put the window, and its size"
-msgstr "ウィンドウを配置する場所とサイズ"
-
-#: mini-utils/gless/gless.c:131
-msgid "Ignore standard input; may be needed in some cases."
-msgstr "標準出力を無視する; 必要になる場合があったりします。"
-
-#: mini-utils/gless/gless.c:293
-msgid "_New Window"
-msgstr "新しいウィンドウ(_N)"
-
-#: mini-utils/gless/gless.c:294
-msgid "New text viewer window"
-msgstr "新しいビューワウィンドウを開く"
-
-#: mini-utils/gless/gless.c:312
-msgid "_Fixed Font"
-msgstr "固定幅フォント(_F)"
-
-#: mini-utils/gless/gless.c:313
-msgid "Display text with a fixed font"
-msgstr "テキストの表示に固定幅のフォントを使用する"
-
-#: mini-utils/gless/gless.c:351 mini-utils/gless/gless.desktop.in.h:2
-msgid "Text File Viewer"
-msgstr "テキストファイルビューワ"
-
-#: mini-utils/gless/gless.c:446 mini-utils/gshutdown/gshutdown.c:30
-#: mini-utils/guname/guname.c:43 mini-utils/gw/gw.c:29
-#: mini-utils/idetool/idetool.c:11
-msgid "Copyright 1998, under the GNU General Public License."
-msgstr "Copyright 1998, under the GNU General Public License."
-
-#: mini-utils/gless/gless.c:467
-msgid "Find string"
-msgstr "文字列検索"
-
-#: mini-utils/gless/gless.c:468
-msgid "Find"
-msgstr "検索"
-
-#: mini-utils/gless/gless.c:505
-msgid "Loading..."
-msgstr "読み込み中..."
-
-#: mini-utils/gless/gless.c:509
-#, c-format
-msgid ""
-"No such file or directory:\n"
-"%s"
-msgstr ""
-"そんなファイルもディレクトリもありません:\n"
-"%s"
-
-#: mini-utils/gless/gless.c:527
-#, c-format
-msgid ""
-"Failed to decompress and display the file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"ファイルの展開、表示に失敗しました:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:540
-msgid ""
-"Unable to display compressed file.\n"
-"zcat not found in your path."
-msgstr ""
-"圧縮されたファイルを表示することができません。\n"
-"zcat が見当たりません。"
-
-#: mini-utils/gless/gless.c:548
-#, c-format
-msgid ""
-"Error loading file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"ファイル読み込み中にエラー:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:606
-msgid "Saving..."
-msgstr "保存中..."
-
-#: mini-utils/gless/gless.c:617
-#, c-format
-msgid ""
-"Failed to write file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"ファイル書き込みに失敗:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:667
-msgid "Save Text As..."
-msgstr "テキストに名前をつけて保存..."
-
-#: mini-utils/gless/gless.c:707
-msgid "Open Text File..."
-msgstr "テキストファイルを開く..."
-
-#: mini-utils/gless/gless.c:771
-msgid "Sorry, no preferences yet."
-msgstr "すみません、プリファレンスはまだありません。"
-
-#: mini-utils/gless/gless.c:858
-msgid "Searching..."
-msgstr "検索中..."
-
-#: mini-utils/gless/gless.c:869
-msgid "No search string was specified!"
-msgstr "検索文字列が指定されていません!"
-
-#: mini-utils/gshutdown/gshutdown.c:87
-msgid "Shut Down"
-msgstr "シャットダウン"
-
-#: mini-utils/gshutdown/gshutdown.c:88
-msgid "Single User Mode"
-msgstr "シングルユーザーモード"
-
-#: mini-utils/gshutdown/gshutdown.c:89
-msgid "Runlevel 2"
-msgstr "ランレベル 2"
-
-#: mini-utils/gshutdown/gshutdown.c:90
-msgid "Runlevel 3"
-msgstr "ランレベル 3"
-
-#: mini-utils/gshutdown/gshutdown.c:91
-msgid "Runlevel 4"
-msgstr "ランレベル 4"
-
-#: mini-utils/gshutdown/gshutdown.c:92
-msgid "Runlevel 5"
-msgstr "ランレベル 5"
-
-#: mini-utils/gshutdown/gshutdown.c:93
-msgid "Reboot"
-msgstr "リブート"
-
-#: mini-utils/gshutdown/gshutdown.c:99
-msgid "Are you sure you want to shut down the computer?"
-msgstr "本当にシャットダウンしてもよろしいですか?"
-
-#: mini-utils/gshutdown/gshutdown.c:100
-msgid "Are you sure you want to switch to single user mode?"
-msgstr "本当にシングルユーザーモードに移行してもよろしいですか?"
-
-#: mini-utils/gshutdown/gshutdown.c:101
-msgid "Are you sure you want to switch to runlevel 2?"
-msgstr "本当にランレベル 2 に移行してもよろしいですか?"
-
-#: mini-utils/gshutdown/gshutdown.c:102
-msgid "Are you sure you want to switch to runlevel 3?"
-msgstr "本当にランレベル 3 に移行してもよろしいですか?\""
-
-#: mini-utils/gshutdown/gshutdown.c:103
-msgid "Are you sure you want to switch to runlevel 4?"
-msgstr "本当にランレベル 4 に移行してもよろしいですか?\""
-
-#: mini-utils/gshutdown/gshutdown.c:104
-msgid "Are you sure you want to switch to runlevel 5?"
-msgstr "本当にランレベル 5 に移行してもよろしいですか?\""
-
-#: mini-utils/gshutdown/gshutdown.c:105
-msgid "Are you sure you want to reboot the system?"
-msgstr "本当にリブートしてもよろしいですか?"
-
-#: mini-utils/gshutdown/gshutdown.c:153 mini-utils/gshutdown/gshutdown.c:628
-msgid "You must be the super-user (root) to shut down or restart the computer."
-msgstr ""
-"コンピュータをシャットダウン/リブートできるのはスーパーユーザ(root)だけです。"
-
-#. notebook pages
-#: mini-utils/gshutdown/gshutdown.c:189
-msgid "Shutdown or Reboot"
-msgstr "シャットダウン/リブート"
-
-#: mini-utils/gshutdown/gshutdown.c:206 mini-utils/gshutdown/gshutdown.c:207
-msgid "Easy"
-msgstr "簡易"
-
-#: mini-utils/gshutdown/gshutdown.c:211 mini-utils/gshutdown/gshutdown.c:212
-msgid "Advanced"
-msgstr "高等"
-
-#: mini-utils/gshutdown/gshutdown.c:244
-msgid ""
-"Click OK to shutdown or reboot. You will lose\n"
-"any unsaved information in open applications."
-msgstr ""
-"OKをクリックするとシャットダウン/リブートします。\n"
-"まだ保存されていないデータは全て失われます。"
-
-#. Put in a "revert to defaults" button
-#: mini-utils/gshutdown/gshutdown.c:371
-msgid "Revert to Defaults"
-msgstr "デフォルトに戻す"
-
-#: mini-utils/gshutdown/gshutdown.c:381
-msgid "Commands"
-msgstr "コマンド"
-
-#: mini-utils/gshutdown/gshutdown.c:386
-msgid "Confirm before shutdown?"
-msgstr "シャットダウンの前には確認する?"
-
-#: mini-utils/gshutdown/gshutdown.c:454
-#, c-format
-msgid ""
-"%s\n"
-"You will lose any unsaved work."
-msgstr ""
-"%s\n"
-"保存していないデータは失われます."
-
-#: mini-utils/gshutdown/gshutdown.c:464
-msgid "Don't ask next time."
-msgstr "もう聞かない"
-
-#: mini-utils/gshutdown/gshutdown.c:722
-msgid "Command execution failed: fork failed"
-msgstr "コマンド実行に失敗: fork できません"
-
-#: mini-utils/guname/guname.c:53
-msgid "Make guname act as a control center applet"
-msgstr "gunameをコントロールセンターアプレット"
-
-#: mini-utils/guname/guname.c:119
-msgid "an initialization error occurred while starting 'guname-capplet'."
-msgstr "'guname-capplet'の初期化に失敗しました。"
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:2
-#: mini-utils/guname/guname.c:446
-msgid "System Information"
-msgstr "システム情報"
-
-#: mini-utils/guname/guname.c:540
-msgid "Logo file not found"
-msgstr "ロゴが見つかりません"
-
-#. Up here so it uses the default font
-#: mini-utils/guname/guname.c:544
-msgid "GNOME contributors:"
-msgstr "GNOMEに貢献した人々:"
-
-#. fontset used by guname; adapt it if your language requires it
-#: mini-utils/guname/guname.c:548
-msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-msgstr ""
-"-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*,-*-fixed-medium-r-"
-"normal--*-16-*-*-*-*-*-*"
-
-#: mini-utils/guname/guname.c:559
-msgid "GNOME: The GNU Network Object Model Environment"
-msgstr "GNOME: GNUネットワークオブジェクトモデル環境"
-
-#: mini-utils/guname/guname.c:583
-msgid "Email Information..."
-msgstr "メールで情報を送る..."
-
-#: mini-utils/guname/guname.c:596
-msgid "Save Information to File..."
-msgstr "ファイルに情報を保存する..."
-
-#: mini-utils/guname/guname.c:608 mini-utils/guname/guname.c:678
-msgid "Detailed Information..."
-msgstr "詳細な情報..."
-
-#: mini-utils/guname/guname.c:623
-msgid "Category"
-msgstr "分類"
-
-#: mini-utils/guname/guname.c:623
-msgid "Your System"
-msgstr "システム"
-
-#: mini-utils/guname/guname.c:664 stripchart/params.c:946
-msgid "Save As..."
-msgstr "名前をつけて保存..."
-
-#: mini-utils/guname/guname.c:670
-msgid "Mail To..."
-msgstr "メール先..."
-
-#: mini-utils/guname/guname.c:718
-#, c-format
-msgid ""
-"Error closing file `%s': \n"
-"%s\n"
-"Some or all data may not have been written."
-msgstr ""
-"ファイル`%s'を閉じるのに失敗:\n"
-"%s\n"
-"一部もしくは全てのデータが記録されていないかもしれません。"
-
-#: mini-utils/guname/guname.c:730
-#, c-format
-msgid "Couldn't open file `%s': %s"
-msgstr "このファイルを開けません `%s': %s"
-
-#: mini-utils/guname/guname.c:752
-msgid "Save System Information As..."
-msgstr "システム情報に名前をつけて保存..."
-
-#. I don't think the error_string() will reliably mean anything.
-#: mini-utils/guname/guname.c:809
-#, c-format
-msgid "Command failed ` %s ': %s"
-msgstr "命令実行失敗 ` %s ':%s"
-
-#: mini-utils/guname/guname.c:817
-#, c-format
-msgid "Couldn't run command ` %s ': %s"
-msgstr "次のコマンドを実行できません ` %s ': %s"
-
-#: mini-utils/guname/guname.c:841
-#, c-format
-msgid ""
-"The following mail will be sent to %s.\n"
-" Are you sure you want to mail this information?"
-msgstr ""
-"次のメールが %s に送信されます。。\n"
-"この情報を送信しても良いですね?"
-
-#: mini-utils/guname/guname.c:852
-msgid "Are you sure?"
-msgstr "本当ですか?"
-
-#: mini-utils/guname/guname.c:894
-msgid "Address to mail to:"
-msgstr "メール宛先:"
-
-#. ***********************************
-#. Globals
-#. **********************************
-#: mini-utils/guname/info.c:40
-msgid "Distribution:"
-msgstr "ディストリビューション:"
-
-#: mini-utils/guname/info.c:41
-msgid "Operating System:"
-msgstr "オペレーティングシステム:"
-
-#: mini-utils/guname/info.c:42
-msgid "Distribution Version:"
-msgstr "ディストリビューションのバージョン:"
-
-#: mini-utils/guname/info.c:43
-msgid "Operating System Version:"
-msgstr "オペレーティングシステムのバージョン"
-
-#: mini-utils/guname/info.c:44
-msgid "Operating System Release:"
-msgstr "オペレーティングシステムのリリース"
-
-#: mini-utils/guname/info.c:45
-msgid "Processor Type:"
-msgstr "CPUのタイプ:"
-
-#: mini-utils/guname/info.c:46
-msgid "Processor Speed:"
-msgstr "CPUのスピード:"
-
-#: mini-utils/guname/info.c:47
-msgid "Host Name:"
-msgstr "ホスト名:"
-
-#: mini-utils/guname/info.c:48
-msgid "Domain Name:"
-msgstr "ドメイン名:"
-
-#: mini-utils/guname/info.c:49
-msgid "User Name:"
-msgstr "ユーザー名:"
-
-#: mini-utils/guname/info.c:50
-msgid "X Display Name:"
-msgstr "Xディスプレイ名:"
-
-#: mini-utils/guname/info.c:51
-msgid "System Status:"
-msgstr "システム状態:"
-
-#: mini-utils/guname/info.c:52
-msgid "Real Memory:"
-msgstr "物理メモリ:"
-
-#: mini-utils/guname/info.c:53
-msgid "Swap Space (\"virtual memory\"):"
-msgstr "スワップ領域 (仮想メモリ):"
-
-#: mini-utils/guname/info.c:54
-msgid "Total Memory:"
-msgstr "全メモリ空間:"
-
-#: mini-utils/guname/info.c:55
-msgid "Free Memory:"
-msgstr "利用可能メモリ:"
-
-#: mini-utils/guname/info.c:60
-msgid "Device"
-msgstr "デバイス"
-
-#: mini-utils/guname/info.c:62
-msgid "Used space"
-msgstr "使用領域"
-
-#: mini-utils/guname/info.c:63
-msgid "Free space"
-msgstr "未使用領域"
-
-#: mini-utils/guname/info.c:64
-msgid "Percent free"
-msgstr "パーセントの空き"
-
-#: mini-utils/guname/info.c:65
-msgid "Mount point"
-msgstr "マウントポイント"
-
-#. This is about the only case where we'll put Unknown instead
-#. of simply not showing the info.
-#: mini-utils/guname/info.c:202 mini-utils/idetool/idetool.c:21
-#: mini-utils/idetool/idetool.c:26 mini-utils/idetool/idetool.c:319
-#: mini-utils/idetool/idetool.c:330
-msgid "Unknown"
-msgstr "不明"
-
-#: mini-utils/guname/moreinfo.c:82
-msgid "Unknown filesystem"
-msgstr "不明なファイルシステム"
-
-#: mini-utils/guname/moreinfo.c:104
-msgid "No information for this filesystem."
-msgstr "このファイルシステムの情報はありません"
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Memory"
-msgstr "メモリ"
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Kilobytes"
-msgstr "Kバイト"
-
-#: mini-utils/guname/moreinfo.c:186
-#, c-format
-msgid "%ld%% memory used."
-msgstr "%ld%% のメモリ空間を使用."
-
-#: mini-utils/guname/moreinfo.c:197
-#, c-format
-msgid "%ld%% swap used."
-msgstr "%ld%% のスワップ領域を使用."
-
-#: mini-utils/guname/moreinfo.c:222
-#, c-format
-msgid "CPU %d"
-msgstr "CPU %d"
-
-#: mini-utils/guname/moreinfo.c:276
-msgid "Detailed System Information"
-msgstr "詳細なシステム情報"
-
-#: mini-utils/guname/moreinfo.c:289
-msgid "Disk Information"
-msgstr "ディスク情報"
-
-#: mini-utils/guname/moreinfo.c:291
-msgid "Memory Information"
-msgstr "メモリ情報"
-
-#: mini-utils/guname/moreinfo.c:294
-msgid "CPU Information"
-msgstr "CPU情報"
-
-#: mini-utils/guname/moreinfo.c:326
-msgid "Mount Point: "
-msgstr "マウントポイント:"
-
-#: mini-utils/guname/moreinfo.c:327
-msgid "    Device: "
-msgstr "   デバイス: "
-
-#: mini-utils/guname/moreinfo.c:328
-msgid "    Filesystem Type: "
-msgstr "   ファイルシステム: "
-
-#: mini-utils/guname/moreinfo.c:341
-#, c-format
-msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
-msgstr "%ld Mバイト、%ld 空き (%ld 特権領域); %ld Iノード、%ld 空き"
-
-#: mini-utils/guname/moreinfo.c:353
-#, c-format
-msgid "%2d%% full "
-msgstr "%2d%% 使用 "
-
-#: mini-utils/gw/gw.c:143
-msgid ""
-"Couldn't find the \"w\" command in your path.\n"
-"This command is needed for the program to work."
-msgstr ""
-"\"w\"コマンドが見つかりません。\n"
-"\"w\"がないとこのプログラムは動きません。"
-
-#: mini-utils/gw/gw.c:198
-msgid "Active User Listing"
-msgstr "ログインしているユーザの一覧"
-
-#: mini-utils/gw/gw.c:215
-msgid "Update Information"
-msgstr "情報の更新"
-
-#: mini-utils/gw/gw.c:491
-msgid "Command Line"
-msgstr "コマンドライン"
-
-#: mini-utils/gw/gw.c:493
-msgid "Add some defaults"
-msgstr "デフォルトに何か追加"
-
-#: mini-utils/gw/gw.c:495
-msgid "Delete"
-msgstr "削除"
-
-#: mini-utils/gw/gw.c:513
-msgid "Command Editor"
-msgstr "コマンドエディタ"
-
-#: mini-utils/gw/gw.c:523
-msgid ""
-"You can configure the commands on the popup menus.\n"
-"Just enter the name you want to appear on the \n"
-"menu, and the command to execute.\n"
-"In the command, you can use %u to represent the\n"
-"currently selected username, and %t for the tty."
-msgstr ""
-"ポップアップメニューから実行するコマンドを設定できます。\n"
-"メニューに現れる文字を入力して、実行するコマンドを入力\n"
-"して下さい。\n"
-"コマンドには、%u 選択したユーザを表すものとして、%t を\n"
-"tty を表すものとして指示することができます。"
-
-#: mini-utils/gw/gw.c:530
-msgid ""
-"Click this button to add\n"
-"some sample commands."
-msgstr ""
-"このボタンをクリックして\n"
-"コマンドの例を追加できます。"
-
-#: mini-utils/gw/gw.c:538
-msgid "Menu items"
-msgstr "メニュー項目"
-
-#: mini-utils/gw/gw.c:566
-msgid "Command"
-msgstr "コマンド"
-
-#: mini-utils/gw/gw.c:978
-#, c-format
-msgid "Running: %s\n"
-msgstr "実行中: %s\n"
-
-#: mini-utils/idetool/idetool.c:19
-msgid "Default 16-bit"
-msgstr "デフォルト16ビット"
-
-#: mini-utils/idetool/idetool.c:20
-msgid "32-bit"
-msgstr "32ビット"
-
-#. there is no 2 apparently
-#: mini-utils/idetool/idetool.c:22
-msgid "32-bit w/sync"
-msgstr "32ビット同期"
-
-#: mini-utils/idetool/idetool.c:27
-msgid "Sleeping"
-msgstr "休止中"
-
-#: mini-utils/idetool/idetool.c:28
-msgid "Active/Idle"
-msgstr "稼働/アイドル"
-
-#: mini-utils/idetool/idetool.c:29
-msgid "Standby"
-msgstr "スタンバイ"
-
-#: mini-utils/idetool/idetool.c:42
-msgid "Unable to access the drive."
-msgstr "ドライブにアクセスできません。"
-
-#: mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
-msgid "The DMA setting for this drive cannot be changed."
-msgstr "このドライブのDMA設定を変更することはできません。"
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Enabled"
-msgstr "許可"
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Disabled"
-msgstr "不許可"
-
-#: mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
-msgid "The IRQ unmask setting for this drive cannot be changed."
-msgstr "このドライブのIRQ umask設定を変更することはできません。"
-
-#: mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
-msgid "The drive refused to keep its settings."
-msgstr "このドライブは設定を保持してくれません。"
-
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Keep settings"
-msgstr "設定を保持"
-
-#: mini-utils/idetool/idetool.c:203
-msgid "None"
-msgstr "なし"
-
-#: mini-utils/idetool/idetool.c:207
-msgid "(1 Sector)"
-msgstr "(1セクター)"
-
-#: mini-utils/idetool/idetool.c:209
-msgid "(Dual Port)"
-msgstr "(デュアルポート)"
-
-#: mini-utils/idetool/idetool.c:211
-msgid "(Dual Port Cache)"
-msgstr "(デュアルポートキャッシュ)"
-
-#: mini-utils/idetool/idetool.c:241
-msgid "No"
-msgstr "切"
-
-#: mini-utils/idetool/idetool.c:243
-#, c-format
-msgid "Yes (%d sector)"
-msgstr "入(%dセクター)"
-
-#: mini-utils/idetool/idetool.c:245
-#, c-format
-msgid "Yes (%d sectors)"
-msgstr "入(%dセクター)"
-
-#: mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:323
-msgid "Model"
-msgstr "モデル"
-
-#: mini-utils/idetool/idetool.c:311
-msgid "Firmware"
-msgstr "ファームウェア"
-
-#: mini-utils/idetool/idetool.c:312
-msgid "Serial No."
-msgstr "シリアル番号"
-
-#. do config here
-#: mini-utils/idetool/idetool.c:314
-msgid "Geometry"
-msgstr "ジオメトリ"
-
-#: mini-utils/idetool/idetool.c:315
-msgid "Cache"
-msgstr "キャッシュ"
-
-#: mini-utils/idetool/idetool.c:323
-msgid "Legacy MFM/RLL drive"
-msgstr "古いMFM/RLLドライブ"
-
-#: mini-utils/idetool/idetool.c:326
-msgid "DMA Mode"
-msgstr "DMAモード"
-
-#: mini-utils/idetool/idetool.c:328 mini-utils/idetool/idetool.c:330
-msgid "IO Mode"
-msgstr "IOモード"
-
-#: mini-utils/idetool/idetool.c:331
-msgid "IRQ Unmask"
-msgstr "IRQアンマスク"
-
-#: mini-utils/idetool/idetool.c:332
-msgid "Multisector"
-msgstr "マルチセクター"
-
-#: mini-utils/idetool/idetool.c:333
-msgid "On Reset"
-msgstr "リセット時"
-
-#.
-#. *	Set up the outer display first
-#.
-#: mini-utils/idetool/idetool.c:373
-msgid "IDE Status"
-msgstr "IDE状態"
-
-#: mini-utils/idetool/idetool.c:395
-msgid "Disk Logo Not Found"
-msgstr "ディスクのロゴが見つかりません"
-
-#: mini-utils/idetool/idetool.c:446
-msgid "Only the superuser can use this tool"
-msgstr "スーパーユーザのみがこのツールを使えます"
-
-#: mini-utils/idetool/idetool.c:457
-msgid "You appear to have no IDE drives"
-msgstr "IDEドライブは付いていないようですね"
-
-#: gfloppy/src/badblocks.c:102
-msgid "MInternal Error: Unable to seek to the correct location."
-msgstr "M内部エラー: 正しい位置へシークできません"
-
-#: gfloppy/src/badblocks.c:111
-#, c-format
-msgid "MInternal Error: Weird value (%ld) in do_test\n"
-msgstr "M内部エラー: do_test におかしな値 (%ld) が\n"
-
-#: gfloppy/src/badblocks.c:166
-#, c-format
-msgid "EBad block at block %lu"
-msgstr "Eブロック %lu に壊れたブロック"
-
-#. while (!i)
-#. ;
-#: gfloppy/src/badblocks.c:260
-msgid "MChecking for bad blocks..."
-msgstr "M壊れたブロックをチェック中..."
-
-#: gfloppy/src/badblocks.c:272
-#, c-format
-msgid "MFailed to open device %s for badblock checking\n"
-msgstr ""
-"M壊れたブロックのチェックするにデバイス %s をオープンできませんでした\n"
-
-#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
-msgid "MChecking for bad blocks... Done"
-msgstr "M壊れたブロックをチェック中... 終了"
-
-#: gfloppy/src/fdformat.c:45
-msgid "MFormatting the disk..."
-msgstr "Mフォーマットしています..."
-
-#: gfloppy/src/fdformat.c:47
-msgid "EI don't know what this is, but it's very wrong."
-msgstr "Eなにがなんだかわかりませんが, とにかく悪いことです."
-
-#: gfloppy/src/fdformat.c:55 gfloppy/src/fdformat.c:67
-#, c-format
-msgid "EError formatting track #%d"
-msgstr "Eトラック #%d フォーマット中のエラー"
-
-#: gfloppy/src/fdformat.c:75
-msgid "EError during completion of formatting"
-msgstr "Eフォーマット終了処理中のエラー"
-
-#. XXXX - need to tell parent we're finished
-#: gfloppy/src/fdformat.c:79
-msgid "MFormatting the disk... Done"
-msgstr "Mフォーマットしています...完了"
-
-#. XXXX - tell parent we're starting verify stage
-#: gfloppy/src/fdformat.c:95
-msgid "MVerifying the format..."
-msgstr "M検証しています..."
-
-#: gfloppy/src/fdformat.c:100 gfloppy/src/fdformat.c:175
-msgid ""
-"EUnable to write to the floppy.\n"
-"\n"
-"Please confirm that it is not write-protected."
-msgstr ""
-"Eフロッピーに書き込むことができません。\n"
-"\n"
-"書き込み禁止になっていないか確認してください。"
-
-#: gfloppy/src/fdformat.c:103 gfloppy/src/fdformat.c:178
-#, c-format
-msgid "EInsufficient permissions to open floppy device %s."
-msgstr "Eデバイス %s を開くことができません"
-
-#: gfloppy/src/fdformat.c:107 gfloppy/src/fdformat.c:182
-msgid ""
-"EUnable to access the floppy disk.\n"
-"\n"
-"Please confirm that it is in the drive\n"
-"with the drive door shut."
-msgstr ""
-"Eフロッピーディスクにアクセスできません。\n"
-"\n"
-"ドライブの中にディスクがあって蓋がしまっているか\n"
-"確認してください。"
-
-#: gfloppy/src/fdformat.c:110
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s:%d"
-msgstr ""
-"Eフロッピーデバイス %s のアクセスで一般エラーが発生しました。\n"
-"\n"
-"エラーコード %s:%d"
-
-#: gfloppy/src/fdformat.c:130
-#, c-format
-msgid ""
-"ERead Error:\n"
-"Problem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"E読み込みエラー:\n"
-"シリンダ %d 読み込み時の問題. 期待される値 %d, 結果 %d"
-
-#: gfloppy/src/fdformat.c:133
-#, c-format
-msgid "EProblem reading cylinder %d, expected %d, read %d"
-msgstr "Eシリンダ %d 読み込み時の問題. 期待される値 %d, 結果 %d"
-
-#: gfloppy/src/fdformat.c:142
-#, c-format
-msgid "MBad data in cyl %d.  Continuing... "
-msgstr "Mシリンダ %d が不正. 続けます..."
-
-#: gfloppy/src/fdformat.c:149
-#, c-format
-msgid "EError closing device %s"
-msgstr "Eデバイス %s を閉じる際のエラー"
-
-#: gfloppy/src/fdformat.c:154
-msgid "MVerifying the format... Done"
-msgstr "M検証しています...完了"
-
-#: gfloppy/src/fdformat.c:166
-#, c-format
-msgid "EUnable to write to device %s"
-msgstr "Eデバイス %s に書き込むことができません"
-
-#: gfloppy/src/fdformat.c:185
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s"
-msgstr ""
-"Eフロッピーデバイス %s にアクセスする際に一般エラーが発生しました。\n"
-"\n"
-"エラーコード %s"
-
-#: gfloppy/src/fdformat.c:195
-msgid "ECould not determine current format type"
-msgstr "Eフォーマットタイプが不明です"
-
-#: gfloppy/src/gfloppy-i18n.h:9 gfloppy/src/gfloppy.glade.h:1
-msgid "Dos (FAT)"
-msgstr "DOS (FAT)"
-
-#: gfloppy/src/gfloppy-i18n.h:15 gfloppy/src/gfloppy.glade.h:2
-msgid "Double Density 3.5\" (720 KB)"
-msgstr "倍密度 3.5\" (720KB)"
-
-#: gfloppy/src/gfloppy-i18n.h:16 gfloppy/src/gfloppy.glade.h:3
-msgid "Double Density 5.25\" (360 KB)"
-msgstr "倍密度 5.25\" (360KB)"
-
-#: gfloppy/src/gfloppy-i18n.h:12 gfloppy/src/gfloppy.glade.h:4
-msgid "File system type:"
-msgstr "ファイルシステム:"
-
-#: gfloppy/src/gfloppy-i18n.h:11 gfloppy/src/gfloppy.glade.h:5
-msgid "Floppy Density:"
-msgstr "ディスク容量:"
-
-#: gfloppy/src/gfloppy-i18n.h:18 gfloppy/src/gfloppy.glade.h:6
-msgid "Floppy Device:"
-msgstr "フロッピーデバイス:"
-
-#.
-#. * Translatable strings file generated by Glade.
-#. * Add this file to your project's POTFILES.in.
-#. * DO NOT compile it as part of your application.
-#.
-#: gfloppy/src/gfloppy-i18n.h:7 gfloppy/src/gfloppy.glade.h:7
-msgid "Format a floppy"
-msgstr "フロッピーディスクのフォーマット"
-
-#: gfloppy/src/gfloppy-i18n.h:13 gfloppy/src/gfloppy.glade.h:8
-msgid "High Density 3.5\" (1.44 MB)"
-msgstr "高密度 3.5\" (1.44MB)"
-
-#: gfloppy/src/gfloppy-i18n.h:14 gfloppy/src/gfloppy.glade.h:9
-msgid "High Density 5.25\" (1.2 MB)"
-msgstr "高密度 5.25\" (1.2MB)"
-
-#: gfloppy/src/gfloppy-i18n.h:8 gfloppy/src/gfloppy-i18n.h:10
-#: gfloppy/src/gfloppy.glade.h:10
-msgid "Linux Native (ext2)"
-msgstr "Linux ネイティブ (ext2)"
-
-#: gfloppy/src/gfloppy-i18n.h:17 gfloppy/src/gfloppy.glade.h:11
-msgid "_Quick format"
-msgstr "クイックフォーマット(_Q)"
-
-#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
-msgid "MMaking filesystem on disk..."
-msgstr "Mディスクにファイルシステムを作成中..."
-
-#: gfloppy/src/gfloppy.c:167
-msgid "EUnable to create filesystem correctly."
-msgstr "Eファイルシステムを正しく作成できません.."
-
-#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
-msgid "MMaking filesystem on disk... Done"
-msgstr "Mディスクにファイルシステムを作成中...完了"
-
-#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
-msgid "EUnable to create filesystem."
-msgstr "Eファイルシステムを作成できません"
-
-#: gfloppy/src/gfloppy.c:209
-msgid "MChecking for bad blocks... (this might take a while)"
-msgstr "Mバッドブロックのチェック... (しばらくかかります)"
-
-#: gfloppy/src/main.c:135 gfloppy/src/main.c:171
-#, c-format
-msgid "Unable to open the device %s, formatting cannot continue."
-msgstr "デバイス %s を開けません。フォーマットを続行できません"
-
-#: gfloppy/src/main.c:138 gfloppy/src/main.c:174
-#, c-format
-msgid ""
-"The device %s is disconnected.\n"
-"Please attach device to continue."
-msgstr ""
-"デバイス %s は繋がってません。\n"
-"続行するにはデバイスを接続してください。"
-
-#: gfloppy/src/main.c:141 gfloppy/src/main.c:177
-#, c-format
-msgid ""
-"You do not have the proper permissions to write to %s, formatting will not "
-"be possible.\n"
-"Contact your system administrator about getting write permissions."
-msgstr ""
-"%s へ書き込む権限がありません。フォーマットは不可能です。\n"
-"システム管理者に連絡し、書き込み権限を設定してもらってください"
-
-#: gfloppy/src/main.c:285
-msgid "The device to format"
-msgstr "フォーマットするデバイス"
-
-#: gfloppy/src/main.c:286
-msgid "DEVICE"
-msgstr "デバイス"
-
-#. We do this to get around a bug in libglade.  Ideally we won't need
-#. * to do this in the future.
-#: gfloppy/src/main.c:317
-msgid "Format"
-msgstr "フォーマット"
-
-#: gfloppy/src/main.c:360
-msgid "Format another floppy?"
-msgstr "別のフロッピーをフォーマットしますか?"
-
-#: gfloppy/src/progress.c:117
-msgid "Floppy formatted successfully."
-msgstr "フォーマットが終了しました."
-
-#: gfloppy/src/progress.c:121
-msgid "Floppy formatting cancelled."
-msgstr "フォーマットは中断されました."
-
-#: gfloppy/src/progress.c:176
-msgid "Format progress."
-msgstr "フォーマット中"
-
-#: stripchart/chart-app.c:160
-msgid "Param"
-msgstr "パラメータ"
-
-#: stripchart/chart-app.c:161
-msgid "Current"
-msgstr "現在値"
-
-#: stripchart/chart-app.c:163 stripchart/params.c:760
-msgid "Scale"
-msgstr "目盛"
-
-#: stripchart/chart-app.c:197 stripchart/stripchart-applet.c:69
-#: stripchart/stripchart-applet.desktop.in.h:2 stripchart/stripchart.c:92
-#: stripchart/stripchart.c:97
-msgid "Stripchart"
-msgstr "ストリップチャート"
-
-#: stripchart/chart-app.c:198
-msgid "Copyright 2000 John Kodis"
-msgstr "Copyright 2000 John Kodis"
-
-#: stripchart/chart-app.c:200
-msgid ""
-"The GNOME stripchart program plots various user-specified parameters as a "
-"function of time.  Its main use is to chart system performance parameters "
-"such as CPU load, CPU utilization, network traffic levels, and the like.  "
-"Other more ingenious uses are left as an exercise for the interested user."
-msgstr ""
-"GNOMEストリップチャートは、ユーザーが指定する 様々なパラメータを時間の関数と"
-"して表示します。 主な目的はCPUの負荷や使用度、ネットワークトラ フィックのよう"
-"なシステムパフォーマンスを表す パラメータをチャートで表示することです。 それ"
-"以外にもっと賢い使い方として興味のある ユーザの実習用、というのがあります。"
-
-#: stripchart/chart-app.c:239
-msgid "Show values"
-msgstr "値の表示"
-
-#: stripchart/chart-app.c:246
-msgid "Edit Prefs..."
-msgstr "設定の編集..."
-
-#: stripchart/chart-app.c:251
-msgid "Edit Params..."
-msgstr "パラメータの編集..."
-
-#: stripchart/eval.c:252
-msgid "closing parenthesis expected"
-msgstr "閉じ括弧が必要です"
-
-#: stripchart/eval.c:269
-#, c-format
-msgid "no such field: %d"
-msgstr "そのようなフィールドはありません: %d"
-
-#: stripchart/eval.c:294
-msgid "missing variable identifer"
-msgstr "変数指定がありません"
-
-#: stripchart/eval.c:296
-#, c-format
-msgid "invalid variable identifer: %s"
-msgstr "おかしな変数指定です: %s"
-
-#: stripchart/eval.c:300
-msgid "number expected"
-msgstr "数値が必要です"
-
-#: stripchart/eval.c:371
-#, c-format
-msgid "extra junk at end: \"%s\""
-msgstr "妙なものが終りについています: \"%s\""
-
-#: stripchart/params.c:633
-msgid "Parameter"
-msgstr "パラメータ"
-
-#: stripchart/params.c:671
-msgid "Equation"
-msgstr "平均化"
-
-#: stripchart/params.c:682
-msgid "Filename"
-msgstr "ファイル名"
-
-#: stripchart/params.c:693
-msgid "Pattern"
-msgstr "パターン"
-
-#: stripchart/params.c:714 stripchart/params.c:742
-msgid "Min"
-msgstr "最小"
-
-#: stripchart/params.c:723 stripchart/params.c:751
-msgid "Max"
-msgstr "最大"
-
-#: stripchart/params.c:771
-msgid "Linear"
-msgstr "線型"
-
-#: stripchart/params.c:779
-msgid "Logarithmic"
-msgstr "対数"
-
-#: stripchart/params.c:784
-msgid "Type"
-msgstr "タイプ"
-
-#: stripchart/params.c:795
-msgid "Indicator"
-msgstr "指示子"
-
-#: stripchart/params.c:802
-msgid "Line"
-msgstr "線分"
-
-#: stripchart/params.c:809
-msgid "Point"
-msgstr "点"
-
-#: stripchart/params.c:816
-msgid "Solid"
-msgstr "実線"
-
-#: stripchart/params.c:965
-msgid "Add Parameter Before"
-msgstr "前にパラーメータを追加"
-
-#: stripchart/params.c:972
-msgid "Add Parameter After"
-msgstr "後にパラーメータを追加"
-
-#: stripchart/params.c:979
-msgid "Apply Parameter Changes"
-msgstr "パラメータの変更を適用"
-
-#: stripchart/params.c:986
-msgid "Delete Parameter"
-msgstr "パラメータを削除"
-
-#: stripchart/params.c:994
-msgid "Add Color"
-msgstr "色を追加"
-
-#: stripchart/params.c:1001
-msgid "Delete Color"
-msgstr "色を削除"
-
-#: stripchart/params.c:1020
-msgid "Info"
-msgstr "情報"
-
-#: stripchart/params.c:1091
-msgid "Parameter Editor"
-msgstr "パラメータの編集"
-
-#: stripchart/params.c:1100
-msgid "Parameters"
-msgstr "パラメータ"
-
-#: stripchart/prefs.c:208
-msgid "Chart"
-msgstr "チャート"
-
-#: stripchart/prefs.c:218 stripchart/prefs.c:277
-msgid "enabled"
-msgstr "許可"
-
-#: stripchart/prefs.c:225
-msgid "minor"
-msgstr "マイナー"
-
-#: stripchart/prefs.c:231
-msgid "major"
-msgstr "メジャー"
-
-#: stripchart/prefs.c:244 stripchart/prefs.c:262
-msgid "Update"
-msgstr "更新"
-
-#: stripchart/prefs.c:247 stripchart/prefs.c:270
-msgid "Smooth"
-msgstr "スムース"
-
-#: stripchart/prefs.c:250
-msgid "Ticks"
-msgstr "ティック"
-
-#: stripchart/prefs.c:255
-msgid "Pen"
-msgstr "ペン"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "Geometry string: WxH+X+Y"
-msgstr "ジオメトリ情報: WxH+X+Y"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "GEO"
-msgstr "ジオメトリ"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "Configuration file name"
-msgstr "設定ファイルの名前"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "FILE"
-msgstr "ファイル"
-
-#: stripchart/stripchart-applet.c:92
-msgid "Values"
-msgstr "値"
-
-#: stripchart/stripchart-applet.c:95
-msgid "Prefs..."
-msgstr "設定..."
-
-#: stripchart/stripchart-applet.c:98
-msgid "Params..."
-msgstr "パラメータ..."
-
-#: exe-handler/gnome-exe-handler.c:76
-#, c-format
-msgid ""
-"Executing arbitrary programs that you downloaded from the network might be "
-"dangerous.\n"
-"\n"
-"Are you sure you want to run `%s'?"
-msgstr ""
-"ネットワークからダウンロードした任意のプログラムを実行するのは危険です。\n"
-"\n"
-"本当に `%s' を実行したいですか?"
-
-#: exe-handler/gnome-exe-handler.c:83
-msgid "Could not access file permissions"
-msgstr "ファイルのパーミッションにアクセスできませんでした"
-
-#: exe-handler/gnome-exe-handler.c:88
-#, c-format
-msgid "Could not execute the file `%s' due to a permission problem"
-msgstr "パーミッションの問題でファイル `%s' を実行できませんでした"
-
-#: exe-handler/gnome-exe-handler.c:104
-#, c-format
-msgid "Failure at executing `%s'"
-msgstr "`%s' の実行に失敗しました"
-
-#: exe-handler/gnome-exe-handler.c:123
-#, c-format
-msgid "It was not possible to open the file `%s'"
-msgstr "ファイル `%s' をオープンできませんでした"
-
-#: exe-handler/gnome-exe-handler.c:132
-#, c-format
-msgid "The file `%s' is empty"
-msgstr "ファイル `%s' は空です"
-
-#: exe-handler/gnome-exe-handler.c:137
-#, c-format
-msgid "There was an error. `%s' is empty"
-msgstr "エラーです。 `%s' は空です"
-
-#: exe-handler/gnome-exe-handler.c:152
-msgid "This is a library and can not be executed"
-msgstr "このファイルはライブラリで、実行できません"
-
-#: exe-handler/gnome-exe-handler.c:158
-msgid "The file is a core file and can not be executed"
-msgstr "このファイルは core ファイルで、実行できません"
-
-#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
-msgid "This is an unknown kind of executable"
-msgstr "不明なタイプの実行可能ファイルです"
-
-#: exe-handler/gnome-exe-handler.c:192
-msgid ""
-"The executable is for a different platform and can not be executed on this "
-"system"
-msgstr ""
-"別のプラットフォーム用の実行可能ファイルであり、このシステムでは実行できませ"
-"ん"
-
-#: meat-grinder/meat-grinder.c:106
-#, c-format
-msgid ""
-"Number of files: %d\n"
-"Nuber of folders: %d"
-msgstr ""
-"ファイルの数: %d\n"
-"フォルダの数: %d"
-
-#: meat-grinder/meat-grinder.c:112
-msgid ""
-"No files or folders, drop files or folders\n"
-"above to add them to the archive"
-msgstr ""
-"ファイルまたはフォルダが一つもありません。上の部分にファイル\n"
-"またはフォルダをドロップし、アーカイブに加えてください"
-
-#: meat-grinder/meat-grinder.c:217 meat-grinder/meat-grinder.c:220
-msgid "Cannot start the archive (tar) program"
-msgstr "アーカイブプログラム (tar) を起動できません"
-
-#: meat-grinder/meat-grinder.c:228
-msgid "Cannot run tar/gtar"
-msgstr "tar/gtar を実行できません"
-
-#: meat-grinder/meat-grinder.c:279
-msgid "Archive.tar.gz"
-msgstr "Archive.tar.gz"
-
-#: meat-grinder/meat-grinder.c:379
-msgid "The GNOME Archive Generator"
-msgstr "GNOME アーカイブ作成器"
-
-#: meat-grinder/meat-grinder.c:382
-msgid "Drag files in to make archives"
-msgstr "ファイルをドラッグして、 アーカイブを作ります"
-
-#: meat-grinder/meat-grinder.c:444 meat-grinder/meat-grinder.c:602
-msgid "No filename selected"
-msgstr "ファイル名が選択されていません"
-
-#: meat-grinder/meat-grinder.c:448
-msgid "File exists, overwrite?"
-msgstr "ファイルが存在します。上書きしますか?"
-
-#: meat-grinder/meat-grinder.c:472
-msgid "No items to archive"
-msgstr "アーカイブする物がありません"
-
-#: meat-grinder/meat-grinder.c:605
-msgid "File does not exists"
-msgstr "ファイルが存在しません"
-
-#: meat-grinder/meat-grinder.c:619
-msgid "Add file or folder"
-msgstr "ファイルまたはフォルダを追加"
-
-#: meat-grinder/meat-grinder.c:689
-msgid "Add file or folder..."
-msgstr "ファイルまたはフォルダを追加..."
-
-#: meat-grinder/meat-grinder.c:690
-msgid "Add a file or folder to the archive"
-msgstr "ファイルまたはフォルダをアーカイブに追加"
-
-#: meat-grinder/meat-grinder.c:693
-msgid "Create archive..."
-msgstr "アーカイブの作成..."
-
-#: meat-grinder/meat-grinder.c:694
-msgid "Create a new archive from the items"
-msgstr "このアイテムから新規アーカイブを作成"
-
-#: meat-grinder/meat-grinder.c:703
-msgid "Remove the selected item(s)"
-msgstr "選択したアイテムの削除"
-
-#: meat-grinder/meat-grinder.c:735
-msgid "GNOME Archive Generator"
-msgstr "GNOME アーカイブ作成器"
-
-#: meat-grinder/meat-grinder.c:765
-msgid "Drop files here to add them to the archive."
-msgstr "ファイルをここにドロップして、アーカイブに追加してください"
-
-#: meat-grinder/meat-grinder.c:783
-msgid "Archive"
-msgstr "アーカイブ"
-
-#: meat-grinder/meat-grinder.c:790
-msgid ""
-"Drag this button to the destination where you want the archive to be created "
-"or press it to pop up a file selection dialog."
-msgstr ""
-"アーカイブを作りたい場所にこのボタンをドラッグするか、ボタンを押してファイル"
-"選択のダイアログをポップアップしてください"
-
-#: meat-grinder/meat-grinder.c:883
-msgid "Cannot find proper icons anywhere!"
-msgstr "適切なアイコンを見つけられません!"
-
-#: meat-grinder/meat-grinder.c:891
-msgid ""
-"Cannot find the archive (tar) program!\n"
-"This is the program used for creating archives."
-msgstr ""
-"アーカイブプログラム (tar) を見つけられません!\n"
-"tar はアーカイブを作るのに使われるプログラムです。"
-
-#: gfloppy/gfloppy.desktop.in.h:1
-msgid "Format Floppy Disks"
-msgstr "フロッピーディスクのフォーマットツール"
-
-#: gfloppy/gfloppy.desktop.in.h:2
-msgid "gfloppy"
-msgstr "gfloppy"
-
-#: gdictsrc/GDict.desktop.in.h:1 gdictsrc/gdict.desktop.in.h:1
-msgid "GDict"
-msgstr ""
-
-#: gdictsrc/GDict.desktop.in.h:2
-msgid "Gnome client for the MIT dictionary server"
-msgstr ""
-
-#: gdictsrc/gdict.desktop.in.h:2
-msgid "GNOME client for RFC 2229-compliant dictionary server"
-msgstr ""
-
-#: stripchart/stripchart-applet.desktop.in.h:1
-#, fuzzy
-msgid "Shows a stripchart plot"
-msgstr "ストリップチャートプロッタ"
-
-#: gstripchart/gstripchart.desktop.in.h:1 stripchart/stripchart.desktop.in.h:1
-msgid "Stripchart Plotter"
-msgstr "ストリップチャートプロッタ"
-
-#: notepad/Notepad.desktop.in.h:1
-msgid "Notepad"
-msgstr "ノートパッド"
-
-#: notepad/Notepad.desktop.in.h:2
-msgid "Simple editor (notepad)"
-msgstr "簡易エディタ(ノートパッド)"
-
-#: mini-utils/idetool/idetool.desktop.in.h:1
-msgid "IDE Device Tool"
-msgstr ""
-
-#: mini-utils/idetool/idetool.desktop.in.h:2
-msgid "Show and Configure IDE Device Settings"
-msgstr ""
-
-#: mini-utils/gw/gw.desktop.in.h:1
-msgid "User Listing"
-msgstr "ユーザ一覧"
-
-#: mini-utils/gw/gw.desktop.in.h:2
-msgid "View users on the system"
-msgstr "システム使用中のユーザを表示します"
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:1
-#, fuzzy
-msgid "Show various system information"
-msgstr "システム情報"
-
-#: mini-utils/guname/guname.desktop.in.h:1
-msgid "System Info"
-msgstr "システム情報"
-
-#: mini-utils/guname/guname.desktop.in.h:2
-msgid "Technical information about this computer"
-msgstr "このコンピュータについての技術的な情報"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:1
-msgid "Shut Down or Reboot"
-msgstr "シャットダウン/再起動"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:2
-msgid "Turn off or reset the computer"
-msgstr "システムのシャットダウンまたは再起動"
-
-#: mini-utils/grun/grun.desktop.in.h:1
-msgid "Ask for a command to execute"
-msgstr "実行するコマンドを入力して下さい"
-
-#: mini-utils/grun/grun.desktop.in.h:2
-msgid "Run A Command..."
-msgstr "コマンド実行..."
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:1
-msgid "GNOME Penguin"
-msgstr "GNOMEペンギン"
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:2
-msgid "Let a cute pinguin chase your pointer"
-msgstr "かわいいペンギンがポインタを追いかけます"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:1
-msgid "Prompts the user for a program to run"
-msgstr "ユーザがコマンドを実行できるプロンプトを表示します"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:2
-msgid "Run program..."
-msgstr "コマンド実行..."
-
-#: mini-utils/gless/gless.desktop.in.h:1
-msgid "Page files as with `more' and `less'"
-msgstr "「more」や「less」のようなファイルビューア"
-
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:2
-msgid "Select a font for pasting"
-msgstr "フォントを選択します"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:1
-msgid "Browse available X11 colors."
-msgstr "使用できるX11カラーをブラウズします"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:2
-msgid "Color Browser"
-msgstr "カラーブラウザ"
-
-#: meat-grinder/meat-grinder.desktop.in.h:1
-#, fuzzy
-msgid "Archive Generator"
-msgstr "GNOME アーカイブ作成器"
-
-#: meat-grinder/meat-grinder.desktop.in.h:2
-#, fuzzy
-msgid "GNOME Archive Generator aka Meat Grinder"
-msgstr "GNOME アーカイブ作成器"
-
-#: logview/logview.desktop.in.h:1
-msgid "SysLog tool"
-msgstr "Syslogを見るツールです。"
-
-#: logview/logview.desktop.in.h:2
-msgid "System log monitor"
-msgstr "システムログモニタ"
-
-#: gtt/gtt.desktop.in.h:1
+#: gtt.desktop.in.h:1
 msgid "Time Tracker tool"
 msgstr "時間追跡ツール"
 
-#: gtt/gtt.desktop.in.h:2
+#: gtt.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "時間追跡ツール"
 
-#: gstripchart/gstripchart_applet.desktop.in.h:1
+#~ msgid "The Gnome Calculator"
+#~ msgstr "GNOME電卓"
+
+#~ msgid "Simple double precision calculator similiar to xcalc"
+#~ msgstr "xcalc同様シンプルな倍精度計算機"
+
+#~ msgid "Run in analog (slide rule) mode"
+#~ msgstr "アナログモード(目盛りをスライド)で実行"
+
+#~ msgid "Gnome Calculator"
+#~ msgstr "GNOME電卓"
+
+#~ msgid "DEG"
+#~ msgstr "DEG"
+
+#~ msgid "RAD"
+#~ msgstr "RAD"
+
+#~ msgid "GRAD"
+#~ msgstr "GRAD"
+
+#~ msgid "1/x"
+#~ msgstr "逆数"
+
+#~ msgid "x^2"
+#~ msgstr "自乗"
+
+#~ msgid "SQRT"
+#~ msgstr "√"
+
+#~ msgid "CE/C"
+#~ msgstr "CE/C"
+
+#~ msgid "AC"
+#~ msgstr "AC"
+
+#~ msgid "INV"
+#~ msgstr "INV"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "cos"
+#~ msgstr "cos"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "EE"
+#~ msgstr "EE"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "x^y"
+#~ msgstr "x^y"
+
+#~ msgid "PI"
+#~ msgstr "π"
+
+#~ msgid "x!"
+#~ msgstr "階乗"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "/"
+#~ msgstr "÷"
+
+#~ msgid "STO"
+#~ msgstr "STO"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "*"
+#~ msgstr "×"
+
+#~ msgid "RCL"
+#~ msgstr "RCL"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "SUM"
+#~ msgstr "SUM"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "EXC"
+#~ msgstr "EXC"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "+/-"
+#~ msgstr "±"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "calculator-font.png"
+#~ msgstr "calculator-font.png"
+
+#~ msgid "Select Character"
+#~ msgstr "文字を選択"
+
+#~ msgid "Insert"
+#~ msgstr "挿入"
+
+#~ msgid "Character code:"
+#~ msgstr "文字コード:"
+
+#~ msgid "Character:"
+#~ msgstr "文字:"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
+#~ "normal-*-10-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "Gnome Character Map"
+#~ msgstr "GNOME 文字選択"
+
+#~ msgid ""
+#~ "The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+#~ "contain bad English."
+#~ msgstr ""
+#~ "Microsoft Windows の文字コード表の GNOME 版です。 注意：変な英語が入ってい"
+#~ "るかもしれません。"
+
+#~ msgid "del"
+#~ msgstr "del"
+
+#~ msgid " %s: Character code %d"
+#~ msgstr "%s: 文字コード %d"
+
+#~ msgid "Text copied to clipboard..."
+#~ msgstr "コピーしてクリップボードに送ったテキスト..."
+
+#~ msgid "Text cut to clipboard..."
+#~ msgstr "切り出してクリップボードに送ったテキスト..."
+
+#~ msgid "Text pasted from clipboard..."
+#~ msgstr "クリップボードから貼り付けられたテキスト..."
+
+#~ msgid "Action Toolbar"
+#~ msgstr "アクション・ツールバー"
+
+#~ msgid "Text to copy:"
+#~ msgstr "コピーするテキスト:"
+
+#~ msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-r-"
+#~ "normal-*-12-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "Exit"
+#~ msgstr "終了"
+
+#~ msgid "Copy"
+#~ msgstr "コピー"
+
+#~ msgid "About"
+#~ msgstr "情報"
+
+#~ msgid "Help"
+#~ msgstr "ヘルプ"
+
+#~ msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
+#~ "normal-*-10-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "Insert Character..."
+#~ msgstr "文字の挿入..."
+
+#~ msgid "Insert character(s) by choosing character codes."
+#~ msgstr "文字コードを選んで文字を挿入"
+
+#~ msgid "_Action Toolbar"
+#~ msgstr "_アクション・ツールバー(_A)"
+
+#~ msgid "View or hide the action toolbar"
+#~ msgstr "アクション・ツールバーの表示／非表示"
+
+#~ msgid "_Text Toolbar"
+#~ msgstr "テキスト・ツールバー(_T)"
+
+#~ msgid "View or hide the text toolbar"
+#~ msgstr "ツールバーの表示／非表示"
+
+#~ msgid "_Statusbar"
+#~ msgstr "ステータスバー(_S)"
+
+#~ msgid "View or hide the statusbar"
+#~ msgstr "ステータスバーの表示／非表示"
+
+#~ msgid "Character Table's Font..."
+#~ msgstr "文字テーブルのフォント..."
+
+#~ msgid "Set the character table's font."
+#~ msgstr "文字テーブルのフォントを設定。"
+
+#~ msgid "_Insert at end"
+#~ msgstr "末尾に挿入(_I)"
+
+#~ msgid "Insert every selected character at the end of the text entry"
+#~ msgstr "選択した文字はテキストエントリの末尾に挿入"
+
+#~ msgid "_Focusable Buttons"
+#~ msgstr "フォーカス可能なボタン(_F)"
+
+#~ msgid "Set the buttons to be focusable or not"
+#~ msgstr "ボタンごとにフォーカス可能かどうか設定"
+
+#~ msgid "Insert character(s) by choosing character codes"
+#~ msgstr "文字コードを選んで文字を挿入"
+
+#~ msgid "Cut"
+#~ msgstr "切り出し"
+
+#~ msgid "Cut the selection"
+#~ msgstr "選択範囲を切り出し"
+
+#~ msgid "Copy the selection"
+#~ msgstr "選択範囲をコピー"
+
+#~ msgid "Paste"
+#~ msgstr "貼り付け"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "クリップボードから貼り付け"
+
+#~ msgid "Show Gnome Character Map's manual"
+#~ msgstr "GNOME 文字選択のマニュアルを表示"
+
+#~ msgid "About this application"
+#~ msgstr "このアプリケーションについて"
+
+#~ msgid "Exit the program"
+#~ msgstr "プログラムの終了"
+
+#~ msgid ""
+#~ "Couldn't start the dictionary; most likely, http://www.dict.org could not "
+#~ "be contacted."
+#~ msgstr ""
+#~ "辞書を開けませんでした。http://www.dict.org/ に接続できなかったと思われま"
+#~ "す"
+
+#~ msgid "Cannot connect to server"
+#~ msgstr "サーバに接続できません"
+
+#~ msgid ""
+#~ "Client for MIT dictionary server.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#~ msgstr ""
+#~ "MIT辞書サーバのためのクライアント。\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#~ msgid "Spell-checking..."
+#~ msgstr "スペルチェック中..."
+
+#~ msgid "Spell check done"
+#~ msgstr "スペルチェック完了"
+
+#~ msgid "No matches found"
+#~ msgstr "一致するものは見つかりません"
+
+#~ msgid "Looking up word..."
+#~ msgstr "単語を検索しています..."
+
+#~ msgid "Lookup done"
+#~ msgstr "検索完了"
+
+#~ msgid "String not found"
+#~ msgstr "文字が見つかりません"
+
+#~ msgid "Find:"
+#~ msgstr "検索"
+
+#~ msgid ""
+#~ "Unable to perform requested operation, either because the server\n"
+#~ "you are using is down or because you are not connected to the\n"
+#~ "Internet. If you are not already connected to the Internet, please\n"
+#~ "do so and try again."
+#~ msgstr ""
+#~ "要求された操作を実行できません。使っているサーバがダウンしているか、\n"
+#~ "インターネットに接続されていないのが原因です。もしまだインターネットに\n"
+#~ "接続していないなら、接続してもう一度試してみてください。"
+
 #, fuzzy
-msgid "Gstripchart"
-msgstr "ストリップチャート"
+#~ msgid "Look up"
+#~ msgstr "検索"
 
-#: gstripchart/gstripchart_applet.desktop.in.h:2
 #, fuzzy
-msgid "Shows a stripchart"
-msgstr "ストリップチャート"
+#~ msgid "Look up word in dictionary"
+#~ msgstr "辞書で単語を検索します"
 
-#: gsearchtool/gsearchtool.desktop.in.h:1
-#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
-msgid "GNOME Search Tool"
-msgstr "GNOME検索ツール"
+#~ msgid "Spell"
+#~ msgstr "スペル"
 
-#: gdiskfree/gdiskfree.desktop.in.h:1
-msgid "GNOME DiskFree"
-msgstr "GNOMEディスクフリー"
+#~ msgid "Check word spelling"
+#~ msgstr "単語のスペルチェック"
 
-#: gdiskfree/gdiskfree.desktop.in.h:2
-msgid "Show free space on mounted file systems using dials."
-msgstr "マウントされたファイルシステムの空き容量をダイアル表示します"
+#~ msgid "Cut to Clipboard"
+#~ msgstr "切り出してクリップボードに送る"
 
-#: gcharmap/gcharmap.desktop.in.h:1
+#~ msgid "Copy to Clipboard"
+#~ msgstr "クリップボードにコピー"
+
+#~ msgid "Paste Clipboard Contents"
+#~ msgstr "クリップボードの内容を貼り付け"
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid "Server to use, default search strategy, fonts"
+#~ msgstr "使用するサーバ、デフォルトの検索方法、フォント"
+
+#~ msgid "Word definition"
+#~ msgstr "単語の定義"
+
+#~ msgid "About..."
+#~ msgstr "情報..."
+
+#~ msgid "Preferences..."
+#~ msgstr "設定..."
+
+#~ msgid "Show/Hide Definition Window..."
+#~ msgstr "定義ウィンドウの表示／非表示..."
+
+#~ msgid "Spell Check..."
+#~ msgstr "スペルチェック..."
+
+#~ msgid "Cannot create applet!\n"
+#~ msgstr "アプレットを作成できません!\n"
+
+#~ msgid "Error invoking query: %s"
+#~ msgstr "%s の問い合わせでエラー"
+
+#~ msgid "Headword:"
+#~ msgstr "先頭の単語:"
+
+#~ msgid "Sub-number:"
+#~ msgstr "サブ番号:"
+
+#~ msgid "Pronunciation:"
+#~ msgstr "発音:"
+
+#~ msgid "Etymology:"
+#~ msgstr "語源:"
+
+#~ msgid "Part of speech:"
+#~ msgstr "品詞:"
+
+#~ msgid "Example:"
+#~ msgstr "例:"
+
+#~ msgid "Main body:"
+#~ msgstr "本体:"
+
+#~ msgid "Cross-reference:"
+#~ msgstr "参照:"
+
+#~ msgid "Preferences"
+#~ msgstr "設定"
+
+#~ msgid "Smart lookup"
+#~ msgstr "スマート検索"
+
+#~ msgid "Server:"
+#~ msgstr "サーバ:"
+
+#~ msgid "Port:"
+#~ msgstr "ポート:"
+
+#~ msgid "Database:"
+#~ msgstr "データベース:"
+
+#~ msgid "Default strategy:"
+#~ msgstr "デフォルトの検索方法:"
+
+#~ msgid "Server"
+#~ msgstr "サーバ"
+
+#~ msgid "Fonts"
+#~ msgstr "フォント"
+
+#~ msgid "Display handle bar"
+#~ msgstr "バーの表示"
+
+#~ msgid ""
+#~ "You have to restart GDict for these\n"
+#~ "settings to become active."
+#~ msgstr ""
+#~ "これらの設定を有効にするには、\n"
+#~ "GDictを再起動して下さい。"
+
+#~ msgid "Applet"
+#~ msgstr "アプレット"
+
+#~ msgid "Search all databases"
+#~ msgstr "すべてのデーターベースを検索"
+
+#~ msgid "The server you specified could not be found."
+#~ msgstr "指定されたサーバは見つかりませんでした。"
+
+#~ msgid "Word:"
+#~ msgstr "単語:"
+
+#~ msgid "Search Strategy:"
+#~ msgstr "検索方法:"
+
+#~ msgid "Find Words..."
+#~ msgstr "単語を検索..."
+
 #, fuzzy
-msgid "GNOME Character Map"
-msgstr "GNOME 文字選択"
+#~ msgid "Look up Word..."
+#~ msgstr "単語を問い合わせ..."
 
-#: gcalc/gcalc.desktop.in.h:1
-msgid "Simple Calculator"
-msgstr "簡易電卓"
+#~ msgid "Spell checker"
+#~ msgstr "スペルチェッカー"
 
-#: cromagnon/Cromagnon.desktop.in.h:1
-msgid "Personal cron manager"
-msgstr "ユーザ用cronマネージャ"
+#~ msgid "GDiskFree"
+#~ msgstr "Gディスクフリー"
 
-#: cromagnon/Cromagnon.desktop.in.h:2
-msgid "Personal crontab manager"
-msgstr "定期実行プログラムの各個人用設定ツール"
+#~ msgid "Unable to parse the geometry string '%s'"
+#~ msgstr "ジオメトリ情報 '%s' が正しくありません"
+
+#~ msgid "Specify the geometry of the window."
+#~ msgstr "ウィンドウの位置を指定する"
+
+#~ msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
+#~ msgstr "Gディスクフリーは 'df' コマンドのGNOME版プログラムです"
+
+#~ msgid "GDiskFree Properties"
+#~ msgstr "Gディスクフリーの設定"
+
+#~ msgid "Invoke sync before getting usage info"
+#~ msgstr "利用状況を表示する前にディスクの同期を行なう"
+
+#~ msgid "Show drive mount points"
+#~ msgstr "マウントポイントを表示する"
+
+#~ msgid "Show drive size"
+#~ msgstr "ドライブ容量の表示"
+
+#~ msgid "Dial Orientation"
+#~ msgstr "メーターの表示方向"
+
+#~ msgid "Vertical"
+#~ msgstr "垂直方向"
+
+#~ msgid "Horizontal"
+#~ msgstr "水平方向"
+
+#~ msgid "Update interval (ms)"
+#~ msgstr "更新間隔 (ms)"
+
+#~ msgid "General Settings"
+#~ msgstr "一般的な設定"
+
+#~ msgid "File name"
+#~ msgstr "ファイル名"
+
+#~ msgid "Don't search subdirectories"
+#~ msgstr "サブディレクトリの下を探索しない"
+
+#~ msgid "File owner"
+#~ msgstr "ファイルの所有者"
+
+#~ msgid "File owner group"
+#~ msgstr "ファイルの所有グループ"
+
+#~ msgid "Last modification time"
+#~ msgstr "最終変更時間"
+
+#~ msgid "Don't search mounted filesystems"
+#~ msgstr "マウント済みのファイルシステムは探索しない"
+
+#~ msgid "Empty file"
+#~ msgstr "空のファイル"
+
+#~ msgid "Invalid user or group"
+#~ msgstr "不正なユーザまたはグループ"
+
+#~ msgid "Filenames except"
+#~ msgstr "このファイル名を除く"
+
+#~ msgid "Follow symbolic links"
+#~ msgstr "シンボリックリンクを追跡する"
+
+#~ msgid "Simple substring search"
+#~ msgstr "単純な文字列の探索"
+
+#~ msgid "Regular expression search"
+#~ msgstr "正規表現を使った文字列の探索"
+
+#~ msgid "Extended regular expression search"
+#~ msgstr "拡張正規表現を使った探索"
+
+#~ msgid "grep options found in find list bad bad!"
+#~ msgstr "findリスト中にgrepのオプションが入っていたらダメダメです!"
+
+#~ msgid "non-grep option found in grep list, bad bad!"
+#~ msgstr "grepリスト中にgrepのものでないオプションが入っていたらダメダメです!"
+
+#~ msgid "Search already running on another page"
+#~ msgstr "別のページで探索中です"
+
+#~ msgid "Search Results"
+#~ msgstr "探索結果"
+
+#~ msgid ""
+#~ "\n"
+#~ "... Too many errors to display ..."
+#~ msgstr ""
+#~ "\n"
+#~ "...エラーが多すぎて表示でません..."
+
+#~ msgid "Start directory does not exist"
+#~ msgstr "起点ディレクトリが存在しません"
+
+#~ msgid "Search command line"
+#~ msgstr "コマンドラインで検索"
+
+#~ msgid ""
+#~ "This is the command line that can be used to execute this search from the "
+#~ "console:\n"
+#~ "(Note: to print one file per line rather then null separated,\n"
+#~ "append \"| tr '\\000' '\\n'\" to the line below)"
+#~ msgstr ""
+#~ "これはコンソールからこの検索を実行するときに使うコマンドです:\n"
+#~ "(注意: ヌル文字での分割ではなく行ごとにファイルを出力したいときは、\n"
+#~ "下のコマンド行に\"| tr '\\000' '\\n'\"を追加して下さい)"
+
+#~ msgid "Entry changed called for a non entry option!"
+#~ msgstr "エントリオプションのないエントリに変更されました!"
+
+#~ msgid "Enable"
+#~ msgstr "許可"
+
+#~ msgid "Remove"
+#~ msgstr "削除"
+
+#~ msgid "Start in directory:"
+#~ msgstr "起点ディレクトリ:"
+
+#~ msgid "Browse"
+#~ msgstr "参照"
+
+#~ msgid "Add"
+#~ msgstr "追加"
+
+#~ msgid "Show Command"
+#~ msgstr "コマンドの表示"
+
+#~ msgid "Nothing to locate"
+#~ msgstr "ファイル名を入力してください"
+
+#~ msgid ""
+#~ "This is an interface to locate.  If you type in a simple string it\n"
+#~ "will be matched as a subset of the full path, and if you type\n"
+#~ "in a string with wildcards, it will have to match the full path."
+#~ msgstr ""
+#~ "これは locate コマンドのインターフェースです. 簡単な文字列を入力して,\n"
+#~ "フルパスの一部にマッチすればそれが表示されます. また, ワイルドカード\n"
+#~ "を用いた探索も行なうことができます."
+
+#~ msgid "Locate file: "
+#~ msgstr "文字列: "
+
+#~ msgid "Full find (find)"
+#~ msgstr "全探索(find)"
+
+#~ msgid "Quick find (locate)"
+#~ msgstr "簡易探索(locate)"
+
+#~ msgid "The Gnome Search Tool"
+#~ msgstr "GNOME探索ツール"
+
+#~ msgid "(C) 1998,2000 the Free Software Foundation"
+#~ msgstr "(C) 1998,2000 the Free Software Foundation"
+
+#~ msgid "Frontend to the unix find/grep/locate commands"
+#~ msgstr "UNIX コマンド find / grep / locate のフロントエンドです"
+
+#~ msgid "Gnome Search Tool"
+#~ msgstr "GNOME探索ツール"
+
+#~ msgid "Cannot save file"
+#~ msgstr "ファイルを保存できません"
+
+#~ msgid "Save Results"
+#~ msgstr "探索結果"
+
+#~ msgid "Command mangled"
+#~ msgstr "コマンドライン"
+
+#~ msgid "No command for this mime type"
+#~ msgstr "このファイルシステムの情報はありません"
+
+#~ msgid "[GTT]New"
+#~ msgstr "新規"
+
+#~ msgid "Reload"
+#~ msgstr "読み直し"
+
+#~ msgid "Props"
+#~ msgstr "設定"
+
+#~ msgid "Prefs"
+#~ msgstr "好み"
+
+#~ msgid "Manual"
+#~ msgstr "説明"
+
+#~ msgid "Quit"
+#~ msgstr "終了"
+
+#, fuzzy
+#~ msgid "Delete _Times"
+#~ msgstr "削除"
+
+#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
+#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#, fuzzy
+#~ msgid ""
+#~ "This  program  is  part of  the  GNOME  project. Logview comes with "
+#~ "ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+#~ "redistribute it under the conditions of the GNU General Public Licence. "
+#~ "The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+#~ msgstr ""
+#~ "このプログラムは GNOME プロジェクトの一部です。 logview はまったく無保証で"
+#~ "す。これはフリーソフト ウェアで、GNU一般公有使用許諾書にもとづいて 再配布"
+#~ "することができます。ログのアイコンは Tuomas Kuosmanen(tigert) 氏のご好意に"
+#~ "よるものです。"
+
+#~ msgid "Logview"
+#~ msgstr "ログファイル"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Copyright (C) 1998,1999 John Kodis"
+
+#~ msgid "Action database"
+#~ msgstr "アクションデータベース"
+
+#~ msgid "Monitor options"
+#~ msgstr "マウントポイント"
+
+#~ msgid "Add..."
+#~ msgstr "追加"
+
+#~ msgid "Edit..."
+#~ msgstr "編集..."
+
+#~ msgid "Cannot open action data base <%s>! Open failed."
+#~ msgstr "アクションデーターベース <%s>を開けません!"
+
+#~ msgid "Error parsing actions data base"
+#~ msgstr "アクションデータベースのパースでエラー"
+
+#~ msgid "Can't write to actions database!"
+#~ msgstr "アクションデータベースに書き込めません!"
+
+#~ msgid "<empty>"
+#~ msgstr "空"
+
+#~ msgid "log name regexp"
+#~ msgstr "ログ名称 正規表現"
+
+#~ msgid "process regexp"
+#~ msgstr "プロセス 正規表現:"
+
+#~ msgid "message regexp"
+#~ msgstr "メッセージ 正規表現"
+
+#~ msgid "action to execute when regexps are TRUE"
+#~ msgstr "正規表現が真のときに実行するアクション"
+
+#~ msgid "description"
+#~ msgstr "説明"
+
+#~ msgid "description:"
+#~ msgstr "説明:"
+
+#~ msgid "Description of this entry."
+#~ msgstr "このエントリの説明。"
+
+#~ msgid ""
+#~ "tag: [%s]\n"
+#~ "log_name: [%s]\n"
+#~ "process: [%s]\n"
+#~ "message: [%s]\n"
+#~ "description: [%s]\n"
+#~ "action: [%s]\n"
+#~ msgstr ""
+#~ "タグ: [%s]\n"
+#~ "ログ名: [%s]\n"
+#~ "プロセス: [%s]\n"
+#~ "メッセージ: [%s]\n"
+#~ "説明: [%s]\n"
+#~ "アクション: [%s]\n"
+
+#~ msgid "Log stats"
+#~ msgstr "ログの状態"
+
+#~ msgid "Log information"
+#~ msgstr "ログ情報"
+
+#~ msgid "Log:"
+#~ msgstr "ログ:"
+
+#~ msgid "Size:"
+#~ msgstr "サイズ:"
+
+#~ msgid "Modified:"
+#~ msgstr "修正:"
+
+#~ msgid "Start date:"
+#~ msgstr "開始日時:"
+
+#~ msgid "Last date:"
+#~ msgstr "最終日時:"
+
+#~ msgid "Num. lines:"
+#~ msgstr "行数:"
+
+#~ msgid "%ld bytes"
+#~ msgstr "%ld バイト"
+
+#~ msgid "January"
+#~ msgstr "1月"
+
+#~ msgid "February"
+#~ msgstr "2月"
+
+#~ msgid "March"
+#~ msgstr "3月"
+
+#~ msgid "April"
+#~ msgstr "4月"
+
+#~ msgid "May"
+#~ msgstr "5月"
+
+#~ msgid "June"
+#~ msgstr "6月"
+
+#~ msgid "July"
+#~ msgstr "7月"
+
+#~ msgid "August"
+#~ msgstr "8月"
+
+#~ msgid "September"
+#~ msgstr "9月"
+
+#~ msgid "October"
+#~ msgstr "10月"
+
+#~ msgid "November"
+#~ msgstr "11月"
+
+#~ msgid "December"
+#~ msgstr "12月"
+
+#~ msgid "%x"
+#~ msgstr "%x"
+
+#~ msgid "%X"
+#~ msgstr "%X"
+
+#~ msgid "%B %e"
+#~ msgstr "%B %e"
+
+#~ msgid "Not enough memory!\n"
+#~ msgstr "十分なメモリがありません!\n"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "メモリ不足です!\n"
+
+#~ msgid "Unable to open logfile!\n"
+#~ msgstr "ログファイルを開けません!\n"
+
+#~ msgid "%s is not a regular file."
+#~ msgstr "%sは通常のファイルではありません。"
+
+#~ msgid ""
+#~ "%s is not user readable. Either run the program as root or ask the "
+#~ "sysadmin to change the permissions on the file."
+#~ msgstr ""
+#~ "ユーザは %s を読めません。root でプログラムを起動するか、管理者に頼んで"
+#~ "ファイルのパーミッションを変更してもらって下さい。"
+
+#~ msgid "%s could not be opened."
+#~ msgstr "%s は開けませんでした。"
+
+#~ msgid "%s not a log file."
+#~ msgstr "%s はログファイルではありません。"
+
+#~ msgid "ReadLogStats: out of memory"
+#~ msgstr "ログの読み込み: メモリ不足"
+
+#~ msgid "Open log..."
+#~ msgstr "ログを開く..."
+
+#~ msgid "Open log"
+#~ msgstr "ログを開く"
+
+#~ msgid "Export log..."
+#~ msgstr "ログのエクスポート..."
+
+#~ msgid "Export log"
+#~ msgstr "ログのエクスポート"
+
+#~ msgid "Close log"
+#~ msgstr "ログを閉じる"
+
+#~ msgid "Switch log"
+#~ msgstr "ログを切替える"
+
+#~ msgid "Monitor..."
+#~ msgstr "モニタ..."
+
+#~ msgid "Monitor log"
+#~ msgstr "ログのモニタ"
+
+#~ msgid "Exit program"
+#~ msgstr "プログラムの終了"
+
+#~ msgid "Show calendar log"
+#~ msgstr "カレンダーログの表示"
+
+#~ msgid "Show log stats"
+#~ msgstr "ステータスバーを表示"
+
+#~ msgid "Zoom"
+#~ msgstr "拡大"
+
+#~ msgid "Show line info"
+#~ msgstr "行の情報を表示"
+
+#~ msgid "Show user preferences"
+#~ msgstr "ユーザ設定の表示"
+
+#~ msgid "Select...               "
+#~ msgstr "選択...               "
+
+#~ msgid "Select log events"
+#~ msgstr "ログイベントの選択"
+
+#~ msgid "Filter..                "
+#~ msgstr "フィルタ..                "
+
+#~ msgid "Filter log events"
+#~ msgstr "ログイベントフィルタ"
+
+#~ msgid "Info about logview"
+#~ msgstr "logviewについての情報"
+
+#~ msgid "No log files to open"
+#~ msgstr "ロゴが見つかりません"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "システムログビューア"
+
+#~ msgid "Filename: "
+#~ msgstr "ファイル名:"
+
+#~ msgid "Date: "
+#~ msgstr "日付:"
+
+#~ msgid "Too many open logs. Close one and try again"
+#~ msgstr "ログを開きすぎです。一つ閉じてもう一度やってみてください"
+
+#~ msgid "Open new logfile"
+#~ msgstr "テキストファイルを開く..."
+
+#~ msgid "Error: [%s]\n"
+#~ msgstr "エラー: [%s]\n"
+
+#~ msgid "Choose logs to monitor"
+#~ msgstr "モニタするログを選択してください"
+
+#~ msgid "Add >>"
+#~ msgstr "追加 >>"
+
+#~ msgid "Remove <<"
+#~ msgstr "削除 <<"
+
+#~ msgid "Hide app"
+#~ msgstr "アプリを表示しない"
+
+#~ msgid "Exec actions"
+#~ msgstr "アクションの実行"
+
+#~ msgid "Actions..."
+#~ msgstr "アクション..."
+
+#~ msgid "tmp_list is NULL\n"
+#~ msgstr "tmp_listはNULLです\n"
+
+#~ msgid "Monitoring logs..."
+#~ msgstr "ログのモニタリング..."
+
+#~ msgid "TOUCHED!!\n"
+#~ msgstr "TOUCHED!!\n"
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "ホスト名の文字数(0 だとこの項目を表示しません): "
+
+#~ msgid "Columns"
+#~ msgstr "項目"
+
+#~ msgid "Zoom view"
+#~ msgstr "拡大表示"
+
+#~ msgid "Log line detail for %s"
+#~ msgstr "ログ%sについて詳細"
+
+#~ msgid "Log line detail for <No log loaded>"
+#~ msgstr "<ログがロードされていません>についてログの詳細"
+
+#~ msgid "Date:"
+#~ msgstr "日付:"
+
+#~ msgid "Process:"
+#~ msgstr "プロセス:"
+
+#~ msgid "Message:"
+#~ msgstr "メッセージ:"
+
+#~ msgid "Description:"
+#~ msgstr "説明:"
+
+#~ msgid "%B %e %X"
+#~ msgstr "%B %e %X"
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-"
+#~ "r-normal-*-12-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-misc-fixed-medium-r-normal--12-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*,-*-fixed-"
+#~ "medium-r-normal-*-10-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*,-misc-fixed-"
+#~ "medium-r-normal--10-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-fixed-medium-r-"
+#~ "normal-*-14-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*,-*-fixed-medium-r-"
+#~ "normal-*-12-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
+#~ "normal--14-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*,-*-fixed-medium-r-"
+#~ "normal-*-10-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*,-misc-fixed-medium-r-"
+#~ "normal-*-10-*-*-*-*-*-*-*,*-r-*"
+
+#~ msgid "Cannot open regexp data base <%s>! Open failed."
+#~ msgstr "正規表現データベース <%s> をオープンできません!"
+
+#~ msgid "Cannot open description data base <%s>! Open failed."
+#~ msgstr "説明データベース <%s> をオープンできません!"
+
+#~ msgid "Do nothing"
+#~ msgstr "なにもしない"
+
+#~ msgid "Append it to ->"
+#~ msgstr "追加 ->"
+
+#~ msgid "Search it in ->"
+#~ msgstr "検索 ->"
+
+#~ msgid "Edit it"
+#~ msgstr "編集する"
+
+#~ msgid "List"
+#~ msgstr "リスト"
+
+#~ msgid "Grid"
+#~ msgstr "グリッド"
+
+#~ msgid "Edit"
+#~ msgstr "終了"
+
+#~ msgid "File"
+#~ msgstr "ファイル(_F)"
+
+#~ msgid "Search RGB"
+#~ msgstr "RGBの検索"
+
+#~ msgid "Monitor"
+#~ msgstr "モニタ"
+
+#~ msgid "Concat"
+#~ msgstr "結合"
+
+#~ msgid "'%s' document has been modified; do you wish to save it ?"
+#~ msgstr "'%s'ドキュメントは変更されました。保存しますか?"
+
+#~ msgid "GColorsel was unable to paste colors from the clipboard."
+#~ msgstr "GColorselはクリップボードからカラーを貼り付けられませんでした。"
+
+#~ msgid "Please select a file document before."
+#~ msgstr "先にファイルを選択して下さい。"
+
+#~ msgid ""
+#~ "I can't execute this action. Check that :\n"
+#~ "\n"
+#~ "1. You have associated an action with this event.\n"
+#~ "2. The associated document still exists.\n"
+#~ "3. The type of the associated document.\n"
+#~ "\n"
+#~ "Go to preferences, in the edit menu."
+#~ msgstr ""
+#~ "このアクションを実行できません:\n"
+#~ "1. このイベントにアクションを関連づけていた。\n"
+#~ "2. 関連するドキュメントがまだ存在する。\n"
+#~ "3. 関連するドキュメントのタイプ。\n"
+#~ "\n"
+#~ "をチェックしてみて下さい。\n"
+#~ "編集メニューにある、設定を見て下さい。"
+
+#~ msgid "GColorsel"
+#~ msgstr "GColorsel"
+
+#~ msgid "<- Remove"
+#~ msgstr "<- 削除"
+
+#~ msgid "<- Remove all"
+#~ msgstr "<- 全て削除"
+
+#~ msgid "Add ->"
+#~ msgstr "追加 ->"
+
+#~ msgid "Add all ->"
+#~ msgstr "全て追加 ->"
+
+#~ msgid "Available documents"
+#~ msgstr "使用可能なドキュメント"
+
+#~ msgid "Available views"
+#~ msgstr "使用可能なビュー"
+
+#~ msgid "Connect to"
+#~ msgstr "接続"
+
+#~ msgid "Create a document"
+#~ msgstr "ドキュメントの作成"
+
+#~ msgid "Create views"
+#~ msgstr "ビューの作成"
+
+#~ msgid "Description :"
+#~ msgstr "説明 :"
+
+#~ msgid ""
+#~ "Please, select the type of document to create.\n"
+#~ "You can choose a short name, do not confuse it with the file name."
+#~ msgstr ""
+#~ "作成するドキュメントのタイプを選択して下さい。\n"
+#~ "略称も選択できますが、ファイル名と混同しないで下さい。"
+
+#~ msgid "Select source document"
+#~ msgstr "ソースドキュメントの選択"
+
+#~ msgid "Select type"
+#~ msgstr "タイプの選択"
+
+#~ msgid "Short name : "
+#~ msgstr "略称 : "
+
+#~ msgid ""
+#~ "This document read document from one or more other document. Please, "
+#~ "choose these documents."
+#~ msgstr ""
+#~ "このドキュメントは一つかそれ以上のドキュメントを読んでいます。それらのド"
+#~ "キュメントを選択して下さい。"
+
+#~ msgid ""
+#~ "You can create one or more views for this document. Note that you have to "
+#~ "create at least one view."
+#~ msgstr ""
+#~ "このドキュメントについて、一つかそれ以上のビューを作成できます。少なくとも"
+#~ "一つはビューを作らなければなりません。"
+
+#~ msgid "Create a new view"
+#~ msgstr "新規ビューの作成"
+
+#~ msgid "Please, select the type of view you want to create."
+#~ msgstr "作成するビューのタイプを選択して下さい。"
+
+#~ msgid "Actions"
+#~ msgstr "アクション"
+
+#~ msgid "Bottom"
+#~ msgstr "下"
+
+#~ msgid "Default"
+#~ msgstr "デフォルト"
+
+#~ msgid "Display documents menu (restart required)."
+#~ msgstr "ドキュメントメニューを表示(再起動が必要)する。"
+
+#~ msgid "Documents"
+#~ msgstr "ドキュメント"
+
+#~ msgid "DoubleClick in previews:"
+#~ msgstr "プレビューでのダブルクリック:"
+
+#~ msgid "DoubleClick in views:"
+#~ msgstr "ビューでのダブルクリック:"
+
+#~ msgid "Drop:"
+#~ msgstr "落下:"
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Grab:"
+#~ msgstr "取得:"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "MDI (複数ドキュメント表示)"
+
+#~ msgid "Modal"
+#~ msgstr "モーダル"
+
+#~ msgid "Mode:"
+#~ msgstr "モード:"
+
+#~ msgid "Notebook"
+#~ msgstr "ノートブック"
+
+#~ msgid "Notebook Tab position:"
+#~ msgstr "ノートのタブ位置:"
+
+#~ msgid "On ... execute ..."
+#~ msgstr "実行..."
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Save session on exit."
+#~ msgstr "終了時にセッションを保存する"
+
+#~ msgid "Session"
+#~ msgstr "セッション"
+
+#~ msgid "Top"
+#~ msgstr "上"
+
+#~ msgid "Toplevel"
+#~ msgstr "トップレベル"
+
+#~ msgid ""
+#~ "Begin\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "開始\n"
+#~ "コメント :"
+
+#~ msgid ""
+#~ "End\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "完了\n"
+#~ "コメント :"
+
+#~ msgid "File name :"
+#~ msgstr "ファイル名:"
+
+#~ msgid "Header :"
+#~ msgstr "ヘッダ : "
+
+#~ msgid "Special properties"
+#~ msgstr "特殊プロパティ"
+
+#~ msgid "Common properties"
+#~ msgstr "共通プロパティ"
+
+#~ msgid "Name :"
+#~ msgstr "名前 :"
+
+#~ msgid "Blue :"
+#~ msgstr "青 :"
+
+#~ msgid "Green :"
+#~ msgstr "緑 :"
+
+#~ msgid "Red :"
+#~ msgstr "赤 :"
+
+#~ msgid "Colors format :"
+#~ msgstr "カラーフォーマット :"
+
+#~ msgid "Display document control (if exists)"
+#~ msgstr "ドキュメントコントロールの表示(もしあれば)"
+
+#~ msgid "Color height :"
+#~ msgstr "カラー高さ :"
+
+#~ msgid "Color width :"
+#~ msgstr "カラー幅 :"
+
+#~ msgid "Draw numbers"
+#~ msgstr "数字の描画"
+
+#~ msgid "New Document"
+#~ msgstr "新規ドキュメント"
+
+#~ msgid "Create a new document"
+#~ msgstr "新規ドキュメントの作成"
+
+#~ msgid "New View"
+#~ msgstr "新規ビュー"
+
+#~ msgid "Create a new view for a document"
+#~ msgstr "ドキュメントの新規ビューの作成"
+
+#~ msgid "Close document"
+#~ msgstr "ドキュメントを閉じる"
+
+#~ msgid "Close the current document"
+#~ msgstr "現在のドキュメントを閉じる"
+
+#~ msgid "Close view"
+#~ msgstr "ビューを閉じる"
+
+#~ msgid "Close the current view"
+#~ msgstr "現在のビューを閉じる"
+
+#~ msgid "_Open palette..."
+#~ msgstr "パレットを開く(_O)"
+
+#~ msgid "Load a palette"
+#~ msgstr "パレットを読み込む"
+
+#~ msgid "_Save palette"
+#~ msgstr "パレットの保存(_S)"
+
+#~ msgid "Save the current palette in a file"
+#~ msgstr "現在のパレットをファイルに保存"
+
+#~ msgid "Save palette _As..."
+#~ msgstr "名前を変えてパレットを保存(_A)"
+
+#~ msgid "Save the current palette with a different name"
+#~ msgstr "現在のパレットを別の名前で保存"
+
+#~ msgid "Insert color"
+#~ msgstr "カラーの挿入"
+
+#~ msgid "Remove selected colors"
+#~ msgstr "選択したカラーの削除"
+
+#~ msgid "Edit selected colors ..."
+#~ msgstr "好みの編集..."
+
+#~ msgid "Document/View properties"
+#~ msgstr "ドキュメント/ビューのプロパティ"
+
+#~ msgid ""
+#~ "GColorsel was unable to save the file :\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have the approprate write permissions.\n"
+#~ "\n"
+#~ "Do you want to retry ?"
+#~ msgstr ""
+#~ "GColorselはファイルを保存できません :\n"
+#~ "\n"
+#~ "%s\n"
+#~ "指定したパスが存在するか確認して下さい。\n"
+#~ "そして書き込み権限があるか確認して下さい。\n"
+#~ "\n"
+#~ "もう一度実行しますか?"
+
+#~ msgid ""
+#~ "GColorsel was unable to load the file:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have permissions for opening the file."
+#~ msgstr ""
+#~ "GColorselはファイルを読み込むことができません:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "指定したパスが存在するか確認して下さい。\n"
+#~ "そして読み込み権限があるか確認して下さい。"
+
+#~ msgid "Open Palette"
+#~ msgstr "パレットを開く"
+
+#~ msgid "Loading file, please wait ..."
+#~ msgstr "ファイルを読み込んでいます、お待ち下さい..."
+
+#~ msgid "Save Palette as"
+#~ msgstr "テキストに名前をつけて保存..."
+
+#~ msgid "File not saved ..."
+#~ msgstr "ファイルは保存されませんでした..."
+
+#~ msgid "File saved ..."
+#~ msgstr "ファイルは保存されました..."
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?\n"
+#~ "\n"
+#~ "Please note that %d virtual document use data from this document."
+#~ msgstr ""
+#~ "'%s'の最後のビューを閉じようとしています。\n"
+#~ "\n"
+#~ "このドキュメントも閉じますが、よろしいですか ?\n"
+#~ "\n"
+#~ "%dの仮想的なドキュメントがこのドキュメントからのデータを使っていることに注"
+#~ "意してください。"
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?"
+#~ msgstr ""
+#~ "'%s'の最後のビューを閉じようとしています。\n"
+#~ "\n"
+#~ "このドキュメントも閉じますが、よろしいですか ?"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed,\n"
+#~ "and that %d virtual document use data from this document.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "'%s'を閉じようとしています。\n"
+#~ "%dのビューが閉じられます。\n"
+#~ "そして%dの仮想的なドキュメントがこのドキュメントからのデータを\n"
+#~ "使っています。\n"
+#~ "\n"
+#~ "よろしいですか ?"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "'%s'を閉じようとしています。\n"
+#~ "\n"
+#~ "%dのビューが閉じられます。\n"
+#~ "\n"
+#~ "よろしいですか ?"
+
+#~ msgid "Gnome Color Browser"
+#~ msgstr "GNOME色ブラウザ"
+
+#~ msgid "Small utility to browse available X11 colors."
+#~ msgstr "X11で定義された色を参照するための 簡単なユーティリティです。"
+
+#~ msgid "New Color"
+#~ msgstr "新規カラー"
+
+#~ msgid "View properties"
+#~ msgstr "ビュー"
+
+#~ msgid "Document properties"
+#~ msgstr "ドキュメント"
+
+#~ msgid "Open"
+#~ msgstr "開く"
+
+#~ msgid "Open a palette"
+#~ msgstr "パレットを開く"
+
+#~ msgid "Grab"
+#~ msgstr "取得"
+
+#~ msgid "Grab a color on the screen"
+#~ msgstr "面から色を取得します"
+
+#~ msgid ""
+#~ "Your config file is corrupted.\n"
+#~ "Do you want to create a new session ?"
+#~ msgstr ""
+#~ "設定ファイルが壊れています。\n"
+#~ "新規セッションを作成しますか ?"
+
+#~ msgid "Loading files, please wait ..."
+#~ msgstr "ファイルを読み込んでいます。お待ち下さい..."
+
+#~ msgid ""
+#~ "One or more files can not be restored :\n"
+#~ "\n"
+#~ msgstr ""
+#~ "一つまたはそれ以上のファイルが読み込めませんでした :\n"
+#~ "\n"
+
+#~ msgid "System Colors"
+#~ msgstr "システムカラー"
+
+#~ msgid "User Colors"
+#~ msgstr "ユーザカラー"
+
+#~ msgid "Search"
+#~ msgstr "検索"
+
+#~ msgid "Decimal 8 bits"
+#~ msgstr "10進数 (8ビット)"
+
+#~ msgid "Decimal 16 bits"
+#~ msgstr "10進数 (16ビット)"
+
+#~ msgid "Hex 8 bits"
+#~ msgstr "16進数 (8ビット)"
+
+#~ msgid "Hex 16 bits"
+#~ msgstr "16進数 (16ビット)"
+
+#~ msgid "Float"
+#~ msgstr "浮動小数値"
+
+#~ msgid "Color"
+#~ msgstr "色"
+
+#~ msgid "Name"
+#~ msgstr "名前"
+
+#~ msgid "Tolerance :"
+#~ msgstr "許容誤差 :"
+
+#~ msgid "Font Selector"
+#~ msgstr "フォントセレクタ"
+
+#~ msgid "Selection:"
+#~ msgstr "選択:"
+
+#~ msgid "Font to load"
+#~ msgstr "読み込むフォント"
+
+#~ msgid "FONTSPEC"
+#~ msgstr "FONTSPEC"
+
+#~ msgid "Print selected font name on exit"
+#~ msgstr "終了時に選択したフォント名を表示する"
+
+#~ msgid "Inhibit remembering selected font for next run"
+#~ msgstr "選択したフォントを次回の起動時まで記憶しない"
+
+#~ msgid "Inhibit loading of last font"
+#~ msgstr "最後のフォントを読み込まない"
+
+#~ msgid "Reason %d\n"
+#~ msgstr "理由 %d\n"
+
+#~ msgid "Where to put the window, and its size"
+#~ msgstr "ウィンドウを配置する場所とサイズ"
+
+#~ msgid "Ignore standard input; may be needed in some cases."
+#~ msgstr "標準出力を無視する; 必要になる場合があったりします。"
+
+#~ msgid "_New Window"
+#~ msgstr "新しいウィンドウ(_N)"
+
+#~ msgid "New text viewer window"
+#~ msgstr "新しいビューワウィンドウを開く"
+
+#~ msgid "_Fixed Font"
+#~ msgstr "固定幅フォント(_F)"
+
+#~ msgid "Display text with a fixed font"
+#~ msgstr "テキストの表示に固定幅のフォントを使用する"
+
+#~ msgid "Text File Viewer"
+#~ msgstr "テキストファイルビューワ"
+
+#~ msgid "Copyright 1998, under the GNU General Public License."
+#~ msgstr "Copyright 1998, under the GNU General Public License."
+
+#~ msgid "Find string"
+#~ msgstr "文字列検索"
+
+#~ msgid "Find"
+#~ msgstr "検索"
+
+#~ msgid "Loading..."
+#~ msgstr "読み込み中..."
+
+#~ msgid ""
+#~ "No such file or directory:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "そんなファイルもディレクトリもありません:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Failed to decompress and display the file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "ファイルの展開、表示に失敗しました:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Unable to display compressed file.\n"
+#~ "zcat not found in your path."
+#~ msgstr ""
+#~ "圧縮されたファイルを表示することができません。\n"
+#~ "zcat が見当たりません。"
+
+#~ msgid ""
+#~ "Error loading file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "ファイル読み込み中にエラー:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Saving..."
+#~ msgstr "保存中..."
+
+#~ msgid ""
+#~ "Failed to write file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "ファイル書き込みに失敗:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Save Text As..."
+#~ msgstr "テキストに名前をつけて保存..."
+
+#~ msgid "Open Text File..."
+#~ msgstr "テキストファイルを開く..."
+
+#~ msgid "Sorry, no preferences yet."
+#~ msgstr "すみません、プリファレンスはまだありません。"
+
+#~ msgid "Searching..."
+#~ msgstr "検索中..."
+
+#~ msgid "No search string was specified!"
+#~ msgstr "検索文字列が指定されていません!"
+
+#~ msgid "Shut Down"
+#~ msgstr "シャットダウン"
+
+#~ msgid "Single User Mode"
+#~ msgstr "シングルユーザーモード"
+
+#~ msgid "Runlevel 2"
+#~ msgstr "ランレベル 2"
+
+#~ msgid "Runlevel 3"
+#~ msgstr "ランレベル 3"
+
+#~ msgid "Runlevel 4"
+#~ msgstr "ランレベル 4"
+
+#~ msgid "Runlevel 5"
+#~ msgstr "ランレベル 5"
+
+#~ msgid "Reboot"
+#~ msgstr "リブート"
+
+#~ msgid "Are you sure you want to shut down the computer?"
+#~ msgstr "本当にシャットダウンしてもよろしいですか?"
+
+#~ msgid "Are you sure you want to switch to single user mode?"
+#~ msgstr "本当にシングルユーザーモードに移行してもよろしいですか?"
+
+#~ msgid "Are you sure you want to switch to runlevel 2?"
+#~ msgstr "本当にランレベル 2 に移行してもよろしいですか?"
+
+#~ msgid "Are you sure you want to switch to runlevel 3?"
+#~ msgstr "本当にランレベル 3 に移行してもよろしいですか?\""
+
+#~ msgid "Are you sure you want to switch to runlevel 4?"
+#~ msgstr "本当にランレベル 4 に移行してもよろしいですか?\""
+
+#~ msgid "Are you sure you want to switch to runlevel 5?"
+#~ msgstr "本当にランレベル 5 に移行してもよろしいですか?\""
+
+#~ msgid "Are you sure you want to reboot the system?"
+#~ msgstr "本当にリブートしてもよろしいですか?"
+
+#~ msgid ""
+#~ "You must be the super-user (root) to shut down or restart the computer."
+#~ msgstr ""
+#~ "コンピュータをシャットダウン/リブートできるのはスーパーユーザ(root)だけで"
+#~ "す。"
+
+#~ msgid "Shutdown or Reboot"
+#~ msgstr "シャットダウン/リブート"
+
+#~ msgid "Easy"
+#~ msgstr "簡易"
+
+#~ msgid "Advanced"
+#~ msgstr "高等"
+
+#~ msgid ""
+#~ "Click OK to shutdown or reboot. You will lose\n"
+#~ "any unsaved information in open applications."
+#~ msgstr ""
+#~ "OKをクリックするとシャットダウン/リブートします。\n"
+#~ "まだ保存されていないデータは全て失われます。"
+
+#~ msgid "Revert to Defaults"
+#~ msgstr "デフォルトに戻す"
+
+#~ msgid "Commands"
+#~ msgstr "コマンド"
+
+#~ msgid "Confirm before shutdown?"
+#~ msgstr "シャットダウンの前には確認する?"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "You will lose any unsaved work."
+#~ msgstr ""
+#~ "%s\n"
+#~ "保存していないデータは失われます."
+
+#~ msgid "Don't ask next time."
+#~ msgstr "もう聞かない"
+
+#~ msgid "Command execution failed: fork failed"
+#~ msgstr "コマンド実行に失敗: fork できません"
+
+#~ msgid "Make guname act as a control center applet"
+#~ msgstr "gunameをコントロールセンターアプレット"
+
+#~ msgid "an initialization error occurred while starting 'guname-capplet'."
+#~ msgstr "'guname-capplet'の初期化に失敗しました。"
+
+#~ msgid "System Information"
+#~ msgstr "システム情報"
+
+#~ msgid "Logo file not found"
+#~ msgstr "ロゴが見つかりません"
+
+#~ msgid "GNOME contributors:"
+#~ msgstr "GNOMEに貢献した人々:"
+
+#~ msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+#~ msgstr ""
+#~ "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*,-*-fixed-medium-r-"
+#~ "normal--*-16-*-*-*-*-*-*"
+
+#~ msgid "GNOME: The GNU Network Object Model Environment"
+#~ msgstr "GNOME: GNUネットワークオブジェクトモデル環境"
+
+#~ msgid "Email Information..."
+#~ msgstr "メールで情報を送る..."
+
+#~ msgid "Save Information to File..."
+#~ msgstr "ファイルに情報を保存する..."
+
+#~ msgid "Detailed Information..."
+#~ msgstr "詳細な情報..."
+
+#~ msgid "Category"
+#~ msgstr "分類"
+
+#~ msgid "Your System"
+#~ msgstr "システム"
+
+#~ msgid "Save As..."
+#~ msgstr "名前をつけて保存..."
+
+#~ msgid "Mail To..."
+#~ msgstr "メール先..."
+
+#~ msgid ""
+#~ "Error closing file `%s': \n"
+#~ "%s\n"
+#~ "Some or all data may not have been written."
+#~ msgstr ""
+#~ "ファイル`%s'を閉じるのに失敗:\n"
+#~ "%s\n"
+#~ "一部もしくは全てのデータが記録されていないかもしれません。"
+
+#~ msgid "Couldn't open file `%s': %s"
+#~ msgstr "このファイルを開けません `%s': %s"
+
+#~ msgid "Save System Information As..."
+#~ msgstr "システム情報に名前をつけて保存..."
+
+#~ msgid "Command failed ` %s ': %s"
+#~ msgstr "命令実行失敗 ` %s ':%s"
+
+#~ msgid "Couldn't run command ` %s ': %s"
+#~ msgstr "次のコマンドを実行できません ` %s ': %s"
+
+#~ msgid ""
+#~ "The following mail will be sent to %s.\n"
+#~ " Are you sure you want to mail this information?"
+#~ msgstr ""
+#~ "次のメールが %s に送信されます。。\n"
+#~ "この情報を送信しても良いですね?"
+
+#~ msgid "Are you sure?"
+#~ msgstr "本当ですか?"
+
+#~ msgid "Address to mail to:"
+#~ msgstr "メール宛先:"
+
+#~ msgid "Distribution:"
+#~ msgstr "ディストリビューション:"
+
+#~ msgid "Operating System:"
+#~ msgstr "オペレーティングシステム:"
+
+#~ msgid "Distribution Version:"
+#~ msgstr "ディストリビューションのバージョン:"
+
+#~ msgid "Operating System Version:"
+#~ msgstr "オペレーティングシステムのバージョン"
+
+#~ msgid "Operating System Release:"
+#~ msgstr "オペレーティングシステムのリリース"
+
+#~ msgid "Processor Type:"
+#~ msgstr "CPUのタイプ:"
+
+#~ msgid "Processor Speed:"
+#~ msgstr "CPUのスピード:"
+
+#~ msgid "Host Name:"
+#~ msgstr "ホスト名:"
+
+#~ msgid "Domain Name:"
+#~ msgstr "ドメイン名:"
+
+#~ msgid "User Name:"
+#~ msgstr "ユーザー名:"
+
+#~ msgid "X Display Name:"
+#~ msgstr "Xディスプレイ名:"
+
+#~ msgid "System Status:"
+#~ msgstr "システム状態:"
+
+#~ msgid "Real Memory:"
+#~ msgstr "物理メモリ:"
+
+#~ msgid "Swap Space (\"virtual memory\"):"
+#~ msgstr "スワップ領域 (仮想メモリ):"
+
+#~ msgid "Total Memory:"
+#~ msgstr "全メモリ空間:"
+
+#~ msgid "Free Memory:"
+#~ msgstr "利用可能メモリ:"
+
+#~ msgid "Device"
+#~ msgstr "デバイス"
+
+#~ msgid "Used space"
+#~ msgstr "使用領域"
+
+#~ msgid "Free space"
+#~ msgstr "未使用領域"
+
+#~ msgid "Percent free"
+#~ msgstr "パーセントの空き"
+
+#~ msgid "Mount point"
+#~ msgstr "マウントポイント"
+
+#~ msgid "Unknown"
+#~ msgstr "不明"
+
+#~ msgid "Unknown filesystem"
+#~ msgstr "不明なファイルシステム"
+
+#~ msgid "No information for this filesystem."
+#~ msgstr "このファイルシステムの情報はありません"
+
+#~ msgid "Memory"
+#~ msgstr "メモリ"
+
+#~ msgid "Kilobytes"
+#~ msgstr "Kバイト"
+
+#~ msgid "%ld%% memory used."
+#~ msgstr "%ld%% のメモリ空間を使用."
+
+#~ msgid "%ld%% swap used."
+#~ msgstr "%ld%% のスワップ領域を使用."
+
+#~ msgid "CPU %d"
+#~ msgstr "CPU %d"
+
+#~ msgid "Detailed System Information"
+#~ msgstr "詳細なシステム情報"
+
+#~ msgid "Disk Information"
+#~ msgstr "ディスク情報"
+
+#~ msgid "Memory Information"
+#~ msgstr "メモリ情報"
+
+#~ msgid "CPU Information"
+#~ msgstr "CPU情報"
+
+#~ msgid "Mount Point: "
+#~ msgstr "マウントポイント:"
+
+#~ msgid "    Device: "
+#~ msgstr "   デバイス: "
+
+#~ msgid "    Filesystem Type: "
+#~ msgstr "   ファイルシステム: "
+
+#~ msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
+#~ msgstr "%ld Mバイト、%ld 空き (%ld 特権領域); %ld Iノード、%ld 空き"
+
+#~ msgid "%2d%% full "
+#~ msgstr "%2d%% 使用 "
+
+#~ msgid ""
+#~ "Couldn't find the \"w\" command in your path.\n"
+#~ "This command is needed for the program to work."
+#~ msgstr ""
+#~ "\"w\"コマンドが見つかりません。\n"
+#~ "\"w\"がないとこのプログラムは動きません。"
+
+#~ msgid "Active User Listing"
+#~ msgstr "ログインしているユーザの一覧"
+
+#~ msgid "Update Information"
+#~ msgstr "情報の更新"
+
+#~ msgid "Command Line"
+#~ msgstr "コマンドライン"
+
+#~ msgid "Add some defaults"
+#~ msgstr "デフォルトに何か追加"
+
+#~ msgid "Delete"
+#~ msgstr "削除"
+
+#~ msgid "Command Editor"
+#~ msgstr "コマンドエディタ"
+
+#~ msgid ""
+#~ "You can configure the commands on the popup menus.\n"
+#~ "Just enter the name you want to appear on the \n"
+#~ "menu, and the command to execute.\n"
+#~ "In the command, you can use %u to represent the\n"
+#~ "currently selected username, and %t for the tty."
+#~ msgstr ""
+#~ "ポップアップメニューから実行するコマンドを設定できます。\n"
+#~ "メニューに現れる文字を入力して、実行するコマンドを入力\n"
+#~ "して下さい。\n"
+#~ "コマンドには、%u 選択したユーザを表すものとして、%t を\n"
+#~ "tty を表すものとして指示することができます。"
+
+#~ msgid ""
+#~ "Click this button to add\n"
+#~ "some sample commands."
+#~ msgstr ""
+#~ "このボタンをクリックして\n"
+#~ "コマンドの例を追加できます。"
+
+#~ msgid "Menu items"
+#~ msgstr "メニュー項目"
+
+#~ msgid "Command"
+#~ msgstr "コマンド"
+
+#~ msgid "Running: %s\n"
+#~ msgstr "実行中: %s\n"
+
+#~ msgid "Default 16-bit"
+#~ msgstr "デフォルト16ビット"
+
+#~ msgid "32-bit"
+#~ msgstr "32ビット"
+
+#~ msgid "32-bit w/sync"
+#~ msgstr "32ビット同期"
+
+#~ msgid "Sleeping"
+#~ msgstr "休止中"
+
+#~ msgid "Active/Idle"
+#~ msgstr "稼働/アイドル"
+
+#~ msgid "Standby"
+#~ msgstr "スタンバイ"
+
+#~ msgid "Unable to access the drive."
+#~ msgstr "ドライブにアクセスできません。"
+
+#~ msgid "The DMA setting for this drive cannot be changed."
+#~ msgstr "このドライブのDMA設定を変更することはできません。"
+
+#~ msgid "Enabled"
+#~ msgstr "許可"
+
+#~ msgid "Disabled"
+#~ msgstr "不許可"
+
+#~ msgid "The IRQ unmask setting for this drive cannot be changed."
+#~ msgstr "このドライブのIRQ umask設定を変更することはできません。"
+
+#~ msgid "The drive refused to keep its settings."
+#~ msgstr "このドライブは設定を保持してくれません。"
+
+#~ msgid "Keep settings"
+#~ msgstr "設定を保持"
+
+#~ msgid "None"
+#~ msgstr "なし"
+
+#~ msgid "(1 Sector)"
+#~ msgstr "(1セクター)"
+
+#~ msgid "(Dual Port)"
+#~ msgstr "(デュアルポート)"
+
+#~ msgid "(Dual Port Cache)"
+#~ msgstr "(デュアルポートキャッシュ)"
+
+#~ msgid "No"
+#~ msgstr "切"
+
+#~ msgid "Yes (%d sector)"
+#~ msgstr "入(%dセクター)"
+
+#~ msgid "Yes (%d sectors)"
+#~ msgstr "入(%dセクター)"
+
+#~ msgid "Model"
+#~ msgstr "モデル"
+
+#~ msgid "Firmware"
+#~ msgstr "ファームウェア"
+
+#~ msgid "Serial No."
+#~ msgstr "シリアル番号"
+
+#~ msgid "Geometry"
+#~ msgstr "ジオメトリ"
+
+#~ msgid "Cache"
+#~ msgstr "キャッシュ"
+
+#~ msgid "Legacy MFM/RLL drive"
+#~ msgstr "古いMFM/RLLドライブ"
+
+#~ msgid "DMA Mode"
+#~ msgstr "DMAモード"
+
+#~ msgid "IO Mode"
+#~ msgstr "IOモード"
+
+#~ msgid "IRQ Unmask"
+#~ msgstr "IRQアンマスク"
+
+#~ msgid "Multisector"
+#~ msgstr "マルチセクター"
+
+#~ msgid "On Reset"
+#~ msgstr "リセット時"
+
+#~ msgid "IDE Status"
+#~ msgstr "IDE状態"
+
+#~ msgid "Disk Logo Not Found"
+#~ msgstr "ディスクのロゴが見つかりません"
+
+#~ msgid "Only the superuser can use this tool"
+#~ msgstr "スーパーユーザのみがこのツールを使えます"
+
+#~ msgid "You appear to have no IDE drives"
+#~ msgstr "IDEドライブは付いていないようですね"
+
+#~ msgid "MInternal Error: Unable to seek to the correct location."
+#~ msgstr "M内部エラー: 正しい位置へシークできません"
+
+#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
+#~ msgstr "M内部エラー: do_test におかしな値 (%ld) が\n"
+
+#~ msgid "EBad block at block %lu"
+#~ msgstr "Eブロック %lu に壊れたブロック"
+
+#~ msgid "MChecking for bad blocks..."
+#~ msgstr "M壊れたブロックをチェック中..."
+
+#~ msgid "MFailed to open device %s for badblock checking\n"
+#~ msgstr ""
+#~ "M壊れたブロックのチェックするにデバイス %s をオープンできませんでした\n"
+
+#~ msgid "MChecking for bad blocks... Done"
+#~ msgstr "M壊れたブロックをチェック中... 終了"
+
+#~ msgid "MFormatting the disk..."
+#~ msgstr "Mフォーマットしています..."
+
+#~ msgid "EI don't know what this is, but it's very wrong."
+#~ msgstr "Eなにがなんだかわかりませんが, とにかく悪いことです."
+
+#~ msgid "EError formatting track #%d"
+#~ msgstr "Eトラック #%d フォーマット中のエラー"
+
+#~ msgid "EError during completion of formatting"
+#~ msgstr "Eフォーマット終了処理中のエラー"
+
+#~ msgid "MFormatting the disk... Done"
+#~ msgstr "Mフォーマットしています...完了"
+
+#~ msgid "MVerifying the format..."
+#~ msgstr "M検証しています..."
+
+#~ msgid ""
+#~ "EUnable to write to the floppy.\n"
+#~ "\n"
+#~ "Please confirm that it is not write-protected."
+#~ msgstr ""
+#~ "Eフロッピーに書き込むことができません。\n"
+#~ "\n"
+#~ "書き込み禁止になっていないか確認してください。"
+
+#~ msgid "EInsufficient permissions to open floppy device %s."
+#~ msgstr "Eデバイス %s を開くことができません"
+
+#~ msgid ""
+#~ "EUnable to access the floppy disk.\n"
+#~ "\n"
+#~ "Please confirm that it is in the drive\n"
+#~ "with the drive door shut."
+#~ msgstr ""
+#~ "Eフロッピーディスクにアクセスできません。\n"
+#~ "\n"
+#~ "ドライブの中にディスクがあって蓋がしまっているか\n"
+#~ "確認してください。"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s:%d"
+#~ msgstr ""
+#~ "Eフロッピーデバイス %s のアクセスで一般エラーが発生しました。\n"
+#~ "\n"
+#~ "エラーコード %s:%d"
+
+#~ msgid ""
+#~ "ERead Error:\n"
+#~ "Problem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "E読み込みエラー:\n"
+#~ "シリンダ %d 読み込み時の問題. 期待される値 %d, 結果 %d"
+
+#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
+#~ msgstr "Eシリンダ %d 読み込み時の問題. 期待される値 %d, 結果 %d"
+
+#~ msgid "MBad data in cyl %d.  Continuing... "
+#~ msgstr "Mシリンダ %d が不正. 続けます..."
+
+#~ msgid "EError closing device %s"
+#~ msgstr "Eデバイス %s を閉じる際のエラー"
+
+#~ msgid "MVerifying the format... Done"
+#~ msgstr "M検証しています...完了"
+
+#~ msgid "EUnable to write to device %s"
+#~ msgstr "Eデバイス %s に書き込むことができません"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s"
+#~ msgstr ""
+#~ "Eフロッピーデバイス %s にアクセスする際に一般エラーが発生しました。\n"
+#~ "\n"
+#~ "エラーコード %s"
+
+#~ msgid "ECould not determine current format type"
+#~ msgstr "Eフォーマットタイプが不明です"
+
+#~ msgid "Dos (FAT)"
+#~ msgstr "DOS (FAT)"
+
+#~ msgid "Double Density 3.5\" (720 KB)"
+#~ msgstr "倍密度 3.5\" (720KB)"
+
+#~ msgid "Double Density 5.25\" (360 KB)"
+#~ msgstr "倍密度 5.25\" (360KB)"
+
+#~ msgid "File system type:"
+#~ msgstr "ファイルシステム:"
+
+#~ msgid "Floppy Density:"
+#~ msgstr "ディスク容量:"
+
+#~ msgid "Floppy Device:"
+#~ msgstr "フロッピーデバイス:"
+
+#~ msgid "Format a floppy"
+#~ msgstr "フロッピーディスクのフォーマット"
+
+#~ msgid "High Density 3.5\" (1.44 MB)"
+#~ msgstr "高密度 3.5\" (1.44MB)"
+
+#~ msgid "High Density 5.25\" (1.2 MB)"
+#~ msgstr "高密度 5.25\" (1.2MB)"
+
+#~ msgid "Linux Native (ext2)"
+#~ msgstr "Linux ネイティブ (ext2)"
+
+#~ msgid "_Quick format"
+#~ msgstr "クイックフォーマット(_Q)"
+
+#~ msgid "MMaking filesystem on disk..."
+#~ msgstr "Mディスクにファイルシステムを作成中..."
+
+#~ msgid "EUnable to create filesystem correctly."
+#~ msgstr "Eファイルシステムを正しく作成できません.."
+
+#~ msgid "MMaking filesystem on disk... Done"
+#~ msgstr "Mディスクにファイルシステムを作成中...完了"
+
+#~ msgid "EUnable to create filesystem."
+#~ msgstr "Eファイルシステムを作成できません"
+
+#~ msgid "MChecking for bad blocks... (this might take a while)"
+#~ msgstr "Mバッドブロックのチェック... (しばらくかかります)"
+
+#~ msgid "Unable to open the device %s, formatting cannot continue."
+#~ msgstr "デバイス %s を開けません。フォーマットを続行できません"
+
+#~ msgid ""
+#~ "The device %s is disconnected.\n"
+#~ "Please attach device to continue."
+#~ msgstr ""
+#~ "デバイス %s は繋がってません。\n"
+#~ "続行するにはデバイスを接続してください。"
+
+#~ msgid ""
+#~ "You do not have the proper permissions to write to %s, formatting will "
+#~ "not be possible.\n"
+#~ "Contact your system administrator about getting write permissions."
+#~ msgstr ""
+#~ "%s へ書き込む権限がありません。フォーマットは不可能です。\n"
+#~ "システム管理者に連絡し、書き込み権限を設定してもらってください"
+
+#~ msgid "The device to format"
+#~ msgstr "フォーマットするデバイス"
+
+#~ msgid "DEVICE"
+#~ msgstr "デバイス"
+
+#~ msgid "Format"
+#~ msgstr "フォーマット"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "別のフロッピーをフォーマットしますか?"
+
+#~ msgid "Floppy formatted successfully."
+#~ msgstr "フォーマットが終了しました."
+
+#~ msgid "Floppy formatting cancelled."
+#~ msgstr "フォーマットは中断されました."
+
+#~ msgid "Format progress."
+#~ msgstr "フォーマット中"
+
+#~ msgid "Param"
+#~ msgstr "パラメータ"
+
+#~ msgid "Current"
+#~ msgstr "現在値"
+
+#~ msgid "Scale"
+#~ msgstr "目盛"
+
+#~ msgid "Stripchart"
+#~ msgstr "ストリップチャート"
+
+#~ msgid "Copyright 2000 John Kodis"
+#~ msgstr "Copyright 2000 John Kodis"
+
+#~ msgid ""
+#~ "The GNOME stripchart program plots various user-specified parameters as a "
+#~ "function of time.  Its main use is to chart system performance parameters "
+#~ "such as CPU load, CPU utilization, network traffic levels, and the like.  "
+#~ "Other more ingenious uses are left as an exercise for the interested user."
+#~ msgstr ""
+#~ "GNOMEストリップチャートは、ユーザーが指定する 様々なパラメータを時間の関数"
+#~ "として表示します。 主な目的はCPUの負荷や使用度、ネットワークトラ フィック"
+#~ "のようなシステムパフォーマンスを表す パラメータをチャートで表示することで"
+#~ "す。 それ以外にもっと賢い使い方として興味のある ユーザの実習用、というのが"
+#~ "あります。"
+
+#~ msgid "Show values"
+#~ msgstr "値の表示"
+
+#~ msgid "Edit Prefs..."
+#~ msgstr "設定の編集..."
+
+#~ msgid "Edit Params..."
+#~ msgstr "パラメータの編集..."
+
+#~ msgid "closing parenthesis expected"
+#~ msgstr "閉じ括弧が必要です"
+
+#~ msgid "no such field: %d"
+#~ msgstr "そのようなフィールドはありません: %d"
+
+#~ msgid "missing variable identifer"
+#~ msgstr "変数指定がありません"
+
+#~ msgid "invalid variable identifer: %s"
+#~ msgstr "おかしな変数指定です: %s"
+
+#~ msgid "number expected"
+#~ msgstr "数値が必要です"
+
+#~ msgid "extra junk at end: \"%s\""
+#~ msgstr "妙なものが終りについています: \"%s\""
+
+#~ msgid "Parameter"
+#~ msgstr "パラメータ"
+
+#~ msgid "Equation"
+#~ msgstr "平均化"
+
+#~ msgid "Filename"
+#~ msgstr "ファイル名"
+
+#~ msgid "Pattern"
+#~ msgstr "パターン"
+
+#~ msgid "Min"
+#~ msgstr "最小"
+
+#~ msgid "Max"
+#~ msgstr "最大"
+
+#~ msgid "Linear"
+#~ msgstr "線型"
+
+#~ msgid "Logarithmic"
+#~ msgstr "対数"
+
+#~ msgid "Type"
+#~ msgstr "タイプ"
+
+#~ msgid "Indicator"
+#~ msgstr "指示子"
+
+#~ msgid "Line"
+#~ msgstr "線分"
+
+#~ msgid "Point"
+#~ msgstr "点"
+
+#~ msgid "Solid"
+#~ msgstr "実線"
+
+#~ msgid "Add Parameter Before"
+#~ msgstr "前にパラーメータを追加"
+
+#~ msgid "Add Parameter After"
+#~ msgstr "後にパラーメータを追加"
+
+#~ msgid "Apply Parameter Changes"
+#~ msgstr "パラメータの変更を適用"
+
+#~ msgid "Delete Parameter"
+#~ msgstr "パラメータを削除"
+
+#~ msgid "Add Color"
+#~ msgstr "色を追加"
+
+#~ msgid "Delete Color"
+#~ msgstr "色を削除"
+
+#~ msgid "Info"
+#~ msgstr "情報"
+
+#~ msgid "Parameter Editor"
+#~ msgstr "パラメータの編集"
+
+#~ msgid "Parameters"
+#~ msgstr "パラメータ"
+
+#~ msgid "Chart"
+#~ msgstr "チャート"
+
+#~ msgid "enabled"
+#~ msgstr "許可"
+
+#~ msgid "minor"
+#~ msgstr "マイナー"
+
+#~ msgid "major"
+#~ msgstr "メジャー"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "Smooth"
+#~ msgstr "スムース"
+
+#~ msgid "Ticks"
+#~ msgstr "ティック"
+
+#~ msgid "Pen"
+#~ msgstr "ペン"
+
+#~ msgid "Geometry string: WxH+X+Y"
+#~ msgstr "ジオメトリ情報: WxH+X+Y"
+
+#~ msgid "GEO"
+#~ msgstr "ジオメトリ"
+
+#~ msgid "Configuration file name"
+#~ msgstr "設定ファイルの名前"
+
+#~ msgid "FILE"
+#~ msgstr "ファイル"
+
+#~ msgid "Values"
+#~ msgstr "値"
+
+#~ msgid "Prefs..."
+#~ msgstr "設定..."
+
+#~ msgid "Params..."
+#~ msgstr "パラメータ..."
+
+#~ msgid ""
+#~ "Executing arbitrary programs that you downloaded from the network might "
+#~ "be dangerous.\n"
+#~ "\n"
+#~ "Are you sure you want to run `%s'?"
+#~ msgstr ""
+#~ "ネットワークからダウンロードした任意のプログラムを実行するのは危険です。\n"
+#~ "\n"
+#~ "本当に `%s' を実行したいですか?"
+
+#~ msgid "Could not access file permissions"
+#~ msgstr "ファイルのパーミッションにアクセスできませんでした"
+
+#~ msgid "Could not execute the file `%s' due to a permission problem"
+#~ msgstr "パーミッションの問題でファイル `%s' を実行できませんでした"
+
+#~ msgid "Failure at executing `%s'"
+#~ msgstr "`%s' の実行に失敗しました"
+
+#~ msgid "It was not possible to open the file `%s'"
+#~ msgstr "ファイル `%s' をオープンできませんでした"
+
+#~ msgid "The file `%s' is empty"
+#~ msgstr "ファイル `%s' は空です"
+
+#~ msgid "There was an error. `%s' is empty"
+#~ msgstr "エラーです。 `%s' は空です"
+
+#~ msgid "This is a library and can not be executed"
+#~ msgstr "このファイルはライブラリで、実行できません"
+
+#~ msgid "The file is a core file and can not be executed"
+#~ msgstr "このファイルは core ファイルで、実行できません"
+
+#~ msgid "This is an unknown kind of executable"
+#~ msgstr "不明なタイプの実行可能ファイルです"
+
+#~ msgid ""
+#~ "The executable is for a different platform and can not be executed on "
+#~ "this system"
+#~ msgstr ""
+#~ "別のプラットフォーム用の実行可能ファイルであり、このシステムでは実行できま"
+#~ "せん"
+
+#~ msgid ""
+#~ "Number of files: %d\n"
+#~ "Nuber of folders: %d"
+#~ msgstr ""
+#~ "ファイルの数: %d\n"
+#~ "フォルダの数: %d"
+
+#~ msgid ""
+#~ "No files or folders, drop files or folders\n"
+#~ "above to add them to the archive"
+#~ msgstr ""
+#~ "ファイルまたはフォルダが一つもありません。上の部分にファイル\n"
+#~ "またはフォルダをドロップし、アーカイブに加えてください"
+
+#~ msgid "Cannot start the archive (tar) program"
+#~ msgstr "アーカイブプログラム (tar) を起動できません"
+
+#~ msgid "Cannot run tar/gtar"
+#~ msgstr "tar/gtar を実行できません"
+
+#~ msgid "Archive.tar.gz"
+#~ msgstr "Archive.tar.gz"
+
+#~ msgid "The GNOME Archive Generator"
+#~ msgstr "GNOME アーカイブ作成器"
+
+#~ msgid "Drag files in to make archives"
+#~ msgstr "ファイルをドラッグして、 アーカイブを作ります"
+
+#~ msgid "No filename selected"
+#~ msgstr "ファイル名が選択されていません"
+
+#~ msgid "File exists, overwrite?"
+#~ msgstr "ファイルが存在します。上書きしますか?"
+
+#~ msgid "No items to archive"
+#~ msgstr "アーカイブする物がありません"
+
+#~ msgid "File does not exists"
+#~ msgstr "ファイルが存在しません"
+
+#~ msgid "Add file or folder"
+#~ msgstr "ファイルまたはフォルダを追加"
+
+#~ msgid "Add file or folder..."
+#~ msgstr "ファイルまたはフォルダを追加..."
+
+#~ msgid "Add a file or folder to the archive"
+#~ msgstr "ファイルまたはフォルダをアーカイブに追加"
+
+#~ msgid "Create archive..."
+#~ msgstr "アーカイブの作成..."
+
+#~ msgid "Create a new archive from the items"
+#~ msgstr "このアイテムから新規アーカイブを作成"
+
+#~ msgid "Remove the selected item(s)"
+#~ msgstr "選択したアイテムの削除"
+
+#~ msgid "GNOME Archive Generator"
+#~ msgstr "GNOME アーカイブ作成器"
+
+#~ msgid "Drop files here to add them to the archive."
+#~ msgstr "ファイルをここにドロップして、アーカイブに追加してください"
+
+#~ msgid "Archive"
+#~ msgstr "アーカイブ"
+
+#~ msgid ""
+#~ "Drag this button to the destination where you want the archive to be "
+#~ "created or press it to pop up a file selection dialog."
+#~ msgstr ""
+#~ "アーカイブを作りたい場所にこのボタンをドラッグするか、ボタンを押してファイ"
+#~ "ル選択のダイアログをポップアップしてください"
+
+#~ msgid "Cannot find proper icons anywhere!"
+#~ msgstr "適切なアイコンを見つけられません!"
+
+#~ msgid ""
+#~ "Cannot find the archive (tar) program!\n"
+#~ "This is the program used for creating archives."
+#~ msgstr ""
+#~ "アーカイブプログラム (tar) を見つけられません!\n"
+#~ "tar はアーカイブを作るのに使われるプログラムです。"
+
+#~ msgid "Format Floppy Disks"
+#~ msgstr "フロッピーディスクのフォーマットツール"
+
+#~ msgid "gfloppy"
+#~ msgstr "gfloppy"
+
+#, fuzzy
+#~ msgid "Shows a stripchart plot"
+#~ msgstr "ストリップチャートプロッタ"
+
+#~ msgid "Stripchart Plotter"
+#~ msgstr "ストリップチャートプロッタ"
+
+#~ msgid "Notepad"
+#~ msgstr "ノートパッド"
+
+#~ msgid "Simple editor (notepad)"
+#~ msgstr "簡易エディタ(ノートパッド)"
+
+#~ msgid "User Listing"
+#~ msgstr "ユーザ一覧"
+
+#~ msgid "View users on the system"
+#~ msgstr "システム使用中のユーザを表示します"
+
+#, fuzzy
+#~ msgid "Show various system information"
+#~ msgstr "システム情報"
+
+#~ msgid "System Info"
+#~ msgstr "システム情報"
+
+#~ msgid "Technical information about this computer"
+#~ msgstr "このコンピュータについての技術的な情報"
+
+#~ msgid "Shut Down or Reboot"
+#~ msgstr "シャットダウン/再起動"
+
+#~ msgid "Turn off or reset the computer"
+#~ msgstr "システムのシャットダウンまたは再起動"
+
+#~ msgid "Ask for a command to execute"
+#~ msgstr "実行するコマンドを入力して下さい"
+
+#~ msgid "Run A Command..."
+#~ msgstr "コマンド実行..."
+
+#~ msgid "GNOME Penguin"
+#~ msgstr "GNOMEペンギン"
+
+#~ msgid "Let a cute pinguin chase your pointer"
+#~ msgstr "かわいいペンギンがポインタを追いかけます"
+
+#~ msgid "Prompts the user for a program to run"
+#~ msgstr "ユーザがコマンドを実行できるプロンプトを表示します"
+
+#~ msgid "Run program..."
+#~ msgstr "コマンド実行..."
+
+#~ msgid "Page files as with `more' and `less'"
+#~ msgstr "「more」や「less」のようなファイルビューア"
+
+#~ msgid "Select a font for pasting"
+#~ msgstr "フォントを選択します"
+
+#~ msgid "Browse available X11 colors."
+#~ msgstr "使用できるX11カラーをブラウズします"
+
+#~ msgid "Color Browser"
+#~ msgstr "カラーブラウザ"
+
+#, fuzzy
+#~ msgid "Archive Generator"
+#~ msgstr "GNOME アーカイブ作成器"
+
+#, fuzzy
+#~ msgid "GNOME Archive Generator aka Meat Grinder"
+#~ msgstr "GNOME アーカイブ作成器"
+
+#~ msgid "SysLog tool"
+#~ msgstr "Syslogを見るツールです。"
+
+#~ msgid "System log monitor"
+#~ msgstr "システムログモニタ"
+
+#, fuzzy
+#~ msgid "Gstripchart"
+#~ msgstr "ストリップチャート"
+
+#, fuzzy
+#~ msgid "Shows a stripchart"
+#~ msgstr "ストリップチャート"
+
+#~ msgid "GNOME Search Tool"
+#~ msgstr "GNOME検索ツール"
+
+#~ msgid "GNOME DiskFree"
+#~ msgstr "GNOMEディスクフリー"
+
+#~ msgid "Show free space on mounted file systems using dials."
+#~ msgstr "マウントされたファイルシステムの空き容量をダイアル表示します"
+
+#, fuzzy
+#~ msgid "GNOME Character Map"
+#~ msgstr "GNOME 文字選択"
+
+#~ msgid "Simple Calculator"
+#~ msgstr "簡易電卓"
+
+#~ msgid "Personal cron manager"
+#~ msgstr "ユーザ用cronマネージャ"
+
+#~ msgid "Personal crontab manager"
+#~ msgstr "定期実行プログラムの各個人用設定ツール"
 
 #~ msgid ""
 #~ "An error occured while reading the configuration file.\n"
@@ -5009,10 +4125,6 @@ msgstr "定期実行プログラムの各個人用設定ツール"
 #~ msgstr ""
 #~ "設定ファイル読み込み中にエラーが発生しました。\n"
 #~ "新規に設定ファイルを用意しましょうか?"
-
-#, fuzzy
-#~ msgid "Could not write the configuration file!"
-#~ msgstr "設定ファイルを保存できません!"
 
 #~ msgid "Time tracking tool for GNOME"
 #~ msgstr "GNOMEのスケジューリングツールです"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils VERSION\n"
-"POT-Creation-Date: 2002-06-17 09:34+0100\n"
+"POT-Creation-Date: 2002-09-06 18:10-0500\n"
 "PO-Revision-Date: 2002-06-05 02:49+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
@@ -13,2162 +13,2871 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: exe-handler/gnome-exe-handler.c:76
-#, c-format
-msgid ""
-"Executing arbitrary programs that you downloaded from the network might be "
-"dangerous.\n"
-"\n"
-"Are you sure you want to run `%s'?"
+#: src/app.c:116 src/app.c:228
+#, fuzzy
+msgid "no project selected"
+msgstr "Chưa chọn tên tập tin"
+
+#: src/app.c:218
+msgid "00:00"
 msgstr ""
-"Thực hiện một chương trình mới lấy từ mạng về có thể rất nguy hiểm.\n"
-"\n"
-"Bạn có chắc muốn thực hiện `%s' không?"
 
-#: exe-handler/gnome-exe-handler.c:83
-msgid "Could not access file permissions"
-msgstr "Không thể truy cập quyền truy cập tập tin."
-
-#: exe-handler/gnome-exe-handler.c:88
-#, c-format
-msgid "Could not execute the file `%s' due to a permission problem"
-msgstr ""
-"Không thể thực hiện tập tin `%s' vì không quyền truy cập tập tin không thích "
-"hợp"
-
-#: exe-handler/gnome-exe-handler.c:104
-#, c-format
-msgid "Failure at executing `%s'"
-msgstr "Lỗi khi đang thực hiện `%s'"
-
-#: exe-handler/gnome-exe-handler.c:123
-#, c-format
-msgid "It was not possible to open the file `%s'"
-msgstr "Không thể mở tập tin `%s'"
-
-#: exe-handler/gnome-exe-handler.c:132
-#, c-format
-msgid "The file `%s' is empty"
-msgstr "Tập tin `%s' rỗng"
-
-#: exe-handler/gnome-exe-handler.c:137
-#, c-format
-msgid "There was an error. `%s' is empty"
-msgstr "Có lỗi, `%s' rỗng"
-
-#: exe-handler/gnome-exe-handler.c:152
-msgid "This is a library and can not be executed"
-msgstr "Đây là một thư viện nên không thể được thực hiện"
-
-#: exe-handler/gnome-exe-handler.c:158
-msgid "The file is a core file and can not be executed"
-msgstr "Tập tin này là tập tin core và không thể được thực hiện"
-
-#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
-msgid "This is an unknown kind of executable"
-msgstr "Đây là một loại tập tin thực thi lạ"
-
-#: exe-handler/gnome-exe-handler.c:192
+#: src/app.c:270
 msgid ""
-"The executable is for a different platform and can not be executed on this "
-"system"
+"Couldn't understand geometry (position and size)\n"
+" specified on command line"
 msgstr ""
-"Tập tin thực thi này dành cho một hệ máy khác và không thể được thực hiện "
-"trên hệ thống này"
 
-#. Translator credits
-#: gcalc/gcalc.c:42 gcharmap/src/callbacks.c:47 gdictsrc/gdict-about.c:43
-#: gsearchtool/gsearchtool.c:2002 logview/about.c:52
-#: meat-grinder/meat-grinder.c:475
-msgid "translator_credits"
-msgstr "Nguyễn Thái Ngọc Duy"
-
-#: gcalc/gcalc.c:60 gcalc/gcalc.c:191
-msgid "GNOME Calculator"
-msgstr "Máy tính"
-
-#: gcalc/gcalc.c:62
-msgid "Simple double precision calculator similiar to xcalc"
-msgstr "Máy tính đơn giản với độ chính xác đôi, tương tự như xcalc"
-
-#: gcalc/gcalc.c:140
-msgid "_Calculator"
-msgstr "_Máy tính"
-
-#: gcalc/gnome-calc.c:252
-msgid "inf"
-msgstr "inf"
-
-#: gcalc/gnome-calc.c:475
-msgid "DEG"
-msgstr "DEG"
-
-#: gcalc/gnome-calc.c:477
-msgid "RAD"
-msgstr "RAD"
-
-#: gcalc/gnome-calc.c:479
-msgid "GRAD"
-msgstr "GRAD"
-
-#: gcalc/gnome-calc.c:1252
-msgid "1/x"
-msgstr "1/x"
-
-#: gcalc/gnome-calc.c:1252
-msgid "Inverse"
-msgstr "Đảo"
-
-#. FIXME: XXXX when we can break strings again change
-#. * this to x<sup>2</sup> and turn on markup (search for XXXX)
-#: gcalc/gnome-calc.c:1255
-msgid "x^2"
-msgstr "x^2"
-
-#: gcalc/gnome-calc.c:1255
-msgid "Square"
-msgstr "Bình phương"
-
-#: gcalc/gnome-calc.c:1256
-msgid "SQRT"
-msgstr "Căn"
-
-#: gcalc/gnome-calc.c:1256
-msgid "Square root"
-msgstr "Căn bậc hai"
-
-#: gcalc/gnome-calc.c:1257
-msgid "CE/C"
-msgstr "CE/C"
-
-#: gcalc/gnome-calc.c:1257
-msgid "Clear"
-msgstr "Xóa"
-
-#: gcalc/gnome-calc.c:1258
-msgid "AC"
-msgstr "AC"
-
-#: gcalc/gnome-calc.c:1258
-msgid "Reset"
-msgstr "Đặt lại"
-
-#: gcalc/gnome-calc.c:1260
-msgid "INV"
-msgstr "INV"
-
-#: gcalc/gnome-calc.c:1260
-msgid "Inverse trigonometry/log function"
-msgstr "Đảo hàm trigonometry/log"
-
-#. inverse button
-#: gcalc/gnome-calc.c:1261
-msgid "sin"
-msgstr "sin"
-
-#: gcalc/gnome-calc.c:1261
-msgid "Sine"
-msgstr "Sin"
-
-#: gcalc/gnome-calc.c:1262
-msgid "cos"
-msgstr "cos"
-
-#: gcalc/gnome-calc.c:1262
-msgid "Cosine"
-msgstr "Cosin"
-
-#: gcalc/gnome-calc.c:1263
-msgid "tan"
-msgstr "tan"
-
-#: gcalc/gnome-calc.c:1263
-msgid "Tangent"
-msgstr "Tan"
-
-#. Ugly hack so that window won't resize when selecting GRAD - there should be a better fix that this
-#: gcalc/gnome-calc.c:1265
-msgid " DEG  "
-msgstr " DEG  "
-
-#: gcalc/gnome-calc.c:1265
-msgid "Switch degrees / radians / grad"
-msgstr "Chuyển đổi độ / radian / grad"
-
-#: gcalc/gnome-calc.c:1267
-msgid "e"
-msgstr "e"
-
-#: gcalc/gnome-calc.c:1267
-msgid "Base of Natural Logarithm"
-msgstr "Cơ số e"
-
-#: gcalc/gnome-calc.c:1268
-msgid "EE"
-msgstr "EE"
-
-#: gcalc/gnome-calc.c:1268
-msgid "Add digit"
-msgstr "Thêm số"
-
-#: gcalc/gnome-calc.c:1269
-msgid "log"
-msgstr "log"
-
-#: gcalc/gnome-calc.c:1269
-msgid "Base 10 Logarithm"
-msgstr "Cơ số 10"
-
-#: gcalc/gnome-calc.c:1270
-msgid "ln"
-msgstr "ln"
-
-#: gcalc/gnome-calc.c:1270
-msgid "Natural Logarithm"
-msgstr "Cơ số e"
-
-#. FIXME: XXXX when we can break strings again change
-#. * this to x<sup>y</sup> and turn on markup (search for XXXX)
-#: gcalc/gnome-calc.c:1273
-msgid "x^y"
-msgstr "x^y"
-
-#: gcalc/gnome-calc.c:1273
-msgid "Power"
-msgstr "Tắt"
-
-#: gcalc/gnome-calc.c:1275
-msgid "PI"
-msgstr "PI"
-
-#: gcalc/gnome-calc.c:1276
-msgid "x!"
-msgstr "x!"
-
-#: gcalc/gnome-calc.c:1276
-msgid "Factorial"
-msgstr "Thừa số"
-
-#: gcalc/gnome-calc.c:1277
-msgid "("
-msgstr "("
-
-#: gcalc/gnome-calc.c:1277
-msgid "Opening Parenthesis"
-msgstr "Dấu mở ngoặc"
-
-#: gcalc/gnome-calc.c:1278
-msgid ")"
-msgstr ")"
-
-#: gcalc/gnome-calc.c:1278
-msgid "Closing Parenthesis"
-msgstr "Dấu đóng ngoặc"
-
-#: gcalc/gnome-calc.c:1279
-msgid "/"
-msgstr "/"
-
-#: gcalc/gnome-calc.c:1279
-msgid "Divide by"
-msgstr "Chia cho"
-
-#: gcalc/gnome-calc.c:1281
-msgid "STO"
-msgstr "STO"
-
-#: gcalc/gnome-calc.c:1281
-msgid ""
-"Store the value in the\n"
-"display field in memory"
+#: src/ctree.c:517
+msgid "Total"
 msgstr ""
-"Lưu giá trị trong vùng\n"
-"hiện thị vào bộ nhớ"
 
-#: gcalc/gnome-calc.c:1282
-msgid "7"
-msgstr "7"
-
-#: gcalc/gnome-calc.c:1283
-msgid "8"
-msgstr "8"
-
-#: gcalc/gnome-calc.c:1284
-msgid "9"
-msgstr "9"
-
-#: gcalc/gnome-calc.c:1285 gfloppy/src/gfloppy2.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: gcalc/gnome-calc.c:1285
-msgid "Multiply by"
-msgstr "Nhân cho"
-
-#: gcalc/gnome-calc.c:1287
-msgid "RCL"
-msgstr "RCL"
-
-#: gcalc/gnome-calc.c:1287
-msgid ""
-"Display the value in memory\n"
-"in the display field"
+#: src/ctree.c:519
+msgid "Total time spent on this project."
 msgstr ""
-"Hiển thị giá trị trong\n"
-"bộ nhớ vào vùng hiển thị"
 
-#: gcalc/gnome-calc.c:1288
-msgid "4"
-msgstr "4"
-
-#: gcalc/gnome-calc.c:1289
-msgid "5"
-msgstr "5"
-
-#: gcalc/gnome-calc.c:1290
-msgid "6"
-msgstr "6"
-
-#: gcalc/gnome-calc.c:1291
-msgid "-"
-msgstr "-"
-
-#: gcalc/gnome-calc.c:1291
-msgid "Subtract"
-msgstr "Trừ"
-
-#: gcalc/gnome-calc.c:1293
-msgid "SUM"
-msgstr "SUM"
-
-#: gcalc/gnome-calc.c:1293
-msgid ""
-"Add the value in the display\n"
-"field to the value in memory"
-msgstr ""
-"Cộng thêm giá trị trong vùng\n"
-"hiển thị vào bộ nhớ"
-
-#: gcalc/gnome-calc.c:1294
-msgid "1"
-msgstr "1"
-
-#: gcalc/gnome-calc.c:1295
-msgid "2"
-msgstr "2"
-
-#: gcalc/gnome-calc.c:1296
-msgid "3"
-msgstr "3"
-
-#: gcalc/gnome-calc.c:1297
-msgid "+"
-msgstr "+"
-
-#: gcalc/gnome-calc.c:1297
-msgid "Add"
-msgstr "Cộng"
-
-#: gcalc/gnome-calc.c:1299
-msgid "EXC"
-msgstr "EXC"
-
-#: gcalc/gnome-calc.c:1299
-msgid ""
-"Exchange the values in the\n"
-"display field and memory"
-msgstr ""
-"Đổi giá trị giữa vùng hiển\n"
-"thị và bộ nhớ"
-
-#: gcalc/gnome-calc.c:1300
-msgid "0"
-msgstr "0"
-
-#: gcalc/gnome-calc.c:1301
-msgid "."
-msgstr "."
-
-#: gcalc/gnome-calc.c:1301
-msgid "Decimal Point"
-msgstr "Dấu chấm thập phân"
-
-#: gcalc/gnome-calc.c:1302
-msgid "+/-"
-msgstr "+/-"
-
-#: gcalc/gnome-calc.c:1302
-msgid "Change sign"
-msgstr "Đổi dấu"
-
-#: gcalc/gnome-calc.c:1303
-msgid "="
-msgstr "="
-
-#: gcalc/gnome-calc.c:1303
-msgid "Calculate"
-msgstr "Tính"
-
-#: gcalc/gnome-calculator.desktop.in.h:1
-msgid "Calculator"
-msgstr "Máy tính"
-
-#: gcalc/gnome-calculator.desktop.in.h:2
-msgid "Perform simple calculations"
-msgstr "Thực hiện các tính toán đơn giản"
-
-#: gcharmap/gnome-character-map.desktop.in.h:1
-msgid "Character Map"
-msgstr "Bảng ký tự"
-
-#: gcharmap/gnome-character-map.desktop.in.h:2
-msgid "Insert special characters into documents"
-msgstr "Chèn ký tự đặc biệt vào tài liệu"
-
-#: gcharmap/src/asciiselect.c:116
-msgid "Select Character"
-msgstr "Chọn ký tự"
-
-#: gcharmap/src/asciiselect.c:119
-msgid "_Insert"
-msgstr "_Chèn"
-
-#: gcharmap/src/asciiselect.c:123
-msgid "Character code:"
-msgstr "Mã ký tự:"
-
-#: gcharmap/src/asciiselect.c:135
-msgid "Character:"
-msgstr "Ký tự:"
-
-#: gcharmap/src/asciiselect.c:143
-msgid "Character Code"
-msgstr "Mã ký tự"
-
-#: gcharmap/src/asciiselect.c:143
-msgid "Select character code"
-msgstr "Chọn mã ký tự"
-
-#: gcharmap/src/asciiselect.c:144
-msgid "Character"
-msgstr "Ký tự"
-
-#: gcharmap/src/asciiselect.c:144
-msgid "Character to insert"
-msgstr "Ký tự cần chèn"
-
-#: gcharmap/src/asciiselect.c:152
-msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-#: gcharmap/src/callbacks.c:64
-msgid "GNOME Character Map"
-msgstr "Bảng ký tự"
-
-#: gcharmap/src/callbacks.c:67
-msgid ""
-"Select, copy and paste characters from your font into other applications"
-msgstr "Chọn, sao chép và dán các ký tự từ font của bạn vào ứng dụng khác"
-
-#: gcharmap/src/callbacks.c:115
-msgid "del"
-msgstr "xóa"
-
-#: gcharmap/src/callbacks.c:121
-#, c-format
-msgid " %s: Character code %d"
-msgstr " %s: Mã ký tự %d"
-
-#: gcharmap/src/callbacks.c:159
-msgid "Text copied to clipboard..."
-msgstr "Chữ được chép vào clipboard..."
-
-#: gcharmap/src/callbacks.c:176
-msgid "Text cut to clipboard..."
-msgstr "Chữ được cắt, cho vào clipboard..."
-
-#: gcharmap/src/callbacks.c:229
-msgid "Text pasted from clipboard..."
-msgstr "Chữ được dán từ clipboard..."
-
-#: gcharmap/src/interface.c:208
-msgid "Gnome Character Map"
-msgstr "Bản đồ ký tự"
-
-#: gcharmap/src/interface.c:238
-msgid "Action Toolbar"
-msgstr "Thanh công cụ hành động"
-
-#: gcharmap/src/interface.c:242
-msgid "_Text to copy:"
-msgstr "_Chữ cần chép:"
-
-#: gcharmap/src/interface.c:255
-msgid "_Copy"
-msgstr "Sao _chép"
-
-#: gcharmap/src/interface.c:277 gcharmap/src/interface.c:278
-msgid "Text to copy"
-msgstr "Chữ cần chép"
-
-#: gcharmap/src/interface.c:278
+#: src/ctree.c:524
 msgid "Entry"
 msgstr "Mục nhập"
 
-#: gcharmap/src/interface.c:279 gcharmap/src/menus.c:77
-msgid "Copy"
-msgstr "Chép"
+#: src/ctree.c:526
+msgid "Time spent under the current diary entry."
+msgstr ""
 
-#: gcharmap/src/interface.c:279
-msgid "Copy the text"
-msgstr "Chép chữ"
+#: src/ctree.c:532 glade/interval_edit.glade.h:14
+msgid "Today"
+msgstr ""
 
-#: gcharmap/src/menus.c:34
-msgid "_Browse..."
-msgstr "_Duyệt..."
+#: src/ctree.c:534
+msgid "Time spent on this project today."
+msgstr ""
 
-#: gcharmap/src/menus.c:35
-msgid "Insert character(s) by choosing character codes."
-msgstr "Chèn các ký tự được chọn bởi các mã ký tự."
+#: src/ctree.c:539
+msgid "Week"
+msgstr ""
 
-#: gcharmap/src/menus.c:63
-msgid "_Characters"
-msgstr "_Ký tự"
+#: src/ctree.c:541
+msgid "Time spent on this project this week."
+msgstr ""
 
-#. GNOMEUIINFO_ITEM(N_("Insert"), N_("Insert character(s) by choosing character codes"),
-#. cb_insert_char_click, NULL),
-#. GNOMEUIINFO_SEPARATOR,
-#: gcharmap/src/menus.c:75
-msgid "Cut"
-msgstr "Cắt"
+#: src/ctree.c:547
+msgid "Month"
+msgstr ""
 
-#: gcharmap/src/menus.c:75
-msgid "Cut the selection"
-msgstr "Cắt vùng chọn"
+#: src/ctree.c:549
+msgid "Time spent on this project this month."
+msgstr ""
 
-#: gcharmap/src/menus.c:77
-msgid "Copy the selection"
-msgstr "Chép vùng chọn"
+#: src/ctree.c:555
+#, fuzzy
+msgid "Year"
+msgstr "Xóa"
 
-#: gcharmap/src/menus.c:79
-msgid "Paste"
-msgstr "Dán"
+#: src/ctree.c:557
+msgid "Time spent on this project this year."
+msgstr ""
 
-#: gcharmap/src/menus.c:79
-msgid "Paste the clipboard"
-msgstr "Dán từ clipboard"
+#: src/ctree.c:563
+msgid "Title"
+msgstr ""
 
-#: gdialog/guage.c:78
-msgid "Gdialog progressbar"
-msgstr "Thanh tiến trình GDialog"
+#: src/ctree.c:564 src/menucmd.c:155
+msgid "Project Title"
+msgstr ""
 
-#: gdialog/guage.c:78
-msgid "Indicates the percentage specified at the standard input"
-msgstr "Chỉ thị phần trăm tại đầu vào chuẩn"
+#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
+#, fuzzy
+msgid "Description"
+msgstr "Mô tả:"
 
-#: gdialog/inputbox.c:90
-msgid "GDialog Entry"
+#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
+#, fuzzy
+msgid "Diary Entry"
 msgstr "Mục nhập GDialog"
 
-#: gdialog/inputbox.c:90
-msgid "Enter the text"
-msgstr "Nhập chuỗi"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:1
-msgid "Accessories"
-msgstr "Đồ phụ tùng"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:2 gdictsrc/gdict-applet.c:250
-msgid "Dictionary Lookup"
-msgstr "Tìm từ điển"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:3
-#: gdictsrc/gnome-dictionary.desktop.in.h:2
-msgid "Lookup words in an online dictionary"
-msgstr "Tìm từ trong từ điển trực tuyến"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:1
-msgid "Look Up Selected Text..."
-msgstr "Tìm chữ được chọn..."
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:2
-msgid "_About..."
-msgstr "_Giới thiệu..."
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:3
-msgid "_Help"
-msgstr "_Trợ giúp"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:4
-msgid "_Preferences"
-msgstr "_Thông số"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:5
-msgid "_Show/Hide Definition Window..."
-msgstr "_Hiện/Ẩn cửa sổ định nghĩa..."
-
-#. Could not look up search strategies, so just display a
-#. * label; FIXME: Memory leak
-#.
-#: gdictsrc/dict.c:648 gdictsrc/gdict-pref-dialog.c:465
-#: gdictsrc/gdict-pref-dialog.c:516 gdictsrc/gdict-speller.c:463
-msgid "Cannot connect to server"
-msgstr "Không thể kết nối đến server"
-
-#: gdictsrc/dict.c:661
-msgid ""
-"A serious error occured. Please check that your server and port are correct. "
-"For reference the default server is dict.org and the port 2628"
-msgstr ""
-"Xảy ra lỗi nghiêm trọng. Vui lòng kiểm tra server và số hiệu cổng có đúng "
-"chưa. Server mặc định là dict.org và số hiệu cổng là 2628"
-
-#: gdictsrc/gdict-about.c:58
-msgid ""
-"Client for MIT dictionary server.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-msgstr ""
-"Client cho server tự điển của MIT.\n"
-"Web: http://gdict.dhs.org, http://www.psilord.com/code/"
-
-#: gdictsrc/gdict-app.c:128
-msgid "Spell-checking..."
-msgstr "Đang kiểm tra chính tả..."
-
-#: gdictsrc/gdict-app.c:136
-msgid "Spell check done"
-msgstr "Kiểm tra chính tả xong"
-
-#: gdictsrc/gdict-app.c:144 gdictsrc/gdict-app.c:274
-msgid "No matches found"
-msgstr "Không tìm thấy"
-
-#: gdictsrc/gdict-app.c:257
-msgid "Looking up word..."
-msgstr "Đang tra từ..."
-
-#: gdictsrc/gdict-app.c:265
-msgid "Lookup done"
-msgstr "Tìm xong"
-
-#: gdictsrc/gdict-app.c:287
-msgid "String not found"
-msgstr "Không thấy chuỗi"
-
-#: gdictsrc/gdict-app.c:455
-msgid "Find"
-msgstr "Tìm"
-
-#: gdictsrc/gdict-app.c:476 gsearchtool/gsearchtool.c:1507
-#: gsearchtool/gsearchtool.c:1840
-msgid "_Find"
-msgstr "_Tìm"
-
-#: gdictsrc/gdict-app.c:526
-msgid ""
-"Unable to perform requested operation. \n"
-"Either the server you are using is not available \n"
-"or you are not connected to the Internet."
-msgstr ""
-"Không thể thực hiện thao tác yêu cầu.\n"
-"Hoặc là server không hoạt động, hoặc\n"
-"là bạn không có kết nối Internet."
-
-#: gdictsrc/gdict-app.c:687 gdictsrc/gdict-app.c:798
-#: gdictsrc/gdict-speller.c:221
-msgid "_Look Up Word"
-msgstr "_Tìm từ"
-
-#: gdictsrc/gdict-app.c:688
-msgid "Lookup word in dictionary"
-msgstr "Tra từ trong từ điển"
-
-#: gdictsrc/gdict-app.c:690 gdictsrc/gdict-speller.c:165
-msgid "Check _Spelling"
-msgstr "_Kiểm tra chính tả"
-
-#: gdictsrc/gdict-app.c:691
-msgid "Check word spelling"
-msgstr "Kiểm tra chính tả"
-
-#: gdictsrc/gdict-app.c:735
-msgid "_Dictionary"
-msgstr "_Từ điển"
-
-#: gdictsrc/gdict-app.c:771 gdictsrc/gnome-dictionary.desktop.in.h:1
-msgid "Dictionary"
-msgstr "Từ điển"
-
-#: gdictsrc/gdict-app.c:794
-msgid "_Word: "
-msgstr "_Từ: "
-
-#: gdictsrc/gdict-app.c:821 gdictsrc/gdict-speller.c:147
-msgid "Word"
-msgstr "Từ"
-
-#: gdictsrc/gdict-app.c:822 gdictsrc/gdict-app.c:823
-#: gdictsrc/gdict-speller.c:148
-msgid "Word Entry"
-msgstr "Mục nhập từ"
-
-#: gdictsrc/gdict-app.c:822
-msgid "Enter a Word or select one from the list below"
-msgstr "Nhập từ hoặc chọn một từ từ danh sách bên dưới"
-
-#: gdictsrc/gdict-app.c:825
-msgid "Look Up for a Word"
-msgstr "Tìm từ"
-
-#: gdictsrc/gdict-applet.c:243
-msgid "_Lookup"
-msgstr "_Tìm"
-
-#: gdictsrc/gdict-defbox.c:643 gdictsrc/gdict-speller.c:488
-#, c-format
-msgid "Error invoking query: %s"
-msgstr "Lỗi khi truy vấn: %s"
-
-#: gdictsrc/gdict-pref-dialog.c:37
-msgid "Headword:"
-msgstr "Tiêu đề:"
-
-#: gdictsrc/gdict-pref-dialog.c:38
-msgid "Sub-number:"
-msgstr "Số phụ:"
-
-#: gdictsrc/gdict-pref-dialog.c:39
-msgid "Pronunciation:"
-msgstr "Phát âm:"
-
-#: gdictsrc/gdict-pref-dialog.c:40
-msgid "Etymology:"
-msgstr "Từ nguyên:"
-
-#: gdictsrc/gdict-pref-dialog.c:41
-msgid "Part of speech:"
-msgstr "Phần bài nói:"
-
-#: gdictsrc/gdict-pref-dialog.c:42
-msgid "Example:"
-msgstr "Ví dụ:"
-
-#: gdictsrc/gdict-pref-dialog.c:43
-msgid "Main body:"
-msgstr "Nội dung:"
-
-#: gdictsrc/gdict-pref-dialog.c:44
-msgid "Cross-reference:"
-msgstr "Tham khảo:"
-
-#: gdictsrc/gdict-pref-dialog.c:185
-msgid "Dictionary Preferences"
-msgstr "Thông số từ điển"
-
-#: gdictsrc/gdict-pref-dialog.c:197
-msgid "Smart _lookup"
-msgstr "_Tìm thông minh"
-
-#: gdictsrc/gdict-pref-dialog.c:210
-msgid "_Server:"
-msgstr "_Server:"
-
-#: gdictsrc/gdict-pref-dialog.c:217
-msgid "De_fault"
-msgstr "_Mặc định"
-
-#: gdictsrc/gdict-pref-dialog.c:223
-msgid "Reset server to default"
-msgstr "Đặt lại server về mặc định"
-
-#: gdictsrc/gdict-pref-dialog.c:225
-msgid "_Port:"
-msgstr "_Cổng:"
-
-#: gdictsrc/gdict-pref-dialog.c:239
-msgid "Def_ault"
-msgstr "_Mặc định"
-
-#: gdictsrc/gdict-pref-dialog.c:246
-msgid "Reset port to default"
-msgstr "Đặt lại cổng về mặc định"
-
-#: gdictsrc/gdict-pref-dialog.c:247
-msgid "Server"
-msgstr "Server"
-
-#: gdictsrc/gdict-pref-dialog.c:248
-msgid "Server Entry"
-msgstr "Mục nhập server"
-
-#: gdictsrc/gdict-pref-dialog.c:248
-msgid "Enter the Server Name"
-msgstr "Tên server"
-
-#: gdictsrc/gdict-pref-dialog.c:251
-msgid "Port"
-msgstr "Cổng"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Port Entry"
-msgstr "Mục nhập cổng"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Enter the Port Number"
-msgstr "Nhập vào số hiệu cổng"
-
-#: gdictsrc/gdict-pref-dialog.c:257
-msgid "_Database:"
-msgstr "_Từ điển:"
-
-#: gdictsrc/gdict-pref-dialog.c:264
-msgid "D_efault strategy:"
-msgstr "Chiến lược _mặc định:"
-
-#: gdictsrc/gdict-pref-dialog.c:457
-msgid "Search all databases"
-msgstr "Tìm mọi từ trong từ điển"
-
-#: gdictsrc/gdict-pref-dialog.c:622
-msgid "Database"
-msgstr "Từ điển"
-
-#: gdictsrc/gdict-pref-dialog.c:622
-msgid "Database Name"
-msgstr "Tên từ điển"
-
-#: gdictsrc/gdict-pref-dialog.c:634
-msgid "Default Strategy"
-msgstr "Chiến lược mặc định"
-
-#: gdictsrc/gdict-speller.c:135
-msgid "_Word:"
-msgstr "_Từ:"
-
-#: gdictsrc/gdict-speller.c:148
-msgid "Enter a word to know the spelling"
-msgstr "Nhập một từ cần kiểm tra chính tả"
-
-#: gdictsrc/gdict-speller.c:153
-msgid "Click to do the spell check"
-msgstr "Nhấn để tiến hành kiểm tra chính tả"
-
-#: gdictsrc/gdict-speller.c:158
-msgid "Search S_trategy:"
-msgstr "Chiến lược _tìm:"
-
-#: gdictsrc/gdict-speller.c:174
-msgid "Search _Results"
-msgstr "_Kết quả tìm"
-
-#: gdictsrc/gdict-speller.c:236
-msgid "Check Spelling"
-msgstr "Kiểm tra chính tả"
-
-#: gdictsrc/gdict-speller.c:654
-msgid "Search Strategy"
-msgstr "Chiến lược tìm kiếm"
-
-#: gdictsrc/gdict.schemas.in.h:1
-msgid "Default database. ! indicates all databases"
-msgstr "Cơ sở dữ liệu mặc định. ! nghĩa là mọi cơ sở dữ liệu"
-
-#: gdictsrc/gdict.schemas.in.h:2
-msgid "Default strategy"
-msgstr "Chiến lược _mặc định"
-
-#: gdictsrc/gdict.schemas.in.h:3
-msgid "Dictionary server"
-msgstr "Server từ điển"
-
-#: gdictsrc/gdict.schemas.in.h:4
-msgid "Port used to connect to server"
-msgstr "Cổng được dùng để kết nối tới server"
-
-#: gdictsrc/gdict.schemas.in.h:5
-msgid "Use smart lookup"
-msgstr "Tìm thông minh"
-
-#: gfloppy/gfloppy.desktop.in.h:1
-msgid "Floppy Formatter"
-msgstr "Trình định dạng đĩa mềm"
-
-#: gfloppy/gfloppy.desktop.in.h:2
-msgid "Format Floppy Disks"
-msgstr "Định dạng đĩa mềm"
-
-#: gfloppy/src/badblocks.c:102
-msgid "MInternal Error: Unable to seek to the correct location."
-msgstr "MLỗi nội tại: Không thể tìm vị trí đúng."
-
-#: gfloppy/src/badblocks.c:111
-#, c-format
-msgid "MInternal Error: Weird value (%ld) in do_test\n"
-msgstr "MLỗi nội tại: Giá trị lạ (%ld) trong do_test\n"
-
-#: gfloppy/src/badblocks.c:166
-#, c-format
-msgid "EBad block at block %lu"
-msgstr "EKhối %lu bị hỏng"
-
-#. while (!i)
-#. ;
-#: gfloppy/src/badblocks.c:260
-msgid "MChecking for bad blocks..."
-msgstr "MĐang kiểm tra tìm khối hỏng..."
-
-#: gfloppy/src/badblocks.c:272
-#, c-format
-msgid "MFailed to open device %s for badblock checking\n"
-msgstr "MLỗi khi mở thiết bị %s để tìm khối hỏng\n"
-
-#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
-msgid "MChecking for bad blocks... Done"
-msgstr "MĐang kiểm tra tìm khối hỏng... Xong"
-
-#: gfloppy/src/fdformat.c:44
-msgid "MFormatting the disk..."
-msgstr "MĐang định dạng đĩa..."
-
-#: gfloppy/src/fdformat.c:46
-msgid "EI don't know what this is, but it's very wrong."
-msgstr "EKhông biết đây là cái gì, nhưng chắc chắn là sai."
-
-#: gfloppy/src/fdformat.c:54 gfloppy/src/fdformat.c:66
-#, c-format
-msgid "EError formatting track #%d"
-msgstr "ELỗi khi định dạng track #%d"
-
-#: gfloppy/src/fdformat.c:74
-msgid "EError during completion of formatting"
-msgstr "ELỗi khi đang hoàn tất việc định dạng"
-
-#. XXXX - need to tell parent we're finished
-#: gfloppy/src/fdformat.c:78
-msgid "MFormatting the disk... Done"
-msgstr "MĐang định dạng đĩa... Xong"
-
-#. XXXX - tell parent we're starting verify stage
-#: gfloppy/src/fdformat.c:94
-msgid "MVerifying the format..."
-msgstr "MĐang kiểm tra định dạng..."
-
-#: gfloppy/src/fdformat.c:99 gfloppy/src/fdformat.c:174
-msgid ""
-"EUnable to write to the floppy.\n"
-"\n"
-"Please confirm that it is not write-protected."
-msgstr ""
-"EKhông thể ghi vào đĩa mềm.\n"
-"\n"
-"Vui lòng kiểm tra xem đĩa có chống ghi hay không."
-
-#: gfloppy/src/fdformat.c:102 gfloppy/src/fdformat.c:177
-#, c-format
-msgid "EInsufficient permissions to open floppy device %s."
-msgstr "EKhông đủ quyền truy cập để mở thiết bị điều khiển đĩa mềm %s."
-
-#: gfloppy/src/fdformat.c:106 gfloppy/src/fdformat.c:181
-msgid ""
-"EUnable to access the floppy disk.\n"
-"\n"
-"Please confirm that it is in the drive\n"
-"with the drive door shut."
-msgstr ""
-"EKhông thể truy cập đĩa mềm.\n"
-"\n"
-"Vui lòng kiểm tra xem có đĩa trong ổ đĩa hay chưa."
-
-#: gfloppy/src/fdformat.c:109
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s:%d"
-msgstr ""
-"ELỗi truy cập chung của đĩa mềm %s.\n"
-"\n"
-"Mã lỗi %s:%d"
-
-#: gfloppy/src/fdformat.c:129
-#, c-format
-msgid ""
-"ERead Error:\n"
-"Problem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"ELỗi đọc:\n"
-"Gặp vấn đề ở cylinder %d, yêu cầu %d, đọc được %d"
-
-#: gfloppy/src/fdformat.c:132
-#, c-format
-msgid "EProblem reading cylinder %d, expected %d, read %d"
-msgstr "ELỗi đọc ở cylinder %d, yêu cầu %d, đọc được %d"
-
-#: gfloppy/src/fdformat.c:141
-#, c-format
-msgid "MBad data in cyl %d.  Continuing... "
-msgstr "MDữ liệu hỏng ở cylinder %d. Tiếp tục..."
-
-#: gfloppy/src/fdformat.c:148
-#, c-format
-msgid "EError closing device %s"
-msgstr "ELỗi khi đóng thiết bị %s"
-
-#: gfloppy/src/fdformat.c:153
-msgid "MVerifying the format... Done"
-msgstr "MĐang kiểm tra định dạng... Xong"
-
-#: gfloppy/src/fdformat.c:165
-#, c-format
-msgid "EUnable to write to device %s"
-msgstr "EKhông thể ghi vào thiết bị %s"
-
-#: gfloppy/src/fdformat.c:184
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s"
-msgstr ""
-"ELỗi chung khi truy cập thiết bị %s.\n"
-"Mã lỗi %s"
-
-#: gfloppy/src/fdformat.c:194
-msgid "ECould not determine current format type"
-msgstr "EKhông thể xác định loại định dạng hiện thời"
-
-#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
-msgid "MMaking filesystem on disk..."
-msgstr "MĐang tạo hệ thống tập tin trên đĩa..."
-
-#: gfloppy/src/gfloppy.c:167
-msgid "EUnable to create filesystem correctly."
-msgstr "EKhông thể tạo hệ thống tập tin đúng."
-
-#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
-msgid "MMaking filesystem on disk... Done"
-msgstr "MĐang tạo hệ thống tập tin trên đĩa... Xong"
-
-#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
-msgid "EUnable to create filesystem."
-msgstr "EKhông thể tạo hệ thống tập tin."
-
-#: gfloppy/src/gfloppy.c:209
-msgid "MChecking for bad blocks... (this might take a while)"
-msgstr "MĐang kiểm tra tìm khối hỏng... (có lẽ hơi lâu)"
-
-#: gfloppy/src/gfloppy2.glade.h:2
-msgid "DOS (fat)"
-msgstr "DOS (fat)"
-
-#: gfloppy/src/gfloppy2.glade.h:3
-msgid "Double Density 3.5\" (720KB)"
-msgstr "Mật độ đôi (DD) 3.5\" (720KB)"
-
-#: gfloppy/src/gfloppy2.glade.h:4
-msgid "Double Density 5.25\" (360KB)"
-msgstr "Mật độ đôi (DD) 5.25\" (360KB)"
-
-#: gfloppy/src/gfloppy2.glade.h:5
-msgid "File system _type:"
-msgstr "_Loại hệ thống tập tin:"
-
-#: gfloppy/src/gfloppy2.glade.h:6
-msgid "Floppy _density:"
-msgstr "_Mật độ đĩa mềm:"
-
-#: gfloppy/src/gfloppy2.glade.h:7
-msgid "Floppy de_vice:"
-msgstr "_Thiết bị đĩa mềm:"
-
-#: gfloppy/src/gfloppy2.glade.h:8
-msgid "Format a Floppy"
-msgstr "Định dạng đĩa mềm"
-
-#: gfloppy/src/gfloppy2.glade.h:9
-msgid "High Density 3.5\" (1.44MB)"
-msgstr "Mật độ cao (HD) 3.5\" (1.44MB)"
-
-#: gfloppy/src/gfloppy2.glade.h:10
-msgid "High Density 5.25\" (1.2MB)"
-msgstr "Mật độ cao (HD) 5.25\" (1.2MB)"
-
-#: gfloppy/src/gfloppy2.glade.h:11
-msgid "Linux Native (ext2)"
-msgstr "Linux Native (ext2)"
-
-#: gfloppy/src/gfloppy2.glade.h:12
-msgid "_Format"
-msgstr "Định _dạng"
-
-#: gfloppy/src/gfloppy2.glade.h:13
-msgid "_Quick format"
-msgstr "Định dạng _nhanh"
-
-#: gfloppy/src/main.c:130 gfloppy/src/main.c:173
-#, c-format
-msgid "Unable to open the device %s, formatting cannot continue."
-msgstr "Không thể mở thiết bị %s, không thể tiếp tục định dạng."
-
-#: gfloppy/src/main.c:133 gfloppy/src/main.c:176
-#, c-format
-msgid ""
-"The device %s is disconnected.\n"
-"Please attach device to continue."
-msgstr ""
-"Thiết bị %s bị ngắt kết nối.\n"
-"Vui lòng gắn thiết bị vào để tiếp tục."
-
-#: gfloppy/src/main.c:136 gfloppy/src/main.c:179
-#, c-format
-msgid ""
-"You do not have the proper permissions to write to %s, formatting will not "
-"be possible.\n"
-"Contact your system administrator about getting write permissions."
-msgstr ""
-"Bạn không có quyền ghi vào %s, nên không thể định dạng.\n"
-"Liên hệ system administrator để có quyền ghi."
-
-#: gfloppy/src/main.c:292
-msgid "The device to format"
-msgstr "Thiết bị cần định dạng"
-
-#: gfloppy/src/main.c:293
-msgid "DEVICE"
-msgstr "THIẾT BỊ"
-
-#: gfloppy/src/main.c:360
-#, c-format
-msgid ""
-"Could not display help for the floppy formatter.\n"
-"%s"
-msgstr ""
-"Không thể hiển thị trợ giúp cho bộ định dạng đĩa mềm.\n"
-"%s"
-
-#: gfloppy/src/main.c:399
-msgid "Format another floppy?"
-msgstr "Định dạng đĩa mềm khác?"
-
-#: gfloppy/src/progress.c:115
-msgid "Floppy formatted successfully."
-msgstr "Định dạng đĩa mềm thành công."
-
-#: gfloppy/src/progress.c:120
-msgid "Floppy formatting cancelled."
-msgstr "Định dạng đĩa mềm bị hủy."
-
-#: gfloppy/src/progress.c:161
-msgid "Format progress."
-msgstr "Tiến trình định dạng."
-
-#: gsearchtool/gnome-search-tool.desktop.in.h:1
-msgid "Search for Files"
-msgstr "Tìm tập tin"
-
-#: gsearchtool/gnome-search-tool.desktop.in.h:2
-msgid "Search your disk for files"
-msgstr "Tìm tập tin trên đĩa"
-
-#: gsearchtool/gsearchtool.c:66
-msgid "File name is"
-msgstr "Tên tập tin là"
-
-#: gsearchtool/gsearchtool.c:67
-msgid "File name is not"
-msgstr "Tên tập tin không phải là"
-
-#: gsearchtool/gsearchtool.c:68
-msgid "Don't search mounted filesystems"
-msgstr "Không tìm trên hệ thống tập tin đã gắn kết"
-
-#: gsearchtool/gsearchtool.c:69
-msgid "Follow symbolic links"
-msgstr "Đi theo các liên kết"
-
-#: gsearchtool/gsearchtool.c:70
-msgid "Process folder contents depth first"
-msgstr "Xử lý thư mục theo độ sâu"
-
-#: gsearchtool/gsearchtool.c:71
-msgid "Owned by user"
-msgstr "Được sở hữu bởi người dùng"
-
-#: gsearchtool/gsearchtool.c:72
-msgid "Owned by group"
-msgstr "Được sở hữu bởi nhóm"
-
-#: gsearchtool/gsearchtool.c:73
-msgid "Invalid user or group"
-msgstr "Nhóm hoặc người dùng không hợp lệ"
-
-#: gsearchtool/gsearchtool.c:74
-msgid "Last time modified"
-msgstr "Lần sửa đổi cuối cùng"
-
-#: gsearchtool/gsearchtool.c:75
-msgid "File is empty"
-msgstr "Tập tin rỗng"
-
-#: gsearchtool/gsearchtool.c:76
-msgid "Matches regular expression"
-msgstr "Dùng biểu thức chính quy"
-
-#: gsearchtool/gsearchtool.c:274 gsearchtool/gsearchtool.c:943
-msgid "Start folder does not exist."
-msgstr "Thư mục bắt đầu không tồn tại."
-
-#: gsearchtool/gsearchtool.c:499
-msgid "today at %-I:%M %p"
-msgstr "hôm nay là %-I:%M:%p"
-
-#: gsearchtool/gsearchtool.c:501
-msgid "yesterday at %-I:%M %p"
-msgstr "hôm qua là %-I:%M:%p"
-
-#: gsearchtool/gsearchtool.c:503 gsearchtool/gsearchtool.c:505
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr "%-d/%m/%y, %-I:%M %p"
-
-#: gsearchtool/gsearchtool.c:518
-msgid "%Y%m%d%H%M%S"
-msgstr "%H%M%S%d%m%Y"
-
-#: gsearchtool/gsearchtool.c:533
-msgid "folder"
-msgstr "thư mục"
-
-#: gsearchtool/gsearchtool.c:535
-msgid "program"
-msgstr "chương trình"
-
-#: gsearchtool/gsearchtool.c:537
-msgid "symbolic link"
-msgstr "liên kết"
-
-#: gsearchtool/gsearchtool.c:663
-msgid "No Files Found."
-msgstr "Không tìm thấy."
-
-#: gsearchtool/gsearchtool.c:736
-msgid ""
-"Cannot perform the search.\n"
-"The Bourne shell was not found\n"
-"It is typically installed as /bin/sh or /usr/bin/sh."
-msgstr ""
-"Không thể thực hiện tìm kiếm vì\n"
-"không tìm thấy Bourne Shell,thông \n"
-"thường được cài đặt tại /bin/sh hoặc /usr/bin/sh."
-
-#: gsearchtool/gsearchtool.c:752
-msgid "Searching..."
-msgstr "Đang tìm..."
-
-#: gsearchtool/gsearchtool.c:866
-msgid ""
-"\n"
-"... Too many errors to display ..."
-msgstr ""
-"\n"
-"... Quá nhiều lỗi, không thể hiển thị hết ..."
-
-#: gsearchtool/gsearchtool.c:877
-msgid "No files found"
-msgstr "Không tìm thấy"
-
-#: gsearchtool/gsearchtool.c:880
-msgid "One file found"
-msgstr "Tìm thấy 1 tập tin"
-
-#: gsearchtool/gsearchtool.c:882
-#, c-format
-msgid "%d files found"
-msgstr "tìm thấy %d tập tin"
-
-#: gsearchtool/gsearchtool.c:954 gsearchtool/gsearchtool.c:1671
-msgid "Cannot perform the search. Please specify a search criteria."
-msgstr "Không thể thực hiện tìm kiếm. Vui lòng xác định tiêu chuẩn tìm kiếm."
-
-#: gsearchtool/gsearchtool.c:971 gsearchtool/gsearchtool.c:1692
-msgid ""
-"A search is already running.  Please wait for the search to complete or "
-"cancel it."
-msgstr ""
-"Một quá trình tìm kiếm khác đang thực hiện. Vui lòng chờ quá trình tìm kiếm "
-"kết thúc hoặc ngừng quá trình tìm kiếm."
-
-#: gsearchtool/gsearchtool.c:1005
-msgid "Start folder does not exist"
-msgstr "Thư mục bắt đầu không tồn tại"
-
-#: gsearchtool/gsearchtool.c:1020
-msgid "Cannot show the search command line. Please specify a search criteria."
-msgstr ""
-"Không thể hiển thị dòng lệnh tìm kiếm. Vui lòng xác định tiêu chuẩn tìm kiếm."
-
-#: gsearchtool/gsearchtool.c:1024
-msgid "Search Command Line"
-msgstr "Dòng lệnh tìm kiếm"
-
-#: gsearchtool/gsearchtool.c:1042
-msgid ""
-"This is the command line that can be used to execute this search\n"
-"from the console.\n"
-"\n"
-"C_ommand:"
-msgstr ""
-"Đây là dòng lệnh được dùng để thực hiện tìm kiếm từ console.\n"
-"\n"
-"_Lệnh:"
-
-#: gsearchtool/gsearchtool.c:1063
-msgid "Command"
-msgstr "Lệnh"
-
-#: gsearchtool/gsearchtool.c:1064
-msgid "Command Line Entry"
-msgstr "Mục nhập dòng lệnh"
-
-#: gsearchtool/gsearchtool.c:1064
-msgid "Use this command line to execute the search from console"
-msgstr "Dùng dòng lệnh này để thực hiện tìm kiếm từ console"
-
-#: gsearchtool/gsearchtool.c:1172
-msgid "No viewer available for this mime type."
-msgstr "Không có trình hiển thị cho loại MIME này."
-
-#: gsearchtool/gsearchtool.c:1269
-msgid "Entry changed called for a non entry option!"
+#: src/ctree.c:577
+msgid "The current diary entry"
 msgstr ""
 
-#: gsearchtool/gsearchtool.c:1339
-msgid "Search Rule Value Entry"
-msgstr "Mục nhập giá trị quy tắc tìm"
+#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: glade/interval_edit.glade.h:11
+#, fuzzy
+msgid "Start"
+msgstr "Ngày bắt đầu:"
 
-#: gsearchtool/gsearchtool.c:1339
-msgid "Enter a value for search rule"
-msgstr "Nhập giá trị cho quy tắc tìm"
+#: src/ctree.c:584
+msgid "Estimated Project Start Date"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1354
-msgid "Enabled"
+#: src/ctree.c:589
+#, fuzzy
+msgid "End"
 msgstr "Bật"
 
-#: gsearchtool/gsearchtool.c:1362
-msgid "Toggle On/Off to enable/disable the rule"
-msgstr "Bật/Tắt sử dụng quy tắc"
+#: src/ctree.c:591
+msgid "Estimated Project Completion Date"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1370
-msgid "Click to Remove the Rule"
-msgstr "Nhấn vào để loại bỏ quy tắc"
+#: src/ctree.c:596
+msgid "Due"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1416 gsearchtool/gsearchtool.c:1794
-msgid "S_tarting in folder:"
-msgstr "_Bắt đầu tìm tại thư mục:"
+#: src/ctree.c:598
+msgid ""
+"Due Date: the date by which the project absolutely must be completed by."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1420 gsearchtool/gsearchtool.c:1800
-msgid "Browse"
-msgstr "Duyệt"
-
-#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
-#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
-msgid "Starting folder entry"
-msgstr "Thư mục bắt đầu"
-
-#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
-#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
-msgid "Enter the folder name where you want to start the search"
-msgstr "Nhập tên thư mục, nơi bạn muốn bắt đầu tìm"
-
-#: gsearchtool/gsearchtool.c:1450
-msgid "Rules:"
-msgstr "Quy luật:"
-
-#: gsearchtool/gsearchtool.c:1470
-msgid "A_dd Rule:"
-msgstr "T_hêm quy luật:"
-
-#: gsearchtool/gsearchtool.c:1479
-msgid "Search Rules Menu"
-msgstr "Menu quy tắc tìm"
-
-#: gsearchtool/gsearchtool.c:1479
-msgid "Select a search rule from the menu"
-msgstr "Chọn một quy tắc tìm từ menu"
-
-#: gsearchtool/gsearchtool.c:1522
-msgid "Click to Add a Rule"
-msgstr "Nhấn để thêm quy tắc"
-
-#: gsearchtool/gsearchtool.c:1523
-msgid "Click to Start the Search"
-msgstr "Nhấn để bắt đầu tìm"
-
-#: gsearchtool/gsearchtool.c:1524
-msgid "Click to Stop the Search"
-msgstr "Nhấn để chấm dứt tìm"
-
-#: gsearchtool/gsearchtool.c:1529 gsearchtool/gsearchtool.c:1861
-msgid "S_earch Results"
-msgstr "_Kết quả tìm"
-
-#: gsearchtool/gsearchtool.c:1569 gsearchtool/gsearchtool.c:1901
-msgid "Name"
-msgstr "Tên"
-
-#: gsearchtool/gsearchtool.c:1591 gsearchtool/gsearchtool.c:1923
-msgid "Folder"
-msgstr "Thư mục"
-
-#: gsearchtool/gsearchtool.c:1603 gsearchtool/gsearchtool.c:1935
+#: src/ctree.c:605
 msgid "Size"
 msgstr "Kích thước"
 
-#: gsearchtool/gsearchtool.c:1615 gsearchtool/gsearchtool.c:1947
-msgid "Type"
-msgstr "Loại"
+#: src/ctree.c:607
+msgid "Sizing: How much work it will take to finish this project."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1626 gsearchtool/gsearchtool.c:1958
-msgid "Date Modified"
-msgstr "Ngày sửa đổi"
+#: src/ctree.c:613
+#, fuzzy
+msgid "Done"
+msgstr "Cosin"
 
-#: gsearchtool/gsearchtool.c:1770
-msgid "Find files _named:"
-msgstr "Tìm các tập tin _tên là:"
+#: src/ctree.c:615
+msgid "Percent Complete: How much of this project has been finished till now."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
-msgid "File Name Entry"
-msgstr "Nhập tên tập tin"
+#: src/ctree.c:622
+msgid "U"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
-msgid "Enter the file name you want to search"
-msgstr "Nhập tên tập tin bạn muốn tìm"
+#: src/ctree.c:624
+msgid "Urgency: Does this project need to be done soon, done quickly?"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1855
-msgid "Click to Start the search"
-msgstr "Nhấn để bắt đầu tìm"
+#: src/ctree.c:630
+msgid "Imp"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1856
-msgid "Click to Stop the search"
-msgstr "Nhấn để chấm dứt tìm"
+#: src/ctree.c:632
+msgid "Importance: How important is this project?"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1978
-msgid "Simple"
-msgstr "Đơn giản"
+#: src/ctree.c:638
+#, fuzzy
+msgid "Status"
+msgstr "Thanh T_rạng thái"
 
-#: gsearchtool/gsearchtool.c:1980
-msgid "Advanced"
-msgstr "Nâng cao"
+#: src/ctree.c:640
+msgid "The current status of this project."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:2018
-#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
-msgid "GNOME Search Tool"
-msgstr "Trình tìm kiếm GNOME"
+#: src/ctree.c:959
+msgid "3"
+msgstr "3"
 
-#: gsearchtool/gsearchtool.c:2019
-msgid "(C) 1998,2002 the Free Software Foundation"
-msgstr "(C) 1998,2002 the Free Software Foundation"
+#: src/ctree.c:960
+msgid "2"
+msgstr "2"
 
-#: gsearchtool/gsearchtool.c:2020
-msgid "Frontend to the unix find/locate commands"
-msgstr "Frontend cho lệnh find/locate"
+#: src/ctree.c:961
+msgid "1"
+msgstr "1"
 
-#: gsearchtool/gsearchtool.c:2060
-#, c-format
-msgid "File %s already exists. Overwrite?"
-msgstr "Tập tin %s đã tồn tại, ghi đè lên không?"
+#: src/ctree.c:971 glade/project_properties.glade.h:25
+#, fuzzy
+msgid "Low"
+msgstr "Logview"
 
-#: gsearchtool/gsearchtool.c:2095
-msgid "Cannot save the results file."
+#: src/ctree.c:972
+msgid "Med"
+msgstr ""
+
+#: src/ctree.c:973 glade/project_properties.glade.h:15
+msgid "High"
+msgstr ""
+
+#: src/ctree.c:982 glade/project_properties.glade.h:29
+msgid "Not Started"
+msgstr ""
+
+#: src/ctree.c:983 glade/project_properties.glade.h:21
+#, fuzzy
+msgid "In Progress"
+msgstr "Tiến trình:"
+
+#: src/ctree.c:984 glade/project_properties.glade.h:31
+msgid "On Hold"
+msgstr ""
+
+#: src/ctree.c:985 glade/project_properties.glade.h:9
+msgid "Cancelled"
+msgstr ""
+
+#: src/ctree.c:986 glade/project_properties.glade.h:10
+msgid "Completed"
+msgstr ""
+
+#: src/err-throw.c:61
+msgid "No Error"
+msgstr ""
+
+#: src/err-throw.c:65
+#, fuzzy, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
 msgstr "Không thể lưu kết quả tìm kiếm."
 
-#: gsearchtool/gsearchtool.c:2102 meat-grinder/meat-grinder.c:654
-msgid "Save Results"
-msgstr "Lưu kết quả"
-
-#: gsearchtool/gsearchtool.c:2159
-msgid "S_how Command..."
-msgstr "_Hiện lệnh..."
-
-#: gsearchtool/gsearchtool.c:2160
-msgid "Show the command used to perform the search"
-msgstr "Hiện dòng lệnh được dùng để thực hiện tìm kiếm"
-
-#: gsearchtool/gsearchtool.c:2163
-msgid "Save Results _As..."
-msgstr "Lư_u kết quả là..."
-
-#: gsearchtool/gsearchtool.c:2164
-msgid "Save the search results"
-msgstr "Lưu kết quả tìm kiếm"
-
-#: gsearchtool/gsearchtool.c:2179
-msgid "Sear_ch"
-msgstr "_Tìm"
-
-#: gsearchtool/gsearchtool.c:2201
-msgid "Cannot initialize bonobo."
-msgstr "Không thể khởi động Bonobo."
-
-#: gsearchtool/gsearchtool.c:2205
-msgid "Search Tool"
-msgstr "Công cụ tìm kiếm"
-
-#: logview/about.c:42
-msgid "Cesar Miquel (miquel@df.uba.ar)"
-msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#: logview/about.c:43
+#: src/err-throw.c:70
+#, fuzzy, c-format
 msgid ""
-"This  program  is  part of  the  GNOME  project for Linux. Logview comes "
-"with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
-"redistribute it under the conditions of the GNU General Public Licence. The "
-"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-msgstr ""
-"Chương trình này là một phần của dự án GNOME trên Linux. Chương trình này "
-"KHÔNG KÈM THEO BẤT KỲ BẢO ĐẢM NÀO. Đây là phần mềm tự do, và bạn được tự do "
-"phân phối lại theo những điều khoản trong giấy phép GNU GPL. Biểu tượng "
-"chương trình là của Toumas Kousmanen (còn gọi là tigert)."
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr "Không thể lưu kết quả tìm kiếm."
 
-#. go get logview.xpm in $(prefix)/share/pixmaps/logview
-#: logview/about.c:72
-msgid "GNOME System Log Viewer"
-msgstr "Trình xem log hệ thống"
-
-#: logview/about.c:73
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
-
-#: logview/actions.c:74
-msgid "Action database"
-msgstr "Cơ sở dữ liệu hành động"
-
-#: logview/actions.c:81
-msgid "Action options"
-msgstr "Tùy chọn hành động"
-
-#: logview/actions.c:138
-msgid "Add..."
-msgstr "Thêm..."
-
-#: logview/actions.c:144
-msgid "Edit..."
-msgstr "Sửa..."
-
-#: logview/actions.c:150
-msgid "Remove"
-msgstr "Loại bỏ"
-
-#: logview/actions.c:261
+#: src/err-throw.c:75
 #, c-format
-msgid "Cannot open action data base <%s>! Open failed."
-msgstr "Không thể mở cơ sở dữ liệu hành động <%s>!"
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GTT project data file\n"
+msgstr ""
 
-#: logview/actions.c:296 logview/actions.c:309 logview/actions.c:320
-#: logview/actions.c:331 logview/actions.c:342 logview/actions.c:353
-msgid "Error parsing actions data base"
-msgstr "Lỗi phân tích cơ sở dữ liệu hành động"
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
 
-#: logview/actions.c:387
-msgid "Can't write to actions database!"
-msgstr "Không thể ghi vào cơ sở dữ liệu hành động!"
+#: src/err-throw.c:87
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
 
-#: logview/actions.c:494
-msgid "<empty>"
+#: src/err-throw.c:92
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:97
+#, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/file-io.c:376
+msgid "project %t started"
+msgstr ""
+
+#: src/file-io.c:379
+msgid "stopped project %t"
+msgstr ""
+
+#. Translators: This is a "time format", that is
+#. * format on how to print the elapsed time with
+#. * hours:minutes:seconds.
+#: src/file-io.c:677
+#, c-format
+msgid "%d:%02d:%02d"
+msgstr ""
+
+#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+#, fuzzy
+msgid "Stop"
+msgstr "Lưu"
+
+#: src/ghtml.c:95 src/ghtml.c:273
+msgid "Elapsed"
+msgstr ""
+
+#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
+#, fuzzy
+msgid "(empty)"
 msgstr "<rỗng>"
 
-#: logview/actions.c:495
-msgid "log name regexp"
-msgstr "regexp tên log"
+#: src/ghtml.c:225
+msgid "Notes"
+msgstr ""
 
-#: logview/actions.c:496
-msgid "process regexp"
-msgstr "regexp tiến trình"
+#: src/ghtml.c:229
+msgid "Task Time"
+msgstr ""
 
-#: logview/actions.c:497
-msgid "message regexp"
-msgstr "regexp thông điệp"
+#: src/ghtml.c:233
+msgid "Bill Status"
+msgstr ""
 
-#: logview/actions.c:498
-msgid "action to execute when regexps are TRUE"
-msgstr "hành động cần thực hiện khi khớp regexp"
+#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
+msgid "Billable"
+msgstr ""
 
-#: logview/actions.c:499
-msgid "description"
+#: src/ghtml.c:241
+msgid "Bill Rate"
+msgstr ""
+
+#: src/ghtml.c:245
+msgid "Value"
+msgstr ""
+
+#: src/ghtml.c:249
+msgid "Billable Value"
+msgstr ""
+
+#: src/ghtml.c:253 src/ghtml.c:279
+#, fuzzy
+msgid "No Default Value"
+msgstr "Chiến lược mặc định"
+
+#: src/ghtml.c:276
+msgid "Start Time Fuzziness"
+msgstr ""
+
+#: src/ghtml.c:392 glade/task_properties.glade.h:13
+#, fuzzy
+msgid "Hold"
+msgstr "Thư mục"
+
+#: src/ghtml.c:395 glade/task_properties.glade.h:3
+msgid "Bill"
+msgstr ""
+
+#: src/ghtml.c:398 glade/task_properties.glade.h:21
+msgid "Paid"
+msgstr ""
+
+#: src/ghtml.c:411 glade/task_properties.glade.h:17
+msgid "Not Billable"
+msgstr ""
+
+#: src/ghtml.c:414 glade/task_properties.glade.h:16
+msgid "No Charge"
+msgstr ""
+
+#: src/ghtml.c:424 glade/task_properties.glade.h:22
+msgid "Regular"
+msgstr ""
+
+#: src/ghtml.c:427 glade/task_properties.glade.h:20
+msgid "Overtime"
+msgstr ""
+
+#: src/ghtml.c:430
+msgid "Double Overtime"
+msgstr ""
+
+#: src/ghtml.c:433 glade/task_properties.glade.h:12
+msgid "Flat Fee"
+msgstr ""
+
+#: src/ghtml.c:453
+msgid "Error - Unknown"
+msgstr ""
+
+#: src/ghtml.c:703
+msgid "unknown token: >>>>"
+msgstr ""
+
+#: src/journal.c:111
+msgid "Error 404 Not Found"
+msgstr ""
+
+#: src/journal.c:113
+#, fuzzy, c-format
+msgid "The file %s was not found."
+msgstr "Tập tin `%s' rỗng"
+
+#: src/journal.c:114
+msgid "(null)"
+msgstr ""
+
+#: src/journal.c:124
+msgid "Unkown Error"
+msgstr ""
+
+#: src/journal.c:175 src/plug-in.c:90
+#, fuzzy, c-format
+msgid ""
+"Unable to open the file %s\n"
+"%s"
+msgstr "Không thể mở logfile!\n"
+
+#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/proj.c:1807
+#, fuzzy
+msgid "New Diary Entry"
+msgstr "Mục nhập GDialog"
+
+#: src/journal.c:455
+msgid "Save HTML To File"
+msgstr ""
+
+#: src/log.c:55
+#, fuzzy, c-format
+msgid "Cannot open logfile %s for append"
+msgstr "Không có tập tin log nào được mở"
+
+#. Translators: Format to use in the gtt logfile
+#: src/log.c:64
+#, fuzzy
+msgid "%b %d %H:%M:%S"
+msgstr "%H%M%S%d%m%Y"
+
+#: src/log.c:102
+#, fuzzy
+msgid "no description"
 msgstr "mô tả"
 
-#: logview/actions.c:744
-msgid "description:"
-msgstr "mô tả:"
+#: src/log.c:167 src/log.c:258
+#, fuzzy
+msgid "program started"
+msgstr "chương trình"
 
-#: logview/actions.c:753
-msgid "Description of this entry."
-msgstr "Mô tả của mục này"
+#. log_if_equal
+#: src/log.c:250
+#, fuzzy
+msgid "program exited"
+msgstr "chương trình"
 
-#: logview/actions.c:800
+#: src/main.c:114
+msgid ""
+"There seems to be another GTimeTracker running.\n"
+"Press OK to start GTimeTracker anyway, or press Cancel to quit."
+msgstr ""
+
+#: src/main.c:126
+msgid "Cannot create pid-file!"
+msgstr ""
+
+#: src/main.c:219
+msgid "Do you want to continue?"
+msgstr ""
+
+#: src/main.c:222 src/main.c:275
+msgid "Error"
+msgstr ""
+
+#: src/main.c:272
+msgid "Shall I setup a new configuration?"
+msgstr ""
+
+#: src/main.c:440
+msgid "Specify geometry"
+msgstr ""
+
+#: src/main.c:440
+msgid "GEOMETRY"
+msgstr ""
+
+#: src/main.c:442
+msgid "Select a project on startup"
+msgstr ""
+
+#: src/main.c:442
+msgid "PROJECT"
+msgstr ""
+
+#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
+msgid "Warning"
+msgstr ""
+
+#: src/menucmd.c:89
+msgid ""
+"GTimeTracker is a combination stop-watch, diary, consultant billing system "
+"and project manager.  You can measure the amount of time you spend on a "
+"task, associate a memo with it, set a billing rate, print an invoice, as "
+"well as track that status of other projects."
+msgstr ""
+
+#: src/menucmd.c:149
+msgid "New Project..."
+msgstr ""
+
+#: src/menucmd.c:231 src/toolbar.c:179
+msgid "Reload Configuration File"
+msgstr ""
+
+#: src/menucmd.c:232
+msgid "Do you really want to reload the configuration file?"
+msgstr ""
+
+#: src/menucmd.c:267
+#, fuzzy, c-format
+msgid "File %s exists, overwrite?"
+msgstr "Tập tin đã tồn tại, ghi đè chứ?"
+
+#: src/menucmd.c:278
+msgid "File cannot be written"
+msgstr ""
+
+#: src/menucmd.c:298
+msgid "Export Current State"
+msgstr ""
+
+#: src/menus.c:33
+msgid "_New Project..."
+msgstr ""
+
+#: src/menus.c:36
+msgid "_Reload Configuration File"
+msgstr ""
+
+#: src/menus.c:40
+msgid "_Save Configuration File"
+msgstr ""
+
+#: src/menus.c:44
+msgid "_Export Current State"
+msgstr ""
+
+#: src/menus.c:63 src/menus.c:173
+msgid "Clear _Daily Counter"
+msgstr ""
+
+#: src/menus.c:64 src/menus.c:174
+msgid "Zero out todays timer by deleting todays time logs"
+msgstr ""
+
+#: src/menus.c:68 src/menus.c:87 src/menus.c:156
+#, fuzzy
+msgid "_Journal..."
+msgstr "_Giới thiệu..."
+
+#: src/menus.c:69 src/menus.c:88 src/menus.c:157
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
+#: src/menus.c:72 src/menus.c:160
+#, fuzzy
+msgid "New Diary _Entry"
+msgstr "Mục nhập GDialog"
+
+#: src/menus.c:73 src/menus.c:161
+msgid "Change the current task for this project"
+msgstr ""
+
+#: src/menus.c:91
+msgid "_All Journal..."
+msgstr ""
+
+#: src/menus.c:92
+msgid "Show the verbose timesheet journal for this project"
+msgstr ""
+
+#: src/menus.c:95
+msgid "_Invoice..."
+msgstr ""
+
+#: src/menus.c:96
+msgid "Show a sample invoice for this project"
+msgstr ""
+
+#: src/menus.c:99
+#, fuzzy
+msgid "_Primer..."
+msgstr "_Duyệt..."
+
+#: src/menus.c:100
+msgid "Show a sample introductory primer for designing custom reports"
+msgstr ""
+
+#: src/menus.c:103
+msgid "_New Report..."
+msgstr ""
+
+#: src/menus.c:104
+msgid "Define a path to a new GTT phtml report file"
+msgstr ""
+
+#: src/menus.c:115
+#, fuzzy
+msgid "St_art"
+msgstr "Chọn cổng"
+
+#: src/menus.c:116
+msgid "Start the timer running"
+msgstr ""
+
+#: src/menus.c:121
+#, fuzzy
+msgid "Sto_p"
+msgstr "Lưu"
+
+#: src/menus.c:122
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Chọn số hiệu cổng"
+
+#: src/menus.c:127
+msgid "_Timer Running"
+msgstr ""
+
+#: src/menus.c:146
+msgid "_Reports"
+msgstr ""
+
+#: src/menus.c:147
+msgid "_Timer"
+msgstr ""
+
+#. deal with the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#: src/menus.c:244
+msgid "Reports"
+msgstr ""
+
+#: src/plug-in.c:121
+msgid "Reports/<Separator>"
+msgstr ""
+
+#: src/proj.c:697
+msgid "Old GTT Tasks"
+msgstr ""
+
+#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
+#: src/props-task.c:76
+#, fuzzy
+msgid "empty"
+msgstr "<rỗng>"
+
+#: src/timer.c:117
 #, c-format
 msgid ""
-"tag: [%s]\n"
-"log_name: [%s]\n"
-"process: [%s]\n"
-"message: [%s]\n"
-"description: [%s]\n"
-"action: [%s]\n"
+"The keyboard and mouse have been idle\n"
+"for %d minutes.  The currently running\n"
+"project (%s - %s)\n"
+"has been stopped.\n"
+"Do you want to restart it?"
 msgstr ""
-"đuôi: [%s]\n"
-"tên log: [%s]\n"
-"tiến trình: [%s]\n"
-"thông điệp: [%s]\n"
-"mô tả: [%s]\n"
-"hành động: [%s]\n"
 
-#: logview/calendar.c:112
+#: src/timer.c:125
+#, fuzzy
+msgid "System Idle"
+msgstr "Log hệ thống"
+
+#: src/toolbar.c:169
+#, fuzzy
+msgid "Create a New Project..."
+msgstr "_Tạo kho lưu..."
+
+#: src/toolbar.c:184
+msgid "Save Configuration File"
+msgstr ""
+
+#: src/toolbar.c:194
+msgid "Cut Selected Project"
+msgstr ""
+
+#: src/toolbar.c:199
+#, fuzzy
+msgid "Copy Selected Project"
+msgstr "Tìm chữ được chọn..."
+
+#: src/toolbar.c:204
+msgid "Paste Project"
+msgstr ""
+
+#: src/toolbar.c:213 glade/journal.glade.h:2
+msgid "Journal"
+msgstr ""
+
+#: src/toolbar.c:214
+msgid "View and Edit Timestamp Logs"
+msgstr ""
+
+#: src/toolbar.c:223
+msgid "Edit Project Properties..."
+msgstr ""
+
+#: src/toolbar.c:230
+msgid "Timer"
+msgstr ""
+
+#: src/toolbar.c:231
+msgid "Start/Stop Timer"
+msgstr ""
+
+#: src/toolbar.c:241
 msgid "Calendar"
 msgstr "Lịch"
 
-#.
-#. * 	-------------------
-#. * 	     Defines
-#. * 	-------------------
-#.
-#: logview/config.c:34
-msgid "fixed 12"
-msgstr "fixed 12"
+#: src/toolbar.c:242
+#, fuzzy
+msgid "View Calendar"
+msgstr "Lịch"
 
-#. Translators: It seems for asian languages the Bold seems not to work
-#: logview/config.c:36
-msgid "fixed Bold 12"
-msgstr "fixed Bold 12"
+#: src/toolbar.c:262
+#, fuzzy
+msgid "Edit Preferences..."
+msgstr "Thông số..."
 
-#: logview/config.c:37
-msgid "fixed 10"
-msgstr "fixed 10"
+#: src/toolbar.c:270
+msgid "User's Guide and Manual"
+msgstr ""
 
-#. Translators: It seems for asian languages the Bold seems not to work
-#: logview/config.c:39
-msgid "fixed Bold 8"
-msgstr "fixed Bold 8"
+#: src/toolbar.c:278
+msgid "Quit Gnome TimeTracker"
+msgstr ""
 
-#. Translators: translate to fonts that appear well in the log viewer,
-#. * for example for asian languages, helvetica seems not to work
-#. * well for those
-#: logview/config.c:44
-msgid "Helvetica 14"
-msgstr "Helvetica 14"
+#: glade/interval_edit.glade.h:1
+msgid "1 Hour"
+msgstr ""
 
-#: logview/config.c:45
-msgid "Helvetica Bold 14"
-msgstr "Helvetica Bold 14"
+#: glade/interval_edit.glade.h:2
+msgid "10 Min"
+msgstr ""
 
-#: logview/config.c:46
-msgid "Helvetica 12"
-msgstr "Helvetica 12"
+#: glade/interval_edit.glade.h:3
+msgid "15 Min"
+msgstr ""
 
-#: logview/config.c:47
-msgid "Helvetica Bold 12"
-msgstr "Helvetica Bold 12"
+#: glade/interval_edit.glade.h:4
+msgid "2 Hours"
+msgstr ""
 
-#: logview/config.c:48
-msgid "Helvetica 10"
-msgstr "Helvetica 10"
+#: glade/interval_edit.glade.h:5
+msgid "20 Min"
+msgstr ""
 
-#: logview/config.c:49
-msgid "Helvetica Bold 10"
-msgstr "Helvetica Bold 10"
+#: glade/interval_edit.glade.h:6
+msgid "3 Hours"
+msgstr ""
 
-#: logview/desc_db.c:37
-#, c-format
-msgid "Cannot open regexp data base <%s>! Open failed."
-msgstr "Không thể mở cơ sở dữ liệu regexp <%s>!"
+#: glade/interval_edit.glade.h:7
+msgid "30 Min"
+msgstr ""
 
-#: logview/desc_db.c:147
-#, c-format
-msgid "Cannot open description data base <%s>! Open failed."
-msgstr "Không thể mở cơ sở dữ liệu mô tả <%s>!"
+#: glade/interval_edit.glade.h:8
+msgid "5 Min"
+msgstr ""
 
-#. ----------------------------------------------------------------------
-#. NAME:
-#. DESCRIPTION:
-#. ----------------------------------------------------------------------
-#: logview/gnome-system-log.desktop.in.h:1
-msgid "System Log"
-msgstr "Log hệ thống"
+#: glade/interval_edit.glade.h:9
+msgid "Exact Time"
+msgstr ""
 
-#: logview/gnome-system-log.desktop.in.h:2
-msgid "View the system log file"
-msgstr "Xem tập tin log hệ thống"
+#: glade/interval_edit.glade.h:10
+msgid "Set how Uncertain the Start Time Is"
+msgstr ""
 
-#: logview/info.c:80
-msgid "Log stats"
-msgstr "Trạng thái log"
+#: glade/interval_edit.glade.h:12
+msgid "Start Fuzz"
+msgstr ""
 
-#. Note: we use a real translated string that will appear below to gather
-#. * the length, that way we'll get semi correct results with a lot more
-#. * fonts
-#: logview/info.c:193 logview/info.c:195 logview/zoom.c:220 logview/zoom.c:223
-#: logview/zoom.c:271
-msgid "Date:"
-msgstr "Ngày:"
+#: glade/interval_popup.glade.h:1
+msgid "Add a new time interval."
+msgstr ""
 
-#: logview/info.c:204
-msgid "Log information"
+#: glade/interval_popup.glade.h:2
+msgid "Delete Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:3
+msgid "Delete This Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:4
+msgid "Edit Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:5
+msgid "Edit the Start & Stop Times"
+msgstr ""
+
+#: glade/interval_popup.glade.h:6
+#, fuzzy
+msgid "Insert Diary Entry"
+msgstr "_Chèn vào cuối"
+
+#: glade/interval_popup.glade.h:7
+msgid "Insert a new diary entry above this time interval."
+msgstr ""
+
+#: glade/interval_popup.glade.h:8
+msgid "Merge Down"
+msgstr ""
+
+#: glade/interval_popup.glade.h:9
+msgid "Merge Into Interval Above"
+msgstr ""
+
+#: glade/interval_popup.glade.h:10
+msgid "Merge Into Interval Below"
+msgstr ""
+
+#: glade/interval_popup.glade.h:11
+msgid "Merge Up"
+msgstr ""
+
+#: glade/interval_popup.glade.h:12
+msgid "New Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:13
+#, fuzzy
+msgid "Paste Diary Entry"
+msgstr "Mục nhập GDialog"
+
+#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
+msgid "Paste a previously cut diary entry."
+msgstr ""
+
+#: glade/journal.glade.h:1
+#, fuzzy
+msgid "Close"
+msgstr "Cosin"
+
+#: glade/journal.glade.h:3
+msgid "New File"
+msgstr ""
+
+#: glade/journal.glade.h:4
+#, fuzzy
+msgid "Open File"
+msgstr "Mở log"
+
+#: glade/journal.glade.h:5
+#, fuzzy
+msgid "Print"
+msgstr "Cổng"
+
+#: glade/journal.glade.h:6
+msgid "Refresh"
+msgstr ""
+
+#: glade/journal.glade.h:7
+#, fuzzy
+msgid "Save"
+msgstr "Server"
+
+#: glade/journal.glade.h:8
+msgid "Save File"
+msgstr ""
+
+#: glade/not-implemented.glade.h:1
+#, fuzzy
+msgid "Information"
 msgstr "Thông tin log:"
 
-#: logview/info.c:232
-msgid "Log:"
-msgstr "Log:"
-
-#: logview/info.c:235
-msgid "Size:"
-msgstr "Kích thước:"
-
-#: logview/info.c:238
-msgid "Modified:"
-msgstr "Đã thay đổi:"
-
-#: logview/info.c:241
-msgid "Start date:"
-msgstr "Ngày bắt đầu:"
-
-#: logview/info.c:244
-msgid "Last date:"
-msgstr "Ngày cuối cùng:"
-
-#: logview/info.c:247
-msgid "Num. lines:"
-msgstr "Số dòng:"
-
-#: logview/info.c:265
-#, c-format
-msgid "%ld bytes"
-msgstr "%ld byte"
-
-#: logview/log_repaint.c:84
-msgid "January"
-msgstr "Tháng Giêng"
-
-#: logview/log_repaint.c:84
-msgid "February"
-msgstr "Tháng Hai"
-
-#: logview/log_repaint.c:84
-msgid "March"
-msgstr "Tháng Ba"
-
-#: logview/log_repaint.c:84
-msgid "April"
-msgstr "Tháng Tư"
-
-#: logview/log_repaint.c:84
-msgid "May"
-msgstr "Tháng Năm"
-
-#: logview/log_repaint.c:85
-msgid "June"
-msgstr "Tháng Sáu"
-
-#: logview/log_repaint.c:85
-msgid "July"
-msgstr "Tháng Bảy"
-
-#: logview/log_repaint.c:85
-msgid "August"
-msgstr "Tháng Tám"
-
-#: logview/log_repaint.c:85
-msgid "September"
-msgstr "Tháng Chín"
-
-#: logview/log_repaint.c:85
-msgid "October"
-msgstr "Tháng Mười"
-
-#: logview/log_repaint.c:86
-msgid "November"
-msgstr "Tháng Mười Một"
-
-#: logview/log_repaint.c:86
-msgid "December"
-msgstr "Tháng Mười Hai"
-
-#. Translators: Date only format, %x should well do really
-#: logview/log_repaint.c:511
-#, c-format
-msgid "%x"
-msgstr "%x"
-
-#. Translators: should be only the time, date could be bogus
-#: logview/log_repaint.c:638
-#, c-format
-msgid "%X"
-msgstr "%X"
-
-#. Translators: Make sure this is only Month and Day format, year
-#. * will be bogus here
-#: logview/log_repaint.c:760
-msgid "%B %e"
-msgstr "%e %B"
-
-#: logview/logrtns.c:206
-msgid "Not enough memory!\n"
-msgstr "Không đủ bộ nhớ!\n"
-
-#: logview/logrtns.c:214
-msgid "Out of memory!\n"
-msgstr "Hết bộ nhớ!\n"
-
-#: logview/logrtns.c:240
-msgid "Unable to open logfile!\n"
-msgstr "Không thể mở logfile!\n"
-
-#: logview/logrtns.c:295
-#, c-format
-msgid "%s is not a regular file."
-msgstr "%s không phải là tập tin bình thường."
-
-#: logview/logrtns.c:303
-#, c-format
+#: glade/not-implemented.glade.h:2
 msgid ""
-"%s is not user readable. Either run the program as root or ask the sysadmin "
-"to change the permissions on the file."
+"This function is not yet implemented!\n"
+"Coming Soon, I hope!"
 msgstr ""
-"%s không phải là tập tin người dùng có thể xem. Hoặc là chạy chương trình "
-"với tư cách root, hoặc yêu cầu sysadmin thay đổi quyền truy cập của tập tin."
 
-#: logview/logrtns.c:320
-#, c-format
-msgid "%s could not be opened."
-msgstr "Không thể mở tập tin %s."
+#: glade/prefs.glade.h:1
+msgid "Display"
+msgstr ""
 
-#: logview/logrtns.c:350 logview/logrtns.c:359
-#, c-format
-msgid "%s not a log file."
-msgstr "%s không phải là log file."
+#: glade/prefs.glade.h:2
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr ""
 
-#: logview/logrtns.c:792 logview/logrtns.c:823 logview/logrtns.c:954
-msgid "ReadLogStats: out of memory"
-msgstr "ReadLogStats: hết bộ nhớ"
+#: glade/prefs.glade.h:3
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr ""
 
-#: logview/logview.c:95
-msgid "S_witch Log"
-msgstr "_Chuyển log"
-
-#: logview/logview.c:96
-msgid "Switch log"
-msgstr "Chuyển log"
-
-#: logview/logview.c:98
-msgid "_Monitor..."
-msgstr "Theo _dõi..."
-
-#: logview/logview.c:99
-msgid "Monitor Log"
-msgstr "Theo dõi log"
-
-#: logview/logview.c:102
-msgid "_Properties"
-msgstr "_Thuộc tính"
-
-#: logview/logview.c:103
-msgid "Show Log Properties"
-msgstr "Hiện thuộc tính log"
-
-#: logview/logview.c:112
-msgid "_Calendar"
-msgstr "_Lịch"
-
-#: logview/logview.c:112
-msgid "Show Calendar Log"
-msgstr "Hiện log lịch"
-
-#: logview/logview.c:114
-msgid "_Entry Detail"
+#: glade/prefs.glade.h:4
+#, fuzzy
+msgid "Entry Start:"
 msgstr "Chi tiết _mục nhập"
 
-#: logview/logview.c:114
-msgid "Show Entry Detail"
-msgstr "Hiện chi tiết mục nhập"
+#: glade/prefs.glade.h:5
+#, fuzzy
+msgid "Entry Stop:"
+msgstr "Mục nhập"
 
-#: logview/logview.c:122
-msgid "About..."
-msgstr "Giới thiệu..."
+#: glade/prefs.glade.h:7
+#, no-c-format
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
 
-#: logview/logview.c:123
-msgid "Info about logview"
-msgstr "Thông tin về logview"
+#: glade/prefs.glade.h:9
+#, no-c-format
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
 
-#: logview/logview.c:130
-msgid "_Log"
-msgstr "_Log"
+#: glade/prefs.glade.h:10
+#, fuzzy
+msgid "Fields"
+msgstr "Tìm"
 
-#: logview/logview.c:334
-msgid "No log files to open"
-msgstr "Không có tập tin log nào được mở"
-
-#. Create App
-#: logview/logview.c:354
-msgid "System Log Viewer"
-msgstr "Trình xem log hệ thống"
-
-#: logview/logview.c:452
-msgid "Filename: "
+#: glade/prefs.glade.h:11
+#, fuzzy
+msgid "Filename:"
 msgstr "Tên tập tin: "
 
-#: logview/logview.c:473
-msgid "Last Modified: "
-msgstr "Ngày sửa đổi: "
-
-#: logview/logview.c:722 logview/logview.c:788
-msgid "Too many open logs. Close one and try again"
-msgstr "Mở quá nhiều tập tin log. Hãy đóng bớt một cái và thử lại."
-
-#: logview/logview.c:734
-msgid "File already opened"
-msgstr "Tập tin đã mở rồi"
-
-#: logview/logview.c:801
-msgid "Open new logfile"
-msgstr "Mở log mới"
-
-#: logview/misc.c:56
-msgid "Cannot load required fonts, cannot continue"
-msgstr "Không thể nạp font yêu cầu, không thể tiếp tục"
-
-#: logview/misc.c:91
-#, c-format
-msgid "Error: [%s]\n"
-msgstr "Lỗi: [%s]\n"
-
-#: logview/monitor.c:115
-msgid "Monitor options"
-msgstr "Tùy chọn theo dõi"
-
-#: logview/monitor.c:125
-msgid "Choose logs to monitor"
-msgstr "Chọn log cần theo dõi"
-
-#. Arrowed buttons
-#: logview/monitor.c:169
-msgid "Add >>"
-msgstr "Thêm >>"
-
-#. Remove button
-#: logview/monitor.c:177
-msgid "Remove <<"
-msgstr "Loại bỏ <<"
-
-#. Check boxes
-#: logview/monitor.c:215
-msgid "Hide app"
-msgstr "Ẩn ứng dụng"
-
-#: logview/monitor.c:223
-msgid "Exec actions"
-msgstr "Tùy chọn thực thi"
-
-#. Actions button
-#: logview/monitor.c:235
-msgid "Actions..."
-msgstr "Hành động..."
-
-#: logview/monitor.c:286
-msgid "Too many logs to monitor. Remove one and try again"
-msgstr "Theo dõi quá nhiều log. Hãy loại bỏ bớt một cái và thử lại"
-
-#: logview/monitor.c:294 logview/monitor.c:332
-msgid "tmp_list is NULL\n"
-msgstr "tmp_list là NULL\n"
-
-#: logview/monitor.c:452
-msgid "Monitoring logs..."
-msgstr "Đang theo dõi log..."
-
-#: logview/monitor.c:673
-msgid "TOUCHED!!\n"
+#: glade/prefs.glade.h:12
+msgid "Idle Seconds:"
 msgstr ""
 
-#: logview/userprefsdialog.c:65
-msgid "hostname column width ( 0 to hide this column ): "
-msgstr "Độ rộng cột tên máy chủ (0 là ẩn cột): "
+#: glade/prefs.glade.h:13
+msgid "Inactivity Timeout"
+msgstr ""
 
-#: logview/userprefsdialog.c:66
-msgid "Columns"
-msgstr "Cột"
+#: glade/prefs.glade.h:14
+#, fuzzy
+msgid "Logfile"
+msgstr "Logview"
 
-#: logview/zoom.c:79
-msgid "Zoom view"
-msgstr "Khung phóng to/thu nhỏ"
+#: glade/prefs.glade.h:15
+#, fuzzy
+msgid "Min Recorded:"
+msgstr "Nội dung:"
 
-#: logview/zoom.c:233
-#, c-format
-msgid "Log line detail for %s"
-msgstr "Dòng log chi tiết cho %s"
+#: glade/prefs.glade.h:16
+msgid "Misc"
+msgstr ""
 
-#: logview/zoom.c:236
-msgid "Log line detail for <No log loaded>"
-msgstr "Dòng log chi tiết cho <chưa nạp log>"
+#: glade/prefs.glade.h:17
+msgid "No Project Command:"
+msgstr ""
 
-#: logview/zoom.c:275
-msgid "Process:"
-msgstr "Tiến trình:"
+#: glade/prefs.glade.h:18
+msgid "Project List Display"
+msgstr ""
 
-#: logview/zoom.c:278
-msgid "Message:"
-msgstr "Thông điệp:"
+#: glade/prefs.glade.h:19
+#, fuzzy
+msgid "Shell"
+msgstr "Kiểm tra chính tả"
 
-#: logview/zoom.c:281
-msgid "Description:"
+#: glade/prefs.glade.h:20
+#, fuzzy
+msgid "Shell Commands"
+msgstr "_Hiện lệnh..."
+
+#: glade/prefs.glade.h:21
+msgid "Show Current Diary Entry"
+msgstr ""
+
+#: glade/prefs.glade.h:22
+msgid "Show Estimated Effort"
+msgstr ""
+
+#: glade/prefs.glade.h:23
+#, fuzzy
+msgid "Show Percent Complete"
+msgstr "Hiện thuộc tính log"
+
+#: glade/prefs.glade.h:24
+msgid "Show Planned Project End Date"
+msgstr ""
+
+#: glade/prefs.glade.h:25
+msgid "Show Planned Project Start Date"
+msgstr ""
+
+#: glade/prefs.glade.h:26
+#, fuzzy
+msgid "Show Project Description"
 msgstr "Mô tả:"
 
-#. Translators: do not include year, it would be bogus
-#: logview/zoom.c:306
-msgid "%B %e %X"
-msgstr "%e %B %X"
-
-#: meat-grinder/archive-generator.desktop.in.h:1
-msgid "Archive Generator"
-msgstr "Trình tạo kho lưu"
-
-#: meat-grinder/archive-generator.desktop.in.h:2
-msgid "Create compressed archives containing many files"
-msgstr "Tạo kho lưu nén chứa nhiều tập tin"
-
-#: meat-grinder/meat-grinder.c:137
-#, c-format
-msgid ""
-"Number of files: %d\n"
-"Number of folders: %d"
+#: glade/prefs.glade.h:27
+msgid "Show Project Due Date"
 msgstr ""
-"Số tập tin: %d\n"
-"Số thư mục: %d"
 
-#: meat-grinder/meat-grinder.c:143
-msgid ""
-"No files or folders, drop files or folders\n"
-"above to add them to the archive"
+#: glade/prefs.glade.h:28
+msgid "Show Project Importance"
 msgstr ""
-"Không có tập tin hay thự mục, thả tập tin hoặc thư mục\n"
-"ở trên xuống để thêm vào kho lưu"
 
-#: meat-grinder/meat-grinder.c:166
-#, c-format
-msgid "%s removed"
-msgstr "đã loại bỏ %s"
-
-#: meat-grinder/meat-grinder.c:328 meat-grinder/meat-grinder.c:333
-#, c-format
-msgid "Failed to create %s"
-msgstr "Lỗi tạo %s"
-
-#: meat-grinder/meat-grinder.c:373
-msgid "Archive.tar.gz"
-msgstr "Archive.tar.gz"
-
-#: meat-grinder/meat-grinder.c:493 meat-grinder/meat-grinder.c:977
-msgid "GNOME Archive Generator"
-msgstr "Trình tạo kho lưu GNOME"
-
-#: meat-grinder/meat-grinder.c:495
-msgid "Drag files in to make archives"
-msgstr "Kéo tập tin vào để tạo kho lưu"
-
-#: meat-grinder/meat-grinder.c:528
-msgid "All files selected"
-msgstr "Đã chọn mọi tập tin"
-
-#: meat-grinder/meat-grinder.c:547
-msgid "All files removed"
-msgstr "Đã loại bỏ mọi tập tin"
-
-#: meat-grinder/meat-grinder.c:609 meat-grinder/meat-grinder.c:793
-msgid "No filename selected"
-msgstr "Chưa chọn tên tập tin"
-
-#: meat-grinder/meat-grinder.c:613
-msgid "File exists, overwrite?"
-msgstr "Tập tin đã tồn tại, ghi đè chứ?"
-
-#: meat-grinder/meat-grinder.c:636
-#, c-format
-msgid "%s created"
-msgstr "đã tạo %s"
-
-#: meat-grinder/meat-grinder.c:650
-msgid "No items to archive"
-msgstr "Kho lưu rỗng"
-
-#: meat-grinder/meat-grinder.c:777
-#, c-format
-msgid "%s added"
-msgstr "đã thêm %s"
-
-#: meat-grinder/meat-grinder.c:796
-msgid "File does not exists"
-msgstr "Tập tin không tồn tại"
-
-#: meat-grinder/meat-grinder.c:810
-msgid "Add file or folder"
-msgstr "Thêm tập tin hoặc thư mục"
-
-#: meat-grinder/meat-grinder.c:927
-msgid "_Add file or folder..."
-msgstr "_Thêm tập tin hoặc thư mục..."
-
-#: meat-grinder/meat-grinder.c:928
-msgid "Add a file or folder to archive"
-msgstr "Thêm tập tin hoặc thư mục vào kho lưu"
-
-#: meat-grinder/meat-grinder.c:931
-msgid "_Create archive..."
-msgstr "_Tạo kho lưu..."
-
-#: meat-grinder/meat-grinder.c:931
-msgid "Create a new archive from the items"
-msgstr "Tạo một kho lưu mới từ các mục được chọn"
-
-#: meat-grinder/meat-grinder.c:941
-msgid "_Remove"
-msgstr "_Loại bỏ"
-
-#: meat-grinder/meat-grinder.c:942
-msgid "Remove the selected item"
-msgstr "Loại bỏ các mục được chọn"
-
-#: meat-grinder/meat-grinder.c:944
-msgid "R_emove All"
-msgstr "_Loại bỏ"
-
-#: meat-grinder/meat-grinder.c:945
-msgid "Remove all items"
-msgstr "Loại bỏ mọi thứ"
-
-#: meat-grinder/meat-grinder.c:1016
-msgid "Drop files here to add them to the archive."
-msgstr "Thả các tập tin ở đây để thêm vào kho lưu."
-
-#. tarball icon
-#: meat-grinder/meat-grinder.c:1028
-msgid "_Create Archive"
-msgstr "_Tạo kho lưu..."
-
-#: meat-grinder/meat-grinder.c:1036
-msgid ""
-"Drag this button to the destination where you want the archive to be created "
-"or press it to pop up a file selection dialog."
+#: glade/prefs.glade.h:29
+msgid "Show Project Status"
 msgstr ""
-"Kéo nút này tới đích đến, nơi bạn muốn kho lưu được tạo, hoặc nhấn vào nó để "
-"bật hộp thoại chọn tập tin."
 
-#: meat-grinder/meat-grinder.c:1174
-msgid "Cannot find proper icons anywhere!"
-msgstr "Không thể tìm thấy biểu tượng thích hợp!"
-
-#: meat-grinder/meat-grinder.c:1182
-msgid ""
-"Cannot find the archive (tar) program!\n"
-"This is the program used for creating archives."
+#: glade/prefs.glade.h:30
+msgid "Show Project Urgency"
 msgstr ""
-"Không thể tìm thấy chương trình tar!\n"
-"Chương trình này được dùng để tạo kho lưu."
+
+#: glade/prefs.glade.h:31
+msgid "Show Seconds"
+msgstr ""
+
+#: glade/prefs.glade.h:32
+#, fuzzy
+msgid "Show Status Bar"
+msgstr "Thanh T_rạng thái"
+
+#: glade/prefs.glade.h:33
+#, fuzzy
+msgid "Show Sub-Projects"
+msgstr "Hiện thuộc tính log"
+
+#: glade/prefs.glade.h:34
+msgid "Show Table Header"
+msgstr ""
+
+#: glade/prefs.glade.h:35
+msgid "Show Time For The Current Diary Entry"
+msgstr ""
+
+#: glade/prefs.glade.h:36
+msgid "Show Time This Month"
+msgstr ""
+
+#: glade/prefs.glade.h:37
+msgid "Show Time This Week"
+msgstr ""
+
+#: glade/prefs.glade.h:38
+msgid "Show Time This Year"
+msgstr ""
+
+#: glade/prefs.glade.h:39
+#, fuzzy
+msgid "Show Time Today"
+msgstr "Hiên số dòng"
+
+#: glade/prefs.glade.h:40
+msgid "Show Toolbar Icons"
+msgstr ""
+
+#: glade/prefs.glade.h:41
+msgid "Show Toolbar Texts"
+msgstr ""
+
+#: glade/prefs.glade.h:42
+#, fuzzy
+msgid "Show Tooltips"
+msgstr "Hiện thuộc tính log"
+
+#: glade/prefs.glade.h:43
+msgid "Show Total Time Ever"
+msgstr ""
+
+#: glade/prefs.glade.h:44
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr ""
+
+#: glade/prefs.glade.h:45
+msgid "Show `Help'"
+msgstr ""
+
+#: glade/prefs.glade.h:46
+msgid "Show `Journal'"
+msgstr ""
+
+#: glade/prefs.glade.h:47
+msgid "Show `New'"
+msgstr ""
+
+#: glade/prefs.glade.h:48
+#, fuzzy
+msgid "Show `Preferences'"
+msgstr "_Thông số"
+
+#: glade/prefs.glade.h:49
+#, fuzzy
+msgid "Show `Properties'"
+msgstr "Hiện thuộc tính log"
+
+#: glade/prefs.glade.h:50
+msgid "Show `Quit'"
+msgstr ""
+
+#: glade/prefs.glade.h:51
+msgid "Show `Save', `Reload'"
+msgstr ""
+
+#: glade/prefs.glade.h:52
+msgid "Show `Timer'"
+msgstr ""
+
+#: glade/prefs.glade.h:53
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr ""
+
+#: glade/prefs.glade.h:54
+msgid "Switch Project Command:"
+msgstr ""
+
+#: glade/prefs.glade.h:55
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+
+#: glade/prefs.glade.h:56
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+
+#: glade/prefs.glade.h:57
+#, fuzzy
+msgid "Toolbar"
+msgstr "Toolbar _Text"
+
+#: glade/prefs.glade.h:58
+msgid "Toolbar Segments"
+msgstr ""
+
+#: glade/prefs.glade.h:59
+msgid "Use Logfile"
+msgstr ""
+
+#: glade/prefs.glade.h:60
+msgid "View Project Fields"
+msgstr ""
+
+#: glade/project_properties.glade.h:1
+msgid "        "
+msgstr ""
+
+#: glade/project_properties.glade.h:2
+#, fuzzy
+msgid "            "
+msgstr "Lọc..."
+
+#: glade/project_properties.glade.h:3
+#, fuzzy
+msgid "                        "
+msgstr "Lọc..."
+
+#: glade/project_properties.glade.h:5
+#, no-c-format
+msgid "% Complete"
+msgstr ""
+
+#: glade/project_properties.glade.h:6
+msgid "A title to assign to this project"
+msgstr ""
+
+#: glade/project_properties.glade.h:7
+msgid "Auto-merge Gap:"
+msgstr ""
+
+#: glade/project_properties.glade.h:8
+msgid "Auto-merge Interval:"
+msgstr ""
+
+#: glade/project_properties.glade.h:11
+msgid ""
+"Does this item need immediate attention? Note that some urgent tasks might "
+"not be important.  For example, Bill may want you to answer his email today, "
+"but you may have better things to do today."
+msgstr ""
+
+#: glade/project_properties.glade.h:12
+msgid "Double-Overtime Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:13
+#, fuzzy
+msgid "Due Date:"
+msgstr "Ngày:"
+
+#: glade/project_properties.glade.h:14
+msgid "Flat Fee:"
+msgstr ""
+
+#: glade/project_properties.glade.h:16
+msgid "Hours to Finish:"
+msgstr ""
+
+#: glade/project_properties.glade.h:17
+msgid ""
+"How important is it to perform this task?  Not everything important is "
+"urgent.  For example, it is important to file a tax return every year, but "
+"you have a lot of time to get ready to do this."
+msgstr ""
+
+#: glade/project_properties.glade.h:18
+msgid ""
+"If the gap between intervals is smaller than this, the intervals will be "
+"merged together."
+msgstr ""
+
+#: glade/project_properties.glade.h:19
+msgid ""
+"If this project is billed for one price no matter how long it takes, enter "
+"the fee here."
+msgstr ""
+
+#: glade/project_properties.glade.h:20
+msgid "Importance:"
+msgstr ""
+
+#: glade/project_properties.glade.h:22
+msgid ""
+"Internal notes about the project that will not be printed on an invoice."
+msgstr ""
+
+#: glade/project_properties.glade.h:23
+#, fuzzy
+msgid "Intervals"
+msgstr "Đảo"
+
+#: glade/project_properties.glade.h:24
+msgid "Intervals smaller than this will be discarded"
+msgstr ""
+
+#: glade/project_properties.glade.h:26
+msgid "Medium"
+msgstr ""
+
+#: glade/project_properties.glade.h:27
+msgid "Minimum Interval: "
+msgstr ""
+
+#: glade/project_properties.glade.h:28
+msgid "Not Set"
+msgstr ""
+
+#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
+msgid "Notes:"
+msgstr ""
+
+#: glade/project_properties.glade.h:32
+msgid "Overtime Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:33
+msgid "Planned Finish:"
+msgstr ""
+
+#: glade/project_properties.glade.h:34
+msgid "Planned Start:"
+msgstr ""
+
+#: glade/project_properties.glade.h:35
+msgid "Planning"
+msgstr ""
+
+#: glade/project_properties.glade.h:36
+msgid "Project"
+msgstr ""
+
+#: glade/project_properties.glade.h:37
+#, fuzzy
+msgid "Project Description:"
+msgstr "Mô tả:"
+
+#: glade/project_properties.glade.h:38
+msgid "Project Title:"
+msgstr ""
+
+#: glade/project_properties.glade.h:39
+#, fuzzy
+msgid "Rates"
+msgstr "Ngày:"
+
+#: glade/project_properties.glade.h:40
+msgid "Regular Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:41
+#, fuzzy
+msgid "Status:"
+msgstr "Thanh T_rạng thái"
+
+#: glade/project_properties.glade.h:42
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:43
+msgid "The dollars per hour normally charged for this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:44
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr ""
+
+#: glade/project_properties.glade.h:45
+msgid "Time below which an interval is merged with its neighbors"
+msgstr ""
+
+#: glade/project_properties.glade.h:46
+msgid "Urgency:"
+msgstr ""
+
+#: glade/project_properties.glade.h:47
+msgid "What is the status of this project?"
+msgstr ""
+
+#: glade/project_properties.glade.h:48
+msgid "a short description that will be printed on the invoice."
+msgstr ""
+
+#: glade/project_properties.glade.h:49
+#, fuzzy
+msgid "seconds"
+msgstr "cos"
+
+#: glade/task_popup.glade.h:1
+msgid "Add a new time interval"
+msgstr ""
+
+#: glade/task_popup.glade.h:2
+msgid "Cut Entry & _Times"
+msgstr ""
+
+#: glade/task_popup.glade.h:3
+msgid "Delete the diary entry only, keep the time intervals"
+msgstr ""
+
+#: glade/task_popup.glade.h:4
+msgid "Delete the diary entry, and the time intervals below it."
+msgstr ""
+
+#: glade/task_popup.glade.h:5
+msgid "Edit the diary entry and other task properties."
+msgstr ""
+
+#: glade/task_popup.glade.h:6
+msgid "Insert a new diary entry above this one."
+msgstr ""
+
+#: glade/task_popup.glade.h:7
+msgid "New Time Interval"
+msgstr ""
+
+#: glade/task_popup.glade.h:9
+#, fuzzy
+msgid "_Cut Diary Entry"
+msgstr "Mục nhập GDialog"
+
+#: glade/task_popup.glade.h:10
+#, fuzzy
+msgid "_Edit Diary Entry"
+msgstr "Mục nhập GDialog"
+
+#: glade/task_popup.glade.h:11
+#, fuzzy
+msgid "_New Diary Entry"
+msgstr "Mục nhập GDialog"
+
+#: glade/task_popup.glade.h:12
+msgid "_Paste Diary Entry"
+msgstr ""
+
+#: glade/task_properties.glade.h:1
+msgid "A set of private notes that will not be printed on an invoice."
+msgstr ""
+
+#: glade/task_properties.glade.h:2
+msgid "A short description to attach to this block of time."
+msgstr ""
+
+#: glade/task_properties.glade.h:5
+msgid "Billable:"
+msgstr ""
+
+#: glade/task_properties.glade.h:6
+msgid "Billing Block:"
+msgstr ""
+
+#: glade/task_properties.glade.h:7
+msgid "Billing Rate:"
+msgstr ""
+
+#: glade/task_properties.glade.h:8
+msgid "Billing Status:"
+msgstr ""
+
+#: glade/task_properties.glade.h:9
+#, fuzzy
+msgid "Diary Entry Properties"
+msgstr "_Thuộc tính"
+
+#: glade/task_properties.glade.h:10
+#, fuzzy
+msgid "Diary Entry:"
+msgstr "Mục nhập GDialog"
+
+#: glade/task_properties.glade.h:11
+msgid "Fee rate to be charged for this task."
+msgstr ""
+
+#: glade/task_properties.glade.h:14
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+
+#: glade/task_properties.glade.h:15
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+
+#: glade/task_properties.glade.h:19
+#, fuzzy
+msgid "OverOver"
+msgstr "Server"
+
+#: glade/task_properties.glade.h:23
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+
+#: glade/task_properties.glade.h:24
+msgid "minutes"
+msgstr ""
+
+#: gtt.desktop.in.h:1
+msgid "Time Tracker tool"
+msgstr ""
+
+#: gtt.desktop.in.h:2
+msgid "Time tracking tool"
+msgstr ""
+
+#~ msgid ""
+#~ "Executing arbitrary programs that you downloaded from the network might "
+#~ "be dangerous.\n"
+#~ "\n"
+#~ "Are you sure you want to run `%s'?"
+#~ msgstr ""
+#~ "Thực hiện một chương trình mới lấy từ mạng về có thể rất nguy hiểm.\n"
+#~ "\n"
+#~ "Bạn có chắc muốn thực hiện `%s' không?"
+
+#~ msgid "Could not access file permissions"
+#~ msgstr "Không thể truy cập quyền truy cập tập tin."
+
+#~ msgid "Could not execute the file `%s' due to a permission problem"
+#~ msgstr ""
+#~ "Không thể thực hiện tập tin `%s' vì không quyền truy cập tập tin không "
+#~ "thích hợp"
+
+#~ msgid "Failure at executing `%s'"
+#~ msgstr "Lỗi khi đang thực hiện `%s'"
+
+#~ msgid "It was not possible to open the file `%s'"
+#~ msgstr "Không thể mở tập tin `%s'"
+
+#~ msgid "There was an error. `%s' is empty"
+#~ msgstr "Có lỗi, `%s' rỗng"
+
+#~ msgid "This is a library and can not be executed"
+#~ msgstr "Đây là một thư viện nên không thể được thực hiện"
+
+#~ msgid "The file is a core file and can not be executed"
+#~ msgstr "Tập tin này là tập tin core và không thể được thực hiện"
+
+#~ msgid "This is an unknown kind of executable"
+#~ msgstr "Đây là một loại tập tin thực thi lạ"
+
+#~ msgid ""
+#~ "The executable is for a different platform and can not be executed on "
+#~ "this system"
+#~ msgstr ""
+#~ "Tập tin thực thi này dành cho một hệ máy khác và không thể được thực hiện "
+#~ "trên hệ thống này"
+
+#~ msgid "translator_credits"
+#~ msgstr "Nguyễn Thái Ngọc Duy"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Máy tính"
+
+#~ msgid "Simple double precision calculator similiar to xcalc"
+#~ msgstr "Máy tính đơn giản với độ chính xác đôi, tương tự như xcalc"
+
+#~ msgid "_Calculator"
+#~ msgstr "_Máy tính"
+
+#~ msgid "inf"
+#~ msgstr "inf"
+
+#~ msgid "DEG"
+#~ msgstr "DEG"
+
+#~ msgid "RAD"
+#~ msgstr "RAD"
+
+#~ msgid "GRAD"
+#~ msgstr "GRAD"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "x^2"
+#~ msgstr "x^2"
+
+#~ msgid "Square"
+#~ msgstr "Bình phương"
+
+#~ msgid "SQRT"
+#~ msgstr "Căn"
+
+#~ msgid "Square root"
+#~ msgstr "Căn bậc hai"
+
+#~ msgid "CE/C"
+#~ msgstr "CE/C"
+
+#~ msgid "AC"
+#~ msgstr "AC"
+
+#~ msgid "Reset"
+#~ msgstr "Đặt lại"
+
+#~ msgid "INV"
+#~ msgstr "INV"
+
+#~ msgid "Inverse trigonometry/log function"
+#~ msgstr "Đảo hàm trigonometry/log"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "Sine"
+#~ msgstr "Sin"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "Tangent"
+#~ msgstr "Tan"
+
+#~ msgid " DEG  "
+#~ msgstr " DEG  "
+
+#~ msgid "Switch degrees / radians / grad"
+#~ msgstr "Chuyển đổi độ / radian / grad"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "Base of Natural Logarithm"
+#~ msgstr "Cơ số e"
+
+#~ msgid "EE"
+#~ msgstr "EE"
+
+#~ msgid "Add digit"
+#~ msgstr "Thêm số"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "Base 10 Logarithm"
+#~ msgstr "Cơ số 10"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "Natural Logarithm"
+#~ msgstr "Cơ số e"
+
+#~ msgid "x^y"
+#~ msgstr "x^y"
+
+#~ msgid "Power"
+#~ msgstr "Tắt"
+
+#~ msgid "PI"
+#~ msgstr "PI"
+
+#~ msgid "x!"
+#~ msgstr "x!"
+
+#~ msgid "Factorial"
+#~ msgstr "Thừa số"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid "Opening Parenthesis"
+#~ msgstr "Dấu mở ngoặc"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "Closing Parenthesis"
+#~ msgstr "Dấu đóng ngoặc"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "Divide by"
+#~ msgstr "Chia cho"
+
+#~ msgid "STO"
+#~ msgstr "STO"
+
+#~ msgid ""
+#~ "Store the value in the\n"
+#~ "display field in memory"
+#~ msgstr ""
+#~ "Lưu giá trị trong vùng\n"
+#~ "hiện thị vào bộ nhớ"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Multiply by"
+#~ msgstr "Nhân cho"
+
+#~ msgid "RCL"
+#~ msgstr "RCL"
+
+#~ msgid ""
+#~ "Display the value in memory\n"
+#~ "in the display field"
+#~ msgstr ""
+#~ "Hiển thị giá trị trong\n"
+#~ "bộ nhớ vào vùng hiển thị"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "Subtract"
+#~ msgstr "Trừ"
+
+#~ msgid "SUM"
+#~ msgstr "SUM"
+
+#~ msgid ""
+#~ "Add the value in the display\n"
+#~ "field to the value in memory"
+#~ msgstr ""
+#~ "Cộng thêm giá trị trong vùng\n"
+#~ "hiển thị vào bộ nhớ"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "Add"
+#~ msgstr "Cộng"
+
+#~ msgid "EXC"
+#~ msgstr "EXC"
+
+#~ msgid ""
+#~ "Exchange the values in the\n"
+#~ "display field and memory"
+#~ msgstr ""
+#~ "Đổi giá trị giữa vùng hiển\n"
+#~ "thị và bộ nhớ"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "Decimal Point"
+#~ msgstr "Dấu chấm thập phân"
+
+#~ msgid "+/-"
+#~ msgstr "+/-"
+
+#~ msgid "Change sign"
+#~ msgstr "Đổi dấu"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "Calculate"
+#~ msgstr "Tính"
+
+#~ msgid "Calculator"
+#~ msgstr "Máy tính"
+
+#~ msgid "Perform simple calculations"
+#~ msgstr "Thực hiện các tính toán đơn giản"
+
+#~ msgid "Character Map"
+#~ msgstr "Bảng ký tự"
+
+#~ msgid "Insert special characters into documents"
+#~ msgstr "Chèn ký tự đặc biệt vào tài liệu"
+
+#~ msgid "Select Character"
+#~ msgstr "Chọn ký tự"
+
+#~ msgid "_Insert"
+#~ msgstr "_Chèn"
+
+#~ msgid "Character code:"
+#~ msgstr "Mã ký tự:"
+
+#~ msgid "Character:"
+#~ msgstr "Ký tự:"
+
+#~ msgid "Character Code"
+#~ msgstr "Mã ký tự"
+
+#~ msgid "Select character code"
+#~ msgstr "Chọn mã ký tự"
+
+#~ msgid "Character"
+#~ msgstr "Ký tự"
+
+#~ msgid "Character to insert"
+#~ msgstr "Ký tự cần chèn"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "GNOME Character Map"
+#~ msgstr "Bảng ký tự"
+
+#~ msgid ""
+#~ "Select, copy and paste characters from your font into other applications"
+#~ msgstr "Chọn, sao chép và dán các ký tự từ font của bạn vào ứng dụng khác"
+
+#~ msgid "del"
+#~ msgstr "xóa"
+
+#~ msgid " %s: Character code %d"
+#~ msgstr " %s: Mã ký tự %d"
+
+#~ msgid "Text copied to clipboard..."
+#~ msgstr "Chữ được chép vào clipboard..."
+
+#~ msgid "Text cut to clipboard..."
+#~ msgstr "Chữ được cắt, cho vào clipboard..."
+
+#~ msgid "Text pasted from clipboard..."
+#~ msgstr "Chữ được dán từ clipboard..."
+
+#~ msgid "Gnome Character Map"
+#~ msgstr "Bản đồ ký tự"
+
+#~ msgid "Action Toolbar"
+#~ msgstr "Thanh công cụ hành động"
+
+#~ msgid "_Text to copy:"
+#~ msgstr "_Chữ cần chép:"
+
+#~ msgid "_Copy"
+#~ msgstr "Sao _chép"
+
+#~ msgid "Text to copy"
+#~ msgstr "Chữ cần chép"
+
+#~ msgid "Copy"
+#~ msgstr "Chép"
+
+#~ msgid "Copy the text"
+#~ msgstr "Chép chữ"
+
+#~ msgid "Insert character(s) by choosing character codes."
+#~ msgstr "Chèn các ký tự được chọn bởi các mã ký tự."
+
+#~ msgid "_Characters"
+#~ msgstr "_Ký tự"
+
+#~ msgid "Cut"
+#~ msgstr "Cắt"
+
+#~ msgid "Cut the selection"
+#~ msgstr "Cắt vùng chọn"
+
+#~ msgid "Copy the selection"
+#~ msgstr "Chép vùng chọn"
+
+#~ msgid "Paste"
+#~ msgstr "Dán"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "Dán từ clipboard"
+
+#~ msgid "Gdialog progressbar"
+#~ msgstr "Thanh tiến trình GDialog"
+
+#~ msgid "Indicates the percentage specified at the standard input"
+#~ msgstr "Chỉ thị phần trăm tại đầu vào chuẩn"
+
+#~ msgid "Enter the text"
+#~ msgstr "Nhập chuỗi"
+
+#~ msgid "Accessories"
+#~ msgstr "Đồ phụ tùng"
+
+#~ msgid "Dictionary Lookup"
+#~ msgstr "Tìm từ điển"
+
+#~ msgid "Lookup words in an online dictionary"
+#~ msgstr "Tìm từ trong từ điển trực tuyến"
+
+#~ msgid "_Help"
+#~ msgstr "_Trợ giúp"
+
+#~ msgid "_Show/Hide Definition Window..."
+#~ msgstr "_Hiện/Ẩn cửa sổ định nghĩa..."
+
+#~ msgid "Cannot connect to server"
+#~ msgstr "Không thể kết nối đến server"
+
+#~ msgid ""
+#~ "A serious error occured. Please check that your server and port are "
+#~ "correct. For reference the default server is dict.org and the port 2628"
+#~ msgstr ""
+#~ "Xảy ra lỗi nghiêm trọng. Vui lòng kiểm tra server và số hiệu cổng có đúng "
+#~ "chưa. Server mặc định là dict.org và số hiệu cổng là 2628"
+
+#~ msgid ""
+#~ "Client for MIT dictionary server.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#~ msgstr ""
+#~ "Client cho server tự điển của MIT.\n"
+#~ "Web: http://gdict.dhs.org, http://www.psilord.com/code/"
+
+#~ msgid "Spell-checking..."
+#~ msgstr "Đang kiểm tra chính tả..."
+
+#~ msgid "Spell check done"
+#~ msgstr "Kiểm tra chính tả xong"
+
+#~ msgid "No matches found"
+#~ msgstr "Không tìm thấy"
+
+#~ msgid "Looking up word..."
+#~ msgstr "Đang tra từ..."
+
+#~ msgid "Lookup done"
+#~ msgstr "Tìm xong"
+
+#~ msgid "String not found"
+#~ msgstr "Không thấy chuỗi"
+
+#~ msgid "_Find"
+#~ msgstr "_Tìm"
+
+#~ msgid ""
+#~ "Unable to perform requested operation. \n"
+#~ "Either the server you are using is not available \n"
+#~ "or you are not connected to the Internet."
+#~ msgstr ""
+#~ "Không thể thực hiện thao tác yêu cầu.\n"
+#~ "Hoặc là server không hoạt động, hoặc\n"
+#~ "là bạn không có kết nối Internet."
+
+#~ msgid "_Look Up Word"
+#~ msgstr "_Tìm từ"
+
+#~ msgid "Lookup word in dictionary"
+#~ msgstr "Tra từ trong từ điển"
+
+#~ msgid "Check _Spelling"
+#~ msgstr "_Kiểm tra chính tả"
+
+#~ msgid "Check word spelling"
+#~ msgstr "Kiểm tra chính tả"
+
+#~ msgid "_Dictionary"
+#~ msgstr "_Từ điển"
+
+#~ msgid "Dictionary"
+#~ msgstr "Từ điển"
+
+#~ msgid "_Word: "
+#~ msgstr "_Từ: "
+
+#~ msgid "Word"
+#~ msgstr "Từ"
+
+#~ msgid "Word Entry"
+#~ msgstr "Mục nhập từ"
+
+#~ msgid "Enter a Word or select one from the list below"
+#~ msgstr "Nhập từ hoặc chọn một từ từ danh sách bên dưới"
+
+#~ msgid "Look Up for a Word"
+#~ msgstr "Tìm từ"
+
+#~ msgid "_Lookup"
+#~ msgstr "_Tìm"
+
+#~ msgid "Error invoking query: %s"
+#~ msgstr "Lỗi khi truy vấn: %s"
+
+#~ msgid "Headword:"
+#~ msgstr "Tiêu đề:"
+
+#~ msgid "Sub-number:"
+#~ msgstr "Số phụ:"
+
+#~ msgid "Pronunciation:"
+#~ msgstr "Phát âm:"
+
+#~ msgid "Etymology:"
+#~ msgstr "Từ nguyên:"
+
+#~ msgid "Part of speech:"
+#~ msgstr "Phần bài nói:"
+
+#~ msgid "Example:"
+#~ msgstr "Ví dụ:"
+
+#~ msgid "Cross-reference:"
+#~ msgstr "Tham khảo:"
+
+#~ msgid "Dictionary Preferences"
+#~ msgstr "Thông số từ điển"
+
+#~ msgid "Smart _lookup"
+#~ msgstr "_Tìm thông minh"
+
+#~ msgid "_Server:"
+#~ msgstr "_Server:"
+
+#~ msgid "De_fault"
+#~ msgstr "_Mặc định"
+
+#~ msgid "Reset server to default"
+#~ msgstr "Đặt lại server về mặc định"
+
+#~ msgid "_Port:"
+#~ msgstr "_Cổng:"
+
+#~ msgid "Def_ault"
+#~ msgstr "_Mặc định"
+
+#~ msgid "Reset port to default"
+#~ msgstr "Đặt lại cổng về mặc định"
+
+#~ msgid "Server Entry"
+#~ msgstr "Mục nhập server"
+
+#~ msgid "Enter the Server Name"
+#~ msgstr "Tên server"
+
+#~ msgid "Port Entry"
+#~ msgstr "Mục nhập cổng"
+
+#~ msgid "Enter the Port Number"
+#~ msgstr "Nhập vào số hiệu cổng"
+
+#~ msgid "_Database:"
+#~ msgstr "_Từ điển:"
+
+#~ msgid "D_efault strategy:"
+#~ msgstr "Chiến lược _mặc định:"
+
+#~ msgid "Search all databases"
+#~ msgstr "Tìm mọi từ trong từ điển"
+
+#~ msgid "Database"
+#~ msgstr "Từ điển"
+
+#~ msgid "Database Name"
+#~ msgstr "Tên từ điển"
+
+#~ msgid "_Word:"
+#~ msgstr "_Từ:"
+
+#~ msgid "Enter a word to know the spelling"
+#~ msgstr "Nhập một từ cần kiểm tra chính tả"
+
+#~ msgid "Click to do the spell check"
+#~ msgstr "Nhấn để tiến hành kiểm tra chính tả"
+
+#~ msgid "Search S_trategy:"
+#~ msgstr "Chiến lược _tìm:"
+
+#~ msgid "Search _Results"
+#~ msgstr "_Kết quả tìm"
+
+#~ msgid "Check Spelling"
+#~ msgstr "Kiểm tra chính tả"
+
+#~ msgid "Search Strategy"
+#~ msgstr "Chiến lược tìm kiếm"
+
+#~ msgid "Default database. ! indicates all databases"
+#~ msgstr "Cơ sở dữ liệu mặc định. ! nghĩa là mọi cơ sở dữ liệu"
+
+#~ msgid "Default strategy"
+#~ msgstr "Chiến lược _mặc định"
+
+#~ msgid "Dictionary server"
+#~ msgstr "Server từ điển"
+
+#~ msgid "Port used to connect to server"
+#~ msgstr "Cổng được dùng để kết nối tới server"
+
+#~ msgid "Use smart lookup"
+#~ msgstr "Tìm thông minh"
+
+#~ msgid "Floppy Formatter"
+#~ msgstr "Trình định dạng đĩa mềm"
+
+#~ msgid "Format Floppy Disks"
+#~ msgstr "Định dạng đĩa mềm"
+
+#~ msgid "MInternal Error: Unable to seek to the correct location."
+#~ msgstr "MLỗi nội tại: Không thể tìm vị trí đúng."
+
+#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
+#~ msgstr "MLỗi nội tại: Giá trị lạ (%ld) trong do_test\n"
+
+#~ msgid "EBad block at block %lu"
+#~ msgstr "EKhối %lu bị hỏng"
+
+#~ msgid "MChecking for bad blocks..."
+#~ msgstr "MĐang kiểm tra tìm khối hỏng..."
+
+#~ msgid "MFailed to open device %s for badblock checking\n"
+#~ msgstr "MLỗi khi mở thiết bị %s để tìm khối hỏng\n"
+
+#~ msgid "MChecking for bad blocks... Done"
+#~ msgstr "MĐang kiểm tra tìm khối hỏng... Xong"
+
+#~ msgid "MFormatting the disk..."
+#~ msgstr "MĐang định dạng đĩa..."
+
+#~ msgid "EI don't know what this is, but it's very wrong."
+#~ msgstr "EKhông biết đây là cái gì, nhưng chắc chắn là sai."
+
+#~ msgid "EError formatting track #%d"
+#~ msgstr "ELỗi khi định dạng track #%d"
+
+#~ msgid "EError during completion of formatting"
+#~ msgstr "ELỗi khi đang hoàn tất việc định dạng"
+
+#~ msgid "MFormatting the disk... Done"
+#~ msgstr "MĐang định dạng đĩa... Xong"
+
+#~ msgid "MVerifying the format..."
+#~ msgstr "MĐang kiểm tra định dạng..."
+
+#~ msgid ""
+#~ "EUnable to write to the floppy.\n"
+#~ "\n"
+#~ "Please confirm that it is not write-protected."
+#~ msgstr ""
+#~ "EKhông thể ghi vào đĩa mềm.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem đĩa có chống ghi hay không."
+
+#~ msgid "EInsufficient permissions to open floppy device %s."
+#~ msgstr "EKhông đủ quyền truy cập để mở thiết bị điều khiển đĩa mềm %s."
+
+#~ msgid ""
+#~ "EUnable to access the floppy disk.\n"
+#~ "\n"
+#~ "Please confirm that it is in the drive\n"
+#~ "with the drive door shut."
+#~ msgstr ""
+#~ "EKhông thể truy cập đĩa mềm.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem có đĩa trong ổ đĩa hay chưa."
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s:%d"
+#~ msgstr ""
+#~ "ELỗi truy cập chung của đĩa mềm %s.\n"
+#~ "\n"
+#~ "Mã lỗi %s:%d"
+
+#~ msgid ""
+#~ "ERead Error:\n"
+#~ "Problem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "ELỗi đọc:\n"
+#~ "Gặp vấn đề ở cylinder %d, yêu cầu %d, đọc được %d"
+
+#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
+#~ msgstr "ELỗi đọc ở cylinder %d, yêu cầu %d, đọc được %d"
+
+#~ msgid "MBad data in cyl %d.  Continuing... "
+#~ msgstr "MDữ liệu hỏng ở cylinder %d. Tiếp tục..."
+
+#~ msgid "EError closing device %s"
+#~ msgstr "ELỗi khi đóng thiết bị %s"
+
+#~ msgid "MVerifying the format... Done"
+#~ msgstr "MĐang kiểm tra định dạng... Xong"
+
+#~ msgid "EUnable to write to device %s"
+#~ msgstr "EKhông thể ghi vào thiết bị %s"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s"
+#~ msgstr ""
+#~ "ELỗi chung khi truy cập thiết bị %s.\n"
+#~ "Mã lỗi %s"
+
+#~ msgid "ECould not determine current format type"
+#~ msgstr "EKhông thể xác định loại định dạng hiện thời"
+
+#~ msgid "MMaking filesystem on disk..."
+#~ msgstr "MĐang tạo hệ thống tập tin trên đĩa..."
+
+#~ msgid "EUnable to create filesystem correctly."
+#~ msgstr "EKhông thể tạo hệ thống tập tin đúng."
+
+#~ msgid "MMaking filesystem on disk... Done"
+#~ msgstr "MĐang tạo hệ thống tập tin trên đĩa... Xong"
+
+#~ msgid "EUnable to create filesystem."
+#~ msgstr "EKhông thể tạo hệ thống tập tin."
+
+#~ msgid "MChecking for bad blocks... (this might take a while)"
+#~ msgstr "MĐang kiểm tra tìm khối hỏng... (có lẽ hơi lâu)"
+
+#~ msgid "DOS (fat)"
+#~ msgstr "DOS (fat)"
+
+#~ msgid "Double Density 3.5\" (720KB)"
+#~ msgstr "Mật độ đôi (DD) 3.5\" (720KB)"
+
+#~ msgid "Double Density 5.25\" (360KB)"
+#~ msgstr "Mật độ đôi (DD) 5.25\" (360KB)"
+
+#~ msgid "File system _type:"
+#~ msgstr "_Loại hệ thống tập tin:"
+
+#~ msgid "Floppy _density:"
+#~ msgstr "_Mật độ đĩa mềm:"
+
+#~ msgid "Floppy de_vice:"
+#~ msgstr "_Thiết bị đĩa mềm:"
+
+#~ msgid "Format a Floppy"
+#~ msgstr "Định dạng đĩa mềm"
+
+#~ msgid "High Density 3.5\" (1.44MB)"
+#~ msgstr "Mật độ cao (HD) 3.5\" (1.44MB)"
+
+#~ msgid "High Density 5.25\" (1.2MB)"
+#~ msgstr "Mật độ cao (HD) 5.25\" (1.2MB)"
+
+#~ msgid "Linux Native (ext2)"
+#~ msgstr "Linux Native (ext2)"
+
+#~ msgid "_Format"
+#~ msgstr "Định _dạng"
+
+#~ msgid "_Quick format"
+#~ msgstr "Định dạng _nhanh"
+
+#~ msgid "Unable to open the device %s, formatting cannot continue."
+#~ msgstr "Không thể mở thiết bị %s, không thể tiếp tục định dạng."
+
+#~ msgid ""
+#~ "The device %s is disconnected.\n"
+#~ "Please attach device to continue."
+#~ msgstr ""
+#~ "Thiết bị %s bị ngắt kết nối.\n"
+#~ "Vui lòng gắn thiết bị vào để tiếp tục."
+
+#~ msgid ""
+#~ "You do not have the proper permissions to write to %s, formatting will "
+#~ "not be possible.\n"
+#~ "Contact your system administrator about getting write permissions."
+#~ msgstr ""
+#~ "Bạn không có quyền ghi vào %s, nên không thể định dạng.\n"
+#~ "Liên hệ system administrator để có quyền ghi."
+
+#~ msgid "The device to format"
+#~ msgstr "Thiết bị cần định dạng"
+
+#~ msgid "DEVICE"
+#~ msgstr "THIẾT BỊ"
+
+#~ msgid ""
+#~ "Could not display help for the floppy formatter.\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Không thể hiển thị trợ giúp cho bộ định dạng đĩa mềm.\n"
+#~ "%s"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "Định dạng đĩa mềm khác?"
+
+#~ msgid "Floppy formatted successfully."
+#~ msgstr "Định dạng đĩa mềm thành công."
+
+#~ msgid "Floppy formatting cancelled."
+#~ msgstr "Định dạng đĩa mềm bị hủy."
+
+#~ msgid "Format progress."
+#~ msgstr "Tiến trình định dạng."
+
+#~ msgid "Search for Files"
+#~ msgstr "Tìm tập tin"
+
+#~ msgid "Search your disk for files"
+#~ msgstr "Tìm tập tin trên đĩa"
+
+#~ msgid "File name is"
+#~ msgstr "Tên tập tin là"
+
+#~ msgid "File name is not"
+#~ msgstr "Tên tập tin không phải là"
+
+#~ msgid "Don't search mounted filesystems"
+#~ msgstr "Không tìm trên hệ thống tập tin đã gắn kết"
+
+#~ msgid "Follow symbolic links"
+#~ msgstr "Đi theo các liên kết"
+
+#~ msgid "Process folder contents depth first"
+#~ msgstr "Xử lý thư mục theo độ sâu"
+
+#~ msgid "Owned by user"
+#~ msgstr "Được sở hữu bởi người dùng"
+
+#~ msgid "Owned by group"
+#~ msgstr "Được sở hữu bởi nhóm"
+
+#~ msgid "Invalid user or group"
+#~ msgstr "Nhóm hoặc người dùng không hợp lệ"
+
+#~ msgid "Last time modified"
+#~ msgstr "Lần sửa đổi cuối cùng"
+
+#~ msgid "File is empty"
+#~ msgstr "Tập tin rỗng"
+
+#~ msgid "Matches regular expression"
+#~ msgstr "Dùng biểu thức chính quy"
+
+#~ msgid "Start folder does not exist."
+#~ msgstr "Thư mục bắt đầu không tồn tại."
+
+#~ msgid "today at %-I:%M %p"
+#~ msgstr "hôm nay là %-I:%M:%p"
+
+#~ msgid "yesterday at %-I:%M %p"
+#~ msgstr "hôm qua là %-I:%M:%p"
+
+#~ msgid "%m/%-d/%y, %-I:%M %p"
+#~ msgstr "%-d/%m/%y, %-I:%M %p"
+
+#~ msgid "folder"
+#~ msgstr "thư mục"
+
+#~ msgid "symbolic link"
+#~ msgstr "liên kết"
+
+#~ msgid "No Files Found."
+#~ msgstr "Không tìm thấy."
+
+#~ msgid ""
+#~ "Cannot perform the search.\n"
+#~ "The Bourne shell was not found\n"
+#~ "It is typically installed as /bin/sh or /usr/bin/sh."
+#~ msgstr ""
+#~ "Không thể thực hiện tìm kiếm vì\n"
+#~ "không tìm thấy Bourne Shell,thông \n"
+#~ "thường được cài đặt tại /bin/sh hoặc /usr/bin/sh."
+
+#~ msgid "Searching..."
+#~ msgstr "Đang tìm..."
+
+#~ msgid ""
+#~ "\n"
+#~ "... Too many errors to display ..."
+#~ msgstr ""
+#~ "\n"
+#~ "... Quá nhiều lỗi, không thể hiển thị hết ..."
+
+#~ msgid "No files found"
+#~ msgstr "Không tìm thấy"
+
+#~ msgid "One file found"
+#~ msgstr "Tìm thấy 1 tập tin"
+
+#~ msgid "%d files found"
+#~ msgstr "tìm thấy %d tập tin"
+
+#~ msgid "Cannot perform the search. Please specify a search criteria."
+#~ msgstr ""
+#~ "Không thể thực hiện tìm kiếm. Vui lòng xác định tiêu chuẩn tìm kiếm."
+
+#~ msgid ""
+#~ "A search is already running.  Please wait for the search to complete or "
+#~ "cancel it."
+#~ msgstr ""
+#~ "Một quá trình tìm kiếm khác đang thực hiện. Vui lòng chờ quá trình tìm "
+#~ "kiếm kết thúc hoặc ngừng quá trình tìm kiếm."
+
+#~ msgid "Start folder does not exist"
+#~ msgstr "Thư mục bắt đầu không tồn tại"
+
+#~ msgid ""
+#~ "Cannot show the search command line. Please specify a search criteria."
+#~ msgstr ""
+#~ "Không thể hiển thị dòng lệnh tìm kiếm. Vui lòng xác định tiêu chuẩn tìm "
+#~ "kiếm."
+
+#~ msgid "Search Command Line"
+#~ msgstr "Dòng lệnh tìm kiếm"
+
+#~ msgid ""
+#~ "This is the command line that can be used to execute this search\n"
+#~ "from the console.\n"
+#~ "\n"
+#~ "C_ommand:"
+#~ msgstr ""
+#~ "Đây là dòng lệnh được dùng để thực hiện tìm kiếm từ console.\n"
+#~ "\n"
+#~ "_Lệnh:"
+
+#~ msgid "Command"
+#~ msgstr "Lệnh"
+
+#~ msgid "Command Line Entry"
+#~ msgstr "Mục nhập dòng lệnh"
+
+#~ msgid "Use this command line to execute the search from console"
+#~ msgstr "Dùng dòng lệnh này để thực hiện tìm kiếm từ console"
+
+#~ msgid "No viewer available for this mime type."
+#~ msgstr "Không có trình hiển thị cho loại MIME này."
+
+#~ msgid "Search Rule Value Entry"
+#~ msgstr "Mục nhập giá trị quy tắc tìm"
+
+#~ msgid "Enter a value for search rule"
+#~ msgstr "Nhập giá trị cho quy tắc tìm"
+
+#~ msgid "Toggle On/Off to enable/disable the rule"
+#~ msgstr "Bật/Tắt sử dụng quy tắc"
+
+#~ msgid "Click to Remove the Rule"
+#~ msgstr "Nhấn vào để loại bỏ quy tắc"
+
+#~ msgid "S_tarting in folder:"
+#~ msgstr "_Bắt đầu tìm tại thư mục:"
+
+#~ msgid "Browse"
+#~ msgstr "Duyệt"
+
+#~ msgid "Starting folder entry"
+#~ msgstr "Thư mục bắt đầu"
+
+#~ msgid "Enter the folder name where you want to start the search"
+#~ msgstr "Nhập tên thư mục, nơi bạn muốn bắt đầu tìm"
+
+#~ msgid "Rules:"
+#~ msgstr "Quy luật:"
+
+#~ msgid "A_dd Rule:"
+#~ msgstr "T_hêm quy luật:"
+
+#~ msgid "Search Rules Menu"
+#~ msgstr "Menu quy tắc tìm"
+
+#~ msgid "Select a search rule from the menu"
+#~ msgstr "Chọn một quy tắc tìm từ menu"
+
+#~ msgid "Click to Add a Rule"
+#~ msgstr "Nhấn để thêm quy tắc"
+
+#~ msgid "Click to Start the Search"
+#~ msgstr "Nhấn để bắt đầu tìm"
+
+#~ msgid "Click to Stop the Search"
+#~ msgstr "Nhấn để chấm dứt tìm"
+
+#~ msgid "S_earch Results"
+#~ msgstr "_Kết quả tìm"
+
+#~ msgid "Name"
+#~ msgstr "Tên"
+
+#~ msgid "Type"
+#~ msgstr "Loại"
+
+#~ msgid "Date Modified"
+#~ msgstr "Ngày sửa đổi"
+
+#~ msgid "Find files _named:"
+#~ msgstr "Tìm các tập tin _tên là:"
+
+#~ msgid "File Name Entry"
+#~ msgstr "Nhập tên tập tin"
+
+#~ msgid "Enter the file name you want to search"
+#~ msgstr "Nhập tên tập tin bạn muốn tìm"
+
+#~ msgid "Click to Start the search"
+#~ msgstr "Nhấn để bắt đầu tìm"
+
+#~ msgid "Click to Stop the search"
+#~ msgstr "Nhấn để chấm dứt tìm"
+
+#~ msgid "Simple"
+#~ msgstr "Đơn giản"
+
+#~ msgid "Advanced"
+#~ msgstr "Nâng cao"
+
+#~ msgid "GNOME Search Tool"
+#~ msgstr "Trình tìm kiếm GNOME"
+
+#~ msgid "(C) 1998,2002 the Free Software Foundation"
+#~ msgstr "(C) 1998,2002 the Free Software Foundation"
+
+#~ msgid "Frontend to the unix find/locate commands"
+#~ msgstr "Frontend cho lệnh find/locate"
+
+#~ msgid "File %s already exists. Overwrite?"
+#~ msgstr "Tập tin %s đã tồn tại, ghi đè lên không?"
+
+#~ msgid "Save Results"
+#~ msgstr "Lưu kết quả"
+
+#~ msgid "Show the command used to perform the search"
+#~ msgstr "Hiện dòng lệnh được dùng để thực hiện tìm kiếm"
+
+#~ msgid "Save Results _As..."
+#~ msgstr "Lư_u kết quả là..."
+
+#~ msgid "Save the search results"
+#~ msgstr "Lưu kết quả tìm kiếm"
+
+#~ msgid "Sear_ch"
+#~ msgstr "_Tìm"
+
+#~ msgid "Cannot initialize bonobo."
+#~ msgstr "Không thể khởi động Bonobo."
+
+#~ msgid "Search Tool"
+#~ msgstr "Công cụ tìm kiếm"
+
+#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
+#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#~ msgid ""
+#~ "This  program  is  part of  the  GNOME  project for Linux. Logview comes "
+#~ "with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome "
+#~ "to redistribute it under the conditions of the GNU General Public "
+#~ "Licence. The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+#~ msgstr ""
+#~ "Chương trình này là một phần của dự án GNOME trên Linux. Chương trình này "
+#~ "KHÔNG KÈM THEO BẤT KỲ BẢO ĐẢM NÀO. Đây là phần mềm tự do, và bạn được tự "
+#~ "do phân phối lại theo những điều khoản trong giấy phép GNU GPL. Biểu "
+#~ "tượng chương trình là của Toumas Kousmanen (còn gọi là tigert)."
+
+#~ msgid "GNOME System Log Viewer"
+#~ msgstr "Trình xem log hệ thống"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Copyright (C) 1998"
+
+#~ msgid "Action database"
+#~ msgstr "Cơ sở dữ liệu hành động"
+
+#~ msgid "Action options"
+#~ msgstr "Tùy chọn hành động"
+
+#~ msgid "Add..."
+#~ msgstr "Thêm..."
+
+#~ msgid "Edit..."
+#~ msgstr "Sửa..."
+
+#~ msgid "Remove"
+#~ msgstr "Loại bỏ"
+
+#~ msgid "Cannot open action data base <%s>! Open failed."
+#~ msgstr "Không thể mở cơ sở dữ liệu hành động <%s>!"
+
+#~ msgid "Error parsing actions data base"
+#~ msgstr "Lỗi phân tích cơ sở dữ liệu hành động"
+
+#~ msgid "Can't write to actions database!"
+#~ msgstr "Không thể ghi vào cơ sở dữ liệu hành động!"
+
+#~ msgid "log name regexp"
+#~ msgstr "regexp tên log"
+
+#~ msgid "process regexp"
+#~ msgstr "regexp tiến trình"
+
+#~ msgid "message regexp"
+#~ msgstr "regexp thông điệp"
+
+#~ msgid "action to execute when regexps are TRUE"
+#~ msgstr "hành động cần thực hiện khi khớp regexp"
+
+#~ msgid "description:"
+#~ msgstr "mô tả:"
+
+#~ msgid "Description of this entry."
+#~ msgstr "Mô tả của mục này"
+
+#~ msgid ""
+#~ "tag: [%s]\n"
+#~ "log_name: [%s]\n"
+#~ "process: [%s]\n"
+#~ "message: [%s]\n"
+#~ "description: [%s]\n"
+#~ "action: [%s]\n"
+#~ msgstr ""
+#~ "đuôi: [%s]\n"
+#~ "tên log: [%s]\n"
+#~ "tiến trình: [%s]\n"
+#~ "thông điệp: [%s]\n"
+#~ "mô tả: [%s]\n"
+#~ "hành động: [%s]\n"
+
+#~ msgid "fixed 12"
+#~ msgstr "fixed 12"
+
+#~ msgid "fixed Bold 12"
+#~ msgstr "fixed Bold 12"
+
+#~ msgid "fixed 10"
+#~ msgstr "fixed 10"
+
+#~ msgid "fixed Bold 8"
+#~ msgstr "fixed Bold 8"
+
+#~ msgid "Helvetica 14"
+#~ msgstr "Helvetica 14"
+
+#~ msgid "Helvetica Bold 14"
+#~ msgstr "Helvetica Bold 14"
+
+#~ msgid "Helvetica 12"
+#~ msgstr "Helvetica 12"
+
+#~ msgid "Helvetica Bold 12"
+#~ msgstr "Helvetica Bold 12"
+
+#~ msgid "Helvetica 10"
+#~ msgstr "Helvetica 10"
+
+#~ msgid "Helvetica Bold 10"
+#~ msgstr "Helvetica Bold 10"
+
+#~ msgid "Cannot open regexp data base <%s>! Open failed."
+#~ msgstr "Không thể mở cơ sở dữ liệu regexp <%s>!"
+
+#~ msgid "Cannot open description data base <%s>! Open failed."
+#~ msgstr "Không thể mở cơ sở dữ liệu mô tả <%s>!"
+
+#~ msgid "View the system log file"
+#~ msgstr "Xem tập tin log hệ thống"
+
+#~ msgid "Log stats"
+#~ msgstr "Trạng thái log"
+
+#~ msgid "Log:"
+#~ msgstr "Log:"
+
+#~ msgid "Size:"
+#~ msgstr "Kích thước:"
+
+#~ msgid "Modified:"
+#~ msgstr "Đã thay đổi:"
+
+#~ msgid "Last date:"
+#~ msgstr "Ngày cuối cùng:"
+
+#~ msgid "Num. lines:"
+#~ msgstr "Số dòng:"
+
+#~ msgid "%ld bytes"
+#~ msgstr "%ld byte"
+
+#~ msgid "January"
+#~ msgstr "Tháng Giêng"
+
+#~ msgid "February"
+#~ msgstr "Tháng Hai"
+
+#~ msgid "March"
+#~ msgstr "Tháng Ba"
+
+#~ msgid "April"
+#~ msgstr "Tháng Tư"
+
+#~ msgid "May"
+#~ msgstr "Tháng Năm"
+
+#~ msgid "June"
+#~ msgstr "Tháng Sáu"
+
+#~ msgid "July"
+#~ msgstr "Tháng Bảy"
+
+#~ msgid "August"
+#~ msgstr "Tháng Tám"
+
+#~ msgid "September"
+#~ msgstr "Tháng Chín"
+
+#~ msgid "October"
+#~ msgstr "Tháng Mười"
+
+#~ msgid "November"
+#~ msgstr "Tháng Mười Một"
+
+#~ msgid "December"
+#~ msgstr "Tháng Mười Hai"
+
+#~ msgid "%x"
+#~ msgstr "%x"
+
+#~ msgid "%X"
+#~ msgstr "%X"
+
+#~ msgid "%B %e"
+#~ msgstr "%e %B"
+
+#~ msgid "Not enough memory!\n"
+#~ msgstr "Không đủ bộ nhớ!\n"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "Hết bộ nhớ!\n"
+
+#~ msgid "%s is not a regular file."
+#~ msgstr "%s không phải là tập tin bình thường."
+
+#~ msgid ""
+#~ "%s is not user readable. Either run the program as root or ask the "
+#~ "sysadmin to change the permissions on the file."
+#~ msgstr ""
+#~ "%s không phải là tập tin người dùng có thể xem. Hoặc là chạy chương trình "
+#~ "với tư cách root, hoặc yêu cầu sysadmin thay đổi quyền truy cập của tập "
+#~ "tin."
+
+#~ msgid "%s could not be opened."
+#~ msgstr "Không thể mở tập tin %s."
+
+#~ msgid "%s not a log file."
+#~ msgstr "%s không phải là log file."
+
+#~ msgid "ReadLogStats: out of memory"
+#~ msgstr "ReadLogStats: hết bộ nhớ"
+
+#~ msgid "S_witch Log"
+#~ msgstr "_Chuyển log"
+
+#~ msgid "Switch log"
+#~ msgstr "Chuyển log"
+
+#~ msgid "_Monitor..."
+#~ msgstr "Theo _dõi..."
+
+#~ msgid "Monitor Log"
+#~ msgstr "Theo dõi log"
+
+#~ msgid "_Calendar"
+#~ msgstr "_Lịch"
+
+#~ msgid "Show Calendar Log"
+#~ msgstr "Hiện log lịch"
+
+#~ msgid "Show Entry Detail"
+#~ msgstr "Hiện chi tiết mục nhập"
+
+#~ msgid "About..."
+#~ msgstr "Giới thiệu..."
+
+#~ msgid "Info about logview"
+#~ msgstr "Thông tin về logview"
+
+#~ msgid "_Log"
+#~ msgstr "_Log"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "Trình xem log hệ thống"
+
+#~ msgid "Last Modified: "
+#~ msgstr "Ngày sửa đổi: "
+
+#~ msgid "Too many open logs. Close one and try again"
+#~ msgstr "Mở quá nhiều tập tin log. Hãy đóng bớt một cái và thử lại."
+
+#~ msgid "File already opened"
+#~ msgstr "Tập tin đã mở rồi"
+
+#~ msgid "Open new logfile"
+#~ msgstr "Mở log mới"
+
+#~ msgid "Cannot load required fonts, cannot continue"
+#~ msgstr "Không thể nạp font yêu cầu, không thể tiếp tục"
+
+#~ msgid "Error: [%s]\n"
+#~ msgstr "Lỗi: [%s]\n"
+
+#~ msgid "Monitor options"
+#~ msgstr "Tùy chọn theo dõi"
+
+#~ msgid "Choose logs to monitor"
+#~ msgstr "Chọn log cần theo dõi"
+
+#~ msgid "Add >>"
+#~ msgstr "Thêm >>"
+
+#~ msgid "Remove <<"
+#~ msgstr "Loại bỏ <<"
+
+#~ msgid "Hide app"
+#~ msgstr "Ẩn ứng dụng"
+
+#~ msgid "Exec actions"
+#~ msgstr "Tùy chọn thực thi"
+
+#~ msgid "Actions..."
+#~ msgstr "Hành động..."
+
+#~ msgid "Too many logs to monitor. Remove one and try again"
+#~ msgstr "Theo dõi quá nhiều log. Hãy loại bỏ bớt một cái và thử lại"
+
+#~ msgid "tmp_list is NULL\n"
+#~ msgstr "tmp_list là NULL\n"
+
+#~ msgid "Monitoring logs..."
+#~ msgstr "Đang theo dõi log..."
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "Độ rộng cột tên máy chủ (0 là ẩn cột): "
+
+#~ msgid "Columns"
+#~ msgstr "Cột"
+
+#~ msgid "Zoom view"
+#~ msgstr "Khung phóng to/thu nhỏ"
+
+#~ msgid "Log line detail for %s"
+#~ msgstr "Dòng log chi tiết cho %s"
+
+#~ msgid "Log line detail for <No log loaded>"
+#~ msgstr "Dòng log chi tiết cho <chưa nạp log>"
+
+#~ msgid "Message:"
+#~ msgstr "Thông điệp:"
+
+#~ msgid "%B %e %X"
+#~ msgstr "%e %B %X"
+
+#~ msgid "Archive Generator"
+#~ msgstr "Trình tạo kho lưu"
+
+#~ msgid "Create compressed archives containing many files"
+#~ msgstr "Tạo kho lưu nén chứa nhiều tập tin"
+
+#~ msgid ""
+#~ "Number of files: %d\n"
+#~ "Number of folders: %d"
+#~ msgstr ""
+#~ "Số tập tin: %d\n"
+#~ "Số thư mục: %d"
+
+#~ msgid ""
+#~ "No files or folders, drop files or folders\n"
+#~ "above to add them to the archive"
+#~ msgstr ""
+#~ "Không có tập tin hay thự mục, thả tập tin hoặc thư mục\n"
+#~ "ở trên xuống để thêm vào kho lưu"
+
+#~ msgid "%s removed"
+#~ msgstr "đã loại bỏ %s"
+
+#~ msgid "Failed to create %s"
+#~ msgstr "Lỗi tạo %s"
+
+#~ msgid "Archive.tar.gz"
+#~ msgstr "Archive.tar.gz"
+
+#~ msgid "GNOME Archive Generator"
+#~ msgstr "Trình tạo kho lưu GNOME"
+
+#~ msgid "Drag files in to make archives"
+#~ msgstr "Kéo tập tin vào để tạo kho lưu"
+
+#~ msgid "All files selected"
+#~ msgstr "Đã chọn mọi tập tin"
+
+#~ msgid "All files removed"
+#~ msgstr "Đã loại bỏ mọi tập tin"
+
+#~ msgid "%s created"
+#~ msgstr "đã tạo %s"
+
+#~ msgid "No items to archive"
+#~ msgstr "Kho lưu rỗng"
+
+#~ msgid "%s added"
+#~ msgstr "đã thêm %s"
+
+#~ msgid "File does not exists"
+#~ msgstr "Tập tin không tồn tại"
+
+#~ msgid "Add file or folder"
+#~ msgstr "Thêm tập tin hoặc thư mục"
+
+#~ msgid "_Add file or folder..."
+#~ msgstr "_Thêm tập tin hoặc thư mục..."
+
+#~ msgid "Add a file or folder to archive"
+#~ msgstr "Thêm tập tin hoặc thư mục vào kho lưu"
+
+#~ msgid "Create a new archive from the items"
+#~ msgstr "Tạo một kho lưu mới từ các mục được chọn"
+
+#~ msgid "_Remove"
+#~ msgstr "_Loại bỏ"
+
+#~ msgid "Remove the selected item"
+#~ msgstr "Loại bỏ các mục được chọn"
+
+#~ msgid "R_emove All"
+#~ msgstr "_Loại bỏ"
+
+#~ msgid "Remove all items"
+#~ msgstr "Loại bỏ mọi thứ"
+
+#~ msgid "Drop files here to add them to the archive."
+#~ msgstr "Thả các tập tin ở đây để thêm vào kho lưu."
+
+#~ msgid "_Create Archive"
+#~ msgstr "_Tạo kho lưu..."
+
+#~ msgid ""
+#~ "Drag this button to the destination where you want the archive to be "
+#~ "created or press it to pop up a file selection dialog."
+#~ msgstr ""
+#~ "Kéo nút này tới đích đến, nơi bạn muốn kho lưu được tạo, hoặc nhấn vào nó "
+#~ "để bật hộp thoại chọn tập tin."
+
+#~ msgid "Cannot find proper icons anywhere!"
+#~ msgstr "Không thể tìm thấy biểu tượng thích hợp!"
+
+#~ msgid ""
+#~ "Cannot find the archive (tar) program!\n"
+#~ "This is the program used for creating archives."
+#~ msgstr ""
+#~ "Không thể tìm thấy chương trình tar!\n"
+#~ "Chương trình này được dùng để tạo kho lưu."
 
 #~ msgid "_Floppy Device:"
 #~ msgstr "_Thiết bị điều khiển đĩa mềm:"
@@ -2181,9 +2890,6 @@ msgstr ""
 
 #~ msgid "Shift"
 #~ msgstr "Shift"
-
-#~ msgid "Store"
-#~ msgstr "Lưu"
 
 #~ msgid "Recall"
 #~ msgstr "Gọi lại"
@@ -2216,20 +2922,11 @@ msgstr ""
 #~ msgid "_Browse Characters..."
 #~ msgstr "_Duyệt ký tự..."
 
-#~ msgid "_Text Toolbar"
-#~ msgstr "Toolbar _Text"
-
 #~ msgid "View or hide the text toolbar"
 #~ msgstr "Hiện hoặc ẩn toolbar text"
 
-#~ msgid "_Statusbar"
-#~ msgstr "Thanh T_rạng thái"
-
 #~ msgid "View or hide the statusbar"
 #~ msgstr "Hiện hoặc ẩn thanh trạng thái"
-
-#~ msgid "_Insert at end"
-#~ msgstr "_Chèn vào cuối"
 
 #~ msgid "Insert every selected character at the end of the text entry"
 #~ msgstr "Chèn mỗi ký tự được chọn vào cuối mục nhập"
@@ -2240,9 +2937,6 @@ msgstr ""
 #~ msgid "Set the buttons to be focusable or not"
 #~ msgstr "Cho phép nút được nhận focus hay không"
 
-#~ msgid "Spell"
-#~ msgstr "Kiểm tra chính tả"
-
 #~ msgid "_Look Up"
 #~ msgstr "_Tìm"
 
@@ -2252,20 +2946,11 @@ msgstr ""
 #~ msgid "Set _Server"
 #~ msgstr "Chọn server"
 
-#~ msgid "Set _Port"
-#~ msgstr "Chọn cổng"
-
-#~ msgid "Set the port number"
-#~ msgstr "Chọn số hiệu cổng"
-
 #~ msgid "_Spell"
 #~ msgstr "_Kiểm tra chính tả"
 
 #~ msgid "Spell checker"
 #~ msgstr "Bộ kiểm tra chính tả"
-
-#~ msgid "Preferences..."
-#~ msgstr "Thông số..."
 
 #~ msgid "Don't search subdirectories"
 #~ msgstr "Không tìm thư mục con"
@@ -2276,14 +2961,8 @@ msgstr ""
 #~ msgid "The Gnome Search Tool"
 #~ msgstr "Công cụ tìm kiếm"
 
-#~ msgid "Logview"
-#~ msgstr "Logview"
-
 #~ msgid "Open log..."
 #~ msgstr "Mở log..."
-
-#~ msgid "Open log"
-#~ msgstr "Mở log"
 
 #~ msgid "Export log..."
 #~ msgstr "Xuất khẩu log..."
@@ -2300,17 +2979,11 @@ msgstr ""
 #~ msgid "Zoom"
 #~ msgstr "Phóng to"
 
-#~ msgid "Show line info"
-#~ msgstr "Hiên số dòng"
-
 #~ msgid "Select...               "
 #~ msgstr "Chọn..."
 
 #~ msgid "Select log events"
 #~ msgstr "Chọn sự kiện log"
-
-#~ msgid "Filter..                "
-#~ msgstr "Lọc..."
 
 #~ msgid "Filter log events"
 #~ msgstr "Lọc sự kiện log"

@@ -20,7 +20,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.2.1\n"
-"POT-Creation-Date: 2001-11-30 16:14-0600\n"
+"POT-Creation-Date: 2002-09-06 18:10-0500\n"
 "PO-Revision-Date: 2001-02-14 00:32:02+0900\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -28,899 +28,15 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gcalc/gcalc.c:41
-msgid "The Gnome Calculator"
-msgstr "Η Αριθμομηχανή του Gnome"
-
-#: gcalc/gcalc.c:44
-msgid "Simple double precision calculator similiar to xcalc"
-msgstr "Απλή αριθμομηχανή διπλής ακριβείας παρόμοια με το xcalc"
-
-#: gcalc/gcalc.c:124
-msgid "Run in analog (slide rule) mode"
-msgstr ""
-
-#: gcalc/gcalc.c:152
-msgid "Gnome Calculator"
-msgstr "Αριθμομηχανή του Gnome"
-
-#: gcalc/gnome-calc.c:517 gcalc/gnome-calc.c:1185
-msgid "DEG"
-msgstr ""
-
-#: gcalc/gnome-calc.c:519
-msgid "RAD"
-msgstr ""
-
-#: gcalc/gnome-calc.c:521
-msgid "GRAD"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1175
-msgid "1/x"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1176
-msgid "x^2"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1177
-msgid "SQRT"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1178
-msgid "CE/C"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1179
-msgid "AC"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1181 gcalc/gnome-calc.c:1379
-msgid "INV"
-msgstr ""
-
-#. inverse button
-#: gcalc/gnome-calc.c:1182
-#, fuzzy
-msgid "sin"
-msgstr "Ελαχ."
-
-#: gcalc/gnome-calc.c:1183
-msgid "cos"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1184
-msgid "tan"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1187
-msgid "e"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1188
-msgid "EE"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1189
-msgid "log"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1190
-msgid "ln"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1191
-msgid "x^y"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1193
-msgid "PI"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1194
-msgid "x!"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1195
-msgid "("
-msgstr ""
-
-#: gcalc/gnome-calc.c:1196
-msgid ")"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1197
-msgid "/"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1199
-msgid "STO"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1200
-msgid "7"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1201
-msgid "8"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1202
-msgid "9"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1203
-msgid "*"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1205
-msgid "RCL"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1206
-msgid "4"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1207
-msgid "5"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1208
-msgid "6"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1209
-msgid "-"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1211
-msgid "SUM"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1212 gtt/ctree.c:959
-msgid "1"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1213 gtt/ctree.c:958
-msgid "2"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1214 gtt/ctree.c:957
-msgid "3"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1215
-msgid "+"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1217
-msgid "EXC"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1218
-msgid "0"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1219
-msgid "."
-msgstr ""
-
-#: gcalc/gnome-calc.c:1220
-msgid "+/-"
-msgstr ""
-
-#: gcalc/gnome-calc.c:1221
-msgid "="
-msgstr ""
-
-#. Translators:  This allows you to create translated font pngs,
-#. * though probably won't be necessary
-#: gcalc/gnome-calc.c:1246
-msgid "calculator-font.png"
-msgstr ""
-
-#: gcharmap/src/asciiselect.c:96
-#, fuzzy
-msgid "Select Character"
-msgstr "Επιλογή Χαρακτήρα ASCII"
-
-#: gcharmap/src/asciiselect.c:97 gcharmap/src/menus.c:99
-msgid "Insert"
-msgstr "Εισαγωγή"
-
-#: gcharmap/src/asciiselect.c:105
-#, fuzzy
-msgid "Character code:"
-msgstr "Χαρακτήρας:"
-
-#: gcharmap/src/asciiselect.c:115
-msgid "Character:"
-msgstr "Χαρακτήρας:"
-
-#: gcharmap/src/asciiselect.c:123
-#, fuzzy
-msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: gcharmap/src/callbacks.c:43 gcharmap/src/interface.c:141
-msgid "Gnome Character Map"
-msgstr "Πίνακας Χαρακτήρων του Gnome"
-
-#: gcharmap/src/callbacks.c:47
-msgid ""
-"The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
-"contain bad English."
-msgstr ""
-"Η αντίστοιχη εφαρμογή του Χάρτη Χαρακτήρων των Microsoft Windows για το "
-"Gnome. Προειδοποίηση: μπορεί να περιέχει ακατάλληλα αγγλικά."
-
-#: gcharmap/src/callbacks.c:63 gcharmap/src/callbacks.c:101
-#: gcharmap/src/interface.c:65
-#, fuzzy
-msgid "del"
-msgstr "Μοντέλο"
-
-#: gcharmap/src/callbacks.c:107
-#, fuzzy, c-format
-msgid " %s: Character code %d"
-msgstr "%s: Κωδικός ASCII %d"
-
-#: gcharmap/src/callbacks.c:134
-msgid "Text copied to clipboard..."
-msgstr "Αντιγραμμένο κείμενο στο τεμάχιο..."
-
-#: gcharmap/src/callbacks.c:146
-msgid "Text cut to clipboard..."
-msgstr "Κομμένο κείμενο στο τεμάχιο..."
-
-#: gcharmap/src/callbacks.c:199
-msgid "Text pasted from clipboard..."
-msgstr "Επικολλημένο κείμενο στο τεμάχιο..."
-
-#: gcharmap/src/interface.c:170
-msgid "Action Toolbar"
-msgstr "Εργαλειοθήκη Ενεργειών"
-
-#: gcharmap/src/interface.c:189
-msgid "Text to copy:"
-msgstr "Κείμενο προς αντιγραφή:"
-
-#: gcharmap/src/interface.c:215
-#, fuzzy
-msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: gcharmap/src/interface.c:238 gcharmap/src/menus.c:114 logview/logview.c:100
-#: mini-utils/gcolorsel/menus.c:921 stripchart/chart-app.c:258
-msgid "Exit"
-msgstr "Έξοδος"
-
-#: gcharmap/src/interface.c:239 gcharmap/src/menus.c:104
-#: gdictsrc/gdict-app.c:519 gtt/toolbar.c:181
-msgid "Copy"
-msgstr "Αντιγραφή"
-
-#: gcharmap/src/interface.c:243 gcharmap/src/menus.c:111
-#: mini-utils/gcolorsel/menus.c:919 mini-utils/gshutdown/gshutdown.c:321
-#: stripchart/chart-app.c:232 stripchart/params.c:1013
-#: stripchart/stripchart-applet.c:89
-msgid "About"
-msgstr "Περί"
-
-#: gcharmap/src/interface.c:245 gcharmap/src/menus.c:109
-#: gdictsrc/gdict-applet.c:284 stripchart/chart-app.c:227
-#: stripchart/params.c:1048 stripchart/params.c:1051
-#: stripchart/stripchart-applet.c:86
-msgid "Help"
-msgstr "Βοήθεια"
-
-#: gcharmap/src/interface.c:264
-#, fuzzy
-msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: gcharmap/src/menus.c:51
-msgid "Insert Character..."
-msgstr "Εισαγωγή Χαρακτήρα..."
-
-#: gcharmap/src/menus.c:52
-#, fuzzy
-msgid "Insert character(s) by choosing character codes."
-msgstr "Εισάγετε χαρακτήρα(ες) με επιλογή του κωδικού ASCII."
-
-#: gcharmap/src/menus.c:59
-msgid "_Action Toolbar"
-msgstr "_Εργαλειοθήκη Ενεργειών"
-
-#: gcharmap/src/menus.c:59
-msgid "View or hide the action toolbar"
-msgstr "Εμφάνιση ή απόκρυψη εργαλειοθήκης ενεργειών"
-
-#: gcharmap/src/menus.c:61
-msgid "_Text Toolbar"
-msgstr "_Εργαλειοθήκη με κείμενο"
-
-#: gcharmap/src/menus.c:61
-msgid "View or hide the text toolbar"
-msgstr "Εμφάνιση ή απόκρυψη εργαλειοθήκη κειμένου"
-
-#: gcharmap/src/menus.c:63
-msgid "_Statusbar"
-msgstr "_Μπάρα κατάστασης"
-
-#: gcharmap/src/menus.c:63
-msgid "View or hide the statusbar"
-msgstr "Εμφάνιση ή απόκρυψη μπάρας κατάστασης"
-
-#: gcharmap/src/menus.c:70
-msgid "Character Table's Font..."
-msgstr "Πίνακας Χαρακτήρων της Γραμματοσειράς..."
-
-#: gcharmap/src/menus.c:70
-msgid "Set the character table's font."
-msgstr "Καθορισμός της γραμματοσειράς του πίνακα χαρακτήρων."
-
-#: gcharmap/src/menus.c:73
-msgid "_Insert at end"
-msgstr "_Εισαγωγή στο τέλος"
-
-#: gcharmap/src/menus.c:73
-msgid "Insert every selected character at the end of the text entry"
-msgstr "Εισαγωγή κάθε επιλεγμένου χαρακτήρα στο τέλος της εισόδου κειμένου"
-
-#: gcharmap/src/menus.c:75
-msgid "_Focusable Buttons"
-msgstr "_Εστιαζόμενα Κουμπιά"
-
-#: gcharmap/src/menus.c:75
-msgid "Set the buttons to be focusable or not"
-msgstr "Καθορισμός αν τα κουμπιά είναι εστιαζόμενα ή όχι"
-
-#: gcharmap/src/menus.c:99
-#, fuzzy
-msgid "Insert character(s) by choosing character codes"
-msgstr "Εισαγωγή χαρακτήρα(ων) με επιλογή κωδικών ASCII"
-
-#: gcharmap/src/menus.c:102 gdictsrc/gdict-app.c:516 gtt/toolbar.c:177
-msgid "Cut"
-msgstr "Κοπή"
-
-#: gcharmap/src/menus.c:102
-msgid "Cut the selection"
-msgstr "Αποκοπή επιλεγμένου"
-
-#: gcharmap/src/menus.c:104
-msgid "Copy the selection"
-msgstr "Αντιγραφή του επιλεγμένου"
-
-#: gcharmap/src/menus.c:106 gdictsrc/gdict-app.c:522 gtt/toolbar.c:185
-msgid "Paste"
-msgstr "Επικόλληση"
-
-#: gcharmap/src/menus.c:106
-msgid "Paste the clipboard"
-msgstr "Επικόλληση από το τεμάχιο"
-
-#: gcharmap/src/menus.c:109
-msgid "Show Gnome Character Map's manual"
-msgstr "Εμφάνιση της τεκμηρίωσης του Πίνακα Χαρακτήρων του Gnome"
-
-#: gcharmap/src/menus.c:111 mini-utils/gcolorsel/menus.c:919
-msgid "About this application"
-msgstr "Σχετικά με αυτήν την εφαρμογή"
-
-#: gcharmap/src/menus.c:114 mini-utils/gcolorsel/menus.c:921
-msgid "Exit the program"
-msgstr "Έξοδος από το πρόγραμμα"
-
-#: gdictsrc/main.c:93
-msgid ""
-"Couldn't start the dictionary; most likely, http://www.dict.org could not be "
-"contacted."
-msgstr ""
-
-#. Could not look up search strategies, so just display a
-#. * label; FIXME: Memory leak
-#.
-#: gdictsrc/dict.c:637 gdictsrc/gdict-pref-dialog.c:502
-#: gdictsrc/gdict-pref-dialog.c:546 gdictsrc/gdict-speller.c:393
-msgid "Cannot connect to server"
-msgstr "Αδύνατη η σύνδεση στον εξυπηρετητή"
-
-#: gdictsrc/gdict-about.c:40
-msgid ""
-"Client for MIT dictionary server.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-msgstr ""
-"Πελάτης για τον εξυπηρετητή λεξικού του MIT.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-
-#: gdictsrc/gdict-app.c:117
-msgid "Spell-checking..."
-msgstr "Έλεγχος ορθογραφίας..."
-
-#: gdictsrc/gdict-app.c:125
-msgid "Spell check done"
-msgstr "Ο έλεγχος ορθογραφίας έγινε"
-
-#: gdictsrc/gdict-app.c:133 gdictsrc/gdict-app.c:266
-msgid "No matches found"
-msgstr "δε βρέθηκαν ταιριάσματα"
-
-#: gdictsrc/gdict-app.c:250
-msgid "Looking up word..."
-msgstr "Ανατρέξιμο λέξης..."
-
-#: gdictsrc/gdict-app.c:258
-msgid "Lookup done"
-msgstr "Η εύρεση του λήμματος ολοκληρώθηκε"
-
-#: gdictsrc/gdict-app.c:278
-msgid "String not found"
-msgstr "Το αλφαριθμητικό δε βρέθηκε"
-
-#: gdictsrc/gdict-app.c:381
-msgid "Find:"
-msgstr "Αναζήτηση:"
-
-#: gdictsrc/gdict-app.c:413
-msgid ""
-"Unable to perform requested operation, either because the server\n"
-"you are using is down or because you are not connected to the\n"
-"Internet. If you are not already connected to the Internet, please\n"
-"do so and try again."
-msgstr ""
-"Αδύνατη η εκτέλεση της ζητούμενης λειτουργίας, είτε επειδή ο εξυπηρετητής\n"
-"είναι ανενεργός είτε δεν είστε συνδεδεμένος στο Internet. Αν δεν είστε\n"
-" συνδεδεμένος στο Internet, παρακαλώ συνδεθείτε και δοκιμάστε ξανά."
-
-#: gdictsrc/gdict-app.c:452 gdictsrc/gdict-app.c:509
-#: gdictsrc/gdict-applet.c:313
-#, fuzzy
-msgid "Look up"
-msgstr "Εύρεση"
-
-#: gdictsrc/gdict-app.c:453 gdictsrc/gdict-app.c:510
-#, fuzzy
-msgid "Look up word in dictionary"
-msgstr "Ανατρέξιμο λέξης στο λεξικό"
-
-#: gdictsrc/gdict-app.c:455 gdictsrc/gdict-app.c:512
-msgid "Spell"
-msgstr "Έλεγχος ορθογραφίας"
-
-#: gdictsrc/gdict-app.c:456 gdictsrc/gdict-app.c:513
-msgid "Check word spelling"
-msgstr "Έλεγχος ορθογραφίας λέξης"
-
-#: gdictsrc/gdict-app.c:517
-msgid "Cut to Clipboard"
-msgstr "Κόψιμο στο Τεμάχιο"
-
-#: gdictsrc/gdict-app.c:520
-msgid "Copy to Clipboard"
-msgstr "Αντιγραφή στο Τεμάχιο"
-
-#: gdictsrc/gdict-app.c:523
-msgid "Paste Clipboard Contents"
-msgstr "Επικόλληση των Περιεχομένων του Τεμαχίου"
-
-#: gdictsrc/gdict-app.c:526
-msgid "Settings"
-msgstr "Ρυθμίσεις"
-
-#: gdictsrc/gdict-app.c:527
-msgid "Server to use, default search strategy, fonts"
-msgstr ""
-"Εξυπηρετητής προς χρήση, εξ' ορισμού στρατηγική αναζήτησης, γραμματοσειρές"
-
-#: gdictsrc/gdict-app.c:588
-msgid "Word definition"
-msgstr "Ορισμός λέξης"
-
-#: gdictsrc/gdict-applet.c:280 logview/logview.c:136
-msgid "About..."
-msgstr "Σχετικά με..."
-
-#: gdictsrc/gdict-applet.c:289 logview/logview.c:116
-msgid "Preferences..."
-msgstr "Προτιμήσεις..."
-
-#: gdictsrc/gdict-applet.c:293
-msgid "Show/Hide Definition Window..."
-msgstr "Εμφάνιση/Απόκρυψη Παραθύρου Ορισμού..."
-
-#: gdictsrc/gdict-applet.c:297
-msgid "Spell Check..."
-msgstr "Έλεγχος Ορθογραφίας..."
-
-#: gdictsrc/gdict-applet.c:309
-msgid "Cannot create applet!\n"
-msgstr "Αδύνατο το άνοιγμα εφαρμογιδίου!\n"
-
-#: gdictsrc/gdict-defbox.c:524 gdictsrc/gdict-speller.c:417
-#, fuzzy, c-format
-msgid "Error invoking query: %s"
-msgstr "EΣφάλμα κλεισίματος συσκευής %s"
-
-#: gdictsrc/gdict-pref-dialog.c:38
-msgid "Headword:"
-msgstr "Λήμμα:"
-
-#: gdictsrc/gdict-pref-dialog.c:39
-msgid "Sub-number:"
-msgstr "Υπό-αριθμός:"
-
-#: gdictsrc/gdict-pref-dialog.c:40
-msgid "Pronunciation:"
-msgstr "Προφορά:"
-
-#: gdictsrc/gdict-pref-dialog.c:41
-msgid "Etymology:"
-msgstr "Ετυμολογία:"
-
-#: gdictsrc/gdict-pref-dialog.c:42
-msgid "Part of speech:"
-msgstr "Μέρος του λόγου:"
-
-#: gdictsrc/gdict-pref-dialog.c:43
-msgid "Example:"
-msgstr "Παράδειγμα:"
-
-#: gdictsrc/gdict-pref-dialog.c:44
-msgid "Main body:"
-msgstr "Κυρίως μέρος:"
-
-#: gdictsrc/gdict-pref-dialog.c:45
-msgid "Cross-reference:"
-msgstr "Αντιπαραπομπή:"
-
-#. Fixme these should be stock buttons
-#: gdictsrc/gdict-pref-dialog.c:129 mini-utils/gshutdown/gshutdown.c:316
-#: stripchart/prefs.c:195
-msgid "Preferences"
-msgstr "Προτιμίσεις"
-
-#: gdictsrc/gdict-pref-dialog.c:147
-msgid "Smart lookup"
-msgstr "Έξυπνο ανατρέξιμο"
-
-#: gdictsrc/gdict-pref-dialog.c:156
-msgid "Server:"
-msgstr "Εξυπηρετητής:"
-
-#: gdictsrc/gdict-pref-dialog.c:161
-msgid "Port:"
-msgstr "Θύρα:"
-
-#: gdictsrc/gdict-pref-dialog.c:171
-msgid "Database:"
-msgstr "Βάση:"
-
-#: gdictsrc/gdict-pref-dialog.c:178
-msgid "Default strategy:"
-msgstr "Εξ' ορισμού στρατηγική:"
-
-#: gdictsrc/gdict-pref-dialog.c:185
-msgid "Server"
-msgstr "Εξυπηρετητής"
-
-#: gdictsrc/gdict-pref-dialog.c:235
-msgid "Fonts"
-msgstr "Γραμματοσειρές"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Display handle bar"
-msgstr "Απεικόνιση μπάρας χειρισμού"
-
-#: gdictsrc/gdict-pref-dialog.c:256
-msgid ""
-"You have to restart GDict for these\n"
-"settings to become active."
-msgstr ""
-"Πρέπει να επανεκκινήσετε το GDict\n"
-"για να ενεργοποιηθούν οι ρυθμίσεις."
-
-#: gdictsrc/gdict-pref-dialog.c:263
-msgid "Applet"
-msgstr "Εφαρμογίδιο"
-
-#: gdictsrc/gdict-pref-dialog.c:494
-msgid "Search all databases"
-msgstr ""
-
-#: gdictsrc/gdict-pref-dialog.c:585
-msgid "The server you specified could not be found."
-msgstr "Ο εξυπηρετητής που ορίσατε δεν βρέθηκε."
-
-#: gdictsrc/gdict-speller.c:118
-msgid "Word:"
-msgstr ""
-
-#: gdictsrc/gdict-speller.c:127
-#, fuzzy
-msgid "Search Strategy:"
-msgstr "Εξ' ορισμού στρατηγική:"
-
-#: gdictsrc/gdict-speller.c:150
-msgid "Find Words..."
-msgstr ""
-
-#: gdictsrc/gdict-speller.c:151
-#, fuzzy
-msgid "Look up Word..."
-msgstr "Ανατρέξιμο λέξης..."
-
-#: gdictsrc/gdict-speller.c:163
-#, fuzzy
-msgid "Spell checker"
-msgstr "Ο έλεγχος ορθογραφίας έγινε"
-
-#: gdiskfree/gdiskfree_app.c:53 gdiskfree/gdiskfree_menus.c:108
-msgid "GDiskFree"
-msgstr "GDiskFree"
-
-#: gdiskfree/gdiskfree_app.c:73
-#, c-format
-msgid "Unable to parse the geometry string '%s'"
-msgstr "Ανεπιτυχής αποκωδικοποίηση του αλφαριθμητικου γεωμετρίας '%s'"
-
-#: gdiskfree/gdiskfree.c:58
-msgid "Specify the geometry of the window."
-msgstr "Καθορισμός γεωμετρίας του παραθύρου."
-
-#: gdiskfree/gdiskfree.c:59 gtt/main.c:439 mini-utils/gless/gless.c:130
-msgid "GEOMETRY"
-msgstr "ΓΕΩΜΕΤΡΙΑ"
-
-#: gdiskfree/gdiskfree_menus.c:111
-msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
-msgstr ""
-"Το GDiskFree είναι η υλοποίηση του βοηθητικού προγράμματος 'df' στο GNOME."
-
-#: gdiskfree/gdiskfree_options.c:222
-msgid "GDiskFree Properties"
-msgstr "Ιδιότητες GDiskFree"
-
-#: gdiskfree/gdiskfree_options.c:227
-msgid "Invoke sync before getting usage info"
-msgstr "Συγχρονισμός δίσκων πριν την ανάκτηση πληροφοριών χρήσης"
-
-#: gdiskfree/gdiskfree_options.c:239
-msgid "Show drive mount points"
-msgstr "Εμφάνιση σημείων προσάρτησης δίσκων"
-
-#: gdiskfree/gdiskfree_options.c:250
-msgid "Show drive size"
-msgstr "Εμφάνιση μεγέθους δίσκων"
-
-#: gdiskfree/gdiskfree_options.c:260
-msgid "Dial Orientation"
-msgstr "Προσανατολισμός Καντράν"
-
-#: gdiskfree/gdiskfree_options.c:265
-msgid "Vertical"
-msgstr "Κατακόρυφος"
-
-#: gdiskfree/gdiskfree_options.c:278
-msgid "Horizontal"
-msgstr "Οριζόντιος"
-
-#: gdiskfree/gdiskfree_options.c:297
-msgid "Update interval (ms)"
-msgstr "Διάστημα ανανέωσης (ms)"
-
-#: gdiskfree/gdiskfree_options.c:308
-msgid "General Settings"
-msgstr "Γενικές Ρυθμίσεις"
-
-#: gsearchtool/gsearchtool.c:33
-msgid "File name"
-msgstr "Όνομα αρχείου"
-
-#: gsearchtool/gsearchtool.c:35
-msgid "Don't search subdirectories"
-msgstr "Όχι αναζήτηση σε υποκαταλόγους"
-
-#: gsearchtool/gsearchtool.c:36
-msgid "File owner"
-msgstr "Ιδιοκτήτης αρχείου"
-
-#: gsearchtool/gsearchtool.c:37
-msgid "File owner group"
-msgstr "Ομάδα ιδιοκτήτη αρχείου"
-
-#: gsearchtool/gsearchtool.c:38
-msgid "Last modification time"
-msgstr "Ώρα τελευταίας αλλαγής"
-
-#: gsearchtool/gsearchtool.c:40
-msgid "Don't search mounted filesystems"
-msgstr "Όχι αναζήτηση σε προσαρτημένα συστήματα αρχείων"
-
-#: gsearchtool/gsearchtool.c:41
-msgid "Empty file"
-msgstr "Άδειο αρχείο"
-
-#: gsearchtool/gsearchtool.c:43
-msgid "Invalid user or group"
-msgstr "Άκυρος χρήστης ή ομάδα"
-
-#: gsearchtool/gsearchtool.c:44
-msgid "Filenames except"
-msgstr "Ονόματα αρχείων εκτός από"
-
-#: gsearchtool/gsearchtool.c:45
-msgid "Follow symbolic links"
-msgstr "Ακολούθηση συμβολικών συνδέσμων"
-
-#: gsearchtool/gsearchtool.c:46
-msgid "Simple substring search"
-msgstr "Αναζήτηση απλής υπακολουθίας"
-
-#: gsearchtool/gsearchtool.c:47
-msgid "Regular expression search"
-msgstr "Αναζήτηση κανονικής έκφρασης"
-
-#: gsearchtool/gsearchtool.c:49
-msgid "Extended regular expression search"
-msgstr "Αναζήτηση εκτεταμένης κανονικής έκφρασης"
-
-# Translation of "extended" follows standard, but is quite
-# unsuitable in this context...
-#: gsearchtool/gsearchtool.c:151
-msgid "grep options found in find list bad bad!"
-msgstr "ορίσματα του grep βρέθηκαν στη λίστα αναζήτησης, κακό!"
-
-#: gsearchtool/gsearchtool.c:165
-msgid "non-grep option found in grep list, bad bad!"
-msgstr "ορίσματα γραμμής εντολών βρέθηκαν στη λίστα αναζήτησης, κακό!"
-
-#: gsearchtool/gsearchtool.c:219
-msgid "Search already running on another page"
-msgstr "Αναζήτηση ήδη εκτελούμενων σε άλλη σελίδα"
-
-#. create the results box
-#. FIXME: add an option to autoclear result box and pass TRUE in that
-#. case
-#: gsearchtool/gsearchtool.c:229
-msgid "Search Results"
-msgstr "Αποτελέσματα Αναζήτησης"
-
-#: gsearchtool/gsearchtool.c:336
-msgid ""
-"\n"
-"... Too many errors to display ..."
-msgstr ""
-
-#: gsearchtool/gsearchtool.c:369 gsearchtool/gsearchtool.c:400
-msgid "Start directory does not exist"
-msgstr "Ο κατάλογος έναρξης δεν υπάρχει"
-
-#: gsearchtool/gsearchtool.c:409
-msgid "Search command line"
-msgstr "Γραμμή εντολών αναζήτησης"
-
-#: gsearchtool/gsearchtool.c:415
-msgid ""
-"This is the command line that can be used to execute this search from the "
-"console:\n"
-"(Note: to print one file per line rather then null separated,\n"
-"append \"| tr '\\000' '\\n'\" to the line below)"
-msgstr ""
-"Αυτή είναι η εντολή γραμμής που μπορεί να χρησιμοποιηθεί για την εκτέλεση "
-"της αναζήτησης από την κονσόλα:\n"
-"(Σημείωση: για την εκτύπωση ενός αρχείου ανά γραμμή αντί για διαχωρισμό με \n"
-"μηδενικό, προσθέστε \"| tr '\\000' '\\n'\" στην παρακάτω γραμμή)"
-
-#: gsearchtool/gsearchtool.c:502
-msgid "Entry changed called for a non entry option!"
-msgstr "Η αλλαγή εισαγωγής καλέστηκε για επιλογή που δεν επιτρέπει εισαγωγή!"
-
-#: gsearchtool/gsearchtool.c:568
-msgid "Enable"
-msgstr "Ενεργοποίηση"
-
-#: gsearchtool/gsearchtool.c:576 logview/actions.c:163
-#: meat-grinder/meat-grinder.c:702
-msgid "Remove"
-msgstr "Διαγραφή"
-
-#: gsearchtool/gsearchtool.c:628
-msgid "Start in directory:"
-msgstr "Έναρξη στον κατάλογο:"
-
-#: gsearchtool/gsearchtool.c:630
-msgid "Browse"
-msgstr "Εξερεύνηση"
-
-#: gsearchtool/gsearchtool.c:650 mini-utils/gw/gw.c:494
-msgid "Add"
-msgstr "Προσθήκη"
-
-#: gsearchtool/gsearchtool.c:661
-msgid "Show Command"
-msgstr "Εμφάνιση Εντολής"
-
-#: gsearchtool/gsearchtool.c:666 gsearchtool/gsearchtool.c:759 gtt/ctree.c:576
-#: gtt/ghtml.c:95 gtt/ghtml.c:267 gtt/glade/interval_edit.glade.h:11
-msgid "Start"
-msgstr "Εκκίνηση"
-
-#: gsearchtool/gsearchtool.c:667 gsearchtool/gsearchtool.c:760 gtt/ghtml.c:95
-#: gtt/ghtml.c:270 gtt/glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "Τέλος"
-
-#: gsearchtool/gsearchtool.c:700
-msgid "Nothing to locate"
-msgstr "Τίποτα για εντοπισμό"
-
-#: gsearchtool/gsearchtool.c:735
-msgid ""
-"This is an interface to locate.  If you type in a simple string it\n"
-"will be matched as a subset of the full path, and if you type\n"
-"in a string with wildcards, it will have to match the full path."
-msgstr ""
-"Αυτή είναι μια διεπιφάνεια για το locate. Εάν δώσετε απλό αλφαριθμητικό,\n"
-"θα αναζητηθεί ως μέρος πλήρους διαδρομής.  Εάν δώσετε αλφαριθμητικό με\n"
-"μπαλαντέρ, θα πρέπει να συμφωνεί με ολόκληρη τη διαδρομή."
-
-#: gsearchtool/gsearchtool.c:744
-msgid "Locate file: "
-msgstr "Εντοπισμός αρχείου: "
-
-#: gsearchtool/gsearchtool.c:781
-msgid "Full find (find)"
-msgstr "Πλήρης αναζήτηση (find)"
-
-#: gsearchtool/gsearchtool.c:783
-msgid "Quick find (locate)"
-msgstr "Γρήγορη αναζήτηση (locate)"
-
-#: gsearchtool/gsearchtool.c:804
-msgid "The Gnome Search Tool"
-msgstr "Το Εργαλείο Αναζήτησης του Gnome"
-
-#: gsearchtool/gsearchtool.c:805
-msgid "(C) 1998,2000 the Free Software Foundation"
-msgstr "(C) 1998,2000 το Free Software Foundation"
-
-#: gsearchtool/gsearchtool.c:807
-msgid "Frontend to the unix find/grep/locate commands"
-msgstr "Διεπιφάνεια για τις εντολές find/grep/locate του UNIX"
-
-#: gsearchtool/gsearchtool.c:865
-msgid "Gnome Search Tool"
-msgstr "Εργαλείο Αναζήτησης του Gnome"
-
-#: gsearchtool/outdlg.c:51
-#, fuzzy
-msgid "Cannot save file"
-msgstr "Αδύνατο το άνοιγμα εφαρμογιδίου!\n"
-
-#: gsearchtool/outdlg.c:69 meat-grinder/meat-grinder.c:476
-msgid "Save Results"
-msgstr "Αποθήκευση Αποτελεσμάτων"
-
-#: gsearchtool/outdlg.c:130
-msgid "Command mangled"
-msgstr "Η γραμμή διαμελίστηκε"
-
-#: gsearchtool/outdlg.c:159
-msgid "No command for this mime type"
-msgstr "Δεν υπάρχει εντολή για αυτό το είδος mime"
-
-#: gtt/app.c:115 gtt/app.c:227
+#: src/app.c:116 src/app.c:228
 msgid "no project selected"
 msgstr "δεν έχει επιλεχθεί έργο"
 
-#: gtt/app.c:217
+#: src/app.c:218
 msgid "00:00"
 msgstr "00:00"
 
-#: gtt/app.c:259 mini-utils/gless/gless.c:423
+#: src/app.c:270
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -928,359 +44,434 @@ msgstr ""
 "Δεν κατάλαβα τη γεωμετρία (θέση και μέγεθος) που\n"
 " δόθηκε στη γραμμή εντολών"
 
-#: gtt/ctree.c:511
+#: src/ctree.c:517
 msgid "Total"
 msgstr "Σύνολο"
 
-#: gtt/ctree.c:513
+#: src/ctree.c:519
 msgid "Total time spent on this project."
 msgstr ""
 
-#: gtt/ctree.c:518
+#: src/ctree.c:524
 #, fuzzy
 msgid "Entry"
 msgstr "Τέλος Καταχώρησης:"
 
-#: gtt/ctree.c:520
+#: src/ctree.c:526
 msgid "Time spent under the current diary entry."
 msgstr ""
 
-#: gtt/ctree.c:526 gtt/glade/interval_edit.glade.h:14
+#: src/ctree.c:532 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "Σήμερα"
 
-#: gtt/ctree.c:528
+#: src/ctree.c:534
 msgid "Time spent on this project today."
 msgstr ""
 
-#: gtt/ctree.c:533
+#: src/ctree.c:539
 msgid "Week"
 msgstr ""
 
-#: gtt/ctree.c:535
+#: src/ctree.c:541
 msgid "Time spent on this project this week."
 msgstr ""
 
-#: gtt/ctree.c:541
+#: src/ctree.c:547
 #, fuzzy
 msgid "Month"
 msgstr "Παρακολούθηση"
 
-#: gtt/ctree.c:543
+#: src/ctree.c:549
 msgid "Time spent on this project this month."
 msgstr ""
 
-#: gtt/ctree.c:549
+#: src/ctree.c:555
 #, fuzzy
 msgid "Year"
 msgstr "Γραμμικό"
 
-#: gtt/ctree.c:551
+#: src/ctree.c:557
 msgid "Time spent on this project this year."
 msgstr ""
 
-#: gtt/ctree.c:557
+#: src/ctree.c:563
 #, fuzzy
 msgid "Title"
 msgstr "Αρχείο"
 
-#: gtt/ctree.c:558 gtt/menucmd.c:148
+#: src/ctree.c:564 src/menucmd.c:155
 msgid "Project Title"
 msgstr "Τίτλος Έργου"
 
-#: gtt/ctree.c:563 gtt/ctree.c:564 gtt/menucmd.c:149 stripchart/params.c:654
+#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: gtt/ctree.c:569 gtt/ghtml.c:95 gtt/ghtml.c:220
+#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
 msgid "Diary Entry"
 msgstr ""
 
-#: gtt/ctree.c:571
+#: src/ctree.c:577
 #, fuzzy
 msgid "The current diary entry"
 msgstr "Κλείσιμο του τρέχοντος ντοκουμέντου"
 
-#: gtt/ctree.c:578
+#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: glade/interval_edit.glade.h:11
+msgid "Start"
+msgstr "Εκκίνηση"
+
+#: src/ctree.c:584
 msgid "Estimated Project Start Date"
 msgstr ""
 
-#: gtt/ctree.c:583
+#: src/ctree.c:589
 #, fuzzy
 msgid "End"
 msgstr "Ενεργό"
 
-#: gtt/ctree.c:585
+#: src/ctree.c:591
 #, fuzzy
 msgid "Estimated Project Completion Date"
 msgstr "Αλλαγή Ιδιοτήτων..."
 
-#: gtt/ctree.c:590
+#: src/ctree.c:596
 msgid "Due"
 msgstr ""
 
-#: gtt/ctree.c:592
+#: src/ctree.c:598
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 
-#: gtt/ctree.c:599 mini-utils/guname/info.c:61
+#: src/ctree.c:605
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: gtt/ctree.c:601
+#: src/ctree.c:607
 msgid "Sizing: How much work it will take to finish this project."
 msgstr ""
 
-#: gtt/ctree.c:607
+#: src/ctree.c:613
 #, fuzzy
 msgid "Done"
 msgstr "Καμία"
 
-#: gtt/ctree.c:609
+#: src/ctree.c:615
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
 
-#: gtt/ctree.c:616
+#: src/ctree.c:622
 msgid "U"
 msgstr ""
 
-#: gtt/ctree.c:618
+#: src/ctree.c:624
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr ""
 
-#: gtt/ctree.c:624
+#: src/ctree.c:630
 msgid "Imp"
 msgstr ""
 
-#: gtt/ctree.c:626
+#: src/ctree.c:632
 msgid "Importance: How important is this project?"
 msgstr ""
 
-#: gtt/ctree.c:632 mini-utils/idetool/idetool.c:317
-#: mini-utils/idetool/idetool.c:319
+#: src/ctree.c:638
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: gtt/ctree.c:634
+#: src/ctree.c:640
 msgid "The current status of this project."
 msgstr ""
 
-#: gtt/ctree.c:969 gtt/glade/project_properties.glade.h:25
+#: src/ctree.c:959
+msgid "3"
+msgstr ""
+
+#: src/ctree.c:960
+msgid "2"
+msgstr ""
+
+#: src/ctree.c:961
+msgid "1"
+msgstr ""
+
+#: src/ctree.c:971 glade/project_properties.glade.h:25
 #, fuzzy
 msgid "Low"
 msgstr "Εμφάνιση Μητρώου"
 
-#: gtt/ctree.c:970
+#: src/ctree.c:972
 #, fuzzy
 msgid "Med"
 msgstr "κόκκινο"
 
-#: gtt/ctree.c:971 gtt/glade/project_properties.glade.h:15
+#: src/ctree.c:973 glade/project_properties.glade.h:15
 msgid "High"
 msgstr ""
 
-#: gtt/ctree.c:980 gtt/glade/project_properties.glade.h:29
+#: src/ctree.c:982 glade/project_properties.glade.h:29
 #, fuzzy
 msgid "Not Started"
 msgstr "Εκκίνηση"
 
-#: gtt/ctree.c:981 gtt/glade/project_properties.glade.h:21
+#: src/ctree.c:983 glade/project_properties.glade.h:21
 #, fuzzy
 msgid "In Progress"
 msgstr "Εκτέλεση Προγράμματος"
 
-#: gtt/ctree.c:982 gtt/glade/project_properties.glade.h:31
+#: src/ctree.c:984 glade/project_properties.glade.h:31
 #, fuzzy
 msgid "On Hold"
 msgstr "Ενιαίο"
 
-#: gtt/ctree.c:983 gtt/glade/project_properties.glade.h:9
+#: src/ctree.c:985 glade/project_properties.glade.h:9
 #, fuzzy
 msgid "Cancelled"
 msgstr "Άκυρο"
 
-#: gtt/ctree.c:984 gtt/glade/project_properties.glade.h:10
+#: src/ctree.c:986 glade/project_properties.glade.h:10
 msgid "Completed"
 msgstr ""
 
-#: gtt/file-io.c:376
+#: src/err-throw.c:61
+#, fuzzy
+msgid "No Error"
+msgstr "Σφάλμα"
+
+#: src/err-throw.c:65
+#, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:70
+#, c-format
+msgid ""
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:75
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GTT project data file\n"
+msgstr ""
+
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
+
+#: src/err-throw.c:87
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:92
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:97
+#, fuzzy, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr "Εγγραφή αρχείου ρυθμίσεων ανεπιτυχής!"
+
+#: src/file-io.c:376
 msgid "project %t started"
 msgstr "έναρξη έργου %t"
 
-#: gtt/file-io.c:379
+#: src/file-io.c:379
 msgid "stopped project %t"
 msgstr "τέλος έργου %t"
 
 #. Translators: This is a "time format", that is
 #. * format on how to print the elapsed time with
 #. * hours:minutes:seconds.
-#: gtt/file-io.c:677
+#: src/file-io.c:677
 #, c-format
 msgid "%d:%02d:%02d"
 msgstr ""
 
-#: gtt/ghtml.c:95 gtt/ghtml.c:273
+#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Τέλος"
+
+#: src/ghtml.c:95 src/ghtml.c:273
 msgid "Elapsed"
 msgstr ""
 
-#: gtt/ghtml.c:113 gtt/ghtml.c:369 gtt/ghtml.c:378
+#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
 #, fuzzy
 msgid "(empty)"
 msgstr "κενό"
 
-#: gtt/ghtml.c:225
+#: src/ghtml.c:225
 #, fuzzy
 msgid "Notes"
 msgstr "Σημειωματάριο"
 
-#: gtt/ghtml.c:229
+#: src/ghtml.c:229
 msgid "Task Time"
 msgstr ""
 
-#: gtt/ghtml.c:233
+#: src/ghtml.c:233
 #, fuzzy
 msgid "Bill Status"
 msgstr "Κατάσταση"
 
-#: gtt/ghtml.c:237 gtt/ghtml.c:408 gtt/glade/task_properties.glade.h:4
+#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
 #, fuzzy
 msgid "Billable"
 msgstr "Ανενεργό"
 
-#: gtt/ghtml.c:241
+#: src/ghtml.c:241
 #, fuzzy
 msgid "Bill Rate"
 msgstr "Ανενεργό"
 
-#: gtt/ghtml.c:245 mini-utils/gcolorsel/view-color-list.c:197
-#: mini-utils/guname/moreinfo.c:227
+#: src/ghtml.c:245
 msgid "Value"
 msgstr "Τιμή"
 
-#: gtt/ghtml.c:249
+#: src/ghtml.c:249
 #, fuzzy
 msgid "Billable Value"
 msgstr "Ανενεργό"
 
-#: gtt/ghtml.c:253 gtt/ghtml.c:279
+#: src/ghtml.c:253 src/ghtml.c:279
 #, fuzzy
 msgid "No Default Value"
 msgstr "Εξ' ορισμού"
 
-#: gtt/ghtml.c:276
+#: src/ghtml.c:276
 #, fuzzy
 msgid "Start Time Fuzziness"
 msgstr "Εκκίνηση"
 
-#: gtt/ghtml.c:392 gtt/glade/task_properties.glade.h:13
+#: src/ghtml.c:392 glade/task_properties.glade.h:13
 #, fuzzy
 msgid "Hold"
 msgstr "Ενιαίο"
 
-#: gtt/ghtml.c:395 gtt/glade/task_properties.glade.h:3
+#: src/ghtml.c:395 glade/task_properties.glade.h:3
 #, fuzzy
 msgid "Bill"
 msgstr "Ανενεργό"
 
-#: gtt/ghtml.c:398 gtt/glade/task_properties.glade.h:21
+#: src/ghtml.c:398 glade/task_properties.glade.h:21
 msgid "Paid"
 msgstr ""
 
-#: gtt/ghtml.c:411 gtt/glade/task_properties.glade.h:17
+#: src/ghtml.c:411 glade/task_properties.glade.h:17
 msgid "Not Billable"
 msgstr ""
 
-#: gtt/ghtml.c:414 gtt/glade/task_properties.glade.h:16
+#: src/ghtml.c:414 glade/task_properties.glade.h:16
 msgid "No Charge"
 msgstr ""
 
-#: gtt/ghtml.c:424 gtt/glade/task_properties.glade.h:22
+#: src/ghtml.c:424 glade/task_properties.glade.h:22
 #, fuzzy
 msgid "Regular"
 msgstr "Επανανάγν."
 
-#: gtt/ghtml.c:427 gtt/glade/task_properties.glade.h:20
+#: src/ghtml.c:427 glade/task_properties.glade.h:20
 msgid "Overtime"
 msgstr ""
 
-#: gtt/ghtml.c:430
+#: src/ghtml.c:430
 msgid "Double Overtime"
 msgstr ""
 
-#: gtt/ghtml.c:433 gtt/glade/task_properties.glade.h:12
+#: src/ghtml.c:433 glade/task_properties.glade.h:12
 #, fuzzy
 msgid "Flat Fee"
 msgstr "Κινητής Υποδιαστολής"
 
-#: gtt/ghtml.c:453
+#: src/ghtml.c:453
 #, fuzzy
 msgid "Error - Unknown"
 msgstr "Άγνωστο"
 
-#: gtt/ghtml.c:703
+#: src/ghtml.c:703
 msgid "unknown token: >>>>"
 msgstr ""
 
-#: gtt/journal.c:108
+#: src/journal.c:111
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: gtt/journal.c:110
+#: src/journal.c:113
 #, fuzzy, c-format
 msgid "The file %s was not found."
 msgstr "Αρχείο λογοτύπου δε βρέθηκε"
 
-#: gtt/journal.c:111
+#: src/journal.c:114
 msgid "(null)"
 msgstr ""
 
-#: gtt/journal.c:120
+#: src/journal.c:124
 #, fuzzy
 msgid "Unkown Error"
 msgstr "Άγνωστο"
 
-#: gtt/journal.c:169 gtt/plug-in.c:90
+#: src/journal.c:175 src/plug-in.c:90
 #, fuzzy, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr "Αδύνατο το άνοιγμα αρχείου καταγραφών!\n"
 
-#: gtt/journal.c:248 gtt/proj.c:716 gtt/proj.c:1539 gtt/proj.c:1667
-#: gtt/proj.c:1807
+#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/proj.c:1807
 msgid "New Diary Entry"
 msgstr ""
 
-#: gtt/journal.c:436
+#: src/journal.c:455
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "_Αποθήκευση παλέττας"
 
-#: gtt/log.c:55
+#: src/log.c:55
 #, fuzzy, c-format
 msgid "Cannot open logfile %s for append"
 msgstr "Δεν υπάρχουν αρχεία καταγραφών προς ανάγνωση"
 
 #. Translators: Format to use in the gtt logfile
-#: gtt/log.c:64
+#: src/log.c:64
 msgid "%b %d %H:%M:%S"
 msgstr ""
 
-#: gtt/log.c:102
+#: src/log.c:102
 msgid "no description"
 msgstr "κενή περιγραφή"
 
-#: gtt/log.c:167 gtt/log.c:258
+#: src/log.c:167 src/log.c:258
 msgid "program started"
 msgstr "πρόγραμμα εκκινήθηκε"
 
 #. log_if_equal
-#: gtt/log.c:250
+#: src/log.c:250
 msgid "program exited"
 msgstr "πρόγραμμα τερματίστηκε"
 
-#: gtt/main.c:114
+#: src/main.c:114
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -1289,40 +480,44 @@ msgstr ""
 "Πιέστε Εντάξζει για να ξεκινήσετε το GTimeTracker ούτως ή άλλως, ή πιέστε "
 "Άκυρο για τερματισμό."
 
-#: gtt/main.c:126
+#: src/main.c:126
 #, fuzzy
 msgid "Cannot create pid-file!"
 msgstr "Αδύνατο το άνοιγμα εφαρμογιδίου!\n"
 
-#: gtt/main.c:219
+#: src/main.c:219
 msgid "Do you want to continue?"
 msgstr ""
 
-#: gtt/main.c:222 gtt/main.c:275
+#: src/main.c:222 src/main.c:275
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: gtt/main.c:272
+#: src/main.c:272
 msgid "Shall I setup a new configuration?"
 msgstr ""
 
-#: gtt/main.c:439
+#: src/main.c:440
 msgid "Specify geometry"
 msgstr "Καθορισμός γεωμετρίας"
 
-#: gtt/main.c:441
+#: src/main.c:440
+msgid "GEOMETRY"
+msgstr "ΓΕΩΜΕΤΡΙΑ"
+
+#: src/main.c:442
 msgid "Select a project on startup"
 msgstr "Επιλογή έργου κατά την εκκίνηση"
 
-#: gtt/main.c:441
+#: src/main.c:442
 msgid "PROJECT"
 msgstr "ΕΡΓΟ"
 
-#: gtt/main.c:481 gtt/menucmd.c:48 gtt/menucmd.c:204 gtt/menucmd.c:240
+#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: gtt/menucmd.c:85
+#: src/menucmd.c:89
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -1330,158 +525,158 @@ msgid ""
 "well as track that status of other projects."
 msgstr ""
 
-#: gtt/menucmd.c:142
+#: src/menucmd.c:149
 msgid "New Project..."
 msgstr "Νέο Έργο..."
 
-#: gtt/menucmd.c:224 gtt/toolbar.c:167
+#: src/menucmd.c:231 src/toolbar.c:179
 msgid "Reload Configuration File"
 msgstr "Επανανάγνωση Αρχείου Ρυθμίσεων"
 
-#: gtt/menucmd.c:225
+#: src/menucmd.c:232
 #, fuzzy
 msgid "Do you really want to reload the configuration file?"
 msgstr "Ανάγνωση αρχείου ρυθμίσεων ανεπιτυχής"
 
-#: gtt/menucmd.c:260
+#: src/menucmd.c:267
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr ""
 
-#: gtt/menucmd.c:271
+#: src/menucmd.c:278
 msgid "File cannot be written"
 msgstr ""
 
-#: gtt/menucmd.c:291
+#: src/menucmd.c:298
 #, fuzzy
 msgid "Export Current State"
 msgstr "Τρέχουσα τιμή"
 
-#: gtt/menus.c:33
+#: src/menus.c:33
 msgid "_New Project..."
 msgstr "_Νέο Έργο..."
 
-#: gtt/menus.c:36
+#: src/menus.c:36
 msgid "_Reload Configuration File"
 msgstr "Επα_νανάγνωση Αρχείου Ρυθμίσεων"
 
-#: gtt/menus.c:40
+#: src/menus.c:40
 msgid "_Save Configuration File"
 msgstr "_Αποθήκευση Αρχείου Ρυθμίσεων"
 
-#: gtt/menus.c:44
+#: src/menus.c:44
 msgid "_Export Current State"
 msgstr ""
 
-#: gtt/menus.c:63 gtt/menus.c:173
+#: src/menus.c:63 src/menus.c:173
 msgid "Clear _Daily Counter"
 msgstr "Καθαρισμός _Ημερ΄ησιου Μετρητή"
 
-#: gtt/menus.c:64 gtt/menus.c:174
+#: src/menus.c:64 src/menus.c:174
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr ""
 
-#: gtt/menus.c:68 gtt/menus.c:87 gtt/menus.c:156
+#: src/menus.c:68 src/menus.c:87 src/menus.c:156
 msgid "_Journal..."
 msgstr ""
 
-#: gtt/menus.c:69 gtt/menus.c:88 gtt/menus.c:157
+#: src/menus.c:69 src/menus.c:88 src/menus.c:157
 msgid "Show the timesheet journal for this project"
 msgstr ""
 
-#: gtt/menus.c:72 gtt/menus.c:160
+#: src/menus.c:72 src/menus.c:160
 msgid "New Diary _Entry"
 msgstr ""
 
-#: gtt/menus.c:73 gtt/menus.c:161
+#: src/menus.c:73 src/menus.c:161
 msgid "Change the current task for this project"
 msgstr ""
 
-#: gtt/menus.c:91
+#: src/menus.c:91
 msgid "_All Journal..."
 msgstr ""
 
-#: gtt/menus.c:92
+#: src/menus.c:92
 msgid "Show the verbose timesheet journal for this project"
 msgstr ""
 
-#: gtt/menus.c:95
+#: src/menus.c:95
 #, fuzzy
 msgid "_Invoice..."
 msgstr "_Αποθήκευση..."
 
-#: gtt/menus.c:96
+#: src/menus.c:96
 msgid "Show a sample invoice for this project"
 msgstr ""
 
-#: gtt/menus.c:99
+#: src/menus.c:99
 #, fuzzy
 msgid "_Primer..."
 msgstr "Προτιμήσεις..."
 
-#: gtt/menus.c:100
+#: src/menus.c:100
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr ""
 
-#: gtt/menus.c:103
+#: src/menus.c:103
 #, fuzzy
 msgid "_New Report..."
 msgstr "_Νέο Έργο..."
 
-#: gtt/menus.c:104
+#: src/menus.c:104
 msgid "Define a path to a new GTT phtml report file"
 msgstr ""
 
-#: gtt/menus.c:115
+#: src/menus.c:115
 msgid "St_art"
 msgstr "Έ_ναρξη"
 
-#: gtt/menus.c:116
+#: src/menus.c:116
 msgid "Start the timer running"
 msgstr ""
 
-#: gtt/menus.c:121
+#: src/menus.c:121
 msgid "Sto_p"
 msgstr "Τε_ρματισμός"
 
-#: gtt/menus.c:122
+#: src/menus.c:122
 #, fuzzy
 msgid "Stop the timer"
 msgstr "Σεπτέμβριος"
 
-#: gtt/menus.c:127
+#: src/menus.c:127
 msgid "_Timer Running"
 msgstr "_Χρονόμετρο Τρέχει"
 
-#: gtt/menus.c:146
+#: src/menus.c:146
 msgid "_Reports"
 msgstr ""
 
-#: gtt/menus.c:147
+#: src/menus.c:147
 msgid "_Timer"
 msgstr "_Χρονόμετρο"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: gtt/menus.c:244
+#: src/menus.c:244
 #, fuzzy
 msgid "Reports"
 msgstr "Επανεκκίνηση Υπολογιστή"
 
-#: gtt/plug-in.c:121
+#: src/plug-in.c:121
 msgid "Reports/<Separator>"
 msgstr ""
 
-#: gtt/proj.c:697
+#: src/proj.c:697
 msgid "Old GTT Tasks"
 msgstr ""
 
-#: gtt/props-proj.c:94 gtt/props-proj.c:95 gtt/props-task.c:75
-#: gtt/props-task.c:76
+#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
+#: src/props-task.c:76
 msgid "empty"
 msgstr "κενό"
 
-#: gtt/timer.c:117
+#: src/timer.c:117
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -1491,785 +686,765 @@ msgid ""
 "Do you want to restart it?"
 msgstr ""
 
-#: gtt/timer.c:125
+#: src/timer.c:125
 #, fuzzy
 msgid "System Idle"
 msgstr "Πληροφορίες Συστήματος"
 
-#. Note to translators: just skip the `[GTT]'
-#: gtt/toolbar.c:159
-msgid "[GTT]New"
-msgstr "[GTT]Νέο"
-
-#: gtt/toolbar.c:160
+#: src/toolbar.c:169
 #, fuzzy
 msgid "Create a New Project..."
 msgstr "Νέο Έργο..."
 
-#: gtt/toolbar.c:166
-msgid "Reload"
-msgstr "Επανανάγν."
-
-#: gtt/glade/journal.glade.h:7 gtt/toolbar.c:170 stripchart/params.c:939
-msgid "Save"
-msgstr "Αποθήκευση"
-
-#: gtt/toolbar.c:171
+#: src/toolbar.c:184
 msgid "Save Configuration File"
 msgstr "Αποθήκευση Αρχείου Ρυθμίσεων"
 
-#: gtt/toolbar.c:178
+#: src/toolbar.c:194
 msgid "Cut Selected Project"
 msgstr "Κοπή Επιλεγμένου Έργου"
 
-#: gtt/toolbar.c:182
+#: src/toolbar.c:199
 msgid "Copy Selected Project"
 msgstr "Αντιγραφή Επιλεγμένου Έργου"
 
-#: gtt/toolbar.c:186
+#: src/toolbar.c:204
 msgid "Paste Project"
 msgstr "Επικόλληση Έργου"
 
-#: gtt/glade/journal.glade.h:2 gtt/toolbar.c:193
+#: src/toolbar.c:213 glade/journal.glade.h:2
 msgid "Journal"
 msgstr ""
 
-#: gtt/toolbar.c:194
+#: src/toolbar.c:214
 msgid "View and Edit Timestamp Logs"
 msgstr ""
 
-#: gtt/toolbar.c:199
-msgid "Props"
-msgstr "Ιδιότητες"
-
-#: gtt/toolbar.c:200
+#: src/toolbar.c:223
 #, fuzzy
 msgid "Edit Project Properties..."
 msgstr "Αλλαγή Ιδιοτήτων..."
 
-#: gtt/toolbar.c:204
+#: src/toolbar.c:230
 msgid "Timer"
 msgstr "Χρονόμετρο"
 
-#: gtt/toolbar.c:205
+#: src/toolbar.c:231
 msgid "Start/Stop Timer"
 msgstr "Έναρξη/Τέλος Χρονομέτρου"
 
-#: gtt/toolbar.c:211 logview/calendar.c:112 logview/logview.c:107
+#: src/toolbar.c:241
 msgid "Calendar"
 msgstr "Ημερολόγιο"
 
-#: gtt/toolbar.c:212
+#: src/toolbar.c:242
 #, fuzzy
 msgid "View Calendar"
 msgstr "Απόκρυψη ημερολογίου"
 
-#: gtt/toolbar.c:225
-msgid "Prefs"
-msgstr "Προτιμήσεις"
-
-#: gtt/toolbar.c:226
+#: src/toolbar.c:262
 msgid "Edit Preferences..."
 msgstr "Επεξεργασία Προτιμήσεων..."
 
-#: gtt/toolbar.c:230
-msgid "Manual"
-msgstr "Τεκμηρίωση"
-
-#: gtt/toolbar.c:231
+#: src/toolbar.c:270
 msgid "User's Guide and Manual"
 msgstr ""
 
-#: gtt/toolbar.c:236
-msgid "Quit"
-msgstr "Τέλος"
-
-#: gtt/toolbar.c:236
-msgid "Quit GTimeTracker"
+#: src/toolbar.c:278
+#, fuzzy
+msgid "Quit Gnome TimeTracker"
 msgstr "Τερματισμός του GTimeTracker"
 
-#: gtt/glade/interval_edit.glade.h:1
+#: glade/interval_edit.glade.h:1
 msgid "1 Hour"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:2
+#: glade/interval_edit.glade.h:2
 #, fuzzy
 msgid "10 Min"
 msgstr "Ελαχ."
 
-#: gtt/glade/interval_edit.glade.h:3
+#: glade/interval_edit.glade.h:3
 #, fuzzy
 msgid "15 Min"
 msgstr "Ελαχ."
 
-#: gtt/glade/interval_edit.glade.h:4
+#: glade/interval_edit.glade.h:4
 #, fuzzy
 msgid "2 Hours"
 msgstr "ώρες"
 
-#: gtt/glade/interval_edit.glade.h:5
+#: glade/interval_edit.glade.h:5
 #, fuzzy
 msgid "20 Min"
 msgstr "Ελαχ."
 
-#: gtt/glade/interval_edit.glade.h:6
+#: glade/interval_edit.glade.h:6
 #, fuzzy
 msgid "3 Hours"
 msgstr "ώρες"
 
-#: gtt/glade/interval_edit.glade.h:7
+#: glade/interval_edit.glade.h:7
 #, fuzzy
 msgid "30 Min"
 msgstr "Ελαχ."
 
-#: gtt/glade/interval_edit.glade.h:8
+#: glade/interval_edit.glade.h:8
 #, fuzzy
 msgid "5 Min"
 msgstr "Ελαχ."
 
-#: gtt/glade/interval_edit.glade.h:9
+#: glade/interval_edit.glade.h:9
 msgid "Exact Time"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:10
+#: glade/interval_edit.glade.h:10
 msgid "Set how Uncertain the Start Time Is"
 msgstr ""
 
-#: gtt/glade/interval_edit.glade.h:12
+#: glade/interval_edit.glade.h:12
 #, fuzzy
 msgid "Start Fuzz"
 msgstr "Εκκίνηση"
 
-#: gtt/glade/interval_popup.glade.h:1
+#: glade/interval_popup.glade.h:1
+#, fuzzy
+msgid "Add a new time interval."
+msgstr "Διάστημα ανανέωσης (ms)"
+
+#: glade/interval_popup.glade.h:2
 #, fuzzy
 msgid "Delete Interval"
 msgstr "Περίοδος ανανέωσης δείκτη"
 
-#: gtt/glade/interval_popup.glade.h:2
+#: glade/interval_popup.glade.h:3
 #, fuzzy
 msgid "Delete This Interval"
 msgstr "Περίοδος ανανέωσης δείκτη"
 
-#: gtt/glade/interval_popup.glade.h:3
+#: glade/interval_popup.glade.h:4
 #, fuzzy
 msgid "Edit Interval"
 msgstr "Γενικά"
 
-#: gtt/glade/interval_popup.glade.h:4
+#: glade/interval_popup.glade.h:5
 #, fuzzy
 msgid "Edit the Start & Stop Times"
 msgstr "Έναρξη/Τέλος Χρονομέτρου"
 
-#: gtt/glade/interval_popup.glade.h:5
+#: glade/interval_popup.glade.h:6
 #, fuzzy
 msgid "Insert Diary Entry"
 msgstr "_Εισαγωγή στο τέλος"
 
-#: gtt/glade/interval_popup.glade.h:6
+#: glade/interval_popup.glade.h:7
 msgid "Insert a new diary entry above this time interval."
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:8
 msgid "Merge Down"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:8
+#: glade/interval_popup.glade.h:9
 msgid "Merge Into Interval Above"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:9
+#: glade/interval_popup.glade.h:10
 msgid "Merge Into Interval Below"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:10
+#: glade/interval_popup.glade.h:11
 msgid "Merge Up"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:11
+#: glade/interval_popup.glade.h:12
+#, fuzzy
+msgid "New Interval"
+msgstr "Περίοδος ανανέωσης δείκτη"
+
+#: glade/interval_popup.glade.h:13
 msgid "Paste Diary Entry"
 msgstr ""
 
-#: gtt/glade/interval_popup.glade.h:12 gtt/glade/task_popup.glade.h:8
+#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
 msgid "Paste a previously cut diary entry."
 msgstr ""
 
-#: gtt/glade/journal.glade.h:1 mini-utils/gcolorsel/menus.c:89
-#: mini-utils/gcolorsel/menus.c:913 mini-utils/gshutdown/gshutdown.c:155
-#: mini-utils/gshutdown/gshutdown.c:631 stripchart/params.c:953
+#: glade/journal.glade.h:1
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: gtt/glade/journal.glade.h:3
+#: glade/journal.glade.h:3
 #, fuzzy
 msgid "New File"
 msgstr "_Νέα απεικόνιση"
 
-#: gtt/glade/journal.glade.h:4
+#: glade/journal.glade.h:4
 #, fuzzy
 msgid "Open File"
 msgstr "Άνοιγμα αρχείου καταγραφών"
 
-#: gtt/glade/journal.glade.h:5
+#: glade/journal.glade.h:5
 #, fuzzy
 msgid "Print"
 msgstr "Σημείο"
 
-#: gtt/glade/journal.glade.h:6
+#: glade/journal.glade.h:6
 msgid "Refresh"
 msgstr ""
 
-#: gtt/glade/journal.glade.h:8
+#: glade/journal.glade.h:7
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: glade/journal.glade.h:8
 #, fuzzy
 msgid "Save File"
 msgstr "_Αποθήκευση παλέττας"
 
-#: gtt/glade/not-implemented.glade.h:1
+#: glade/not-implemented.glade.h:1
 #, fuzzy
 msgid "Information"
 msgstr "Πληροφορίες CPU"
 
-#: gtt/glade/not-implemented.glade.h:2
+#: glade/not-implemented.glade.h:2
 msgid ""
 "This function is not yet implemented!\n"
 "Coming Soon, I hope!"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:1
+#: glade/prefs.glade.h:1
 msgid "Display"
 msgstr "Απεικόνιση"
 
-#: gtt/glade/prefs.glade.h:2
+#: glade/prefs.glade.h:2
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:3
+#: glade/prefs.glade.h:3
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:4
+#: glade/prefs.glade.h:4
 msgid "Entry Start:"
 msgstr "Έναρξη Καταχώρησης:"
 
-#: gtt/glade/prefs.glade.h:5
+#: glade/prefs.glade.h:5
 msgid "Entry Stop:"
 msgstr "Τέλος Καταχώρησης:"
 
-#: gtt/glade/prefs.glade.h:7
+#: glade/prefs.glade.h:7
 #, no-c-format
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
 "title, %d for the description, etc. See the manual for more options."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:9
+#: glade/prefs.glade.h:9
 #, no-c-format
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
 "title, %d for the project description, etc. See the manual for more options."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:10
+#: glade/prefs.glade.h:10
 #, fuzzy
 msgid "Fields"
 msgstr "Αναζήτηση"
 
-#: gtt/glade/prefs.glade.h:11
+#: glade/prefs.glade.h:11
 msgid "Filename:"
 msgstr "Όνομα Αρχείου:"
 
-#: gtt/glade/prefs.glade.h:12
+#: glade/prefs.glade.h:12
 #, fuzzy
 msgid "Idle Seconds:"
 msgstr "Εμφάνιση Δευτερολέπτων"
 
-#: gtt/glade/prefs.glade.h:13
+#: glade/prefs.glade.h:13
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:14
+#: glade/prefs.glade.h:14
 msgid "Logfile"
 msgstr "Αρχείο Μητρώου"
 
-#: gtt/glade/prefs.glade.h:15
+#: glade/prefs.glade.h:15
 #, fuzzy
 msgid "Min Recorded:"
 msgstr "Κυρίως μέρος:"
 
-#: gtt/glade/prefs.glade.h:16
+#: glade/prefs.glade.h:16
 msgid "Misc"
 msgstr "Διάφορα"
 
-#: gtt/glade/prefs.glade.h:17
+#: glade/prefs.glade.h:17
 msgid "No Project Command:"
 msgstr "Εντολή Τέλους Έργου:"
 
-#: gtt/glade/prefs.glade.h:18
+#: glade/prefs.glade.h:18
 #, fuzzy
 msgid "Project List Display"
 msgstr "Τίτλος Έργου"
 
-#: gtt/glade/prefs.glade.h:19
+#: glade/prefs.glade.h:19
 #, fuzzy
 msgid "Shell"
 msgstr "Έλεγχος ορθογραφίας"
 
-#: gtt/glade/prefs.glade.h:20
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Εντολές Κελύφους"
 
-#: gtt/glade/prefs.glade.h:21
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:22
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:23
+#: glade/prefs.glade.h:23
 #, fuzzy
 msgid "Show Percent Complete"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:24
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:25
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:26
+#: glade/prefs.glade.h:26
 #, fuzzy
 msgid "Show Project Description"
 msgstr "Περιγραφή Έργου:"
 
-#: gtt/glade/prefs.glade.h:27
+#: glade/prefs.glade.h:27
 #, fuzzy
 msgid "Show Project Due Date"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:28
+#: glade/prefs.glade.h:28
 #, fuzzy
 msgid "Show Project Importance"
 msgstr "Εντολή Τέλους Έργου:"
 
-#: gtt/glade/prefs.glade.h:29
+#: glade/prefs.glade.h:29
 #, fuzzy
 msgid "Show Project Status"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:30
+#: glade/prefs.glade.h:30
 #, fuzzy
 msgid "Show Project Urgency"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:31
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Εμφάνιση Δευτερολέπτων"
 
-#: gtt/glade/prefs.glade.h:32
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Εμφάνιση Γραμμής Κατάστασης"
 
-#: gtt/glade/prefs.glade.h:33
+#: glade/prefs.glade.h:33
 #, fuzzy
 msgid "Show Sub-Projects"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:34
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Εμφάνιση Επικεφαλίδας Πίνακα"
 
-#: gtt/glade/prefs.glade.h:35
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:36
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:37
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:38
+#: glade/prefs.glade.h:38
 #, fuzzy
 msgid "Show Time This Year"
 msgstr "`Χρονόμετρο'"
 
-#: gtt/glade/prefs.glade.h:39
+#: glade/prefs.glade.h:39
 #, fuzzy
 msgid "Show Time Today"
 msgstr "`Χρονόμετρο'"
 
-#: gtt/glade/prefs.glade.h:40
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Εμφάνιση Εικονιδίων Εργαλείων"
 
-#: gtt/glade/prefs.glade.h:41
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Εμφάνιση Κειμένου Εργαλείων"
 
-#: gtt/glade/prefs.glade.h:42
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Εμφάνιση Βοηθημάτων"
 
-#: gtt/glade/prefs.glade.h:43
+#: glade/prefs.glade.h:43
 #, fuzzy
 msgid "Show Total Time Ever"
 msgstr "Εμφάνιση Επικεφαλίδας Πίνακα"
 
-#: gtt/glade/prefs.glade.h:44
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "`Κοπή', `Αντιγραφή', `Επικόλληση'"
 
-#: gtt/glade/prefs.glade.h:45
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "`Βοήθεια'"
 
-#: gtt/glade/prefs.glade.h:46
+#: glade/prefs.glade.h:46
 #, fuzzy
 msgid "Show `Journal'"
 msgstr "`Βοήθεια'"
 
-#: gtt/glade/prefs.glade.h:47
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "`Νέο'"
 
-#: gtt/glade/prefs.glade.h:48
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "`Προτιμίσεις'"
 
-#: gtt/glade/prefs.glade.h:49
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "`Ιδιότητες'"
 
-#: gtt/glade/prefs.glade.h:50
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "`Τέλος'"
 
-#: gtt/glade/prefs.glade.h:51
+#: glade/prefs.glade.h:51
 msgid "Show `Save', `Reload'"
 msgstr "`Αποθήκευση', `Επανανάγνωση'"
 
-#: gtt/glade/prefs.glade.h:52
+#: glade/prefs.glade.h:52
 msgid "Show `Timer'"
 msgstr "`Χρονόμετρο'"
 
-#: gtt/glade/prefs.glade.h:53
+#: glade/prefs.glade.h:53
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:54
+#: glade/prefs.glade.h:54
 msgid "Switch Project Command:"
 msgstr "Εντολή Αλλαγής Έργου:"
 
-#: gtt/glade/prefs.glade.h:55
+#: glade/prefs.glade.h:55
 msgid ""
 "Switches between projects that happen faster than this will not be logged "
 "(enter the number of seconds)"
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:56
+#: glade/prefs.glade.h:56
 msgid ""
 "The current active project will be made inactive after there has been no "
 "keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
 msgstr ""
 
-#: gtt/glade/prefs.glade.h:57
+#: glade/prefs.glade.h:57
 msgid "Toolbar"
 msgstr "Γραμμή Εργαλείων"
 
-#: gtt/glade/prefs.glade.h:58
+#: glade/prefs.glade.h:58
 msgid "Toolbar Segments"
 msgstr "Τμήματα Γραμμής Εργαλείων"
 
-#: gtt/glade/prefs.glade.h:59
+#: glade/prefs.glade.h:59
 msgid "Use Logfile"
 msgstr "Χρήση Μητρώου"
 
-#: gtt/glade/prefs.glade.h:60
+#: glade/prefs.glade.h:60
 #, fuzzy
 msgid "View Project Fields"
 msgstr "Εμφάνιση ιδιοτήτων"
 
-#: gtt/glade/project_properties.glade.h:1
+#: glade/project_properties.glade.h:1
 msgid "        "
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:2
+#: glade/project_properties.glade.h:2
 #, fuzzy
 msgid "            "
 msgstr "Άνοιγμα καταγραφών...  "
 
-#: gtt/glade/project_properties.glade.h:3
+#: glade/project_properties.glade.h:3
 #, fuzzy
 msgid "                        "
 msgstr "Μεγέθυνση              "
 
-#: gtt/glade/project_properties.glade.h:5
+#: glade/project_properties.glade.h:5
 #, no-c-format
 msgid "% Complete"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:6
+#: glade/project_properties.glade.h:6
 msgid "A title to assign to this project"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:7
+#: glade/project_properties.glade.h:7
 msgid "Auto-merge Gap:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:8
+#: glade/project_properties.glade.h:8
 msgid "Auto-merge Interval:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:11
+#: glade/project_properties.glade.h:11
 msgid ""
 "Does this item need immediate attention? Note that some urgent tasks might "
 "not be important.  For example, Bill may want you to answer his email today, "
 "but you may have better things to do today."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:12
+#: glade/project_properties.glade.h:12
 msgid "Double-Overtime Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:13
+#: glade/project_properties.glade.h:13
 #, fuzzy
 msgid "Due Date:"
 msgstr "Ημερομηνία:"
 
-#: gtt/glade/project_properties.glade.h:14
+#: glade/project_properties.glade.h:14
 msgid "Flat Fee:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:16
+#: glade/project_properties.glade.h:16
 msgid "Hours to Finish:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:17
+#: glade/project_properties.glade.h:17
 msgid ""
 "How important is it to perform this task?  Not everything important is "
 "urgent.  For example, it is important to file a tax return every year, but "
 "you have a lot of time to get ready to do this."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:18
+#: glade/project_properties.glade.h:18
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:19
+#: glade/project_properties.glade.h:19
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:20
+#: glade/project_properties.glade.h:20
 #, fuzzy
 msgid "Importance:"
 msgstr "Ανοχή :"
 
-#: gtt/glade/project_properties.glade.h:22
+#: glade/project_properties.glade.h:22
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:23
+#: glade/project_properties.glade.h:23
 #, fuzzy
 msgid "Intervals"
 msgstr "Γενικά"
 
-#: gtt/glade/project_properties.glade.h:24
+#: glade/project_properties.glade.h:24
 msgid "Intervals smaller than this will be discarded"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:26
+#: glade/project_properties.glade.h:26
 msgid "Medium"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:27
+#: glade/project_properties.glade.h:27
 msgid "Minimum Interval: "
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:28
+#: glade/project_properties.glade.h:28
 #, fuzzy
 msgid "Not Set"
 msgstr "Επιλογέας Γραμματοσειράς"
 
-#: gtt/glade/project_properties.glade.h:30
-#: gtt/glade/task_properties.glade.h:18
+#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
 msgid "Notes:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:32
+#: glade/project_properties.glade.h:32
 msgid "Overtime Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:33
+#: glade/project_properties.glade.h:33
 msgid "Planned Finish:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:34
+#: glade/project_properties.glade.h:34
 #, fuzzy
 msgid "Planned Start:"
 msgstr "Έναρξη Καταχώρησης:"
 
-#: gtt/glade/project_properties.glade.h:35
+#: glade/project_properties.glade.h:35
 #, fuzzy
 msgid "Planning"
 msgstr "Προειδοποίηση"
 
-#: gtt/glade/project_properties.glade.h:36
+#: glade/project_properties.glade.h:36
 msgid "Project"
 msgstr "Έργο"
 
-#: gtt/glade/project_properties.glade.h:37
+#: glade/project_properties.glade.h:37
 msgid "Project Description:"
 msgstr "Περιγραφή Έργου:"
 
-#: gtt/glade/project_properties.glade.h:38
+#: glade/project_properties.glade.h:38
 msgid "Project Title:"
 msgstr "Τίτλος Έργου:"
 
-#: gtt/glade/project_properties.glade.h:39
+#: glade/project_properties.glade.h:39
 msgid "Rates"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:40
+#: glade/project_properties.glade.h:40
 msgid "Regular Rate:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:41
+#: glade/project_properties.glade.h:41
 #, fuzzy
 msgid "Status:"
 msgstr "Κατάσταση"
 
-#: gtt/glade/project_properties.glade.h:42
+#: glade/project_properties.glade.h:42
 msgid "The dollars per hour charged for overtime work on this project."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:43
+#: glade/project_properties.glade.h:43
 msgid "The dollars per hour normally charged for this project."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:44
+#: glade/project_properties.glade.h:44
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:45
+#: glade/project_properties.glade.h:45
 msgid "Time below which an interval is merged with its neighbors"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:46
+#: glade/project_properties.glade.h:46
 msgid "Urgency:"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:47
+#: glade/project_properties.glade.h:47
 msgid "What is the status of this project?"
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:48
+#: glade/project_properties.glade.h:48
 msgid "a short description that will be printed on the invoice."
 msgstr ""
 
-#: gtt/glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:49
 #, fuzzy
 msgid "seconds"
 msgstr "δ/λεπτα"
 
-#: gtt/glade/task_popup.glade.h:1
+#: glade/task_popup.glade.h:1
 #, fuzzy
 msgid "Add a new time interval"
 msgstr "Διάστημα ανανέωσης (ms)"
 
-# Using standard translation for "default" for consistency, although
-# it is not quite suitable in this context...
-#: gtt/glade/task_popup.glade.h:2
-#, fuzzy
-msgid "Delete _Times"
-msgstr "Διαγραφή"
+#: glade/task_popup.glade.h:2
+msgid "Cut Entry & _Times"
+msgstr ""
 
-#: gtt/glade/task_popup.glade.h:3
+#: glade/task_popup.glade.h:3
 msgid "Delete the diary entry only, keep the time intervals"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:4
+#: glade/task_popup.glade.h:4
 msgid "Delete the diary entry, and the time intervals below it."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:5
+#: glade/task_popup.glade.h:5
 msgid "Edit the diary entry and other task properties."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:6
+#: glade/task_popup.glade.h:6
 msgid "Insert a new diary entry above this one."
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:7
+#: glade/task_popup.glade.h:7
 #, fuzzy
 msgid "New Time Interval"
 msgstr "Περίοδος ανανέωσης δείκτη"
 
-#: gtt/glade/task_popup.glade.h:9
+#: glade/task_popup.glade.h:9
 #, fuzzy
-msgid "_Delete Diary Entry"
+msgid "_Cut Diary Entry"
 msgstr "Διαγραφή Παραμέτρου"
 
-#: gtt/glade/task_popup.glade.h:10
+#: glade/task_popup.glade.h:10
 msgid "_Edit Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:11
+#: glade/task_popup.glade.h:11
 msgid "_New Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_popup.glade.h:12
+#: glade/task_popup.glade.h:12
 msgid "_Paste Diary Entry"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:1
+#: glade/task_properties.glade.h:1
 msgid "A set of private notes that will not be printed on an invoice."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:2
+#: glade/task_properties.glade.h:2
 msgid "A short description to attach to this block of time."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:5
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:6
 msgid "Billing Block:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:7
+#: glade/task_properties.glade.h:7
 msgid "Billing Rate:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:8
+#: glade/task_properties.glade.h:8
 msgid "Billing Status:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:9
+#: glade/task_properties.glade.h:9
 #, fuzzy
 msgid "Diary Entry Properties"
 msgstr "Ιδιότητες GDiskFree"
 
-#: gtt/glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:10
 msgid "Diary Entry:"
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:11
+#: glade/task_properties.glade.h:11
 msgid "Fee rate to be charged for this task."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:14
+#: glade/task_properties.glade.h:14
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
 "the normal fashion.   \"Not Billable\" means we can't ask for money for "
@@ -2277,2761 +1452,2436 @@ msgid ""
 "as 'free/no-charge'."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:15
+#: glade/task_properties.glade.h:15
 msgid ""
 "Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:19
+#: glade/task_properties.glade.h:19
 #, fuzzy
 msgid "OverOver"
 msgstr "Εξυπηρετητής"
 
-#: gtt/glade/task_properties.glade.h:23
+#: glade/task_properties.glade.h:23
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 
-#: gtt/glade/task_properties.glade.h:24
+#: glade/task_properties.glade.h:24
 #, fuzzy
 msgid "minutes"
 msgstr "λεπτά"
 
-#: logview/about.c:41
-msgid "Cesar Miquel (miquel@df.uba.ar)"
-msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#: logview/about.c:42
-#, fuzzy
-msgid ""
-"This  program  is  part of  the  GNOME  project. Logview comes with "
-"ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
-"redistribute it under the conditions of the GNU General Public Licence. The "
-"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-msgstr ""
-"Αυτό το πρόγραμμα είναι μέρος του Έργου GNOME για το Linux. Το Logview δεν "
-"παρέχει ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Αυτό είναι ελεύθερο λογισμικό και έχετε την "
-"ελευθερία να το επαναδιανείμετε κάτω από τις συνθήκες της Δημόσιας Γενικής "
-"Άδειας Λογισμικού GNU. Το εικονίδιο του λογοτύπου είναι προσφορά του Tuomas "
-"Kuosmanen (γνωστός και σαν tigert)."
-
-#. go get logview.xpm in $(prefix)/share/pixmaps/logview
-#: logview/about.c:55
-msgid "Logview"
-msgstr "Εμφάνιση Μητρώου"
-
-#: logview/about.c:56
-msgid "Copyright (C) 1998"
-msgstr "Πνευματικά δικαιώματα (C) 1998"
-
-#: logview/actions.c:92
-msgid "Action database"
-msgstr "Βάση ενεργειών"
-
-#: logview/actions.c:97 logview/monitor.c:110
-msgid "Monitor options"
-msgstr "Επιλογες ελέγχου"
-
-#: logview/actions.c:151
-msgid "Add..."
-msgstr "Προσθήκη..."
-
-#: logview/actions.c:157
-msgid "Edit..."
-msgstr "Επεξεργασία..."
-
-#: logview/actions.c:278
-#, c-format
-msgid "Cannot open action data base <%s>! Open failed."
-msgstr ""
-
-#: logview/actions.c:313 logview/actions.c:326 logview/actions.c:337
-#: logview/actions.c:348 logview/actions.c:359 logview/actions.c:370
-msgid "Error parsing actions data base"
-msgstr "Σφάλμα στην ανάλυση της βάση ενεργειών"
-
-#: logview/actions.c:404
-msgid "Can't write to actions database!"
-msgstr "Αδύνατη η εγγραφή στη βάση ενεργειών!"
-
-#: logview/actions.c:511
-msgid "<empty>"
-msgstr "<κενό>"
-
-#: logview/actions.c:512
-#, fuzzy
-msgid "log name regexp"
-msgstr "κανονική έκφραση ονόματος καταγραφής"
-
-#: logview/actions.c:513
-msgid "process regexp"
-msgstr "κανονική έκφραση διεργασίας"
-
-#: logview/actions.c:514
-msgid "message regexp"
-msgstr "κανονική έκφραση μηνύματος"
-
-#: logview/actions.c:515
-msgid "action to execute when regexps are TRUE"
-msgstr "ενέργεια προς εκτέλεση όταν η κανονική έκφραση είναι ΑΛΗΘΗΣ"
-
-#: logview/actions.c:516
-msgid "description"
-msgstr "περιγραφή"
-
-#: logview/actions.c:746
-msgid "description:"
-msgstr "περιγραφή:"
-
-#: logview/actions.c:754
-msgid "Description of this entry."
-msgstr "Περιγραφή αυτής της εγγραφής."
-
-#: logview/actions.c:810
-#, c-format
-msgid ""
-"tag: [%s]\n"
-"log_name: [%s]\n"
-"process: [%s]\n"
-"message: [%s]\n"
-"description: [%s]\n"
-"action: [%s]\n"
-msgstr ""
-"ετικέτα: [%s]\n"
-"όνομα καταγραφής: [%s]\n"
-"διεργασία: [%s]\n"
-"μήνυμα: [%s]\n"
-"περιγραφή: [%s]\n"
-"ενέργεια: [%s]\n"
-
-#: logview/info.c:79 logview/logview.c:110
-msgid "Log stats"
-msgstr "Στατιστικά καταγραφών"
-
-#: logview/info.c:139
-msgid "Log information"
-msgstr "Πληροφορίες καταγραφών"
-
-#: logview/info.c:156
-msgid "Log:"
-msgstr "Καταγραφή:"
-
-#: logview/info.c:158
-msgid "Size:"
-msgstr "Μέγεθος:"
-
-#: logview/info.c:160
-msgid "Modified:"
-msgstr "Τροποποιημένο:"
-
-#: logview/info.c:162
-msgid "Start date:"
-msgstr "Ημερομηνία έναρξης:"
-
-#: logview/info.c:164
-msgid "Last date:"
-msgstr "Τελευταίά ημερομηνία:"
-
-#: logview/info.c:166
-msgid "Num. lines:"
-msgstr "Αριθ. γραμμών:"
-
-#: logview/info.c:183
-#, c-format
-msgid "%ld bytes"
-msgstr "%ld byte"
-
-#: logview/log_repaint.c:86
-msgid "January"
-msgstr "Ιανουάριος"
-
-# Revise translation of "manual" (as in opposite of "automatic", not synonym of "documentation")
-#: logview/log_repaint.c:86
-msgid "February"
-msgstr "Φεβρουάριος"
-
-#: logview/log_repaint.c:86
-msgid "March"
-msgstr "Μάρτιος"
-
-#: logview/log_repaint.c:86
-msgid "April"
-msgstr "Απρίλιος"
-
-#: logview/log_repaint.c:86
-msgid "May"
-msgstr "Μάιος"
-
-#: logview/log_repaint.c:87
-msgid "June"
-msgstr "Ιούνιος"
-
-#: logview/log_repaint.c:87
-msgid "July"
-msgstr "Ιούλιος"
-
-#: logview/log_repaint.c:87
-msgid "August"
-msgstr "Αύγουστος"
-
-#: logview/log_repaint.c:87
-msgid "September"
-msgstr "Σεπτέμβριος"
-
-#: logview/log_repaint.c:87
-msgid "October"
-msgstr "Οκτώβριος"
-
-#: logview/log_repaint.c:88
-msgid "November"
-msgstr "Νοέμβριος"
-
-#: logview/log_repaint.c:88
-msgid "December"
-msgstr "Δεκέμβριος"
-
-#. Translators: Date only format, %x should well do really
-#: logview/log_repaint.c:477
-#, c-format
-msgid "%x"
-msgstr ""
-
-#. Translators: should be only the time, date could be bogus
-#: logview/log_repaint.c:587
-#, c-format
-msgid "%X"
-msgstr ""
-
-#. bogus
-#. Translators: Make sure this is only Month and Day format, year
-#. * will be bogus here
-#: logview/log_repaint.c:671
-msgid "%B %e"
-msgstr ""
-
-#: logview/logrtns.c:199
-msgid "Not enough memory!\n"
-msgstr "Δεν υπάρχει αρκετή μνήμη!\n"
-
-#: logview/logrtns.c:207
-msgid "Out of memory!\n"
-msgstr "Η μνήμη εξαντλήθηκε!\n"
-
-#: logview/logrtns.c:233
-msgid "Unable to open logfile!\n"
-msgstr "Αδύνατο το άνοιγμα αρχείου καταγραφών!\n"
-
-#: logview/logrtns.c:288
-#, c-format
-msgid "%s is not a regular file."
-msgstr "Το %s δεν είναι κανονικό αρχείο."
-
-#: logview/logrtns.c:296
-#, fuzzy, c-format
-msgid ""
-"%s is not user readable. Either run the program as root or ask the sysadmin "
-"to change the permissions on the file."
-msgstr ""
-"το %s δεν είναι αναγνώσιμο από το χρήστη. Πιθανώς να έχει δικαίωμα μόνο για "
-"ανάγνωση. Είτε τρέξτε το πρόγραμμα ως διαχειριστής ή ζητήστε από το "
-"διαχειριστή να αλλάξει τα δικαιώματα του αρχείου."
-
-#: logview/logrtns.c:309
-#, c-format
-msgid "%s could not be opened."
-msgstr "Το %s δεν μπόρεσε να ανοιχτεί."
-
-#: logview/logrtns.c:332
-#, c-format
-msgid "%s not a log file."
-msgstr "To %s δεν είναι αρχείο καταγραφών."
-
-#: logview/logrtns.c:756 logview/logrtns.c:787 logview/logrtns.c:918
-msgid "ReadLogStats: out of memory"
-msgstr "ReadLogStats: η μνήμη εξαντλήθηκε"
-
-#: logview/logview.c:85
-#, fuzzy
-msgid "Open log..."
-msgstr "Άνοιγμα αρχείου καταγραφών"
-
-#: logview/logview.c:86
-msgid "Open log"
-msgstr "Άνοιγμα αρχείου καταγραφών"
-
-#: logview/logview.c:88
-#, fuzzy
-msgid "Export log..."
-msgstr "Εξαγωγή καταγραφών"
-
-#: logview/logview.c:89
-msgid "Export log"
-msgstr "Εξαγωγή καταγραφών"
-
-#: logview/logview.c:91 logview/logview.c:92
-msgid "Close log"
-msgstr "Κλείσιμο καταγραφών"
-
-#: logview/logview.c:94 logview/logview.c:95
-msgid "Switch log"
-msgstr "Αλλαγή καταγραφής"
-
-#: logview/logview.c:97
-#, fuzzy
-msgid "Monitor..."
-msgstr "Παρακολούθηση"
-
-#: logview/logview.c:98
-msgid "Monitor log"
-msgstr "Παρακολούθηση καταγραφών"
-
-#: logview/logview.c:101
-msgid "Exit program"
-msgstr "Έξοδος από το πρόγραμμα"
-
-#: logview/logview.c:108
-msgid "Show calendar log"
-msgstr "Εμφάνιση καταγραφών ημερολογίου"
-
-#: logview/logview.c:111
-msgid "Show log stats"
-msgstr "Εμφάνιση στατιστικών καταγραφών"
-
-#: logview/logview.c:113
-#, fuzzy
-msgid "Zoom"
-msgstr "Απεικόνιση μεγένθυνσης"
-
-#: logview/logview.c:114
-msgid "Show line info"
-msgstr "Εμφάνιση πληροφοριών γραμμής"
-
-#: logview/logview.c:117
-msgid "Show user preferences"
-msgstr "Εμφάνιση προτιμίσεων χρήστη"
-
-#: logview/logview.c:124
-msgid "Select...               "
-msgstr "Επιλογή...              "
-
-#: logview/logview.c:125
-msgid "Select log events"
-msgstr "Επιλογή γεγονότων καταγραφής"
-
-#: logview/logview.c:127
-msgid "Filter..                "
-msgstr "Φιλτράρισμα...          "
-
-#: logview/logview.c:128
-msgid "Filter log events"
-msgstr "Φιλτράρισμα γεγονότων καταγραφής"
-
-#: logview/logview.c:137
-msgid "Info about logview"
-msgstr "Πληροφορίες για το logview"
-
-#: logview/logview.c:241
-msgid "No log files to open"
-msgstr "Δεν υπάρχουν αρχεία καταγραφών προς ανάγνωση"
-
-#. Create App
-#: logview/logview.c:264
-msgid "System Log Viewer"
-msgstr "Παρακολουθηση Καταγραφών Συστήματος"
-
-#: logview/logview.c:368
-msgid "Filename: "
-msgstr "Όνομα Αρχείου:"
-
-#: logview/logview.c:384
-msgid "Date: "
-msgstr "Ημερομηνία:"
-
-#: logview/logview.c:619
-msgid "Too many open logs. Close one and try again"
-msgstr "Πάρα πολλά ανοιχτά αρχεία καταγραφών. Κλείστε ένα και δοκιμάστε ξανά"
-
-#: logview/logview.c:676
-msgid "Open new logfile"
-msgstr "Άνοιγμα νέου αρχείου καταγραφών"
-
-#: logview/misc.c:55
-#, c-format
-msgid "Error: [%s]\n"
-msgstr "Σφάλμα: [%s]\n"
-
-#: logview/monitor.c:124
-msgid "Choose logs to monitor"
-msgstr "Επιλογή καταγραφών για παρακολούθηση"
-
-#. Arrowed buttons
-#: logview/monitor.c:168
-#, fuzzy
-msgid "Add >>"
-msgstr "Προσθήκη ->"
-
-#. Remove button
-#: logview/monitor.c:176
-#, fuzzy
-msgid "Remove <<"
-msgstr "Διαγραφή"
-
-#. Check boxes
-#: logview/monitor.c:207
-msgid "Hide app"
-msgstr "Απόκρυψη εφαρμογής"
-
-#: logview/monitor.c:215
-msgid "Exec actions"
-msgstr "Εκτέλεση ενέργειας"
-
-# FIX? drop (see also "On Drop" above)
-#. Actions button
-#: logview/monitor.c:227
-#, fuzzy
-msgid "Actions..."
-msgstr "Ενέργειες"
-
-#: logview/monitor.c:282 logview/monitor.c:329
-msgid "tmp_list is NULL\n"
-msgstr "Το tmp_list είναι κενό\n"
-
-#: logview/monitor.c:456
-#, fuzzy
-msgid "Monitoring logs..."
-msgstr "Παρακολούθηση καταγραφών..."
-
-#: logview/monitor.c:638
-msgid "TOUCHED!!\n"
-msgstr "ΑΚΟΥΜΠΗΘΗΚΕ!!!\n"
-
-#: logview/userprefsdialog.c:65
-msgid "hostname column width ( 0 to hide this column ): "
-msgstr "πλάτος στήλης ονόματος συστήματος (0 για να αποκρύψετε τη στήλη): "
-
-#: logview/userprefsdialog.c:66
-msgid "Columns"
-msgstr "Στήλες"
-
-#: logview/zoom.c:78
-msgid "Zoom view"
-msgstr "Απεικόνιση μεγένθυνσης"
-
-#: logview/zoom.c:154
-#, c-format
-msgid "Log line detail for %s"
-msgstr "Λεπτομέρεια γραμμής καταγραφής για το %s"
-
-#: logview/zoom.c:157
-msgid "Log line detail for <No log loaded>"
-msgstr "Λεπτομέρεια γραμμής καταγραφής για <Δε φορτώθηκαν καταγραφές>"
-
-#: logview/zoom.c:180
-msgid "Date:"
-msgstr "Ημερομηνία:"
-
-#: logview/zoom.c:182
-msgid "Process:"
-msgstr "Διεργασία:"
-
-#: logview/zoom.c:184
-msgid "Message:"
-msgstr "Μήνυμα:"
-
-#: logview/zoom.c:186
-msgid "Description:"
-msgstr "Περιγραφή:"
-
-#. Translators: do not include year, it would be bogus
-#: logview/zoom.c:212
-msgid "%B %e %X"
-msgstr ""
-
-#.
-#. * 	-------------------
-#. * 	     Defines
-#. * 	-------------------
-#.
-#: logview/config.c:34
-#, fuzzy
-msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:35
-msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr ""
-
-#: logview/config.c:36
-#, fuzzy
-msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:37
-msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr ""
-
-#: logview/config.c:39
-#, fuzzy
-msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:40
-#, fuzzy
-msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:41
-#, fuzzy
-msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:42
-#, fuzzy
-msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:43
-#, fuzzy
-msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/config.c:44
-#, fuzzy
-msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: logview/desc_db.c:37
-#, c-format
-msgid "Cannot open regexp data base <%s>! Open failed."
-msgstr ""
-
-#: logview/desc_db.c:147
-#, c-format
-msgid "Cannot open description data base <%s>! Open failed."
-msgstr ""
-
-#: mini-utils/gcolorsel/dialog-prefs.c:119
-msgid "Do nothing"
-msgstr "Να μην κάνει κάτι"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:124
-msgid "Append it to ->"
-msgstr "Προσθήκη του στο ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:129
-msgid "Search it in ->"
-msgstr "Αναζήτησέ το στο ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:135
-msgid "Edit it"
-msgstr "Επεξεργάσου το"
-
-#. First view is considered as the default view ...
-#: mini-utils/gcolorsel/gcolorsel.c:24
-msgid "List"
-msgstr "Λίστα"
-
-#: mini-utils/gcolorsel/gcolorsel.c:28
-msgid "Grid"
-msgstr "Πλέγμα"
-
-#: mini-utils/gcolorsel/gcolorsel.c:32 mini-utils/gcolorsel/menus.c:573
-#: mini-utils/gcolorsel/menus.c:660 stripchart/params.c:1041
-#: stripchart/params.c:1044
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-#: mini-utils/gcolorsel/gcolorsel.c:40 stripchart/params.c:1034
-#: stripchart/params.c:1037
-msgid "File"
-msgstr "Αρχείο"
-
-#: mini-utils/gcolorsel/gcolorsel.c:42
-msgid "Search RGB"
-msgstr "Αναζήτηση RGB"
-
-#: mini-utils/gcolorsel/gcolorsel.c:44
-msgid "Monitor"
-msgstr "Παρακολούθηση"
-
-#: mini-utils/gcolorsel/gcolorsel.c:46
-msgid "Concat"
-msgstr "Σύζευξη"
-
-#: mini-utils/gcolorsel/gcolorsel.c:96
-#, c-format
-msgid "'%s' document has been modified; do you wish to save it ?"
-msgstr "Το ντοκουμέντο '%s' έχει τροποποιηθεί· θέλετε να το αποθηκεύσετε;"
-
-#: mini-utils/gcolorsel/gcolorsel.c:206
-msgid "GColorsel was unable to paste colors from the clipboard."
-msgstr "Το GColorsel δεν μπόρεσε να επικολλήσει χρώματα από το τεμάχιο."
-
-#: mini-utils/gcolorsel/gcolorsel.c:220
-msgid "Please select a file document before."
-msgstr "Παρακαλώ επιλέξτε πρώτα ένα ντοκουμέντο."
-
-#: mini-utils/gcolorsel/gcolorsel.c:398
-msgid ""
-"I can't execute this action. Check that :\n"
-"\n"
-"1. You have associated an action with this event.\n"
-"2. The associated document still exists.\n"
-"3. The type of the associated document.\n"
-"\n"
-"Go to preferences, in the edit menu."
-msgstr ""
-"Αδύνατη η εκτέλεση αυτής της ενέργειας. Ελέγξτε ότι: \n"
-"\n"
-"1. Έχετε συσχετίσει μια ενέργεια με το γεγονός αυτό.\n"
-"2. Το συσχετισμένο ντοκουμέντο υπάρχει ακόμα.\n"
-"3. Το είδος του συσχετισμένου ντοκουμέντο.\n"
-"\n"
-"Δείτε της Προτιμίσεις, στο μενού Επεξεργασία."
-
-#. Init GnomeMDI
-#: mini-utils/gcolorsel/gcolorsel.c:505
-msgid "GColorsel"
-msgstr "GColorsel"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:1
-msgid "<- Remove"
-msgstr "<- Διαγραφή"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:2
-msgid "<- Remove all"
-msgstr "<- Διαγραφή όλων"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:3
-msgid "Add ->"
-msgstr "Προσθήκη ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:4
-msgid "Add all ->"
-msgstr "Προσθήκη όλων ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:5
-msgid "Available documents"
-msgstr "Διαθέσιμα ντοκουμέντα"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:6
-msgid "Available views"
-msgstr "Διαθέσιμες όψεις"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:7
-msgid "Connect to"
-msgstr "Σύνδεση με"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:8
-msgid "Create a document"
-msgstr "Δημιουργία ντοκουμέντου"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:9
-msgid "Create views"
-msgstr "Δημιουργία όψεων"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:10
-msgid "Description :"
-msgstr "Περιγραφή :"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:11
-msgid ""
-"Please, select the type of document to create.\n"
-"You can choose a short name, do not confuse it with the file name."
-msgstr ""
-"Παρακαλώ επιλέξτε το είδος του ντοκουμέντου που θέλετε να δημιουργήσετε.\n"
-"Μπορείτε να επιλέξετε ένα σύντομο όνομα, μην το συγχέετε με το όνομα του "
-"αρχείου."
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:13
-msgid "Select source document"
-msgstr "Επιλογή ντοκουμέντου πηγής"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:14
-msgid "Select type"
-msgstr "Επιλογή τύπου"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:15
-msgid "Short name : "
-msgstr "Σύντομο όνομα : "
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:16
-msgid ""
-"This document read document from one or more other document. Please, choose "
-"these documents."
-msgstr ""
-"Αυτό το ντοκουμέντο μπορεί να εισάγει πληροφορίες από ένα ή περισσότερα "
-"ντοκουμέντα.Παρακαλώ επιλέξτε αυτά τα ντοκουμέντα."
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:17
-msgid ""
-"You can create one or more views for this document. Note that you have to "
-"create at least one view."
-msgstr ""
-"Μπορείτε να δημιουργήσετε μια ή περισσότερες απεικονίσεις για αυτό το "
-"ντοκουμέντο. Σημειώστε ότι πρέπει να δημιουργήσετε τουλάχιστον μια "
-"απεικόνιση."
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:1
-msgid "Create a new view"
-msgstr "Δημιουργία νέας όψης"
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:2
-msgid "Please, select the type of view you want to create."
-msgstr "Παρακαλώ, επιλέξτε το είδος της όψης που θέλετε να δημιουργήσετε."
-
-# FIX? drop (see also "On Drop" above)
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:1
-msgid "Actions"
-msgstr "Ενέργειες"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:2 stripchart/params.c:732
-msgid "Bottom"
-msgstr "Κάτω μέρος"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:3
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Default"
-msgstr "Εξ' ορισμού"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:4
-msgid "Display documents menu (restart required)."
-msgstr "Εμφάνιση μενού ντοκουμέντων (απαιτεί επανεκκίνηση)."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:5
-msgid "Documents"
-msgstr "Αρχεία"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:6
-msgid "DoubleClick in previews:"
-msgstr "Διπλό Κλικ στις προεπισκοπήσεις:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:7
-msgid "DoubleClick in views:"
-msgstr "Διπλό Κλικ στις απεικονίσεις:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:8
-msgid "Drop:"
-msgstr "Αφημένο:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:9
-#: mini-utils/gshutdown/gshutdown.c:398
-msgid "General"
-msgstr "Γενικά"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:10
-msgid "Grab:"
-msgstr "Ξεσήκωμα:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:11
-msgid "Left"
-msgstr ""
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:12
-msgid "MDI (Multiple Document Interface)"
-msgstr "ΔΠΝ (Διασύνδεση Πολλαπλών Ντοκουμέντων)"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:13
-#, fuzzy
-msgid "Modal"
-msgstr "Μοντέλο"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:14
-msgid "Mode:"
-msgstr "Κατάσταση:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:15
-msgid "Notebook"
-msgstr ""
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:16
-msgid "Notebook Tab position:"
-msgstr "Θέση καρτέλας τετραδίου:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:17
-msgid "On ... execute ..."
-msgstr "Στο ... εκτέλεσε ..."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:18
-msgid "Right"
-msgstr ""
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:19
-msgid "Save session on exit."
-msgstr "Αποθήκευση συνεδρίας στην έξοδο."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:20
-msgid "Session"
-msgstr "Συνεδρία"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:21
-#: stripchart/chart-app.c:162 stripchart/params.c:704
-msgid "Top"
-msgstr "Κορυφή"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:22
-msgid "Toplevel"
-msgstr ""
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:1
-msgid ""
-"Begin\n"
-"Comments :"
-msgstr ""
-"Αρχή\n"
-"Σχόλια: "
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:3
-msgid ""
-"End\n"
-"Comments :"
-msgstr ""
-"Τέλος\n"
-"Σχόλια:"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:5
-msgid "File name :"
-msgstr "Όνομα αρχείου:"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:6
-msgid "Header :"
-msgstr "Κεφαλίδα :"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:7
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:3
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:4
-msgid "Special properties"
-msgstr "Ειδικές ιδιότητες"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:2
-msgid "Common properties"
-msgstr "Τυπικές ιδιότητες"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:3
-msgid "Name :"
-msgstr "Όνομα :"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:1
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:106
-msgid "Blue :"
-msgstr "Μπλε : "
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:2
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:102
-msgid "Green :"
-msgstr "Πράσινο :"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:4
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:98
-msgid "Red :"
-msgstr "Κόκκινο :"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:1
-msgid "Colors format :"
-msgstr "Μορφή χρώματος :"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:3
-msgid "Display document control (if exists)"
-msgstr "Εμφάνιση ελέγχου ντοκουμέντου (αν υπάρχει)"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:1
-msgid "Color height :"
-msgstr "Ύψος χρώματος:"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:2
-msgid "Color width :"
-msgstr "Πλάτος χρώματος:"
-
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:3
-msgid "Draw numbers"
-msgstr "Απεικόνιση αριθμών"
-
-#: mini-utils/gcolorsel/menus.c:52
-msgid "New Document"
-msgstr "Νέο Αρχείο"
-
-#: mini-utils/gcolorsel/menus.c:53
-msgid "Create a new document"
-msgstr "Δημιουργία νέου ντοκουμέντου"
-
-#: mini-utils/gcolorsel/menus.c:55
-msgid "New View"
-msgstr "_Νέα απεικόνιση"
-
-#: mini-utils/gcolorsel/menus.c:56
-msgid "Create a new view for a document"
-msgstr "Δημιουργία νέας απεικόνισης για το ντοκουμέντο"
-
-#: mini-utils/gcolorsel/menus.c:62
-msgid "Close document"
-msgstr "Κλείσιμο ντοκουμέντου"
-
-#: mini-utils/gcolorsel/menus.c:63
-msgid "Close the current document"
-msgstr "Κλείσιμο του τρέχοντος ντοκουμέντου"
-
-#: mini-utils/gcolorsel/menus.c:65
-msgid "Close view"
-msgstr "Κλείσιμο απεικόνισης"
-
-#: mini-utils/gcolorsel/menus.c:66 mini-utils/gcolorsel/menus.c:913
-msgid "Close the current view"
-msgstr "Διαγραφή παρούσας απεικόνισης"
-
-#: mini-utils/gcolorsel/menus.c:76
-msgid "_Open palette..."
-msgstr "Άνοιγμα _παλέττας..."
-
-#: mini-utils/gcolorsel/menus.c:77
-msgid "Load a palette"
-msgstr "Φόρτωμα παλέττας"
-
-#: mini-utils/gcolorsel/menus.c:79
-msgid "_Save palette"
-msgstr "_Αποθήκευση παλέττας"
-
-#: mini-utils/gcolorsel/menus.c:80
-msgid "Save the current palette in a file"
-msgstr "Αποθήκευση της παλέττας σε αρχείο"
-
-#: mini-utils/gcolorsel/menus.c:82
-msgid "Save palette _As..."
-msgstr "Αποθήκευση παλέττας _Ως..."
-
-#: mini-utils/gcolorsel/menus.c:83
-msgid "Save the current palette with a different name"
-msgstr "Αποθήκευση της τρέχουσας παλέττας με διαφορετικό όνομα"
-
-#: mini-utils/gcolorsel/menus.c:105
-msgid "Insert color"
-msgstr "Εισαγωγή χρώματος"
-
-#: mini-utils/gcolorsel/menus.c:107
-msgid "Remove selected colors"
-msgstr "Διαγραφή επιλεγμένων χρωμάτων"
-
-#: mini-utils/gcolorsel/menus.c:109
-msgid "Edit selected colors ..."
-msgstr "Επεξεργασία επιλεγμένων χρωμάτων ..."
-
-#: mini-utils/gcolorsel/menus.c:113
-msgid "Document/View properties"
-msgstr "Ντοκουμέντο/Εμφάνιση ιδιοτήτων"
-
-#: mini-utils/gcolorsel/menus.c:179
-#, c-format
-msgid ""
-"GColorsel was unable to save the file :\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have the approprate write permissions.\n"
-"\n"
-"Do you want to retry ?"
-msgstr ""
-"Το GColorsel δε μπόρεσε να αποθηκεύσει το αρχείο:\n"
-"\n"
-"%s\n"
-"\n"
-"Παρακαλώ επιβεβεώστε ότι το μονοπάτι που δηλώσατε υπάρχει,\n"
-"και ότι έχετε τα κατάλληλα δικαιώματα εγγραφής.\n"
-"\n"
-"Θέλετε να ξαναδοκιμάσετε;"
-
-#: mini-utils/gcolorsel/menus.c:198
-#, c-format
-msgid ""
-"GColorsel was unable to load the file:\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have permissions for opening the file."
-msgstr ""
-"Το GColorsel δε μπόρεσε να φορτώσει το αρχείο:\n"
-"\n"
-"%s\n"
-"\n"
-"Παρακαλώ επιβεβεώστε ότι το μονοπάτι που δηλώσατε υπάρχει,\n"
-"και ότι έχετε τα δικαιώματα να ανοίξετε το αρχείο."
-
-#: mini-utils/gcolorsel/menus.c:217
-msgid "Open Palette"
-msgstr "Άνοιγμα Παλέττας"
-
-#: mini-utils/gcolorsel/menus.c:242
-msgid "Loading file, please wait ..."
-msgstr "Άνοιγμα αρχείου, παρακαλώ περιμένετε ..."
-
-#: mini-utils/gcolorsel/menus.c:273
-msgid "Save Palette as"
-msgstr "Αποθήκευση Παλέττας ως"
-
-#: mini-utils/gcolorsel/menus.c:320
-msgid "File not saved ..."
-msgstr "Το αρχείο δεν αποθηκεύτηκε ..."
-
-#: mini-utils/gcolorsel/menus.c:330
-msgid "File saved ..."
-msgstr "Το αρχείο αποθηκεύτηκε ..."
-
-#: mini-utils/gcolorsel/menus.c:408
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?\n"
-"\n"
-"Please note that %d virtual document use data from this document."
-msgstr ""
-"Πρόκειτε να κλείσω την τελευταία απεικόνιση του '%s'.\n"
-"\n"
-"Το ντοκουμέντο αυτό θα κλείσει επίσης. Να συνεχίσω;\n"
-"\n"
-"Παρακαλώ σημειώστε ότι %d ιδεατά ντοκουμέντα χρησιμοποιούν αυτό το "
-"ντοκουμέντο."
-
-#: mini-utils/gcolorsel/menus.c:410
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?"
-msgstr ""
-"Πρόκειτε να κλείσω την τελευταία απεικόνιση του '%s'.\n"
-"\n"
-"Το ντοκουμέντο αυτό θα κλείσει επίσης. Να συνεχίσω;"
-
-#: mini-utils/gcolorsel/menus.c:444
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed,\n"
-"and that %d virtual document use data from this document.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"Πρόκειτε να κλείσω το '%s'.\n"
-"\n"
-"Παρακαλώ σημειώστε ότι %d απεικονίσεις θα καταστραφούν,\n"
-"και ότι %d ιδεατά ντοκουμέντα χρησιμοποιούν δεδομένα από\n"
-"αυτό το ντοκουμέντο.\n"
-"Θέλετε να συνεχίσετε;"
-
-#: mini-utils/gcolorsel/menus.c:446
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"Πρόκειτε να κλείσω το '%s'.\n"
-"\n"
-"Παρακαλώ σημειώστε ότι %d απεικονίσεις θα καταστραφούν.\n"
-"\n"
-"Θέλετε να συνεχίσετε;"
-
-#: mini-utils/gcolorsel/menus.c:493
-msgid "Gnome Color Browser"
-msgstr "Πρόγραμμα Εξερεύνησης Χρωμάτων του Gnome"
-
-#: mini-utils/gcolorsel/menus.c:496
-msgid "Small utility to browse available X11 colors."
-msgstr "Μικρή εφαρμογή για την εξερεύνηση των διαθέσιμων χρωμάτων στα X11."
-
-#: mini-utils/gcolorsel/menus.c:606
-msgid "New Color"
-msgstr "Νέο Χρώμα"
-
-#: mini-utils/gcolorsel/menus.c:863
-msgid "View properties"
-msgstr "Εμφάνιση ιδιοτήτων"
-
-#: mini-utils/gcolorsel/menus.c:878
-msgid "Document properties"
-msgstr "Ιδιότητες αρχείου"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open"
-msgstr "Άνοιγμα"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open a palette"
-msgstr "Άνοιγμα παλέττας"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab"
-msgstr "Ξεσήκωμα"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab a color on the screen"
-msgstr "Ξεσήκωμα χρώματος από την οθόνη"
-
-#: mini-utils/gcolorsel/session.c:305
-msgid ""
-"Your config file is corrupted.\n"
-"Do you want to create a new session ?"
-msgstr ""
-"Το αρχείο ρυθμίσεων είναι κατεστραμμένο.\n"
-"Θέλετε να δημιουργήσετε μια νέα συνεδρία;"
-
-#: mini-utils/gcolorsel/session.c:358
-msgid "Loading files, please wait ..."
-msgstr "Φόρτωμα αρχείων, παρακαλώ περιμένετε..."
-
-#: mini-utils/gcolorsel/session.c:383
-msgid ""
-"One or more files can not be restored :\n"
-"\n"
-msgstr ""
-"Ένα η περισσότερα αρχεία δεν μπορούν να επαναφερθούν:\n"
-"\n"
-
-#: mini-utils/gcolorsel/session.c:409
-msgid "System Colors"
-msgstr "Χρώματα Συστήματος"
-
-#: mini-utils/gcolorsel/session.c:430
-msgid "User Colors"
-msgstr "Χρώματα χρήστη"
-
-#: mini-utils/gcolorsel/session.c:438
-msgid "Search"
-msgstr "Αναζήτηση"
-
-#: mini-utils/gcolorsel/view-color-generic.c:16
-msgid "Decimal 8 bits"
-msgstr "Δεκαδικό 8 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:17
-msgid "Decimal 16 bits"
-msgstr "Δεκαδικό 16 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:18
-msgid "Hex 8 bits"
-msgstr "Δεκαεξαδικό 8 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:19
-msgid "Hex 16 bits"
-msgstr "Δεκαεξαδικό 16 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:20
-msgid "Float"
-msgstr "Κινητής Υποδιαστολής"
-
-#: mini-utils/gcolorsel/view-color-list.c:196 stripchart/params.c:827
-msgid "Color"
-msgstr "Χρώμα"
-
-#. Create everything.
-#: mini-utils/gcolorsel/view-color-list.c:198 mini-utils/guname/moreinfo.c:225
-#: mini-utils/gw/gw.c:490 mini-utils/gw/gw.c:560
-msgid "Name"
-msgstr "Όνομα"
-
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:110
-msgid "Tolerance :"
-msgstr "Ανοχή :"
-
-#: mini-utils/gfontsel/gfontsel.c:162
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:1
-msgid "Font Selector"
-msgstr "Επιλογέας Γραμματοσειράς"
-
-#: mini-utils/gfontsel/gfontsel.c:190
-msgid "Selection:"
-msgstr "Επιλογή:"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "Font to load"
-msgstr "Γραμματοσειρά προς απεικόνιση"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "FONTSPEC"
-msgstr "ΓΡΑΜ/ΣΕΙΡΑ"
-
-#: mini-utils/gfontsel/gfontsel.c:274
-msgid "Print selected font name on exit"
-msgstr "Εκτύπωση επιλεγμένης γραμματοσειράς κατά την έξοδο"
-
-#: mini-utils/gfontsel/gfontsel.c:275
-msgid "Inhibit remembering selected font for next run"
-msgstr ""
-"Απενεργ. αποθήκευσης επιλεγμένης γραμματοσειράς για την επόμενη εκτέλεση"
-
-#: mini-utils/gfontsel/gfontsel.c:276
-msgid "Inhibit loading of last font"
-msgstr "Απενεργ. ανάγνωσης της τελευταίας γραμματοσειράς"
-
-#: mini-utils/gless/gless.c:115
-#, c-format
-msgid "Reason %d\n"
-msgstr "Αιτία %d\n"
-
-#: mini-utils/gless/gless.c:130
-msgid "Where to put the window, and its size"
-msgstr "Θέση και μέγεθος παραθύρου"
-
-#: mini-utils/gless/gless.c:131
-msgid "Ignore standard input; may be needed in some cases."
-msgstr ""
-"Αγνόηση κανονικής εισόδου -- ενδεχομένως απαραίτητο σε μερικές περιπτώσεις."
-
-#: mini-utils/gless/gless.c:293
-msgid "_New Window"
-msgstr "_Νέο Παράθυρο"
-
-#: mini-utils/gless/gless.c:294
-msgid "New text viewer window"
-msgstr "Νέο παράθυρο απεικόνισης κειμένου"
-
-#: mini-utils/gless/gless.c:312
-msgid "_Fixed Font"
-msgstr "Γραμματοσειρά Στα_θερού Πλάτους"
-
-#: mini-utils/gless/gless.c:313
-msgid "Display text with a fixed font"
-msgstr "Απεικόνιση κειμένου με γραμματοσειρά σταθερού πλάτους"
-
-#: mini-utils/gless/gless.c:351 mini-utils/gless/gless.desktop.in.h:2
-msgid "Text File Viewer"
-msgstr "Πρόγραμμα Απεικόνισης Αρχείων Κειμένου"
-
-#: mini-utils/gless/gless.c:446 mini-utils/gshutdown/gshutdown.c:30
-#: mini-utils/guname/guname.c:43 mini-utils/gw/gw.c:29
-#: mini-utils/idetool/idetool.c:11
-msgid "Copyright 1998, under the GNU General Public License."
-msgstr "Copyright 1998, σύμφωνα με τη Γενική Δημόσια άδεια GNU (GNU GPL)."
-
-#: mini-utils/gless/gless.c:467
-msgid "Find string"
-msgstr "Αναζήτηση ακολουθίας"
-
-#: mini-utils/gless/gless.c:468
-msgid "Find"
-msgstr "Αναζήτηση"
-
-#: mini-utils/gless/gless.c:505
-msgid "Loading..."
-msgstr "Ανάγνωση..."
-
-#: mini-utils/gless/gless.c:509
-#, c-format
-msgid ""
-"No such file or directory:\n"
-"%s"
-msgstr ""
-"Ανύπαρκτο αρχείο ή κατάλογος:\n"
-"%s"
-
-#: mini-utils/gless/gless.c:527
-#, c-format
-msgid ""
-"Failed to decompress and display the file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Αποσυμπίεση και εμφάνιση του αρχείου ανεπιτυχής:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:540
-msgid ""
-"Unable to display compressed file.\n"
-"zcat not found in your path."
-msgstr ""
-"Εμφάνιση συμπιεσμένων αρχείων αδύνατη.\n"
-"Το zcat δε βρέθηκε στη διαδρομή."
-
-#: mini-utils/gless/gless.c:548
-#, c-format
-msgid ""
-"Error loading file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Ανάγνωση αρχείου ανεπιτυχής:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:606
-msgid "Saving..."
-msgstr "Αποθήκευση..."
-
-#: mini-utils/gless/gless.c:617
-#, c-format
-msgid ""
-"Failed to write file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Εγγραφή στο αρχείο ανεπιτυχής:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:667
-msgid "Save Text As..."
-msgstr "Αποθήκευση Κειμένου Ως..."
-
-#: mini-utils/gless/gless.c:707
-msgid "Open Text File..."
-msgstr "Άνοιγμα Αρχείου Κειμένου..."
-
-#: mini-utils/gless/gless.c:771
-msgid "Sorry, no preferences yet."
-msgstr "Με συγχωρείτε, δεν υπάρχουν ρυθμίσεις ακόμα."
-
-#: mini-utils/gless/gless.c:858
-msgid "Searching..."
-msgstr "Αναζήτηση..."
-
-#: mini-utils/gless/gless.c:869
-msgid "No search string was specified!"
-msgstr "Δεν δόθηκε αλφαριθμητικό προς αναζήτηση!"
-
-#: mini-utils/gshutdown/gshutdown.c:87
-msgid "Shut Down"
-msgstr "Κλείσιμο Υπολογιστή"
-
-#: mini-utils/gshutdown/gshutdown.c:88
-msgid "Single User Mode"
-msgstr "Κατάσταση Ενός Χρήστη"
-
-#: mini-utils/gshutdown/gshutdown.c:89
-msgid "Runlevel 2"
-msgstr "Runlevel 2"
-
-#: mini-utils/gshutdown/gshutdown.c:90
-msgid "Runlevel 3"
-msgstr "Runlevel 3"
-
-#: mini-utils/gshutdown/gshutdown.c:91
-msgid "Runlevel 4"
-msgstr "Runlevel 4"
-
-#: mini-utils/gshutdown/gshutdown.c:92
-msgid "Runlevel 5"
-msgstr "Runlevel 5"
-
-#: mini-utils/gshutdown/gshutdown.c:93
-msgid "Reboot"
-msgstr "Επανεκκίνηση Υπολογιστή"
-
-#: mini-utils/gshutdown/gshutdown.c:99
-msgid "Are you sure you want to shut down the computer?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να κλείσετε τον υπολογιστή;"
-
-#: mini-utils/gshutdown/gshutdown.c:100
-msgid "Are you sure you want to switch to single user mode?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε κατάσταση ενός χρήστη;"
-
-#: mini-utils/gshutdown/gshutdown.c:101
-msgid "Are you sure you want to switch to runlevel 2?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 2;"
-
-#: mini-utils/gshutdown/gshutdown.c:102
-msgid "Are you sure you want to switch to runlevel 3?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 3;"
-
-#: mini-utils/gshutdown/gshutdown.c:103
-msgid "Are you sure you want to switch to runlevel 4?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 4;"
-
-#: mini-utils/gshutdown/gshutdown.c:104
-msgid "Are you sure you want to switch to runlevel 5?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 5;"
-
-#: mini-utils/gshutdown/gshutdown.c:105
-msgid "Are you sure you want to reboot the system?"
-msgstr "Είσαστε βέβαιοι ότι θέλετε να επανεκιννήσετε τον υπολογιστή;"
-
-#: mini-utils/gshutdown/gshutdown.c:153 mini-utils/gshutdown/gshutdown.c:628
-msgid "You must be the super-user (root) to shut down or restart the computer."
-msgstr ""
-"Μόνο ο υπερχρήστης (root) επιτρέπεται να κλείσει ή επανεκκινήσει τον "
-"υπολογιστή."
-
-#. notebook pages
-#: mini-utils/gshutdown/gshutdown.c:189
-msgid "Shutdown or Reboot"
-msgstr "Τερματισμός ή Επανεκκίνηση Υπολογιστή"
-
-#: mini-utils/gshutdown/gshutdown.c:206 mini-utils/gshutdown/gshutdown.c:207
-msgid "Easy"
-msgstr "Απλό"
-
-#: mini-utils/gshutdown/gshutdown.c:211 mini-utils/gshutdown/gshutdown.c:212
-msgid "Advanced"
-msgstr "Για προχωρημένους"
-
-#: mini-utils/gshutdown/gshutdown.c:244
-msgid ""
-"Click OK to shutdown or reboot. You will lose\n"
-"any unsaved information in open applications."
-msgstr ""
-"Κάντε κλίκ στο Εντάξει για να κλείσετε ή να επανεκκινήσετε τον υπολογιστή.\n"
-"Οι μη αποθηκευμένες αλλαγές σε ανοιχτά προγράμματα θα χαθούν."
-
-#. Put in a "revert to defaults" button
-#: mini-utils/gshutdown/gshutdown.c:371
-msgid "Revert to Defaults"
-msgstr "Επαναφορά εξ' ορισμού ρυθμίσεων"
-
-#: mini-utils/gshutdown/gshutdown.c:381
-msgid "Commands"
-msgstr "Εντολές"
-
-#: mini-utils/gshutdown/gshutdown.c:386
-msgid "Confirm before shutdown?"
-msgstr "Επιβεβαίωση τερματισμού λειτουργίας υπολογιστή;"
-
-#: mini-utils/gshutdown/gshutdown.c:454
-#, c-format
-msgid ""
-"%s\n"
-"You will lose any unsaved work."
-msgstr ""
-"%s\n"
-"Οι μη αποθηκευμένες αλλαγές θα χαθούν."
-
-#: mini-utils/gshutdown/gshutdown.c:464
-msgid "Don't ask next time."
-msgstr "Μη ρωτήσεις την επόμενη φορά."
-
-#: mini-utils/gshutdown/gshutdown.c:722
-msgid "Command execution failed: fork failed"
-msgstr "Εκτέλεση εντολής ανεπιτυχής: ανεπιτυχές fork"
-
-#: mini-utils/guname/guname.c:53
-msgid "Make guname act as a control center applet"
-msgstr "Συμπεριφορά του guname ως εφαρμογιδίου κέντρου ελέγχου"
-
-#: mini-utils/guname/guname.c:119
-msgid "an initialization error occurred while starting 'guname-capplet'."
-msgstr "σφάλμα αρχικοποίησης κατά την εκκίνηση του 'guname-capplet'."
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:2
-#: mini-utils/guname/guname.c:446
-msgid "System Information"
-msgstr "Πληροφορίες Συστήματος"
-
-#: mini-utils/guname/guname.c:540
-msgid "Logo file not found"
-msgstr "Αρχείο λογοτύπου δε βρέθηκε"
-
-#. Up here so it uses the default font
-#: mini-utils/guname/guname.c:544
-msgid "GNOME contributors:"
-msgstr "Συνεργάτες του GNOME:"
-
-#. fontset used by guname; adapt it if your language requires it
-#: mini-utils/guname/guname.c:548
-msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: mini-utils/guname/guname.c:559
-msgid "GNOME: The GNU Network Object Model Environment"
-msgstr "GNOME: The GNU Network Object Model Environment"
-
-#: mini-utils/guname/guname.c:583
-msgid "Email Information..."
-msgstr "Αποστολή Πληροφορίων..."
-
-#: mini-utils/guname/guname.c:596
-msgid "Save Information to File..."
-msgstr "Αποθήκευση Πληροφοριών σε Αρχείο..."
-
-#: mini-utils/guname/guname.c:608 mini-utils/guname/guname.c:678
-msgid "Detailed Information..."
-msgstr "Λεπτομερείς Πληροφορίες..."
-
-#: mini-utils/guname/guname.c:623
-msgid "Category"
-msgstr "Κατηγορία"
-
-#: mini-utils/guname/guname.c:623
-msgid "Your System"
-msgstr "Το Σύστημα Σας"
-
-#: mini-utils/guname/guname.c:664 stripchart/params.c:946
-msgid "Save As..."
-msgstr "Αποθήκευση Ως"
-
-#: mini-utils/guname/guname.c:670
-msgid "Mail To..."
-msgstr "Αποστολή Σε..."
-
-#: mini-utils/guname/guname.c:718
-#, c-format
-msgid ""
-"Error closing file `%s': \n"
-"%s\n"
-"Some or all data may not have been written."
-msgstr ""
-"Σφάλμα κατά το κλείσιμο του αρχείου `%s': \n"
-"%s\n"
-"Ενδέχεται μερικά ή όλα τα δεδομένα να μην έχουν αποθηκευτεί."
-
-#: mini-utils/guname/guname.c:730
-#, c-format
-msgid "Couldn't open file `%s': %s"
-msgstr "Άνοιγμα αρχείου `%s' ανεπιτυχές: %s"
-
-#: mini-utils/guname/guname.c:752
-msgid "Save System Information As..."
-msgstr "Αποθήκευση Πληροφοριών Συστήματος Ως..."
-
-#. I don't think the error_string() will reliably mean anything.
-#: mini-utils/guname/guname.c:809
-#, c-format
-msgid "Command failed ` %s ': %s"
-msgstr "Εκτέλεση της εντολής ` %s ' ανεπιτυχής: %s"
-
-#: mini-utils/guname/guname.c:817
-#, c-format
-msgid "Couldn't run command ` %s ': %s"
-msgstr "Εκτέλεση της εντολής ` %s ' αδύνατη: %s"
-
-#: mini-utils/guname/guname.c:841
-#, c-format
-msgid ""
-"The following mail will be sent to %s.\n"
-" Are you sure you want to mail this information?"
-msgstr ""
-"Το ακόλουθο email θα σταλεί προς %s.\n"
-" Είσαστε βέβαιοι ότι θέλετε να στείλετε αυτές τις πληροφορίες;"
-
-#: mini-utils/guname/guname.c:852
-msgid "Are you sure?"
-msgstr "Είσαστε βέβαιοι;"
-
-#: mini-utils/guname/guname.c:894
-msgid "Address to mail to:"
-msgstr "Αποστολή email προς:"
-
-#. ***********************************
-#. Globals
-#. **********************************
-#: mini-utils/guname/info.c:40
-msgid "Distribution:"
-msgstr "Διανομή:"
-
-#: mini-utils/guname/info.c:41
-msgid "Operating System:"
-msgstr "Λειτουργικό Σύστημα:"
-
-#: mini-utils/guname/info.c:42
-msgid "Distribution Version:"
-msgstr "Έκδοση Διανομής:"
-
-#: mini-utils/guname/info.c:43
-msgid "Operating System Version:"
-msgstr "Έκδοση Λειτουργικού Συστήματος:"
-
-#: mini-utils/guname/info.c:44
-msgid "Operating System Release:"
-msgstr "Αριθμός Διανομής Λειτουργικού:"
-
-# Revise translation for "release" (current sucks!)
-#: mini-utils/guname/info.c:45
-msgid "Processor Type:"
-msgstr "Τύπος Επεξεργαστή:"
-
-#: mini-utils/guname/info.c:46
-msgid "Processor Speed:"
-msgstr "Ταχύτητα Επεξεργαστή:"
-
-#: mini-utils/guname/info.c:47
-msgid "Host Name:"
-msgstr "Όνομα Συστήματος:"
-
-#: mini-utils/guname/info.c:48
-msgid "Domain Name:"
-msgstr "Όνομα Περιοχής (domain):"
-
-#: mini-utils/guname/info.c:49
-msgid "User Name:"
-msgstr "Όνομα Χρήστη:"
-
-#: mini-utils/guname/info.c:50
-msgid "X Display Name:"
-msgstr "Όνομα οθόνης X (display):"
-
-#: mini-utils/guname/info.c:51
-msgid "System Status:"
-msgstr "Κατάσταση Συστήματος:"
-
-#: mini-utils/guname/info.c:52
-msgid "Real Memory:"
-msgstr "Πραγματική Μνήμη:"
-
-#: mini-utils/guname/info.c:53
-msgid "Swap Space (\"virtual memory\"):"
-msgstr "Εικονική Μνήμη:"
-
-#: mini-utils/guname/info.c:54
-msgid "Total Memory:"
-msgstr "Συνολική Μνήμη:"
-
-#: mini-utils/guname/info.c:55
-msgid "Free Memory:"
-msgstr "Ελεύθερη Μνήμη:"
-
-#: mini-utils/guname/info.c:60
-msgid "Device"
-msgstr "Συσκευή"
-
-#: mini-utils/guname/info.c:62
-msgid "Used space"
-msgstr "Κατειλλημένος χώρος"
-
-#: mini-utils/guname/info.c:63
-msgid "Free space"
-msgstr "Ελεύθερος χώρος"
-
-#: mini-utils/guname/info.c:64
-msgid "Percent free"
-msgstr "Επί τοις εκατό ελεύθερο"
-
-#: mini-utils/guname/info.c:65
-msgid "Mount point"
-msgstr "Σημείο προσάρτησης"
-
-#. This is about the only case where we'll put Unknown instead
-#. of simply not showing the info.
-#: mini-utils/guname/info.c:202 mini-utils/idetool/idetool.c:21
-#: mini-utils/idetool/idetool.c:26 mini-utils/idetool/idetool.c:319
-#: mini-utils/idetool/idetool.c:330
-msgid "Unknown"
-msgstr "Άγνωστο"
-
-#: mini-utils/guname/moreinfo.c:82
-msgid "Unknown filesystem"
-msgstr "Άγνωστο σύστημα αρχείων"
-
-#: mini-utils/guname/moreinfo.c:104
-msgid "No information for this filesystem."
-msgstr "Δεν υπάρχουν πληροφορίες για αυτό το σύστημα αρχείων."
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Memory"
-msgstr "Μνήμη"
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Kilobytes"
-msgstr "Kbyte"
-
-#: mini-utils/guname/moreinfo.c:186
-#, c-format
-msgid "%ld%% memory used."
-msgstr "κατειλλημένη μνήμη %ld%%."
-
-#: mini-utils/guname/moreinfo.c:197
-#, c-format
-msgid "%ld%% swap used."
-msgstr "κατειλλημένη εικονική μνήμη %ld%%."
-
-#: mini-utils/guname/moreinfo.c:222
-#, c-format
-msgid "CPU %d"
-msgstr "CPU %d"
-
-#: mini-utils/guname/moreinfo.c:276
-msgid "Detailed System Information"
-msgstr "Λεπτομερείς Πληροφορίες Συστήματος"
-
-#: mini-utils/guname/moreinfo.c:289
-msgid "Disk Information"
-msgstr "Πληροφορίες Δίσκων"
-
-#: mini-utils/guname/moreinfo.c:291
-msgid "Memory Information"
-msgstr "Πληροφορίες Μνήμης"
-
-#: mini-utils/guname/moreinfo.c:294
-msgid "CPU Information"
-msgstr "Πληροφορίες CPU"
-
-#: mini-utils/guname/moreinfo.c:326
-msgid "Mount Point: "
-msgstr "Σημείο Προσάρτησης: "
-
-#: mini-utils/guname/moreinfo.c:327
-msgid "    Device: "
-msgstr "    Συσκεύη: "
-
-#: mini-utils/guname/moreinfo.c:328
-msgid "    Filesystem Type: "
-msgstr "    Τύπος Συστήματος Αρχείων: "
-
-#: mini-utils/guname/moreinfo.c:341
-#, c-format
-msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
-msgstr "%ld Mbyte, %ld ελεύθερα (%ld υπερχρήστη); %ld inode, %ld ελεύθεροι."
-
-#: mini-utils/guname/moreinfo.c:353
-#, c-format
-msgid "%2d%% full "
-msgstr "%2d%% πλήρες "
-
-#: mini-utils/gw/gw.c:143
-msgid ""
-"Couldn't find the \"w\" command in your path.\n"
-"This command is needed for the program to work."
-msgstr ""
-"Η εντολή \"w\" δε βρέθηκε στη διαδρομή.\n"
-"Η εντολή αυτή απαιτείται για τη λειτουργία του προγράμματος."
-
-#: mini-utils/gw/gw.c:198
-msgid "Active User Listing"
-msgstr "Κατάλογος Τρέχοντων Χρηστών"
-
-#: mini-utils/gw/gw.c:215
-msgid "Update Information"
-msgstr "Ανανέωση Πληροφοριών"
-
-#: mini-utils/gw/gw.c:491
-msgid "Command Line"
-msgstr "Γραμμή Εντολών"
-
-#: mini-utils/gw/gw.c:493
-msgid "Add some defaults"
-msgstr "Προσθήκη εξ' ορισμού εντολών"
-
-# Using standard translation for "default" for consistency, although
-# it is not quite suitable in this context...
-#: mini-utils/gw/gw.c:495
-msgid "Delete"
-msgstr "Διαγραφή"
-
-#: mini-utils/gw/gw.c:513
-msgid "Command Editor"
-msgstr "Επεξεργαστής Ενεργειών"
-
-#: mini-utils/gw/gw.c:523
-msgid ""
-"You can configure the commands on the popup menus.\n"
-"Just enter the name you want to appear on the \n"
-"menu, and the command to execute.\n"
-"In the command, you can use %u to represent the\n"
-"currently selected username, and %t for the tty."
-msgstr ""
-"Μπορείτε να ρυθμίσετε τις εντολές του μενού.\n"
-"Απλώς εισάγετε το όνομα που θέλετε να εμφανίζεται \n"
-"στο μενού και την εντολή προς εκτέλεση.\n"
-"Στην εντολή, μπορείτε να χρησιμοποιήσετε το %u για τον\n"
-"τρέχοντα χρήστη, και %t για το τερματικό (tty)."
-
-#: mini-utils/gw/gw.c:530
-msgid ""
-"Click this button to add\n"
-"some sample commands."
-msgstr ""
-"Κάντε κλικ σε αυτό το κουμπί για να\n"
-"προσθέσετε μερικά δείγματα εντολών."
-
-#: mini-utils/gw/gw.c:538
-msgid "Menu items"
-msgstr "Στοιχεία μενού"
-
-#: mini-utils/gw/gw.c:566
-msgid "Command"
-msgstr "Εντολή"
-
-#: mini-utils/gw/gw.c:978
-#, c-format
-msgid "Running: %s\n"
-msgstr "Εκτελείται: %s\n"
-
-#: mini-utils/idetool/idetool.c:19
-msgid "Default 16-bit"
-msgstr "Εξ' ορισμού 16-bit"
-
-#: mini-utils/idetool/idetool.c:20
-msgid "32-bit"
-msgstr "32-bit"
-
-#. there is no 2 apparently
-#: mini-utils/idetool/idetool.c:22
-msgid "32-bit w/sync"
-msgstr "32-bit με sync"
-
-#: mini-utils/idetool/idetool.c:27
-msgid "Sleeping"
-msgstr "Κοιμώμενος"
-
-#: mini-utils/idetool/idetool.c:28
-msgid "Active/Idle"
-msgstr "Ενεργός/Ανενεργός"
-
-#: mini-utils/idetool/idetool.c:29
-msgid "Standby"
-msgstr "Αναμονή"
-
-#: mini-utils/idetool/idetool.c:42
-msgid "Unable to access the drive."
-msgstr "Πρόσβαση στο δίσκο αδύνατη."
-
-#: mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
-msgid "The DMA setting for this drive cannot be changed."
-msgstr "Οι ρυθμίσεις DMA για αυτόν τον δίσκο δεν μπορούν να αλλαχθούν."
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Enabled"
-msgstr "Ενεργό"
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Disabled"
-msgstr "Ανενεργό"
-
-#: mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
-msgid "The IRQ unmask setting for this drive cannot be changed."
-msgstr "Η ρύθμιση IRQ unmask για αυτόν τον δίσκο δε μπορεί να αλλαχθεί."
-
-#: mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
-msgid "The drive refused to keep its settings."
-msgstr "Ο δίσκος αρνήθηκε να αλλάξει τις ρυθμίσεις του."
-
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Keep settings"
-msgstr "Διατήρηση ρυθμίσεων"
-
-#: mini-utils/idetool/idetool.c:203
-msgid "None"
-msgstr "Καμία"
-
-#: mini-utils/idetool/idetool.c:207
-msgid "(1 Sector)"
-msgstr "(1 Τομέας)"
-
-#: mini-utils/idetool/idetool.c:209
-msgid "(Dual Port)"
-msgstr "(Δίπορτη)"
-
-#: mini-utils/idetool/idetool.c:211
-msgid "(Dual Port Cache)"
-msgstr "(Δίπορτη Κρυφή Μνήμη)"
-
-#: mini-utils/idetool/idetool.c:241
-msgid "No"
-msgstr "Όχι"
-
-#: mini-utils/idetool/idetool.c:243
-#, c-format
-msgid "Yes (%d sector)"
-msgstr "Ναι (%d τομέας)"
-
-#: mini-utils/idetool/idetool.c:245
-#, c-format
-msgid "Yes (%d sectors)"
-msgstr "Ναι (%d τομείς)"
-
-#: mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:323
-msgid "Model"
-msgstr "Μοντέλο"
-
-#: mini-utils/idetool/idetool.c:311
-msgid "Firmware"
-msgstr "Λογισμικό υλικού"
-
-# FIX? firmware
-#: mini-utils/idetool/idetool.c:312
-msgid "Serial No."
-msgstr "Σειριακός Αρ."
-
-#. do config here
-#: mini-utils/idetool/idetool.c:314
-msgid "Geometry"
-msgstr "Γεωμετρία"
-
-#: mini-utils/idetool/idetool.c:315
-msgid "Cache"
-msgstr "Κρυφή Μνήμη"
-
-#: mini-utils/idetool/idetool.c:323
-msgid "Legacy MFM/RLL drive"
-msgstr "Δίσκος MFM/RLL"
-
-#: mini-utils/idetool/idetool.c:326
-msgid "DMA Mode"
-msgstr "Κατάσταση DMA"
-
-#: mini-utils/idetool/idetool.c:328 mini-utils/idetool/idetool.c:330
-msgid "IO Mode"
-msgstr "Κατάσταση εισόδου/εξόδου (IO)"
-
-#: mini-utils/idetool/idetool.c:331
-msgid "IRQ Unmask"
-msgstr "IRQ Unmask"
-
-#: mini-utils/idetool/idetool.c:332
-msgid "Multisector"
-msgstr "Πολλαπλοί τομείς"
-
-#: mini-utils/idetool/idetool.c:333
-msgid "On Reset"
-msgstr "Στην Επαναρχικοποίηση"
-
-#.
-#. *	Set up the outer display first
-#.
-#: mini-utils/idetool/idetool.c:373
-msgid "IDE Status"
-msgstr "Κατάσταση IDE"
-
-#: mini-utils/idetool/idetool.c:395
-msgid "Disk Logo Not Found"
-msgstr "Δε Βρέθηκε Λογότυπο Δίσκου"
-
-#: mini-utils/idetool/idetool.c:446
-msgid "Only the superuser can use this tool"
-msgstr "Μόνο ο υπερχρήστης επιτρέπεται να χρησιμοποιήσει το εργαλείο αυτό"
-
-#: mini-utils/idetool/idetool.c:457
-msgid "You appear to have no IDE drives"
-msgstr "Δε φαίνεται να έχετε δίσκους IDE"
-
-#: gfloppy/src/badblocks.c:102
-msgid "MInternal Error: Unable to seek to the correct location."
-msgstr "MΕσωτερικό Σφάλμα: Αδύνατη η προσπέλαση στη σωστή θέση."
-
-#: gfloppy/src/badblocks.c:111
-#, c-format
-msgid "MInternal Error: Weird value (%ld) in do_test\n"
-msgstr "MΕσωτερικό Σφάλμα: Παράξενη τιμή (%ld) στο do_test\n"
-
-#: gfloppy/src/badblocks.c:166
-#, c-format
-msgid "EBad block at block %lu"
-msgstr "EΑκατάλληλο μπλοκ στο μπλοκ %lu"
-
-#. while (!i)
-#. ;
-#: gfloppy/src/badblocks.c:260
-msgid "MChecking for bad blocks..."
-msgstr "MΈλεγχος για ακατάλληλα μπλοκ..."
-
-#: gfloppy/src/badblocks.c:272
-#, c-format
-msgid "MFailed to open device %s for badblock checking\n"
-msgstr "MΑποτυχία ανοίγματος της συσκευής %s για έλεγχο ακατάλληλων μπλοκ\n"
-
-#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
-msgid "MChecking for bad blocks... Done"
-msgstr "MΈλεγχος για ακατάλληλα μπλοκ... Έγινε"
-
-#: gfloppy/src/fdformat.c:45
-msgid "MFormatting the disk..."
-msgstr "MΜορφοποίηση του δίσκου..."
-
-#: gfloppy/src/fdformat.c:47
-msgid "EI don't know what this is, but it's very wrong."
-msgstr "EΔεν καταλαβαίνω τί είναι αυτό, αλλά είναι πολύ λάθος."
-
-#: gfloppy/src/fdformat.c:55 gfloppy/src/fdformat.c:67
-#, c-format
-msgid "EError formatting track #%d"
-msgstr "EΣφάλμα μορφοποίηση τροχίας #%d"
-
-#: gfloppy/src/fdformat.c:75
-msgid "EError during completion of formatting"
-msgstr "EΣφάλμα κατά την ολοκλήρωση της μορφοποίησης"
-
-#. XXXX - need to tell parent we're finished
-#: gfloppy/src/fdformat.c:79
-msgid "MFormatting the disk... Done"
-msgstr "MΜορφοποίηση του δίσκου... Έγινε"
-
-#. XXXX - tell parent we're starting verify stage
-#: gfloppy/src/fdformat.c:95
-msgid "MVerifying the format..."
-msgstr "MΕπαλήθευση της μορφοποίησης..."
-
-#: gfloppy/src/fdformat.c:100 gfloppy/src/fdformat.c:175
-msgid ""
-"EUnable to write to the floppy.\n"
-"\n"
-"Please confirm that it is not write-protected."
-msgstr ""
-"EΑδύνατη η εγγραφή στη δισκέτα.\n"
-"\n"
-"Παρακαλώ επιβεβαιώστε ότι δεν είναι προστατευμένη από εγγραφή."
-
-#: gfloppy/src/fdformat.c:103 gfloppy/src/fdformat.c:178
-#, c-format
-msgid "EInsufficient permissions to open floppy device %s."
-msgstr "EΑνεπαρκή δικαιώματα για το άνοιγμα της συσκευής εύκαμπτου δίσκου %s."
-
-#: gfloppy/src/fdformat.c:107 gfloppy/src/fdformat.c:182
-msgid ""
-"EUnable to access the floppy disk.\n"
-"\n"
-"Please confirm that it is in the drive\n"
-"with the drive door shut."
-msgstr ""
-"EΑδύνατη η προσπέλαση της δισκέτας.\n"
-"\n"
-"Παρακαλώ επιβεβαιώστε ότι είναι στον οδηγό\n"
-"δισκέτας με την πόρτα κλειστή."
-
-#: gfloppy/src/fdformat.c:110
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s:%d"
-msgstr ""
-"EΓενικό σφάλμα πρόσβασης στη συσκευή εύκαμπτου δίσκου %s.\n"
-"\n"
-"Κωδικός σφάλματος %s:%d"
-
-#: gfloppy/src/fdformat.c:130
-#, c-format
-msgid ""
-"ERead Error:\n"
-"Problem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"EΣφάλμα Ανάγνωσης:\n"
-"Πρόβλημα ανάγνωσης κυλίνδρου %d, αναμενόταν %d, αναγνώστηκε %d"
-
-#: gfloppy/src/fdformat.c:133
-#, c-format
-msgid "EProblem reading cylinder %d, expected %d, read %d"
-msgstr "EΠρόβλημα ανάγνωσης κυλίνδρου %d, αναμενόταν %d, αναγνώστηκε %d"
-
-#: gfloppy/src/fdformat.c:142
-#, c-format
-msgid "MBad data in cyl %d.  Continuing... "
-msgstr "MΑκατάλληλα δεδομένα στον κύλινδρο %d. Συνεχίζει..."
-
-#: gfloppy/src/fdformat.c:149
-#, c-format
-msgid "EError closing device %s"
-msgstr "EΣφάλμα κλεισίματος συσκευής %s"
-
-#: gfloppy/src/fdformat.c:154
-msgid "MVerifying the format... Done"
-msgstr "MΕπαλήθευση της μορφοποίησης... Έγινε"
-
-#: gfloppy/src/fdformat.c:166
-#, c-format
-msgid "EUnable to write to device %s"
-msgstr "EΑδύνατη η εγγραφή στη συσκευή %s"
-
-#: gfloppy/src/fdformat.c:185
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s"
-msgstr ""
-"EΓενικό σφάλμα πρόσβασης στη συσκευή εύκαμπτου δίσκου %s.\n"
-"\n"
-"Κωδικός σφάλματος %s"
-
-#: gfloppy/src/fdformat.c:195
-msgid "ECould not determine current format type"
-msgstr "EΑδύνατος ο προσδιορισμός του τρέχοντος τύπου μορφοποίησης"
-
-#: gfloppy/src/gfloppy-i18n.h:9 gfloppy/src/gfloppy.glade.h:1
-msgid "Dos (FAT)"
-msgstr "DOS (FAT)"
-
-#: gfloppy/src/gfloppy-i18n.h:15 gfloppy/src/gfloppy.glade.h:2
-msgid "Double Density 3.5\" (720 KB)"
-msgstr "Διπλής Πυκνότητας 3.5\" (720 KB)"
-
-#: gfloppy/src/gfloppy-i18n.h:16 gfloppy/src/gfloppy.glade.h:3
-msgid "Double Density 5.25\" (360 KB)"
-msgstr "Διπλής Πυκνότητας 5.25\" (360 KB)"
-
-#: gfloppy/src/gfloppy-i18n.h:12 gfloppy/src/gfloppy.glade.h:4
-msgid "File system type:"
-msgstr "Τύπος συστήματος αρχείων: "
-
-#: gfloppy/src/gfloppy-i18n.h:11 gfloppy/src/gfloppy.glade.h:5
-msgid "Floppy Density:"
-msgstr "Πυκνότητα Δισκέτας:"
-
-#: gfloppy/src/gfloppy-i18n.h:18 gfloppy/src/gfloppy.glade.h:6
-#, fuzzy
-msgid "Floppy Device:"
-msgstr "Πυκνότητα Δισκέτας:"
-
-#.
-#. * Translatable strings file generated by Glade.
-#. * Add this file to your project's POTFILES.in.
-#. * DO NOT compile it as part of your application.
-#.
-#: gfloppy/src/gfloppy-i18n.h:7 gfloppy/src/gfloppy.glade.h:7
-msgid "Format a floppy"
-msgstr "Μορφοποίηση δισκέτας"
-
-#: gfloppy/src/gfloppy-i18n.h:13 gfloppy/src/gfloppy.glade.h:8
-msgid "High Density 3.5\" (1.44 MB)"
-msgstr "Υψηλής Πυκνότητας 3.5\" (1.44 MB)"
-
-#: gfloppy/src/gfloppy-i18n.h:14 gfloppy/src/gfloppy.glade.h:9
-msgid "High Density 5.25\" (1.2 MB)"
-msgstr "Υψηλής Πυκνότητας 5.25\" (1.2 MB)"
-
-#: gfloppy/src/gfloppy-i18n.h:8 gfloppy/src/gfloppy-i18n.h:10
-#: gfloppy/src/gfloppy.glade.h:10
-msgid "Linux Native (ext2)"
-msgstr "Linux Native (ext2)"
-
-#: gfloppy/src/gfloppy-i18n.h:17 gfloppy/src/gfloppy.glade.h:11
-#, fuzzy
-msgid "_Quick format"
-msgstr "Γρήγορη μορφοποίηση"
-
-#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
-msgid "MMaking filesystem on disk..."
-msgstr "MΔημιουργία συστήματος αρχείων στη δισκέτα..."
-
-#: gfloppy/src/gfloppy.c:167
-msgid "EUnable to create filesystem correctly."
-msgstr "EΑδύνατη η ορθή δημιουργία συστήματος αρχείων."
-
-#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
-msgid "MMaking filesystem on disk... Done"
-msgstr "MΔημιουργία συστήματος αρχείων στη δισκέτα... Έγινε"
-
-#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
-msgid "EUnable to create filesystem."
-msgstr "EΑδύνατη η δημιουργία συστήματος αρχείων."
-
-#: gfloppy/src/gfloppy.c:209
-msgid "MChecking for bad blocks... (this might take a while)"
-msgstr "MΈλεγχος για ακατάλληλα μπλοκ... (μπορεί να διαρκέσει λίγο)"
-
-#: gfloppy/src/main.c:135 gfloppy/src/main.c:171
-#, fuzzy, c-format
-msgid "Unable to open the device %s, formatting cannot continue."
-msgstr "MΑποτυχία ανοίγματος της συσκευής %s για έλεγχο ακατάλληλων μπλοκ\n"
-
-#: gfloppy/src/main.c:138 gfloppy/src/main.c:174
-#, c-format
-msgid ""
-"The device %s is disconnected.\n"
-"Please attach device to continue."
-msgstr ""
-
-#: gfloppy/src/main.c:141 gfloppy/src/main.c:177
-#, c-format
-msgid ""
-"You do not have the proper permissions to write to %s, formatting will not "
-"be possible.\n"
-"Contact your system administrator about getting write permissions."
-msgstr ""
-
-#: gfloppy/src/main.c:285
-msgid "The device to format"
-msgstr "Η συσκευή για μορφοποίηση"
-
-#: gfloppy/src/main.c:286
-msgid "DEVICE"
-msgstr "ΣΥΣΚΕΥΉ"
-
-#. We do this to get around a bug in libglade.  Ideally we won't need
-#. * to do this in the future.
-#: gfloppy/src/main.c:317
-msgid "Format"
-msgstr "Μορφή:"
-
-#: gfloppy/src/main.c:360
-msgid "Format another floppy?"
-msgstr "Μορφοποίηση άλλης δισκέτας;"
-
-#: gfloppy/src/progress.c:117
-msgid "Floppy formatted successfully."
-msgstr "Η δισκέτα μορφοποιήθηκε επιτυχώς."
-
-#: gfloppy/src/progress.c:121
-msgid "Floppy formatting cancelled."
-msgstr "Η μορφοποίηση δισκέτας ακυρώθηκε."
-
-#: gfloppy/src/progress.c:176
-msgid "Format progress."
-msgstr "Πρόοδος μορφοποίησης."
-
-#: stripchart/chart-app.c:160
-msgid "Param"
-msgstr "Παράμετρος"
-
-#: stripchart/chart-app.c:161
-msgid "Current"
-msgstr "Τρέχον"
-
-#: stripchart/chart-app.c:163 stripchart/params.c:760
-msgid "Scale"
-msgstr "Κλίμακα"
-
-#: stripchart/chart-app.c:197 stripchart/stripchart-applet.c:69
-#: stripchart/stripchart-applet.desktop.in.h:2 stripchart/stripchart.c:92
-#: stripchart/stripchart.c:97
-msgid "Stripchart"
-msgstr "Γράφημα τύπου σεισμογράφου"
-
-#: stripchart/chart-app.c:198
-msgid "Copyright 2000 John Kodis"
-msgstr "Πνευματικά δικαιώματα 2000 Τζον Κόντις"
-
-#: stripchart/chart-app.c:200
-msgid ""
-"The GNOME stripchart program plots various user-specified parameters as a "
-"function of time.  Its main use is to chart system performance parameters "
-"such as CPU load, CPU utilization, network traffic levels, and the like.  "
-"Other more ingenious uses are left as an exercise for the interested user."
-msgstr ""
-"Το πρόγραμμα γραφημάτων του GNOME απεικονίζει δίαφορες παραμέτρους ως "
-"συνάρτηση του χρόνου. Η βασική λειτουργία του είναι η απεικόνιση διαφόρων "
-"παραμέτρων της απόδοσης του συστήματος, όπως φόρτος CPU load, αξιοποίηση "
-"CPU, επίπεδα κίνησης δικτύου, και τα σχετικά. Άλλες ευφυέστερες χρήσεις "
-"αφήνονται ως άσκηση για τους ενδιαφερόμενους χρήστες."
-
-#: stripchart/chart-app.c:239
-msgid "Show values"
-msgstr "Εμφάνιση τιμών"
-
-#: stripchart/chart-app.c:246
-msgid "Edit Prefs..."
-msgstr "Επεξεργασία Προτιμήσεων..."
-
-#: stripchart/chart-app.c:251
-msgid "Edit Params..."
-msgstr "Επεξεργασία Παραμέτρων..."
-
-#: stripchart/eval.c:252
-msgid "closing parenthesis expected"
-msgstr "αναμενόταν παρένθεση κλεισίματος"
-
-#: stripchart/eval.c:269
-#, c-format
-msgid "no such field: %d"
-msgstr "ανύπαρκτο πεδίο: %d"
-
-#: stripchart/eval.c:294
-msgid "missing variable identifer"
-msgstr "ανύπαρκτο όνομα μεταβλητής"
-
-#: stripchart/eval.c:296
-#, c-format
-msgid "invalid variable identifer: %s"
-msgstr "άκυρο όνομα μεταβλητής: %s"
-
-#: stripchart/eval.c:300
-msgid "number expected"
-msgstr "αναμενόμενος αριθμός"
-
-#: stripchart/eval.c:371
-#, c-format
-msgid "extra junk at end: \"%s\""
-msgstr "επιπλέον σκουπίδια στο τέλος: \"%s\""
-
-#: stripchart/params.c:633
-msgid "Parameter"
-msgstr "Παράμετρος"
-
-#: stripchart/params.c:671
-msgid "Equation"
-msgstr "Εξίσωση"
-
-#: stripchart/params.c:682
-msgid "Filename"
-msgstr "Όνομα αρχείου"
-
-#: stripchart/params.c:693
-msgid "Pattern"
-msgstr "Κανονική έκφραση"
-
-#: stripchart/params.c:714 stripchart/params.c:742
-msgid "Min"
-msgstr "Ελαχ."
-
-#: stripchart/params.c:723 stripchart/params.c:751
-msgid "Max"
-msgstr "Μεγ."
-
-#: stripchart/params.c:771
-msgid "Linear"
-msgstr "Γραμμικό"
-
-#: stripchart/params.c:779
-msgid "Logarithmic"
-msgstr "Λογαριθμικό"
-
-#: stripchart/params.c:784
-msgid "Type"
-msgstr "Είδος"
-
-#: stripchart/params.c:795
-msgid "Indicator"
-msgstr "Μετρητής"
-
-#: stripchart/params.c:802
-msgid "Line"
-msgstr "Γραμμή"
-
-#: stripchart/params.c:809
-msgid "Point"
-msgstr "Σημείο"
-
-#: stripchart/params.c:816
-msgid "Solid"
-msgstr "Ενιαίο"
-
-#: stripchart/params.c:965
-msgid "Add Parameter Before"
-msgstr "Προσθήκη Παραμέτρου Πριν"
-
-#: stripchart/params.c:972
-msgid "Add Parameter After"
-msgstr "Προσθήκη Παραμέτρου Μετά"
-
-#: stripchart/params.c:979
-msgid "Apply Parameter Changes"
-msgstr "Εφαρμογή Αλλαγών Παραμέτρων"
-
-#: stripchart/params.c:986
-msgid "Delete Parameter"
-msgstr "Διαγραφή Παραμέτρου"
-
-#: stripchart/params.c:994
-msgid "Add Color"
-msgstr "Προσθήκη Χρώματος"
-
-#: stripchart/params.c:1001
-msgid "Delete Color"
-msgstr "Διαγραφή Χρώματος"
-
-#: stripchart/params.c:1020
-msgid "Info"
-msgstr "Πληροφορίες"
-
-#: stripchart/params.c:1091
-msgid "Parameter Editor"
-msgstr "Επεξεργαστής Παραμέτρων"
-
-#: stripchart/params.c:1100
-msgid "Parameters"
-msgstr "Παράμετροι"
-
-#: stripchart/prefs.c:208
-msgid "Chart"
-msgstr "Γράφημα"
-
-#: stripchart/prefs.c:218 stripchart/prefs.c:277
-msgid "enabled"
-msgstr "ενεργοποιημένο"
-
-#: stripchart/prefs.c:225
-msgid "minor"
-msgstr "κατώτερο"
-
-#: stripchart/prefs.c:231
-msgid "major"
-msgstr "ανώτερο"
-
-#: stripchart/prefs.c:244 stripchart/prefs.c:262
-msgid "Update"
-msgstr "Ενημέρωση"
-
-#: stripchart/prefs.c:247 stripchart/prefs.c:270
-msgid "Smooth"
-msgstr "Ομαλό"
-
-#: stripchart/prefs.c:250
-msgid "Ticks"
-msgstr "Μολυβιές"
-
-#: stripchart/prefs.c:255
-msgid "Pen"
-msgstr "Πένα"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "Geometry string: WxH+X+Y"
-msgstr "Ακολουθία γεωμετρίας ΠxΥ+Χ+Ψ"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "GEO"
-msgstr "ΓΕΩΜ"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "Configuration file name"
-msgstr "Όνομα αρχείου ρυθμίσεων"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "FILE"
-msgstr "ΑΡΧΕΙΟ"
-
-#: stripchart/stripchart-applet.c:92
-msgid "Values"
-msgstr "Τιμές"
-
-#: stripchart/stripchart-applet.c:95
-msgid "Prefs..."
-msgstr "Προτιμήσεις..."
-
-#: stripchart/stripchart-applet.c:98
-msgid "Params..."
-msgstr "Παράμετροι..."
-
-#: exe-handler/gnome-exe-handler.c:76
-#, c-format
-msgid ""
-"Executing arbitrary programs that you downloaded from the network might be "
-"dangerous.\n"
-"\n"
-"Are you sure you want to run `%s'?"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:83
-msgid "Could not access file permissions"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:88
-#, c-format
-msgid "Could not execute the file `%s' due to a permission problem"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:104
-#, c-format
-msgid "Failure at executing `%s'"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:123
-#, c-format
-msgid "It was not possible to open the file `%s'"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:132
-#, c-format
-msgid "The file `%s' is empty"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:137
-#, c-format
-msgid "There was an error. `%s' is empty"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:152
-msgid "This is a library and can not be executed"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:158
-#, fuzzy
-msgid "The file is a core file and can not be executed"
-msgstr ""
-"Ένα η περισσότερα αρχεία δεν μπορούν να επαναφερθούν:\n"
-"\n"
-
-#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
-msgid "This is an unknown kind of executable"
-msgstr ""
-
-#: exe-handler/gnome-exe-handler.c:192
-msgid ""
-"The executable is for a different platform and can not be executed on this "
-"system"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:106
-#, c-format
-msgid ""
-"Number of files: %d\n"
-"Nuber of folders: %d"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:112
-msgid ""
-"No files or folders, drop files or folders\n"
-"above to add them to the archive"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:217 meat-grinder/meat-grinder.c:220
-msgid "Cannot start the archive (tar) program"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:228
-msgid "Cannot run tar/gtar"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:279
-msgid "Archive.tar.gz"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:379
-msgid "The GNOME Archive Generator"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:382
-msgid "Drag files in to make archives"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:444 meat-grinder/meat-grinder.c:602
-#, fuzzy
-msgid "No filename selected"
-msgstr "δεν έχει επιλεχθεί έργο"
-
-#: meat-grinder/meat-grinder.c:448
-msgid "File exists, overwrite?"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:472
-msgid "No items to archive"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:605
-#, fuzzy
-msgid "File does not exists"
-msgstr "Ο κατάλογος έναρξης δεν υπάρχει"
-
-#: meat-grinder/meat-grinder.c:619
-msgid "Add file or folder"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:689
-msgid "Add file or folder..."
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:690
-msgid "Add a file or folder to the archive"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:693
-#, fuzzy
-msgid "Create archive..."
-msgstr "Δημιουργία όψεων"
-
-#: meat-grinder/meat-grinder.c:694
-#, fuzzy
-msgid "Create a new archive from the items"
-msgstr "Δημιουργία νέας απεικόνισης για το ντοκουμέντο"
-
-#: meat-grinder/meat-grinder.c:703
-#, fuzzy
-msgid "Remove the selected item(s)"
-msgstr "Διαγραφή επιλεγμένων χρωμάτων"
-
-#: meat-grinder/meat-grinder.c:735
-msgid "GNOME Archive Generator"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:765
-msgid "Drop files here to add them to the archive."
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:783
-#, fuzzy
-msgid "Archive"
-msgstr "Ενεργό"
-
-#: meat-grinder/meat-grinder.c:790
-msgid ""
-"Drag this button to the destination where you want the archive to be created "
-"or press it to pop up a file selection dialog."
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:883
-msgid "Cannot find proper icons anywhere!"
-msgstr ""
-
-#: meat-grinder/meat-grinder.c:891
-msgid ""
-"Cannot find the archive (tar) program!\n"
-"This is the program used for creating archives."
-msgstr ""
-
-#: gfloppy/gfloppy.desktop.in.h:1
-msgid "Format Floppy Disks"
-msgstr "Μορφοποιεί Εύκαμπτους Δίσκους"
-
-#: gfloppy/gfloppy.desktop.in.h:2
-msgid "gfloppy"
-msgstr "Μορφοποίηση Δισκέτας"
-
-#: gdictsrc/GDict.desktop.in.h:1 gdictsrc/gdict.desktop.in.h:1
-msgid "GDict"
-msgstr "Λεξικό"
-
-#: gdictsrc/GDict.desktop.in.h:2
-msgid "Gnome client for the MIT dictionary server"
-msgstr "Πελάτης του GNOME για το λεξικό του MIT"
-
-#: gdictsrc/gdict.desktop.in.h:2
-msgid "GNOME client for RFC 2229-compliant dictionary server"
-msgstr "Πελάτης του GNOME για το λεξικό του MIT"
-
-#: stripchart/stripchart-applet.desktop.in.h:1
-#, fuzzy
-msgid "Shows a stripchart plot"
-msgstr "Εμφανίζει στατιστικά όπως σε σεισμογράφο"
-
-#: gstripchart/gstripchart.desktop.in.h:1 stripchart/stripchart.desktop.in.h:1
-msgid "Stripchart Plotter"
-msgstr "Σχεδιαστής Στατιστικών"
-
-#: notepad/Notepad.desktop.in.h:1
-msgid "Notepad"
-msgstr "Σημειωματάριο"
-
-#: notepad/Notepad.desktop.in.h:2
-msgid "Simple editor (notepad)"
-msgstr "Απλός επεξεργαστής κειμένου (σημειωματάριο)"
-
-#: mini-utils/idetool/idetool.desktop.in.h:1
-msgid "IDE Device Tool"
-msgstr "Εργαλείο Συσκευών IDE"
-
-#: mini-utils/idetool/idetool.desktop.in.h:2
-msgid "Show and Configure IDE Device Settings"
-msgstr "Εμφανίζει και επιτρέπει τη ρύθμιση συσκευών IDE"
-
-#: mini-utils/gw/gw.desktop.in.h:1
-msgid "User Listing"
-msgstr "Λίστα χρηστών"
-
-#: mini-utils/gw/gw.desktop.in.h:2
-msgid "View users on the system"
-msgstr "Εμφάνιση των χρηστών του συστήματος"
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:1
-#, fuzzy
-msgid "Show various system information"
-msgstr "Πληροφορίες Συστήματος"
-
-#: mini-utils/guname/guname.desktop.in.h:1
-msgid "System Info"
-msgstr "Πληροφορίες Συστήματος"
-
-#: mini-utils/guname/guname.desktop.in.h:2
-msgid "Technical information about this computer"
-msgstr "Τεχνικές Πληροφορίες σχετικά με το σύστημα"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:1
-msgid "Shut Down or Reboot"
-msgstr "Κλείσιμο συστήματος ή Επανεκκίνηση"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:2
-msgid "Turn off or reset the computer"
-msgstr "Κλείσιμο συστήματος ή επανεκκίνηση του"
-
-#: mini-utils/grun/grun.desktop.in.h:1
-msgid "Ask for a command to execute"
-msgstr "Υποβολή εντολής για εκτέλεση"
-
-#: mini-utils/grun/grun.desktop.in.h:2
-msgid "Run A Command..."
-msgstr "Εκτέλεση Εντολής..."
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:1
-msgid "GNOME Penguin"
-msgstr "Πιγκουίνος του GNOME"
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:2
-msgid "Let a cute pinguin chase your pointer"
-msgstr ""
-"Επιτρέψτε ένα όμορφο πιγκουίνο να κυνηγήσει το δείκτη του ποντικιού σας"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:1
-msgid "Prompts the user for a program to run"
-msgstr "Υποβάλει το χρήστη για πρόγραμμα προς εκτέλεση"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:2
-msgid "Run program..."
-msgstr "Εκτέλεση..."
-
-#: mini-utils/gless/gless.desktop.in.h:1
-msgid "Page files as with `more' and `less'"
-msgstr ""
-"Ανάγνωση αρχείων κειμένου με τρόπο παρόμοιο με τα κλασσικά `more' και `less'"
-
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:2
-msgid "Select a font for pasting"
-msgstr "Επιλέγει γραμματοσειρές για επικόλληση"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:1
-msgid "Browse available X11 colors."
-msgstr "Εμφανίζει τα διαθέσιμα χρώματα του συστήματος"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:2
-msgid "Color Browser"
-msgstr "Φυλλομετρητής Χρώματος"
-
-#: meat-grinder/meat-grinder.desktop.in.h:1
-msgid "Archive Generator"
-msgstr ""
-
-#: meat-grinder/meat-grinder.desktop.in.h:2
-msgid "GNOME Archive Generator aka Meat Grinder"
-msgstr ""
-
-#: logview/logview.desktop.in.h:1
-msgid "SysLog tool"
-msgstr "Επιτρέπει τον έλεγχο των καταγραφών του συστήματος"
-
-#: logview/logview.desktop.in.h:2
-msgid "System log monitor"
-msgstr "Έλεγχος καταγραφών συστήματος"
-
-#: gtt/gtt.desktop.in.h:1
+#: gtt.desktop.in.h:1
 msgid "Time Tracker tool"
 msgstr "Εργαλείο Προγραμματισμού Χρόνου"
 
-#: gtt/gtt.desktop.in.h:2
+#: gtt.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Εργαλείο Προγραμματισμού Χρόνου"
 
-#: gstripchart/gstripchart_applet.desktop.in.h:1
+#~ msgid "The Gnome Calculator"
+#~ msgstr "Η Αριθμομηχανή του Gnome"
+
+#~ msgid "Simple double precision calculator similiar to xcalc"
+#~ msgstr "Απλή αριθμομηχανή διπλής ακριβείας παρόμοια με το xcalc"
+
+#~ msgid "Gnome Calculator"
+#~ msgstr "Αριθμομηχανή του Gnome"
+
 #, fuzzy
-msgid "Gstripchart"
-msgstr "gstripchart"
+#~ msgid "sin"
+#~ msgstr "Ελαχ."
 
-#: gstripchart/gstripchart_applet.desktop.in.h:2
-msgid "Shows a stripchart"
-msgstr "Εμφανίζει στατιστικά όπως σε σεισμογράφο"
+#, fuzzy
+#~ msgid "Select Character"
+#~ msgstr "Επιλογή Χαρακτήρα ASCII"
 
-#: gsearchtool/gsearchtool.desktop.in.h:1
-#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
-msgid "GNOME Search Tool"
-msgstr "Εργαλείο Εύρεσης Aρχείων"
+#~ msgid "Insert"
+#~ msgstr "Εισαγωγή"
 
-#: gdiskfree/gdiskfree.desktop.in.h:1
-msgid "GNOME DiskFree"
-msgstr "Ελεύθερος Δίσκος"
+#, fuzzy
+#~ msgid "Character code:"
+#~ msgstr "Χαρακτήρας:"
 
-#: gdiskfree/gdiskfree.desktop.in.h:2
-msgid "Show free space on mounted file systems using dials."
-msgstr "Εμφανίζει το διαθέσιμο χώρο των προσαρτησμένων συστημάτων αρχείων"
+#~ msgid "Character:"
+#~ msgstr "Χαρακτήρας:"
 
-#: gcharmap/gcharmap.desktop.in.h:1
-msgid "GNOME Character Map"
-msgstr "Πίνακας Χαρακτήρων του GNOME"
+#, fuzzy
+#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
 
-#: gcalc/gcalc.desktop.in.h:1
-msgid "Simple Calculator"
-msgstr "Υπολογιστής τσέπης"
+#~ msgid "Gnome Character Map"
+#~ msgstr "Πίνακας Χαρακτήρων του Gnome"
 
-#: cromagnon/Cromagnon.desktop.in.h:1
-msgid "Personal cron manager"
-msgstr "Προσωπικός διαχειριστής cron"
+#~ msgid ""
+#~ "The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+#~ "contain bad English."
+#~ msgstr ""
+#~ "Η αντίστοιχη εφαρμογή του Χάρτη Χαρακτήρων των Microsoft Windows για το "
+#~ "Gnome. Προειδοποίηση: μπορεί να περιέχει ακατάλληλα αγγλικά."
 
-#: cromagnon/Cromagnon.desktop.in.h:2
-msgid "Personal crontab manager"
-msgstr "Προσωπικός διαχειριστής συστήματος δρομολόγησης εργασιών (cron)"
+#, fuzzy
+#~ msgid "del"
+#~ msgstr "Μοντέλο"
+
+#, fuzzy
+#~ msgid " %s: Character code %d"
+#~ msgstr "%s: Κωδικός ASCII %d"
+
+#~ msgid "Text copied to clipboard..."
+#~ msgstr "Αντιγραμμένο κείμενο στο τεμάχιο..."
+
+#~ msgid "Text cut to clipboard..."
+#~ msgstr "Κομμένο κείμενο στο τεμάχιο..."
+
+#~ msgid "Text pasted from clipboard..."
+#~ msgstr "Επικολλημένο κείμενο στο τεμάχιο..."
+
+#~ msgid "Action Toolbar"
+#~ msgstr "Εργαλειοθήκη Ενεργειών"
+
+#~ msgid "Text to copy:"
+#~ msgstr "Κείμενο προς αντιγραφή:"
+
+#, fuzzy
+#~ msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#~ msgid "Exit"
+#~ msgstr "Έξοδος"
+
+#~ msgid "Copy"
+#~ msgstr "Αντιγραφή"
+
+#~ msgid "About"
+#~ msgstr "Περί"
+
+#~ msgid "Help"
+#~ msgstr "Βοήθεια"
+
+#, fuzzy
+#~ msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#~ msgid "Insert Character..."
+#~ msgstr "Εισαγωγή Χαρακτήρα..."
+
+#, fuzzy
+#~ msgid "Insert character(s) by choosing character codes."
+#~ msgstr "Εισάγετε χαρακτήρα(ες) με επιλογή του κωδικού ASCII."
+
+#~ msgid "_Action Toolbar"
+#~ msgstr "_Εργαλειοθήκη Ενεργειών"
+
+#~ msgid "View or hide the action toolbar"
+#~ msgstr "Εμφάνιση ή απόκρυψη εργαλειοθήκης ενεργειών"
+
+#~ msgid "_Text Toolbar"
+#~ msgstr "_Εργαλειοθήκη με κείμενο"
+
+#~ msgid "View or hide the text toolbar"
+#~ msgstr "Εμφάνιση ή απόκρυψη εργαλειοθήκη κειμένου"
+
+#~ msgid "_Statusbar"
+#~ msgstr "_Μπάρα κατάστασης"
+
+#~ msgid "View or hide the statusbar"
+#~ msgstr "Εμφάνιση ή απόκρυψη μπάρας κατάστασης"
+
+#~ msgid "Character Table's Font..."
+#~ msgstr "Πίνακας Χαρακτήρων της Γραμματοσειράς..."
+
+#~ msgid "Set the character table's font."
+#~ msgstr "Καθορισμός της γραμματοσειράς του πίνακα χαρακτήρων."
+
+#~ msgid "_Insert at end"
+#~ msgstr "_Εισαγωγή στο τέλος"
+
+#~ msgid "Insert every selected character at the end of the text entry"
+#~ msgstr "Εισαγωγή κάθε επιλεγμένου χαρακτήρα στο τέλος της εισόδου κειμένου"
+
+#~ msgid "_Focusable Buttons"
+#~ msgstr "_Εστιαζόμενα Κουμπιά"
+
+#~ msgid "Set the buttons to be focusable or not"
+#~ msgstr "Καθορισμός αν τα κουμπιά είναι εστιαζόμενα ή όχι"
+
+#, fuzzy
+#~ msgid "Insert character(s) by choosing character codes"
+#~ msgstr "Εισαγωγή χαρακτήρα(ων) με επιλογή κωδικών ASCII"
+
+#~ msgid "Cut"
+#~ msgstr "Κοπή"
+
+#~ msgid "Cut the selection"
+#~ msgstr "Αποκοπή επιλεγμένου"
+
+#~ msgid "Copy the selection"
+#~ msgstr "Αντιγραφή του επιλεγμένου"
+
+#~ msgid "Paste"
+#~ msgstr "Επικόλληση"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "Επικόλληση από το τεμάχιο"
+
+#~ msgid "Show Gnome Character Map's manual"
+#~ msgstr "Εμφάνιση της τεκμηρίωσης του Πίνακα Χαρακτήρων του Gnome"
+
+#~ msgid "About this application"
+#~ msgstr "Σχετικά με αυτήν την εφαρμογή"
+
+#~ msgid "Exit the program"
+#~ msgstr "Έξοδος από το πρόγραμμα"
+
+#~ msgid "Cannot connect to server"
+#~ msgstr "Αδύνατη η σύνδεση στον εξυπηρετητή"
+
+#~ msgid ""
+#~ "Client for MIT dictionary server.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#~ msgstr ""
+#~ "Πελάτης για τον εξυπηρετητή λεξικού του MIT.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#~ msgid "Spell-checking..."
+#~ msgstr "Έλεγχος ορθογραφίας..."
+
+#~ msgid "Spell check done"
+#~ msgstr "Ο έλεγχος ορθογραφίας έγινε"
+
+#~ msgid "No matches found"
+#~ msgstr "δε βρέθηκαν ταιριάσματα"
+
+#~ msgid "Looking up word..."
+#~ msgstr "Ανατρέξιμο λέξης..."
+
+#~ msgid "Lookup done"
+#~ msgstr "Η εύρεση του λήμματος ολοκληρώθηκε"
+
+#~ msgid "String not found"
+#~ msgstr "Το αλφαριθμητικό δε βρέθηκε"
+
+#~ msgid "Find:"
+#~ msgstr "Αναζήτηση:"
+
+#~ msgid ""
+#~ "Unable to perform requested operation, either because the server\n"
+#~ "you are using is down or because you are not connected to the\n"
+#~ "Internet. If you are not already connected to the Internet, please\n"
+#~ "do so and try again."
+#~ msgstr ""
+#~ "Αδύνατη η εκτέλεση της ζητούμενης λειτουργίας, είτε επειδή ο "
+#~ "εξυπηρετητής\n"
+#~ "είναι ανενεργός είτε δεν είστε συνδεδεμένος στο Internet. Αν δεν είστε\n"
+#~ " συνδεδεμένος στο Internet, παρακαλώ συνδεθείτε και δοκιμάστε ξανά."
+
+#, fuzzy
+#~ msgid "Look up"
+#~ msgstr "Εύρεση"
+
+#, fuzzy
+#~ msgid "Look up word in dictionary"
+#~ msgstr "Ανατρέξιμο λέξης στο λεξικό"
+
+#~ msgid "Spell"
+#~ msgstr "Έλεγχος ορθογραφίας"
+
+#~ msgid "Check word spelling"
+#~ msgstr "Έλεγχος ορθογραφίας λέξης"
+
+#~ msgid "Cut to Clipboard"
+#~ msgstr "Κόψιμο στο Τεμάχιο"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Αντιγραφή στο Τεμάχιο"
+
+#~ msgid "Paste Clipboard Contents"
+#~ msgstr "Επικόλληση των Περιεχομένων του Τεμαχίου"
+
+#~ msgid "Settings"
+#~ msgstr "Ρυθμίσεις"
+
+#~ msgid "Server to use, default search strategy, fonts"
+#~ msgstr ""
+#~ "Εξυπηρετητής προς χρήση, εξ' ορισμού στρατηγική αναζήτησης, γραμματοσειρές"
+
+#~ msgid "Word definition"
+#~ msgstr "Ορισμός λέξης"
+
+#~ msgid "About..."
+#~ msgstr "Σχετικά με..."
+
+#~ msgid "Preferences..."
+#~ msgstr "Προτιμήσεις..."
+
+#~ msgid "Show/Hide Definition Window..."
+#~ msgstr "Εμφάνιση/Απόκρυψη Παραθύρου Ορισμού..."
+
+#~ msgid "Spell Check..."
+#~ msgstr "Έλεγχος Ορθογραφίας..."
+
+#~ msgid "Cannot create applet!\n"
+#~ msgstr "Αδύνατο το άνοιγμα εφαρμογιδίου!\n"
+
+#, fuzzy
+#~ msgid "Error invoking query: %s"
+#~ msgstr "EΣφάλμα κλεισίματος συσκευής %s"
+
+#~ msgid "Headword:"
+#~ msgstr "Λήμμα:"
+
+#~ msgid "Sub-number:"
+#~ msgstr "Υπό-αριθμός:"
+
+#~ msgid "Pronunciation:"
+#~ msgstr "Προφορά:"
+
+#~ msgid "Etymology:"
+#~ msgstr "Ετυμολογία:"
+
+#~ msgid "Part of speech:"
+#~ msgstr "Μέρος του λόγου:"
+
+#~ msgid "Example:"
+#~ msgstr "Παράδειγμα:"
+
+#~ msgid "Main body:"
+#~ msgstr "Κυρίως μέρος:"
+
+#~ msgid "Cross-reference:"
+#~ msgstr "Αντιπαραπομπή:"
+
+#~ msgid "Preferences"
+#~ msgstr "Προτιμίσεις"
+
+#~ msgid "Smart lookup"
+#~ msgstr "Έξυπνο ανατρέξιμο"
+
+#~ msgid "Server:"
+#~ msgstr "Εξυπηρετητής:"
+
+#~ msgid "Port:"
+#~ msgstr "Θύρα:"
+
+#~ msgid "Database:"
+#~ msgstr "Βάση:"
+
+#~ msgid "Default strategy:"
+#~ msgstr "Εξ' ορισμού στρατηγική:"
+
+#~ msgid "Server"
+#~ msgstr "Εξυπηρετητής"
+
+#~ msgid "Fonts"
+#~ msgstr "Γραμματοσειρές"
+
+#~ msgid "Display handle bar"
+#~ msgstr "Απεικόνιση μπάρας χειρισμού"
+
+#~ msgid ""
+#~ "You have to restart GDict for these\n"
+#~ "settings to become active."
+#~ msgstr ""
+#~ "Πρέπει να επανεκκινήσετε το GDict\n"
+#~ "για να ενεργοποιηθούν οι ρυθμίσεις."
+
+#~ msgid "Applet"
+#~ msgstr "Εφαρμογίδιο"
+
+#~ msgid "The server you specified could not be found."
+#~ msgstr "Ο εξυπηρετητής που ορίσατε δεν βρέθηκε."
+
+#, fuzzy
+#~ msgid "Search Strategy:"
+#~ msgstr "Εξ' ορισμού στρατηγική:"
+
+#, fuzzy
+#~ msgid "Look up Word..."
+#~ msgstr "Ανατρέξιμο λέξης..."
+
+#, fuzzy
+#~ msgid "Spell checker"
+#~ msgstr "Ο έλεγχος ορθογραφίας έγινε"
+
+#~ msgid "GDiskFree"
+#~ msgstr "GDiskFree"
+
+#~ msgid "Unable to parse the geometry string '%s'"
+#~ msgstr "Ανεπιτυχής αποκωδικοποίηση του αλφαριθμητικου γεωμετρίας '%s'"
+
+#~ msgid "Specify the geometry of the window."
+#~ msgstr "Καθορισμός γεωμετρίας του παραθύρου."
+
+#~ msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
+#~ msgstr ""
+#~ "Το GDiskFree είναι η υλοποίηση του βοηθητικού προγράμματος 'df' στο GNOME."
+
+#~ msgid "GDiskFree Properties"
+#~ msgstr "Ιδιότητες GDiskFree"
+
+#~ msgid "Invoke sync before getting usage info"
+#~ msgstr "Συγχρονισμός δίσκων πριν την ανάκτηση πληροφοριών χρήσης"
+
+#~ msgid "Show drive mount points"
+#~ msgstr "Εμφάνιση σημείων προσάρτησης δίσκων"
+
+#~ msgid "Show drive size"
+#~ msgstr "Εμφάνιση μεγέθους δίσκων"
+
+#~ msgid "Dial Orientation"
+#~ msgstr "Προσανατολισμός Καντράν"
+
+#~ msgid "Vertical"
+#~ msgstr "Κατακόρυφος"
+
+#~ msgid "Horizontal"
+#~ msgstr "Οριζόντιος"
+
+#~ msgid "Update interval (ms)"
+#~ msgstr "Διάστημα ανανέωσης (ms)"
+
+#~ msgid "General Settings"
+#~ msgstr "Γενικές Ρυθμίσεις"
+
+#~ msgid "File name"
+#~ msgstr "Όνομα αρχείου"
+
+#~ msgid "Don't search subdirectories"
+#~ msgstr "Όχι αναζήτηση σε υποκαταλόγους"
+
+#~ msgid "File owner"
+#~ msgstr "Ιδιοκτήτης αρχείου"
+
+#~ msgid "File owner group"
+#~ msgstr "Ομάδα ιδιοκτήτη αρχείου"
+
+#~ msgid "Last modification time"
+#~ msgstr "Ώρα τελευταίας αλλαγής"
+
+#~ msgid "Don't search mounted filesystems"
+#~ msgstr "Όχι αναζήτηση σε προσαρτημένα συστήματα αρχείων"
+
+#~ msgid "Empty file"
+#~ msgstr "Άδειο αρχείο"
+
+#~ msgid "Invalid user or group"
+#~ msgstr "Άκυρος χρήστης ή ομάδα"
+
+#~ msgid "Filenames except"
+#~ msgstr "Ονόματα αρχείων εκτός από"
+
+#~ msgid "Follow symbolic links"
+#~ msgstr "Ακολούθηση συμβολικών συνδέσμων"
+
+#~ msgid "Simple substring search"
+#~ msgstr "Αναζήτηση απλής υπακολουθίας"
+
+#~ msgid "Regular expression search"
+#~ msgstr "Αναζήτηση κανονικής έκφρασης"
+
+#~ msgid "Extended regular expression search"
+#~ msgstr "Αναζήτηση εκτεταμένης κανονικής έκφρασης"
+
+# Translation of "extended" follows standard, but is quite
+# unsuitable in this context...
+#~ msgid "grep options found in find list bad bad!"
+#~ msgstr "ορίσματα του grep βρέθηκαν στη λίστα αναζήτησης, κακό!"
+
+#~ msgid "non-grep option found in grep list, bad bad!"
+#~ msgstr "ορίσματα γραμμής εντολών βρέθηκαν στη λίστα αναζήτησης, κακό!"
+
+#~ msgid "Search already running on another page"
+#~ msgstr "Αναζήτηση ήδη εκτελούμενων σε άλλη σελίδα"
+
+#~ msgid "Search Results"
+#~ msgstr "Αποτελέσματα Αναζήτησης"
+
+#~ msgid "Start directory does not exist"
+#~ msgstr "Ο κατάλογος έναρξης δεν υπάρχει"
+
+#~ msgid "Search command line"
+#~ msgstr "Γραμμή εντολών αναζήτησης"
+
+#~ msgid ""
+#~ "This is the command line that can be used to execute this search from the "
+#~ "console:\n"
+#~ "(Note: to print one file per line rather then null separated,\n"
+#~ "append \"| tr '\\000' '\\n'\" to the line below)"
+#~ msgstr ""
+#~ "Αυτή είναι η εντολή γραμμής που μπορεί να χρησιμοποιηθεί για την εκτέλεση "
+#~ "της αναζήτησης από την κονσόλα:\n"
+#~ "(Σημείωση: για την εκτύπωση ενός αρχείου ανά γραμμή αντί για διαχωρισμό "
+#~ "με \n"
+#~ "μηδενικό, προσθέστε \"| tr '\\000' '\\n'\" στην παρακάτω γραμμή)"
+
+#~ msgid "Entry changed called for a non entry option!"
+#~ msgstr ""
+#~ "Η αλλαγή εισαγωγής καλέστηκε για επιλογή που δεν επιτρέπει εισαγωγή!"
+
+#~ msgid "Enable"
+#~ msgstr "Ενεργοποίηση"
+
+#~ msgid "Remove"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Start in directory:"
+#~ msgstr "Έναρξη στον κατάλογο:"
+
+#~ msgid "Browse"
+#~ msgstr "Εξερεύνηση"
+
+#~ msgid "Add"
+#~ msgstr "Προσθήκη"
+
+#~ msgid "Show Command"
+#~ msgstr "Εμφάνιση Εντολής"
+
+#~ msgid "Nothing to locate"
+#~ msgstr "Τίποτα για εντοπισμό"
+
+#~ msgid ""
+#~ "This is an interface to locate.  If you type in a simple string it\n"
+#~ "will be matched as a subset of the full path, and if you type\n"
+#~ "in a string with wildcards, it will have to match the full path."
+#~ msgstr ""
+#~ "Αυτή είναι μια διεπιφάνεια για το locate. Εάν δώσετε απλό αλφαριθμητικό,\n"
+#~ "θα αναζητηθεί ως μέρος πλήρους διαδρομής.  Εάν δώσετε αλφαριθμητικό με\n"
+#~ "μπαλαντέρ, θα πρέπει να συμφωνεί με ολόκληρη τη διαδρομή."
+
+#~ msgid "Locate file: "
+#~ msgstr "Εντοπισμός αρχείου: "
+
+#~ msgid "Full find (find)"
+#~ msgstr "Πλήρης αναζήτηση (find)"
+
+#~ msgid "Quick find (locate)"
+#~ msgstr "Γρήγορη αναζήτηση (locate)"
+
+#~ msgid "The Gnome Search Tool"
+#~ msgstr "Το Εργαλείο Αναζήτησης του Gnome"
+
+#~ msgid "(C) 1998,2000 the Free Software Foundation"
+#~ msgstr "(C) 1998,2000 το Free Software Foundation"
+
+#~ msgid "Frontend to the unix find/grep/locate commands"
+#~ msgstr "Διεπιφάνεια για τις εντολές find/grep/locate του UNIX"
+
+#~ msgid "Gnome Search Tool"
+#~ msgstr "Εργαλείο Αναζήτησης του Gnome"
+
+#, fuzzy
+#~ msgid "Cannot save file"
+#~ msgstr "Αδύνατο το άνοιγμα εφαρμογιδίου!\n"
+
+#~ msgid "Save Results"
+#~ msgstr "Αποθήκευση Αποτελεσμάτων"
+
+#~ msgid "Command mangled"
+#~ msgstr "Η γραμμή διαμελίστηκε"
+
+#~ msgid "No command for this mime type"
+#~ msgstr "Δεν υπάρχει εντολή για αυτό το είδος mime"
+
+#~ msgid "[GTT]New"
+#~ msgstr "[GTT]Νέο"
+
+#~ msgid "Reload"
+#~ msgstr "Επανανάγν."
+
+#~ msgid "Props"
+#~ msgstr "Ιδιότητες"
+
+#~ msgid "Prefs"
+#~ msgstr "Προτιμήσεις"
+
+#~ msgid "Manual"
+#~ msgstr "Τεκμηρίωση"
+
+#~ msgid "Quit"
+#~ msgstr "Τέλος"
+
+# Using standard translation for "default" for consistency, although
+# it is not quite suitable in this context...
+#, fuzzy
+#~ msgid "Delete _Times"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
+#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#, fuzzy
+#~ msgid ""
+#~ "This  program  is  part of  the  GNOME  project. Logview comes with "
+#~ "ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+#~ "redistribute it under the conditions of the GNU General Public Licence. "
+#~ "The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+#~ msgstr ""
+#~ "Αυτό το πρόγραμμα είναι μέρος του Έργου GNOME για το Linux. Το Logview "
+#~ "δεν παρέχει ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Αυτό είναι ελεύθερο λογισμικό και "
+#~ "έχετε την ελευθερία να το επαναδιανείμετε κάτω από τις συνθήκες της "
+#~ "Δημόσιας Γενικής Άδειας Λογισμικού GNU. Το εικονίδιο του λογοτύπου είναι "
+#~ "προσφορά του Tuomas Kuosmanen (γνωστός και σαν tigert)."
+
+#~ msgid "Logview"
+#~ msgstr "Εμφάνιση Μητρώου"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Πνευματικά δικαιώματα (C) 1998"
+
+#~ msgid "Action database"
+#~ msgstr "Βάση ενεργειών"
+
+#~ msgid "Monitor options"
+#~ msgstr "Επιλογες ελέγχου"
+
+#~ msgid "Add..."
+#~ msgstr "Προσθήκη..."
+
+#~ msgid "Edit..."
+#~ msgstr "Επεξεργασία..."
+
+#~ msgid "Error parsing actions data base"
+#~ msgstr "Σφάλμα στην ανάλυση της βάση ενεργειών"
+
+#~ msgid "Can't write to actions database!"
+#~ msgstr "Αδύνατη η εγγραφή στη βάση ενεργειών!"
+
+#~ msgid "<empty>"
+#~ msgstr "<κενό>"
+
+#, fuzzy
+#~ msgid "log name regexp"
+#~ msgstr "κανονική έκφραση ονόματος καταγραφής"
+
+#~ msgid "process regexp"
+#~ msgstr "κανονική έκφραση διεργασίας"
+
+#~ msgid "message regexp"
+#~ msgstr "κανονική έκφραση μηνύματος"
+
+#~ msgid "action to execute when regexps are TRUE"
+#~ msgstr "ενέργεια προς εκτέλεση όταν η κανονική έκφραση είναι ΑΛΗΘΗΣ"
+
+#~ msgid "description"
+#~ msgstr "περιγραφή"
+
+#~ msgid "description:"
+#~ msgstr "περιγραφή:"
+
+#~ msgid "Description of this entry."
+#~ msgstr "Περιγραφή αυτής της εγγραφής."
+
+#~ msgid ""
+#~ "tag: [%s]\n"
+#~ "log_name: [%s]\n"
+#~ "process: [%s]\n"
+#~ "message: [%s]\n"
+#~ "description: [%s]\n"
+#~ "action: [%s]\n"
+#~ msgstr ""
+#~ "ετικέτα: [%s]\n"
+#~ "όνομα καταγραφής: [%s]\n"
+#~ "διεργασία: [%s]\n"
+#~ "μήνυμα: [%s]\n"
+#~ "περιγραφή: [%s]\n"
+#~ "ενέργεια: [%s]\n"
+
+#~ msgid "Log stats"
+#~ msgstr "Στατιστικά καταγραφών"
+
+#~ msgid "Log information"
+#~ msgstr "Πληροφορίες καταγραφών"
+
+#~ msgid "Log:"
+#~ msgstr "Καταγραφή:"
+
+#~ msgid "Size:"
+#~ msgstr "Μέγεθος:"
+
+#~ msgid "Modified:"
+#~ msgstr "Τροποποιημένο:"
+
+#~ msgid "Start date:"
+#~ msgstr "Ημερομηνία έναρξης:"
+
+#~ msgid "Last date:"
+#~ msgstr "Τελευταίά ημερομηνία:"
+
+#~ msgid "Num. lines:"
+#~ msgstr "Αριθ. γραμμών:"
+
+#~ msgid "%ld bytes"
+#~ msgstr "%ld byte"
+
+#~ msgid "January"
+#~ msgstr "Ιανουάριος"
+
+# Revise translation of "manual" (as in opposite of "automatic", not synonym of "documentation")
+#~ msgid "February"
+#~ msgstr "Φεβρουάριος"
+
+#~ msgid "March"
+#~ msgstr "Μάρτιος"
+
+#~ msgid "April"
+#~ msgstr "Απρίλιος"
+
+#~ msgid "May"
+#~ msgstr "Μάιος"
+
+#~ msgid "June"
+#~ msgstr "Ιούνιος"
+
+#~ msgid "July"
+#~ msgstr "Ιούλιος"
+
+#~ msgid "August"
+#~ msgstr "Αύγουστος"
+
+#~ msgid "September"
+#~ msgstr "Σεπτέμβριος"
+
+#~ msgid "October"
+#~ msgstr "Οκτώβριος"
+
+#~ msgid "November"
+#~ msgstr "Νοέμβριος"
+
+#~ msgid "December"
+#~ msgstr "Δεκέμβριος"
+
+#~ msgid "Not enough memory!\n"
+#~ msgstr "Δεν υπάρχει αρκετή μνήμη!\n"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "Η μνήμη εξαντλήθηκε!\n"
+
+#~ msgid "Unable to open logfile!\n"
+#~ msgstr "Αδύνατο το άνοιγμα αρχείου καταγραφών!\n"
+
+#~ msgid "%s is not a regular file."
+#~ msgstr "Το %s δεν είναι κανονικό αρχείο."
+
+#, fuzzy
+#~ msgid ""
+#~ "%s is not user readable. Either run the program as root or ask the "
+#~ "sysadmin to change the permissions on the file."
+#~ msgstr ""
+#~ "το %s δεν είναι αναγνώσιμο από το χρήστη. Πιθανώς να έχει δικαίωμα μόνο "
+#~ "για ανάγνωση. Είτε τρέξτε το πρόγραμμα ως διαχειριστής ή ζητήστε από το "
+#~ "διαχειριστή να αλλάξει τα δικαιώματα του αρχείου."
+
+#~ msgid "%s could not be opened."
+#~ msgstr "Το %s δεν μπόρεσε να ανοιχτεί."
+
+#~ msgid "%s not a log file."
+#~ msgstr "To %s δεν είναι αρχείο καταγραφών."
+
+#~ msgid "ReadLogStats: out of memory"
+#~ msgstr "ReadLogStats: η μνήμη εξαντλήθηκε"
+
+#, fuzzy
+#~ msgid "Open log..."
+#~ msgstr "Άνοιγμα αρχείου καταγραφών"
+
+#~ msgid "Open log"
+#~ msgstr "Άνοιγμα αρχείου καταγραφών"
+
+#, fuzzy
+#~ msgid "Export log..."
+#~ msgstr "Εξαγωγή καταγραφών"
+
+#~ msgid "Export log"
+#~ msgstr "Εξαγωγή καταγραφών"
+
+#~ msgid "Close log"
+#~ msgstr "Κλείσιμο καταγραφών"
+
+#~ msgid "Switch log"
+#~ msgstr "Αλλαγή καταγραφής"
+
+#, fuzzy
+#~ msgid "Monitor..."
+#~ msgstr "Παρακολούθηση"
+
+#~ msgid "Monitor log"
+#~ msgstr "Παρακολούθηση καταγραφών"
+
+#~ msgid "Exit program"
+#~ msgstr "Έξοδος από το πρόγραμμα"
+
+#~ msgid "Show calendar log"
+#~ msgstr "Εμφάνιση καταγραφών ημερολογίου"
+
+#~ msgid "Show log stats"
+#~ msgstr "Εμφάνιση στατιστικών καταγραφών"
+
+#, fuzzy
+#~ msgid "Zoom"
+#~ msgstr "Απεικόνιση μεγένθυνσης"
+
+#~ msgid "Show line info"
+#~ msgstr "Εμφάνιση πληροφοριών γραμμής"
+
+#~ msgid "Show user preferences"
+#~ msgstr "Εμφάνιση προτιμίσεων χρήστη"
+
+#~ msgid "Select...               "
+#~ msgstr "Επιλογή...              "
+
+#~ msgid "Select log events"
+#~ msgstr "Επιλογή γεγονότων καταγραφής"
+
+#~ msgid "Filter..                "
+#~ msgstr "Φιλτράρισμα...          "
+
+#~ msgid "Filter log events"
+#~ msgstr "Φιλτράρισμα γεγονότων καταγραφής"
+
+#~ msgid "Info about logview"
+#~ msgstr "Πληροφορίες για το logview"
+
+#~ msgid "No log files to open"
+#~ msgstr "Δεν υπάρχουν αρχεία καταγραφών προς ανάγνωση"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "Παρακολουθηση Καταγραφών Συστήματος"
+
+#~ msgid "Filename: "
+#~ msgstr "Όνομα Αρχείου:"
+
+#~ msgid "Date: "
+#~ msgstr "Ημερομηνία:"
+
+#~ msgid "Too many open logs. Close one and try again"
+#~ msgstr ""
+#~ "Πάρα πολλά ανοιχτά αρχεία καταγραφών. Κλείστε ένα και δοκιμάστε ξανά"
+
+#~ msgid "Open new logfile"
+#~ msgstr "Άνοιγμα νέου αρχείου καταγραφών"
+
+#~ msgid "Error: [%s]\n"
+#~ msgstr "Σφάλμα: [%s]\n"
+
+#~ msgid "Choose logs to monitor"
+#~ msgstr "Επιλογή καταγραφών για παρακολούθηση"
+
+#, fuzzy
+#~ msgid "Add >>"
+#~ msgstr "Προσθήκη ->"
+
+#, fuzzy
+#~ msgid "Remove <<"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Hide app"
+#~ msgstr "Απόκρυψη εφαρμογής"
+
+#~ msgid "Exec actions"
+#~ msgstr "Εκτέλεση ενέργειας"
+
+# FIX? drop (see also "On Drop" above)
+#, fuzzy
+#~ msgid "Actions..."
+#~ msgstr "Ενέργειες"
+
+#~ msgid "tmp_list is NULL\n"
+#~ msgstr "Το tmp_list είναι κενό\n"
+
+#, fuzzy
+#~ msgid "Monitoring logs..."
+#~ msgstr "Παρακολούθηση καταγραφών..."
+
+#~ msgid "TOUCHED!!\n"
+#~ msgstr "ΑΚΟΥΜΠΗΘΗΚΕ!!!\n"
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "πλάτος στήλης ονόματος συστήματος (0 για να αποκρύψετε τη στήλη): "
+
+#~ msgid "Columns"
+#~ msgstr "Στήλες"
+
+#~ msgid "Zoom view"
+#~ msgstr "Απεικόνιση μεγένθυνσης"
+
+#~ msgid "Log line detail for %s"
+#~ msgstr "Λεπτομέρεια γραμμής καταγραφής για το %s"
+
+#~ msgid "Log line detail for <No log loaded>"
+#~ msgstr "Λεπτομέρεια γραμμής καταγραφής για <Δε φορτώθηκαν καταγραφές>"
+
+#~ msgid "Date:"
+#~ msgstr "Ημερομηνία:"
+
+#~ msgid "Process:"
+#~ msgstr "Διεργασία:"
+
+#~ msgid "Message:"
+#~ msgstr "Μήνυμα:"
+
+#~ msgid "Description:"
+#~ msgstr "Περιγραφή:"
+
+#, fuzzy
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#, fuzzy
+#~ msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#~ msgid "Do nothing"
+#~ msgstr "Να μην κάνει κάτι"
+
+#~ msgid "Append it to ->"
+#~ msgstr "Προσθήκη του στο ->"
+
+#~ msgid "Search it in ->"
+#~ msgstr "Αναζήτησέ το στο ->"
+
+#~ msgid "Edit it"
+#~ msgstr "Επεξεργάσου το"
+
+#~ msgid "List"
+#~ msgstr "Λίστα"
+
+#~ msgid "Grid"
+#~ msgstr "Πλέγμα"
+
+#~ msgid "Edit"
+#~ msgstr "Επεξεργασία"
+
+#~ msgid "File"
+#~ msgstr "Αρχείο"
+
+#~ msgid "Search RGB"
+#~ msgstr "Αναζήτηση RGB"
+
+#~ msgid "Monitor"
+#~ msgstr "Παρακολούθηση"
+
+#~ msgid "Concat"
+#~ msgstr "Σύζευξη"
+
+#~ msgid "'%s' document has been modified; do you wish to save it ?"
+#~ msgstr "Το ντοκουμέντο '%s' έχει τροποποιηθεί· θέλετε να το αποθηκεύσετε;"
+
+#~ msgid "GColorsel was unable to paste colors from the clipboard."
+#~ msgstr "Το GColorsel δεν μπόρεσε να επικολλήσει χρώματα από το τεμάχιο."
+
+#~ msgid "Please select a file document before."
+#~ msgstr "Παρακαλώ επιλέξτε πρώτα ένα ντοκουμέντο."
+
+#~ msgid ""
+#~ "I can't execute this action. Check that :\n"
+#~ "\n"
+#~ "1. You have associated an action with this event.\n"
+#~ "2. The associated document still exists.\n"
+#~ "3. The type of the associated document.\n"
+#~ "\n"
+#~ "Go to preferences, in the edit menu."
+#~ msgstr ""
+#~ "Αδύνατη η εκτέλεση αυτής της ενέργειας. Ελέγξτε ότι: \n"
+#~ "\n"
+#~ "1. Έχετε συσχετίσει μια ενέργεια με το γεγονός αυτό.\n"
+#~ "2. Το συσχετισμένο ντοκουμέντο υπάρχει ακόμα.\n"
+#~ "3. Το είδος του συσχετισμένου ντοκουμέντο.\n"
+#~ "\n"
+#~ "Δείτε της Προτιμίσεις, στο μενού Επεξεργασία."
+
+#~ msgid "GColorsel"
+#~ msgstr "GColorsel"
+
+#~ msgid "<- Remove"
+#~ msgstr "<- Διαγραφή"
+
+#~ msgid "<- Remove all"
+#~ msgstr "<- Διαγραφή όλων"
+
+#~ msgid "Add ->"
+#~ msgstr "Προσθήκη ->"
+
+#~ msgid "Add all ->"
+#~ msgstr "Προσθήκη όλων ->"
+
+#~ msgid "Available documents"
+#~ msgstr "Διαθέσιμα ντοκουμέντα"
+
+#~ msgid "Available views"
+#~ msgstr "Διαθέσιμες όψεις"
+
+#~ msgid "Connect to"
+#~ msgstr "Σύνδεση με"
+
+#~ msgid "Create a document"
+#~ msgstr "Δημιουργία ντοκουμέντου"
+
+#~ msgid "Create views"
+#~ msgstr "Δημιουργία όψεων"
+
+#~ msgid "Description :"
+#~ msgstr "Περιγραφή :"
+
+#~ msgid ""
+#~ "Please, select the type of document to create.\n"
+#~ "You can choose a short name, do not confuse it with the file name."
+#~ msgstr ""
+#~ "Παρακαλώ επιλέξτε το είδος του ντοκουμέντου που θέλετε να δημιουργήσετε.\n"
+#~ "Μπορείτε να επιλέξετε ένα σύντομο όνομα, μην το συγχέετε με το όνομα του "
+#~ "αρχείου."
+
+#~ msgid "Select source document"
+#~ msgstr "Επιλογή ντοκουμέντου πηγής"
+
+#~ msgid "Select type"
+#~ msgstr "Επιλογή τύπου"
+
+#~ msgid "Short name : "
+#~ msgstr "Σύντομο όνομα : "
+
+#~ msgid ""
+#~ "This document read document from one or more other document. Please, "
+#~ "choose these documents."
+#~ msgstr ""
+#~ "Αυτό το ντοκουμέντο μπορεί να εισάγει πληροφορίες από ένα ή περισσότερα "
+#~ "ντοκουμέντα.Παρακαλώ επιλέξτε αυτά τα ντοκουμέντα."
+
+#~ msgid ""
+#~ "You can create one or more views for this document. Note that you have to "
+#~ "create at least one view."
+#~ msgstr ""
+#~ "Μπορείτε να δημιουργήσετε μια ή περισσότερες απεικονίσεις για αυτό το "
+#~ "ντοκουμέντο. Σημειώστε ότι πρέπει να δημιουργήσετε τουλάχιστον μια "
+#~ "απεικόνιση."
+
+#~ msgid "Create a new view"
+#~ msgstr "Δημιουργία νέας όψης"
+
+#~ msgid "Please, select the type of view you want to create."
+#~ msgstr "Παρακαλώ, επιλέξτε το είδος της όψης που θέλετε να δημιουργήσετε."
+
+# FIX? drop (see also "On Drop" above)
+#~ msgid "Actions"
+#~ msgstr "Ενέργειες"
+
+#~ msgid "Bottom"
+#~ msgstr "Κάτω μέρος"
+
+#~ msgid "Default"
+#~ msgstr "Εξ' ορισμού"
+
+#~ msgid "Display documents menu (restart required)."
+#~ msgstr "Εμφάνιση μενού ντοκουμέντων (απαιτεί επανεκκίνηση)."
+
+#~ msgid "Documents"
+#~ msgstr "Αρχεία"
+
+#~ msgid "DoubleClick in previews:"
+#~ msgstr "Διπλό Κλικ στις προεπισκοπήσεις:"
+
+#~ msgid "DoubleClick in views:"
+#~ msgstr "Διπλό Κλικ στις απεικονίσεις:"
+
+#~ msgid "Drop:"
+#~ msgstr "Αφημένο:"
+
+#~ msgid "General"
+#~ msgstr "Γενικά"
+
+#~ msgid "Grab:"
+#~ msgstr "Ξεσήκωμα:"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "ΔΠΝ (Διασύνδεση Πολλαπλών Ντοκουμέντων)"
+
+#, fuzzy
+#~ msgid "Modal"
+#~ msgstr "Μοντέλο"
+
+#~ msgid "Mode:"
+#~ msgstr "Κατάσταση:"
+
+#~ msgid "Notebook Tab position:"
+#~ msgstr "Θέση καρτέλας τετραδίου:"
+
+#~ msgid "On ... execute ..."
+#~ msgstr "Στο ... εκτέλεσε ..."
+
+#~ msgid "Save session on exit."
+#~ msgstr "Αποθήκευση συνεδρίας στην έξοδο."
+
+#~ msgid "Session"
+#~ msgstr "Συνεδρία"
+
+#~ msgid "Top"
+#~ msgstr "Κορυφή"
+
+#~ msgid ""
+#~ "Begin\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "Αρχή\n"
+#~ "Σχόλια: "
+
+#~ msgid ""
+#~ "End\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "Τέλος\n"
+#~ "Σχόλια:"
+
+#~ msgid "File name :"
+#~ msgstr "Όνομα αρχείου:"
+
+#~ msgid "Header :"
+#~ msgstr "Κεφαλίδα :"
+
+#~ msgid "Special properties"
+#~ msgstr "Ειδικές ιδιότητες"
+
+#~ msgid "Common properties"
+#~ msgstr "Τυπικές ιδιότητες"
+
+#~ msgid "Name :"
+#~ msgstr "Όνομα :"
+
+#~ msgid "Blue :"
+#~ msgstr "Μπλε : "
+
+#~ msgid "Green :"
+#~ msgstr "Πράσινο :"
+
+#~ msgid "Red :"
+#~ msgstr "Κόκκινο :"
+
+#~ msgid "Colors format :"
+#~ msgstr "Μορφή χρώματος :"
+
+#~ msgid "Display document control (if exists)"
+#~ msgstr "Εμφάνιση ελέγχου ντοκουμέντου (αν υπάρχει)"
+
+#~ msgid "Color height :"
+#~ msgstr "Ύψος χρώματος:"
+
+#~ msgid "Color width :"
+#~ msgstr "Πλάτος χρώματος:"
+
+#~ msgid "Draw numbers"
+#~ msgstr "Απεικόνιση αριθμών"
+
+#~ msgid "New Document"
+#~ msgstr "Νέο Αρχείο"
+
+#~ msgid "Create a new document"
+#~ msgstr "Δημιουργία νέου ντοκουμέντου"
+
+#~ msgid "New View"
+#~ msgstr "_Νέα απεικόνιση"
+
+#~ msgid "Create a new view for a document"
+#~ msgstr "Δημιουργία νέας απεικόνισης για το ντοκουμέντο"
+
+#~ msgid "Close document"
+#~ msgstr "Κλείσιμο ντοκουμέντου"
+
+#~ msgid "Close the current document"
+#~ msgstr "Κλείσιμο του τρέχοντος ντοκουμέντου"
+
+#~ msgid "Close view"
+#~ msgstr "Κλείσιμο απεικόνισης"
+
+#~ msgid "Close the current view"
+#~ msgstr "Διαγραφή παρούσας απεικόνισης"
+
+#~ msgid "_Open palette..."
+#~ msgstr "Άνοιγμα _παλέττας..."
+
+#~ msgid "Load a palette"
+#~ msgstr "Φόρτωμα παλέττας"
+
+#~ msgid "_Save palette"
+#~ msgstr "_Αποθήκευση παλέττας"
+
+#~ msgid "Save the current palette in a file"
+#~ msgstr "Αποθήκευση της παλέττας σε αρχείο"
+
+#~ msgid "Save palette _As..."
+#~ msgstr "Αποθήκευση παλέττας _Ως..."
+
+#~ msgid "Save the current palette with a different name"
+#~ msgstr "Αποθήκευση της τρέχουσας παλέττας με διαφορετικό όνομα"
+
+#~ msgid "Insert color"
+#~ msgstr "Εισαγωγή χρώματος"
+
+#~ msgid "Remove selected colors"
+#~ msgstr "Διαγραφή επιλεγμένων χρωμάτων"
+
+#~ msgid "Edit selected colors ..."
+#~ msgstr "Επεξεργασία επιλεγμένων χρωμάτων ..."
+
+#~ msgid "Document/View properties"
+#~ msgstr "Ντοκουμέντο/Εμφάνιση ιδιοτήτων"
+
+#~ msgid ""
+#~ "GColorsel was unable to save the file :\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have the approprate write permissions.\n"
+#~ "\n"
+#~ "Do you want to retry ?"
+#~ msgstr ""
+#~ "Το GColorsel δε μπόρεσε να αποθηκεύσει το αρχείο:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Παρακαλώ επιβεβεώστε ότι το μονοπάτι που δηλώσατε υπάρχει,\n"
+#~ "και ότι έχετε τα κατάλληλα δικαιώματα εγγραφής.\n"
+#~ "\n"
+#~ "Θέλετε να ξαναδοκιμάσετε;"
+
+#~ msgid ""
+#~ "GColorsel was unable to load the file:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have permissions for opening the file."
+#~ msgstr ""
+#~ "Το GColorsel δε μπόρεσε να φορτώσει το αρχείο:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Παρακαλώ επιβεβεώστε ότι το μονοπάτι που δηλώσατε υπάρχει,\n"
+#~ "και ότι έχετε τα δικαιώματα να ανοίξετε το αρχείο."
+
+#~ msgid "Open Palette"
+#~ msgstr "Άνοιγμα Παλέττας"
+
+#~ msgid "Loading file, please wait ..."
+#~ msgstr "Άνοιγμα αρχείου, παρακαλώ περιμένετε ..."
+
+#~ msgid "Save Palette as"
+#~ msgstr "Αποθήκευση Παλέττας ως"
+
+#~ msgid "File not saved ..."
+#~ msgstr "Το αρχείο δεν αποθηκεύτηκε ..."
+
+#~ msgid "File saved ..."
+#~ msgstr "Το αρχείο αποθηκεύτηκε ..."
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?\n"
+#~ "\n"
+#~ "Please note that %d virtual document use data from this document."
+#~ msgstr ""
+#~ "Πρόκειτε να κλείσω την τελευταία απεικόνιση του '%s'.\n"
+#~ "\n"
+#~ "Το ντοκουμέντο αυτό θα κλείσει επίσης. Να συνεχίσω;\n"
+#~ "\n"
+#~ "Παρακαλώ σημειώστε ότι %d ιδεατά ντοκουμέντα χρησιμοποιούν αυτό το "
+#~ "ντοκουμέντο."
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?"
+#~ msgstr ""
+#~ "Πρόκειτε να κλείσω την τελευταία απεικόνιση του '%s'.\n"
+#~ "\n"
+#~ "Το ντοκουμέντο αυτό θα κλείσει επίσης. Να συνεχίσω;"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed,\n"
+#~ "and that %d virtual document use data from this document.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "Πρόκειτε να κλείσω το '%s'.\n"
+#~ "\n"
+#~ "Παρακαλώ σημειώστε ότι %d απεικονίσεις θα καταστραφούν,\n"
+#~ "και ότι %d ιδεατά ντοκουμέντα χρησιμοποιούν δεδομένα από\n"
+#~ "αυτό το ντοκουμέντο.\n"
+#~ "Θέλετε να συνεχίσετε;"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "Πρόκειτε να κλείσω το '%s'.\n"
+#~ "\n"
+#~ "Παρακαλώ σημειώστε ότι %d απεικονίσεις θα καταστραφούν.\n"
+#~ "\n"
+#~ "Θέλετε να συνεχίσετε;"
+
+#~ msgid "Gnome Color Browser"
+#~ msgstr "Πρόγραμμα Εξερεύνησης Χρωμάτων του Gnome"
+
+#~ msgid "Small utility to browse available X11 colors."
+#~ msgstr "Μικρή εφαρμογή για την εξερεύνηση των διαθέσιμων χρωμάτων στα X11."
+
+#~ msgid "New Color"
+#~ msgstr "Νέο Χρώμα"
+
+#~ msgid "View properties"
+#~ msgstr "Εμφάνιση ιδιοτήτων"
+
+#~ msgid "Document properties"
+#~ msgstr "Ιδιότητες αρχείου"
+
+#~ msgid "Open"
+#~ msgstr "Άνοιγμα"
+
+#~ msgid "Open a palette"
+#~ msgstr "Άνοιγμα παλέττας"
+
+#~ msgid "Grab"
+#~ msgstr "Ξεσήκωμα"
+
+#~ msgid "Grab a color on the screen"
+#~ msgstr "Ξεσήκωμα χρώματος από την οθόνη"
+
+#~ msgid ""
+#~ "Your config file is corrupted.\n"
+#~ "Do you want to create a new session ?"
+#~ msgstr ""
+#~ "Το αρχείο ρυθμίσεων είναι κατεστραμμένο.\n"
+#~ "Θέλετε να δημιουργήσετε μια νέα συνεδρία;"
+
+#~ msgid "Loading files, please wait ..."
+#~ msgstr "Φόρτωμα αρχείων, παρακαλώ περιμένετε..."
+
+#~ msgid ""
+#~ "One or more files can not be restored :\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Ένα η περισσότερα αρχεία δεν μπορούν να επαναφερθούν:\n"
+#~ "\n"
+
+#~ msgid "System Colors"
+#~ msgstr "Χρώματα Συστήματος"
+
+#~ msgid "User Colors"
+#~ msgstr "Χρώματα χρήστη"
+
+#~ msgid "Search"
+#~ msgstr "Αναζήτηση"
+
+#~ msgid "Decimal 8 bits"
+#~ msgstr "Δεκαδικό 8 bit"
+
+#~ msgid "Decimal 16 bits"
+#~ msgstr "Δεκαδικό 16 bit"
+
+#~ msgid "Hex 8 bits"
+#~ msgstr "Δεκαεξαδικό 8 bit"
+
+#~ msgid "Hex 16 bits"
+#~ msgstr "Δεκαεξαδικό 16 bit"
+
+#~ msgid "Float"
+#~ msgstr "Κινητής Υποδιαστολής"
+
+#~ msgid "Color"
+#~ msgstr "Χρώμα"
+
+#~ msgid "Name"
+#~ msgstr "Όνομα"
+
+#~ msgid "Tolerance :"
+#~ msgstr "Ανοχή :"
+
+#~ msgid "Font Selector"
+#~ msgstr "Επιλογέας Γραμματοσειράς"
+
+#~ msgid "Selection:"
+#~ msgstr "Επιλογή:"
+
+#~ msgid "Font to load"
+#~ msgstr "Γραμματοσειρά προς απεικόνιση"
+
+#~ msgid "FONTSPEC"
+#~ msgstr "ΓΡΑΜ/ΣΕΙΡΑ"
+
+#~ msgid "Print selected font name on exit"
+#~ msgstr "Εκτύπωση επιλεγμένης γραμματοσειράς κατά την έξοδο"
+
+#~ msgid "Inhibit remembering selected font for next run"
+#~ msgstr ""
+#~ "Απενεργ. αποθήκευσης επιλεγμένης γραμματοσειράς για την επόμενη εκτέλεση"
+
+#~ msgid "Inhibit loading of last font"
+#~ msgstr "Απενεργ. ανάγνωσης της τελευταίας γραμματοσειράς"
+
+#~ msgid "Reason %d\n"
+#~ msgstr "Αιτία %d\n"
+
+#~ msgid "Where to put the window, and its size"
+#~ msgstr "Θέση και μέγεθος παραθύρου"
+
+#~ msgid "Ignore standard input; may be needed in some cases."
+#~ msgstr ""
+#~ "Αγνόηση κανονικής εισόδου -- ενδεχομένως απαραίτητο σε μερικές "
+#~ "περιπτώσεις."
+
+#~ msgid "_New Window"
+#~ msgstr "_Νέο Παράθυρο"
+
+#~ msgid "New text viewer window"
+#~ msgstr "Νέο παράθυρο απεικόνισης κειμένου"
+
+#~ msgid "_Fixed Font"
+#~ msgstr "Γραμματοσειρά Στα_θερού Πλάτους"
+
+#~ msgid "Display text with a fixed font"
+#~ msgstr "Απεικόνιση κειμένου με γραμματοσειρά σταθερού πλάτους"
+
+#~ msgid "Text File Viewer"
+#~ msgstr "Πρόγραμμα Απεικόνισης Αρχείων Κειμένου"
+
+#~ msgid "Copyright 1998, under the GNU General Public License."
+#~ msgstr "Copyright 1998, σύμφωνα με τη Γενική Δημόσια άδεια GNU (GNU GPL)."
+
+#~ msgid "Find string"
+#~ msgstr "Αναζήτηση ακολουθίας"
+
+#~ msgid "Find"
+#~ msgstr "Αναζήτηση"
+
+#~ msgid "Loading..."
+#~ msgstr "Ανάγνωση..."
+
+#~ msgid ""
+#~ "No such file or directory:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Ανύπαρκτο αρχείο ή κατάλογος:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Failed to decompress and display the file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Αποσυμπίεση και εμφάνιση του αρχείου ανεπιτυχής:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Unable to display compressed file.\n"
+#~ "zcat not found in your path."
+#~ msgstr ""
+#~ "Εμφάνιση συμπιεσμένων αρχείων αδύνατη.\n"
+#~ "Το zcat δε βρέθηκε στη διαδρομή."
+
+#~ msgid ""
+#~ "Error loading file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Ανάγνωση αρχείου ανεπιτυχής:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Saving..."
+#~ msgstr "Αποθήκευση..."
+
+#~ msgid ""
+#~ "Failed to write file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Εγγραφή στο αρχείο ανεπιτυχής:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Save Text As..."
+#~ msgstr "Αποθήκευση Κειμένου Ως..."
+
+#~ msgid "Open Text File..."
+#~ msgstr "Άνοιγμα Αρχείου Κειμένου..."
+
+#~ msgid "Sorry, no preferences yet."
+#~ msgstr "Με συγχωρείτε, δεν υπάρχουν ρυθμίσεις ακόμα."
+
+#~ msgid "Searching..."
+#~ msgstr "Αναζήτηση..."
+
+#~ msgid "No search string was specified!"
+#~ msgstr "Δεν δόθηκε αλφαριθμητικό προς αναζήτηση!"
+
+#~ msgid "Shut Down"
+#~ msgstr "Κλείσιμο Υπολογιστή"
+
+#~ msgid "Single User Mode"
+#~ msgstr "Κατάσταση Ενός Χρήστη"
+
+#~ msgid "Runlevel 2"
+#~ msgstr "Runlevel 2"
+
+#~ msgid "Runlevel 3"
+#~ msgstr "Runlevel 3"
+
+#~ msgid "Runlevel 4"
+#~ msgstr "Runlevel 4"
+
+#~ msgid "Runlevel 5"
+#~ msgstr "Runlevel 5"
+
+#~ msgid "Reboot"
+#~ msgstr "Επανεκκίνηση Υπολογιστή"
+
+#~ msgid "Are you sure you want to shut down the computer?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να κλείσετε τον υπολογιστή;"
+
+#~ msgid "Are you sure you want to switch to single user mode?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε κατάσταση ενός χρήστη;"
+
+#~ msgid "Are you sure you want to switch to runlevel 2?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 2;"
+
+#~ msgid "Are you sure you want to switch to runlevel 3?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 3;"
+
+#~ msgid "Are you sure you want to switch to runlevel 4?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 4;"
+
+#~ msgid "Are you sure you want to switch to runlevel 5?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να μεταβείτε σε runlevel 5;"
+
+#~ msgid "Are you sure you want to reboot the system?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να επανεκιννήσετε τον υπολογιστή;"
+
+#~ msgid ""
+#~ "You must be the super-user (root) to shut down or restart the computer."
+#~ msgstr ""
+#~ "Μόνο ο υπερχρήστης (root) επιτρέπεται να κλείσει ή επανεκκινήσει τον "
+#~ "υπολογιστή."
+
+#~ msgid "Shutdown or Reboot"
+#~ msgstr "Τερματισμός ή Επανεκκίνηση Υπολογιστή"
+
+#~ msgid "Easy"
+#~ msgstr "Απλό"
+
+#~ msgid "Advanced"
+#~ msgstr "Για προχωρημένους"
+
+#~ msgid ""
+#~ "Click OK to shutdown or reboot. You will lose\n"
+#~ "any unsaved information in open applications."
+#~ msgstr ""
+#~ "Κάντε κλίκ στο Εντάξει για να κλείσετε ή να επανεκκινήσετε τον "
+#~ "υπολογιστή.\n"
+#~ "Οι μη αποθηκευμένες αλλαγές σε ανοιχτά προγράμματα θα χαθούν."
+
+#~ msgid "Revert to Defaults"
+#~ msgstr "Επαναφορά εξ' ορισμού ρυθμίσεων"
+
+#~ msgid "Commands"
+#~ msgstr "Εντολές"
+
+#~ msgid "Confirm before shutdown?"
+#~ msgstr "Επιβεβαίωση τερματισμού λειτουργίας υπολογιστή;"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "You will lose any unsaved work."
+#~ msgstr ""
+#~ "%s\n"
+#~ "Οι μη αποθηκευμένες αλλαγές θα χαθούν."
+
+#~ msgid "Don't ask next time."
+#~ msgstr "Μη ρωτήσεις την επόμενη φορά."
+
+#~ msgid "Command execution failed: fork failed"
+#~ msgstr "Εκτέλεση εντολής ανεπιτυχής: ανεπιτυχές fork"
+
+#~ msgid "Make guname act as a control center applet"
+#~ msgstr "Συμπεριφορά του guname ως εφαρμογιδίου κέντρου ελέγχου"
+
+#~ msgid "an initialization error occurred while starting 'guname-capplet'."
+#~ msgstr "σφάλμα αρχικοποίησης κατά την εκκίνηση του 'guname-capplet'."
+
+#~ msgid "System Information"
+#~ msgstr "Πληροφορίες Συστήματος"
+
+#~ msgid "Logo file not found"
+#~ msgstr "Αρχείο λογοτύπου δε βρέθηκε"
+
+#~ msgid "GNOME contributors:"
+#~ msgstr "Συνεργάτες του GNOME:"
+
+#~ msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#~ msgid "GNOME: The GNU Network Object Model Environment"
+#~ msgstr "GNOME: The GNU Network Object Model Environment"
+
+#~ msgid "Email Information..."
+#~ msgstr "Αποστολή Πληροφορίων..."
+
+#~ msgid "Save Information to File..."
+#~ msgstr "Αποθήκευση Πληροφοριών σε Αρχείο..."
+
+#~ msgid "Detailed Information..."
+#~ msgstr "Λεπτομερείς Πληροφορίες..."
+
+#~ msgid "Category"
+#~ msgstr "Κατηγορία"
+
+#~ msgid "Your System"
+#~ msgstr "Το Σύστημα Σας"
+
+#~ msgid "Save As..."
+#~ msgstr "Αποθήκευση Ως"
+
+#~ msgid "Mail To..."
+#~ msgstr "Αποστολή Σε..."
+
+#~ msgid ""
+#~ "Error closing file `%s': \n"
+#~ "%s\n"
+#~ "Some or all data may not have been written."
+#~ msgstr ""
+#~ "Σφάλμα κατά το κλείσιμο του αρχείου `%s': \n"
+#~ "%s\n"
+#~ "Ενδέχεται μερικά ή όλα τα δεδομένα να μην έχουν αποθηκευτεί."
+
+#~ msgid "Couldn't open file `%s': %s"
+#~ msgstr "Άνοιγμα αρχείου `%s' ανεπιτυχές: %s"
+
+#~ msgid "Save System Information As..."
+#~ msgstr "Αποθήκευση Πληροφοριών Συστήματος Ως..."
+
+#~ msgid "Command failed ` %s ': %s"
+#~ msgstr "Εκτέλεση της εντολής ` %s ' ανεπιτυχής: %s"
+
+#~ msgid "Couldn't run command ` %s ': %s"
+#~ msgstr "Εκτέλεση της εντολής ` %s ' αδύνατη: %s"
+
+#~ msgid ""
+#~ "The following mail will be sent to %s.\n"
+#~ " Are you sure you want to mail this information?"
+#~ msgstr ""
+#~ "Το ακόλουθο email θα σταλεί προς %s.\n"
+#~ " Είσαστε βέβαιοι ότι θέλετε να στείλετε αυτές τις πληροφορίες;"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Είσαστε βέβαιοι;"
+
+#~ msgid "Address to mail to:"
+#~ msgstr "Αποστολή email προς:"
+
+#~ msgid "Distribution:"
+#~ msgstr "Διανομή:"
+
+#~ msgid "Operating System:"
+#~ msgstr "Λειτουργικό Σύστημα:"
+
+#~ msgid "Distribution Version:"
+#~ msgstr "Έκδοση Διανομής:"
+
+#~ msgid "Operating System Version:"
+#~ msgstr "Έκδοση Λειτουργικού Συστήματος:"
+
+#~ msgid "Operating System Release:"
+#~ msgstr "Αριθμός Διανομής Λειτουργικού:"
+
+# Revise translation for "release" (current sucks!)
+#~ msgid "Processor Type:"
+#~ msgstr "Τύπος Επεξεργαστή:"
+
+#~ msgid "Processor Speed:"
+#~ msgstr "Ταχύτητα Επεξεργαστή:"
+
+#~ msgid "Host Name:"
+#~ msgstr "Όνομα Συστήματος:"
+
+#~ msgid "Domain Name:"
+#~ msgstr "Όνομα Περιοχής (domain):"
+
+#~ msgid "User Name:"
+#~ msgstr "Όνομα Χρήστη:"
+
+#~ msgid "X Display Name:"
+#~ msgstr "Όνομα οθόνης X (display):"
+
+#~ msgid "System Status:"
+#~ msgstr "Κατάσταση Συστήματος:"
+
+#~ msgid "Real Memory:"
+#~ msgstr "Πραγματική Μνήμη:"
+
+#~ msgid "Swap Space (\"virtual memory\"):"
+#~ msgstr "Εικονική Μνήμη:"
+
+#~ msgid "Total Memory:"
+#~ msgstr "Συνολική Μνήμη:"
+
+#~ msgid "Free Memory:"
+#~ msgstr "Ελεύθερη Μνήμη:"
+
+#~ msgid "Device"
+#~ msgstr "Συσκευή"
+
+#~ msgid "Used space"
+#~ msgstr "Κατειλλημένος χώρος"
+
+#~ msgid "Free space"
+#~ msgstr "Ελεύθερος χώρος"
+
+#~ msgid "Percent free"
+#~ msgstr "Επί τοις εκατό ελεύθερο"
+
+#~ msgid "Mount point"
+#~ msgstr "Σημείο προσάρτησης"
+
+#~ msgid "Unknown"
+#~ msgstr "Άγνωστο"
+
+#~ msgid "Unknown filesystem"
+#~ msgstr "Άγνωστο σύστημα αρχείων"
+
+#~ msgid "No information for this filesystem."
+#~ msgstr "Δεν υπάρχουν πληροφορίες για αυτό το σύστημα αρχείων."
+
+#~ msgid "Memory"
+#~ msgstr "Μνήμη"
+
+#~ msgid "Kilobytes"
+#~ msgstr "Kbyte"
+
+#~ msgid "%ld%% memory used."
+#~ msgstr "κατειλλημένη μνήμη %ld%%."
+
+#~ msgid "%ld%% swap used."
+#~ msgstr "κατειλλημένη εικονική μνήμη %ld%%."
+
+#~ msgid "CPU %d"
+#~ msgstr "CPU %d"
+
+#~ msgid "Detailed System Information"
+#~ msgstr "Λεπτομερείς Πληροφορίες Συστήματος"
+
+#~ msgid "Disk Information"
+#~ msgstr "Πληροφορίες Δίσκων"
+
+#~ msgid "Memory Information"
+#~ msgstr "Πληροφορίες Μνήμης"
+
+#~ msgid "CPU Information"
+#~ msgstr "Πληροφορίες CPU"
+
+#~ msgid "Mount Point: "
+#~ msgstr "Σημείο Προσάρτησης: "
+
+#~ msgid "    Device: "
+#~ msgstr "    Συσκεύη: "
+
+#~ msgid "    Filesystem Type: "
+#~ msgstr "    Τύπος Συστήματος Αρχείων: "
+
+#~ msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
+#~ msgstr "%ld Mbyte, %ld ελεύθερα (%ld υπερχρήστη); %ld inode, %ld ελεύθεροι."
+
+#~ msgid "%2d%% full "
+#~ msgstr "%2d%% πλήρες "
+
+#~ msgid ""
+#~ "Couldn't find the \"w\" command in your path.\n"
+#~ "This command is needed for the program to work."
+#~ msgstr ""
+#~ "Η εντολή \"w\" δε βρέθηκε στη διαδρομή.\n"
+#~ "Η εντολή αυτή απαιτείται για τη λειτουργία του προγράμματος."
+
+#~ msgid "Active User Listing"
+#~ msgstr "Κατάλογος Τρέχοντων Χρηστών"
+
+#~ msgid "Update Information"
+#~ msgstr "Ανανέωση Πληροφοριών"
+
+#~ msgid "Command Line"
+#~ msgstr "Γραμμή Εντολών"
+
+#~ msgid "Add some defaults"
+#~ msgstr "Προσθήκη εξ' ορισμού εντολών"
+
+# Using standard translation for "default" for consistency, although
+# it is not quite suitable in this context...
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Command Editor"
+#~ msgstr "Επεξεργαστής Ενεργειών"
+
+#~ msgid ""
+#~ "You can configure the commands on the popup menus.\n"
+#~ "Just enter the name you want to appear on the \n"
+#~ "menu, and the command to execute.\n"
+#~ "In the command, you can use %u to represent the\n"
+#~ "currently selected username, and %t for the tty."
+#~ msgstr ""
+#~ "Μπορείτε να ρυθμίσετε τις εντολές του μενού.\n"
+#~ "Απλώς εισάγετε το όνομα που θέλετε να εμφανίζεται \n"
+#~ "στο μενού και την εντολή προς εκτέλεση.\n"
+#~ "Στην εντολή, μπορείτε να χρησιμοποιήσετε το %u για τον\n"
+#~ "τρέχοντα χρήστη, και %t για το τερματικό (tty)."
+
+#~ msgid ""
+#~ "Click this button to add\n"
+#~ "some sample commands."
+#~ msgstr ""
+#~ "Κάντε κλικ σε αυτό το κουμπί για να\n"
+#~ "προσθέσετε μερικά δείγματα εντολών."
+
+#~ msgid "Menu items"
+#~ msgstr "Στοιχεία μενού"
+
+#~ msgid "Command"
+#~ msgstr "Εντολή"
+
+#~ msgid "Running: %s\n"
+#~ msgstr "Εκτελείται: %s\n"
+
+#~ msgid "Default 16-bit"
+#~ msgstr "Εξ' ορισμού 16-bit"
+
+#~ msgid "32-bit"
+#~ msgstr "32-bit"
+
+#~ msgid "32-bit w/sync"
+#~ msgstr "32-bit με sync"
+
+#~ msgid "Sleeping"
+#~ msgstr "Κοιμώμενος"
+
+#~ msgid "Active/Idle"
+#~ msgstr "Ενεργός/Ανενεργός"
+
+#~ msgid "Standby"
+#~ msgstr "Αναμονή"
+
+#~ msgid "Unable to access the drive."
+#~ msgstr "Πρόσβαση στο δίσκο αδύνατη."
+
+#~ msgid "The DMA setting for this drive cannot be changed."
+#~ msgstr "Οι ρυθμίσεις DMA για αυτόν τον δίσκο δεν μπορούν να αλλαχθούν."
+
+#~ msgid "Enabled"
+#~ msgstr "Ενεργό"
+
+#~ msgid "Disabled"
+#~ msgstr "Ανενεργό"
+
+#~ msgid "The IRQ unmask setting for this drive cannot be changed."
+#~ msgstr "Η ρύθμιση IRQ unmask για αυτόν τον δίσκο δε μπορεί να αλλαχθεί."
+
+#~ msgid "The drive refused to keep its settings."
+#~ msgstr "Ο δίσκος αρνήθηκε να αλλάξει τις ρυθμίσεις του."
+
+#~ msgid "Keep settings"
+#~ msgstr "Διατήρηση ρυθμίσεων"
+
+#~ msgid "None"
+#~ msgstr "Καμία"
+
+#~ msgid "(1 Sector)"
+#~ msgstr "(1 Τομέας)"
+
+#~ msgid "(Dual Port)"
+#~ msgstr "(Δίπορτη)"
+
+#~ msgid "(Dual Port Cache)"
+#~ msgstr "(Δίπορτη Κρυφή Μνήμη)"
+
+#~ msgid "No"
+#~ msgstr "Όχι"
+
+#~ msgid "Yes (%d sector)"
+#~ msgstr "Ναι (%d τομέας)"
+
+#~ msgid "Yes (%d sectors)"
+#~ msgstr "Ναι (%d τομείς)"
+
+#~ msgid "Model"
+#~ msgstr "Μοντέλο"
+
+#~ msgid "Firmware"
+#~ msgstr "Λογισμικό υλικού"
+
+# FIX? firmware
+#~ msgid "Serial No."
+#~ msgstr "Σειριακός Αρ."
+
+#~ msgid "Geometry"
+#~ msgstr "Γεωμετρία"
+
+#~ msgid "Cache"
+#~ msgstr "Κρυφή Μνήμη"
+
+#~ msgid "Legacy MFM/RLL drive"
+#~ msgstr "Δίσκος MFM/RLL"
+
+#~ msgid "DMA Mode"
+#~ msgstr "Κατάσταση DMA"
+
+#~ msgid "IO Mode"
+#~ msgstr "Κατάσταση εισόδου/εξόδου (IO)"
+
+#~ msgid "IRQ Unmask"
+#~ msgstr "IRQ Unmask"
+
+#~ msgid "Multisector"
+#~ msgstr "Πολλαπλοί τομείς"
+
+#~ msgid "On Reset"
+#~ msgstr "Στην Επαναρχικοποίηση"
+
+#~ msgid "IDE Status"
+#~ msgstr "Κατάσταση IDE"
+
+#~ msgid "Disk Logo Not Found"
+#~ msgstr "Δε Βρέθηκε Λογότυπο Δίσκου"
+
+#~ msgid "Only the superuser can use this tool"
+#~ msgstr "Μόνο ο υπερχρήστης επιτρέπεται να χρησιμοποιήσει το εργαλείο αυτό"
+
+#~ msgid "You appear to have no IDE drives"
+#~ msgstr "Δε φαίνεται να έχετε δίσκους IDE"
+
+#~ msgid "MInternal Error: Unable to seek to the correct location."
+#~ msgstr "MΕσωτερικό Σφάλμα: Αδύνατη η προσπέλαση στη σωστή θέση."
+
+#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
+#~ msgstr "MΕσωτερικό Σφάλμα: Παράξενη τιμή (%ld) στο do_test\n"
+
+#~ msgid "EBad block at block %lu"
+#~ msgstr "EΑκατάλληλο μπλοκ στο μπλοκ %lu"
+
+#~ msgid "MChecking for bad blocks..."
+#~ msgstr "MΈλεγχος για ακατάλληλα μπλοκ..."
+
+#~ msgid "MFailed to open device %s for badblock checking\n"
+#~ msgstr "MΑποτυχία ανοίγματος της συσκευής %s για έλεγχο ακατάλληλων μπλοκ\n"
+
+#~ msgid "MChecking for bad blocks... Done"
+#~ msgstr "MΈλεγχος για ακατάλληλα μπλοκ... Έγινε"
+
+#~ msgid "MFormatting the disk..."
+#~ msgstr "MΜορφοποίηση του δίσκου..."
+
+#~ msgid "EI don't know what this is, but it's very wrong."
+#~ msgstr "EΔεν καταλαβαίνω τί είναι αυτό, αλλά είναι πολύ λάθος."
+
+#~ msgid "EError formatting track #%d"
+#~ msgstr "EΣφάλμα μορφοποίηση τροχίας #%d"
+
+#~ msgid "EError during completion of formatting"
+#~ msgstr "EΣφάλμα κατά την ολοκλήρωση της μορφοποίησης"
+
+#~ msgid "MFormatting the disk... Done"
+#~ msgstr "MΜορφοποίηση του δίσκου... Έγινε"
+
+#~ msgid "MVerifying the format..."
+#~ msgstr "MΕπαλήθευση της μορφοποίησης..."
+
+#~ msgid ""
+#~ "EUnable to write to the floppy.\n"
+#~ "\n"
+#~ "Please confirm that it is not write-protected."
+#~ msgstr ""
+#~ "EΑδύνατη η εγγραφή στη δισκέτα.\n"
+#~ "\n"
+#~ "Παρακαλώ επιβεβαιώστε ότι δεν είναι προστατευμένη από εγγραφή."
+
+#~ msgid "EInsufficient permissions to open floppy device %s."
+#~ msgstr ""
+#~ "EΑνεπαρκή δικαιώματα για το άνοιγμα της συσκευής εύκαμπτου δίσκου %s."
+
+#~ msgid ""
+#~ "EUnable to access the floppy disk.\n"
+#~ "\n"
+#~ "Please confirm that it is in the drive\n"
+#~ "with the drive door shut."
+#~ msgstr ""
+#~ "EΑδύνατη η προσπέλαση της δισκέτας.\n"
+#~ "\n"
+#~ "Παρακαλώ επιβεβαιώστε ότι είναι στον οδηγό\n"
+#~ "δισκέτας με την πόρτα κλειστή."
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s:%d"
+#~ msgstr ""
+#~ "EΓενικό σφάλμα πρόσβασης στη συσκευή εύκαμπτου δίσκου %s.\n"
+#~ "\n"
+#~ "Κωδικός σφάλματος %s:%d"
+
+#~ msgid ""
+#~ "ERead Error:\n"
+#~ "Problem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "EΣφάλμα Ανάγνωσης:\n"
+#~ "Πρόβλημα ανάγνωσης κυλίνδρου %d, αναμενόταν %d, αναγνώστηκε %d"
+
+#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
+#~ msgstr "EΠρόβλημα ανάγνωσης κυλίνδρου %d, αναμενόταν %d, αναγνώστηκε %d"
+
+#~ msgid "MBad data in cyl %d.  Continuing... "
+#~ msgstr "MΑκατάλληλα δεδομένα στον κύλινδρο %d. Συνεχίζει..."
+
+#~ msgid "EError closing device %s"
+#~ msgstr "EΣφάλμα κλεισίματος συσκευής %s"
+
+#~ msgid "MVerifying the format... Done"
+#~ msgstr "MΕπαλήθευση της μορφοποίησης... Έγινε"
+
+#~ msgid "EUnable to write to device %s"
+#~ msgstr "EΑδύνατη η εγγραφή στη συσκευή %s"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s"
+#~ msgstr ""
+#~ "EΓενικό σφάλμα πρόσβασης στη συσκευή εύκαμπτου δίσκου %s.\n"
+#~ "\n"
+#~ "Κωδικός σφάλματος %s"
+
+#~ msgid "ECould not determine current format type"
+#~ msgstr "EΑδύνατος ο προσδιορισμός του τρέχοντος τύπου μορφοποίησης"
+
+#~ msgid "Dos (FAT)"
+#~ msgstr "DOS (FAT)"
+
+#~ msgid "Double Density 3.5\" (720 KB)"
+#~ msgstr "Διπλής Πυκνότητας 3.5\" (720 KB)"
+
+#~ msgid "Double Density 5.25\" (360 KB)"
+#~ msgstr "Διπλής Πυκνότητας 5.25\" (360 KB)"
+
+#~ msgid "File system type:"
+#~ msgstr "Τύπος συστήματος αρχείων: "
+
+#~ msgid "Floppy Density:"
+#~ msgstr "Πυκνότητα Δισκέτας:"
+
+#, fuzzy
+#~ msgid "Floppy Device:"
+#~ msgstr "Πυκνότητα Δισκέτας:"
+
+#~ msgid "Format a floppy"
+#~ msgstr "Μορφοποίηση δισκέτας"
+
+#~ msgid "High Density 3.5\" (1.44 MB)"
+#~ msgstr "Υψηλής Πυκνότητας 3.5\" (1.44 MB)"
+
+#~ msgid "High Density 5.25\" (1.2 MB)"
+#~ msgstr "Υψηλής Πυκνότητας 5.25\" (1.2 MB)"
+
+#~ msgid "Linux Native (ext2)"
+#~ msgstr "Linux Native (ext2)"
+
+#, fuzzy
+#~ msgid "_Quick format"
+#~ msgstr "Γρήγορη μορφοποίηση"
+
+#~ msgid "MMaking filesystem on disk..."
+#~ msgstr "MΔημιουργία συστήματος αρχείων στη δισκέτα..."
+
+#~ msgid "EUnable to create filesystem correctly."
+#~ msgstr "EΑδύνατη η ορθή δημιουργία συστήματος αρχείων."
+
+#~ msgid "MMaking filesystem on disk... Done"
+#~ msgstr "MΔημιουργία συστήματος αρχείων στη δισκέτα... Έγινε"
+
+#~ msgid "EUnable to create filesystem."
+#~ msgstr "EΑδύνατη η δημιουργία συστήματος αρχείων."
+
+#~ msgid "MChecking for bad blocks... (this might take a while)"
+#~ msgstr "MΈλεγχος για ακατάλληλα μπλοκ... (μπορεί να διαρκέσει λίγο)"
+
+#, fuzzy
+#~ msgid "Unable to open the device %s, formatting cannot continue."
+#~ msgstr "MΑποτυχία ανοίγματος της συσκευής %s για έλεγχο ακατάλληλων μπλοκ\n"
+
+#~ msgid "The device to format"
+#~ msgstr "Η συσκευή για μορφοποίηση"
+
+#~ msgid "DEVICE"
+#~ msgstr "ΣΥΣΚΕΥΉ"
+
+#~ msgid "Format"
+#~ msgstr "Μορφή:"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "Μορφοποίηση άλλης δισκέτας;"
+
+#~ msgid "Floppy formatted successfully."
+#~ msgstr "Η δισκέτα μορφοποιήθηκε επιτυχώς."
+
+#~ msgid "Floppy formatting cancelled."
+#~ msgstr "Η μορφοποίηση δισκέτας ακυρώθηκε."
+
+#~ msgid "Format progress."
+#~ msgstr "Πρόοδος μορφοποίησης."
+
+#~ msgid "Param"
+#~ msgstr "Παράμετρος"
+
+#~ msgid "Current"
+#~ msgstr "Τρέχον"
+
+#~ msgid "Scale"
+#~ msgstr "Κλίμακα"
+
+#~ msgid "Stripchart"
+#~ msgstr "Γράφημα τύπου σεισμογράφου"
+
+#~ msgid "Copyright 2000 John Kodis"
+#~ msgstr "Πνευματικά δικαιώματα 2000 Τζον Κόντις"
+
+#~ msgid ""
+#~ "The GNOME stripchart program plots various user-specified parameters as a "
+#~ "function of time.  Its main use is to chart system performance parameters "
+#~ "such as CPU load, CPU utilization, network traffic levels, and the like.  "
+#~ "Other more ingenious uses are left as an exercise for the interested user."
+#~ msgstr ""
+#~ "Το πρόγραμμα γραφημάτων του GNOME απεικονίζει δίαφορες παραμέτρους ως "
+#~ "συνάρτηση του χρόνου. Η βασική λειτουργία του είναι η απεικόνιση διαφόρων "
+#~ "παραμέτρων της απόδοσης του συστήματος, όπως φόρτος CPU load, αξιοποίηση "
+#~ "CPU, επίπεδα κίνησης δικτύου, και τα σχετικά. Άλλες ευφυέστερες χρήσεις "
+#~ "αφήνονται ως άσκηση για τους ενδιαφερόμενους χρήστες."
+
+#~ msgid "Show values"
+#~ msgstr "Εμφάνιση τιμών"
+
+#~ msgid "Edit Prefs..."
+#~ msgstr "Επεξεργασία Προτιμήσεων..."
+
+#~ msgid "Edit Params..."
+#~ msgstr "Επεξεργασία Παραμέτρων..."
+
+#~ msgid "closing parenthesis expected"
+#~ msgstr "αναμενόταν παρένθεση κλεισίματος"
+
+#~ msgid "no such field: %d"
+#~ msgstr "ανύπαρκτο πεδίο: %d"
+
+#~ msgid "missing variable identifer"
+#~ msgstr "ανύπαρκτο όνομα μεταβλητής"
+
+#~ msgid "invalid variable identifer: %s"
+#~ msgstr "άκυρο όνομα μεταβλητής: %s"
+
+#~ msgid "number expected"
+#~ msgstr "αναμενόμενος αριθμός"
+
+#~ msgid "extra junk at end: \"%s\""
+#~ msgstr "επιπλέον σκουπίδια στο τέλος: \"%s\""
+
+#~ msgid "Parameter"
+#~ msgstr "Παράμετρος"
+
+#~ msgid "Equation"
+#~ msgstr "Εξίσωση"
+
+#~ msgid "Filename"
+#~ msgstr "Όνομα αρχείου"
+
+#~ msgid "Pattern"
+#~ msgstr "Κανονική έκφραση"
+
+#~ msgid "Min"
+#~ msgstr "Ελαχ."
+
+#~ msgid "Max"
+#~ msgstr "Μεγ."
+
+#~ msgid "Linear"
+#~ msgstr "Γραμμικό"
+
+#~ msgid "Logarithmic"
+#~ msgstr "Λογαριθμικό"
+
+#~ msgid "Type"
+#~ msgstr "Είδος"
+
+#~ msgid "Indicator"
+#~ msgstr "Μετρητής"
+
+#~ msgid "Line"
+#~ msgstr "Γραμμή"
+
+#~ msgid "Point"
+#~ msgstr "Σημείο"
+
+#~ msgid "Solid"
+#~ msgstr "Ενιαίο"
+
+#~ msgid "Add Parameter Before"
+#~ msgstr "Προσθήκη Παραμέτρου Πριν"
+
+#~ msgid "Add Parameter After"
+#~ msgstr "Προσθήκη Παραμέτρου Μετά"
+
+#~ msgid "Apply Parameter Changes"
+#~ msgstr "Εφαρμογή Αλλαγών Παραμέτρων"
+
+#~ msgid "Delete Parameter"
+#~ msgstr "Διαγραφή Παραμέτρου"
+
+#~ msgid "Add Color"
+#~ msgstr "Προσθήκη Χρώματος"
+
+#~ msgid "Delete Color"
+#~ msgstr "Διαγραφή Χρώματος"
+
+#~ msgid "Info"
+#~ msgstr "Πληροφορίες"
+
+#~ msgid "Parameter Editor"
+#~ msgstr "Επεξεργαστής Παραμέτρων"
+
+#~ msgid "Parameters"
+#~ msgstr "Παράμετροι"
+
+#~ msgid "Chart"
+#~ msgstr "Γράφημα"
+
+#~ msgid "enabled"
+#~ msgstr "ενεργοποιημένο"
+
+#~ msgid "minor"
+#~ msgstr "κατώτερο"
+
+#~ msgid "major"
+#~ msgstr "ανώτερο"
+
+#~ msgid "Update"
+#~ msgstr "Ενημέρωση"
+
+#~ msgid "Smooth"
+#~ msgstr "Ομαλό"
+
+#~ msgid "Ticks"
+#~ msgstr "Μολυβιές"
+
+#~ msgid "Pen"
+#~ msgstr "Πένα"
+
+#~ msgid "Geometry string: WxH+X+Y"
+#~ msgstr "Ακολουθία γεωμετρίας ΠxΥ+Χ+Ψ"
+
+#~ msgid "GEO"
+#~ msgstr "ΓΕΩΜ"
+
+#~ msgid "Configuration file name"
+#~ msgstr "Όνομα αρχείου ρυθμίσεων"
+
+#~ msgid "FILE"
+#~ msgstr "ΑΡΧΕΙΟ"
+
+#~ msgid "Values"
+#~ msgstr "Τιμές"
+
+#~ msgid "Prefs..."
+#~ msgstr "Προτιμήσεις..."
+
+#~ msgid "Params..."
+#~ msgstr "Παράμετροι..."
+
+#, fuzzy
+#~ msgid "The file is a core file and can not be executed"
+#~ msgstr ""
+#~ "Ένα η περισσότερα αρχεία δεν μπορούν να επαναφερθούν:\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid "No filename selected"
+#~ msgstr "δεν έχει επιλεχθεί έργο"
+
+#, fuzzy
+#~ msgid "File does not exists"
+#~ msgstr "Ο κατάλογος έναρξης δεν υπάρχει"
+
+#, fuzzy
+#~ msgid "Create archive..."
+#~ msgstr "Δημιουργία όψεων"
+
+#, fuzzy
+#~ msgid "Create a new archive from the items"
+#~ msgstr "Δημιουργία νέας απεικόνισης για το ντοκουμέντο"
+
+#, fuzzy
+#~ msgid "Remove the selected item(s)"
+#~ msgstr "Διαγραφή επιλεγμένων χρωμάτων"
+
+#, fuzzy
+#~ msgid "Archive"
+#~ msgstr "Ενεργό"
+
+#~ msgid "Format Floppy Disks"
+#~ msgstr "Μορφοποιεί Εύκαμπτους Δίσκους"
+
+#~ msgid "gfloppy"
+#~ msgstr "Μορφοποίηση Δισκέτας"
+
+#~ msgid "GDict"
+#~ msgstr "Λεξικό"
+
+#~ msgid "Gnome client for the MIT dictionary server"
+#~ msgstr "Πελάτης του GNOME για το λεξικό του MIT"
+
+#~ msgid "GNOME client for RFC 2229-compliant dictionary server"
+#~ msgstr "Πελάτης του GNOME για το λεξικό του MIT"
+
+#, fuzzy
+#~ msgid "Shows a stripchart plot"
+#~ msgstr "Εμφανίζει στατιστικά όπως σε σεισμογράφο"
+
+#~ msgid "Stripchart Plotter"
+#~ msgstr "Σχεδιαστής Στατιστικών"
+
+#~ msgid "Notepad"
+#~ msgstr "Σημειωματάριο"
+
+#~ msgid "Simple editor (notepad)"
+#~ msgstr "Απλός επεξεργαστής κειμένου (σημειωματάριο)"
+
+#~ msgid "IDE Device Tool"
+#~ msgstr "Εργαλείο Συσκευών IDE"
+
+#~ msgid "Show and Configure IDE Device Settings"
+#~ msgstr "Εμφανίζει και επιτρέπει τη ρύθμιση συσκευών IDE"
+
+#~ msgid "User Listing"
+#~ msgstr "Λίστα χρηστών"
+
+#~ msgid "View users on the system"
+#~ msgstr "Εμφάνιση των χρηστών του συστήματος"
+
+#, fuzzy
+#~ msgid "Show various system information"
+#~ msgstr "Πληροφορίες Συστήματος"
+
+#~ msgid "System Info"
+#~ msgstr "Πληροφορίες Συστήματος"
+
+#~ msgid "Technical information about this computer"
+#~ msgstr "Τεχνικές Πληροφορίες σχετικά με το σύστημα"
+
+#~ msgid "Shut Down or Reboot"
+#~ msgstr "Κλείσιμο συστήματος ή Επανεκκίνηση"
+
+#~ msgid "Turn off or reset the computer"
+#~ msgstr "Κλείσιμο συστήματος ή επανεκκίνηση του"
+
+#~ msgid "Ask for a command to execute"
+#~ msgstr "Υποβολή εντολής για εκτέλεση"
+
+#~ msgid "Run A Command..."
+#~ msgstr "Εκτέλεση Εντολής..."
+
+#~ msgid "GNOME Penguin"
+#~ msgstr "Πιγκουίνος του GNOME"
+
+#~ msgid "Let a cute pinguin chase your pointer"
+#~ msgstr ""
+#~ "Επιτρέψτε ένα όμορφο πιγκουίνο να κυνηγήσει το δείκτη του ποντικιού σας"
+
+#~ msgid "Prompts the user for a program to run"
+#~ msgstr "Υποβάλει το χρήστη για πρόγραμμα προς εκτέλεση"
+
+#~ msgid "Run program..."
+#~ msgstr "Εκτέλεση..."
+
+#~ msgid "Page files as with `more' and `less'"
+#~ msgstr ""
+#~ "Ανάγνωση αρχείων κειμένου με τρόπο παρόμοιο με τα κλασσικά `more' και "
+#~ "`less'"
+
+#~ msgid "Select a font for pasting"
+#~ msgstr "Επιλέγει γραμματοσειρές για επικόλληση"
+
+#~ msgid "Browse available X11 colors."
+#~ msgstr "Εμφανίζει τα διαθέσιμα χρώματα του συστήματος"
+
+#~ msgid "Color Browser"
+#~ msgstr "Φυλλομετρητής Χρώματος"
+
+#~ msgid "SysLog tool"
+#~ msgstr "Επιτρέπει τον έλεγχο των καταγραφών του συστήματος"
+
+#~ msgid "System log monitor"
+#~ msgstr "Έλεγχος καταγραφών συστήματος"
+
+#, fuzzy
+#~ msgid "Gstripchart"
+#~ msgstr "gstripchart"
+
+#~ msgid "Shows a stripchart"
+#~ msgstr "Εμφανίζει στατιστικά όπως σε σεισμογράφο"
+
+#~ msgid "GNOME Search Tool"
+#~ msgstr "Εργαλείο Εύρεσης Aρχείων"
+
+#~ msgid "GNOME DiskFree"
+#~ msgstr "Ελεύθερος Δίσκος"
+
+#~ msgid "Show free space on mounted file systems using dials."
+#~ msgstr "Εμφανίζει το διαθέσιμο χώρο των προσαρτησμένων συστημάτων αρχείων"
+
+#~ msgid "GNOME Character Map"
+#~ msgstr "Πίνακας Χαρακτήρων του GNOME"
+
+#~ msgid "Simple Calculator"
+#~ msgstr "Υπολογιστής τσέπης"
+
+#~ msgid "Personal cron manager"
+#~ msgstr "Προσωπικός διαχειριστής cron"
+
+#~ msgid "Personal crontab manager"
+#~ msgstr "Προσωπικός διαχειριστής συστήματος δρομολόγησης εργασιών (cron)"
 
 #~ msgid ""
 #~ "An error occured while reading the configuration file.\n"
@@ -5039,10 +3889,6 @@ msgstr "Προσωπικός διαχειριστής συστήματος δρομολόγησης εργασιών (cron)"
 #~ msgstr ""
 #~ "Προέκυψε σφάλμα κατά την ανάγνωση του αρχείου ρυθμίσεων.\n"
 #~ "Δημιουργία νέων ρυθμίσεων;"
-
-#, fuzzy
-#~ msgid "Could not write the configuration file!"
-#~ msgstr "Εγγραφή αρχείου ρυθμίσεων ανεπιτυχής!"
 
 #~ msgid "Time tracking tool for GNOME"
 #~ msgstr "Εργαλείο παρακολούθησης χρόνου του GNOME"

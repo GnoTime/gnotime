@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils\n"
-"POT-Creation-Date: 2002-06-17 09:34+0100\n"
+"POT-Creation-Date: 2002-09-06 18:10-0500\n"
 "PO-Revision-Date: 2002-06-05 15:28GMT\n"
 "Last-Translator: Borislav Aleksandrov <B.Aleksandrov@cnsys.bg>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -14,2160 +14,2855 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: exe-handler/gnome-exe-handler.c:76
-#, c-format
-msgid ""
-"Executing arbitrary programs that you downloaded from the network might be "
-"dangerous.\n"
-"\n"
-"Are you sure you want to run `%s'?"
+#: src/app.c:116 src/app.c:228
+#, fuzzy
+msgid "no project selected"
+msgstr "Не е избрано име на файл"
+
+#: src/app.c:218
+msgid "00:00"
 msgstr ""
-"Изпълнението на случайни програми свалени по мрежата може да бъде опасно.\n"
-"\n"
-"Сигурни ли сте, че искате изпълнение на `%s'?"
 
-#: exe-handler/gnome-exe-handler.c:83
-msgid "Could not access file permissions"
-msgstr "Няма достъп до правата на файл"
-
-#: exe-handler/gnome-exe-handler.c:88
-#, c-format
-msgid "Could not execute the file `%s' due to a permission problem"
-msgstr "Не мога да изпълня файла `%s' заради проблем с правата"
-
-#: exe-handler/gnome-exe-handler.c:104
-#, c-format
-msgid "Failure at executing `%s'"
-msgstr "Неуспех при изпълнение на `%s'"
-
-#: exe-handler/gnome-exe-handler.c:123
-#, c-format
-msgid "It was not possible to open the file `%s'"
-msgstr "Не е възможно да отворя файла `%s'"
-
-#: exe-handler/gnome-exe-handler.c:132
-#, c-format
-msgid "The file `%s' is empty"
-msgstr "Файла `%s' е празен"
-
-#: exe-handler/gnome-exe-handler.c:137
-#, c-format
-msgid "There was an error. `%s' is empty"
-msgstr "Има грешка. `%s' е празен"
-
-#: exe-handler/gnome-exe-handler.c:152
-msgid "This is a library and can not be executed"
-msgstr "Това е библиотека и не може да бъде изпълнена"
-
-#: exe-handler/gnome-exe-handler.c:158
-msgid "The file is a core file and can not be executed"
-msgstr "Файла е 'core' и не е изпълним"
-
-#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
-msgid "This is an unknown kind of executable"
-msgstr "Това е неизвестен тип изпълним файл"
-
-#: exe-handler/gnome-exe-handler.c:192
+#: src/app.c:270
 msgid ""
-"The executable is for a different platform and can not be executed on this "
-"system"
+"Couldn't understand geometry (position and size)\n"
+" specified on command line"
 msgstr ""
-"Изпълнимият файл е за друга платформа и не може да бъде изпълнен на тази "
-"система"
 
-#. Translator credits
-#: gcalc/gcalc.c:42 gcharmap/src/callbacks.c:47 gdictsrc/gdict-about.c:43
-#: gsearchtool/gsearchtool.c:2002 logview/about.c:52
-#: meat-grinder/meat-grinder.c:475
-msgid "translator_credits"
-msgstr "Борислав Александров"
-
-#: gcalc/gcalc.c:60 gcalc/gcalc.c:191
-msgid "GNOME Calculator"
-msgstr "Калкулатор на ГНОМЕ"
-
-#: gcalc/gcalc.c:62
-msgid "Simple double precision calculator similiar to xcalc"
-msgstr "Прост калкулатор с двойна точност подобен на xcalc"
-
-#: gcalc/gcalc.c:140
-msgid "_Calculator"
-msgstr "_Калкулатор"
-
-#: gcalc/gnome-calc.c:252
-msgid "inf"
-msgstr "инф"
-
-#: gcalc/gnome-calc.c:475
-msgid "DEG"
-msgstr "ГР"
-
-#: gcalc/gnome-calc.c:477
-msgid "RAD"
-msgstr "РАД"
-
-#: gcalc/gnome-calc.c:479
-msgid "GRAD"
-msgstr "ГРАД"
-
-#: gcalc/gnome-calc.c:1252
-msgid "1/x"
-msgstr "1/x"
-
-#: gcalc/gnome-calc.c:1252
-msgid "Inverse"
-msgstr "Обърнат"
-
-#. FIXME: XXXX when we can break strings again change
-#. * this to x<sup>2</sup> and turn on markup (search for XXXX)
-#: gcalc/gnome-calc.c:1255
-msgid "x^2"
-msgstr "x^2"
-
-#: gcalc/gnome-calc.c:1255
-msgid "Square"
-msgstr "На 2-ра степен"
-
-#: gcalc/gnome-calc.c:1256
-msgid "SQRT"
-msgstr "Корен Кв."
-
-#: gcalc/gnome-calc.c:1256
-msgid "Square root"
-msgstr "Извличане на корен квадратен"
-
-#: gcalc/gnome-calc.c:1257
-msgid "CE/C"
-msgstr "CE/C"
-
-#: gcalc/gnome-calc.c:1257
-msgid "Clear"
-msgstr "Изчиства"
-
-#: gcalc/gnome-calc.c:1258
-msgid "AC"
-msgstr "AC"
-
-#: gcalc/gnome-calc.c:1258
-msgid "Reset"
-msgstr "Нулира"
-
-#: gcalc/gnome-calc.c:1260
-msgid "INV"
-msgstr "INV"
-
-#: gcalc/gnome-calc.c:1260
-msgid "Inverse trigonometry/log function"
-msgstr "Инвертира тригонометрични/логаритмични функции"
-
-#. inverse button
-#: gcalc/gnome-calc.c:1261
-msgid "sin"
-msgstr "sin"
-
-#: gcalc/gnome-calc.c:1261
-msgid "Sine"
-msgstr "Изчислява синус"
-
-#: gcalc/gnome-calc.c:1262
-msgid "cos"
-msgstr "cos"
-
-#: gcalc/gnome-calc.c:1262
-msgid "Cosine"
-msgstr "Изчислява косинус"
-
-#: gcalc/gnome-calc.c:1263
-msgid "tan"
-msgstr "tan"
-
-#: gcalc/gnome-calc.c:1263
-msgid "Tangent"
-msgstr "Изчислява тангенс"
-
-#. Ugly hack so that window won't resize when selecting GRAD - there should be a better fix that this
-#: gcalc/gnome-calc.c:1265
-msgid " DEG  "
-msgstr " ГР "
-
-#: gcalc/gnome-calc.c:1265
-msgid "Switch degrees / radians / grad"
-msgstr "Превключва грдуси / радиани / град"
-
-#: gcalc/gnome-calc.c:1267
-msgid "e"
-msgstr "e"
-
-#: gcalc/gnome-calc.c:1267
-msgid "Base of Natural Logarithm"
-msgstr "Основа на Натурален Логаритъм"
-
-#: gcalc/gnome-calc.c:1268
-msgid "EE"
-msgstr "EE"
-
-#: gcalc/gnome-calc.c:1268
-msgid "Add digit"
-msgstr "Добавя цифра"
-
-#: gcalc/gnome-calc.c:1269
-msgid "log"
-msgstr "log"
-
-#: gcalc/gnome-calc.c:1269
-msgid "Base 10 Logarithm"
-msgstr "Получаване на Десетичен Логаритъм"
-
-#: gcalc/gnome-calc.c:1270
-msgid "ln"
-msgstr "ln"
-
-#: gcalc/gnome-calc.c:1270
-msgid "Natural Logarithm"
-msgstr "Получаване на Натурален Логаритм"
-
-#. FIXME: XXXX when we can break strings again change
-#. * this to x<sup>y</sup> and turn on markup (search for XXXX)
-#: gcalc/gnome-calc.c:1273
-msgid "x^y"
-msgstr "x^y"
-
-#: gcalc/gnome-calc.c:1273
-msgid "Power"
-msgstr "Извежда в степен"
-
-#: gcalc/gnome-calc.c:1275
-msgid "PI"
-msgstr "PI"
-
-#: gcalc/gnome-calc.c:1276
-msgid "x!"
-msgstr "x!"
-
-#: gcalc/gnome-calc.c:1276
-msgid "Factorial"
-msgstr "Фактуриел"
-
-#: gcalc/gnome-calc.c:1277
-msgid "("
-msgstr "("
-
-#: gcalc/gnome-calc.c:1277
-msgid "Opening Parenthesis"
-msgstr "Отварящи скоби"
-
-#: gcalc/gnome-calc.c:1278
-msgid ")"
-msgstr ")"
-
-#: gcalc/gnome-calc.c:1278
-msgid "Closing Parenthesis"
-msgstr "Затварящи скоби"
-
-#: gcalc/gnome-calc.c:1279
-msgid "/"
-msgstr "/"
-
-#: gcalc/gnome-calc.c:1279
-msgid "Divide by"
-msgstr "Делеа на"
-
-#: gcalc/gnome-calc.c:1281
-msgid "STO"
-msgstr "STO"
-
-#: gcalc/gnome-calc.c:1281
-msgid ""
-"Store the value in the\n"
-"display field in memory"
+#: src/ctree.c:517
+msgid "Total"
 msgstr ""
-"Запаза стойноста на\n"
-"дисплея в паметта"
 
-#: gcalc/gnome-calc.c:1282
-msgid "7"
-msgstr "7"
-
-#: gcalc/gnome-calc.c:1283
-msgid "8"
-msgstr "8"
-
-#: gcalc/gnome-calc.c:1284
-msgid "9"
-msgstr "9"
-
-#: gcalc/gnome-calc.c:1285 gfloppy/src/gfloppy2.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: gcalc/gnome-calc.c:1285
-msgid "Multiply by"
-msgstr "Умножение на"
-
-#: gcalc/gnome-calc.c:1287
-msgid "RCL"
-msgstr "RCL"
-
-#: gcalc/gnome-calc.c:1287
-msgid ""
-"Display the value in memory\n"
-"in the display field"
+#: src/ctree.c:519
+msgid "Total time spent on this project."
 msgstr ""
-"Показва значението в\n"
-"паметта на дисплея"
 
-#: gcalc/gnome-calc.c:1288
-msgid "4"
-msgstr "4"
-
-#: gcalc/gnome-calc.c:1289
-msgid "5"
-msgstr "5"
-
-#: gcalc/gnome-calc.c:1290
-msgid "6"
-msgstr "6"
-
-#: gcalc/gnome-calc.c:1291
-msgid "-"
-msgstr "-"
-
-#: gcalc/gnome-calc.c:1291
-msgid "Subtract"
-msgstr "Изваждане"
-
-#: gcalc/gnome-calc.c:1293
-msgid "SUM"
-msgstr "SUM"
-
-#: gcalc/gnome-calc.c:1293
-msgid ""
-"Add the value in the display\n"
-"field to the value in memory"
-msgstr ""
-"Добавя стойността на дисплея\n"
-"с тази в паметта"
-
-#: gcalc/gnome-calc.c:1294
-msgid "1"
-msgstr "1"
-
-#: gcalc/gnome-calc.c:1295
-msgid "2"
-msgstr "2"
-
-#: gcalc/gnome-calc.c:1296
-msgid "3"
-msgstr "3"
-
-#: gcalc/gnome-calc.c:1297
-msgid "+"
-msgstr "+"
-
-#: gcalc/gnome-calc.c:1297
-msgid "Add"
-msgstr "Добавя"
-
-#: gcalc/gnome-calc.c:1299
-msgid "EXC"
-msgstr "EXC"
-
-#: gcalc/gnome-calc.c:1299
-msgid ""
-"Exchange the values in the\n"
-"display field and memory"
-msgstr ""
-"Размяна стойностите на\n"
-"дисплея и паметта"
-
-#: gcalc/gnome-calc.c:1300
-msgid "0"
-msgstr "0"
-
-#: gcalc/gnome-calc.c:1301
-msgid "."
-msgstr "."
-
-#: gcalc/gnome-calc.c:1301
-msgid "Decimal Point"
-msgstr "Десетична Точка"
-
-#: gcalc/gnome-calc.c:1302
-msgid "+/-"
-msgstr "+/-"
-
-#: gcalc/gnome-calc.c:1302
-msgid "Change sign"
-msgstr "Промяна на знак"
-
-#: gcalc/gnome-calc.c:1303
-msgid "="
-msgstr "="
-
-#: gcalc/gnome-calc.c:1303
-msgid "Calculate"
-msgstr "Изчисли"
-
-#: gcalc/gnome-calculator.desktop.in.h:1
-msgid "Calculator"
-msgstr "Калкулатор"
-
-#: gcalc/gnome-calculator.desktop.in.h:2
-msgid "Perform simple calculations"
-msgstr "Позволява прости изчисления"
-
-#: gcharmap/gnome-character-map.desktop.in.h:1
-msgid "Character Map"
-msgstr "Таблица на символи"
-
-#: gcharmap/gnome-character-map.desktop.in.h:2
-msgid "Insert special characters into documents"
-msgstr "Вмъква специални символи в документи"
-
-#: gcharmap/src/asciiselect.c:116
-msgid "Select Character"
-msgstr "Избор на Символ"
-
-#: gcharmap/src/asciiselect.c:119
-msgid "_Insert"
-msgstr "_Вмъква"
-
-#: gcharmap/src/asciiselect.c:123
-msgid "Character code:"
-msgstr "Код на Символ:"
-
-#: gcharmap/src/asciiselect.c:135
-msgid "Character:"
-msgstr "Символ:"
-
-#: gcharmap/src/asciiselect.c:143
-msgid "Character Code"
-msgstr "Код на Символ"
-
-#: gcharmap/src/asciiselect.c:143
-msgid "Select character code"
-msgstr "Избор код на символ"
-
-#: gcharmap/src/asciiselect.c:144
-msgid "Character"
-msgstr "Символ"
-
-#: gcharmap/src/asciiselect.c:144
-msgid "Character to insert"
-msgstr "Символ за вмъкване"
-
-#: gcharmap/src/asciiselect.c:152
-msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-#: gcharmap/src/callbacks.c:64
-msgid "GNOME Character Map"
-msgstr "Таблица на символите в ГНОМЕ"
-
-#: gcharmap/src/callbacks.c:67
-msgid ""
-"Select, copy and paste characters from your font into other applications"
-msgstr "Избира, копира и поставя символи от шрифта в други приложения"
-
-#: gcharmap/src/callbacks.c:115
-msgid "del"
-msgstr "del"
-
-#: gcharmap/src/callbacks.c:121
-#, c-format
-msgid " %s: Character code %d"
-msgstr " %s: Код на символ %d"
-
-#: gcharmap/src/callbacks.c:159
-msgid "Text copied to clipboard..."
-msgstr "Текст копиран в буфера за обмен...."
-
-#: gcharmap/src/callbacks.c:176
-msgid "Text cut to clipboard..."
-msgstr "Отрязан текст в буфера за обмен"
-
-#: gcharmap/src/callbacks.c:229
-msgid "Text pasted from clipboard..."
-msgstr "Текст поставен от буфера за обмен..."
-
-#: gcharmap/src/interface.c:208
-msgid "Gnome Character Map"
-msgstr "Таблица на символите в ГНОМЕ"
-
-#: gcharmap/src/interface.c:238
-msgid "Action Toolbar"
-msgstr "Панел за Действия"
-
-#: gcharmap/src/interface.c:242
-msgid "_Text to copy:"
-msgstr "_Текст за копиране:"
-
-#: gcharmap/src/interface.c:255
-msgid "_Copy"
-msgstr "_Копира"
-
-#: gcharmap/src/interface.c:277 gcharmap/src/interface.c:278
-msgid "Text to copy"
-msgstr "Текст за копиране"
-
-#: gcharmap/src/interface.c:278
+#: src/ctree.c:524
 msgid "Entry"
 msgstr "Елемент"
 
-#: gcharmap/src/interface.c:279 gcharmap/src/menus.c:77
-msgid "Copy"
-msgstr "Копира"
+#: src/ctree.c:526
+msgid "Time spent under the current diary entry."
+msgstr ""
 
-#: gcharmap/src/interface.c:279
-msgid "Copy the text"
-msgstr "Копира текст"
+#: src/ctree.c:532 glade/interval_edit.glade.h:14
+msgid "Today"
+msgstr ""
 
-#: gcharmap/src/menus.c:34
-msgid "_Browse..."
-msgstr "_Преглед..."
+#: src/ctree.c:534
+msgid "Time spent on this project today."
+msgstr ""
 
-#: gcharmap/src/menus.c:35
-msgid "Insert character(s) by choosing character codes."
-msgstr "Вмъква символ(и) чрез избор кодове на символи."
+#: src/ctree.c:539
+msgid "Week"
+msgstr ""
 
-#: gcharmap/src/menus.c:63
-msgid "_Characters"
-msgstr "_Символи"
+#: src/ctree.c:541
+msgid "Time spent on this project this week."
+msgstr ""
 
-#. GNOMEUIINFO_ITEM(N_("Insert"), N_("Insert character(s) by choosing character codes"),
-#. cb_insert_char_click, NULL),
-#. GNOMEUIINFO_SEPARATOR,
-#: gcharmap/src/menus.c:75
-msgid "Cut"
-msgstr "Отрязва"
+#: src/ctree.c:547
+msgid "Month"
+msgstr ""
 
-#: gcharmap/src/menus.c:75
-msgid "Cut the selection"
-msgstr "Отрязва избраното"
+#: src/ctree.c:549
+msgid "Time spent on this project this month."
+msgstr ""
 
-#: gcharmap/src/menus.c:77
-msgid "Copy the selection"
-msgstr "Копира избраното"
+#: src/ctree.c:555
+#, fuzzy
+msgid "Year"
+msgstr "Изчиства"
 
-#: gcharmap/src/menus.c:79
-msgid "Paste"
-msgstr "Поставя"
+#: src/ctree.c:557
+msgid "Time spent on this project this year."
+msgstr ""
 
-#: gcharmap/src/menus.c:79
-msgid "Paste the clipboard"
-msgstr "Поставя съдържанието на буфера за обмен"
+#: src/ctree.c:563
+msgid "Title"
+msgstr ""
 
-#: gdialog/guage.c:78
-msgid "Gdialog progressbar"
-msgstr "Лента за прогрес на Gdialog "
+#: src/ctree.c:564 src/menucmd.c:155
+msgid "Project Title"
+msgstr ""
 
-#: gdialog/guage.c:78
-msgid "Indicates the percentage specified at the standard input"
-msgstr "Показва процент за зададен стандартен вход"
+#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
+#, fuzzy
+msgid "Description"
+msgstr "Описание:"
 
-#: gdialog/inputbox.c:90
-msgid "GDialog Entry"
+#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
+#, fuzzy
+msgid "Diary Entry"
 msgstr "Елемент GDialog "
 
-#: gdialog/inputbox.c:90
-msgid "Enter the text"
-msgstr "Въвеждане на текст"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:1
-msgid "Accessories"
-msgstr "Аксесоари"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:2 gdictsrc/gdict-applet.c:250
-msgid "Dictionary Lookup"
-msgstr "Търсене в Речник"
-
-#: gdictsrc/GNOME_GDictApplet.server.in.h:3
-#: gdictsrc/gnome-dictionary.desktop.in.h:2
-msgid "Lookup words in an online dictionary"
-msgstr "Търсене на думи в речник"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:1
-msgid "Look Up Selected Text..."
-msgstr "Търсене в Избран Текст..."
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:2
-msgid "_About..."
-msgstr "_Относно програма..."
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:3
-msgid "_Help"
-msgstr "_Помощ"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:4
-msgid "_Preferences"
-msgstr "_Настройки"
-
-#: gdictsrc/GNOME_GDictApplet.xml.h:5
-msgid "_Show/Hide Definition Window..."
-msgstr "_Показва/Скрива прозорец за определение..."
-
-#. Could not look up search strategies, so just display a
-#. * label; FIXME: Memory leak
-#.
-#: gdictsrc/dict.c:648 gdictsrc/gdict-pref-dialog.c:465
-#: gdictsrc/gdict-pref-dialog.c:516 gdictsrc/gdict-speller.c:463
-msgid "Cannot connect to server"
-msgstr "Не мога да се свържа със сървъра"
-
-#: gdictsrc/dict.c:661
-msgid ""
-"A serious error occured. Please check that your server and port are correct. "
-"For reference the default server is dict.org and the port 2628"
+#: src/ctree.c:577
+msgid "The current diary entry"
 msgstr ""
-"Появи се сериозна грешка. Моля проверете дали сървъра и портовете са "
-"коректни. За справка: сървър по подразбиране - dict.org - порт 2628"
 
-#: gdictsrc/gdict-about.c:58
-msgid ""
-"Client for MIT dictionary server.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: glade/interval_edit.glade.h:11
+#, fuzzy
+msgid "Start"
+msgstr "Начална дата:"
+
+#: src/ctree.c:584
+msgid "Estimated Project Start Date"
 msgstr ""
-"Клиент за сървър на MIT .\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
 
-#: gdictsrc/gdict-app.c:128
-msgid "Spell-checking..."
-msgstr "Проверка на правопис..."
-
-#: gdictsrc/gdict-app.c:136
-msgid "Spell check done"
-msgstr "Проверка на правопис завърши"
-
-#: gdictsrc/gdict-app.c:144 gdictsrc/gdict-app.c:274
-msgid "No matches found"
-msgstr "Не са намерени съвпадения"
-
-#: gdictsrc/gdict-app.c:257
-msgid "Looking up word..."
-msgstr "Търсене на дума..."
-
-#: gdictsrc/gdict-app.c:265
-msgid "Lookup done"
-msgstr "Търсенете завърши"
-
-#: gdictsrc/gdict-app.c:287
-msgid "String not found"
-msgstr "Низа не е намерен"
-
-#: gdictsrc/gdict-app.c:455
-msgid "Find"
-msgstr "Търси"
-
-#: gdictsrc/gdict-app.c:476 gsearchtool/gsearchtool.c:1507
-#: gsearchtool/gsearchtool.c:1840
-msgid "_Find"
-msgstr "_Търси"
-
-#: gdictsrc/gdict-app.c:526
-msgid ""
-"Unable to perform requested operation. \n"
-"Either the server you are using is not available \n"
-"or you are not connected to the Internet."
-msgstr ""
-"Не мога да изпълня заявената операция. \n"
-"Или сървъра не е наличен \n"
-"или не сте свързани с Интернет."
-
-#: gdictsrc/gdict-app.c:687 gdictsrc/gdict-app.c:798
-#: gdictsrc/gdict-speller.c:221
-msgid "_Look Up Word"
-msgstr "_Търсене на Дума"
-
-#: gdictsrc/gdict-app.c:688
-msgid "Lookup word in dictionary"
-msgstr "Търсене на дума в речник"
-
-#: gdictsrc/gdict-app.c:690 gdictsrc/gdict-speller.c:165
-msgid "Check _Spelling"
-msgstr "Про_верка на Правопис"
-
-#: gdictsrc/gdict-app.c:691
-msgid "Check word spelling"
-msgstr "Проверка правопис на дума"
-
-#: gdictsrc/gdict-app.c:735
-msgid "_Dictionary"
-msgstr "_Речник"
-
-#: gdictsrc/gdict-app.c:771 gdictsrc/gnome-dictionary.desktop.in.h:1
-msgid "Dictionary"
-msgstr "Речник"
-
-#: gdictsrc/gdict-app.c:794
-msgid "_Word: "
-msgstr "_Дума:"
-
-#: gdictsrc/gdict-app.c:821 gdictsrc/gdict-speller.c:147
-msgid "Word"
-msgstr "Дума"
-
-#: gdictsrc/gdict-app.c:822 gdictsrc/gdict-app.c:823
-#: gdictsrc/gdict-speller.c:148
-msgid "Word Entry"
-msgstr "Елемент Дума"
-
-#: gdictsrc/gdict-app.c:822
-msgid "Enter a Word or select one from the list below"
-msgstr "Въведете Дума или изберете една от списъка по-долу"
-
-#: gdictsrc/gdict-app.c:825
-msgid "Look Up for a Word"
-msgstr "Търси за Дума"
-
-#: gdictsrc/gdict-applet.c:243
-msgid "_Lookup"
-msgstr "_Търси"
-
-#: gdictsrc/gdict-defbox.c:643 gdictsrc/gdict-speller.c:488
-#, c-format
-msgid "Error invoking query: %s"
-msgstr "Грешка при изпълнение на заявка: %s"
-
-#: gdictsrc/gdict-pref-dialog.c:37
-msgid "Headword:"
-msgstr "Заглавна дума:"
-
-#: gdictsrc/gdict-pref-dialog.c:38
-msgid "Sub-number:"
-msgstr "Допълнителен номер:"
-
-#: gdictsrc/gdict-pref-dialog.c:39
-msgid "Pronunciation:"
-msgstr "Произношение:"
-
-#: gdictsrc/gdict-pref-dialog.c:40
-msgid "Etymology:"
-msgstr "Етимология:"
-
-#: gdictsrc/gdict-pref-dialog.c:41
-msgid "Part of speech:"
-msgstr "Част на речта:"
-
-#: gdictsrc/gdict-pref-dialog.c:42
-msgid "Example:"
-msgstr "Пример:"
-
-#: gdictsrc/gdict-pref-dialog.c:43
-msgid "Main body:"
-msgstr "Основно тяло:"
-
-#: gdictsrc/gdict-pref-dialog.c:44
-msgid "Cross-reference:"
-msgstr "Препратки:"
-
-#: gdictsrc/gdict-pref-dialog.c:185
-msgid "Dictionary Preferences"
-msgstr "Настройки на Речник"
-
-#: gdictsrc/gdict-pref-dialog.c:197
-msgid "Smart _lookup"
-msgstr "Разумно _търсене"
-
-#: gdictsrc/gdict-pref-dialog.c:210
-msgid "_Server:"
-msgstr "_Сървър:"
-
-#: gdictsrc/gdict-pref-dialog.c:217
-msgid "De_fault"
-msgstr "_По подразбиране"
-
-#: gdictsrc/gdict-pref-dialog.c:223
-msgid "Reset server to default"
-msgstr "Инициализира сървър с подразбиращи се настройки"
-
-#: gdictsrc/gdict-pref-dialog.c:225
-msgid "_Port:"
-msgstr "_Порт:"
-
-#: gdictsrc/gdict-pref-dialog.c:239
-msgid "Def_ault"
-msgstr "П_о подразбиране"
-
-#: gdictsrc/gdict-pref-dialog.c:246
-msgid "Reset port to default"
-msgstr "Установява подразбираща се стойност за порт"
-
-#: gdictsrc/gdict-pref-dialog.c:247
-msgid "Server"
-msgstr "Сървър"
-
-#: gdictsrc/gdict-pref-dialog.c:248
-msgid "Server Entry"
-msgstr "Елемент Сървър"
-
-#: gdictsrc/gdict-pref-dialog.c:248
-msgid "Enter the Server Name"
-msgstr "Въведете Име на Сървър"
-
-#: gdictsrc/gdict-pref-dialog.c:251
-msgid "Port"
-msgstr "Порт"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Port Entry"
-msgstr "Елемент Порт"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Enter the Port Number"
-msgstr "Въведете Номер на Порт"
-
-#: gdictsrc/gdict-pref-dialog.c:257
-msgid "_Database:"
-msgstr "Баз_за данни:"
-
-#: gdictsrc/gdict-pref-dialog.c:264
-msgid "D_efault strategy:"
-msgstr "Под_разбираща се стратегия:"
-
-#: gdictsrc/gdict-pref-dialog.c:457
-msgid "Search all databases"
-msgstr "Търси във всички бази данни"
-
-#: gdictsrc/gdict-pref-dialog.c:622
-msgid "Database"
-msgstr "База данни"
-
-#: gdictsrc/gdict-pref-dialog.c:622
-msgid "Database Name"
-msgstr "Име на База данни"
-
-#: gdictsrc/gdict-pref-dialog.c:634
-msgid "Default Strategy"
-msgstr "Подразбираща се Стратегия"
-
-#: gdictsrc/gdict-speller.c:135
-msgid "_Word:"
-msgstr "_Дума:"
-
-#: gdictsrc/gdict-speller.c:148
-msgid "Enter a word to know the spelling"
-msgstr "Въведете дума за която искате да научите правописа"
-
-#: gdictsrc/gdict-speller.c:153
-msgid "Click to do the spell check"
-msgstr "Кликнете тук за проверка на правописа"
-
-#: gdictsrc/gdict-speller.c:158
-msgid "Search S_trategy:"
-msgstr "_Стратегия за Търсене:"
-
-#: gdictsrc/gdict-speller.c:174
-msgid "Search _Results"
-msgstr "Резултати от Търсене"
-
-#: gdictsrc/gdict-speller.c:236
-msgid "Check Spelling"
-msgstr "Проверка на Правопис"
-
-#: gdictsrc/gdict-speller.c:654
-msgid "Search Strategy"
-msgstr "Стратегия за Търсене"
-
-#: gdictsrc/gdict.schemas.in.h:1
-msgid "Default database. ! indicates all databases"
-msgstr "Подразбираща се база данни. ! указва всички бази данни"
-
-#: gdictsrc/gdict.schemas.in.h:2
-msgid "Default strategy"
-msgstr "Подразбираща се стратегия"
-
-#: gdictsrc/gdict.schemas.in.h:3
-msgid "Dictionary server"
-msgstr "Речник"
-
-#: gdictsrc/gdict.schemas.in.h:4
-msgid "Port used to connect to server"
-msgstr "Порт използван за свързване към сървър"
-
-#: gdictsrc/gdict.schemas.in.h:5
-msgid "Use smart lookup"
-msgstr "Използва _разумно търсене"
-
-#: gfloppy/gfloppy.desktop.in.h:1
-msgid "Floppy Formatter"
-msgstr "Програма за Форматиране на Флопи"
-
-#: gfloppy/gfloppy.desktop.in.h:2
-msgid "Format Floppy Disks"
-msgstr "Форматиране на Флопи"
-
-#: gfloppy/src/badblocks.c:102
-msgid "MInternal Error: Unable to seek to the correct location."
-msgstr "MInternal Error: Не мога да отида на правилното място"
-
-#: gfloppy/src/badblocks.c:111
-#, c-format
-msgid "MInternal Error: Weird value (%ld) in do_test\n"
-msgstr "MInternal Грешка: Странно значение на (%ld) в do_test\n"
-
-#: gfloppy/src/badblocks.c:166
-#, c-format
-msgid "EBad block at block %lu"
-msgstr "Лош блок в %lu"
-
-#. while (!i)
-#. ;
-#: gfloppy/src/badblocks.c:260
-msgid "MChecking for bad blocks..."
-msgstr "Проверка за лоши блокове..."
-
-#: gfloppy/src/badblocks.c:272
-#, c-format
-msgid "MFailed to open device %s for badblock checking\n"
-msgstr "Не мога да отворя устройство %s за проверка за лоши блокове\n"
-
-#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
-msgid "MChecking for bad blocks... Done"
-msgstr "Проверка за лоши блокове.... Завърши"
-
-#: gfloppy/src/fdformat.c:44
-msgid "MFormatting the disk..."
-msgstr "Форматиране на диск..."
-
-#: gfloppy/src/fdformat.c:46
-msgid "EI don't know what this is, but it's very wrong."
-msgstr "Не знам какво е това, но е много грешно."
-
-#: gfloppy/src/fdformat.c:54 gfloppy/src/fdformat.c:66
-#, c-format
-msgid "EError formatting track #%d"
-msgstr "Грешка при форматиране на пътечка #%d"
-
-#: gfloppy/src/fdformat.c:74
-msgid "EError during completion of formatting"
-msgstr "Грешка при завършване на форматирането"
-
-#. XXXX - need to tell parent we're finished
-#: gfloppy/src/fdformat.c:78
-msgid "MFormatting the disk... Done"
-msgstr "Форматиране на диск... Завърши"
-
-#. XXXX - tell parent we're starting verify stage
-#: gfloppy/src/fdformat.c:94
-msgid "MVerifying the format..."
-msgstr "Проверка на формата..."
-
-#: gfloppy/src/fdformat.c:99 gfloppy/src/fdformat.c:174
-msgid ""
-"EUnable to write to the floppy.\n"
-"\n"
-"Please confirm that it is not write-protected."
-msgstr ""
-"Не е възможно е да пиша на флопито.\n"
-"\n"
-"Моля, проверете дали не е защитено за запис."
-
-#: gfloppy/src/fdformat.c:102 gfloppy/src/fdformat.c:177
-#, c-format
-msgid "EInsufficient permissions to open floppy device %s."
-msgstr "Недостатъчни права за отваряне на флопи устройство %s."
-
-#: gfloppy/src/fdformat.c:106 gfloppy/src/fdformat.c:181
-msgid ""
-"EUnable to access the floppy disk.\n"
-"\n"
-"Please confirm that it is in the drive\n"
-"with the drive door shut."
-msgstr ""
-"ННямам достъп до флопи диска.\n"
-"\n"
-"Моля, убедете се ,че е в устройството\n"
-"и вратата му е затворена."
-
-#: gfloppy/src/fdformat.c:109
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s:%d"
-msgstr ""
-"Обща грешка при достъп до флопи устройство %s.\n"
-"\n"
-"Код на грешка %s:%d"
-
-#: gfloppy/src/fdformat.c:129
-#, c-format
-msgid ""
-"ERead Error:\n"
-"Problem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"Грешка при Четене:\n"
-"Проблем при четене на цилиндър %d, очакваше се %d, а е прочетено %d"
-
-#: gfloppy/src/fdformat.c:132
-#, c-format
-msgid "EProblem reading cylinder %d, expected %d, read %d"
-msgstr "Проблем при четене а цилиндър %d, очакваше се %d, а е прочетено %d"
-
-#: gfloppy/src/fdformat.c:141
-#, c-format
-msgid "MBad data in cyl %d.  Continuing... "
-msgstr "Лоши данни в цил %d.  Продължавам..."
-
-#: gfloppy/src/fdformat.c:148
-#, c-format
-msgid "EError closing device %s"
-msgstr "Грешка при затваряне на устройство %s"
-
-#: gfloppy/src/fdformat.c:153
-msgid "MVerifying the format... Done"
-msgstr "Проверка на формата... Завърши"
-
-#: gfloppy/src/fdformat.c:165
-#, c-format
-msgid "EUnable to write to device %s"
-msgstr "Не мога да пиша в устройство %s"
-
-#: gfloppy/src/fdformat.c:184
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s"
-msgstr ""
-"Обща грешка при достъп до флопи устройство %s.\n"
-"\n"
-"Код на грешка %s"
-
-#: gfloppy/src/fdformat.c:194
-msgid "ECould not determine current format type"
-msgstr "Не мога да определя типа на текущият формат"
-
-#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
-msgid "MMaking filesystem on disk..."
-msgstr "Правя файлова система на диска..."
-
-#: gfloppy/src/gfloppy.c:167
-msgid "EUnable to create filesystem correctly."
-msgstr "Немога да създам файлова система коректно."
-
-#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
-msgid "MMaking filesystem on disk... Done"
-msgstr "Създаване на файлова система на диск... Завърши"
-
-#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
-msgid "EUnable to create filesystem."
-msgstr "Не мога да създам файлова система."
-
-#: gfloppy/src/gfloppy.c:209
-msgid "MChecking for bad blocks... (this might take a while)"
-msgstr "Проверка за лоши блокове...(това може да отнеме време)"
-
-#: gfloppy/src/gfloppy2.glade.h:2
-msgid "DOS (fat)"
-msgstr "DOS (fat)"
-
-#: gfloppy/src/gfloppy2.glade.h:3
-msgid "Double Density 3.5\" (720KB)"
-msgstr "Двойна Плътност 3.5\" (720КБ)"
-
-#: gfloppy/src/gfloppy2.glade.h:4
-msgid "Double Density 5.25\" (360KB)"
-msgstr "Двойна Плътност 5.25\" (360КБ)"
-
-#: gfloppy/src/gfloppy2.glade.h:5
-msgid "File system _type:"
-msgstr "Т_ип на файлова система:"
-
-#: gfloppy/src/gfloppy2.glade.h:6
-msgid "Floppy _density:"
-msgstr "Плътност на флопи:"
-
-#: gfloppy/src/gfloppy2.glade.h:7
-msgid "Floppy de_vice:"
-msgstr "Флопи _устройство:"
-
-#: gfloppy/src/gfloppy2.glade.h:8
-msgid "Format a Floppy"
-msgstr "Формат на Флопи"
-
-#: gfloppy/src/gfloppy2.glade.h:9
-msgid "High Density 3.5\" (1.44MB)"
-msgstr "Висока Плътност 3.5\" (1.44МБ)"
-
-#: gfloppy/src/gfloppy2.glade.h:10
-msgid "High Density 5.25\" (1.2MB)"
-msgstr "Висока Полътност  5.25\" (1.2МБ)"
-
-#: gfloppy/src/gfloppy2.glade.h:11
-msgid "Linux Native (ext2)"
-msgstr "Linux файлова система (ext2)"
-
-#: gfloppy/src/gfloppy2.glade.h:12
-msgid "_Format"
-msgstr "_Формат"
-
-#: gfloppy/src/gfloppy2.glade.h:13
-msgid "_Quick format"
-msgstr "_Бърз формат"
-
-#: gfloppy/src/main.c:130 gfloppy/src/main.c:173
-#, c-format
-msgid "Unable to open the device %s, formatting cannot continue."
-msgstr "Не мога да отворя устройството %s, форматирането не може да продължи."
-
-#: gfloppy/src/main.c:133 gfloppy/src/main.c:176
-#, c-format
-msgid ""
-"The device %s is disconnected.\n"
-"Please attach device to continue."
-msgstr ""
-"Устройството %s е разкачено.\n"
-"Моля закачете устройството за да продължа."
-
-#: gfloppy/src/main.c:136 gfloppy/src/main.c:179
-#, c-format
-msgid ""
-"You do not have the proper permissions to write to %s, formatting will not "
-"be possible.\n"
-"Contact your system administrator about getting write permissions."
-msgstr ""
-"Вие нямата подходящи права за запис в %s, форматирането не е възможно.\n"
-"Обърнете се към системният администратор за да получите права."
-
-#: gfloppy/src/main.c:292
-msgid "The device to format"
-msgstr "Устройството за форматиране"
-
-#: gfloppy/src/main.c:293
-msgid "DEVICE"
-msgstr "УСТРОЙСТВО"
-
-#: gfloppy/src/main.c:360
-#, c-format
-msgid ""
-"Could not display help for the floppy formatter.\n"
-"%s"
-msgstr ""
-"Не мога да покажа помощна информация за програмата форматираща флопи.\n"
-"%s"
-
-#: gfloppy/src/main.c:399
-msgid "Format another floppy?"
-msgstr "Да форматирам друго флопи?"
-
-#: gfloppy/src/progress.c:115
-msgid "Floppy formatted successfully."
-msgstr "Успешно е форматирано флопито."
-
-#: gfloppy/src/progress.c:120
-msgid "Floppy formatting cancelled."
-msgstr "Форматирането на флопи е прекъснато."
-
-#: gfloppy/src/progress.c:161
-msgid "Format progress."
-msgstr "Прогрес на форматиране."
-
-#: gsearchtool/gnome-search-tool.desktop.in.h:1
-msgid "Search for Files"
-msgstr "Търсене за Файлове"
-
-#: gsearchtool/gnome-search-tool.desktop.in.h:2
-msgid "Search your disk for files"
-msgstr "Търсене за файлове на вашият диск."
-
-#: gsearchtool/gsearchtool.c:66
-msgid "File name is"
-msgstr "Името на файла е"
-
-#: gsearchtool/gsearchtool.c:67
-msgid "File name is not"
-msgstr "Името на файла не е"
-
-#: gsearchtool/gsearchtool.c:68
-msgid "Don't search mounted filesystems"
-msgstr "Не търси в монтираните файлови системи"
-
-#: gsearchtool/gsearchtool.c:69
-msgid "Follow symbolic links"
-msgstr "Следва символичните указатели"
-
-#: gsearchtool/gsearchtool.c:70
-msgid "Process folder contents depth first"
-msgstr "Обработва съдържанието на директорията първо в дълбочина"
-
-#: gsearchtool/gsearchtool.c:71
-msgid "Owned by user"
-msgstr "Собственост на потребител"
-
-#: gsearchtool/gsearchtool.c:72
-msgid "Owned by group"
-msgstr "Собственост на група"
-
-#: gsearchtool/gsearchtool.c:73
-msgid "Invalid user or group"
-msgstr "Грешна група или потребител"
-
-#: gsearchtool/gsearchtool.c:74
-msgid "Last time modified"
-msgstr "Последно време на обновление"
-
-#: gsearchtool/gsearchtool.c:75
-msgid "File is empty"
-msgstr "Файла е празен"
-
-#: gsearchtool/gsearchtool.c:76
-msgid "Matches regular expression"
-msgstr "Съвпадение на регулярни изрази"
-
-#: gsearchtool/gsearchtool.c:274 gsearchtool/gsearchtool.c:943
-msgid "Start folder does not exist."
-msgstr "Началната папка не съществува."
-
-#: gsearchtool/gsearchtool.c:499
-msgid "today at %-I:%M %p"
-msgstr "днес в %-I:%M %p"
-
-#: gsearchtool/gsearchtool.c:501
-msgid "yesterday at %-I:%M %p"
-msgstr "вчера в %-I:%M %p"
-
-#: gsearchtool/gsearchtool.c:503 gsearchtool/gsearchtool.c:505
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr "%m/%-d/%y, %-I:%M %p"
-
-#: gsearchtool/gsearchtool.c:518
-msgid "%Y%m%d%H%M%S"
-msgstr "%Y%m%d%H%M%S"
-
-#: gsearchtool/gsearchtool.c:533
-msgid "folder"
-msgstr "папка"
-
-#: gsearchtool/gsearchtool.c:535
-msgid "program"
-msgstr "програма"
-
-#: gsearchtool/gsearchtool.c:537
-msgid "symbolic link"
-msgstr "символен указател"
-
-#: gsearchtool/gsearchtool.c:663
-msgid "No Files Found."
-msgstr "Не са Намерени Файлове."
-
-#: gsearchtool/gsearchtool.c:736
-msgid ""
-"Cannot perform the search.\n"
-"The Bourne shell was not found\n"
-"It is typically installed as /bin/sh or /usr/bin/sh."
-msgstr ""
-"Не мога да изпълня търсенето.\n"
-"Bourne shell не е намерен\n"
-"Той обикновенно е в /bin/sh или /usr/bin/sh."
-
-#: gsearchtool/gsearchtool.c:752
-msgid "Searching..."
-msgstr "Търся..."
-
-#: gsearchtool/gsearchtool.c:866
-msgid ""
-"\n"
-"... Too many errors to display ..."
-msgstr ""
-"\n"
-"... Твърде много грешки за показване ..."
-
-#: gsearchtool/gsearchtool.c:877
-msgid "No files found"
-msgstr "Не са намерени файлове"
-
-#: gsearchtool/gsearchtool.c:880
-msgid "One file found"
-msgstr "Намерен един файл"
-
-#: gsearchtool/gsearchtool.c:882
-#, c-format
-msgid "%d files found"
-msgstr "%d файла са намерени"
-
-#: gsearchtool/gsearchtool.c:954 gsearchtool/gsearchtool.c:1671
-msgid "Cannot perform the search. Please specify a search criteria."
-msgstr "Не мога да изпълня търсенето. Моля задайте критерии за търсене."
-
-#: gsearchtool/gsearchtool.c:971 gsearchtool/gsearchtool.c:1692
-msgid ""
-"A search is already running.  Please wait for the search to complete or "
-"cancel it."
-msgstr ""
-"Търсенето вече е започнало. Моля изчакайте да завърши или го прекъснете."
-
-#: gsearchtool/gsearchtool.c:1005
-msgid "Start folder does not exist"
-msgstr "Началната папка не съществува"
-
-#: gsearchtool/gsearchtool.c:1020
-msgid "Cannot show the search command line. Please specify a search criteria."
-msgstr ""
-"Не мога да покажа камандния ред за търсене. Моля задайте критерии за търсене."
-
-#: gsearchtool/gsearchtool.c:1024
-msgid "Search Command Line"
-msgstr "Команден Ред за Търсене"
-
-#: gsearchtool/gsearchtool.c:1042
-msgid ""
-"This is the command line that can be used to execute this search\n"
-"from the console.\n"
-"\n"
-"C_ommand:"
-msgstr ""
-"Това е командния ред за търсене който може да бъде използван за търсене\n"
-"от конзолата.\n"
-"\n"
-"_Команда:"
-
-#: gsearchtool/gsearchtool.c:1063
-msgid "Command"
-msgstr "Команда"
-
-#: gsearchtool/gsearchtool.c:1064
-msgid "Command Line Entry"
-msgstr "Команден ред"
-
-#: gsearchtool/gsearchtool.c:1064
-msgid "Use this command line to execute the search from console"
-msgstr "Използвайте този команден ред за изпълнение на търсене от конзола"
-
-#: gsearchtool/gsearchtool.c:1172
-msgid "No viewer available for this mime type."
-msgstr "Няма програма за преглед на този тип mime."
-
-#: gsearchtool/gsearchtool.c:1269
-msgid "Entry changed called for a non entry option!"
-msgstr "Извиканото значение за записа не е опция за записа!"
-
-#: gsearchtool/gsearchtool.c:1339
-msgid "Search Rule Value Entry"
-msgstr "Низ за Стойностите на Правилата за Търсне"
-
-#: gsearchtool/gsearchtool.c:1339
-msgid "Enter a value for search rule"
-msgstr "Въведете стойност за правила на търсене"
-
-#: gsearchtool/gsearchtool.c:1354
-msgid "Enabled"
+#: src/ctree.c:589
+#, fuzzy
+msgid "End"
 msgstr "Включено"
 
-#: gsearchtool/gsearchtool.c:1362
-msgid "Toggle On/Off to enable/disable the rule"
-msgstr "Превключва Разрешава/Забранява използването на правила"
+#: src/ctree.c:591
+msgid "Estimated Project Completion Date"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1370
-msgid "Click to Remove the Rule"
-msgstr "Кликнете за Премахване на Правило"
+#: src/ctree.c:596
+msgid "Due"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1416 gsearchtool/gsearchtool.c:1794
-msgid "S_tarting in folder:"
-msgstr "_Започва в папка:"
+#: src/ctree.c:598
+msgid ""
+"Due Date: the date by which the project absolutely must be completed by."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1420 gsearchtool/gsearchtool.c:1800
-msgid "Browse"
-msgstr "Преглед"
-
-#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
-#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
-msgid "Starting folder entry"
-msgstr "Започва от папка"
-
-#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
-#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
-msgid "Enter the folder name where you want to start the search"
-msgstr "Въведете името на папката където вие искате да започнете търсенето"
-
-#: gsearchtool/gsearchtool.c:1450
-msgid "Rules:"
-msgstr "Правила:"
-
-#: gsearchtool/gsearchtool.c:1470
-msgid "A_dd Rule:"
-msgstr "_Добавя Правило:"
-
-#: gsearchtool/gsearchtool.c:1479
-msgid "Search Rules Menu"
-msgstr "Меню за Правила на Търсене"
-
-#: gsearchtool/gsearchtool.c:1479
-msgid "Select a search rule from the menu"
-msgstr "Избор на правила за търсене от менюто"
-
-#: gsearchtool/gsearchtool.c:1522
-msgid "Click to Add a Rule"
-msgstr "Кликнете за Добавяне на Правило"
-
-#: gsearchtool/gsearchtool.c:1523
-msgid "Click to Start the Search"
-msgstr "Кликнете за Начало на Търсене"
-
-#: gsearchtool/gsearchtool.c:1524
-msgid "Click to Stop the Search"
-msgstr "Кликнете за Спиране на Търсене"
-
-#: gsearchtool/gsearchtool.c:1529 gsearchtool/gsearchtool.c:1861
-msgid "S_earch Results"
-msgstr "_Резултати от Търсене"
-
-#: gsearchtool/gsearchtool.c:1569 gsearchtool/gsearchtool.c:1901
-msgid "Name"
-msgstr "Име"
-
-#: gsearchtool/gsearchtool.c:1591 gsearchtool/gsearchtool.c:1923
-msgid "Folder"
-msgstr "Папка"
-
-#: gsearchtool/gsearchtool.c:1603 gsearchtool/gsearchtool.c:1935
+#: src/ctree.c:605
 msgid "Size"
 msgstr "Размер"
 
-#: gsearchtool/gsearchtool.c:1615 gsearchtool/gsearchtool.c:1947
-msgid "Type"
-msgstr "Тип"
+#: src/ctree.c:607
+msgid "Sizing: How much work it will take to finish this project."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1626 gsearchtool/gsearchtool.c:1958
-msgid "Date Modified"
-msgstr "Дата на Модифициране"
+#: src/ctree.c:613
+#, fuzzy
+msgid "Done"
+msgstr "Изчислява косинус"
 
-#: gsearchtool/gsearchtool.c:1770
-msgid "Find files _named:"
-msgstr "Намерени _имена на файлове:"
+#: src/ctree.c:615
+msgid "Percent Complete: How much of this project has been finished till now."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
-msgid "File Name Entry"
-msgstr "Име на Файл"
+#: src/ctree.c:622
+msgid "U"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
-msgid "Enter the file name you want to search"
-msgstr "Въведете име на файл за който искате да търсите"
+#: src/ctree.c:624
+msgid "Urgency: Does this project need to be done soon, done quickly?"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1855
-msgid "Click to Start the search"
-msgstr "Кликнете за да Започне търсене"
+#: src/ctree.c:630
+msgid "Imp"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1856
-msgid "Click to Stop the search"
-msgstr "Кликнете за Спиране на търсенето"
+#: src/ctree.c:632
+msgid "Importance: How important is this project?"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1978
-msgid "Simple"
-msgstr "Просто"
+#: src/ctree.c:638
+msgid "Status"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:1980
-msgid "Advanced"
-msgstr "Допълнитено"
+#: src/ctree.c:640
+msgid "The current status of this project."
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:2018
-#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
-msgid "GNOME Search Tool"
-msgstr "Инструмент за Търсене в ГНОМЕ"
+#: src/ctree.c:959
+msgid "3"
+msgstr "3"
 
-#: gsearchtool/gsearchtool.c:2019
-msgid "(C) 1998,2002 the Free Software Foundation"
-msgstr "(C) 1998,2002 Фондация за Свободен Софтуер"
+#: src/ctree.c:960
+msgid "2"
+msgstr "2"
 
-#: gsearchtool/gsearchtool.c:2020
-msgid "Frontend to the unix find/locate commands"
-msgstr "Shell за командите на unix find/locate"
+#: src/ctree.c:961
+msgid "1"
+msgstr "1"
 
-#: gsearchtool/gsearchtool.c:2060
-#, c-format
-msgid "File %s already exists. Overwrite?"
-msgstr "Файла %s вече съществува. Да го презапиша?"
+#: src/ctree.c:971 glade/project_properties.glade.h:25
+msgid "Low"
+msgstr ""
 
-#: gsearchtool/gsearchtool.c:2095
-msgid "Cannot save the results file."
+#: src/ctree.c:972
+msgid "Med"
+msgstr ""
+
+#: src/ctree.c:973 glade/project_properties.glade.h:15
+msgid "High"
+msgstr ""
+
+#: src/ctree.c:982 glade/project_properties.glade.h:29
+msgid "Not Started"
+msgstr ""
+
+#: src/ctree.c:983 glade/project_properties.glade.h:21
+#, fuzzy
+msgid "In Progress"
+msgstr "Процес:"
+
+#: src/ctree.c:984 glade/project_properties.glade.h:31
+msgid "On Hold"
+msgstr ""
+
+#: src/ctree.c:985 glade/project_properties.glade.h:9
+msgid "Cancelled"
+msgstr ""
+
+#: src/ctree.c:986 glade/project_properties.glade.h:10
+msgid "Completed"
+msgstr ""
+
+#: src/err-throw.c:61
+msgid "No Error"
+msgstr ""
+
+#: src/err-throw.c:65
+#, fuzzy, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
 msgstr "Не мога да запазя файла с резултата."
 
-#: gsearchtool/gsearchtool.c:2102 meat-grinder/meat-grinder.c:654
-msgid "Save Results"
-msgstr "Запазва Резултата"
-
-#: gsearchtool/gsearchtool.c:2159
-msgid "S_how Command..."
-msgstr "_Показва Команда..."
-
-#: gsearchtool/gsearchtool.c:2160
-msgid "Show the command used to perform the search"
-msgstr "Показва командата използвана за изпълнение на търсенето"
-
-#: gsearchtool/gsearchtool.c:2163
-msgid "Save Results _As..."
-msgstr "Запазва _Резултата Като..."
-
-#: gsearchtool/gsearchtool.c:2164
-msgid "Save the search results"
-msgstr "Запазва резултата от търсенето"
-
-#: gsearchtool/gsearchtool.c:2179
-msgid "Sear_ch"
-msgstr "Т_ърси"
-
-#: gsearchtool/gsearchtool.c:2201
-msgid "Cannot initialize bonobo."
-msgstr "Не мога да инициализиран bonobo."
-
-#: gsearchtool/gsearchtool.c:2205
-msgid "Search Tool"
-msgstr "Инструмент за Търсене"
-
-#: logview/about.c:42
-msgid "Cesar Miquel (miquel@df.uba.ar)"
-msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#: logview/about.c:43
+#: src/err-throw.c:70
+#, fuzzy, c-format
 msgid ""
-"This  program  is  part of  the  GNOME  project for Linux. Logview comes "
-"with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
-"redistribute it under the conditions of the GNU General Public Licence. The "
-"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-msgstr ""
-"Тази програма е част от проекта ГНОМЕ за Linux. Тя се доставя БЕЗ ГАРАНЦИИ. "
-"Това е свободен софтуер и вие може да го разпостранявате при условията на "
-"'GNU General Public Licence'. Иконата е създадена от Tuomas Kuosmanen (a.k.a "
-"tigert)."
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr "Не мога да запазя файла с резултата."
 
-#. go get logview.xpm in $(prefix)/share/pixmaps/logview
-#: logview/about.c:72
-msgid "GNOME System Log Viewer"
-msgstr "Програма на ГНОМЕ за Преглед на Системни Журнали"
-
-#: logview/about.c:73
-msgid "Copyright (C) 1998"
-msgstr "Аворски права (C) 1998"
-
-#: logview/actions.c:74
-msgid "Action database"
-msgstr "База данни с действия"
-
-#: logview/actions.c:81
-msgid "Action options"
-msgstr "Опции на действия"
-
-#: logview/actions.c:138
-msgid "Add..."
-msgstr "Добавя..."
-
-#: logview/actions.c:144
-msgid "Edit..."
-msgstr "Редактира..."
-
-#: logview/actions.c:150
-msgid "Remove"
-msgstr "Премахва"
-
-#: logview/actions.c:261
+#: src/err-throw.c:75
 #, c-format
-msgid "Cannot open action data base <%s>! Open failed."
-msgstr "Не мога да отворя базата данни с действия <%s>! Отварянето пропадна."
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GTT project data file\n"
+msgstr ""
 
-#: logview/actions.c:296 logview/actions.c:309 logview/actions.c:320
-#: logview/actions.c:331 logview/actions.c:342 logview/actions.c:353
-msgid "Error parsing actions data base"
-msgstr "Грешка при обработка на базата данни с действия"
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
 
-#: logview/actions.c:387
-msgid "Can't write to actions database!"
-msgstr "Не мога да пиша в базата данни с действия!"
+#: src/err-throw.c:87
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
 
-#: logview/actions.c:494
-msgid "<empty>"
+#: src/err-throw.c:92
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:97
+#, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/file-io.c:376
+msgid "project %t started"
+msgstr ""
+
+#: src/file-io.c:379
+msgid "stopped project %t"
+msgstr ""
+
+#. Translators: This is a "time format", that is
+#. * format on how to print the elapsed time with
+#. * hours:minutes:seconds.
+#: src/file-io.c:677
+#, c-format
+msgid "%d:%02d:%02d"
+msgstr ""
+
+#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr ""
+
+#: src/ghtml.c:95 src/ghtml.c:273
+msgid "Elapsed"
+msgstr ""
+
+#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
+#, fuzzy
+msgid "(empty)"
 msgstr "<празно>"
 
-#: logview/actions.c:495
-msgid "log name regexp"
-msgstr "регулярен израз за журнал"
+#: src/ghtml.c:225
+msgid "Notes"
+msgstr ""
 
-#: logview/actions.c:496
-msgid "process regexp"
-msgstr "регулярен израз за процес"
+#: src/ghtml.c:229
+msgid "Task Time"
+msgstr ""
 
-#: logview/actions.c:497
-msgid "message regexp"
-msgstr "регулярен израз за съобщение"
+#: src/ghtml.c:233
+msgid "Bill Status"
+msgstr ""
 
-#: logview/actions.c:498
-msgid "action to execute when regexps are TRUE"
-msgstr "действие за изпълнение когато регулярните изрази са TRUE"
+#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
+msgid "Billable"
+msgstr ""
 
-#: logview/actions.c:499
-msgid "description"
+#: src/ghtml.c:241
+msgid "Bill Rate"
+msgstr ""
+
+#: src/ghtml.c:245
+msgid "Value"
+msgstr ""
+
+#: src/ghtml.c:249
+msgid "Billable Value"
+msgstr ""
+
+#: src/ghtml.c:253 src/ghtml.c:279
+#, fuzzy
+msgid "No Default Value"
+msgstr "Подразбираща се Стратегия"
+
+#: src/ghtml.c:276
+msgid "Start Time Fuzziness"
+msgstr ""
+
+#: src/ghtml.c:392 glade/task_properties.glade.h:13
+#, fuzzy
+msgid "Hold"
+msgstr "Папка"
+
+#: src/ghtml.c:395 glade/task_properties.glade.h:3
+msgid "Bill"
+msgstr ""
+
+#: src/ghtml.c:398 glade/task_properties.glade.h:21
+msgid "Paid"
+msgstr ""
+
+#: src/ghtml.c:411 glade/task_properties.glade.h:17
+msgid "Not Billable"
+msgstr ""
+
+#: src/ghtml.c:414 glade/task_properties.glade.h:16
+msgid "No Charge"
+msgstr ""
+
+#: src/ghtml.c:424 glade/task_properties.glade.h:22
+msgid "Regular"
+msgstr ""
+
+#: src/ghtml.c:427 glade/task_properties.glade.h:20
+msgid "Overtime"
+msgstr ""
+
+#: src/ghtml.c:430
+msgid "Double Overtime"
+msgstr ""
+
+#: src/ghtml.c:433 glade/task_properties.glade.h:12
+msgid "Flat Fee"
+msgstr ""
+
+#: src/ghtml.c:453
+msgid "Error - Unknown"
+msgstr ""
+
+#: src/ghtml.c:703
+msgid "unknown token: >>>>"
+msgstr ""
+
+#: src/journal.c:111
+msgid "Error 404 Not Found"
+msgstr ""
+
+#: src/journal.c:113
+#, fuzzy, c-format
+msgid "The file %s was not found."
+msgstr "Файла `%s' е празен"
+
+#: src/journal.c:114
+msgid "(null)"
+msgstr ""
+
+#: src/journal.c:124
+msgid "Unkown Error"
+msgstr ""
+
+#: src/journal.c:175 src/plug-in.c:90
+#, fuzzy, c-format
+msgid ""
+"Unable to open the file %s\n"
+"%s"
+msgstr "Не мога да отворя журнален файл!\n"
+
+#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/proj.c:1807
+#, fuzzy
+msgid "New Diary Entry"
+msgstr "Елемент GDialog "
+
+#: src/journal.c:455
+msgid "Save HTML To File"
+msgstr ""
+
+#: src/log.c:55
+#, fuzzy, c-format
+msgid "Cannot open logfile %s for append"
+msgstr "Няма журнален файл за отваряне"
+
+#. Translators: Format to use in the gtt logfile
+#: src/log.c:64
+#, fuzzy
+msgid "%b %d %H:%M:%S"
+msgstr "%Y%m%d%H%M%S"
+
+#: src/log.c:102
+#, fuzzy
+msgid "no description"
 msgstr "описание"
 
-#: logview/actions.c:744
-msgid "description:"
-msgstr "описание:"
+#: src/log.c:167 src/log.c:258
+#, fuzzy
+msgid "program started"
+msgstr "програма"
 
-#: logview/actions.c:753
-msgid "Description of this entry."
-msgstr "Описание за този запис."
+#. log_if_equal
+#: src/log.c:250
+#, fuzzy
+msgid "program exited"
+msgstr "програма"
 
-#: logview/actions.c:800
+#: src/main.c:114
+msgid ""
+"There seems to be another GTimeTracker running.\n"
+"Press OK to start GTimeTracker anyway, or press Cancel to quit."
+msgstr ""
+
+#: src/main.c:126
+msgid "Cannot create pid-file!"
+msgstr ""
+
+#: src/main.c:219
+msgid "Do you want to continue?"
+msgstr ""
+
+#: src/main.c:222 src/main.c:275
+msgid "Error"
+msgstr ""
+
+#: src/main.c:272
+msgid "Shall I setup a new configuration?"
+msgstr ""
+
+#: src/main.c:440
+msgid "Specify geometry"
+msgstr ""
+
+#: src/main.c:440
+msgid "GEOMETRY"
+msgstr ""
+
+#: src/main.c:442
+msgid "Select a project on startup"
+msgstr ""
+
+#: src/main.c:442
+msgid "PROJECT"
+msgstr ""
+
+#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
+msgid "Warning"
+msgstr ""
+
+#: src/menucmd.c:89
+msgid ""
+"GTimeTracker is a combination stop-watch, diary, consultant billing system "
+"and project manager.  You can measure the amount of time you spend on a "
+"task, associate a memo with it, set a billing rate, print an invoice, as "
+"well as track that status of other projects."
+msgstr ""
+
+#: src/menucmd.c:149
+msgid "New Project..."
+msgstr ""
+
+#: src/menucmd.c:231 src/toolbar.c:179
+msgid "Reload Configuration File"
+msgstr ""
+
+#: src/menucmd.c:232
+msgid "Do you really want to reload the configuration file?"
+msgstr ""
+
+#: src/menucmd.c:267
+#, fuzzy, c-format
+msgid "File %s exists, overwrite?"
+msgstr "Файла съществува, да го презапиша?"
+
+#: src/menucmd.c:278
+msgid "File cannot be written"
+msgstr ""
+
+#: src/menucmd.c:298
+msgid "Export Current State"
+msgstr ""
+
+#: src/menus.c:33
+msgid "_New Project..."
+msgstr ""
+
+#: src/menus.c:36
+msgid "_Reload Configuration File"
+msgstr ""
+
+#: src/menus.c:40
+msgid "_Save Configuration File"
+msgstr ""
+
+#: src/menus.c:44
+msgid "_Export Current State"
+msgstr ""
+
+#: src/menus.c:63 src/menus.c:173
+msgid "Clear _Daily Counter"
+msgstr ""
+
+#: src/menus.c:64 src/menus.c:174
+msgid "Zero out todays timer by deleting todays time logs"
+msgstr ""
+
+#: src/menus.c:68 src/menus.c:87 src/menus.c:156
+#, fuzzy
+msgid "_Journal..."
+msgstr "_Относно програма..."
+
+#: src/menus.c:69 src/menus.c:88 src/menus.c:157
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
+#: src/menus.c:72 src/menus.c:160
+#, fuzzy
+msgid "New Diary _Entry"
+msgstr "Елемент GDialog "
+
+#: src/menus.c:73 src/menus.c:161
+msgid "Change the current task for this project"
+msgstr ""
+
+#: src/menus.c:91
+msgid "_All Journal..."
+msgstr ""
+
+#: src/menus.c:92
+msgid "Show the verbose timesheet journal for this project"
+msgstr ""
+
+#: src/menus.c:95
+msgid "_Invoice..."
+msgstr ""
+
+#: src/menus.c:96
+msgid "Show a sample invoice for this project"
+msgstr ""
+
+#: src/menus.c:99
+#, fuzzy
+msgid "_Primer..."
+msgstr "_Преглед..."
+
+#: src/menus.c:100
+msgid "Show a sample introductory primer for designing custom reports"
+msgstr ""
+
+#: src/menus.c:103
+msgid "_New Report..."
+msgstr ""
+
+#: src/menus.c:104
+msgid "Define a path to a new GTT phtml report file"
+msgstr ""
+
+#: src/menus.c:115
+msgid "St_art"
+msgstr ""
+
+#: src/menus.c:116
+msgid "Start the timer running"
+msgstr ""
+
+#: src/menus.c:121
+msgid "Sto_p"
+msgstr ""
+
+#: src/menus.c:122
+#, fuzzy
+msgid "Stop the timer"
+msgstr "Копира текст"
+
+#: src/menus.c:127
+msgid "_Timer Running"
+msgstr ""
+
+#: src/menus.c:146
+msgid "_Reports"
+msgstr ""
+
+#: src/menus.c:147
+msgid "_Timer"
+msgstr ""
+
+#. deal with the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#: src/menus.c:244
+msgid "Reports"
+msgstr ""
+
+#: src/plug-in.c:121
+msgid "Reports/<Separator>"
+msgstr ""
+
+#: src/proj.c:697
+msgid "Old GTT Tasks"
+msgstr ""
+
+#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
+#: src/props-task.c:76
+#, fuzzy
+msgid "empty"
+msgstr "<празно>"
+
+#: src/timer.c:117
 #, c-format
 msgid ""
-"tag: [%s]\n"
-"log_name: [%s]\n"
-"process: [%s]\n"
-"message: [%s]\n"
-"description: [%s]\n"
-"action: [%s]\n"
+"The keyboard and mouse have been idle\n"
+"for %d minutes.  The currently running\n"
+"project (%s - %s)\n"
+"has been stopped.\n"
+"Do you want to restart it?"
 msgstr ""
-"таг: [%s]\n"
-"Име_на_журнал: [%s]\n"
-"процес: [%s]\n"
-"съобщение: [%s]\n"
-"описание: [%s]\n"
-"действие: [%s]\n"
 
-#: logview/calendar.c:112
+#: src/timer.c:125
+#, fuzzy
+msgid "System Idle"
+msgstr "Системен Журнал"
+
+#: src/toolbar.c:169
+#, fuzzy
+msgid "Create a New Project..."
+msgstr "_Създава архив..."
+
+#: src/toolbar.c:184
+msgid "Save Configuration File"
+msgstr ""
+
+#: src/toolbar.c:194
+msgid "Cut Selected Project"
+msgstr ""
+
+#: src/toolbar.c:199
+#, fuzzy
+msgid "Copy Selected Project"
+msgstr "Търсене в Избран Текст..."
+
+#: src/toolbar.c:204
+msgid "Paste Project"
+msgstr ""
+
+#: src/toolbar.c:213 glade/journal.glade.h:2
+msgid "Journal"
+msgstr ""
+
+#: src/toolbar.c:214
+msgid "View and Edit Timestamp Logs"
+msgstr ""
+
+#: src/toolbar.c:223
+msgid "Edit Project Properties..."
+msgstr ""
+
+#: src/toolbar.c:230
+msgid "Timer"
+msgstr ""
+
+#: src/toolbar.c:231
+msgid "Start/Stop Timer"
+msgstr ""
+
+#: src/toolbar.c:241
 msgid "Calendar"
 msgstr "Календар"
 
-#.
-#. * 	-------------------
-#. * 	     Defines
-#. * 	-------------------
-#.
-#: logview/config.c:34
-msgid "fixed 12"
-msgstr "фиксиран 12"
+#: src/toolbar.c:242
+#, fuzzy
+msgid "View Calendar"
+msgstr "Календар"
 
-#. Translators: It seems for asian languages the Bold seems not to work
-#: logview/config.c:36
-msgid "fixed Bold 12"
-msgstr "фиксиран Удебелен 12"
+#: src/toolbar.c:262
+#, fuzzy
+msgid "Edit Preferences..."
+msgstr "_Настройки"
 
-#: logview/config.c:37
-msgid "fixed 10"
-msgstr "фиксиран 10"
-
-#. Translators: It seems for asian languages the Bold seems not to work
-#: logview/config.c:39
-msgid "fixed Bold 8"
-msgstr "фиксиран Удебелен 8"
-
-#. Translators: translate to fonts that appear well in the log viewer,
-#. * for example for asian languages, helvetica seems not to work
-#. * well for those
-#: logview/config.c:44
-msgid "Helvetica 14"
-msgstr "Helvetica 14"
-
-#: logview/config.c:45
-msgid "Helvetica Bold 14"
-msgstr "Helvetica Bold 14"
-
-#: logview/config.c:46
-msgid "Helvetica 12"
-msgstr "Helvetica 12"
-
-#: logview/config.c:47
-msgid "Helvetica Bold 12"
-msgstr "Helvetica Bold 12"
-
-#: logview/config.c:48
-msgid "Helvetica 10"
-msgstr "Helvetica 10"
-
-#: logview/config.c:49
-msgid "Helvetica Bold 10"
-msgstr "Helvetica Bold 10"
-
-#: logview/desc_db.c:37
-#, c-format
-msgid "Cannot open regexp data base <%s>! Open failed."
+#: src/toolbar.c:270
+msgid "User's Guide and Manual"
 msgstr ""
-"Не мога да отворя базата данни с регулярни изрази <%s>! Отварянето пропадна."
 
-#: logview/desc_db.c:147
-#, c-format
-msgid "Cannot open description data base <%s>! Open failed."
-msgstr "Не мога да отворя базата данни с описания <%s>! Отварянето пропадна."
-
-#. ----------------------------------------------------------------------
-#. NAME:
-#. DESCRIPTION:
-#. ----------------------------------------------------------------------
-#: logview/gnome-system-log.desktop.in.h:1
-msgid "System Log"
-msgstr "Системен Журнал"
-
-#: logview/gnome-system-log.desktop.in.h:2
-msgid "View the system log file"
-msgstr "Преглед на файловете със системни журнали"
-
-#: logview/info.c:80
-msgid "Log stats"
-msgstr "Статистика на журнал"
-
-#. Note: we use a real translated string that will appear below to gather
-#. * the length, that way we'll get semi correct results with a lot more
-#. * fonts
-#: logview/info.c:193 logview/info.c:195 logview/zoom.c:220 logview/zoom.c:223
-#: logview/zoom.c:271
-msgid "Date:"
-msgstr "Дата:"
-
-#: logview/info.c:204
-msgid "Log information"
-msgstr "Журнална информация"
-
-#: logview/info.c:232
-msgid "Log:"
-msgstr "Журнал:"
-
-#: logview/info.c:235
-msgid "Size:"
-msgstr "Размер:"
-
-#: logview/info.c:238
-msgid "Modified:"
-msgstr "Модифициран:"
-
-#: logview/info.c:241
-msgid "Start date:"
-msgstr "Начална дата:"
-
-#: logview/info.c:244
-msgid "Last date:"
-msgstr "Крайна дата:"
-
-#: logview/info.c:247
-msgid "Num. lines:"
-msgstr "Брой редове:"
-
-#: logview/info.c:265
-#, c-format
-msgid "%ld bytes"
-msgstr "%ld байта"
-
-#: logview/log_repaint.c:84
-msgid "January"
-msgstr "Януари"
-
-#: logview/log_repaint.c:84
-msgid "February"
-msgstr "Февруари"
-
-#: logview/log_repaint.c:84
-msgid "March"
-msgstr "Март"
-
-#: logview/log_repaint.c:84
-msgid "April"
-msgstr "Април"
-
-#: logview/log_repaint.c:84
-msgid "May"
-msgstr "Май"
-
-#: logview/log_repaint.c:85
-msgid "June"
-msgstr "Юни"
-
-#: logview/log_repaint.c:85
-msgid "July"
-msgstr "Юли"
-
-#: logview/log_repaint.c:85
-msgid "August"
-msgstr "Август"
-
-#: logview/log_repaint.c:85
-msgid "September"
-msgstr "Септември"
-
-#: logview/log_repaint.c:85
-msgid "October"
-msgstr "Октомври"
-
-#: logview/log_repaint.c:86
-msgid "November"
-msgstr "Ноември"
-
-#: logview/log_repaint.c:86
-msgid "December"
-msgstr "Декември"
-
-#. Translators: Date only format, %x should well do really
-#: logview/log_repaint.c:511
-#, c-format
-msgid "%x"
-msgstr "%x"
-
-#. Translators: should be only the time, date could be bogus
-#: logview/log_repaint.c:638
-#, c-format
-msgid "%X"
-msgstr "%X"
-
-#. Translators: Make sure this is only Month and Day format, year
-#. * will be bogus here
-#: logview/log_repaint.c:760
-msgid "%B %e"
-msgstr "%B %e"
-
-#: logview/logrtns.c:206
-msgid "Not enough memory!\n"
-msgstr "Няма достатъчно памет!\n"
-
-#: logview/logrtns.c:214
-msgid "Out of memory!\n"
-msgstr "Недостига памет!\n"
-
-#: logview/logrtns.c:240
-msgid "Unable to open logfile!\n"
-msgstr "Не мога да отворя журнален файл!\n"
-
-#: logview/logrtns.c:295
-#, c-format
-msgid "%s is not a regular file."
-msgstr "%s не е обикновен файл."
-
-#: logview/logrtns.c:303
-#, c-format
-msgid ""
-"%s is not user readable. Either run the program as root or ask the sysadmin "
-"to change the permissions on the file."
+#: src/toolbar.c:278
+msgid "Quit Gnome TimeTracker"
 msgstr ""
-"%s не е четим. Изпълнете програмата като 'root' или помолете системният "
-"администратор да смени правата на файла."
 
-#: logview/logrtns.c:320
-#, c-format
-msgid "%s could not be opened."
-msgstr "%s не може да бъде отворен."
+#: glade/interval_edit.glade.h:1
+msgid "1 Hour"
+msgstr ""
 
-#: logview/logrtns.c:350 logview/logrtns.c:359
-#, c-format
-msgid "%s not a log file."
-msgstr "%s  не е журнален файл."
+#: glade/interval_edit.glade.h:2
+msgid "10 Min"
+msgstr ""
 
-#: logview/logrtns.c:792 logview/logrtns.c:823 logview/logrtns.c:954
-msgid "ReadLogStats: out of memory"
-msgstr "ReadLogStats: недостатъчно памет"
+#: glade/interval_edit.glade.h:3
+msgid "15 Min"
+msgstr ""
 
-#: logview/logview.c:95
-msgid "S_witch Log"
-msgstr "П_ревключва Журнал"
+#: glade/interval_edit.glade.h:4
+msgid "2 Hours"
+msgstr ""
 
-#: logview/logview.c:96
-msgid "Switch log"
-msgstr "Превключва журнал"
+#: glade/interval_edit.glade.h:5
+msgid "20 Min"
+msgstr ""
 
-#: logview/logview.c:98
-msgid "_Monitor..."
-msgstr "_Наблюдение..."
+#: glade/interval_edit.glade.h:6
+msgid "3 Hours"
+msgstr ""
 
-#: logview/logview.c:99
-msgid "Monitor Log"
-msgstr "Наблюдение на Журнал"
+#: glade/interval_edit.glade.h:7
+msgid "30 Min"
+msgstr ""
 
-#: logview/logview.c:102
-msgid "_Properties"
-msgstr "Н_астройки"
+#: glade/interval_edit.glade.h:8
+msgid "5 Min"
+msgstr ""
 
-#: logview/logview.c:103
-msgid "Show Log Properties"
-msgstr "Показва Настройки на Журнал"
+#: glade/interval_edit.glade.h:9
+msgid "Exact Time"
+msgstr ""
 
-#: logview/logview.c:112
-msgid "_Calendar"
-msgstr "_Календар"
+#: glade/interval_edit.glade.h:10
+msgid "Set how Uncertain the Start Time Is"
+msgstr ""
 
-#: logview/logview.c:112
-msgid "Show Calendar Log"
-msgstr "Показва Журнал на Календар"
+#: glade/interval_edit.glade.h:12
+msgid "Start Fuzz"
+msgstr ""
 
-#: logview/logview.c:114
-msgid "_Entry Detail"
-msgstr "Подробно за _Елемент"
+#: glade/interval_popup.glade.h:1
+msgid "Add a new time interval."
+msgstr ""
 
-#: logview/logview.c:114
-msgid "Show Entry Detail"
-msgstr "Показва Подробности за Елемент"
+#: glade/interval_popup.glade.h:2
+msgid "Delete Interval"
+msgstr ""
 
-#: logview/logview.c:122
-msgid "About..."
-msgstr "Относно програма..."
+#: glade/interval_popup.glade.h:3
+msgid "Delete This Interval"
+msgstr ""
 
-#: logview/logview.c:123
-msgid "Info about logview"
-msgstr "Информация относно преглед на журнал"
+#: glade/interval_popup.glade.h:4
+msgid "Edit Interval"
+msgstr ""
 
-#: logview/logview.c:130
-msgid "_Log"
-msgstr "_Журнал"
+#: glade/interval_popup.glade.h:5
+msgid "Edit the Start & Stop Times"
+msgstr ""
 
-#: logview/logview.c:334
-msgid "No log files to open"
-msgstr "Няма журнален файл за отваряне"
+#: glade/interval_popup.glade.h:6
+#, fuzzy
+msgid "Insert Diary Entry"
+msgstr "Елемент Сървър"
 
-#. Create App
-#: logview/logview.c:354
-msgid "System Log Viewer"
-msgstr "Програма за Преглед на Журнали"
+#: glade/interval_popup.glade.h:7
+msgid "Insert a new diary entry above this time interval."
+msgstr ""
 
-#: logview/logview.c:452
-msgid "Filename: "
-msgstr "Име на файл:"
+#: glade/interval_popup.glade.h:8
+msgid "Merge Down"
+msgstr ""
 
-#: logview/logview.c:473
-msgid "Last Modified: "
-msgstr "Последна Модификация:"
+#: glade/interval_popup.glade.h:9
+msgid "Merge Into Interval Above"
+msgstr ""
 
-#: logview/logview.c:722 logview/logview.c:788
-msgid "Too many open logs. Close one and try again"
-msgstr "Твърде много отворени файлове. Затворете един и опитайте отново"
+#: glade/interval_popup.glade.h:10
+msgid "Merge Into Interval Below"
+msgstr ""
 
-#: logview/logview.c:734
-msgid "File already opened"
-msgstr "Файла вече е отворен"
+#: glade/interval_popup.glade.h:11
+msgid "Merge Up"
+msgstr ""
 
-#: logview/logview.c:801
-msgid "Open new logfile"
+#: glade/interval_popup.glade.h:12
+msgid "New Interval"
+msgstr ""
+
+#: glade/interval_popup.glade.h:13
+#, fuzzy
+msgid "Paste Diary Entry"
+msgstr "Елемент GDialog "
+
+#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
+msgid "Paste a previously cut diary entry."
+msgstr ""
+
+#: glade/journal.glade.h:1
+#, fuzzy
+msgid "Close"
+msgstr "Изчислява косинус"
+
+#: glade/journal.glade.h:3
+msgid "New File"
+msgstr ""
+
+#: glade/journal.glade.h:4
+#, fuzzy
+msgid "Open File"
 msgstr "Отваря нов журнален файл"
 
-#: logview/misc.c:56
-msgid "Cannot load required fonts, cannot continue"
-msgstr "Не мога да заредя заявеният шрифт, не мога да продължа"
+#: glade/journal.glade.h:5
+#, fuzzy
+msgid "Print"
+msgstr "Порт"
 
-#: logview/misc.c:91
-#, c-format
-msgid "Error: [%s]\n"
-msgstr "Грешка: [%s]\n"
+#: glade/journal.glade.h:6
+msgid "Refresh"
+msgstr ""
 
-#: logview/monitor.c:115
-msgid "Monitor options"
-msgstr "Опции на Наблюдение"
+#: glade/journal.glade.h:7
+#, fuzzy
+msgid "Save"
+msgstr "Сървър"
 
-#: logview/monitor.c:125
-msgid "Choose logs to monitor"
-msgstr "Избор на журнал за наблюдение"
+#: glade/journal.glade.h:8
+msgid "Save File"
+msgstr ""
 
-#. Arrowed buttons
-#: logview/monitor.c:169
-msgid "Add >>"
-msgstr "Добавя >>"
+#: glade/not-implemented.glade.h:1
+#, fuzzy
+msgid "Information"
+msgstr "Журнална информация"
 
-#. Remove button
-#: logview/monitor.c:177
-msgid "Remove <<"
-msgstr "Премахва <<"
+#: glade/not-implemented.glade.h:2
+msgid ""
+"This function is not yet implemented!\n"
+"Coming Soon, I hope!"
+msgstr ""
 
-#. Check boxes
-#: logview/monitor.c:215
-msgid "Hide app"
-msgstr "Скрива приложение"
+#: glade/prefs.glade.h:1
+msgid "Display"
+msgstr ""
 
-#: logview/monitor.c:223
-msgid "Exec actions"
-msgstr "Изпълнява действия"
+#: glade/prefs.glade.h:2
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr ""
 
-#. Actions button
-#: logview/monitor.c:235
-msgid "Actions..."
-msgstr "Действия..."
+#: glade/prefs.glade.h:3
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr ""
 
-#: logview/monitor.c:286
-msgid "Too many logs to monitor. Remove one and try again"
-msgstr "Твърде много журнали за наблюдение. Премахнете един и опитайте отново"
+#: glade/prefs.glade.h:4
+#, fuzzy
+msgid "Entry Start:"
+msgstr "Подробно за _Елемент"
 
-#: logview/monitor.c:294 logview/monitor.c:332
-msgid "tmp_list is NULL\n"
-msgstr "tmp_list е NULL\n"
+#: glade/prefs.glade.h:5
+#, fuzzy
+msgid "Entry Stop:"
+msgstr "Елемент"
 
-#: logview/monitor.c:452
-msgid "Monitoring logs..."
-msgstr "Наблюдава журнали..."
+#: glade/prefs.glade.h:7
+#, no-c-format
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
 
-#: logview/monitor.c:673
-msgid "TOUCHED!!\n"
-msgstr "ПРОМЕНЕНО!!\n"
+#: glade/prefs.glade.h:9
+#, no-c-format
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
 
-#: logview/userprefsdialog.c:65
-msgid "hostname column width ( 0 to hide this column ): "
-msgstr "ширина на колоната за име на хост (0 за скриване на колоната ):"
+#: glade/prefs.glade.h:10
+#, fuzzy
+msgid "Fields"
+msgstr "Търси"
 
-#: logview/userprefsdialog.c:66
-msgid "Columns"
-msgstr "Колони"
+#: glade/prefs.glade.h:11
+#, fuzzy
+msgid "Filename:"
+msgstr "Име на файл:"
 
-#: logview/zoom.c:79
-msgid "Zoom view"
-msgstr "Мащаб на преглед"
+#: glade/prefs.glade.h:12
+msgid "Idle Seconds:"
+msgstr ""
 
-#: logview/zoom.c:233
-#, c-format
-msgid "Log line detail for %s"
-msgstr "Подробност на ред от журнала за %s"
+#: glade/prefs.glade.h:13
+msgid "Inactivity Timeout"
+msgstr ""
 
-#: logview/zoom.c:236
-msgid "Log line detail for <No log loaded>"
-msgstr "Подробен ред на журнала за <Няма зареден журнал>"
+#: glade/prefs.glade.h:14
+msgid "Logfile"
+msgstr ""
 
-#: logview/zoom.c:275
-msgid "Process:"
-msgstr "Процес:"
+#: glade/prefs.glade.h:15
+#, fuzzy
+msgid "Min Recorded:"
+msgstr "Основно тяло:"
 
-#: logview/zoom.c:278
-msgid "Message:"
-msgstr "Съобщение:"
+#: glade/prefs.glade.h:16
+msgid "Misc"
+msgstr ""
 
-#: logview/zoom.c:281
-msgid "Description:"
+#: glade/prefs.glade.h:17
+msgid "No Project Command:"
+msgstr ""
+
+#: glade/prefs.glade.h:18
+msgid "Project List Display"
+msgstr ""
+
+#: glade/prefs.glade.h:19
+msgid "Shell"
+msgstr ""
+
+#: glade/prefs.glade.h:20
+#, fuzzy
+msgid "Shell Commands"
+msgstr "_Показва Команда..."
+
+#: glade/prefs.glade.h:21
+msgid "Show Current Diary Entry"
+msgstr ""
+
+#: glade/prefs.glade.h:22
+msgid "Show Estimated Effort"
+msgstr ""
+
+#: glade/prefs.glade.h:23
+#, fuzzy
+msgid "Show Percent Complete"
+msgstr "Показва Настройки на Журнал"
+
+#: glade/prefs.glade.h:24
+msgid "Show Planned Project End Date"
+msgstr ""
+
+#: glade/prefs.glade.h:25
+msgid "Show Planned Project Start Date"
+msgstr ""
+
+#: glade/prefs.glade.h:26
+#, fuzzy
+msgid "Show Project Description"
 msgstr "Описание:"
 
-#. Translators: do not include year, it would be bogus
-#: logview/zoom.c:306
-msgid "%B %e %X"
-msgstr "%B %e %X"
-
-#: meat-grinder/archive-generator.desktop.in.h:1
-msgid "Archive Generator"
-msgstr "Генератор на Архив"
-
-#: meat-grinder/archive-generator.desktop.in.h:2
-msgid "Create compressed archives containing many files"
-msgstr "Създава компресиран архив съдържащ много файлове"
-
-#: meat-grinder/meat-grinder.c:137
-#, c-format
-msgid ""
-"Number of files: %d\n"
-"Number of folders: %d"
+#: glade/prefs.glade.h:27
+msgid "Show Project Due Date"
 msgstr ""
-"Брой на файлове: %d\n"
-"Брой на папки: %d"
 
-#: meat-grinder/meat-grinder.c:143
-msgid ""
-"No files or folders, drop files or folders\n"
-"above to add them to the archive"
+#: glade/prefs.glade.h:28
+msgid "Show Project Importance"
 msgstr ""
-"Няма файлове или папки, пуснете файловете или папките\n"
-"отгоре за да ги добавите в архива"
 
-#: meat-grinder/meat-grinder.c:166
-#, c-format
-msgid "%s removed"
-msgstr "%s премахнат"
-
-#: meat-grinder/meat-grinder.c:328 meat-grinder/meat-grinder.c:333
-#, c-format
-msgid "Failed to create %s"
-msgstr "Грешка при създаване на %s"
-
-#: meat-grinder/meat-grinder.c:373
-msgid "Archive.tar.gz"
-msgstr "Archive.tar.gz"
-
-#: meat-grinder/meat-grinder.c:493 meat-grinder/meat-grinder.c:977
-msgid "GNOME Archive Generator"
-msgstr "Генератор на Архиви в ГНОМЕ"
-
-#: meat-grinder/meat-grinder.c:495
-msgid "Drag files in to make archives"
-msgstr "Извлачва файла за да го архивира"
-
-#: meat-grinder/meat-grinder.c:528
-msgid "All files selected"
-msgstr "Всички избрани файлове"
-
-#: meat-grinder/meat-grinder.c:547
-msgid "All files removed"
-msgstr "Всички премахнати файлове"
-
-#: meat-grinder/meat-grinder.c:609 meat-grinder/meat-grinder.c:793
-msgid "No filename selected"
-msgstr "Не е избрано име на файл"
-
-#: meat-grinder/meat-grinder.c:613
-msgid "File exists, overwrite?"
-msgstr "Файла съществува, да го презапиша?"
-
-#: meat-grinder/meat-grinder.c:636
-#, c-format
-msgid "%s created"
-msgstr "%s създаден"
-
-#: meat-grinder/meat-grinder.c:650
-msgid "No items to archive"
-msgstr "Няма обект за архивиране"
-
-#: meat-grinder/meat-grinder.c:777
-#, c-format
-msgid "%s added"
-msgstr "%s добавен"
-
-#: meat-grinder/meat-grinder.c:796
-msgid "File does not exists"
-msgstr "Файла не съществува"
-
-#: meat-grinder/meat-grinder.c:810
-msgid "Add file or folder"
-msgstr "Добавя файл или папка"
-
-#: meat-grinder/meat-grinder.c:927
-msgid "_Add file or folder..."
-msgstr "_Добавя файл или папка..."
-
-#: meat-grinder/meat-grinder.c:928
-msgid "Add a file or folder to archive"
-msgstr "Добавя файл или папка за архивиране"
-
-#: meat-grinder/meat-grinder.c:931
-msgid "_Create archive..."
-msgstr "_Създава архив..."
-
-#: meat-grinder/meat-grinder.c:931
-msgid "Create a new archive from the items"
-msgstr "Създава нов архив от обектите"
-
-#: meat-grinder/meat-grinder.c:941
-msgid "_Remove"
-msgstr "_Премахва"
-
-#: meat-grinder/meat-grinder.c:942
-msgid "Remove the selected item"
-msgstr "Премахва избраните обекти"
-
-#: meat-grinder/meat-grinder.c:944
-msgid "R_emove All"
-msgstr "П_ремахва Всички"
-
-#: meat-grinder/meat-grinder.c:945
-msgid "Remove all items"
-msgstr "Премахва всички обекти"
-
-#: meat-grinder/meat-grinder.c:1016
-msgid "Drop files here to add them to the archive."
-msgstr "Пуска файловете тук за да ги добави към архива."
-
-#. tarball icon
-#: meat-grinder/meat-grinder.c:1028
-msgid "_Create Archive"
-msgstr "_Създава Архив"
-
-#: meat-grinder/meat-grinder.c:1036
-msgid ""
-"Drag this button to the destination where you want the archive to be created "
-"or press it to pop up a file selection dialog."
+#: glade/prefs.glade.h:29
+msgid "Show Project Status"
 msgstr ""
-"Извлачете този бутон на мястото където искате да създадете архив или го "
-"натиснете за да се появи диалог за избор на файл."
 
-#: meat-grinder/meat-grinder.c:1174
-msgid "Cannot find proper icons anywhere!"
-msgstr "Не мога да намеря подходяща икона!"
-
-#: meat-grinder/meat-grinder.c:1182
-msgid ""
-"Cannot find the archive (tar) program!\n"
-"This is the program used for creating archives."
+#: glade/prefs.glade.h:30
+msgid "Show Project Urgency"
 msgstr ""
-"Не мога да намеря архивната (tar) програма!\n"
-"Това е програмата използвана за създаване на архиви."
+
+#: glade/prefs.glade.h:31
+msgid "Show Seconds"
+msgstr ""
+
+#: glade/prefs.glade.h:32
+msgid "Show Status Bar"
+msgstr ""
+
+#: glade/prefs.glade.h:33
+#, fuzzy
+msgid "Show Sub-Projects"
+msgstr "Показва Настройки на Журнал"
+
+#: glade/prefs.glade.h:34
+msgid "Show Table Header"
+msgstr ""
+
+#: glade/prefs.glade.h:35
+msgid "Show Time For The Current Diary Entry"
+msgstr ""
+
+#: glade/prefs.glade.h:36
+msgid "Show Time This Month"
+msgstr ""
+
+#: glade/prefs.glade.h:37
+msgid "Show Time This Week"
+msgstr ""
+
+#: glade/prefs.glade.h:38
+msgid "Show Time This Year"
+msgstr ""
+
+#: glade/prefs.glade.h:39
+msgid "Show Time Today"
+msgstr ""
+
+#: glade/prefs.glade.h:40
+msgid "Show Toolbar Icons"
+msgstr ""
+
+#: glade/prefs.glade.h:41
+msgid "Show Toolbar Texts"
+msgstr ""
+
+#: glade/prefs.glade.h:42
+#, fuzzy
+msgid "Show Tooltips"
+msgstr "Показва Настройки на Журнал"
+
+#: glade/prefs.glade.h:43
+msgid "Show Total Time Ever"
+msgstr ""
+
+#: glade/prefs.glade.h:44
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr ""
+
+#: glade/prefs.glade.h:45
+msgid "Show `Help'"
+msgstr ""
+
+#: glade/prefs.glade.h:46
+msgid "Show `Journal'"
+msgstr ""
+
+#: glade/prefs.glade.h:47
+msgid "Show `New'"
+msgstr ""
+
+#: glade/prefs.glade.h:48
+#, fuzzy
+msgid "Show `Preferences'"
+msgstr "_Настройки"
+
+#: glade/prefs.glade.h:49
+#, fuzzy
+msgid "Show `Properties'"
+msgstr "Показва Настройки на Журнал"
+
+#: glade/prefs.glade.h:50
+msgid "Show `Quit'"
+msgstr ""
+
+#: glade/prefs.glade.h:51
+msgid "Show `Save', `Reload'"
+msgstr ""
+
+#: glade/prefs.glade.h:52
+msgid "Show `Timer'"
+msgstr ""
+
+#: glade/prefs.glade.h:53
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr ""
+
+#: glade/prefs.glade.h:54
+msgid "Switch Project Command:"
+msgstr ""
+
+#: glade/prefs.glade.h:55
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+
+#: glade/prefs.glade.h:56
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+
+#: glade/prefs.glade.h:57
+#, fuzzy
+msgid "Toolbar"
+msgstr "Панел за Действия"
+
+#: glade/prefs.glade.h:58
+msgid "Toolbar Segments"
+msgstr ""
+
+#: glade/prefs.glade.h:59
+msgid "Use Logfile"
+msgstr ""
+
+#: glade/prefs.glade.h:60
+msgid "View Project Fields"
+msgstr ""
+
+#: glade/project_properties.glade.h:1
+msgid "        "
+msgstr ""
+
+#: glade/project_properties.glade.h:2
+msgid "            "
+msgstr ""
+
+#: glade/project_properties.glade.h:3
+msgid "                        "
+msgstr ""
+
+#: glade/project_properties.glade.h:5
+#, no-c-format
+msgid "% Complete"
+msgstr ""
+
+#: glade/project_properties.glade.h:6
+msgid "A title to assign to this project"
+msgstr ""
+
+#: glade/project_properties.glade.h:7
+msgid "Auto-merge Gap:"
+msgstr ""
+
+#: glade/project_properties.glade.h:8
+msgid "Auto-merge Interval:"
+msgstr ""
+
+#: glade/project_properties.glade.h:11
+msgid ""
+"Does this item need immediate attention? Note that some urgent tasks might "
+"not be important.  For example, Bill may want you to answer his email today, "
+"but you may have better things to do today."
+msgstr ""
+
+#: glade/project_properties.glade.h:12
+msgid "Double-Overtime Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:13
+#, fuzzy
+msgid "Due Date:"
+msgstr "Дата:"
+
+#: glade/project_properties.glade.h:14
+msgid "Flat Fee:"
+msgstr ""
+
+#: glade/project_properties.glade.h:16
+msgid "Hours to Finish:"
+msgstr ""
+
+#: glade/project_properties.glade.h:17
+msgid ""
+"How important is it to perform this task?  Not everything important is "
+"urgent.  For example, it is important to file a tax return every year, but "
+"you have a lot of time to get ready to do this."
+msgstr ""
+
+#: glade/project_properties.glade.h:18
+msgid ""
+"If the gap between intervals is smaller than this, the intervals will be "
+"merged together."
+msgstr ""
+
+#: glade/project_properties.glade.h:19
+msgid ""
+"If this project is billed for one price no matter how long it takes, enter "
+"the fee here."
+msgstr ""
+
+#: glade/project_properties.glade.h:20
+msgid "Importance:"
+msgstr ""
+
+#: glade/project_properties.glade.h:22
+msgid ""
+"Internal notes about the project that will not be printed on an invoice."
+msgstr ""
+
+#: glade/project_properties.glade.h:23
+#, fuzzy
+msgid "Intervals"
+msgstr "Обърнат"
+
+#: glade/project_properties.glade.h:24
+msgid "Intervals smaller than this will be discarded"
+msgstr ""
+
+#: glade/project_properties.glade.h:26
+msgid "Medium"
+msgstr ""
+
+#: glade/project_properties.glade.h:27
+msgid "Minimum Interval: "
+msgstr ""
+
+#: glade/project_properties.glade.h:28
+msgid "Not Set"
+msgstr ""
+
+#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
+msgid "Notes:"
+msgstr ""
+
+#: glade/project_properties.glade.h:32
+msgid "Overtime Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:33
+msgid "Planned Finish:"
+msgstr ""
+
+#: glade/project_properties.glade.h:34
+msgid "Planned Start:"
+msgstr ""
+
+#: glade/project_properties.glade.h:35
+msgid "Planning"
+msgstr ""
+
+#: glade/project_properties.glade.h:36
+msgid "Project"
+msgstr ""
+
+#: glade/project_properties.glade.h:37
+#, fuzzy
+msgid "Project Description:"
+msgstr "Описание:"
+
+#: glade/project_properties.glade.h:38
+msgid "Project Title:"
+msgstr ""
+
+#: glade/project_properties.glade.h:39
+#, fuzzy
+msgid "Rates"
+msgstr "Дата:"
+
+#: glade/project_properties.glade.h:40
+msgid "Regular Rate:"
+msgstr ""
+
+#: glade/project_properties.glade.h:41
+msgid "Status:"
+msgstr ""
+
+#: glade/project_properties.glade.h:42
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:43
+msgid "The dollars per hour normally charged for this project."
+msgstr ""
+
+#: glade/project_properties.glade.h:44
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr ""
+
+#: glade/project_properties.glade.h:45
+msgid "Time below which an interval is merged with its neighbors"
+msgstr ""
+
+#: glade/project_properties.glade.h:46
+msgid "Urgency:"
+msgstr ""
+
+#: glade/project_properties.glade.h:47
+msgid "What is the status of this project?"
+msgstr ""
+
+#: glade/project_properties.glade.h:48
+msgid "a short description that will be printed on the invoice."
+msgstr ""
+
+#: glade/project_properties.glade.h:49
+#, fuzzy
+msgid "seconds"
+msgstr "cos"
+
+#: glade/task_popup.glade.h:1
+msgid "Add a new time interval"
+msgstr ""
+
+#: glade/task_popup.glade.h:2
+msgid "Cut Entry & _Times"
+msgstr ""
+
+#: glade/task_popup.glade.h:3
+msgid "Delete the diary entry only, keep the time intervals"
+msgstr ""
+
+#: glade/task_popup.glade.h:4
+msgid "Delete the diary entry, and the time intervals below it."
+msgstr ""
+
+#: glade/task_popup.glade.h:5
+msgid "Edit the diary entry and other task properties."
+msgstr ""
+
+#: glade/task_popup.glade.h:6
+msgid "Insert a new diary entry above this one."
+msgstr ""
+
+#: glade/task_popup.glade.h:7
+msgid "New Time Interval"
+msgstr ""
+
+#: glade/task_popup.glade.h:9
+#, fuzzy
+msgid "_Cut Diary Entry"
+msgstr "Елемент GDialog "
+
+#: glade/task_popup.glade.h:10
+#, fuzzy
+msgid "_Edit Diary Entry"
+msgstr "Елемент GDialog "
+
+#: glade/task_popup.glade.h:11
+#, fuzzy
+msgid "_New Diary Entry"
+msgstr "Елемент GDialog "
+
+#: glade/task_popup.glade.h:12
+msgid "_Paste Diary Entry"
+msgstr ""
+
+#: glade/task_properties.glade.h:1
+msgid "A set of private notes that will not be printed on an invoice."
+msgstr ""
+
+#: glade/task_properties.glade.h:2
+msgid "A short description to attach to this block of time."
+msgstr ""
+
+#: glade/task_properties.glade.h:5
+msgid "Billable:"
+msgstr ""
+
+#: glade/task_properties.glade.h:6
+msgid "Billing Block:"
+msgstr ""
+
+#: glade/task_properties.glade.h:7
+msgid "Billing Rate:"
+msgstr ""
+
+#: glade/task_properties.glade.h:8
+msgid "Billing Status:"
+msgstr ""
+
+#: glade/task_properties.glade.h:9
+#, fuzzy
+msgid "Diary Entry Properties"
+msgstr "Н_астройки"
+
+#: glade/task_properties.glade.h:10
+#, fuzzy
+msgid "Diary Entry:"
+msgstr "Елемент GDialog "
+
+#: glade/task_properties.glade.h:11
+msgid "Fee rate to be charged for this task."
+msgstr ""
+
+#: glade/task_properties.glade.h:14
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+
+#: glade/task_properties.glade.h:15
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+
+#: glade/task_properties.glade.h:19
+#, fuzzy
+msgid "OverOver"
+msgstr "Сървър"
+
+#: glade/task_properties.glade.h:23
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+
+#: glade/task_properties.glade.h:24
+msgid "minutes"
+msgstr ""
+
+#: gtt.desktop.in.h:1
+msgid "Time Tracker tool"
+msgstr ""
+
+#: gtt.desktop.in.h:2
+msgid "Time tracking tool"
+msgstr ""
+
+#~ msgid ""
+#~ "Executing arbitrary programs that you downloaded from the network might "
+#~ "be dangerous.\n"
+#~ "\n"
+#~ "Are you sure you want to run `%s'?"
+#~ msgstr ""
+#~ "Изпълнението на случайни програми свалени по мрежата може да бъде "
+#~ "опасно.\n"
+#~ "\n"
+#~ "Сигурни ли сте, че искате изпълнение на `%s'?"
+
+#~ msgid "Could not access file permissions"
+#~ msgstr "Няма достъп до правата на файл"
+
+#~ msgid "Could not execute the file `%s' due to a permission problem"
+#~ msgstr "Не мога да изпълня файла `%s' заради проблем с правата"
+
+#~ msgid "Failure at executing `%s'"
+#~ msgstr "Неуспех при изпълнение на `%s'"
+
+#~ msgid "It was not possible to open the file `%s'"
+#~ msgstr "Не е възможно да отворя файла `%s'"
+
+#~ msgid "There was an error. `%s' is empty"
+#~ msgstr "Има грешка. `%s' е празен"
+
+#~ msgid "This is a library and can not be executed"
+#~ msgstr "Това е библиотека и не може да бъде изпълнена"
+
+#~ msgid "The file is a core file and can not be executed"
+#~ msgstr "Файла е 'core' и не е изпълним"
+
+#~ msgid "This is an unknown kind of executable"
+#~ msgstr "Това е неизвестен тип изпълним файл"
+
+#~ msgid ""
+#~ "The executable is for a different platform and can not be executed on "
+#~ "this system"
+#~ msgstr ""
+#~ "Изпълнимият файл е за друга платформа и не може да бъде изпълнен на тази "
+#~ "система"
+
+#~ msgid "translator_credits"
+#~ msgstr "Борислав Александров"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Калкулатор на ГНОМЕ"
+
+#~ msgid "Simple double precision calculator similiar to xcalc"
+#~ msgstr "Прост калкулатор с двойна точност подобен на xcalc"
+
+#~ msgid "_Calculator"
+#~ msgstr "_Калкулатор"
+
+#~ msgid "inf"
+#~ msgstr "инф"
+
+#~ msgid "DEG"
+#~ msgstr "ГР"
+
+#~ msgid "RAD"
+#~ msgstr "РАД"
+
+#~ msgid "GRAD"
+#~ msgstr "ГРАД"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "x^2"
+#~ msgstr "x^2"
+
+#~ msgid "Square"
+#~ msgstr "На 2-ра степен"
+
+#~ msgid "SQRT"
+#~ msgstr "Корен Кв."
+
+#~ msgid "Square root"
+#~ msgstr "Извличане на корен квадратен"
+
+#~ msgid "CE/C"
+#~ msgstr "CE/C"
+
+#~ msgid "AC"
+#~ msgstr "AC"
+
+#~ msgid "Reset"
+#~ msgstr "Нулира"
+
+#~ msgid "INV"
+#~ msgstr "INV"
+
+#~ msgid "Inverse trigonometry/log function"
+#~ msgstr "Инвертира тригонометрични/логаритмични функции"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "Sine"
+#~ msgstr "Изчислява синус"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "Tangent"
+#~ msgstr "Изчислява тангенс"
+
+#~ msgid " DEG  "
+#~ msgstr " ГР "
+
+#~ msgid "Switch degrees / radians / grad"
+#~ msgstr "Превключва грдуси / радиани / град"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "Base of Natural Logarithm"
+#~ msgstr "Основа на Натурален Логаритъм"
+
+#~ msgid "EE"
+#~ msgstr "EE"
+
+#~ msgid "Add digit"
+#~ msgstr "Добавя цифра"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "Base 10 Logarithm"
+#~ msgstr "Получаване на Десетичен Логаритъм"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "Natural Logarithm"
+#~ msgstr "Получаване на Натурален Логаритм"
+
+#~ msgid "x^y"
+#~ msgstr "x^y"
+
+#~ msgid "Power"
+#~ msgstr "Извежда в степен"
+
+#~ msgid "PI"
+#~ msgstr "PI"
+
+#~ msgid "x!"
+#~ msgstr "x!"
+
+#~ msgid "Factorial"
+#~ msgstr "Фактуриел"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid "Opening Parenthesis"
+#~ msgstr "Отварящи скоби"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "Closing Parenthesis"
+#~ msgstr "Затварящи скоби"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "Divide by"
+#~ msgstr "Делеа на"
+
+#~ msgid "STO"
+#~ msgstr "STO"
+
+#~ msgid ""
+#~ "Store the value in the\n"
+#~ "display field in memory"
+#~ msgstr ""
+#~ "Запаза стойноста на\n"
+#~ "дисплея в паметта"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Multiply by"
+#~ msgstr "Умножение на"
+
+#~ msgid "RCL"
+#~ msgstr "RCL"
+
+#~ msgid ""
+#~ "Display the value in memory\n"
+#~ "in the display field"
+#~ msgstr ""
+#~ "Показва значението в\n"
+#~ "паметта на дисплея"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "Subtract"
+#~ msgstr "Изваждане"
+
+#~ msgid "SUM"
+#~ msgstr "SUM"
+
+#~ msgid ""
+#~ "Add the value in the display\n"
+#~ "field to the value in memory"
+#~ msgstr ""
+#~ "Добавя стойността на дисплея\n"
+#~ "с тази в паметта"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "Add"
+#~ msgstr "Добавя"
+
+#~ msgid "EXC"
+#~ msgstr "EXC"
+
+#~ msgid ""
+#~ "Exchange the values in the\n"
+#~ "display field and memory"
+#~ msgstr ""
+#~ "Размяна стойностите на\n"
+#~ "дисплея и паметта"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "Decimal Point"
+#~ msgstr "Десетична Точка"
+
+#~ msgid "+/-"
+#~ msgstr "+/-"
+
+#~ msgid "Change sign"
+#~ msgstr "Промяна на знак"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "Calculate"
+#~ msgstr "Изчисли"
+
+#~ msgid "Calculator"
+#~ msgstr "Калкулатор"
+
+#~ msgid "Perform simple calculations"
+#~ msgstr "Позволява прости изчисления"
+
+#~ msgid "Character Map"
+#~ msgstr "Таблица на символи"
+
+#~ msgid "Insert special characters into documents"
+#~ msgstr "Вмъква специални символи в документи"
+
+#~ msgid "Select Character"
+#~ msgstr "Избор на Символ"
+
+#~ msgid "_Insert"
+#~ msgstr "_Вмъква"
+
+#~ msgid "Character code:"
+#~ msgstr "Код на Символ:"
+
+#~ msgid "Character:"
+#~ msgstr "Символ:"
+
+#~ msgid "Character Code"
+#~ msgstr "Код на Символ"
+
+#~ msgid "Select character code"
+#~ msgstr "Избор код на символ"
+
+#~ msgid "Character"
+#~ msgstr "Символ"
+
+#~ msgid "Character to insert"
+#~ msgstr "Символ за вмъкване"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "GNOME Character Map"
+#~ msgstr "Таблица на символите в ГНОМЕ"
+
+#~ msgid ""
+#~ "Select, copy and paste characters from your font into other applications"
+#~ msgstr "Избира, копира и поставя символи от шрифта в други приложения"
+
+#~ msgid "del"
+#~ msgstr "del"
+
+#~ msgid " %s: Character code %d"
+#~ msgstr " %s: Код на символ %d"
+
+#~ msgid "Text copied to clipboard..."
+#~ msgstr "Текст копиран в буфера за обмен...."
+
+#~ msgid "Text cut to clipboard..."
+#~ msgstr "Отрязан текст в буфера за обмен"
+
+#~ msgid "Text pasted from clipboard..."
+#~ msgstr "Текст поставен от буфера за обмен..."
+
+#~ msgid "Gnome Character Map"
+#~ msgstr "Таблица на символите в ГНОМЕ"
+
+#~ msgid "_Text to copy:"
+#~ msgstr "_Текст за копиране:"
+
+#~ msgid "_Copy"
+#~ msgstr "_Копира"
+
+#~ msgid "Text to copy"
+#~ msgstr "Текст за копиране"
+
+#~ msgid "Copy"
+#~ msgstr "Копира"
+
+#~ msgid "Insert character(s) by choosing character codes."
+#~ msgstr "Вмъква символ(и) чрез избор кодове на символи."
+
+#~ msgid "_Characters"
+#~ msgstr "_Символи"
+
+#~ msgid "Cut"
+#~ msgstr "Отрязва"
+
+#~ msgid "Cut the selection"
+#~ msgstr "Отрязва избраното"
+
+#~ msgid "Copy the selection"
+#~ msgstr "Копира избраното"
+
+#~ msgid "Paste"
+#~ msgstr "Поставя"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "Поставя съдържанието на буфера за обмен"
+
+#~ msgid "Gdialog progressbar"
+#~ msgstr "Лента за прогрес на Gdialog "
+
+#~ msgid "Indicates the percentage specified at the standard input"
+#~ msgstr "Показва процент за зададен стандартен вход"
+
+#~ msgid "Enter the text"
+#~ msgstr "Въвеждане на текст"
+
+#~ msgid "Accessories"
+#~ msgstr "Аксесоари"
+
+#~ msgid "Dictionary Lookup"
+#~ msgstr "Търсене в Речник"
+
+#~ msgid "Lookup words in an online dictionary"
+#~ msgstr "Търсене на думи в речник"
+
+#~ msgid "_Help"
+#~ msgstr "_Помощ"
+
+#~ msgid "_Show/Hide Definition Window..."
+#~ msgstr "_Показва/Скрива прозорец за определение..."
+
+#~ msgid "Cannot connect to server"
+#~ msgstr "Не мога да се свържа със сървъра"
+
+#~ msgid ""
+#~ "A serious error occured. Please check that your server and port are "
+#~ "correct. For reference the default server is dict.org and the port 2628"
+#~ msgstr ""
+#~ "Появи се сериозна грешка. Моля проверете дали сървъра и портовете са "
+#~ "коректни. За справка: сървър по подразбиране - dict.org - порт 2628"
+
+#~ msgid ""
+#~ "Client for MIT dictionary server.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#~ msgstr ""
+#~ "Клиент за сървър на MIT .\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#~ msgid "Spell-checking..."
+#~ msgstr "Проверка на правопис..."
+
+#~ msgid "Spell check done"
+#~ msgstr "Проверка на правопис завърши"
+
+#~ msgid "No matches found"
+#~ msgstr "Не са намерени съвпадения"
+
+#~ msgid "Looking up word..."
+#~ msgstr "Търсене на дума..."
+
+#~ msgid "Lookup done"
+#~ msgstr "Търсенете завърши"
+
+#~ msgid "String not found"
+#~ msgstr "Низа не е намерен"
+
+#~ msgid "_Find"
+#~ msgstr "_Търси"
+
+#~ msgid ""
+#~ "Unable to perform requested operation. \n"
+#~ "Either the server you are using is not available \n"
+#~ "or you are not connected to the Internet."
+#~ msgstr ""
+#~ "Не мога да изпълня заявената операция. \n"
+#~ "Или сървъра не е наличен \n"
+#~ "или не сте свързани с Интернет."
+
+#~ msgid "_Look Up Word"
+#~ msgstr "_Търсене на Дума"
+
+#~ msgid "Lookup word in dictionary"
+#~ msgstr "Търсене на дума в речник"
+
+#~ msgid "Check _Spelling"
+#~ msgstr "Про_верка на Правопис"
+
+#~ msgid "Check word spelling"
+#~ msgstr "Проверка правопис на дума"
+
+#~ msgid "_Dictionary"
+#~ msgstr "_Речник"
+
+#~ msgid "Dictionary"
+#~ msgstr "Речник"
+
+#~ msgid "_Word: "
+#~ msgstr "_Дума:"
+
+#~ msgid "Word"
+#~ msgstr "Дума"
+
+#~ msgid "Word Entry"
+#~ msgstr "Елемент Дума"
+
+#~ msgid "Enter a Word or select one from the list below"
+#~ msgstr "Въведете Дума или изберете една от списъка по-долу"
+
+#~ msgid "Look Up for a Word"
+#~ msgstr "Търси за Дума"
+
+#~ msgid "_Lookup"
+#~ msgstr "_Търси"
+
+#~ msgid "Error invoking query: %s"
+#~ msgstr "Грешка при изпълнение на заявка: %s"
+
+#~ msgid "Headword:"
+#~ msgstr "Заглавна дума:"
+
+#~ msgid "Sub-number:"
+#~ msgstr "Допълнителен номер:"
+
+#~ msgid "Pronunciation:"
+#~ msgstr "Произношение:"
+
+#~ msgid "Etymology:"
+#~ msgstr "Етимология:"
+
+#~ msgid "Part of speech:"
+#~ msgstr "Част на речта:"
+
+#~ msgid "Example:"
+#~ msgstr "Пример:"
+
+#~ msgid "Cross-reference:"
+#~ msgstr "Препратки:"
+
+#~ msgid "Dictionary Preferences"
+#~ msgstr "Настройки на Речник"
+
+#~ msgid "Smart _lookup"
+#~ msgstr "Разумно _търсене"
+
+#~ msgid "_Server:"
+#~ msgstr "_Сървър:"
+
+#~ msgid "De_fault"
+#~ msgstr "_По подразбиране"
+
+#~ msgid "Reset server to default"
+#~ msgstr "Инициализира сървър с подразбиращи се настройки"
+
+#~ msgid "_Port:"
+#~ msgstr "_Порт:"
+
+#~ msgid "Def_ault"
+#~ msgstr "П_о подразбиране"
+
+#~ msgid "Reset port to default"
+#~ msgstr "Установява подразбираща се стойност за порт"
+
+#~ msgid "Enter the Server Name"
+#~ msgstr "Въведете Име на Сървър"
+
+#~ msgid "Port Entry"
+#~ msgstr "Елемент Порт"
+
+#~ msgid "Enter the Port Number"
+#~ msgstr "Въведете Номер на Порт"
+
+#~ msgid "_Database:"
+#~ msgstr "Баз_за данни:"
+
+#~ msgid "D_efault strategy:"
+#~ msgstr "Под_разбираща се стратегия:"
+
+#~ msgid "Search all databases"
+#~ msgstr "Търси във всички бази данни"
+
+#~ msgid "Database"
+#~ msgstr "База данни"
+
+#~ msgid "Database Name"
+#~ msgstr "Име на База данни"
+
+#~ msgid "_Word:"
+#~ msgstr "_Дума:"
+
+#~ msgid "Enter a word to know the spelling"
+#~ msgstr "Въведете дума за която искате да научите правописа"
+
+#~ msgid "Click to do the spell check"
+#~ msgstr "Кликнете тук за проверка на правописа"
+
+#~ msgid "Search S_trategy:"
+#~ msgstr "_Стратегия за Търсене:"
+
+#~ msgid "Search _Results"
+#~ msgstr "Резултати от Търсене"
+
+#~ msgid "Check Spelling"
+#~ msgstr "Проверка на Правопис"
+
+#~ msgid "Search Strategy"
+#~ msgstr "Стратегия за Търсене"
+
+#~ msgid "Default database. ! indicates all databases"
+#~ msgstr "Подразбираща се база данни. ! указва всички бази данни"
+
+#~ msgid "Default strategy"
+#~ msgstr "Подразбираща се стратегия"
+
+#~ msgid "Dictionary server"
+#~ msgstr "Речник"
+
+#~ msgid "Port used to connect to server"
+#~ msgstr "Порт използван за свързване към сървър"
+
+#~ msgid "Use smart lookup"
+#~ msgstr "Използва _разумно търсене"
+
+#~ msgid "Floppy Formatter"
+#~ msgstr "Програма за Форматиране на Флопи"
+
+#~ msgid "Format Floppy Disks"
+#~ msgstr "Форматиране на Флопи"
+
+#~ msgid "MInternal Error: Unable to seek to the correct location."
+#~ msgstr "MInternal Error: Не мога да отида на правилното място"
+
+#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
+#~ msgstr "MInternal Грешка: Странно значение на (%ld) в do_test\n"
+
+#~ msgid "EBad block at block %lu"
+#~ msgstr "Лош блок в %lu"
+
+#~ msgid "MChecking for bad blocks..."
+#~ msgstr "Проверка за лоши блокове..."
+
+#~ msgid "MFailed to open device %s for badblock checking\n"
+#~ msgstr "Не мога да отворя устройство %s за проверка за лоши блокове\n"
+
+#~ msgid "MChecking for bad blocks... Done"
+#~ msgstr "Проверка за лоши блокове.... Завърши"
+
+#~ msgid "MFormatting the disk..."
+#~ msgstr "Форматиране на диск..."
+
+#~ msgid "EI don't know what this is, but it's very wrong."
+#~ msgstr "Не знам какво е това, но е много грешно."
+
+#~ msgid "EError formatting track #%d"
+#~ msgstr "Грешка при форматиране на пътечка #%d"
+
+#~ msgid "EError during completion of formatting"
+#~ msgstr "Грешка при завършване на форматирането"
+
+#~ msgid "MFormatting the disk... Done"
+#~ msgstr "Форматиране на диск... Завърши"
+
+#~ msgid "MVerifying the format..."
+#~ msgstr "Проверка на формата..."
+
+#~ msgid ""
+#~ "EUnable to write to the floppy.\n"
+#~ "\n"
+#~ "Please confirm that it is not write-protected."
+#~ msgstr ""
+#~ "Не е възможно е да пиша на флопито.\n"
+#~ "\n"
+#~ "Моля, проверете дали не е защитено за запис."
+
+#~ msgid "EInsufficient permissions to open floppy device %s."
+#~ msgstr "Недостатъчни права за отваряне на флопи устройство %s."
+
+#~ msgid ""
+#~ "EUnable to access the floppy disk.\n"
+#~ "\n"
+#~ "Please confirm that it is in the drive\n"
+#~ "with the drive door shut."
+#~ msgstr ""
+#~ "ННямам достъп до флопи диска.\n"
+#~ "\n"
+#~ "Моля, убедете се ,че е в устройството\n"
+#~ "и вратата му е затворена."
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s:%d"
+#~ msgstr ""
+#~ "Обща грешка при достъп до флопи устройство %s.\n"
+#~ "\n"
+#~ "Код на грешка %s:%d"
+
+#~ msgid ""
+#~ "ERead Error:\n"
+#~ "Problem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "Грешка при Четене:\n"
+#~ "Проблем при четене на цилиндър %d, очакваше се %d, а е прочетено %d"
+
+#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
+#~ msgstr "Проблем при четене а цилиндър %d, очакваше се %d, а е прочетено %d"
+
+#~ msgid "MBad data in cyl %d.  Continuing... "
+#~ msgstr "Лоши данни в цил %d.  Продължавам..."
+
+#~ msgid "EError closing device %s"
+#~ msgstr "Грешка при затваряне на устройство %s"
+
+#~ msgid "MVerifying the format... Done"
+#~ msgstr "Проверка на формата... Завърши"
+
+#~ msgid "EUnable to write to device %s"
+#~ msgstr "Не мога да пиша в устройство %s"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s"
+#~ msgstr ""
+#~ "Обща грешка при достъп до флопи устройство %s.\n"
+#~ "\n"
+#~ "Код на грешка %s"
+
+#~ msgid "ECould not determine current format type"
+#~ msgstr "Не мога да определя типа на текущият формат"
+
+#~ msgid "MMaking filesystem on disk..."
+#~ msgstr "Правя файлова система на диска..."
+
+#~ msgid "EUnable to create filesystem correctly."
+#~ msgstr "Немога да създам файлова система коректно."
+
+#~ msgid "MMaking filesystem on disk... Done"
+#~ msgstr "Създаване на файлова система на диск... Завърши"
+
+#~ msgid "EUnable to create filesystem."
+#~ msgstr "Не мога да създам файлова система."
+
+#~ msgid "MChecking for bad blocks... (this might take a while)"
+#~ msgstr "Проверка за лоши блокове...(това може да отнеме време)"
+
+#~ msgid "DOS (fat)"
+#~ msgstr "DOS (fat)"
+
+#~ msgid "Double Density 3.5\" (720KB)"
+#~ msgstr "Двойна Плътност 3.5\" (720КБ)"
+
+#~ msgid "Double Density 5.25\" (360KB)"
+#~ msgstr "Двойна Плътност 5.25\" (360КБ)"
+
+#~ msgid "File system _type:"
+#~ msgstr "Т_ип на файлова система:"
+
+#~ msgid "Floppy _density:"
+#~ msgstr "Плътност на флопи:"
+
+#~ msgid "Floppy de_vice:"
+#~ msgstr "Флопи _устройство:"
+
+#~ msgid "Format a Floppy"
+#~ msgstr "Формат на Флопи"
+
+#~ msgid "High Density 3.5\" (1.44MB)"
+#~ msgstr "Висока Плътност 3.5\" (1.44МБ)"
+
+#~ msgid "High Density 5.25\" (1.2MB)"
+#~ msgstr "Висока Полътност  5.25\" (1.2МБ)"
+
+#~ msgid "Linux Native (ext2)"
+#~ msgstr "Linux файлова система (ext2)"
+
+#~ msgid "_Format"
+#~ msgstr "_Формат"
+
+#~ msgid "_Quick format"
+#~ msgstr "_Бърз формат"
+
+#~ msgid "Unable to open the device %s, formatting cannot continue."
+#~ msgstr ""
+#~ "Не мога да отворя устройството %s, форматирането не може да продължи."
+
+#~ msgid ""
+#~ "The device %s is disconnected.\n"
+#~ "Please attach device to continue."
+#~ msgstr ""
+#~ "Устройството %s е разкачено.\n"
+#~ "Моля закачете устройството за да продължа."
+
+#~ msgid ""
+#~ "You do not have the proper permissions to write to %s, formatting will "
+#~ "not be possible.\n"
+#~ "Contact your system administrator about getting write permissions."
+#~ msgstr ""
+#~ "Вие нямата подходящи права за запис в %s, форматирането не е възможно.\n"
+#~ "Обърнете се към системният администратор за да получите права."
+
+#~ msgid "The device to format"
+#~ msgstr "Устройството за форматиране"
+
+#~ msgid "DEVICE"
+#~ msgstr "УСТРОЙСТВО"
+
+#~ msgid ""
+#~ "Could not display help for the floppy formatter.\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Не мога да покажа помощна информация за програмата форматираща флопи.\n"
+#~ "%s"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "Да форматирам друго флопи?"
+
+#~ msgid "Floppy formatted successfully."
+#~ msgstr "Успешно е форматирано флопито."
+
+#~ msgid "Floppy formatting cancelled."
+#~ msgstr "Форматирането на флопи е прекъснато."
+
+#~ msgid "Format progress."
+#~ msgstr "Прогрес на форматиране."
+
+#~ msgid "Search for Files"
+#~ msgstr "Търсене за Файлове"
+
+#~ msgid "Search your disk for files"
+#~ msgstr "Търсене за файлове на вашият диск."
+
+#~ msgid "File name is"
+#~ msgstr "Името на файла е"
+
+#~ msgid "File name is not"
+#~ msgstr "Името на файла не е"
+
+#~ msgid "Don't search mounted filesystems"
+#~ msgstr "Не търси в монтираните файлови системи"
+
+#~ msgid "Follow symbolic links"
+#~ msgstr "Следва символичните указатели"
+
+#~ msgid "Process folder contents depth first"
+#~ msgstr "Обработва съдържанието на директорията първо в дълбочина"
+
+#~ msgid "Owned by user"
+#~ msgstr "Собственост на потребител"
+
+#~ msgid "Owned by group"
+#~ msgstr "Собственост на група"
+
+#~ msgid "Invalid user or group"
+#~ msgstr "Грешна група или потребител"
+
+#~ msgid "Last time modified"
+#~ msgstr "Последно време на обновление"
+
+#~ msgid "File is empty"
+#~ msgstr "Файла е празен"
+
+#~ msgid "Matches regular expression"
+#~ msgstr "Съвпадение на регулярни изрази"
+
+#~ msgid "Start folder does not exist."
+#~ msgstr "Началната папка не съществува."
+
+#~ msgid "today at %-I:%M %p"
+#~ msgstr "днес в %-I:%M %p"
+
+#~ msgid "yesterday at %-I:%M %p"
+#~ msgstr "вчера в %-I:%M %p"
+
+#~ msgid "%m/%-d/%y, %-I:%M %p"
+#~ msgstr "%m/%-d/%y, %-I:%M %p"
+
+#~ msgid "folder"
+#~ msgstr "папка"
+
+#~ msgid "symbolic link"
+#~ msgstr "символен указател"
+
+#~ msgid "No Files Found."
+#~ msgstr "Не са Намерени Файлове."
+
+#~ msgid ""
+#~ "Cannot perform the search.\n"
+#~ "The Bourne shell was not found\n"
+#~ "It is typically installed as /bin/sh or /usr/bin/sh."
+#~ msgstr ""
+#~ "Не мога да изпълня търсенето.\n"
+#~ "Bourne shell не е намерен\n"
+#~ "Той обикновенно е в /bin/sh или /usr/bin/sh."
+
+#~ msgid "Searching..."
+#~ msgstr "Търся..."
+
+#~ msgid ""
+#~ "\n"
+#~ "... Too many errors to display ..."
+#~ msgstr ""
+#~ "\n"
+#~ "... Твърде много грешки за показване ..."
+
+#~ msgid "No files found"
+#~ msgstr "Не са намерени файлове"
+
+#~ msgid "One file found"
+#~ msgstr "Намерен един файл"
+
+#~ msgid "%d files found"
+#~ msgstr "%d файла са намерени"
+
+#~ msgid "Cannot perform the search. Please specify a search criteria."
+#~ msgstr "Не мога да изпълня търсенето. Моля задайте критерии за търсене."
+
+#~ msgid ""
+#~ "A search is already running.  Please wait for the search to complete or "
+#~ "cancel it."
+#~ msgstr ""
+#~ "Търсенето вече е започнало. Моля изчакайте да завърши или го прекъснете."
+
+#~ msgid "Start folder does not exist"
+#~ msgstr "Началната папка не съществува"
+
+#~ msgid ""
+#~ "Cannot show the search command line. Please specify a search criteria."
+#~ msgstr ""
+#~ "Не мога да покажа камандния ред за търсене. Моля задайте критерии за "
+#~ "търсене."
+
+#~ msgid "Search Command Line"
+#~ msgstr "Команден Ред за Търсене"
+
+#~ msgid ""
+#~ "This is the command line that can be used to execute this search\n"
+#~ "from the console.\n"
+#~ "\n"
+#~ "C_ommand:"
+#~ msgstr ""
+#~ "Това е командния ред за търсене който може да бъде използван за търсене\n"
+#~ "от конзолата.\n"
+#~ "\n"
+#~ "_Команда:"
+
+#~ msgid "Command"
+#~ msgstr "Команда"
+
+#~ msgid "Command Line Entry"
+#~ msgstr "Команден ред"
+
+#~ msgid "Use this command line to execute the search from console"
+#~ msgstr "Използвайте този команден ред за изпълнение на търсене от конзола"
+
+#~ msgid "No viewer available for this mime type."
+#~ msgstr "Няма програма за преглед на този тип mime."
+
+#~ msgid "Entry changed called for a non entry option!"
+#~ msgstr "Извиканото значение за записа не е опция за записа!"
+
+#~ msgid "Search Rule Value Entry"
+#~ msgstr "Низ за Стойностите на Правилата за Търсне"
+
+#~ msgid "Enter a value for search rule"
+#~ msgstr "Въведете стойност за правила на търсене"
+
+#~ msgid "Toggle On/Off to enable/disable the rule"
+#~ msgstr "Превключва Разрешава/Забранява използването на правила"
+
+#~ msgid "Click to Remove the Rule"
+#~ msgstr "Кликнете за Премахване на Правило"
+
+#~ msgid "S_tarting in folder:"
+#~ msgstr "_Започва в папка:"
+
+#~ msgid "Browse"
+#~ msgstr "Преглед"
+
+#~ msgid "Starting folder entry"
+#~ msgstr "Започва от папка"
+
+#~ msgid "Enter the folder name where you want to start the search"
+#~ msgstr "Въведете името на папката където вие искате да започнете търсенето"
+
+#~ msgid "Rules:"
+#~ msgstr "Правила:"
+
+#~ msgid "A_dd Rule:"
+#~ msgstr "_Добавя Правило:"
+
+#~ msgid "Search Rules Menu"
+#~ msgstr "Меню за Правила на Търсене"
+
+#~ msgid "Select a search rule from the menu"
+#~ msgstr "Избор на правила за търсене от менюто"
+
+#~ msgid "Click to Add a Rule"
+#~ msgstr "Кликнете за Добавяне на Правило"
+
+#~ msgid "Click to Start the Search"
+#~ msgstr "Кликнете за Начало на Търсене"
+
+#~ msgid "Click to Stop the Search"
+#~ msgstr "Кликнете за Спиране на Търсене"
+
+#~ msgid "S_earch Results"
+#~ msgstr "_Резултати от Търсене"
+
+#~ msgid "Name"
+#~ msgstr "Име"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgid "Date Modified"
+#~ msgstr "Дата на Модифициране"
+
+#~ msgid "Find files _named:"
+#~ msgstr "Намерени _имена на файлове:"
+
+#~ msgid "File Name Entry"
+#~ msgstr "Име на Файл"
+
+#~ msgid "Enter the file name you want to search"
+#~ msgstr "Въведете име на файл за който искате да търсите"
+
+#~ msgid "Click to Start the search"
+#~ msgstr "Кликнете за да Започне търсене"
+
+#~ msgid "Click to Stop the search"
+#~ msgstr "Кликнете за Спиране на търсенето"
+
+#~ msgid "Simple"
+#~ msgstr "Просто"
+
+#~ msgid "Advanced"
+#~ msgstr "Допълнитено"
+
+#~ msgid "GNOME Search Tool"
+#~ msgstr "Инструмент за Търсене в ГНОМЕ"
+
+#~ msgid "(C) 1998,2002 the Free Software Foundation"
+#~ msgstr "(C) 1998,2002 Фондация за Свободен Софтуер"
+
+#~ msgid "Frontend to the unix find/locate commands"
+#~ msgstr "Shell за командите на unix find/locate"
+
+#~ msgid "File %s already exists. Overwrite?"
+#~ msgstr "Файла %s вече съществува. Да го презапиша?"
+
+#~ msgid "Save Results"
+#~ msgstr "Запазва Резултата"
+
+#~ msgid "Show the command used to perform the search"
+#~ msgstr "Показва командата използвана за изпълнение на търсенето"
+
+#~ msgid "Save Results _As..."
+#~ msgstr "Запазва _Резултата Като..."
+
+#~ msgid "Save the search results"
+#~ msgstr "Запазва резултата от търсенето"
+
+#~ msgid "Sear_ch"
+#~ msgstr "Т_ърси"
+
+#~ msgid "Cannot initialize bonobo."
+#~ msgstr "Не мога да инициализиран bonobo."
+
+#~ msgid "Search Tool"
+#~ msgstr "Инструмент за Търсене"
+
+#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
+#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#~ msgid ""
+#~ "This  program  is  part of  the  GNOME  project for Linux. Logview comes "
+#~ "with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome "
+#~ "to redistribute it under the conditions of the GNU General Public "
+#~ "Licence. The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+#~ msgstr ""
+#~ "Тази програма е част от проекта ГНОМЕ за Linux. Тя се доставя БЕЗ "
+#~ "ГАРАНЦИИ. Това е свободен софтуер и вие може да го разпостранявате при "
+#~ "условията на 'GNU General Public Licence'. Иконата е създадена от Tuomas "
+#~ "Kuosmanen (a.k.a tigert)."
+
+#~ msgid "GNOME System Log Viewer"
+#~ msgstr "Програма на ГНОМЕ за Преглед на Системни Журнали"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Аворски права (C) 1998"
+
+#~ msgid "Action database"
+#~ msgstr "База данни с действия"
+
+#~ msgid "Action options"
+#~ msgstr "Опции на действия"
+
+#~ msgid "Add..."
+#~ msgstr "Добавя..."
+
+#~ msgid "Edit..."
+#~ msgstr "Редактира..."
+
+#~ msgid "Remove"
+#~ msgstr "Премахва"
+
+#~ msgid "Cannot open action data base <%s>! Open failed."
+#~ msgstr ""
+#~ "Не мога да отворя базата данни с действия <%s>! Отварянето пропадна."
+
+#~ msgid "Error parsing actions data base"
+#~ msgstr "Грешка при обработка на базата данни с действия"
+
+#~ msgid "Can't write to actions database!"
+#~ msgstr "Не мога да пиша в базата данни с действия!"
+
+#~ msgid "log name regexp"
+#~ msgstr "регулярен израз за журнал"
+
+#~ msgid "process regexp"
+#~ msgstr "регулярен израз за процес"
+
+#~ msgid "message regexp"
+#~ msgstr "регулярен израз за съобщение"
+
+#~ msgid "action to execute when regexps are TRUE"
+#~ msgstr "действие за изпълнение когато регулярните изрази са TRUE"
+
+#~ msgid "description:"
+#~ msgstr "описание:"
+
+#~ msgid "Description of this entry."
+#~ msgstr "Описание за този запис."
+
+#~ msgid ""
+#~ "tag: [%s]\n"
+#~ "log_name: [%s]\n"
+#~ "process: [%s]\n"
+#~ "message: [%s]\n"
+#~ "description: [%s]\n"
+#~ "action: [%s]\n"
+#~ msgstr ""
+#~ "таг: [%s]\n"
+#~ "Име_на_журнал: [%s]\n"
+#~ "процес: [%s]\n"
+#~ "съобщение: [%s]\n"
+#~ "описание: [%s]\n"
+#~ "действие: [%s]\n"
+
+#~ msgid "fixed 12"
+#~ msgstr "фиксиран 12"
+
+#~ msgid "fixed Bold 12"
+#~ msgstr "фиксиран Удебелен 12"
+
+#~ msgid "fixed 10"
+#~ msgstr "фиксиран 10"
+
+#~ msgid "fixed Bold 8"
+#~ msgstr "фиксиран Удебелен 8"
+
+#~ msgid "Helvetica 14"
+#~ msgstr "Helvetica 14"
+
+#~ msgid "Helvetica Bold 14"
+#~ msgstr "Helvetica Bold 14"
+
+#~ msgid "Helvetica 12"
+#~ msgstr "Helvetica 12"
+
+#~ msgid "Helvetica Bold 12"
+#~ msgstr "Helvetica Bold 12"
+
+#~ msgid "Helvetica 10"
+#~ msgstr "Helvetica 10"
+
+#~ msgid "Helvetica Bold 10"
+#~ msgstr "Helvetica Bold 10"
+
+#~ msgid "Cannot open regexp data base <%s>! Open failed."
+#~ msgstr ""
+#~ "Не мога да отворя базата данни с регулярни изрази <%s>! Отварянето "
+#~ "пропадна."
+
+#~ msgid "Cannot open description data base <%s>! Open failed."
+#~ msgstr ""
+#~ "Не мога да отворя базата данни с описания <%s>! Отварянето пропадна."
+
+#~ msgid "View the system log file"
+#~ msgstr "Преглед на файловете със системни журнали"
+
+#~ msgid "Log stats"
+#~ msgstr "Статистика на журнал"
+
+#~ msgid "Log:"
+#~ msgstr "Журнал:"
+
+#~ msgid "Size:"
+#~ msgstr "Размер:"
+
+#~ msgid "Modified:"
+#~ msgstr "Модифициран:"
+
+#~ msgid "Last date:"
+#~ msgstr "Крайна дата:"
+
+#~ msgid "Num. lines:"
+#~ msgstr "Брой редове:"
+
+#~ msgid "%ld bytes"
+#~ msgstr "%ld байта"
+
+#~ msgid "January"
+#~ msgstr "Януари"
+
+#~ msgid "February"
+#~ msgstr "Февруари"
+
+#~ msgid "March"
+#~ msgstr "Март"
+
+#~ msgid "April"
+#~ msgstr "Април"
+
+#~ msgid "May"
+#~ msgstr "Май"
+
+#~ msgid "June"
+#~ msgstr "Юни"
+
+#~ msgid "July"
+#~ msgstr "Юли"
+
+#~ msgid "August"
+#~ msgstr "Август"
+
+#~ msgid "September"
+#~ msgstr "Септември"
+
+#~ msgid "October"
+#~ msgstr "Октомври"
+
+#~ msgid "November"
+#~ msgstr "Ноември"
+
+#~ msgid "December"
+#~ msgstr "Декември"
+
+#~ msgid "%x"
+#~ msgstr "%x"
+
+#~ msgid "%X"
+#~ msgstr "%X"
+
+#~ msgid "%B %e"
+#~ msgstr "%B %e"
+
+#~ msgid "Not enough memory!\n"
+#~ msgstr "Няма достатъчно памет!\n"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "Недостига памет!\n"
+
+#~ msgid "%s is not a regular file."
+#~ msgstr "%s не е обикновен файл."
+
+#~ msgid ""
+#~ "%s is not user readable. Either run the program as root or ask the "
+#~ "sysadmin to change the permissions on the file."
+#~ msgstr ""
+#~ "%s не е четим. Изпълнете програмата като 'root' или помолете системният "
+#~ "администратор да смени правата на файла."
+
+#~ msgid "%s could not be opened."
+#~ msgstr "%s не може да бъде отворен."
+
+#~ msgid "%s not a log file."
+#~ msgstr "%s  не е журнален файл."
+
+#~ msgid "ReadLogStats: out of memory"
+#~ msgstr "ReadLogStats: недостатъчно памет"
+
+#~ msgid "S_witch Log"
+#~ msgstr "П_ревключва Журнал"
+
+#~ msgid "Switch log"
+#~ msgstr "Превключва журнал"
+
+#~ msgid "_Monitor..."
+#~ msgstr "_Наблюдение..."
+
+#~ msgid "Monitor Log"
+#~ msgstr "Наблюдение на Журнал"
+
+#~ msgid "_Calendar"
+#~ msgstr "_Календар"
+
+#~ msgid "Show Calendar Log"
+#~ msgstr "Показва Журнал на Календар"
+
+#~ msgid "Show Entry Detail"
+#~ msgstr "Показва Подробности за Елемент"
+
+#~ msgid "About..."
+#~ msgstr "Относно програма..."
+
+#~ msgid "Info about logview"
+#~ msgstr "Информация относно преглед на журнал"
+
+#~ msgid "_Log"
+#~ msgstr "_Журнал"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "Програма за Преглед на Журнали"
+
+#~ msgid "Last Modified: "
+#~ msgstr "Последна Модификация:"
+
+#~ msgid "Too many open logs. Close one and try again"
+#~ msgstr "Твърде много отворени файлове. Затворете един и опитайте отново"
+
+#~ msgid "File already opened"
+#~ msgstr "Файла вече е отворен"
+
+#~ msgid "Cannot load required fonts, cannot continue"
+#~ msgstr "Не мога да заредя заявеният шрифт, не мога да продължа"
+
+#~ msgid "Error: [%s]\n"
+#~ msgstr "Грешка: [%s]\n"
+
+#~ msgid "Monitor options"
+#~ msgstr "Опции на Наблюдение"
+
+#~ msgid "Choose logs to monitor"
+#~ msgstr "Избор на журнал за наблюдение"
+
+#~ msgid "Add >>"
+#~ msgstr "Добавя >>"
+
+#~ msgid "Remove <<"
+#~ msgstr "Премахва <<"
+
+#~ msgid "Hide app"
+#~ msgstr "Скрива приложение"
+
+#~ msgid "Exec actions"
+#~ msgstr "Изпълнява действия"
+
+#~ msgid "Actions..."
+#~ msgstr "Действия..."
+
+#~ msgid "Too many logs to monitor. Remove one and try again"
+#~ msgstr ""
+#~ "Твърде много журнали за наблюдение. Премахнете един и опитайте отново"
+
+#~ msgid "tmp_list is NULL\n"
+#~ msgstr "tmp_list е NULL\n"
+
+#~ msgid "Monitoring logs..."
+#~ msgstr "Наблюдава журнали..."
+
+#~ msgid "TOUCHED!!\n"
+#~ msgstr "ПРОМЕНЕНО!!\n"
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "ширина на колоната за име на хост (0 за скриване на колоната ):"
+
+#~ msgid "Columns"
+#~ msgstr "Колони"
+
+#~ msgid "Zoom view"
+#~ msgstr "Мащаб на преглед"
+
+#~ msgid "Log line detail for %s"
+#~ msgstr "Подробност на ред от журнала за %s"
+
+#~ msgid "Log line detail for <No log loaded>"
+#~ msgstr "Подробен ред на журнала за <Няма зареден журнал>"
+
+#~ msgid "Message:"
+#~ msgstr "Съобщение:"
+
+#~ msgid "%B %e %X"
+#~ msgstr "%B %e %X"
+
+#~ msgid "Archive Generator"
+#~ msgstr "Генератор на Архив"
+
+#~ msgid "Create compressed archives containing many files"
+#~ msgstr "Създава компресиран архив съдържащ много файлове"
+
+#~ msgid ""
+#~ "Number of files: %d\n"
+#~ "Number of folders: %d"
+#~ msgstr ""
+#~ "Брой на файлове: %d\n"
+#~ "Брой на папки: %d"
+
+#~ msgid ""
+#~ "No files or folders, drop files or folders\n"
+#~ "above to add them to the archive"
+#~ msgstr ""
+#~ "Няма файлове или папки, пуснете файловете или папките\n"
+#~ "отгоре за да ги добавите в архива"
+
+#~ msgid "%s removed"
+#~ msgstr "%s премахнат"
+
+#~ msgid "Failed to create %s"
+#~ msgstr "Грешка при създаване на %s"
+
+#~ msgid "Archive.tar.gz"
+#~ msgstr "Archive.tar.gz"
+
+#~ msgid "GNOME Archive Generator"
+#~ msgstr "Генератор на Архиви в ГНОМЕ"
+
+#~ msgid "Drag files in to make archives"
+#~ msgstr "Извлачва файла за да го архивира"
+
+#~ msgid "All files selected"
+#~ msgstr "Всички избрани файлове"
+
+#~ msgid "All files removed"
+#~ msgstr "Всички премахнати файлове"
+
+#~ msgid "%s created"
+#~ msgstr "%s създаден"
+
+#~ msgid "No items to archive"
+#~ msgstr "Няма обект за архивиране"
+
+#~ msgid "%s added"
+#~ msgstr "%s добавен"
+
+#~ msgid "File does not exists"
+#~ msgstr "Файла не съществува"
+
+#~ msgid "Add file or folder"
+#~ msgstr "Добавя файл или папка"
+
+#~ msgid "_Add file or folder..."
+#~ msgstr "_Добавя файл или папка..."
+
+#~ msgid "Add a file or folder to archive"
+#~ msgstr "Добавя файл или папка за архивиране"
+
+#~ msgid "Create a new archive from the items"
+#~ msgstr "Създава нов архив от обектите"
+
+#~ msgid "_Remove"
+#~ msgstr "_Премахва"
+
+#~ msgid "Remove the selected item"
+#~ msgstr "Премахва избраните обекти"
+
+#~ msgid "R_emove All"
+#~ msgstr "П_ремахва Всички"
+
+#~ msgid "Remove all items"
+#~ msgstr "Премахва всички обекти"
+
+#~ msgid "Drop files here to add them to the archive."
+#~ msgstr "Пуска файловете тук за да ги добави към архива."
+
+#~ msgid "_Create Archive"
+#~ msgstr "_Създава Архив"
+
+#~ msgid ""
+#~ "Drag this button to the destination where you want the archive to be "
+#~ "created or press it to pop up a file selection dialog."
+#~ msgstr ""
+#~ "Извлачете този бутон на мястото където искате да създадете архив или го "
+#~ "натиснете за да се появи диалог за избор на файл."
+
+#~ msgid "Cannot find proper icons anywhere!"
+#~ msgstr "Не мога да намеря подходяща икона!"
+
+#~ msgid ""
+#~ "Cannot find the archive (tar) program!\n"
+#~ "This is the program used for creating archives."
+#~ msgstr ""
+#~ "Не мога да намеря архивната (tar) програма!\n"
+#~ "Това е програмата използвана за създаване на архиви."

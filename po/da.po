@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.99\n"
-"POT-Creation-Date: 2001-12-20 06:17-0500\n"
+"POT-Creation-Date: 2002-09-06 18:10-0500\n"
 "PO-Revision-Date: 2001-12-20 16:52+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Dansk/Danish <dansk@klid.dk>\n"
@@ -17,884 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gcalc/gcalc.c:41
-msgid "The Gnome Calculator"
-msgstr "Gnome lommeregneren"
-
-#: gcalc/gcalc.c:44
-msgid "Simple double precision calculator similiar to xcalc"
-msgstr "Enkel dobbelt-præcisionslommeregner lignende xcalc"
-
-#: gcalc/gcalc.c:124
-msgid "Run in analog (slide rule) mode"
-msgstr "Kør i analog (regnestok-) tilstand"
-
-#: gcalc/gcalc.c:152
-msgid "Gnome Calculator"
-msgstr "Gnome lommeregner"
-
-#: gcalc/gnome-calc.c:517 gcalc/gnome-calc.c:1185
-msgid "DEG"
-msgstr "GRA"
-
-#: gcalc/gnome-calc.c:519
-msgid "RAD"
-msgstr "RAD"
-
-#: gcalc/gnome-calc.c:521
-msgid "GRAD"
-msgstr "NYGRA"
-
-#: gcalc/gnome-calc.c:1175
-msgid "1/x"
-msgstr "1/x"
-
-#: gcalc/gnome-calc.c:1176
-msgid "x^2"
-msgstr "x²"
-
-#: gcalc/gnome-calc.c:1177
-msgid "SQRT"
-msgstr "KVDROD"
-
-#: gcalc/gnome-calc.c:1178
-msgid "CE/C"
-msgstr "CE/C"
-
-#: gcalc/gnome-calc.c:1179
-msgid "AC"
-msgstr "AC"
-
-#: gcalc/gnome-calc.c:1181 gcalc/gnome-calc.c:1379
-msgid "INV"
-msgstr "INV"
-
-#. inverse button
-#: gcalc/gnome-calc.c:1182
-msgid "sin"
-msgstr "sin"
-
-#: gcalc/gnome-calc.c:1183
-msgid "cos"
-msgstr "cos"
-
-#: gcalc/gnome-calc.c:1184
-msgid "tan"
-msgstr "tan"
-
-#: gcalc/gnome-calc.c:1187
-msgid "e"
-msgstr "e"
-
-#: gcalc/gnome-calc.c:1188
-msgid "EE"
-msgstr "EE"
-
-#: gcalc/gnome-calc.c:1189
-msgid "log"
-msgstr "log"
-
-#: gcalc/gnome-calc.c:1190
-msgid "ln"
-msgstr "ln"
-
-#: gcalc/gnome-calc.c:1191
-msgid "x^y"
-msgstr "x^y"
-
-#: gcalc/gnome-calc.c:1193
-msgid "PI"
-msgstr "PI"
-
-#: gcalc/gnome-calc.c:1194
-msgid "x!"
-msgstr "x!"
-
-#: gcalc/gnome-calc.c:1195
-msgid "("
-msgstr "("
-
-#: gcalc/gnome-calc.c:1196
-msgid ")"
-msgstr ")"
-
-#: gcalc/gnome-calc.c:1197
-msgid "/"
-msgstr "/"
-
-#: gcalc/gnome-calc.c:1199
-msgid "STO"
-msgstr "STO"
-
-#: gcalc/gnome-calc.c:1200
-msgid "7"
-msgstr "7"
-
-#: gcalc/gnome-calc.c:1201
-msgid "8"
-msgstr "8"
-
-#: gcalc/gnome-calc.c:1202
-msgid "9"
-msgstr "9"
-
-#: gcalc/gnome-calc.c:1203
-msgid "*"
-msgstr "*"
-
-#: gcalc/gnome-calc.c:1205
-msgid "RCL"
-msgstr "RCL"
-
-#: gcalc/gnome-calc.c:1206
-msgid "4"
-msgstr "4"
-
-#: gcalc/gnome-calc.c:1207
-msgid "5"
-msgstr "5"
-
-#: gcalc/gnome-calc.c:1208
-msgid "6"
-msgstr "6"
-
-#: gcalc/gnome-calc.c:1209
-msgid "-"
-msgstr "-"
-
-#: gcalc/gnome-calc.c:1211
-msgid "SUM"
-msgstr "SUM"
-
-#: gcalc/gnome-calc.c:1212 gtt/ctree.c:965
-msgid "1"
-msgstr "1"
-
-#: gcalc/gnome-calc.c:1213 gtt/ctree.c:964
-msgid "2"
-msgstr "2"
-
-#: gcalc/gnome-calc.c:1214 gtt/ctree.c:963
-msgid "3"
-msgstr "3"
-
-#: gcalc/gnome-calc.c:1215
-msgid "+"
-msgstr "+"
-
-#: gcalc/gnome-calc.c:1217
-msgid "EXC"
-msgstr "EXC"
-
-#: gcalc/gnome-calc.c:1218
-msgid "0"
-msgstr "0"
-
-#: gcalc/gnome-calc.c:1219
-msgid "."
-msgstr "."
-
-#: gcalc/gnome-calc.c:1220
-msgid "+/-"
-msgstr "+/-"
-
-#: gcalc/gnome-calc.c:1221
-msgid "="
-msgstr "="
-
-#. Translators:  This allows you to create translated font pngs,
-#. * though probably won't be necessary
-#: gcalc/gnome-calc.c:1246
-msgid "calculator-font.png"
-msgstr "calculator-font.png"
-
-#: gcharmap/src/asciiselect.c:96
-msgid "Select Character"
-msgstr "Vælg tegn"
-
-#: gcharmap/src/asciiselect.c:97 gcharmap/src/menus.c:99
-msgid "Insert"
-msgstr "Indsæt"
-
-#: gcharmap/src/asciiselect.c:105
-msgid "Character code:"
-msgstr "Tegnkode:"
-
-#: gcharmap/src/asciiselect.c:115
-msgid "Character:"
-msgstr "Tegn:"
-
-#: gcharmap/src/asciiselect.c:123
-msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-#: gcharmap/src/callbacks.c:43 gcharmap/src/interface.c:141
-msgid "Gnome Character Map"
-msgstr "Gnome tegnoversigt"
-
-#: gcharmap/src/callbacks.c:47
-msgid ""
-"The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
-"contain bad English."
-msgstr "Gnome ækvivalenten til Windows' tegnoversigt"
-
-#: gcharmap/src/callbacks.c:63 gcharmap/src/callbacks.c:101
-#: gcharmap/src/interface.c:65
-msgid "del"
-msgstr "del"
-
-#: gcharmap/src/callbacks.c:107
-#, c-format
-msgid " %s: Character code %d"
-msgstr "%s: tegnkode %d"
-
-#: gcharmap/src/callbacks.c:134
-msgid "Text copied to clipboard..."
-msgstr "Tekst kopieret til klippebordet..."
-
-#: gcharmap/src/callbacks.c:146
-msgid "Text cut to clipboard..."
-msgstr "Tekst klippet ud til klippebordet..."
-
-#: gcharmap/src/callbacks.c:199
-msgid "Text pasted from clipboard..."
-msgstr "Tekst indsat fra klippebordet..."
-
-#: gcharmap/src/interface.c:170
-msgid "Action Toolbar"
-msgstr "Handlingsværktøjslinje"
-
-#: gcharmap/src/interface.c:189
-msgid "Text to copy:"
-msgstr "Tekst at kopiere:"
-
-#: gcharmap/src/interface.c:215
-msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
-msgstr "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
-
-#: gcharmap/src/interface.c:238 gcharmap/src/menus.c:114 logview/logview.c:100
-#: mini-utils/gcolorsel/menus.c:921 stripchart/chart-app.c:258
-msgid "Exit"
-msgstr "Afslut"
-
-#: gcharmap/src/interface.c:239 gcharmap/src/menus.c:104
-#: gdictsrc/gdict-app.c:519 gtt/toolbar.c:181
-msgid "Copy"
-msgstr "Kopiér"
-
-#: gcharmap/src/interface.c:243 gcharmap/src/menus.c:111
-#: mini-utils/gcolorsel/menus.c:919 mini-utils/gshutdown/gshutdown.c:321
-#: stripchart/chart-app.c:232 stripchart/params.c:1013
-#: stripchart/stripchart-applet.c:89
-msgid "About"
-msgstr "Om..."
-
-#: gcharmap/src/interface.c:245 gcharmap/src/menus.c:109
-#: gdictsrc/gdict-applet.c:284 stripchart/chart-app.c:227
-#: stripchart/params.c:1048 stripchart/params.c:1051
-#: stripchart/stripchart-applet.c:86
-msgid "Help"
-msgstr "Hjælp"
-
-#: gcharmap/src/interface.c:264
-msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-msgstr "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
-
-#: gcharmap/src/menus.c:51
-msgid "Insert Character..."
-msgstr "Indsæt tegn..."
-
-#: gcharmap/src/menus.c:52
-msgid "Insert character(s) by choosing character codes."
-msgstr "Indsæt tegn ved at vælge tegnkoder."
-
-#: gcharmap/src/menus.c:59
-msgid "_Action Toolbar"
-msgstr "_Handlingsværktøjslinje"
-
-#: gcharmap/src/menus.c:59
-msgid "View or hide the action toolbar"
-msgstr "Vis eller skjul handlingsværktøjslinjen"
-
-#: gcharmap/src/menus.c:61
-msgid "_Text Toolbar"
-msgstr "_Tekstlinje"
-
-#: gcharmap/src/menus.c:61
-msgid "View or hide the text toolbar"
-msgstr "Vis eller skjul tekstlinjen"
-
-#: gcharmap/src/menus.c:63
-msgid "_Statusbar"
-msgstr "_Statuslinje"
-
-#: gcharmap/src/menus.c:63
-msgid "View or hide the statusbar"
-msgstr "Vis eller skjul statuslinjen"
-
-#: gcharmap/src/menus.c:70
-msgid "Character Table's Font..."
-msgstr "Skrifttype til tegntabel..."
-
-#: gcharmap/src/menus.c:70
-msgid "Set the character table's font."
-msgstr "Vælg tegntabellens skrifttype."
-
-#: gcharmap/src/menus.c:73
-msgid "_Insert at end"
-msgstr "_Indsæt ved slutning"
-
-#: gcharmap/src/menus.c:73
-msgid "Insert every selected character at the end of the text entry"
-msgstr "Indsæt alle valgte tegn i slutningen af teksten"
-
-#: gcharmap/src/menus.c:75
-msgid "_Focusable Buttons"
-msgstr "_Fokuserbare knapper"
-
-#: gcharmap/src/menus.c:75
-msgid "Set the buttons to be focusable or not"
-msgstr "Vælg om knapperne kan modtage tastaturfokus"
-
-#: gcharmap/src/menus.c:99
-msgid "Insert character(s) by choosing character codes"
-msgstr "Indsæt tegn ved at vælge tegnkoder"
-
-#: gcharmap/src/menus.c:102 gdictsrc/gdict-app.c:516 gtt/toolbar.c:177
-msgid "Cut"
-msgstr "Klip"
-
-#: gcharmap/src/menus.c:102
-msgid "Cut the selection"
-msgstr "Klip det valgte ud"
-
-#: gcharmap/src/menus.c:104
-msgid "Copy the selection"
-msgstr "Kopiér det valgte"
-
-#: gcharmap/src/menus.c:106 gdictsrc/gdict-app.c:522 gtt/toolbar.c:185
-msgid "Paste"
-msgstr "Indsæt"
-
-#: gcharmap/src/menus.c:106
-msgid "Paste the clipboard"
-msgstr "Indsæt fra klippebordet"
-
-#: gcharmap/src/menus.c:109
-msgid "Show Gnome Character Map's manual"
-msgstr "Vis brugervejledningen til tegnoversigten"
-
-#: gcharmap/src/menus.c:111 mini-utils/gcolorsel/menus.c:919
-msgid "About this application"
-msgstr "Om dette program"
-
-#: gcharmap/src/menus.c:114 mini-utils/gcolorsel/menus.c:921
-msgid "Exit the program"
-msgstr "Afslut programmet"
-
-#: gdictsrc/main.c:93
-msgid ""
-"Couldn't start the dictionary; most likely, http://www.dict.org could not be "
-"contacted."
-msgstr ""
-"Kunne ikke starte ordbogen; sandsynligvis var det ikke muligt at komme i "
-"kontakt med http://www.dict.org."
-
-#. Could not look up search strategies, so just display a
-#. * label; FIXME: Memory leak
-#.
-#: gdictsrc/dict.c:637 gdictsrc/gdict-pref-dialog.c:502
-#: gdictsrc/gdict-pref-dialog.c:546 gdictsrc/gdict-speller.c:393
-msgid "Cannot connect to server"
-msgstr "Kan ikke forbinde med server!"
-
-#: gdictsrc/gdict-about.c:40
-msgid ""
-"Client for MIT dictionary server.\n"
-"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
-msgstr ""
-"Klient til MIT-ordbogsserver.\n"
-"Netadresse: http://gdict.dhs.org/, http://www.psilord.com/code/"
-
-#: gdictsrc/gdict-app.c:117
-msgid "Spell-checking..."
-msgstr "Kontrollerer stavning..."
-
-#: gdictsrc/gdict-app.c:125
-msgid "Spell check done"
-msgstr "Stavekontrol fuldført"
-
-#: gdictsrc/gdict-app.c:133 gdictsrc/gdict-app.c:266
-msgid "No matches found"
-msgstr "Ingen træf"
-
-#: gdictsrc/gdict-app.c:250
-msgid "Looking up word..."
-msgstr "Slår ord op..."
-
-#: gdictsrc/gdict-app.c:258
-msgid "Lookup done"
-msgstr "Opslag fuldført"
-
-#: gdictsrc/gdict-app.c:278
-msgid "String not found"
-msgstr "Streng ikke fundet"
-
-#: gdictsrc/gdict-app.c:381
-msgid "Find:"
-msgstr "Find:"
-
-#: gdictsrc/gdict-app.c:413
-msgid ""
-"Unable to perform requested operation, either because the server\n"
-"you are using is down or because you are not connected to the\n"
-"Internet. If you are not already connected to the Internet, please\n"
-"do so and try again."
-msgstr ""
-"Kunne ikke udføre forespurgt handling, enten fordi serveren du\n"
-"bruger er nede eller fordi du ikke er koblet til Internettet. Hvis\n"
-"du ikke er koblet til Internettet allerede, gør dette og prøv igen."
-
-#: gdictsrc/gdict-app.c:452 gdictsrc/gdict-app.c:509
-#: gdictsrc/gdict-applet.c:313
-msgid "Look up"
-msgstr "Slå op"
-
-#: gdictsrc/gdict-app.c:453 gdictsrc/gdict-app.c:510
-msgid "Look up word in dictionary"
-msgstr "Slå ordet op i ordbog"
-
-#: gdictsrc/gdict-app.c:455 gdictsrc/gdict-app.c:512
-msgid "Spell"
-msgstr "Stav"
-
-#: gdictsrc/gdict-app.c:456 gdictsrc/gdict-app.c:513
-msgid "Check word spelling"
-msgstr "Tjek ordets stavning"
-
-#: gdictsrc/gdict-app.c:517
-msgid "Cut to Clipboard"
-msgstr "Klip ud til klippebord"
-
-#: gdictsrc/gdict-app.c:520
-msgid "Copy to Clipboard"
-msgstr "Kopiér til klippebord"
-
-#: gdictsrc/gdict-app.c:523
-msgid "Paste Clipboard Contents"
-msgstr "Indsæt indholdet af klippebordet"
-
-#: gdictsrc/gdict-app.c:526
-msgid "Settings"
-msgstr "Indstillinger"
-
-#: gdictsrc/gdict-app.c:527
-msgid "Server to use, default search strategy, fonts"
-msgstr "Vært, standard-strategi for søgning, skrifttyper"
-
-#: gdictsrc/gdict-app.c:588
-msgid "Word definition"
-msgstr "Orddefinition"
-
-#: gdictsrc/gdict-applet.c:280 logview/logview.c:136
-msgid "About..."
-msgstr "Om..."
-
-#: gdictsrc/gdict-applet.c:289 logview/logview.c:116
-msgid "Preferences..."
-msgstr "Indstillinger..."
-
-#: gdictsrc/gdict-applet.c:293
-msgid "Show/Hide Definition Window..."
-msgstr "Vis/skjul definitionsvindue..."
-
-#: gdictsrc/gdict-applet.c:297
-msgid "Spell Check..."
-msgstr "Stavekontrol..."
-
-#: gdictsrc/gdict-applet.c:309
-msgid "Cannot create applet!\n"
-msgstr "Kan ikke oprette panelprogram!\n"
-
-#: gdictsrc/gdict-defbox.c:524 gdictsrc/gdict-speller.c:417
-#, c-format
-msgid "Error invoking query: %s"
-msgstr "Fejl ved udførsel af forespørgsel: %s"
-
-#: gdictsrc/gdict-pref-dialog.c:38
-msgid "Headword:"
-msgstr "Hovedord:"
-
-#: gdictsrc/gdict-pref-dialog.c:39
-msgid "Sub-number:"
-msgstr "Undernummer:"
-
-#: gdictsrc/gdict-pref-dialog.c:40
-msgid "Pronunciation:"
-msgstr "Udtale:"
-
-#: gdictsrc/gdict-pref-dialog.c:41
-msgid "Etymology:"
-msgstr "Etymologi:"
-
-#: gdictsrc/gdict-pref-dialog.c:42
-msgid "Part of speech:"
-msgstr "Del af tale:"
-
-#: gdictsrc/gdict-pref-dialog.c:43
-msgid "Example:"
-msgstr "Eksempel:"
-
-#: gdictsrc/gdict-pref-dialog.c:44
-msgid "Main body:"
-msgstr "Hovedkrop:"
-
-#: gdictsrc/gdict-pref-dialog.c:45
-msgid "Cross-reference:"
-msgstr "Krydsreference:"
-
-#. Fixme these should be stock buttons
-#: gdictsrc/gdict-pref-dialog.c:129 mini-utils/gshutdown/gshutdown.c:316
-#: stripchart/prefs.c:195
-msgid "Preferences"
-msgstr "Opsætning"
-
-#: gdictsrc/gdict-pref-dialog.c:147
-msgid "Smart lookup"
-msgstr "Smart opslag"
-
-#: gdictsrc/gdict-pref-dialog.c:156
-msgid "Server:"
-msgstr "Vært:"
-
-#: gdictsrc/gdict-pref-dialog.c:161
-msgid "Port:"
-msgstr "Port:"
-
-#: gdictsrc/gdict-pref-dialog.c:171
-msgid "Database:"
-msgstr "Database:"
-
-#: gdictsrc/gdict-pref-dialog.c:178
-msgid "Default strategy:"
-msgstr "Standard-strategi:"
-
-#: gdictsrc/gdict-pref-dialog.c:185
-msgid "Server"
-msgstr "Vært"
-
-#: gdictsrc/gdict-pref-dialog.c:235
-msgid "Fonts"
-msgstr "Skrifttyper"
-
-#: gdictsrc/gdict-pref-dialog.c:252
-msgid "Display handle bar"
-msgstr "Vis håndtagslinje"
-
-#: gdictsrc/gdict-pref-dialog.c:256
-msgid ""
-"You have to restart GDict for these\n"
-"settings to become active."
-msgstr ""
-"Du skal genstarte GDict før disse\n"
-"indstillinger træder i kraft."
-
-#: gdictsrc/gdict-pref-dialog.c:263
-msgid "Applet"
-msgstr "Panelprogram"
-
-#: gdictsrc/gdict-pref-dialog.c:494
-msgid "Search all databases"
-msgstr "Søg i alle databaser"
-
-#: gdictsrc/gdict-pref-dialog.c:585
-msgid "The server you specified could not be found."
-msgstr "Den angivne vært blev ikke fundet."
-
-#: gdictsrc/gdict-speller.c:118
-msgid "Word:"
-msgstr "Ord:"
-
-#: gdictsrc/gdict-speller.c:127
-msgid "Search Strategy:"
-msgstr "Søgningsstrategi:"
-
-#: gdictsrc/gdict-speller.c:150
-msgid "Find Words..."
-msgstr "Find ord..."
-
-#: gdictsrc/gdict-speller.c:151
-msgid "Look up Word..."
-msgstr "Slå ord op..."
-
-#: gdictsrc/gdict-speller.c:163
-msgid "Spell checker"
-msgstr "Stavekontrol"
-
-# et forsøg på at afkode navnet
-#: gdiskfree/gdiskfree_app.c:53 gdiskfree/gdiskfree_menus.c:108
-msgid "GDiskFree"
-msgstr "Ledig diskplads"
-
-#: gdiskfree/gdiskfree_app.c:73
-#, c-format
-msgid "Unable to parse the geometry string '%s'"
-msgstr "Kunne ikke tolke geometristrengen '%s'"
-
-#: gdiskfree/gdiskfree.c:58
-msgid "Specify the geometry of the window."
-msgstr "Angiv geometrien til vinduet."
-
-#: gdiskfree/gdiskfree.c:59 gtt/main.c:439 mini-utils/gless/gless.c:130
-msgid "GEOMETRY"
-msgstr "GEOMETRI"
-
-#: gdiskfree/gdiskfree_menus.c:111
-msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
-msgstr "Ledig diskplads er en Gnome-implementation af skalværktøjet 'df'."
-
-#: gdiskfree/gdiskfree_options.c:222
-msgid "GDiskFree Properties"
-msgstr "Indstillinger for ledig diskplads"
-
-#: gdiskfree/gdiskfree_options.c:227
-msgid "Invoke sync before getting usage info"
-msgstr "Synkronisér disken (med sync) før info hentes"
-
-#: gdiskfree/gdiskfree_options.c:239
-msgid "Show drive mount points"
-msgstr "Vis drevmonteringspunkter"
-
-#: gdiskfree/gdiskfree_options.c:250
-msgid "Show drive size"
-msgstr "Vis drevstørrelse"
-
-#: gdiskfree/gdiskfree_options.c:260
-msgid "Dial Orientation"
-msgstr "Orientering"
-
-#: gdiskfree/gdiskfree_options.c:265
-msgid "Vertical"
-msgstr "Lodret"
-
-#: gdiskfree/gdiskfree_options.c:278
-msgid "Horizontal"
-msgstr "Vandret"
-
-#: gdiskfree/gdiskfree_options.c:297
-msgid "Update interval (ms)"
-msgstr "Opdateringsinterval (ms)"
-
-#: gdiskfree/gdiskfree_options.c:308
-msgid "General Settings"
-msgstr "Generelle indstillinger"
-
-#: gsearchtool/gsearchtool.c:33
-msgid "File name"
-msgstr "Filnavn"
-
-#: gsearchtool/gsearchtool.c:35
-msgid "Don't search subdirectories"
-msgstr "Søg ikke i undermapper"
-
-#: gsearchtool/gsearchtool.c:36
-msgid "File owner"
-msgstr "Filejer"
-
-#: gsearchtool/gsearchtool.c:37
-msgid "File owner group"
-msgstr "Filejergruppe"
-
-#: gsearchtool/gsearchtool.c:38
-msgid "Last modification time"
-msgstr "Sidste ændringstid"
-
-#: gsearchtool/gsearchtool.c:40
-msgid "Don't search mounted filesystems"
-msgstr "Søg ikke i monterede filsystemer"
-
-#: gsearchtool/gsearchtool.c:41
-msgid "Empty file"
-msgstr "Tom fil"
-
-#: gsearchtool/gsearchtool.c:43
-msgid "Invalid user or group"
-msgstr "Forkert bruger eller gruppe"
-
-#: gsearchtool/gsearchtool.c:44
-msgid "Filenames except"
-msgstr "Filnavne undtagen"
-
-#: gsearchtool/gsearchtool.c:45
-msgid "Follow symbolic links"
-msgstr "Følg symbolske henvisninger"
-
-#: gsearchtool/gsearchtool.c:46
-msgid "Simple substring search"
-msgstr "Simpel substrengssøgning"
-
-#: gsearchtool/gsearchtool.c:47
-msgid "Regular expression search"
-msgstr "Søgning med regulært udtryk"
-
-#: gsearchtool/gsearchtool.c:49
-msgid "Extended regular expression search"
-msgstr "Søgning med udvidet regulært udtryk"
-
-#: gsearchtool/gsearchtool.c:151
-msgid "grep options found in find list bad bad!"
-msgstr "grep flag fundet i søgeliste! fy fy!"
-
-#: gsearchtool/gsearchtool.c:165
-msgid "non-grep option found in grep list, bad bad!"
-msgstr "ikke-grep flag fundet i grep-liste! fy fy!"
-
-#: gsearchtool/gsearchtool.c:219
-msgid "Search already running on another page"
-msgstr "Søgning kører allerede på en anden side"
-
-#. create the results box
-#. FIXME: add an option to autoclear result box and pass TRUE in that
-#. case
-#: gsearchtool/gsearchtool.c:229
-msgid "Search Results"
-msgstr "Søgeresultater"
-
-#: gsearchtool/gsearchtool.c:336
-msgid ""
-"\n"
-"... Too many errors to display ..."
-msgstr ""
-"\n"
-"...for mange fejl til at vise..."
-
-#: gsearchtool/gsearchtool.c:369 gsearchtool/gsearchtool.c:400
-msgid "Start directory does not exist"
-msgstr "Startmappe eksisterer ikke"
-
-#: gsearchtool/gsearchtool.c:409
-msgid "Search command line"
-msgstr "Søgningskommandolinje"
-
-#: gsearchtool/gsearchtool.c:415
-msgid ""
-"This is the command line that can be used to execute this search from the "
-"console:\n"
-"(Note: to print one file per line rather then null separated,\n"
-"append \"| tr '\\000' '\\n'\" to the line below)"
-msgstr ""
-"Dette er den kommandolinje som kan bruges til at udføre søgningen fra "
-"konsollen:\n"
-"(Note: For at skrive en fil per linje i stedet for adskilt med nul,\n"
-"tilføj \"| tr '\\000' '\\n'\" til linjen nedenunder)"
-
-#: gsearchtool/gsearchtool.c:502
-msgid "Entry changed called for a non entry option!"
-msgstr "Den ændrede indgang ønskede et ikke-indgangsflag!"
-
-#: gsearchtool/gsearchtool.c:568
-msgid "Enable"
-msgstr "Anvend"
-
-#: gsearchtool/gsearchtool.c:576 logview/actions.c:163
-#: meat-grinder/meat-grinder.c:702
-msgid "Remove"
-msgstr "Fjern"
-
-#: gsearchtool/gsearchtool.c:628
-msgid "Start in directory:"
-msgstr "Start i mappe:"
-
-#: gsearchtool/gsearchtool.c:630
-msgid "Browse"
-msgstr "Gennemse"
-
-#: gsearchtool/gsearchtool.c:650 mini-utils/gw/gw.c:494
-msgid "Add"
-msgstr "Tilføj"
-
-#: gsearchtool/gsearchtool.c:661
-msgid "Show Command"
-msgstr "Vis kommando"
-
-#: gsearchtool/gsearchtool.c:666 gsearchtool/gsearchtool.c:759 gtt/ctree.c:582
-#: gtt/ghtml.c:95 gtt/ghtml.c:267 gtt/glade/interval_edit.glade.h:11
-msgid "Start"
-msgstr "Start"
-
-#: gsearchtool/gsearchtool.c:667 gsearchtool/gsearchtool.c:760 gtt/ghtml.c:95
-#: gtt/ghtml.c:270 gtt/glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "Stop"
-
-#: gsearchtool/gsearchtool.c:700
-msgid "Nothing to locate"
-msgstr "Intet at finde"
-
-#: gsearchtool/gsearchtool.c:735
-msgid ""
-"This is an interface to locate.  If you type in a simple string it\n"
-"will be matched as a subset of the full path, and if you type\n"
-"in a string with wildcards, it will have to match the full path."
-msgstr ""
-"Dette er grafisk brugerflade for 'locate'. Hvis du indtaster en\n"
-"simpel tekststreng vil den blive behandlet som et underudsnit af\n"
-"hele søgestien, og hvis du indtaster en tekst med jokertegn, skal\n"
-"den stemme med hele stinavnet."
-
-#: gsearchtool/gsearchtool.c:744
-msgid "Locate file: "
-msgstr "Find fil: "
-
-#: gsearchtool/gsearchtool.c:781
-msgid "Full find (find)"
-msgstr "Grundig søgning (find)"
-
-#: gsearchtool/gsearchtool.c:783
-msgid "Quick find (locate)"
-msgstr "Hurtig søgning (locate)"
-
-#: gsearchtool/gsearchtool.c:804
-msgid "The Gnome Search Tool"
-msgstr "Gnome søgeværktøj"
-
-#: gsearchtool/gsearchtool.c:805
-msgid "(C) 1998,2000 the Free Software Foundation"
-msgstr "(C) 1998, 2000 Free Software Foundation"
-
-#: gsearchtool/gsearchtool.c:807
-msgid "Frontend to the unix find/grep/locate commands"
-msgstr "Grafisk grænseflade til unix's find/grep/locate-kommandoer"
-
-#: gsearchtool/gsearchtool.c:865
-msgid "Gnome Search Tool"
-msgstr "Gnome filsøgningsværktøj"
-
-#: gsearchtool/outdlg.c:51
-msgid "Cannot save file"
-msgstr "Kan ikke gemme fil"
-
-#: gsearchtool/outdlg.c:69 meat-grinder/meat-grinder.c:476
-msgid "Save Results"
-msgstr "Gem resultater"
-
-#: gsearchtool/outdlg.c:130
-msgid "Command mangled"
-msgstr "Kommando i uorden"
-
-#: gsearchtool/outdlg.c:159
-msgid "No command for this mime type"
-msgstr "Ingen kommando for denne mime-type."
-
-#: gtt/app.c:115 gtt/app.c:227
+#: src/app.c:116 src/app.c:228
 msgid "no project selected"
 msgstr "intet projekt er valgt"
 
-#: gtt/app.c:217
+#: src/app.c:218
 msgid "00:00"
 msgstr "00:00"
 
-#: gtt/app.c:259 mini-utils/gless/gless.c:423
+#: src/app.c:270
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -902,293 +33,368 @@ msgstr ""
 "Kunne ikke forstå geometrien (placering eller størrelse)\n"
 " der blev angivet på kommandolinjen"
 
-#: gtt/ctree.c:517
+#: src/ctree.c:517
 msgid "Total"
 msgstr "Total"
 
-#: gtt/ctree.c:519
+#: src/ctree.c:519
 msgid "Total time spent on this project."
 msgstr "Total tid brugt på dette projekt"
 
-#: gtt/ctree.c:524
+#: src/ctree.c:524
 msgid "Entry"
 msgstr "Indgang:"
 
-#: gtt/ctree.c:526
+#: src/ctree.c:526
 msgid "Time spent under the current diary entry."
 msgstr "Tid brugt under den aktuelle kalenderindgang."
 
-#: gtt/ctree.c:532 gtt/glade/interval_edit.glade.h:14
+#: src/ctree.c:532 glade/interval_edit.glade.h:14
 msgid "Today"
 msgstr "I dag"
 
-#: gtt/ctree.c:534
+#: src/ctree.c:534
 msgid "Time spent on this project today."
 msgstr "Tid brugt på dette projekt i dag."
 
-#: gtt/ctree.c:539
+#: src/ctree.c:539
 msgid "Week"
 msgstr "Uge"
 
-#: gtt/ctree.c:541
+#: src/ctree.c:541
 msgid "Time spent on this project this week."
 msgstr "Tid brugt på dette projekt denne uge."
 
-#: gtt/ctree.c:547
+#: src/ctree.c:547
 msgid "Month"
 msgstr "Måned"
 
-#: gtt/ctree.c:549
+#: src/ctree.c:549
 msgid "Time spent on this project this month."
 msgstr "Tid brugt på dette projekt denne måned."
 
-#: gtt/ctree.c:555
+#: src/ctree.c:555
 msgid "Year"
 msgstr "År"
 
-#: gtt/ctree.c:557
+#: src/ctree.c:557
 msgid "Time spent on this project this year."
 msgstr "Tid brugt på dette projekt dette år."
 
-#: gtt/ctree.c:563
+#: src/ctree.c:563
 msgid "Title"
 msgstr "Titel"
 
-#: gtt/ctree.c:564 gtt/menucmd.c:148
+#: src/ctree.c:564 src/menucmd.c:155
 msgid "Project Title"
 msgstr "Projekttitel"
 
-#: gtt/ctree.c:569 gtt/ctree.c:570 gtt/menucmd.c:149 stripchart/params.c:654
+#: src/ctree.c:569 src/ctree.c:570 src/menucmd.c:156
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: gtt/ctree.c:575 gtt/ghtml.c:95 gtt/ghtml.c:220
+#: src/ctree.c:575 src/ghtml.c:95 src/ghtml.c:220
 msgid "Diary Entry"
 msgstr "Indgang i kalender"
 
-#: gtt/ctree.c:577
+#: src/ctree.c:577
 msgid "The current diary entry"
 msgstr "Luk nuværende kalenderindgang"
 
-#: gtt/ctree.c:584
+#: src/ctree.c:582 src/ghtml.c:95 src/ghtml.c:267
+#: glade/interval_edit.glade.h:11
+msgid "Start"
+msgstr "Start"
+
+#: src/ctree.c:584
 msgid "Estimated Project Start Date"
 msgstr "Anslået startdato for projekt"
 
-#: gtt/ctree.c:589
+#: src/ctree.c:589
 msgid "End"
 msgstr "Slut"
 
-#: gtt/ctree.c:591
+#: src/ctree.c:591
 msgid "Estimated Project Completion Date"
 msgstr "Anslået slutdato for projekt"
 
-#: gtt/ctree.c:596
+#: src/ctree.c:596
 msgid "Due"
 msgstr "Forfald"
 
-#: gtt/ctree.c:598
+#: src/ctree.c:598
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
 "Forfaldsdato: Datoen for hvornår projektet absolut skal være færdiggjort."
 
-#: gtt/ctree.c:605 mini-utils/guname/info.c:61
+#: src/ctree.c:605
 msgid "Size"
 msgstr "Størrelse"
 
-#: gtt/ctree.c:607
+#: src/ctree.c:607
 msgid "Sizing: How much work it will take to finish this project."
 msgstr "Størrelse: Hvor meget arbejde det vil tage at afslutte dette projekt."
 
-#: gtt/ctree.c:613
+#: src/ctree.c:613
 msgid "Done"
 msgstr "Færdig"
 
-#: gtt/ctree.c:615
+#: src/ctree.c:615
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
 "Procent færdig: Hvor meget af dette projekt er blevet færdiggjort indtil nu."
 
-#: gtt/ctree.c:622
+#: src/ctree.c:622
 msgid "U"
 msgstr "H"
 
-#: gtt/ctree.c:624
+#: src/ctree.c:624
 msgid "Urgency: Does this project need to be done soon, done quickly?"
 msgstr "Hastende: Skal dette projekt afsluttes snart, eller udføres hurtigt?"
 
-#: gtt/ctree.c:630
+#: src/ctree.c:630
 msgid "Imp"
 msgstr "Vkt"
 
-#: gtt/ctree.c:632
+#: src/ctree.c:632
 msgid "Importance: How important is this project?"
 msgstr "Vigtighed: Hvor vigtigt er dette projekt?"
 
-#: gtt/ctree.c:638 mini-utils/idetool/idetool.c:317
-#: mini-utils/idetool/idetool.c:319
+#: src/ctree.c:638
 msgid "Status"
 msgstr "Status"
 
-#: gtt/ctree.c:640
+#: src/ctree.c:640
 msgid "The current status of this project."
 msgstr "Den aktuelle status for dette projekt"
 
-#: gtt/ctree.c:975 gtt/glade/project_properties.glade.h:25
+#: src/ctree.c:959
+msgid "3"
+msgstr "3"
+
+#: src/ctree.c:960
+msgid "2"
+msgstr "2"
+
+#: src/ctree.c:961
+msgid "1"
+msgstr "1"
+
+#: src/ctree.c:971 glade/project_properties.glade.h:25
 msgid "Low"
 msgstr "Lav"
 
-#: gtt/ctree.c:976
+#: src/ctree.c:972
 msgid "Med"
 msgstr "Mellem"
 
-#: gtt/ctree.c:977 gtt/glade/project_properties.glade.h:15
+#: src/ctree.c:973 glade/project_properties.glade.h:15
 msgid "High"
 msgstr "Høj"
 
-#: gtt/ctree.c:986 gtt/glade/project_properties.glade.h:29
+#: src/ctree.c:982 glade/project_properties.glade.h:29
 msgid "Not Started"
 msgstr "Ikke startet"
 
-#: gtt/ctree.c:987 gtt/glade/project_properties.glade.h:21
+#: src/ctree.c:983 glade/project_properties.glade.h:21
 msgid "In Progress"
 msgstr "I gang"
 
-#: gtt/ctree.c:988 gtt/glade/project_properties.glade.h:31
+#: src/ctree.c:984 glade/project_properties.glade.h:31
 msgid "On Hold"
 msgstr "Afventer"
 
-#: gtt/ctree.c:989 gtt/glade/project_properties.glade.h:9
+#: src/ctree.c:985 glade/project_properties.glade.h:9
 msgid "Cancelled"
 msgstr "Annulleret"
 
-#: gtt/ctree.c:990 gtt/glade/project_properties.glade.h:10
+#: src/ctree.c:986 glade/project_properties.glade.h:10
 msgid "Completed"
 msgstr "Færdiggjort"
 
-#: gtt/file-io.c:376
+#: src/err-throw.c:61
+#, fuzzy
+msgid "No Error"
+msgstr "Fejl"
+
+#: src/err-throw.c:65
+#, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:70
+#, c-format
+msgid ""
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:75
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GTT project data file\n"
+msgstr ""
+
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
+
+#: src/err-throw.c:87
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:92
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:97
+#, fuzzy, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr "Kan ikke oprette pid-fil!"
+
+#: src/file-io.c:376
 msgid "project %t started"
 msgstr "projektet %t er startet"
 
-#: gtt/file-io.c:379
+#: src/file-io.c:379
 msgid "stopped project %t"
 msgstr "stoppede projektet %t"
 
 #. Translators: This is a "time format", that is
 #. * format on how to print the elapsed time with
 #. * hours:minutes:seconds.
-#: gtt/file-io.c:677
+#: src/file-io.c:677
 #, c-format
 msgid "%d:%02d:%02d"
 msgstr "%d:%02d:%02d"
 
-#: gtt/ghtml.c:95 gtt/ghtml.c:273
+#: src/ghtml.c:95 src/ghtml.c:270 glade/interval_edit.glade.h:13
+msgid "Stop"
+msgstr "Stop"
+
+#: src/ghtml.c:95 src/ghtml.c:273
 msgid "Elapsed"
 msgstr "Påløbet"
 
-#: gtt/ghtml.c:113 gtt/ghtml.c:369 gtt/ghtml.c:378
+#: src/ghtml.c:113 src/ghtml.c:369 src/ghtml.c:378
 msgid "(empty)"
 msgstr "<tom>"
 
-#: gtt/ghtml.c:225
+#: src/ghtml.c:225
 msgid "Notes"
 msgstr "Noter"
 
-#: gtt/ghtml.c:229
+#: src/ghtml.c:229
 msgid "Task Time"
 msgstr "Opgavetid"
 
-#: gtt/ghtml.c:233
+#: src/ghtml.c:233
 msgid "Bill Status"
 msgstr "Status på fakturering"
 
-#: gtt/ghtml.c:237 gtt/ghtml.c:408 gtt/glade/task_properties.glade.h:4
+#: src/ghtml.c:237 src/ghtml.c:408 glade/task_properties.glade.h:4
 msgid "Billable"
 msgstr "Betalbart"
 
-#: gtt/ghtml.c:241
+#: src/ghtml.c:241
 msgid "Bill Rate"
 msgstr "Regningstarif"
 
-#: gtt/ghtml.c:245 mini-utils/gcolorsel/view-color-list.c:197
-#: mini-utils/guname/moreinfo.c:227
+#: src/ghtml.c:245
 msgid "Value"
 msgstr "Værdi"
 
-#: gtt/ghtml.c:249
+#: src/ghtml.c:249
 msgid "Billable Value"
 msgstr "Fakturerbar værdi"
 
-#: gtt/ghtml.c:253 gtt/ghtml.c:279
+#: src/ghtml.c:253 src/ghtml.c:279
 msgid "No Default Value"
 msgstr "Ingen standard-værdi"
 
-#: gtt/ghtml.c:276
+#: src/ghtml.c:276
 msgid "Start Time Fuzziness"
 msgstr "Usikkerhed på starttid"
 
-#: gtt/ghtml.c:392 gtt/glade/task_properties.glade.h:13
+#: src/ghtml.c:392 glade/task_properties.glade.h:13
 msgid "Hold"
 msgstr "Afvent"
 
-#: gtt/ghtml.c:395 gtt/glade/task_properties.glade.h:3
+#: src/ghtml.c:395 glade/task_properties.glade.h:3
 msgid "Bill"
 msgstr "Fakturér"
 
-#: gtt/ghtml.c:398 gtt/glade/task_properties.glade.h:21
+#: src/ghtml.c:398 glade/task_properties.glade.h:21
 msgid "Paid"
 msgstr "Betalt"
 
-#: gtt/ghtml.c:411 gtt/glade/task_properties.glade.h:17
+#: src/ghtml.c:411 glade/task_properties.glade.h:17
 msgid "Not Billable"
 msgstr "Ikke fakturerbart"
 
-#: gtt/ghtml.c:414 gtt/glade/task_properties.glade.h:16
+#: src/ghtml.c:414 glade/task_properties.glade.h:16
 msgid "No Charge"
 msgstr "Ingen regning"
 
-#: gtt/ghtml.c:424 gtt/glade/task_properties.glade.h:22
+#: src/ghtml.c:424 glade/task_properties.glade.h:22
 msgid "Regular"
 msgstr "Normal"
 
-#: gtt/ghtml.c:427 gtt/glade/task_properties.glade.h:20
+#: src/ghtml.c:427 glade/task_properties.glade.h:20
 msgid "Overtime"
 msgstr "Overarbejde"
 
-#: gtt/ghtml.c:430
+#: src/ghtml.c:430
 msgid "Double Overtime"
 msgstr "Dobbelt-overarbejde"
 
-#: gtt/ghtml.c:433 gtt/glade/task_properties.glade.h:12
+#: src/ghtml.c:433 glade/task_properties.glade.h:12
 msgid "Flat Fee"
 msgstr "Fast honorar"
 
-#: gtt/ghtml.c:453
+#: src/ghtml.c:453
 msgid "Error - Unknown"
 msgstr "Fejl - ukendt"
 
-#: gtt/ghtml.c:703
+#: src/ghtml.c:703
 msgid "unknown token: >>>>"
 msgstr "ukendt enhed: >>>>"
 
-#: gtt/journal.c:107
+#: src/journal.c:111
 msgid "Error 404 Not Found"
 msgstr "Fejl 404 Ikke fundet"
 
-#: gtt/journal.c:109
+#: src/journal.c:113
 #, c-format
 msgid "The file %s was not found."
 msgstr "Filen %s blev ikke fundet"
 
-#: gtt/journal.c:110
+#: src/journal.c:114
 msgid "(null)"
 msgstr "<nul>"
 
-#: gtt/journal.c:119
+#: src/journal.c:124
 msgid "Unkown Error"
 msgstr "Ukendt fejl"
 
-#: gtt/journal.c:168 gtt/plug-in.c:90
+#: src/journal.c:175 src/plug-in.c:90
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -1197,39 +403,39 @@ msgstr ""
 "Ude af stand til at åbne filen %s\n"
 "%s"
 
-#: gtt/journal.c:259 gtt/proj.c:716 gtt/proj.c:1539 gtt/proj.c:1667
-#: gtt/proj.c:1807
+#: src/journal.c:267 src/proj.c:716 src/proj.c:1539 src/proj.c:1667
+#: src/proj.c:1807
 msgid "New Diary Entry"
 msgstr "Ny indgang i kalender"
 
-#: gtt/journal.c:447
+#: src/journal.c:455
 msgid "Save HTML To File"
 msgstr "Gem HTML i fil"
 
-#: gtt/log.c:55
+#: src/log.c:55
 #, c-format
 msgid "Cannot open logfile %s for append"
 msgstr "Kan ikke åbne logfilen %s til tilføjelse"
 
 #. Translators: Format to use in the gtt logfile
-#: gtt/log.c:64
+#: src/log.c:64
 msgid "%b %d %H:%M:%S"
 msgstr "%d. %b %H:%M:%S"
 
-#: gtt/log.c:102
+#: src/log.c:102
 msgid "no description"
 msgstr "ingen beskrivelse"
 
-#: gtt/log.c:167 gtt/log.c:258
+#: src/log.c:167 src/log.c:258
 msgid "program started"
 msgstr "program startet"
 
 #. log_if_equal
-#: gtt/log.c:250
+#: src/log.c:250
 msgid "program exited"
 msgstr "program afsluttet"
 
-#: gtt/main.c:114
+#: src/main.c:114
 msgid ""
 "There seems to be another GTimeTracker running.\n"
 "Press OK to start GTimeTracker anyway, or press Cancel to quit."
@@ -1238,39 +444,43 @@ msgstr ""
 "Tryk O.k. for at starte GTimeTracker alligevel eller Annullér for at "
 "afslutte."
 
-#: gtt/main.c:126
+#: src/main.c:126
 msgid "Cannot create pid-file!"
 msgstr "Kan ikke oprette pid-fil!"
 
-#: gtt/main.c:219
+#: src/main.c:219
 msgid "Do you want to continue?"
 msgstr "Ønsker du at fortsætte?"
 
-#: gtt/main.c:222 gtt/main.c:275
+#: src/main.c:222 src/main.c:275
 msgid "Error"
 msgstr "Fejl"
 
-#: gtt/main.c:272
+#: src/main.c:272
 msgid "Shall I setup a new configuration?"
 msgstr "Skal jeg opsætte en ny konfiguration?"
 
-#: gtt/main.c:439
+#: src/main.c:440
 msgid "Specify geometry"
 msgstr "Angiv geometri"
 
-#: gtt/main.c:441
+#: src/main.c:440
+msgid "GEOMETRY"
+msgstr "GEOMETRI"
+
+#: src/main.c:442
 msgid "Select a project on startup"
 msgstr "Vælg projekt ved opstart"
 
-#: gtt/main.c:441
+#: src/main.c:442
 msgid "PROJECT"
 msgstr "PROJEKT"
 
-#: gtt/main.c:481 gtt/menucmd.c:48 gtt/menucmd.c:204 gtt/menucmd.c:240
+#: src/main.c:483 src/menucmd.c:48 src/menucmd.c:211 src/menucmd.c:247
 msgid "Warning"
 msgstr "Advarsel"
 
-#: gtt/menucmd.c:85
+#: src/menucmd.c:89
 msgid ""
 "GTimeTracker is a combination stop-watch, diary, consultant billing system "
 "and project manager.  You can measure the amount of time you spend on a "
@@ -1282,151 +492,151 @@ msgstr ""
 "en opgave, tilknytte et notat til det, sætte en faktureringspris, udskrive "
 "en faktura, samt følge status for andre projekter."
 
-#: gtt/menucmd.c:142
+#: src/menucmd.c:149
 msgid "New Project..."
 msgstr "Nyt projekt..."
 
-#: gtt/menucmd.c:224 gtt/toolbar.c:167
+#: src/menucmd.c:231 src/toolbar.c:179
 msgid "Reload Configuration File"
 msgstr "Genindlæs konfigurationsfil"
 
-#: gtt/menucmd.c:225
+#: src/menucmd.c:232
 msgid "Do you really want to reload the configuration file?"
 msgstr "Vil du virkelig genindlæse konfigurationsfilen?"
 
-#: gtt/menucmd.c:260
+#: src/menucmd.c:267
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Filen %s eksisterer allerede, overskriv den?"
 
-#: gtt/menucmd.c:271
+#: src/menucmd.c:278
 msgid "File cannot be written"
 msgstr "Fil kan ikke skrives"
 
-#: gtt/menucmd.c:291
+#: src/menucmd.c:298
 msgid "Export Current State"
 msgstr "Eksportér nuværende tilstand"
 
-#: gtt/menus.c:33
+#: src/menus.c:33
 msgid "_New Project..."
 msgstr "_Nyt projekt..."
 
-#: gtt/menus.c:36
+#: src/menus.c:36
 msgid "_Reload Configuration File"
 msgstr "_Genindlæs konfigurationsfil"
 
-#: gtt/menus.c:40
+#: src/menus.c:40
 msgid "_Save Configuration File"
 msgstr "_Gem konfigurationsfil"
 
-#: gtt/menus.c:44
+#: src/menus.c:44
 msgid "_Export Current State"
 msgstr "_Eksportér nuværende tilstand"
 
-#: gtt/menus.c:63 gtt/menus.c:173
+#: src/menus.c:63 src/menus.c:173
 msgid "Clear _Daily Counter"
 msgstr "Nulstil _daglig tæller"
 
-#: gtt/menus.c:64 gtt/menus.c:174
+#: src/menus.c:64 src/menus.c:174
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "Nulstil tidstæller for i dag ved at slette dagens tidslogninger"
 
-#: gtt/menus.c:68 gtt/menus.c:87 gtt/menus.c:156
+#: src/menus.c:68 src/menus.c:87 src/menus.c:156
 msgid "_Journal..."
 msgstr "_Journal..."
 
-#: gtt/menus.c:69 gtt/menus.c:88 gtt/menus.c:157
+#: src/menus.c:69 src/menus.c:88 src/menus.c:157
 msgid "Show the timesheet journal for this project"
 msgstr "Vis journalen med tidspunkter for dette projekt"
 
-#: gtt/menus.c:72 gtt/menus.c:160
+#: src/menus.c:72 src/menus.c:160
 msgid "New Diary _Entry"
 msgstr "Ny _indgang i kalender"
 
-#: gtt/menus.c:73 gtt/menus.c:161
+#: src/menus.c:73 src/menus.c:161
 msgid "Change the current task for this project"
 msgstr "Ændr den igangværende opgave for dette projekt"
 
-#: gtt/menus.c:91
+#: src/menus.c:91
 msgid "_All Journal..."
 msgstr "_Hele journalen..."
 
-#: gtt/menus.c:92
+#: src/menus.c:92
 msgid "Show the verbose timesheet journal for this project"
 msgstr "Vis den udførlige tidsjournal for dette projekt"
 
-#: gtt/menus.c:95
+#: src/menus.c:95
 msgid "_Invoice..."
 msgstr "_Fakturér..."
 
-#: gtt/menus.c:96
+#: src/menus.c:96
 msgid "Show a sample invoice for this project"
 msgstr "Vis et eksempel på en faktura for dette projekt."
 
-#: gtt/menus.c:99
+#: src/menus.c:99
 msgid "_Primer..."
 msgstr "_Introduktion..."
 
-#: gtt/menus.c:100
+#: src/menus.c:100
 msgid "Show a sample introductory primer for designing custom reports"
 msgstr "Viser et eksempel på en introduktion til at designe kunderapporter"
 
-#: gtt/menus.c:103
+#: src/menus.c:103
 msgid "_New Report..."
 msgstr "_Ny rapport..."
 
-#: gtt/menus.c:104
+#: src/menus.c:104
 msgid "Define a path to a new GTT phtml report file"
 msgstr "Angiv en sti til en ny GTT phtml rapportfil"
 
-#: gtt/menus.c:115
+#: src/menus.c:115
 msgid "St_art"
 msgstr "St_art"
 
-#: gtt/menus.c:116
+#: src/menus.c:116
 msgid "Start the timer running"
 msgstr "Start med at lade tidstæller køre"
 
-#: gtt/menus.c:121
+#: src/menus.c:121
 msgid "Sto_p"
 msgstr "Sto_p"
 
-#: gtt/menus.c:122
+#: src/menus.c:122
 msgid "Stop the timer"
 msgstr "Stop med at lade tidstæller køre"
 
-#: gtt/menus.c:127
+#: src/menus.c:127
 msgid "_Timer Running"
 msgstr "_Tidstæller kører"
 
-#: gtt/menus.c:146
+#: src/menus.c:146
 msgid "_Reports"
 msgstr "_Rapporter"
 
-#: gtt/menus.c:147
+#: src/menus.c:147
 msgid "_Timer"
 msgstr "_Tidstæller"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: gtt/menus.c:244
+#: src/menus.c:244
 msgid "Reports"
 msgstr "Rapporter"
 
-#: gtt/plug-in.c:121
+#: src/plug-in.c:121
 msgid "Reports/<Separator>"
 msgstr "Rapporter/<Adskiller>"
 
-#: gtt/proj.c:697
+#: src/proj.c:697
 msgid "Old GTT Tasks"
 msgstr "Gammel GTT opgave"
 
-#: gtt/props-proj.c:94 gtt/props-proj.c:95 gtt/props-task.c:75
-#: gtt/props-task.c:76
+#: src/props-proj.c:94 src/props-proj.c:95 src/props-task.c:75
+#: src/props-task.c:76
 msgid "empty"
 msgstr "tom"
 
-#: gtt/timer.c:117
+#: src/timer.c:117
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle\n"
@@ -1441,230 +651,204 @@ msgstr ""
 "er blevet stoppet.\n"
 "Vil du genstarte det?"
 
-#: gtt/timer.c:125
+#: src/timer.c:125
 msgid "System Idle"
 msgstr "Systemet stille"
 
-#. Note to translators: just skip the `[GTT]'
-#: gtt/toolbar.c:159
-msgid "[GTT]New"
-msgstr "[GTT]Ny"
-
-#: gtt/toolbar.c:160
+#: src/toolbar.c:169
 msgid "Create a New Project..."
 msgstr "Opret et nyt projekt..."
 
-#: gtt/toolbar.c:166
-msgid "Reload"
-msgstr "Genindlæs"
-
-#: gtt/glade/journal.glade.h:7 gtt/toolbar.c:170 stripchart/params.c:939
-msgid "Save"
-msgstr "Gem"
-
-#: gtt/toolbar.c:171
+#: src/toolbar.c:184
 msgid "Save Configuration File"
 msgstr "Gem konfigurationsfil"
 
-#: gtt/toolbar.c:178
+#: src/toolbar.c:194
 msgid "Cut Selected Project"
 msgstr "Udklip valgt projekt"
 
-#: gtt/toolbar.c:182
+#: src/toolbar.c:199
 msgid "Copy Selected Project"
 msgstr "Kopiér valgt projekt"
 
-#: gtt/toolbar.c:186
+#: src/toolbar.c:204
 msgid "Paste Project"
 msgstr "Indsæt projekt"
 
-#: gtt/glade/journal.glade.h:2 gtt/toolbar.c:193
+#: src/toolbar.c:213 glade/journal.glade.h:2
 msgid "Journal"
 msgstr "Journal"
 
-#: gtt/toolbar.c:194
+#: src/toolbar.c:214
 msgid "View and Edit Timestamp Logs"
 msgstr "Se og redigér logger af tidsstempler"
 
-#: gtt/toolbar.c:199
-msgid "Props"
-msgstr "Egnsk"
-
-#: gtt/toolbar.c:200
+#: src/toolbar.c:223
 msgid "Edit Project Properties..."
 msgstr "Redigér projekt-egenskaber..."
 
-#: gtt/toolbar.c:204
+#: src/toolbar.c:230
 msgid "Timer"
 msgstr "Tidstæller"
 
-#: gtt/toolbar.c:205
+#: src/toolbar.c:231
 msgid "Start/Stop Timer"
 msgstr "Start/stop tidstæller"
 
-#: gtt/toolbar.c:211 logview/calendar.c:112 logview/logview.c:107
+#: src/toolbar.c:241
 msgid "Calendar"
 msgstr "Kalender"
 
-#: gtt/toolbar.c:212
+#: src/toolbar.c:242
 msgid "View Calendar"
 msgstr "Vis kalender"
 
-#: gtt/toolbar.c:225
-msgid "Prefs"
-msgstr "Opsæt"
-
-#: gtt/toolbar.c:226
+#: src/toolbar.c:262
 msgid "Edit Preferences..."
 msgstr "Redigér opsætning..."
 
-#: gtt/toolbar.c:230
-msgid "Manual"
-msgstr "Manuelt"
-
-#: gtt/toolbar.c:231
+#: src/toolbar.c:270
 msgid "User's Guide and Manual"
 msgstr "Brugervejledning og -håndbog"
 
-#: gtt/toolbar.c:236
-msgid "Quit"
-msgstr "Afslut"
-
-#: gtt/toolbar.c:236
-msgid "Quit GTimeTracker"
+#: src/toolbar.c:278
+#, fuzzy
+msgid "Quit Gnome TimeTracker"
 msgstr "Afslut tidsforbrugværktøjet"
 
-#: gtt/glade/interval_edit.glade.h:1
+#: glade/interval_edit.glade.h:1
 msgid "1 Hour"
 msgstr "1 time"
 
-#: gtt/glade/interval_edit.glade.h:2
+#: glade/interval_edit.glade.h:2
 msgid "10 Min"
 msgstr "10 min"
 
-#: gtt/glade/interval_edit.glade.h:3
+#: glade/interval_edit.glade.h:3
 msgid "15 Min"
 msgstr "15 Min"
 
-#: gtt/glade/interval_edit.glade.h:4
+#: glade/interval_edit.glade.h:4
 msgid "2 Hours"
 msgstr "2 timer"
 
-#: gtt/glade/interval_edit.glade.h:5
+#: glade/interval_edit.glade.h:5
 msgid "20 Min"
 msgstr "20 min"
 
-#: gtt/glade/interval_edit.glade.h:6
+#: glade/interval_edit.glade.h:6
 msgid "3 Hours"
 msgstr "3 timer"
 
-#: gtt/glade/interval_edit.glade.h:7
+#: glade/interval_edit.glade.h:7
 msgid "30 Min"
 msgstr "30 min"
 
-#: gtt/glade/interval_edit.glade.h:8
+#: glade/interval_edit.glade.h:8
 msgid "5 Min"
 msgstr "5 min"
 
-#: gtt/glade/interval_edit.glade.h:9
+#: glade/interval_edit.glade.h:9
 msgid "Exact Time"
 msgstr "Præcis tid"
 
-#: gtt/glade/interval_edit.glade.h:10
+#: glade/interval_edit.glade.h:10
 msgid "Set how Uncertain the Start Time Is"
 msgstr "Sæt hvor usikker starttiden er"
 
-#: gtt/glade/interval_edit.glade.h:12
+#: glade/interval_edit.glade.h:12
 msgid "Start Fuzz"
 msgstr "Usikkerhed på start"
 
-#: gtt/glade/interval_popup.glade.h:1
+#: glade/interval_popup.glade.h:1
 msgid "Add a new time interval."
 msgstr "Indsæt et nyt tidsinterval."
 
-#: gtt/glade/interval_popup.glade.h:2
+#: glade/interval_popup.glade.h:2
 msgid "Delete Interval"
 msgstr "Slet interval"
 
-#: gtt/glade/interval_popup.glade.h:3
+#: glade/interval_popup.glade.h:3
 msgid "Delete This Interval"
 msgstr "Slet dette opdateringsinterval"
 
-#: gtt/glade/interval_popup.glade.h:4
+#: glade/interval_popup.glade.h:4
 msgid "Edit Interval"
 msgstr "Redigér intervaller"
 
-#: gtt/glade/interval_popup.glade.h:5
+#: glade/interval_popup.glade.h:5
 msgid "Edit the Start & Stop Times"
 msgstr "Redigér Start/stop tider"
 
-#: gtt/glade/interval_popup.glade.h:6
+#: glade/interval_popup.glade.h:6
 msgid "Insert Diary Entry"
 msgstr "Indsæt kalenderindgang"
 
-#: gtt/glade/interval_popup.glade.h:7
+#: glade/interval_popup.glade.h:7
 msgid "Insert a new diary entry above this time interval."
 msgstr "Indsæt en ny kalenderindgang over dette tidsinterval."
 
-#: gtt/glade/interval_popup.glade.h:8
+#: glade/interval_popup.glade.h:8
 msgid "Merge Down"
 msgstr "Flet ned"
 
-#: gtt/glade/interval_popup.glade.h:9
+#: glade/interval_popup.glade.h:9
 msgid "Merge Into Interval Above"
 msgstr "Flet ind i interval ovenover"
 
-#: gtt/glade/interval_popup.glade.h:10
+#: glade/interval_popup.glade.h:10
 msgid "Merge Into Interval Below"
 msgstr "Flet ind i interval nedenunder"
 
-#: gtt/glade/interval_popup.glade.h:11
+#: glade/interval_popup.glade.h:11
 msgid "Merge Up"
 msgstr "Flet op"
 
-#: gtt/glade/interval_popup.glade.h:12
+#: glade/interval_popup.glade.h:12
 msgid "New Interval"
 msgstr "Nyt interval"
 
-#: gtt/glade/interval_popup.glade.h:13
+#: glade/interval_popup.glade.h:13
 msgid "Paste Diary Entry"
 msgstr "Indsæt indgang i kalender"
 
-#: gtt/glade/interval_popup.glade.h:14 gtt/glade/task_popup.glade.h:8
+#: glade/interval_popup.glade.h:14 glade/task_popup.glade.h:8
 msgid "Paste a previously cut diary entry."
 msgstr "Indsæt en tidligere udklippet kalenderindgang."
 
-#: gtt/glade/journal.glade.h:1 mini-utils/gcolorsel/menus.c:89
-#: mini-utils/gcolorsel/menus.c:913 mini-utils/gshutdown/gshutdown.c:155
-#: mini-utils/gshutdown/gshutdown.c:631 stripchart/params.c:953
+#: glade/journal.glade.h:1
 msgid "Close"
 msgstr "Luk"
 
-#: gtt/glade/journal.glade.h:3
+#: glade/journal.glade.h:3
 msgid "New File"
 msgstr "Ny fil"
 
-#: gtt/glade/journal.glade.h:4
+#: glade/journal.glade.h:4
 msgid "Open File"
 msgstr "Åbn fil"
 
-#: gtt/glade/journal.glade.h:5
+#: glade/journal.glade.h:5
 msgid "Print"
 msgstr "Udskriv"
 
-#: gtt/glade/journal.glade.h:6
+#: glade/journal.glade.h:6
 msgid "Refresh"
 msgstr "Genopfrisk"
 
-#: gtt/glade/journal.glade.h:8
+#: glade/journal.glade.h:7
+msgid "Save"
+msgstr "Gem"
+
+#: glade/journal.glade.h:8
 msgid "Save File"
 msgstr "Gem fil"
 
-#: gtt/glade/not-implemented.glade.h:1
+#: glade/not-implemented.glade.h:1
 msgid "Information"
 msgstr "Information"
 
-#: gtt/glade/not-implemented.glade.h:2
+#: glade/not-implemented.glade.h:2
 msgid ""
 "This function is not yet implemented!\n"
 "Coming Soon, I hope!"
@@ -1672,29 +856,29 @@ msgstr ""
 "Denne funktion er ikke implementeret endnu!\n"
 "Jeg håber det kommer snart!"
 
-#: gtt/glade/prefs.glade.h:1
+#: glade/prefs.glade.h:1
 msgid "Display"
 msgstr "Vis"
 
-#: gtt/glade/prefs.glade.h:2
+#: glade/prefs.glade.h:2
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
 "Indtast en skalkommando som skal udføres når ingen projekter er aktive."
 
-#: gtt/glade/prefs.glade.h:3
+#: glade/prefs.glade.h:3
 msgid "Enter a shell command to be executed whenever projects are switched."
 msgstr ""
 "Indtast en skalkommando som skal udføres når der skiftes mellem projekter."
 
-#: gtt/glade/prefs.glade.h:4
+#: glade/prefs.glade.h:4
 msgid "Entry Start:"
 msgstr "Elementbegyndelse:"
 
-#: gtt/glade/prefs.glade.h:5
+#: glade/prefs.glade.h:5
 msgid "Entry Stop:"
 msgstr "Elementslutning:"
 
-#: gtt/glade/prefs.glade.h:7
+#: glade/prefs.glade.h:7
 #, no-c-format
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
@@ -1703,7 +887,7 @@ msgstr ""
 "Indgang der vil blive logget når et projekt starter. Brug %t for "
 "projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
 
-#: gtt/glade/prefs.glade.h:9
+#: glade/prefs.glade.h:9
 #, no-c-format
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
@@ -1712,179 +896,179 @@ msgstr ""
 "Indgang der vil blive logget når et projekt stopper. Brug %t for "
 "projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
 
-#: gtt/glade/prefs.glade.h:10
+#: glade/prefs.glade.h:10
 msgid "Fields"
 msgstr "Felter"
 
-#: gtt/glade/prefs.glade.h:11
+#: glade/prefs.glade.h:11
 msgid "Filename:"
 msgstr "Filnavn:"
 
-#: gtt/glade/prefs.glade.h:12
+#: glade/prefs.glade.h:12
 msgid "Idle Seconds:"
 msgstr "Stille sekunder:"
 
-#: gtt/glade/prefs.glade.h:13
+#: glade/prefs.glade.h:13
 msgid "Inactivity Timeout"
 msgstr "Tidsudløb for inaktivitet"
 
-#: gtt/glade/prefs.glade.h:14
+#: glade/prefs.glade.h:14
 msgid "Logfile"
 msgstr "Logfil"
 
-#: gtt/glade/prefs.glade.h:15
+#: glade/prefs.glade.h:15
 msgid "Min Recorded:"
 msgstr "Min nedskrevet:"
 
-#: gtt/glade/prefs.glade.h:16
+#: glade/prefs.glade.h:16
 msgid "Misc"
 msgstr "Divs."
 
-#: gtt/glade/prefs.glade.h:17
+#: glade/prefs.glade.h:17
 msgid "No Project Command:"
 msgstr "Ingen projektkommando:"
 
-#: gtt/glade/prefs.glade.h:18
+#: glade/prefs.glade.h:18
 msgid "Project List Display"
 msgstr "Visning af projektliste"
 
-#: gtt/glade/prefs.glade.h:19
+#: glade/prefs.glade.h:19
 msgid "Shell"
 msgstr "Skal"
 
-#: gtt/glade/prefs.glade.h:20
+#: glade/prefs.glade.h:20
 msgid "Shell Commands"
 msgstr "Skalkommandoer"
 
-#: gtt/glade/prefs.glade.h:21
+#: glade/prefs.glade.h:21
 msgid "Show Current Diary Entry"
 msgstr "Vis aktuelle kalenderindgang"
 
-#: gtt/glade/prefs.glade.h:22
+#: glade/prefs.glade.h:22
 msgid "Show Estimated Effort"
 msgstr "Vis anslået indsats"
 
-#: gtt/glade/prefs.glade.h:23
+#: glade/prefs.glade.h:23
 msgid "Show Percent Complete"
 msgstr "Vis procent færdiggjort"
 
-#: gtt/glade/prefs.glade.h:24
+#: glade/prefs.glade.h:24
 msgid "Show Planned Project End Date"
 msgstr "Vis planlagt slutdato for projekt"
 
-#: gtt/glade/prefs.glade.h:25
+#: glade/prefs.glade.h:25
 msgid "Show Planned Project Start Date"
 msgstr "Vis planlagt startdato for projekt"
 
-#: gtt/glade/prefs.glade.h:26
+#: glade/prefs.glade.h:26
 msgid "Show Project Description"
 msgstr "Vis projektbeskrivelse"
 
-#: gtt/glade/prefs.glade.h:27
+#: glade/prefs.glade.h:27
 msgid "Show Project Due Date"
 msgstr "Vis projektafleveringsdato"
 
-#: gtt/glade/prefs.glade.h:28
+#: glade/prefs.glade.h:28
 msgid "Show Project Importance"
 msgstr "Vis projektvigtighed"
 
-#: gtt/glade/prefs.glade.h:29
+#: glade/prefs.glade.h:29
 msgid "Show Project Status"
 msgstr "Vis projektstatus"
 
-#: gtt/glade/prefs.glade.h:30
+#: glade/prefs.glade.h:30
 msgid "Show Project Urgency"
 msgstr "Vis projekthastende"
 
-#: gtt/glade/prefs.glade.h:31
+#: glade/prefs.glade.h:31
 msgid "Show Seconds"
 msgstr "Vis sekunder"
 
-#: gtt/glade/prefs.glade.h:32
+#: glade/prefs.glade.h:32
 msgid "Show Status Bar"
 msgstr "Vis statuslinje"
 
-#: gtt/glade/prefs.glade.h:33
+#: glade/prefs.glade.h:33
 msgid "Show Sub-Projects"
 msgstr "Vis underprojekter"
 
-#: gtt/glade/prefs.glade.h:34
+#: glade/prefs.glade.h:34
 msgid "Show Table Header"
 msgstr "Vis tabelhoved"
 
-#: gtt/glade/prefs.glade.h:35
+#: glade/prefs.glade.h:35
 msgid "Show Time For The Current Diary Entry"
 msgstr "Vis tid for aktuelle kalenderindgang"
 
-#: gtt/glade/prefs.glade.h:36
+#: glade/prefs.glade.h:36
 msgid "Show Time This Month"
 msgstr "Vis tid i denne måned"
 
-#: gtt/glade/prefs.glade.h:37
+#: glade/prefs.glade.h:37
 msgid "Show Time This Week"
 msgstr "Vis tid i denne uge"
 
-#: gtt/glade/prefs.glade.h:38
+#: glade/prefs.glade.h:38
 msgid "Show Time This Year"
 msgstr "Vis tid i dette år"
 
-#: gtt/glade/prefs.glade.h:39
+#: glade/prefs.glade.h:39
 msgid "Show Time Today"
 msgstr "Vis tid i dag"
 
-#: gtt/glade/prefs.glade.h:40
+#: glade/prefs.glade.h:40
 msgid "Show Toolbar Icons"
 msgstr "Vis ikoner på værktøjslinjen"
 
-#: gtt/glade/prefs.glade.h:41
+#: glade/prefs.glade.h:41
 msgid "Show Toolbar Texts"
 msgstr "Vis tekst på værktøjslinjen"
 
-#: gtt/glade/prefs.glade.h:42
+#: glade/prefs.glade.h:42
 msgid "Show Tooltips"
 msgstr "Vis hjælpetekster"
 
-#: gtt/glade/prefs.glade.h:43
+#: glade/prefs.glade.h:43
 msgid "Show Total Time Ever"
 msgstr "Vis total tid ialt"
 
-#: gtt/glade/prefs.glade.h:44
+#: glade/prefs.glade.h:44
 msgid "Show `Cut', `Copy', `Paste'"
 msgstr "Vis 'Klip', 'Kopiér', 'Indsæt'"
 
-#: gtt/glade/prefs.glade.h:45
+#: glade/prefs.glade.h:45
 msgid "Show `Help'"
 msgstr "Vis 'Hjælp'"
 
-#: gtt/glade/prefs.glade.h:46
+#: glade/prefs.glade.h:46
 msgid "Show `Journal'"
 msgstr "Vis 'Journal'"
 
-#: gtt/glade/prefs.glade.h:47
+#: glade/prefs.glade.h:47
 msgid "Show `New'"
 msgstr "Vis 'Ny'"
 
-#: gtt/glade/prefs.glade.h:48
+#: glade/prefs.glade.h:48
 msgid "Show `Preferences'"
 msgstr "Vis 'Opsætning'"
 
-#: gtt/glade/prefs.glade.h:49
+#: glade/prefs.glade.h:49
 msgid "Show `Properties'"
 msgstr "Vis 'Egenskaber'"
 
-#: gtt/glade/prefs.glade.h:50
+#: glade/prefs.glade.h:50
 msgid "Show `Quit'"
 msgstr "Vis 'Afslut'"
 
-#: gtt/glade/prefs.glade.h:51
+#: glade/prefs.glade.h:51
 msgid "Show `Save', `Reload'"
 msgstr "Vis 'Gem', 'Genindlæs'"
 
-#: gtt/glade/prefs.glade.h:52
+#: glade/prefs.glade.h:52
 msgid "Show `Timer'"
 msgstr "Vis 'Tidstæller'"
 
-#: gtt/glade/prefs.glade.h:53
+#: glade/prefs.glade.h:53
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
@@ -1892,11 +1076,11 @@ msgstr ""
 "Vis 'szing', dvs. den anslåede mængde arbejde, det vil tage at udføre dette "
 "projekt."
 
-#: gtt/glade/prefs.glade.h:54
+#: glade/prefs.glade.h:54
 msgid "Switch Project Command:"
 msgstr "Skift projektkommando:"
 
-#: gtt/glade/prefs.glade.h:55
+#: glade/prefs.glade.h:55
 msgid ""
 "Switches between projects that happen faster than this will not be logged "
 "(enter the number of seconds)"
@@ -1904,7 +1088,7 @@ msgstr ""
 "Skift mellem projekter som sker hurtigere end dette, vil ikke blive logget "
 "(indtast antal sekunder)"
 
-#: gtt/glade/prefs.glade.h:56
+#: glade/prefs.glade.h:56
 msgid ""
 "The current active project will be made inactive after there has been no "
 "keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
@@ -1913,52 +1097,52 @@ msgstr ""
 "nogen aktivitet på tastatur eller mus i dette antal sekunder. Sæt til -1 for "
 "at deaktivere."
 
-#: gtt/glade/prefs.glade.h:57
+#: glade/prefs.glade.h:57
 msgid "Toolbar"
 msgstr "Værktøjslinje"
 
-#: gtt/glade/prefs.glade.h:58
+#: glade/prefs.glade.h:58
 msgid "Toolbar Segments"
 msgstr "Værktøjslinjesegmenter"
 
-#: gtt/glade/prefs.glade.h:59
+#: glade/prefs.glade.h:59
 msgid "Use Logfile"
 msgstr "Brug logfil"
 
-#: gtt/glade/prefs.glade.h:60
+#: glade/prefs.glade.h:60
 msgid "View Project Fields"
 msgstr "Vis projektfelter"
 
-#: gtt/glade/project_properties.glade.h:1
+#: glade/project_properties.glade.h:1
 msgid "        "
 msgstr "        "
 
-#: gtt/glade/project_properties.glade.h:2
+#: glade/project_properties.glade.h:2
 msgid "            "
 msgstr "            "
 
-#: gtt/glade/project_properties.glade.h:3
+#: glade/project_properties.glade.h:3
 msgid "                        "
 msgstr "                        "
 
-#: gtt/glade/project_properties.glade.h:5
+#: glade/project_properties.glade.h:5
 #, no-c-format
 msgid "% Complete"
 msgstr "% færdig"
 
-#: gtt/glade/project_properties.glade.h:6
+#: glade/project_properties.glade.h:6
 msgid "A title to assign to this project"
 msgstr "En titel til dette projekt"
 
-#: gtt/glade/project_properties.glade.h:7
+#: glade/project_properties.glade.h:7
 msgid "Auto-merge Gap:"
 msgstr "Flet automatisk hul:"
 
-#: gtt/glade/project_properties.glade.h:8
+#: glade/project_properties.glade.h:8
 msgid "Auto-merge Interval:"
 msgstr "Interval for automatisk indfleting:"
 
-#: gtt/glade/project_properties.glade.h:11
+#: glade/project_properties.glade.h:11
 msgid ""
 "Does this item need immediate attention? Note that some urgent tasks might "
 "not be important.  For example, Bill may want you to answer his email today, "
@@ -1968,23 +1152,23 @@ msgstr ""
 "opgaver ikke behøver at være vigtige. Fx ønsker Peter at du svarer på hans e-"
 "post i dag, men du har måske bedre ting at foretage dig i dag."
 
-#: gtt/glade/project_properties.glade.h:12
+#: glade/project_properties.glade.h:12
 msgid "Double-Overtime Rate:"
 msgstr "Tarif for dobbelt-overarbejde:"
 
-#: gtt/glade/project_properties.glade.h:13
+#: glade/project_properties.glade.h:13
 msgid "Due Date:"
 msgstr "Afleveringsdato:"
 
-#: gtt/glade/project_properties.glade.h:14
+#: glade/project_properties.glade.h:14
 msgid "Flat Fee:"
 msgstr "Fast honorar:"
 
-#: gtt/glade/project_properties.glade.h:16
+#: glade/project_properties.glade.h:16
 msgid "Hours to Finish:"
 msgstr "Timer til afslutning:"
 
-#: gtt/glade/project_properties.glade.h:17
+#: glade/project_properties.glade.h:17
 msgid ""
 "How important is it to perform this task?  Not everything important is "
 "urgent.  For example, it is important to file a tax return every year, but "
@@ -1994,7 +1178,7 @@ msgstr ""
 "er det vigtigt at indsende selvangivelse hvert år, men du har masser af tid "
 "til at komme igang med dette."
 
-#: gtt/glade/project_properties.glade.h:18
+#: glade/project_properties.glade.h:18
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
@@ -2002,7 +1186,7 @@ msgstr ""
 "Hvis hullet mellem intervaller er mindre end dette, vil intervallerne blive "
 "flettet sammen."
 
-#: gtt/glade/project_properties.glade.h:19
+#: glade/project_properties.glade.h:19
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
@@ -2010,194 +1194,192 @@ msgstr ""
 "Hvis projektet bliver betalt med én pris, lige meget hvor lang tid det "
 "tager, så indtast honoraret her."
 
-#: gtt/glade/project_properties.glade.h:20
+#: glade/project_properties.glade.h:20
 msgid "Importance:"
 msgstr "Vigtighed:"
 
-#: gtt/glade/project_properties.glade.h:22
+#: glade/project_properties.glade.h:22
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
-msgstr ""
-"Interne noter om projektet, der ikke vil blive skrevet på en faktura."
+msgstr "Interne noter om projektet, der ikke vil blive skrevet på en faktura."
 
-#: gtt/glade/project_properties.glade.h:23
+#: glade/project_properties.glade.h:23
 msgid "Intervals"
 msgstr "Intervaller"
 
-#: gtt/glade/project_properties.glade.h:24
+#: glade/project_properties.glade.h:24
 msgid "Intervals smaller than this will be discarded"
 msgstr "Intervaller mindre end dette vil ikke blive behandlet"
 
-#: gtt/glade/project_properties.glade.h:26
+#: glade/project_properties.glade.h:26
 msgid "Medium"
 msgstr "Mellem"
 
-#: gtt/glade/project_properties.glade.h:27
+#: glade/project_properties.glade.h:27
 msgid "Minimum Interval: "
 msgstr "Minimum interval: "
 
-#: gtt/glade/project_properties.glade.h:28
+#: glade/project_properties.glade.h:28
 msgid "Not Set"
 msgstr "Ikke sat"
 
-#: gtt/glade/project_properties.glade.h:30
-#: gtt/glade/task_properties.glade.h:18
+#: glade/project_properties.glade.h:30 glade/task_properties.glade.h:18
 msgid "Notes:"
 msgstr "Noter:"
 
-#: gtt/glade/project_properties.glade.h:32
+#: glade/project_properties.glade.h:32
 msgid "Overtime Rate:"
 msgstr "Tarif for overarbejde:"
 
-#: gtt/glade/project_properties.glade.h:33
+#: glade/project_properties.glade.h:33
 msgid "Planned Finish:"
 msgstr "Planlagt færdiggørelse:"
 
-#: gtt/glade/project_properties.glade.h:34
+#: glade/project_properties.glade.h:34
 msgid "Planned Start:"
 msgstr "Planlagt start:"
 
-#: gtt/glade/project_properties.glade.h:35
+#: glade/project_properties.glade.h:35
 msgid "Planning"
 msgstr "Planlægning"
 
-#: gtt/glade/project_properties.glade.h:36
+#: glade/project_properties.glade.h:36
 msgid "Project"
 msgstr "Projekt"
 
-#: gtt/glade/project_properties.glade.h:37
+#: glade/project_properties.glade.h:37
 msgid "Project Description:"
 msgstr "Projektbeskrivelse:"
 
-#: gtt/glade/project_properties.glade.h:38
+#: glade/project_properties.glade.h:38
 msgid "Project Title:"
 msgstr "Projekttitel:"
 
-#: gtt/glade/project_properties.glade.h:39
+#: glade/project_properties.glade.h:39
 msgid "Rates"
 msgstr "Tariffer"
 
-#: gtt/glade/project_properties.glade.h:40
+#: glade/project_properties.glade.h:40
 msgid "Regular Rate:"
 msgstr "Normaltarif:"
 
-#: gtt/glade/project_properties.glade.h:41
+#: glade/project_properties.glade.h:41
 msgid "Status:"
 msgstr "Status:"
 
-#: gtt/glade/project_properties.glade.h:42
+#: glade/project_properties.glade.h:42
 msgid "The dollars per hour charged for overtime work on this project."
 msgstr "Kroner pr time for overarbejde på dette projekt."
 
-#: gtt/glade/project_properties.glade.h:43
+#: glade/project_properties.glade.h:43
 msgid "The dollars per hour normally charged for this project."
 msgstr "Kroner pr time for normalt arbejde på dette projekt."
 
-#: gtt/glade/project_properties.glade.h:44
+#: glade/project_properties.glade.h:44
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
 msgstr "Tarif for ekstra overarbejde (overarbejde på søndage osv.)"
 
-#: gtt/glade/project_properties.glade.h:45
+#: glade/project_properties.glade.h:45
 msgid "Time below which an interval is merged with its neighbors"
 msgstr "Tidsrum under hvilet et interval flettes ind med sine naboer."
 
-#: gtt/glade/project_properties.glade.h:46
+#: glade/project_properties.glade.h:46
 msgid "Urgency:"
 msgstr "Hastende:"
 
-#: gtt/glade/project_properties.glade.h:47
+#: glade/project_properties.glade.h:47
 msgid "What is the status of this project?"
 msgstr "Hvad er status på dette projekt?"
 
-#: gtt/glade/project_properties.glade.h:48
+#: glade/project_properties.glade.h:48
 msgid "a short description that will be printed on the invoice."
 msgstr "en kort beskrivelse som vil blive skrevet på fakturaen."
 
-#: gtt/glade/project_properties.glade.h:49
+#: glade/project_properties.glade.h:49
 msgid "seconds"
 msgstr "sek."
 
-#: gtt/glade/task_popup.glade.h:1
+#: glade/task_popup.glade.h:1
 msgid "Add a new time interval"
 msgstr "Tilføj et nyt tidsinterval"
 
-#: gtt/glade/task_popup.glade.h:2
+#: glade/task_popup.glade.h:2
 msgid "Cut Entry & _Times"
 msgstr "Udklip indgang & _tider"
 
-#: gtt/glade/task_popup.glade.h:3
+#: glade/task_popup.glade.h:3
 msgid "Delete the diary entry only, keep the time intervals"
 msgstr "Slet kun kalenderindgangen, behold tidsintervallerne"
 
-#: gtt/glade/task_popup.glade.h:4
+#: glade/task_popup.glade.h:4
 msgid "Delete the diary entry, and the time intervals below it."
 msgstr "Slet kalenderindgangen, og tidsintervallerne under den."
 
-#: gtt/glade/task_popup.glade.h:5
+#: glade/task_popup.glade.h:5
 msgid "Edit the diary entry and other task properties."
 msgstr "Redigér kalenderindgangen og andre opgaveprioriteter."
 
-#: gtt/glade/task_popup.glade.h:6
+#: glade/task_popup.glade.h:6
 msgid "Insert a new diary entry above this one."
 msgstr "Indsæt en ny kalenderindgang over denne."
 
-#: gtt/glade/task_popup.glade.h:7
+#: glade/task_popup.glade.h:7
 msgid "New Time Interval"
 msgstr "Nyt opdateringsinterval"
 
-#: gtt/glade/task_popup.glade.h:9
+#: glade/task_popup.glade.h:9
 msgid "_Cut Diary Entry"
 msgstr "_Udklip kalenderindgangen"
 
-#: gtt/glade/task_popup.glade.h:10
+#: glade/task_popup.glade.h:10
 msgid "_Edit Diary Entry"
 msgstr "_Redigér kalenderindgang"
 
-#: gtt/glade/task_popup.glade.h:11
+#: glade/task_popup.glade.h:11
 msgid "_New Diary Entry"
 msgstr "_Ny kalenderindgang"
 
-#: gtt/glade/task_popup.glade.h:12
+#: glade/task_popup.glade.h:12
 msgid "_Paste Diary Entry"
 msgstr "_Indsæt kalenderindgang"
 
-#: gtt/glade/task_properties.glade.h:1
+#: glade/task_properties.glade.h:1
 msgid "A set of private notes that will not be printed on an invoice."
 msgstr "Et sæt af private noter der ikke vil blive skrevet på en faktura."
 
-#: gtt/glade/task_properties.glade.h:2
+#: glade/task_properties.glade.h:2
 msgid "A short description to attach to this block of time."
 msgstr "En kort beskrivelse knyttet til denne tidsblok."
 
-#: gtt/glade/task_properties.glade.h:5
+#: glade/task_properties.glade.h:5
 msgid "Billable:"
 msgstr "Betalbart:"
 
-#: gtt/glade/task_properties.glade.h:6
+#: glade/task_properties.glade.h:6
 msgid "Billing Block:"
 msgstr "Regningsblok:"
 
-#: gtt/glade/task_properties.glade.h:7
+#: glade/task_properties.glade.h:7
 msgid "Billing Rate:"
 msgstr "Regningstarif:"
 
-#: gtt/glade/task_properties.glade.h:8
+#: glade/task_properties.glade.h:8
 msgid "Billing Status:"
 msgstr "Regningsstatus:"
 
-#: gtt/glade/task_properties.glade.h:9
+#: glade/task_properties.glade.h:9
 msgid "Diary Entry Properties"
 msgstr "Indstillinger for kalenderindgang"
 
-#: gtt/glade/task_properties.glade.h:10
+#: glade/task_properties.glade.h:10
 msgid "Diary Entry:"
 msgstr "Kalenderindgang:"
 
-#: gtt/glade/task_properties.glade.h:11
+#: glade/task_properties.glade.h:11
 msgid "Fee rate to be charged for this task."
 msgstr "Honorartarif som skal tages for denne opgave."
 
-#: gtt/glade/task_properties.glade.h:14
+#: glade/task_properties.glade.h:14
 msgid ""
 "How should this task be billed?  \"Billable\" means bill to the customer in "
 "the normal fashion.   \"Not Billable\" means we can't ask for money for "
@@ -2209,7 +1391,7 @@ msgstr ""
 "for dette, må ikke skrives på fakturaen. 'Ingen regning' betyder skriv på "
 "fakturaen som 'gratis'."
 
-#: gtt/glade/task_properties.glade.h:15
+#: glade/task_properties.glade.h:15
 msgid ""
 "Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
@@ -2220,2724 +1402,2659 @@ msgstr ""
 "næste faktura. 'Betalt' betyder at det ikke længere bør inkluderes på "
 "fakturaer."
 
-#: gtt/glade/task_properties.glade.h:19
+#: glade/task_properties.glade.h:19
 msgid "OverOver"
 msgstr "EkstraOver"
 
-#: gtt/glade/task_properties.glade.h:23
+#: glade/task_properties.glade.h:23
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
 msgstr ""
 "Den fakturerede tidsenhed vil blive rundet af til et helt antal gange denne "
 "tid."
 
-#: gtt/glade/task_properties.glade.h:24
+#: glade/task_properties.glade.h:24
 msgid "minutes"
 msgstr "minutter"
 
-#: logview/about.c:41
-msgid "Cesar Miquel (miquel@df.uba.ar)"
-msgstr "Cesar Miquel (miquel@df.uba.ar)"
-
-#: logview/about.c:42
-msgid ""
-"This  program  is  part of  the  GNOME  project. Logview comes with "
-"ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
-"redistribute it under the conditions of the GNU General Public Licence. The "
-"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
-msgstr ""
-"Dette program er en del af Gnome-projektet. Logvisning kommer uden NOGEN SOM "
-"HELST GARANTI. Dette er frit programmel, og du er velkommen til at give det "
-"videre under betingelserne angivet i GNU General Public Licence. Logikonet "
-"er udført af Tuomas Kuosmanen (tigert)."
-
-#. go get logview.xpm in $(prefix)/share/pixmaps/logview
-#: logview/about.c:55
-msgid "Logview"
-msgstr "Logvisning"
-
-#: logview/about.c:56
-msgid "Copyright (C) 1998"
-msgstr "Ophavsret (C) 1998"
-
-#: logview/actions.c:92
-msgid "Action database"
-msgstr "Handlingsdatabase"
-
-#: logview/actions.c:97 logview/monitor.c:110
-msgid "Monitor options"
-msgstr "Overvågningsmuligheder"
-
-#: logview/actions.c:151
-msgid "Add..."
-msgstr "Tilføj..."
-
-#: logview/actions.c:157
-msgid "Edit..."
-msgstr "Rediger..."
-
-#: logview/actions.c:278
-#, c-format
-msgid "Cannot open action data base <%s>! Open failed."
-msgstr "Kan ikke åbne handlingsdatabasen <%s>! Åbning mislykkedes."
-
-#: logview/actions.c:313 logview/actions.c:326 logview/actions.c:337
-#: logview/actions.c:348 logview/actions.c:359 logview/actions.c:370
-msgid "Error parsing actions data base"
-msgstr "Fejl under fortolkning af handlingsdatabase"
-
-#: logview/actions.c:404
-msgid "Can't write to actions database!"
-msgstr "Kan ikke skrive til handlingsdatabase!"
-
-#: logview/actions.c:511
-msgid "<empty>"
-msgstr "<tom>"
-
-#: logview/actions.c:512
-msgid "log name regexp"
-msgstr "reg. udtryk til log-navn"
-
-#: logview/actions.c:513
-msgid "process regexp"
-msgstr "reg. udtryk til proces"
-
-#: logview/actions.c:514
-msgid "message regexp"
-msgstr "reg. udtryk til besked"
-
-#: logview/actions.c:515
-msgid "action to execute when regexps are TRUE"
-msgstr "handling at udføre når reg. udtryk findes"
-
-#: logview/actions.c:516
-msgid "description"
-msgstr "beskrivelse"
-
-#: logview/actions.c:746
-msgid "description:"
-msgstr "beskrivelse:"
-
-#: logview/actions.c:754
-msgid "Description of this entry."
-msgstr "Beskrivelse af dette punkt."
-
-#: logview/actions.c:810
-#, c-format
-msgid ""
-"tag: [%s]\n"
-"log_name: [%s]\n"
-"process: [%s]\n"
-"message: [%s]\n"
-"description: [%s]\n"
-"action: [%s]\n"
-msgstr ""
-"tag: [%s]\n"
-"log_navn: [%s]\n"
-"proces: [%s]\n"
-"besked: [%s]\n"
-"beskrivelse: [%s]\n"
-"handling: [%s]\n"
-
-#: logview/info.c:79 logview/logview.c:110
-msgid "Log stats"
-msgstr "Logstatus"
-
-#: logview/info.c:139
-msgid "Log information"
-msgstr "Log-information"
-
-#: logview/info.c:156
-msgid "Log:"
-msgstr "Log:"
-
-#: logview/info.c:158
-msgid "Size:"
-msgstr "Størrelse:"
-
-#: logview/info.c:160
-msgid "Modified:"
-msgstr "Ændret:"
-
-#: logview/info.c:162
-msgid "Start date:"
-msgstr "Startdato:"
-
-#: logview/info.c:164
-msgid "Last date:"
-msgstr "Sidste dato:"
-
-#: logview/info.c:166
-msgid "Num. lines:"
-msgstr "Antal linjer:"
-
-#: logview/info.c:183
-#, c-format
-msgid "%ld bytes"
-msgstr "%ld byte"
-
-#: logview/log_repaint.c:86
-msgid "January"
-msgstr "Januar"
-
-#: logview/log_repaint.c:86
-msgid "February"
-msgstr "Februar"
-
-#: logview/log_repaint.c:86
-msgid "March"
-msgstr "Marts"
-
-#: logview/log_repaint.c:86
-msgid "April"
-msgstr "April"
-
-#: logview/log_repaint.c:86
-msgid "May"
-msgstr "Maj"
-
-#: logview/log_repaint.c:87
-msgid "June"
-msgstr "Juni"
-
-#: logview/log_repaint.c:87
-msgid "July"
-msgstr "Juli"
-
-#: logview/log_repaint.c:87
-msgid "August"
-msgstr "August"
-
-#: logview/log_repaint.c:87
-msgid "September"
-msgstr "September"
-
-#: logview/log_repaint.c:87
-msgid "October"
-msgstr "Oktober"
-
-#: logview/log_repaint.c:88
-msgid "November"
-msgstr "November"
-
-#: logview/log_repaint.c:88
-msgid "December"
-msgstr "December"
-
-#. Translators: Date only format, %x should well do really
-#: logview/log_repaint.c:477
-#, c-format
-msgid "%x"
-msgstr "%x"
-
-#. Translators: should be only the time, date could be bogus
-#: logview/log_repaint.c:587
-#, c-format
-msgid "%X"
-msgstr "%X"
-
-#. bogus
-#. Translators: Make sure this is only Month and Day format, year
-#. * will be bogus here
-#: logview/log_repaint.c:671
-msgid "%B %e"
-msgstr "%e. %B"
-
-#: logview/logrtns.c:199
-msgid "Not enough memory!\n"
-msgstr "Ikke tilstrækkelig hukommelse!\n"
-
-#: logview/logrtns.c:207
-msgid "Out of memory!\n"
-msgstr "Løbet tør for hukommelse!\n"
-
-#: logview/logrtns.c:233
-msgid "Unable to open logfile!\n"
-msgstr "Ude af stand til at åbne logfil!\n"
-
-#: logview/logrtns.c:288
-#, c-format
-msgid "%s is not a regular file."
-msgstr "%s er ikke en almindelig fil."
-
-#: logview/logrtns.c:296
-#, c-format
-msgid ""
-"%s is not user readable. Either run the program as root or ask the sysadmin "
-"to change the permissions on the file."
-msgstr ""
-"%s kan ikke læses af brugere. Kør enten programmet som root eller bed "
-"systemadministratoren om at ændre rettighederne på filen."
-
-#: logview/logrtns.c:309
-#, c-format
-msgid "%s could not be opened."
-msgstr "Kunne ikke åbne %s."
-
-#: logview/logrtns.c:332
-#, c-format
-msgid "%s not a log file."
-msgstr "%s er ikke en logfil."
-
-#: logview/logrtns.c:756 logview/logrtns.c:787 logview/logrtns.c:918
-msgid "ReadLogStats: out of memory"
-msgstr "ReadLogStats: løbet tør for hukommelse"
-
-#: logview/logview.c:85
-msgid "Open log..."
-msgstr "Åbn log..."
-
-#: logview/logview.c:86
-msgid "Open log"
-msgstr "Åbn log"
-
-#: logview/logview.c:88
-msgid "Export log..."
-msgstr "Eksportér log..."
-
-#: logview/logview.c:89
-msgid "Export log"
-msgstr "Eksportér log"
-
-#: logview/logview.c:91 logview/logview.c:92
-msgid "Close log"
-msgstr "Luk log"
-
-#: logview/logview.c:94 logview/logview.c:95
-msgid "Switch log"
-msgstr "Skift log"
-
-#: logview/logview.c:97
-msgid "Monitor..."
-msgstr "Overvåg..."
-
-#: logview/logview.c:98
-msgid "Monitor log"
-msgstr "Overvåg log"
-
-#: logview/logview.c:101
-msgid "Exit program"
-msgstr "Afslut program"
-
-#: logview/logview.c:108
-msgid "Show calendar log"
-msgstr "Vis kalenderlog"
-
-#: logview/logview.c:111
-msgid "Show log stats"
-msgstr "Vis logstatus"
-
-#: logview/logview.c:113
-msgid "Zoom"
-msgstr "Zoom"
-
-#: logview/logview.c:114
-msgid "Show line info"
-msgstr "Vis linjeinfo"
-
-#: logview/logview.c:117
-msgid "Show user preferences"
-msgstr "Vis indstillinger"
-
-#: logview/logview.c:124
-msgid "Select...               "
-msgstr "Vælg..."
-
-#: logview/logview.c:125
-msgid "Select log events"
-msgstr "Vælg loghændelser"
-
-#: logview/logview.c:127
-msgid "Filter..                "
-msgstr "Filter..."
-
-#: logview/logview.c:128
-msgid "Filter log events"
-msgstr "Filtrér loghændelser"
-
-#: logview/logview.c:137
-msgid "Info about logview"
-msgstr "Info om logviser"
-
-#: logview/logview.c:241
-msgid "No log files to open"
-msgstr "Ingen logfiler at åbne"
-
-#. Create App
-#: logview/logview.c:264
-msgid "System Log Viewer"
-msgstr "Systemlog-fremviser"
-
-#: logview/logview.c:368
-msgid "Filename: "
-msgstr "Filnavn: "
-
-#: logview/logview.c:384
-msgid "Date: "
-msgstr "Dato: "
-
-#: logview/logview.c:619
-msgid "Too many open logs. Close one and try again"
-msgstr "For mange åbne logfiler. Luk en og prøv igen"
-
-#: logview/logview.c:676
-msgid "Open new logfile"
-msgstr "Åbn ny logfil"
-
-#: logview/misc.c:55
-#, c-format
-msgid "Error: [%s]\n"
-msgstr "Fejl: [%s]\n"
-
-#: logview/monitor.c:124
-msgid "Choose logs to monitor"
-msgstr "Vælg logfiler at overvåge"
-
-#. Arrowed buttons
-#: logview/monitor.c:168
-msgid "Add >>"
-msgstr "Tilføj >>"
-
-#. Remove button
-#: logview/monitor.c:176
-msgid "Remove <<"
-msgstr "Fjern <<"
-
-#. Check boxes
-#: logview/monitor.c:207
-msgid "Hide app"
-msgstr "Skjul program"
-
-#: logview/monitor.c:215
-msgid "Exec actions"
-msgstr "Udfør handlinger"
-
-#. Actions button
-#: logview/monitor.c:227
-msgid "Actions..."
-msgstr "Handlinger..."
-
-#: logview/monitor.c:282 logview/monitor.c:329
-msgid "tmp_list is NULL\n"
-msgstr "tmp_list er NULL\n"
-
-#: logview/monitor.c:456
-msgid "Monitoring logs..."
-msgstr "Overvåger logfiler..."
-
-#: logview/monitor.c:638
-msgid "TOUCHED!!\n"
-msgstr "ÆNDRET!\n"
-
-#: logview/userprefsdialog.c:65
-msgid "hostname column width ( 0 to hide this column ): "
-msgstr "værtsnavn-kolonnebredde (0 for at skjule denne kolonne): "
-
-#: logview/userprefsdialog.c:66
-msgid "Columns"
-msgstr "Kolonner"
-
-#: logview/zoom.c:78
-msgid "Zoom view"
-msgstr "Zoom-visning"
-
-#: logview/zoom.c:154
-#, c-format
-msgid "Log line detail for %s"
-msgstr "Log linjedetaljer for %s"
-
-#: logview/zoom.c:157
-msgid "Log line detail for <No log loaded>"
-msgstr "Log linjedetaljer for <Ingen log indlæst>"
-
-#: logview/zoom.c:180
-msgid "Date:"
-msgstr "Dato:"
-
-#: logview/zoom.c:182
-msgid "Process:"
-msgstr "Proces:"
-
-#: logview/zoom.c:184
-msgid "Message:"
-msgstr "Besked:"
-
-#: logview/zoom.c:186
-msgid "Description:"
-msgstr "Beskrivelse:"
-
-#. Translators: do not include year, it would be bogus
-#: logview/zoom.c:212
-msgid "%B %e %X"
-msgstr "%e. %B %X"
-
-#.
-#. * 	-------------------
-#. * 	     Defines
-#. * 	-------------------
-#.
-#: logview/config.c:34
-msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
-
-#: logview/config.c:35
-msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
-
-#: logview/config.c:36
-msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
-
-#: logview/config.c:37
-msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-msgstr "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
-
-#: logview/config.c:39
-msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
-
-#: logview/config.c:40
-msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
-
-#: logview/config.c:41
-msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
-
-#: logview/config.c:42
-msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
-
-#: logview/config.c:43
-msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
-
-#: logview/config.c:44
-msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-msgstr "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
-
-#: logview/desc_db.c:37
-#, c-format
-msgid "Cannot open regexp data base <%s>! Open failed."
-msgstr "Kan ikke åbne databasen med regulære udtryk <%s>! Åbning mislykkedes."
-
-#: logview/desc_db.c:147
-#, c-format
-msgid "Cannot open description data base <%s>! Open failed."
-msgstr "Kan ikke åbne beskrivelsesdatabasen <%s>! Åbning mislykkedes."
-
-#: mini-utils/gcolorsel/dialog-prefs.c:119
-msgid "Do nothing"
-msgstr "Gør ingenting"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:124
-msgid "Append it to ->"
-msgstr "Tilføj den til ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:129
-msgid "Search it in ->"
-msgstr "Søg efter den i ->"
-
-#: mini-utils/gcolorsel/dialog-prefs.c:135
-msgid "Edit it"
-msgstr "Ændr det"
-
-#. First view is considered as the default view ...
-#: mini-utils/gcolorsel/gcolorsel.c:24
-msgid "List"
-msgstr "Liste"
-
-#: mini-utils/gcolorsel/gcolorsel.c:28
-msgid "Grid"
-msgstr "Gitter"
-
-#: mini-utils/gcolorsel/gcolorsel.c:32 mini-utils/gcolorsel/menus.c:573
-#: mini-utils/gcolorsel/menus.c:660 stripchart/params.c:1041
-#: stripchart/params.c:1044
-msgid "Edit"
-msgstr "Ændr"
-
-#: mini-utils/gcolorsel/gcolorsel.c:40 stripchart/params.c:1034
-#: stripchart/params.c:1037
-msgid "File"
-msgstr "Fil"
-
-#: mini-utils/gcolorsel/gcolorsel.c:42
-msgid "Search RGB"
-msgstr "Søg RGB"
-
-#: mini-utils/gcolorsel/gcolorsel.c:44
-msgid "Monitor"
-msgstr "Overvåg"
-
-#: mini-utils/gcolorsel/gcolorsel.c:46
-msgid "Concat"
-msgstr "Sammenføj"
-
-#: mini-utils/gcolorsel/gcolorsel.c:96
-#, c-format
-msgid "'%s' document has been modified; do you wish to save it ?"
-msgstr "Dokumentet '%s' er ændret; vil du gemme det?"
-
-#: mini-utils/gcolorsel/gcolorsel.c:206
-msgid "GColorsel was unable to paste colors from the clipboard."
-msgstr "GColorsel kunne ikke indsætte farver fra klippebordet."
-
-#: mini-utils/gcolorsel/gcolorsel.c:220
-msgid "Please select a file document before."
-msgstr "Venligst vælg et fildokument først."
-
-#: mini-utils/gcolorsel/gcolorsel.c:398
-msgid ""
-"I can't execute this action. Check that :\n"
-"\n"
-"1. You have associated an action with this event.\n"
-"2. The associated document still exists.\n"
-"3. The type of the associated document.\n"
-"\n"
-"Go to preferences, in the edit menu."
-msgstr ""
-"Kan ikke udføre denne handling. Tjek at:\n"
-"\n"
-"1. Du har associeret en handling med denne hændelse.\n"
-"2. Det associerede dokument stadig eksisterer.\n"
-"3. Typen på det associerede dokument er rigtig.\n"
-"\n"
-"Gå til indstillinger, i 'Redigér'-menuen."
-
-#. Init GnomeMDI
-#: mini-utils/gcolorsel/gcolorsel.c:505
-msgid "GColorsel"
-msgstr "Farvevælger"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:1
-msgid "<- Remove"
-msgstr "<- Fjern"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:2
-msgid "<- Remove all"
-msgstr "<- Fjern alle"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:3
-msgid "Add ->"
-msgstr "Tilføj ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:4
-msgid "Add all ->"
-msgstr "Tilføj alle ->"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:5
-msgid "Available documents"
-msgstr "Tilgængelige dokumenter"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:6
-msgid "Available views"
-msgstr "Tilgængelige visninger"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:7
-msgid "Connect to"
-msgstr "Forbind til"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:8
-msgid "Create a document"
-msgstr "Opret dokument"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:9
-msgid "Create views"
-msgstr "Opret visninger"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:10
-msgid "Description :"
-msgstr "Beskrivelse:"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:11
-msgid ""
-"Please, select the type of document to create.\n"
-"You can choose a short name, do not confuse it with the file name."
-msgstr ""
-"Venligst vælg typen af det dokument du skal oprette.\n"
-"Du kan vælge et kort navn eftersom det er ikke det samme som filnavnet."
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:13
-msgid "Select source document"
-msgstr "Vælg kildedokument"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:14
-msgid "Select type"
-msgstr "Vælg type"
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:15
-msgid "Short name : "
-msgstr "Kort navn: "
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:16
-msgid ""
-"This document read document from one or more other document. Please, choose "
-"these documents."
-msgstr ""
-"Dette dokumentet læser dokumenter fra et eller flere andre dokumenter. Vælg "
-"disse dokumenter."
-
-#: mini-utils/gcolorsel/glade/dialog-new-doc.glade.h:17
-msgid ""
-"You can create one or more views for this document. Note that you have to "
-"create at least one view."
-msgstr ""
-"Du kan lave et eller flere visninger for dette dokument. Bemærk at du skal "
-"have mindst en visning."
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:1
-msgid "Create a new view"
-msgstr "Opretter en ny visning"
-
-#: mini-utils/gcolorsel/glade/dialog-new-view.glade.h:2
-msgid "Please, select the type of view you want to create."
-msgstr "Vælg venligst hvilken visningstype til vil oprette."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:1
-msgid "Actions"
-msgstr "Handlinger"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:2 stripchart/params.c:732
-msgid "Bottom"
-msgstr "Bund"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:3
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Default"
-msgstr "Standard"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:4
-msgid "Display documents menu (restart required)."
-msgstr "Vis dokumentmenu (kræver genstart)"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:5
-msgid "Documents"
-msgstr "Dokumenter"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:6
-msgid "DoubleClick in previews:"
-msgstr "Dobbeltklik i forhåndsvisninger:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:7
-msgid "DoubleClick in views:"
-msgstr "Dobbeltklik i visninger:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:8
-msgid "Drop:"
-msgstr "Drop:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:9
-#: mini-utils/gshutdown/gshutdown.c:398
-msgid "General"
-msgstr "Generelt"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:10
-msgid "Grab:"
-msgstr "Fang:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:11
-msgid "Left"
-msgstr "Venstre"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:12
-msgid "MDI (Multiple Document Interface)"
-msgstr "Multidokument"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:13
-msgid "Modal"
-msgstr "Modal"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:14
-msgid "Mode:"
-msgstr "Tilstand:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:15
-msgid "Notebook"
-msgstr "Notesbog"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:16
-msgid "Notebook Tab position:"
-msgstr "Notesbog-faneposition:"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:17
-msgid "On ... execute ..."
-msgstr "Ved ... kør ..."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:18
-msgid "Right"
-msgstr "Højre"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:19
-msgid "Save session on exit."
-msgstr "Gem session ved afslutning."
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:20
-msgid "Session"
-msgstr "Session"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:21
-#: stripchart/chart-app.c:162 stripchart/params.c:704
-msgid "Top"
-msgstr "Top"
-
-#: mini-utils/gcolorsel/glade/dialog-prefs.glade.h:22
-msgid "Toplevel"
-msgstr "Øverste"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:1
-msgid ""
-"Begin\n"
-"Comments :"
-msgstr ""
-"Begynd\n"
-"kommentarer :"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:3
-msgid ""
-"End\n"
-"Comments :"
-msgstr ""
-"Slut\n"
-"kommentarer :"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:5
-msgid "File name :"
-msgstr "Filnavn:"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:6
-msgid "Header :"
-msgstr "Hoved:"
-
-#: mini-utils/gcolorsel/glade/mdi-color-file-properties.glade.h:7
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:3
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:4
-msgid "Special properties"
-msgstr "Specialindstillinger"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:2
-msgid "Common properties"
-msgstr "Alm. indstillinger"
-
-#: mini-utils/gcolorsel/glade/mdi-color-generic-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:3
-msgid "Name :"
-msgstr "Navn:"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:1
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:106
-msgid "Blue :"
-msgstr "Blå:"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:2
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:102
-msgid "Green :"
-msgstr "Grøn:"
-
-#: mini-utils/gcolorsel/glade/view-color-edit.glade.h:4
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:98
-msgid "Red :"
-msgstr "Rød:"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:1
-msgid "Colors format :"
-msgstr "Farveformat:"
-
-#: mini-utils/gcolorsel/glade/view-color-generic-properties.glade.h:3
-msgid "Display document control (if exists)"
-msgstr "Vis dokumentkontrol (hvis tilgængelig)"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:1
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:1
-msgid "Color height :"
-msgstr "Farvehøjde:"
-
-#: mini-utils/gcolorsel/glade/view-color-grid-properties.glade.h:2
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:2
-msgid "Color width :"
-msgstr "Farvebredde:"
-
-#: mini-utils/gcolorsel/glade/view-color-list-properties.glade.h:3
-msgid "Draw numbers"
-msgstr "Vis tal"
-
-#: mini-utils/gcolorsel/menus.c:52
-msgid "New Document"
-msgstr "Nyt dokument"
-
-#: mini-utils/gcolorsel/menus.c:53
-msgid "Create a new document"
-msgstr "Opretter et nyt dokument"
-
-#: mini-utils/gcolorsel/menus.c:55
-msgid "New View"
-msgstr "Nyt vindue"
-
-#: mini-utils/gcolorsel/menus.c:56
-msgid "Create a new view for a document"
-msgstr "Opretter ny visning for et dokument"
-
-#: mini-utils/gcolorsel/menus.c:62
-msgid "Close document"
-msgstr "Luk dokument"
-
-#: mini-utils/gcolorsel/menus.c:63
-msgid "Close the current document"
-msgstr "Luk nuværende dokument"
-
-#: mini-utils/gcolorsel/menus.c:65
-msgid "Close view"
-msgstr "Luk visning"
-
-#: mini-utils/gcolorsel/menus.c:66 mini-utils/gcolorsel/menus.c:913
-msgid "Close the current view"
-msgstr "Luk nuværende visning"
-
-#: mini-utils/gcolorsel/menus.c:76
-msgid "_Open palette..."
-msgstr "_Åbn palet..."
-
-#: mini-utils/gcolorsel/menus.c:77
-msgid "Load a palette"
-msgstr "Indlæs en palet"
-
-#: mini-utils/gcolorsel/menus.c:79
-msgid "_Save palette"
-msgstr "_Gem palet"
-
-#: mini-utils/gcolorsel/menus.c:80
-msgid "Save the current palette in a file"
-msgstr "Gem den aktuelle palet i en fil"
-
-#: mini-utils/gcolorsel/menus.c:82
-msgid "Save palette _As..."
-msgstr "Gem palet _som..."
-
-#: mini-utils/gcolorsel/menus.c:83
-msgid "Save the current palette with a different name"
-msgstr "Gem den aktuelle palet under et andet navn"
-
-#: mini-utils/gcolorsel/menus.c:105
-msgid "Insert color"
-msgstr "Indsæt farve"
-
-#: mini-utils/gcolorsel/menus.c:107
-msgid "Remove selected colors"
-msgstr "Fjern valgte farver"
-
-#: mini-utils/gcolorsel/menus.c:109
-msgid "Edit selected colors ..."
-msgstr "Redigér valgte farver..."
-
-#: mini-utils/gcolorsel/menus.c:113
-msgid "Document/View properties"
-msgstr "Egenskaber for dokument/visning"
-
-#: mini-utils/gcolorsel/menus.c:179
-#, c-format
-msgid ""
-"GColorsel was unable to save the file :\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have the approprate write permissions.\n"
-"\n"
-"Do you want to retry ?"
-msgstr ""
-"Farvevælgeren kunne ikke gemme filen:\n"
-"\n"
-"%s\n"
-"\n"
-"Tjek at stien du angav eksisterer, og at\n"
-"du har skrivetilladelse til filen."
-
-#: mini-utils/gcolorsel/menus.c:198
-#, c-format
-msgid ""
-"GColorsel was unable to load the file:\n"
-"\n"
-"%s\n"
-"\n"
-"Make sure that the path you provided exists,\n"
-"and that you have permissions for opening the file."
-msgstr ""
-"Farvevælgeren kunne ikke gemme filen:\n"
-"\n"
-"%s\n"
-"\n"
-"Tjek at stien du angav eksisterer, og at\n"
-"du har læsetilladelse til filen."
-
-#: mini-utils/gcolorsel/menus.c:217
-msgid "Open Palette"
-msgstr "Åbn palet"
-
-#: mini-utils/gcolorsel/menus.c:242
-msgid "Loading file, please wait ..."
-msgstr "Indlæser fil, vent venligst..."
-
-#: mini-utils/gcolorsel/menus.c:273
-msgid "Save Palette as"
-msgstr "Gem palette som"
-
-#: mini-utils/gcolorsel/menus.c:320
-msgid "File not saved ..."
-msgstr "Fil ikke gemt..."
-
-#: mini-utils/gcolorsel/menus.c:330
-msgid "File saved ..."
-msgstr "Fil gemt..."
-
-#: mini-utils/gcolorsel/menus.c:408
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?\n"
-"\n"
-"Please note that %d virtual document use data from this document."
-msgstr ""
-"Jeg er ved at lukke den sidste visning af '%s'.\n"
-"\n"
-"Dette dokument vil også blive lukket, fortsæt?\n"
-"\n"
-"Bemærk venligst at %d virtuelle dokumenter bruger data fra dette dokument."
-
-#: mini-utils/gcolorsel/menus.c:410
-#, c-format
-msgid ""
-"I'm going to close the last view of '%s'.\n"
-"\n"
-"This document will be closed too, continue ?"
-msgstr ""
-"Jeg er ved at lukke den sidste visning af '%s'.\n"
-"\n"
-"Dette dokument vil også blive lukket, fortsæt?"
-
-#: mini-utils/gcolorsel/menus.c:444
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed,\n"
-"and that %d virtual document use data from this document.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"Jeg er ved at lukke '%s'.\n"
-"\n"
-"Bemærk venligst at %d visninger vil blive fjernet,\n"
-"og at %d virtuelle dokumenter bruger data fra dette dokument.\n"
-"\n"
-"Vil du fortsætte?"
-
-#: mini-utils/gcolorsel/menus.c:446
-#, c-format
-msgid ""
-"I'm going to close '%s'.\n"
-"\n"
-"Please note that %d views will be destroyed.\n"
-"\n"
-"Do you want to continue ?"
-msgstr ""
-"Jeg er ved at lukke '%s'.\n"
-"\n"
-"Venligst bemærk at %d visninger vil blive fjernet.\n"
-"\n"
-"Ønsker du at fortsætte ?"
-
-#: mini-utils/gcolorsel/menus.c:493
-msgid "Gnome Color Browser"
-msgstr "Gnome farvevælger"
-
-#: mini-utils/gcolorsel/menus.c:496
-msgid "Small utility to browse available X11 colors."
-msgstr "Lille værktøj til at gennemse X11-farver."
-
-#: mini-utils/gcolorsel/menus.c:606
-msgid "New Color"
-msgstr "Ny farve"
-
-#: mini-utils/gcolorsel/menus.c:863
-msgid "View properties"
-msgstr "Vis egenskaber"
-
-#: mini-utils/gcolorsel/menus.c:878
-msgid "Document properties"
-msgstr "Egenskaber for dokument"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open"
-msgstr "Åbn"
-
-#: mini-utils/gcolorsel/menus.c:911
-msgid "Open a palette"
-msgstr "Åbn en palet"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab"
-msgstr "Fang"
-
-#: mini-utils/gcolorsel/menus.c:916
-msgid "Grab a color on the screen"
-msgstr "Fang en farve på skærmen"
-
-#: mini-utils/gcolorsel/session.c:305
-msgid ""
-"Your config file is corrupted.\n"
-"Do you want to create a new session ?"
-msgstr ""
-"Din konfigurationsfil er ødelagt.\n"
-"Vil du oprette en ny session?"
-
-#: mini-utils/gcolorsel/session.c:358
-msgid "Loading files, please wait ..."
-msgstr "Indlæser filer, vent venligst..."
-
-#: mini-utils/gcolorsel/session.c:383
-msgid ""
-"One or more files can not be restored :\n"
-"\n"
-msgstr ""
-"En eller flere filer kan ikke genoprettes:\n"
-"\n"
-
-#: mini-utils/gcolorsel/session.c:409
-msgid "System Colors"
-msgstr "Systemfarver"
-
-#: mini-utils/gcolorsel/session.c:430
-msgid "User Colors"
-msgstr "Brugerfarver"
-
-#: mini-utils/gcolorsel/session.c:438
-msgid "Search"
-msgstr "Søg"
-
-#: mini-utils/gcolorsel/view-color-generic.c:16
-msgid "Decimal 8 bits"
-msgstr "Decimal 8 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:17
-msgid "Decimal 16 bits"
-msgstr "Decimal 16 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:18
-msgid "Hex 8 bits"
-msgstr "Hexadecimal 8 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:19
-msgid "Hex 16 bits"
-msgstr "Hexadecimal 16 bit"
-
-#: mini-utils/gcolorsel/view-color-generic.c:20
-msgid "Float"
-msgstr "Kommatal"
-
-#: mini-utils/gcolorsel/view-color-list.c:196 stripchart/params.c:827
-msgid "Color"
-msgstr "Farve"
-
-#. Create everything.
-#: mini-utils/gcolorsel/view-color-list.c:198 mini-utils/guname/moreinfo.c:225
-#: mini-utils/gw/gw.c:490 mini-utils/gw/gw.c:560
-msgid "Name"
-msgstr "Navn"
-
-#: mini-utils/gcolorsel/widget-control-virtual-rgb.c:110
-msgid "Tolerance :"
-msgstr "Tolerance:"
-
-#: mini-utils/gfontsel/gfontsel.c:162
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:1
-msgid "Font Selector"
-msgstr "Skrifttypevælger"
-
-#: mini-utils/gfontsel/gfontsel.c:190
-msgid "Selection:"
-msgstr "Valg:"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "Font to load"
-msgstr "Skrifttype som skal indlæses"
-
-#: mini-utils/gfontsel/gfontsel.c:273
-msgid "FONTSPEC"
-msgstr "FONTSPEC"
-
-#: mini-utils/gfontsel/gfontsel.c:274
-msgid "Print selected font name on exit"
-msgstr "Skriv valgt skrifttypenavn ved afslutning"
-
-#: mini-utils/gfontsel/gfontsel.c:275
-msgid "Inhibit remembering selected font for next run"
-msgstr "Forhindr at valgt skrifttype huskes ved næste opstart"
-
-#: mini-utils/gfontsel/gfontsel.c:276
-msgid "Inhibit loading of last font"
-msgstr "Forhindr at den sidste skrifttype indlæses"
-
-#: mini-utils/gless/gless.c:115
-#, c-format
-msgid "Reason %d\n"
-msgstr "Grund %d\n"
-
-#: mini-utils/gless/gless.c:130
-msgid "Where to put the window, and its size"
-msgstr "Hvor vinduet skal placeres, og dets størrelse"
-
-#: mini-utils/gless/gless.c:131
-msgid "Ignore standard input; may be needed in some cases."
-msgstr "Ignorér standard-inddata; kan være nødvendigt i nogle tilfælde."
-
-#: mini-utils/gless/gless.c:293
-msgid "_New Window"
-msgstr "_Nyt vindue"
-
-#: mini-utils/gless/gless.c:294
-msgid "New text viewer window"
-msgstr "Nyt tekstvisningsvindue"
-
-#: mini-utils/gless/gless.c:312
-msgid "_Fixed Font"
-msgstr "_Fast bredde"
-
-#: mini-utils/gless/gless.c:313
-msgid "Display text with a fixed font"
-msgstr "Vis tekst med fastbreddeskrifttype"
-
-#: mini-utils/gless/gless.c:351 mini-utils/gless/gless.desktop.in.h:2
-msgid "Text File Viewer"
-msgstr "Tekstfilfremviser"
-
-#: mini-utils/gless/gless.c:446 mini-utils/gshutdown/gshutdown.c:30
-#: mini-utils/guname/guname.c:43 mini-utils/gw/gw.c:29
-#: mini-utils/idetool/idetool.c:11
-msgid "Copyright 1998, under the GNU General Public License."
-msgstr "Ophavsret 1998, under GNU General Public License"
-
-#: mini-utils/gless/gless.c:467
-msgid "Find string"
-msgstr "Find tekst"
-
-#: mini-utils/gless/gless.c:468
-msgid "Find"
-msgstr "Søg"
-
-#: mini-utils/gless/gless.c:505
-msgid "Loading..."
-msgstr "Indlæser..."
-
-#: mini-utils/gless/gless.c:509
-#, c-format
-msgid ""
-"No such file or directory:\n"
-"%s"
-msgstr ""
-"Fil eller mappe findes ikke:\n"
-"%s"
-
-#: mini-utils/gless/gless.c:527
-#, c-format
-msgid ""
-"Failed to decompress and display the file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Fejlede ved dekomprimering og visning af filen:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:540
-msgid ""
-"Unable to display compressed file.\n"
-"zcat not found in your path."
-msgstr ""
-"Kan ikke vise komprimeret fil.\n"
-"zcat blev ikke fundet i din søgesti."
-
-#: mini-utils/gless/gless.c:548
-#, c-format
-msgid ""
-"Error loading file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Fejl ved indlæsning af filen:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:606
-msgid "Saving..."
-msgstr "Gemmer..."
-
-#: mini-utils/gless/gless.c:617
-#, c-format
-msgid ""
-"Failed to write file:\n"
-"%s\n"
-"%s"
-msgstr ""
-"Fejl ved skrivning af filen:\n"
-"%s\n"
-"%s"
-
-#: mini-utils/gless/gless.c:667
-msgid "Save Text As..."
-msgstr "Gem tekst som..."
-
-#: mini-utils/gless/gless.c:707
-msgid "Open Text File..."
-msgstr "Åbn tekstfil..."
-
-#: mini-utils/gless/gless.c:771
-msgid "Sorry, no preferences yet."
-msgstr "Desværre, ingen indstillinger endnu."
-
-#: mini-utils/gless/gless.c:858
-msgid "Searching..."
-msgstr "Søger..."
-
-#: mini-utils/gless/gless.c:869
-msgid "No search string was specified!"
-msgstr "Ingen søgetekst blev angivet!"
-
-#: mini-utils/gshutdown/gshutdown.c:87
-msgid "Shut Down"
-msgstr "Luk ned"
-
-#: mini-utils/gshutdown/gshutdown.c:88
-msgid "Single User Mode"
-msgstr "Enkeltbrugertilstand"
-
-#: mini-utils/gshutdown/gshutdown.c:89
-msgid "Runlevel 2"
-msgstr "Kørselsniveau 2"
-
-#: mini-utils/gshutdown/gshutdown.c:90
-msgid "Runlevel 3"
-msgstr "Kørselsniveau 3"
-
-#: mini-utils/gshutdown/gshutdown.c:91
-msgid "Runlevel 4"
-msgstr "Kørselsniveau 4"
-
-#: mini-utils/gshutdown/gshutdown.c:92
-msgid "Runlevel 5"
-msgstr "Kørselsniveau 5"
-
-#: mini-utils/gshutdown/gshutdown.c:93
-msgid "Reboot"
-msgstr "Genstart"
-
-#: mini-utils/gshutdown/gshutdown.c:99
-msgid "Are you sure you want to shut down the computer?"
-msgstr "Er du sikker på at du vil lukke maskinen ned?"
-
-#: mini-utils/gshutdown/gshutdown.c:100
-msgid "Are you sure you want to switch to single user mode?"
-msgstr "Er du sikker på at du vil skifte til enkeltbruger-tilstand?"
-
-#: mini-utils/gshutdown/gshutdown.c:101
-msgid "Are you sure you want to switch to runlevel 2?"
-msgstr "Er du sikker på at du vil skifte til kørselsniveau 2?"
-
-#: mini-utils/gshutdown/gshutdown.c:102
-msgid "Are you sure you want to switch to runlevel 3?"
-msgstr "Er du sikker på at du vil skifte til kørselsniveau 3?"
-
-#: mini-utils/gshutdown/gshutdown.c:103
-msgid "Are you sure you want to switch to runlevel 4?"
-msgstr "Er du sikker på at du vil skifte til kørselsniveau 4?"
-
-#: mini-utils/gshutdown/gshutdown.c:104
-msgid "Are you sure you want to switch to runlevel 5?"
-msgstr "Er du sikker på at du vil skifte til kørselsniveau 5?"
-
-#: mini-utils/gshutdown/gshutdown.c:105
-msgid "Are you sure you want to reboot the system?"
-msgstr "Er du sikker på at du vil genstarte systemet?"
-
-#: mini-utils/gshutdown/gshutdown.c:153 mini-utils/gshutdown/gshutdown.c:628
-msgid "You must be the super-user (root) to shut down or restart the computer."
-msgstr ""
-"Du skal være administrator (root) for at lukke maskinen ned eller genstarte "
-"den."
-
-#. notebook pages
-#: mini-utils/gshutdown/gshutdown.c:189
-msgid "Shutdown or Reboot"
-msgstr "Luk ned eller genstart"
-
-#: mini-utils/gshutdown/gshutdown.c:206 mini-utils/gshutdown/gshutdown.c:207
-msgid "Easy"
-msgstr "Simpelt"
-
-#: mini-utils/gshutdown/gshutdown.c:211 mini-utils/gshutdown/gshutdown.c:212
-msgid "Advanced"
-msgstr "Avanceret"
-
-#: mini-utils/gshutdown/gshutdown.c:244
-msgid ""
-"Click OK to shutdown or reboot. You will lose\n"
-"any unsaved information in open applications."
-msgstr ""
-"Tryk O.k. for at slukke maskinen eller genstarte den. Du vil\n"
-"miste alt der ikke er gemt i de åbne programmer."
-
-#. Put in a "revert to defaults" button
-#: mini-utils/gshutdown/gshutdown.c:371
-msgid "Revert to Defaults"
-msgstr "Gendan standarder"
-
-#: mini-utils/gshutdown/gshutdown.c:381
-msgid "Commands"
-msgstr "Kommandoer"
-
-#: mini-utils/gshutdown/gshutdown.c:386
-msgid "Confirm before shutdown?"
-msgstr "Bekræft før nedlukning?"
-
-#: mini-utils/gshutdown/gshutdown.c:454
-#, c-format
-msgid ""
-"%s\n"
-"You will lose any unsaved work."
-msgstr ""
-"%s\n"
-"Du vil miste alt der ikke er gemt."
-
-#: mini-utils/gshutdown/gshutdown.c:464
-msgid "Don't ask next time."
-msgstr "Spørg ikke næste gang."
-
-#: mini-utils/gshutdown/gshutdown.c:722
-msgid "Command execution failed: fork failed"
-msgstr "Kørsel af kommando mislykkedes: kunne ikke fraspalte en ny proces"
-
-#: mini-utils/guname/guname.c:53
-msgid "Make guname act as a control center applet"
-msgstr "Lad guname opføre sig som et kontrolcenterprogram"
-
-#: mini-utils/guname/guname.c:119
-msgid "an initialization error occurred while starting 'guname-capplet'."
-msgstr "en klargøringsfejl opstod under opstart af 'guname-capplet'."
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:2
-#: mini-utils/guname/guname.c:446
-msgid "System Information"
-msgstr "Systeminformation"
-
-#: mini-utils/guname/guname.c:540
-msgid "Logo file not found"
-msgstr "Logofilen blev ikke fundet"
-
-#. Up here so it uses the default font
-#: mini-utils/guname/guname.c:544
-msgid "GNOME contributors:"
-msgstr "Gnome bidragsydere:"
-
-#. fontset used by guname; adapt it if your language requires it
-#: mini-utils/guname/guname.c:548
-msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
-
-#: mini-utils/guname/guname.c:559
-msgid "GNOME: The GNU Network Object Model Environment"
-msgstr "Gnome: GNU netværksobjektmiljø"
-
-#: mini-utils/guname/guname.c:583
-msgid "Email Information..."
-msgstr "Send information pr. epost..."
-
-#: mini-utils/guname/guname.c:596
-msgid "Save Information to File..."
-msgstr "Gem information som fil..."
-
-#: mini-utils/guname/guname.c:608 mini-utils/guname/guname.c:678
-msgid "Detailed Information..."
-msgstr "Detaljeret information..."
-
-#: mini-utils/guname/guname.c:623
-msgid "Category"
-msgstr "Kategori"
-
-#: mini-utils/guname/guname.c:623
-msgid "Your System"
-msgstr "Dit system"
-
-#: mini-utils/guname/guname.c:664 stripchart/params.c:946
-msgid "Save As..."
-msgstr "Gem som..."
-
-#: mini-utils/guname/guname.c:670
-msgid "Mail To..."
-msgstr "Send til..."
-
-#: mini-utils/guname/guname.c:718
-#, c-format
-msgid ""
-"Error closing file `%s': \n"
-"%s\n"
-"Some or all data may not have been written."
-msgstr ""
-"Fejl ved lukning af filen '%s': \n"
-"%s\n"
-"Dele af data eller evt. det hele er måske ikke blevet skrevet."
-
-#: mini-utils/guname/guname.c:730
-#, c-format
-msgid "Couldn't open file `%s': %s"
-msgstr "Kunne ikke åbne filen '%s': %s"
-
-#: mini-utils/guname/guname.c:752
-msgid "Save System Information As..."
-msgstr "Gem systeminformation som..."
-
-#. I don't think the error_string() will reliably mean anything.
-#: mini-utils/guname/guname.c:809
-#, c-format
-msgid "Command failed ` %s ': %s"
-msgstr "Kommando mislykkedes ' %s ': %s"
-
-#: mini-utils/guname/guname.c:817
-#, c-format
-msgid "Couldn't run command ` %s ': %s"
-msgstr "Kunne ikke køre kommandoen ' %s ': %s"
-
-#: mini-utils/guname/guname.c:841
-#, c-format
-msgid ""
-"The following mail will be sent to %s.\n"
-" Are you sure you want to mail this information?"
-msgstr ""
-"Følgende brev vil blive sendt til %s.\n"
-"Er du sikker på at du vil sende informationerne?"
-
-#: mini-utils/guname/guname.c:852
-msgid "Are you sure?"
-msgstr "Er du sikker?"
-
-#: mini-utils/guname/guname.c:894
-msgid "Address to mail to:"
-msgstr "Adresse der skal sendes til:"
-
-#. ***********************************
-#. Globals
-#. **********************************
-#: mini-utils/guname/info.c:40
-msgid "Distribution:"
-msgstr "Distribution:"
-
-#: mini-utils/guname/info.c:41
-msgid "Operating System:"
-msgstr "Styresystem:"
-
-#: mini-utils/guname/info.c:42
-msgid "Distribution Version:"
-msgstr "Distributionsversion:"
-
-#: mini-utils/guname/info.c:43
-msgid "Operating System Version:"
-msgstr "Styresystemversion:"
-
-#: mini-utils/guname/info.c:44
-msgid "Operating System Release:"
-msgstr "Styresystemets udgivelse:"
-
-#: mini-utils/guname/info.c:45
-msgid "Processor Type:"
-msgstr "Processortype:"
-
-#: mini-utils/guname/info.c:46
-msgid "Processor Speed:"
-msgstr "Processorhastighed:"
-
-#: mini-utils/guname/info.c:47
-msgid "Host Name:"
-msgstr "Værtsnavn:"
-
-#: mini-utils/guname/info.c:48
-msgid "Domain Name:"
-msgstr "Domænenavn:"
-
-#: mini-utils/guname/info.c:49
-msgid "User Name:"
-msgstr "Brugernavn:"
-
-#: mini-utils/guname/info.c:50
-msgid "X Display Name:"
-msgstr "X-skærmnavn:"
-
-#: mini-utils/guname/info.c:51
-msgid "System Status:"
-msgstr "Systemstatus:"
-
-#: mini-utils/guname/info.c:52
-msgid "Real Memory:"
-msgstr "Rigtig hukommelse:"
-
-#: mini-utils/guname/info.c:53
-msgid "Swap Space (\"virtual memory\"):"
-msgstr "Swap-plads (simuleret hukommelse):"
-
-#: mini-utils/guname/info.c:54
-msgid "Total Memory:"
-msgstr "Total hukommelse:"
-
-#: mini-utils/guname/info.c:55
-msgid "Free Memory:"
-msgstr "Fri hukommelse:"
-
-#: mini-utils/guname/info.c:60
-msgid "Device"
-msgstr "Enhed"
-
-#: mini-utils/guname/info.c:62
-msgid "Used space"
-msgstr "Brugt plads"
-
-#: mini-utils/guname/info.c:63
-msgid "Free space"
-msgstr "Ledig plads"
-
-#: mini-utils/guname/info.c:64
-msgid "Percent free"
-msgstr "Procent ledig"
-
-#: mini-utils/guname/info.c:65
-msgid "Mount point"
-msgstr "Monteringspunkt"
-
-#. This is about the only case where we'll put Unknown instead
-#. of simply not showing the info.
-#: mini-utils/guname/info.c:202 mini-utils/idetool/idetool.c:21
-#: mini-utils/idetool/idetool.c:26 mini-utils/idetool/idetool.c:319
-#: mini-utils/idetool/idetool.c:330
-msgid "Unknown"
-msgstr "Ukendt"
-
-#: mini-utils/guname/moreinfo.c:82
-msgid "Unknown filesystem"
-msgstr "Ukendt filsystem"
-
-#: mini-utils/guname/moreinfo.c:104
-msgid "No information for this filesystem."
-msgstr "Ingen information for dette filsystem."
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Memory"
-msgstr "Hukommelse"
-
-#: mini-utils/guname/moreinfo.c:161
-msgid "Kilobytes"
-msgstr "Kilobyte"
-
-#: mini-utils/guname/moreinfo.c:186
-#, c-format
-msgid "%ld%% memory used."
-msgstr "%ld%% hukommelse brugt."
-
-#: mini-utils/guname/moreinfo.c:197
-#, c-format
-msgid "%ld%% swap used."
-msgstr "%ld%% swap brugt."
-
-#: mini-utils/guname/moreinfo.c:222
-#, c-format
-msgid "CPU %d"
-msgstr "CPU %d"
-
-#: mini-utils/guname/moreinfo.c:276
-msgid "Detailed System Information"
-msgstr "Detaljeret systeminformation"
-
-#: mini-utils/guname/moreinfo.c:289
-msgid "Disk Information"
-msgstr "Diskinformation"
-
-#: mini-utils/guname/moreinfo.c:291
-msgid "Memory Information"
-msgstr "Hukommelsesinformation"
-
-#: mini-utils/guname/moreinfo.c:294
-msgid "CPU Information"
-msgstr "Processorinformation"
-
-#: mini-utils/guname/moreinfo.c:326
-msgid "Mount Point: "
-msgstr "Monteringspunkt: "
-
-#: mini-utils/guname/moreinfo.c:327
-msgid "    Device: "
-msgstr "    Enhed: "
-
-#: mini-utils/guname/moreinfo.c:328
-msgid "    Filesystem Type: "
-msgstr "    Filsystemtype: "
-
-#: mini-utils/guname/moreinfo.c:341
-#, c-format
-msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
-msgstr "%ld megabyte, %ld fri (%ld superbruger); %ld inoder, %ld ledig."
-
-#: mini-utils/guname/moreinfo.c:353
-#, c-format
-msgid "%2d%% full "
-msgstr "%2d%% fuld "
-
-#: mini-utils/gw/gw.c:143
-msgid ""
-"Couldn't find the \"w\" command in your path.\n"
-"This command is needed for the program to work."
-msgstr ""
-"Kunne ikke finde \"w\" kommandoen i søgestien.\n"
-"Denne kommando er nødvendig for at programmet kan virke."
-
-#: mini-utils/gw/gw.c:198
-msgid "Active User Listing"
-msgstr "Liste over aktive brugere"
-
-#: mini-utils/gw/gw.c:215
-msgid "Update Information"
-msgstr "Opdatér information"
-
-#: mini-utils/gw/gw.c:491
-msgid "Command Line"
-msgstr "Kommandolinje"
-
-#: mini-utils/gw/gw.c:493
-msgid "Add some defaults"
-msgstr "Tilføj nogle standarder"
-
-#: mini-utils/gw/gw.c:495
-msgid "Delete"
-msgstr "Slet"
-
-#: mini-utils/gw/gw.c:513
-msgid "Command Editor"
-msgstr "Kommandoredigering"
-
-#: mini-utils/gw/gw.c:523
-msgid ""
-"You can configure the commands on the popup menus.\n"
-"Just enter the name you want to appear on the \n"
-"menu, and the command to execute.\n"
-"In the command, you can use %u to represent the\n"
-"currently selected username, and %t for the tty."
-msgstr ""
-"Du kan indstille kommandoerne i pop-op-menuerne.\n"
-"Bare skriv det navn du ønsker der skal stå i \n"
-"menuen, og kommandoen der skal udføres.\n"
-"I kommandoen kan du bruge %u til at repræsentere det\n"
-"valgte brugernavn og %t for tty'en."
-
-#: mini-utils/gw/gw.c:530
-msgid ""
-"Click this button to add\n"
-"some sample commands."
-msgstr ""
-"Tryk på denne knap for at\n"
-"tilføje nogle prøvekommandoer."
-
-#: mini-utils/gw/gw.c:538
-msgid "Menu items"
-msgstr "Menupunkter"
-
-#: mini-utils/gw/gw.c:566
-msgid "Command"
-msgstr "Kommando"
-
-#: mini-utils/gw/gw.c:978
-#, c-format
-msgid "Running: %s\n"
-msgstr "Kører: %s\n"
-
-#: mini-utils/idetool/idetool.c:19
-msgid "Default 16-bit"
-msgstr "Standard 16-bit"
-
-#: mini-utils/idetool/idetool.c:20
-msgid "32-bit"
-msgstr "32-bit"
-
-#. there is no 2 apparently
-#: mini-utils/idetool/idetool.c:22
-msgid "32-bit w/sync"
-msgstr "32-bit m/synk"
-
-#: mini-utils/idetool/idetool.c:27
-msgid "Sleeping"
-msgstr "Sover"
-
-#: mini-utils/idetool/idetool.c:28
-msgid "Active/Idle"
-msgstr "Aktiv/passiv"
-
-#: mini-utils/idetool/idetool.c:29
-msgid "Standby"
-msgstr "Dvale"
-
-#: mini-utils/idetool/idetool.c:42
-msgid "Unable to access the drive."
-msgstr "Kan ikke komme i kontakt med drevet"
-
-#: mini-utils/idetool/idetool.c:59 mini-utils/idetool/idetool.c:71
-msgid "The DMA setting for this drive cannot be changed."
-msgstr "DMA-indstillingen for dette drev kan ikke ændres."
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Enabled"
-msgstr "Aktiveret"
-
-#: mini-utils/idetool/idetool.c:79 mini-utils/idetool/idetool.c:111
-#: mini-utils/idetool/idetool.c:326 mini-utils/idetool/idetool.c:331
-msgid "Disabled"
-msgstr "Deaktiveret"
-
-#: mini-utils/idetool/idetool.c:91 mini-utils/idetool/idetool.c:103
-msgid "The IRQ unmask setting for this drive cannot be changed."
-msgstr "IRQ-afmaskindstillingen for dette drev kan ikke ændres."
-
-#: mini-utils/idetool/idetool.c:122 mini-utils/idetool/idetool.c:134
-msgid "The drive refused to keep its settings."
-msgstr "Drevet nægter at beholde indstillingerne."
-
-#: mini-utils/idetool/idetool.c:142 mini-utils/idetool/idetool.c:333
-msgid "Keep settings"
-msgstr "Behold indstillinger"
-
-#: mini-utils/idetool/idetool.c:203
-msgid "None"
-msgstr "Ingen"
-
-#: mini-utils/idetool/idetool.c:207
-msgid "(1 Sector)"
-msgstr "(1 sektor)"
-
-#: mini-utils/idetool/idetool.c:209
-msgid "(Dual Port)"
-msgstr "(dobbeltport)"
-
-#: mini-utils/idetool/idetool.c:211
-msgid "(Dual Port Cache)"
-msgstr "(dobbeltportsmellemlager)"
-
-#: mini-utils/idetool/idetool.c:241
-msgid "No"
-msgstr "Nej"
-
-#: mini-utils/idetool/idetool.c:243
-#, c-format
-msgid "Yes (%d sector)"
-msgstr "Ja (%d sektor)"
-
-#: mini-utils/idetool/idetool.c:245
-#, c-format
-msgid "Yes (%d sectors)"
-msgstr "Ja (%d sektorer)"
-
-#: mini-utils/idetool/idetool.c:310 mini-utils/idetool/idetool.c:323
-msgid "Model"
-msgstr "Model"
-
-#: mini-utils/idetool/idetool.c:311
-msgid "Firmware"
-msgstr "Fast programmel"
-
-#: mini-utils/idetool/idetool.c:312
-msgid "Serial No."
-msgstr "Serienr."
-
-#. do config here
-#: mini-utils/idetool/idetool.c:314
-msgid "Geometry"
-msgstr "Geometri"
-
-#: mini-utils/idetool/idetool.c:315
-msgid "Cache"
-msgstr "Mellemlager"
-
-#: mini-utils/idetool/idetool.c:323
-msgid "Legacy MFM/RLL drive"
-msgstr "Gammeldags MFM/RLL-drev"
-
-#: mini-utils/idetool/idetool.c:326
-msgid "DMA Mode"
-msgstr "DMA-tilstand"
-
-#: mini-utils/idetool/idetool.c:328 mini-utils/idetool/idetool.c:330
-msgid "IO Mode"
-msgstr "IO-tilstand"
-
-#: mini-utils/idetool/idetool.c:331
-msgid "IRQ Unmask"
-msgstr "IRQ-afmask"
-
-#: mini-utils/idetool/idetool.c:332
-msgid "Multisector"
-msgstr "Multisektor"
-
-#: mini-utils/idetool/idetool.c:333
-msgid "On Reset"
-msgstr "Ved genstart"
-
-#.
-#. *	Set up the outer display first
-#.
-#: mini-utils/idetool/idetool.c:373
-msgid "IDE Status"
-msgstr "IDE-status"
-
-#: mini-utils/idetool/idetool.c:395
-msgid "Disk Logo Not Found"
-msgstr "Disk-logo blev ikke fundet"
-
-#: mini-utils/idetool/idetool.c:446
-msgid "Only the superuser can use this tool"
-msgstr "Kun administratoren kan bruge dette værktøj"
-
-#: mini-utils/idetool/idetool.c:457
-msgid "You appear to have no IDE drives"
-msgstr "Du ser ikke ud til at have noget IDE-drev"
-
-#: gfloppy/src/badblocks.c:102
-msgid "MInternal Error: Unable to seek to the correct location."
-msgstr "Intern fejl: Ude stand til at søge til den rigtige position."
-
-#: gfloppy/src/badblocks.c:111
-#, c-format
-msgid "MInternal Error: Weird value (%ld) in do_test\n"
-msgstr "Intern fejl: Mærkelig værdi (%ld) i do_test\n"
-
-#: gfloppy/src/badblocks.c:166
-#, c-format
-msgid "EBad block at block %lu"
-msgstr "Ugyldig blok ved blok %lu"
-
-#. while (!i)
-#. ;
-#: gfloppy/src/badblocks.c:260
-msgid "MChecking for bad blocks..."
-msgstr "Tjekker efter ugyldige blokke..."
-
-#: gfloppy/src/badblocks.c:272
-#, c-format
-msgid "MFailed to open device %s for badblock checking\n"
-msgstr "Det lykkedes ikke at åbne enheden %s til tjek efter ugyldige blokke\n"
-
-#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
-msgid "MChecking for bad blocks... Done"
-msgstr "Tjekker efter ugyldige blokke... Færdig"
-
-#: gfloppy/src/fdformat.c:45
-msgid "MFormatting the disk..."
-msgstr "Formaterer disken..."
-
-#: gfloppy/src/fdformat.c:47
-msgid "EI don't know what this is, but it's very wrong."
-msgstr "Aner ikke hvad dette er, men det er meget forkert."
-
-#: gfloppy/src/fdformat.c:55 gfloppy/src/fdformat.c:67
-#, c-format
-msgid "EError formatting track #%d"
-msgstr "Fejl ved formatering af spor %d"
-
-#: gfloppy/src/fdformat.c:75
-msgid "EError during completion of formatting"
-msgstr "Fejl ved fuldbyrdelse af formatering"
-
-#. XXXX - need to tell parent we're finished
-#: gfloppy/src/fdformat.c:79
-msgid "MFormatting the disk... Done"
-msgstr "Formaterer disken... Færdig"
-
-#. XXXX - tell parent we're starting verify stage
-#: gfloppy/src/fdformat.c:95
-msgid "MVerifying the format..."
-msgstr "Tjekker formatet..."
-
-#: gfloppy/src/fdformat.c:100 gfloppy/src/fdformat.c:175
-msgid ""
-"EUnable to write to the floppy.\n"
-"\n"
-"Please confirm that it is not write-protected."
-msgstr ""
-"Ude af stand til at skrive til disketten.\n"
-"\n"
-"Tjek venligst at den ikke er skrivebeskyttet."
-
-#: gfloppy/src/fdformat.c:103 gfloppy/src/fdformat.c:178
-#, c-format
-msgid "EInsufficient permissions to open floppy device %s."
-msgstr "Du har ikke rettighed til at åbne disketteenheden %s."
-
-#: gfloppy/src/fdformat.c:107 gfloppy/src/fdformat.c:182
-msgid ""
-"EUnable to access the floppy disk.\n"
-"\n"
-"Please confirm that it is in the drive\n"
-"with the drive door shut."
-msgstr ""
-"Ude af stand til at tilgå disketten.\n"
-"\n"
-"Tjek venligst at den er i drevet med\n"
-"døren lukket."
-
-#: gfloppy/src/fdformat.c:110
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s:%d"
-msgstr ""
-"General fejl ved tilgang af disketteenheden %s.\n"
-"\n"
-"Fejlkode %s:%d"
-
-#: gfloppy/src/fdformat.c:130
-#, c-format
-msgid ""
-"ERead Error:\n"
-"Problem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"Læsefejl:\n"
-"Der opstod et problem ved læsning af cylinder %d, forventede %d, læste %d"
-
-#: gfloppy/src/fdformat.c:133
-#, c-format
-msgid "EProblem reading cylinder %d, expected %d, read %d"
-msgstr ""
-"Der opstod et problem ved læsning af cylinder %d, forventede %d, læste %d"
-
-#: gfloppy/src/fdformat.c:142
-#, c-format
-msgid "MBad data in cyl %d.  Continuing... "
-msgstr "Ugyldig data i cylinder %d. Fortsætter..."
-
-#: gfloppy/src/fdformat.c:149
-#, c-format
-msgid "EError closing device %s"
-msgstr "Fejl ved lukning af enhed %s"
-
-#: gfloppy/src/fdformat.c:154
-msgid "MVerifying the format... Done"
-msgstr "Tjekker formatet... Færdig"
-
-#: gfloppy/src/fdformat.c:166
-#, c-format
-msgid "EUnable to write to device %s"
-msgstr "Ude af stand til at skrive til enhed %s"
-
-#: gfloppy/src/fdformat.c:185
-#, c-format
-msgid ""
-"EGeneric error accessing floppy device %s.\n"
-"\n"
-"Error code %s"
-msgstr ""
-"General fejl ved tilgang af disketteenheden %s.\n"
-"\n"
-"Fejlkode %s"
-
-#: gfloppy/src/fdformat.c:195
-msgid "ECould not determine current format type"
-msgstr "Kunne ikke bestemme den nuværende formattype"
-
-#: gfloppy/src/gfloppy-i18n.h:9 gfloppy/src/gfloppy.glade.h:1
-msgid "Dos (FAT)"
-msgstr "DOS (FAT)"
-
-#: gfloppy/src/gfloppy-i18n.h:15 gfloppy/src/gfloppy.glade.h:2
-msgid "Double Density 3.5\" (720 KB)"
-msgstr "Dobbeltdensitets 3.5\" (720 Kb)"
-
-#: gfloppy/src/gfloppy-i18n.h:16 gfloppy/src/gfloppy.glade.h:3
-msgid "Double Density 5.25\" (360 KB)"
-msgstr "Dobbeltdensitets 5.25\" (360 Kb)"
-
-#: gfloppy/src/gfloppy-i18n.h:12 gfloppy/src/gfloppy.glade.h:4
-msgid "File system type:"
-msgstr "Filsystemtype:"
-
-#: gfloppy/src/gfloppy-i18n.h:11 gfloppy/src/gfloppy.glade.h:5
-msgid "Floppy Density:"
-msgstr "Diskettedensitet:"
-
-#: gfloppy/src/gfloppy-i18n.h:18 gfloppy/src/gfloppy.glade.h:6
-msgid "Floppy Device:"
-msgstr "Disketteenhed:"
-
-#.
-#. * Translatable strings file generated by Glade.
-#. * Add this file to your project's POTFILES.in.
-#. * DO NOT compile it as part of your application.
-#.
-#: gfloppy/src/gfloppy-i18n.h:7 gfloppy/src/gfloppy.glade.h:7
-msgid "Format a floppy"
-msgstr "Formatér en diskette"
-
-#: gfloppy/src/gfloppy-i18n.h:13 gfloppy/src/gfloppy.glade.h:8
-msgid "High Density 3.5\" (1.44 MB)"
-msgstr "Højdensitets 3.5\" (1.44 Mb)"
-
-#: gfloppy/src/gfloppy-i18n.h:14 gfloppy/src/gfloppy.glade.h:9
-msgid "High Density 5.25\" (1.2 MB)"
-msgstr "Højdensitets 5.25\" (1.2 Mb)"
-
-#: gfloppy/src/gfloppy-i18n.h:8 gfloppy/src/gfloppy-i18n.h:10
-#: gfloppy/src/gfloppy.glade.h:10
-msgid "Linux Native (ext2)"
-msgstr "Indfødt Linux (ext2)"
-
-#: gfloppy/src/gfloppy-i18n.h:17 gfloppy/src/gfloppy.glade.h:11
-msgid "_Quick format"
-msgstr "H_urtig formatering"
-
-#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
-msgid "MMaking filesystem on disk..."
-msgstr "Opretter filsystem på disketten..."
-
-#: gfloppy/src/gfloppy.c:167
-msgid "EUnable to create filesystem correctly."
-msgstr "Kan ikke oprette filsystemet korrekt."
-
-#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
-msgid "MMaking filesystem on disk... Done"
-msgstr "Opretter filsystem på disketten... Færdig"
-
-#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
-msgid "EUnable to create filesystem."
-msgstr "Kan ikke oprette filsystemet."
-
-#: gfloppy/src/gfloppy.c:209
-msgid "MChecking for bad blocks... (this might take a while)"
-msgstr "Kontrollerer for ugyldige blokke... (dette kan tage et stykke tid)"
-
-#: gfloppy/src/main.c:135 gfloppy/src/main.c:171
-#, c-format
-msgid "Unable to open the device %s, formatting cannot continue."
-msgstr "Kan ikke åbne enheden %s, formatering kan ikke fortsætte."
-
-#: gfloppy/src/main.c:138 gfloppy/src/main.c:174
-#, c-format
-msgid ""
-"The device %s is disconnected.\n"
-"Please attach device to continue."
-msgstr ""
-"Enheden %s er ikke forbundet.\n"
-"Tilkobl venligst enheden for at forsætte."
-
-#: gfloppy/src/main.c:141 gfloppy/src/main.c:177
-#, c-format
-msgid ""
-"You do not have the proper permissions to write to %s, formatting will not "
-"be possible.\n"
-"Contact your system administrator about getting write permissions."
-msgstr ""
-"Du har ikke rettigheder til at skrive til %s, formateringen kan ikke "
-"udføres.\n"
-"Kontakt systemadministratoren for at få skriverettigheder."
-
-#: gfloppy/src/main.c:285
-msgid "The device to format"
-msgstr "Enheden der skal formatteres"
-
-#: gfloppy/src/main.c:286
-msgid "DEVICE"
-msgstr "ENHED"
-
-#. We do this to get around a bug in libglade.  Ideally we won't need
-#. * to do this in the future.
-#: gfloppy/src/main.c:317
-msgid "Format"
-msgstr "Formatér"
-
-#: gfloppy/src/main.c:360
-msgid "Format another floppy?"
-msgstr "Formatér en anden diskette?"
-
-#: gfloppy/src/progress.c:117
-msgid "Floppy formatted successfully."
-msgstr "Diskette formateret."
-
-#: gfloppy/src/progress.c:121
-msgid "Floppy formatting cancelled."
-msgstr "Disketteformatering afbrudt."
-
-#: gfloppy/src/progress.c:176
-msgid "Format progress."
-msgstr "Formateringsstatus."
-
-#: stripchart/chart-app.c:160
-msgid "Param"
-msgstr "Param"
-
-#: stripchart/chart-app.c:161
-msgid "Current"
-msgstr "Nuværende"
-
-#: stripchart/chart-app.c:163 stripchart/params.c:760
-msgid "Scale"
-msgstr "Skalér"
-
-#: stripchart/chart-app.c:197 stripchart/stripchart-applet.c:69
-#: stripchart/stripchart-applet.desktop.in.h:2 stripchart/stripchart.c:92
-#: stripchart/stripchart.c:97
-msgid "Stripchart"
-msgstr "Stripgraf"
-
-#: stripchart/chart-app.c:198
-msgid "Copyright 2000 John Kodis"
-msgstr "Ophavsret 2000 John Kodis"
-
-#: stripchart/chart-app.c:200
-msgid ""
-"The GNOME stripchart program plots various user-specified parameters as a "
-"function of time.  Its main use is to chart system performance parameters "
-"such as CPU load, CPU utilization, network traffic levels, and the like.  "
-"Other more ingenious uses are left as an exercise for the interested user."
-msgstr ""
-"Gnome stripgrafsprogrammet plotter forskellige bruger-specificerede "
-"parametre som en funktion af tiden. Det primære formål er at vise systemets  "
-"ydelsesparametre såsom CPU-forbrug og -udnyttelse, netværkstrafik, osv. "
-"Andre formål er skjult for at give den interesserede bruger lidt øvelse."
-
-#: stripchart/chart-app.c:239
-msgid "Show values"
-msgstr "Vis værdier"
-
-#: stripchart/chart-app.c:246
-msgid "Edit Prefs..."
-msgstr "Redigér opsætning..."
-
-#: stripchart/chart-app.c:251
-msgid "Edit Params..."
-msgstr "Redigér parametre..."
-
-#: stripchart/eval.c:252
-msgid "closing parenthesis expected"
-msgstr "højreparantes forventet"
-
-#: stripchart/eval.c:269
-#, c-format
-msgid "no such field: %d"
-msgstr "feltet findes ikke: %d"
-
-#: stripchart/eval.c:294
-msgid "missing variable identifer"
-msgstr "mangler variabelnavn"
-
-#: stripchart/eval.c:296
-#, c-format
-msgid "invalid variable identifer: %s"
-msgstr "ugyldig variabelnavn: %s"
-
-#: stripchart/eval.c:300
-msgid "number expected"
-msgstr "tal forventet"
-
-#: stripchart/eval.c:371
-#, c-format
-msgid "extra junk at end: \"%s\""
-msgstr "overflødigt bras i slutning: \"%s\""
-
-#: stripchart/params.c:633
-msgid "Parameter"
-msgstr "Parameter"
-
-#: stripchart/params.c:671
-msgid "Equation"
-msgstr "Ligning"
-
-#: stripchart/params.c:682
-msgid "Filename"
-msgstr "Filnavn"
-
-#: stripchart/params.c:693
-msgid "Pattern"
-msgstr "Mønster"
-
-#: stripchart/params.c:714 stripchart/params.c:742
-msgid "Min"
-msgstr "Min."
-
-#: stripchart/params.c:723 stripchart/params.c:751
-msgid "Max"
-msgstr "Maks."
-
-#: stripchart/params.c:771
-msgid "Linear"
-msgstr "Lineær"
-
-#: stripchart/params.c:779
-msgid "Logarithmic"
-msgstr "Logaritmisk"
-
-#: stripchart/params.c:784
-msgid "Type"
-msgstr "Type"
-
-#: stripchart/params.c:795
-msgid "Indicator"
-msgstr "Indikator"
-
-#: stripchart/params.c:802
-msgid "Line"
-msgstr "Linje"
-
-#: stripchart/params.c:809
-msgid "Point"
-msgstr "Punkt"
-
-#: stripchart/params.c:816
-msgid "Solid"
-msgstr "Solid"
-
-#: stripchart/params.c:965
-msgid "Add Parameter Before"
-msgstr "Tilføj parameter før"
-
-#: stripchart/params.c:972
-msgid "Add Parameter After"
-msgstr "Tilføj parameter efter"
-
-#: stripchart/params.c:979
-msgid "Apply Parameter Changes"
-msgstr "Anvend parameterændringer"
-
-#: stripchart/params.c:986
-msgid "Delete Parameter"
-msgstr "Slet parameter"
-
-#: stripchart/params.c:994
-msgid "Add Color"
-msgstr "Tilføj farve"
-
-#: stripchart/params.c:1001
-msgid "Delete Color"
-msgstr "Fjern farve"
-
-#: stripchart/params.c:1020
-msgid "Info"
-msgstr "Info"
-
-#: stripchart/params.c:1091
-msgid "Parameter Editor"
-msgstr "Parameterredigering"
-
-#: stripchart/params.c:1100
-msgid "Parameters"
-msgstr "Parametre"
-
-#: stripchart/prefs.c:208
-msgid "Chart"
-msgstr "Graf"
-
-#: stripchart/prefs.c:218 stripchart/prefs.c:277
-msgid "enabled"
-msgstr "aktiveret"
-
-#: stripchart/prefs.c:225
-msgid "minor"
-msgstr "mindre"
-
-#: stripchart/prefs.c:231
-msgid "major"
-msgstr "større"
-
-#: stripchart/prefs.c:244 stripchart/prefs.c:262
-msgid "Update"
-msgstr "Opdatering"
-
-#: stripchart/prefs.c:247 stripchart/prefs.c:270
-msgid "Smooth"
-msgstr "Udjævnet"
-
-#: stripchart/prefs.c:250
-msgid "Ticks"
-msgstr "Mærker"
-
-#: stripchart/prefs.c:255
-msgid "Pen"
-msgstr "Pen"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "Geometry string: WxH+X+Y"
-msgstr "Geometristreng: VxH+X+Y"
-
-#: stripchart/stripchart-applet.c:44 stripchart/stripchart.c:66
-msgid "GEO"
-msgstr "GEO"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "Configuration file name"
-msgstr "Konfigurationsfilnavn"
-
-#: stripchart/stripchart-applet.c:46 stripchart/stripchart.c:68
-msgid "FILE"
-msgstr "FIL"
-
-#: stripchart/stripchart-applet.c:92
-msgid "Values"
-msgstr "Værdier"
-
-#: stripchart/stripchart-applet.c:95
-msgid "Prefs..."
-msgstr "Opsætning..."
-
-#: stripchart/stripchart-applet.c:98
-msgid "Params..."
-msgstr "Parametre..."
-
-#: exe-handler/gnome-exe-handler.c:76
-#, c-format
-msgid ""
-"Executing arbitrary programs that you downloaded from the network might be "
-"dangerous.\n"
-"\n"
-"Are you sure you want to run `%s'?"
-msgstr ""
-"At køre tilfældige programmer som du har hentet fra netværket kan være "
-"farligt.\n"
-"\n"
-"Er du sikker på at du vil køre '%s'?"
-
-#: exe-handler/gnome-exe-handler.c:83
-msgid "Could not access file permissions"
-msgstr "Kunne ikke få adgang til filrettigheder"
-
-#: exe-handler/gnome-exe-handler.c:88
-#, c-format
-msgid "Could not execute the file `%s' due to a permission problem"
-msgstr "Kunne ikke køre filen '%s' pga. et rettighedsproblem"
-
-#: exe-handler/gnome-exe-handler.c:104
-#, c-format
-msgid "Failure at executing `%s'"
-msgstr "Fejl ved kørsel af '%s'"
-
-#: exe-handler/gnome-exe-handler.c:123
-#, c-format
-msgid "It was not possible to open the file `%s'"
-msgstr "Det var ikke muligt at åbne filen '%s'"
-
-#: exe-handler/gnome-exe-handler.c:132
-#, c-format
-msgid "The file `%s' is empty"
-msgstr "Filen '%s' er tom"
-
-#: exe-handler/gnome-exe-handler.c:137
-#, c-format
-msgid "There was an error. `%s' is empty"
-msgstr "Der opstod en fejl, '%s' er tom"
-
-#: exe-handler/gnome-exe-handler.c:152
-msgid "This is a library and can not be executed"
-msgstr "Dette er et rutinebibliotek og kan ikke køres"
-
-#: exe-handler/gnome-exe-handler.c:158
-msgid "The file is a core file and can not be executed"
-msgstr "Filen er et hukommelsesdump og kan ikke køres"
-
-#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
-msgid "This is an unknown kind of executable"
-msgstr "Dette er en ukendt form for kørbar fil"
-
-#: exe-handler/gnome-exe-handler.c:192
-msgid ""
-"The executable is for a different platform and can not be executed on this "
-"system"
-msgstr ""
-"Den kørbare fil er beregnet til en anden platform og kan ikke køres på dette "
-"system"
-
-#: meat-grinder/meat-grinder.c:106
-#, c-format
-msgid ""
-"Number of files: %d\n"
-"Nuber of folders: %d"
-msgstr ""
-"Antal filer: %d\n"
-"Antal mapper: %d"
-
-#: meat-grinder/meat-grinder.c:112
-msgid ""
-"No files or folders, drop files or folders\n"
-"above to add them to the archive"
-msgstr ""
-"Ingen filer eller mapper, slip filer eller\n"
-"mapper ovenfor for at tilføje dem til arkivet."
-
-#: meat-grinder/meat-grinder.c:217 meat-grinder/meat-grinder.c:220
-msgid "Cannot start the archive (tar) program"
-msgstr "Kan ikke starte arkivprogrammet (tar)"
-
-#: meat-grinder/meat-grinder.c:228
-msgid "Cannot run tar/gtar"
-msgstr "Kan ikke køre tar/gtar"
-
-#: meat-grinder/meat-grinder.c:279
-msgid "Archive.tar.gz"
-msgstr "Arkiv.tar.gz"
-
-#: meat-grinder/meat-grinder.c:379
-msgid "The GNOME Archive Generator"
-msgstr "Gnome arkivgeneratoren"
-
-#: meat-grinder/meat-grinder.c:382
-msgid "Drag files in to make archives"
-msgstr "Træk filer for at oprette arkiver"
-
-# dækker vist bedre
-#: meat-grinder/meat-grinder.c:444 meat-grinder/meat-grinder.c:602
-msgid "No filename selected"
-msgstr "Ingen filnavne markeret"
-
-#: meat-grinder/meat-grinder.c:448
-msgid "File exists, overwrite?"
-msgstr "Filer eksisterer allerede, overskriv dem?"
-
-#: meat-grinder/meat-grinder.c:472
-msgid "No items to archive"
-msgstr "Ingen elementer til arkiv"
-
-#: meat-grinder/meat-grinder.c:605
-msgid "File does not exists"
-msgstr "Filen eksisterer ikke"
-
-#: meat-grinder/meat-grinder.c:619
-msgid "Add file or folder"
-msgstr "Tilføj fil eller mappe"
-
-#: meat-grinder/meat-grinder.c:689
-msgid "Add file or folder..."
-msgstr "Tilføj fil eller mappe..."
-
-#: meat-grinder/meat-grinder.c:690
-msgid "Add a file or folder to the archive"
-msgstr "Tilføj en fil eller en mappe til arkivet"
-
-#: meat-grinder/meat-grinder.c:693
-msgid "Create archive..."
-msgstr "Opret arkiv..."
-
-#: meat-grinder/meat-grinder.c:694
-msgid "Create a new archive from the items"
-msgstr "Opret et nyt arkiv med de markerede elementer"
-
-# det er åndssvagt at have parantesen med
-#: meat-grinder/meat-grinder.c:703
-msgid "Remove the selected item(s)"
-msgstr "Fjern de markerede elementer"
-
-#: meat-grinder/meat-grinder.c:735
-msgid "GNOME Archive Generator"
-msgstr "Gnome arkivgenerator"
-
-#: meat-grinder/meat-grinder.c:765
-msgid "Drop files here to add them to the archive."
-msgstr "Træk og slip filer her for at tilføje dem til arkivet."
-
-#: meat-grinder/meat-grinder.c:783
-msgid "Archive"
-msgstr "Arkiv"
-
-#: meat-grinder/meat-grinder.c:790
-msgid ""
-"Drag this button to the destination where you want the archive to be created "
-"or press it to pop up a file selection dialog."
-msgstr ""
-"Træk denne knap til destinationen hvor du ønsker arkivet skal oprettes, "
-"eller tryk på den for at åbne filvælgervinduet."
-
-#: meat-grinder/meat-grinder.c:883
-msgid "Cannot find proper icons anywhere!"
-msgstr "Kan ikke finde de rigtige ikoner!"
-
-#: meat-grinder/meat-grinder.c:891
-msgid ""
-"Cannot find the archive (tar) program!\n"
-"This is the program used for creating archives."
-msgstr ""
-"Kan ikke finde arkivprogrammet (tar)!\n"
-"Det program benyttes til at oprette arkiverne."
-
-#: gfloppy/gfloppy.desktop.in.h:1
-msgid "Format Floppy Disks"
-msgstr "Formaterer forskellige diskettetyper"
-
-#: gfloppy/gfloppy.desktop.in.h:2
-msgid "gfloppy"
-msgstr "Formatér diskette"
-
-#: gdictsrc/GDict.desktop.in.h:1 gdictsrc/gdict.desktop.in.h:1
-msgid "GDict"
-msgstr "GDict ordbog"
-
-#: gdictsrc/GDict.desktop.in.h:2
-msgid "Gnome client for the MIT dictionary server"
-msgstr "Gnome klient for MIT ordbogs-tjener"
-
-#: gdictsrc/gdict.desktop.in.h:2
-msgid "GNOME client for RFC 2229-compliant dictionary server"
-msgstr "Klient til RFC 2229-ordbogsopslag"
-
-#: stripchart/stripchart-applet.desktop.in.h:1
-msgid "Shows a stripchart plot"
-msgstr "Viser et stripchart plot"
-
-#: gstripchart/gstripchart.desktop.in.h:1 stripchart/stripchart.desktop.in.h:1
-msgid "Stripchart Plotter"
-msgstr "Stripgraf plotter"
-
-#: notepad/Notepad.desktop.in.h:1
-msgid "Notepad"
-msgstr "Notesblok"
-
-#: notepad/Notepad.desktop.in.h:2
-msgid "Simple editor (notepad)"
-msgstr "Simpel tekstbehandler (notesblok)"
-
-#: mini-utils/idetool/idetool.desktop.in.h:1
-msgid "IDE Device Tool"
-msgstr "IDE-enhedsværktøj"
-
-#: mini-utils/idetool/idetool.desktop.in.h:2
-msgid "Show and Configure IDE Device Settings"
-msgstr "Viser og konfigurerer IDE-enhedsindstillinger"
-
-#: mini-utils/gw/gw.desktop.in.h:1
-msgid "User Listing"
-msgstr "Brugerliste"
-
-#: mini-utils/gw/gw.desktop.in.h:2
-msgid "View users on the system"
-msgstr "Liste over brugere som er logget ind"
-
-#: mini-utils/guname/guname-capplet.desktop.in.h:1
-msgid "Show various system information"
-msgstr "Viser forskelligt systeminformation"
-
-#: mini-utils/guname/guname.desktop.in.h:1
-msgid "System Info"
-msgstr "Systeminfo"
-
-#: mini-utils/guname/guname.desktop.in.h:2
-msgid "Technical information about this computer"
-msgstr "Teknisk information om denne maskine"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:1
-msgid "Shut Down or Reboot"
-msgstr "Luk ned eller genstart"
-
-#: mini-utils/gshutdown/gshutdown.desktop.in.h:2
-msgid "Turn off or reset the computer"
-msgstr "Luk maskinen ned eller genstart den"
-
-#: mini-utils/grun/grun.desktop.in.h:1
-msgid "Ask for a command to execute"
-msgstr "Bed om navnet på en kommando som skal udføres"
-
-#: mini-utils/grun/grun.desktop.in.h:2
-msgid "Run A Command..."
-msgstr "Udfør en kommando..."
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:1
-msgid "GNOME Penguin"
-msgstr "GNOME Pingvin"
-
-#: mini-utils/gpenguin/gpenguin.desktop.in.h:2
-msgid "Let a cute pinguin chase your pointer"
-msgstr "Se en sød pingvin forfølge din musemarkør"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:1
-msgid "Prompts the user for a program to run"
-msgstr "Spørger brugeren hvilket program, hun vil køre"
-
-#: mini-utils/gnome-run/gnome-run.desktop.in.h:2
-msgid "Run program..."
-msgstr "Kør..."
-
-#: mini-utils/gless/gless.desktop.in.h:1
-msgid "Page files as with `more' and `less'"
-msgstr "Viser filer på samme måde som `more' og `less'"
-
-#: mini-utils/gfontsel/gfontsel.desktop.in.h:2
-msgid "Select a font for pasting"
-msgstr "Vælg en skrifttype"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:1
-msgid "Browse available X11 colors."
-msgstr "Visualisering af systemfarverne i X11"
-
-#: mini-utils/gcolorsel/gcolorsel.desktop.in.h:2
-msgid "Color Browser"
-msgstr "Farvevælger"
-
-#: meat-grinder/meat-grinder.desktop.in.h:1
-msgid "Archive Generator"
-msgstr "Arkivgenerator"
-
-#: meat-grinder/meat-grinder.desktop.in.h:2
-msgid "GNOME Archive Generator aka Meat Grinder"
-msgstr "Genererer arkiver (med tilnavnet Kødmaskinen)"
-
-#: logview/logview.desktop.in.h:1
-msgid "SysLog tool"
-msgstr "Viser systemets logfiler"
-
-#: logview/logview.desktop.in.h:2
-msgid "System log monitor"
-msgstr "Systemlog-overvågning"
-
-#: gtt/gtt.desktop.in.h:1
+#: gtt.desktop.in.h:1
 msgid "Time Tracker tool"
 msgstr "Undersøg hvor meget tid du bruger på dine projekter"
 
-#: gtt/gtt.desktop.in.h:2
+#: gtt.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Tidsforbrugsværktøj"
 
-#: gstripchart/gstripchart_applet.desktop.in.h:1
-msgid "Gstripchart"
-msgstr "Gstripchart"
+#~ msgid "The Gnome Calculator"
+#~ msgstr "Gnome lommeregneren"
 
-#: gstripchart/gstripchart_applet.desktop.in.h:2
-msgid "Shows a stripchart"
-msgstr "Viser et stripchart"
+#~ msgid "Simple double precision calculator similiar to xcalc"
+#~ msgstr "Enkel dobbelt-præcisionslommeregner lignende xcalc"
 
-#: gsearchtool/gsearchtool.desktop.in.h:1
-#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
-msgid "GNOME Search Tool"
-msgstr "Søgeværktøj"
+#~ msgid "Run in analog (slide rule) mode"
+#~ msgstr "Kør i analog (regnestok-) tilstand"
 
-#: gdiskfree/gdiskfree.desktop.in.h:1
-msgid "GNOME DiskFree"
-msgstr "Ledig diskplads"
+#~ msgid "Gnome Calculator"
+#~ msgstr "Gnome lommeregner"
 
-#: gdiskfree/gdiskfree.desktop.in.h:2
-msgid "Show free space on mounted file systems using dials."
-msgstr "Viser hvor meget plads der er tilbage på harddisken"
+#~ msgid "DEG"
+#~ msgstr "GRA"
 
-#: gcharmap/gcharmap.desktop.in.h:1
-msgid "GNOME Character Map"
-msgstr "Tegnoversigt"
+#~ msgid "RAD"
+#~ msgstr "RAD"
 
-#: gcalc/gcalc.desktop.in.h:1
-msgid "Simple Calculator"
-msgstr "Lommeregner"
+#~ msgid "GRAD"
+#~ msgstr "NYGRA"
 
-#: cromagnon/Cromagnon.desktop.in.h:1
-msgid "Personal cron manager"
-msgstr "Crontabredigering"
+#~ msgid "1/x"
+#~ msgstr "1/x"
 
-#: cromagnon/Cromagnon.desktop.in.h:2
-msgid "Personal crontab manager"
-msgstr "Personlig crontabredigering"
+#~ msgid "x^2"
+#~ msgstr "x²"
+
+#~ msgid "SQRT"
+#~ msgstr "KVDROD"
+
+#~ msgid "CE/C"
+#~ msgstr "CE/C"
+
+#~ msgid "AC"
+#~ msgstr "AC"
+
+#~ msgid "INV"
+#~ msgstr "INV"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "cos"
+#~ msgstr "cos"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "EE"
+#~ msgstr "EE"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "x^y"
+#~ msgstr "x^y"
+
+#~ msgid "PI"
+#~ msgstr "PI"
+
+#~ msgid "x!"
+#~ msgstr "x!"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "STO"
+#~ msgstr "STO"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "RCL"
+#~ msgstr "RCL"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "SUM"
+#~ msgstr "SUM"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "EXC"
+#~ msgstr "EXC"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "+/-"
+#~ msgstr "+/-"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "calculator-font.png"
+#~ msgstr "calculator-font.png"
+
+#~ msgid "Select Character"
+#~ msgstr "Vælg tegn"
+
+#~ msgid "Insert"
+#~ msgstr "Indsæt"
+
+#~ msgid "Character code:"
+#~ msgstr "Tegnkode:"
+
+#~ msgid "Character:"
+#~ msgstr "Tegn:"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "Gnome Character Map"
+#~ msgstr "Gnome tegnoversigt"
+
+#~ msgid ""
+#~ "The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+#~ "contain bad English."
+#~ msgstr "Gnome ækvivalenten til Windows' tegnoversigt"
+
+#~ msgid "del"
+#~ msgstr "del"
+
+#~ msgid " %s: Character code %d"
+#~ msgstr "%s: tegnkode %d"
+
+#~ msgid "Text copied to clipboard..."
+#~ msgstr "Tekst kopieret til klippebordet..."
+
+#~ msgid "Text cut to clipboard..."
+#~ msgstr "Tekst klippet ud til klippebordet..."
+
+#~ msgid "Text pasted from clipboard..."
+#~ msgstr "Tekst indsat fra klippebordet..."
+
+#~ msgid "Action Toolbar"
+#~ msgstr "Handlingsværktøjslinje"
+
+#~ msgid "Text to copy:"
+#~ msgstr "Tekst at kopiere:"
+
+#~ msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "Exit"
+#~ msgstr "Afslut"
+
+#~ msgid "Copy"
+#~ msgstr "Kopiér"
+
+#~ msgid "About"
+#~ msgstr "Om..."
+
+#~ msgid "Help"
+#~ msgstr "Hjælp"
+
+#~ msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "Insert Character..."
+#~ msgstr "Indsæt tegn..."
+
+#~ msgid "Insert character(s) by choosing character codes."
+#~ msgstr "Indsæt tegn ved at vælge tegnkoder."
+
+#~ msgid "_Action Toolbar"
+#~ msgstr "_Handlingsværktøjslinje"
+
+#~ msgid "View or hide the action toolbar"
+#~ msgstr "Vis eller skjul handlingsværktøjslinjen"
+
+#~ msgid "_Text Toolbar"
+#~ msgstr "_Tekstlinje"
+
+#~ msgid "View or hide the text toolbar"
+#~ msgstr "Vis eller skjul tekstlinjen"
+
+#~ msgid "_Statusbar"
+#~ msgstr "_Statuslinje"
+
+#~ msgid "View or hide the statusbar"
+#~ msgstr "Vis eller skjul statuslinjen"
+
+#~ msgid "Character Table's Font..."
+#~ msgstr "Skrifttype til tegntabel..."
+
+#~ msgid "Set the character table's font."
+#~ msgstr "Vælg tegntabellens skrifttype."
+
+#~ msgid "_Insert at end"
+#~ msgstr "_Indsæt ved slutning"
+
+#~ msgid "Insert every selected character at the end of the text entry"
+#~ msgstr "Indsæt alle valgte tegn i slutningen af teksten"
+
+#~ msgid "_Focusable Buttons"
+#~ msgstr "_Fokuserbare knapper"
+
+#~ msgid "Set the buttons to be focusable or not"
+#~ msgstr "Vælg om knapperne kan modtage tastaturfokus"
+
+#~ msgid "Insert character(s) by choosing character codes"
+#~ msgstr "Indsæt tegn ved at vælge tegnkoder"
+
+#~ msgid "Cut"
+#~ msgstr "Klip"
+
+#~ msgid "Cut the selection"
+#~ msgstr "Klip det valgte ud"
+
+#~ msgid "Copy the selection"
+#~ msgstr "Kopiér det valgte"
+
+#~ msgid "Paste"
+#~ msgstr "Indsæt"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "Indsæt fra klippebordet"
+
+#~ msgid "Show Gnome Character Map's manual"
+#~ msgstr "Vis brugervejledningen til tegnoversigten"
+
+#~ msgid "About this application"
+#~ msgstr "Om dette program"
+
+#~ msgid "Exit the program"
+#~ msgstr "Afslut programmet"
+
+#~ msgid ""
+#~ "Couldn't start the dictionary; most likely, http://www.dict.org could not "
+#~ "be contacted."
+#~ msgstr ""
+#~ "Kunne ikke starte ordbogen; sandsynligvis var det ikke muligt at komme i "
+#~ "kontakt med http://www.dict.org."
+
+#~ msgid "Cannot connect to server"
+#~ msgstr "Kan ikke forbinde med server!"
+
+#~ msgid ""
+#~ "Client for MIT dictionary server.\n"
+#~ "Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+#~ msgstr ""
+#~ "Klient til MIT-ordbogsserver.\n"
+#~ "Netadresse: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#~ msgid "Spell-checking..."
+#~ msgstr "Kontrollerer stavning..."
+
+#~ msgid "Spell check done"
+#~ msgstr "Stavekontrol fuldført"
+
+#~ msgid "No matches found"
+#~ msgstr "Ingen træf"
+
+#~ msgid "Looking up word..."
+#~ msgstr "Slår ord op..."
+
+#~ msgid "Lookup done"
+#~ msgstr "Opslag fuldført"
+
+#~ msgid "String not found"
+#~ msgstr "Streng ikke fundet"
+
+#~ msgid "Find:"
+#~ msgstr "Find:"
+
+#~ msgid ""
+#~ "Unable to perform requested operation, either because the server\n"
+#~ "you are using is down or because you are not connected to the\n"
+#~ "Internet. If you are not already connected to the Internet, please\n"
+#~ "do so and try again."
+#~ msgstr ""
+#~ "Kunne ikke udføre forespurgt handling, enten fordi serveren du\n"
+#~ "bruger er nede eller fordi du ikke er koblet til Internettet. Hvis\n"
+#~ "du ikke er koblet til Internettet allerede, gør dette og prøv igen."
+
+#~ msgid "Look up"
+#~ msgstr "Slå op"
+
+#~ msgid "Look up word in dictionary"
+#~ msgstr "Slå ordet op i ordbog"
+
+#~ msgid "Spell"
+#~ msgstr "Stav"
+
+#~ msgid "Check word spelling"
+#~ msgstr "Tjek ordets stavning"
+
+#~ msgid "Cut to Clipboard"
+#~ msgstr "Klip ud til klippebord"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopiér til klippebord"
+
+#~ msgid "Paste Clipboard Contents"
+#~ msgstr "Indsæt indholdet af klippebordet"
+
+#~ msgid "Settings"
+#~ msgstr "Indstillinger"
+
+#~ msgid "Server to use, default search strategy, fonts"
+#~ msgstr "Vært, standard-strategi for søgning, skrifttyper"
+
+#~ msgid "Word definition"
+#~ msgstr "Orddefinition"
+
+#~ msgid "About..."
+#~ msgstr "Om..."
+
+#~ msgid "Preferences..."
+#~ msgstr "Indstillinger..."
+
+#~ msgid "Show/Hide Definition Window..."
+#~ msgstr "Vis/skjul definitionsvindue..."
+
+#~ msgid "Spell Check..."
+#~ msgstr "Stavekontrol..."
+
+#~ msgid "Cannot create applet!\n"
+#~ msgstr "Kan ikke oprette panelprogram!\n"
+
+#~ msgid "Error invoking query: %s"
+#~ msgstr "Fejl ved udførsel af forespørgsel: %s"
+
+#~ msgid "Headword:"
+#~ msgstr "Hovedord:"
+
+#~ msgid "Sub-number:"
+#~ msgstr "Undernummer:"
+
+#~ msgid "Pronunciation:"
+#~ msgstr "Udtale:"
+
+#~ msgid "Etymology:"
+#~ msgstr "Etymologi:"
+
+#~ msgid "Part of speech:"
+#~ msgstr "Del af tale:"
+
+#~ msgid "Example:"
+#~ msgstr "Eksempel:"
+
+#~ msgid "Main body:"
+#~ msgstr "Hovedkrop:"
+
+#~ msgid "Cross-reference:"
+#~ msgstr "Krydsreference:"
+
+#~ msgid "Preferences"
+#~ msgstr "Opsætning"
+
+#~ msgid "Smart lookup"
+#~ msgstr "Smart opslag"
+
+#~ msgid "Server:"
+#~ msgstr "Vært:"
+
+#~ msgid "Port:"
+#~ msgstr "Port:"
+
+#~ msgid "Database:"
+#~ msgstr "Database:"
+
+#~ msgid "Default strategy:"
+#~ msgstr "Standard-strategi:"
+
+#~ msgid "Server"
+#~ msgstr "Vært"
+
+#~ msgid "Fonts"
+#~ msgstr "Skrifttyper"
+
+#~ msgid "Display handle bar"
+#~ msgstr "Vis håndtagslinje"
+
+#~ msgid ""
+#~ "You have to restart GDict for these\n"
+#~ "settings to become active."
+#~ msgstr ""
+#~ "Du skal genstarte GDict før disse\n"
+#~ "indstillinger træder i kraft."
+
+#~ msgid "Applet"
+#~ msgstr "Panelprogram"
+
+#~ msgid "Search all databases"
+#~ msgstr "Søg i alle databaser"
+
+#~ msgid "The server you specified could not be found."
+#~ msgstr "Den angivne vært blev ikke fundet."
+
+#~ msgid "Word:"
+#~ msgstr "Ord:"
+
+#~ msgid "Search Strategy:"
+#~ msgstr "Søgningsstrategi:"
+
+#~ msgid "Find Words..."
+#~ msgstr "Find ord..."
+
+#~ msgid "Look up Word..."
+#~ msgstr "Slå ord op..."
+
+#~ msgid "Spell checker"
+#~ msgstr "Stavekontrol"
+
+# et forsøg på at afkode navnet
+#~ msgid "GDiskFree"
+#~ msgstr "Ledig diskplads"
+
+#~ msgid "Unable to parse the geometry string '%s'"
+#~ msgstr "Kunne ikke tolke geometristrengen '%s'"
+
+#~ msgid "Specify the geometry of the window."
+#~ msgstr "Angiv geometrien til vinduet."
+
+#~ msgid "GDiskFree is a GNOME implementation of the shell utility 'df'."
+#~ msgstr "Ledig diskplads er en Gnome-implementation af skalværktøjet 'df'."
+
+#~ msgid "GDiskFree Properties"
+#~ msgstr "Indstillinger for ledig diskplads"
+
+#~ msgid "Invoke sync before getting usage info"
+#~ msgstr "Synkronisér disken (med sync) før info hentes"
+
+#~ msgid "Show drive mount points"
+#~ msgstr "Vis drevmonteringspunkter"
+
+#~ msgid "Show drive size"
+#~ msgstr "Vis drevstørrelse"
+
+#~ msgid "Dial Orientation"
+#~ msgstr "Orientering"
+
+#~ msgid "Vertical"
+#~ msgstr "Lodret"
+
+#~ msgid "Horizontal"
+#~ msgstr "Vandret"
+
+#~ msgid "Update interval (ms)"
+#~ msgstr "Opdateringsinterval (ms)"
+
+#~ msgid "General Settings"
+#~ msgstr "Generelle indstillinger"
+
+#~ msgid "File name"
+#~ msgstr "Filnavn"
+
+#~ msgid "Don't search subdirectories"
+#~ msgstr "Søg ikke i undermapper"
+
+#~ msgid "File owner"
+#~ msgstr "Filejer"
+
+#~ msgid "File owner group"
+#~ msgstr "Filejergruppe"
+
+#~ msgid "Last modification time"
+#~ msgstr "Sidste ændringstid"
+
+#~ msgid "Don't search mounted filesystems"
+#~ msgstr "Søg ikke i monterede filsystemer"
+
+#~ msgid "Empty file"
+#~ msgstr "Tom fil"
+
+#~ msgid "Invalid user or group"
+#~ msgstr "Forkert bruger eller gruppe"
+
+#~ msgid "Filenames except"
+#~ msgstr "Filnavne undtagen"
+
+#~ msgid "Follow symbolic links"
+#~ msgstr "Følg symbolske henvisninger"
+
+#~ msgid "Simple substring search"
+#~ msgstr "Simpel substrengssøgning"
+
+#~ msgid "Regular expression search"
+#~ msgstr "Søgning med regulært udtryk"
+
+#~ msgid "Extended regular expression search"
+#~ msgstr "Søgning med udvidet regulært udtryk"
+
+#~ msgid "grep options found in find list bad bad!"
+#~ msgstr "grep flag fundet i søgeliste! fy fy!"
+
+#~ msgid "non-grep option found in grep list, bad bad!"
+#~ msgstr "ikke-grep flag fundet i grep-liste! fy fy!"
+
+#~ msgid "Search already running on another page"
+#~ msgstr "Søgning kører allerede på en anden side"
+
+#~ msgid "Search Results"
+#~ msgstr "Søgeresultater"
+
+#~ msgid ""
+#~ "\n"
+#~ "... Too many errors to display ..."
+#~ msgstr ""
+#~ "\n"
+#~ "...for mange fejl til at vise..."
+
+#~ msgid "Start directory does not exist"
+#~ msgstr "Startmappe eksisterer ikke"
+
+#~ msgid "Search command line"
+#~ msgstr "Søgningskommandolinje"
+
+#~ msgid ""
+#~ "This is the command line that can be used to execute this search from the "
+#~ "console:\n"
+#~ "(Note: to print one file per line rather then null separated,\n"
+#~ "append \"| tr '\\000' '\\n'\" to the line below)"
+#~ msgstr ""
+#~ "Dette er den kommandolinje som kan bruges til at udføre søgningen fra "
+#~ "konsollen:\n"
+#~ "(Note: For at skrive en fil per linje i stedet for adskilt med nul,\n"
+#~ "tilføj \"| tr '\\000' '\\n'\" til linjen nedenunder)"
+
+#~ msgid "Entry changed called for a non entry option!"
+#~ msgstr "Den ændrede indgang ønskede et ikke-indgangsflag!"
+
+#~ msgid "Enable"
+#~ msgstr "Anvend"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Start in directory:"
+#~ msgstr "Start i mappe:"
+
+#~ msgid "Browse"
+#~ msgstr "Gennemse"
+
+#~ msgid "Add"
+#~ msgstr "Tilføj"
+
+#~ msgid "Show Command"
+#~ msgstr "Vis kommando"
+
+#~ msgid "Nothing to locate"
+#~ msgstr "Intet at finde"
+
+#~ msgid ""
+#~ "This is an interface to locate.  If you type in a simple string it\n"
+#~ "will be matched as a subset of the full path, and if you type\n"
+#~ "in a string with wildcards, it will have to match the full path."
+#~ msgstr ""
+#~ "Dette er grafisk brugerflade for 'locate'. Hvis du indtaster en\n"
+#~ "simpel tekststreng vil den blive behandlet som et underudsnit af\n"
+#~ "hele søgestien, og hvis du indtaster en tekst med jokertegn, skal\n"
+#~ "den stemme med hele stinavnet."
+
+#~ msgid "Locate file: "
+#~ msgstr "Find fil: "
+
+#~ msgid "Full find (find)"
+#~ msgstr "Grundig søgning (find)"
+
+#~ msgid "Quick find (locate)"
+#~ msgstr "Hurtig søgning (locate)"
+
+#~ msgid "The Gnome Search Tool"
+#~ msgstr "Gnome søgeværktøj"
+
+#~ msgid "(C) 1998,2000 the Free Software Foundation"
+#~ msgstr "(C) 1998, 2000 Free Software Foundation"
+
+#~ msgid "Frontend to the unix find/grep/locate commands"
+#~ msgstr "Grafisk grænseflade til unix's find/grep/locate-kommandoer"
+
+#~ msgid "Gnome Search Tool"
+#~ msgstr "Gnome filsøgningsværktøj"
+
+#~ msgid "Cannot save file"
+#~ msgstr "Kan ikke gemme fil"
+
+#~ msgid "Save Results"
+#~ msgstr "Gem resultater"
+
+#~ msgid "Command mangled"
+#~ msgstr "Kommando i uorden"
+
+#~ msgid "No command for this mime type"
+#~ msgstr "Ingen kommando for denne mime-type."
+
+#~ msgid "[GTT]New"
+#~ msgstr "[GTT]Ny"
+
+#~ msgid "Reload"
+#~ msgstr "Genindlæs"
+
+#~ msgid "Props"
+#~ msgstr "Egnsk"
+
+#~ msgid "Prefs"
+#~ msgstr "Opsæt"
+
+#~ msgid "Manual"
+#~ msgstr "Manuelt"
+
+#~ msgid "Quit"
+#~ msgstr "Afslut"
+
+#~ msgid "Cesar Miquel (miquel@df.uba.ar)"
+#~ msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#~ msgid ""
+#~ "This  program  is  part of  the  GNOME  project. Logview comes with "
+#~ "ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+#~ "redistribute it under the conditions of the GNU General Public Licence. "
+#~ "The log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+#~ msgstr ""
+#~ "Dette program er en del af Gnome-projektet. Logvisning kommer uden NOGEN "
+#~ "SOM HELST GARANTI. Dette er frit programmel, og du er velkommen til at "
+#~ "give det videre under betingelserne angivet i GNU General Public Licence. "
+#~ "Logikonet er udført af Tuomas Kuosmanen (tigert)."
+
+#~ msgid "Logview"
+#~ msgstr "Logvisning"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Ophavsret (C) 1998"
+
+#~ msgid "Action database"
+#~ msgstr "Handlingsdatabase"
+
+#~ msgid "Monitor options"
+#~ msgstr "Overvågningsmuligheder"
+
+#~ msgid "Add..."
+#~ msgstr "Tilføj..."
+
+#~ msgid "Edit..."
+#~ msgstr "Rediger..."
+
+#~ msgid "Cannot open action data base <%s>! Open failed."
+#~ msgstr "Kan ikke åbne handlingsdatabasen <%s>! Åbning mislykkedes."
+
+#~ msgid "Error parsing actions data base"
+#~ msgstr "Fejl under fortolkning af handlingsdatabase"
+
+#~ msgid "Can't write to actions database!"
+#~ msgstr "Kan ikke skrive til handlingsdatabase!"
+
+#~ msgid "<empty>"
+#~ msgstr "<tom>"
+
+#~ msgid "log name regexp"
+#~ msgstr "reg. udtryk til log-navn"
+
+#~ msgid "process regexp"
+#~ msgstr "reg. udtryk til proces"
+
+#~ msgid "message regexp"
+#~ msgstr "reg. udtryk til besked"
+
+#~ msgid "action to execute when regexps are TRUE"
+#~ msgstr "handling at udføre når reg. udtryk findes"
+
+#~ msgid "description"
+#~ msgstr "beskrivelse"
+
+#~ msgid "description:"
+#~ msgstr "beskrivelse:"
+
+#~ msgid "Description of this entry."
+#~ msgstr "Beskrivelse af dette punkt."
+
+#~ msgid ""
+#~ "tag: [%s]\n"
+#~ "log_name: [%s]\n"
+#~ "process: [%s]\n"
+#~ "message: [%s]\n"
+#~ "description: [%s]\n"
+#~ "action: [%s]\n"
+#~ msgstr ""
+#~ "tag: [%s]\n"
+#~ "log_navn: [%s]\n"
+#~ "proces: [%s]\n"
+#~ "besked: [%s]\n"
+#~ "beskrivelse: [%s]\n"
+#~ "handling: [%s]\n"
+
+#~ msgid "Log stats"
+#~ msgstr "Logstatus"
+
+#~ msgid "Log information"
+#~ msgstr "Log-information"
+
+#~ msgid "Log:"
+#~ msgstr "Log:"
+
+#~ msgid "Size:"
+#~ msgstr "Størrelse:"
+
+#~ msgid "Modified:"
+#~ msgstr "Ændret:"
+
+#~ msgid "Start date:"
+#~ msgstr "Startdato:"
+
+#~ msgid "Last date:"
+#~ msgstr "Sidste dato:"
+
+#~ msgid "Num. lines:"
+#~ msgstr "Antal linjer:"
+
+#~ msgid "%ld bytes"
+#~ msgstr "%ld byte"
+
+#~ msgid "January"
+#~ msgstr "Januar"
+
+#~ msgid "February"
+#~ msgstr "Februar"
+
+#~ msgid "March"
+#~ msgstr "Marts"
+
+#~ msgid "April"
+#~ msgstr "April"
+
+#~ msgid "May"
+#~ msgstr "Maj"
+
+#~ msgid "June"
+#~ msgstr "Juni"
+
+#~ msgid "July"
+#~ msgstr "Juli"
+
+#~ msgid "August"
+#~ msgstr "August"
+
+#~ msgid "September"
+#~ msgstr "September"
+
+#~ msgid "October"
+#~ msgstr "Oktober"
+
+#~ msgid "November"
+#~ msgstr "November"
+
+#~ msgid "December"
+#~ msgstr "December"
+
+#~ msgid "%x"
+#~ msgstr "%x"
+
+#~ msgid "%X"
+#~ msgstr "%X"
+
+#~ msgid "%B %e"
+#~ msgstr "%e. %B"
+
+#~ msgid "Not enough memory!\n"
+#~ msgstr "Ikke tilstrækkelig hukommelse!\n"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "Løbet tør for hukommelse!\n"
+
+#~ msgid "Unable to open logfile!\n"
+#~ msgstr "Ude af stand til at åbne logfil!\n"
+
+#~ msgid "%s is not a regular file."
+#~ msgstr "%s er ikke en almindelig fil."
+
+#~ msgid ""
+#~ "%s is not user readable. Either run the program as root or ask the "
+#~ "sysadmin to change the permissions on the file."
+#~ msgstr ""
+#~ "%s kan ikke læses af brugere. Kør enten programmet som root eller bed "
+#~ "systemadministratoren om at ændre rettighederne på filen."
+
+#~ msgid "%s could not be opened."
+#~ msgstr "Kunne ikke åbne %s."
+
+#~ msgid "%s not a log file."
+#~ msgstr "%s er ikke en logfil."
+
+#~ msgid "ReadLogStats: out of memory"
+#~ msgstr "ReadLogStats: løbet tør for hukommelse"
+
+#~ msgid "Open log..."
+#~ msgstr "Åbn log..."
+
+#~ msgid "Open log"
+#~ msgstr "Åbn log"
+
+#~ msgid "Export log..."
+#~ msgstr "Eksportér log..."
+
+#~ msgid "Export log"
+#~ msgstr "Eksportér log"
+
+#~ msgid "Close log"
+#~ msgstr "Luk log"
+
+#~ msgid "Switch log"
+#~ msgstr "Skift log"
+
+#~ msgid "Monitor..."
+#~ msgstr "Overvåg..."
+
+#~ msgid "Monitor log"
+#~ msgstr "Overvåg log"
+
+#~ msgid "Exit program"
+#~ msgstr "Afslut program"
+
+#~ msgid "Show calendar log"
+#~ msgstr "Vis kalenderlog"
+
+#~ msgid "Show log stats"
+#~ msgstr "Vis logstatus"
+
+#~ msgid "Zoom"
+#~ msgstr "Zoom"
+
+#~ msgid "Show line info"
+#~ msgstr "Vis linjeinfo"
+
+#~ msgid "Show user preferences"
+#~ msgstr "Vis indstillinger"
+
+#~ msgid "Select...               "
+#~ msgstr "Vælg..."
+
+#~ msgid "Select log events"
+#~ msgstr "Vælg loghændelser"
+
+#~ msgid "Filter..                "
+#~ msgstr "Filter..."
+
+#~ msgid "Filter log events"
+#~ msgstr "Filtrér loghændelser"
+
+#~ msgid "Info about logview"
+#~ msgstr "Info om logviser"
+
+#~ msgid "No log files to open"
+#~ msgstr "Ingen logfiler at åbne"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "Systemlog-fremviser"
+
+#~ msgid "Filename: "
+#~ msgstr "Filnavn: "
+
+#~ msgid "Date: "
+#~ msgstr "Dato: "
+
+#~ msgid "Too many open logs. Close one and try again"
+#~ msgstr "For mange åbne logfiler. Luk en og prøv igen"
+
+#~ msgid "Open new logfile"
+#~ msgstr "Åbn ny logfil"
+
+#~ msgid "Error: [%s]\n"
+#~ msgstr "Fejl: [%s]\n"
+
+#~ msgid "Choose logs to monitor"
+#~ msgstr "Vælg logfiler at overvåge"
+
+#~ msgid "Add >>"
+#~ msgstr "Tilføj >>"
+
+#~ msgid "Remove <<"
+#~ msgstr "Fjern <<"
+
+#~ msgid "Hide app"
+#~ msgstr "Skjul program"
+
+#~ msgid "Exec actions"
+#~ msgstr "Udfør handlinger"
+
+#~ msgid "Actions..."
+#~ msgstr "Handlinger..."
+
+#~ msgid "tmp_list is NULL\n"
+#~ msgstr "tmp_list er NULL\n"
+
+#~ msgid "Monitoring logs..."
+#~ msgstr "Overvåger logfiler..."
+
+#~ msgid "TOUCHED!!\n"
+#~ msgstr "ÆNDRET!\n"
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "værtsnavn-kolonnebredde (0 for at skjule denne kolonne): "
+
+#~ msgid "Columns"
+#~ msgstr "Kolonner"
+
+#~ msgid "Zoom view"
+#~ msgstr "Zoom-visning"
+
+#~ msgid "Log line detail for %s"
+#~ msgstr "Log linjedetaljer for %s"
+
+#~ msgid "Log line detail for <No log loaded>"
+#~ msgstr "Log linjedetaljer for <Ingen log indlæst>"
+
+#~ msgid "Date:"
+#~ msgstr "Dato:"
+
+#~ msgid "Process:"
+#~ msgstr "Proces:"
+
+#~ msgid "Message:"
+#~ msgstr "Besked:"
+
+#~ msgid "Description:"
+#~ msgstr "Beskrivelse:"
+
+#~ msgid "%B %e %X"
+#~ msgstr "%e. %B %X"
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+
+#~ msgid "Cannot open regexp data base <%s>! Open failed."
+#~ msgstr ""
+#~ "Kan ikke åbne databasen med regulære udtryk <%s>! Åbning mislykkedes."
+
+#~ msgid "Cannot open description data base <%s>! Open failed."
+#~ msgstr "Kan ikke åbne beskrivelsesdatabasen <%s>! Åbning mislykkedes."
+
+#~ msgid "Do nothing"
+#~ msgstr "Gør ingenting"
+
+#~ msgid "Append it to ->"
+#~ msgstr "Tilføj den til ->"
+
+#~ msgid "Search it in ->"
+#~ msgstr "Søg efter den i ->"
+
+#~ msgid "Edit it"
+#~ msgstr "Ændr det"
+
+#~ msgid "List"
+#~ msgstr "Liste"
+
+#~ msgid "Grid"
+#~ msgstr "Gitter"
+
+#~ msgid "Edit"
+#~ msgstr "Ændr"
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Search RGB"
+#~ msgstr "Søg RGB"
+
+#~ msgid "Monitor"
+#~ msgstr "Overvåg"
+
+#~ msgid "Concat"
+#~ msgstr "Sammenføj"
+
+#~ msgid "'%s' document has been modified; do you wish to save it ?"
+#~ msgstr "Dokumentet '%s' er ændret; vil du gemme det?"
+
+#~ msgid "GColorsel was unable to paste colors from the clipboard."
+#~ msgstr "GColorsel kunne ikke indsætte farver fra klippebordet."
+
+#~ msgid "Please select a file document before."
+#~ msgstr "Venligst vælg et fildokument først."
+
+#~ msgid ""
+#~ "I can't execute this action. Check that :\n"
+#~ "\n"
+#~ "1. You have associated an action with this event.\n"
+#~ "2. The associated document still exists.\n"
+#~ "3. The type of the associated document.\n"
+#~ "\n"
+#~ "Go to preferences, in the edit menu."
+#~ msgstr ""
+#~ "Kan ikke udføre denne handling. Tjek at:\n"
+#~ "\n"
+#~ "1. Du har associeret en handling med denne hændelse.\n"
+#~ "2. Det associerede dokument stadig eksisterer.\n"
+#~ "3. Typen på det associerede dokument er rigtig.\n"
+#~ "\n"
+#~ "Gå til indstillinger, i 'Redigér'-menuen."
+
+#~ msgid "GColorsel"
+#~ msgstr "Farvevælger"
+
+#~ msgid "<- Remove"
+#~ msgstr "<- Fjern"
+
+#~ msgid "<- Remove all"
+#~ msgstr "<- Fjern alle"
+
+#~ msgid "Add ->"
+#~ msgstr "Tilføj ->"
+
+#~ msgid "Add all ->"
+#~ msgstr "Tilføj alle ->"
+
+#~ msgid "Available documents"
+#~ msgstr "Tilgængelige dokumenter"
+
+#~ msgid "Available views"
+#~ msgstr "Tilgængelige visninger"
+
+#~ msgid "Connect to"
+#~ msgstr "Forbind til"
+
+#~ msgid "Create a document"
+#~ msgstr "Opret dokument"
+
+#~ msgid "Create views"
+#~ msgstr "Opret visninger"
+
+#~ msgid "Description :"
+#~ msgstr "Beskrivelse:"
+
+#~ msgid ""
+#~ "Please, select the type of document to create.\n"
+#~ "You can choose a short name, do not confuse it with the file name."
+#~ msgstr ""
+#~ "Venligst vælg typen af det dokument du skal oprette.\n"
+#~ "Du kan vælge et kort navn eftersom det er ikke det samme som filnavnet."
+
+#~ msgid "Select source document"
+#~ msgstr "Vælg kildedokument"
+
+#~ msgid "Select type"
+#~ msgstr "Vælg type"
+
+#~ msgid "Short name : "
+#~ msgstr "Kort navn: "
+
+#~ msgid ""
+#~ "This document read document from one or more other document. Please, "
+#~ "choose these documents."
+#~ msgstr ""
+#~ "Dette dokumentet læser dokumenter fra et eller flere andre dokumenter. "
+#~ "Vælg disse dokumenter."
+
+#~ msgid ""
+#~ "You can create one or more views for this document. Note that you have to "
+#~ "create at least one view."
+#~ msgstr ""
+#~ "Du kan lave et eller flere visninger for dette dokument. Bemærk at du "
+#~ "skal have mindst en visning."
+
+#~ msgid "Create a new view"
+#~ msgstr "Opretter en ny visning"
+
+#~ msgid "Please, select the type of view you want to create."
+#~ msgstr "Vælg venligst hvilken visningstype til vil oprette."
+
+#~ msgid "Actions"
+#~ msgstr "Handlinger"
+
+#~ msgid "Bottom"
+#~ msgstr "Bund"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "Display documents menu (restart required)."
+#~ msgstr "Vis dokumentmenu (kræver genstart)"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenter"
+
+#~ msgid "DoubleClick in previews:"
+#~ msgstr "Dobbeltklik i forhåndsvisninger:"
+
+#~ msgid "DoubleClick in views:"
+#~ msgstr "Dobbeltklik i visninger:"
+
+#~ msgid "Drop:"
+#~ msgstr "Drop:"
+
+#~ msgid "General"
+#~ msgstr "Generelt"
+
+#~ msgid "Grab:"
+#~ msgstr "Fang:"
+
+#~ msgid "Left"
+#~ msgstr "Venstre"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "Multidokument"
+
+#~ msgid "Modal"
+#~ msgstr "Modal"
+
+#~ msgid "Mode:"
+#~ msgstr "Tilstand:"
+
+#~ msgid "Notebook"
+#~ msgstr "Notesbog"
+
+#~ msgid "Notebook Tab position:"
+#~ msgstr "Notesbog-faneposition:"
+
+#~ msgid "On ... execute ..."
+#~ msgstr "Ved ... kør ..."
+
+#~ msgid "Right"
+#~ msgstr "Højre"
+
+#~ msgid "Save session on exit."
+#~ msgstr "Gem session ved afslutning."
+
+#~ msgid "Session"
+#~ msgstr "Session"
+
+#~ msgid "Top"
+#~ msgstr "Top"
+
+#~ msgid "Toplevel"
+#~ msgstr "Øverste"
+
+#~ msgid ""
+#~ "Begin\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "Begynd\n"
+#~ "kommentarer :"
+
+#~ msgid ""
+#~ "End\n"
+#~ "Comments :"
+#~ msgstr ""
+#~ "Slut\n"
+#~ "kommentarer :"
+
+#~ msgid "File name :"
+#~ msgstr "Filnavn:"
+
+#~ msgid "Header :"
+#~ msgstr "Hoved:"
+
+#~ msgid "Special properties"
+#~ msgstr "Specialindstillinger"
+
+#~ msgid "Common properties"
+#~ msgstr "Alm. indstillinger"
+
+#~ msgid "Name :"
+#~ msgstr "Navn:"
+
+#~ msgid "Blue :"
+#~ msgstr "Blå:"
+
+#~ msgid "Green :"
+#~ msgstr "Grøn:"
+
+#~ msgid "Red :"
+#~ msgstr "Rød:"
+
+#~ msgid "Colors format :"
+#~ msgstr "Farveformat:"
+
+#~ msgid "Display document control (if exists)"
+#~ msgstr "Vis dokumentkontrol (hvis tilgængelig)"
+
+#~ msgid "Color height :"
+#~ msgstr "Farvehøjde:"
+
+#~ msgid "Color width :"
+#~ msgstr "Farvebredde:"
+
+#~ msgid "Draw numbers"
+#~ msgstr "Vis tal"
+
+#~ msgid "New Document"
+#~ msgstr "Nyt dokument"
+
+#~ msgid "Create a new document"
+#~ msgstr "Opretter et nyt dokument"
+
+#~ msgid "New View"
+#~ msgstr "Nyt vindue"
+
+#~ msgid "Create a new view for a document"
+#~ msgstr "Opretter ny visning for et dokument"
+
+#~ msgid "Close document"
+#~ msgstr "Luk dokument"
+
+#~ msgid "Close the current document"
+#~ msgstr "Luk nuværende dokument"
+
+#~ msgid "Close view"
+#~ msgstr "Luk visning"
+
+#~ msgid "Close the current view"
+#~ msgstr "Luk nuværende visning"
+
+#~ msgid "_Open palette..."
+#~ msgstr "_Åbn palet..."
+
+#~ msgid "Load a palette"
+#~ msgstr "Indlæs en palet"
+
+#~ msgid "_Save palette"
+#~ msgstr "_Gem palet"
+
+#~ msgid "Save the current palette in a file"
+#~ msgstr "Gem den aktuelle palet i en fil"
+
+#~ msgid "Save palette _As..."
+#~ msgstr "Gem palet _som..."
+
+#~ msgid "Save the current palette with a different name"
+#~ msgstr "Gem den aktuelle palet under et andet navn"
+
+#~ msgid "Insert color"
+#~ msgstr "Indsæt farve"
+
+#~ msgid "Remove selected colors"
+#~ msgstr "Fjern valgte farver"
+
+#~ msgid "Edit selected colors ..."
+#~ msgstr "Redigér valgte farver..."
+
+#~ msgid "Document/View properties"
+#~ msgstr "Egenskaber for dokument/visning"
+
+#~ msgid ""
+#~ "GColorsel was unable to save the file :\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have the approprate write permissions.\n"
+#~ "\n"
+#~ "Do you want to retry ?"
+#~ msgstr ""
+#~ "Farvevælgeren kunne ikke gemme filen:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Tjek at stien du angav eksisterer, og at\n"
+#~ "du har skrivetilladelse til filen."
+
+#~ msgid ""
+#~ "GColorsel was unable to load the file:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Make sure that the path you provided exists,\n"
+#~ "and that you have permissions for opening the file."
+#~ msgstr ""
+#~ "Farvevælgeren kunne ikke gemme filen:\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Tjek at stien du angav eksisterer, og at\n"
+#~ "du har læsetilladelse til filen."
+
+#~ msgid "Open Palette"
+#~ msgstr "Åbn palet"
+
+#~ msgid "Loading file, please wait ..."
+#~ msgstr "Indlæser fil, vent venligst..."
+
+#~ msgid "Save Palette as"
+#~ msgstr "Gem palette som"
+
+#~ msgid "File not saved ..."
+#~ msgstr "Fil ikke gemt..."
+
+#~ msgid "File saved ..."
+#~ msgstr "Fil gemt..."
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?\n"
+#~ "\n"
+#~ "Please note that %d virtual document use data from this document."
+#~ msgstr ""
+#~ "Jeg er ved at lukke den sidste visning af '%s'.\n"
+#~ "\n"
+#~ "Dette dokument vil også blive lukket, fortsæt?\n"
+#~ "\n"
+#~ "Bemærk venligst at %d virtuelle dokumenter bruger data fra dette dokument."
+
+#~ msgid ""
+#~ "I'm going to close the last view of '%s'.\n"
+#~ "\n"
+#~ "This document will be closed too, continue ?"
+#~ msgstr ""
+#~ "Jeg er ved at lukke den sidste visning af '%s'.\n"
+#~ "\n"
+#~ "Dette dokument vil også blive lukket, fortsæt?"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed,\n"
+#~ "and that %d virtual document use data from this document.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "Jeg er ved at lukke '%s'.\n"
+#~ "\n"
+#~ "Bemærk venligst at %d visninger vil blive fjernet,\n"
+#~ "og at %d virtuelle dokumenter bruger data fra dette dokument.\n"
+#~ "\n"
+#~ "Vil du fortsætte?"
+
+#~ msgid ""
+#~ "I'm going to close '%s'.\n"
+#~ "\n"
+#~ "Please note that %d views will be destroyed.\n"
+#~ "\n"
+#~ "Do you want to continue ?"
+#~ msgstr ""
+#~ "Jeg er ved at lukke '%s'.\n"
+#~ "\n"
+#~ "Venligst bemærk at %d visninger vil blive fjernet.\n"
+#~ "\n"
+#~ "Ønsker du at fortsætte ?"
+
+#~ msgid "Gnome Color Browser"
+#~ msgstr "Gnome farvevælger"
+
+#~ msgid "Small utility to browse available X11 colors."
+#~ msgstr "Lille værktøj til at gennemse X11-farver."
+
+#~ msgid "New Color"
+#~ msgstr "Ny farve"
+
+#~ msgid "View properties"
+#~ msgstr "Vis egenskaber"
+
+#~ msgid "Document properties"
+#~ msgstr "Egenskaber for dokument"
+
+#~ msgid "Open"
+#~ msgstr "Åbn"
+
+#~ msgid "Open a palette"
+#~ msgstr "Åbn en palet"
+
+#~ msgid "Grab"
+#~ msgstr "Fang"
+
+#~ msgid "Grab a color on the screen"
+#~ msgstr "Fang en farve på skærmen"
+
+#~ msgid ""
+#~ "Your config file is corrupted.\n"
+#~ "Do you want to create a new session ?"
+#~ msgstr ""
+#~ "Din konfigurationsfil er ødelagt.\n"
+#~ "Vil du oprette en ny session?"
+
+#~ msgid "Loading files, please wait ..."
+#~ msgstr "Indlæser filer, vent venligst..."
+
+#~ msgid ""
+#~ "One or more files can not be restored :\n"
+#~ "\n"
+#~ msgstr ""
+#~ "En eller flere filer kan ikke genoprettes:\n"
+#~ "\n"
+
+#~ msgid "System Colors"
+#~ msgstr "Systemfarver"
+
+#~ msgid "User Colors"
+#~ msgstr "Brugerfarver"
+
+#~ msgid "Search"
+#~ msgstr "Søg"
+
+#~ msgid "Decimal 8 bits"
+#~ msgstr "Decimal 8 bit"
+
+#~ msgid "Decimal 16 bits"
+#~ msgstr "Decimal 16 bit"
+
+#~ msgid "Hex 8 bits"
+#~ msgstr "Hexadecimal 8 bit"
+
+#~ msgid "Hex 16 bits"
+#~ msgstr "Hexadecimal 16 bit"
+
+#~ msgid "Float"
+#~ msgstr "Kommatal"
+
+#~ msgid "Color"
+#~ msgstr "Farve"
+
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "Tolerance :"
+#~ msgstr "Tolerance:"
+
+#~ msgid "Font Selector"
+#~ msgstr "Skrifttypevælger"
+
+#~ msgid "Selection:"
+#~ msgstr "Valg:"
+
+#~ msgid "Font to load"
+#~ msgstr "Skrifttype som skal indlæses"
+
+#~ msgid "FONTSPEC"
+#~ msgstr "FONTSPEC"
+
+#~ msgid "Print selected font name on exit"
+#~ msgstr "Skriv valgt skrifttypenavn ved afslutning"
+
+#~ msgid "Inhibit remembering selected font for next run"
+#~ msgstr "Forhindr at valgt skrifttype huskes ved næste opstart"
+
+#~ msgid "Inhibit loading of last font"
+#~ msgstr "Forhindr at den sidste skrifttype indlæses"
+
+#~ msgid "Reason %d\n"
+#~ msgstr "Grund %d\n"
+
+#~ msgid "Where to put the window, and its size"
+#~ msgstr "Hvor vinduet skal placeres, og dets størrelse"
+
+#~ msgid "Ignore standard input; may be needed in some cases."
+#~ msgstr "Ignorér standard-inddata; kan være nødvendigt i nogle tilfælde."
+
+#~ msgid "_New Window"
+#~ msgstr "_Nyt vindue"
+
+#~ msgid "New text viewer window"
+#~ msgstr "Nyt tekstvisningsvindue"
+
+#~ msgid "_Fixed Font"
+#~ msgstr "_Fast bredde"
+
+#~ msgid "Display text with a fixed font"
+#~ msgstr "Vis tekst med fastbreddeskrifttype"
+
+#~ msgid "Text File Viewer"
+#~ msgstr "Tekstfilfremviser"
+
+#~ msgid "Copyright 1998, under the GNU General Public License."
+#~ msgstr "Ophavsret 1998, under GNU General Public License"
+
+#~ msgid "Find string"
+#~ msgstr "Find tekst"
+
+#~ msgid "Find"
+#~ msgstr "Søg"
+
+#~ msgid "Loading..."
+#~ msgstr "Indlæser..."
+
+#~ msgid ""
+#~ "No such file or directory:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Fil eller mappe findes ikke:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Failed to decompress and display the file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Fejlede ved dekomprimering og visning af filen:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Unable to display compressed file.\n"
+#~ "zcat not found in your path."
+#~ msgstr ""
+#~ "Kan ikke vise komprimeret fil.\n"
+#~ "zcat blev ikke fundet i din søgesti."
+
+#~ msgid ""
+#~ "Error loading file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Fejl ved indlæsning af filen:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Saving..."
+#~ msgstr "Gemmer..."
+
+#~ msgid ""
+#~ "Failed to write file:\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Fejl ved skrivning af filen:\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "Save Text As..."
+#~ msgstr "Gem tekst som..."
+
+#~ msgid "Open Text File..."
+#~ msgstr "Åbn tekstfil..."
+
+#~ msgid "Sorry, no preferences yet."
+#~ msgstr "Desværre, ingen indstillinger endnu."
+
+#~ msgid "Searching..."
+#~ msgstr "Søger..."
+
+#~ msgid "No search string was specified!"
+#~ msgstr "Ingen søgetekst blev angivet!"
+
+#~ msgid "Shut Down"
+#~ msgstr "Luk ned"
+
+#~ msgid "Single User Mode"
+#~ msgstr "Enkeltbrugertilstand"
+
+#~ msgid "Runlevel 2"
+#~ msgstr "Kørselsniveau 2"
+
+#~ msgid "Runlevel 3"
+#~ msgstr "Kørselsniveau 3"
+
+#~ msgid "Runlevel 4"
+#~ msgstr "Kørselsniveau 4"
+
+#~ msgid "Runlevel 5"
+#~ msgstr "Kørselsniveau 5"
+
+#~ msgid "Reboot"
+#~ msgstr "Genstart"
+
+#~ msgid "Are you sure you want to shut down the computer?"
+#~ msgstr "Er du sikker på at du vil lukke maskinen ned?"
+
+#~ msgid "Are you sure you want to switch to single user mode?"
+#~ msgstr "Er du sikker på at du vil skifte til enkeltbruger-tilstand?"
+
+#~ msgid "Are you sure you want to switch to runlevel 2?"
+#~ msgstr "Er du sikker på at du vil skifte til kørselsniveau 2?"
+
+#~ msgid "Are you sure you want to switch to runlevel 3?"
+#~ msgstr "Er du sikker på at du vil skifte til kørselsniveau 3?"
+
+#~ msgid "Are you sure you want to switch to runlevel 4?"
+#~ msgstr "Er du sikker på at du vil skifte til kørselsniveau 4?"
+
+#~ msgid "Are you sure you want to switch to runlevel 5?"
+#~ msgstr "Er du sikker på at du vil skifte til kørselsniveau 5?"
+
+#~ msgid "Are you sure you want to reboot the system?"
+#~ msgstr "Er du sikker på at du vil genstarte systemet?"
+
+#~ msgid ""
+#~ "You must be the super-user (root) to shut down or restart the computer."
+#~ msgstr ""
+#~ "Du skal være administrator (root) for at lukke maskinen ned eller "
+#~ "genstarte den."
+
+#~ msgid "Shutdown or Reboot"
+#~ msgstr "Luk ned eller genstart"
+
+#~ msgid "Easy"
+#~ msgstr "Simpelt"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanceret"
+
+#~ msgid ""
+#~ "Click OK to shutdown or reboot. You will lose\n"
+#~ "any unsaved information in open applications."
+#~ msgstr ""
+#~ "Tryk O.k. for at slukke maskinen eller genstarte den. Du vil\n"
+#~ "miste alt der ikke er gemt i de åbne programmer."
+
+#~ msgid "Revert to Defaults"
+#~ msgstr "Gendan standarder"
+
+#~ msgid "Commands"
+#~ msgstr "Kommandoer"
+
+#~ msgid "Confirm before shutdown?"
+#~ msgstr "Bekræft før nedlukning?"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "You will lose any unsaved work."
+#~ msgstr ""
+#~ "%s\n"
+#~ "Du vil miste alt der ikke er gemt."
+
+#~ msgid "Don't ask next time."
+#~ msgstr "Spørg ikke næste gang."
+
+#~ msgid "Command execution failed: fork failed"
+#~ msgstr "Kørsel af kommando mislykkedes: kunne ikke fraspalte en ny proces"
+
+#~ msgid "Make guname act as a control center applet"
+#~ msgstr "Lad guname opføre sig som et kontrolcenterprogram"
+
+#~ msgid "an initialization error occurred while starting 'guname-capplet'."
+#~ msgstr "en klargøringsfejl opstod under opstart af 'guname-capplet'."
+
+#~ msgid "System Information"
+#~ msgstr "Systeminformation"
+
+#~ msgid "Logo file not found"
+#~ msgstr "Logofilen blev ikke fundet"
+
+#~ msgid "GNOME contributors:"
+#~ msgstr "Gnome bidragsydere:"
+
+#~ msgid "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+#~ msgstr "-Adobe-Helvetica-Medium-R-Normal--*-180-*-*-*-*-*-*"
+
+#~ msgid "GNOME: The GNU Network Object Model Environment"
+#~ msgstr "Gnome: GNU netværksobjektmiljø"
+
+#~ msgid "Email Information..."
+#~ msgstr "Send information pr. epost..."
+
+#~ msgid "Save Information to File..."
+#~ msgstr "Gem information som fil..."
+
+#~ msgid "Detailed Information..."
+#~ msgstr "Detaljeret information..."
+
+#~ msgid "Category"
+#~ msgstr "Kategori"
+
+#~ msgid "Your System"
+#~ msgstr "Dit system"
+
+#~ msgid "Save As..."
+#~ msgstr "Gem som..."
+
+#~ msgid "Mail To..."
+#~ msgstr "Send til..."
+
+#~ msgid ""
+#~ "Error closing file `%s': \n"
+#~ "%s\n"
+#~ "Some or all data may not have been written."
+#~ msgstr ""
+#~ "Fejl ved lukning af filen '%s': \n"
+#~ "%s\n"
+#~ "Dele af data eller evt. det hele er måske ikke blevet skrevet."
+
+#~ msgid "Couldn't open file `%s': %s"
+#~ msgstr "Kunne ikke åbne filen '%s': %s"
+
+#~ msgid "Save System Information As..."
+#~ msgstr "Gem systeminformation som..."
+
+#~ msgid "Command failed ` %s ': %s"
+#~ msgstr "Kommando mislykkedes ' %s ': %s"
+
+#~ msgid "Couldn't run command ` %s ': %s"
+#~ msgstr "Kunne ikke køre kommandoen ' %s ': %s"
+
+#~ msgid ""
+#~ "The following mail will be sent to %s.\n"
+#~ " Are you sure you want to mail this information?"
+#~ msgstr ""
+#~ "Følgende brev vil blive sendt til %s.\n"
+#~ "Er du sikker på at du vil sende informationerne?"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Er du sikker?"
+
+#~ msgid "Address to mail to:"
+#~ msgstr "Adresse der skal sendes til:"
+
+#~ msgid "Distribution:"
+#~ msgstr "Distribution:"
+
+#~ msgid "Operating System:"
+#~ msgstr "Styresystem:"
+
+#~ msgid "Distribution Version:"
+#~ msgstr "Distributionsversion:"
+
+#~ msgid "Operating System Version:"
+#~ msgstr "Styresystemversion:"
+
+#~ msgid "Operating System Release:"
+#~ msgstr "Styresystemets udgivelse:"
+
+#~ msgid "Processor Type:"
+#~ msgstr "Processortype:"
+
+#~ msgid "Processor Speed:"
+#~ msgstr "Processorhastighed:"
+
+#~ msgid "Host Name:"
+#~ msgstr "Værtsnavn:"
+
+#~ msgid "Domain Name:"
+#~ msgstr "Domænenavn:"
+
+#~ msgid "User Name:"
+#~ msgstr "Brugernavn:"
+
+#~ msgid "X Display Name:"
+#~ msgstr "X-skærmnavn:"
+
+#~ msgid "System Status:"
+#~ msgstr "Systemstatus:"
+
+#~ msgid "Real Memory:"
+#~ msgstr "Rigtig hukommelse:"
+
+#~ msgid "Swap Space (\"virtual memory\"):"
+#~ msgstr "Swap-plads (simuleret hukommelse):"
+
+#~ msgid "Total Memory:"
+#~ msgstr "Total hukommelse:"
+
+#~ msgid "Free Memory:"
+#~ msgstr "Fri hukommelse:"
+
+#~ msgid "Device"
+#~ msgstr "Enhed"
+
+#~ msgid "Used space"
+#~ msgstr "Brugt plads"
+
+#~ msgid "Free space"
+#~ msgstr "Ledig plads"
+
+#~ msgid "Percent free"
+#~ msgstr "Procent ledig"
+
+#~ msgid "Mount point"
+#~ msgstr "Monteringspunkt"
+
+#~ msgid "Unknown"
+#~ msgstr "Ukendt"
+
+#~ msgid "Unknown filesystem"
+#~ msgstr "Ukendt filsystem"
+
+#~ msgid "No information for this filesystem."
+#~ msgstr "Ingen information for dette filsystem."
+
+#~ msgid "Memory"
+#~ msgstr "Hukommelse"
+
+#~ msgid "Kilobytes"
+#~ msgstr "Kilobyte"
+
+#~ msgid "%ld%% memory used."
+#~ msgstr "%ld%% hukommelse brugt."
+
+#~ msgid "%ld%% swap used."
+#~ msgstr "%ld%% swap brugt."
+
+#~ msgid "CPU %d"
+#~ msgstr "CPU %d"
+
+#~ msgid "Detailed System Information"
+#~ msgstr "Detaljeret systeminformation"
+
+#~ msgid "Disk Information"
+#~ msgstr "Diskinformation"
+
+#~ msgid "Memory Information"
+#~ msgstr "Hukommelsesinformation"
+
+#~ msgid "CPU Information"
+#~ msgstr "Processorinformation"
+
+#~ msgid "Mount Point: "
+#~ msgstr "Monteringspunkt: "
+
+#~ msgid "    Device: "
+#~ msgstr "    Enhed: "
+
+#~ msgid "    Filesystem Type: "
+#~ msgstr "    Filsystemtype: "
+
+#~ msgid "%ld megabytes, %ld free (%ld superuser); %ld inodes, %ld free."
+#~ msgstr "%ld megabyte, %ld fri (%ld superbruger); %ld inoder, %ld ledig."
+
+#~ msgid "%2d%% full "
+#~ msgstr "%2d%% fuld "
+
+#~ msgid ""
+#~ "Couldn't find the \"w\" command in your path.\n"
+#~ "This command is needed for the program to work."
+#~ msgstr ""
+#~ "Kunne ikke finde \"w\" kommandoen i søgestien.\n"
+#~ "Denne kommando er nødvendig for at programmet kan virke."
+
+#~ msgid "Active User Listing"
+#~ msgstr "Liste over aktive brugere"
+
+#~ msgid "Update Information"
+#~ msgstr "Opdatér information"
+
+#~ msgid "Command Line"
+#~ msgstr "Kommandolinje"
+
+#~ msgid "Add some defaults"
+#~ msgstr "Tilføj nogle standarder"
+
+#~ msgid "Delete"
+#~ msgstr "Slet"
+
+#~ msgid "Command Editor"
+#~ msgstr "Kommandoredigering"
+
+#~ msgid ""
+#~ "You can configure the commands on the popup menus.\n"
+#~ "Just enter the name you want to appear on the \n"
+#~ "menu, and the command to execute.\n"
+#~ "In the command, you can use %u to represent the\n"
+#~ "currently selected username, and %t for the tty."
+#~ msgstr ""
+#~ "Du kan indstille kommandoerne i pop-op-menuerne.\n"
+#~ "Bare skriv det navn du ønsker der skal stå i \n"
+#~ "menuen, og kommandoen der skal udføres.\n"
+#~ "I kommandoen kan du bruge %u til at repræsentere det\n"
+#~ "valgte brugernavn og %t for tty'en."
+
+#~ msgid ""
+#~ "Click this button to add\n"
+#~ "some sample commands."
+#~ msgstr ""
+#~ "Tryk på denne knap for at\n"
+#~ "tilføje nogle prøvekommandoer."
+
+#~ msgid "Menu items"
+#~ msgstr "Menupunkter"
+
+#~ msgid "Command"
+#~ msgstr "Kommando"
+
+#~ msgid "Running: %s\n"
+#~ msgstr "Kører: %s\n"
+
+#~ msgid "Default 16-bit"
+#~ msgstr "Standard 16-bit"
+
+#~ msgid "32-bit"
+#~ msgstr "32-bit"
+
+#~ msgid "32-bit w/sync"
+#~ msgstr "32-bit m/synk"
+
+#~ msgid "Sleeping"
+#~ msgstr "Sover"
+
+#~ msgid "Active/Idle"
+#~ msgstr "Aktiv/passiv"
+
+#~ msgid "Standby"
+#~ msgstr "Dvale"
+
+#~ msgid "Unable to access the drive."
+#~ msgstr "Kan ikke komme i kontakt med drevet"
+
+#~ msgid "The DMA setting for this drive cannot be changed."
+#~ msgstr "DMA-indstillingen for dette drev kan ikke ændres."
+
+#~ msgid "Enabled"
+#~ msgstr "Aktiveret"
+
+#~ msgid "Disabled"
+#~ msgstr "Deaktiveret"
+
+#~ msgid "The IRQ unmask setting for this drive cannot be changed."
+#~ msgstr "IRQ-afmaskindstillingen for dette drev kan ikke ændres."
+
+#~ msgid "The drive refused to keep its settings."
+#~ msgstr "Drevet nægter at beholde indstillingerne."
+
+#~ msgid "Keep settings"
+#~ msgstr "Behold indstillinger"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "(1 Sector)"
+#~ msgstr "(1 sektor)"
+
+#~ msgid "(Dual Port)"
+#~ msgstr "(dobbeltport)"
+
+#~ msgid "(Dual Port Cache)"
+#~ msgstr "(dobbeltportsmellemlager)"
+
+#~ msgid "No"
+#~ msgstr "Nej"
+
+#~ msgid "Yes (%d sector)"
+#~ msgstr "Ja (%d sektor)"
+
+#~ msgid "Yes (%d sectors)"
+#~ msgstr "Ja (%d sektorer)"
+
+#~ msgid "Model"
+#~ msgstr "Model"
+
+#~ msgid "Firmware"
+#~ msgstr "Fast programmel"
+
+#~ msgid "Serial No."
+#~ msgstr "Serienr."
+
+#~ msgid "Geometry"
+#~ msgstr "Geometri"
+
+#~ msgid "Cache"
+#~ msgstr "Mellemlager"
+
+#~ msgid "Legacy MFM/RLL drive"
+#~ msgstr "Gammeldags MFM/RLL-drev"
+
+#~ msgid "DMA Mode"
+#~ msgstr "DMA-tilstand"
+
+#~ msgid "IO Mode"
+#~ msgstr "IO-tilstand"
+
+#~ msgid "IRQ Unmask"
+#~ msgstr "IRQ-afmask"
+
+#~ msgid "Multisector"
+#~ msgstr "Multisektor"
+
+#~ msgid "On Reset"
+#~ msgstr "Ved genstart"
+
+#~ msgid "IDE Status"
+#~ msgstr "IDE-status"
+
+#~ msgid "Disk Logo Not Found"
+#~ msgstr "Disk-logo blev ikke fundet"
+
+#~ msgid "Only the superuser can use this tool"
+#~ msgstr "Kun administratoren kan bruge dette værktøj"
+
+#~ msgid "You appear to have no IDE drives"
+#~ msgstr "Du ser ikke ud til at have noget IDE-drev"
+
+#~ msgid "MInternal Error: Unable to seek to the correct location."
+#~ msgstr "Intern fejl: Ude stand til at søge til den rigtige position."
+
+#~ msgid "MInternal Error: Weird value (%ld) in do_test\n"
+#~ msgstr "Intern fejl: Mærkelig værdi (%ld) i do_test\n"
+
+#~ msgid "EBad block at block %lu"
+#~ msgstr "Ugyldig blok ved blok %lu"
+
+#~ msgid "MChecking for bad blocks..."
+#~ msgstr "Tjekker efter ugyldige blokke..."
+
+#~ msgid "MFailed to open device %s for badblock checking\n"
+#~ msgstr ""
+#~ "Det lykkedes ikke at åbne enheden %s til tjek efter ugyldige blokke\n"
+
+#~ msgid "MChecking for bad blocks... Done"
+#~ msgstr "Tjekker efter ugyldige blokke... Færdig"
+
+#~ msgid "MFormatting the disk..."
+#~ msgstr "Formaterer disken..."
+
+#~ msgid "EI don't know what this is, but it's very wrong."
+#~ msgstr "Aner ikke hvad dette er, men det er meget forkert."
+
+#~ msgid "EError formatting track #%d"
+#~ msgstr "Fejl ved formatering af spor %d"
+
+#~ msgid "EError during completion of formatting"
+#~ msgstr "Fejl ved fuldbyrdelse af formatering"
+
+#~ msgid "MFormatting the disk... Done"
+#~ msgstr "Formaterer disken... Færdig"
+
+#~ msgid "MVerifying the format..."
+#~ msgstr "Tjekker formatet..."
+
+#~ msgid ""
+#~ "EUnable to write to the floppy.\n"
+#~ "\n"
+#~ "Please confirm that it is not write-protected."
+#~ msgstr ""
+#~ "Ude af stand til at skrive til disketten.\n"
+#~ "\n"
+#~ "Tjek venligst at den ikke er skrivebeskyttet."
+
+#~ msgid "EInsufficient permissions to open floppy device %s."
+#~ msgstr "Du har ikke rettighed til at åbne disketteenheden %s."
+
+#~ msgid ""
+#~ "EUnable to access the floppy disk.\n"
+#~ "\n"
+#~ "Please confirm that it is in the drive\n"
+#~ "with the drive door shut."
+#~ msgstr ""
+#~ "Ude af stand til at tilgå disketten.\n"
+#~ "\n"
+#~ "Tjek venligst at den er i drevet med\n"
+#~ "døren lukket."
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s:%d"
+#~ msgstr ""
+#~ "General fejl ved tilgang af disketteenheden %s.\n"
+#~ "\n"
+#~ "Fejlkode %s:%d"
+
+#~ msgid ""
+#~ "ERead Error:\n"
+#~ "Problem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "Læsefejl:\n"
+#~ "Der opstod et problem ved læsning af cylinder %d, forventede %d, læste %d"
+
+#~ msgid "EProblem reading cylinder %d, expected %d, read %d"
+#~ msgstr ""
+#~ "Der opstod et problem ved læsning af cylinder %d, forventede %d, læste %d"
+
+#~ msgid "MBad data in cyl %d.  Continuing... "
+#~ msgstr "Ugyldig data i cylinder %d. Fortsætter..."
+
+#~ msgid "EError closing device %s"
+#~ msgstr "Fejl ved lukning af enhed %s"
+
+#~ msgid "MVerifying the format... Done"
+#~ msgstr "Tjekker formatet... Færdig"
+
+#~ msgid "EUnable to write to device %s"
+#~ msgstr "Ude af stand til at skrive til enhed %s"
+
+#~ msgid ""
+#~ "EGeneric error accessing floppy device %s.\n"
+#~ "\n"
+#~ "Error code %s"
+#~ msgstr ""
+#~ "General fejl ved tilgang af disketteenheden %s.\n"
+#~ "\n"
+#~ "Fejlkode %s"
+
+#~ msgid "ECould not determine current format type"
+#~ msgstr "Kunne ikke bestemme den nuværende formattype"
+
+#~ msgid "Dos (FAT)"
+#~ msgstr "DOS (FAT)"
+
+#~ msgid "Double Density 3.5\" (720 KB)"
+#~ msgstr "Dobbeltdensitets 3.5\" (720 Kb)"
+
+#~ msgid "Double Density 5.25\" (360 KB)"
+#~ msgstr "Dobbeltdensitets 5.25\" (360 Kb)"
+
+#~ msgid "File system type:"
+#~ msgstr "Filsystemtype:"
+
+#~ msgid "Floppy Density:"
+#~ msgstr "Diskettedensitet:"
+
+#~ msgid "Floppy Device:"
+#~ msgstr "Disketteenhed:"
+
+#~ msgid "Format a floppy"
+#~ msgstr "Formatér en diskette"
+
+#~ msgid "High Density 3.5\" (1.44 MB)"
+#~ msgstr "Højdensitets 3.5\" (1.44 Mb)"
+
+#~ msgid "High Density 5.25\" (1.2 MB)"
+#~ msgstr "Højdensitets 5.25\" (1.2 Mb)"
+
+#~ msgid "Linux Native (ext2)"
+#~ msgstr "Indfødt Linux (ext2)"
+
+#~ msgid "_Quick format"
+#~ msgstr "H_urtig formatering"
+
+#~ msgid "MMaking filesystem on disk..."
+#~ msgstr "Opretter filsystem på disketten..."
+
+#~ msgid "EUnable to create filesystem correctly."
+#~ msgstr "Kan ikke oprette filsystemet korrekt."
+
+#~ msgid "MMaking filesystem on disk... Done"
+#~ msgstr "Opretter filsystem på disketten... Færdig"
+
+#~ msgid "EUnable to create filesystem."
+#~ msgstr "Kan ikke oprette filsystemet."
+
+#~ msgid "MChecking for bad blocks... (this might take a while)"
+#~ msgstr "Kontrollerer for ugyldige blokke... (dette kan tage et stykke tid)"
+
+#~ msgid "Unable to open the device %s, formatting cannot continue."
+#~ msgstr "Kan ikke åbne enheden %s, formatering kan ikke fortsætte."
+
+#~ msgid ""
+#~ "The device %s is disconnected.\n"
+#~ "Please attach device to continue."
+#~ msgstr ""
+#~ "Enheden %s er ikke forbundet.\n"
+#~ "Tilkobl venligst enheden for at forsætte."
+
+#~ msgid ""
+#~ "You do not have the proper permissions to write to %s, formatting will "
+#~ "not be possible.\n"
+#~ "Contact your system administrator about getting write permissions."
+#~ msgstr ""
+#~ "Du har ikke rettigheder til at skrive til %s, formateringen kan ikke "
+#~ "udføres.\n"
+#~ "Kontakt systemadministratoren for at få skriverettigheder."
+
+#~ msgid "The device to format"
+#~ msgstr "Enheden der skal formatteres"
+
+#~ msgid "DEVICE"
+#~ msgstr "ENHED"
+
+#~ msgid "Format"
+#~ msgstr "Formatér"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "Formatér en anden diskette?"
+
+#~ msgid "Floppy formatted successfully."
+#~ msgstr "Diskette formateret."
+
+#~ msgid "Floppy formatting cancelled."
+#~ msgstr "Disketteformatering afbrudt."
+
+#~ msgid "Format progress."
+#~ msgstr "Formateringsstatus."
+
+#~ msgid "Param"
+#~ msgstr "Param"
+
+#~ msgid "Current"
+#~ msgstr "Nuværende"
+
+#~ msgid "Scale"
+#~ msgstr "Skalér"
+
+#~ msgid "Stripchart"
+#~ msgstr "Stripgraf"
+
+#~ msgid "Copyright 2000 John Kodis"
+#~ msgstr "Ophavsret 2000 John Kodis"
+
+#~ msgid ""
+#~ "The GNOME stripchart program plots various user-specified parameters as a "
+#~ "function of time.  Its main use is to chart system performance parameters "
+#~ "such as CPU load, CPU utilization, network traffic levels, and the like.  "
+#~ "Other more ingenious uses are left as an exercise for the interested user."
+#~ msgstr ""
+#~ "Gnome stripgrafsprogrammet plotter forskellige bruger-specificerede "
+#~ "parametre som en funktion af tiden. Det primære formål er at vise "
+#~ "systemets  ydelsesparametre såsom CPU-forbrug og -udnyttelse, "
+#~ "netværkstrafik, osv. Andre formål er skjult for at give den interesserede "
+#~ "bruger lidt øvelse."
+
+#~ msgid "Show values"
+#~ msgstr "Vis værdier"
+
+#~ msgid "Edit Prefs..."
+#~ msgstr "Redigér opsætning..."
+
+#~ msgid "Edit Params..."
+#~ msgstr "Redigér parametre..."
+
+#~ msgid "closing parenthesis expected"
+#~ msgstr "højreparantes forventet"
+
+#~ msgid "no such field: %d"
+#~ msgstr "feltet findes ikke: %d"
+
+#~ msgid "missing variable identifer"
+#~ msgstr "mangler variabelnavn"
+
+#~ msgid "invalid variable identifer: %s"
+#~ msgstr "ugyldig variabelnavn: %s"
+
+#~ msgid "number expected"
+#~ msgstr "tal forventet"
+
+#~ msgid "extra junk at end: \"%s\""
+#~ msgstr "overflødigt bras i slutning: \"%s\""
+
+#~ msgid "Parameter"
+#~ msgstr "Parameter"
+
+#~ msgid "Equation"
+#~ msgstr "Ligning"
+
+#~ msgid "Filename"
+#~ msgstr "Filnavn"
+
+#~ msgid "Pattern"
+#~ msgstr "Mønster"
+
+#~ msgid "Min"
+#~ msgstr "Min."
+
+#~ msgid "Max"
+#~ msgstr "Maks."
+
+#~ msgid "Linear"
+#~ msgstr "Lineær"
+
+#~ msgid "Logarithmic"
+#~ msgstr "Logaritmisk"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Indicator"
+#~ msgstr "Indikator"
+
+#~ msgid "Line"
+#~ msgstr "Linje"
+
+#~ msgid "Point"
+#~ msgstr "Punkt"
+
+#~ msgid "Solid"
+#~ msgstr "Solid"
+
+#~ msgid "Add Parameter Before"
+#~ msgstr "Tilføj parameter før"
+
+#~ msgid "Add Parameter After"
+#~ msgstr "Tilføj parameter efter"
+
+#~ msgid "Apply Parameter Changes"
+#~ msgstr "Anvend parameterændringer"
+
+#~ msgid "Delete Parameter"
+#~ msgstr "Slet parameter"
+
+#~ msgid "Add Color"
+#~ msgstr "Tilføj farve"
+
+#~ msgid "Delete Color"
+#~ msgstr "Fjern farve"
+
+#~ msgid "Info"
+#~ msgstr "Info"
+
+#~ msgid "Parameter Editor"
+#~ msgstr "Parameterredigering"
+
+#~ msgid "Parameters"
+#~ msgstr "Parametre"
+
+#~ msgid "Chart"
+#~ msgstr "Graf"
+
+#~ msgid "enabled"
+#~ msgstr "aktiveret"
+
+#~ msgid "minor"
+#~ msgstr "mindre"
+
+#~ msgid "major"
+#~ msgstr "større"
+
+#~ msgid "Update"
+#~ msgstr "Opdatering"
+
+#~ msgid "Smooth"
+#~ msgstr "Udjævnet"
+
+#~ msgid "Ticks"
+#~ msgstr "Mærker"
+
+#~ msgid "Pen"
+#~ msgstr "Pen"
+
+#~ msgid "Geometry string: WxH+X+Y"
+#~ msgstr "Geometristreng: VxH+X+Y"
+
+#~ msgid "GEO"
+#~ msgstr "GEO"
+
+#~ msgid "Configuration file name"
+#~ msgstr "Konfigurationsfilnavn"
+
+#~ msgid "FILE"
+#~ msgstr "FIL"
+
+#~ msgid "Values"
+#~ msgstr "Værdier"
+
+#~ msgid "Prefs..."
+#~ msgstr "Opsætning..."
+
+#~ msgid "Params..."
+#~ msgstr "Parametre..."
+
+#~ msgid ""
+#~ "Executing arbitrary programs that you downloaded from the network might "
+#~ "be dangerous.\n"
+#~ "\n"
+#~ "Are you sure you want to run `%s'?"
+#~ msgstr ""
+#~ "At køre tilfældige programmer som du har hentet fra netværket kan være "
+#~ "farligt.\n"
+#~ "\n"
+#~ "Er du sikker på at du vil køre '%s'?"
+
+#~ msgid "Could not access file permissions"
+#~ msgstr "Kunne ikke få adgang til filrettigheder"
+
+#~ msgid "Could not execute the file `%s' due to a permission problem"
+#~ msgstr "Kunne ikke køre filen '%s' pga. et rettighedsproblem"
+
+#~ msgid "Failure at executing `%s'"
+#~ msgstr "Fejl ved kørsel af '%s'"
+
+#~ msgid "It was not possible to open the file `%s'"
+#~ msgstr "Det var ikke muligt at åbne filen '%s'"
+
+#~ msgid "The file `%s' is empty"
+#~ msgstr "Filen '%s' er tom"
+
+#~ msgid "There was an error. `%s' is empty"
+#~ msgstr "Der opstod en fejl, '%s' er tom"
+
+#~ msgid "This is a library and can not be executed"
+#~ msgstr "Dette er et rutinebibliotek og kan ikke køres"
+
+#~ msgid "The file is a core file and can not be executed"
+#~ msgstr "Filen er et hukommelsesdump og kan ikke køres"
+
+#~ msgid "This is an unknown kind of executable"
+#~ msgstr "Dette er en ukendt form for kørbar fil"
+
+#~ msgid ""
+#~ "The executable is for a different platform and can not be executed on "
+#~ "this system"
+#~ msgstr ""
+#~ "Den kørbare fil er beregnet til en anden platform og kan ikke køres på "
+#~ "dette system"
+
+#~ msgid ""
+#~ "Number of files: %d\n"
+#~ "Nuber of folders: %d"
+#~ msgstr ""
+#~ "Antal filer: %d\n"
+#~ "Antal mapper: %d"
+
+#~ msgid ""
+#~ "No files or folders, drop files or folders\n"
+#~ "above to add them to the archive"
+#~ msgstr ""
+#~ "Ingen filer eller mapper, slip filer eller\n"
+#~ "mapper ovenfor for at tilføje dem til arkivet."
+
+#~ msgid "Cannot start the archive (tar) program"
+#~ msgstr "Kan ikke starte arkivprogrammet (tar)"
+
+#~ msgid "Cannot run tar/gtar"
+#~ msgstr "Kan ikke køre tar/gtar"
+
+#~ msgid "Archive.tar.gz"
+#~ msgstr "Arkiv.tar.gz"
+
+#~ msgid "The GNOME Archive Generator"
+#~ msgstr "Gnome arkivgeneratoren"
+
+#~ msgid "Drag files in to make archives"
+#~ msgstr "Træk filer for at oprette arkiver"
+
+# dækker vist bedre
+#~ msgid "No filename selected"
+#~ msgstr "Ingen filnavne markeret"
+
+#~ msgid "File exists, overwrite?"
+#~ msgstr "Filer eksisterer allerede, overskriv dem?"
+
+#~ msgid "No items to archive"
+#~ msgstr "Ingen elementer til arkiv"
+
+#~ msgid "File does not exists"
+#~ msgstr "Filen eksisterer ikke"
+
+#~ msgid "Add file or folder"
+#~ msgstr "Tilføj fil eller mappe"
+
+#~ msgid "Add file or folder..."
+#~ msgstr "Tilføj fil eller mappe..."
+
+#~ msgid "Add a file or folder to the archive"
+#~ msgstr "Tilføj en fil eller en mappe til arkivet"
+
+#~ msgid "Create archive..."
+#~ msgstr "Opret arkiv..."
+
+#~ msgid "Create a new archive from the items"
+#~ msgstr "Opret et nyt arkiv med de markerede elementer"
+
+# det er åndssvagt at have parantesen med
+#~ msgid "Remove the selected item(s)"
+#~ msgstr "Fjern de markerede elementer"
+
+#~ msgid "GNOME Archive Generator"
+#~ msgstr "Gnome arkivgenerator"
+
+#~ msgid "Drop files here to add them to the archive."
+#~ msgstr "Træk og slip filer her for at tilføje dem til arkivet."
+
+#~ msgid "Archive"
+#~ msgstr "Arkiv"
+
+#~ msgid ""
+#~ "Drag this button to the destination where you want the archive to be "
+#~ "created or press it to pop up a file selection dialog."
+#~ msgstr ""
+#~ "Træk denne knap til destinationen hvor du ønsker arkivet skal oprettes, "
+#~ "eller tryk på den for at åbne filvælgervinduet."
+
+#~ msgid "Cannot find proper icons anywhere!"
+#~ msgstr "Kan ikke finde de rigtige ikoner!"
+
+#~ msgid ""
+#~ "Cannot find the archive (tar) program!\n"
+#~ "This is the program used for creating archives."
+#~ msgstr ""
+#~ "Kan ikke finde arkivprogrammet (tar)!\n"
+#~ "Det program benyttes til at oprette arkiverne."
+
+#~ msgid "Format Floppy Disks"
+#~ msgstr "Formaterer forskellige diskettetyper"
+
+#~ msgid "gfloppy"
+#~ msgstr "Formatér diskette"
+
+#~ msgid "GDict"
+#~ msgstr "GDict ordbog"
+
+#~ msgid "Gnome client for the MIT dictionary server"
+#~ msgstr "Gnome klient for MIT ordbogs-tjener"
+
+#~ msgid "GNOME client for RFC 2229-compliant dictionary server"
+#~ msgstr "Klient til RFC 2229-ordbogsopslag"
+
+#~ msgid "Shows a stripchart plot"
+#~ msgstr "Viser et stripchart plot"
+
+#~ msgid "Stripchart Plotter"
+#~ msgstr "Stripgraf plotter"
+
+#~ msgid "Notepad"
+#~ msgstr "Notesblok"
+
+#~ msgid "Simple editor (notepad)"
+#~ msgstr "Simpel tekstbehandler (notesblok)"
+
+#~ msgid "IDE Device Tool"
+#~ msgstr "IDE-enhedsværktøj"
+
+#~ msgid "Show and Configure IDE Device Settings"
+#~ msgstr "Viser og konfigurerer IDE-enhedsindstillinger"
+
+#~ msgid "User Listing"
+#~ msgstr "Brugerliste"
+
+#~ msgid "View users on the system"
+#~ msgstr "Liste over brugere som er logget ind"
+
+#~ msgid "Show various system information"
+#~ msgstr "Viser forskelligt systeminformation"
+
+#~ msgid "System Info"
+#~ msgstr "Systeminfo"
+
+#~ msgid "Technical information about this computer"
+#~ msgstr "Teknisk information om denne maskine"
+
+#~ msgid "Shut Down or Reboot"
+#~ msgstr "Luk ned eller genstart"
+
+#~ msgid "Turn off or reset the computer"
+#~ msgstr "Luk maskinen ned eller genstart den"
+
+#~ msgid "Ask for a command to execute"
+#~ msgstr "Bed om navnet på en kommando som skal udføres"
+
+#~ msgid "Run A Command..."
+#~ msgstr "Udfør en kommando..."
+
+#~ msgid "GNOME Penguin"
+#~ msgstr "GNOME Pingvin"
+
+#~ msgid "Let a cute pinguin chase your pointer"
+#~ msgstr "Se en sød pingvin forfølge din musemarkør"
+
+#~ msgid "Prompts the user for a program to run"
+#~ msgstr "Spørger brugeren hvilket program, hun vil køre"
+
+#~ msgid "Run program..."
+#~ msgstr "Kør..."
+
+#~ msgid "Page files as with `more' and `less'"
+#~ msgstr "Viser filer på samme måde som `more' og `less'"
+
+#~ msgid "Select a font for pasting"
+#~ msgstr "Vælg en skrifttype"
+
+#~ msgid "Browse available X11 colors."
+#~ msgstr "Visualisering af systemfarverne i X11"
+
+#~ msgid "Color Browser"
+#~ msgstr "Farvevælger"
+
+#~ msgid "Archive Generator"
+#~ msgstr "Arkivgenerator"
+
+#~ msgid "GNOME Archive Generator aka Meat Grinder"
+#~ msgstr "Genererer arkiver (med tilnavnet Kødmaskinen)"
+
+#~ msgid "SysLog tool"
+#~ msgstr "Viser systemets logfiler"
+
+#~ msgid "System log monitor"
+#~ msgstr "Systemlog-overvågning"
+
+#~ msgid "Gstripchart"
+#~ msgstr "Gstripchart"
+
+#~ msgid "Shows a stripchart"
+#~ msgstr "Viser et stripchart"
+
+#~ msgid "GNOME Search Tool"
+#~ msgstr "Søgeværktøj"
+
+#~ msgid "GNOME DiskFree"
+#~ msgstr "Ledig diskplads"
+
+#~ msgid "Show free space on mounted file systems using dials."
+#~ msgstr "Viser hvor meget plads der er tilbage på harddisken"
+
+#~ msgid "GNOME Character Map"
+#~ msgstr "Tegnoversigt"
+
+#~ msgid "Simple Calculator"
+#~ msgstr "Lommeregner"
+
+#~ msgid "Personal cron manager"
+#~ msgstr "Crontabredigering"
+
+#~ msgid "Personal crontab manager"
+#~ msgstr "Personlig crontabredigering"
 
 #~ msgid "Delete _Times"
 #~ msgstr "Slet _tider"
