@@ -2,6 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
+<requires lib="gnome"/>
 
 <widget class="GtkDialog" id="Plugin New">
   <property name="visible">True</property>
@@ -162,28 +163,6 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="plugin path">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Path to phtml file that defines a GTT Report</property>
-	      <property name="can_focus">True</property>
-	      <property name="editable">True</property>
-	      <property name="visibility">True</property>
-	      <property name="max_length">0</property>
-	      <property name="text" translatable="yes"></property>
-	      <property name="has_frame">True</property>
-	      <property name="invisible_char" translatable="yes">*</property>
-	      <property name="activates_default">False</property>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">2</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkEntry" id="plugin tooltip">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Tooltip that will show when the pointer hovers over this menu item.</property>
@@ -201,6 +180,36 @@
 	      <property name="right_attach">2</property>
 	      <property name="top_attach">2</property>
 	      <property name="bottom_attach">3</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GnomeFileEntry" id="plugin path">
+	      <property name="visible">True</property>
+	      <property name="max_saved">10</property>
+	      <property name="directory_entry">False</property>
+	      <property name="modal">False</property>
+
+	      <child internal-child="entry">
+		<widget class="GtkEntry" id="combo-entry1">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char" translatable="yes">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="y_options"></property>
 	    </packing>
 	  </child>
