@@ -1,7 +1,7 @@
 
-bin_PROGRAMS = gtt
+bin_PROGRAMS = gnotime
 
-gtt_SOURCES = 		\
+gnotime_SOURCES = 		\
 	app.c		\
 	ctree.c		\
 	dialog.c	\
@@ -78,7 +78,7 @@ INCLUDES = 			\
 	${GNOME_INCLUDEDIR}	\
 	${GUILE_INCS}
 						 
-gtt_LDADD = \
+gnotime_LDADD = \
 	$(GNOTIME_LIBS)	\
 	$(LIBGLADE_LIBS)        \
 	$(LIBGTKHTML_LIBS)	\

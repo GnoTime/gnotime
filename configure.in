@@ -38,7 +38,7 @@ AC_SUBST(GNOTIME_CFLAGS)
 AC_SUBST(GNOTIME_LIBS)
 
 dnl *****************************************
-dnl gtt needs libglade
+dnl need libglade
 dnl *****************************************
 PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
@@ -74,7 +74,6 @@ AC_SUBST(GUILE_LIBS)
 
 dnl *******************************
 dnl gtkhtml
-dnl gtkhtml is needed to build gtt
 dnl *******************************
 
 PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-2.0 >= $LIBGTKHTML_REQUIRED)
@@ -84,7 +83,7 @@ AC_SUBST(LIBGTKHTML_LIBS)
 
 dnl ********************
 dnl libxml2
-dnl The libxml2 library is required to build gtt
+dnl The libxml2 library is required 
 dnl ********************
 dnl XXX this is the wrong macro
 
@@ -179,7 +178,7 @@ AC_SUBST(LDFLAGS)
 
 AC_OUTPUT([
 Makefile
-gtt.desktop
+gnotime.desktop
 doc/C/Makefile
 doc/C/man/Makefile
 doc/de/Makefile
