@@ -57,6 +57,8 @@ typedef struct wiggy_s
 	GtkWidget *task_popup;
 	GtkWidget *task_delete_memo;
 	GtkWidget *task_paste;
+	GtkWidget *hover_help_window;
+	guint      hover_timeout_id;
 	char        *filepath;  /* file containing report template */
 	EditIntervalDialog *edit_ivl;
 	GttInterval * interval;
@@ -524,6 +526,7 @@ on_close_clicked_cb (GtkWidget *w, gpointer data)
 	 * this might leak memory?  Hide instead. */
 	// gtk_widget_destroy (wig->top);
 	gtk_widget_hide (wig->top);
+	gtk_widget_destroy (wig->hover_help_window);
 	gtt_ghtml_destroy (wig->gh);
 	g_free (wig->filepath);
 	
@@ -585,12 +588,88 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 	}
 }
 
+/* ============================================================== */
+/* Display a tool-tip type of message when the user pauses thier 
+ * mouse over a URL.   If mouse pointer doesn't move for a 
+ * second, popup a window.
+ */
+static gint
+hover_timer_func(gpointer data)
+{
+	Wiggy *wig = data;
+
+	gint px=0, py=0, rx=0, ry=0;
+	gtk_widget_get_pointer (wig->hover_help_window, &px, &py);
+	gtk_window_get_position (GTK_WINDOW(wig->hover_help_window), &rx, &ry);
+	rx += px;
+	ry += py;
+	rx += 25; /* move it out from under the cursor shape */
+	gtk_window_move (GTK_WINDOW(wig->hover_help_window), rx, ry);
+	gtk_widget_show (wig->hover_help_window);
+
+	return 0;
+}
+
+/* If the html window looses foxus, we've got to hie the flyover help;
+ * otherwise it will leave garbage on the screen. 
+ */
+static gboolean
+hover_loose_focus(GtkWidget *w, GdkEventFocus *ev, gpointer data) 
+{
+	Wiggy *wig = data;
+
+	if (wig->hover_timeout_id) 
+	{
+		gtk_timeout_remove (wig->hover_timeout_id);
+		wig->hover_timeout_id = 0;
+		gtk_widget_hide (wig->hover_help_window);
+	}
+	return 0;
+}
+		  
 static void
 html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data) 
 {
-	printf ("duude hover over the url show hover help duude=%s\n", url);
-}
+	Wiggy *wig = data;
 
+	/* Create and initialize the hover-help window */
+	if (!wig->hover_help_window)
+	{
+		char * msg = _("Left-click to bring up menu");
+
+		wig->hover_help_window = gtk_window_new(GTK_WINDOW_POPUP);
+		gtk_window_set_decorated (GTK_WINDOW(wig->hover_help_window), FALSE);
+		gtk_window_set_destroy_with_parent (GTK_WINDOW(wig->hover_help_window), TRUE);
+		gtk_window_set_transient_for (GTK_WINDOW(wig->hover_help_window), 
+							 GTK_WINDOW(wig->top));
+
+		GtkWidget *label = gtk_label_new (msg);
+		gtk_container_add(GTK_CONTAINER(wig->hover_help_window), label);
+		gtk_widget_show (label);
+
+		/* So that we can loose focus later */
+		gtk_window_set_focus (GTK_WINDOW(wig->top), GTK_WIDGET(wig->html));
+
+		/* Set up in initial default, so later move works. */
+		gtk_window_move (GTK_WINDOW(wig->hover_help_window), 300,300);
+	}
+
+	/* If hovering over a URL, bring up a timer after one second. */
+	if (url)
+	{
+		/* 1000 milliseconds == 1 second */
+		wig->hover_timeout_id = gtk_timeout_add (1000, hover_timer_func, wig);
+	}
+	else
+	{
+		if (wig->hover_timeout_id)
+		{
+			gtk_timeout_remove (wig->hover_timeout_id);
+			wig->hover_timeout_id = 0;
+			gtk_widget_hide (wig->hover_help_window);
+		}
+	}
+}
 
 /* ============================================================== */
 /* HTML form (method=GET, POST) events */
@@ -758,6 +837,9 @@ do_show_report (const char * report, const char * title,
 	g_signal_connect(G_OBJECT(wig->html), "on_url",
 		G_CALLBACK(html_on_url_cb), wig);
 
+	g_signal_connect(G_OBJECT(wig->html), "focus_out_event",
+		G_CALLBACK(hover_loose_focus), wig);
+
 	gtk_widget_show (GTK_WIDGET(wig->html));
 	gtk_widget_show (jnl_top);
 
@@ -820,6 +902,10 @@ do_show_report (const char * report, const char * title,
 	  
 	glade_xml_signal_connect_data (glxml, "on_new_interval_activate",
 	        GTK_SIGNAL_FUNC (task_new_interval_cb), wig);
+
+	/* ---------------------------------------------------- */
+	wig->hover_help_window = NULL;
+	wig->hover_timeout_id = 0;
 
 	/* ---------------------------------------------------- */
 	/* finally ... display the actual journal */
