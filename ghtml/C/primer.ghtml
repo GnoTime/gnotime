@@ -29,20 +29,33 @@ this example primer by viewing 'primer.ghtml' (probably installed
 at <tt>/usr/share/gnotime/ghtml/C/primer.ghtml</tt>)
 </p>
 <p>
-Some sample scheme expressions, and their output:
+Some sample scheme forms, and their output:
 </p>
 
 <ul>
 <li> <tt>(gtt-hello)</tt>  prints the following:
-     <?scm  (gtt-hello) ?>
+     <b><i><?scm  (gtt-hello) ?></i></b>
      <br><br>
 
 <li> <tt>(gtt-show-project-title)</tt>  prints the following:
-     <?scm  (gtt-show-project-title) ?>
+     <b><i><?scm  (gtt-show-project-title) ?></i></b>
      <br><br>
 
 <li> <tt>(gtt-show-project-desc)</tt>  prints the following:
-     <?scm  (gtt-show-project-desc) ?>
+     <b><i><?scm  (gtt-show-project-desc) ?></i></b>
+     <br><br>
+
+<li> <tt>(gtt-show (gtt-project-notes (gtt-selected-project)))</tt>  
+     prints the notes for the selected proejct, which are:
+	  <br><b><i>
+     <?scm  (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
+	  </i></b><br>
+	  Note the slightly more complicated form of the above: 
+	  <tt>gtt-selected-project</tt> denotes the project that is currently
+	  selected in the GnoTime main window.  <tt>gtt-project-notes</tt>
+	  is a function that takes a project as an argument, and returns the
+	  notes on that project.  <tt>gtt-show</tt> is a kind of 'print'
+	  statement (see below for more examples of <tt>gtt-show</tt>).
      <br><br>
 
 <li> <tt>(gtt-show-basic-journal)</tt>  prints a basic layout of the journal, 
