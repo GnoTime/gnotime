@@ -52,7 +52,7 @@ static int
 day_bin (GttInterval *ivl, gpointer data)
 {
 	DayArray *da = data;
-	time_t start, stop, end_of_day;
+	time_t start, start_off, stop, end_of_day;
 	struct tm stm;
 	int century_day, arr_day;
 	GttTask *tsk;
@@ -62,7 +62,8 @@ day_bin (GttInterval *ivl, gpointer data)
 	stop = gtt_interval_get_stop (ivl);
 
 	/* Get the starting point in array based on day-of-century */
-	localtime_r (&start, &stm);
+	start_off = start - config_daystart_offset;
+	localtime_r (&start_off, &stm);
 	century_day = yearday_to_centuryday (stm.tm_yday, stm.tm_year);
 	arr_day = century_day - da->start_cday;
 
