@@ -1,0 +1,2454 @@
+# 1. Mohamad Afifi Omar (App) <mr_mohd_afifi@yahoo.com>
+# 2. Hasbullah BIn Pit <sebol@ikhlas.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: iPACKAGE VERSION\n"
+"POT-Creation-Date: 2002-07-09 10:59+0800\n"
+"PO-Revision-Date: 2002-02-25 01:08+0800\n"
+"Last-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\n"
+"Language-Team: Bahasa Melayu <gabai-penyumbang@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: exe-handler/gnome-exe-handler.c:76
+#, c-format
+msgid ""
+"Executing arbitrary programs that you downloaded from the network might be "
+"dangerous.\n"
+"\n"
+"Are you sure you want to run `%s'?"
+msgstr ""
+"Melaksanakan program arbitari yang anda muaturun daripada rangkaian mungkin "
+"bahasa.\n"
+"\n"
+" Anda pasti untuk melaksanakan '%s'?"
+
+#: exe-handler/gnome-exe-handler.c:83
+msgid "Could not access file permissions"
+msgstr "Tak dapat mengakses keizinan fail"
+
+#: exe-handler/gnome-exe-handler.c:88
+#, c-format
+msgid "Could not execute the file `%s' due to a permission problem"
+msgstr "Takdapat melaksanakan fail '%s' kerana masalah keizinan"
+
+#: exe-handler/gnome-exe-handler.c:104
+#, c-format
+msgid "Failure at executing `%s'"
+msgstr "Gagal melaksanakan '%s'"
+
+#: exe-handler/gnome-exe-handler.c:123
+#, c-format
+msgid "It was not possible to open the file `%s'"
+msgstr "Mustahil untuk membuka fail '%s'"
+
+#: exe-handler/gnome-exe-handler.c:132
+#, c-format
+msgid "The file `%s' is empty"
+msgstr "Fail '%s' adalah kosong"
+
+#: exe-handler/gnome-exe-handler.c:137
+#, c-format
+msgid "There was an error. `%s' is empty"
+msgstr "Terdapat ralat. '%s' adalah kosong"
+
+#: exe-handler/gnome-exe-handler.c:152
+msgid "This is a library and can not be executed"
+msgstr "Fail adalah pustaka dan takboleh dilaksanakan"
+
+#: exe-handler/gnome-exe-handler.c:158
+msgid "The file is a core file and can not be executed"
+msgstr "Fail adalah fail core dan takboleh dilaksanakan"
+
+#: exe-handler/gnome-exe-handler.c:162 exe-handler/gnome-exe-handler.c:196
+msgid "This is an unknown kind of executable"
+msgstr "Jenis bolehlaksana yang tak diketahui"
+
+#: exe-handler/gnome-exe-handler.c:192
+msgid ""
+"The executable is for a different platform and can not be executed on this "
+"system"
+msgstr ""
+"fail bolehlaksana ini adalah untuk platform lain dan tak boleh dilaksanakan "
+"pada sistem ini"
+
+#. Translator credits
+#: gcalc/gcalc.c:42 gcharmap/src/callbacks.c:46 gdictsrc/gdict-about.c:43
+#: gsearchtool/gsearchtool.c:2002 logview/about.c:52
+#: meat-grinder/meat-grinder.c:475
+msgid "translator_credits"
+msgstr ""
+"Mohamad Afifi Omar (App) <mr_mohd_afifi@yahoo.com>\n"
+"Hasbullah Bin Pit <sebol@ikhlas.com>, Merlimau."
+
+#: gcalc/gcalc.c:60 gcalc/gcalc.c:191
+msgid "GNOME Calculator"
+msgstr "Kalkulator GNOME"
+
+#: gcalc/gcalc.c:62
+msgid "Simple double precision calculator similiar to xcalc"
+msgstr "Kalkulator mudah dua titik perpuluhan yang menyerupai xcalc"
+
+#: gcalc/gcalc.c:140
+msgid "_Calculator"
+msgstr "_Kalkulator"
+
+#: gcalc/gnome-calc.c:252
+msgid "inf"
+msgstr "inf"
+
+#: gcalc/gnome-calc.c:475
+msgid "DEG"
+msgstr "DEG"
+
+#: gcalc/gnome-calc.c:477
+msgid "RAD"
+msgstr "RAD"
+
+#: gcalc/gnome-calc.c:479
+msgid "GRAD"
+msgstr "GRAD"
+
+#: gcalc/gnome-calc.c:1252
+msgid "1/x"
+msgstr "1/x"
+
+#: gcalc/gnome-calc.c:1252
+msgid "Inverse"
+msgstr "Songsangkan"
+
+#: gcalc/gnome-calc.c:1253
+msgid "x<sup>2</sup>"
+msgstr "x<sup>2</sup>"
+
+#: gcalc/gnome-calc.c:1253
+msgid "Square"
+msgstr "Kuasa dua"
+
+#: gcalc/gnome-calc.c:1254
+msgid "SQRT"
+msgstr "SQRT"
+
+#: gcalc/gnome-calc.c:1254
+msgid "Square root"
+msgstr "Punca kuasa dua"
+
+#: gcalc/gnome-calc.c:1255
+msgid "CE/C"
+msgstr "CE/C"
+
+#: gcalc/gnome-calc.c:1255
+msgid "Clear"
+msgstr "Terang"
+
+#: gcalc/gnome-calc.c:1256
+msgid "AC"
+msgstr "AC"
+
+#: gcalc/gnome-calc.c:1256
+msgid "Reset"
+msgstr "Ulangtetap"
+
+#: gcalc/gnome-calc.c:1258
+msgid "INV"
+msgstr "INV"
+
+#: gcalc/gnome-calc.c:1258
+msgid "Inverse trigonometry/log function"
+msgstr "Songsangkan fungsi trigonometri/log"
+
+#. inverse button
+#: gcalc/gnome-calc.c:1259
+msgid "sin"
+msgstr "sin"
+
+#: gcalc/gnome-calc.c:1259
+msgid "Sine"
+msgstr "Sinus"
+
+#: gcalc/gnome-calc.c:1260
+msgid "cos"
+msgstr "kos"
+
+#: gcalc/gnome-calc.c:1260
+msgid "Cosine"
+msgstr "Kosinus"
+
+#: gcalc/gnome-calc.c:1261
+msgid "tan"
+msgstr "tan"
+
+#: gcalc/gnome-calc.c:1261
+msgid "Tangent"
+msgstr "Tangen"
+
+#. Ugly hack so that window won't resize when selecting GRAD - there should be a better fix that this
+#: gcalc/gnome-calc.c:1263
+msgid " DEG  "
+msgstr " DEG "
+
+#: gcalc/gnome-calc.c:1263
+msgid "Switch degrees / radians / grad"
+msgstr "Tukar darjah /radian / grad"
+
+#: gcalc/gnome-calc.c:1265
+msgid "e"
+msgstr "e"
+
+#: gcalc/gnome-calc.c:1265
+msgid "Base of Natural Logarithm"
+msgstr "Asas bagi Logaritma Tabii"
+
+#: gcalc/gnome-calc.c:1266
+msgid "EE"
+msgstr "EE"
+
+#: gcalc/gnome-calc.c:1266
+msgid "Add digit"
+msgstr "Tambah digit"
+
+#: gcalc/gnome-calc.c:1267
+msgid "log"
+msgstr "log"
+
+#: gcalc/gnome-calc.c:1267
+msgid "Base 10 Logarithm"
+msgstr "Logaritma asas 10"
+
+#: gcalc/gnome-calc.c:1268
+msgid "ln"
+msgstr "ln"
+
+#: gcalc/gnome-calc.c:1268
+msgid "Natural Logarithm"
+msgstr "Logaritma Tabii"
+
+#: gcalc/gnome-calc.c:1269
+msgid "x<sup>y</sup>"
+msgstr "x<sup>y</sup>"
+
+#: gcalc/gnome-calc.c:1269
+msgid "Power"
+msgstr "Kuasa"
+
+#: gcalc/gnome-calc.c:1271
+msgid "PI"
+msgstr "PI"
+
+#: gcalc/gnome-calc.c:1272
+msgid "x!"
+msgstr "x!"
+
+#: gcalc/gnome-calc.c:1272
+msgid "Factorial"
+msgstr "Faktorial"
+
+#: gcalc/gnome-calc.c:1273
+msgid "("
+msgstr "("
+
+#: gcalc/gnome-calc.c:1273
+msgid "Opening Parenthesis"
+msgstr "Pembuka Kurungan"
+
+#: gcalc/gnome-calc.c:1274
+msgid ")"
+msgstr ")"
+
+#: gcalc/gnome-calc.c:1274
+msgid "Closing Parenthesis"
+msgstr "Penutup Kurungan"
+
+#: gcalc/gnome-calc.c:1275
+msgid "/"
+msgstr "/"
+
+#: gcalc/gnome-calc.c:1275
+msgid "Divide by"
+msgstr "Dibahagi dengan"
+
+#: gcalc/gnome-calc.c:1277
+msgid "STO"
+msgstr "STO"
+
+#: gcalc/gnome-calc.c:1277
+msgid ""
+"Store the value in the\n"
+"display field in memory"
+msgstr ""
+"Simpan nilai di medan\n"
+"paparan pada memori"
+
+#: gcalc/gnome-calc.c:1278
+msgid "7"
+msgstr "7"
+
+#: gcalc/gnome-calc.c:1279
+msgid "8"
+msgstr "8"
+
+#: gcalc/gnome-calc.c:1280
+msgid "9"
+msgstr "9"
+
+#: gcalc/gnome-calc.c:1281 gfloppy/src/gfloppy2.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: gcalc/gnome-calc.c:1281
+msgid "Multiply by"
+msgstr "Didarab dengan"
+
+#: gcalc/gnome-calc.c:1283
+msgid "RCL"
+msgstr "RCL"
+
+#: gcalc/gnome-calc.c:1283
+msgid ""
+"Display the value in memory\n"
+"in the display field"
+msgstr ""
+"Papar nilai pada memori\n"
+"di medan paparan"
+
+#: gcalc/gnome-calc.c:1284
+msgid "4"
+msgstr "4"
+
+#: gcalc/gnome-calc.c:1285
+msgid "5"
+msgstr "5"
+
+#: gcalc/gnome-calc.c:1286
+msgid "6"
+msgstr "6"
+
+#: gcalc/gnome-calc.c:1287
+msgid "-"
+msgstr "-"
+
+#: gcalc/gnome-calc.c:1287
+msgid "Subtract"
+msgstr "Tolak"
+
+#: gcalc/gnome-calc.c:1289
+msgid "SUM"
+msgstr "SUM"
+
+#: gcalc/gnome-calc.c:1289
+msgid ""
+"Add the value in the display\n"
+"field to the value in memory"
+msgstr ""
+"Tambah nilai di medan paparan\n"
+"ke nilai pada memori"
+
+#: gcalc/gnome-calc.c:1290
+msgid "1"
+msgstr "1"
+
+#: gcalc/gnome-calc.c:1291
+msgid "2"
+msgstr "2"
+
+#: gcalc/gnome-calc.c:1292
+msgid "3"
+msgstr "3"
+
+#: gcalc/gnome-calc.c:1293
+msgid "+"
+msgstr "+"
+
+#: gcalc/gnome-calc.c:1293
+msgid "Add"
+msgstr "Tambah"
+
+#: gcalc/gnome-calc.c:1295
+msgid "EXC"
+msgstr "EXC"
+
+#: gcalc/gnome-calc.c:1295
+msgid ""
+"Exchange the values in the\n"
+"display field and memory"
+msgstr ""
+"Tukar nilai pada paparan\n"
+" dengan memori"
+
+#: gcalc/gnome-calc.c:1296
+msgid "0"
+msgstr "0"
+
+#: gcalc/gnome-calc.c:1297
+msgid "."
+msgstr "."
+
+#: gcalc/gnome-calc.c:1297
+msgid "Decimal Point"
+msgstr "Titik Perpuluhan"
+
+#: gcalc/gnome-calc.c:1298
+msgid "+/-"
+msgstr "+/-"
+
+#: gcalc/gnome-calc.c:1298
+msgid "Change sign"
+msgstr "Tukar tanda"
+
+#: gcalc/gnome-calc.c:1299
+msgid "="
+msgstr "="
+
+#: gcalc/gnome-calc.c:1299
+msgid "Calculate"
+msgstr "Kalkulator"
+
+#: gcalc/gnome-calculator.desktop.in.h:1
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: gcalc/gnome-calculator.desktop.in.h:2
+msgid "Perform simple calculations"
+msgstr "Lakukan pengiraan mudah"
+
+#: gcharmap/gnome-character-map.desktop.in.h:1
+msgid "Character Map"
+msgstr "Peta Aksara"
+
+#: gcharmap/gnome-character-map.desktop.in.h:2
+msgid "Insert special characters into documents"
+msgstr "Selit aksara istimewa ke dlaam dokumen"
+
+#: gcharmap/src/asciiselect.c:116
+msgid "Select Character"
+msgstr "Pilih Aksara"
+
+#: gcharmap/src/asciiselect.c:119
+msgid "_Insert"
+msgstr "Sel_it"
+
+#: gcharmap/src/asciiselect.c:123
+msgid "Character code:"
+msgstr "Kod Aksara :"
+
+#: gcharmap/src/asciiselect.c:135
+msgid "Character:"
+msgstr "Aksara:"
+
+#: gcharmap/src/asciiselect.c:143
+msgid "Character Code"
+msgstr "Kod Aksara"
+
+#: gcharmap/src/asciiselect.c:143
+msgid "Select character code"
+msgstr "Pilih kod aksara"
+
+#: gcharmap/src/asciiselect.c:144
+msgid "Character"
+msgstr "Aksara"
+
+#: gcharmap/src/asciiselect.c:144
+msgid "Character to insert"
+msgstr "Aksara untuk diselit"
+
+#: gcharmap/src/asciiselect.c:152
+msgid "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+msgstr "-adobe-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#: gcharmap/src/callbacks.c:63
+msgid "GNOME Character Map"
+msgstr "Peta Aksara GNOME"
+
+#: gcharmap/src/callbacks.c:66
+msgid ""
+"Select, copy and paste characters from your font into other applications"
+msgstr "Pilih, salin dan tepek aksara dari font anda ke aplikasi lain"
+
+#: gcharmap/src/callbacks.c:113
+msgid "del"
+msgstr "del"
+
+#: gcharmap/src/callbacks.c:119
+#, c-format
+msgid " %s: Character code %d"
+msgstr " %s: Kod Aksara %d"
+
+#: gcharmap/src/callbacks.c:155
+msgid "Text copied to clipboard..."
+msgstr "Teks yang disalin ke papanklip..."
+
+#: gcharmap/src/callbacks.c:172
+msgid "Text cut to clipboard..."
+msgstr "Teks yang dipotong dari papanklip..."
+
+#: gcharmap/src/callbacks.c:225
+msgid "Text pasted from clipboard..."
+msgstr "Teks yang ditampal dari papanklip..."
+
+#: gcharmap/src/interface.c:208
+msgid "Gnome Character Map"
+msgstr "Peta Aksara GNOME"
+
+#: gcharmap/src/interface.c:238
+msgid "Action Toolbar"
+msgstr "Toolbar aksi"
+
+#: gcharmap/src/interface.c:242
+msgid "_Text to copy:"
+msgstr "_Teks untuk disalin"
+
+#: gcharmap/src/interface.c:257
+msgid "_Copy"
+msgstr "_Salin"
+
+#: gcharmap/src/interface.c:279 gcharmap/src/interface.c:280
+msgid "Text to copy"
+msgstr "Teks untuk disalin"
+
+#: gcharmap/src/interface.c:280
+msgid "Entry"
+msgstr "Kemasukan"
+
+#: gcharmap/src/interface.c:281 gcharmap/src/menus.c:77
+msgid "Copy"
+msgstr "Salin"
+
+#: gcharmap/src/interface.c:281
+msgid "Copy the text"
+msgstr "Salin teks"
+
+#: gcharmap/src/menus.c:34
+msgid "_Browse..."
+msgstr "_Lungsur..."
+
+#: gcharmap/src/menus.c:35
+msgid "Insert character(s) by choosing character codes."
+msgstr "Selitkan aksara dengan cara memilih kod aksara."
+
+#: gcharmap/src/menus.c:63
+msgid "_Characters"
+msgstr "_Aksara"
+
+#. GNOMEUIINFO_ITEM(N_("Insert"), N_("Insert character(s) by choosing character codes"),
+#. cb_insert_char_click, NULL),
+#. GNOMEUIINFO_SEPARATOR,
+#: gcharmap/src/menus.c:75
+msgid "Cut"
+msgstr "Potong"
+
+#: gcharmap/src/menus.c:75
+msgid "Cut the selection"
+msgstr "Potong pilihan"
+
+#: gcharmap/src/menus.c:77
+msgid "Copy the selection"
+msgstr "Salin pilihan"
+
+#: gcharmap/src/menus.c:79
+msgid "Paste"
+msgstr "Tepek"
+
+#: gcharmap/src/menus.c:79
+msgid "Paste the clipboard"
+msgstr "Tepek papanklip"
+
+#: gdialog/guage.c:78
+msgid "Gdialog progressbar"
+msgstr "Bar progres Gdialog"
+
+#: gdialog/guage.c:78
+msgid "Indicates the percentage specified at the standard input"
+msgstr "Menunjukkan peratusan dinyatakan pada input piawai"
+
+#: gdialog/inputbox.c:90
+msgid "GDialog Entry"
+msgstr "Kemasukan GDialog"
+
+#: gdialog/inputbox.c:90
+msgid "Enter the text"
+msgstr "Masukkan teks"
+
+#: gdictsrc/GNOME_GDictApplet.server.in.h:1
+msgid "Accessories"
+msgstr "Aksesori"
+
+#: gdictsrc/GNOME_GDictApplet.server.in.h:2 gdictsrc/gdict-applet.c:250
+msgid "Dictionary Lookup"
+msgstr "Carian Kamus"
+
+#: gdictsrc/GNOME_GDictApplet.server.in.h:3
+#: gdictsrc/gnome-dictionary.desktop.in.h:2
+msgid "Lookup words in an online dictionary"
+msgstr "Cari perkataan pada kamus dalamtalian"
+
+#: gdictsrc/GNOME_GDictApplet.xml.h:1
+msgid "Look Up Selected Text..."
+msgstr "Cari Teks Dipilih..."
+
+#: gdictsrc/GNOME_GDictApplet.xml.h:2
+msgid "_About..."
+msgstr "_Perihal..."
+
+#: gdictsrc/GNOME_GDictApplet.xml.h:3
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: gdictsrc/GNOME_GDictApplet.xml.h:4
+msgid "_Preferences"
+msgstr "Ke_utamaan"
+
+#: gdictsrc/GNOME_GDictApplet.xml.h:5
+msgid "_Show/Hide Definition Window..."
+msgstr "Papar/_Sorok Tetingkap Definisi..."
+
+#. Could not look up search strategies, so just display a
+#. * label; FIXME: Memory leak
+#.
+#: gdictsrc/dict.c:648 gdictsrc/gdict-pref-dialog.c:465
+#: gdictsrc/gdict-pref-dialog.c:516 gdictsrc/gdict-speller.c:463
+msgid "Cannot connect to server"
+msgstr "Gagal menyambung pelayan"
+
+#: gdictsrc/dict.c:661
+msgid ""
+"A serious error occured. Please check that your server and port are correct. "
+"For reference the default server is dict.org and the port 2628"
+msgstr ""
+"Ralat serius berlaku. Sila pastikan samada pelayan dan liang adalah betul. "
+"Sebagai rujukan pelayan default ialah dict.org dan liangnya 2628"
+
+#: gdictsrc/gdict-about.c:58
+msgid ""
+"Client for MIT dictionary server.\n"
+"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+msgstr ""
+"Pelanggan untuk pelayan kamus MIT.\n"
+"Web: http://gdict.dhs.org/, http://www.psilord.com/code/"
+
+#: gdictsrc/gdict-app.c:128
+msgid "Spell-checking..."
+msgstr "Menyemak ejaan..."
+
+#: gdictsrc/gdict-app.c:136
+msgid "Spell check done"
+msgstr "Penyemakan ejaan siap"
+
+#: gdictsrc/gdict-app.c:144 gdictsrc/gdict-app.c:274
+msgid "No matches found"
+msgstr "Tiada padanan dijumpai"
+
+#: gdictsrc/gdict-app.c:257
+msgid "Looking up word..."
+msgstr "Mencari perkataan..."
+
+#: gdictsrc/gdict-app.c:265
+msgid "Lookup done"
+msgstr "Pencarian selesai"
+
+#: gdictsrc/gdict-app.c:287
+msgid "String not found"
+msgstr "Rentetan tidak dijumpai"
+
+#: gdictsrc/gdict-app.c:455
+msgid "Find"
+msgstr "Cari"
+
+#: gdictsrc/gdict-app.c:476 gsearchtool/gsearchtool.c:1507
+#: gsearchtool/gsearchtool.c:1840
+msgid "_Find"
+msgstr "_Cari"
+
+#: gdictsrc/gdict-app.c:526
+msgid ""
+"Unable to perform requested operation. \n"
+"Either the server you are using is not available \n"
+"or you are not connected to the Internet."
+msgstr ""
+"Gagal melakukan operasi seperti yang diarahkan.\n"
+"Sama ada pelayan yang digunakan tidak dapat dihunbungi\n"
+"atau anda tidak ada sambungan ke Internet."
+
+#: gdictsrc/gdict-app.c:687 gdictsrc/gdict-app.c:798
+#: gdictsrc/gdict-speller.c:221
+msgid "_Look Up Word"
+msgstr "_Cari Perkataan"
+
+#: gdictsrc/gdict-app.c:688
+msgid "Lookup word in dictionary"
+msgstr "Cari ayat di dalam kamus"
+
+#: gdictsrc/gdict-app.c:690 gdictsrc/gdict-speller.c:165
+msgid "Check _Spelling"
+msgstr "_Semak Ejaan"
+
+#: gdictsrc/gdict-app.c:691
+msgid "Check word spelling"
+msgstr "Semak ejaan perkataan"
+
+#: gdictsrc/gdict-app.c:735
+msgid "_Dictionary"
+msgstr "_Kamus"
+
+#: gdictsrc/gdict-app.c:771 gdictsrc/gnome-dictionary.desktop.in.h:1
+msgid "Dictionary"
+msgstr "Kamus"
+
+#: gdictsrc/gdict-app.c:794
+msgid "_Word: "
+msgstr "_Perkataan: "
+
+#: gdictsrc/gdict-app.c:821 gdictsrc/gdict-speller.c:147
+msgid "Word"
+msgstr "Perkataan"
+
+#: gdictsrc/gdict-app.c:822 gdictsrc/gdict-app.c:823
+#: gdictsrc/gdict-speller.c:148
+msgid "Word Entry"
+msgstr "Kemasukan Perkataan"
+
+#: gdictsrc/gdict-app.c:822
+msgid "Enter a Word or select one from the list below"
+msgstr "Masukkan Perkataan atau pilih satu dari senarai dibawah"
+
+#: gdictsrc/gdict-app.c:825
+msgid "Look Up for a Word"
+msgstr "Cari Perkataan"
+
+#: gdictsrc/gdict-applet.c:243
+msgid "_Lookup"
+msgstr "_Cari"
+
+#: gdictsrc/gdict-defbox.c:643 gdictsrc/gdict-speller.c:488
+#, c-format
+msgid "Error invoking query: %s"
+msgstr "Ralat melaksanakan kueri: %s"
+
+#: gdictsrc/gdict-pref-dialog.c:37
+msgid "Headword:"
+msgstr "Ayat awal:"
+
+#: gdictsrc/gdict-pref-dialog.c:38
+msgid "Sub-number:"
+msgstr "Nombor-sub:"
+
+#: gdictsrc/gdict-pref-dialog.c:39
+msgid "Pronunciation:"
+msgstr "Sebutan:"
+
+#: gdictsrc/gdict-pref-dialog.c:40
+msgid "Etymology:"
+msgstr "Etimologi:"
+
+#: gdictsrc/gdict-pref-dialog.c:41
+msgid "Part of speech:"
+msgstr "Bahagian sebutan:"
+
+#: gdictsrc/gdict-pref-dialog.c:42
+msgid "Example:"
+msgstr "Contoh:"
+
+#: gdictsrc/gdict-pref-dialog.c:43
+msgid "Main body:"
+msgstr "Badan utama:"
+
+#: gdictsrc/gdict-pref-dialog.c:44
+msgid "Cross-reference:"
+msgstr "Saling hubung:"
+
+#: gdictsrc/gdict-pref-dialog.c:185
+msgid "Dictionary Preferences"
+msgstr "Keutamaan Kamus"
+
+#: gdictsrc/gdict-pref-dialog.c:197
+msgid "Smart _lookup"
+msgstr "_Carian bistari"
+
+#: gdictsrc/gdict-pref-dialog.c:210
+msgid "_Server:"
+msgstr "_Pelayan:"
+
+#: gdictsrc/gdict-pref-dialog.c:217
+msgid "De_fault"
+msgstr "De_fault"
+
+#: gdictsrc/gdict-pref-dialog.c:223
+msgid "Reset server to default"
+msgstr "Ulangtetap pelayan ke default"
+
+#: gdictsrc/gdict-pref-dialog.c:225
+msgid "_Port:"
+msgstr "_Liang:"
+
+#: gdictsrc/gdict-pref-dialog.c:239
+msgid "Def_ault"
+msgstr "Def_ault"
+
+#: gdictsrc/gdict-pref-dialog.c:246
+msgid "Reset port to default"
+msgstr "Ulangtetap liang ke default"
+
+#: gdictsrc/gdict-pref-dialog.c:247
+msgid "Server"
+msgstr "Pelayan"
+
+#: gdictsrc/gdict-pref-dialog.c:248
+msgid "Server Entry"
+msgstr "Kemasukan Pelayan"
+
+#: gdictsrc/gdict-pref-dialog.c:248
+msgid "Enter the Server Name"
+msgstr "Masukkan Nama Pelayan"
+
+#: gdictsrc/gdict-pref-dialog.c:251
+msgid "Port"
+msgstr "Liang"
+
+#: gdictsrc/gdict-pref-dialog.c:252
+msgid "Port Entry"
+msgstr "Kemasukan Liang"
+
+#: gdictsrc/gdict-pref-dialog.c:252
+msgid "Enter the Port Number"
+msgstr "Masukkan Nombor Liang"
+
+#: gdictsrc/gdict-pref-dialog.c:257
+msgid "_Database:"
+msgstr "Pangkalan _Data:"
+
+#: gdictsrc/gdict-pref-dialog.c:264
+msgid "D_efault strategy:"
+msgstr "Strategi d_efault:"
+
+#: gdictsrc/gdict-pref-dialog.c:457
+msgid "Search all databases"
+msgstr "Cari dalam semua pengkalan data"
+
+#: gdictsrc/gdict-pref-dialog.c:622
+msgid "Database"
+msgstr "Pangkalan data"
+
+#: gdictsrc/gdict-pref-dialog.c:622
+msgid "Database Name"
+msgstr "Nama Pangkalan data"
+
+#: gdictsrc/gdict-pref-dialog.c:634
+msgid "Default Strategy"
+msgstr "Strategi Default"
+
+#: gdictsrc/gdict-speller.c:135
+msgid "_Word:"
+msgstr "_Perkataan:"
+
+#: gdictsrc/gdict-speller.c:148
+msgid "Enter a word to know the spelling"
+msgstr "Masukkan perkataan untuk mengetahui ejaan"
+
+#: gdictsrc/gdict-speller.c:153
+msgid "Click to do the spell check"
+msgstr "Klik untuk melakukan semakan ejaan"
+
+#: gdictsrc/gdict-speller.c:158
+msgid "Search S_trategy:"
+msgstr "S_trategi Pencarian:"
+
+#: gdictsrc/gdict-speller.c:174
+msgid "Search _Results"
+msgstr "_Hasil Pencarian"
+
+#: gdictsrc/gdict-speller.c:236
+msgid "Check Spelling"
+msgstr "Semak Ejaan"
+
+#: gdictsrc/gdict-speller.c:654
+msgid "Search Strategy"
+msgstr "Strategi Pencarian"
+
+#: gdictsrc/gdict.schemas.in.h:1
+msgid "Dictionary server"
+msgstr "Pelayan kamus"
+
+#: gdictsrc/gdict.schemas.in.h:2
+msgid "Port used to connect to server"
+msgstr "Liang digunakan untuk menyambung pelayan"
+
+#: gdictsrc/gdict.schemas.in.h:3
+msgid ""
+"Specify whether to use smart lookup. This key is dependant on whether the "
+"dictionary server supports this option. The default is TRUE"
+msgstr ""
+"Nyatakan samada untuk menggunakan carian bistari. Kekunci ini bergantung "
+"pada samada pelayan kamus menyokong opsyen ini. Default adalah BENAR"
+
+#: gdictsrc/gdict.schemas.in.h:4
+msgid "The database to use in the dictionary server."
+msgstr "Pangkalan data untuk digunakan pada pelayan kamus"
+
+#: gdictsrc/gdict.schemas.in.h:5
+msgid ""
+"The dictionary server to connect to. The default server is dict.org. See "
+"http://www.dict.org for details on other servers"
+msgstr ""
+"Pelayan kamus untuk disambung. Pelayan default adalah dict.org. Lihat http://"
+"www.dict.org untuk mendapatkan perincian pada pelayan lain"
+
+#: gdictsrc/gdict.schemas.in.h:6
+msgid ""
+"The name of the individual database to use in the dictionary server. ! "
+"specifies that gnome-dictionary should search all databases in a given server"
+msgstr ""
+"Nama pangkalan data individu untuk digunakan pada pelayan kamus. !menyatakan "
+"gnome-dictionary patut mencari semua pangkalan data pada pelayan iyang diberi"
+
+#: gdictsrc/gdict.schemas.in.h:7
+msgid "The port number to connect to. The default port is 2628."
+msgstr "Nombor liang untuk disambung. Liang default adalah 2628."
+
+#: gdictsrc/gdict.schemas.in.h:8
+msgid "The search strategy to use"
+msgstr "Strategi Pencarian untuk digunakan"
+
+#: gdictsrc/gdict.schemas.in.h:9
+msgid ""
+"The search strategy to use. This is dependant on the search strategy that "
+"the dictionary server supports. The default strategy is 'lev' - Match words "
+"within Levenshtein distance one"
+msgstr ""
+"Strategi pencarian untuk digunakan. Ini bergantung pada strategi pencarian "
+"yang disokong pelayan kamus. Strategi default adalah 'lev' - Padan perkataan "
+"di dalam jarak Levenshtein"
+
+#: gdictsrc/gdict.schemas.in.h:10
+msgid "Use smart lookup"
+msgstr "Guna carian bistari"
+
+#: gfloppy/gfloppy.desktop.in.h:1
+msgid "Floppy Formatter"
+msgstr "Pengformat Liut"
+
+#: gfloppy/gfloppy.desktop.in.h:2
+msgid "Format Floppy Disks"
+msgstr "Format Cakera Liut"
+
+#: gfloppy/src/badblocks.c:102
+msgid "MInternal Error: Unable to seek to the correct location."
+msgstr "MRalat dalaman: Tak dapat menjumpai lokasi yang betul."
+
+#: gfloppy/src/badblocks.c:111
+#, c-format
+msgid "MInternal Error: Weird value (%ld) in do_test\n"
+msgstr "MRalat dalaman: NIlai pelik (%ld) pada do_test\n"
+
+#: gfloppy/src/badblocks.c:166
+#, c-format
+msgid "EBad block at block %lu"
+msgstr "EBlok teruk pada blok %lu"
+
+#. while (!i)
+#. ;
+#: gfloppy/src/badblocks.c:260
+msgid "MChecking for bad blocks..."
+msgstr "MMemeriksa blok teruk..."
+
+#: gfloppy/src/badblocks.c:272
+#, c-format
+msgid "MFailed to open device %s for badblock checking\n"
+msgstr "MGagal membuka peranti %s untuk meperiksaan blok teruk\n"
+
+#: gfloppy/src/badblocks.c:291 gfloppy/src/gfloppy.c:213
+msgid "MChecking for bad blocks... Done"
+msgstr "MMemeriksa blok teruk... Selesai"
+
+#: gfloppy/src/fdformat.c:44
+msgid "MFormatting the disk..."
+msgstr "MMemformat cakera..."
+
+#: gfloppy/src/fdformat.c:46
+msgid "EI don't know what this is, but it's very wrong."
+msgstr "ESaya tidak tahu apa ini, tapi ia amat salah."
+
+#: gfloppy/src/fdformat.c:54 gfloppy/src/fdformat.c:66
+#, c-format
+msgid "EError formatting track #%d"
+msgstr "ERalat memformat trek #%d"
+
+#: gfloppy/src/fdformat.c:74
+msgid "EError during completion of formatting"
+msgstr "ERalat ketika menyelesaikan pengformatan"
+
+#. XXXX - need to tell parent we're finished
+#: gfloppy/src/fdformat.c:78
+msgid "MFormatting the disk... Done"
+msgstr "MMemformat cakera... Selesai"
+
+#. XXXX - tell parent we're starting verify stage
+#: gfloppy/src/fdformat.c:94
+msgid "MVerifying the format..."
+msgstr "MMententusahkan format..."
+
+#: gfloppy/src/fdformat.c:99 gfloppy/src/fdformat.c:174
+msgid ""
+"EUnable to write to the floppy.\n"
+"\n"
+"Please confirm that it is not write-protected."
+msgstr ""
+"ETak dapat menulis ke liut.\n"
+"\n"
+"Sila pastikan ianya tidak write-protected."
+
+#: gfloppy/src/fdformat.c:102 gfloppy/src/fdformat.c:177
+#, c-format
+msgid "EInsufficient permissions to open floppy device %s."
+msgstr "ETidak cukup keizinan untuk membuka peranti liut %s."
+
+#: gfloppy/src/fdformat.c:106 gfloppy/src/fdformat.c:181
+msgid ""
+"EUnable to access the floppy disk.\n"
+"\n"
+"Please confirm that it is in the drive\n"
+"with the drive door shut."
+msgstr ""
+"ETak dapat mengakses cakera liut.\n"
+"\n"
+"Sila pastikan ianya terdapat dalma pemacu\n"
+"dengan pintu pemacu ditutup."
+
+#: gfloppy/src/fdformat.c:109
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s:%d"
+msgstr ""
+"ERalat generik ketika mengakses peranti liut %s/\n"
+"\n"
+"Kod ralat ialah %s:%d"
+
+#: gfloppy/src/fdformat.c:129
+#, c-format
+msgid ""
+"ERead Error:\n"
+"Problem reading cylinder %d, expected %d, read %d"
+msgstr ""
+"ERalat Bacaan:\n"
+"Masalah membaca silinder %d, dijangka %d, dibaca %d"
+
+#: gfloppy/src/fdformat.c:132
+#, c-format
+msgid "EProblem reading cylinder %d, expected %d, read %d"
+msgstr "EMasalah membaca  silinder %d, dijangka %d, dibaca %d"
+
+#: gfloppy/src/fdformat.c:141
+#, c-format
+msgid "MBad data in cyl %d.  Continuing... "
+msgstr "MData teruk pada sil %d.  Menyambung..."
+
+#: gfloppy/src/fdformat.c:148
+#, c-format
+msgid "EError closing device %s"
+msgstr "ERalat menutup peranti %s"
+
+#: gfloppy/src/fdformat.c:153
+msgid "MVerifying the format... Done"
+msgstr "MMententusahkan format... Selesai"
+
+#: gfloppy/src/fdformat.c:165
+#, c-format
+msgid "EUnable to write to device %s"
+msgstr "ETak dapat menulis ke peranti %s"
+
+#: gfloppy/src/fdformat.c:184
+#, c-format
+msgid ""
+"EGeneric error accessing floppy device %s.\n"
+"\n"
+"Error code %s"
+msgstr ""
+"ERalat generik tika mengakses peranti liut %s.\n"
+"\n"
+"Kod ralat ialah %s"
+
+#: gfloppy/src/fdformat.c:194
+msgid "ECould not determine current format type"
+msgstr "ETak dapat menentukan jenis format semasa"
+
+#: gfloppy/src/gfloppy.c:164 gfloppy/src/gfloppy.c:197
+msgid "MMaking filesystem on disk..."
+msgstr "MMembuat sistem fail pada cakera..."
+
+#: gfloppy/src/gfloppy.c:167
+msgid "EUnable to create filesystem correctly."
+msgstr "ETak dapat mencipta sistemfail dengan betul."
+
+#: gfloppy/src/gfloppy.c:171 gfloppy/src/gfloppy.c:203
+msgid "MMaking filesystem on disk... Done"
+msgstr "MMembuat sistem fail pada cakera...Selesai"
+
+#: gfloppy/src/gfloppy.c:200 gfloppy/src/gfloppy.c:215
+msgid "EUnable to create filesystem."
+msgstr "ETak dapat mencipta fail sistem."
+
+#: gfloppy/src/gfloppy.c:209
+msgid "MChecking for bad blocks... (this might take a while)"
+msgstr "MMemeriksa blok teruk... (ini akan mengambil sedikit masa)"
+
+#: gfloppy/src/gfloppy2.glade.h:2
+msgid "DOS (fat)"
+msgstr "DOD (fat)"
+
+#: gfloppy/src/gfloppy2.glade.h:3
+msgid "Double Density 3.5\" (720KB)"
+msgstr "Dwi Kepadatan 3.5\" (720KB)"
+
+#: gfloppy/src/gfloppy2.glade.h:4
+msgid "Double Density 5.25\" (360KB)"
+msgstr "Dwi Kepadatan 5.25\" (360KB)"
+
+#: gfloppy/src/gfloppy2.glade.h:5
+msgid "File system _type:"
+msgstr "_Jenis sistem fail:"
+
+#: gfloppy/src/gfloppy2.glade.h:6
+msgid "Floppy _density:"
+msgstr "Kepa_datan liut:"
+
+#: gfloppy/src/gfloppy2.glade.h:7
+msgid "Floppy de_vice:"
+msgstr "Pe_ranti Liut:"
+
+#: gfloppy/src/gfloppy2.glade.h:8
+msgid "Format a Floppy"
+msgstr "Format  Liut"
+
+#: gfloppy/src/gfloppy2.glade.h:9
+msgid "High Density 3.5\" (1.44MB)"
+msgstr "Kepadatan Tinggi 3.5\" (1.44MB)"
+
+#: gfloppy/src/gfloppy2.glade.h:10
+msgid "High Density 5.25\" (1.2MB)"
+msgstr "Kepadatan Tinggi 5.25\" (1.2MB)"
+
+#: gfloppy/src/gfloppy2.glade.h:11
+msgid "Linux Native (ext2)"
+msgstr "Linux Native (ext2)"
+
+#: gfloppy/src/gfloppy2.glade.h:12
+msgid "_Format"
+msgstr "_Format"
+
+#: gfloppy/src/gfloppy2.glade.h:13
+msgid "_Quick format"
+msgstr "Format _pantas"
+
+#: gfloppy/src/main.c:131 gfloppy/src/main.c:174
+#, c-format
+msgid "Unable to open the device %s, formatting cannot continue."
+msgstr "Tak dapat membuka peranti %s, pengformatan tak boleh diteruskan"
+
+#: gfloppy/src/main.c:134 gfloppy/src/main.c:177
+#, c-format
+msgid ""
+"The device %s is disconnected.\n"
+"Please attach device to continue."
+msgstr ""
+"Peranti telah diputuskan.\n"
+"Sila Sisip peranti untuk meneruskan."
+
+#: gfloppy/src/main.c:137 gfloppy/src/main.c:180
+#, c-format
+msgid ""
+"You do not have the proper permissions to write to %s, formatting will not "
+"be possible.\n"
+"Contact your system administrator about getting write permissions."
+msgstr ""
+"Anda tidak mempunyai keizinan untuk menulis ke %s, pengformatan adalah "
+"mustahil.\n"
+"Hubungi pentadbir sistem mengenai keizinan menulis."
+
+#: gfloppy/src/main.c:291
+#, c-format
+msgid ""
+"Could not display help for the floppy formatter.\n"
+"%s"
+msgstr ""
+"Tak dapat memapar bantuan bagi pengformat liut.\n"
+"%s"
+
+#: gfloppy/src/main.c:359
+msgid "The device to format"
+msgstr "Peranti untuk diformat"
+
+#: gfloppy/src/main.c:360
+msgid "DEVICE"
+msgstr "PERANTI"
+
+#: gfloppy/src/progress.c:115
+msgid "Floppy formatted successfully."
+msgstr "Liut diformatkan dengan berjaya."
+
+#: gfloppy/src/progress.c:120
+msgid "Floppy formatting cancelled."
+msgstr "Pengformatan liut dibatalkan."
+
+#: gfloppy/src/progress.c:161
+msgid "Format progress."
+msgstr "Progres Format."
+
+#: gsearchtool/gnome-search-tool.desktop.in.h:1
+msgid "Search for Files"
+msgstr "Cari Fail"
+
+#: gsearchtool/gnome-search-tool.desktop.in.h:2
+msgid "Search your disk for files"
+msgstr "Cari di cakera untuk fail"
+
+#: gsearchtool/gsearchtool.c:66
+msgid "File name is"
+msgstr "Nama fail ialah"
+
+#: gsearchtool/gsearchtool.c:67
+msgid "File name is not"
+msgstr "Nama fail bukanlah"
+
+#: gsearchtool/gsearchtool.c:68
+msgid "Don't search mounted filesystems"
+msgstr "Jangan cari dalam fail sistem yang dilekap"
+
+#: gsearchtool/gsearchtool.c:69
+msgid "Follow symbolic links"
+msgstr "Ikut pautan simbolik"
+
+# mushkil ...
+#: gsearchtool/gsearchtool.c:70
+msgid "Process folder contents depth first"
+msgstr "Proses kandungan folder dahulu"
+
+#: gsearchtool/gsearchtool.c:71
+msgid "Owned by user"
+msgstr "Dimiliki pengguna"
+
+#: gsearchtool/gsearchtool.c:72
+msgid "Owned by group"
+msgstr "Dimiliki  kumpulan"
+
+#: gsearchtool/gsearchtool.c:73
+msgid "Invalid user or group"
+msgstr "Penguna atau kumpulan yang tidak wujud"
+
+#: gsearchtool/gsearchtool.c:74
+msgid "Last time modified"
+msgstr "Masa terakhir diubah"
+
+#: gsearchtool/gsearchtool.c:75
+msgid "File is empty"
+msgstr "Fail adalah kosong"
+
+#: gsearchtool/gsearchtool.c:76
+msgid "Matches regular expression"
+msgstr "Padankan penyataan regular (regexp)"
+
+#: gsearchtool/gsearchtool.c:274 gsearchtool/gsearchtool.c:943
+msgid "Start folder does not exist."
+msgstr "Folder permulaan tidak wujud."
+
+#: gsearchtool/gsearchtool.c:499
+msgid "today at %-I:%M %p"
+msgstr "hari ini pada %-I:%M %p"
+
+#: gsearchtool/gsearchtool.c:501
+msgid "yesterday at %-I:%M %p"
+msgstr "semalam pada %-I:%M %p"
+
+#: gsearchtool/gsearchtool.c:503 gsearchtool/gsearchtool.c:505
+msgid "%m/%-d/%y, %-I:%M %p"
+msgstr "%m/%-d/%y, %-I:%M %p"
+
+#: gsearchtool/gsearchtool.c:518
+msgid "%Y%m%d%H%M%S"
+msgstr "%Y%m%d%H%M%S"
+
+#: gsearchtool/gsearchtool.c:533
+msgid "folder"
+msgstr "folder"
+
+#: gsearchtool/gsearchtool.c:535
+msgid "program"
+msgstr "program"
+
+#: gsearchtool/gsearchtool.c:537
+msgid "symbolic link"
+msgstr "pautan simbolik"
+
+#: gsearchtool/gsearchtool.c:663
+msgid "No Files Found."
+msgstr "Tiada Fail Dijumpai."
+
+#: gsearchtool/gsearchtool.c:736
+msgid ""
+"Cannot perform the search.\n"
+"The Bourne shell was not found\n"
+"It is typically installed as /bin/sh or /usr/bin/sh."
+msgstr ""
+"Tak dapat lakukan carian.\n"
+" Bash tidak dijumpai\n"
+"Ianya biasanya dipasang sebagai /bin/sh atau /usr/bin/sh."
+
+#: gsearchtool/gsearchtool.c:752
+msgid "Searching..."
+msgstr "Mencari..."
+
+#: gsearchtool/gsearchtool.c:866
+msgid ""
+"\n"
+"... Too many errors to display ..."
+msgstr ""
+"\n"
+"... Terlalu banyak ralat untuk dipaparkan ..."
+
+#: gsearchtool/gsearchtool.c:877
+msgid "No files found"
+msgstr "Tiada fail dijumpai"
+
+#: gsearchtool/gsearchtool.c:880
+msgid "One file found"
+msgstr "Satu fail dijumpai"
+
+#: gsearchtool/gsearchtool.c:882
+#, c-format
+msgid "%d files found"
+msgstr "%d fail dijumpai"
+
+#: gsearchtool/gsearchtool.c:954 gsearchtool/gsearchtool.c:1671
+msgid "Cannot perform the search. Please specify a search criteria."
+msgstr "Tak dapat melakukan pencarian. Sila nyatakan kriteris pencarian."
+
+#: gsearchtool/gsearchtool.c:971 gsearchtool/gsearchtool.c:1692
+msgid ""
+"A search is already running.  Please wait for the search to complete or "
+"cancel it."
+msgstr ""
+"Pencarian sudah terlaksana. Sila tunggu hingga pencarian selesai atau "
+"batalkan ia."
+
+#: gsearchtool/gsearchtool.c:1005
+msgid "Start folder does not exist"
+msgstr "Folder permulaan tidak wujud"
+
+#: gsearchtool/gsearchtool.c:1020
+msgid "Cannot show the search command line. Please specify a search criteria."
+msgstr ""
+"Tak dapat memapar arahan baris pencarian. Sila nyatakan kriteria pencarian."
+
+#: gsearchtool/gsearchtool.c:1024
+msgid "Search Command Line"
+msgstr "Arahan Baris Pencarian"
+
+#: gsearchtool/gsearchtool.c:1042
+msgid ""
+"This is the command line that can be used to execute this search\n"
+"from the console.\n"
+"\n"
+"C_ommand:"
+msgstr ""
+"Berikut adalah arahan baris yang boleh digunakan untuk melaksanakan carian "
+"ini daripada konsol:\n"
+"\n"
+"_Arahan:"
+
+#: gsearchtool/gsearchtool.c:1063
+msgid "Command"
+msgstr "Arahan"
+
+#: gsearchtool/gsearchtool.c:1064
+msgid "Command Line Entry"
+msgstr "Kemasukan Arahan Baris"
+
+#: gsearchtool/gsearchtool.c:1064
+msgid "Use this command line to execute the search from console"
+msgstr "Guna arahan baris ini  untuk melaksanakan pencarian daripada konsol"
+
+#: gsearchtool/gsearchtool.c:1172
+msgid "No viewer available for this mime type."
+msgstr "Tiada pelihat yang ada untuk jenis mime ini"
+
+#: gsearchtool/gsearchtool.c:1269
+msgid "Entry changed called for a non entry option!"
+msgstr "Kemasukkan diubah dipanggil untuk opsyen bukan kemasukkan!"
+
+#: gsearchtool/gsearchtool.c:1339
+msgid "Search Rule Value Entry"
+msgstr "Kemasukan Nilai Tatacara Pencarian"
+
+#: gsearchtool/gsearchtool.c:1339
+msgid "Enter a value for search rule"
+msgstr "Masukkan nilai bagi tatacara pencarian"
+
+#: gsearchtool/gsearchtool.c:1354
+msgid "Enabled"
+msgstr "Dihidupkan"
+
+#: gsearchtool/gsearchtool.c:1362
+msgid "Toggle On/Off to enable/disable the rule"
+msgstr "Toggle On/Off untuk menghidup/matikan tatacara"
+
+#: gsearchtool/gsearchtool.c:1370
+msgid "Click to Remove the Rule"
+msgstr "Klik untuk membuang Tatacara"
+
+#: gsearchtool/gsearchtool.c:1416 gsearchtool/gsearchtool.c:1794
+msgid "S_tarting in folder:"
+msgstr "Ber_mula pada folder"
+
+#: gsearchtool/gsearchtool.c:1420 gsearchtool/gsearchtool.c:1800
+msgid "Browse"
+msgstr "Lungsur"
+
+#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
+#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
+msgid "Starting folder entry"
+msgstr "Kemasukan folder permulaan"
+
+#: gsearchtool/gsearchtool.c:1428 gsearchtool/gsearchtool.c:1429
+#: gsearchtool/gsearchtool.c:1809 gsearchtool/gsearchtool.c:1810
+msgid "Enter the folder name where you want to start the search"
+msgstr "Masukkan nama folder di mana anda ingin memulakan pencarian"
+
+#: gsearchtool/gsearchtool.c:1450
+msgid "Rules:"
+msgstr "Tatacara:"
+
+#: gsearchtool/gsearchtool.c:1470
+msgid "A_dd Rule:"
+msgstr "_Tambah Tatacara:"
+
+#: gsearchtool/gsearchtool.c:1479
+msgid "Search Rules Menu"
+msgstr "Menu Tatacara Pencarian"
+
+#: gsearchtool/gsearchtool.c:1479
+msgid "Select a search rule from the menu"
+msgstr "Pilih tatacara pencarian dari menu"
+
+#: gsearchtool/gsearchtool.c:1522
+msgid "Click to Add a Rule"
+msgstr "Klik untuk Menambah Tatacara"
+
+#: gsearchtool/gsearchtool.c:1523
+msgid "Click to Start the Search"
+msgstr "Klik untuk mula mencari"
+
+#: gsearchtool/gsearchtool.c:1524
+msgid "Click to Stop the Search"
+msgstr "Klik untuk hentikan pencarian"
+
+#: gsearchtool/gsearchtool.c:1529 gsearchtool/gsearchtool.c:1861
+msgid "S_earch Results"
+msgstr "_Hasil Pencarian"
+
+#: gsearchtool/gsearchtool.c:1569 gsearchtool/gsearchtool.c:1901
+msgid "Name"
+msgstr "Nama"
+
+#: gsearchtool/gsearchtool.c:1591 gsearchtool/gsearchtool.c:1923
+msgid "Folder"
+msgstr "Folder"
+
+#: gsearchtool/gsearchtool.c:1603 gsearchtool/gsearchtool.c:1935
+msgid "Size"
+msgstr "Saiz"
+
+#: gsearchtool/gsearchtool.c:1615 gsearchtool/gsearchtool.c:1947
+msgid "Type"
+msgstr "Jenis"
+
+#: gsearchtool/gsearchtool.c:1626 gsearchtool/gsearchtool.c:1958
+msgid "Date Modified"
+msgstr "Tarikh Diubahsuai"
+
+#: gsearchtool/gsearchtool.c:1770
+msgid "Find files _named:"
+msgstr "Cari _nama fail:"
+
+#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
+msgid "File Name Entry"
+msgstr "Kemasukan Nama Fail"
+
+#: gsearchtool/gsearchtool.c:1785 gsearchtool/gsearchtool.c:1786
+msgid "Enter the file name you want to search"
+msgstr "Masukkan nama fail untuk dicari"
+
+#: gsearchtool/gsearchtool.c:1855
+msgid "Click to Start the search"
+msgstr "Klik untuk memulakan pencarian"
+
+#: gsearchtool/gsearchtool.c:1856
+msgid "Click to Stop the search"
+msgstr "Klik untuk hentikan pencarian"
+
+#: gsearchtool/gsearchtool.c:1978
+msgid "Simple"
+msgstr "Ringkas"
+
+#: gsearchtool/gsearchtool.c:1980
+msgid "Advanced"
+msgstr "Lanjutan"
+
+#: gsearchtool/gsearchtool.c:2018
+#: gsearchtool/help/es/gsearchtool.desktop.in.h:1
+msgid "GNOME Search Tool"
+msgstr "Radas pencarian GNOME"
+
+#: gsearchtool/gsearchtool.c:2019
+msgid "(C) 1998,2002 the Free Software Foundation"
+msgstr "(C) 1998,2002 the Free Software Foundation"
+
+#: gsearchtool/gsearchtool.c:2020
+msgid "Frontend to the unix find/locate commands"
+msgstr "Antaramuka untuk arahan unix find/locate"
+
+#: gsearchtool/gsearchtool.c:2060
+#, c-format
+msgid "File %s already exists. Overwrite?"
+msgstr "Fail %s tersedia ada. Tindih?"
+
+#: gsearchtool/gsearchtool.c:2095
+msgid "Cannot save the results file."
+msgstr "Tak dapat menyimpan fail hasil."
+
+#: gsearchtool/gsearchtool.c:2102 meat-grinder/meat-grinder.c:654
+msgid "Save Results"
+msgstr "Simpan Hasil"
+
+#: gsearchtool/gsearchtool.c:2159
+msgid "S_how Command..."
+msgstr "Papar Ara_han..."
+
+#: gsearchtool/gsearchtool.c:2160
+msgid "Show the command used to perform the search"
+msgstr "Papar arahan digunakan untuk melakukan pencarian"
+
+#: gsearchtool/gsearchtool.c:2163
+msgid "Save Results _As..."
+msgstr "Simpan Hasil Seb_agai..."
+
+#: gsearchtool/gsearchtool.c:2164
+msgid "Save the search results"
+msgstr "Simpan hasil pencarian"
+
+#: gsearchtool/gsearchtool.c:2179
+msgid "Sear_ch"
+msgstr "_Cari"
+
+#: gsearchtool/gsearchtool.c:2201
+msgid "Cannot initialize bonobo."
+msgstr "Gagal menginitialisasikan Bonobo."
+
+#: gsearchtool/gsearchtool.c:2205
+msgid "Search Tool"
+msgstr "Radas pencarian"
+
+#: logview/about.c:42
+msgid "Cesar Miquel (miquel@df.uba.ar)"
+msgstr "Cesar Miquel (miquel@df.uba.ar)"
+
+#: logview/about.c:43
+msgid ""
+"This  program  is  part of  the  GNOME  project for Linux. Logview comes "
+"with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to "
+"redistribute it under the conditions of the GNU General Public Licence. The "
+"log icon is a courtesy of Tuomas Kuosmanen (a.k.a tigert)."
+msgstr ""
+"Program ini adalah sebahagian daripada projek GNOME. Logview datang dengan "
+"SEMEMANGNYA TIADA JAMINAN. Ini adalah perisian bebas, dan anda dijemput "
+"untuk mengagihkannya di bawah Lesen Awam Umum GNU. Ikon logview adalah ihsan "
+"daripada Tuomas Kuosmanen (a.k.a tigert)."
+
+#. go get logview.xpm in $(prefix)/share/pixmaps/logview
+#: logview/about.c:72
+msgid "GNOME System Log Viewer"
+msgstr "Pelihat Log Sistem GNOME"
+
+#: logview/about.c:73
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: logview/actions.c:75
+msgid "Action database"
+msgstr "Pangkalan data aksi"
+
+#: logview/actions.c:85
+msgid "Actions"
+msgstr "Aksi"
+
+#: logview/actions.c:153
+msgid "_Add"
+msgstr "_Tambah"
+
+#: logview/actions.c:160
+msgid "_Edit"
+msgstr "_Edit"
+
+#: logview/actions.c:167 meat-grinder/meat-grinder.c:941
+msgid "_Remove"
+msgstr "_Buang"
+
+#: logview/actions.c:260
+#, c-format
+msgid "Cannot open action data base <%s>! Open failed."
+msgstr "Tak dapat membuka pangkalan data aksi <%s>! Pembukaan gagal."
+
+#: logview/actions.c:295 logview/actions.c:308 logview/actions.c:319
+#: logview/actions.c:330 logview/actions.c:341 logview/actions.c:352
+msgid "Error parsing actions data base"
+msgstr "Ralat menghantar pangkalan data aksi"
+
+#: logview/actions.c:386
+msgid "Can't write to actions database!"
+msgstr "Tak dapat menulis ke pangkalan data aksi"
+
+#: logview/actions.c:486
+msgid "Error while executing specified action"
+msgstr "Ralat bila melaksanakan aksi yang dinyatakan"
+
+#: logview/actions.c:507
+msgid "<empty>"
+msgstr "<kosong>"
+
+#: logview/actions.c:508
+msgid "log name regexp"
+msgstr "regexp nama log"
+
+#: logview/actions.c:509
+msgid "process regexp"
+msgstr "regexp proses"
+
+#: logview/actions.c:510
+msgid "message regexp"
+msgstr "regexp mesej"
+
+#: logview/actions.c:511
+msgid "action to execute when regexps are TRUE"
+msgstr "aksi untuk dilaksanakan bila regexps adalah BENAR"
+
+#: logview/actions.c:512
+msgid "description"
+msgstr "keterangan"
+
+#: logview/actions.c:772
+msgid "_Description:"
+msgstr "_Keterangan:"
+
+#: logview/actions.c:781
+msgid "Description of this entry."
+msgstr "keterangan kemasukan ini."
+
+#: logview/actions.c:805
+#, c-format
+msgid ""
+"tag: [%s]\n"
+"log_name: [%s]\n"
+"process: [%s]\n"
+"message: [%s]\n"
+"description: [%s]\n"
+"action: [%s]\n"
+msgstr ""
+"tag: [%s]\n"
+"nama_log: [%s]\n"
+"proses: [%s]\n"
+"mesej: [%s]\n"
+"keterangan: [%s]\n"
+"aksi: [%s]\n"
+
+#: logview/calendar.c:112
+msgid "Calendar"
+msgstr "Takwim"
+
+#: logview/desc_db.c:37
+#, c-format
+msgid "Cannot open regexp data base <%s>! Open failed."
+msgstr "Tak dapat membuka pangkalan data regexp <%s>! Pembukaan gagal."
+
+#: logview/desc_db.c:147
+#, c-format
+msgid "Cannot open description data base <%s>! Open failed."
+msgstr "Tak dapat membuka keterangan pangkalan data <%s>! Pembukaan gagal."
+
+#. ----------------------------------------------------------------------
+#. NAME:
+#. DESCRIPTION:
+#. ----------------------------------------------------------------------
+#: logview/gnome-system-log.desktop.in.h:1
+msgid "System Log"
+msgstr "Log Sistem"
+
+#: logview/gnome-system-log.desktop.in.h:2
+msgid "View the system log file"
+msgstr "Lihat fail log sistem"
+
+#: logview/info.c:65
+msgid "Log stats"
+msgstr "Stat log"
+
+#: logview/info.c:110
+msgid "Size:"
+msgstr "Saiz:"
+
+#: logview/info.c:110
+msgid "Modified:"
+msgstr "Diubahsuai:"
+
+#: logview/info.c:111
+msgid "Start Date:"
+msgstr "Tarikh Mula:"
+
+#: logview/info.c:111
+msgid "Last Date:"
+msgstr "Tarikh Akhir:"
+
+#: logview/info.c:111
+msgid "Number of Lines:"
+msgstr "Bilangan Baris:"
+
+#: logview/info.c:137
+msgid "Log Information"
+msgstr "Maklumat Log"
+
+#: logview/info.c:161 logview/info.c:190 logview/info.c:197 logview/info.c:204
+#: logview/zoom.c:155
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: logview/info.c:163 logview/zoom.c:157
+msgid "<No log loaded>"
+msgstr "<tiada log dimuatkan>"
+
+#: logview/info.c:186
+#, c-format
+msgid "%ld bytes"
+msgstr "%ld byte"
+
+#: logview/log_repaint.c:67
+msgid "January"
+msgstr "Januari"
+
+#: logview/log_repaint.c:67
+msgid "February"
+msgstr "Febuari"
+
+#: logview/log_repaint.c:67
+msgid "March"
+msgstr "Mac"
+
+#: logview/log_repaint.c:67
+msgid "April"
+msgstr "April"
+
+#: logview/log_repaint.c:67
+msgid "May"
+msgstr "Mei"
+
+#: logview/log_repaint.c:68
+msgid "June"
+msgstr "Jun"
+
+#: logview/log_repaint.c:68
+msgid "July"
+msgstr "Julai"
+
+#: logview/log_repaint.c:68
+msgid "August"
+msgstr "Ogos"
+
+#: logview/log_repaint.c:68
+msgid "September"
+msgstr "September"
+
+#: logview/log_repaint.c:68
+msgid "October"
+msgstr "Oktober"
+
+#: logview/log_repaint.c:69
+msgid "November"
+msgstr "November"
+
+#: logview/log_repaint.c:69
+msgid "December"
+msgstr "Disember"
+
+#. Translators: Date only format, %x should well do really
+#: logview/log_repaint.c:410
+#, c-format
+msgid "%x"
+msgstr "%x"
+
+#. Translators: Make sure this is only Month and Day format, year
+#. * will be bogus here
+#: logview/log_repaint.c:465
+msgid "%B %e"
+msgstr "%B %e"
+
+#. Translators: should be only the time, date could be bogus
+#: logview/log_repaint.c:531
+#, c-format
+msgid "%X"
+msgstr "%X"
+
+#: logview/logrtns.c:192
+msgid "Not enough memory!\n"
+msgstr "Tak cukup memori!\n"
+
+#: logview/logrtns.c:203
+msgid "Unable to open logfile!\n"
+msgstr "Tak dapat membuka faillog!\n"
+
+#: logview/logrtns.c:261
+#, c-format
+msgid "%s is not a regular file."
+msgstr "%s bukanlah fail biasa."
+
+#: logview/logrtns.c:269
+#, c-format
+msgid ""
+"%s is not user readable. Either run the program as root or ask the sysadmin "
+"to change the permissions on the file."
+msgstr ""
+"%s tak boleh dibaca oleh pengguna. Samada laksanakan program sebagai root "
+"atau tanya pent. sistem untuk menukar keizinan pada fail itu."
+
+#: logview/logrtns.c:286
+#, c-format
+msgid "%s could not be opened."
+msgstr "%s tak dapat dibuka."
+
+#: logview/logrtns.c:316 logview/logrtns.c:325
+#, c-format
+msgid "%s not a log file."
+msgstr "%s bukanlah fail log."
+
+#: logview/logrtns.c:723 logview/logrtns.c:754 logview/logrtns.c:885
+msgid "ReadLogStats: out of memory"
+msgstr "ReadLogStats: kehabisan memori"
+
+#: logview/logview.c:89
+msgid "S_witch Log"
+msgstr "T_ukar log"
+
+#: logview/logview.c:90
+msgid "Switch log"
+msgstr "Tukar log"
+
+#: logview/logview.c:92
+msgid "_Monitor..."
+msgstr "_Monitor..."
+
+#: logview/logview.c:93
+msgid "Monitor Log"
+msgstr "Monitor Log"
+
+#: logview/logview.c:96
+msgid "_Properties"
+msgstr "_Ciri-ciri"
+
+#: logview/logview.c:97
+msgid "Show Log Properties"
+msgstr "Papar Ciri-ciri log"
+
+#: logview/logview.c:106
+msgid "_Calendar"
+msgstr "_Kalendar"
+
+#: logview/logview.c:107
+msgid "Show Calendar Log"
+msgstr "Papar Kelendar Log"
+
+#: logview/logview.c:109
+msgid "_Entry Detail"
+msgstr "Perincian _Kemasukan"
+
+#: logview/logview.c:110
+msgid "Show Entry Detail"
+msgstr "Papar Perindian Kemasukan"
+
+#: logview/logview.c:117
+msgid "About..."
+msgstr "Perihal..."
+
+#: logview/logview.c:118
+msgid "Info about logview"
+msgstr "Maklumat perihal logview"
+
+#: logview/logview.c:321
+msgid "No log files to open"
+msgstr "Tiada fail log untuk dibuka"
+
+#: logview/logview.c:345
+msgid "Date"
+msgstr "Tarikh"
+
+#: logview/logview.c:345
+msgid "Host Name"
+msgstr "Nama Hos"
+
+#: logview/logview.c:346
+msgid "Process"
+msgstr "Proses"
+
+#: logview/logview.c:346
+msgid "Message"
+msgstr "Mesej"
+
+#: logview/logview.c:432
+msgid "Last Modified: "
+msgstr "Tarikh Diubahsuai: "
+
+#: logview/logview.c:525 logview/logview.c:597
+msgid "Too many open logs. Close one and try again"
+msgstr "Terlalu banyak log dibuka. Tutup satu dan cuba lagi"
+
+#: logview/logview.c:537
+msgid "File already opened"
+msgstr "Fail sudah dibuka"
+
+#: logview/logview.c:610
+msgid "Open new logfile"
+msgstr "Buka faillog baru"
+
+#: logview/misc.c:56
+#, c-format
+msgid "Error: [%s]\n"
+msgstr "Ralat: [%s]\n"
+
+#: logview/monitor.c:111
+msgid "Monitor Options"
+msgstr "Opsyen Monitor"
+
+#: logview/monitor.c:133
+msgid "Choose logs to monitor"
+msgstr "Pilih log untuk dimonitor"
+
+#: logview/monitor.c:180
+msgid "Add logs to monitor"
+msgstr "Tambah log untuk dimonitor"
+
+#: logview/monitor.c:189
+msgid "Remove logs from monitor"
+msgstr "Buang log untuk dimonitor"
+
+#. Check boxes
+#: logview/monitor.c:227
+msgid "_Hide Application"
+msgstr "_Sembunyi Aplikasi"
+
+#: logview/monitor.c:235
+msgid "_Execute Actions"
+msgstr "Laksanakan Aksi"
+
+#: logview/monitor.c:273
+msgid "Too many logs to monitor. Remove one and try again"
+msgstr "Terlalu banyak log dimonitor. Buang satu dan cuba lagi"
+
+#: logview/monitor.c:281 logview/monitor.c:319
+msgid "tmp_list is NULL\n"
+msgstr "tmp_list adalah NULL\n"
+
+#: logview/monitor.c:439
+msgid "Monitoring logs..."
+msgstr "Memonitor log..."
+
+#: logview/monitor.c:626
+msgid "TOUCHED!!\n"
+msgstr "TOUCHED!!\n"
+
+#: logview/zoom.c:63
+msgid "Zoom view"
+msgstr "Paparan Zoom"
+
+#: logview/zoom.c:102
+msgid "Date:"
+msgstr "Tarikh:"
+
+#: logview/zoom.c:102
+msgid "Process:"
+msgstr "Proses:"
+
+#: logview/zoom.c:103
+msgid "Message:"
+msgstr "Mesej:"
+
+#: logview/zoom.c:103
+msgid "Description:"
+msgstr "Penerangan:"
+
+#: logview/zoom.c:131
+msgid "Log line detail for"
+msgstr "Huraian baris log bagi"
+
+#. Translators: do not include year, it would be bogus
+#: logview/zoom.c:185
+msgid "%B %e %X"
+msgstr "%B %e %X"
+
+#: logview/logview.schemas.in.h:1
+msgid "Log file to open up on startup"
+msgstr "Fail log untuk dibuka pada permulaan"
+
+#: logview/logview.schemas.in.h:2
+msgid ""
+"Specifies the log file to open up at startup. The default is either /var/adm/"
+"messages or /var/log/messages, depending on your distribution."
+msgstr ""
+"Nyatakan fail log untuk dibuka pada permulaan. Default adalah samada /var/"
+"adm/messages atau /var/log/messages, bergantung pada distro."
+
+#: meat-grinder/archive-generator.desktop.in.h:1
+msgid "Archive Generator"
+msgstr "Penjana Arkib"
+
+#: meat-grinder/archive-generator.desktop.in.h:2
+msgid "Create compressed archives containing many files"
+msgstr "Cipta akrib termampat yang mengandungi banyak fail"
+
+#: meat-grinder/meat-grinder.c:137
+#, c-format
+msgid ""
+"Number of files: %d\n"
+"Number of folders: %d"
+msgstr ""
+"Bilangan fail: %d\n"
+"Bilangan folder: %d"
+
+#: meat-grinder/meat-grinder.c:143
+msgid ""
+"No files or folders, drop files or folders\n"
+"above to add them to the archive"
+msgstr ""
+"Tiada fail atau folder, heret dan jatuhkan fail\n"
+"atau folder ke atas untuk menambahnya ke arkib"
+
+#: meat-grinder/meat-grinder.c:166
+#, c-format
+msgid "%s removed"
+msgstr "%s dibuang"
+
+#: meat-grinder/meat-grinder.c:328 meat-grinder/meat-grinder.c:333
+#, c-format
+msgid "Failed to create %s"
+msgstr "Tak dapat mencipta %s"
+
+#: meat-grinder/meat-grinder.c:373
+msgid "Archive.tar.gz"
+msgstr "Arkib.tar.gz"
+
+#: meat-grinder/meat-grinder.c:493 meat-grinder/meat-grinder.c:977
+msgid "GNOME Archive Generator"
+msgstr "Penjana Arkib bagi GNOME"
+
+#: meat-grinder/meat-grinder.c:495
+msgid "Drag files in to make archives"
+msgstr "Heret fail kedalamnya untuk membuat arkib"
+
+#: meat-grinder/meat-grinder.c:528
+msgid "All files selected"
+msgstr "Semua fail dipilih"
+
+#: meat-grinder/meat-grinder.c:547
+msgid "All files removed"
+msgstr "Semua fail dibuang"
+
+#: meat-grinder/meat-grinder.c:609 meat-grinder/meat-grinder.c:793
+msgid "No filename selected"
+msgstr "Tiada namafail dipilih"
+
+#: meat-grinder/meat-grinder.c:613
+msgid "File exists, overwrite?"
+msgstr "Fail %s tersedia ada. Tindih?"
+
+#: meat-grinder/meat-grinder.c:636
+#, c-format
+msgid "%s created"
+msgstr "%s dicipta"
+
+#: meat-grinder/meat-grinder.c:650
+msgid "No items to archive"
+msgstr "Tiada item untuk diarkibkan"
+
+#: meat-grinder/meat-grinder.c:777
+#, c-format
+msgid "%s added"
+msgstr "%d ditambah"
+
+#: meat-grinder/meat-grinder.c:796
+msgid "File does not exists"
+msgstr "Fail tidak wujud"
+
+#: meat-grinder/meat-grinder.c:810
+msgid "Add file or folder"
+msgstr "Tambah fail atau folder"
+
+#: meat-grinder/meat-grinder.c:927
+msgid "_Add file or folder..."
+msgstr "_Tambah fail atau folder..."
+
+#: meat-grinder/meat-grinder.c:928
+msgid "Add a file or folder to archive"
+msgstr "Tambah fail atau folder ke arkib"
+
+#: meat-grinder/meat-grinder.c:931
+msgid "_Create archive..."
+msgstr "_Cipta arkib..."
+
+#: meat-grinder/meat-grinder.c:931
+msgid "Create a new archive from the items"
+msgstr "Cipta arkib baru dari item"
+
+#: meat-grinder/meat-grinder.c:942
+msgid "Remove the selected item"
+msgstr "Buang item yang dipilih"
+
+#: meat-grinder/meat-grinder.c:944
+msgid "R_emove All"
+msgstr "B_uang Semua"
+
+#: meat-grinder/meat-grinder.c:945
+msgid "Remove all items"
+msgstr "Buang semua item"
+
+#: meat-grinder/meat-grinder.c:1016
+msgid "Drop files here to add them to the archive."
+msgstr "Jatuhkan fail disini untuk menambahnya ke arkib."
+
+#. tarball icon
+#: meat-grinder/meat-grinder.c:1028
+msgid "_Create Archive"
+msgstr "_Cipta Arkib"
+
+#: meat-grinder/meat-grinder.c:1036
+msgid ""
+"Drag this button to the destination where you want the archive to be created "
+"or press it to pop up a file selection dialog."
+msgstr ""
+"Heret butang ini ke destinasi di mana anda ingin arkib dicipta atau tekan ia "
+"untuk popupkan dialog pemilihan fail."
+
+#: meat-grinder/meat-grinder.c:1174
+msgid "Cannot find proper icons anywhere!"
+msgstr "Tak dapat menjumpai ikon sesuai di mana sekalipun!"
+
+#: meat-grinder/meat-grinder.c:1182
+msgid ""
+"Cannot find the archive (tar) program!\n"
+"This is the program used for creating archives."
+msgstr ""
+"Tak dapat menjumpai program arkib (tar)!\n"
+" Program ini digunakan untuk mencipta arkib."
+
+#~ msgid "x^2"
+#~ msgstr "x^2"
+
+#~ msgid "x^y"
+#~ msgstr "x^y"
+
+#~ msgid "Default database. ! indicates all databases"
+#~ msgstr "Pangkalandata default. ! menunjukkan semua pangkalandata"
+
+#~ msgid "Default strategy"
+#~ msgstr "Strategi default"
+
+#~ msgid "Format another floppy?"
+#~ msgstr "Format liut lain?"
+
+#~ msgid "Action options"
+#~ msgstr "Opsyen aksi"
+
+#~ msgid "Add..."
+#~ msgstr "Tambah..."
+
+#~ msgid "Edit..."
+#~ msgstr "Edit..."
+
+#~ msgid "Remove"
+#~ msgstr "Buang"
+
+#~ msgid "description:"
+#~ msgstr "keterangan:"
+
+#~ msgid "fixed 12"
+#~ msgstr "fixed 12"
+
+#~ msgid "fixed Bold 12"
+#~ msgstr "fixed Bold 12"
+
+#~ msgid "fixed 10"
+#~ msgstr "fixed 10"
+
+#~ msgid "fixed Bold 8"
+#~ msgstr "fixed Bold 8"
+
+#~ msgid "Helvetica 14"
+#~ msgstr "Helvetica 14"
+
+#~ msgid "Helvetica Bold 14"
+#~ msgstr "Helvetica Bold 14"
+
+#~ msgid "Helvetica 12"
+#~ msgstr "Helvetica 12"
+
+#~ msgid "Helvetica Bold 12"
+#~ msgstr "Helvetica Bold 12"
+
+#~ msgid "Helvetica 10"
+#~ msgstr "Helvetica 10"
+
+#~ msgid "Helvetica Bold 10"
+#~ msgstr "Helvetica Bold 10"
+
+#~ msgid "Log:"
+#~ msgstr "Log:"
+
+#~ msgid "Out of memory!\n"
+#~ msgstr "Kehabisan memori!\n"
+
+#~ msgid "_Log"
+#~ msgstr "_Log"
+
+#~ msgid "System Log Viewer"
+#~ msgstr "Pelihat Log Sistem"
+
+#~ msgid "Filename: "
+#~ msgstr "Namafail: "
+
+#~ msgid "Cannot load required fonts, cannot continue"
+#~ msgstr "Tak dapat memuatkan fotn diperlukan, tak dapat teryskan"
+
+#~ msgid "Add >>"
+#~ msgstr "Tambah >>"
+
+#~ msgid "Remove <<"
+#~ msgstr "Buang <<"
+
+#~ msgid "Hide app"
+#~ msgstr "Sembunyi app"
+
+#~ msgid "hostname column width ( 0 to hide this column ): "
+#~ msgstr "lebar kolum namahos (0 untuk sembunyi kolum ini): "
+
+#~ msgid "Columns"
+#~ msgstr "Kolum"
+
+#~ msgid "_Floppy Device:"
+#~ msgstr "Peranti _Liut:"
+
+#~ msgid "Dictionary Applet"
+#~ msgstr "Aplet Kamus"
+
+#~ msgid "Find:"
+#~ msgstr "Cari:"
+
+#~ msgid "Press button to look up any highlighted text in a dictionary"
+#~ msgstr "Tekan butang untuk mencari ayat yang diserlahkan di dalam kamus"
+
+#~ msgid "GNOME System Log"
+#~ msgstr "Log Sistem GNOME"
+
+#~ msgid "Open log..."
+#~ msgstr "Buka log..."
+
+#~ msgid "Open log"
+#~ msgstr "Buka log"
+
+#~ msgid "Export log..."
+#~ msgstr "Eksport log..."
+
+#~ msgid "Export log"
+#~ msgstr "Eksport log"
+
+#~ msgid "Close log"
+#~ msgstr "Tutup log"
+
+#~ msgid "Exit program"
+#~ msgstr "Keluar program"
+
+#~ msgid "Zoom"
+#~ msgstr "Zoom"
+
+#~ msgid "Show line info"
+#~ msgstr "Papar maklumat baris"
+
+#~ msgid "Select...               "
+#~ msgstr "Pilih...                "
+
+#~ msgid "Select log events"
+#~ msgstr "PIlih acara log"
+
+#~ msgid "Filter..                "
+#~ msgstr "Tapisan..               "
+
+#~ msgid "Filter log events"
+#~ msgstr "Tapis acara log"
+
+#~ msgid "Cannot start the archive (tar) program"
+#~ msgstr "Tak dapat memulakan program arkib (tar)"
+
+#~ msgid "Cannot run tar/gtar"
+#~ msgstr "Tak dapat melaksanakan tar/gtar"
+
+#~ msgid "The GNOME Calculator"
+#~ msgstr "Kalkulator GNOME"
+
+#~ msgid "Run in analog (slide rule) mode"
+#~ msgstr "Laksanakan dalam mod analog (slide rule)"
+
+#~ msgid "Shift"
+#~ msgstr "Shif"
+
+#~ msgid "Store"
+#~ msgstr "Simpan"
+
+#~ msgid "Recall"
+#~ msgstr "Ingat"
+
+#~ msgid "Sum"
+#~ msgstr "Jumlah"
+
+#~ msgid "Exchange"
+#~ msgstr "Tukar"
+
+#~ msgid ""
+#~ "The Gnome equalivant of Microsoft Windows' Character Map. Warning: might "
+#~ "contain bad English."
+#~ msgstr ""
+#~ "Perisian GNOME yang menyerupai Microsoft Windows Character Map. Amaran : "
+#~ "Mungkin mengandungi terjemahan Bahasa Melayu yang teruk."
+
+#~ msgid "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-*-helvetica-medium-r-normal-*-12-*-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "About"
+#~ msgstr "Perihal"
+
+#~ msgid "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+#~ msgstr "-*-helvetica-bold-r-normal-*-*-180-*-*-p-*-*-*,*-r-*"
+
+#~ msgid "_Browse Characters..."
+#~ msgstr "_Lihat Aksara..."
+
+#~ msgid "_Text Toolbar"
+#~ msgstr "Toolbar _Teks"
+
+#~ msgid "View or hide the text toolbar"
+#~ msgstr "Papar atau sembunyikan toolbar teks"
+
+#~ msgid "_Statusbar"
+#~ msgstr "_Statusbar"
+
+#~ msgid "View or hide the statusbar"
+#~ msgstr "Papar atau sembunyikan statusbar"
+
+#~ msgid "_Insert at end"
+#~ msgstr "S_isipkan dia hujung"
+
+#~ msgid "Insert every selected character at the end of the text entry"
+#~ msgstr "Selitkan setiap aksara dihujung kemasukkan data"
+
+#~ msgid "_Focusable Buttons"
+#~ msgstr "Butang boleh _fokus"
+
+#~ msgid "Set the buttons to be focusable or not"
+#~ msgstr "Tetapkan butang agar boleh difokus atau tidak"
+
+#~ msgid "Spell"
+#~ msgstr "Eja"
+
+#~ msgid "_Look Up"
+#~ msgstr "Car_i"
+
+#~ msgid "_Spell"
+#~ msgstr "Ej_a"
+
+#~ msgid "Spell checker"
+#~ msgstr "Pemeriksa ejaan"
+
+#~ msgid "Preferences..."
+#~ msgstr "Keutamaan..."
+
+#~ msgid "Results"
+#~ msgstr "Hasil"
+
+#~ msgid "The Gnome Search Tool"
+#~ msgstr "Radas pencarian Gnome"
+
+#~ msgid "Logview"
+#~ msgstr "Logview"
+
+#~ msgid "Date: "
+#~ msgstr "Tarikh: "
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-medium-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#~ msgid "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+#~ msgstr "-b&h-lucidatypewriter-bold-r-normal-sans-10-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-14-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-medium-r-normal-*-10-*-*-*-*-*-*-*"
+
+#~ msgid "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+#~ msgstr "-adobe-helvetica-bold-r-normal-*-10-*-*-*-*-*-*-*"
+
+#~ msgid "Dos (FAT)"
+#~ msgstr "Dos (FAT)"
+
+#~ msgid "Floppy Density:"
+#~ msgstr "Kepadatan Liut:"
+
+#~ msgid "File system type:"
+#~ msgstr "Jenis sistem fail:"
+
+#~ msgid "The GNOME Archive Generator"
+#~ msgstr "Penjana Arkib bagi GNOME"
+
+#~ msgid "Archive"
+#~ msgstr "Arkib"
+
+#~ msgid "Don't search subdirectories"
+#~ msgstr "Jangan cari subdirektori"
+
+#~ msgid "Set _Server"
+#~ msgstr "Tetapkan pela_yan"
+
+#~ msgid "Set _Port"
+#~ msgstr "Tetapkan _Liang"
+
+#~ msgid "Set the port number"
+#~ msgstr "Tetapkan nombor liang"
+
+#~ msgid "Show user preferences"
+#~ msgstr "Papar keutamaan pengguna"
+
+#~ msgid "The server you specified could not be found."
+#~ msgstr "Pelayan yang anda nyatakan tidak dapat ditemui"
+
+#~ msgid "The server could not be found on that port."
+#~ msgstr "Pelayan tersebut tidak dijumpai pada liang tesebut."
+
+#~ msgid "Utility"
+#~ msgstr "Utiliti"
