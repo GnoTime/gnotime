@@ -63,6 +63,9 @@ struct gtt_ghtml_s
 
 	GttProject *prj;
 
+	/* Flag -- add html markup, or not */
+	gboolean show_html;
+
 	/* table layout info */
 	int ntask_cols;
 	TableCol task_cols[NCOL];
@@ -87,17 +90,16 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 {
 	GList *node;
 	char *p;
-	char prn[2000];
+	char prn[2000];  /* XXX danger buffer overflow !! */
+
+	if (NULL == ghtml->write_stream) return;
 
 	p = prn;
 	p += sprintf (p, "<table border=1><tr><th colspan=4>%s\n"
 		"<tr><th>&nbsp;<th>%s<th>%s<th>%s",
 		_("Diary Entry"), _("Start"), _("Stop"), _("Elapsed"));
 
-	if (ghtml->write_stream)
-	{
-		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
-	}
+	(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
 
 	for (node = gtt_project_get_tasks(prj); node; node=node->next)
 	{
@@ -117,10 +119,7 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 		p = g_stpcpy (p, pp);
 		p = g_stpcpy (p, "</a>");
 
-		if (ghtml->write_stream)
-		{
-			(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
-		}
+		(ghtml->write_stream) (ghtml, prn, p-prn, ghtml->user_data);
 
 		
 		for (in=gtt_task_get_intervals(tsk); in; in=in->next)
@@ -168,19 +167,13 @@ do_show_journal (GttGhtml *ghtml, GttProject*prj)
 			p = print_hours_elapsed (p, 40, elapsed, TRUE);
 			p = g_stpcpy (p, "&nbsp;&nbsp;");
 			len = p - prn;
-			if (ghtml->write_stream)
-			{
-				(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
-			}
+			(ghtml->write_stream) (ghtml, prn, len, ghtml->user_data);
 		}
 
 	}
 	
 	p = "</table>";
-	if (ghtml->write_stream)
-	{
-		(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
-	}
+	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 }
 
 /* ============================================================== */
@@ -209,15 +202,16 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 	int i;
 	GList *node;
 	char *p;
-	char buff[2000];
+	char buff[2000];  /* XXX danger buffer overflow !! */
+	gboolean output_html = ghtml->show_html;
 
 	if (NULL == ghtml->write_stream) return;
 
 	p = buff;
-	p = g_stpcpy (p, "<table border=1>");
+	if (output_html) p = g_stpcpy (p, "<table border=1>");
 
 	/* write out the table header */
-	if (0 < ghtml->ntask_cols)
+	if (output_html && (0 < ghtml->ntask_cols))
 	{
 		p = g_stpcpy (p, "<tr>");
 	}
@@ -230,51 +224,51 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 				int mcols;
 				mcols = ghtml->ninvl_cols - ghtml->ntask_cols;
 				if (0 >= mcols) mcols = 1; 
-				p += sprintf (p, "<th colspan=%d>", mcols);
+				if (output_html) p += sprintf (p, "<th colspan=%d>", mcols);
 				TASK_COL_TITLE (_("Diary Entry"));
 				break;
 			}
 			case NOTES:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Notes"));
 				break;
 			case TASK_TIME:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Task Time"));
 				break;
 			case BILLSTATUS:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Bill Status"));
 				break;
 			case BILLABLE:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Billable"));
 				break;
 			case BILLRATE:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Bill Rate"));
 				break;
 			case VALUE:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Value"));
 				break;
 			case BILLABLE_VALUE:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("Billable Value"));
 				break;
 			default:
-				p = g_stpcpy (p, "<th>");
+				if (output_html) p = g_stpcpy (p, "<th>");
 				TASK_COL_TITLE (_("No Default Value"));
 		}
 	}
 
-	if (0 < ghtml->ninvl_cols)
+	if (output_html && (0 < ghtml->ninvl_cols))
 	{
 		p = g_stpcpy (p, "</th></tr><tr>");
 	}
 	for (i=0; i<ghtml->ninvl_cols; i++)
 	{
-		p = g_stpcpy (p, "<th>");
+		if (output_html) p = g_stpcpy (p, "<th>");
 		switch (ghtml->invl_cols[i]) 
 		{
 			case START_DATIME:
@@ -293,11 +287,10 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 				TASK_COL_TITLE (_("No Default Value"));
 		}
 	}
-	if (0 < ghtml->ninvl_cols)
+	if (output_html && (0 < ghtml->ninvl_cols))
 	{
 		p = g_stpcpy (p, "</th></tr>");
 	}
-
 
 	(ghtml->write_stream) (ghtml, buff, p-buff, ghtml->user_data);
 
@@ -360,7 +353,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 		p = buff;
 
 		/* write the task data */
-		if (0 < ghtml->ntask_cols)
+		if (output_html && (0 < ghtml->ntask_cols))
 		{
 			p = g_stpcpy (p, "<tr>");
 		}
@@ -373,7 +366,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					int mcols;
 					mcols = ghtml->ninvl_cols - ghtml->ntask_cols;
 					if (0 >= mcols) mcols = 1; 
-					p += sprintf (p, "<td colspan=%d>", mcols);
+					if (output_html) p += sprintf (p, "<td colspan=%d>", mcols);
 					if (show_links) 
 					{
 						p = g_stpcpy (p, "<a href=\"gtt:task:");
@@ -387,19 +380,19 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 				}
 
 				case NOTES:
-					p = g_stpcpy (p, "<td align=left>");
+					if (output_html) p = g_stpcpy (p, "<td align=left>");
 					pp = gtt_task_get_notes(tsk);
 					if (!pp || !pp[0]) pp = _("(empty)");
 					p = stpcpy (p, pp); 
 					break;
 
 				case TASK_TIME:
-					p = g_stpcpy (p, "<td align=right>");
+					if (output_html) p = g_stpcpy (p, "<td align=right>");
 					p = print_hours_elapsed (p, 40, task_secs, TRUE);
 					break;
 
 				case BILLSTATUS:
-					p = g_stpcpy (p, "<td>");
+					if (output_html) p = g_stpcpy (p, "<td>");
 					switch (billstatus)
 					{
 						case GTT_HOLD:
@@ -415,7 +408,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					break;
 
 				case BILLABLE:
-					p = g_stpcpy (p, "<td>");
+					if (output_html) p = g_stpcpy (p, "<td>");
 					switch (billable)
 					{
 						case GTT_BILLABLE:
@@ -431,7 +424,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					break;
 
 				case BILLRATE:
-					p = g_stpcpy (p, "<td>");
+					if (output_html) p = g_stpcpy (p, "<td>");
 					switch (billrate)
 					{
 						case GTT_REGULAR:
@@ -450,27 +443,27 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 					break;
 
 				case VALUE:
-					p = g_stpcpy (p, "<td align=right>");
+					if (output_html) p = g_stpcpy (p, "<td align=right>");
 					
 					/* hack alert should use i18n currency/monetary printing */
 					p += sprintf (p, "$%.2f", value+0.0049);
 					break;
 
 				case BILLABLE_VALUE:
-					p = g_stpcpy (p, "<td align=right>");
+					if (output_html) p = g_stpcpy (p, "<td align=right>");
 					/* hack alert should use i18n currency/monetary printing */
 					p += sprintf (p, "$%.2f", billable_value+0.0049);
 					break;
 
 				default:
-					p = g_stpcpy (p, "<td>");
+					if (output_html) p = g_stpcpy (p, "<td>");
 					p = g_stpcpy (p, _("Error - Unknown"));
 			}
 		}
 
 		if (0 < ghtml->ntask_cols)
 		{
-			p = g_stpcpy (p, "</td></tr>");
+			if (output_html) p = g_stpcpy (p, "</td></tr>");
 			(ghtml->write_stream) (ghtml, buff, p-buff, ghtml->user_data);
 		}
 		
@@ -498,7 +491,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 
 			/* -------------------------- */
 			p = buff;
-			p = g_stpcpy (p, "<tr>");
+			if (output_html) p = g_stpcpy (p, "<tr>");
 			for (i=0; i<ghtml->ninvl_cols; i++)
 			{
 
@@ -506,7 +499,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 				{
 	case START_DATIME:
 	{
-		p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
 			p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
@@ -522,7 +515,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 	}
 	case STOP_DATIME:
 	{
-		p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "<td align=right>&nbsp;&nbsp;");
 		if (show_links)
 		{
 			p += sprintf (p, "<a href=\"gtt:interval:0x%x\">", ivl);
@@ -533,36 +526,36 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int show_links, int invoice)
 			p = print_time (p, 100, stop);
 		}
 		if (show_links) p = g_stpcpy (p, "</a>");
-		p = g_stpcpy (p, "&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "&nbsp;&nbsp;");
 		break;
 	}
 	case ELAPSED:
 	{
-		p = g_stpcpy (p, "<td>&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "<td>&nbsp;&nbsp;");
 		p = print_hours_elapsed (p, 40, elapsed, TRUE);
-		p = g_stpcpy (p, "&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "&nbsp;&nbsp;");
 		break;
 	}
 	case FUZZ:
 	{
-		p = g_stpcpy (p, "<td>&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "<td>&nbsp;&nbsp;");
 		p = print_hours_elapsed (p, 40, gtt_interval_get_fuzz(ivl), TRUE);
-		p = g_stpcpy (p, "&nbsp;&nbsp;");
+		if (output_html) p = g_stpcpy (p, "&nbsp;&nbsp;");
 		break;
 	}
 	default:
-		p = g_stpcpy (p, "<td>");
+		if (output_html) p = g_stpcpy (p, "<td>");
 				}
 			}
 
-			p = g_stpcpy (p, "</td></tr>");
+			if (output_html) p = g_stpcpy (p, "</td></tr>");
 			len = p - buff;
 			(ghtml->write_stream) (ghtml, buff, len, ghtml->user_data);
 		}
 
 	}
 	
-	p = "</table>";
+	if (output_html) p = "</table>";
 	(ghtml->write_stream) (ghtml, p, strlen(p), ghtml->user_data);
 }
 
@@ -787,6 +780,20 @@ show_invoice (SCM col_list)
 	return rc;
 }
 
+static SCM
+show_export (SCM col_list)
+{
+	GttGhtml *ghtml = ghtml_global_hack;
+	gboolean save_show_html = ghtml->show_html;
+	SCM rc;
+	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-export");
+	rc = decode_scm_col_list (ghtml, col_list);
+	ghtml->show_html = FALSE;
+	do_show_table (ghtml, ghtml->prj, FALSE, FALSE);
+	ghtml->show_html = save_show_html;
+	return rc;
+}
+
 /* ============================================================== */
 
 static SCM
@@ -974,6 +981,7 @@ register_procs (void)
 	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
+	gh_new_procedure("gtt-show-export",          show_export,   1, 0, 0);
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
 }
 
@@ -993,6 +1001,9 @@ gtt_ghtml_new (void)
 	}
 
 	p = g_new0 (GttGhtml, 1);
+
+	p->show_html = TRUE;
+
 	p->prj = NULL;
 	p->ninvl_cols = 0;
 	p->ntask_cols = 0;

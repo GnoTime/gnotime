@@ -65,6 +65,13 @@ export_write (GttGhtml *gxp, const char *str, size_t len,
 	fprintf (xp->fp, "%s", str);
 }
 
+static void 
+export_err (GttGhtml *gxp, int errcode, const char *msg,
+					 export_format_t *xp)
+{
+	printf ("duuude uhh oh %s\n", msg);
+}
+
 static gint
 export_projects (export_format_t *xp)
 {
@@ -73,13 +80,13 @@ export_projects (export_format_t *xp)
 
 	gxp = gtt_ghtml_new();
 	gtt_ghtml_set_stream (gxp, xp, NULL, (GttGhtmlWriteStream) export_write,
-						 NULL, NULL);
+						 NULL, (GttGhtmlError) export_err);
 
 	for (node = gtt_get_project_list(); node; node = node->next) 
 	{
 	
 		GttProject *prj = node->data;
-		gtt_ghtml_display (gxp, "tab-delim.ghtml", prj);
+		gtt_ghtml_display (gxp, "/tmp/tab-delim.ghtml", prj);
 	}
 	gtt_ghtml_destroy (gxp);
 

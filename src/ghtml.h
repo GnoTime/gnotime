@@ -49,7 +49,7 @@ void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
                                        GttGhtmlError);
 
 /* The gtt_ghtml_display() routine will parse the indicated gtt file, 
- * and output standard HTML to the indicated stream
+ * and output standard HTML to the indicated stream.
  */
 void gtt_ghtml_display (GttGhtml *, const char *path_frag, GttProject *prj);
 
