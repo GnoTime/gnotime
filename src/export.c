@@ -141,7 +141,7 @@ export_really (GtkWidget *widget, export_format_t *xp)
 						    GTK_WINDOW (xp->picker));
 		g_free (s);
 
-		if (0 == gnome_dialog_run (GNOME_DIALOG (w))) return;
+		if (0 == gnome_dialog_run (GNOME_DIALOG (w))) goto done;
 	}
 
 	GnomeVFSResult result;
@@ -154,7 +154,7 @@ export_really (GtkWidget *widget, export_format_t *xp)
 		GtkWidget *w = gnome_error_dialog (s);
 		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
 		g_free (s);
-		return;
+		goto done;
 	}
 	
 	rc = export_projects (xp);
@@ -162,21 +162,22 @@ export_really (GtkWidget *widget, export_format_t *xp)
 	{
 		GtkWidget *w = gnome_error_dialog (_("Error occured during export"));
 		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
-		return;
+		goto done;
 	}
 
 	gnome_vfs_close (xp->handle);
+done:
 	gtk_widget_destroy (GTK_WIDGET (xp->picker));
+	g_free (xp);
 }
 
 /* ======================================================= */
 
 static void
-export_close (GtkWidget *widget, export_format_t *xp)
+export_close (GtkWidget *widget, gint response_id, export_format_t *xp)
 {
-	/* Is this a memory leak, because widget is not destroyed ??
-	 * But it crashes if I call destroy here ... */
-	gtk_widget_hide (GTK_WIDGET (xp->picker));
+	if (GTK_RESPONSE_OK == response_id) return;
+	gtk_widget_destroy (GTK_WIDGET (xp->picker));
 	g_free (xp);
 }
 
@@ -196,10 +197,15 @@ export_file_picker (GtkWidget *widget, gpointer data)
 	xp->picker = GTK_FILE_SELECTION (dialog);
 	xp->template = gtt_ghtml_resolve_path (template_filename, NULL);
 
+#if 0
 	g_signal_connect (G_OBJECT (dialog), "destroy",
 			    G_CALLBACK (export_close), xp);
 
 	g_signal_connect (G_OBJECT (xp->picker->cancel_button), "clicked",
+			    G_CALLBACK (export_close), xp);
+#endif
+
+	g_signal_connect (G_OBJECT (xp->picker), "response",
 			    G_CALLBACK (export_close), xp);
 
 	g_signal_connect (G_OBJECT (xp->picker->ok_button), "clicked",
