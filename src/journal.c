@@ -620,8 +620,8 @@ printf ("duude kvp=%s\n", kvp_frame_to_string (kvpf));
 	char qstr[2000];
 	strcpy (qstr, 
 	   "SELECT * FROM " GTT_PROJECT_ID " WHERE ("
-	       GTT_PROJECT_EARLIEST " >= \'kvp://earliest-end-date\') AND ("
-	       GTT_PROJECT_LATEST " <= \'kvp://latest-start-date\');");
+	       GTT_PROJECT_EARLIEST " <= \'kvp://earliest-end-date\') AND ("
+	       GTT_PROJECT_LATEST " >= \'kvp://latest-start-date\');");
 
 printf ("duude the query string is %s\n", qstr);
 	/* Run the query */
