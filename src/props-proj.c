@@ -323,7 +323,7 @@ static void wrapper (void * gobj, void * data) {
 static void 
 help_cb (GnomePropertyBox *propertybox, gint page_num, gpointer data)
 {
-	gtt_help_popup (propertybox, data);
+	gtt_help_popup (GTK_WIDGET(propertybox), data);
 }
 
 static PropDlg *

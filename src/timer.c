@@ -26,7 +26,6 @@
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
-#include "dialog.h"
 #include "gtt.h"
 #include "idle-dialog.h"
 #include "log.h"

@@ -132,12 +132,17 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 
 	if (!path)
 	{
-		msgbox_ok(_("Warning"),
-	   	          _("You must specify a complete filepath to the report, "
-	   	            "including a leading slash.  The file that you specify "
-	   	            "must exist."),
-	      	       GTK_STOCK_OK,
-	         	    NULL);
+		GtkWidget *mb;
+		mb = gtk_message_dialog_new (NULL,
+		         GTK_DIALOG_MODAL,
+		         GTK_MESSAGE_WARNING,
+		         GTK_BUTTONS_CLOSE,
+	   	      _("You must specify a complete filepath to the report, "
+	   	        "including a leading slash.  The file that you specify "
+	   	        "must exist."));
+		g_signal_connect (G_OBJECT(mb), "response",
+		         G_CALLBACK (gtk_widget_destroy), mb);
+		gtk_widget_show (mb);
 	}
 
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);

@@ -25,7 +25,6 @@
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
-#include "dialog.h"
 #include "err-throw.h"
 #include "file-io.h"
 #include "gtt.h"
@@ -199,16 +198,26 @@ about_box(GtkWidget *w, gpointer data)
 	gtk_widget_show(about);
 }
 
-
-
+/* =============================================================================== */
+/* The below implements a new project popup dialog.  
+ * XXX It is HIG-deprecated and should be replaced by a 
+ * an editable c-tree entry line in the main window.
+ * XXX FIXME remove this code ASAP ... 
+ */
 
 static void
-project_name_desc(GtkWidget *w, GtkEntry **entries)
+project_name_desc(GtkDialog *w, gint response_id, GtkEntry **entries)
 {
 	const char *name, *desc;
 	GttProject *proj;
 	GttProject *sib_prj;
 	
+	if (GTK_RESPONSE_OK != response_id) 
+	{
+		gtk_widget_destroy (GTK_WIDGET (w));
+		return;
+	}
+
 	sib_prj = ctree_get_focus_project (global_ptw);
 
 	if (!(name = gtk_entry_get_text(entries[0]))) return;
@@ -221,6 +230,8 @@ project_name_desc(GtkWidget *w, GtkEntry **entries)
 	proj = gtt_project_new_title_desc(name, desc);
 	gtt_project_insert_after (proj, sib_prj);
 	ctree_insert_after (global_ptw, proj, sib_prj);
+
+	gtk_widget_destroy (GTK_WIDGET (w));
 }
 
 static void
@@ -233,7 +244,8 @@ free_data(GtkWidget *dlg, gpointer data)
 void
 new_project(GtkWidget *widget, gpointer data)
 {
-	GtkWidget *dlg, *t, *title, *d, *desc;
+	GtkWidget *w, *t, *title, *d, *desc;
+	GtkDialog *dlg;
 	GtkBox *vbox;
 	GtkWidget **entries = g_new0(GtkWidget *, 2);
 	GtkWidget *table;
@@ -243,12 +255,22 @@ new_project(GtkWidget *widget, gpointer data)
 	entries[0] = gnome_entry_gtk_entry(GNOME_ENTRY(title));
 	entries[1] = gnome_entry_gtk_entry(GNOME_ENTRY(desc));
 
-	new_dialog_ok_cancel(_("New Project..."), &dlg, &vbox,
-			     GTK_STOCK_OK,
-			     G_CALLBACK(project_name_desc),
-				 entries,
-			     GTK_STOCK_CANCEL, NULL, NULL);
+	/* Create new dialog box */
+	w = gtk_dialog_new_with_buttons (
+	             _("New Project..."),
+	            // GTK_WINDOW (widget),
+	            NULL,
+		         GTK_DIALOG_MODAL,
+		         NULL);
+	g_signal_connect (G_OBJECT(w), "response",
+	         G_CALLBACK (project_name_desc), entries);
+	dlg = GTK_DIALOG(w);
+	gtk_dialog_add_button (dlg, GTK_STOCK_OK, GTK_RESPONSE_OK);
+	gtk_dialog_add_button (dlg, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
+	vbox = dlg->vbox;
+
+	/* Put stuff into the dialog box */
 	t = gtk_label_new(_("Project Title"));
 	d = gtk_label_new(_("Description"));
 
@@ -275,8 +297,8 @@ new_project(GtkWidget *widget, gpointer data)
 	g_signal_connect_object (G_OBJECT (entries[0]), "activate",
 				   G_CALLBACK (gtk_widget_grab_focus),
 				   GTK_OBJECT (entries[1]), 0);
-	gnome_dialog_editable_enters(GNOME_DIALOG(dlg),
-				     GTK_EDITABLE(entries[1]));
+	// gnome_dialog_editable_enters(GNOME_DIALOG(dlg),
+	// 			     GTK_EDITABLE(entries[1]));
 
 	g_signal_connect(G_OBJECT(dlg), "destroy",
 			   G_CALLBACK(free_data),
@@ -487,7 +509,11 @@ menu_properties(GtkWidget *w, gpointer data)
  * (Yes this generates compiler warnings ... thats the point !!!
  */
 
-static void show_j (GtkWidget *w) { show_report (w, "journal.ghtml"); }
+static void show_j (GtkWidget *w) 
+{ 
+	gtk_widget_destroy (w);
+	show_report (NULL, "journal.ghtml"); 
+}
 
 void 
 menu_howto_edit_times (GtkWidget *w,gpointer data)
@@ -498,7 +524,15 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	        "open the Journal window and click on a link.\n"
 	        "This will bring up a menu of time editing options.\n");
 
-	msgbox_ok (_("Info"), msg, GTK_STOCK_OK, (GCallback) show_j);
+	GtkWidget *mb;
+	mb = gtk_message_dialog_new (NULL,
+	         GTK_DIALOG_MODAL,
+	         GTK_MESSAGE_INFO,
+	         GTK_BUTTONS_OK,
+		      msg);
+	g_signal_connect (G_OBJECT(mb), "response",
+	         G_CALLBACK (show_j), mb);
+	gtk_widget_show (mb);
 }
 
 /* ============================ END OF FILE ======================= */

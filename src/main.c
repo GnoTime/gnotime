@@ -42,7 +42,6 @@
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
-#include "dialog.h"
 #include "err-throw.h"
 #include "file-io.h"
 #include "gtt.h"
@@ -224,15 +223,17 @@ post_read_data(void)
 }
 
 static void 
-read_data_err_run_or_abort (GtkWidget *w, gint butnum)
+read_data_err_run_or_abort (GtkDialog *w, gint response_id)
 {
-	if (butnum == 1)
+	if ((GTK_RESPONSE_OK == response_id) ||
+	    (GTK_RESPONSE_YES == response_id))
 	{
-		gtk_main_quit();
+		gtk_widget_destroy (GTK_WIDGET(w));
+		post_read_data();
 	}
 	else
 	{
-		post_read_data();
+		gtk_main_quit();
 	}
 }
 
@@ -346,11 +347,16 @@ read_data(void)
 			_("Do you want to continue?"),
 			NULL);
 
-	msgbox_ok_cancel(_("Error"),
-			 qmsg,
-			 GTK_STOCK_YES, 
-			 GTK_STOCK_NO,
-			 G_CALLBACK(read_data_err_run_or_abort));
+	GtkWidget *mb;
+	mb = gtk_message_dialog_new (NULL,
+	         GTK_DIALOG_MODAL,
+	         GTK_MESSAGE_ERROR,
+	         GTK_BUTTONS_YES_NO,
+	         qmsg);
+	g_signal_connect (G_OBJECT(mb), "response",
+	         G_CALLBACK (read_data_err_run_or_abort), 
+	         NULL);
+	gtk_widget_show (mb);
 	g_free (qmsg); 
 	g_free (errmsg);
 }
@@ -362,16 +368,18 @@ post_read_config(void)
 }
 
 static void 
-read_config_err_run_or_abort (GtkWidget *w, gint butnum)
+read_config_err_run_or_abort (GtkDialog *w, gint response_id)
 {
-	if (butnum == 1)
+	if ((GTK_RESPONSE_OK == response_id) ||
+	    (GTK_RESPONSE_YES == response_id))
 	{
-		gtk_main_quit();
+		gtk_widget_destroy (GTK_WIDGET(w));
+		first_time_ever = TRUE;
+		post_read_config();
 	}
 	else
 	{
-		first_time_ever = TRUE;
-		post_read_config();
+		gtk_main_quit();
 	}
 }
 
@@ -396,11 +404,16 @@ read_config(void)
 			_("Shall I setup a new configuration?"),
 			NULL);
 
-		msgbox_ok_cancel(_("Error"),
-			 qmsg,
-			 GTK_STOCK_YES, 
-			 GTK_STOCK_NO,
-			 G_CALLBACK(read_config_err_run_or_abort));
+		GtkWidget *mb;
+		mb = gtk_message_dialog_new (NULL,
+		         GTK_DIALOG_MODAL,
+		         GTK_MESSAGE_ERROR,
+		         GTK_BUTTONS_YES_NO,
+		         qmsg);
+		g_signal_connect (G_OBJECT(mb), "response",
+		         G_CALLBACK (read_config_err_run_or_abort), 
+		         NULL);
+		gtk_widget_show (mb);
 		g_free (qmsg); 
 		g_free (errmsg);
 	}
@@ -564,10 +577,15 @@ save_properties (void)
 	{
 		char *errmsg = gtt_err_to_string (errcode, NULL);
 
-		msgbox_ok(_("Warning"),
-		     errmsg,
-		     GTK_STOCK_OK,
-		     NULL);
+		GtkWidget *mb;
+		mb = gtk_message_dialog_new (NULL,
+		         GTK_DIALOG_MODAL,
+		         GTK_MESSAGE_WARNING,
+		         GTK_BUTTONS_CLOSE,
+		         errmsg);
+		g_signal_connect (G_OBJECT(mb), "response",
+		         G_CALLBACK (gtk_widget_destroy), mb);
+		gtk_widget_show (mb);
 		g_free (errmsg);
 	}
 }
@@ -603,10 +621,16 @@ save_projects (void)
 	{
 		char *errmsg = gtt_err_to_string (errcode, xml_filepath);
 
-		msgbox_ok(_("Warning"),
-		     errmsg,
-		     GTK_STOCK_OK,
-		     NULL);
+		GtkWidget *mb;
+		mb = gtk_message_dialog_new (NULL,
+		         GTK_DIALOG_MODAL,
+		         GTK_MESSAGE_WARNING,
+		         GTK_BUTTONS_CLOSE,
+		         errmsg);
+		g_signal_connect (G_OBJECT(mb), "response",
+		         G_CALLBACK (gtk_widget_destroy), mb);
+		gtk_widget_show (mb);
+		g_free (errmsg);
 		g_free (errmsg);
 	}
 
