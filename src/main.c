@@ -146,6 +146,7 @@ post_read_data(void)
 
 	err_init();
 	ctree_setup(global_ptw);
+	menu_set_states();
 	init_timer();
 
 	/* plugins need to be added to the main menus dynamically,
