@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.0.13\n"
-"POT-Creation-Date: 2002-12-26 07:26-0600\n"
+"POT-Creation-Date: 2002-12-26 23:56-0600\n"
 "PO-Revision-Date: 2001-11-20 22:34-0200\n"
 "Last-Translator: Francisco Petrúcio Cavalcante Junior <fpcj@impa.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -15,15 +15,16 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:104 src/app.c:220
-msgid "no project selected"
-msgstr "Nenhum projeto selecionado"
+#: src/app.c:109 src/app.c:230
+#, fuzzy
+msgid "Timer is not running"
+msgstr "_Contador marcando"
 
-#: src/app.c:212
+#: src/app.c:218
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:249
+#: src/app.c:259
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -81,7 +82,7 @@ msgstr "Ano"
 msgid "Time spent on this project this year."
 msgstr "Tempo gasto neste projeto este ano."
 
-#: src/ctree.c:654
+#: src/ctree.c:654 src/ghtml.c:732
 msgid "Title"
 msgstr "Título"
 
@@ -89,11 +90,11 @@ msgstr "Título"
 msgid "Project Title"
 msgstr "Título do Projeto"
 
-#: src/ctree.c:660 src/ctree.c:661 src/menucmd.c:263
+#: src/ctree.c:660 src/ctree.c:661 src/ghtml.c:735 src/menucmd.c:263
 msgid "Description"
 msgstr "Descrição"
 
-#: src/ctree.c:666 src/ghtml.c:105 src/ghtml.c:243
+#: src/ctree.c:666 src/ghtml.c:128 src/ghtml.c:349
 msgid "Diary Entry"
 msgstr ""
 
@@ -102,7 +103,7 @@ msgstr ""
 msgid "The current diary entry"
 msgstr "Fechar o documento atual"
 
-#: src/ctree.c:673 src/ghtml.c:105 src/ghtml.c:292
+#: src/ctree.c:673 src/ghtml.c:128 src/ghtml.c:399
 #: glade/interval_edit.glade.h:11
 msgid "Start"
 msgstr "Iniciar"
@@ -160,7 +161,7 @@ msgstr "Imp"
 msgid "Importance: How important is this project?"
 msgstr "Importância: Indica o quanto esse projeto é importante."
 
-#: src/ctree.c:729
+#: src/ctree.c:729 src/ghtml.c:762
 msgid "Status"
 msgstr "Status"
 
@@ -180,7 +181,8 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1062 glade/project_properties.glade.h:26
+#: src/ctree.c:1062 src/ghtml.c:893 src/ghtml.c:903
+#: glade/project_properties.glade.h:26
 msgid "Low"
 msgstr "Baixa"
 
@@ -192,23 +194,23 @@ msgstr "Média"
 msgid "High"
 msgstr "Alta"
 
-#: src/ctree.c:1073 glade/project_properties.glade.h:30
+#: src/ctree.c:1073 src/ghtml.c:912 glade/project_properties.glade.h:30
 msgid "Not Started"
 msgstr "Não iniciado"
 
-#: src/ctree.c:1074 glade/project_properties.glade.h:22
+#: src/ctree.c:1074 src/ghtml.c:913 glade/project_properties.glade.h:22
 msgid "In Progress"
 msgstr "Em andamento"
 
-#: src/ctree.c:1075 glade/project_properties.glade.h:32
+#: src/ctree.c:1075 src/ghtml.c:914 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr "Em espera"
 
-#: src/ctree.c:1076 glade/project_properties.glade.h:10
+#: src/ctree.c:1076 src/ghtml.c:915 glade/project_properties.glade.h:10
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: src/ctree.c:1077 glade/project_properties.glade.h:11
+#: src/ctree.c:1077 src/ghtml.c:916 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr "Finalizado"
 
@@ -273,7 +275,7 @@ msgstr "Impossível criar arquivo pid!"
 msgid "Error exporting data: %s"
 msgstr "EErro formatando a trilha #%d"
 
-#: src/export.c:133 src/journal.c:169
+#: src/export.c:133 src/journal.c:172
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "O arquivo %s existe. Deseja substituí-lo?"
@@ -299,117 +301,176 @@ msgstr "projeto %t iniciado"
 msgid "stopped project %t"
 msgstr "projeto %t parado"
 
-#: src/ghtml.c:105 src/ghtml.c:295 glade/interval_edit.glade.h:13
+#: src/ghtml.c:128 src/ghtml.c:402 glade/interval_edit.glade.h:13
 msgid "Stop"
 msgstr "Parar"
 
-#: src/ghtml.c:105 src/ghtml.c:298
+#: src/ghtml.c:128 src/ghtml.c:405
 msgid "Elapsed"
 msgstr "Decorrido"
 
-#: src/ghtml.c:125 src/ghtml.c:394 src/ghtml.c:403
+#: src/ghtml.c:148 src/ghtml.c:502 src/ghtml.c:511 src/ghtml.c:844
+#: src/ghtml.c:851 src/ghtml.c:857
 msgid "(empty)"
 msgstr "(vazio)"
 
-#: src/ghtml.c:248
+#: src/ghtml.c:354 src/ghtml.c:738
 #, fuzzy
 msgid "Notes"
 msgstr "Notas:"
 
-#: src/ghtml.c:252
+#: src/ghtml.c:358
 msgid "Task Time"
 msgstr "Horário da tarefa"
 
-#: src/ghtml.c:256
+#: src/ghtml.c:362
 msgid "Bill Status"
 msgstr "Status da cobrança"
 
-#: src/ghtml.c:260 src/ghtml.c:433 glade/task_properties.glade.h:5
+#: src/ghtml.c:366 src/ghtml.c:542 glade/task_properties.glade.h:5
 msgid "Billable"
 msgstr "Cobrável"
 
-#: src/ghtml.c:264
+#: src/ghtml.c:370
 msgid "Bill Rate"
 msgstr "Taxa de cobrança"
 
-#: src/ghtml.c:268
+#: src/ghtml.c:374
 msgid "Value"
 msgstr "Valor"
 
-#: src/ghtml.c:272
+#: src/ghtml.c:378
 msgid "Billable Value"
 msgstr "Valor cobrável"
 
-#: src/ghtml.c:276 src/ghtml.c:304
+#: src/ghtml.c:382 src/ghtml.c:411 src/ghtml.c:765
 msgid "No Default Value"
 msgstr "Sem valor padrão"
 
-#: src/ghtml.c:301
+#: src/ghtml.c:408
 msgid "Start Time Fuzziness"
 msgstr "Margem da data de início"
 
-#: src/ghtml.c:417 glade/task_properties.glade.h:14
+#: src/ghtml.c:526 glade/task_properties.glade.h:14
 msgid "Hold"
 msgstr "Espera"
 
-#: src/ghtml.c:420 glade/task_properties.glade.h:4
+#: src/ghtml.c:529 glade/task_properties.glade.h:4
 msgid "Bill"
 msgstr "Cobrar"
 
-#: src/ghtml.c:423 glade/task_properties.glade.h:22
+#: src/ghtml.c:532 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr "Pago"
 
-#: src/ghtml.c:436 glade/task_properties.glade.h:18
+#: src/ghtml.c:545 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr "Não cobrável"
 
-#: src/ghtml.c:439 glade/task_properties.glade.h:17
+#: src/ghtml.c:548 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr "Sem taxa"
 
-#: src/ghtml.c:449 glade/task_properties.glade.h:23
+#: src/ghtml.c:558 glade/task_properties.glade.h:23
 msgid "Regular"
 msgstr "Regular"
 
-#: src/ghtml.c:452 glade/task_properties.glade.h:21
+#: src/ghtml.c:561 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr "Hora extra"
 
-#: src/ghtml.c:455
+#: src/ghtml.c:564
 msgid "Double Overtime"
 msgstr "Hora extra dupla"
 
-#: src/ghtml.c:458 glade/task_properties.glade.h:13
+#: src/ghtml.c:567 glade/task_properties.glade.h:13
 msgid "Flat Fee"
 msgstr "Preço normal"
 
-#: src/ghtml.c:478
+#: src/ghtml.c:587
 msgid "Error - Unknown"
 msgstr "Erro - Desconhecido"
 
 #: src/ghtml.c:741
+#, fuzzy
+msgid "Estimated Start Date"
+msgstr "Data aproximada do início do projeto"
+
+#: src/ghtml.c:744
+#, fuzzy
+msgid "Estimated End Date"
+msgstr "Data aproximada do início do projeto"
+
+#: src/ghtml.c:747
+#, fuzzy
+msgid "Due Date"
+msgstr "Prazo de entrega:"
+
+#: src/ghtml.c:750
+#, fuzzy
+msgid "Sizing"
+msgstr "Tamanho"
+
+#: src/ghtml.c:753
+#, fuzzy
+msgid "Percent Complete"
+msgstr "Mostrar porcentagem efetuada"
+
+#: src/ghtml.c:756
+#, fuzzy
+msgid "Urgency"
+msgstr "Urgência:"
+
+#: src/ghtml.c:759
+#, fuzzy
+msgid "Importance"
+msgstr "Importância:"
+
+#: src/ghtml.c:892 src/ghtml.c:902
+msgid "Undefined"
+msgstr ""
+
+#: src/ghtml.c:894
+#, fuzzy
+msgid "Normal"
+msgstr "Diário"
+
+#: src/ghtml.c:895
+#, fuzzy
+msgid "Urgent"
+msgstr "Urgência:"
+
+#: src/ghtml.c:904 glade/project_properties.glade.h:27
+msgid "Medium"
+msgstr "Médio"
+
+#: src/ghtml.c:905
+#, fuzzy
+msgid "Important"
+msgstr "Importância:"
+
+#: src/ghtml.c:1109
 msgid "unknown token: >>>>"
 msgstr "Símbolo desconhecido: >>>>"
 
-#: src/journal.c:110
+#: src/journal.c:113
 msgid "Error 404 Not Found"
 msgstr "Erro 404: Não encontrado"
 
-#: src/journal.c:112
+#: src/journal.c:115
 #, c-format
 msgid "The file %s was not found."
 msgstr "O Arquivo %s não foi encontrado."
 
-#: src/journal.c:113
+#: src/journal.c:116
 msgid "(null)"
 msgstr "(nulo)"
 
-#: src/journal.c:122
+#: src/journal.c:125
 msgid "Unkown Error"
 msgstr "Erro Desconhecido"
 
-#: src/journal.c:184 src/plug-in.c:90
+#: src/journal.c:187 src/plug-in.c:89
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
@@ -418,12 +479,12 @@ msgstr ""
 "Impossível abrir o arquivo %s\n"
 "%s"
 
-#: src/journal.c:287 src/proj.c:716 src/proj.c:1559 src/proj.c:1687
+#: src/journal.c:290 src/proj.c:716 src/proj.c:1559 src/proj.c:1687
 #: src/proj.c:1827
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:475
+#: src/journal.c:478
 msgid "Save HTML To File"
 msgstr "Salvar HTML para arquivo"
 
@@ -474,23 +535,23 @@ msgstr "Erro"
 msgid "Shall I setup a new configuration?"
 msgstr "Deseja que uma nova configuração seja criada?"
 
-#: src/main.c:364 src/main.c:389 src/main.c:530 src/menucmd.c:49
+#: src/main.c:363 src/main.c:388 src/main.c:529 src/menucmd.c:49
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/main.c:486
+#: src/main.c:485
 msgid "Specify geometry"
 msgstr "Especificar a geometria"
 
-#: src/main.c:486
+#: src/main.c:485
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: src/main.c:488
+#: src/main.c:487
 msgid "Select a project on startup"
 msgstr "Escolher um projeto ao iniciar"
 
-#: src/main.c:488
+#: src/main.c:487
 msgid "PROJECT"
 msgstr "PROJETO"
 
@@ -518,27 +579,27 @@ msgstr "_Novo projeto..."
 msgid "_Export Tab-Delimited"
 msgstr ""
 
-#: src/menus.c:56 src/menus.c:166
+#: src/menus.c:56 src/menus.c:170
 msgid "Clear _Daily Counter"
 msgstr "Limpar contador _diário"
 
-#: src/menus.c:57 src/menus.c:167
+#: src/menus.c:57 src/menus.c:171
 msgid "Zero out todays timer by deleting todays time logs"
 msgstr "Remover os logs de tempo de hoje"
 
-#: src/menus.c:61 src/menus.c:80 src/menus.c:149
+#: src/menus.c:61 src/menus.c:80 src/menus.c:153
 msgid "_Journal..."
 msgstr "Diári_o..."
 
-#: src/menus.c:62 src/menus.c:81 src/menus.c:150
+#: src/menus.c:62 src/menus.c:81 src/menus.c:154
 msgid "Show the timesheet journal for this project"
 msgstr "Mostra o diário de cronogramas para este projeto"
 
-#: src/menus.c:65 src/menus.c:153
+#: src/menus.c:65 src/menus.c:157
 msgid "New Diary _Entry"
 msgstr ""
 
-#: src/menus.c:66 src/menus.c:154
+#: src/menus.c:66 src/menus.c:158
 msgid "Change the current task for this project"
 msgstr "Mudar a tarefa atual deste projeto"
 
@@ -567,48 +628,58 @@ msgid "Show a sample introductory primer for designing custom reports"
 msgstr "Mostrar um exemplo do manual para criar relatórios personalizados"
 
 #: src/menus.c:96
+msgid "_To Do..."
+msgstr ""
+
+#: src/menus.c:97
+#, fuzzy
+msgid "Show a sample to-do list"
+msgstr "Mostrar uma amostra de fatura para este projeto"
+
+#: src/menus.c:100
 msgid "_New Report..."
 msgstr "_Novo relatório..."
 
-#: src/menus.c:97
-msgid "Define a path to a new GTT phtml report file"
+#: src/menus.c:101
+#, fuzzy
+msgid "Define a path to a new GnoTime ghtml report file"
 msgstr "Definir um caminho para um novo relatório GTT em phtml"
 
-#: src/menus.c:108
+#: src/menus.c:112
 msgid "St_art"
 msgstr "Inici_ar"
 
-#: src/menus.c:109
+#: src/menus.c:113
 msgid "Start the timer running"
 msgstr "Iniciar a execução do contador"
 
-#: src/menus.c:114
+#: src/menus.c:118
 msgid "Sto_p"
 msgstr "_Parar"
 
-#: src/menus.c:115
+#: src/menus.c:119
 msgid "Stop the timer"
 msgstr "Parar o contador"
 
-#: src/menus.c:120
+#: src/menus.c:124
 msgid "_Timer Running"
 msgstr "_Contador marcando"
 
-#: src/menus.c:139
+#: src/menus.c:143
 msgid "_Reports"
 msgstr "_Relatórios"
 
-#: src/menus.c:140
+#: src/menus.c:144
 msgid "_Timer"
 msgstr "Con_tador"
 
 #. deal with the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:237
+#: src/menus.c:241
 msgid "Reports"
 msgstr "Relatórios"
 
-#: src/plug-in.c:121
+#: src/plug-in.c:120
 msgid "Reports/<Separator>"
 msgstr "Relatórios/<Separador>"
 
@@ -676,23 +747,23 @@ msgstr "Contador"
 msgid "Start/Stop Timer"
 msgstr "Iniciar/Parar o Contador"
 
-#: src/toolbar.c:220
+#: src/toolbar.c:221
 msgid "Calendar"
 msgstr "Calendário"
 
-#: src/toolbar.c:221
+#: src/toolbar.c:222
 msgid "View Calendar"
 msgstr "Ver calendário"
 
-#: src/toolbar.c:241
+#: src/toolbar.c:242
 msgid "Edit Preferences..."
 msgstr "Editar Preferências..."
 
-#: src/toolbar.c:249
+#: src/toolbar.c:250
 msgid "User's Guide and Manual"
 msgstr "Manual e guia do usuário"
 
-#: src/toolbar.c:257
+#: src/toolbar.c:258
 #, fuzzy
 msgid "Quit Gnome TimeTracker"
 msgstr "Sair do GTimeTracker"
@@ -1172,10 +1243,6 @@ msgstr "Intervalos"
 msgid "Intervals smaller than this will be discarded"
 msgstr "Intervalos menores que este serão descartados"
 
-#: glade/project_properties.glade.h:27
-msgid "Medium"
-msgstr "Médio"
-
 #: glade/project_properties.glade.h:28
 msgid "Minimum Interval: "
 msgstr "Intervalo mínimo: "
@@ -1367,6 +1434,9 @@ msgstr "Ferramenta de controle de tempo"
 #: gnotime.desktop.in.h:2
 msgid "Time tracking tool"
 msgstr "Ferramenta de controle de tempo"
+
+#~ msgid "no project selected"
+#~ msgstr "Nenhum projeto selecionado"
 
 #, fuzzy
 #~ msgid ""
