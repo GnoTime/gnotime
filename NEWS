@@ -22,7 +22,7 @@ and other export formats can be easily added.
 New in the 2.1.3 release:
 -------------------------
 The time credited to a project after the keyboard inactivity 
-timer has tripped is now very easily adjustible.  Thus, if
+timer has tripped is now very easily adjustable.  Thus, if
 the timer tripped because you were on the phone, you can now
 trivially credit the project with any time, from zero to 
 the full interval since the last keyboard/mouse activity,
@@ -42,7 +42,7 @@ robust than the single-click interface, which was prone
 to accidental-click problems, especially on laptop touchpads.
 This makes GnoTime much more usable on laptops.
 
-The 2.1.2 version is also the first offical stable, 
+The 2.1.2 version is also the first official stable, 
 non-beta release GnoTime. (December 27, 2002)
 
 The 2.1.2 version also included:
@@ -54,7 +54,7 @@ The 2.1.2 version also included:
 -- Remember what state tree was left in between sessions.
 -- Much improved scheme support in reports
 -- Language translations now included as part of dist
--- Can now save html reports to file (again)
+-- Can now save HTML reports to file (again)
 -- Now detects inactivity due to laptop shutdown
 -- Fix start/stop timer icon in toolbar
 
@@ -91,7 +91,7 @@ August 2001
      the project.  
   -- A journal showing explicit start and stop times is now maintained. 
      Blocks of time can be annotated with memos.  The journal can be 
-     exported as an html page, or printed (OK, printer support not
+     exported as an HTML page, or printed (OK, printer support not
      yet finished).
   -- Infrastructure for storing price & billing information has been
      put into place.  This allows billing invoices to be generated.
@@ -105,8 +105,8 @@ August 2001
      are automerged into nearby neighbors. Short gaps between intervals
      are coalesced as well.  You can specify a time period of 0 seconds
      to turn these features off.
-  -- The journal GUI is based on extended html pages.  If you know
-     html, then you can create customized report pages.
+  -- The journal GUI is based on extended HTML pages.  If you know
+     HTML, then you can create customized report pages.
      User-defined reports (contained in ghtml files) can be added to the
      menus by typing in the filename into the 'new report' GUI dialog.
      Typically, a 'user-defined report' is one with customized layout,
@@ -121,7 +121,7 @@ August 2001
      journal data.
   -- Export to GnuCash coming soon, I hope ...
 
-A very simple website for gtt is now up at 
+A very simple website for GTT is now up at 
 http://www.linas.org/linux/gtt/gtt.html
 
   (This blast of new features by Linas Vepstas <linas@linas.org>)
