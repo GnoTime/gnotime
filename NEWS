@@ -9,6 +9,28 @@ measure the time spent on to-do list items and generate invoices.
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
 
+New in the 2.1.8 release:
+-------------------------
+This release adds support for simple report queries.  In particular,
+reports can now be generated for all tasks that occured between a
+pair of dates;  an extremely general query system is now in place,
+although it is not used except to perform this simple date query.
+
+Toshio Kuratomi <toshio@tiki-lounge.com> provided a major 
+cleanup of the documentation subsystem.  Goedson Teixeira Paixao
+provided a new pt_BR translation.
+
+Bug fixes:
+-- avoid crash of 'yelp' help browser due to SIGCHILD zombie reap.
+-- numerous other minor crashes fixed.
+
+
+New in the 2.1.7 release:
+-------------------------
+Version 2.1.7 fixes some internationalization bugs, and ports the 
+configuration system to GConf2. The 'custom reports' menu is now 
+editable.  
+
 
 New in the 2.1.6 release:
 -------------------------
