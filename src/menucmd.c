@@ -298,9 +298,10 @@ have_cutted_project (void)
 	return (NULL==cutted_project_list) ? FALSE : TRUE;
 }
 
-void
+static inline void
 debug_print_cutted_proj_list (char * str)
 {
+#ifdef DEBUG
 	GList *n;
 	printf ("proj list --- \n");
 	if (NULL == cutted_project_list)
@@ -313,6 +314,7 @@ debug_print_cutted_proj_list (char * str)
 		printf ("%s: n=%p prj=%p title=%s\n", str,n,p,gtt_project_get_title(p));
 	}
 	printf ("\n");
+#endif
 }
 
 void
