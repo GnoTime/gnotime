@@ -17,7 +17,7 @@
  */
 
 #include <glib.h>
-#include <gnome-xml/parser.h>
+#include <libxml/parser.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,7 +43,7 @@
 #define GET_TEXT(node)  ({					\
 	char * sstr = NULL;					\
 	xmlNodePtr text;					\
-	text = node->childs;					\
+	text = node->xmlChildrenNode;					\
 	if (!text) { 						\
 		gtt_err_set_code (GTT_FILE_CORRUPT);		\
 	}							\
@@ -155,7 +155,7 @@ parse_interval (xmlNodePtr interval)
 		gtt_err_set_code (GTT_FILE_CORRUPT); return ivl; }
 
 	ivl = gtt_interval_new ();
-	for (node=interval->childs; node; node=node->next)
+	for (node=interval->xmlChildrenNode; node; node=node->next)
 	{
 		GET_TIM (ivl, gtt_interval_set_start, "start")
 		GET_TIM (ivl, gtt_interval_set_stop, "stop")
@@ -182,7 +182,7 @@ parse_task (xmlNodePtr task)
 		gtt_err_set_code (GTT_FILE_CORRUPT); return tsk; }
 
 	tsk = gtt_task_new ();
-	for (node=task->childs; node; node=node->next)
+	for (node=task->xmlChildrenNode; node; node=node->next)
 	{
 		GET_STR (tsk, gtt_task_set_memo, "memo")
 		GET_STR (tsk, gtt_task_set_notes, "notes")
@@ -197,7 +197,7 @@ parse_task (xmlNodePtr task)
 		if (0 == strcmp ("interval-list", node->name))
 		{
 			xmlNodePtr tn;
-			for (tn=node->childs; tn; tn=tn->next)
+			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
 			{
 				GttInterval *ival;
 				ival = parse_interval (tn);
@@ -228,7 +228,7 @@ parse_project (xmlNodePtr project)
 
 	prj = gtt_project_new ();
 	gtt_project_freeze (prj);
-	for (node=project->childs; node; node=node->next)
+	for (node=project->xmlChildrenNode; node; node=node->next)
 	{
 		GET_STR (prj, gtt_project_set_title, "title")
 		GET_STR (prj, gtt_project_set_desc, "desc")
@@ -262,7 +262,7 @@ parse_project (xmlNodePtr project)
 		if (0 == strcmp ("task-list", node->name))
 		{
 			xmlNodePtr tn;
-			for (tn=node->childs; tn; tn=tn->next)
+			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
 			{
 				GttTask *tsk;
 				tsk = parse_task (tn);
@@ -273,7 +273,7 @@ parse_project (xmlNodePtr project)
 		if (0 == strcmp ("project-list", node->name))
 		{
 			xmlNodePtr tn;
-			for (tn=node->childs; tn; tn=tn->next)
+			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
 			{
 				GttProject *child;
 				child = parse_project (tn);
@@ -298,27 +298,42 @@ gtt_xml_read_projects (const char * filename)
 	GList *prjs = NULL;
 	xmlDocPtr doc;
 	xmlNodePtr root, project_list, project;
+	xmlChar *version;
 
+	LIBXML_TEST_VERSION;
+	xmlKeepBlanksDefault(0);
 	doc = xmlParseFile (filename);
 
 	if (!doc) { gtt_err_set_code (GTT_CANT_OPEN_FILE); return NULL; }
-	root = doc->root;
+	root = xmlDocGetRootElement(doc);
 
 	/* The doc may be null if the file is valid but empty */
-	if (!root) return NULL;
+	if (!root) 
+	{
+		xmlFreeDoc(doc);
+		return NULL;
+	}
 	
-	if (strcmp ("gtt", root->name)) {
-		gtt_err_set_code (GTT_NOT_A_GTT_FILE); return NULL; }
+	version = xmlGetProp(root, "version");
+	if (!root->name || strcmp ("gtt", root->name)) 
+	{
+		xmlFreeDoc(doc);
+		gtt_err_set_code (GTT_NOT_A_GTT_FILE); return NULL;
+	}
 
-	project_list = root->childs;
+	project_list = root->xmlChildrenNode;
 
 	/* If no children, then no projects -- a clean slate */
-	if (!project_list) return NULL;
+	if (!project_list) {
+		xmlFreeDoc(doc);
+		return NULL;
+	}
 
 	if (strcmp ("project-list", project_list->name)) {
+		xmlFreeDoc(doc);
 		gtt_err_set_code (GTT_FILE_CORRUPT); return NULL; }
 
-	for (project=project_list->childs; project; project=project->next)
+	for (project=project_list->xmlChildrenNode; project; project=project->next)
 	{
 		GttProject *prj;
 		prj = parse_project (project);

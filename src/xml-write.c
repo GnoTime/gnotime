@@ -17,7 +17,7 @@
  */
 
 
-#include <gnome-xml/tree.h>
+#include <libxml/tree.h>
 #include <stdio.h>
 
 #include "err-throw.h"
@@ -318,9 +318,12 @@ gtt_to_dom_tree (void)
 {
 	xmlNodePtr topnode;
 	xmlNodePtr node;
+	xmlNsPtr   ns;
 
-	topnode = xmlNewNode(NULL, "gtt");
-	xmlSetProp(topnode, "version", "1.0.0");
+	topnode = xmlNewNode(NULL, "gtt:gtt");
+	xmlSetProp(topnode, "version", "1.0.1");
+
+	ns = xmlNewNs (topnode, "file:" GTTDATADIR "/gtt.dtd", "gtt");
 
 	node = gtt_project_list_to_dom_tree (gtt_get_project_list()); 
 	if (node) xmlAddChild (topnode, node);

@@ -1,0 +1,25 @@
+
+<!-- bogus, unfinished, untested, un-necessary?  -->
+
+<!ENTITY % title "CDATA">
+<!ENTITY % desc "CDATA">
+<!ENTITY % id "CDATA">
+<!ENTITY % billrate "CDATA">
+<!ENTITY % overtime_rate "CDATA">
+<!ENTITY % flat_fee "CDATA">
+<!ENTITY % overover_rate "CDATA">
+<!ENTITY % min_interval "CDATA">
+<!ENTITY % auto_merge_interval "CDATA">
+<!ENTITY % auto_merge_gap "CDATA">
+<!ENTITY % estimated_start "CDATA">
+<!ENTITY % estimated_end "CDATA">
+<!ENTITY % due_date "CDATA">
+<!ENTITY % sizing "CDATA">
+<!ENTITY % percent_complete "CDATA">
+<!ENTITY % urgency "CDATA">
+<!ENTITY % importance "CDATA">
+<!ENTITY % status "CDATA">
+
+<!ENTITY % project "(title|desc)*">
+<!ENTITY % project-list "project">
+
