@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.3.0\n"
-"POT-Creation-Date: 2004-04-20 22:47-0500\n"
+"POT-Creation-Date: 2004-04-26 21:26-0500\n"
 "PO-Revision-Date: 2001-02-19 16:06+0900\n"
 "Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=EUC-KR\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:122 src/app.c:283
+#: src/app.c:124 src/app.c:315
 #, fuzzy
 msgid "Timer is not running"
 msgstr "타이머 실행(_T)"
 
-#: src/app.c:269
+#: src/app.c:301
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:328
+#: src/app.c:360
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
@@ -102,11 +102,12 @@ msgstr ""
 msgid "Title"
 msgstr "파일"
 
-#: src/ctree.c:844 src/menucmd.c:252
+#. Put stuff into the dialog box
+#: src/ctree.c:844 src/menucmd.c:274
 msgid "Project Title"
 msgstr "프로젝트 이름"
 
-#: src/ctree.c:849 src/ctree.c:850 src/menucmd.c:253
+#: src/ctree.c:849 src/ctree.c:850 src/menucmd.c:275
 msgid "Description"
 msgstr "설명"
 
@@ -199,7 +200,7 @@ msgstr ""
 msgid "1"
 msgstr ""
 
-#: src/ctree.c:1284 src/ghtml.c:838 src/ghtml.c:852
+#: src/ctree.c:1284 src/ghtml.c:890 src/ghtml.c:904
 #: glade/project_properties.glade.h:26
 #, fuzzy
 msgid "Low"
@@ -214,26 +215,26 @@ msgstr "빨강"
 msgid "High"
 msgstr ""
 
-#: src/ctree.c:1295 src/ghtml.c:866 glade/project_properties.glade.h:30
+#: src/ctree.c:1295 src/ghtml.c:918 glade/project_properties.glade.h:30
 #, fuzzy
 msgid "Not Started"
 msgstr "시작"
 
-#: src/ctree.c:1296 src/ghtml.c:867 glade/project_properties.glade.h:22
+#: src/ctree.c:1296 src/ghtml.c:919 glade/project_properties.glade.h:22
 #, fuzzy
 msgid "In Progress"
 msgstr "작업:"
 
-#: src/ctree.c:1297 src/ghtml.c:868 glade/project_properties.glade.h:32
+#: src/ctree.c:1297 src/ghtml.c:920 glade/project_properties.glade.h:32
 msgid "On Hold"
 msgstr ""
 
-#: src/ctree.c:1298 src/ghtml.c:869 glade/project_properties.glade.h:10
+#: src/ctree.c:1298 src/ghtml.c:921 glade/project_properties.glade.h:10
 #, fuzzy
 msgid "Cancelled"
 msgstr "취소"
 
-#: src/ctree.c:1299 src/ghtml.c:870 glade/project_properties.glade.h:11
+#: src/ctree.c:1299 src/ghtml.c:922 glade/project_properties.glade.h:11
 msgid "Completed"
 msgstr ""
 
@@ -293,108 +294,108 @@ msgid ""
 "\t%s\n"
 msgstr "컨피그 파일을 쓸 수 없습니다!"
 
-#: src/export.c:76
+#: src/export.c:88
 #, fuzzy, c-format
 msgid "Error exporting data: %s"
 msgstr "데이터 베이스 파싱 오류"
 
-#: src/export.c:123 src/journal.c:182
+#: src/export.c:138 src/journal.c:209
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr ""
 
-#: src/export.c:135
-#, fuzzy
-msgid "File could not be opened"
+#: src/export.c:153
+#, fuzzy, c-format
+msgid "File %s dould not be opened"
 msgstr "%s를 열수 없습니다."
 
-#: src/export.c:143
+#: src/export.c:163
 msgid "Error occured during export"
 msgstr ""
 
-#: src/export.c:161
+#: src/export.c:193
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:401
+#: src/file-io.c:405
 msgid "project %t started"
 msgstr "프로젝트 %t 시작"
 
-#: src/file-io.c:404
+#: src/file-io.c:408
 msgid "stopped project %t"
 msgstr "%t 프로젝트 정지"
 
-#: src/ghtml.c:349
+#: src/ghtml.c:355
 #, fuzzy
 msgid "False"
 msgstr "값"
 
-#: src/ghtml.c:350
+#: src/ghtml.c:356
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:839
+#: src/ghtml.c:891
 msgid "Normal"
 msgstr ""
 
-#: src/ghtml.c:840
+#: src/ghtml.c:892
 msgid "Urgent"
 msgstr ""
 
-#: src/ghtml.c:841 src/ghtml.c:843 src/ghtml.c:855 src/ghtml.c:857
-#: src/ghtml.c:872
+#: src/ghtml.c:893 src/ghtml.c:895 src/ghtml.c:907 src/ghtml.c:909
+#: src/ghtml.c:924
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:853 glade/project_properties.glade.h:27
+#: src/ghtml.c:905 glade/project_properties.glade.h:27
 msgid "Medium"
 msgstr ""
 
-#: src/ghtml.c:854
+#: src/ghtml.c:906
 #, fuzzy
 msgid "Important"
 msgstr "오차 :"
 
-#: src/ghtml.c:971 glade/task_properties.glade.h:14
+#: src/ghtml.c:1023 glade/task_properties.glade.h:14
 msgid "Hold"
 msgstr ""
 
-#: src/ghtml.c:972 glade/task_properties.glade.h:4
+#: src/ghtml.c:1024 glade/task_properties.glade.h:4
 #, fuzzy
 msgid "Bill"
 msgstr "사용하지 않기"
 
-#: src/ghtml.c:973 glade/task_properties.glade.h:22
+#: src/ghtml.c:1025 glade/task_properties.glade.h:22
 msgid "Paid"
 msgstr ""
 
-#: src/ghtml.c:984 glade/task_properties.glade.h:5
+#: src/ghtml.c:1036 glade/task_properties.glade.h:5
 #, fuzzy
 msgid "Billable"
 msgstr "사용하지 않기"
 
-#: src/ghtml.c:985 glade/task_properties.glade.h:18
+#: src/ghtml.c:1037 glade/task_properties.glade.h:18
 msgid "Not Billable"
 msgstr ""
 
-#: src/ghtml.c:986 glade/task_properties.glade.h:17
+#: src/ghtml.c:1038 glade/task_properties.glade.h:17
 msgid "No Charge"
 msgstr ""
 
-#: src/ghtml.c:997 glade/task_properties.glade.h:23
+#: src/ghtml.c:1049 glade/task_properties.glade.h:23
 #, fuzzy
 msgid "Regular"
 msgstr "다시 읽기"
 
-#: src/ghtml.c:998 glade/task_properties.glade.h:21
+#: src/ghtml.c:1050 glade/task_properties.glade.h:21
 msgid "Overtime"
 msgstr ""
 
-#: src/ghtml.c:999
+#: src/ghtml.c:1051
 msgid "Double Overtime"
 msgstr ""
 
-#: src/ghtml.c:1000 glade/task_properties.glade.h:13
+#: src/ghtml.c:1052 glade/task_properties.glade.h:13
 #, fuzzy
 msgid "Flat Fee"
 msgstr "부동소수점"
@@ -440,70 +441,74 @@ msgid ""
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
 
-#: src/journal.c:120
+#: src/journal.c:138
 msgid "Error 404 Not Found"
 msgstr ""
 
-#: src/journal.c:122
+#: src/journal.c:140
 #, fuzzy, c-format
 msgid "The file %s was not found."
 msgstr "로고파일을 찾을 수 없습니다"
 
-#: src/journal.c:123
+#: src/journal.c:141
 msgid "(null)"
 msgstr ""
 
-#: src/journal.c:132
+#: src/journal.c:150
 #, fuzzy
 msgid "Unkown Error"
 msgstr "모름"
 
-#: src/journal.c:197 src/plug-in.c:109
+#: src/journal.c:229
 #, fuzzy, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr "로그 파일을 열 수 없습니다!\n"
 
-#: src/journal.c:301 src/proj.c:735 src/proj.c:1750 src/proj.c:1951
-#: src/proj.c:2091 glade/notes.glade.h:8
+#: src/journal.c:396 src/proj.c:734 src/proj.c:1749 src/proj.c:1950
+#: src/proj.c:2090 glade/notes.glade.h:8
 msgid "New Diary Entry"
 msgstr ""
 
-#: src/journal.c:521
+#: src/journal.c:656
+msgid "mailto: URL is not supported at this time"
+msgstr ""
+
+#: src/journal.c:679
 #, fuzzy
 msgid "Save HTML To File"
 msgstr "팔레트 저장(_S)"
 
-#: src/journal.c:659
+#: src/journal.c:862
 msgid "Left-click to bring up menu"
 msgstr ""
 
-#: src/log.c:55
+#: src/log.c:61
 #, fuzzy, c-format
-msgid "Cannot open logfile %s for append"
+msgid "Cannot open logfile %s for append: %s"
 msgstr "읽을 로그파일이 없습니다"
 
 #. Translators: Format to use in the gnotime logfile
-#: src/log.c:64
+#: src/log.c:70
 msgid "%b %d %H:%M:%S"
 msgstr ""
 
-#: src/log.c:97
+#: src/log.c:109
 #, fuzzy
 msgid "no title"
 msgstr "파일"
 
-#: src/log.c:106
+#: src/log.c:118
 msgid "no description"
 msgstr "설명 없음"
 
-#: src/log.c:171 src/log.c:264
+#: src/log.c:183 src/log.c:276
 msgid "program started"
 msgstr "프로그램이 시작했습니다"
 
 #. log_if_equal
-#: src/log.c:256
+#: src/log.c:268
 msgid "program exited"
 msgstr "프로그램이 끝났습니다"
 
@@ -522,63 +527,55 @@ msgstr ""
 msgid "Cannot create pid-file!"
 msgstr "애플릿을 생성할수 없습니다!\n"
 
-#: src/main.c:340
+#: src/main.c:347
 msgid "Do you want to continue?"
 msgstr ""
 
-#: src/main.c:343 src/main.c:393
-msgid "Error"
-msgstr "오류"
-
-#: src/main.c:390
+#: src/main.c:404
 msgid "Shall I setup a new configuration?"
 msgstr ""
 
-#: src/main.c:561 src/main.c:600 src/main.c:759
-msgid "Warning"
-msgstr "경고"
-
-#: src/main.c:701
+#: src/main.c:731
 msgid "Specify geometry"
 msgstr "위치 지정"
 
-#: src/main.c:701
+#: src/main.c:731
 msgid "GEOMETRY"
 msgstr "위치"
 
-#: src/main.c:703
+#: src/main.c:733
 msgid "Select a project on startup"
 msgstr "시작시 프로젝트 선택"
 
-#: src/main.c:703
+#: src/main.c:733
 msgid "PROJECT"
 msgstr "<프로젝트>"
 
-#: src/menucmd.c:51
+#: src/main.c:791
+msgid "Warning"
+msgstr "경고"
+
+#: src/menucmd.c:50
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:187
+#: src/menucmd.c:186
 msgid ""
 "GnoTime is a combination stop-watch, diary, consultant billing system and "
-"project manager.  You can measure the amount of time you spend on a task, "
+"todo-list manager.  You can measure the amount of time you spend on a task, "
 "associate a memo with it, set a billing rate, print an invoice, as well as "
 "track the status of other projects."
 msgstr ""
 
-#: src/menucmd.c:246
+#: src/menucmd.c:260
 msgid "New Project..."
 msgstr "새 프로젝트"
 
-#: src/menucmd.c:497
+#: src/menucmd.c:523
 msgid ""
 "To edit the timer interval for this project,\n"
 "open the Journal window and click on a link.\n"
 "This will bring up a menu of time editing options.\n"
-msgstr ""
-
-#: src/menucmd.c:501
-msgid "Info"
 msgstr ""
 
 #: src/menus.c:35
@@ -607,16 +604,17 @@ msgstr ""
 msgid "_Journal..."
 msgstr ""
 
-#: src/menus.c:81 src/menus.c:170
-msgid "Show the timesheet journal for this project"
+#: src/menus.c:81
+msgid "Show the journal for this project"
 msgstr ""
 
 #: src/menus.c:84
-msgid "_Big Journal..."
-msgstr ""
+#, fuzzy
+msgid "Time _Interval..."
+msgstr "슬라이더 갱신 간격"
 
-#: src/menus.c:85
-msgid "Show the verbose timesheet journal for this project"
+#: src/menus.c:85 src/menus.c:170
+msgid "Show the timesheet journal for this project"
 msgstr ""
 
 #: src/menus.c:88
@@ -719,7 +717,7 @@ msgstr ""
 msgid "_Timer"
 msgstr "타이머(_T)"
 
-#: src/menus.c:177 glade/task_popup.glade.h:5
+#: src/menus.c:177 glade/task_popup.glade.h:6
 msgid "_New Diary Entry"
 msgstr ""
 
@@ -727,7 +725,7 @@ msgstr ""
 msgid "Change the current task for this project"
 msgstr ""
 
-#: src/menus.c:181 glade/task_popup.glade.h:4
+#: src/menus.c:181 glade/task_popup.glade.h:5
 msgid "_Edit Diary Entry"
 msgstr ""
 
@@ -742,7 +740,12 @@ msgstr ""
 msgid "Reports"
 msgstr "재시동"
 
-#: src/proj.c:716
+#: src/plug-in.c:114
+#, fuzzy, c-format
+msgid "Unable to open the report file %s\n"
+msgstr "로그 파일을 열 수 없습니다!\n"
+
+#: src/proj.c:715
 msgid "Old GTT Tasks"
 msgstr ""
 
@@ -751,62 +754,62 @@ msgstr ""
 msgid "empty"
 msgstr "없음"
 
-#: src/toolbar.c:143
+#: src/toolbar.c:150
 #, fuzzy
 msgid "Create a New Project..."
 msgstr "새 프로젝트"
 
-#: src/toolbar.c:153
+#: src/toolbar.c:160
 msgid "Cut Selected Project"
 msgstr "선택된 프로젝트 자르기"
 
-#: src/toolbar.c:158
+#: src/toolbar.c:165
 msgid "Copy Selected Project"
 msgstr "선택된 프로젝트 복사"
 
-#: src/toolbar.c:163
+#: src/toolbar.c:170
 msgid "Paste Project"
 msgstr "프로젝트 붙이기"
 
-#: src/toolbar.c:175 glade/journal.glade.h:2
+#: src/toolbar.c:182
 msgid "Journal"
 msgstr ""
 
-#: src/toolbar.c:176
+#: src/toolbar.c:183
 msgid "View and Edit Timestamp Logs"
 msgstr ""
 
-#: src/toolbar.c:185
+#: src/toolbar.c:192
 #, fuzzy
 msgid "Edit Project Properties..."
 msgstr "속성 바꾸기..."
 
-#: src/toolbar.c:201
+#: src/toolbar.c:208
 msgid "Timer"
 msgstr "타이머"
 
-#: src/toolbar.c:202
+#: src/toolbar.c:209
 msgid "Start/Stop Timer"
 msgstr "타이머 시작/멈춤"
 
-#: src/toolbar.c:211
+#: src/toolbar.c:218
 msgid "Calendar"
 msgstr "달력"
 
-#: src/toolbar.c:212
+#: src/toolbar.c:219
 #, fuzzy
 msgid "View Calendar"
 msgstr "달력 숨김"
 
-#: src/toolbar.c:232
+#: src/toolbar.c:239
 msgid "Edit Preferences..."
 msgstr "설정 바꾸기"
 
-#: src/toolbar.c:240
+#: src/toolbar.c:247
 msgid "User's Guide and Manual"
 msgstr ""
 
-#: src/toolbar.c:248
+#: src/toolbar.c:255
 #, fuzzy
 msgid "Quit GnoTime"
 msgstr "GTimeTracker 종료"
@@ -912,37 +915,63 @@ msgstr "슬라이더 갱신 간격"
 msgid "Paste Diary Entry"
 msgstr ""
 
-#: glade/journal.glade.h:1
+#: glade/journal.glade.h:1 glade/notes.glade.h:1 glade/prefs.glade.h:1
+#: glade/project_properties.glade.h:6 glade/task_properties.glade.h:1
+msgid "*"
+msgstr ""
+
+#: glade/journal.glade.h:2
+msgid ""
+"<b>Publish This Report</b>\n"
+"Enter a URL such as one of the following:\n"
+"mailto:<i><username>@<hostname></i>\n"
+"ssh://<i>host.net/some/file/path</i>\n"
+"ftp://<i>username:passwd@host.net/path/to/file</i>\n"
+msgstr ""
+
+#: glade/journal.glade.h:8
 msgid "Close"
 msgstr "닫기"
 
-#: glade/journal.glade.h:3
+#: glade/journal.glade.h:9
+#, fuzzy
+msgid "GnoTime: Journal"
+msgstr "`도움말' 표시"
+
+#: glade/journal.glade.h:10
+msgid "GnoTime: Publish Report"
+msgstr ""
+
+#: glade/journal.glade.h:11
 #, fuzzy
 msgid "New File"
 msgstr "새 창"
 
-#: glade/journal.glade.h:4
+#: glade/journal.glade.h:12
 #, fuzzy
 msgid "Open File"
 msgstr "로그 열기"
 
-#: glade/journal.glade.h:5
-#, fuzzy
-msgid "Print"
-msgstr "포트:"
+#: glade/journal.glade.h:13
+msgid "Publish"
+msgstr ""
 
-#: glade/journal.glade.h:6
+#: glade/journal.glade.h:14
 msgid "Refresh"
 msgstr ""
 
-#: glade/journal.glade.h:7
+#: glade/journal.glade.h:15
 msgid "Save"
 msgstr "저장"
 
-#: glade/journal.glade.h:8
+#: glade/journal.glade.h:16
 #, fuzzy
 msgid "Save File"
 msgstr "팔레트 저장(_S)"
+
+#: glade/journal.glade.h:17
+msgid "URL:"
+msgstr ""
 
 #: glade/not-implemented.glade.h:1
 #, fuzzy
@@ -953,11 +982,6 @@ msgstr "CPU 정보"
 msgid ""
 "This function is not yet implemented!\n"
 "Coming Soon, I hope!"
-msgstr ""
-
-#: glade/notes.glade.h:1 glade/prefs.glade.h:1
-#: glade/project_properties.glade.h:6 glade/task_properties.glade.h:1
-msgid "*"
 msgstr ""
 
 #: glade/notes.glade.h:2
@@ -1550,20 +1574,25 @@ msgid "seconds"
 msgstr "초"
 
 #: glade/task_popup.glade.h:1
+#, fuzzy
+msgid "Copy Diary Entry"
+msgstr "슬라이더 갱신 간격"
+
+#: glade/task_popup.glade.h:2
 msgid "Cut Entry & _Times"
 msgstr ""
 
-#: glade/task_popup.glade.h:2
+#: glade/task_popup.glade.h:3
 #, fuzzy
 msgid "New Time Interval"
 msgstr "슬라이더 갱신 간격"
 
-#: glade/task_popup.glade.h:3
+#: glade/task_popup.glade.h:4
 #, fuzzy
 msgid "_Cut Diary Entry"
 msgstr "슬라이더 갱신 간격"
 
-#: glade/task_popup.glade.h:6
+#: glade/task_popup.glade.h:7
 msgid "_Paste Diary Entry"
 msgstr ""
 
@@ -1638,6 +1667,13 @@ msgstr "시간 기록기"
 #: gnotime.desktop.in.h:2
 msgid "To-Do List Organizer, Diary and Billing System"
 msgstr ""
+
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#, fuzzy
+#~ msgid "Print"
+#~ msgstr "포트:"
 
 #~ msgid "Clear _Daily Counter"
 #~ msgstr "매일 실행되는 카운터 지우기(_D)"
