@@ -1,0 +1,31 @@
+
+<html>
+<head>
+<title>To-Do List</title>
+</head>
+<body>
+<center>
+<h1>To-Do List</h1>
+
+This is a sample to-do list
+<br><br>
+The displayed columns, and the order in which they are displayed,
+can be changed by making a copy of the file <tt>"todo.ghtml"</tt>
+(probably in <tt>/usr/share/gtt/ghtml/C/todo.ghtml</tt>) 
+and editing the copy to suit your needs.  When finished, you can 
+add the new copy to your system by picking 
+the menu item "Reports... New Report".
+<br><br>
+
+<!--
+This is commented out and not visible
+<?scm (gtt-show-project '($memo  $start_datime $stop_datime $elapsed)) ?>
+-->
+
+<?scm (gtt-show-project '($memo $task_time $billable $bill_value))  ?>
+
+<br><br>
+That's all Folks!
+</center>
+</body>
+</html>
