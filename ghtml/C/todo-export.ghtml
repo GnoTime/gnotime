@@ -1,0 +1,10 @@
+Importance	Urgency	"Title"	"Description"	Status
+<?scm 
+      (gtt-show-projects (gtt-projects) 
+      (list        gtt-project-importance ''"\t"
+                   gtt-project-urgency    ''"\t"
+           ''"\""  gtt-project-title      ''"\"\t"
+           ''"\""  gtt-project-desc       ''"\"\t"
+                   gtt-project-status     ''"\n"
+            ))
+?>

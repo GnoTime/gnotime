@@ -11,6 +11,7 @@ gttghtml_DATA =      \
 	primer.ghtml      \
 	tab-delim.ghtml   \
 	todo.ghtml	      \
+	todo-export.ghtml \
 	gtt.scm
 
 
