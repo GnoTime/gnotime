@@ -34,12 +34,27 @@ struct PluginEditorDialog_s
 
 	GtkTreeView *treeview;
 	GtkTreeStore *treestore;
+	GArray *menus;   /* array of GnomeUIInfo */
 
 	GtkEntry  *plugin_name;    /* AKA 'Label' */
 	GnomeFileEntry  *plugin_path;
 	GtkEntry  *plugin_tooltip;
 	GnomeApp  *app;
 };
+
+/* ============================================================ */
+
+static void
+edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
+{
+	int i;
+
+printf ("duude redraw len=%d\n", ped->menus->len);
+	/* Walk the current menu list */
+	for (i=0; i<ped->menus->len; i++)
+	{
+	}
+}
 
 /* ============================================================ */
 
@@ -128,6 +143,57 @@ printf ("cancle cleicked\n");
 
 /* ============================================================ */
 
+static void 
+edit_plugin_add_cb (GtkWidget * w, gpointer data)
+{
+	PluginEditorDialog *dlg = data;
+	GnomeUIInfo item;
+	const char *title, *path, *tip;
+	int index;
+	GttPlugin *plg;
+printf ("add clicked\n");
+	
+	gtk_entry_set_text (dlg->plugin_name, "New Item");
+	/* gtk_entry_set_text (dlg->plugin_path, "");
+	gtk_entry_set_text (dlg->plugin_tooltip, ""); */
+
+	/* Get the dialog contents */
+	title = gtk_entry_get_text (dlg->plugin_name);
+	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
+	tip = gtk_entry_get_text (dlg->plugin_tooltip);
+
+   index = 0; /* XXX should be current in ctree */
+
+	/* Create a plugin */
+	plg = gtt_plugin_new (title, path);
+	plg->tooltip = g_strdup (tip);
+
+	/* Add item to array */
+	item.type = GNOME_APP_UI_ITEM;
+	item.label = title;
+	item.hint = tip;
+	item.moreinfo = NULL; /* XXX should be modified invoke_report */
+	item.user_data = plg;
+	item.unused_data = NULL;
+	item.pixmap_type = GNOME_APP_PIXMAP_STOCK;
+	item.pixmap_info = GNOME_STOCK_BLANK;
+	item.accelerator_key = 0;
+	item.ac_mods = (GdkModifierType) 0;
+	g_array_insert_val (dlg->menus, index, item);
+	
+	/* Redraw the tree */
+	edit_plugin_redraw_tree (dlg);
+}
+
+static void 
+edit_plugin_delete_cb (GtkWidget * w, gpointer data)
+{
+	PluginEditorDialog *dlg = data;
+printf ("delete cleicked\n");
+}
+
+/* ============================================================ */
+
 #define NCOL 3
 
 PluginEditorDialog *
@@ -147,6 +213,9 @@ edit_plugin_dialog_new (void)
 
 	dlg->dialog = GTK_DIALOG (glade_xml_get_widget (gtxml,  "Plugin Editor"));
 
+	/* ------------------------------------------------------ */
+	/* Dialog dismissal buttons */
+	
 	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_create_cb), dlg);
 	  
@@ -156,6 +225,14 @@ edit_plugin_dialog_new (void)
 	glade_xml_signal_connect_data (gtxml, "on_cancel_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_cancel_cb), dlg);
 
+	/* ------------------------------------------------------ */
+	/* Menu item add/delete buttons */
+	glade_xml_signal_connect_data (gtxml, "on_add_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_add_cb), dlg);
+	  
+	glade_xml_signal_connect_data (gtxml, "on_delete_button_clicked",
+		GTK_SIGNAL_FUNC (edit_plugin_delete_cb), dlg);
+	  
 	/* ------------------------------------------------------ */
 	/* Set up the Treeview Widget */
 	e = glade_xml_get_widget (gtxml, "editor treeview");
@@ -186,8 +263,10 @@ edit_plugin_dialog_new (void)
 		gtk_tree_view_insert_column (dlg->treeview, col, i);
 				
 	}
-	/* use garray */
-		
+
+	/* XXX should copy-in from system */
+	dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
+
 	/* ------------------------------------------------------ */
 	/* grab the various entry boxes and hook them up */
 	e = glade_xml_get_widget (gtxml, "plugin name");
