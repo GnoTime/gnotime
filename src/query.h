@@ -67,8 +67,8 @@
  *    find out what day 0 correpinds to in calendar time.
  */
 
-GArrary  gtt_project_get_daily_time (GttProject *proj);
-GArrary  gtt_project_total_daily_time (GttProject *proj);
+GArray * gtt_project_get_daily_time (GttProject *proj);
+GArray * gtt_project_total_daily_time (GttProject *proj);
 
 time_t   gtt_project_get_earliest_start (GttProject *proj);
 time_t   gtt_project_total_earliest_start (GttProject *proj);
