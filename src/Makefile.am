@@ -27,6 +27,7 @@ gnotime_SOURCES = 		\
 	props-invl.c	\
 	props-proj.c	\
 	props-task.c	\
+	query.c     \
 	timer.c		\
 	toolbar.c	\
 	util.c		\
@@ -60,6 +61,7 @@ noinst_HEADERS = 	\
 	props-invl.h	\
 	props-proj.h	\
 	props-task.h	\
+	query.h     \
 	timer.h		\
 	toolbar.h	\
 	util.h		\
