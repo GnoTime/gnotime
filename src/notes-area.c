@@ -58,9 +58,11 @@ task_memo_changed (GtkEntry *entry, NotesArea *na)
 	if (NULL == na->proj) return;
 	if (na->ignore_events) return;
 	
+	na->ignore_events = TRUE;
 	str = gtk_entry_get_text (entry);
 	tsk = gtt_project_get_first_task (na->proj);
 	gtt_task_set_memo (tsk, str);
+	na->ignore_events = FALSE;
 }
 
 /* ============================================================== */
@@ -73,9 +75,11 @@ task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	if (NULL == na->proj) return;
 	if (na->ignore_events) return;
 	
+	na->ignore_events = TRUE;
 	str = xxxgtk_textview_get_text (na->task_notes);
 	tsk = gtt_project_get_first_task (na->proj);
 	gtt_task_set_notes (tsk, str);
+	na->ignore_events = FALSE;
 }
 
 /* ============================================================== */
@@ -87,8 +91,10 @@ proj_title_changed (GtkEntry *entry, NotesArea *na)
 	if (NULL == na->proj) return;
 	if (na->ignore_events) return;
 	
+	na->ignore_events = TRUE;
 	str = gtk_entry_get_text (entry);
 	gtt_project_set_title (na->proj, str);
+	na->ignore_events = FALSE;
 }
 
 
@@ -101,8 +107,10 @@ proj_desc_changed (GtkEntry *entry, NotesArea *na)
 	if (NULL == na->proj) return;
 	if (na->ignore_events) return;
 	
+	na->ignore_events = TRUE;
 	str = gtk_entry_get_text (entry);
 	gtt_project_set_desc (na->proj, str);
+	na->ignore_events = FALSE;
 }
 
 
@@ -115,8 +123,10 @@ proj_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	if (NULL == na->proj) return;
 	if (na->ignore_events) return;
 	
+	na->ignore_events = TRUE;
 	str = xxxgtk_textview_get_text (na->proj_notes);
 	gtt_project_set_notes (na->proj, str);
+	na->ignore_events = FALSE;
 }
 
 /* ============================================================== */
@@ -287,6 +297,7 @@ static void
 redraw (GttProject *prj, gpointer data)
 {
 	NotesArea *na = data;
+	if (na->ignore_events) return;
 	notes_area_do_set_project (na, prj);
 }
 
