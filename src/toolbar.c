@@ -268,24 +268,29 @@ build_toolbar(void)
 void
 update_toolbar_sections(void)
 {
+	GtkWidget *otb;
 	GtkWidget *tb;
 	GtkWidget *w;
 
 	if (!app_window) return;
 	if (!mytbar) return;
 
-	w = GTK_WIDGET(mytbar->tbar)->parent;
-	if (w) {
-		gtk_container_remove(GTK_CONTAINER(w),
-				     GTK_WIDGET(mytbar->tbar));
+	otb = GTK_WIDGET(mytbar->tbar);
+	w = otb->parent;
+	if (w) 
+	{
+		gtk_container_remove(GTK_CONTAINER(w), otb);
 	}
 
-	/* XXX probably a memory leak if we don't free/destroy
-	 * all the toolbar widgets first ... */
+	/* XXX I think we have a memory leak here, I think we need to
+	 * free/destroy all the toolbar widgets first ... ?? */
 	g_free(mytbar);
 	mytbar = NULL;
 	tb = build_toolbar();
-	gtk_container_add(GTK_CONTAINER(w), GTK_WIDGET(mytbar->tbar));
+
+	// XXX this sure looks wrong, shouldn't we be adding to tb, not w ??
+	// XXX what if w is null ??
+	gtk_container_add(GTK_CONTAINER(w), otb);
 	gtk_widget_show(GTK_WIDGET(tb));
 }
 

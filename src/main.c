@@ -130,8 +130,11 @@ static void lock_gtt(void)
 			exit(0);
 		}
 	}
-	if (NULL == (f = fopen(fname, "wt"))) {
+	f = fopen(fname, "wt");
+	if (NULL == f) 
+	{
 		g_warning(_("Cannot create pid-file!"));
+		return;
 	}
 	fprintf(f, "%d\n", getpid());
 	fclose(f);

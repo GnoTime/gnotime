@@ -677,7 +677,7 @@ decode_column (GttGhtml *ghtml, const char * tok)
 		TASK_COL(TASK_TIME);
 	}
 	else
-	if (0 == strncmp (tok, "$billstatus", 9))
+	if (0 == strncmp (tok, "$billstatus", 11))
 	{
 		TASK_COL(BILLSTATUS);
 	}

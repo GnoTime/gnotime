@@ -247,7 +247,7 @@ printf ("duuude key eve\n");
 		default:
 			return FALSE;
 	}
-#endif XXX
+#endif // XXX
 	return FALSE;
 }
 

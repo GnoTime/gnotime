@@ -28,6 +28,7 @@
 #include "err-throw.h"
 #include "file-io.h"
 #include "gtt.h"
+#include "journal.h"
 #include "menucmd.h"
 #include "menus.h"
 #include "prefs.h"

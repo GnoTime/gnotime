@@ -299,7 +299,9 @@ gtt_load_gnome_config (const char *prefix)
 	prefix_len = 0;
 	if (prefix) prefix_len = strlen (prefix);
 	s = g_new (char, prefix_len + TOKLEN);
-	strcpy (s, prefix);
+	if (!s) return;
+	s[0] = 0;
+	if (prefix) strcpy (s, prefix);
 	p = &s[prefix_len];
 
 	/* If already running, and we are over-loading a new file,
