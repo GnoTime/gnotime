@@ -115,7 +115,7 @@
 		      <child>
 			<widget class="GtkLabel" id="idle label">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Dummy Text Do Not Translate</property>
+			  <property name="label" translatable="no">Dummy Text Do Not Translate</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -164,7 +164,7 @@
 		      <child>
 			<widget class="GtkLabel" id="credit label">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Dummy Text Do Not Translate</property>
+			  <property name="label" translatable="no">Dummy Text Do Not Translate</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -207,7 +207,7 @@
 	      <child>
 		<widget class="GtkLabel" id="time label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">hh:mm</property>
+		  <property name="label" translatable="no">hh:mm</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
