@@ -57,6 +57,10 @@ Some sample scheme forms, and their output:
      notes on that project.  <tt>gtt-show</tt> is a kind of 'print'
      statement (see below for more examples of <tt>gtt-show</tt>).
      <br><br>
+	  Note also that there is a <tt>(gtt-linked-project)</tt>
+	  which is the projected refered to in a link.  It is 
+	  frequenctly the same as the selected project, but need not be.
+     <br><br>
 
 <li> <tt>(gtt-show-basic-journal)</tt>  prints a basic layout of the journal, 
      see <tt>journal.ghtml</tt> for an example.
