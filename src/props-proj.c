@@ -137,11 +137,11 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 		ivl = (int) GET_MENU (dlg->status, "status");
 		gtt_project_set_status (dlg->proj, (GttProjectStatus) ivl);
 
-		tval = gnome_date_edit_get_date (dlg->start);
+		tval = gnome_date_edit_get_time (dlg->start);
 		gtt_project_set_estimated_start (dlg->proj, tval);
-		tval = gnome_date_edit_get_date (dlg->end);
+		tval = gnome_date_edit_get_time (dlg->end);
 		gtt_project_set_estimated_end (dlg->proj, tval);
-		tval = gnome_date_edit_get_date (dlg->due);
+		tval = gnome_date_edit_get_time (dlg->due);
 		gtt_project_set_due_date (dlg->proj, tval);
 
 		rate = atof (gtk_entry_get_text(dlg->sizing));
@@ -166,6 +166,7 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 	GttRank rank;
 	time_t tval;
 	char buff[132];
+	time_t now = time(NULL);
 
 	if (!dlg) return;
 
@@ -185,9 +186,9 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 		gtk_entry_set_text(dlg->interval, "0");
 		gtk_entry_set_text(dlg->gap, "0");
 
-		gnome_date_edit_set_time(dlg->start, 0);
-		gnome_date_edit_set_time(dlg->end, 0);
-		gnome_date_edit_set_time(dlg->due, 0);
+		gnome_date_edit_set_time(dlg->start, now);
+		gnome_date_edit_set_time(dlg->end, now);
+		gnome_date_edit_set_time(dlg->due, now+86400);
 		gtk_entry_set_text(dlg->sizing, "0.0");
 		gtk_entry_set_text(dlg->percent, "0");
 		return;
@@ -239,10 +240,13 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 	else if (GTT_COMPLETED   == status) gtk_option_menu_set_history (dlg->status, 4);
 
 	tval = gtt_project_get_estimated_start (proj);
+	if (-1 == tval) tval = now;
 	gnome_date_edit_set_time (dlg->start, tval);
 	tval = gtt_project_get_estimated_end (proj);
+	if (-1 == tval) tval = now+3600;
 	gnome_date_edit_set_time (dlg->end, tval);
 	tval = gtt_project_get_due_date (proj);
+	if (-1 == tval) tval = now+86400;
 	gnome_date_edit_set_time (dlg->due, tval);
 
 	g_snprintf (buff, 132, "%.2f", ((double) gtt_project_get_sizing(proj))/3600.0);
