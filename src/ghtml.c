@@ -548,11 +548,11 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 	rc = SCM_EOL;
 	if (!prj) return rc;
 	
-	/* get the project data */
-	arr = gtt_project_get_daily_time (prj, FALSE);
-	earliest = gtt_project_get_earliest_start (prj, FALSE);
+	/* Get the project data */
+	arr = gtt_project_get_daily_time (prj, TRUE);
+	earliest = gtt_project_get_earliest_start (prj, TRUE);
 	
-	/* format the start date */
+	/* Format the start date */
 	localtime_r (&earliest, &tday);
 	tday.tm_mday --;
 
@@ -570,13 +570,13 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 
 		/* Print time spent on project this day */
 		print_hours_elapsed (buff, 100, secs, TRUE);
-	   node = gh_str2scm (buff, strlen (buff));
+		node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, SCM_EOL);
 		
-		/* print date */
+		/* Print date */
 		rptdate = mktime (&tday);
 		print_date (buff, 100, rptdate);
-	   node = gh_str2scm (buff, strlen (buff));
+		node = gh_str2scm (buff, strlen (buff));
 		rpt = gh_cons (node, rpt);
 
 		/* Put a data type in the cdr slot */
