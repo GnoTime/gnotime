@@ -389,9 +389,9 @@ interval_insert_memo_cb(GtkWidget * w, gpointer data)
 	GttTask *newtask;
 	if (!wig->interval) return;
 
-	/* try to get billrates consistent across gap */
+	/* Try to get billrates consistent across gap */
 	newtask = gtt_interval_get_parent (wig->interval);
-	newtask = gtt_task_dup (newtask);
+	newtask = gtt_task_copy (newtask);
 	gtt_task_set_memo (newtask, _("New Diary Entry"));
 	gtt_task_set_notes (newtask, "");
 
@@ -410,7 +410,7 @@ interval_paste_memo_cb(GtkWidget * w, gpointer data)
 	/* Pop one off the stack, if stack has any depth to it */
 	if (NULL == cutted_task_list->next)
 	{
-		newtask = gtt_task_dup (cutted_task_list->data);
+		newtask = gtt_task_copy (cutted_task_list->data);
 	}
 	else
 	{
@@ -510,8 +510,8 @@ task_delete_memo_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
-	/* its physically impossible to cut just the memo,
-	 * when its the first one */
+	/* It is physically impossible to cut just the memo, without
+	 * also cutting the time entries, when its the first one. */
 	if (gtt_task_is_first_task (wig->task)) return;
 
 	gtt_task_merge_up (wig->task);
@@ -532,6 +532,16 @@ task_delete_times_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
+task_copy_clicked_cb(GtkWidget * w, gpointer data) 
+{
+	Wiggy *wig = (Wiggy *) data;
+
+	GttTask * tsk = gtt_task_copy (wig->task);
+	GList * ctl = g_list_prepend(cutted_task_list, tsk);
+	cutted_task_list = ctl;
+}
+
+static void
 task_paste_clicked_cb(GtkWidget * w, gpointer data) 
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -542,7 +552,7 @@ task_paste_clicked_cb(GtkWidget * w, gpointer data)
 	/* Pop one off the stack, if stack has any depth to it */
 	if (NULL == cutted_task_list->next)
 	{
-		newtask = gtt_task_dup (cutted_task_list->data);
+		newtask = gtt_task_copy (cutted_task_list->data);
 	}
 	else
 	{
@@ -1209,6 +1219,9 @@ do_show_report (const char * report, GttPlugin *plg,
 	  
 	glade_xml_signal_connect_data (glxml, "on_delete_times_activate",
 	        GTK_SIGNAL_FUNC (task_delete_times_clicked_cb), wig);
+	  
+	glade_xml_signal_connect_data (glxml, "on_copy_activate",
+	        GTK_SIGNAL_FUNC (task_copy_clicked_cb), wig);
 	  
 	glade_xml_signal_connect_data (glxml, "on_paste_activate",
 	        GTK_SIGNAL_FUNC (task_paste_clicked_cb), wig);

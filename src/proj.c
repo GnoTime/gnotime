@@ -1958,7 +1958,7 @@ gtt_task_new (void)
 }
 
 GttTask *
-gtt_task_dup (GttTask *old)
+gtt_task_copy (GttTask *old)
 {
 	GttTask *task;
 

@@ -481,13 +481,13 @@ int      gtt_project_list_total (void);
  * 'diary entries'.
  */
 
-/* The gtt_task_dup() routine makes a copy of the indicated task.
- *    it copies the memo, notes, adn billing info, but not the 
+/* The gtt_task_copy() routine makes a copy of the indicated task.
+ *    it copies the memo, notes, and billing info, but not the 
  *    intervals, nor the parent.
  */
 
 GttTask *	gtt_task_new (void);
-GttTask *	gtt_task_dup (GttTask *);
+GttTask *	gtt_task_copy (GttTask *);
 void 		gtt_task_destroy (GttTask *);
 
 void		gtt_task_set_memo (GttTask *, const char *);
