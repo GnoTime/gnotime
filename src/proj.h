@@ -495,17 +495,17 @@ int 		gtt_task_get_secs_ever (GttTask *tsk);
  * The is_running flag indicates whether the timer is running on this
  * interval.
  */
-GttInterval *	gtt_interval_new (void);
-void		gtt_interval_destroy (GttInterval *);
+GttInterval *   gtt_interval_new (void);
+void      gtt_interval_destroy (GttInterval *);
 
-void		gtt_interval_set_start (GttInterval *, time_t);
-void		gtt_interval_set_stop (GttInterval *, time_t);
-void		gtt_interval_set_running (GttInterval *, gboolean);
-void		gtt_interval_set_fuzz (GttInterval *, int);
-time_t		gtt_interval_get_start (GttInterval *);
-time_t		gtt_interval_get_stop (GttInterval *);
-gboolean	gtt_interval_is_running (GttInterval *);
-int		gtt_interval_get_fuzz (GttInterval *);
+void      gtt_interval_set_start (GttInterval *, time_t);
+void      gtt_interval_set_stop (GttInterval *, time_t);
+void      gtt_interval_set_running (GttInterval *, gboolean);
+void      gtt_interval_set_fuzz (GttInterval *, int);
+time_t    gtt_interval_get_start (GttInterval *);
+time_t    gtt_interval_get_stop (GttInterval *);
+gboolean  gtt_interval_is_running (GttInterval *);
+int       gtt_interval_get_fuzz (GttInterval *);
 
 /* The gtt_interval_new_insert_after() routine creates a new interval 
  *    and inserts it after the interval "where".  It returns the new 
@@ -525,11 +525,11 @@ int		gtt_interval_get_fuzz (GttInterval *);
  *    following it going after the specified.  
  */
 GttInterval *   gtt_interval_new_insert_after (GttInterval *where);
-GttInterval *	gtt_interval_merge_up (GttInterval *);
-GttInterval *	gtt_interval_merge_down (GttInterval *);
-void		gtt_interval_split (GttInterval *, GttTask *);
-GttTask *	gtt_interval_get_parent (GttInterval *);
-gboolean	gtt_interval_is_first_interval (GttInterval *);
-gboolean	gtt_interval_is_last_interval (GttInterval *);
+GttInterval *   gtt_interval_merge_up (GttInterval *);
+GttInterval *   gtt_interval_merge_down (GttInterval *);
+void            gtt_interval_split (GttInterval *, GttTask *);
+GttTask *       gtt_interval_get_parent (GttInterval *);
+gboolean        gtt_interval_is_first_interval (GttInterval *);
+gboolean        gtt_interval_is_last_interval (GttInterval *);
 
 #endif /* __GTT_PROJ_H__ */
