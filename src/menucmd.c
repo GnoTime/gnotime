@@ -1,6 +1,6 @@
-/*   GTimeTracker - a time tracker
+/*   Main menu callbacks for app main menubar for GTimeTracker 
  *   Copyright (C) 1997,98 Eckehard Berns
- *   Copyright (C) 2001,2002 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -137,6 +137,7 @@ about_box(GtkWidget *w, gpointer data)
 		"Kjartan Maraas  <kmaraas@gnome.org> - nn\n"
 		"Roy-Magne Mo <rmo@sunnmore.net> - nn\n"
 		"Kjartan Maraas <kmaraas@gnome.org> - no\n"
+		"Egil Kvaleberg <egil@kvaleberg.no> - no\n"
 		"GNOME PL Team <translators@gnome.pl> - pl\n"
 		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt> - pt\n"
 		"Duarte Loreto <happyguy_pt@hotmail.com> - pt\n"
@@ -320,7 +321,7 @@ void
 paste_project(GtkWidget *w, gpointer data)
 {
 	GttProject *sib_prj;
-	GttProject *p;
+	GttProject *p, *focus_prj;
 	
 	sib_prj = ctree_get_focus_project (global_ptw);
 
@@ -340,6 +341,12 @@ paste_project(GtkWidget *w, gpointer data)
 		return;
 	}
 	ctree_insert_before(global_ptw, p, sib_prj);
+
+	/* Set the notes are to whatever the new focus project is. 
+	 * (which should be 'p', bbut we play it safe to avoid
+	 * weird inconsistent state.) */
+	focus_prj = ctree_get_focus_project (global_ptw);
+	notes_area_set_project (global_na, focus_prj);
 }
 
 

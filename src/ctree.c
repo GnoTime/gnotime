@@ -280,7 +280,10 @@ set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
 		if (!ctn) break;
 		if (gtk_ctree_node_get_row_data(ctree, ctn) == ptn)
 		{
+			/* The freeze-draw cycle forces a redraw */
+			gtk_clist_freeze (GTK_CLIST(ctree));
     		GTK_CLIST(ctree)->focus_row = i;
+			gtk_clist_thaw (GTK_CLIST(ctree));
 			break;
 		}
 		i++;
@@ -334,6 +337,7 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 		case 'j':
 			if(GTK_CLIST(ctree)->focus_row < GTK_CLIST(ctree)->rows - 1)
 			{
+				/* The freeze-draw cycle forces a redraw */
 				gtk_clist_freeze(GTK_CLIST(ctree));
 				GTK_CLIST(ctree)->focus_row += 1;
 				gtk_clist_thaw(GTK_CLIST(ctree));
@@ -344,6 +348,7 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 		case 'k':
 			if(GTK_CLIST(ctree)->focus_row > 0)
 			{
+				/* The freeze-draw cycle forces a redraw */
 				gtk_clist_freeze(GTK_CLIST(ctree));
 				GTK_CLIST(ctree)->focus_row -= 1;
 				gtk_clist_thaw(GTK_CLIST(ctree));
@@ -380,7 +385,8 @@ widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
 	gtk_clist_get_selection_info(clist,bevent->x,bevent->y,&row,&column);
 	if (0 > row) return FALSE;
 	
-	/* change the focus row */
+	/* Change the focus row */
+	/* The freeze-draw cycle forces a redraw */
 	gtk_clist_freeze(clist);
 	clist->focus_row = row;
 	gtk_clist_thaw(clist);
