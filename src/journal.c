@@ -735,7 +735,6 @@ edit_journal(GtkWidget *w, gpointer data)
 	char * path;
 
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
 
 	path = gtt_ghtml_resolve_path ("journal.ghtml");
 	do_show_report (path, prj);
@@ -748,7 +747,6 @@ edit_alldata(GtkWidget *w, gpointer data)
 	char * path;
 
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
 
 	path = gtt_ghtml_resolve_path ("bigtable.ghtml");
 	do_show_report (path, prj);
@@ -761,7 +759,6 @@ edit_invoice(GtkWidget *w, gpointer data)
 	char * path;
 
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
 
 	path = gtt_ghtml_resolve_path ("invoice.ghtml");
 	do_show_report (path, prj);
@@ -774,7 +771,6 @@ edit_primer(GtkWidget *w, gpointer data)
 	char * path;
 
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
 
 	path = gtt_ghtml_resolve_path ("primer.ghtml");
 	do_show_report (path, prj);
@@ -787,7 +783,6 @@ invoke_report(GtkWidget *widget, gpointer data)
 	char * filepath = (char *) data;
 
 	prj = ctree_get_focus_project (global_ptw);
-	if (!prj) return;
 
 	/* do not gnome-filepath this, this is for user-defined reports */
 	do_show_report (filepath, prj);

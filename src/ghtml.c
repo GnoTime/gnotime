@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "app.h"
+#include "ctree.h"
 #include "gtt.h"
 #include "ghtml.h"
 #include "proj.h"
@@ -83,7 +85,7 @@ struct gtt_ghtml_s
 
 /* ============================================================== */
 
-static GttGhtml *ghtml_global_hack = NULL;   /* seems like guile screwed the pooch */
+static GttGhtml *ghtml_guile_global_hack = NULL;   /* seems like guile screwed the pooch */
 
 /* ============================================================== */
 /* a simple, hard-coded version of show_table */
@@ -583,10 +585,18 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 /* ============================================================== */
 
+static void
+do_show_project (GttGhtml *ghtml, GttProject *prj)
+{
+	(ghtml->write_stream) (ghtml, "duude", 5, ghtml->user_data);
+}
+
+/* ============================================================== */
+
 static SCM 
 gtt_hello (void)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	char *p;
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
@@ -603,7 +613,7 @@ gtt_hello (void)
 static SCM 
 project_title (void)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	const char *p;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
@@ -621,7 +631,7 @@ project_title (void)
 static SCM 
 project_desc (void)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	const char *p;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
@@ -639,7 +649,7 @@ project_desc (void)
 static SCM 
 show_journal (void)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 
 	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
 
@@ -783,7 +793,7 @@ decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 static SCM
 show_table (SCM col_list)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-table");
 	rc = decode_scm_col_list (ghtml, col_list);
@@ -794,7 +804,7 @@ show_table (SCM col_list)
 static SCM
 show_invoice (SCM col_list)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
 	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-invoice");
 	rc = decode_scm_col_list (ghtml, col_list);
@@ -805,7 +815,7 @@ show_invoice (SCM col_list)
 static SCM
 show_export (SCM col_list)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	gboolean save_show_html = ghtml->show_html;
 	char *save_delim = ghtml->delim;
 	
@@ -821,6 +831,17 @@ show_export (SCM col_list)
 	ghtml->show_html = save_show_html;
 	ghtml->delim = save_delim;
 	
+	return rc;
+}
+
+static SCM 
+show_project (SCM col_list)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	SCM rc;
+	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-project");
+	rc = decode_scm_col_list (ghtml, col_list);
+	do_show_project (ghtml, ghtml->prj);
 	return rc;
 }
 
@@ -870,8 +891,57 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 static SCM
 show_scm (SCM node_list)
 {
-	GttGhtml *ghtml = ghtml_global_hack;
+	GttGhtml *ghtml = ghtml_guile_global_hack;
 	return do_show_scm (ghtml, node_list);
+}
+
+/* ============================================================== */
+/* Cheesy hack, this returns a pointer to the currently
+ * selected project as a ulong.  Its baaaad,  but achaives its 
+ * purpose for now.
+ */
+
+static SCM
+do_ret_selected_project (GttGhtml *ghtml)
+{
+	SCM rc;
+	GttProject *prj = ctree_get_focus_project (global_ptw);
+	rc = gh_ulong2scm ((unsigned long) prj);
+	return rc;
+}
+
+static SCM
+ret_selected_project (void)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_selected_project (ghtml);
+}
+
+/* ============================================================== */
+
+static SCM
+do_ret_project_title (GttGhtml *ghtml, SCM node)
+{
+	const char * title;
+	GttProject * prj;
+	SCM rc;
+	if (!SCM_NUMBERP(node))
+	{
+		printf ("duuuude badd !!!! \n");
+		rc = gh_str2scm ("(null)", 6);
+		return rc;
+	}
+	prj = (GttProject *) gh_scm2ulong (node);
+	title = gtt_project_get_title (prj);
+	rc = gh_str2scm (title, strlen (title));
+	return rc;
+}
+
+static SCM
+ret_project_title (SCM node)
+{
+	GttGhtml *ghtml = ghtml_guile_global_hack;
+	return do_ret_project_title (ghtml, node);
 }
 
 /* ============================================================== */
@@ -906,7 +976,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ghtml->prj = prj;
 	
 	/* ugh. gag. choke. puke. */
-	ghtml_global_hack = ghtml;
+	ghtml_guile_global_hack = ghtml;
 
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream)
@@ -1005,14 +1075,17 @@ static int is_inited = 0;
 static void
 register_procs (void)
 {
-	gh_new_procedure("gtt-hello",   gtt_hello,   0, 0, 0);
+	gh_new_procedure("gtt-hello",                gtt_hello,      0, 0, 0);
 	gh_new_procedure("gtt-show-project-title",   project_title,  0, 0, 0);
 	gh_new_procedure("gtt-show-project-desc",    project_desc,   0, 0, 0);
 	gh_new_procedure("gtt-show-basic-journal",   show_journal,   0, 0, 0);
 	gh_new_procedure("gtt-show-table",           show_table,     1, 0, 0);
 	gh_new_procedure("gtt-show-invoice",         show_invoice,   1, 0, 0);
-	gh_new_procedure("gtt-show-export",          show_export,   1, 0, 0);
+	gh_new_procedure("gtt-show-export",          show_export,    1, 0, 0);
+	gh_new_procedure("gtt-show-project",         show_project,   1, 0, 0);
 	gh_new_procedure("gtt-show",                 show_scm,       1, 0, 0);
+	gh_new_procedure("gtt-selected-project",     ret_selected_project,  0, 0, 0);
+	gh_new_procedure("gtt-project-title",        ret_project_title,  1, 0, 0);
 }
 
 

@@ -29,7 +29,8 @@
  * can be sent anywhere desired. For example, this could, in theory
  * be used inside a cgi-bin script.  (this is a plannned, multi-user,
  * web-based version that we hope to code up someday).  Currently, 
- * the only user of this interface is GtkHTML
+ * the stream is used to push data into GtkHTML, and also to fwrite()
+ * for the save-to-file function.
  */
 
 typedef struct gtt_ghtml_s GttGhtml;
