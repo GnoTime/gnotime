@@ -9,6 +9,19 @@ measure the time spent on to-do list items and generate invoices.
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
 
+
+New in the 2.1.6 release:
+-------------------------
+The "Daily Report" will show not only the total hours worked,
+day by day, but will also show a bullited list of tasks worked
+that day.  The main window display can now show total hours worked
+for previous day and previous week.  Sub-projects can now be fetched
+via scheme, allowing them to be included in reports.  The scheme
+subsystem now includes an elementary type system, allowing more
+complex structures to be built.  A half-dozen different crashes
+have been fixed.
+
+
 New in the 2.1.5 release:
 -------------------------
 The main window has been reformulated in a big way:  It
