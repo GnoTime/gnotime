@@ -1,4 +1,15 @@
 
+Thu Dec 26 07:59:31 CST 2002 Linas Vepstas <linas@linas.org>
+
+	* main.c: remove development warning message
+	* gnotime.desktop.in: fiddling with desktop location
+	* app.c: attempt to fix statusbar bug
+	* ghtml/C/*.ghtml: misc cleanup
+	* plugin.c: fix gnome2 port buglet
+	* ghtml.c: expand quality of support for scheme
+	* ghtml.c: eliminate buffer overrun that may be causing crashes
+	* journal.c, ghtml.c: add prelim support for to-do list
+
 Tue Dec 24 12:58:04 CST 2002 Linas Vepstas <linas@linas.org>
 
 	* ctree.c: Major redesign: Use double-click to start project timer
@@ -7,6 +18,7 @@ Tue Dec 24 12:58:04 CST 2002 Linas Vepstas <linas@linas.org>
 	* toolbar.c: fix the start/stop timer icon
 	* app.c: fix use of incorrect app data file
 	* menucmd.c: add bug-fixer, translator credits
+	* publish gnotime-2.1.0 containing above fixes
 
 Mon Dec 23 13:43:14 CST 2002 Linas Vepstas <linas@linas.org>
 
