@@ -172,14 +172,14 @@ about_box(GtkWidget *w, gpointer data)
 	about = gnome_about_new(GTT_APP_TITLE,
 				    VERSION,
 				    "Copyright (C) 1997,98 Eckehard Berns\n"
-				    "Copyright (C) 2001,2002 Linas Vepstas",
+				    "Copyright (C) 2001,2002,2003 Linas Vepstas",
 #ifdef DEBUG
 				    __DATE__ ", " __TIME__,
 #else
  _("GTimeTracker is a combination stop-watch, diary, consultant billing "
    "system and project manager.  You can measure the amount of time you "
    "spend on a task, associate a memo with it, set a billing rate, print "
-   "an invoice, as well as track that status of other projects."),
+   "an invoice, as well as track the status of other projects."),
 
 #endif
 				    authors,
