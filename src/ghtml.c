@@ -46,7 +46,7 @@ static SCM
 reverse_list (SCM node_list)
 {
 	SCM rc, node;
-	rc = gh_eval_str ("()");
+	rc = SCM_EOL;
 
 	while (FALSE == SCM_NULLP(node_list))
 	{
@@ -82,14 +82,17 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 		SCM proj_list = project;
 		
 		/* Get a pointer to null */
-		rc = gh_eval_str ("()");
+		rc = SCM_EOL;
 	
 		while (FALSE == SCM_NULLP(proj_list))
 		{
 			SCM evl;
 			project = gh_car (proj_list);
 			evl = do_apply_on_project (ghtml, project, func);
-			rc = gh_cons (evl, rc);
+			if (FALSE == SCM_NULLP (evl))
+			{
+				rc = gh_cons (evl, rc);
+			}
 			proj_list = gh_cdr (proj_list);
 		}
 
@@ -107,8 +110,7 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 	}
 	
 	g_warning ("expecting gtt project as argument, got something else\n");
-	rc = gh_eval_str ("()");
-	return rc;
+	return SCM_EOL;
 }
 
 /* ============================================================== */
@@ -136,14 +138,17 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 		SCM task_list = task;
 		
 		/* Get a pointer to null */
-		rc = gh_eval_str ("()");
+		rc = SCM_EOL;
 	
 		while (FALSE == SCM_NULLP(task_list))
 		{
 			SCM evl;
 			task = gh_car (task_list);
 			evl = do_apply_on_task (ghtml, task, func);
-			rc = gh_cons (evl, rc);
+			if (FALSE == SCM_NULLP (evl))
+			{
+				rc = gh_cons (evl, rc);
+			}
 			task_list = gh_cdr (task_list);
 		}
 
@@ -161,8 +166,7 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 	}
 	
 	g_warning ("expecting gtt task as argument, got something else\n");
-	rc = gh_eval_str ("()");
-	return rc;
+	return SCM_EOL;
 }
 
 /* ============================================================== */
@@ -190,14 +194,17 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 		SCM invl_list = invl;
 		
 		/* Get a pointer to null */
-		rc = gh_eval_str ("()");
+		rc = SCM_EOL;
 	
 		while (FALSE == SCM_NULLP(invl_list))
 		{
 			SCM evl;
 			invl = gh_car (invl_list);
 			evl = do_apply_on_interval (ghtml, invl, func);
-			rc = gh_cons (evl, rc);
+			if (FALSE == SCM_NULLP (evl))
+			{
+				rc = gh_cons (evl, rc);
+			}
 			invl_list = gh_cdr (invl_list);
 		}
 
@@ -216,8 +223,7 @@ do_apply_on_interval (GttGhtml *ghtml, SCM invl,
 	
 	
 	g_warning ("expecting gtt interval as argument, got something else\n");
-	rc = gh_eval_str ("()");
-	return rc;
+	return SCM_EOL;
 }
 
 /* ============================================================== */
@@ -231,7 +237,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	size_t len;
 	char * str = NULL;
 
-	if (NULL == ghtml->write_stream) return SCM_UNSPECIFIED;
+	if (NULL == ghtml->write_stream) return SCM_EOL;
 
 	/* Need to test for numbers first, since later tests 
 	 * may core-dump guile-1.3.4 if the node was in fact a number. */
@@ -280,7 +286,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	}
 
 	/* We could return the printed string, but I'm not sure why.. */
-	return SCM_UNSPECIFIED;
+	return SCM_EOL;
 }
 
 static SCM
@@ -347,7 +353,7 @@ do_set_links_on (GttGhtml *ghtml)
 	{
 		ghtml->show_links = TRUE;
 	}
-	return SCM_UNSPECIFIED;
+	return SCM_EOL;
 }
 
 static SCM
@@ -361,7 +367,7 @@ static SCM
 do_set_links_off (GttGhtml *ghtml)
 {
 	ghtml->show_links = FALSE;
-	return SCM_UNSPECIFIED;
+	return SCM_EOL;
 }
 
 static SCM
@@ -381,7 +387,7 @@ do_ret_projects (GttGhtml *ghtml, GList *proj_list)
 	GList *n;
 
 	/* Get a pointer to null */
-	rc = gh_eval_str ("()");
+	rc = SCM_EOL;
 	if (!proj_list) return rc;
 	
 	/* find the tail */
@@ -429,7 +435,7 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
 	GList *n, *task_list;
 
 	/* Get a pointer to null */
-	rc = gh_eval_str ("()");
+	rc = SCM_EOL;
 	if (!prj) return rc;
 	
 	/* Get list of tasks, then get tail */
@@ -471,7 +477,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 	ghtml->last_ivl_time = 0;
 
 	/* Get a pointer to null */
-	rc = gh_eval_str ("()");
+	rc = SCM_EOL;
 	if (!tsk) return rc;
 	
 	/* Get list of intervals, then get tail */
@@ -865,7 +871,7 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 		return gh_str2scm (buff, strlen (buff));
 	}
 	
-	return SCM_UNSPECIFIED; /* Not reached */
+	return SCM_EOL; /* Not reached */
 }
 
 static SCM
