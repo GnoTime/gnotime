@@ -3,6 +3,8 @@ AM_INIT_AUTOMAKE(gnotime, 2.1.6)
 
 AC_PROG_INTLTOOL
 
+AC_PROG_LIBTOOL
+
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
@@ -131,7 +133,8 @@ dnl Checks for library functions.
 dnl *****************************
 
 AC_FUNC_STRFTIME
-AC_CHECK_FUNCS(getcwd gettimeofday getwd strdup strtoul)
+AC_CHECK_FUNCS(getcwd gettimeofday getwd stpcpy strdup strtoul)
+AC_REPLACE_FUNCS(strptime localtime_r)
 
 dnl ************************************************
 dnl X development libraries check
@@ -199,6 +202,8 @@ gconf/Makefile
 ghtml/C/Makefile
 ghtml/Makefile
 glade/Makefile
+lib/Makefile
+lib/gnc/Makefile
 po/Makefile.in
 redhat/Makefile
 redhat/gnotime.spec
