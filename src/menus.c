@@ -222,48 +222,52 @@ menus_create(GnomeApp *app)
 }
 
 /* Global: the user-defined reports pull-down menu */
-GnomeUIInfo *gtt_reports_menu = NULL;
+static GnomeUIInfo *reports_menu = NULL;
 	
-void
-menus_add_plugins (GnomeApp *app)
+GnomeUIInfo *
+gtt_get_reports_menu (void)
 {
+	return (reports_menu);
+}
+
+void
+gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
+{
+	int i;
 	char * path;
-	GList *node;
-	int len, i;
-
-	node = gtt_plugin_get_list ();
-
-	len = g_list_length (node);
-	if (0 >= len) return;
-
-	len ++;
-	gtt_reports_menu = g_new0 (GnomeUIInfo, len);
-
-	i = 0;
-	for (node = gtt_plugin_get_list(); node; node=node->next)
+	
+	if (reports_menu && (new_menus != reports_menu)) 
 	{
-		GttPlugin *plg = node->data;
-
-		gtt_reports_menu[i].type = GNOME_APP_UI_ITEM;
-		gtt_reports_menu[i].label = plg->name;
-		gtt_reports_menu[i].hint = plg->tooltip;
-		gtt_reports_menu[i].moreinfo = invoke_report;
-		gtt_reports_menu[i].user_data = plg->path;
-		gtt_reports_menu[i].unused_data = NULL;
-		gtt_reports_menu[i].pixmap_type = GNOME_APP_PIXMAP_STOCK;
-		gtt_reports_menu[i].pixmap_info = GNOME_STOCK_BLANK;
-		gtt_reports_menu[i].accelerator_key = 0;
-		gtt_reports_menu[i].ac_mods = (GdkModifierType) 0;
-
-		i++;
+		for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+		{
+			gtt_plugin_free(reports_menu[i].user_data);
+		}
+		g_free (reports_menu);
 	}
-	gtt_reports_menu[i].type = GNOME_APP_UI_ENDOFINFO;
 
-	/* deal with the i18n menu path ...*/
+	reports_menu = new_menus;
+	if (!reports_menu)
+	{
+		reports_menu = g_new0 (GnomeUIInfo, 1);
+		reports_menu[0].type = GNOME_APP_UI_ENDOFINFO;
+	}
+
+	/* Deal with the i18n menu path ...*/
 	/* (is this right ??? or is this pre-i18n ???) */
 	path = g_strdup_printf ("%s/<Separator>", _("Reports"));
 
-	gnome_app_insert_menus (app, path, gtt_reports_menu);
+	/* fixup */
+	for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+	{
+		reports_menu[i].moreinfo = invoke_report;
+	}
+	gnome_app_insert_menus (app, path, reports_menu);
+}
+
+void
+menus_add_plugins (GnomeApp *app)
+{
+	gtt_set_reports_menu (app, reports_menu);
 }
 
 

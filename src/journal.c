@@ -32,6 +32,7 @@
 #include "ctree-gnome2.h"
 #include "journal.h"
 #include "ghtml.h"
+#include "plug-in.h"
 #include "proj.h"
 #include "props-invl.h"
 #include "props-task.h"
@@ -850,12 +851,12 @@ void
 invoke_report(GtkWidget *widget, gpointer data)
 {
 	GttProject *prj;
-	char * filepath = (char *) data;
+	GttPlugin *plg = data;
 
 	prj = ctree_get_focus_project (global_ptw);
 
-	/* do not gnome-filepath this, this is for user-defined reports */
-	do_show_report (filepath, prj);
+	/* Do not gnome-filepath this, this is for user-defined reports */
+	do_show_report (plg->path, prj);
 }
 
 /* ===================== END OF FILE ==============================  */

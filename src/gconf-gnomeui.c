@@ -98,7 +98,7 @@ string_to_gnome_ui_pixmap_type (const char * str)
 /* Save the contents of a GnomeUIInfo structure with GConf */
 
 void
-gtt_save_gnomeui_in_gconf (GConfClient *client, 
+gtt_save_gnomeui_to_gconf (GConfClient *client, 
                 const char * path, GnomeUIInfo *gui)
 {
 	char *savepath, *tokptr;

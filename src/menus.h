@@ -19,10 +19,18 @@
 #ifndef __GTT_MENUS_H__
 #define __GTT_MENUS_H__
 
+#include <gnome.h>
+
 GtkWidget *menus_get_popup(void);
 void menus_create(GnomeApp *app);
 void menus_set_states(void);
 
 void menus_add_plugins(GnomeApp *app);
+
+/* Return pointer to user-defined reports menu */
+GnomeUIInfo * gtt_get_reports_menu (void);
+
+/* Install the indicate user reports menu */
+void gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus);
 
 #endif /* __GTT_MENUS_H__ */

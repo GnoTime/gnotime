@@ -30,11 +30,9 @@ typedef struct GttPlugin_s
 
 } GttPlugin;
 
-/* Return the list of report plugins */
-GList * gtt_plugin_get_list (void);
-
+/* Simple allocator */
 GttPlugin * gtt_plugin_new (const char * name, const char * path);
-
+void gtt_plugin_free (GttPlugin *plg);
 
 /*-------------------------------------------- */
 /* A really simple, stupid GUI that allows user to enter in the path

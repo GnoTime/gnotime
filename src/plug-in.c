@@ -39,14 +39,6 @@ struct NewPluginDialog_s
 
 /* ============================================================ */
 
-static GList *plugin_list = NULL;
-
-GList * 
-gtt_plugin_get_list (void)
-{
-	return plugin_list;
-}
-
 GttPlugin *
 gtt_plugin_new (const char * nam, const char * pth)
 {
@@ -59,9 +51,16 @@ gtt_plugin_new (const char * nam, const char * pth)
 	plg->path = g_strdup(pth);
 	plg->tooltip = NULL;
 
-	plugin_list = g_list_append (plugin_list, plg);
-
 	return plg;
+}
+
+void 
+gtt_plugin_free (GttPlugin *plg)
+{
+	if (!plg) return;
+	if (plg->name) g_free (plg->name);
+	if (plg->path) g_free (plg->path);
+	if (plg->tooltip) g_free (plg->tooltip);
 }
 
 /* ============================================================ */

@@ -28,6 +28,7 @@
 #include "gconf-io.h"
 #include "gconf-io-p.h"
 #include "gtt.h"
+#include "menus.h"
 #include "plug-in.h"
 #include "prefs.h"
 #include "timer.h"
@@ -41,9 +42,41 @@ extern time_t last_timer;  /* XXX */
 extern int cur_proj_id;
 extern int run_timer;
 
-extern GnomeUIInfo *gtt_reports_menu;
-
 #define GTT_GCONF "/apps/gnotime"
+
+/* ======================================================= */
+
+void
+gtt_save_reports_menu (void)
+{
+	int i;
+	char s[120], *p;
+	GnomeUIInfo * reports_menu;
+	GConfClient *client;
+
+	client = gconf_client_get_default ();
+	reports_menu = gtt_get_reports_menu();
+	
+	/* Write out the customer report info */
+	for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+	{
+		GttPlugin *plg = reports_menu[i].user_data;
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
+		p = s + strlen(s);
+	   strcpy (p, "Name");
+		F_SETSTR (s, plg->name);
+		
+	   strcpy (p, "Path");
+		F_SETSTR (s, plg->path);
+
+	   strcpy (p, "Tooltip");
+		F_SETSTR (s, plg->tooltip);
+
+	   *p = 0;
+		gtt_save_gnomeui_to_gconf (client, s, &reports_menu[i]); 
+	}
+	SETINT ("/Misc/NumReports", i);
+}
 
 /* ======================================================= */
 /* Save only the GUI configuration info, not the actual data */
@@ -52,8 +85,7 @@ extern GnomeUIInfo *gtt_reports_menu;
 void
 gtt_gconf_save (void)
 {
-	GList *node;
-	char s[120], *p, *pp;
+	char s[120];
 	int i;
 	int x, y, w, h;
 	const char *xpn;
@@ -184,27 +216,8 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
 	SETINT ("/Misc/NumProjects", -1);
 
-	/* Write out the customer report info */
-	i = 0;
-	for (node = gtt_plugin_get_list(); node; node=node->next)
-	{
-		GttPlugin *plg = node->data;
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
-		p = s + strlen(s);
-	   strcpy (p, "Name");
-		F_SETSTR (s, plg->name);
-		
-	   strcpy (p, "Path");
-		F_SETSTR (s, plg->path);
-
-	   strcpy (p, "Tooltip");
-		F_SETSTR (s, plg->tooltip);
-
-	   *p = 0;
-		gtt_save_gnomeui_in_gconf (client, s, &gtt_reports_menu[i]); 
-		i++;
-	}
-	SETINT ("/Misc/NumReports", i);
+	/* Write out the user's report menu structure */
+	gtt_save_reports_menu ();
 
    /* Sync to file.
 	 * XXX if this fails, the error is serious, and there should be a 
@@ -257,6 +270,53 @@ gtt_gconf_exists (void)
 	}
 
 	return TRUE;
+}
+
+/* ======================================================= */
+
+void
+gtt_restore_reports_menu (GnomeApp *app)
+{
+	int i, num;
+	char s[120], *p;
+	GList *node;
+	GnomeUIInfo * reports_menu;
+	GConfClient *client;
+
+	client = gconf_client_get_default ();
+	
+	/* Read in the user-defined report locations */
+	num = GETINT ("/Misc/NumReports", 0);
+	reports_menu =  g_new0 (GnomeUIInfo, num+1);
+	
+	for (i = 0; i < num; i++) 
+	{
+		GttPlugin *plg;
+		const char * name, *path, *tip;
+
+	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
+		p = s + strlen(s);
+		
+	   strcpy (p, "Name");
+		name = F_GETSTR (s, "");
+		
+	   strcpy (p, "Path");
+		path = F_GETSTR(s, "");
+		
+	   strcpy (p, "Tooltip");
+		tip = F_GETSTR(s, "");
+		plg = gtt_plugin_new (name, path);
+		plg->tooltip = g_strdup (tip);
+
+	   *p = 0;
+		gtt_restore_gnomeui_from_gconf (client, s, &reports_menu[i]); 
+
+		/* fixup */
+		reports_menu[i].user_data = plg;
+	}
+	reports_menu[i].type = GNOME_APP_UI_ENDOFINFO;
+
+	gtt_set_reports_menu (app, reports_menu);
 }
 
 /* ======================================================= */
@@ -395,23 +455,9 @@ gtt_gconf_load (void)
 			}
 		}
 	}
-
+	
 	/* Read in the user-defined report locations */
-	num = GETINT ("/Misc/NumReports", 0);
-	for (i = 0; i < num; i++) 
-	{
-		GttPlugin *plg;
-		const char * name, *path, *tip;
-
-		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Name", i);
-		name = F_GETSTR (s, "");
-		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Path", i);
-		path = F_GETSTR(s, "");
-		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/Tooltip", i);
-		tip = F_GETSTR(s, "");
-		plg = gtt_plugin_new (name, path);
-		plg->tooltip = g_strdup (tip);
-	}
+	gtt_restore_reports_menu(GNOME_APP(app_window));
 
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
 	/* Use string for time, to avoid unsigned-long problems */
