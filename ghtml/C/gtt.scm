@@ -175,4 +175,23 @@
 )
 
 ;; ---------------------------------------------------------     
+; The below identifies a 'daily-obj' type, with getters for its two members.
+; The first member is the date,
+; The second member is the amount of time spent on the project on that date.
+; At this point, both members are strings; this may change someday.
+
+(define (gtt-is-daily-type? daily-obj)  (equal? (cdr daily-obj) "daily") )
+
+(define (gtt-daily-day-str  daily-obj)  
+        (if (gtt-is-daily-type? daily-obj)
+            (caar daily-obj) ))
+            
+(define (gtt-daily-time-str daily-obj)  
+        (if (gtt-is-daily-type? daily-obj)
+            (cadar daily-obj) ))
+
+(define (gtt-show-daily dly_list func_list)
+        (gtt-show  (gtt-apply-func-list-to-obj-list func_list dly_list)))
+
+;; ---------------------------------------------------------     
 ;; --------------------- end of file -----------------------     
