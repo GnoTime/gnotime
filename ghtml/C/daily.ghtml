@@ -35,7 +35,7 @@ to create your own custom reports.
    (list 
       ''"<tr>"
       ''"<td> &nbsp; " gtt-daily-day-str  ''" &nbsp; </td>"
-      ''"<td align='right'> &nbsp; "     gtt-daily-time-str ''" &nbsp; </td>"
+      ''"<td align='right'> &nbsp; "  gtt-daily-time-str ''"&nbsp; </td>"
       ''"<td align='left'> &nbsp; "
       ''"<ul>"
       (lambda (dobj) (gtt-show-daily-tasks dobj 
@@ -43,7 +43,7 @@ to create your own custom reports.
                  ''"<li><b>" 
                  (lambda (x) (gtt-project-title (gtt-task-parent x)))
                  ''" -- " 
-                 gtt-task-memO 
+                 gtt-task-memo
                  ''"</b> &nbsp;" 
                  gtt-task-notes
                  ''"&nbsp;" 
