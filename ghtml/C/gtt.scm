@@ -50,7 +50,7 @@
 ; to the object, omitting null results from the list
 ; 
 ; XXX FIXME the vars first_func, next_func, parent_obj,
-; next_obj, result, appres, is-billable  
+; next_obj, result, appres, is-bill, is-hold, is-paid  
 ; are scoped globally to the functions being applied.   This 
 ; introducees potential symbol conflist.  This needds to be fixed!
 ;
@@ -85,6 +85,7 @@
 ; to the object, omitting null results from the list
 ; 
 (define (gtt-apply-func-list-to-obj-list func_list obj_list) 
+   (if (null? obj_list) ()
    (let ( (parent_obj (car obj_list))
           (next_obj   (cdr obj_list))
         )
@@ -105,7 +106,7 @@
                      (gtt-apply-func-list-to-obj-list func_list next_obj))
             )
          )
-)))
+))))
 
 ;; ---------------------------------------------------------     
 ; The gtt-show-projects is syntatic sugar for displaying a 
@@ -150,12 +151,27 @@
 ;; The gtt-billable-tasks takes a list of tasks, and returns
 ;; a list of only those that are billable.
 
-(define (gtt-billable-tasks tasks)
-        (define (is-billable task)
-                (if (not (equal? (gtt-task-billable task) '"Not Billable"))
+(define (gtt-filter-bill-tasks tasks)
+        (define (is-bill task)
+                (if (equal? (gtt-task-billstatus task) '"Bill")
+                  task  ()))
+        (gtt-apply-func-list-to-obj-list (list is-bill) tasks)
+)
+
+(define (gtt-filter-paid-tasks tasks)
+        (define (is-paid task)
+                (if (equal? (gtt-task-billstatus task) '"Paid")
                   task  ())
         )
-        (gtt-apply-func-list-to-obj-list (list is-billable) tasks)
+        (gtt-apply-func-list-to-obj-list (list is-paid) tasks)
+)
+
+(define (gtt-filter-hold-tasks tasks)
+        (define (is-hold task)
+                (if (equal? (gtt-task-billstatus task) '"Hold")
+                  task  ())
+        )
+        (gtt-apply-func-list-to-obj-list (list is-hold) tasks)
 )
 
 ;; ---------------------------------------------------------     
