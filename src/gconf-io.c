@@ -487,4 +487,15 @@ gtt_gconf_load (void)
 	}
 }
 
+const char *
+gtt_gconf_get_expander (void)
+{
+	GConfClient *client;
+	const char *xpn;
+
+	client = gconf_client_get_default ();
+	xpn = GETSTR ("/Display/ExpanderState", NULL);
+	return xpn;
+}
+
 /* =========================== END OF FILE ========================= */

@@ -565,14 +565,21 @@ gtt_post_data_config (void)
 void 
 gtt_post_ctree_config (void)
 {
-	char * xpn;
+	const char * xpn = NULL;
 
 	/* Assume the ctree has been set up.  Now punch in the final
 	 * bit of ctree state.
 	 */
 
 	/* Restore the expander state */
-	xpn = gnome_config_get_string(GTT_CONF"/Display/ExpanderState");
+	if (gtt_gconf_exists())
+	{
+		xpn = gtt_gconf_get_expander();
+	}
+	else
+	{
+		xpn = gnome_config_get_string(GTT_CONF"/Display/ExpanderState");
+	}
 	ctree_set_expander_state (global_ptw, xpn);
 }
 
