@@ -114,7 +114,7 @@ static GnomeUIInfo menu_main_reports[] = {
 		N_("Define a path to a new GnoTime ghtml report file"),
 			       new_report,
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Report..."), 
+	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Reports..."), 
 		N_("Edit the entries in the Reports pulldown menu (this menu)"),
 			       report_menu_edit,
 			       GNOME_STOCK_BLANK),

@@ -193,6 +193,7 @@ printf ("add clicked dlg=%x\n",dlg);
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
 	path = gnome_file_entry_get_full_path (dlg->plugin_path, TRUE);
+printf ("duude plg=%x path=%s\n", dlg->plugin_path, path);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
 	if (!path) path="";
 	if (!tip) path="";
@@ -300,8 +301,18 @@ edit_plugin_dialog_new (void)
 				
 	}
 
-	/* XXX should copy-in from system */
-	dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
+	/* Copy-in from system */
+	{
+		int nitems;
+		
+		GnomeUIInfo *sysmenus;
+		sysmenus = gtt_get_reports_menu ();
+		for (i=0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++) {}
+		nitems = i;
+
+		dlg->menus = g_array_new (TRUE, FALSE, sizeof (GnomeUIInfo));
+		dlg->menus = g_array_append_vals (dlg->menus, sysmenus, nitems);
+	}
 
 	/* Redraw the tree */
 	edit_plugin_redraw_tree (dlg);
