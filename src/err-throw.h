@@ -29,8 +29,8 @@ typedef enum {
 } GttErrCode;
 
 
-/* 
- * These two routines can be used to implement a poor-man's 
+/*
+ * These two routines can be used to implement a poor-man's
  * try-catch block by doing as follows:
  *
  *  gtt_err_set_code (GTT_NO_ERR);  // start of try block
@@ -47,11 +47,11 @@ void gtt_err_set_code (GttErrCode);
 
 
 /* The gtt_err_to_string() routine returns a handy-dandy human-readable
- *    error message, suitable for framing.  Be sure to free the returned 
+ *    error message, suitable for framing.  Be sure to free the returned
  *    string using g_free when done.
  */
-	
+
 char * gtt_err_to_string (GttErrCode code, const char * filename);
- 
+
 
 /* =========================== END OF FILE ======================== */

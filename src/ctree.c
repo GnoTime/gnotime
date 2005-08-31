@@ -1,4 +1,4 @@
-/*   GtkCTree display of projects for GTimeTracker 
+/*   GtkCTree display of projects for GTimeTracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
@@ -87,13 +87,13 @@ typedef struct ProjTreeNode_s
 	char percent_str[24];
 } ProjTreeNode;
 
-struct ProjTreeWindow_s 
+struct ProjTreeWindow_s
 {
 	GtkCTree *ctree;
 
 	/* List of projects we are currently displaying in this tree */
 	GList *proj_list;
-	
+
 	/* Stuff that defines the column layout */
 	ColType cols[NCOLS];
 	char * col_titles[NCOLS];
@@ -116,7 +116,7 @@ struct ProjTreeWindow_s
 	/* Should the select row be shown? */
 	gboolean show_select_row;
 
-	/* Total number of rows/projects, and string showing 
+	/* Total number of rows/projects, and string showing
 	 * expander state.  Used to save and restore expanders.
 	 */
 	int num_rows;
@@ -126,8 +126,6 @@ struct ProjTreeWindow_s
 static void stringify_col_values (ProjTreeNode *ptn, gboolean expand);
 static void ctree_update_column_values (ProjTreeWindow *ptw, ProjTreeNode *ptn, gboolean expand);
 static void ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn);
-		  
-		  
 
 /* ============================================================== */
 
@@ -136,14 +134,14 @@ start_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
 	GtkCTree *ctree = ptw->ctree;
 	GttProject *prj = ptn->prj;
-	
+
 	cur_proj_set(prj);
 	gtt_project_timer_update (prj);
-	
+
 	ctree_update_label (ptw, prj);
 
 	gtk_ctree_node_set_background (ctree, ptn->ctnode, &ptw->active_bgcolor);
-	
+
 	/* unselect so that select color doesn't block the active color */
 	/* toggle to make it the focus row */
 	gtk_ctree_select (ctree, ptn->ctnode);
@@ -157,14 +155,14 @@ stop_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
 	GtkCTree *ctree = ptw->ctree;
 	GttProject *prj = ptn->prj;
-	
+
 	if (prj != cur_proj) return;
 	cur_proj_set(NULL);
-	
+
 	gtt_project_timer_update (prj);
 	ctree_update_label (ptw, prj);
 	gtk_ctree_node_set_background (ctree, ptn->ctnode, &ptw->neutral_bgcolor);
-	
+
 	/* Use the select color, if its desired */
 	if (ptn->ptw->show_select_row)
 	{
@@ -193,7 +191,7 @@ toggle_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 	}
 }
 
-void 
+void
 ctree_start_timer (GttProject *prj)
 {
 	ProjTreeNode *ptn;
@@ -203,7 +201,7 @@ ctree_start_timer (GttProject *prj)
 	start_timer_for_row (ptn->ptw, ptn);
 }
 
-void 
+void
 ctree_stop_timer (GttProject *prj)
 {
 	ProjTreeNode *ptn;
@@ -215,7 +213,7 @@ ctree_stop_timer (GttProject *prj)
 
 /* ============================================================== */
 
-gboolean 
+gboolean
 ctree_has_focus (ProjTreeWindow *ptw)
 {
 	return GTK_WIDGET_HAS_FOCUS (GTK_WIDGET(ptw->ctree));
@@ -234,8 +232,8 @@ get_focus_row (GtkCTree *ctree)
 /* ============================================================== */
 /* Pseudo focus-row-changed callback. Things inside of ctree
  * should call this, which in turn calls out to distribute
- * an event to other subsystems, telling them that the focus 
- * has changed. 
+ * an event to other subsystems, telling them that the focus
+ * has changed.
  */
 
 static void
@@ -251,7 +249,7 @@ focus_row_changed_cb (GtkCTree *ctree, int row)
 		ptn = gtk_ctree_node_get_row_data(ctree, rownode);
 		proj = ptn->prj;
 	}
-	
+
 	/* Call the event-redistributor in app.c.  This should
 	 * be replaced by g_object/g_signal for a better implementation. */
 	focus_row_set (proj);
@@ -284,15 +282,15 @@ set_focus_project (ProjTreeWindow *ptw, GttProject *prj)
 	GtkCTree *ctree;
 	ProjTreeNode *ptn;
 	int i;
-	
+
 	ptn = gtt_project_get_private_data (prj);
 	if (!ptn) return;
-		
+
 	/* Set the focus row.  Seems like the only way
 	 * to get the row number is to search for it. */
 	ctree = ptw->ctree;
 	i = 0;
-	while (1) 
+	while (1)
 	{
 		GtkCTreeNode * ctn = gtk_ctree_node_nth (ctree, i);
 		if (!ctn) break;
@@ -321,10 +319,10 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 
 	if ((GDK_KEY_PRESS == event->type)  &&
 	     gtk_widget_is_focus (GTK_WIDGET(ctree)) &&
-	    (kev->keyval == GDK_Return)) 
-	{ 
+	    (kev->keyval == GDK_Return))
+	{
 		/* Avoid toggling timer when receiving a KEY_RELEASE
-		 * if the KEY_PRESS was not received previously. 
+		 * if the KEY_PRESS was not received previously.
 		 * (because KEY_PRESS went to another window.) */
 		return_key_pressed = TRUE;
 		return TRUE;
@@ -332,7 +330,7 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 
 	if (GDK_KEY_RELEASE != event->type) return FALSE;
 	if (FALSE == gtk_widget_is_focus (GTK_WIDGET(ctree))) return FALSE;
-	
+
 	switch (kev->keyval)
 	{
 		case GDK_Return:
@@ -364,7 +362,7 @@ widget_key_event(GtkCTree *ctree, GdkEvent *event, gpointer data)
 			rownode = get_focus_row(ctree);
 			gtk_ctree_expand (ctree, rownode);
 			return TRUE;
-			
+
 		case 'j':
 			if(GTK_CLIST(ctree)->focus_row < GTK_CLIST(ctree)->rows - 1)
 			{
@@ -406,7 +404,7 @@ widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
 	GtkMenuShell *menu;
 	ProjTreeNode *ptn;
 	GtkCTreeNode *rownode;
-	
+
 	/* The only button event we handle are right-mouse-button,
 	 * end double-click-left-mouse-button. */
 	if (!((event->type == GDK_2BUTTON_PRESS && bevent->button==1) ||
@@ -415,7 +413,7 @@ widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
 
 	gtk_clist_get_selection_info(clist,bevent->x,bevent->y,&row,&column);
 	if (0 > row) return FALSE;
-	
+
 	/* Change the focus row */
 	/* The freeze-draw cycle forces a redraw */
 	gtk_clist_freeze(clist);
@@ -423,13 +421,13 @@ widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
 	gtk_clist_thaw(clist);
 
 	rownode = get_focus_row(ptw->ctree);
-	if (event->type == GDK_2BUTTON_PRESS) 
+	if (event->type == GDK_2BUTTON_PRESS)
 	{
 		/* double-click left mouse toggles the project timer. */
 		ptn = gtk_ctree_node_get_row_data(ptw->ctree, rownode);
 		toggle_timer_for_row (ptw, ptn);
-	} 
-	else 
+	}
+	else
 	{
 		/* right mouse button brings up popup menu */
 		menu = menus_get_popup();
@@ -446,7 +444,7 @@ tree_select_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 {
 	ProjTreeNode *ptn;
 	ptn = gtk_ctree_node_get_row_data(ctree, rownode);
-	
+
 	/* Make sure that the blue of the select doesn't clobber
 	 * the active color */
 	if ((ptn->prj == cur_proj) && timer_is_running())
@@ -469,14 +467,14 @@ tree_unselect_row(GtkCTree *ctree, GtkCTreeNode* rownode, gint column)
 	/* nothing in this incarnation */
 }
 
-static void 
+static void
 tree_expand (GtkCTree *ctree, GtkCTreeNode *row)
 {
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
    ctree_update_column_values (ptn->ptw, ptn, TRUE);
 }
 
-static void 
+static void
 tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 {
 	ProjTreeNode *ptn = gtk_ctree_node_get_row_data(ctree, row);
@@ -485,7 +483,7 @@ tree_collapse (GtkCTree *ctree, GtkCTreeNode *row)
 
 /* ============================================================== */
 
-static void 
+static void
 ctree_save_expander_state (ProjTreeWindow *ptw)
 {
 	int i = 0;
@@ -497,12 +495,12 @@ ctree_save_expander_state (ProjTreeWindow *ptw)
 	if (!ptw) return;
 	ctree = ptw->ctree;
 
-	while (1) 
+	while (1)
 	{
 		ctn = gtk_ctree_node_nth (ctree, i);
 		if (!ctn) break;
 		ptn = gtk_ctree_node_get_row_data(ctree, ctn);
-		gtk_ctree_get_node_info (ctree, ctn, 
+		gtk_ctree_get_node_info (ctree, ctn,
 		                NULL, NULL, NULL, NULL, NULL, NULL,
 		                &is_leaf, &expanded);
 
@@ -591,14 +589,14 @@ click_column(GtkCList *clist, gint col, gpointer data)
 			prlist = project_list_sort_status (prlist);
 			break;
 	}
-	
+
 	ctree_setup(ptw, prlist);
 }
 
 /* ============================================================== */
 /* Attempt to change pixmaps to indicate whether dragged project
  * will be a peer, or a child, of the project its dragged onto.
- * Right now, this code ain't pretty; there must be a better way ...  
+ * Right now, this code ain't pretty; there must be a better way ...
  */
 static GtkWidget *parent_pixmap = NULL;
 static GtkWidget *sibling_pixmap = NULL;
@@ -611,7 +609,7 @@ drag_begin (GtkWidget *widget, GdkDragContext *context, gpointer data)
 	ptw->drag_context = context;
 }
 
-static void 
+static void
 drag_drop (GtkWidget *widget, GdkDragContext *context,
            gint x, gint y, guint time, gpointer data)
 {
@@ -623,7 +621,7 @@ drag_drop (GtkWidget *widget, GdkDragContext *context,
 
 	if (!ptw->source_ctree_node) return;
 
-	/* sanity check. We expect a source node, and either 
+	/* sanity check. We expect a source node, and either
 	 * a parent, or a sibling */
 	ptn = gtk_ctree_node_get_row_data(ctree, ptw->source_ctree_node);
 	src_prj = ptn->prj;
@@ -659,7 +657,7 @@ drag_drop (GtkWidget *widget, GdkDragContext *context,
 
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, src_prj);
-	
+
 	/* Make sure we update the timestamps for the old parent
 	 * from which we were cutted. */
 	ctree_update_label (ptw, old_parent);
@@ -672,8 +670,8 @@ drag_drop (GtkWidget *widget, GdkDragContext *context,
 
 /* ============================================================== */
 
-static gboolean 
-ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node, 
+static gboolean
+ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
                              GtkCTreeNode *new_parent,
                              GtkCTreeNode *new_sibling)
 {
@@ -681,7 +679,7 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
 
 	if (!source_node) return FALSE;
 
-	if (!parent_pixmap->window) 
+	if (!parent_pixmap->window)
 	{
 		gtk_widget_realize (parent_pixmap);
 		gtk_widget_realize (sibling_pixmap);
@@ -706,13 +704,13 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
 #endif
 	/* Note, we must test for new sibling before new parent,
 	 * since there can be a sibling *and* parent */
-	if (new_sibling) 
+	if (new_sibling)
 	{
 		/* if we have a sibling and a parent, and the parent
-		 * is not expanded, then the visually correct thing 
+		 * is not expanded, then the visually correct thing
 		 * is to show 'subproject of parent; (i.e. downarrow)
 		 */
-		if (new_parent && (0 == GTK_CTREE_ROW(new_parent)->expanded)) 
+		if (new_parent && (0 == GTK_CTREE_ROW(new_parent)->expanded))
 		{
 			/* down arrow means 'child of parent' */
 			gtk_drag_set_icon_widget (ptw->drag_context, parent_pixmap, 10, 10);
@@ -725,7 +723,7 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
 		return TRUE;
 	}
 
-	if (new_parent) 
+	if (new_parent)
 	{
 		/* down arrow means 'child of parent' */
 		gtk_drag_set_icon_widget (ptw->drag_context, parent_pixmap, 10, 10);
@@ -743,13 +741,13 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
  * is a small prioject, we'll just use a switch statement.  Seems
  * easier.
  *
- * Note also we have implemented a general system here, that 
+ * Note also we have implemented a general system here, that
  * allows us to show columns in any order, or the same column
  * more than once.   However, we do not actually make use of
  * this anywhere; at the moment, the column locatins are fixed.
- */ 
+ */
 
-static void 
+static void
 ctree_init_cols (ProjTreeWindow *ptw)
 {
 	int i;
@@ -785,56 +783,56 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case TIME_EVER_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Total");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Total time spent on this project.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_CURRENT_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Entry");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Time spent under the current diary entry.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_YESTERDAY_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Yesterday");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Time spent on this project yesterday.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_TODAY_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Today");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Time spent on this project today.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_WEEK_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Week");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Time spent on this project this week.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_LASTWEEK_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] = _("Last Week");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Time spent on this project last week.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_MONTH_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Month");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Time spent on this project this month.");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case TIME_YEAR_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Year");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Time spent on this project this year.");
 				ptw->col_width_set[i] = FALSE;
 				break;
@@ -853,28 +851,28 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case TASK_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_LEFT;
 				ptw->col_titles[i] =  _("Diary Entry");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("The current diary entry");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case START_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Start");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Estimated Project Start Date");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case END_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("End");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Estimated Project Completion Date");
 				ptw->col_width_set[i] = FALSE;
 				break;
 			case DUE_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_CENTER;
 				ptw->col_titles[i] =  _("Due");
-				ptw->col_tooltips[i] =  
+				ptw->col_tooltips[i] =
 					_("Due Date: the date by which "
 					"the project absolutely must be "
 					"completed by.");
@@ -883,7 +881,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case SIZING_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_RIGHT;
 				ptw->col_titles[i] = _("Size");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Sizing: How much work it will "
 					"take to finish this project.");
 				ptw->col_width_set[i] = FALSE;
@@ -891,7 +889,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case PERCENT_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_RIGHT;
 				ptw->col_titles[i] =  _("Done");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Percent Complete: How much "
 					"of this project has been "
 					"finished till now.");
@@ -900,7 +898,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case URGENCY_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_LEFT;
 				ptw->col_titles[i] = _("U");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Urgency: Does this project need "
 					"to be done soon, done quickly?");
 				ptw->col_width_set[i] = FALSE;
@@ -908,7 +906,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case IMPORTANCE_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_LEFT;
 				ptw->col_titles[i] = _("Imp");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("Importance: How important "
 					"is this project?");
 				ptw->col_width_set[i] = FALSE;
@@ -916,7 +914,7 @@ ctree_init_cols (ProjTreeWindow *ptw)
 			case STATUS_COL:
 				ptw->col_justify[i] = GTK_JUSTIFY_LEFT;
 				ptw->col_titles[i] = _("Status");
-				ptw->col_tooltips[i] = 
+				ptw->col_tooltips[i] =
 					_("The current status of this project.");
 				ptw->col_width_set[i] = FALSE;
 				break;
@@ -944,7 +942,7 @@ string_width(GtkWidget *w, const char * str)
 	style = gtk_widget_get_style(w);
 
 	/* Fallback if the GC still isn't available */
-	if (NULL == style) 
+	if (NULL == style)
 	{
 		style = gtk_widget_get_default_style ();
 		if (NULL == style) return -49;
@@ -966,7 +964,7 @@ string_width(GtkWidget *w, const char * str)
 		if (NULL == gc) gc = style->base_gc[0];
 		if (NULL == gc) return -51;
 	}
-	
+
 	gdk_gc_get_values(gc, &vals);
 	font = vals.font;
 
@@ -976,7 +974,7 @@ string_width(GtkWidget *w, const char * str)
 	return width;
 }
 
-/* Initialize to a reasonable column width, but only 
+/* Initialize to a reasonable column width, but only
  * if it hasn't been set already.  */
 
 static void
@@ -998,8 +996,8 @@ default_col_width (ProjTreeWindow *ptw, int col, const char * str)
 		switch (ptw->cols[col])
 		{
 			case IMPORTANCE_COL: width = 16; break;
-			case URGENCY_COL:    width = 16; break;	
-			case DESC_COL:       width = 62; break;	
+			case URGENCY_COL:    width = 16; break;
+			case DESC_COL:       width = 62; break;
 			default: break;
 		}
 	}
@@ -1008,7 +1006,7 @@ default_col_width (ProjTreeWindow *ptw, int col, const char * str)
 
 /* Note: we don't need i18n/l7n translations for most of the strings;
  * they are used only for column widths ... */
-void 
+void
 ctree_update_column_visibility (ProjTreeWindow *ptw)
 {
 	int i;
@@ -1023,7 +1021,7 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 			break;
 		case TIME_EVER_COL:
 			default_col_width (ptw, i, "-00:00:00");
-			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree), 
+			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				i, config_show_title_ever);
 			break;
 		case TIME_CURRENT_COL:
@@ -1053,7 +1051,7 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 			break;
 		case TIME_MONTH_COL:
 			default_col_width (ptw, i, "-00:00:00");
-			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree), 
+			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				i, config_show_title_month);
 			break;
 		case TIME_YEAR_COL:
@@ -1063,7 +1061,7 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
 			break;
 		case DESC_COL:
 			default_col_width (ptw, i, "Not too long");
-			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree), 
+			gtk_clist_set_column_visibility (GTK_CLIST(ptw->ctree),
 				i, config_show_title_desc);
 			break;
 		case TASK_COL:
@@ -1139,7 +1137,7 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
    }                                                            \
 }
 
-static void 
+static void
 stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 {
 	GttProject *prj = ptn->prj;
@@ -1176,12 +1174,12 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 			PRT_TIME(year);
 			break;
 		case TITLE_COL:
-			ptn->col_values[i] = 
+			ptn->col_values[i] =
 				(char *) gtt_project_get_title(prj);
 			break;
 		case DESC_COL:
 			if (config_show_title_desc) {
-				ptn->col_values[i] = 
+				ptn->col_values[i] =
 					(char *) gtt_project_get_desc(prj);
 			}
 			break;
@@ -1191,7 +1189,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				leadnode = gtt_project_get_tasks (prj);
 				if (leadnode)
 				{
-					ptn->col_values[i] =  
+					ptn->col_values[i] =
 					(char *) gtt_task_get_memo (leadnode->data);
 				}
 				else
@@ -1246,7 +1244,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				sz = gtt_project_get_sizing(prj);
 				if (0 < sz)
 				{
-					snprintf (ptn->sizing_str, 24, 
+					snprintf (ptn->sizing_str, 24,
 						"%.2f", (((double)sz)/3600.0));
 				} else {
 					ptn->sizing_str[0] = '-';
@@ -1259,7 +1257,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 			if (config_show_title_percent_complete) {
 				int sz;
 				sz = gtt_project_get_percent_complete(prj);
-				snprintf (ptn->percent_str, 24, 
+				snprintf (ptn->percent_str, 24,
 					"%d%%",sz);
 			}
 			break;
@@ -1315,11 +1313,11 @@ static void
 ctree_update_column_values (ProjTreeWindow *ptw, ProjTreeNode *ptn, gboolean expand)
 {
 	int i;
-	
+
 	stringify_col_values (ptn, expand);
 	for (i=0; i<ptw->ncols; i++)
 	{
-		gtk_ctree_node_set_text(ptw->ctree, 
+		gtk_ctree_node_set_text(ptw->ctree,
 			ptn->ctnode, i, ptn->col_values[i]);
 	}
 }
@@ -1332,16 +1330,16 @@ ctree_update_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 {
 	int i;
 	gboolean expand;
-	
+
 	expand = GTK_CTREE_ROW(ptn->ctnode)->expanded;
 	stringify_col_values (ptn, expand);
 	for (i=0; i<ptw->ncols; i++)
 	{
-		gtk_ctree_node_set_text(ptw->ctree, 
+		gtk_ctree_node_set_text(ptw->ctree,
 			ptn->ctnode, i, ptn->col_values[i]);
 	}
 }
-		  
+
 /* ============================================================== */
 /* redraw utility, recursively walks visibile project tree */
 
@@ -1351,7 +1349,7 @@ refresh_list (ProjTreeWindow *ptw, GList *prjlist)
 	GList *node;
 
 	/* now, draw each project */
-	for (node = prjlist; node; node = node->next) 
+	for (node = prjlist; node; node = node->next)
 	{
 		gboolean expand;
 		ProjTreeNode *ptn;
@@ -1360,11 +1358,11 @@ refresh_list (ProjTreeWindow *ptw, GList *prjlist)
 		ptn = gtt_project_get_private_data (prj);
 
 		/* Under rare circumstances, e.g. when run after midnight,
-		 * th GUI might not yet be initialized, so ptn is zero. 
+		 * th GUI might not yet be initialized, so ptn is zero.
 		 * We sorta shouldn't even be here in that case, but oh well. */
 		if (!ptn) continue;
-		
-		/* Determine if project is expanded -- this affects 
+
+		/* Determine if project is expanded -- this affects
 		 * display of time totals */
 		expand = GTK_CTREE_ROW(ptn->ctnode)->expanded;
 		ctree_update_column_values (ptw, ptn, expand);
@@ -1392,14 +1390,14 @@ ctree_refresh (ProjTreeWindow *ptw)
 
 	/* Freeze, in prep for a massive update */
 	/* XXX As of gtk 2.2.1, doing a freeze-thaw cycle
-	 * fails to redraw the window correctly.  
+	 * fails to redraw the window correctly.
 	 * Actually, if the window gets an expose events,
 	 * then it will show the right thing. Until then, work
 	 * around by not calling freeze-thaw.
 	 * Glurg. Failing to freeze-thaw causes some pretty
 	 * nasty cpu-cycle sucking sucks. Ughh.
 	 */
-	gtk_clist_freeze(GTK_CLIST(tree_w)); 
+	gtk_clist_freeze(GTK_CLIST(tree_w));
 
 	/* Make sure the right set of columns are visibile */
 	ctree_update_column_visibility (ptw);
@@ -1424,7 +1422,7 @@ redraw (GttProject *prj, gpointer data)
 /* ============================================================== */
 
 static void
-select_row_cb (GtkCTree *ctree, gint row, gint col, 
+select_row_cb (GtkCTree *ctree, gint row, gint col,
 					 GdkEvent *ev, ProjTreeWindow *ptw)
 {
 	/* shim to artificial callback */
@@ -1469,7 +1467,7 @@ ctree_new(void)
 
 	for (i=0; i<ptw->ncols; i++)
 	{
-		gtk_clist_set_column_justification(GTK_CLIST(w), 
+		gtk_clist_set_column_justification(GTK_CLIST(w),
 			i, ptw->col_justify[i]);
 	}
 	gtk_clist_column_titles_active(GTK_CLIST(w));
@@ -1493,7 +1491,7 @@ ctree_new(void)
 
 	/* Grab initial focus for hot-key events */
 	gtk_widget_grab_focus (w);
-	
+
 	/* connect various signals */
 	g_signal_connect(G_OBJECT(w), "button_press_event",
 			   G_CALLBACK(widget_button_event), ptw);
@@ -1526,7 +1524,7 @@ ctree_new(void)
 	gtk_clist_set_use_drag_icons (GTK_CLIST(w), TRUE);
 	gtk_ctree_set_drag_compare_func (GTK_CTREE(w), ctree_drag);
 
-	/* Desperate attempt to clue the user into how the 
+	/* Desperate attempt to clue the user into how the
 	 * dragged project will be reparented. We show left or
 	 * down arrows, respecitvely.  If anyone can come up with
 	 * something more elegant, then please ...  */
@@ -1572,7 +1570,7 @@ ctree_new(void)
 /* The ctree_setup routine runs during initialization,
  * and also whenever the window is 'deeply' restructured:
  * e.g. when the projects are sorted into a new order.
- * 
+ *
  * It sets up the state of the ctree widget infrastructure.
  * It can't be run until after the project data has been
  * read in.
@@ -1586,18 +1584,18 @@ ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 
 	if (!ptw) return;
 	tree_w = ptw->ctree;
-	
+
 
 	/* Save expander state before doing anything.  */
 	ctree_save_expander_state (ptw);
 
 	/* First, add all projects to the ctree. */
 	ptw->proj_list = prjlist;
-	if (prjlist) 
+	if (prjlist)
 	{
 		gtk_clist_freeze(GTK_CLIST(tree_w));
 		gtk_clist_clear(GTK_CLIST(tree_w));
-		for (node = prjlist; node; node = node->next) 
+		for (node = prjlist; node; node = node->next)
 		{
 			GttProject *prj = node->data;
 			ctree_add(ptw, prj);
@@ -1607,21 +1605,21 @@ ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 		gtk_clist_clear(GTK_CLIST(tree_w));
 	}
 
-	/* Next, highlight the current project, and expand 
+	/* Next, highlight the current project, and expand
 	 * the tree branches to it, if needed */
-	if (cur_proj) 
+	if (cur_proj)
 	{
 		GttProject *parent;
 		ProjTreeNode *ptn;
 
 		ptn = gtt_project_get_private_data (cur_proj);
-		
+
 		/* Select to set initial focus row */
-		gtk_ctree_select (tree_w, ptn->ctnode);  
-		
+		gtk_ctree_select (tree_w, ptn->ctnode);
+
 		start_timer_for_row (ptn->ptw, ptn);
 		parent = gtt_project_get_parent (cur_proj);
-		while (parent) 
+		while (parent)
 		{
 			ptn = gtt_project_get_private_data (parent);
 			gtk_ctree_expand(tree_w, ptn->ctnode);
@@ -1649,7 +1647,7 @@ ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 		gtk_ctree_set_expander_style(tree_w, GTK_CTREE_EXPANDER_NONE);
 	}
 
-	if (cur_proj) 
+	if (cur_proj)
 	{
 		ProjTreeNode *ptn;
 		ptn = gtt_project_get_private_data (cur_proj);
@@ -1686,7 +1684,7 @@ ctree_destroy (ProjTreeWindow *ptw)
 /* ============================================================== */
 
 #if 0
-/* we don't want to do this willy-nilly with a GtkDestroyNotify, 
+/* we don't want to do this willy-nilly with a GtkDestroyNotify,
  * because it will erase things like expander state whenever we clear
  * and redraw the window, e.g. during column sorts.
  * We need some smarter way of freeing things.  */
@@ -1733,14 +1731,14 @@ do_ctree_add (ProjTreeWindow *ptw, GttProject *p, GtkCTreeNode *parent)
 	{
 		gtk_ctree_collapse (ptw->ctree, ptn->ctnode);
 	}
-	
+
 	/* Make sure children get moved over also */
 	for (n=gtt_project_get_children(p); n; n=n->next)
 	{
 		GttProject *sub_prj = n->data;
 		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
-	
+
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
 }
@@ -1764,7 +1762,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	if (sibling)
 	{
 		GttProject *parent = gtt_project_get_parent (sibling);
-		if (parent) 
+		if (parent)
 		{
 			ptn = gtt_project_get_private_data (parent);
 			parentnode = ptn->ctnode;
@@ -1783,7 +1781,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
 	stringify_col_values (ptn, FALSE);
-	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,  
+	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,
                                parentnode, sibnode,
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
                                FALSE, FALSE);
@@ -1796,7 +1794,7 @@ ctree_insert_before (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		GttProject *sub_prj = n->data;
 		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
-	
+
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
 }
@@ -1814,7 +1812,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 	if (sibling)
 	{
 		GttProject *parent = gtt_project_get_parent (sibling);
-		if (parent) 
+		if (parent)
 		{
 			ptn = gtt_project_get_private_data (parent);
 			parentnode = ptn->ctnode;
@@ -1823,10 +1821,10 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		next_sibling = GTK_CTREE_NODE_NEXT(ptn->ctnode);
 
 		/* weird math: if this is the last leaf on this
-		 * branch, then next_sibling must be null to become 
+		 * branch, then next_sibling must be null to become
 		 * the new last leaf. Unfortunately, GTK_CTREE_NODE_NEXT
 		 * doesn't give null, it just gives the next branch */
-		if (next_sibling &&  
+		if (next_sibling &&
 		   (GTK_CTREE_ROW(next_sibling)->parent != parentnode)) next_sibling = NULL;
 	}
 
@@ -1840,7 +1838,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		gtt_project_add_notifier (p, redraw, ptn);
 	}
 	stringify_col_values (ptn, FALSE);
-	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,  
+	ptn->ctnode = gtk_ctree_insert_node (ptw->ctree,
                                parentnode, next_sibling,
                                ptn->col_values, 0, NULL, NULL, NULL, NULL,
                                FALSE, FALSE);
@@ -1853,7 +1851,7 @@ ctree_insert_after (ProjTreeWindow *ptw, GttProject *p, GttProject *sibling)
 		GttProject *sub_prj = n->data;
 		do_ctree_add (ptw, sub_prj, ptn->ctnode);
 	}
-	
+
 	/* Set the focus row to the newly inserted project. */
 	set_focus_project (ptw, p);
 }
@@ -1894,14 +1892,14 @@ ctree_update_label(ProjTreeWindow *ptw, GttProject *p)
 
 /* ============================================================== */
 
-void 
+void
 ctree_titles_show (ProjTreeWindow *ptw)
 {
 	if (!ptw) return;
 	gtk_clist_column_titles_show(GTK_CLIST(ptw->ctree));
 }
 
-void 
+void
 ctree_titles_hide (ProjTreeWindow *ptw)
 {
 	if (!ptw) return;
@@ -1964,13 +1962,13 @@ ctree_get_expander_state (ProjTreeWindow *ptw)
 	ptw->num_rows = gtt_project_list_total();
 	if (ptw->expander_state) g_free (ptw->expander_state);
 	ptw->expander_state = g_new0 (char, ptw->num_rows+1);
-	
+
 	for (i=0; i<ptw->num_rows; i++)
 	{
 		ctn = gtk_ctree_node_nth (ctree, i);
 		if (!ctn) break;
 		ptn = gtk_ctree_node_get_row_data(ctree, ctn);
-		gtk_ctree_get_node_info (ctree, ctn, 
+		gtk_ctree_get_node_info (ctree, ctn,
 		                NULL, NULL, NULL, NULL, NULL, NULL,
 		                &is_leaf, &expanded);
 
@@ -1997,7 +1995,7 @@ ctree_set_expander_state (ProjTreeWindow *ptw, const char *expn)
 	int i = 0;
 
 	if (!ptw || !expn) return;
-	
+
 	ctree = ptw->ctree;
 
 	while (expn[i])
@@ -2013,7 +2011,7 @@ ctree_set_expander_state (ProjTreeWindow *ptw, const char *expn)
 		{
 			gtk_ctree_collapse (ctree, ctn);
 		}
-				  
+
 		i++;
 	}
 }

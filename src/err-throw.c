@@ -22,20 +22,20 @@
 #include <gnome.h>  /* needed only to define the _() macro */
 
 #include "err-throw.h"
- 
+
 
 static GttErrCode err = GTT_NO_ERR;
 
-void 
+void
 gtt_err_set_code (GttErrCode code)
 {
 	/* clear the error if requested. */
-	if (GTT_NO_ERR == code) 
+	if (GTT_NO_ERR == code)
 	{
 		err = GTT_NO_ERR;
 		return;
 	}
-	
+
 	/* if the error code is already set, don't over-write it */
 	if (GTT_NO_ERR != err) return;
 
@@ -43,7 +43,7 @@ gtt_err_set_code (GttErrCode code)
 	err = code;
 }
 
-GttErrCode 
+GttErrCode
 gtt_err_get_code (void)
 {
 	return err;
