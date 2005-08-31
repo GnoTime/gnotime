@@ -1,4 +1,7 @@
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
+	* Bump to version number 2.2.2
+	* Manually apply patch from sourceforge bug [ 1119338 ] fedora .spec file
+	  is out of date and rpm cannot build rpm
    * Fix bug involving copy of old gnotime files to a new machine
 	  on which gnotime has never been run before.
 	* Fix sourceforge bug [ 1276458 ] "Empty" appears in diary entry
