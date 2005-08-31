@@ -1,4 +1,4 @@
-/*   Config file input/output handling for GnoTime 
+/*   Config file input/output handling for GnoTime
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
@@ -62,7 +62,7 @@ int save_count = 0;
 /* Configuration file I/O routines:
  * Note that this file supports reading from several old, 'obsolete'
  * config file formats taht GTT has used over the years.  We support
- * these reads so that users do not get left out in the cold when 
+ * these reads so that users do not get left out in the cold when
  * upgrading from old versions of GTT.  All 'saves' are in the new
  * file format (currently, GConf-2).
  *
@@ -129,7 +129,7 @@ project_list_load_old(void)
 	realname = build_rc_name_old();
 	gtt_config_filepath = realname;
 
-	if (NULL == (f = fopen(realname, "rt"))) 
+	if (NULL == (f = fopen(realname, "rt")))
 	{
 		gtt_err_set_code(GTT_CANT_OPEN_FILE);
 		gtt_config_filepath = ""; /* Don't spew obsolete filename to new users */
@@ -309,9 +309,9 @@ gtt_load_gnome_config (const char *prefix)
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
 	 * running again ... */
-	if (gtt_project_get_title(cur_proj) && (!first_proj_title)) 
+	if (gtt_project_get_title(cur_proj) && (!first_proj_title))
 	{
-		/* we need to strdup because title is freed when 
+		/* we need to strdup because title is freed when
 		 * the project list is destroyed ... */
 		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
 	}
@@ -331,11 +331,11 @@ gtt_load_gnome_config (const char *prefix)
    config_idle_timeout = GET_INT("/Misc/IdleTimeout=300");
    config_autosave_period = GET_INT("/Misc/AutosavePeriod=60");
 
-	/* Reset the main window width and height to the values 
-	 * last stored in the config file.  Note that if the user 
-	 * specified command-line flags, then the command line 
+	/* Reset the main window width and height to the values
+	 * last stored in the config file.  Note that if the user
+	 * specified command-line flags, then the command line
 	 * over-rides the config file. */
-	if (!geom_place_override) 
+	if (!geom_place_override)
 	{
 		int x, y;
 		x = GET_INT("/Geometry/X=10");
@@ -415,7 +415,7 @@ gtt_load_gnome_config (const char *prefix)
 	/* ------------ */
 	save_count = GET_INT("/Data/SaveCount=0");
 	config_data_url = GET_STR("/Data/URL=" XML_DATA_FILENAME);
-	if (NULL == config_data_url) 
+	if (NULL == config_data_url)
 	{
 		config_data_url = XML_DATA_FILENAME;
 	}
@@ -424,8 +424,8 @@ gtt_load_gnome_config (const char *prefix)
 	num = 0;
 	for (i = 0; -1 < num; i++) {
 		g_snprintf(p, TOKLEN, "/CList/ColumnWidth%d=-1", i);
-		num = gnome_config_get_int(s);   
-		if (-1 < num) 
+		num = gnome_config_get_int(s);
+		if (-1 < num)
 		{
 			ctree_set_col_width (global_ptw, i, num);
 		}
@@ -435,7 +435,7 @@ gtt_load_gnome_config (const char *prefix)
 	num = GET_INT("/Misc/NumReports=0");
 	if (0 < num)
 	{
-		for (i = num-1; i >= 0 ; i--) 
+		for (i = num-1; i >= 0 ; i--)
 		{
 			GttPlugin *plg;
 			char * name, *path, *tip;
@@ -448,7 +448,7 @@ gtt_load_gnome_config (const char *prefix)
 			plg = gtt_plugin_new (name, path);
 			plg->tooltip = g_strdup (tip);
 		}
-	} 
+	}
 
 	/* The old-style config file also contained project data
 	 * in it. Read this data, if present.  The new config file
@@ -462,7 +462,7 @@ gtt_load_gnome_config (const char *prefix)
 		/* start with a clean slate */
 		project_list_destroy();
 
-		for (i = 0; i < num; i++) 
+		for (i = 0; i < num; i++)
 		{
 			GttProject *proj;
 			time_t ever_secs, day_secs;
@@ -471,12 +471,12 @@ gtt_load_gnome_config (const char *prefix)
 			gtt_project_list_append(proj);
 			g_snprintf(p, TOKLEN, "/Project%d/Title", i);
 			gtt_project_set_title(proj, gnome_config_get_string(s));
-	
+
 			/* Match the last running project */
 			if (i == cur_proj_id) {
 				cur_proj_set(proj);
 			}
-	
+
 			g_snprintf(p, TOKLEN, "/Project%d/Desc", i);
 			gtt_project_set_desc(proj, gnome_config_get_string(s));
 			g_snprintf(p, TOKLEN, "/Project%d/SecsEver=0", i);
@@ -486,7 +486,7 @@ gtt_load_gnome_config (const char *prefix)
 			gtt_project_compat_set_secs (proj, ever_secs, day_secs, last_timer);
 		}
 		gtt_project_list_compute_secs();
-	} 
+	}
 
 	/* redraw the GUI */
 	if (config_show_statusbar)
@@ -506,7 +506,7 @@ gtt_load_gnome_config (const char *prefix)
 	    (_t != config_show_tb_timer) ||
 	    (_o != config_show_tb_pref) ||
 	    (_h != config_show_tb_help) ||
-	    (_e != config_show_tb_exit)) 
+	    (_e != config_show_tb_exit))
 	{
 		update_toolbar_sections();
 	}
@@ -543,7 +543,7 @@ gtt_load_config (void)
 		if (p) *p = 0x0;
 		return;
 	}
-			
+
 	/* Look for a gnome-1.4 era gnome_config file */
 	h = g_get_home_dir();
 	s = g_new (char, strlen (h) + 120);
@@ -563,7 +563,7 @@ gtt_load_config (void)
 		return;
 	}
 	g_free (s);
-	
+
 	/* OK, try to load the oldest file format */
 	project_list_load_old ();
 	config_data_url = XML_DATA_FILENAME;
@@ -572,26 +572,26 @@ gtt_load_config (void)
 
 /* ======================================================= */
 
-void 
+void
 gtt_post_data_config (void)
 {
-	/* Assume we've already read the XML data, and just 
+	/* Assume we've already read the XML data, and just
 	 * set the current project */
 	cur_proj_set (gtt_project_locate_from_id (cur_proj_id));
 
-	/* Over-ride the current project based on the 
+	/* Over-ride the current project based on the
 	 * command-line setting */
 	if (first_proj_title)
 	{
 		GList *node;
-		for (node = gtt_get_project_list(); node; node = node->next) 
+		for (node = gtt_get_project_list(); node; node = node->next)
 		{
 			GttProject *prj = node->data;
 			if (!gtt_project_get_title(prj)) continue;
 
 			/* set project based on command line */
-			if (0 == strcmp(gtt_project_get_title(prj), 
-					first_proj_title)) 
+			if (0 == strcmp(gtt_project_get_title(prj),
+					first_proj_title))
 			{
 				cur_proj_set(prj);
 				break;
@@ -603,7 +603,7 @@ gtt_post_data_config (void)
 	first_proj_title = NULL;
 
 	/* reset the clocks, if needed */
-	if (0 < last_timer) 
+	if (0 < last_timer)
 	{
 		set_last_reset (last_timer);
 		zero_on_rollover (time(0));
@@ -611,13 +611,13 @@ gtt_post_data_config (void)
 
 	/* if a project is running, then set it running again,
 	 * otherwise be sure to stop the clock. */
-	if (FALSE == run_timer) 
+	if (FALSE == run_timer)
 	{
 		cur_proj_set (NULL);
 	}
 }
-	
-void 
+
+void
 gtt_post_ctree_config (void)
 {
 	const char * xpn = NULL;
@@ -644,12 +644,12 @@ gtt_post_ctree_config (void)
 void
 gtt_save_config(void)
 {
-   gtt_gconf_save(); 
+   gtt_gconf_save();
 }
 
 /* ======================================================= */
 
-const char * 
+const char *
 gtt_get_config_filepath (void)
 {
 	return gtt_config_filepath;

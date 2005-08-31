@@ -74,7 +74,7 @@ static char *build_lock_fname(void)
 {
 	GString *str;
 	static char *fname = NULL;
-	
+
 	if (fname != NULL) return fname;
 
 	/* note it will handle unset "HOME" fairly gracefully */
@@ -97,7 +97,7 @@ static void lock_gtt(void)
 	FILE *f;
 	char *fname;
 	gboolean warn = FALSE;
-	
+
 	fname = build_lock_fname ();
 
 	/* if the pid file exists and such a process exists
@@ -114,8 +114,8 @@ static void lock_gtt(void)
 		}
 		fclose(f);
 	}
-		
-	if (warn) 
+	
+	if (warn)
 	{
 		GtkWidget *warning;
 		warning = gnome_message_box_new(
@@ -131,7 +131,7 @@ static void lock_gtt(void)
 		}
 	}
 	f = fopen(fname, "wt");
-	if (NULL == f) 
+	if (NULL == f)
 	{
 		g_warning(_("Cannot create pid-file!"));
 		return;
@@ -142,7 +142,7 @@ static void lock_gtt(void)
 
 
 
-void 
+void
 unlock_gtt(void)
 {
 	log_exit();
@@ -164,7 +164,7 @@ unlock_gtt(void)
 	/* gnome shutdown */
 #if 0
 	gnome_vfs_shutdown ();
-#endif  
+#endif
 }
 
 /* Return a 1 if the indicated directory did not exist, and
@@ -225,7 +225,7 @@ post_read_data(void)
 	app_show();
 }
 
-static void 
+static void
 read_data_err_run_or_abort (GtkDialog *w, gint response_id)
 {
 	if ((GTK_RESPONSE_OK == response_id) ||
@@ -295,7 +295,7 @@ resolve_path (const char * pathfrag)
 }
 
 
-static void 
+static void
 read_data(void)
 {
 	GttErrCode xml_errcode;
@@ -313,7 +313,7 @@ read_data(void)
 	xml_errcode = gtt_err_get_code();
 
 	read_is_ok = (GTT_NO_ERR == xml_errcode);
-	
+
 	/* If the xml file read bombed because the file doesn't exist,
 	 * and yet the project list isn't null, that's because we read
 	 * and old-format config file that had the projects in it.
@@ -346,7 +346,7 @@ read_data(void)
 
 	/* Else handle an error. */
 	errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
-	qmsg = g_strconcat (errmsg, 
+	qmsg = g_strconcat (errmsg,
 			_("Do you want to continue?"),
 			NULL);
 
@@ -357,10 +357,10 @@ read_data(void)
 	         GTK_BUTTONS_YES_NO,
 	         qmsg);
 	g_signal_connect (G_OBJECT(mb), "response",
-	         G_CALLBACK (read_data_err_run_or_abort), 
+	         G_CALLBACK (read_data_err_run_or_abort),
 	         NULL);
 	gtk_widget_show (mb);
-	g_free (qmsg); 
+	g_free (qmsg);
 	g_free (errmsg);
 }
 
@@ -370,7 +370,7 @@ post_read_config(void)
 	read_data();
 }
 
-static void 
+static void
 read_config_err_run_or_abort (GtkDialog *w, gint response_id)
 {
 	if ((GTK_RESPONSE_OK == response_id) ||
@@ -386,7 +386,7 @@ read_config_err_run_or_abort (GtkDialog *w, gint response_id)
 	}
 }
 
-static void 
+static void
 read_config(void)
 {
 	GttErrCode conf_errcode;
@@ -397,13 +397,13 @@ read_config(void)
 
 	/* Catch ... */
 	conf_errcode = gtt_err_get_code();
-	if (GTT_NO_ERR != conf_errcode) 
+	if (GTT_NO_ERR != conf_errcode)
 	{
 		const char *fp;
 		char *errmsg, *qmsg;
 		fp = gtt_get_config_filepath();
 		errmsg = gtt_err_to_string (conf_errcode, fp);
-		qmsg = g_strconcat (errmsg, 
+		qmsg = g_strconcat (errmsg,
 			_("Shall I setup a new configuration?"),
 			NULL);
 
@@ -414,13 +414,13 @@ read_config(void)
 		         GTK_BUTTONS_YES_NO,
 		         qmsg);
 		g_signal_connect (G_OBJECT(mb), "response",
-		         G_CALLBACK (read_config_err_run_or_abort), 
+		         G_CALLBACK (read_config_err_run_or_abort),
 		         NULL);
 		gtk_widget_show (mb);
-		g_free (qmsg); 
+		g_free (qmsg);
 		g_free (errmsg);
 	}
-	else 
+	else
 	{
 		post_read_config();
 	}
@@ -429,7 +429,7 @@ read_config(void)
 
 #if DEVEL_VERSION_WARNING
 /* used only to display development version warning messsage */
-static void 
+static void
 beta_run_or_abort(GtkWidget *w, gint butnum)
 {
 	if (butnum == 1)
@@ -447,7 +447,7 @@ beta_run_or_abort(GtkWidget *w, gint butnum)
  * every time that its called.  Its structured so that older copies
  * are saved exponentially less often.  This results in a logarithmic
  * distribution of backups; a realatively small number of files, of which
- * few are old, and most are younger.  The idea is that this 
+ * few are old, and most are younger.  The idea is that this
  * should get you out of a jam, no matter how old your mistake is.
  * Sure wish I'd had this implemented earlier in my debugging cycle :-(
  *
@@ -487,15 +487,15 @@ make_backup (const char * filename)
 	new_name = g_new0 (char, len+20);
 	strcpy (old_name, filename);
 	strcpy (new_name, filename);
-		
+	
 
 	if ((0 < suffix) && (0<lm))
 	{
 		/* Shuffle files, but preserve datestamps */
-		/* Don't report errors, as user may have erased 
+		/* Don't report errors, as user may have erased
 		 * some of these older files by hand */
-		sprintf (new_name+len, ".%d.%d", suffix, lm); 
-		sprintf (old_name+len, ".%d.2", suffix-1); 
+		sprintf (new_name+len, ".%d.%d", suffix, lm);
+		sprintf (old_name+len, ".%d.2", suffix-1);
 		rc = stat (old_name, &old_stat);
 		rc += rename (old_name, new_name);
 		if (0 == rc)
@@ -505,8 +505,8 @@ make_backup (const char * filename)
 			utime (new_name, &ub);
 		}
 	}
-	
-	sprintf (new_name+len, ".0.%d",lm); 
+
+	sprintf (new_name+len, ".0.%d",lm);
 	rc = stat (filename, &old_stat);
 	rc += rename (filename, new_name);
 	if (0 == rc)
@@ -520,7 +520,7 @@ make_backup (const char * filename)
 	g_free (new_name);
 }
 
-/* save_all() saves both data and config file, and does this 
+/* save_all() saves both data and config file, and does this
  * without involving the GUI.
  * It is a bit sloppy, in that if we get two errors in a row,
  * we'll miss the second one ... but what the hey, who cares.
@@ -608,7 +608,7 @@ save_projects (void)
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_write_file (xml_filepath);
 
-	/* Try to handle a bizzare missing-directory error 
+	/* Try to handle a bizzare missing-directory error
 	 * by creating the directory, and trying again. */
 	errcode = gtt_err_get_code();
 	if (GTT_CANT_OPEN_FILE == errcode)
@@ -617,7 +617,7 @@ save_projects (void)
 		gtt_err_set_code (GTT_NO_ERR);
 		gtt_xml_write_file (xml_filepath);
 	}
-				  
+
 	/* Catch */
 	errcode = gtt_err_get_code();
 	if (GTT_NO_ERR != errcode)
@@ -698,14 +698,14 @@ static void
 got_signal (int sig)
 {
 	unlock_gtt ();
-	
+
 	/* whack thyself */
 	signal (sig, SIG_DFL);
 	kill (getpid (), sig);
 }
 
 
-static void 
+static void
 guile_inner_main(void *closure, int argc, char **argv)
 {
 	gtk_main();
@@ -713,13 +713,13 @@ guile_inner_main(void *closure, int argc, char **argv)
 }
 
 #if defined (HAVE_DECL_WNOHANG) && defined (HAVE_WAITPID)
-inline RETSIGTYPE sigchld_handler(int unused) 
+inline RETSIGTYPE sigchld_handler(int unused)
 {
 	while(waitpid(-1, NULL, WNOHANG) > 0) {}
 }
 #endif
 
-int 
+int
 main(int argc, char *argv[])
 {
 #if defined (HAVE_DECL_WNOHANG) || defined (HAVE_DECL_SA_NOCLDWAIT)
@@ -737,8 +737,8 @@ main(int argc, char *argv[])
 		{NULL, '\0', 0, NULL, 0}
 	};
 
-	gnome_program_init(PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv, 
-		                   GNOME_PARAM_POPT_TABLE, geo_options, 
+	gnome_program_init(PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv,
+		                   GNOME_PARAM_POPT_TABLE, geo_options,
 		                   GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cromagnon.png");
 
@@ -801,7 +801,7 @@ main(int argc, char *argv[])
 		"the www.gnome.org gnome-utils cvs with\n"
 		"cvs -z3 -d :pserver:anonymous@anoncvs.gnome.org:/cvs/gnome "
 		"checkout -r gnome-utils-1-4 gnome-utils\n",
-	     "Continue", "Exit", 
+	     "Continue", "Exit",
 		G_CALLBACK(beta_run_or_abort));
 #else
 	read_config();
