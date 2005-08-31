@@ -510,10 +510,10 @@ menu_properties(GtkWidget *w, gpointer data)
  * (Yes this generates compiler warnings ... thats the point !!!
  */
 
-static void show_j (GtkWidget *w) 
+static void show_a (GtkWidget *w) 
 { 
 	gtk_widget_destroy (w);
-	show_report (NULL, "journal.ghtml"); 
+	show_report (NULL, "time-interval.ghtml"); 
 }
 
 void 
@@ -522,7 +522,7 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	char * msg;
 
 	msg = _("To edit the timer interval for this project,\n"
-	        "open the Journal window and click on a link.\n"
+	        "open the Activity window and click on a link.\n"
 	        "This will bring up a menu of time editing options.\n");
 
 	GtkWidget *mb;
@@ -532,7 +532,7 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	         GTK_BUTTONS_OK,
 		      msg);
 	g_signal_connect (G_OBJECT(mb), "response",
-	         G_CALLBACK (show_j), mb);
+	         G_CALLBACK (show_a), mb);
 	gtk_widget_show (mb);
 }
 
