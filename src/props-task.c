@@ -91,8 +91,8 @@ save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 	} 
 	else 
 	{
-		gtt_task_set_memo(dlg->task, _("empty"));
-		gtk_entry_set_text(dlg->memo, _("empty"));
+		gtt_task_set_memo(dlg->task, "");
+		gtk_entry_set_text(dlg->memo, "");
 	}
 
 	str = xxxgtk_textview_get_text(dlg->notes);

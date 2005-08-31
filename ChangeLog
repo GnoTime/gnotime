@@ -1,4 +1,7 @@
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
+   * Fix bug involving copy of old gnotime files to a new machine
+	  on which gnotime has never been run before.
+	* Fix sourceforge bug [ 1276458 ] "Empty" appears in diary entry
 	* Apply sourceforge patch 1176719 Extensible fix for gtkhtml3 building
 	  128490: gnotime-gtkhtml.patch  2005-04-04 17:47  abadger1999
 	* Apply 1171394 Adds separate timeout for "No Project" dialog
