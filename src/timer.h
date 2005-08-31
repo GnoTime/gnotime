@@ -36,6 +36,7 @@ gboolean timer_is_running (void);
 /* The idle timeout is how long, in seconds, that the system seems idle
  * before the clock stops itself */
 extern int config_idle_timeout;
+extern int config_no_project_timeout;
 
 /* The autosave period is how long, in seconds, we wait before doing a 
  * periodic save-thyself. */

@@ -111,7 +111,7 @@ timer_func(gpointer data)
 	 */
 	if (!cur_proj) 
 	{
-		if (0 < config_idle_timeout)
+		if (0 < config_no_project_timeout)
 		{
 			/* Make sure the idle dialog is visible */
 			raise_idle_dialog (idt);

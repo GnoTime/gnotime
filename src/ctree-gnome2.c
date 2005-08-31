@@ -1122,6 +1122,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				GttProjectStatus status;
 				status = gtt_project_get_status (prj);
 				switch (status) {
+			case GTT_NO_STATUS:   ptn->col_values[i] = "-"; break;
 			case GTT_NOT_STARTED: ptn->col_values[i] = _("Not Started"); break;
 			case GTT_IN_PROGRESS: ptn->col_values[i] = _("In Progress"); break;
 			case GTT_ON_HOLD:     ptn->col_values[i] = _("On Hold"); break;

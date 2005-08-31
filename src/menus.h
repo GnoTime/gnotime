@@ -21,7 +21,7 @@
 
 #include <gnome.h>
 
-GtkWidget *menus_get_popup(void);
+GtkMenuShell *menus_get_popup(void);
 void menus_create(GnomeApp *app);
 void menus_set_states(void);
 

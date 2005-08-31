@@ -198,14 +198,15 @@ static GnomeUIInfo menu_popup[] = {
 
 
 
-GtkWidget *
+GtkMenuShell *
 menus_get_popup(void)
 {
-	static GtkWidget *menu = NULL;
+	static GtkMenuShell *menu = NULL;
 
 	if (menu) return menu;
-
-	menu = gnome_popup_menu_new(menu_popup);
+    
+	menu = (GtkMenuShell *)gtk_menu_new();
+	gnome_app_fill_menu(menu, menu_popup, NULL, TRUE, 0);
 	return menu;
 }
 

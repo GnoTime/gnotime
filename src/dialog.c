@@ -35,7 +35,7 @@ gtt_help_popup(GtkWidget *widget, gpointer data)
 	{
 		GtkWidget *mb;
 		mb = gtk_message_dialog_new (
-		         GTK_WINDOW (widget),
+		         GTK_IS_WINDOW(widget) ? GTK_WINDOW (widget) : NULL,
 		         GTK_DIALOG_MODAL,
 		         GTK_MESSAGE_ERROR,
 		         GTK_BUTTONS_CLOSE,

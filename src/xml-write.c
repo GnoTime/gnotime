@@ -122,7 +122,7 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
    xmlAddChild (topnode, node);                      \
 }
 
-#define PUT_ENUM_5(TOK,VAL,A,B,C,D,E) {              \
+#define PUT_ENUM_6(TOK,VAL,A,B,C,D,E,F) {            \
    const char * str = #A;                            \
    switch (VAL)                                      \
    {                                                 \
@@ -131,6 +131,7 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
       case GTT_##C: str = #C; break;                 \
       case GTT_##D: str = #D; break;                 \
       case GTT_##E: str = #E; break;                 \
+      case GTT_##F: str = #F; break;                 \
    }                                                 \
    node = xmlNewNode (NULL, TOK);                    \
    xmlNodeAddContent(node, str);                     \
@@ -281,8 +282,8 @@ gtt_xml_project_to_dom_tree (GttProject *prj)
 		UNDEFINED, LOW, MEDIUM, HIGH);
 	PUT_ENUM_4 ("importance", gtt_project_get_importance(prj),
 		UNDEFINED, LOW, MEDIUM, HIGH);
-	PUT_ENUM_5 ("status", gtt_project_get_status(prj),
-		NOT_STARTED, IN_PROGRESS, ON_HOLD, CANCELLED, COMPLETED);
+	PUT_ENUM_6 ("status", gtt_project_get_status(prj),
+		NO_STATUS, NOT_STARTED, IN_PROGRESS, ON_HOLD, CANCELLED, COMPLETED);
 
 	/* handle tasks */
 	tasks = gtt_project_get_tasks(prj);

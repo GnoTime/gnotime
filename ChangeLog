@@ -1,3 +1,18 @@
+Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
+	* Apply sourceforge patch 1176719 Extensible fix for gtkhtml3 building
+	  128490: gnotime-gtkhtml.patch  2005-04-04 17:47  abadger1999
+	* Apply 1171394 Adds separate timeout for "No Project" dialog
+	  27338: separate_no_project_and_idle_timeouts.diff  2005-03-27 08:34 goedson
+	* Apply sourceforge patch 085911 Add "-" value for status field
+	  112568: no_status.patch  2004-12-15 11:25  nfont
+	* Apply sourceforge patch 074658 Add wordwrapping to diary entry boxes
+	  110390: gnotime-wordwrap.patch  2004-11-28 08:51  abadger1999
+	* Apply sourceforge patch 1074458 Fix a crash when invoking help
+	  110357: gnotime-help-error.patch  2004-11-27 22:50  abadger1999
+	* Apply sourceforge patch 1038701 Fix to Activity item in popup menu
+	  103506: gnotime-popup-menus.patch  2004-10-01 13:37  abadger1999
+	* Apply sourceforge patch 1027582 Build system update for qof inclusion.
+	  101401: gnotime-static-qof.patch  2004-09-13 15:45  abadger1999
 
 Fri Aug 20, 2004 Linas Vepstas <linas@linas.org>
 	* Change build system to use eithr the local or the system libqof

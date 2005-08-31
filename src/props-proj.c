@@ -236,11 +236,12 @@ do_set_project(GttProject *proj, PropDlg *dlg)
 	else if (GTT_HIGH   == rank) gtk_option_menu_set_history (dlg->importance, 3);
 
 	status = gtt_project_get_status (proj);
-	if (GTT_NOT_STARTED      == status) gtk_option_menu_set_history (dlg->status, 0);
-	else if (GTT_IN_PROGRESS == status) gtk_option_menu_set_history (dlg->status, 1);
-	else if (GTT_ON_HOLD     == status) gtk_option_menu_set_history (dlg->status, 2);
-	else if (GTT_CANCELLED   == status) gtk_option_menu_set_history (dlg->status, 3);
-	else if (GTT_COMPLETED   == status) gtk_option_menu_set_history (dlg->status, 4);
+	if (GTT_NO_STATUS	 == status) gtk_option_menu_set_history (dlg->status, 0);
+	else if (GTT_NOT_STARTED == status) gtk_option_menu_set_history (dlg->status, 1);
+	else if (GTT_IN_PROGRESS == status) gtk_option_menu_set_history (dlg->status, 2);
+	else if (GTT_ON_HOLD     == status) gtk_option_menu_set_history (dlg->status, 3);
+	else if (GTT_CANCELLED   == status) gtk_option_menu_set_history (dlg->status, 4);
+	else if (GTT_COMPLETED   == status) gtk_option_menu_set_history (dlg->status, 5);
 
 	tval = gtt_project_get_estimated_start (proj);
 	if (-1 == tval) tval = now;
@@ -386,11 +387,12 @@ prop_dialog_new (void)
 	MENTRY (dlg->importance, "importance", 2, GTT_MEDIUM);
 	MENTRY (dlg->importance, "importance", 3, GTT_HIGH);
 
-	MENTRY (dlg->status, "status", 0, GTT_NOT_STARTED);
-	MENTRY (dlg->status, "status", 1, GTT_IN_PROGRESS);
-	MENTRY (dlg->status, "status", 2, GTT_ON_HOLD);
-	MENTRY (dlg->status, "status", 3, GTT_CANCELLED);
-	MENTRY (dlg->status, "status", 4, GTT_COMPLETED);
+	MENTRY (dlg->status, "status", 0, GTT_NO_STATUS);
+	MENTRY (dlg->status, "status", 1, GTT_NOT_STARTED);
+	MENTRY (dlg->status, "status", 2, GTT_IN_PROGRESS);
+	MENTRY (dlg->status, "status", 3, GTT_ON_HOLD);
+	MENTRY (dlg->status, "status", 4, GTT_CANCELLED);
+	MENTRY (dlg->status, "status", 5, GTT_COMPLETED);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 

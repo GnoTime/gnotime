@@ -931,6 +931,7 @@ get_status (GttProject *prj)
 	GttProjectStatus status = gtt_project_get_status (prj);
 	switch (status)
 	{
+		case GTT_NO_STATUS:    return _("No Status");
 		case GTT_NOT_STARTED:  return _("Not Started"); 
 		case GTT_IN_PROGRESS:  return _("In Progress"); 
 		case GTT_ON_HOLD:      return _("On Hold"); 

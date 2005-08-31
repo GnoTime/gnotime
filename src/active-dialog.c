@@ -35,7 +35,7 @@
 #include "dialog.h"
 
 
-extern int config_idle_timeout;
+int config_no_project_timeout;
 
 struct GttActiveDialog_s 
 {
@@ -210,13 +210,13 @@ show_active_dialog (GttActiveDialog *ad)
 	 */
 	if (cur_proj) return;
 	if (FALSE == ad->armed) return;
-	if (0 > config_idle_timeout) return;
+	if (0 >= config_no_project_timeout) return;
 
 	/* If there hasn't been a project running in a while, then pop. */
 	now = time(0);
 	idle_time = now - ad->time_armed;
 // printf ("duude armed, waiting %d %d\n", idle_time, config_idle_timeout);
-	if (idle_time <= config_idle_timeout) return;
+	if (idle_time <= config_no_project_timeout) return;
 					
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == ad->gtxml)
@@ -278,3 +278,4 @@ cancel_active_dialog (GttActiveDialog *ad)
 }
 
 /* =========================== END OF FILE ============================== */
+

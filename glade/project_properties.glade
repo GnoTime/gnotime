@@ -1165,7 +1165,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="convertwidget14">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Not Started</property>
+		      <property name="label" translatable="yes">No Status</property>
 		      <property name="use_underline">True</property>
 		    </widget>
 		  </child>
@@ -1173,7 +1173,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="convertwidget15">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">In Progress</property>
+		      <property name="label" translatable="yes">Not Started</property>
 		      <property name="use_underline">True</property>
 		    </widget>
 		  </child>
@@ -1181,7 +1181,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="convertwidget16">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">On Hold</property>
+		      <property name="label" translatable="yes">In Progress</property>
 		      <property name="use_underline">True</property>
 		    </widget>
 		  </child>
@@ -1189,13 +1189,21 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="convertwidget17">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Cancelled</property>
+		      <property name="label" translatable="yes">On Hold</property>
 		      <property name="use_underline">True</property>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkMenuItem" id="convertwidget18">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Cancelled</property>
+		      <property name="use_underline">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="convertwidget19">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Completed</property>
 		      <property name="use_underline">True</property>

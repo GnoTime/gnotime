@@ -140,7 +140,7 @@
    }                                                         \
    else
 
-#define GET_ENUM_5(SELF,FN,TOK,A,B,C,D,E)                    \
+#define GET_ENUM_6(SELF,FN,TOK,A,B,C,D,E,F)                  \
    if (0 == strcmp (TOK, node->name))                        \
    {                                                         \
       const char *str = GET_TEXT (node);                     \
@@ -150,6 +150,7 @@
       else if (!strcmp (#C, str)) ival = GTT_##C;            \
       else if (!strcmp (#D, str)) ival = GTT_##D;            \
       else if (!strcmp (#E, str)) ival = GTT_##E;            \
+      else if (!strcmp (#F, str)) ival = GTT_##F;            \
       else gtt_err_set_code (GTT_UNKNOWN_VALUE);             \
       FN (SELF, ival);                                       \
    }                                                         \
@@ -280,8 +281,8 @@ parse_project (xmlNodePtr project)
 			UNDEFINED, LOW, MEDIUM, HIGH)
 		GET_ENUM_4 (prj, gtt_project_set_importance, "importance",
 			UNDEFINED, LOW, MEDIUM, HIGH)
-		GET_ENUM_5 (prj, gtt_project_set_status, "status",
-			NOT_STARTED, IN_PROGRESS, ON_HOLD, CANCELLED, COMPLETED)
+		GET_ENUM_6 (prj, gtt_project_set_status, "status",
+			NO_STATUS, NOT_STARTED, IN_PROGRESS, ON_HOLD, CANCELLED, COMPLETED)
 
 		if (0 == strcmp ("task-list", node->name))
 		{

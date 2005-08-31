@@ -216,6 +216,7 @@ gtt_gconf_save (void)
 	g_snprintf(s, sizeof (s), "%ld", time(0));
 	SETSTR ("/Misc/LastTimer", s);
 	SETINT ("/Misc/IdleTimeout", config_idle_timeout);
+	SETINT ("/Misc/NoProjectTimeout", config_no_project_timeout);
 	SETINT ("/Misc/AutosavePeriod", config_autosave_period);
 	SETINT ("/Misc/TimerRunning", timer_is_running());
 	SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
@@ -358,6 +359,7 @@ gtt_gconf_load (void)
    cur_proj_id = GETINT("/Misc/CurrProject", -1);
 
    config_idle_timeout = GETINT ("/Misc/IdleTimeout", 300);
+   config_no_project_timeout = GETINT ("/Misc/NoProjectTimeout", 300);
    config_autosave_period = GETINT ("/Misc/AutosavePeriod", 60);
    config_daystart_offset = GETINT ("/Misc/DayStartOffset", 0);
    config_weekstart_offset = GETINT ("/Misc/WeekStartOffset", 0);

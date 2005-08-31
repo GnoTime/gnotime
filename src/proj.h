@@ -78,7 +78,8 @@ typedef enum
 
 typedef enum
 {
-	GTT_NOT_STARTED = 0,  /* hack alert-- we should allow */
+	GTT_NO_STATUS = 0,
+	GTT_NOT_STARTED = 1,  /* hack alert-- we should allow */
 	GTT_IN_PROGRESS,      /* user-defined status states */
 	GTT_ON_HOLD,          /* wating for something */
 	GTT_CANCELLED,

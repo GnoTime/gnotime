@@ -138,6 +138,7 @@ typedef struct _PrefsDialog
 	GtkCheckButton *show_tb_exit;
 
 	GtkEntry       *idle_secs;
+	GtkEntry       *no_project_secs;
 	GtkEntry       *daystart_secs;
 	GtkOptionMenu  *daystart_menu;
 	GtkOptionMenu  *weekstart_menu;
@@ -374,6 +375,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 	{
 		int change = 0;
 		config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
+		config_no_project_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->no_project_secs)));
 
 		/* Hunt for the hour-of night on which to start */
 		const char * buff = gtk_entry_get_text (odlg->daystart_secs);
@@ -493,6 +495,9 @@ options_dialog_set(PrefsDialog *odlg)
 	/* misc section */
 	g_snprintf(s, sizeof (s), "%d", config_idle_timeout);
 	gtk_entry_set_text(GTK_ENTRY(odlg->idle_secs), s);
+
+	g_snprintf(s, sizeof (s), "%d", config_no_project_timeout);
+	gtk_entry_set_text(GTK_ENTRY(odlg->no_project_secs), s);
 
 	/* Set the correct menu item based on current values */
 	int hour;
@@ -695,6 +700,9 @@ misc_options(PrefsDialog *dlg)
 
 	w = GETWID ("idle secs");
 	dlg->idle_secs = GTK_ENTRY(w);
+
+	w = GETWID ("no project secs");
+	dlg->no_project_secs = GTK_ENTRY(w);
 
 	w = GETWID ("daystart entry");
 	dlg->daystart_secs = GTK_ENTRY(w);
