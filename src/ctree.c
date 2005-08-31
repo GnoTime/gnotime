@@ -403,7 +403,7 @@ widget_button_event(GtkCList *clist, GdkEvent *event, gpointer data)
 	ProjTreeWindow *ptw = data;
 	int row,column;
 	GdkEventButton *bevent = (GdkEventButton *)event;
-	GtkWidget *menu;
+	GtkMenuShell *menu;
 	ProjTreeNode *ptn;
 	GtkCTreeNode *rownode;
 	
