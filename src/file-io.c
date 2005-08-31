@@ -132,12 +132,14 @@ project_list_load_old(void)
 	if (NULL == (f = fopen(realname, "rt"))) 
 	{
 		gtt_err_set_code(GTT_CANT_OPEN_FILE);
+		gtt_config_filepath = ""; /* Don't spew obsolete filename to new users */
 #ifdef ENOENT
 		if (errno == ENOENT) return;
 #endif
 		g_warning("could not open %s\n", realname);
 		return;
 	}
+	printf ("GTT: Info: Importing .gtimetrackerrc config file\n");
 	pl = gtt_get_project_list();
 	plist = NULL;
 
@@ -558,7 +560,6 @@ gtt_load_config (void)
 	g_free (s);
 	
 	/* OK, try to load the oldest file format */
-	printf ("GTT: Info: Importing .gtimetrackerrc config file\n");
 	project_list_load_old ();
 	config_data_url = XML_DATA_FILENAME;
 	return;

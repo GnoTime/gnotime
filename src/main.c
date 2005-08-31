@@ -252,7 +252,7 @@ resolve_old_path (const char * pathfrag)
 		/* If not an absolute filepath, look for the file in the same dir
 		 * where the gtt config file was found. */
 		confpath = gtt_get_config_filepath ();
-		if (NULL == confpath)
+		if (NULL == confpath || 0 == confpath[0])
 		{
 			fullpath = gnome_config_get_real_path (pathfrag);
 		}
@@ -316,7 +316,7 @@ read_data(void)
 	
 	/* If the xml file read bombed because the file doesn't exist,
 	 * and yet the project list isn't null, that's because we read
-	 * and old-format config file that had the proejcts in it.
+	 * and old-format config file that had the projects in it.
 	 * This is not an error. This is OK.
 	 */
 	read_is_ok |= (GTT_CANT_OPEN_FILE == xml_errcode) &&
