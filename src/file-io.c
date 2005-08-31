@@ -40,7 +40,7 @@
 #include "timer.h"
 #include "toolbar.h"
 
-#ifdef DEBUG
+#ifdef USE_GTT_DEBUG_FILE
 #define GTT_CONF "/gtt-DEBUG"
 #else /* not DEBUG */
 #define GTT_CONF "/" GTT_APP_NAME
@@ -529,13 +529,18 @@ gtt_load_config (void)
 		gtt_config_filepath = NULL;
 		return;
 	}
-			  
+
 	/* gnotime breifly used the gnome2 gnome_config file */
 	if (gnome_config_has_section (GTT_CONF"/Misc"))
 	{
 		printf ("GTT: Info: Importing ~/.gnome2/" GTT_CONF " file\n");
 		gtt_load_gnome_config (GTT_CONF);
 		gtt_config_filepath = gnome_config_get_real_path (GTT_CONF);
+
+		/* The data file will be in the same directory ...
+		 * so prune filename to get the directory */
+		char *p = strrchr (gtt_config_filepath, '/');
+		if (p) *p = 0x0;
 		return;
 	}
 			
