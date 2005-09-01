@@ -40,7 +40,7 @@ static inline int
 yearday_to_centuryday (int yday, int year)
 {
 	int cd;
-	cd = 365*year + year/4 + yday;
+	cd = 365*year + (year+1)/4 + yday;
 	if (100 <= year) cd --;
 	return cd;
 }
