@@ -46,8 +46,8 @@
  * task and interval objects.  This type should be in the cdr
  * part of the object, so that it will stop recursion and list-walking.
  * (The utility routines in gtt.scm walk lists and trees; thus,
- * putting a non-pointer in the cdr is an effective way to stop the 
- * recursion.)  The 'daily-totals' object already follows this 
+ * putting a non-pointer in the cdr is an effective way to stop the
+ * recursion.)  The 'daily-totals' object already follows this
  * convention.
  *
  * Another major design problem is that formatting for date/time
@@ -59,7 +59,7 @@
 /* ============================================================== */
 /* Seems to me like guile screwed the pooch; we need a global! */
 
-GttGhtml *ghtml_guile_global_hack = NULL;   
+GttGhtml *ghtml_guile_global_hack = NULL;
 
 static SCM
 do_ret_did_query (GttGhtml *ghtml)
@@ -93,7 +93,7 @@ reverse_list (SCM node_list)
 }
 
 /* ============================================================== */
-/* A routine to recursively apply a scheme form to a list of 
+/* A routine to recursively apply a scheme form to a list of
  * KVP key names.  It returns the result of the apply. */
 
 typedef enum
@@ -105,8 +105,8 @@ typedef enum
 } PtrType;
 
 static SCM
-do_apply_based_on_type (GttGhtml *ghtml, SCM node, 
-             PtrType cur_type,				
+do_apply_based_on_type (GttGhtml *ghtml, SCM node,
+             PtrType cur_type,
              SCM (*str_func)(GttGhtml *, const char *),
              SCM (*prj_func)(GttGhtml *, GttProject *),
              SCM (*tsk_func)(GttGhtml *, GttTask *),
@@ -121,7 +121,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		if ((0<len) && str_func) rc = str_func (ghtml, str);
 		return rc;
 	}
-		
+
 	/* If its a number, its in fact a pointer to the C struct. */
 	if (SCM_NUMBERP(node))
 	{
@@ -129,19 +129,19 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		switch (cur_type)
 		{
 			case GTT_PRJ: {
-				GttProject *prj = (GttProject *) scm_num2ulong (node, 
+				GttProject *prj = (GttProject *) scm_num2ulong (node,
 				             SCM_ARG1, "GnoTime::do-apply-based-on-type==project");
 				if (prj_func) rc = prj_func (ghtml, prj);
 				break;
 			}
 			case GTT_TASK: {
-				GttTask *tsk = (GttTask *) scm_num2ulong (node, 
+				GttTask *tsk = (GttTask *) scm_num2ulong (node,
 				             SCM_ARG1, "GnoTime::do-apply-based-on-type==task");
 				if (tsk_func) rc = tsk_func (ghtml, tsk);
 				break;
 			}
 			case GTT_IVL: {
-				GttInterval *ivl = (GttInterval *) scm_num2ulong (node, 
+				GttInterval *ivl = (GttInterval *) scm_num2ulong (node,
 				             SCM_ARG1, "GnoTime::do-apply-based-on-type==interval");
 				if (ivl_func) rc = ivl_func (ghtml, ivl);
 				break;
@@ -159,8 +159,8 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		SCM rc = SCM_EOL;
 		SCM node_list = node;
 
-		/* Check to see if there's a type-label of the appropriate 
-		 * type.  If so, then strip off the label, and pass back 
+		/* Check to see if there's a type-label of the appropriate
+		 * type.  If so, then strip off the label, and pass back
 		 * car to ourselves, and passing the corrected type.
 		 */
 		if (FALSE == SCM_NULLP(node))
@@ -191,7 +191,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 					return SCM_EOL;
 				}
 				node_list = SCM_CAR (node);
-				return do_apply_based_on_type (ghtml, node_list, cur_type, 
+				return do_apply_based_on_type (ghtml, node_list, cur_type,
 				               str_func, prj_func, tsk_func, ivl_func);
 			}
 		}
@@ -202,10 +202,10 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		{
 			SCM evl;
 			node = SCM_CAR (node_list);
-			
-			evl = do_apply_based_on_type (ghtml, node, cur_type, 
+
+			evl = do_apply_based_on_type (ghtml, node, cur_type,
 				               str_func, prj_func, tsk_func, ivl_func);
-			
+
 			if (FALSE == SCM_NULLP (evl))
 			{
 				rc = scm_cons (evl, rc);
@@ -216,26 +216,26 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		/* reverse the list. Ughh */
 		/* gh_reverse (rc);  this doesn't work, to it manually */
 		rc = reverse_list (rc);
-		
+
 		return rc;
 	}
 
 	/* If its a null list, do nothing */
 	if (SCM_NULLP (node))
-	{ 
+	{
 		return node;
 	}
-	
+
 	g_warning ("expecting a gtt data object,  got something else\n");
 	return SCM_EOL;
 }
 
 /* ============================================================== */
-/* A routine to recursively apply a scheme form to a hierarchical 
+/* A routine to recursively apply a scheme form to a hierarchical
  * list of gtt projects.  It returns the result of the apply. */
 
 static SCM
-do_apply_on_string (GttGhtml *ghtml, SCM strs, 
+do_apply_on_string (GttGhtml *ghtml, SCM strs,
              SCM (*func)(GttGhtml *, const char *))
 {
    return do_apply_based_on_type (ghtml, strs,
@@ -243,7 +243,7 @@ do_apply_on_string (GttGhtml *ghtml, SCM strs,
 }
 
 static SCM
-do_apply_on_project (GttGhtml *ghtml, SCM project, 
+do_apply_on_project (GttGhtml *ghtml, SCM project,
              SCM (*func)(GttGhtml *, GttProject *))
 {
    return do_apply_based_on_type (ghtml, project,
@@ -251,7 +251,7 @@ do_apply_on_project (GttGhtml *ghtml, SCM project,
 }
 
 static SCM
-do_apply_on_task (GttGhtml *ghtml, SCM task, 
+do_apply_on_task (GttGhtml *ghtml, SCM task,
              SCM (*func)(GttGhtml *, GttTask *))
 {
    return do_apply_based_on_type (ghtml, task,
@@ -260,7 +260,7 @@ do_apply_on_task (GttGhtml *ghtml, SCM task,
 
 
 static SCM
-do_apply_on_interval (GttGhtml *ghtml, SCM invl, 
+do_apply_on_interval (GttGhtml *ghtml, SCM invl,
              SCM (*func)(GttGhtml *, GttInterval *))
 {
    return do_apply_based_on_type (ghtml, invl,
@@ -301,7 +301,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	char * str = NULL;
 	if (NULL == ghtml->write_stream) return SCM_EOL;
 
-	/* Need to test for numbers first, since later tests 
+	/* Need to test for numbers first, since later tests
 	 * may core-dump guile-1.3.4 if the node was in fact a number. */
 	if (SCM_NUMBERP(node))
 	{
@@ -357,7 +357,7 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 		(ghtml->write_stream) (ghtml, str, strlen(str), ghtml->user_data);
 	}
 	else
-	if (SCM_NULLP(node))  
+	if (SCM_NULLP(node))
 	{
 		/* No op; maybe this should be a warning? */
 	}
@@ -379,13 +379,13 @@ show_scm (SCM node_list)
 
 /* ============================================================== */
 /* Cheesy hack, this returns a pointer to the currently
- * selected project as a ulong.  Its baaaad,  but acheives its 
+ * selected project as a ulong.  Its baaaad,  but acheives its
  * purpose for now.   Its baad because the C pointer is not
  * currently checked before use.  This could lead to core dumps
  * if the scheme code was bad.  It sure would be nice to be
  * able to check that the pointer is a valid pointer to a gtt
  * project.  For example, maybe projects and tasks should be
- * GObjects, and then would could check the cast.  Later. 
+ * GObjects, and then would could check the cast.  Later.
  * --linas
  */
 
@@ -398,11 +398,11 @@ do_ret_project (GttGhtml *ghtml, GttProject *prj)
 	/* Label the pointer with a type identifier */
 	node = scm_mem2string ("gtt-project-ptr", 15);
 	rc = scm_cons (rc, node);
-	
+
 	return rc;
 }
 
-/* The 'selected project' is the project highlighted by the 
+/* The 'selected project' is the project highlighted by the
  * focus row in the main window.
  */
 
@@ -493,7 +493,7 @@ do_include_file_scm (GttGhtml *ghtml, SCM node)
 		do_include_file_scm (ghtml, node_list);
 	}
 	else
-	if (SCM_NULLP(node))  
+	if (SCM_NULLP(node))
 	{
 		/* No op; maybe this should be a warning? */
 	}
@@ -514,9 +514,9 @@ include_file_scm (SCM node_list)
 }
 
 /* ============================================================== */
-/** Converts a g_list of pointers into a typed SCM list.  This is 
+/** Converts a g_list of pointers into a typed SCM list.  This is
  *  a generic utility.  It returns rc, where (car rc) is a list of
- *  pointers, and (cdr rc) is the type-string that identifies the 
+ *  pointers, and (cdr rc) is the type-string that identifies the
  *  type of the pointers. */
 
 static SCM
@@ -527,12 +527,12 @@ g_list_to_scm (GList * gplist, const char * type)
 
 	/* Get a pointer to null */
 	rc = SCM_EOL;
-	if (gplist) 
+	if (gplist)
 	{
 		/* Get tail of g_list */
 		for (n= gplist; n->next; n=n->next) {}
 		gplist = n;
-		
+
 		/* Walk backwards, creating a scheme list */
 		for (n= gplist; n; n=n->prev)
 		{
@@ -540,11 +540,11 @@ g_list_to_scm (GList * gplist, const char * type)
 			rc = scm_cons (node, rc);
 		}
 	}
-	
+
 	/* Prepend type label */
 	node = scm_mem2string (type, strlen (type));
 	rc = scm_cons (rc, node);
-	
+
 	return rc;
 }
 
@@ -560,13 +560,13 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 	/* Get a pointer to null */
 	rc = SCM_EOL;
 	if (!proj_list) return rc;
-	
+
 	/* XXX should use g_list_to_scm() here */
 	/* XXX should use type identifier gtt-project-list */
 	/* Find the tail */
 	for (n= proj_list; n->next; n=n->next) {}
 	proj_list = n;
-	
+
 	/* Walk backwards, creating a scheme list */
 	for (n= proj_list; n; n=n->prev)
 	{
@@ -574,7 +574,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
       SCM node;
 #if 0
 		GList *subprjs;
-		
+
 		/* Handle sub-projects, if any, before the project itself */
 		subprjs = gtt_project_get_children (prj);
 		if (subprjs)
@@ -582,7 +582,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 			node = do_ret_project_list (ghtml, subprjs);
 			rc = scm_cons (node, rc);
 		}
-#endif 
+#endif
 		node = scm_ulong2num ((unsigned long) prj);
 		rc = scm_cons (node, rc);
 	}
@@ -593,7 +593,7 @@ static SCM
 ret_projects (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
-	
+
 	/* Get list of all top-level projects */
 	GList *proj_list = gtt_get_project_list();
 	return do_ret_project_list (ghtml, proj_list);
@@ -603,7 +603,7 @@ static SCM
 ret_query_projects (void)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
-	
+
 	return do_ret_project_list (ghtml, ghtml->query_result);
 }
 
@@ -614,7 +614,7 @@ static SCM
 do_ret_subprjs (GttGhtml *ghtml, GttProject *prj)
 {
 	GList *proj_list;
-	
+
 	/* Get list of subprojects. */
 	proj_list = gtt_project_get_children (prj);
 	if (!proj_list) return SCM_EOL;
@@ -656,21 +656,21 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
 	/* Get a pointer to null */
 	rc = SCM_EOL;
 	if (!prj) return rc;
-	
+
 	/* Get list of tasks, then get tail */
 	task_list = gtt_project_get_tasks (prj);
 	if (!task_list) return rc;
-	
+
 	/* XXX should use g_list_to_scm() here */
 	for (n= task_list; n->next; n=n->next) {}
 	task_list = n;
-	
+
 	/* Walk backwards, creating a scheme list */
 	for (n= task_list; n; n=n->prev)
 	{
 		GttTask *tsk = n->data;
       SCM node;
-		
+
 		node = scm_ulong2num ((unsigned long) tsk);
 		rc = scm_cons (node, rc);
 	}
@@ -699,21 +699,21 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 	/* Get a pointer to null */
 	rc = SCM_EOL;
 	if (!tsk) return rc;
-	
+
 	/* XXX should use g_list_to_scm() here */
 	/* Get list of intervals, then get tail */
 	ivl_list = gtt_task_get_intervals (tsk);
 	if (!ivl_list) return rc;
-	
+
 	for (n= ivl_list; n->next; n=n->next) {}
 	ivl_list = n;
-	
+
 	/* Walk backwards, creating a scheme list */
 	for (n= ivl_list; n; n=n->prev)
 	{
 		GttInterval *ivl = n->data;
 		SCM node;
-		
+
 		node = scm_ulong2num ((unsigned long) ivl);
 		rc = scm_cons (node, rc);
 	}
@@ -736,19 +736,19 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 {
 	SCM rc, rpt;
 	int i;
-	GArray *arr;  
+	GArray *arr;
 	time_t earliest;
 	struct tm tday;
-	
+
 	/* Get a pointer to null */
 	rc = SCM_EOL;
 	if (!prj) return rc;
-	
+
 	/* Get the project data */
 	arr = gtt_project_get_daily_buckets (prj, TRUE);
 	if (!arr) return rc;
 	earliest = gtt_project_get_earliest_start (prj, TRUE);
-	
+
 	/* Format the start date */
 	localtime_r (&earliest, &tday);
 	tday.tm_mday --;
@@ -759,7 +759,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		char buff[100];
 		SCM node;
 		time_t rptdate, secs;
-		
+
 		tday.tm_mday ++;
 		bu = & g_array_index (arr, GttBucket, i);
 		secs = bu->total;
@@ -773,13 +773,13 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		rpt = scm_cons (node, rpt);
 		node = g_list_to_scm (bu->tasks, "gtt-task-list");
 		rpt = scm_cons (node, rpt);
-		
+
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
 		qof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
 		node = scm_mem2string (buff, strlen (buff));
 		rpt = scm_cons (node, rpt);
-		
+
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
@@ -790,7 +790,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* Put a data type in the cdr slot */
 		node = scm_mem2string ("gtt-daily", 9);
 		rpt = scm_cons (rpt, node);
-		
+
 		rc = scm_cons (rpt, rc);
 	}
 	g_array_free (arr, TRUE);
@@ -808,8 +808,8 @@ ret_daily_totals (SCM proj_list)
 
 /* ============================================================== */
 /* Define a set of subroutines that accept a scheme list of projects,
- * applies the gtt_project function on each, and then returns a 
- * scheme list containing the results.   
+ * applies the gtt_project function on each, and then returns a
+ * scheme list containing the results.
  *
  * For example, ret_project_title() takes a scheme list of gtt
  * projects, gets the project title for each, and then returns
@@ -834,7 +834,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 	return scm_mem2string (str, strlen (str));                       \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
-		  
+
 
 #define RET_PROJECT_LONG(RET_FUNC,GTT_GETTER)                       \
 static SCM                                                          \
@@ -871,8 +871,8 @@ RET_PROJECT_LONG  (ret_project_percent, gtt_project_get_percent_complete)
 /* ============================================================== */
 /* Handle ret_project_title_link in the almost-standard way,
  * i.e. as
- * RET_PROJECT_STR (ret_project_title, gtt_project_get_title) 
- * except that we need to handle url links as well. 
+ * RET_PROJECT_STR (ret_project_title, gtt_project_get_title)
+ * except that we need to handle url links as well.
  */
 static SCM
 get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
@@ -882,13 +882,13 @@ get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
 		GString *str;
 		str = g_string_new (NULL);
 		g_string_append_printf (str, "<a href=\"gtt:proj:0x%lx\">", (long) prj);
-		g_string_append (str, gtt_project_get_title (prj)); 
+		g_string_append (str, gtt_project_get_title (prj));
 		g_string_append (str, "</a>");
 		return scm_mem2string (str->str, str->len);
 	}
-	else 
+	else
 	{
-		const char * str = gtt_project_get_title (prj); 
+		const char * str = gtt_project_get_title (prj);
 		return scm_mem2string (str, strlen (str));
 	}
 }
@@ -897,46 +897,46 @@ RET_PROJECT_SIMPLE (ret_project_title_link, get_project_title_link_scm)
 
 /* ============================================================== */
 
-static const char * 
-get_urgency (GttProject *prj) 
+static const char *
+get_urgency (GttProject *prj)
 {
 	GttRank rank = gtt_project_get_urgency (prj);
 	switch (rank)
 	{
-		case GTT_LOW:       return _("Low"); 
+		case GTT_LOW:       return _("Low");
 		case GTT_MEDIUM:    return _("Normal");
-		case GTT_HIGH:      return _("Urgent"); 
+		case GTT_HIGH:      return _("Urgent");
 		case GTT_UNDEFINED: return _("Undefined");
 	}
 	return _("Undefined");
 }
 
-static const char * 
-get_importance (GttProject *prj) 
+static const char *
+get_importance (GttProject *prj)
 {
 	GttRank rank = gtt_project_get_importance (prj);
 	switch (rank)
 	{
-		case GTT_LOW:       return _("Low"); 
+		case GTT_LOW:       return _("Low");
 		case GTT_MEDIUM:    return _("Medium");
-		case GTT_HIGH:      return _("Important"); 
+		case GTT_HIGH:      return _("Important");
 		case GTT_UNDEFINED: return _("Undefined");
 	}
 	return _("Undefined");
 }
 
-static const char * 
-get_status (GttProject *prj) 
+static const char *
+get_status (GttProject *prj)
 {
 	GttProjectStatus status = gtt_project_get_status (prj);
 	switch (status)
 	{
 		case GTT_NO_STATUS:    return _("No Status");
-		case GTT_NOT_STARTED:  return _("Not Started"); 
-		case GTT_IN_PROGRESS:  return _("In Progress"); 
-		case GTT_ON_HOLD:      return _("On Hold"); 
-		case GTT_CANCELLED:    return _("Cancelled"); 
-		case GTT_COMPLETED:    return _("Completed"); 
+		case GTT_NOT_STARTED:  return _("Not Started");
+		case GTT_IN_PROGRESS:  return _("In Progress");
+		case GTT_ON_HOLD:      return _("On Hold");
+		case GTT_CANCELLED:    return _("Cancelled");
+		case GTT_COMPLETED:    return _("Completed");
 	}
 	return _("Undefined");
 }
@@ -944,11 +944,11 @@ get_status (GttProject *prj)
 RET_PROJECT_STR (ret_project_urgency,    get_urgency)
 RET_PROJECT_STR (ret_project_importance, get_importance)
 RET_PROJECT_STR (ret_project_status,     get_status)
-		  
+
 /* ============================================================== */
 /* Define a set of subroutines that accept a scheme list of tasks,
- * applies the gtt_task function on each, and then returns a 
- * scheme list containing the results.   
+ * applies the gtt_task function on each, and then returns a
+ * scheme list containing the results.
  *
  * For example, ret_task_memo() takes a scheme list of gtt
  * tasks, gets the task memo for each, and then returns
@@ -979,12 +979,12 @@ RET_FUNC (SCM task_list)                                            \
 }
 
 RET_TASK_STR (ret_task_notes,   gtt_task_get_notes)
-		  
+
 /* ============================================================== */
 /* Handle ret_task_memo in the almost-standard way,
  * i.e. as
- * RET_TASK_STR (ret_task_memo, gtt_task_get_memo) 
- * except that we need to handle url links as well. 
+ * RET_TASK_STR (ret_task_memo, gtt_task_get_memo)
+ * except that we need to handle url links as well.
  */
 static SCM
 get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
@@ -994,13 +994,13 @@ get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 		GString *str;
 		str = g_string_new (NULL);
 		g_string_append_printf (str, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
-		g_string_append (str, gtt_task_get_memo (tsk)); 
+		g_string_append (str, gtt_task_get_memo (tsk));
 		g_string_append (str, "</a>");
 		return scm_mem2string (str->str, str->len);
 	}
-	else 
+	else
 	{
-		const char * str = gtt_task_get_memo (tsk); 
+		const char * str = gtt_task_get_memo (tsk);
 		return scm_mem2string (str, strlen (str));
 	}
 }
@@ -1113,7 +1113,7 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 
 	task_secs = gtt_task_get_secs_ever(tsk);
 	value = ((double) task_secs) / 3600.0;
-	
+
 	prj = gtt_task_get_parent (tsk);
 	switch (gtt_task_get_billrate (tsk))
 	{
@@ -1125,7 +1125,7 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	}
 	/* hack alert should use i18n currency/monetary printing */
 	snprintf (buff, 100, "$%.2f", value+0.0049);
-						
+
 	return scm_mem2string (buff, strlen (buff));
 }
 
@@ -1186,7 +1186,7 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 RET_IVL_SIMPLE (ret_ivl_elapsed_str, get_ivl_elapsed_str);
 
 static SCM
-get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl, 
+get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 					 time_t starp, gboolean prt_date)
 {
 	char buff[100];
@@ -1200,9 +1200,9 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	GString *str;
 	str = g_string_new (NULL);
 
-	/* Try to have different indentations for date and time 
+	/* Try to have different indentations for date and time
 	 * actually date and time should be in own separate columns XXXX */
-	if (prt_date) 
+	if (prt_date)
 	{
 		g_string_append_printf (str, "<div class=gnotime-activity-datetime>");
 	}
@@ -1214,17 +1214,17 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 
 	if (ghtml->show_links)
 	{
-		
+
 		g_string_append_printf (str, "<a href=\"gtt:interval:0x%lx\">", (long) ivl);
 	}
-	g_string_append (str, buff); 
-	
+	g_string_append (str, buff);
+
 	if (ghtml->show_links)
 	{
 		g_string_append (str, "</a>");
 	}
 	g_string_append (str, "</div>");
-	
+
 	return scm_mem2string (str->str, str->len);
 }
 
@@ -1233,9 +1233,9 @@ get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
 	time_t start, prev_stop;
-	
-	/* Caution! use of the last_ivl_time thing makes this 
-	 * stateful in a way that may be surprising ! 
+
+	/* Caution! use of the last_ivl_time thing makes this
+	 * stateful in a way that may be surprising !
 	 */
 	start = gtt_interval_get_start (ivl);
 	prev_stop = ghtml->last_ivl_time;
@@ -1254,9 +1254,9 @@ get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
 	time_t stop, prev_start;
-	
-	/* Caution! use of the last_ivl_time thing makes this 
-	 * stateful in a way that may be surprising ! 
+
+	/* Caution! use of the last_ivl_time thing makes this
+	 * stateful in a way that may be surprising !
 	 */
 	stop = gtt_interval_get_stop (ivl);
 	prev_start = ghtml->last_ivl_time;
@@ -1283,7 +1283,7 @@ RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
 /* ============================================================== */
 
-static SCM 
+static SCM
 my_catch_handler (void *data, SCM tag, SCM throw_args)
 {
 	printf ("Error: GnoTime caught error during scheme parse\n");
@@ -1292,7 +1292,7 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 		char * str  = SCM_SYMBOL_CHARS (tag);
 		printf ("\tScheme error was: %s\n", str);
 	}
-	scm_backtrace(); 
+	scm_backtrace();
 
 	SCM fmt = scm_makfrom0str ("~S");
 	SCM s_str = scm_simple_format (SCM_BOOL_F, fmt, SCM_LIST1(throw_args));
@@ -1306,7 +1306,7 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
  * <link rel="stylesheet" href="some_kind_of.css" type="text/css">
  */
 
-static void 
+static void
 process_link (GttGhtml *ghtml, const gchar *str)
 {
 	/* no-op for now, just copy it into the window  */
@@ -1373,11 +1373,11 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 	ghtml_guile_global_hack = ghtml;
 
 #ifdef DEBUG
-	/* Load predefined scheme forms. We do this here only when debugging, 
+	/* Load predefined scheme forms. We do this here only when debugging,
 	 * since they may have changed since just a few minutes ago. */
 	scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
 #endif
-	
+
 	/* Now open the output stream for writing */
 	if (ghtml->open_stream && (0==ghtml->open_count))
 	{
@@ -1386,7 +1386,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 
 	ghtml->open_count ++;
 
-	/* Loop over input text, looking for scheme markup and 
+	/* Loop over input text, looking for scheme markup and
 	 * sgml comments. */
 	start = template->str;
 	while (start)
@@ -1414,7 +1414,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 			{
 				end +=3;
 			}
-			
+
 			/* write everything that we got before the markup */
 			if (ghtml->write_stream)
 			{
@@ -1434,7 +1434,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 				*end = 0;
 				end += 1;
 			}
-			
+
 			/* write everything that we got before the markup */
 			if (ghtml->write_stream)
 			{
@@ -1457,7 +1457,7 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 				*end = 0;
 				end += 2;
 			}
-			
+
 			/* write everything that we got before the markup */
 			if (ghtml->write_stream)
 			{
@@ -1490,8 +1490,8 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 }
 
 /* ============================================================== */
-/* Register callback handlers for various internally defined 
- * scheme forms. 
+/* Register callback handlers for various internally defined
+ * scheme forms.
  */
 
 static int is_inited = 0;
@@ -1511,10 +1511,10 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-tasks",              1, 0, 0, ret_tasks);
 	scm_c_define_gsubr("gtt-intervals",          1, 0, 0, ret_intervals);
 	scm_c_define_gsubr("gtt-daily-totals",       1, 0, 0, ret_daily_totals);
-	
+
 	scm_c_define_gsubr("gtt-links-on",           0, 0, 0, set_links_on);
 	scm_c_define_gsubr("gtt-links-off",          0, 0, 0, set_links_off);
-	
+
 	scm_c_define_gsubr("gtt-project-subprojects", 1, 0, 0, ret_project_subprjs);
 	scm_c_define_gsubr("gtt-project-parent",     1, 0, 0, ret_project_parent);
 	scm_c_define_gsubr("gtt-project-title",      1, 0, 0, ret_project_title);
@@ -1529,7 +1529,7 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-project-due-date",   1, 0, 0, ret_project_due_date);
 	scm_c_define_gsubr("gtt-project-sizing",     1, 0, 0, ret_project_sizing);
 	scm_c_define_gsubr("gtt-project-percent-complete", 1, 0, 0, ret_project_percent);
-	
+
 	scm_c_define_gsubr("gtt-task-memo",          1, 0, 0, ret_task_memo);
 	scm_c_define_gsubr("gtt-task-notes",         1, 0, 0, ret_task_notes);
 	scm_c_define_gsubr("gtt-task-billstatus",    1, 0, 0, ret_task_billstatus);
@@ -1540,7 +1540,7 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-task-latest-str",    1, 0, 0, ret_task_latest_str);
 	scm_c_define_gsubr("gtt-task-value-str",     1, 0, 0, ret_task_value_str);
 	scm_c_define_gsubr("gtt-task-parent",        1, 0, 0, ret_task_parent);
-	
+
 	scm_c_define_gsubr("gtt-interval-start",     1, 0, 0, ret_ivl_start);
 	scm_c_define_gsubr("gtt-interval-stop",      1, 0, 0, ret_ivl_stop);
 	scm_c_define_gsubr("gtt-interval-fuzz",      1, 0, 0, ret_ivl_fuzz);
@@ -1548,7 +1548,7 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-interval-start-str", 1, 0, 0, ret_ivl_start_str);
 	scm_c_define_gsubr("gtt-interval-stop-str",  1, 0, 0, ret_ivl_stop_str);
 	scm_c_define_gsubr("gtt-interval-fuzz-str",  1, 0, 0, ret_ivl_fuzz_str);
-	
+
 }
 
 
@@ -1567,7 +1567,7 @@ gtt_ghtml_new (void)
 		/* I think I neeed to do this, not sure */
 		scm_init_debug();
 		scm_init_backtrace();
-		
+
 		/* Load predefined scheme forms */
 		scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
 	}
@@ -1588,7 +1588,7 @@ gtt_ghtml_new (void)
 	return p;
 }
 
-void 
+void
 gtt_ghtml_destroy (GttGhtml *p)
 {
 	if (!p) return;
@@ -1597,11 +1597,11 @@ gtt_ghtml_destroy (GttGhtml *p)
 	g_free (p);
 }
 
-void 
+void
 gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
-                                   GttGhtmlOpenStream op, 
+                                   GttGhtmlOpenStream op,
                                    GttGhtmlWriteStream wr,
-                                   GttGhtmlCloseStream cl, 
+                                   GttGhtmlCloseStream cl,
                                    GttGhtmlError er)
 {
 	if (!p) return;
@@ -1612,10 +1612,10 @@ gtt_ghtml_set_stream (GttGhtml *p, gpointer ud,
 	p->error = er;
 }
 
-/* This sets the over-ride flag, so that no internal links are shown, 
- * really really for real, when printing out to file. 
+/* This sets the over-ride flag, so that no internal links are shown,
+ * really really for real, when printing out to file.
  */
-void 
+void
 gtt_ghtml_show_links (GttGhtml *p, gboolean sl)
 {
 	if (!p) return;
