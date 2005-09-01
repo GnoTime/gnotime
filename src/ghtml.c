@@ -1197,21 +1197,35 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 		qof_print_time_buff (buff, 100, starp);
 	}
 
-	if (ghtml->show_links)
+	GString *str;
+	str = g_string_new (NULL);
+
+	/* Try to have different indentations for date and time 
+	 * actually date and time should be in own separate columns XXXX */
+	if (prt_date) 
 	{
-		GString *str;
-		str = g_string_new (NULL);
-		g_string_append_printf (str, "<a href=\"gtt:interval:0x%lx\">", (long) ivl);
-		g_string_append (str, buff); 
-		g_string_append (str, "</a>");
-		return scm_mem2string (str->str, str->len);
+		g_string_append_printf (str, "<div class=gnotime-activity-datetime>");
 	}
 	else
 	{
-		return scm_mem2string (buff, strlen (buff));
+		g_string_append_printf (str, "<div class=gnotime-activity-time>");
+		g_string_append_printf (str, "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;");
 	}
+
+	if (ghtml->show_links)
+	{
+		
+		g_string_append_printf (str, "<a href=\"gtt:interval:0x%lx\">", (long) ivl);
+	}
+	g_string_append (str, buff); 
 	
-	return SCM_EOL; /* Not reached */
+	if (ghtml->show_links)
+	{
+		g_string_append (str, "</a>");
+	}
+	g_string_append (str, "</div>");
+	
+	return scm_mem2string (str->str, str->len);
 }
 
 static SCM
