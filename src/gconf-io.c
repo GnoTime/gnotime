@@ -146,8 +146,6 @@ gtt_gconf_save (void)
 	SETSTR ("/Display/ExpanderState", xpn);
 
 	/* ------------- */
-	SETBOOL ("/Toolbar/ShowIcons", config_show_tb_icons);
-	SETBOOL ("/Toolbar/ShowTexts", config_show_tb_texts);
 	SETBOOL ("/Toolbar/ShowTips", config_show_tb_tips);
 	SETBOOL ("/Toolbar/ShowNew", config_show_tb_new);
 	SETBOOL ("/Toolbar/ShowCCP", config_show_tb_ccp);
@@ -418,8 +416,6 @@ gtt_gconf_load (void)
 
 
 	/* ------------ */
-	config_show_tb_icons   = GETBOOL ("/Toolbar/ShowIcons", TRUE);
-	config_show_tb_texts   = GETBOOL ("/Toolbar/ShowTexts", TRUE);
 	config_show_tb_tips    = GETBOOL ("/Toolbar/ShowTips", TRUE);
 	config_show_tb_new     = GETBOOL ("/Toolbar/ShowNew", TRUE);
 	config_show_tb_ccp     = GETBOOL ("/Toolbar/ShowCCP", FALSE);

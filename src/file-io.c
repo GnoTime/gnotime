@@ -167,13 +167,7 @@ project_list_load_old(void)
 			/* show seconds? */
 			config_show_secs = (s[3] == 'n');
 		} else if (s[0] == 'b') {
-			if (s[1] == 'i') {
-				/* show icons in the toolbar */
-				config_show_tb_icons = (s[4] == 'n');
-			} else if (s[1] == 't') {
-				/* show text in the toolbar */
-				config_show_tb_texts = (s[4] == 'n');
-			} else if (s[1] == 'p') {
+			if (s[1] == 'p') {
 				/* show tooltips */
 				config_show_tb_tips = (s[4] == 'n');
 			} else if (s[1] == 'h') {
@@ -385,8 +379,6 @@ gtt_load_gnome_config (const char *prefix)
 
 
 	/* ------------ */
-	config_show_tb_icons = GET_BOOL("/Toolbar/ShowIcons=true");
-	config_show_tb_texts = GET_BOOL("/Toolbar/ShowTexts=true");
 	config_show_tb_tips = GET_BOOL("/Toolbar/ShowTips=true");
 	config_show_tb_new = GET_BOOL("/Toolbar/ShowNew=true");
 	config_show_tb_ccp = GET_BOOL("/Toolbar/ShowCCP=false");

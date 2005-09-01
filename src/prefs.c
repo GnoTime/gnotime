@@ -60,8 +60,6 @@ int config_show_title_urgency = 1;
 int config_show_title_importance = 1;
 int config_show_title_status = 0;
 
-int config_show_tb_icons = 1;
-int config_show_tb_texts = 1;
 int config_show_tb_tips = 1;
 int config_show_tb_new = 1;
 int config_show_tb_ccp = 0;
@@ -125,8 +123,6 @@ typedef struct _PrefsDialog
 	GtkEntry       *shell_start;
 	GtkEntry       *shell_stop;
 
-	GtkCheckButton *show_tb_icons;
-	GtkCheckButton *show_tb_texts;
 	GtkCheckButton *show_tb_tips;
 	GtkCheckButton *show_tb_new;
 	GtkCheckButton *show_tb_ccp;
@@ -349,8 +345,6 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		int change = 0;
 
 		/* toolbar */
-		config_show_tb_icons = GTK_TOGGLE_BUTTON(odlg->show_tb_icons)->active;
-		config_show_tb_texts = GTK_TOGGLE_BUTTON(odlg->show_tb_texts)->active;
 		config_show_tb_tips = GTK_TOGGLE_BUTTON(odlg->show_tb_tips)->active;
 	
 		/* toolbar sections */
@@ -480,8 +474,6 @@ options_dialog_set(PrefsDialog *odlg)
 	logfile_sensitive_cb(NULL, odlg);
 
 	/* toolbar sections */
-	SET_ACTIVE(tb_icons);
-	SET_ACTIVE(tb_texts);
 	SET_ACTIVE(tb_tips);
 	SET_ACTIVE(tb_new);
 	SET_ACTIVE(tb_ccp);
@@ -679,8 +671,6 @@ toolbar_options(PrefsDialog *dlg)
 	GtkWidget *w;
 	GladeXML *gtxml = dlg->gtxml;
 
-	TBWID (icons);
-	TBWID (texts);
 	TBWID (tips);
 	TBWID (new);
 	TBWID (ccp);

@@ -91,28 +91,6 @@ toolbar_set_states(void)
 				     GNOME_STOCK_TIMER),
 				 GTK_ICON_SIZE_LARGE_TOOLBAR);
 	}
-		
-/* The toolbar style setting is interfereing with the default 
- * gnome behaviour, leading to sourceforge bug 877193. 
- * However, that menu doesn't work with my gtk-2.0-dev, so I will
- * keep this around for a while ... 
- */
-#define GET_RID_OF_THESE_SOMEDAY
-#ifdef GET_RID_OF_THESE_SOMEDAY
-	if ((config_show_tb_icons) && (config_show_tb_texts)) 
-	{
-		tb_style = GTK_TOOLBAR_BOTH;
-	} 
-	else if ((!config_show_tb_icons) && (config_show_tb_texts)) 
-	{
-		tb_style = GTK_TOOLBAR_TEXT;
-	} 
-	else 
-	{
-		tb_style = GTK_TOOLBAR_ICONS;
-	}
-	gtk_toolbar_set_style(mytbar->tbar, tb_style);
-#endif
 }
 
 /* ================================================================= */

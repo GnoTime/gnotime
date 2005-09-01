@@ -43,8 +43,6 @@ extern int config_show_title_percent_complete;
 extern int config_show_title_urgency;
 extern int config_show_title_importance;
 extern int config_show_title_status;
-extern int config_show_tb_icons;
-extern int config_show_tb_texts;
 extern int config_show_tb_tips;
 extern int config_show_tb_new;
 extern int config_show_tb_ccp;
