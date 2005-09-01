@@ -1215,9 +1215,8 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	return scm_mem2string (str->str, str->len);
 }
 
-#if XXXX
 static SCM
-get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+get_ivl_same_day_start_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
 	time_t start, prev_stop;
@@ -1233,10 +1232,12 @@ get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	{
 		prt_date = qof_is_same_day(start, prev_stop);
 	}
-	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, prt_date);
+	return SCM_BOOL (prt_date);
 }
+RET_IVL_SIMPLE (ret_ivl_same_day_start, get_ivl_same_day_start);
+
 static SCM
-get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+get_ivl_same_day_stop_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	gboolean prt_date = TRUE;
 	time_t stop, prev_start;
@@ -1251,9 +1252,9 @@ get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	{
 		prt_date = qof_is_same_day(prev_start, stop);
 	}
-	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, prt_date);
+	return SCM_BOOL (prt_date);
 }
-#endif
+RET_IVL_SIMPLE (ret_ivl_same_day_stop, get_ivl_same_day_stop);
 
 static SCM
 get_ivl_start_date_str_scm (GttGhtml *ghtml, GttInterval *ivl)
@@ -1565,6 +1566,8 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-interval-start-time-str", 1, 0, 0, ret_ivl_start_time_str);
 	scm_c_define_gsubr("gtt-interval-stop-date-str",  1, 0, 0, ret_ivl_stop_date_str);
 	scm_c_define_gsubr("gtt-interval-stop-time-str",  1, 0, 0, ret_ivl_stop_time_str);
+	scm_c_define_gsubr("gtt-interval-same-day-start", 1, 0, 0, ret_ivl_same_day_start);
+	scm_c_define_gsubr("gtt-interval-same-day-stop",  1, 0, 0, ret_ivl_same_day_stop);
 	scm_c_define_gsubr("gtt-interval-fuzz-str",  1, 0, 0, ret_ivl_fuzz_str);
 
 }
