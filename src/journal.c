@@ -753,6 +753,17 @@ on_close_clicked_cb (GtkWidget *w, gpointer data)
 	if (NULL == wig->top) return;  /* avoid recursive double-free */
 	GtkWidget *topper = wig->top;   /* avoid recursion */
 	wig->top = NULL;
+
+	/* Unplug the timout function, so that timer doesn't
+	 * pop after the destroy has happened. */
+	if (wig->hover_timeout_id)
+	{
+		gtk_timeout_remove (wig->hover_timeout_id);
+		wig->hover_timeout_id = 0;
+		gtk_widget_hide (wig->hover_help_window);
+	}
+
+	/* kill the display widget */
 	gtk_widget_destroy (topper);
 
 	/* close the main journal window ... everything */

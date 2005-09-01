@@ -1,6 +1,9 @@
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
 	* Bump to version number 2.2.2
-	* Change activity report to display date/time more cleanly
+	* journal.c: Fix crash due to hoverhelp timer popping after 
+	  a report window is closed.
+	* activity.ghtml, ghtml.c:  Change activity report to display 
+	  date/time in two distinct html table columns (prettier alignment)
 	* Bug fix: sourceforge bug report fixed
 	  [ 877193 ] toolbar won't go to/stay in text-only mode
 	* Bug fix: editing time brings up wrong report
