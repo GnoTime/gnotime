@@ -4,6 +4,7 @@ lang = C
 gttghtmldir = $(datadir)/gnotime/ghtml/C
 
 gttghtml_DATA =         \
+	activity.ghtml       \
 	basic-daily.ghtml    \
 	basic-invoice.ghtml  \
 	basic-journal.ghtml  \
@@ -17,7 +18,6 @@ gttghtml_DATA =         \
 	query.ghtml          \
 	status.ghtml         \
 	tab-delim.ghtml      \
-	time-interval.ghtml  \
 	todo.ghtml	         \
 	todo-export.ghtml    \
 	gnotime-logo.png     \
