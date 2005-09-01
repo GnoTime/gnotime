@@ -762,6 +762,12 @@ on_close_clicked_cb (GtkWidget *w, gpointer data)
 		wig->hover_timeout_id = 0;
 		gtk_widget_hide (wig->hover_help_window);
 	}
+	if (wig->hover_kill_id)
+	{
+		gtk_timeout_remove (wig->hover_kill_id);
+		wig->hover_kill_id = 0;
+		gtk_widget_hide (wig->hover_help_window);
+	}
 
 	/* kill the display widget */
 	gtk_widget_destroy (topper);
