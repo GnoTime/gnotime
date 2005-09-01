@@ -42,10 +42,10 @@
         ''"\n</div>\n"
         ''"<table class=gnotime-start-stop-table bgcolor=#f8f8f0 width=100% border=0 cellpadding=4>\n"
         ''"<tr class=gnotime-start-stop-table-header bgcolor=#ebebeb>\n"
-        ''"<td class=gnotime-start-stop-table-header-start><b>Start</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-stop><b>Stop</b></td>\n"
-        ''"<td class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></td>\n"
-        ;;  dont show fuzz ''"<td class=gnotime-start-stop-table-header-fuzz><b>Fuzz</b></td>\n"
+        ''"<th class=gnotime-start-stop-table-header-start colspan=2><b>Start</b></th>\n"
+        ''"<th class=gnotime-start-stop-table-header-stop colspan=2><b>Stop</b></th>\n"
+        ''"<th class=gnotime-start-stop-table-header-elapsed><b>Elapsed</b></th>\n"
+        ;;  dont show fuzz ''"<th class=gnotime-start-stop-table-header-fuzz><b>Fuzz</b></th>\n"
         ''"</tr>\n"
          (lambda (task) (gtt-ivls task
          (list
@@ -53,12 +53,16 @@
                ; the first html table column shows the start date/time
                ''"<td class=gnotime-start-stop-table-start>"  
                      gtt-interval-start-date-str 
+               ''"</td>\n"
+               ''"<td class=gnotime-start-stop-table-start>"  
                      gtt-interval-start-time-str 
                ''"</td>\n"
                
                ; the second html table column shows the stop date/time
                ''"<td class=gnotime-start-stop-table-stop>"  
                      gtt-interval-stop-date-str 
+               ''"</td>\n"
+               ''"<td class=gnotime-start-stop-table-stop>"  
                      gtt-interval-stop-time-str 
                ''"</td>\n"
                
