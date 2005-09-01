@@ -29,6 +29,23 @@
 
 <?scm
 
+;; Simple function to print the start date, but only if the start 
+;; date is different than the previous end date. If date is same as 
+;; previous end, then "&nbsp;" (an html blank space) is printed.
+;; Takes a time interval as an argument.
+(define (gtt-show-start-date ivl)
+        (if (gtt-interval-same-day-start ivl) 
+             (gtt-interval-start-date-str ivl)
+             '"&nbsp;" 
+        )
+)
+(define (gtt-show-stop-date ivl)
+        (if (gtt-interval-same-day-stop ivl) 
+             (gtt-interval-stop-date-str ivl)
+             '"&nbsp;" 
+        )
+)
+
 (gtt-show-tasks (gtt-tasks (gtt-linked-project))
     (list   
         ''"<table class=gnotime-diary-entry bgcolor=#e0e0e0 width=100% border=0 cellpadding=4><tr><td>\n"
@@ -52,7 +69,7 @@
                ''"<tr>\n"
                ; the first html table column shows the start date/time
                ''"<td class=gnotime-start-stop-table-start>"  
-                     gtt-interval-start-date-str 
+                     gtt-show-start-date
                ''"</td>\n"
                ''"<td class=gnotime-start-stop-table-start>"  
                      gtt-interval-start-time-str 
@@ -60,7 +77,7 @@
                
                ; the second html table column shows the stop date/time
                ''"<td class=gnotime-start-stop-table-stop>"  
-                     gtt-interval-stop-date-str 
+                     gtt-show-stop-date
                ''"</td>\n"
                ''"<td class=gnotime-start-stop-table-stop>"  
                      gtt-interval-stop-time-str 
