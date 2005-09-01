@@ -513,7 +513,7 @@ menu_properties(GtkWidget *w, gpointer data)
 static void show_a (GtkWidget *w)
 {
 	gtk_widget_destroy (w);
-	show_report (NULL, "time-interval.ghtml");
+	show_report (NULL, ACTIVITY_REPORT);
 }
 
 void

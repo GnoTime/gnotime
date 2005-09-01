@@ -26,6 +26,7 @@
 #include "gtt.h"
 #include "journal.h"
 #include "menucmd.h"
+#include "menus.h"
 #include "myoaf.h"
 #include "prefs.h"
 #include "timer.h"
@@ -64,8 +65,6 @@ MyToolbar *mytbar = NULL;
 void
 toolbar_set_states(void)
 {
-	GtkToolbarStyle tb_style;
-
 	g_return_if_fail(mytbar != NULL);
 	g_return_if_fail(mytbar->tbar != NULL);
 	g_return_if_fail(GTK_IS_TOOLBAR(mytbar->tbar));
@@ -173,7 +172,7 @@ build_toolbar(void)
 				 _("Activity Journal"),
 				 _("View and Edit Timestamp Logs"),
 				 GNOME_STOCK_BOOK_OPEN,
-				 (GtkSignalFunc) show_report, "time-interval.ghtml");
+				 (GtkSignalFunc) show_report, ACTIVITY_REPORT);
 		position ++;
 	}
 	if (config_show_tb_prop) 

@@ -37,6 +37,7 @@
 #include "dialog.h"
 #include "journal.h"
 #include "ghtml.h"
+#include "menus.h"
 #include "plug-in.h"
 #include "proj.h"
 #include "props-invl.h"
@@ -819,7 +820,7 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		wig->task = NULL;
 		wig->interval = NULL;
 
-		path = gtt_ghtml_resolve_path ("journal.ghtml", wig->filepath);
+		path = gtt_ghtml_resolve_path (JOURNAL_REPORT, wig->filepath);
 		do_show_report (path, NULL, NULL, prj, FALSE, NULL);
 	}
 	else

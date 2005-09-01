@@ -21,6 +21,19 @@
 
 #include <gnome.h>
 
+/* names of reports */
+#define ACTIVITY_REPORT "activity.ghtml"
+#define DAILY_REPORT    "daily.ghtml"
+#define INVOICE_REPORT  "invoice.ghtml"
+#define JOURNAL_REPORT  "journal.ghtml"
+#define PRIMER_REPORT   "primer.ghtml"
+#define QUERY_REPORT    "query.ghtml"
+#define STATUS_REPORT   "status.ghtml"
+#define TODO_REPORT     "todo.ghtml"
+
+#define TAB_DELIM_EXPORT "tab-delim.ghtml"
+#define TODO_EXPORT      "todo-export.ghtml"
+
 GtkMenuShell *menus_get_popup(void);
 void menus_create(GnomeApp *app);
 void menus_set_states(void);
