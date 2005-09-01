@@ -49,9 +49,9 @@
  * HTML display window, and the various actions and etc.
  * that can be taken from it. */
 
-typedef struct wiggy_s 
+typedef struct wiggy_s
 {
-	GttGhtml  *gh;    
+	GttGhtml  *gh;
 	GtkHTML   *html;
 	GtkHTMLStream  *html_stream;
 	GtkWidget *top;
@@ -90,7 +90,7 @@ typedef struct wiggy_s
 	GtkEntry  *publish_entry;
 } Wiggy;
 
-static void do_show_report (const char *, GttPlugin *, 
+static void do_show_report (const char *, GttPlugin *,
                 KvpFrame *, GttProject *, gboolean, GList *);
 
 
@@ -142,7 +142,7 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		p = g_stpcpy (p, "</h1>");
 		p += sprintf (p, _("The file %s was not found."),
 		             (msg? (char*) msg : _("(null)")));
-		
+
 		p = g_stpcpy (p, "</body></html>");
 		gtk_html_write (html, stream, buff, p-buff);
 	}
@@ -154,7 +154,7 @@ wiggy_error (GttGhtml *pl, int err, const char * msg, gpointer ud)
 		p = g_stpcpy (p, "</h1></body></html>");
 		gtk_html_write (html, stream, buff, p-buff);
 	}
-	
+
 	gtk_html_end (html, stream, GTK_HTML_STREAM_OK);
 
 }
@@ -182,11 +182,11 @@ file_write_helper (GttGhtml *pl, const char *str, size_t len, gpointer data)
 
 /* ============================================================== */
 
-static void 
+static void
 remember_uri (Wiggy *wig, const char * filename)
 {
 	/* Remember history, on a per-report basis */
-	if (wig->plg && ((NULL == wig->plg->last_url) || 
+	if (wig->plg && ((NULL == wig->plg->last_url) ||
 	                 (0==wig->plg->last_url[0]) ||
 	                 (0==strncmp (wig->plg->last_url, "file:/", 6))))
 	{
@@ -195,7 +195,7 @@ remember_uri (Wiggy *wig, const char * filename)
 	}
 }
 
-static void 
+static void
 save_to_gnomevfs (Wiggy *wig, const char * filename)
 {
 
@@ -210,16 +210,16 @@ save_to_gnomevfs (Wiggy *wig, const char * filename)
 		char *s;
 
 		s = g_strdup_printf (_("File %s exists, overwrite?"), filename);
-		dg = gnome_question_dialog_parented (s, NULL, NULL, 
+		dg = gnome_question_dialog_parented (s, NULL, NULL,
 		            GTK_WINDOW (wig->filesel));
 		g_free (s);
 
 		if (0 == gnome_dialog_run (GNOME_DIALOG (dg))) return;
 	}
-		
+
 	/* Try to open the file for writing */
 	GnomeVFSResult    result;
-	result = gnome_vfs_create (&wig->handle, filename, 
+	result = gnome_vfs_create (&wig->handle, filename,
 	                     GNOME_VFS_OPEN_WRITE, FALSE, 0644);
 
 	if (GNOME_VFS_OK != result)
@@ -230,7 +230,7 @@ save_to_gnomevfs (Wiggy *wig, const char * filename)
 		               GTK_MESSAGE_ERROR,
 		               GTK_BUTTONS_CLOSE,
 		               _("Unable to open the file %s\n%s"),
-		               filename, 
+		               filename,
 		               gnome_vfs_result_to_string (result));
 		g_signal_connect (G_OBJECT(mb), "response",
 		               G_CALLBACK (gtk_widget_destroy), mb);
@@ -240,7 +240,7 @@ save_to_gnomevfs (Wiggy *wig, const char * filename)
 	{
 		/* Cause ghtml to output the html again, but this time
 		 * using raw file-io handlers instead. */
-		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write_helper, 
+		gtt_ghtml_set_stream (wig->gh, wig, NULL, file_write_helper,
 			NULL, wiggy_error);
 		gtt_ghtml_show_links (wig->gh, FALSE);
 		gtt_ghtml_display (wig->gh, wig->filepath, wig->prj);
@@ -250,19 +250,19 @@ save_to_gnomevfs (Wiggy *wig, const char * filename)
 		wig->handle = NULL;
 
 		/* Reset the html out handlers back to the browser */
-		gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
+		gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write,
 		   wiggy_close, wiggy_error);
 	}
 }
 
-static void 
+static void
 save_to_file (Wiggy *wig, const char * uri)
 {
 
 #if BORKEN_STILL_GET_X11_TRAFFIC_WHICH_HOSES_THINGS
 	/* If its an remote system URI, we fork/exec, because
 	 * gnomevfs can take a looooong time to respond ...
-	 */ 
+	 */
 	if (0 == strncmp (uri, "ssh://", 6))
 	{
 		pid_t pid;
@@ -271,7 +271,7 @@ save_to_file (Wiggy *wig, const char * uri)
 		{
 			save_to_gnomevfs (wig, uri);
 
-			/* exit the child as cleanly as we can ... do NOT 
+			/* exit the child as cleanly as we can ... do NOT
 			 * generate any socket/X11/graphics/gtk traffic.  */
 			execl ("/bin/true", "/bin/true", NULL);
 			execl ("/bin/false", "/bin/false", NULL);
@@ -285,7 +285,7 @@ save_to_file (Wiggy *wig, const char * uri)
 		{
 			/* else we are parent, child will save for us */
 			sched_yield();
-		}	
+		}
 	}
 #endif
 
@@ -298,7 +298,7 @@ save_to_file (Wiggy *wig, const char * uri)
  * results of user editing are saved, rather than the orig contents.
  */
 
-static void 
+static void
 filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -312,7 +312,7 @@ filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
 	wig->filesel = NULL;
 }
 
-static void 
+static void
 filesel_cancel_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -323,7 +323,7 @@ filesel_cancel_clicked_cb (GtkWidget *w, gpointer data)
 /* ============================================================== */
 /* engine callbacks */
 
-static void 
+static void
 redraw (GttProject * prj, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -332,7 +332,7 @@ redraw (GttProject * prj, gpointer data)
 }
 
 /* ============================================================== */
-/* Global clipboard, allows cut task to be reparented to a different 
+/* Global clipboard, allows cut task to be reparented to a different
  * project.  List of cut tasks allows for infinite undo. */
 
 static GList * cutted_task_list = NULL;
@@ -353,7 +353,7 @@ interval_new_clicked_cb (GtkWidget * w, gpointer data)
 }
 
 static void
-interval_edit_clicked_cb(GtkWidget * dw, gpointer data) 
+interval_edit_clicked_cb(GtkWidget * dw, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
@@ -363,7 +363,7 @@ interval_edit_clicked_cb(GtkWidget * dw, gpointer data)
 }
 
 static void
-interval_delete_clicked_cb(GtkWidget * w, gpointer data) 
+interval_delete_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	gtt_interval_destroy (wig->interval);
@@ -371,7 +371,7 @@ interval_delete_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_merge_up_clicked_cb(GtkWidget * w, gpointer data) 
+interval_merge_up_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	gtt_interval_merge_up (wig->interval);
@@ -379,7 +379,7 @@ interval_merge_up_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_merge_down_clicked_cb(GtkWidget * w, gpointer data) 
+interval_merge_down_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	gtt_interval_merge_down (wig->interval);
@@ -387,7 +387,7 @@ interval_merge_down_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_move_up_clicked_cb(GtkWidget * w, gpointer data) 
+interval_move_up_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GttTask *tsk = gtt_interval_get_parent (wig->interval);
@@ -403,7 +403,7 @@ interval_move_up_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_move_down_clicked_cb(GtkWidget * w, gpointer data) 
+interval_move_down_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GttTask *tsk = gtt_interval_get_parent (wig->interval);
@@ -419,7 +419,7 @@ interval_move_down_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_insert_memo_cb(GtkWidget * w, gpointer data) 
+interval_insert_memo_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GttTask *newtask;
@@ -436,7 +436,7 @@ interval_insert_memo_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_paste_memo_cb(GtkWidget * w, gpointer data) 
+interval_paste_memo_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GttTask *newtask = NULL;
@@ -452,23 +452,23 @@ interval_paste_memo_cb(GtkWidget * w, gpointer data)
 	{
 		newtask = cutted_task_list->data;
 		cutted_task_list->data = NULL;
-		cutted_task_list = 
+		cutted_task_list =
 		   g_list_delete_link (cutted_task_list, cutted_task_list);
 	}
-	
+
 	gtt_interval_split (wig->interval, newtask);
 }
 
 static void
 interval_popup_cb (Wiggy *wig)
 {
-	gtk_menu_popup(GTK_MENU(wig->interval_popup), 
+	gtk_menu_popup(GTK_MENU(wig->interval_popup),
 		NULL, NULL, NULL, wig, 1, 0);
 	if (cutted_task_list)
 	{
 		gtk_widget_set_sensitive (wig->interval_paste, TRUE);
 	}
-	else 
+	else
 	{
 		gtk_widget_set_sensitive (wig->interval_paste, FALSE);
 	}
@@ -541,7 +541,7 @@ edit_task_ui(GtkWidget *w, gpointer data)
 /* ============================================================== */
 
 static void
-task_new_task_clicked_cb(GtkWidget * w, gpointer data) 
+task_new_task_clicked_cb(GtkWidget * w, gpointer data)
 {
 	GttTask *newtask;
 	Wiggy *wig = (Wiggy *) data;
@@ -550,14 +550,14 @@ task_new_task_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-task_edit_task_clicked_cb(GtkWidget * w, gpointer data) 
+task_edit_task_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	prop_task_dialog_show (wig->task);
 }
 
 static void
-task_delete_memo_clicked_cb(GtkWidget * w, gpointer data) 
+task_delete_memo_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
@@ -573,7 +573,7 @@ task_delete_memo_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-task_delete_times_clicked_cb(GtkWidget * w, gpointer data) 
+task_delete_times_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
@@ -583,7 +583,7 @@ task_delete_times_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-task_copy_clicked_cb(GtkWidget * w, gpointer data) 
+task_copy_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
@@ -593,7 +593,7 @@ task_copy_clicked_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-task_paste_clicked_cb(GtkWidget * w, gpointer data) 
+task_paste_clicked_cb(GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	GttTask *newtask = NULL;
@@ -609,10 +609,10 @@ task_paste_clicked_cb(GtkWidget * w, gpointer data)
 	{
 		newtask = cutted_task_list->data;
 		cutted_task_list->data = NULL;
-		cutted_task_list = 
+		cutted_task_list =
 		   g_list_delete_link (cutted_task_list, cutted_task_list);
 	}
-	
+
 	gtt_task_insert (wig->task, newtask);
 }
 
@@ -633,13 +633,13 @@ task_new_interval_cb (GtkWidget * w, gpointer data)
 static void
 task_popup_cb (Wiggy *wig)
 {
-	gtk_menu_popup(GTK_MENU(wig->task_popup), 
+	gtk_menu_popup(GTK_MENU(wig->task_popup),
 		NULL, NULL, NULL, wig, 1, 0);
 	if (gtt_task_is_first_task (wig->task))
 	{
 		gtk_widget_set_sensitive (wig->task_delete_memo, FALSE);
 	}
-	else 
+	else
 	{
 		gtk_widget_set_sensitive (wig->task_delete_memo, TRUE);
 	}
@@ -648,7 +648,7 @@ task_popup_cb (Wiggy *wig)
 	{
 		gtk_widget_set_sensitive (wig->task_paste, TRUE);
 	}
-	else 
+	else
 	{
 		gtk_widget_set_sensitive (wig->task_paste, FALSE);
 	}
@@ -658,7 +658,7 @@ task_popup_cb (Wiggy *wig)
 /* ============================================================== */
 
 #if LATER
-static void 
+static void
 on_print_clicked_cb (GtkWidget *w, gpointer data)
 {
 	GladeXML  *glxml;
@@ -669,7 +669,7 @@ on_print_clicked_cb (GtkWidget *w, gpointer data)
 /* ============================================================== */
 /* Publish Button handlers */
 
-static void 
+static void
 on_publish_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = data;
@@ -682,14 +682,14 @@ on_publish_clicked_cb (GtkWidget *w, gpointer data)
 	gtk_widget_show (wig->publish_popup);
 }
 
-static void 
+static void
 on_pub_cancel_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = data;
 	gtk_widget_hide (wig->publish_popup);
 }
 
-static void 
+static void
 on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = data;
@@ -718,7 +718,7 @@ on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
 
 /* ============================================================== */
 
-static void 
+static void
 on_save_clicked_cb (GtkWidget *w, gpointer data)
 {
 	GtkWidget *fselw;
@@ -733,19 +733,19 @@ on_save_clicked_cb (GtkWidget *w, gpointer data)
 	/* Manually set a per-report history thingy */
 	if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
 	{
-		char * path = wig->plg->last_url; 
+		char * path = wig->plg->last_url;
 		gtk_file_selection_set_filename(wig->filesel, path);
 	}
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button), 
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button),
 		"clicked", G_CALLBACK(filesel_ok_clicked_cb), wig);
 
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->cancel_button), 
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->cancel_button),
 		"clicked", G_CALLBACK(filesel_cancel_clicked_cb), wig);
 
 	gtk_widget_show (fselw);
 }
 
-static void 
+static void
 on_close_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -762,7 +762,7 @@ on_close_clicked_cb (GtkWidget *w, gpointer data)
 
 	gtt_ghtml_destroy (wig->gh);
 	g_free (wig->filepath);
-	
+
 	wig->gh = NULL;
 	wig->html = NULL;
 	g_free (wig);
@@ -773,7 +773,7 @@ destroy_cb(GtkObject *ob, gpointer data)
 {
 }
 
-static void 
+static void
 on_refresh_clicked_cb (GtkWidget *w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
@@ -784,7 +784,7 @@ on_refresh_clicked_cb (GtkWidget *w, gpointer data)
 /* html events */
 
 static void
-html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data) 
+html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	gpointer addr = NULL;
@@ -834,8 +834,8 @@ html_link_clicked_cb(GtkHTML *doc, const gchar * url, gpointer data)
 /* ============================================================== */
 
 static void
-html_url_requested_cb(GtkHTML *doc, const gchar * url, 
-                      GtkHTMLStream *handle, gpointer data) 
+html_url_requested_cb(GtkHTML *doc, const gchar * url,
+                      GtkHTMLStream *handle, gpointer data)
 {
 	Wiggy *wig = data;
 	const char * path = gtt_ghtml_resolve_path (url, wig->filepath);
@@ -846,10 +846,10 @@ html_url_requested_cb(GtkHTML *doc, const gchar * url,
 	result = gnome_vfs_open (&vfs, path, GNOME_VFS_OPEN_READ);
 
 	if (GNOME_VFS_OK != result) return;
-	
+
 #define BSZ 16000
 	char buff[BSZ];
-	GnomeVFSFileSize  bytes_read; 
+	GnomeVFSFileSize  bytes_read;
 	result = gnome_vfs_read (vfs, buff, BSZ, &bytes_read);
 	while (GNOME_VFS_OK == result)
 	{
@@ -860,16 +860,16 @@ html_url_requested_cb(GtkHTML *doc, const gchar * url,
 }
 
 /* ============================================================== */
-/* Display a tool-tip type of message when the user pauses thier 
- * mouse over a URL.   If mouse pointer doesn't move for a 
+/* Display a tool-tip type of message when the user pauses thier
+ * mouse over a URL.   If mouse pointer doesn't move for a
  * second, popup a window.
  *
- * XXX we were going to do something fancy with this, but now I 
- * forget what ... 
+ * XXX we were going to do something fancy with this, but now I
+ * forget what ...
  * XXX we should display memos, etc.
  */
 
-static char * 
+static char *
 get_hover_msg (const gchar *url)
 {
 	char * str;
@@ -882,7 +882,7 @@ get_hover_msg (const gchar *url)
 		addr = (gpointer) strtoul (str, NULL, 16);
 	}
 
-	/* XXX todo- -- it would be nice to make these popups 
+	/* XXX todo- -- it would be nice to make these popups
 	 * depend on the type of report tht the user is viewing.
 	 * should we pull them out of a scheme markup ??
 	 *
@@ -939,8 +939,8 @@ hover_timer_func(gpointer data)
 
 	/* 8000 milisecs = 8 secs */
 	/* XXX the 'hover-loose-focus' tool below seems to be broken, and
-	 * if we don't do something, gtt will leave visual turds on the 
-	 * screen indefinitely.  So, in case of turds, hide the hover help 
+	 * if we don't do something, gtt will leave visual turds on the
+	 * screen indefinitely.  So, in case of turds, hide the hover help
 	 * after 8 seconds.
 	 */
 	wig->hover_kill_id = gtk_timeout_add (8000, hover_kill_func, wig);
@@ -948,14 +948,14 @@ hover_timer_func(gpointer data)
 }
 
 /* If the html window looses focus, we've got to hide the flyover help;
- * otherwise it will leave garbage on the screen. 
+ * otherwise it will leave garbage on the screen.
  */
 static gboolean
-hover_loose_focus(GtkWidget *w, GdkEventFocus *ev, gpointer data) 
+hover_loose_focus(GtkWidget *w, GdkEventFocus *ev, gpointer data)
 {
 	Wiggy *wig = data;
 
-	if (wig->hover_timeout_id) 
+	if (wig->hover_timeout_id)
 	{
 		gtk_timeout_remove (wig->hover_timeout_id);
 		wig->hover_timeout_id = 0;
@@ -963,9 +963,9 @@ hover_loose_focus(GtkWidget *w, GdkEventFocus *ev, gpointer data)
 	}
 	return 0;
 }
-		  
+
 static void
-html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data) 
+html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 {
 	Wiggy *wig = data;
 	if (NULL == wig->top) return;
@@ -993,7 +993,7 @@ html_on_url_cb(GtkHTML *doc, const gchar * url, gpointer data)
 		gtk_container_add(GTK_CONTAINER(frame), align);
 		gtk_container_set_resize_mode (GTK_CONTAINER(align), GTK_RESIZE_PARENT);
 		gtk_widget_show (align);
-		
+
 		GtkWidget *label = gtk_label_new ("xxx");
 		wig->hover_label = GTK_LABEL (label);
 		gtk_container_add(GTK_CONTAINER(align), label);
@@ -1047,7 +1047,7 @@ static QofBook *book = NULL;
  * are those that return lists of projects.  This should be fixed.
  * Part of the problem is that we can't currently identify the type
  * of the returned list.  I think we can fix this by returning
- * lists of qof entities, and using that to figure out the returned 
+ * lists of qof entities, and using that to figure out the returned
  * type.  Need to change GttProject to derive from QofEntity.
  */
 static GList *
@@ -1080,10 +1080,10 @@ perform_form_query (KvpFrame *kvpf)
 	{
 		printf ("Debug: Will run the query %s\n", query_string);
 	}
-	
+
 	/* Run the query */
 	results = qof_sql_query_run (q, query_string);
-	
+
 	/* XXX free q after using it */
 
 	if (user_debug)
@@ -1101,39 +1101,39 @@ perform_form_query (KvpFrame *kvpf)
 }
 
 static void
-submit_clicked_cb(GtkHTML * doc, 
-                  const gchar * method, 
-                  const gchar * url, 
-                  const gchar * encoding, 
-                  gpointer data) 
+submit_clicked_cb(GtkHTML * doc,
+                  const gchar * method,
+                  const gchar * url,
+                  const gchar * encoding,
+                  gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 	const char *path;
 	KvpFrame *kvpf;
 	KvpValue *val;
 	GList *qresults;
-	
+
 	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
 
 	kvpf = kvp_frame_new ();
 	kvp_frame_add_url_encoding (kvpf, encoding);
 
-	/* If there is a report specified, use that, else use 
+	/* If there is a report specified, use that, else use
 	 * the report specified in the form "action" */
 	val = kvp_frame_get_slot (kvpf, "report-path");
 	path = kvp_value_get_string (val);
 	if (!path) path = url;
 	path = gtt_ghtml_resolve_path (path, wig->filepath);
-	
+
 	/* Build an ad-hoc query */
 	qresults = perform_form_query (kvpf);
-	
-	/* Open a new window */
-	do_show_report (path, NULL, kvpf, wig->prj, TRUE, qresults); 
 
-	/* XXX We cannnot reuse the same window from this callback, we 
-	 * have to let the callback return first, else we get a nasty error. 
-	 * This should be fixed: if the query and the result form is the 
+	/* Open a new window */
+	do_show_report (path, NULL, kvpf, wig->prj, TRUE, qresults);
+
+	/* XXX We cannnot reuse the same window from this callback, we
+	 * have to let the callback return first, else we get a nasty error.
+	 * This should be fixed: if the query and the result form is the
 	 * same, we should re-use the same window.
 	 */
 #if 0
@@ -1146,8 +1146,8 @@ submit_clicked_cb(GtkHTML * doc,
 /* ============================================================== */
 
 static void
-do_show_report (const char * report, GttPlugin *plg, 
-                KvpFrame *kvpf, GttProject *prj, 
+do_show_report (const char * report, GttPlugin *plg,
+                KvpFrame *kvpf, GttProject *prj,
                 gboolean did_query, GList *prjlist)
 {
 	GtkWidget *jnl_top, *jnl_viewport;
@@ -1174,41 +1174,41 @@ do_show_report (const char * report, GttPlugin *plg,
 	gtk_container_add(GTK_CONTAINER(jnl_viewport), GTK_WIDGET(wig->html));
 
 	wig->gh = gtt_ghtml_new();
-	gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write, 
+	gtt_ghtml_set_stream (wig->gh, wig, wiggy_open, wiggy_write,
 		wiggy_close, wiggy_error);
-	
+
 	/* ---------------------------------------------------- */
 	/* Signals for the browser, and the Journal window */
 
 	glade_xml_signal_connect_data (glxml, "on_close_clicked",
 	        GTK_SIGNAL_FUNC (on_close_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_save_clicked",
 	        GTK_SIGNAL_FUNC (on_save_clicked_cb), wig);
-	  
+
 #if LATER
 	glade_xml_signal_connect_data (glxml, "on_print_clicked",
 	        GTK_SIGNAL_FUNC (on_print_clicked_cb), wig);
 #endif
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_publish_clicked",
 	        GTK_SIGNAL_FUNC (on_publish_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_refresh_clicked",
 	        GTK_SIGNAL_FUNC (on_refresh_clicked_cb), wig);
-	  
+
 	g_signal_connect (G_OBJECT(wig->top), "destroy",
 			G_CALLBACK (destroy_cb), wig);
-	
+
 	g_signal_connect (G_OBJECT(wig->html), "link_clicked",
 			G_CALLBACK (html_link_clicked_cb), wig);
-	
+
 	g_signal_connect (G_OBJECT(wig->html), "submit",
 			G_CALLBACK (submit_clicked_cb), wig);
-	
+
 	g_signal_connect (G_OBJECT(wig->html), "url_requested",
 			G_CALLBACK (html_url_requested_cb), wig);
-	
+
 	g_signal_connect(G_OBJECT(wig->html), "on_url",
 		G_CALLBACK(html_on_url_cb), wig);
 
@@ -1227,13 +1227,13 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	glade_xml_signal_connect_data (glxml, "on_pub_help_clicked",
 	        GTK_SIGNAL_FUNC (gtt_help_popup), NULL);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_pub_cancel_clicked",
 	        GTK_SIGNAL_FUNC (on_pub_cancel_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_pub_ok_clicked",
 	        GTK_SIGNAL_FUNC (on_pub_ok_clicked_cb), wig);
-	  
+
 	/* ---------------------------------------------------- */
 	/* This is the popup menu that says 'edit/delete/merge' */
 	/* for intervals */
@@ -1249,31 +1249,31 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	glade_xml_signal_connect_data (glxml, "on_new_interval_activate",
 	        GTK_SIGNAL_FUNC (interval_new_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_edit_activate",
 	        GTK_SIGNAL_FUNC (interval_edit_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_delete_activate",
 	        GTK_SIGNAL_FUNC (interval_delete_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_merge_up_activate",
 	        GTK_SIGNAL_FUNC (interval_merge_up_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_merge_down_activate",
 	        GTK_SIGNAL_FUNC (interval_merge_down_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_move_up_activate",
 	        GTK_SIGNAL_FUNC (interval_move_up_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_move_down_activate",
 	        GTK_SIGNAL_FUNC (interval_move_down_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_insert_memo_activate",
 	        GTK_SIGNAL_FUNC (interval_insert_memo_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_paste_memo_activate",
 	        GTK_SIGNAL_FUNC (interval_paste_memo_cb), wig);
-	  
+
 	/* ---------------------------------------------------- */
 	/* This is the popup menu that says 'edit/delete/merge' */
 	/* for tasks */
@@ -1286,22 +1286,22 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	glade_xml_signal_connect_data (glxml, "on_new_task_activate",
 	        GTK_SIGNAL_FUNC (task_new_task_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_edit_task_activate",
 	        GTK_SIGNAL_FUNC (task_edit_task_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_delete_memo_activate",
 	        GTK_SIGNAL_FUNC (task_delete_memo_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_delete_times_activate",
 	        GTK_SIGNAL_FUNC (task_delete_times_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_copy_activate",
 	        GTK_SIGNAL_FUNC (task_copy_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_paste_activate",
 	        GTK_SIGNAL_FUNC (task_paste_clicked_cb), wig);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_new_interval_activate",
 	        GTK_SIGNAL_FUNC (task_new_interval_cb), wig);
 
@@ -1314,8 +1314,8 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	wig->prj = prj;
 	wig->filepath = g_strdup (report);
-	if (kvpf) 
-	{ 
+	if (kvpf)
+	{
 		if (wig->gh->kvp) kvp_frame_delete (wig->gh->kvp);
 		wig->gh->kvp = kvpf;
 	}
@@ -1356,13 +1356,13 @@ gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path)
 
 	/* Next, check each language that the user is willing to look at. */
 	list = gnome_i18n_get_language_list ("LC_MESSAGES");
-	for ( ; list; list=list->next) 
+	for ( ; list; list=list->next)
 	{
 		const char *lang = list->data;
 
 		/* See if gnotime/ghtml/<lang>/<path_frag> exists. */
 		/* Look in the local build dir first (for testing) */
-		
+
 		snprintf (buff, PATH_MAX, "ghtml/%s/%s", lang, path_frag);
 		path = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_DATADIR,
 						  buff, TRUE, NULL);
