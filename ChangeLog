@@ -1,5 +1,7 @@
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
 	* Bump to version number 2.2.2
+	* query.c: fix broken leap-year calculation, leading to bugs
+	  sourceforge [ 983408 ]  and [ 1114205 ]
 	* journal.c: Fix crash due to hoverhelp timer popping after 
 	  a report window is closed.
 	* activity.ghtml, ghtml.c:  Change activity report to display 
