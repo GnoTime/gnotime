@@ -1,4 +1,4 @@
-/*   Main menu callbacks for app main menubar for GTimeTracker 
+/*   Main menu callbacks for app main menubar for GTimeTracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
  *
@@ -48,7 +48,7 @@ about_box(GtkWidget *w, gpointer data)
 		  "Eckehard Berns <eb@berns.i-s-o.net>",
 		  "George Lebl <jirka@5z.com>",
 		  " ",
-		  _("Bug-fixes from:"), 
+		  _("Bug-fixes from:"),
 		  "Eric Anderson <eric.anderson@cordata.net>",
 		  "Derek Atkins <warlord@mit.edu>",
 		  "Jonathan Blandford  <jrb@redhat.com>",
@@ -87,7 +87,7 @@ about_box(GtkWidget *w, gpointer data)
 		  NULL
 	};
 
-	const gchar *translators = 
+	const gchar *translators =
 		"Vasif Ismailoglu MD <azerb_linux@hotmail.com> - az\n"
 		"Borislav Aleksandrov <B.Aleksandrov@cnsys.bg> - bg\n"
 		"Ivan Vilata i Balaguer <al011097@alumail.uji.es> - ca\n"
@@ -200,10 +200,10 @@ about_box(GtkWidget *w, gpointer data)
 }
 
 /* =============================================================================== */
-/* The below implements a new project popup dialog.  
- * XXX It is HIG-deprecated and should be replaced by a 
+/* The below implements a new project popup dialog.
+ * XXX It is HIG-deprecated and should be replaced by a
  * an editable c-tree entry line in the main window.
- * XXX FIXME remove this code ASAP ... 
+ * XXX FIXME remove this code ASAP ...
  */
 
 static void
@@ -212,8 +212,8 @@ project_name_desc(GtkDialog *w, gint response_id, GtkEntry **entries)
 	const char *name, *desc;
 	GttProject *proj;
 	GttProject *sib_prj;
-	
-	if (GTK_RESPONSE_OK != response_id) 
+
+	if (GTK_RESPONSE_OK != response_id)
 	{
 		gtk_widget_destroy (GTK_WIDGET (w));
 		return;
@@ -304,7 +304,7 @@ new_project(GtkWidget *widget, gpointer data)
 	g_signal_connect(G_OBJECT(dlg), "destroy",
 			   G_CALLBACK(free_data),
 			   entries);
-	
+
 	gtk_widget_show(GTK_WIDGET(dlg));
 }
 
@@ -315,7 +315,7 @@ new_project(GtkWidget *widget, gpointer data)
 /* XXX hack alert -- we should delete this list during shutdown. */
 static GList *cutted_project_list = NULL;
 
-gboolean 
+gboolean
 have_cutted_project (void)
 {
 	return (NULL==cutted_project_list) ? FALSE : TRUE;
@@ -346,13 +346,13 @@ cut_project(GtkWidget *w, gpointer data)
 	GttProject *cut_prj;
 
 	/* Do NOT cut unless the ctree window actually has focus.
-	 * Otherwise, it will lead to cutting mayhem. 
+	 * Otherwise, it will lead to cutting mayhem.
 	 * (We might have gotten the ctrl-x cut event by accident) */
 	if (0 == ctree_has_focus (global_ptw)) return;
-	
+
 	cut_prj = ctree_get_focus_project (global_ptw);
 	if (!cut_prj) return;
-	
+
 	cutted_project_list = g_list_prepend (cutted_project_list, cut_prj);
 	debug_print_cutted_proj_list ("cut");
 
@@ -367,7 +367,7 @@ cut_project(GtkWidget *w, gpointer data)
 	/* Set the notes are to whatever the new focus project is. */
 	GttProject *prj = ctree_get_focus_project (global_ptw);
 	notes_area_set_project (global_na, prj);
-						 
+
 	menu_set_states();      /* To enable paste menu item */
 	toolbar_set_states();
 }
@@ -379,7 +379,7 @@ paste_project(GtkWidget *w, gpointer data)
 {
 	GttProject *sib_prj;
 	GttProject *p, *focus_prj;
-	
+
 	sib_prj = ctree_get_focus_project (global_ptw);
 
 	debug_print_cutted_proj_list ("pre paste");
@@ -396,7 +396,7 @@ paste_project(GtkWidget *w, gpointer data)
 	{
 		/* Pop element off the top. */
 		cutted_project_list->data = NULL;
-		cutted_project_list = 
+		cutted_project_list =
 		     g_list_delete_link(cutted_project_list, cutted_project_list);
 	}
 	debug_print_cutted_proj_list ("post paste");
@@ -404,7 +404,7 @@ paste_project(GtkWidget *w, gpointer data)
 	/* Insert before the focus proj */
 	gtt_project_insert_before (p, sib_prj);
 
-	if (!sib_prj) 
+	if (!sib_prj)
 	{
 		/* top-level insert */
 		ctree_add(global_ptw, p);
@@ -412,7 +412,7 @@ paste_project(GtkWidget *w, gpointer data)
 	}
 	ctree_insert_before(global_ptw, p, sib_prj);
 
-	/* Set the notes are to whatever the new focus project is. 
+	/* Set the notes are to whatever the new focus project is.
 	 * (which should be 'p', bbut we play it safe to avoid
 	 * weird inconsistent state.) */
 	focus_prj = ctree_get_focus_project (global_ptw);
@@ -445,7 +445,7 @@ copy_project(GtkWidget *w, gpointer data)
 
 	cutted_project_list = g_list_prepend (NULL, prj);
 	debug_print_cutted_proj_list ("copy");
-	
+
 	/* Update various subsystems */
 	menu_set_states();      /* to enable paste menu item */
 	toolbar_set_states();
@@ -510,13 +510,13 @@ menu_properties(GtkWidget *w, gpointer data)
  * (Yes this generates compiler warnings ... thats the point !!!
  */
 
-static void show_a (GtkWidget *w) 
-{ 
+static void show_a (GtkWidget *w)
+{
 	gtk_widget_destroy (w);
-	show_report (NULL, "time-interval.ghtml"); 
+	show_report (NULL, "time-interval.ghtml");
 }
 
-void 
+void
 menu_howto_edit_times (GtkWidget *w,gpointer data)
 {
 	char * msg;

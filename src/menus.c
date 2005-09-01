@@ -77,43 +77,43 @@ static GnomeUIInfo menu_main_settings[] = {
 
 
 static GnomeUIInfo menu_main_reports[] = {
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Journal..."),
 		N_("Show the journal for this project"),
 			       show_report, "journal.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Activity..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Activity..."),
 		N_("Show the journal together with the timestamps for this project"),
 			       show_report, "time-interval.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Daily..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Daily..."),
 		N_("Show the total time spent on a project, day by day"),
 			       show_report, "daily.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Status..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Status..."),
 		N_("Show the project descriptions and notes."),
 			       show_report, "status.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_To Do..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_To Do..."),
 		N_("Show a sample to-do list"),
 			       show_report, "todo.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Invoice..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Invoice..."),
 		N_("Show a sample invoice for this project"),
 			       show_report, "invoice.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Query..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Query..."),
 		N_("Run a sample Query Generator"),
 			       show_report, "query.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Primer..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Primer..."),
 		N_("Show a sample introductory primer for designing custom reports"),
 			       show_report, "primer.ghtml",
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_New Report..."), 
+	GNOMEUIINFO_ITEM_STOCK(N_("_New Report..."),
 		N_("Define a path to a new GnoTime ghtml report file"),
 			       new_report,
 			       GNOME_STOCK_BLANK),
-	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Reports..."), 
+	GNOMEUIINFO_ITEM_STOCK(N_("_Edit Reports..."),
 		N_("Edit the entries in the Reports pulldown menu (this menu)"),
 			       report_menu_edit,
 			       GNOME_STOCK_BLANK),
@@ -125,13 +125,13 @@ static GnomeUIInfo menu_main_reports[] = {
 
 static GnomeUIInfo menu_main_timer[] = {
 #define MENU_TIMER_START_POS 0
-	{GNOME_APP_UI_ITEM, N_("St_art"), 
+	{GNOME_APP_UI_ITEM, N_("St_art"),
 		N_("Start the timer running"),
 		menu_start_timer, NULL,
 		NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER,
 		'A', GDK_CONTROL_MASK, NULL},
 #define MENU_TIMER_STOP_POS 1
-	{GNOME_APP_UI_ITEM, N_("Sto_p"), 
+	{GNOME_APP_UI_ITEM, N_("Sto_p"),
 		N_("Stop the timer"),
 		menu_stop_timer, NULL, NULL,
 		GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER_STOP,
@@ -166,7 +166,7 @@ static GnomeUIInfo menu_main[] = {
 
 static GnomeUIInfo menu_popup[] = {
 #define MENU_POPUP_JNL_POS 0
-	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Activity..."), 
+	GNOMEUIINFO_ITEM_STOCK_DATA(N_("_Activity..."),
 		N_("Show the timesheet journal for this project"),
 			       show_report, "time-interval.ghtml",
 			       GNOME_STOCK_BLANK),
@@ -204,7 +204,7 @@ menus_get_popup(void)
 	static GtkMenuShell *menu = NULL;
 
 	if (menu) return menu;
-    
+
 	menu = (GtkMenuShell *)gtk_menu_new();
 	gnome_app_fill_menu(menu, menu_popup, NULL, TRUE, 0);
 	return menu;
@@ -222,7 +222,7 @@ menus_create(GnomeApp *app)
 
 /* Global: the user-defined reports pull-down menu */
 static GnomeUIInfo *reports_menu = NULL;
-	
+
 GnomeUIInfo *
 gtt_get_reports_menu (void)
 {
@@ -234,11 +234,11 @@ gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
 {
 	int i;
 	char * path;
-	
+
 	/* Build the i18n menu path ... */
 	/* (is this right ??? or is this pre-i18n ???) */
 	path = g_strdup_printf ("%s/<Separator>", _("Reports"));
-	
+
 	/* If there are old menu items, remove them and free them. */
 	if (reports_menu)
 	{
@@ -246,13 +246,13 @@ gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus)
 		for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++) {}
 		nreports = i;
 		gnome_app_remove_menu_range (app, path, 1, nreports);
-		
+
 		if (new_menus != reports_menu)
 		{
 			for (i=0; i<nreports; i++)
 			{
 				// XXX can't free this, since 'append' recycles old pointers !!
-				// there's probably a minor memory leak here ... 
+				// there's probably a minor memory leak here ...
 				// gtt_plugin_free(reports_menu[i].user_data);
 			}
 			g_free (reports_menu);
@@ -313,17 +313,17 @@ menu_set_states(void)
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget,
 				 1);
 	mi = GTK_CHECK_MENU_ITEM(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget);
-	/* Can't call the 'set_active' directly, as that issues an 
+	/* Can't call the 'set_active' directly, as that issues an
 	 * event which puts us in an infinite loop.  Instead,
 	 * just set the value.
 	 * gtk_check_menu_item_set_active (mi, timer_is_running());
 	 */
 	mi->active = timer_is_running();
 
-	/* XXX would be nice to change this menu entry to say 
+	/* XXX would be nice to change this menu entry to say
 	 * 'timer stopped' when the timer is stopped.  But don't
 	 * know how to change the menu label in gtk */
-			  
+
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_START_POS].widget,
 				 (FALSE == timer_is_running()) );
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_STOP_POS].widget,
