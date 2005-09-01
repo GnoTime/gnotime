@@ -1192,25 +1192,13 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	char buff[100];
 
 	if (prt_date) {
-		qof_print_date_time_buff (buff, 100, starp);
+		qof_print_date_buff (buff, 100, starp);
 	} else {
 		qof_print_time_buff (buff, 100, starp);
 	}
 
 	GString *str;
 	str = g_string_new (NULL);
-
-	/* Try to have different indentations for date and time
-	 * actually date and time should be in own separate columns XXXX */
-	if (prt_date)
-	{
-		g_string_append_printf (str, "<div class=gnotime-activity-datetime>");
-	}
-	else
-	{
-		g_string_append_printf (str, "<div class=gnotime-activity-time>");
-		g_string_append_printf (str, "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;");
-	}
 
 	if (ghtml->show_links)
 	{
@@ -1223,11 +1211,11 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	{
 		g_string_append (str, "</a>");
 	}
-	g_string_append (str, "</div>");
 
 	return scm_mem2string (str->str, str->len);
 }
 
+#if XXXX
 static SCM
 get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
@@ -1247,8 +1235,6 @@ get_ivl_start_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	}
 	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, prt_date);
 }
-RET_IVL_SIMPLE (ret_ivl_start_str, get_ivl_start_str);
-
 static SCM
 get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
@@ -1267,8 +1253,39 @@ get_ivl_stop_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	}
 	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, prt_date);
 }
-RET_IVL_SIMPLE (ret_ivl_stop_str, get_ivl_stop_str);
+#endif
 
+static SCM
+get_ivl_start_date_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	time_t start = gtt_interval_get_start (ivl);
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, 1);
+}
+RET_IVL_SIMPLE (ret_ivl_start_date_str, get_ivl_start_date_str);
+
+static SCM
+get_ivl_start_time_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	time_t start = gtt_interval_get_start (ivl);
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, start, 0);
+}
+RET_IVL_SIMPLE (ret_ivl_start_time_str, get_ivl_start_time_str);
+
+static SCM
+get_ivl_stop_date_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	time_t stop = gtt_interval_get_stop (ivl);
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, 1);
+}
+RET_IVL_SIMPLE (ret_ivl_stop_date_str, get_ivl_stop_date_str);
+
+static SCM
+get_ivl_stop_time_str_scm (GttGhtml *ghtml, GttInterval *ivl)
+{
+	time_t stop = gtt_interval_get_stop (ivl);
+	return get_ivl_start_stop_common_str_scm (ghtml, ivl, stop, 0);
+}
+RET_IVL_SIMPLE (ret_ivl_stop_time_str, get_ivl_stop_time_str);
 
 static SCM
 get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
@@ -1278,7 +1295,6 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
 	return scm_mem2string (buff, strlen (buff));
 }
-
 RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
 /* ============================================================== */
@@ -1545,8 +1561,10 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-interval-stop",      1, 0, 0, ret_ivl_stop);
 	scm_c_define_gsubr("gtt-interval-fuzz",      1, 0, 0, ret_ivl_fuzz);
 	scm_c_define_gsubr("gtt-interval-elapsed-str", 1, 0, 0, ret_ivl_elapsed_str);
-	scm_c_define_gsubr("gtt-interval-start-str", 1, 0, 0, ret_ivl_start_str);
-	scm_c_define_gsubr("gtt-interval-stop-str",  1, 0, 0, ret_ivl_stop_str);
+	scm_c_define_gsubr("gtt-interval-start-date-str", 1, 0, 0, ret_ivl_start_date_str);
+	scm_c_define_gsubr("gtt-interval-start-time-str", 1, 0, 0, ret_ivl_start_time_str);
+	scm_c_define_gsubr("gtt-interval-stop-date-str",  1, 0, 0, ret_ivl_stop_date_str);
+	scm_c_define_gsubr("gtt-interval-stop-time-str",  1, 0, 0, ret_ivl_stop_time_str);
 	scm_c_define_gsubr("gtt-interval-fuzz-str",  1, 0, 0, ret_ivl_fuzz_str);
 
 }

@@ -52,12 +52,14 @@
                ''"<tr>\n"
                ; the first html table column shows the start date/time
                ''"<td class=gnotime-start-stop-table-start>"  
-                     gtt-interval-start-str 
+                     gtt-interval-start-date-str 
+                     gtt-interval-start-time-str 
                ''"</td>\n"
                
                ; the second html table column shows the stop date/time
                ''"<td class=gnotime-start-stop-table-stop>"  
-                     gtt-interval-stop-str 
+                     gtt-interval-stop-date-str 
+                     gtt-interval-stop-time-str 
                ''"</td>\n"
                
                ; the third html table column shows the elapsed time
