@@ -27,13 +27,13 @@
 #include "proj.h"
 #include "timer.h"
 
-struct gtt_project_list_s 
+struct gtt_project_list_s
 {
 	// XXX this should belong to a QOF book
 	GList *prj_list;
 };
 
-struct gtt_project_s 
+struct gtt_project_s
 {
 	QofInstance inst;
 
@@ -65,14 +65,14 @@ struct gtt_project_s
 
 	GList *task_list;      /* annotated chunks of time */
 
-	/* hack alert -- the project heriarachy should probably be 
+	/* hack alert -- the project heriarachy should probably be
 	 * reimplemented as a GNode rather than a GList */
 	GList *sub_projects;   /* sub-projects */
 	GttProject *parent;    /* back pointer to parent project */
 
 	/* ------------------------------------------------ */
 	/* 'private' internal data caches & etc. Stores temp or
-	 * dynamically generated info, not save to file or transmitted. 
+	 * dynamically generated info, not save to file or transmitted.
 	 */
 
 	/* hack alert - come gnome-2.0, listeners should be replaced
@@ -103,7 +103,7 @@ struct gtt_project_s
  * associated with them.   Note that by definition, the 'current',
  * active interval is the one at the head of the list.
  */
-struct gtt_task_s 
+struct gtt_task_s
 {
 	QofInstance inst;
 
@@ -118,11 +118,11 @@ struct gtt_task_s
 };
 
 /* one start-stop interval */
-struct gtt_interval_s 
+struct gtt_interval_s
 {
 	GttTask *parent;      /* who I belong to */
 	time_t	start;       /* when the timer started */
-	time_t	stop;        /* if stopped, shows when timer stopped, 
+	time_t	stop;        /* if stopped, shows when timer stopped,
 	                       * if running, then the most recent log point */
 	int	fuzz;           /* how fuzzy the start time is.  In
 	                       * seconds, typically 300, 3600 or 1/2 day */

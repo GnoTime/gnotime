@@ -31,10 +31,10 @@
 static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 
 /* Note: most of this code is a tediously boring cut-n-paste
- * of the same thing over & over again, and could//should be 
- * auto-generated.  Diatribe: If the creators and true 
+ * of the same thing over & over again, and could//should be
+ * auto-generated.  Diatribe: If the creators and true
  * beleivers of XML knew some scheme/lisp, or of IDL's, of
- * Corba or RPC fame, or even had an inkling of what 'object 
+ * Corba or RPC fame, or even had an inkling of what 'object
  * introspection' was, then DTD's wouldn't be the abortion that
  * they are, and XML wouldn't be so sucky to begin with ...
  * Alas ...
@@ -289,7 +289,7 @@ gtt_xml_project_to_dom_tree (GttProject *prj)
 	/* handle tasks */
 	tasks = gtt_project_get_tasks(prj);
 	node = gtt_task_list_to_dom_tree (tasks);
-	xmlAddChild (topnode, node);	
+	xmlAddChild (topnode, node);
 
 	/* handle sub-projects */
 	children = gtt_project_get_children (prj);
@@ -339,7 +339,7 @@ gtt_to_dom_tree (void)
 
 	ns = xmlNewNs (topnode, "file:" GTTDATADIR "/gtt.dtd", "gtt");
 
-	node = gtt_project_list_to_dom_tree (gtt_project_list_get_list(master_list)); 
+	node = gtt_project_list_to_dom_tree (gtt_project_list_get_list(master_list));
 	if (node) xmlAddChild (topnode, node);
 
 	return topnode;
@@ -369,10 +369,10 @@ gtt_xml_write_file (const char * filename)
 	fprintf(fh, "\n");
 
 	/* The algorithm we use here is to write to a tmp file,
-	 * make sure that the write succeeded, and only then 
+	 * make sure that the write succeeded, and only then
 	 * rename the temp file to the real file name.  Note that
 	 * certain errors (e.g. no room on disk) are not reported
-	 * until the fclose, which makes this an important code 
+	 * until the fclose, which makes this an important code
 	 * to check.
 	 * Sure wish there was a way of finding out if xmlElemDump
 	 * suceeded ...
@@ -384,11 +384,11 @@ gtt_xml_write_file (const char * filename)
 	if (rc) { gtt_err_set_code (GTT_CANT_WRITE_FILE); return; }
 
 	/* If we were truly paranoid, we could, at this point, try
-	 * to re-open and re-read the data file, and then match what 
-	 * we read to the existing gtt data.   I'm not sure if 
+	 * to re-open and re-read the data file, and then match what
+	 * we read to the existing gtt data.   I'm not sure if
 	 * I should be that paranoid.  However, once upon a time,
 	 * I did loose all my data during a gnome-desktop-shutdown,
-	 * which freaked me out, but I cannot reproduce this loss.  
+	 * which freaked me out, but I cannot reproduce this loss.
 	 * What to do, what to do ...
 	 */
 

@@ -179,7 +179,7 @@ parse_interval (xmlNodePtr interval)
 		GET_TIM (ivl, gtt_interval_set_stop, "stop")
 		GET_TIM (ivl, gtt_interval_set_fuzz, "fuzz")
 		GET_BOL (ivl, gtt_interval_set_running, "running")
-		{ 
+		{
 			gtt_err_set_code (GTT_UNKNOWN_TOKEN);
 		}
 	}
@@ -209,11 +209,11 @@ parse_task (xmlNodePtr task)
 		GET_STR (tsk, gtt_task_set_notes, "notes")
 		GET_INT (tsk, gtt_task_set_bill_unit, "bill_unit")
 
-		GET_ENUM_3 (tsk, gtt_task_set_billable, "billable", 
+		GET_ENUM_3 (tsk, gtt_task_set_billable, "billable",
 			NOT_BILLABLE, BILLABLE, NO_CHARGE)
-		GET_ENUM_3 (tsk, gtt_task_set_billstatus, "billstatus", 
+		GET_ENUM_3 (tsk, gtt_task_set_billstatus, "billstatus",
 			HOLD, BILL, PAID)
-		GET_ENUM_4 (tsk, gtt_task_set_billrate, "billrate", 
+		GET_ENUM_4 (tsk, gtt_task_set_billrate, "billrate",
 			REGULAR, OVERTIME, OVEROVER, FLAT_FEE)
 		if (0 == strcmp ("interval-list", node->name))
 		{
@@ -226,9 +226,9 @@ parse_task (xmlNodePtr task)
 				ival = parse_interval (tn);
 				gtt_task_append_interval (tsk, ival);
 			}
-		} 
+		}
 		else
-		{ 
+		{
 			gtt_err_set_code (GTT_UNKNOWN_TOKEN);
 		}
 	}
@@ -254,7 +254,7 @@ parse_project (xmlNodePtr project)
 	for (node=project->xmlChildrenNode; node; node=node->next)
 	{
 		if (node->type != XML_ELEMENT_NODE) continue;
-				
+
 		GET_GUID (prj, gtt_project_set_guid, "guid")
 		GET_STR (prj, gtt_project_set_title, "title")
 		GET_STR (prj, gtt_project_set_desc, "desc")
@@ -294,7 +294,7 @@ parse_project (xmlNodePtr project)
 				tsk = parse_task (tn);
 				gtt_project_append_task (prj, tsk);
 			}
-		} 
+		}
 		else
 		if (0 == strcmp ("project-list", node->name))
 		{
@@ -306,9 +306,9 @@ parse_project (xmlNodePtr project)
 				child = parse_project (tn);
 				gtt_project_append_project (prj, child);
 			}
-		} 
+		}
 		else
-		{ 
+		{
 			g_warning ("unexpected node %s", node->name);
 			gtt_err_set_code (GTT_UNKNOWN_TOKEN);
 		}
@@ -335,17 +335,17 @@ gtt_xml_read_projects (const char * filename)
 	root = xmlDocGetRootElement(doc);
 
 	/* The doc may be null if the file is valid but empty */
-	if (!root) 
+	if (!root)
 	{
 		xmlFreeDoc(doc);
 		return NULL;
 	}
-	
+
 	version = xmlGetProp(root, "version");
-	if (!root->name || strcmp ("gtt", root->name)) 
+	if (!root->name || strcmp ("gtt", root->name))
 	{
 		xmlFreeDoc(doc);
-		gtt_err_set_code (GTT_NOT_A_GTT_FILE); 
+		gtt_err_set_code (GTT_NOT_A_GTT_FILE);
 		return NULL;
 	}
 
