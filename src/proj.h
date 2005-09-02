@@ -96,7 +96,8 @@ typedef enum
 #define GTT_PROJECT_LATEST   "GttProjectLatest"
 
 /* -------------------------------------------------------- */
-/* The three basic structures */
+/* The four basic structures */
+typedef struct gtt_project_list_s GttProjectList;
 typedef struct gtt_project_s GttProject;
 typedef struct gtt_task_s GttTask;
 typedef struct gtt_interval_s GttInterval;
@@ -424,44 +425,44 @@ void gtt_clear_daily_counter (GttProject *proj);
 
 /* -------------------------------------------------------- */
 /* master project list */
+/* XXX many routines should take the project list as an argument.
+ * Right now its implemented as a global.
+ */
+
+GttProjectList *gtt_project_list_new (void);
+void gtt_project_list_destroy (GttProjectList *);
 
 /* Return a list of all top-level projects */
-GList * 	gtt_get_project_list (void);
+GList * 	gtt_project_list_get_list (GttProjectList *);
 
-/* Append project to the top-level project list */
-void 		gtt_project_list_append(GttProject *p);
-
-void project_list_destroy(void);
+/* Append project to the project list */
+void 		gtt_project_list_append(GttProjectList *, GttProject *p);
 
 /* The 'sort' functions have a sort-of wacky interface.
  * They will sort the list of projects passed as an argument,
- * returning the sorted list.  If the list is the top-level
- * list, it will 'do the right thing'.  If the list is a set
- * of sub-projects of a project, then the parent project
- * will be reparented with them.  Note that this will cause 
- * data loss and destruction, or garbaged trees, etc. if the
- * list that is passed as the argument is *not* the complete
- * list of subprojects for that project.
  * 
+ * This is fundamentally wrong, sorting should not be done here,
+ * it should be done in the display ("presentation") layer.
+ * But this works for now.
  */
-GList * project_list_sort_current(GList *);
-GList * project_list_sort_day(GList *);
-GList * project_list_sort_yesterday(GList *);
-GList * project_list_sort_week(GList *);
-GList * project_list_sort_lastweek(GList *);
-GList * project_list_sort_month(GList *);
-GList * project_list_sort_year(GList *);
-GList * project_list_sort_ever(GList *);
-GList * project_list_sort_title(GList *);
-GList * project_list_sort_desc(GList *);
-GList * project_list_sort_start(GList *);
-GList * project_list_sort_end(GList *);
-GList * project_list_sort_due(GList *);
-GList * project_list_sort_sizing(GList *);
-GList * project_list_sort_percent(GList *);
-GList * project_list_sort_urgency(GList *);
-GList * project_list_sort_importance(GList *);
-GList * project_list_sort_status(GList *);
+void project_list_sort_current    (GttProjectList *);
+void project_list_sort_day        (GttProjectList *);
+void project_list_sort_yesterday  (GttProjectList *);
+void project_list_sort_week       (GttProjectList *);
+void project_list_sort_lastweek   (GttProjectList *);
+void project_list_sort_month      (GttProjectList *);
+void project_list_sort_year       (GttProjectList *);
+void project_list_sort_ever       (GttProjectList *);
+void project_list_sort_title      (GttProjectList *);
+void project_list_sort_desc       (GttProjectList *);
+void project_list_sort_start      (GttProjectList *);
+void project_list_sort_end        (GttProjectList *);
+void project_list_sort_due        (GttProjectList *);
+void project_list_sort_sizing     (GttProjectList *);
+void project_list_sort_percent    (GttProjectList *);
+void project_list_sort_urgency    (GttProjectList *);
+void project_list_sort_importance (GttProjectList *);
+void project_list_sort_status     (GttProjectList *);
 
 /* The gtt_project_list_total_secs_day() routine returns the
  *    total number of seconds spent on all projects today,

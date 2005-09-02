@@ -27,6 +27,12 @@
 #include "proj.h"
 #include "timer.h"
 
+struct gtt_project_list_s 
+{
+	// XXX this should belong to a QOF book
+	GList *prj_list;
+};
+
 struct gtt_project_s 
 {
 	QofInstance inst;

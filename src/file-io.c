@@ -37,6 +37,7 @@
 #include "plug-in.h"
 #include "prefs.h"
 #include "proj.h"
+#include "proj_p.h"
 #include "timer.h"
 #include "toolbar.h"
 
@@ -45,10 +46,6 @@
 #else /* not DEBUG */
 #define GTT_CONF "/" GTT_APP_NAME
 #endif /* not DEBUG */
-
-
-/* FIXME: we should not extern plist; but for now its ok */
-extern GList * plist;
 
 static const char * gtt_config_filepath = NULL;
 
@@ -120,7 +117,6 @@ project_list_load_old(void)
 {
 	FILE *f;
 	const char *realname;
-	GList *pl, *t;
 	GttProject *proj = NULL;
 	char s[1024];
 	int i;
@@ -140,8 +136,6 @@ project_list_load_old(void)
 		return;
 	}
 	printf ("GTT: Info: Importing .gtimetrackerrc config file\n");
-	pl = gtt_get_project_list();
-	plist = NULL;
 
 	_n = config_show_tb_new;
 	_c = config_show_tb_ccp;
@@ -214,7 +208,7 @@ project_list_load_old(void)
 
 			/* new project */
 			proj = gtt_project_new();
-			gtt_project_list_append(proj);
+			gtt_project_list_append(master_list, proj);
 			ever_secs = atol(s);
 			for (i = 0; s[i] != ' '; i++) ;
 			i++;
@@ -230,10 +224,6 @@ project_list_load_old(void)
 	if ((errno) && (!feof(f))) goto err;
 	fclose(f);
 
-	t = plist;
-	plist = pl;
-	project_list_destroy();
-	plist = t;
 	gtt_project_list_compute_secs();
 
 	if (config_show_statusbar)
@@ -261,8 +251,6 @@ err:
 	fclose(f);
 	gtt_err_set_code (GTT_FILE_CORRUPT);
 	g_warning("error reading %s\n", realname);
-	project_list_destroy();
-	plist = pl;
 }
 
 
@@ -451,16 +439,13 @@ gtt_load_gnome_config (const char *prefix)
 	num = GET_INT("/Misc/NumProjects=0");
 	if (0 < num)
 	{
-		/* start with a clean slate */
-		project_list_destroy();
-
 		for (i = 0; i < num; i++)
 		{
 			GttProject *proj;
 			time_t ever_secs, day_secs;
 
 			proj = gtt_project_new();
-			gtt_project_list_append(proj);
+			gtt_project_list_append(master_list, proj);
 			g_snprintf(p, TOKLEN, "/Project%d/Title", i);
 			gtt_project_set_title(proj, gnome_config_get_string(s));
 
@@ -576,7 +561,8 @@ gtt_post_data_config (void)
 	if (first_proj_title)
 	{
 		GList *node;
-		for (node = gtt_get_project_list(); node; node = node->next)
+		node = gtt_project_list_get_list(master_list);
+		for (; node; node = node->next)
 		{
 			GttProject *prj = node->data;
 			if (!gtt_project_get_title(prj)) continue;

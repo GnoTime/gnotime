@@ -92,7 +92,7 @@ struct ProjTreeWindow_s
 	GtkCTree *ctree;
 
 	/* List of projects we are currently displaying in this tree */
-	GList *proj_list;
+	GttProjectList *proj_list;
 
 	/* Stuff that defines the column layout */
 	ColType cols[NCOLS];
@@ -522,7 +522,7 @@ static void
 click_column(GtkCList *clist, gint col, gpointer data)
 {
 	ProjTreeWindow *ptw = data;
-	GList *prlist;
+	GttProjectList *prlist;
 	ColType ct;
 
 	prlist = ptw->proj_list;
@@ -531,66 +531,66 @@ click_column(GtkCList *clist, gint col, gpointer data)
 	switch (ct)
 	{
 		case TIME_EVER_COL:
-			prlist = project_list_sort_ever (prlist);
+			project_list_sort_ever (prlist);
 			break;
 		case TIME_CURRENT_COL:
-			prlist = project_list_sort_current (prlist);
+			project_list_sort_current (prlist);
 			break;
 		case TIME_YESTERDAY_COL:
-			prlist = project_list_sort_yesterday (prlist);
+			project_list_sort_yesterday (prlist);
 			break;
 		case TIME_TODAY_COL:
-			prlist = project_list_sort_day (prlist);
+			project_list_sort_day (prlist);
 			break;
 		case TIME_WEEK_COL:
-			prlist = project_list_sort_week (prlist);
+			project_list_sort_week (prlist);
 			break;
 		case TIME_LASTWEEK_COL:
-			prlist = project_list_sort_lastweek (prlist);
+			project_list_sort_lastweek (prlist);
 			break;
 		case TIME_MONTH_COL:
-			prlist = project_list_sort_month (prlist);
+			project_list_sort_month (prlist);
 			break;
 		case TIME_YEAR_COL:
-			prlist = project_list_sort_year (prlist);
+			project_list_sort_year (prlist);
 			break;
 		case TITLE_COL:
-			prlist = project_list_sort_title (prlist);
+			project_list_sort_title (prlist);
 			break;
 		case DESC_COL:
-			prlist = project_list_sort_desc (prlist);
+			project_list_sort_desc (prlist);
 			break;
 		case TASK_COL:
 			break;
 		case NULL_COL:
 			break;
 		case START_COL:
-			prlist = project_list_sort_start (prlist);
+			project_list_sort_start (prlist);
 			break;
 		case END_COL:
-			prlist = project_list_sort_end (prlist);
+			project_list_sort_end (prlist);
 			break;
 		case DUE_COL:
-			prlist = project_list_sort_due (prlist);
+			project_list_sort_due (prlist);
 			break;
 		case SIZING_COL:
-			prlist = project_list_sort_sizing (prlist);
+			project_list_sort_sizing (prlist);
 			break;
 		case PERCENT_COL:
-			prlist = project_list_sort_percent (prlist);
+			project_list_sort_percent (prlist);
 			break;
 		case URGENCY_COL:
-			prlist = project_list_sort_urgency (prlist);
+			project_list_sort_urgency (prlist);
 			break;
 		case IMPORTANCE_COL:
-			prlist = project_list_sort_importance (prlist);
+			project_list_sort_importance (prlist);
 			break;
 		case STATUS_COL:
-			prlist = project_list_sort_status (prlist);
+			project_list_sort_status (prlist);
 			break;
 	}
 
-	ctree_setup(ptw, prlist);
+	ctree_setup(ptw, ptw->proj_list);
 }
 
 /* ============================================================== */
@@ -1403,7 +1403,7 @@ ctree_refresh (ProjTreeWindow *ptw)
 	ctree_update_column_visibility (ptw);
 
 	/* Now, draw each project */
-	prjlist = gtt_get_project_list();
+	prjlist = gtt_project_list_get_list(ptw->proj_list);
 	refresh_list (ptw, prjlist);
 
 	gtk_clist_thaw(GTK_CLIST(tree_w));
@@ -1577,10 +1577,10 @@ ctree_new(void)
  */
 
 void
-ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
+ctree_setup (ProjTreeWindow *ptw, GttProjectList *prjlist)
 {
 	GtkCTree *tree_w;
-	GList *node;
+	GList *plist, *node;
 
 	if (!ptw) return;
 	tree_w = ptw->ctree;
@@ -1591,11 +1591,12 @@ ctree_setup (ProjTreeWindow *ptw, GList *prjlist)
 
 	/* First, add all projects to the ctree. */
 	ptw->proj_list = prjlist;
-	if (prjlist)
+	plist = gtt_project_list_get_list(prjlist);
+	if (plist)
 	{
 		gtk_clist_freeze(GTK_CLIST(tree_w));
 		gtk_clist_clear(GTK_CLIST(tree_w));
-		for (node = prjlist; node; node = node->next)
+		for (node = plist; node; node = node->next)
 		{
 			GttProject *prj = node->data;
 			ctree_add(ptw, prj);

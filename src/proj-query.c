@@ -20,6 +20,7 @@
 
 #include <glib.h>
 
+#include "cur-proj.h"
 #include "proj.h"
 #include "proj-query.h"
 
@@ -31,7 +32,7 @@ gtt_project_get_unfinished (void)
 	GList *prjlist;
 
 	/* XXX under construction */
-	prjlist = gtt_get_project_list ();
+	prjlist = gtt_project_list_get_list (master_list);
 
 	return prjlist;
 }

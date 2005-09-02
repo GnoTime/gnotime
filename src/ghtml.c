@@ -31,6 +31,7 @@
 
 #include "app.h"
 #include "ctree.h"
+#include "cur-proj.h"
 #include "gtt.h"
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
@@ -595,7 +596,7 @@ ret_projects (void)
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 
 	/* Get list of all top-level projects */
-	GList *proj_list = gtt_get_project_list();
+	GList *proj_list = gtt_project_list_get_list(master_list);
 	return do_ret_project_list (ghtml, proj_list);
 }
 

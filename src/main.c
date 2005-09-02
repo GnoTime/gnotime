@@ -49,6 +49,7 @@
 #include "menus.h"
 #include "menucmd.h"
 #include "prefs.h"
+#include "proj.h"
 #include "timer.h"
 #include "toolbar.h"
 #include "xml-gtt.h"
@@ -57,6 +58,7 @@ char *first_proj_title = NULL;  /* command line over-ride */
 
 static gboolean first_time_ever = FALSE;  /* has gtt ever run before? */
 
+GttProjectList *master_list = NULL;
 
 const char *
 gtt_gettext(const char *s)
@@ -66,9 +68,6 @@ gtt_gettext(const char *s)
 		return &s[5];
 	return s;
 }
-
-
-
 
 static char *build_lock_fname(void)
 {
@@ -212,7 +211,7 @@ post_read_data(void)
 	gtt_post_data_config();
 
 	err_init();
-	ctree_setup(global_ptw, gtt_get_project_list());
+	ctree_setup(global_ptw, master_list);
 	gtt_post_ctree_config();
 	menu_set_states();
 	toolbar_set_states();
@@ -320,7 +319,7 @@ read_data(void)
 	 * This is not an error. This is OK.
 	 */
 	read_is_ok |= (GTT_CANT_OPEN_FILE == xml_errcode) &&
-	               gtt_get_project_list();
+	               gtt_project_list_get_list(master_list);
 
 	/* Its possible that the read failed because this is the
 	 * first time that gnotime is being run.  In this case,
@@ -789,6 +788,7 @@ main(int argc, char *argv[])
 	qof_query_init ();
 	qof_book_register ();
 	gtt_project_obj_register();
+	master_list = gtt_project_list_new();
 
 #if DEVEL_VERSION_WARNING
 	msgbox_ok_cancel(_("Warning"),

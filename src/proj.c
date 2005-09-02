@@ -45,8 +45,12 @@ typedef struct notif_s
 	gpointer user_data;
 } Notifier;
 
-// hack alert -- plist should be made to belong to a book
-GList * plist = NULL;
+/* hack alert -- plist should be made to belong to a book 
+ * And its worse than that ... there code that explicitly assumes
+ * there's only one global list, and tha is bad and broken. But
+ * there it is.
+ */
+GttProjectList * global_plist = NULL;
 
 QofBook *global_book = NULL;
 
@@ -191,7 +195,7 @@ gtt_project_remove(GttProject *p)
 	else
 	{
 		/* else we are in the master list ... remove */
-		plist = g_list_remove(plist, p);
+		global_plist->prj_list = g_list_remove(global_plist->prj_list, p);
 	}
 }
 
@@ -768,7 +772,7 @@ gtt_project_append_project (GttProject *proj, GttProject *child)
 	if (!proj)
 	{
 		/* if no parent specified, put in top-level list */
-		gtt_project_list_append (child);
+		gtt_project_list_append (global_plist, child);
 		return;
 	}
 
@@ -787,7 +791,7 @@ gtt_project_insert_before(GttProject *p, GttProject *before_me)
 	/* no before ?? then append to master list */
 	if (!before_me)
 	{
-		plist = g_list_append (plist, p);
+		global_plist->prj_list = g_list_append (global_plist->prj_list, p);
 		p->parent = NULL;
 		return;
 	}
@@ -797,16 +801,16 @@ gtt_project_insert_before(GttProject *p, GttProject *before_me)
 		{
 			/* if before_me has no parent, then its in the 
 			 * master list */
-			pos  = g_list_index (plist, before_me);
+			pos  = g_list_index (global_plist->prj_list, before_me);
 
 			/* this shouldn't happen ....node should be found */
 			if (0 > pos) 
 			{
-				plist = g_list_append (plist, p);
+				global_plist->prj_list = g_list_append (global_plist->prj_list, p);
 				p->parent = NULL;
 				return;
 			}
-			plist = g_list_insert (plist, p, pos);
+			global_plist->prj_list = g_list_insert (global_plist->prj_list, p, pos);
 			p->parent = NULL;
 			return;
 		}
@@ -843,7 +847,7 @@ gtt_project_insert_after(GttProject *p, GttProject *after_me)
 	/* no after ?? then prepend to master list */
 	if (!after_me)
 	{
-		plist = g_list_prepend (plist, p);
+		global_plist->prj_list = g_list_prepend (global_plist->prj_list, p);
 		p->parent = NULL;
 		return;
 	}
@@ -853,17 +857,17 @@ gtt_project_insert_after(GttProject *p, GttProject *after_me)
 		{
 			/* if after_me has no parent, then its in the 
 			 * master list */
-			pos  = g_list_index (plist, after_me);
+			pos  = g_list_index (global_plist->prj_list, after_me);
 
 			/* this shouldn't happen ....node should be found */
 			if (0 > pos) 
 			{
-				plist = g_list_prepend (plist, p);
+				global_plist->prj_list = g_list_prepend (global_plist->prj_list, p);
 				p->parent = NULL;
 				return;
 			}
 			pos ++;
-			plist = g_list_insert (plist, p, pos);
+			global_plist->prj_list = g_list_insert (global_plist->prj_list, p, pos);
 			p->parent = NULL;
 			return;
 		}
@@ -1217,9 +1221,9 @@ gtt_project_list_total_secs_day (void)
 {
 	GList *node;
 	int total = 0;
-	if (!plist) return 0;
+	if (!global_plist->prj_list) return 0;
 
-	for (node=plist; node; node=node->next)
+	for (node=global_plist->prj_list; node; node=node->next)
 	{
 		GttProject *proj = node->data;
 		total += gtt_project_total_secs_day (proj);
@@ -1232,9 +1236,9 @@ gtt_project_list_total_secs_yesterday (void)
 {
 	GList *node;
 	int total = 0;
-	if (!plist) return 0;
+	if (!global_plist->prj_list) return 0;
 
-	for (node=plist; node; node=node->next)
+	for (node=global_plist->prj_list; node; node=node->next)
 	{
 		GttProject *proj = node->data;
 		total += gtt_project_total_secs_yesterday (proj);
@@ -1247,9 +1251,9 @@ gtt_project_list_total (void)
 {
 	GList *node;
 	int total = 0;
-	if (!plist) return 0;
+	if (!global_plist->prj_list) return 0;
 
-	for (node=plist; node; node=node->next)
+	for (node=global_plist->prj_list; node; node=node->next)
 	{
 		GttProject *proj = node->data;
 		total += gtt_project_total (proj);
@@ -1569,7 +1573,7 @@ void
 gtt_project_list_compute_secs (void)
 {
 	GList *node;
-	for (node= plist; node; node=node->next)
+	for (node= global_plist->prj_list; node; node=node->next)
 	{
 		GttProject * prj = node->data;
 		proj_refresh_time (prj);
@@ -1904,7 +1908,7 @@ prj_obj_foreach_helper (GList *prjlist, QofEntityForeachCB cb, gpointer data)
 void
 gtt_project_obj_foreach (QofCollection *coll, QofEntityForeachCB cb, gpointer data)
 {
-	prj_obj_foreach_helper (plist, cb, data);
+	prj_obj_foreach_helper (global_plist->prj_list, cb, data);
 }
 
 static int
@@ -2684,27 +2688,39 @@ gtt_interval_split (GttInterval *ivl, GttTask *newtask)
  * GNode tree ... */
 
 
-GList *
-gtt_get_project_list (void)
+GttProjectList *
+gtt_project_list_new (void)
 {
-	return plist;
+	GttProjectList *gpl;
+	gpl = g_new0(GttProjectList, 1);
+	gpl->prj_list = NULL;
+	global_plist = gpl;   /* XXX one of many nasty hacks */
+	return gpl;
+}
+
+GList *
+gtt_project_list_get_list (GttProjectList *gpl)
+{
+	return gpl->prj_list;
 }
 
 void 
-gtt_project_list_append(GttProject *p)
+gtt_project_list_append(GttProjectList *gpl, GttProject *p)
 {
 	gtt_project_insert_before (p, NULL);
 }
 
 
 void 
-project_list_destroy(void)
+gtt_project_list_destroy(GttProjectList *gpl)
 {
-	while (plist)
+	while (gpl->prj_list)
 	{
 		/* destroying a project pops the plist ... */
-		gtt_project_destroy(plist->data);
+		gtt_project_destroy(gpl->prj_list->data);
 	}
+
+	g_free (gpl);
 }
 
 static GList *
@@ -2748,7 +2764,7 @@ locate_from_id (GList *prj_list, int prj_id)
 GttProject *
 gtt_project_locate_from_id (int prj_id)
 {
-	return locate_from_id (plist, prj_id);
+	return locate_from_id (global_plist->prj_list, prj_id);
 }
 
 /* ==================================================================== */
@@ -2911,119 +2927,119 @@ cmp_status(const void *aa, const void *bb)
 #define DO_SORT(CMP_FUNC)                                   \
 	gboolean is_top = FALSE;                                 \
 	GttProject *parent;                                      \
-	if (!prjs) return NULL;                                  \
-	if (prjs == plist) is_top = TRUE;                        \
+	GList *prjs = gps->prj_list;                             \
+	if (!prjs) return;                                       \
+	if (prjs == gps->prj_list) is_top = TRUE;                \
 	parent = ((GttProject *) (prjs->data))->parent;          \
 	prjs = project_list_sort(prjs, CMP_FUNC);                \
-	if (is_top) plist = prjs;                                \
+	if (is_top) gps->prj_list = prjs;                        \
 	else if (parent) parent->sub_projects = prjs;            \
-	return prjs;                                             \
 
 
-GList *
-project_list_sort_day(GList *prjs)
+void
+project_list_sort_day(GttProjectList *gps)
 {
 	DO_SORT(cmp_day);
 }
 
-GList *
-project_list_sort_yesterday(GList *prjs)
+void
+project_list_sort_yesterday(GttProjectList *gps)
 {
 	DO_SORT(cmp_yesterday);
 }
 
-GList *
-project_list_sort_week(GList *prjs)
+void
+project_list_sort_week(GttProjectList *gps)
 {
 	DO_SORT(cmp_week);
 }
 
-GList *
-project_list_sort_lastweek(GList *prjs)
+void
+project_list_sort_lastweek(GttProjectList *gps)
 {
 	DO_SORT(cmp_lastweek);
 }
 
-GList *
-project_list_sort_month(GList *prjs)
+void
+project_list_sort_month(GttProjectList *gps)
 {
 	DO_SORT(cmp_month);
 }
 
-GList *
-project_list_sort_year(GList *prjs)
+void
+project_list_sort_year(GttProjectList *gps)
 {
 	DO_SORT(cmp_year);
 }
 
-GList *
-project_list_sort_ever(GList *prjs)
+void
+project_list_sort_ever(GttProjectList *gps)
 {
 	DO_SORT(cmp_ever);
 }
 
-GList *
-project_list_sort_current(GList *prjs)
+void
+project_list_sort_current(GttProjectList *gps)
 {
 	DO_SORT(cmp_current);
 }
 
-GList *
-project_list_sort_title(GList *prjs)
+void
+project_list_sort_title(GttProjectList *gps)
 {
 	DO_SORT(cmp_title);
 }
 
-GList *
-project_list_sort_desc(GList *prjs)
+void
+project_list_sort_desc(GttProjectList *gps)
 {
 	DO_SORT(cmp_desc);
 }
 
-GList *
-project_list_sort_start(GList *prjs)
+void
+project_list_sort_start(GttProjectList *gps)
 {
 	DO_SORT(cmp_start);
 }
 
-GList *
-project_list_sort_end(GList *prjs)
+void
+project_list_sort_end(GttProjectList *gps)
 {
 	DO_SORT(cmp_end);
 }
 
-GList *
-project_list_sort_due(GList *prjs)
+void
+project_list_sort_due(GttProjectList *gps)
 {
 	DO_SORT(cmp_due);
 }
 
-GList *
-project_list_sort_sizing(GList *prjs)
+void
+project_list_sort_sizing(GttProjectList *gps)
 {
 	DO_SORT(cmp_sizing);
 }
 
-GList *
-project_list_sort_percent(GList *prjs)
+void
+project_list_sort_percent(GttProjectList *gps)
 {
 	DO_SORT(cmp_percent);
 }
 
-GList *
-project_list_sort_urgency(GList *prjs)
+void
+project_list_sort_urgency(GttProjectList *gps)
 {
 	DO_SORT(cmp_urgency);
 }
 
-GList *
-project_list_sort_importance(GList *prjs)
+void
+project_list_sort_importance(GttProjectList *gps)
 {
 	DO_SORT(cmp_importance);
 }
 
-GList *
-project_list_sort_status(GList *prjs)
+void
+project_list_sort_status(GttProjectList *gps)
 {
 	DO_SORT(cmp_status);
 }

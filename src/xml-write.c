@@ -22,6 +22,7 @@
 #include <qof/qof.h>
 #include <stdio.h>
 
+#include "cur-proj.h"
 #include "err-throw.h"
 #include "gtt.h"
 #include "proj.h"
@@ -338,7 +339,7 @@ gtt_to_dom_tree (void)
 
 	ns = xmlNewNs (topnode, "file:" GTTDATADIR "/gtt.dtd", "gtt");
 
-	node = gtt_project_list_to_dom_tree (gtt_get_project_list()); 
+	node = gtt_project_list_to_dom_tree (gtt_project_list_get_list(master_list)); 
 	if (node) xmlAddChild (topnode, node);
 
 	return topnode;

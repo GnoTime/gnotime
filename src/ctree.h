@@ -42,7 +42,7 @@ ProjTreeWindow * ctree_new(void);
  *    projects.  The order of the items displayed in the ctree will
  *    be the same as that presented in the project list.
  */
-void ctree_setup (ProjTreeWindow *ptw, GList *project_list);
+void ctree_setup (ProjTreeWindow *ptw, GttProjectList *);
 void ctree_destroy(ProjTreeWindow *ptw);
 
 /** The ctree_insert_before() routine inserts the new project p

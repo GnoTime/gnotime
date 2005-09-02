@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "cur-proj.h"
 #include "err-throw.h"
 #include "gtt.h"
 #include "proj.h"
@@ -384,7 +385,7 @@ gtt_xml_read_file (const char * filename)
 	for (node=prjs; node; node=node->next)
 	{
 		GttProject *prj = node->data;
-		gtt_project_list_append (prj);
+		gtt_project_list_append (master_list, prj);
 	}
 
 	/* recompute the cached counters */
