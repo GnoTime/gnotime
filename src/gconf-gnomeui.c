@@ -27,9 +27,9 @@
 /* ======================================================= */
 /* Convert gnome enums to strings */
 
-#define CASE(x)  case x: return #x; 
+#define CASE(x)  case x: return #x;
 
-static const char * 
+static const char *
 gnome_ui_info_type_to_string (GnomeUIInfoType typ)
 {
 	switch (typ)
@@ -49,7 +49,7 @@ gnome_ui_info_type_to_string (GnomeUIInfoType typ)
 	return "";
 }
 
-static const char * 
+static const char *
 gnome_ui_pixmap_type_to_string (GnomeUIPixmapType typ)
 {
 	switch (typ)
@@ -67,7 +67,7 @@ gnome_ui_pixmap_type_to_string (GnomeUIPixmapType typ)
 
 #define MATCH(str,x)  if (0==strcmp (str, #x)) return x;
 
-static GnomeUIInfoType 
+static GnomeUIInfoType
 string_to_gnome_ui_info_type (const char *str)
 {
 	MATCH (str, GNOME_APP_UI_ENDOFINFO);
@@ -98,19 +98,19 @@ string_to_gnome_ui_pixmap_type (const char * str)
 /* Save the contents of a GnomeUIInfo structure with GConf */
 
 void
-gtt_save_gnomeui_to_gconf (GConfClient *client, 
+gtt_save_gnomeui_to_gconf (GConfClient *client,
                 const char * path, GnomeUIInfo *gui)
 {
 	char *savepath, *tokptr;
 
 	if (!client || !gui || !path) return;
 
-	if (GNOME_APP_UI_ENDOFINFO == gui->type) return; 
-	
+	if (GNOME_APP_UI_ENDOFINFO == gui->type) return;
+
 	/* Reserve a big enough buffer for ourselves */
 	savepath = g_strdup_printf ("%sXXXXXXXXXXXXXXXXXXXX",path);
 	tokptr = savepath + strlen (path);
-	
+
 	/* Store the info */
 	strcpy (tokptr, "Type");
 	F_SETSTR (savepath, gnome_ui_info_type_to_string(gui->type));
@@ -134,7 +134,7 @@ gtt_save_gnomeui_to_gconf (GConfClient *client,
 /* Restore the contents of a GnomeUIInfo structure from GConf */
 
 void
-gtt_restore_gnomeui_from_gconf (GConfClient *client, 
+gtt_restore_gnomeui_from_gconf (GConfClient *client,
                 const char * path, GnomeUIInfo *gui)
 {
 	char *savepath, *tokptr;
@@ -144,7 +144,7 @@ gtt_restore_gnomeui_from_gconf (GConfClient *client,
 	/* Reserve a big enough buffer for ourselves */
 	savepath = g_strdup_printf ("%sXXXXXXXXXXXXXXXXXXXX",path);
 	tokptr = savepath + strlen (path);
-	
+
 	/* Restore the info */
 	strcpy (tokptr, "Type");
 	gui->type = string_to_gnome_ui_info_type(F_GETSTR (savepath, ""));
