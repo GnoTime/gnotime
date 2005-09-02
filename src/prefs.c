@@ -60,6 +60,7 @@ int config_show_title_urgency = 1;
 int config_show_title_importance = 1;
 int config_show_title_status = 0;
 
+int config_show_toolbar = 1;
 int config_show_tb_tips = 1;
 int config_show_tb_new = 1;
 int config_show_tb_ccp = 0;
@@ -123,6 +124,7 @@ typedef struct _PrefsDialog
 	GtkEntry       *shell_start;
 	GtkEntry       *shell_stop;
 
+	GtkCheckButton *show_toolbar;
 	GtkCheckButton *show_tb_tips;
 	GtkCheckButton *show_tb_new;
 	GtkCheckButton *show_tb_ccp;
@@ -221,6 +223,26 @@ scan_time_string (const char *str)
 	int totalsecs = hours*3600 + minutes*60 + seconds;
 	if (12*3600 < totalsecs) totalsecs -= 24*3600;
 	return totalsecs;
+}
+
+/* ============================================================== */
+
+static void 
+toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
+{
+	int state;
+	
+	state = GTK_TOGGLE_BUTTON(odlg->show_toolbar)->active;
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_new), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_ccp), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_journal), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_pref), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_timer), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_prop), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_help), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_exit), state);
+	
+	// gtk_widget_set_sensitive(odlg->logfilename_l, state);
 }
 
 /* ============================================================== */
@@ -345,6 +367,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		int change = 0;
 
 		/* toolbar */
+		config_show_toolbar = GTK_TOGGLE_BUTTON(odlg->show_toolbar)->active;
 		config_show_tb_tips = GTK_TOGGLE_BUTTON(odlg->show_tb_tips)->active;
 	
 		/* toolbar sections */
@@ -474,6 +497,7 @@ options_dialog_set(PrefsDialog *odlg)
 	logfile_sensitive_cb(NULL, odlg);
 
 	/* toolbar sections */
+	SET_ACTIVE(toolbar);
 	SET_ACTIVE(tb_tips);
 	SET_ACTIVE(tb_new);
 	SET_ACTIVE(tb_ccp);
@@ -483,6 +507,8 @@ options_dialog_set(PrefsDialog *odlg)
 	SET_ACTIVE(tb_pref);
 	SET_ACTIVE(tb_help);
 	SET_ACTIVE(tb_exit);
+	
+	toolbar_sensitive_cb(NULL, odlg);
 
 	/* misc section */
 	g_snprintf(s, sizeof (s), "%d", config_idle_timeout);
@@ -671,6 +697,13 @@ toolbar_options(PrefsDialog *dlg)
 	GtkWidget *w;
 	GladeXML *gtxml = dlg->gtxml;
 
+	w = GETCHWID ("show toolbar");
+	dlg->show_toolbar = GTK_CHECK_BUTTON(w);
+	
+	gtk_signal_connect(GTK_OBJECT(w), "clicked",
+		   GTK_SIGNAL_FUNC(toolbar_sensitive_cb),
+		   (gpointer *)dlg);
+	
 	TBWID (tips);
 	TBWID (new);
 	TBWID (ccp);

@@ -37,6 +37,7 @@ typedef struct _MyToolbar MyToolbar;
 struct _MyToolbar
 {
 	GtkToolbar *tbar;
+	GtkToolbar *null_tbar;
 	GtkWidget *new_w;
 	GtkWidget *cut, *copy, *paste; /* to make them sensible as needed */
 	GtkWidget *journal_button;
@@ -68,6 +69,20 @@ toolbar_set_states(void)
 	g_return_if_fail(mytbar != NULL);
 	g_return_if_fail(mytbar->tbar != NULL);
 	g_return_if_fail(GTK_IS_TOOLBAR(mytbar->tbar));
+
+	if (config_show_toolbar)
+	{
+		gtk_widget_show_all(GTK_WIDGET(mytbar->tbar));
+		// gnome_app_set_toolbar(GNOME_APP(app_window), mytbar->tbar);
+	}
+	else
+	{
+		//  XXX this should hide the toolbar completely,
+		//  but it doesn't, sinse some bonobo fudge is needed.
+		gtk_widget_hide_all(GTK_WIDGET(mytbar->tbar));
+		// gnome_app_set_toolbar(GNOME_APP(app_window), mytbar->null_tbar);
+		return;
+	}
 
 	if (mytbar->tbar && mytbar->tbar->tooltips)
 	{
@@ -128,6 +143,7 @@ build_toolbar(void)
 	{
 		mytbar = g_malloc0(sizeof(MyToolbar));
 		mytbar->tbar = GTK_TOOLBAR(gtk_toolbar_new());
+		mytbar->null_tbar = GTK_TOOLBAR(gtk_toolbar_new());
 	}
 
 	if (config_show_tb_new)
