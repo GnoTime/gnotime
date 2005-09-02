@@ -1388,6 +1388,9 @@ ctree_refresh (ProjTreeWindow *ptw)
 	if (!ptw) return;
 	tree_w = ptw->ctree;
 
+	/* Possible that ctree is not yet initialized */
+	if (!ptw->proj_list) return;
+	
 	/* Freeze, in prep for a massive update */
 	/* XXX As of gtk 2.2.1, doing a freeze-thaw cycle
 	 * fails to redraw the window correctly.
