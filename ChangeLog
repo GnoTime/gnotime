@@ -1,5 +1,7 @@
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
 	* Bump to version number 2.2.2
+	* Fix sourceforge bug [ 799077 ] projects blanked when first time user
+	  tries to sort
 	* query.c: fix broken leap-year calculation, leading to bugs
 	  sourceforge [ 983408 ]  and [ 1114205 ]
 	* journal.c: Fix crash due to hoverhelp timer popping after 
