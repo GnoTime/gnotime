@@ -145,7 +145,7 @@ gtt_restore_gnomeui_from_gconf (GConfClient *client,
 	savepath = g_strdup_printf ("%sXXXXXXXXXXXXXXXXXXXX",path);
 	tokptr = savepath + strlen (path);
 	
-	/* ReStore the info */
+	/* Restore the info */
 	strcpy (tokptr, "Type");
 	gui->type = string_to_gnome_ui_info_type(F_GETSTR (savepath, ""));
 	strcpy (tokptr, "Label");

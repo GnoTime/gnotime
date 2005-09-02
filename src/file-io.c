@@ -34,6 +34,7 @@
 #include "file-io.h"
 #include "gconf-io.h"
 #include "gtt.h"
+#include "menus.h"
 #include "plug-in.h"
 #include "prefs.h"
 #include "proj.h"
@@ -415,6 +416,8 @@ gtt_load_gnome_config (const char *prefix)
 	num = GET_INT("/Misc/NumReports=0");
 	if (0 < num)
 	{
+		GnomeUIInfo * reports_menu;
+		reports_menu =  g_new0 (GnomeUIInfo, num+1);
 		for (i = num-1; i >= 0 ; i--)
 		{
 			GttPlugin *plg;
@@ -427,7 +430,20 @@ gtt_load_gnome_config (const char *prefix)
 			tip = gnome_config_get_string(s);
 			plg = gtt_plugin_new (name, path);
 			plg->tooltip = g_strdup (tip);
+
+			/* fixup */
+			reports_menu[i].type = GNOME_APP_UI_ITEM;
+			reports_menu[i].user_data = plg;
+			reports_menu[i].label = name;
+			reports_menu[i].hint = tip;
+			reports_menu[i].unused_data = NULL;
+			reports_menu[i].pixmap_type = GNOME_APP_PIXMAP_STOCK;
+			reports_menu[i].pixmap_info = GNOME_STOCK_BLANK;
+			reports_menu[i].accelerator_key = 0;
+			reports_menu[i].ac_mods = (GdkModifierType) 0;
 		}
+		reports_menu[num].type = GNOME_APP_UI_ENDOFINFO;
+		gtt_set_reports_menu (GNOME_APP(app_window), reports_menu);
 	}
 
 	/* The old-style config file also contained project data
