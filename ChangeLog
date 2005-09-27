@@ -1,6 +1,7 @@
 Tue Sep 27, 2005 Linas Vepstas <linas@linas.org>
 	* Apply sourceforge patch 149570 
 	  from bug [ 1294149 ] Doesn't detect QOF 0.6.0
+	* cvs tag gnotime-2.2.2 in prep for the 2.2.2 release
 Sat Sep 17, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* doc/gnotime-C.omf, doc/gnotime-es.omf: Fix issue where yelp doesn't
 	  display an entry for gnotime when browsing because it doesn't
@@ -22,7 +23,7 @@ Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
 	* Bug fix: editing time brings up wrong report
 	* Manually apply patch from sourceforge bug [ 1119338 ] fedora .spec file
 	  is out of date and rpm cannot build rpm
-   * Fix bug involving copy of old gnotime files to a new machine
+	* Fix bug involving copy of old gnotime files to a new machine
 	  on which gnotime has never been run before.
 	* Fix sourceforge bug [ 1276458 ] "Empty" appears in diary entry
 	* Apply sourceforge patch 1176719 Extensible fix for gtkhtml3 building
@@ -193,7 +194,7 @@ Thu Dec  18 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* doc/de, doc/Makefile.am: Removed the de directory of the
 	  documentation since no translation resided there (just a topics.dat
 	  that no longer works in a Gnome2 environment.)
-  
+
 Nov 10 2003 Linas Vepstas <linas@linas.org>
 
 	* idle-dialog.c: bug fix to work around missing/dropped X Events
@@ -205,10 +206,10 @@ Nov 10 2003 Linas Vepstas <linas@linas.org>
 Sept 27 2003 Linas Vepstas <linas@linas.org>
 
 	* po/pt_BR.po: New pt_BR translation from Goedson Teixeira Paixao
-     (sourceforge patch #799089)
+	  (sourceforge patch #799089)
 	* lib/qof/*: sync with GnuCash CVS HEAD
 	* src/proj.c: fix core dump when sorting on empty window
-     (sourceforge bug #799077)
+	  (sourceforge bug #799077)
 	* src/mencmd.c: add cheesey usability hack/workaround to explain
 	  how to edit time intervals. (sourceforge bug #795361)
 
@@ -337,7 +338,7 @@ Sun Dec 29 11:32:16 CST 2002 Linas Vepstas <linas@linas.org>
 
 Sat Dec 28 19:54:39 CST 2002 Linas Vepstas <linas@linas.org>
 
-   * gtt.scm: add utilities for display to-do list
+	* gtt.scm: add utilities for display to-do list
 	* ghtml.c: fix buffer overflow bug
 	* ghtml.c: vastly improve the project-list infrastructure
 	* menus.c, export.c: add export of tab-delim project list
@@ -872,7 +873,7 @@ Sat Apr 01 10:39:46 2000  George Lebl <jirka@5z.com>
 1999-01-20  Nat Friedman  <nat@nat.org>
 
 	* prop.c (prop_dialog): Connect the help signal of the property
- 	box to gnome_help_pbox_goto.  Removed the old help callback.
+	  box to gnome_help_pbox_goto.  Removed the old help callback.
 
 	* options.c (signals): Ditto.
 
@@ -955,7 +956,7 @@ Tue Aug 25 01:35:40 1998  Tom Tromey  <tromey@cygnus.com>
 1998-08-12  Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>
 
 	* prop.c (prop_dialog): Replaced 'gnome_property_box_append_page'
- 	with 'gtk_notebook_append_page'.
+	  with 'gtk_notebook_append_page'.
 
 	* options.c (options_dialog): Likewise.
 
@@ -979,7 +980,7 @@ Sun Jul 26 23:16:38 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
 1998-06-14  Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>
 
 	* main.c (main): Uses 'gnome_master_client' instead of
- 	'gnome_client_new_default'.
+	  'gnome_client_new_default'.
 
 Mon Jun  1 22:08:32 CEST 1998  Eckehard Berns  <eb@berns.prima.de>
 
@@ -1222,13 +1223,13 @@ Wed Feb 11 23:29:44 CET 1998  Eckehard Berns  <eb@berns.prima.de>
 Sun Feb  8 03:11:04 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* gtthelp.c (gtt_help_init_menu): changed the `close' menu item to
- 	  use gnome_stock_menu_item for demonstration purposes.
+	  use gnome_stock_menu_item for demonstration purposes.
 
 Wed Feb  4 01:32:49 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* gtthelp.c: added use of gnome_stock_pixmap_register to let the
- 	  API do the dirty work about the proper state settings of the
- 	  `back' and `forward' icons.
+	  API do the dirty work about the proper state settings of the
+	  `back' and `forward' icons.
 
 	* timer.c (timer_func): oops, big bug: when the timer has been
 	  stopped and restarted again, timer_func added all the seconds,
@@ -1251,8 +1252,8 @@ Fri Jan 30 00:20:59 1998  Eckehard Berns  <eb@berns.prima.de>
 	  the sources.
 
 	* timer.c (timer_func): don't know if it really matters, but I
- 	  check the time that is elapsed since the last timer event. This
- 	  ensures that I don't miss any second.
+	  check the time that is elapsed since the last timer event. This
+	  ensures that I don't miss any second.
 
 1998-01-28  Raja R Harinath  <harinath@cs.umn.edu>
 
@@ -1265,8 +1266,8 @@ Wed Jan 28 15:37:55 1998  Eckehard Berns  <eb@berns.prima.de>
 Tue Jan 27 08:31:01 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* toolbar.c (build_toolbar): changed dgettext to gtt_gettext and
- 	  added a prefix to "New". That way I don't need my own domain
- 	  _and_ have no ambiguities.
+	  added a prefix to "New". That way I don't need my own domain
+	  _and_ have no ambiguities.
 
 1998-01-26  Mark Galassi  <rosalia@cygnus.com>
 
@@ -1278,21 +1279,21 @@ Mon Jan 26 14:25:17 1998  Eckehard Berns  <eb@berns.prima.de>
 	* {options,prop}.c: used gnome_stock_button for the dialogs.
 
 	* toolbar.c (build_toolbar): replaced _("New") with
- 	  dgettext("gtt", "New") to distinguish my "New" with the one of
- 	  gnomine.
+	  dgettext("gtt", "New") to distinguish my "New" with the one of
+	  gnomine.
 
 Sun Jan 25 03:36:25 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* gtthelp.c: gnome_config'ed the GttHelp settings.
 
 	* proj.c: I'm using gnome config now. If no gnome config is found,
- 	  a fallback to the old (and non-GNOME) config file is used to
- 	  convert old config files.
+	  a fallback to the old (and non-GNOME) config file is used to
+	  convert old config files.
 
 	* added support to shorten the toolbar by choosing `toolbar
- 	  sections'. This includes some not so pretty gtk_widget_hides
- 	  (instead of _destroys), and some hacks around gnome_app. But I
- 	  think, it's worth it.
+	  sections'. This includes some not so pretty gtk_widget_hides
+	  (instead of _destroys), and some hacks around gnome_app. But I
+	  think, it's worth it.
 
 1998-01-25  Mark Galassi  <rosalia@cygnus.com>
 
@@ -1306,7 +1307,7 @@ Sat Jan 24 13:35:15 1998  Eckehard Berns  <eb@berns.prima.de>
 Wed Jan 21 18:11:39 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* log.c (log_proj_intern): added last_real_proj to avoid duplicate
- 	  log file enrties.
+	  log file enrties.
 
 Tue Jan 20 22:43:29 1998  Eckehard Berns  <eb@berns.prima.de>
 
@@ -1315,29 +1316,29 @@ Tue Jan 20 22:43:29 1998  Eckehard Berns  <eb@berns.prima.de>
 Tue Jan 20 02:03:29 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* app.c (init_list): checked for ENOENT - no configuration file is
- 	  no error
+	  no error
 
 	* proj.c (project_list_load): checked for ENOENT
 
 	* gtthelp.c: Added a toolbar. Added a menu to configure the
- 	  toolbar. These toolbar settings still need to be saved.
+	  toolbar. These toolbar settings still need to be saved.
 
 Mon Jan 19 22:24:13 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* prop.c (prop_dialog): signal_connected delete_event to
- 	  gtt_delete_event
+	  gtt_delete_event
 
 	* options.c (options_dialog): signal_connected delete_event to
- 	  gtt_delete_event, which actiually just hides the widget
+	  gtt_delete_event, which actiually just hides the widget
 
 	* app.c: eliminated segfault bug by not destroying any GnomeApp
- 	  (GTT's main window and GttHelp).
+	  (GTT's main window and GttHelp).
 
 	* gtthelp.c: added history. Found out about
- 	  XmHTMLAnchorScrollToName. I still do not use it because it is
- 	  not converted to gtk yet. Found the segfault bug - seems to be a
- 	  problem with free/malloc in my libc or in gtk - I worked around
- 	  it by not destroying anything.
+	  XmHTMLAnchorScrollToName. I still do not use it because it is
+	  not converted to gtk yet. Found the segfault bug - seems to be a
+	  problem with free/malloc in my libc or in gtk - I worked around
+	  it by not destroying anything.
 
 Mon Jan 19 15:52:46 1998 MET  Eckehard Berns  <eb@berns.prima.de>
 
@@ -1346,19 +1347,19 @@ Mon Jan 19 15:52:46 1998 MET  Eckehard Berns  <eb@berns.prima.de>
 Mon Jan 19 01:34:13 1998  Eckehard Berns  <eb@berns.prima.de>
 
 	* dialog.c (new_dialog): included GtkDialog support when
- 	  GTK_USE_DIALOG is set.
+	  GTK_USE_DIALOG is set.
 
 	* Fixed some style bugs. Added some "delete_event"s.
 
 	* toolbar.c: revamped completely. when using GtkToolbar, widgets
- 	  get updated now.
+	  get updated now.
 	  
 	  Added support for gnome-stock.[ch], which I'm develeping at this
- 	  time.
+	  time.
 
 	* prior to this I added many things to GTT, I do not remember
- 	  exactly (that's why I started this ChangeLog :-) ).All changes,
- 	  the user might see, are covered in NEWS though.
+	  exactly (that's why I started this ChangeLog :-) ).All changes,
+	  the user might see, are covered in NEWS though.
 
 Tue Jan 13 17:13:26 1998  Federico Mena  <federico@bananoid.nuclecu.unam.mx>
 
