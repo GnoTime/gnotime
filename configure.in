@@ -51,8 +51,8 @@ LIBGTKHTML_REQUIRED=3.0.0
 LIBXML2_REQUIRED=2.0.0
 SCROLLKEEPER_BUILD_REQUIRED=0.3.5
 dnl Doesn't compile w/ qof-0.5.0
-LIBQOF_REQUIRED_MIN=0.5.2
-LIBQOF_REQUIRED_MAX=0.5.2
+LIBQOF_REQUIRED_MIN=0.6.0
+LIBQOF_REQUIRED_MAX=0.6.0
 
 
 dnl *******************************
@@ -169,7 +169,7 @@ AC_HELP_STRING([--with-system-qof],
 
 [
 if test x$withval = "xyes"; then
-	PKG_CHECK_MODULES(LIBQOF, qof-0 >= $LIBQOF_REQUIRED_MIN qof-0 <= $LIBQOF_REQUIRED_MAX)
+	PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN qof-1 <= $LIBQOF_REQUIRED_MAX)
 	qofbuild=no
 else
 	dnl Have to use static libqof instead of dynamic.
@@ -180,8 +180,8 @@ else
 fi
 ],
 [
-if $PKG_CONFIG --exists "qof-0 >= $LIBQOF_REQUIRED_MIN qof-0 <= $LIBQOF_REQUIRED_MAX"; then
-	PKG_CHECK_MODULES(LIBQOF, qof-0 >= $LIBQOF_REQUIRED_MIN qof-0 <= $LIBQOF_REQUIRED_MAX)
+if $PKG_CONFIG --exists "qof-1 >= $LIBQOF_REQUIRED_MIN qof-1 <= $LIBQOF_REQUIRED_MAX"; then
+	PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN qof-1 <= $LIBQOF_REQUIRED_MAX)
 	qofbuild=no
 else
 	dnl Have to use static libqof instead of dynamic
