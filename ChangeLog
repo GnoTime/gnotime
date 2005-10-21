@@ -1,3 +1,12 @@
+Thu Oct 20, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
+	* omf.make, xmldocs.make: Update to files from gnome-common-2.12.  This
+	  cleans up some harmless warnings from scrollkeeper when installing
+	  into a DESTDIR.
+	* lib/libqofsql/Makefile.am, lib/qof/Makefile.am: Hopefully fix the
+	  linking of static libqofsql.a into gnotime when no system qof of the
+	  required version exists.  At least, it works here with these changes.
+	  If there are still problems, please include me on the bug so I can
+	  take a look.
 Tue Sep 27, 2005 Linas Vepstas <linas@linas.org>
 	* Apply sourceforge patch 149570 
 	  from bug [ 1294149 ] Doesn't detect QOF 0.6.0
