@@ -224,6 +224,8 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/DayStartOffset", config_daystart_offset);
 	SETINT ("/Misc/WeekStartOffset", config_weekstart_offset);
 
+    SETINT ("/time_format", config_time_format);
+
 	/* Write out the user's report menu structure */
 	gtt_save_reports_menu ();
 
@@ -441,6 +443,8 @@ gtt_gconf_load (void)
 	config_logfile_stop  = GETSTR ("/LogFile/EntryStop", _("stopped project %t"));
 	config_logfile_min_secs = GETINT ("/LogFile/MinSecs", 3);
 
+    /* ------------ */
+    config_time_format = GETINT("/time_format", 3);
 	/* ------------ */
 	save_count = GETINT ("/Data/SaveCount", 0);
 	config_data_url = GETSTR ("/Data/URL", XML_DATA_FILENAME);
@@ -464,7 +468,7 @@ gtt_gconf_load (void)
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
 	/* Use string for time, to avoid unsigned-long problems */
 	last_timer = (time_t) atol (GETSTR ("/Misc/LastTimer", "-1"));
-
+    
 	/* redraw the GUI */
 	if (config_show_statusbar)
 	{

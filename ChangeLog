@@ -1,3 +1,10 @@
+2006-04-11  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ghtml.c: Add support for different time formats in reports.
+
+	* src/prefs.c, src/prefs.h, src/gconf-io.c, glade/prefs.glade: Add
+	configuration for time format in reports
+	
 Thu Oct 20, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* omf.make, xmldocs.make: Update to files from gnome-common-2.12.  This
 	  cleans up some harmless warnings from scrollkeeper when installing

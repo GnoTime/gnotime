@@ -81,6 +81,8 @@ int config_logfile_min_secs = 0;
 int config_daystart_offset = 0;
 int config_weekstart_offset = 0;
 
+int config_time_format = TIME_FORMAT_LOCALE;
+
 char * config_data_url = NULL;
 
 typedef struct _PrefsDialog 
@@ -140,6 +142,11 @@ typedef struct _PrefsDialog
 	GtkEntry       *daystart_secs;
 	GtkOptionMenu  *daystart_menu;
 	GtkOptionMenu  *weekstart_menu;
+
+    GtkRadioButton *time_format_am_pm;
+    GtkRadioButton *time_format_24_hs;
+    GtkRadioButton *time_format_locale;
+
 } PrefsDialog;
 
 
@@ -410,6 +417,24 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		}
 	}
 
+    if (6 == page)
+    {
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm)))
+        {
+            config_time_format = TIME_FORMAT_AM_PM;
+        }
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs)))
+        {
+            config_time_format = TIME_FORMAT_24_HS;
+        }
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale)))
+        {
+            config_time_format = TIME_FORMAT_LOCALE;
+        }
+
+
+    }
+
 	/* Also save them the to file at this point */
 	save_properties();
 }
@@ -542,6 +567,28 @@ options_dialog_set(PrefsDialog *odlg)
 	/* Set the correct menu item based on current values */
 	int day = config_weekstart_offset;
 	set_optionmenu_item (odlg->weekstart_menu, day);
+
+    switch (config_time_format)
+    {
+    case TIME_FORMAT_AM_PM:
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), TRUE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
+        break;
+    case TIME_FORMAT_24_HS:
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), TRUE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
+        break;
+    
+    case TIME_FORMAT_LOCALE:
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), TRUE);
+        break;
+    
+    
+    }
 
 	/* set to unmodified as it reflects the current state of the app */
 	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(odlg->dlg), FALSE);
@@ -741,6 +788,22 @@ misc_options(PrefsDialog *dlg)
 	dlg->weekstart_menu = GTK_OPTION_MENU(w);
 }
 
+static void
+time_format_options(PrefsDialog *dlg)
+{
+    GtkWidget *w;
+    GladeXML *gtxml = dlg->gtxml;
+
+    w = GETCHWID("time_format_am_pm");
+    dlg->time_format_am_pm = GTK_RADIO_BUTTON(w);
+
+    w = GETCHWID("time_format_24_hs");
+    dlg->time_format_24_hs = GTK_RADIO_BUTTON(w);
+
+    w = GETCHWID("time_format_locale");
+    dlg->time_format_locale = GTK_RADIO_BUTTON(w);
+}
+
 /* ============================================================== */
 
 static void 
@@ -777,6 +840,7 @@ prefs_dialog_new (void)
 	logfile_options (dlg);
 	toolbar_options (dlg);
 	misc_options (dlg);
+	time_format_options (dlg);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 	return dlg;

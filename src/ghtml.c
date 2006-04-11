@@ -35,6 +35,7 @@
 #include "gtt.h"
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
+#include "prefs.h"
 #include "proj.h"
 #include "query.h"
 #include "util.h"
@@ -1195,7 +1196,22 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	if (prt_date) {
 		qof_print_date_buff (buff, 100, starp);
 	} else {
-		qof_print_time_buff (buff, 100, starp);
+        switch (config_time_format) 
+        {
+            case TIME_FORMAT_AM_PM: {
+                strftime (buff, 100, "%r", localtime (&starp));
+                break;
+            }
+            case TIME_FORMAT_24_HS: {
+                strftime (buff, 100, "%T", localtime (&starp));
+                break;
+            }
+            case TIME_FORMAT_LOCALE: {
+                qof_print_time_buff (buff, 100, starp);
+                break;
+            }
+
+        }
 	}
 
 	GString *str;

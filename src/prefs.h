@@ -68,6 +68,12 @@ extern char *config_data_url;
 extern int config_daystart_offset;
 extern int config_weekstart_offset;
 
+extern int config_time_format;
+
+#define TIME_FORMAT_AM_PM  1
+#define TIME_FORMAT_24_HS  2
+#define TIME_FORMAT_LOCALE 3
+
 /* Pop up a dialog box for setting user preferences */
 void prefs_dialog_show (void);
 
