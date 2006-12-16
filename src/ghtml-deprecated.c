@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <qof/gnc-date.h>
+#include <qof.h>
 
 #include "app.h"
 #include "ctree.h"

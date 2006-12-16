@@ -27,7 +27,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include <qof/gnc-date.h>
+#include <qof.h>
 
 #include "active-dialog.h"
 #include "app.h"
