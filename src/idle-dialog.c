@@ -122,6 +122,8 @@ util_escape_html_markup (const char *str)
 	char * p;
 	char * ret;
 
+    if (str == NULL) return g_strdup("");
+
 	p = strchr (str, '&');
 	if (!p) return g_strdup (str);
 
