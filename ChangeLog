@@ -1,3 +1,9 @@
+2006-12-22  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/app.c (app_new, update_status_bar): Make the status bar
+	code simpler, using GtkLabels instead of GtkStatusbars to display
+	current project and total day time info. This fixes bug #1597663.
+
 2006-12-17  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/idle-dialog.c (util_escape_html_markup): check if str is

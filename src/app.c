@@ -57,8 +57,8 @@ NotesArea *global_na = NULL;
 GtkWidget *app_window = NULL;
 GtkWidget *status_bar = NULL;
 
-static GtkStatusbar *status_project = NULL;
-static GtkStatusbar *status_day_time = NULL;
+static GtkLabel *status_project = NULL;
+static GtkLabel *status_day_time = NULL;
 static GtkWidget *status_timer = NULL;
 
 char *config_shell_start = NULL;
@@ -75,66 +75,48 @@ extern GttActiveDialog *act;
 void 
 update_status_bar(void)
 {
-	char day_total_str[25];
-	static char *old_day_time = NULL;
-	static char *old_project = NULL;
-	char *s;
-
-	if (!status_bar) return;
-
-	/* Make the little clock item appear/disappear
-	 * when the project is started/stopped */
-	if (status_timer) 
-	{
-		if (timer_is_running())
-			gtk_widget_show(status_timer);
-		else
-			gtk_widget_hide(status_timer);
-	}
+  char day_total_str[25];
+  char *s;
+  
+  if (!status_bar) return;
+  
+  /* Make the little clock item appear/disappear
+   * when the project is started/stopped */
+  if (status_timer)
+  {
+    if (timer_is_running())
+      gtk_widget_show(status_timer);
+    else
+      gtk_widget_hide(status_timer);
+  }
 	
-	if (!old_day_time) old_day_time = g_strdup("");
-	if (!old_project) old_project = g_strdup("");
-
 	/* update timestamp */
-	qof_print_hours_elapsed_buff (day_total_str, 25, 
-	         gtt_project_list_total_secs_day(), config_show_secs);
+	qof_print_hours_elapsed_buff (day_total_str, 25,
+                                gtt_project_list_total_secs_day(),
+                                config_show_secs);
 
-	s = g_strdup(day_total_str);
-	if (0 != strcmp(s, old_day_time)) 
-	{
-	   gtk_statusbar_pop(status_day_time, 0);
-		gtk_statusbar_push(status_day_time, 0, s);
-		g_free(old_day_time);
-		old_day_time = s;
-	} 
-	else 
-	{
-		g_free(s);
-	}
-	
+  if (0 != strcmp(day_total_str, gtk_label_get_text(status_day_time)))
+  {
+    gtk_label_set_text(status_day_time, day_total_str);
+  }
+
 	/* Display the project title */
-	if (cur_proj) 
+	if (cur_proj)
 	{
-		s = g_strdup_printf ("%s - %s", 
-		gtt_project_get_title(cur_proj),
-		gtt_project_get_desc(cur_proj));
-	} 
-	else 
+		s = g_strdup_printf ("%s - %s",
+                         gtt_project_get_title(cur_proj),
+                         gtt_project_get_desc(cur_proj));
+	}
+	else
 	{
 		s = g_strdup(_("Timer is not running"));
 	}
 
-	if (0 != strcmp(s, old_project)) 
+  if (0 != strcmp(s, gtk_label_get_text(status_project)))
 	{
-		gtk_statusbar_pop(status_project, 0);
-		gtk_statusbar_push(status_project, 0, s);
-		g_free(old_project);
-		old_project = s;
-	} 
-	else 
-	{
-		g_free(s);
+		gtk_label_set_text(status_project, s);
 	}
+  g_free(s);
 }
 
 
@@ -268,10 +250,15 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	GtkWidget *vbox;
 	GtkWidget *widget;
 	GtkWidget *vpane;
+    GtkWidget *separator;
+    GtkLabel *filler;
+    GtkHBox *labels;
+    GtkVBox *status_vbox;
+    GtkStatusbar *grip;
 
 	app_window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
 	gtk_window_set_wmclass(GTK_WINDOW(app_window),
-			       GTT_APP_NAME, GTT_APP_PROPER_NAME);
+                           GTT_APP_NAME, GTT_APP_PROPER_NAME);
 
 	/* 485 x 272 seems to be a good size to default to */
 	gtk_window_set_default_size(GTK_WINDOW(app_window), 485, 272);
@@ -287,41 +274,52 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	
 	/* container holds status bar, main ctree widget */
 	vbox = gtk_vbox_new(FALSE, 0);
-	
-	/* build statusbar */
-	status_bar = gtk_hbox_new(FALSE, 0);
-	gtk_box_set_homogeneous (GTK_BOX(status_bar), FALSE);
-	gtk_widget_show(status_bar);
-	gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
-	
-	/* put elapsed time into statusbar */
-	status_day_time = GTK_STATUSBAR(gtk_statusbar_new());
-	gtk_statusbar_set_has_resize_grip (status_day_time, FALSE);
-	gtk_widget_show(GTK_WIDGET(status_day_time));
-	gtk_statusbar_push(status_day_time, 0, _("00:00"));
 
-	/* XXX hack alert: the timer box is not being correctly sized;
-	 * I suspect this is either a gtk bug or a usage bug.
-	 * So instead I set the width to 50 pixels, and hope the 
-	 * font size can live with this. */
-	gtk_widget_set_size_request (GTK_WIDGET(status_day_time), 50, -1);
-	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_day_time),
-			   FALSE, TRUE, 1);
+	/* build statusbar */
+
+    status_vbox = GTK_VBOX(gtk_vbox_new(FALSE, 0));
+    gtk_widget_show(GTK_WIDGET(status_vbox));
+
+    labels = GTK_HBOX(gtk_hbox_new(FALSE, 0));
+    gtk_widget_show(GTK_WIDGET(labels));
+    
+	status_bar = gtk_hbox_new(FALSE, 0);
+	gtk_widget_show(status_bar);
+    separator = gtk_hseparator_new();
+    gtk_widget_show(separator);
+    gtk_box_pack_start(GTK_BOX(status_vbox), separator, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(status_vbox), labels, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(status_bar), status_vbox, TRUE, TRUE, 0);
+
+    grip = GTK_STATUSBAR(gtk_statusbar_new());
+    gtk_statusbar_set_has_resize_grip(grip, TRUE);
+    gtk_widget_show(GTK_WIDGET(grip));
+    gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(grip), FALSE, FALSE, 0);
+
+	/* put elapsed time into statusbar */
+	status_day_time = GTK_LABEL(gtk_label_new(_("00:00")));
+	gtk_widget_show(GTK_WIDGET(status_day_time));
+
+	gtk_box_pack_start(GTK_BOX(labels), GTK_WIDGET(status_day_time),
+                       FALSE, TRUE, 0);
 	
 	/* put project name into statusbar */
-	status_project = GTK_STATUSBAR(gtk_statusbar_new());
+	status_project = GTK_LABEL(gtk_label_new( _("Timer is not running")));
 	gtk_widget_show(GTK_WIDGET(status_project));
 	
-	gtk_statusbar_push(status_project, 0, _("Timer is not running"));
-	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_project),
-			   TRUE, TRUE, 1);
+	gtk_box_pack_start(GTK_BOX(labels), GTK_WIDGET(status_project),
+                       FALSE, TRUE, 10);
+
+    filler = GTK_LABEL(gtk_label_new(""));
+    gtk_widget_show(GTK_WIDGET(filler));
+    gtk_box_pack_start(GTK_BOX(labels), GTK_WIDGET(filler), TRUE, TRUE, 1);
 
 	/* put timer icon into statusbar */
-	status_timer = gtk_image_new_from_stock (GNOME_STOCK_TIMER, 
-			GTK_ICON_SIZE_MENU);
+	status_timer = gtk_image_new_from_stock (GNOME_STOCK_TIMER,
+                                             GTK_ICON_SIZE_MENU);
 	gtk_widget_show(status_timer);
 	gtk_box_pack_end(GTK_BOX(status_bar), GTK_WIDGET(status_timer),
-			 FALSE, FALSE, 1);
+                     FALSE, FALSE, 1);
 
 	/* create the main columned tree for showing projects */
 	global_ptw = ctree_new();
@@ -337,9 +335,10 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	 */
 	gtk_widget_ref (vpane);
 	gtk_container_remove(GTK_CONTAINER(vpane->parent), vpane);
-	// gtk_box_pack_end(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
 	gtk_widget_unref (vpane);
+
+    gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
 
 	notes_area_add_ctree (global_na, ctree);
 	
