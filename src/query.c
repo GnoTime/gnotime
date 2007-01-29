@@ -40,8 +40,8 @@ static inline int
 yearday_to_centuryday (int yday, int year)
 {
 	int cd;
-	cd = 365*year + (year+1)/4 + yday;
-	if (100 <= year) cd --;
+	cd = 365*year + (year-1)/4 + yday;
+  cd -= (year - 1)/100; /* year that are multiple of 100 are not leap years */
 	return cd;
 }
 
