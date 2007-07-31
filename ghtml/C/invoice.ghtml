@@ -16,7 +16,7 @@
 </center>
 
 You don't want to send this invoice to your customers without
-at least putting your logo on the top.  To do that, you will
+at least putting your logo on the top.  To do that, 
 you will have to modify the invoice report template.  
 Changing it is easy: make a copy of the file <tt>invoice.ghtml</tt>
 (probably in <tt>/usr/share/gtt/ghtml/C/invoice.ghtml</tt>),
@@ -24,7 +24,7 @@ and edit it to suit your needs.  The templates are raw HTML,
 so you do need to know a bit of that to do anything fancy.
 If you're adventurous, you can modify the column layout
 and order.
-<br><br>
+<br /><br />
 When finished, you can add your new report to your system by picking 
 the menu item "Reports... New Report".
 
@@ -35,7 +35,7 @@ the menu item "Reports... New Report".
 
    (if (gtt-did-query)
        (gtt-show (list
-          ''"<br><br>"
+          ''"<br /><br />"
           ''"Items shown are for projects that were active between dates"
                 (gtt-kvp-str '"earliest-end-date")
           ''"and"
@@ -82,7 +82,7 @@ the menu item "Reports... New Report".
       (do-show-billable-items)
   )
 ?>
-<br><br>
+<br /><br />
 
 <center>
 <h3>Billable, Paid Work Items</h3>
@@ -124,7 +124,7 @@ The table below shows work items that have been paid:
       (do-show-paid-items)
   )
 ?>
-<br><br>
+<br /><br />
 
 <center>
 <h3>Billable, Held Tasks</h3>
@@ -166,11 +166,11 @@ The table below shows only the items withheld from billing:
       (do-show-hold-items)
   )
 ?>
-<br><br>
+<br /><br />
 
 To create more specialized filters to show more complex 
 combinations of work items, you will have to do some hacking
-in scheme.  Go into the <tt>gtt.scm</tt> file, make 
+in <em>scheme</em>.  Go into the <tt>gtt.scm</tt> file, make 
 a copy of the <tt>'gtt-filter-paid-tasks'</tt> routine, and 
 start hacking.  Please post new/improved filters to the
 GnoTime patch repositiory at
@@ -179,9 +179,9 @@ http://sourceforge.net/projects/gttr/</a>
 so that they can be included in future versions.
 
 
-<br><br>
+<br /><br />
 <div align=right>
-Brought to you by ...  <br>
+Brought to you by ...  <br />
 <a href="http://gttr.sourceforge.net/">
 <img src="gnotime-logo.png" border="0" width="155" height="28"></a>
 </div>

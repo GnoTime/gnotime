@@ -13,8 +13,8 @@
 <p>
 You can design and use custom reports with GnoTime 
 rather easily if you know a bit of basic HTML.   
-If you also know scheme, then the world is at 
-your feet, since the report generator uses guile 
+If you also know <em>scheme</em>, then the world is at 
+your feet, since the report generator uses <em>guile</em> 
 to interpret the embedded scheme in a report template.
 </p>
 <p>
@@ -26,8 +26,8 @@ and entering the filename for the  template.
 <p>
 The report template consists of standard HTML markup
 (including newer HTML features, such as CSS), with 
-embedded scheme markup to provide project and diary display. 
-GnoTime includes some built-in scheme primitives
+embedded <em>scheme</em> markup to provide project and diary display. 
+GnoTime includes some built-in <em>scheme</em> primitives
 for generating HTML tables for projects and diary entries. 
 This page shows some examples; you can view the HTML source for
 this example primer by viewing 'primer.ghtml' (probably installed
@@ -40,34 +40,34 @@ Yes, images using standard HTML markup are now supported.
 You should see a GnoTime PNG logo on your right.
 </p>
 <p>
-Some sample scheme forms, and their output:
+Some sample <em>scheme forms</em>, and their output:
 </p>
 
 <ul>
 <li> <tt>(gtt-hello)</tt>  prints the following:
      <b><i><?scm  (gtt-hello) ?></i></b>
-     <br><br>
+     <br /><br />
 
 <li> <tt>(gtt-show-project-title)</tt>  prints the following:
      <b><i><?scm  (gtt-show-project-title) ?></i></b>
-     <br><br>
+     <br /><br />
 
 <li> <tt>(gtt-show-project-desc)</tt>  prints the following:
      <b><i><?scm  (gtt-show-project-desc) ?></i></b>
-     <br><br>
+     <br /><br />
 
 <li> <tt>(gtt-show (gtt-project-notes (gtt-selected-project)))</tt>  
      prints the notes for the selected project, which are:
-     <br><b><i>
+     <br /><b><i>
      <?scm  (gtt-show (gtt-project-notes (gtt-selected-project))) ?>
-     </i></b><br>
+     </i></b><br />
      Note the slightly more complicated form of the above: 
      <tt>gtt-selected-project</tt> denotes the project that is currently
      selected in the GnoTime main window.  <tt>gtt-project-notes</tt>
      is a function that takes a project as an argument, and returns the
      notes on that project.  <tt>gtt-show</tt> is a kind of 'print'
      statement (see below for more examples of <tt>gtt-show</tt>).
-     <br><br>
+     <br /><br />
 
 <li> Tables showing lists of projects, tasks and intervals can be
      created and displayed.  The file <tt>todo.ghtml</tt> shows a 
@@ -76,83 +76,83 @@ Some sample scheme forms, and their output:
      The file <tt>invoice.ghtml</tt> shows how lists of tasks can be 
      selectively filtered, so that only certain tasks meeting certain
      criteria are displayed.
-     <br><br>
+     <br /><br />
 
 <li> The primitive <tt>gtt-show</tt> acts as the ghtml analog of the 
-     scheme primitive <tt>display</tt>, in that it merely prints 
+     <em>scheme</em> primitive <tt>display</tt>, in that it merely prints 
      the result of evaluating an expression. 
      It differs, however, in one important way: it omits parenthesis.
-     This allows good-looking to be created.
-     Note that html markup does pass through transparently:
-     <br><br> 
+     This allows good-looking text to be created.
+     Note that HTML markup does pass through transparently:
+     <br /><br /> 
      <tt>(gtt-show '"yabba dabba &lt;i&gt;do&lt;/i&gt; (&lt;b&gt;eh 
          duude&lt;/b&gt;)")</tt>  prints the following:
-     <br>
+     <br />
      <?scm (gtt-show '"yabba dabba <i>do</i> (<b>eh duude</b>)") ?>
-     <br><br>
+     <br /><br />
 
 <li> Scheme is a modern, advanced programming language, 
      based on the newest and most advanced programming principles 
      today.  Scheme resembles LISP, somewhat.  For example,
      <tt>(gtt-show (+ 2 2))</tt>  prints the following:
      <?scm (gtt-show (+ 2 2)) ?>
-     <br><br>
+     <br /><br />
 
 <li> The primitive <tt>gtt-show</tt> can be used anywhere,
      such as this (slowly converging) Leibniz series expression 
      for Pi:
-     <br><br>
+     <br /><br />
      <tt>(define (pi-sum a b) (if (> a b) 0 
-     <br> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
-     <br>
+     <br /> (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) ))
+     <br />
      <?scm (define (pi-sum a b) (if (> a b) 0 (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b)) )) ?>
    
      (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) ))
-     <br>
+     <br />
      <?scm (define (pi-approx) (gtt-show (* 8 (pi-sum 1 1400)) )) ?>
      (pi-approx)
      </tt>
-     <br> <br>
+     <br /> <br />
 
      prints the following:
      <?scm (pi-approx) ?>
      (Yes, the value printed is 'wrong', but that's because we didn't
      let the series expansion run long enough.)
-     <br><br>
+     <br /><br />
 
 <li> You can get access to the raw project/task/interval data 
-     from scheme.  Currently, you can only have read-only access to the
-     data from scheme, allowing reports to be generated, but not
-     allowing core data to be changed.  The following show some of the
+     from <em>scheme</em>.  Currently, you can only have read-only access to the
+     data from <em>scheme</em>, allowing reports to be generated, but not
+     allowing core data to be changed.  The following shows some of the
      available primitives:  
-     <br><br>
+     <br /><br />
      <tt>(gtt-projects)</tt> returns the tree of projects,
      which can be used with the getters: for example:
      <tt>(gtt-show (gtt-project-title (gtt-projects)))</tt>
      shows:
-     <br><br>
+     <br /><br />
      <b><i>
      <?scm (gtt-show (gtt-project-title (gtt-projects))) ?>
      </i></b>
 
-     <br><br>
+     <br /><br />
      We've already mentioned <tt>(gtt-selected-project)</tt>
      before; it returns the project that is currently selected
      in the main window.  There is also the <tt>(gtt-linked-project)</tt>
      primitive, which returns the project that was linked to create
-     this report.  The are frequently the same, but need not be.
+     this report.  They are frequently the same, but need not be.
      For example, select a different project, and then hit the 
      refresh button on this page:
-     <br><br>
+     <br /><br />
      This is the linked project:
          <b><?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?></b>
      
-     <br>
+     <br />
      This is the selected project:
          <b><?scm (gtt-show (gtt-project-title (gtt-selected-project))) ?></b>
-     <br><br>
+     <br /><br />
 
-     <br><br>
+     <br /><br />
      The following project attributes are supported:
      <ul>
      <li><tt>(gtt-project-title prj)</tt>:
@@ -187,7 +187,7 @@ Some sample scheme forms, and their output:
          <?scm (gtt-show (gtt-project-percent-complete (gtt-selected-project))) ?>
          <i>(percentage)</i>
      </ul>
-     <br><br>
+     <br /><br />
 
      Subprojects of a project can be obtained with the 
      <tt>(gtt-project-subprojects prj)</tt> routine.
@@ -201,11 +201,11 @@ Some sample scheme forms, and their output:
                  ))
      ?>
      </ul>
-     <br><br>
+     <br /><br />
      Here's the title of the parent of this project: 
      <b><?scm (gtt-show 
                 (gtt-project-title (gtt-project-parent (gtt-selected-project)))) ?></b>
-     <br>
+     <br />
      Here's a list of peer projects (that is, a list of all of the children of the
      parent project):
      <ul>
@@ -238,7 +238,7 @@ Some sample scheme forms, and their output:
 </ul>
 <h1>Hints and Tips</h1>
 <ul>
-<li>wrong-type-arg: this scheme error message can occur if you quoted 
+<li>wrong-type-arg: this <em>scheme</em> error message can occur if you quoted 
     a string literal incorrectly: be sure to use two single quotes, 
     followed by a double-quoted string: for example: ''"some string" 
 </ul>
@@ -246,14 +246,14 @@ Some sample scheme forms, and their output:
 <p>
 
 <h1>More Examples</h1>
-Here's an axample table for <b>
+Here's an example table for <b>
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
 </b>
 showing some of the different task getters 
 that can be used to build a report.  
-<br><br>
+<br /><br />
 
 <table border=1>
 <tr>
@@ -288,7 +288,7 @@ that can be used to build a report.
 </table>
 
 <div align=right>
-Brought to you by ...  <br>
+Brought to you by ...  <br />
 <a href="http://gttr.sourceforge.net/">
 <img src="gnotime-logo.png" border="0" width="155" height="28">
 </a>
