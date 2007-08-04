@@ -22,7 +22,7 @@
 #include "config.h"
 
 #include <glib.h>
-#include <qof/qofinstance-p.h>   /* XXX this is wrong, must use public API */
+#include <qof/qof.h>
 
 #include "proj.h"
 #include "timer.h"

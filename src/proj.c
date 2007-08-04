@@ -27,7 +27,6 @@
 #include <string.h>
 
 #include <qof/qof.h>
-#include <qof/qofid-p.h>
 
 #include "err-throw.h"
 #include "log.h"

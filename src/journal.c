@@ -28,7 +28,6 @@
 #include <string.h>
 #include <sched.h>
 
-#include <qof/kvp_frame.h>
 #include <qof/qof.h>
 
 #include "app.h"
