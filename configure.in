@@ -162,39 +162,10 @@ dnl **************************************************************
 dnl If QOF is found on the build system, then use it.
 dnl **************************************************************
 
-AC_ARG_WITH(system-qof,
-AC_HELP_STRING([--with-system-qof],
-[use installed libqof rather than the bundled one.  If not specified, configure will use the system qof if installed, otherwise its own.]),
-
-[
-if test x$withval = "xyes"; then
-	PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
-	qofbuild=no
-else
-	dnl Have to use static libqof instead of dynamic.
-	AC_MSG_NOTICE([Using internal libqof])
-	LIBQOF_CFLAGS='-I$(top_srcdir)/lib -I$(top_srcdir)/lib/qof'
-	LIBQOF_LIBS='$(top_builddir)/lib/qof/libqof.la $(top_builddir)/lib/libqofsql/libqofsql.la'
-	qofbuild=yes
-fi
-],
-[
-if $PKG_CONFIG --exists "qof-1 >= $LIBQOF_REQUIRED_MIN"; then
-	PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
-	qofbuild=no
-else
-	dnl Have to use static libqof instead of dynamic
-	AC_MSG_NOTICE([Using internal libqof])
-	LIBQOF_CFLAGS='-I$(top_srcdir)/lib -I$(top_srcdir)/lib/qof'
-	LIBQOF_LIBS='$(top_builddir)/lib/qof/libqof.la $(top_builddir)/lib/libqofsql/libqofsql.la'
-	qofbuild=yes
-fi
-])
+PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
 
 AC_SUBST(LIBQOF_CFLAGS)
 AC_SUBST(LIBQOF_LIBS)
-
-AM_CONDITIONAL(BUILD_QOF, [test x$qofbuild = xyes])
 
 dnl *******************************
 dnl Gnome VFS
@@ -343,9 +314,6 @@ gconf/Makefile
 ghtml/C/Makefile
 ghtml/Makefile
 glade/Makefile
-lib/Makefile
-lib/qof/Makefile
-lib/libqofsql/Makefile
 po/Makefile.in
 redhat/Makefile
 redhat/gnotime.spec

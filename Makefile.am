@@ -3,7 +3,7 @@
 # main makeile am for GnoTime
 # 
 
-SUBDIRS = debian doc gconf glade ghtml lib po redhat fedora src
+SUBDIRS = debian doc gconf glade ghtml po redhat fedora src
 
 # old, obsolete location ??
 # Productivitydir = $(datadir)/gnome/apps/Applications
