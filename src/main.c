@@ -633,7 +633,6 @@ save_projects (void)
 		         G_CALLBACK (gtk_widget_destroy), mb);
 		gtk_widget_show (mb);
 		g_free (errmsg);
-		g_free (errmsg);
 	}
 
 	g_free (xml_filepath);

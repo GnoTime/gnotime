@@ -1,3 +1,8 @@
+2007-08-06  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (save_projects): fixed double free of errmsg. This
+	fixes bug #1548248
+
 2007-08-03  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/proj.c, src/journal.c, src/proj_p.h: Include only qof/qof.h
