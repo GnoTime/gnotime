@@ -72,10 +72,10 @@ the menu item "Reports... New Report".
          ''"<td>"               gtt-task-time-str   ''"</td>\n"
          ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
          ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
+         ''"</tr>\n"
       )
     )
-    (gtt-show '" </table> </center>\n")
+    (gtt-show '" </table>\n</center>\n")
   )
   (if (null? (gtt-filter-bill-tasks (gtt-tasks (gtt-linked-project))))
       (gtt-show '"<center><b><big>There are no billable items</big></b></center>\n")
@@ -114,10 +114,10 @@ The table below shows work items that have been paid:
          ''"<td>"               gtt-task-time-str   ''"</td>\n"
          ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
          ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
+         ''"</tr>\n"
       )
     )
-    (gtt-show '" </table> </center>\n")
+    (gtt-show '" </table>\n</center>\n")
   )
   (if (null? (gtt-filter-paid-tasks (gtt-tasks (gtt-linked-project))))
       (gtt-show '"<center><b><big>There are no paid items</big></b></center>\n")
@@ -156,10 +156,10 @@ The table below shows only the items withheld from billing:
          ''"<td>"               gtt-task-time-str   ''"</td>\n"
          ''"<td align=right>"   gtt-task-value-str  ''"</td>\n"
          ''"<td align=right>"   gtt-task-billable-value-str  ''"</td>\n"
-         ''</tr>
+         ''"</tr>\n"
       )
     )
-    (gtt-show '" </table> </center>\n")
+    (gtt-show '" </table>\n</center>\n")
   )
   (if (null? (gtt-filter-hold-tasks (gtt-tasks (gtt-linked-project))))
       (gtt-show '"<center><b><big>There are no held items</big></b></center>\n")
