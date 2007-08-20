@@ -51,15 +51,51 @@ static GnomeUIInfo menu_main_file[] = {
      GNOME_APP_PIXMAP_STOCK, stock_id, 0, (GdkModifierType) 0, NULL }
 
 static GnomeUIInfo menu_main_edit[] = {
-	GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
+  GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
 				  new_project, NULL),
 	GNOMEUIINFO_SEPARATOR,
 #define MENU_EDIT_CUT_POS 2
-	GNOMEUIINFO_MENU_CUT_ITEM(cut_project,NULL),
+  {
+    GNOME_APP_UI_ITEM,
+    N_("Cu_t"),
+    N_("Delete the selected project"),
+    cut_project,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_STOCK,
+    GNOME_STOCK_PIXMAP_CUT,
+    'D',
+    GDK_CONTROL_MASK,
+    NULL
+  },
 #define MENU_EDIT_COPY_POS 3
-	GNOMEUIINFO_MENU_COPY_ITEM(copy_project,NULL),
+  {
+    GNOME_APP_UI_ITEM,
+    N_("_Copy"),
+    N_("Copy the selected project"),
+    copy_project,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_STOCK,
+    GNOME_STOCK_PIXMAP_COPY,
+    'F',
+    GDK_CONTROL_MASK,
+    NULL
+  },
 #define MENU_EDIT_PASTE_POS 4
-	GNOMEUIINFO_MENU_PASTE_ITEM(paste_project,NULL),
+  {
+    GNOME_APP_UI_ITEM,
+    N_("_Paste"),
+    N_("Paste the previously copied project"),
+    cut_project,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_STOCK,
+    GNOME_STOCK_PIXMAP_PASTE,
+    'G',
+    GDK_CONTROL_MASK,
+    NULL
+  },
 	GNOMEUIINFO_SEPARATOR,
 	GNOMEUIINFO_ITEM_STOCK(N_("Edit _Times"),
 		N_("Edit the time interval associated with this project"),
@@ -125,23 +161,48 @@ static GnomeUIInfo menu_main_reports[] = {
 
 static GnomeUIInfo menu_main_timer[] = {
 #define MENU_TIMER_START_POS 0
-	{GNOME_APP_UI_ITEM, N_("St_art"),
-		N_("Start the timer running"),
-		menu_start_timer, NULL,
-		NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER,
-		'A', GDK_CONTROL_MASK, NULL},
+	{
+    GNOME_APP_UI_ITEM,
+    N_("St_art"),
+    N_("Start the timer running"),
+    menu_start_timer,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_STOCK,
+    GNOME_STOCK_TIMER,
+    'S',
+    GDK_CONTROL_MASK,
+    NULL
+  },
 #define MENU_TIMER_STOP_POS 1
-	{GNOME_APP_UI_ITEM, N_("Sto_p"),
-		N_("Stop the timer"),
-		menu_stop_timer, NULL, NULL,
-		GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER_STOP,
-		'Z', GDK_CONTROL_MASK, NULL},
+  {
+    GNOME_APP_UI_ITEM,
+    N_("Sto_p"),
+    N_("Stop the timer"),
+    menu_stop_timer,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_STOCK,
+    GNOME_STOCK_TIMER_STOP,
+    'W',
+    GDK_CONTROL_MASK,
+    NULL
+  },
 #define MENU_TIMER_TOGGLE_POS 2
-	{GNOME_APP_UI_TOGGLEITEM, N_("_Timer Running"), NULL,
-		menu_toggle_timer, NULL, NULL,
-		GNOME_APP_PIXMAP_NONE, NULL,
-		'T', GDK_CONTROL_MASK, NULL},
-	GNOMEUIINFO_END
+  {
+    GNOME_APP_UI_TOGGLEITEM,
+    N_("_Timer Running"),
+    NULL,
+    menu_toggle_timer,
+    NULL,
+    NULL,
+    GNOME_APP_PIXMAP_NONE,
+    NULL,
+    'T',
+    GDK_CONTROL_MASK,
+    NULL
+  },
+  GNOMEUIINFO_END
 };
 
 

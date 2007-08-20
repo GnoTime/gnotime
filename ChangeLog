@@ -1,3 +1,14 @@
+2007-08-20  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/menus.c: Changed the following menu keyboard shortcuts to
+	  avoid conflicts with default editing keybindings
+	  (fixes bug #1639477):
+	  - Cut - CTRL+D
+	  - Copy - CTRL+F
+	  - Paste - CTRL+G
+	  - Start Timer - CTRL+S
+	  - Stop Timer - CTRL+W
+	
 2007-08-18  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* ghtml/C/invoice.ghtml: Applied patch #1775501 with small
