@@ -168,11 +168,9 @@
 ;; ---------------------------------------------------------     
 ; The gtt-task-billable-value-str routine will display the value of
 ; a task, but only if its been marked as 'billable'.
-; XXX Need to i18n/l10n the text '"Billable", otherwise the function
-; breaks
 
 (define (gtt-task-billable-value-str task)
-        (if (equal? (gtt-task-billable task) '"Billable")
+        (if (equal? (gtt-task-billable task) (gettext '"Billable"))
             (gtt-task-value-str task) 
             '"$0.00")
 )
@@ -185,7 +183,7 @@
 
 (define (gtt-filter-bill-tasks tasks)
         (define (is-bill task)
-                (if (equal? (gtt-task-billstatus task) '"Bill")
+                (if (equal? (gtt-task-billstatus task) (gettext '"Bill"))
                   task  '())
         )
         (gtt-apply-func-list-to-obj-list (list is-bill) tasks)
@@ -193,7 +191,7 @@
 
 (define (gtt-filter-paid-tasks tasks)
         (define (is-paid task)
-                (if (equal? (gtt-task-billstatus task) '"Paid")
+                (if (equal? (gtt-task-billstatus task) (gettext '"Paid"))
                   task  '())
         )
         (gtt-apply-func-list-to-obj-list (list is-paid) tasks)
@@ -201,7 +199,7 @@
 
 (define (gtt-filter-hold-tasks tasks)
         (define (is-hold task)
-                (if (equal? (gtt-task-billstatus task) '"Hold")
+                (if (equal? (gtt-task-billstatus task) (gettext '"Hold"))
                   task  '())
         )
         (gtt-apply-func-list-to-obj-list (list is-hold) tasks)
