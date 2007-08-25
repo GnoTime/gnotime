@@ -13,6 +13,7 @@ gnotime_SOURCES =     \
 	app.c              \
 	ctree.c            \
 	ctree-gnome2.c     \
+	dbus.c		   \
 	dialog.c           \
 	err.c              \
 	err-throw.c        \
@@ -51,6 +52,7 @@ noinst_HEADERS =      \
 	app.h              \
 	ctree.h            \
 	ctree-gnome2.h     \
+	dbus.h		   \
 	cur-proj.h         \
 	dialog.h           \
 	err-throw.h        \
@@ -83,7 +85,6 @@ noinst_HEADERS =      \
 	toolbar.h          \
 	util.h             \
 	xml-gtt.h
-	
 
 # disable depricated when we find work-around for ctree, property box.
 #
@@ -102,7 +103,8 @@ AM_CFLAGS = -g -Wall     \
 
 INCLUDES =                                   \
 	$(LIBQOF_CFLAGS)                          \
-	-I$(includedir)                           \
+	$(LIBDBUS_CFLAGS)                         \
+  -I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
 	-DPREFIX=\""$(prefix)"\"                  \
@@ -112,15 +114,15 @@ INCLUDES =                                   \
 	-DLIBDIR=\""$(libdir)/gnotime"\"          \
 	${GNOME_INCLUDEDIR}                       \
 	${GUILE_INCS}
-						 
+
 gnotime_LDADD =         \
 	$(GNOTIME_LIBS)      \
-	$(LIBQOF_LIBS)       \
+	$(LIBQOF_LIBS)  $(LIBDBUS_LIBS)         \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	${LIBGNOMEVFS_LIBS}  \
 	$(LIBXML2_LIBS)      \
-	${GUILE_LIBS}        \
+	${GUILE_LIBS}      \
 	$(INTLLIBS)
 
 #	$(LIBGNOMEXML_LIBS)        	
@@ -129,8 +131,14 @@ gnotime_LDADD =         \
 EXTRA_DIST = 			\
 	down.xpm		\
 	left.xpm		\
+	dbus.xml \
 	design.txt
 
+dbus-glue.h : dbus.xml Makefile
+	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus dbus.xml
+dbus.o:	dbus-glue.h
 
-                                                                                
+LIBGTK_SRCS=	dbus.c dbus.h
+BUILT_SOURCES=	dbus-glue.h
+
 

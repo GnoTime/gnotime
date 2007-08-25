@@ -1,3 +1,11 @@
+2007-08-25  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* scripts/gnotime-remote: Added script using the dbus interface
+	  to control the timer.
+
+	* Applied sourceforge patch #1724152 (add dbus interface to
+	  stop and start the timer)
+
 2007-08-24  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* ghtml/C/gtt.scm: Internationalized the gtt-filter-*-tasks and

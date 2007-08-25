@@ -456,7 +456,7 @@ copy_project(GtkWidget *w, gpointer data)
 /* Timer related menu functions */
 
 void
-menu_start_timer(GtkWidget *w, gpointer data)
+gen_start_timer(void)
 {
 	GttProject *prj;
 	prj = ctree_get_focus_project (global_ptw);
@@ -465,9 +465,22 @@ menu_start_timer(GtkWidget *w, gpointer data)
 
 
 void
-menu_stop_timer(GtkWidget *w, gpointer data)
+gen_stop_timer(void)
 {
 	ctree_stop_timer (cur_proj);
+}
+
+void
+menu_start_timer(GtkWidget *w, gpointer data)
+{
+	gen_start_timer();
+}
+
+
+void
+menu_stop_timer(GtkWidget *w, gpointer data)
+{
+	gen_stop_timer();
 }
 
 

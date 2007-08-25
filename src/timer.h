@@ -45,4 +45,9 @@ extern int config_autosave_period;
 void zero_on_rollover (time_t now);
 void set_last_reset (time_t last);
 
+void gen_start_timer(void);
+void gen_stop_timer(void);
+
+
+
 #endif /* __GTT_TIMER_H__ */

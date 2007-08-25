@@ -167,6 +167,17 @@ PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
 AC_SUBST(LIBQOF_CFLAGS)
 AC_SUBST(LIBQOF_LIBS)
 
+
+dnl *************************************************************
+dnl Check for DBUS
+dnl *************************************************************
+
+PKG_CHECK_MODULES(LIBDBUS, dbus-glib-1)
+
+AC_SUBST(LIBDBUS_CFLAGS)
+AC_SUBST(LIBDBUS_LIBS)
+
+
 dnl *******************************
 dnl Gnome VFS
 dnl *******************************
@@ -320,7 +331,7 @@ redhat/gnotime.spec
 fedora/Makefile
 fedora/gnotime.spec
 src/Makefile
-
+scripts/Makefile
 ])
 
 dnl <= Configuration summary =>
@@ -337,6 +348,8 @@ echo "X_LIBS : $X_LIBS"
 echo "GUILE_LIBS : $GUILE_LIBS"
 echo "LIBQOF_LIBS : $LIBQOF_LIBS"
 echo "LIBQOF_CFLAGS : $LIBQOF_CFLAGS"
+echo "LIBDBUS_LIBS : $LIBDBUS_LIBS"
+echo "LIBDBUS_CFLAGS : $LIBDBUS_CFLAGS"
 echo ""
 
 dnl <= Prefixes =>

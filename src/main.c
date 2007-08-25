@@ -53,6 +53,7 @@
 #include "timer.h"
 #include "toolbar.h"
 #include "xml-gtt.h"
+#include "dbus.h"
 
 char *first_proj_title = NULL;  /* command line over-ride */
 
@@ -779,6 +780,8 @@ main(int argc, char *argv[])
 
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			   G_CALLBACK(app_quit), NULL);
+
+	gnotime_dbus_setup();
 
 	/* Perform QOF-specific initialization. */
 	gnc_engine_get_string_cache();
