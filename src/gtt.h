@@ -51,6 +51,11 @@ void save_properties (void);
  */
 void save_projects (void);
 
+/* The read_data() routine will load the project data file 
+   and setup the interface with the new data
+ */
+void read_data (gboolean);
+
 void unlock_gtt(void);
 const char *gtt_gettext(const char *s);
 

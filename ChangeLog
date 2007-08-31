@@ -1,3 +1,20 @@
+2007-08-30  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (read_data): Changed to support reloading of the
+	  projects data
+
+	* src/notes-area.c (notes_area_set_project): handle proj == NULL
+          as removing the current reference from the notes area, so we
+	  can do it before reloading data.
+
+	* src/dbus.xml: Added interface for the file method
+
+	* src/gtt.h: Added prototype of the read_data function
+
+	* src/dbus.c (gnotime_dbus_file): Added dbus file method handler
+
+	* scripts/gnotime-remote: Added save-file and reload-file commands
+
 2007-08-25  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* scripts/gnotime-remote: Added script using the dbus interface

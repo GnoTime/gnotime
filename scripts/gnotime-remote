@@ -23,22 +23,30 @@
 ## Description:   Remote control for gnotime
 ##                
 ## Created at:    Sat Aug 25 20:11:47 2007
-## Modified at:   Sat Aug 25 20:17:12 2007
+## Modified at:   Sun Aug 26 14:12:29 2007
 ## Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
 ######################################################################
 
 
 case "$1" in
      start-timer)
-        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime.timer /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.timer string:start
+        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.timer string:start
         ;;
      stop-timer)
-        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime.timer /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.timer string:stop
+        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.timer string:stop
+        ;;
+     save-file)
+        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.file string:save
+        ;;
+     reload-file)
+        dbus-send --print-reply --dest=net.sourceforge.gttr.gnotime /net/sourceforge/gttr/gnotime net.sourceforge.gttr.gnotime.file string:reload
         ;;
      *)
         echo "usage: $0 <command>"
         echo "Available commands are:"
-        echo "  start-timer - starts the timer"
-        echo "  stop-timer  - stops the timer"
+        echo "  start-timer  - starts the timer"
+        echo "  stop-timer   - stops the timer"
+        echo "  save-file    - saves project data to the data file"
+        echo "  reload-file  - reloads project data from current data file"
         ;;
 esac

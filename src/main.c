@@ -294,17 +294,20 @@ resolve_path (const char * pathfrag)
 	return fullpath;
 }
 
-
-static void
-read_data(void)
-{
+void
+read_data(gboolean reloading) {
 	GttErrCode xml_errcode;
 	char * xml_filepath;
 	gboolean read_is_ok;
 	char *errmsg, *qmsg;
 
-	xml_filepath = resolve_old_path (config_data_url);
+  if (reloading) {
+      notes_area_set_project(global_na, NULL);
+      gtt_project_list_destroy(master_list);
+      master_list = gtt_project_list_new();
+  }
 
+	xml_filepath = resolve_old_path (config_data_url);
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_read_file (xml_filepath);
@@ -364,10 +367,11 @@ read_data(void)
 	g_free (errmsg);
 }
 
+
 static void
 post_read_config(void)
 {
-	read_data();
+	read_data(FALSE);
 }
 
 static void
@@ -812,5 +816,6 @@ main(int argc, char *argv[])
 	scm_boot_guile (argc, argv, guile_inner_main, NULL);
 	return 0; /* not reached !? */
 }
+
 
 /* ======================= END OF FILE =================== */

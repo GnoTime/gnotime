@@ -379,9 +379,14 @@ redraw (GttProject *prj, gpointer data)
 void
 notes_area_set_project (NotesArea *na, GttProject *proj)
 {
-	gtt_project_remove_notifier (na->proj, redraw, na);
-	notes_area_do_set_project (na, proj);
-	gtt_project_add_notifier (proj, redraw, na);
+  if (na->proj != NULL) {
+    gtt_project_remove_notifier (na->proj, redraw, na);
+    na->proj = NULL;
+  }
+  if (proj != NULL) {
+    notes_area_do_set_project (na, proj);
+    gtt_project_add_notifier (proj, redraw, na);
+  }
 }
 
 /* ============================================================== */

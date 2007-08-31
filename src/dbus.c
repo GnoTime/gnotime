@@ -1,23 +1,30 @@
-/*
- * An interface to dbus for gnotime, that turns on/off the timer from dbus.
- *
- * Copyright (C) 2007 Michael Richardson <mcr@sandelman.ca>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
+/*********************************************************************
+ *                
+ * Copyright (C) 2007,  Michael Richardson <mcr@sandelman.ca>
+ *                
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, 
+ * MA 02110-1301, USA
+ *                
+ * Filename:      dbus.c
+ * Author:        Goedson Teixeira Paixao <goedson@debian.org>
+ * Description:   DBus interface to gnotime
+ *                
+ * Created at:    Sun Aug 26 12:13:05 2007
+ * Modified at:   Thu Aug 30 21:51:39 2007
+ * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
+ ********************************************************************/
 /*
  *  D-Bus code derived from example-service.c in the dbus-glib bindings
  */
@@ -29,6 +36,7 @@
 #include <dbus/dbus-glib.h>
 
 #include "timer.h"
+#include "gtt.h"
 
 typedef struct GnotimeDbus  GnotimeDbus;
 typedef struct GnotimeDbusClass GnotimeDbusClass;
@@ -55,6 +63,8 @@ struct GnotimeDbusClass
 G_DEFINE_TYPE(GnotimeDbus, gnotime_dbus, G_TYPE_OBJECT)
 
 gboolean gnotime_dbus_timer(GnotimeDbus *obj, char *action,
+			    guint32 *ret, GError **error);
+gboolean gnotime_dbus_file(GnotimeDbus *obj, char *action,
 			    guint32 *ret, GError **error);
 
 #include "dbus-glue.h"
@@ -92,6 +102,30 @@ gnotime_dbus_timer(GnotimeDbus *obj, char *action,
   return TRUE;
 }
 
+gboolean
+gnotime_dbus_file(GnotimeDbus *obj, char *action,
+		   guint32 *ret, GError **error)
+{
+#if 1
+	/* def DEBUGDBUS */
+  printf( "gnotime_dbus_file()\n  Got action = '%s'\n", action);
+#endif
+
+  if(strcasecmp(action, "save")==0) {
+	  save_projects();
+  } else if(strcasecmp(action, "reload")==0) {
+	  read_data(TRUE);
+  } else {
+	  (*ret)=1;
+	  return TRUE;
+  }
+
+  (*ret) = 0;
+
+  return TRUE;
+}
+
+
 void
 gnotime_dbus_setup ( void )
 {
@@ -117,13 +151,13 @@ gnotime_dbus_setup ( void )
 					 "org.freedesktop.DBus");
 
   if (!dbus_g_proxy_call (bus_proxy, "RequestName", &error,
-			  G_TYPE_STRING, "net.sourceforge.gttr.gnotime.timer",
+			  G_TYPE_STRING, "net.sourceforge.gttr.gnotime",
 			  G_TYPE_UINT, 0,
 			  G_TYPE_INVALID,
 			  G_TYPE_UINT, &request_name_result,
 			  G_TYPE_INVALID))
     {
-      g_message ("Failed to acquire net.sourceforge.gttr.gnotime.timer: %s", error->message );
+      g_message ("Failed to acquire net.sourceforge.gttr.gnotime: %s", error->message );
       g_error_free (error);
       g_object_unref( bus_proxy );
       dbus_g_connection_unref( bus );

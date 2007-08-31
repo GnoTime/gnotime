@@ -5,6 +5,9 @@
     <method name="timer">
       <arg direction="in" type="s" name="action"/>
     </method>
+    <method name="file">
+      <arg direction="in" type="s" name="action"/>
+    </method>
   </interface>
 </node>
 
