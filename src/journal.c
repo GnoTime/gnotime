@@ -394,17 +394,17 @@ interval_paste_memo_cb(GtkWidget * w, gpointer data)
 	if (!cutted_task_list || !wig->interval) return;
 
 	/* Pop one off the stack, if stack has any depth to it */
-	if (NULL == cutted_task_list->next)
-	{
-		newtask = gtt_task_copy (cutted_task_list->data);
-	}
-	else
-	{
-		newtask = cutted_task_list->data;
-		cutted_task_list->data = NULL;
-		cutted_task_list =
-		   g_list_delete_link (cutted_task_list, cutted_task_list);
-	}
+    if (NULL == cutted_task_list->next)
+    {
+    	newtask = gtt_task_copy (cutted_task_list->data);
+    }
+    else
+    {
+      newtask = cutted_task_list->data;
+      cutted_task_list->data = NULL;
+      cutted_task_list =
+        g_list_delete_link (cutted_task_list, cutted_task_list);
+    }
 
 	gtt_interval_split (wig->interval, newtask);
 }
@@ -551,18 +551,11 @@ task_paste_clicked_cb(GtkWidget * w, gpointer data)
 	if (!cutted_task_list || !wig->task) return;
 
 	/* Pop one off the stack, if stack has any depth to it */
-	if (NULL == cutted_task_list->next)
-	{
-		newtask = gtt_task_copy (cutted_task_list->data);
-	}
-	else
-	{
-		newtask = cutted_task_list->data;
-		cutted_task_list->data = NULL;
-		cutted_task_list =
-		   g_list_delete_link (cutted_task_list, cutted_task_list);
-	}
-
+    newtask = cutted_task_list->data;
+    cutted_task_list->data = NULL;
+    cutted_task_list =
+      g_list_delete_link (cutted_task_list, cutted_task_list);
+    
 	gtt_task_insert (wig->task, newtask);
 }
 

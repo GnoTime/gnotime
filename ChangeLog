@@ -5,6 +5,9 @@
 	problem of a hidden question dialog when overwriting file, as
 	reported in the Debian Bug Tracking System at
 	http://bugs.debian.org/422023 .
+	(task_paste_clicked_cb): Don't use gtt_task_copy when pasting the
+	task, since it doesn't copy the time intervals list. Fixes bug
+	#1522802.
 
 	* src/menus.c (menu_main_edit): Fixed Paste project menu entry. It
 	was associated with the cut_project function.
