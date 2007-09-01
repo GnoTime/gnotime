@@ -87,7 +87,7 @@ static GnomeUIInfo menu_main_edit[] = {
     GNOME_APP_UI_ITEM,
     N_("_Paste"),
     N_("Paste the previously copied project"),
-    cut_project,
+    paste_project,
     NULL,
     NULL,
     GNOME_APP_PIXMAP_STOCK,
