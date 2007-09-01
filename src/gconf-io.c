@@ -226,6 +226,9 @@ gtt_gconf_save (void)
 
     SETINT ("/time_format", config_time_format);
 
+	SETSTR ("/Report/CurrencySymbol", config_currency_symbol);
+	SETBOOL ("/Report/CurrencyUseLocale", config_currency_use_locale);
+
 	/* Write out the user's report menu structure */
 	gtt_save_reports_menu ();
 
@@ -445,6 +448,9 @@ gtt_gconf_load (void)
 
     /* ------------ */
     config_time_format = GETINT("/time_format", 3);
+    
+    config_currency_symbol = GETSTR ("/Report/CurrencySymbol","$");
+    config_currency_use_locale = GETBOOL ("/Report/CurrencyUseLocale",TRUE);
 	/* ------------ */
 	save_count = GETINT ("/Data/SaveCount", 0);
 	config_data_url = GETSTR ("/Data/URL", XML_DATA_FILENAME);

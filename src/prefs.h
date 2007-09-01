@@ -70,6 +70,8 @@ extern int config_weekstart_offset;
 
 extern int config_time_format;
 
+extern char *config_currency_symbol;
+extern int  config_currency_use_locale;
 #define TIME_FORMAT_AM_PM  1
 #define TIME_FORMAT_24_HS  2
 #define TIME_FORMAT_LOCALE 3

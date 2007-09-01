@@ -1,11 +1,36 @@
+2007-08-31  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* Applied patch by Quentin Harley for currency symbol
+	  configuration with some changes to allow for locale based
+	  formating of currency values. Details about the changed files
+	  bellow.
+	
+	* glade/prefs.glade: Added GUI elements for the currency formating
+	options.
+
+	* ghtml/C/gtt.scm (gtt-task-billable-value-str): Removed hard
+	coded formating of zero values. It's now done inside ghtml.c.
+
+	* src/gconf-io.c (gtt_gconf_save, gtt_gconf_load): Added support
+	for loading and saving currency formating options.
+
+	* src/prefs.h: Added configuration for currency formating.
+
+	* src/prefs.c (currency_sensitive_cb, currency_options)
+	(prefs_set, options_dialog_set, prefs_dialog_new): Added
+	configuration for currency formating.
+
+	* src/ghtml.c (task_get_value_str_scm): Added support for
+	localized monetary formating.
+
 2007-08-30  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/main.c (read_data): Changed to support reloading of the
-	  projects data
+	projects data
 
 	* src/notes-area.c (notes_area_set_project): handle proj == NULL
-          as removing the current reference from the notes area, so we
-	  can do it before reloading data.
+	as removing the current reference from the notes area, so we
+	can do it before reloading data.
 
 	* src/dbus.xml: Added interface for the file method
 
@@ -18,29 +43,29 @@
 2007-08-25  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* scripts/gnotime-remote: Added script using the dbus interface
-	  to control the timer.
+	to control the timer.
 
 	* Applied sourceforge patch #1724152 (add dbus interface to
-	  stop and start the timer)
+	stop and start the timer)
 
 2007-08-24  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* ghtml/C/gtt.scm: Internationalized the gtt-filter-*-tasks and
-          gtt-task-billable-value-str so that they don't break in other
-	  locales than C. Now, non-english speakers can use the invoice
-	  report!
+	gtt-task-billable-value-str so that they don't break in other
+	locales than C. Now, non-english speakers can use the invoice
+	report!
 
 2007-08-20  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/menus.c: Changed the following menu keyboard shortcuts to
-	  avoid conflicts with default editing keybindings
-	  (fixes bug #1639477):
-	  - Cut - CTRL+D
-	  - Copy - CTRL+F
-	  - Paste - CTRL+G
-	  - Start Timer - CTRL+S
-	  - Stop Timer - CTRL+W
-	
+	avoid conflicts with default editing keybindings
+	(fixes bug #1639477):
+		- Cut - CTRL+D
+		- Copy - CTRL+F
+		- Paste - CTRL+G
+		- Start Timer - CTRL+S
+		- Stop Timer - CTRL+W
+
 2007-08-18  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* ghtml/C/invoice.ghtml: Applied patch #1775501 with small
@@ -54,10 +79,10 @@
 2007-08-03  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/proj.c, src/journal.c, src/proj_p.h: Include only qof/qof.h
-	  from the QOF library, to make it buildable with 0.7.2.
+	from the QOF library, to make it buildable with 0.7.2.
 
 	* configure.in, Makefile.am: Removed references to the internal
-	  copy of QOF from the configure scripts.
+	copy of QOF from the configure scripts.
 
 2007-07-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
@@ -68,7 +93,7 @@
 
 	* src/query.c (yearday_to_centuryday): Fixed calculation of
 	century day so that we won't have days skiped in the daily
-	report. 
+	report.
 
 2006-12-22  Goedson Teixeira Paixao  <goedson@debian.org>
 
@@ -84,8 +109,8 @@
 2006-12-16  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/active-dialog.c, src/app.c, src/ctree.c,
-	  src/ghtml-deprecated.c, src/idle-dialog.c: include qof.h instead
-	  of qof/gnc-date.h.
+	src/ghtml-deprecated.c, src/idle-dialog.c: include qof.h instead
+	of qof/gnc-date.h.
 
 2006-11-28  Goedson Teixeira Paixao  <goedson@debian.org>
 
@@ -97,19 +122,19 @@
 
 	* src/prefs.c, src/prefs.h, src/gconf-io.c, glade/prefs.glade: Add
 	configuration for time format in reports
-	
+
 Thu Oct 20, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* omf.make, xmldocs.make: Update to files from gnome-common-2.12.  This
-	  cleans up some harmless warnings from scrollkeeper when installing
-	  into a DESTDIR.
+	cleans up some harmless warnings from scrollkeeper when installing
+	into a DESTDIR.
 	* lib/libqofsql/Makefile.am, lib/qof/Makefile.am: Hopefully fix the
-	  linking of static libqofsql.a into gnotime when no system qof of the
-	  required version exists.  At least, it works here with these changes.
-	  If there are still problems, please include me on the bug so I can
-	  take a look.
+	linking of static libqofsql.a into gnotime when no system qof of the
+	required version exists.  At least, it works here with these changes.
+	If there are still problems, please include me on the bug so I can
+	take a look.
 Tue Sep 27, 2005 Linas Vepstas <linas@linas.org>
-	* Apply sourceforge patch 149570 
-	  from bug [ 1294149 ] Doesn't detect QOF 0.6.0
+	* Apply sourceforge patch 149570
+	from bug [ 1294149 ] Doesn't detect QOF 0.6.0
 	* cvs tag gnotime-2.2.2 in prep for the 2.2.2 release
 Sat Sep 17, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
 	* doc/gnotime-C.omf, doc/gnotime-es.omf: Fix issue where yelp doesn't

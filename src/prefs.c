@@ -21,7 +21,7 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
-#include <qof/qof.h>
+#include <qof.h>
 #include <string.h>
 
 #include "app.h"
@@ -82,6 +82,9 @@ int config_daystart_offset = 0;
 int config_weekstart_offset = 0;
 
 int config_time_format = TIME_FORMAT_LOCALE;
+
+char *config_currency_symbol = NULL;
+int  config_currency_use_locale = 1;
 
 char * config_data_url = NULL;
 
@@ -146,6 +149,10 @@ typedef struct _PrefsDialog
     GtkRadioButton *time_format_am_pm;
     GtkRadioButton *time_format_24_hs;
     GtkRadioButton *time_format_locale;
+
+    GtkEntry       *currency_symbol;
+    GtkWidget      *currency_symbol_label;
+    GtkCheckButton *currency_use_locale;
 
 } PrefsDialog;
 
@@ -432,7 +439,11 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
             config_time_format = TIME_FORMAT_LOCALE;
         }
 
-
+		  ENTRY_TO_CHAR(odlg->currency_symbol, config_currency_symbol);
+          int state = GTK_TOGGLE_BUTTON(odlg->currency_use_locale)->active;
+          if (config_currency_use_locale != state) {
+              config_currency_use_locale = state;
+          }
     }
 
 	/* Also save them the to file at this point */
@@ -456,6 +467,17 @@ logfile_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 	gtk_widget_set_sensitive(GTK_WIDGET(odlg->logfileminsecs), state);
 	gtk_widget_set_sensitive(odlg->logfileminsecs_l, state);
 }
+
+static void 
+currency_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
+{
+	int state;
+	
+	state = GTK_TOGGLE_BUTTON(w)->active;
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->currency_symbol), !state);
+	gtk_widget_set_sensitive(GTK_WIDGET(odlg->currency_symbol_label), !state);
+}
+
 
 #define SET_ACTIVE(TOK) \
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->show_##TOK), \
@@ -589,6 +611,12 @@ options_dialog_set(PrefsDialog *odlg)
     
     
     }
+
+	g_snprintf(s, sizeof (s), "%s", config_currency_symbol);
+	gtk_entry_set_text(GTK_ENTRY(odlg->currency_symbol), s);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->currency_use_locale),
+                                 config_currency_use_locale);
+
 
 	/* set to unmodified as it reflects the current state of the app */
 	gnome_property_box_set_modified(GNOME_PROPERTY_BOX(odlg->dlg), FALSE);
@@ -770,7 +798,7 @@ misc_options(PrefsDialog *dlg)
 
 	w = GETWID ("idle secs");
 	dlg->idle_secs = GTK_ENTRY(w);
-
+	
 	w = GETWID ("no project secs");
 	dlg->no_project_secs = GTK_ENTRY(w);
 
@@ -802,6 +830,29 @@ time_format_options(PrefsDialog *dlg)
 
     w = GETCHWID("time_format_locale");
     dlg->time_format_locale = GTK_RADIO_BUTTON(w);
+}
+
+static void
+currency_options(PrefsDialog *dlg)
+{
+    GtkWidget *w;
+    GladeXML *gtxml = dlg->gtxml;
+
+    w = GETWID ("currency_symbol");
+    dlg->currency_symbol = GTK_ENTRY(w);
+
+	w = glade_xml_get_widget (gtxml, "currency_symbol_label");
+	dlg->currency_symbol_label = w;
+
+
+    w = GETCHWID ("currency_use_locale");
+    dlg->currency_use_locale = GTK_ENTRY(w);
+
+	gtk_signal_connect(GTK_OBJECT(w), "clicked",
+                       GTK_SIGNAL_FUNC(currency_sensitive_cb),
+                       (gpointer *)dlg);
+
+
 }
 
 /* ============================================================== */
@@ -840,7 +891,8 @@ prefs_dialog_new (void)
 	logfile_options (dlg);
 	toolbar_options (dlg);
 	misc_options (dlg);
-	time_format_options (dlg);
+    time_format_options (dlg);
+    currency_options (dlg);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 	return dlg;

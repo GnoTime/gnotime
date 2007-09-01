@@ -29,6 +29,9 @@
 
 #include <qof/qof.h>
 
+#include <locale.h>
+#include <monetary.h>
+
 #include "app.h"
 #include "ctree.h"
 #include "cur-proj.h"
@@ -1117,6 +1120,7 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	value = ((double) task_secs) / 3600.0;
 
 	prj = gtt_task_get_parent (tsk);
+	
 	switch (gtt_task_get_billrate (tsk))
 	{
 		case GTT_REGULAR: value *= gtt_project_get_billrate (prj); break;
@@ -1125,8 +1129,15 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		case GTT_FLAT_FEE: value = gtt_project_get_flat_fee (prj); break;
 		default: value = 0.0;
 	}
-	/* hack alert should use i18n currency/monetary printing */
-	snprintf (buff, 100, "$%.2f", value+0.0049);
+
+    if (!config_currency_use_locale) {
+      setlocale(LC_MONETARY, "C");
+      setlocale(LC_NUMERIC, "C");
+      snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
+    } else {
+      setlocale(LC_ALL, "");
+      strfmon(buff, 100, "%n", value);
+    }
 
 	return scm_mem2string (buff, strlen (buff));
 }

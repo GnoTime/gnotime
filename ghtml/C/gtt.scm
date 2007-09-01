@@ -170,9 +170,7 @@
 ; a task, but only if its been marked as 'billable'.
 
 (define (gtt-task-billable-value-str task)
-        (if (equal? (gtt-task-billable task) (gettext '"Billable"))
-            (gtt-task-value-str task) 
-            '"$0.00")
+            (gtt-task-value-str task)
 )
 
 ;; ---------------------------------------------------------     
