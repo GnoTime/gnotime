@@ -79,8 +79,6 @@ typedef struct wiggy_s
 	guint      hover_timeout_id;
 	guint      hover_kill_id;
 
-	/* Save-to-file dialog */
-	GtkFileSelection *filesel;
 	GnomeVFSHandle   *handle;  /* file handle to save to */
 	GttPlugin   *plg;          /* file path save history */
 
@@ -197,25 +195,6 @@ remember_uri (Wiggy *wig, const char * filename)
 static void
 save_to_gnomevfs (Wiggy *wig, const char * filename)
 {
-
-	/* Don't clobber the file, ask user for permission */
-	GnomeVFSURI *parsed_uri;
-	parsed_uri = gnome_vfs_uri_new  (filename);
-	gboolean exists = gnome_vfs_uri_exists (parsed_uri);
-	gnome_vfs_uri_unref (parsed_uri);
-	if (exists)
-	{
-		GtkWidget *dg;
-		char *s;
-
-		s = g_strdup_printf (_("File %s exists, overwrite?"), filename);
-		dg = gnome_question_dialog_parented (s, NULL, NULL,
-		            GTK_WINDOW (wig->filesel));
-		g_free (s);
-
-		if (0 == gnome_dialog_run (GNOME_DIALOG (dg))) return;
-	}
-
 	/* Try to open the file for writing */
 	GnomeVFSResult    result;
 	result = gnome_vfs_create (&wig->handle, filename,
@@ -289,34 +268,6 @@ save_to_file (Wiggy *wig, const char * uri)
 #endif
 
 	save_to_gnomevfs (wig, uri);
-}
-
-/* ============================================================== */
-/* file selection callbacks */
-/* XXX should re-write to save contents from gtkhtml window, so that
- * results of user editing are saved, rather than the orig contents.
- */
-
-static void
-filesel_ok_clicked_cb (GtkWidget *w, gpointer data)
-{
-	Wiggy *wig = (Wiggy *) data;
-	const char * filename;
-
-	filename = gtk_file_selection_get_filename (wig->filesel);
-
-	remember_uri (wig, filename);
-	save_to_file (wig, filename);
-	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
-	wig->filesel = NULL;
-}
-
-static void
-filesel_cancel_clicked_cb (GtkWidget *w, gpointer data)
-{
-	Wiggy *wig = (Wiggy *) data;
-	gtk_widget_destroy (GTK_WIDGET(wig->filesel));
-	wig->filesel = NULL;
 }
 
 /* ============================================================== */
@@ -720,28 +671,32 @@ on_pub_ok_clicked_cb (GtkWidget *w, gpointer data)
 static void
 on_save_clicked_cb (GtkWidget *w, gpointer data)
 {
-	GtkWidget *fselw;
+	GtkWidget *dialog;
 	Wiggy *wig = (Wiggy *) data;
 
-	/* Don't show dialog more than once */
-	if (wig->filesel) return;
+    dialog = gtk_file_chooser_dialog_new(_("Save HTML To File"),
+                                         GTK_WINDOW(wig->top),
+                                         GTK_FILE_CHOOSER_ACTION_SAVE,
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                         GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                         NULL);
 
-	fselw = gtk_file_selection_new (_("Save HTML To File"));
-	wig->filesel = GTK_FILE_SELECTION(fselw);
+    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
 
-	/* Manually set a per-report history thingy */
-	if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
-	{
-		char * path = wig->plg->last_url;
-		gtk_file_selection_set_filename(wig->filesel, path);
-	}
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->ok_button),
-		"clicked", G_CALLBACK(filesel_ok_clicked_cb), wig);
 
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fselw)->cancel_button),
-		"clicked", G_CALLBACK(filesel_cancel_clicked_cb), wig);
 
-	gtk_widget_show (fselw);
+    /* Manually set a per-report history thingy */
+    if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
+    {
+      gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dialog), wig->plg->last_url);
+    }
+    if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+        char *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+        remember_uri (wig, filename);
+        save_to_file (wig, filename);
+        g_free(filename);
+    }
+    gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 static void
@@ -1177,7 +1132,6 @@ do_show_report (const char * report, GttPlugin *plg,
 
 	wig = g_new0 (Wiggy, 1);
 	wig->edit_ivl = NULL;
-	wig->filesel = NULL;
 
 	wig->top = jnl_top;
 	wig->plg = plg;

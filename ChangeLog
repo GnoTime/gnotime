@@ -1,5 +1,11 @@
 2007-09-01  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/journal.c (on_save_clicked_cb): Use GtkFileChooserDialog for
+	the file selection. This simplifies the code and also fixes the
+	problem of a hidden question dialog when overwriting file, as
+	reported in the Debian Bug Tracking System at
+	http://bugs.debian.org/422023 .
+
 	* src/menus.c (menu_main_edit): Fixed Paste project menu entry. It
 	was associated with the cut_project function.
 
