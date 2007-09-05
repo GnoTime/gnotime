@@ -1,5 +1,9 @@
 2007-09-05  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/ghtml.c (task_get_latest_str_scm)
+	(task_get_earliest_str_scm): Display "No activity" instead of
+	"01/01/1970" when the task has no time intervals recorded.
+
 	* configure.in: Updated version number to 2.2.3
 
 2007-09-01  Goedson Teixeira Paixao  <goedson@debian.org>

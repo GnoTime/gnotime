@@ -1094,7 +1094,13 @@ task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	char buff[100];
 
 	time_t task_date = gtt_task_get_secs_earliest(tsk);
-	size_t len = qof_print_date_time_buff (buff, 100, task_date);
+	size_t len;
+	
+	if (task_date > 0) {
+	    len = qof_print_date_time_buff (buff, 100, task_date);
+	} else {
+        len = g_snprintf(buff, 100, "%s", _("No activity"));
+	}
 	return scm_mem2string (buff, len);
 }
 
@@ -1104,7 +1110,13 @@ task_get_latest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	char buff[100];
 
 	time_t task_date = gtt_task_get_secs_latest(tsk);
-	size_t len = qof_print_date_time_buff (buff, 100, task_date);
+	size_t len;
+
+	if (task_date > 0) {
+	    len = qof_print_date_time_buff (buff, 100, task_date);
+	} else {
+        len = g_snprintf(buff, 100, "%s", _("No activity"));
+	}
 	return scm_mem2string (buff, len);
 }
 
