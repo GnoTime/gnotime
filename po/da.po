@@ -9,251 +9,1398 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.4.0.99\n"
-"POT-Creation-Date: 2004-05-23 15:59-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-09-06 14:56-0300\n"
 "PO-Revision-Date: 2001-12-20 16:52+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Dansk/Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/app.c:124 src/app.c:315
+#: active.glade:7
+#, fuzzy
+msgid "Start Project Dialog"
+msgstr "Skift projektkommando:"
+
+#: active.glade:41 idle.glade:41
+msgid "Restart the same project that used to be running."
+msgstr ""
+
+#: active.glade:54 idle.glade:54
+msgid "Do not restart the timer."
+msgstr ""
+
+#: active.glade:118 active.glade:172
+msgid "Dummy Text Do Not Translate"
+msgstr ""
+
+#: active.glade:199 journal.glade:192 notes.glade:114 notes.glade:168
+#: notes.glade:267 plugin_editor.glade:224 plugin_editor.glade:255
+#: plugin_editor.glade:279 plugin_editor.glade:409 plugin_editor.glade:657
+#: plugin.glade:153 plugin.glade:175 plugin.glade:203
+#: project_properties.glade:49 project_properties.glade:79
+#: project_properties.glade:445 project_properties.glade:475
+#: project_properties.glade:505 project_properties.glade:535
+#: project_properties.glade:743 project_properties.glade:773
+#: project_properties.glade:803 project_properties.glade:1330
+#: project_properties.glade:1351 task_properties.glade:122
+#: task_properties.glade:515
+msgid "*"
+msgstr "*"
+
+#: column_menu.glade:12
+msgid "Sort the entries in this column in alphabetical order."
+msgstr ""
+
+#: column_menu.glade:13
+#, fuzzy
+msgid "Sort"
+msgstr "Start"
+
+#: column_menu.glade:34
+msgid "Move this column to the left."
+msgstr ""
+
+#: column_menu.glade:35
+#, fuzzy
+msgid "Move Left"
+msgstr "Flet op"
+
+#: column_menu.glade:56
+msgid "Move this column to the right."
+msgstr ""
+
+#: column_menu.glade:57
+msgid "Move Right"
+msgstr ""
+
+#: idle.glade:7
+msgid "Restart Idle Timer Dialog"
+msgstr ""
+
+#: interval_edit.glade:99
+msgid "Start Fuzz"
+msgstr "Usikkerhed pÃ¥ start"
+
+#: interval_edit.glade:125 ghtml-deprecated.c:89 ghtml-deprecated.c:291
+msgid "Stop"
+msgstr "Stop"
+
+#: interval_edit.glade:151 ctree.c:860 ctree-gnome2.c:718
+#: ghtml-deprecated.c:89 ghtml-deprecated.c:288
+msgid "Start"
+msgstr "Start"
+
+#: interval_edit.glade:211
+msgid "Set how Uncertain the Start Time Is"
+msgstr "SÃ¦t hvor usikker starttiden er"
+
+#: interval_edit.glade:222
+msgid "Exact Time"
+msgstr "PrÃ¦cis tid"
+
+#: interval_edit.glade:230
+msgid "5 Min"
+msgstr "5 min"
+
+#: interval_edit.glade:238
+msgid "10 Min"
+msgstr "10 min"
+
+#: interval_edit.glade:246
+msgid "15 Min"
+msgstr "15 Min"
+
+#: interval_edit.glade:254
+msgid "20 Min"
+msgstr "20 min"
+
+#: interval_edit.glade:262
+msgid "30 Min"
+msgstr "30 min"
+
+#: interval_edit.glade:270
+msgid "1 Hour"
+msgstr "1 time"
+
+#: interval_edit.glade:278
+msgid "2 Hours"
+msgstr "2 timer"
+
+#: interval_edit.glade:286
+msgid "3 Hours"
+msgstr "3 timer"
+
+#: interval_edit.glade:294 ctree.c:806 ctree-gnome2.c:668
+msgid "Today"
+msgstr "I dag"
+
+#: interval_popup.glade:13
+msgid "New Interval"
+msgstr "Nyt interval"
+
+#: interval_popup.glade:34
+msgid "Edit Interval"
+msgstr "RedigÃ©r intervaller"
+
+#: interval_popup.glade:43
+msgid "Delete Interval"
+msgstr "Slet interval"
+
+#: interval_popup.glade:70
+msgid "Merge Up"
+msgstr "Flet op"
+
+#: interval_popup.glade:79
+msgid "Merge Down"
+msgstr "Flet ned"
+
+#: interval_popup.glade:94
+#, fuzzy
+msgid "Move Up"
+msgstr "Flet op"
+
+#: interval_popup.glade:115
+#, fuzzy
+msgid "Move Down"
+msgstr "Flet ned"
+
+#: interval_popup.glade:142
+msgid "Insert Diary Entry"
+msgstr "IndsÃ¦t kalenderindgang"
+
+#: interval_popup.glade:163
+msgid "Paste Diary Entry"
+msgstr "IndsÃ¦t indgang i kalender"
+
+#: journal.glade:10
+#, fuzzy
+msgid "GnoTime: Journal"
+msgstr "Journal"
+
+#: journal.glade:43
+msgid "New File"
+msgstr "Ny fil"
+
+#: journal.glade:44
+msgid "Publish"
+msgstr ""
+
+#: journal.glade:54
+msgid "Open File"
+msgstr "Ã…bn fil"
+
+#: journal.glade:55
+msgid "Save"
+msgstr "Gem"
+
+#: journal.glade:65
+msgid "Refresh"
+msgstr "Genopfrisk"
+
+#: journal.glade:75
+msgid "Save File"
+msgstr "Gem fil"
+
+#: journal.glade:76
+msgid "Close"
+msgstr "Luk"
+
+#: journal.glade:117
+msgid "GnoTime: Publish Report"
+msgstr ""
+
+#: journal.glade:133
+msgid ""
+"<b>Publish This Report</b>\n"
+"Enter a URL such as one of the following:\n"
+"mailto:<i>&lt;username&gt;@&lt;hostname&gt;</i>\n"
+"ssh://<i>host.net/some/file/path</i>\n"
+"ftp://<i>username:passwd@host.net/path/to/file</i>\n"
+msgstr ""
+
+#: journal.glade:165
+msgid "URL:"
+msgstr ""
+
+#: notes.glade:7
+msgid "window1"
+msgstr ""
+
+#: notes.glade:59 project_properties.glade:96
+msgid "Project Title:"
+msgstr "Projekttitel:"
+
+#: notes.glade:80
+msgid "Close the project subwindow"
+msgstr ""
+
+#: notes.glade:107
+msgid "Edit the project title in this box"
+msgstr ""
+
+#: notes.glade:140
+msgid "Desc:"
+msgstr ""
+
+#: notes.glade:161
+#, fuzzy
+msgid "Edit the project description"
+msgstr "Vis projektbeskrivelse"
+
+#: notes.glade:240 task_properties.glade:85
+msgid "Diary Entry:"
+msgstr "Kalenderindgang:"
+
+#: notes.glade:280
+#, fuzzy
+msgid "Create a new diary entry"
+msgstr "IndsÃ¦t en tidligere udklippet kalenderindgang."
+
+#: notes.glade:282 journal.c:381 proj.c:757 proj.c:1772 proj.c:1976
+msgid "New Diary Entry"
+msgstr "Ny indgang i kalender"
+
+#: not-implemented.glade:10
+msgid ""
+"This function is not yet implemented!\n"
+"Coming Soon, I hope!"
+msgstr ""
+"Denne funktion er ikke implementeret endnu!\n"
+"Jeg hÃ¥ber det kommer snart!"
+
+#: not-implemented.glade:12
+msgid "Information"
+msgstr "Information"
+
+#: plugin_editor.glade:9
+msgid "GnoTime Report Menu Editor"
+msgstr ""
+
+#: plugin_editor.glade:43
+msgid "Abandon all changes and close this dialog window."
+msgstr ""
+
+#: plugin_editor.glade:57
+msgid "Apply the changes to the reports menu."
+msgstr ""
+
+#: plugin_editor.glade:71
+msgid "Apply the changes to the reports menu, and close this dialog window."
+msgstr ""
+
+#: plugin_editor.glade:138
+msgid "Move the selected menu item up by one entry."
+msgstr ""
+
+#: plugin_editor.glade:151
+msgid "Move the selected menu item down by one entry."
+msgstr ""
+
+#: plugin_editor.glade:217
+msgid "Enter the popup hint for the menu item here."
+msgstr ""
+
+#: plugin_editor.glade:248
+msgid "Enter the file path to the report here."
+msgstr ""
+
+#: plugin_editor.glade:272
+msgid "Enter the name for the menu item here."
+msgstr ""
+
+#: plugin_editor.glade:295 plugin.glade:98
+msgid "Path:"
+msgstr ""
+
+#: plugin_editor.glade:320 plugin.glade:122
+#, fuzzy
+msgid "Tooltip:"
+msgstr "Vis hjÃ¦lpetekster"
+
+#: plugin_editor.glade:345
+msgid "Label:"
+msgstr ""
+
+#: plugin_editor.glade:370
+msgid "Icon:"
+msgstr ""
+
+#: plugin_editor.glade:402
+msgid "Pick an icon to decorate the menu entry."
+msgstr ""
+
+#: plugin_editor.glade:442
+msgid "Add a new menu entry at the selected position."
+msgstr ""
+
+#: plugin_editor.glade:444
+msgid "Add"
+msgstr ""
+
+#: plugin_editor.glade:461
+msgid "Add a horizontal bar (separator) to the menu."
+msgstr ""
+
+#: plugin_editor.glade:463
+msgid "Add Separator"
+msgstr ""
+
+#: plugin_editor.glade:480
+msgid "Add Child"
+msgstr ""
+
+#: plugin_editor.glade:496
+msgid "Delete the selected menu entry."
+msgstr ""
+
+#: plugin_editor.glade:498
+#, fuzzy
+msgid "Delete"
+msgstr "Slet _notat"
+
+#: plugin_editor.glade:541
+msgid "Modifiers:"
+msgstr ""
+
+#: plugin_editor.glade:563
+msgid "Ctrl"
+msgstr ""
+
+#: plugin_editor.glade:581
+msgid "Shift"
+msgstr ""
+
+#: plugin_editor.glade:599
+msgid "Alt"
+msgstr ""
+
+#: plugin_editor.glade:629
+msgid "Key:"
+msgstr ""
+
+#: plugin_editor.glade:650
+msgid "Enter the keyboard shortcut for this menu item."
+msgstr ""
+
+#: plugin_editor.glade:679
+msgid "Accelerator"
+msgstr ""
+
+#: plugin.glade:74
+msgid "Name:"
+msgstr ""
+
+#: plugin.glade:146
+msgid "Title that will appear in the 'Reports' menu."
+msgstr ""
+
+#: plugin.glade:168
+msgid "Tooltip that will show when the pointer hovers over this menu item."
+msgstr ""
+
+#: prefs.glade:52
+msgid "Show Project Importance"
+msgstr "Vis projektvigtighed"
+
+#: prefs.glade:74
+msgid "Show Project Urgency"
+msgstr "Vis projekthastende"
+
+#: prefs.glade:96
+msgid "Show Project Status"
+msgstr "Vis projektstatus"
+
+#: prefs.glade:118
+msgid "Show Total Time Ever"
+msgstr "Vis total tid ialt"
+
+#: prefs.glade:140
+msgid "Show Time This Year"
+msgstr "Vis tid i dette Ã¥r"
+
+#: prefs.glade:162
+msgid "Show Time This Month"
+msgstr "Vis tid i denne mÃ¥ned"
+
+#: prefs.glade:184
+msgid "Show Time This Week"
+msgstr "Vis tid i denne uge"
+
+#: prefs.glade:206
+msgid "Show Percent Complete"
+msgstr "Vis procent fÃ¦rdiggjort"
+
+#: prefs.glade:227
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr ""
+"Vis 'szing', dvs. den anslÃ¥ede mÃ¦ngde arbejde, det vil tage at udfÃ¸re dette "
+"projekt."
+
+#: prefs.glade:229
+msgid "Show Estimated Effort"
+msgstr "Vis anslÃ¥et indsats"
+
+#: prefs.glade:251
+msgid "Show Project Due Date"
+msgstr "Vis projektafleveringsdato"
+
+#: prefs.glade:273
+msgid "Show Planned Project End Date"
+msgstr "Vis planlagt slutdato for projekt"
+
+#: prefs.glade:295
+msgid "Show Planned Project Start Date"
+msgstr "Vis planlagt startdato for projekt"
+
+#: prefs.glade:317
+msgid "Show Current Diary Entry"
+msgstr "Vis aktuelle kalenderindgang"
+
+#: prefs.glade:339
+msgid "Show Project Description"
+msgstr "Vis projektbeskrivelse"
+
+#: prefs.glade:361
+msgid "Show Time For The Current Diary Entry"
+msgstr "Vis tid for aktuelle kalenderindgang"
+
+#: prefs.glade:383
+#, fuzzy
+msgid "Show Time Yesterday"
+msgstr "Vis tid i dag"
+
+#: prefs.glade:405
+msgid "Show Time Today"
+msgstr "Vis tid i dag"
+
+#: prefs.glade:427
+#, fuzzy
+msgid "Show Time Last Week"
+msgstr "Vis tid i denne uge"
+
+#: prefs.glade:450
+msgid "View Project Fields"
+msgstr "Vis projektfelter"
+
+#: prefs.glade:479
+msgid "Fields"
+msgstr "Felter"
+
+#: prefs.glade:520
+msgid "Show Seconds"
+msgstr "Vis sekunder"
+
+#: prefs.glade:542
+msgid "Show Status Bar"
+msgstr "Vis statuslinje"
+
+#: prefs.glade:564
+msgid "Show Table Header"
+msgstr "Vis tabelhoved"
+
+#: prefs.glade:586
+msgid "Show Sub-Projects"
+msgstr "Vis underprojekter"
+
+#: prefs.glade:609
+msgid "Project List Display"
+msgstr "Visning af projektliste"
+
+#: prefs.glade:638
+msgid "Display"
+msgstr "Vis"
+
+#: prefs.glade:678
+#, fuzzy
+msgid "Start Project Command:"
+msgstr "Skift projektkommando:"
+
+#: prefs.glade:706
+#, fuzzy
+msgid "Stop Project Command:"
+msgstr "Ingen projektkommando:"
+
+#: prefs.glade:739
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr ""
+"Indtast en skalkommando som skal udfÃ¸res nÃ¥r der skiftes mellem projekter."
+
+#: prefs.glade:744
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: prefs.glade:768
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr ""
+"Indtast en skalkommando som skal udfÃ¸res nÃ¥r ingen projekter er aktive."
+
+#: prefs.glade:773
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: prefs.glade:794
+msgid "Shell Commands"
+msgstr "Skalkommandoer"
+
+#: prefs.glade:823
+msgid "Shell"
+msgstr "Skal"
+
+#: prefs.glade:864
+msgid "Use Logfile"
+msgstr "Brug logfil"
+
+#: prefs.glade:885
+msgid "Filename:"
+msgstr "Filnavn:"
+
+#: prefs.glade:913
+msgid "Entry Start:"
+msgstr "Elementbegyndelse:"
+
+#: prefs.glade:941
+msgid "Entry Stop:"
+msgstr "Elementslutning:"
+
+#: prefs.glade:969
+msgid "Min Recorded:"
+msgstr "Min nedskrevet:"
+
+#: prefs.glade:1002
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+"Skift mellem projekter som sker hurtigere end dette, vil ikke blive logget "
+"(indtast antal sekunder)"
+
+#: prefs.glade:1031
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
+"Indgang der vil blive logget nÃ¥r et projekt starter. Brug %t for "
+"projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
+
+#: prefs.glade:1060
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
+"Indgang der vil blive logget nÃ¥r et projekt stopper. Brug %t for "
+"projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
+
+#: prefs.glade:1118 prefs.glade:1147
+msgid "Logfile"
+msgstr "Logfil"
+
+#: prefs.glade:1191
+#, fuzzy
+msgid "Show Toolbar"
+msgstr "Vis ikoner pÃ¥ vÃ¦rktÃ¸jslinjen"
+
+#: prefs.glade:1210
+msgid "Show Tooltips"
+msgstr "Vis hjÃ¦lpetekster"
+
+#: prefs.glade:1230 prefs.glade:1464
+msgid "Toolbar"
+msgstr "VÃ¦rktÃ¸jslinje"
+
+#: prefs.glade:1275
+msgid "Show `New'"
+msgstr "Vis 'Ny'"
+
+#: prefs.glade:1294
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr "Vis 'Klip', 'KopiÃ©r', 'IndsÃ¦t'"
+
+#: prefs.glade:1313
+msgid "Show `Journal'"
+msgstr "Vis 'Journal'"
+
+#: prefs.glade:1332
+msgid "Show `Properties'"
+msgstr "Vis 'Egenskaber'"
+
+#: prefs.glade:1351
+msgid "Show `Timer'"
+msgstr "Vis 'TidstÃ¦ller'"
+
+#: prefs.glade:1370
+msgid "Show `Preferences'"
+msgstr "Vis 'OpsÃ¦tning'"
+
+#: prefs.glade:1389
+msgid "Show `Help'"
+msgstr "Vis 'HjÃ¦lp'"
+
+#: prefs.glade:1408
+msgid "Show `Quit'"
+msgstr "Vis 'Afslut'"
+
+#: prefs.glade:1428
+msgid "Toolbar Segments"
+msgstr "VÃ¦rktÃ¸jslinjesegmenter"
+
+#: prefs.glade:1510 prefs.glade:1609
+msgid "Idle Seconds:"
+msgstr "Stille sekunder:"
+
+#: prefs.glade:1538 prefs.glade:1637
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+"Det aktive projekt vil blive gjort inaktivt efter at der ikke har vÃ¦ret "
+"nogen aktivitet pÃ¥ tastatur eller mus i dette antal sekunder. SÃ¦t til -1 for "
+"at deaktivere."
+
+#: prefs.glade:1562
+msgid "Inactivity Timeout"
+msgstr "TidsudlÃ¸b for inaktivitet"
+
+#: prefs.glade:1661
+#, fuzzy
+msgid "No Project Timeout"
+msgstr "Projekttitel"
+
+#: prefs.glade:1707
+#, fuzzy
+msgid "New Day Starts At:"
+msgstr "Ny indgang i kalender"
+
+#: prefs.glade:1735
+msgid "New Week Starts On:"
+msgstr ""
+
+#: prefs.glade:1763
+msgid ""
+"The day of teh week with which a new week is considered to start. Normally, "
+"this is Sunday, but you can start a new week on any day."
+msgstr ""
+
+#: prefs.glade:1773
+msgid "Sunday"
+msgstr ""
+
+#: prefs.glade:1781
+#, fuzzy
+msgid "Monday"
+msgstr "I dag"
+
+#: prefs.glade:1789
+#, fuzzy
+msgid "Tuesday"
+msgstr "I dag"
+
+#: prefs.glade:1797
+msgid "Wednesday"
+msgstr ""
+
+#: prefs.glade:1805
+#, fuzzy
+msgid "Thursday"
+msgstr "I dag"
+
+#: prefs.glade:1813
+msgid "Friday"
+msgstr ""
+
+#: prefs.glade:1821
+msgid "Saturday"
+msgstr ""
+
+#: prefs.glade:1847 prefs.glade:1867
+msgid ""
+"The time of night at which one day ends and the next day begins.  By default "
+"midnight, you can set this to any value."
+msgstr ""
+
+#: prefs.glade:1877
+msgid "9 PM"
+msgstr ""
+
+#: prefs.glade:1885
+#, fuzzy
+msgid "10 PM"
+msgstr "10 min"
+
+#: prefs.glade:1893
+msgid "11 PM"
+msgstr ""
+
+#: prefs.glade:1901
+msgid "12 Midnight"
+msgstr ""
+
+#: prefs.glade:1909
+#, fuzzy
+msgid "1 AM"
+msgstr "15 Min"
+
+#: prefs.glade:1917
+#, fuzzy
+msgid "2 AM"
+msgstr "20 min"
+
+#: prefs.glade:1925
+#, fuzzy
+msgid "3 AM"
+msgstr "30 min"
+
+#: prefs.glade:1933
+msgid "4 AM"
+msgstr ""
+
+#: prefs.glade:1941
+#, fuzzy
+msgid "5 AM"
+msgstr "5 min"
+
+#: prefs.glade:1949
+msgid "6 AM"
+msgstr ""
+
+#: prefs.glade:1978
+msgid "End of Day/Week"
+msgstr ""
+
+#: prefs.glade:2014
+msgid "Misc"
+msgstr "Divs."
+
+#: prefs.glade:2056
+#, fuzzy
+msgid "12 hours"
+msgstr "2 timer"
+
+#: prefs.glade:2070
+#, fuzzy
+msgid "24 hours"
+msgstr "2 timer"
+
+#: prefs.glade:2086 prefs.glade:2132
+msgid "Use my locale formating"
+msgstr ""
+
+#: prefs.glade:2106
+#, fuzzy
+msgid "Time format"
+msgstr "TidstÃ¦ller"
+
+#: prefs.glade:2145
+msgid "Place your local currency symbol for use in the reports"
+msgstr ""
+
+#: prefs.glade:2162
+msgid "Currency Symbol"
+msgstr ""
+
+#: prefs.glade:2176
+msgid "Currency settings"
+msgstr ""
+
+#. Build the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#. Build the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#. Build the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#: prefs.glade:2199 menus.c:301
+msgid "Reports"
+msgstr "Rapporter"
+
+#: project_properties.glade:42
+msgid "A title to assign to this project"
+msgstr "En titel til dette projekt"
+
+#: project_properties.glade:72
+msgid "a short description that will be printed on the invoice."
+msgstr "en kort beskrivelse som vil blive skrevet pÃ¥ fakturaen."
+
+#: project_properties.glade:120
+msgid "Project Description:"
+msgstr "Projektbeskrivelse:"
+
+#: project_properties.glade:152
+msgid ""
+"Internal notes about the project that will not be printed on an invoice."
+msgstr "Interne noter om projektet, der ikke vil blive skrevet pÃ¥ en faktura."
+
+#: project_properties.glade:180 project_properties.glade:191
+#: task_properties.glade:139
+msgid "Notes:"
+msgstr "Noter:"
+
+#: project_properties.glade:212
+msgid "Project"
+msgstr "Projekt"
+
+#: project_properties.glade:240
+msgid "Regular Rate:"
+msgstr "Normaltarif:"
+
+#: project_properties.glade:264
+msgid "Overtime Rate:"
+msgstr "Tarif for overarbejde:"
+
+#: project_properties.glade:288
+msgid "Double-Overtime Rate:"
+msgstr "Tarif for dobbelt-overarbejde:"
+
+#: project_properties.glade:312
+msgid "Flat Fee:"
+msgstr "Fast honorar:"
+
+#: project_properties.glade:336
+msgid "        "
+msgstr "        "
+
+#: project_properties.glade:408
+msgid "                        "
+msgstr "                        "
+
+#: project_properties.glade:438
+msgid "The dollars per hour normally charged for this project."
+msgstr "Kroner pr time for normalt arbejde pÃ¥ dette projekt."
+
+#: project_properties.glade:468
+msgid "The dollars per hour charged for overtime work on this project."
+msgstr "Kroner pr time for overarbejde pÃ¥ dette projekt."
+
+#: project_properties.glade:498
+msgid "The over-overtime rate (overtime on Sundays, etc.)"
+msgstr "Tarif for ekstra overarbejde (overarbejde pÃ¥ sÃ¸ndage osv.)"
+
+#: project_properties.glade:528
+msgid ""
+"If this project is billed for one price no matter how long it takes, enter "
+"the fee here."
+msgstr ""
+"Hvis projektet bliver betalt med Ã©n pris, lige meget hvor lang tid det "
+"tager, sÃ¥ indtast honoraret her."
+
+#: project_properties.glade:558
+msgid "Rates"
+msgstr "Tariffer"
+
+#: project_properties.glade:586
+msgid "Minimum Interval: "
+msgstr "Minimum interval: "
+
+#: project_properties.glade:610
+msgid "Auto-merge Interval:"
+msgstr "Interval for automatisk indfleting:"
+
+#: project_properties.glade:634
+msgid "Auto-merge Gap:"
+msgstr "Flet automatisk hul:"
+
+#: project_properties.glade:658 project_properties.glade:682
+#: project_properties.glade:706
+msgid "seconds"
+msgstr "sek."
+
+#: project_properties.glade:736
+msgid "Intervals smaller than this will be discarded"
+msgstr "Intervaller mindre end dette vil ikke blive behandlet"
+
+#: project_properties.glade:766
+msgid "Time below which an interval is merged with its neighbors"
+msgstr "Tidsrum under hvilet et interval flettes ind med sine naboer."
+
+#: project_properties.glade:796
+msgid ""
+"If the gap between intervals is smaller than this, the intervals will be "
+"merged together."
+msgstr ""
+"Hvis hullet mellem intervaller er mindre end dette, vil intervallerne blive "
+"flettet sammen."
+
+#: project_properties.glade:826
+msgid "Intervals"
+msgstr "Intervaller"
+
+#: project_properties.glade:855
+msgid "Urgency:"
+msgstr "Hastende:"
+
+#: project_properties.glade:879
+msgid "Importance:"
+msgstr "Vigtighed:"
+
+#: project_properties.glade:903
+msgid "Status:"
+msgstr "Status:"
+
+#: project_properties.glade:927
+msgid "Planned Start:"
+msgstr "Planlagt start:"
+
+#: project_properties.glade:951
+msgid "Planned Finish:"
+msgstr "Planlagt fÃ¦rdiggÃ¸relse:"
+
+#: project_properties.glade:975
+msgid "Due Date:"
+msgstr "Afleveringsdato:"
+
+#: project_properties.glade:999
+msgid "Hours to Finish:"
+msgstr "Timer til afslutning:"
+
+#: project_properties.glade:1023
+msgid "% Complete"
+msgstr "% fÃ¦rdig"
+
+#: project_properties.glade:1047
+msgid ""
+"Does this item need immediate attention? Note that some urgent tasks might "
+"not be important.  For example, Bill may want you to answer his email today, "
+"but you may have better things to do today."
+msgstr ""
+"KrÃ¦ver dette punkt Ã¸jeblikkelig opmÃ¦rksomhed? BemÃ¦rk at nogen hastende "
+"opgaver ikke behÃ¸ver at vÃ¦re vigtige. Fx Ã¸nsker Peter at du svarer pÃ¥ hans e-"
+"post i dag, men du har mÃ¥ske bedre ting at foretage dig i dag."
+
+#: project_properties.glade:1058 project_properties.glade:1113
+msgid "Not Set"
+msgstr "Ikke sat"
+
+#: project_properties.glade:1066 project_properties.glade:1121 ctree.c:1282
+#: ctree-gnome2.c:1114 ghtml.c:911 ghtml.c:925
+msgid "Low"
+msgstr "Lav"
+
+#: project_properties.glade:1074 project_properties.glade:1129 ghtml.c:926
+msgid "Medium"
+msgstr "Mellem"
+
+#: project_properties.glade:1082 project_properties.glade:1137 ctree.c:1284
+#: ctree-gnome2.c:1116
+msgid "High"
+msgstr "HÃ¸j"
+
+#: project_properties.glade:1102
+msgid ""
+"How important is it to perform this task?  Not everything important is "
+"urgent.  For example, it is important to file a tax return every year, but "
+"you have a lot of time to get ready to do this."
+msgstr ""
+"Hvor vigtigt er det at udfÃ¸re denne opgave? Ikke alt vigtigt er hastende. fx "
+"er det vigtigt at indsende selvangivelse hvert Ã¥r, men du har masser af tid "
+"til at komme igang med dette."
+
+#: project_properties.glade:1157
+msgid "What is the status of this project?"
+msgstr "Hvad er status pÃ¥ dette projekt?"
+
+#: project_properties.glade:1168 ghtml.c:939
+#, fuzzy
+msgid "No Status"
+msgstr "Status"
+
+#: project_properties.glade:1176 ctree.c:1294 ctree-gnome2.c:1126 ghtml.c:940
+msgid "Not Started"
+msgstr "Ikke startet"
+
+#: project_properties.glade:1184 ctree.c:1295 ctree-gnome2.c:1127 ghtml.c:941
+msgid "In Progress"
+msgstr "I gang"
+
+#: project_properties.glade:1192 ctree.c:1296 ctree-gnome2.c:1128 ghtml.c:942
+msgid "On Hold"
+msgstr "Afventer"
+
+#: project_properties.glade:1200 ctree.c:1297 ctree-gnome2.c:1129 ghtml.c:943
+msgid "Cancelled"
+msgstr "Annulleret"
+
+#: project_properties.glade:1208 ctree.c:1298 ctree-gnome2.c:1130 ghtml.c:944
+msgid "Completed"
+msgstr "FÃ¦rdiggjort"
+
+#: project_properties.glade:1228 project_properties.glade:1300
+msgid "            "
+msgstr "            "
+
+#: project_properties.glade:1372
+msgid "Planning"
+msgstr "PlanlÃ¦gning"
+
+#: task_popup.glade:13
+msgid "_New Diary Entry"
+msgstr "_Ny kalenderindgang"
+
+#: task_popup.glade:34
+msgid "_Edit Diary Entry"
+msgstr "_RedigÃ©r kalenderindgang"
+
+#: task_popup.glade:55
+msgid "_Cut Diary Entry"
+msgstr "_Udklip kalenderindgangen"
+
+#: task_popup.glade:76
+msgid "Cut Entry & _Times"
+msgstr "Udklip indgang & _tider"
+
+#: task_popup.glade:97
+#, fuzzy
+msgid "Copy Diary Entry"
+msgstr "Indgang i kalender"
+
+#: task_popup.glade:118
+msgid "_Paste Diary Entry"
+msgstr "_IndsÃ¦t kalenderindgang"
+
+#: task_popup.glade:145
+msgid "New Time Interval"
+msgstr "Nyt opdateringsinterval"
+
+#: task_properties.glade:9 task_properties.glade:204
+#, fuzzy
+msgid "Diary Notes"
+msgstr "Indgang i kalender"
+
+#: task_properties.glade:115
+msgid "A short description to attach to this block of time."
+msgstr "En kort beskrivelse knyttet til denne tidsblok."
+
+#: task_properties.glade:171
+#, fuzzy
+msgid "Type detailed diary entry notes here."
+msgstr "RedigÃ©r kalenderindgangen og andre opgaveprioriteter."
+
+#: task_properties.glade:233
+msgid "Billing Status:"
+msgstr "Regningsstatus:"
+
+#: task_properties.glade:257
+msgid "Billable:"
+msgstr "Betalbart:"
+
+#: task_properties.glade:281
+msgid "Billing Rate:"
+msgstr "Regningstarif:"
+
+#: task_properties.glade:305
+msgid "Billing Block:"
+msgstr "Regningsblok:"
+
+#: task_properties.glade:329
+msgid "minutes"
+msgstr "minutter"
+
+#: task_properties.glade:353
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+"Er denne opgave klar til at faktureres til kunden? 'Afvent' betyder mÃ¥ske, "
+"men ikke endnu, krÃ¦ver eftersyn. 'FakturÃ©r' betyder udskriv dette pÃ¥ den "
+"nÃ¦ste faktura. 'Betalt' betyder at det ikke lÃ¦ngere bÃ¸r inkluderes pÃ¥ "
+"fakturaer."
+
+#: task_properties.glade:364 ghtml.c:1045 ghtml-deprecated.c:415
+msgid "Hold"
+msgstr "Afvent"
+
+#: task_properties.glade:372 ghtml.c:1046 ghtml-deprecated.c:418
+msgid "Bill"
+msgstr "FakturÃ©r"
+
+#: task_properties.glade:380 ghtml.c:1047 ghtml-deprecated.c:421
+msgid "Paid"
+msgstr "Betalt"
+
+#: task_properties.glade:400
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+"Hvordan skal denne opgave faktureres? 'Fakturerbar' betyder fakturÃ©r kunden "
+"pÃ¥ normal mÃ¥de. 'ikke fakturerbar' betyder at vi ikke kan bede om betaling "
+"for dette, mÃ¥ ikke skrives pÃ¥ fakturaen. 'Ingen regning' betyder skriv pÃ¥ "
+"fakturaen som 'gratis'."
+
+#: task_properties.glade:411 ghtml.c:1058 ghtml-deprecated.c:256
+#: ghtml-deprecated.c:431
+msgid "Billable"
+msgstr "Betalbart"
+
+#: task_properties.glade:419 ghtml.c:1059 ghtml-deprecated.c:434
+msgid "Not Billable"
+msgstr "Ikke fakturerbart"
+
+#: task_properties.glade:427 ghtml.c:1060 ghtml-deprecated.c:437
+msgid "No Charge"
+msgstr "Ingen regning"
+
+#: task_properties.glade:447
+msgid "Fee rate to be charged for this task."
+msgstr "Honorartarif som skal tages for denne opgave."
+
+#: task_properties.glade:458 ghtml.c:1071 ghtml-deprecated.c:447
+msgid "Regular"
+msgstr "Normal"
+
+#: task_properties.glade:466 ghtml.c:1072 ghtml-deprecated.c:450
+msgid "Overtime"
+msgstr "Overarbejde"
+
+#: task_properties.glade:474
+msgid "OverOver"
+msgstr "EkstraOver"
+
+#: task_properties.glade:482 ghtml.c:1074 ghtml-deprecated.c:456
+msgid "Flat Fee"
+msgstr "Fast honorar"
+
+#: task_properties.glade:508
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+"Den fakturerede tidsenhed vil blive rundet af til et helt antal gange denne "
+"tid."
+
+#: task_properties.glade:538
+#, fuzzy
+msgid "Billing"
+msgstr "FakturÃ©r"
+
+#: active-dialog.c:114
+msgid ""
+"No project timer is currently running in GnoTime.  Do you want to start a "
+"project timer running?  If so, you can select a project from the menu below, "
+"and click 'Start' to start the project running.  Otherwise, just click "
+"'Cancel' to do nothing."
+msgstr ""
+
+#: active-dialog.c:122
+msgid ""
+"You can credit this project with the time that you worked on it but were "
+"away from the keyboard.  Enter a time below, the project will be credited "
+"when you click 'Start'"
+msgstr ""
+
+#. put project name into statusbar
+#. put project name into statusbar
+#. put project name into statusbar
+#: app.c:112 app.c:307
 #, fuzzy
 msgid "Timer is not running"
-msgstr "_Tidstæller kører"
+msgstr "_TidstÃ¦ller kÃ¸rer"
 
-#: src/app.c:301
+#. put elapsed time into statusbar
+#. put elapsed time into statusbar
+#. put elapsed time into statusbar
+#: app.c:300
 msgid "00:00"
 msgstr "00:00"
 
-#: src/app.c:360
+#: app.c:359
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
 msgstr ""
-"Kunne ikke forstå geometrien (placering eller størrelse)\n"
-" der blev angivet på kommandolinjen"
+"Kunne ikke forstÃ¥ geometrien (placering eller stÃ¸rrelse)\n"
+" der blev angivet pÃ¥ kommandolinjen"
 
-#: src/ctree.c:787
+#: ctree.c:785 ctree-gnome2.c:653
 msgid "Total"
 msgstr "Total"
 
-#: src/ctree.c:789
+#: ctree.c:787 ctree-gnome2.c:655
 msgid "Total time spent on this project."
-msgstr "Total tid brugt på dette projekt"
+msgstr "Total tid brugt pÃ¥ dette projekt"
 
-#: src/ctree.c:794
+#: ctree.c:792 ctree-gnome2.c:660
 msgid "Entry"
 msgstr "Indgang:"
 
-#: src/ctree.c:796
+#: ctree.c:794 ctree-gnome2.c:662
 msgid "Time spent under the current diary entry."
 msgstr "Tid brugt under den aktuelle kalenderindgang."
 
-#: src/ctree.c:801
+#: ctree.c:799
 msgid "Yesterday"
 msgstr ""
 
-#: src/ctree.c:803
+#: ctree.c:801
 #, fuzzy
 msgid "Time spent on this project yesterday."
-msgstr "Tid brugt på dette projekt i dag."
+msgstr "Tid brugt pÃ¥ dette projekt i dag."
 
-#: src/ctree.c:808 glade/interval_edit.glade.h:14
-msgid "Today"
-msgstr "I dag"
-
-#: src/ctree.c:810
+#: ctree.c:808 ctree-gnome2.c:670
 msgid "Time spent on this project today."
-msgstr "Tid brugt på dette projekt i dag."
+msgstr "Tid brugt pÃ¥ dette projekt i dag."
 
-#: src/ctree.c:815
+#: ctree.c:813 ctree-gnome2.c:675
 msgid "Week"
 msgstr "Uge"
 
-#: src/ctree.c:817
+#: ctree.c:815 ctree-gnome2.c:677
 msgid "Time spent on this project this week."
-msgstr "Tid brugt på dette projekt denne uge."
+msgstr "Tid brugt pÃ¥ dette projekt denne uge."
 
-#: src/ctree.c:822
+#: ctree.c:820
 #, fuzzy
 msgid "Last Week"
 msgstr "Uge"
 
-#: src/ctree.c:824
+#: ctree.c:822
 #, fuzzy
 msgid "Time spent on this project last week."
-msgstr "Tid brugt på dette projekt denne uge."
+msgstr "Tid brugt pÃ¥ dette projekt denne uge."
 
-#: src/ctree.c:829
+#: ctree.c:827 ctree-gnome2.c:683
 msgid "Month"
-msgstr "Måned"
+msgstr "MÃ¥ned"
 
-#: src/ctree.c:831
+#: ctree.c:829 ctree-gnome2.c:685
 msgid "Time spent on this project this month."
-msgstr "Tid brugt på dette projekt denne måned."
+msgstr "Tid brugt pÃ¥ dette projekt denne mÃ¥ned."
 
-#: src/ctree.c:836
+#: ctree.c:834 ctree-gnome2.c:691
 msgid "Year"
-msgstr "År"
+msgstr "Ã…r"
 
-#: src/ctree.c:838
+#: ctree.c:836 ctree-gnome2.c:693
 msgid "Time spent on this project this year."
-msgstr "Tid brugt på dette projekt dette år."
+msgstr "Tid brugt pÃ¥ dette projekt dette Ã¥r."
 
-#: src/ctree.c:843
+#: ctree.c:841 ctree-gnome2.c:699
 msgid "Title"
 msgstr "Titel"
 
 #. Put stuff into the dialog box
-#: src/ctree.c:844 src/menucmd.c:274
+#. Put stuff into the dialog box
+#. Put stuff into the dialog box
+#: ctree.c:842 ctree-gnome2.c:700 menucmd.c:275
 msgid "Project Title"
 msgstr "Projekttitel"
 
-#: src/ctree.c:849 src/ctree.c:850 src/menucmd.c:275
+#: ctree.c:847 ctree.c:848 ctree-gnome2.c:705 ctree-gnome2.c:706 menucmd.c:276
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: src/ctree.c:855
+#: ctree.c:853 ctree-gnome2.c:711 ghtml-deprecated.c:89 ghtml-deprecated.c:239
 msgid "Diary Entry"
 msgstr "Indgang i kalender"
 
-#: src/ctree.c:857
+#: ctree.c:855 ctree-gnome2.c:713
 msgid "The current diary entry"
-msgstr "Luk nuværende kalenderindgang"
+msgstr "Luk nuvÃ¦rende kalenderindgang"
 
-#: src/ctree.c:862 glade/interval_edit.glade.h:11
-msgid "Start"
-msgstr "Start"
-
-#: src/ctree.c:864
+#: ctree.c:862 ctree-gnome2.c:720
 msgid "Estimated Project Start Date"
-msgstr "Anslået startdato for projekt"
+msgstr "AnslÃ¥et startdato for projekt"
 
-#: src/ctree.c:869
+#: ctree.c:867 ctree-gnome2.c:725
 msgid "End"
 msgstr "Slut"
 
-#: src/ctree.c:871
+#: ctree.c:869 ctree-gnome2.c:727
 msgid "Estimated Project Completion Date"
-msgstr "Anslået slutdato for projekt"
+msgstr "AnslÃ¥et slutdato for projekt"
 
-#: src/ctree.c:876
+#: ctree.c:874 ctree-gnome2.c:732
 msgid "Due"
 msgstr "Forfald"
 
-#: src/ctree.c:878
+#: ctree.c:876 ctree-gnome2.c:734
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
 msgstr ""
-"Forfaldsdato: Datoen for hvornår projektet absolut skal være færdiggjort."
+"Forfaldsdato: Datoen for hvornÃ¥r projektet absolut skal vÃ¦re fÃ¦rdiggjort."
 
-#: src/ctree.c:885
+#: ctree.c:883 ctree-gnome2.c:741
 msgid "Size"
-msgstr "Størrelse"
+msgstr "StÃ¸rrelse"
 
-#: src/ctree.c:887
+#: ctree.c:885 ctree-gnome2.c:743
 msgid "Sizing: How much work it will take to finish this project."
-msgstr "Størrelse: Hvor meget arbejde det vil tage at afslutte dette projekt."
+msgstr "StÃ¸rrelse: Hvor meget arbejde det vil tage at afslutte dette projekt."
 
-#: src/ctree.c:893
+#: ctree.c:891 ctree-gnome2.c:749
 msgid "Done"
-msgstr "Færdig"
+msgstr "FÃ¦rdig"
 
-#: src/ctree.c:895
+#: ctree.c:893 ctree-gnome2.c:751
 msgid "Percent Complete: How much of this project has been finished till now."
 msgstr ""
-"Procent færdig: Hvor meget af dette projekt er blevet færdiggjort indtil nu."
+"Procent fÃ¦rdig: Hvor meget af dette projekt er blevet fÃ¦rdiggjort indtil nu."
 
-#: src/ctree.c:902
+#: ctree.c:900 ctree-gnome2.c:758
 msgid "U"
 msgstr "H"
 
-#: src/ctree.c:904
+#: ctree.c:902 ctree-gnome2.c:760
 msgid "Urgency: Does this project need to be done soon, done quickly?"
-msgstr "Hastende: Skal dette projekt afsluttes snart, eller udføres hurtigt?"
+msgstr "Hastende: Skal dette projekt afsluttes snart, eller udfÃ¸res hurtigt?"
 
-#: src/ctree.c:910
+#: ctree.c:908 ctree-gnome2.c:766
 msgid "Imp"
 msgstr "Vkt"
 
-#: src/ctree.c:912
+#: ctree.c:910 ctree-gnome2.c:768
 msgid "Importance: How important is this project?"
 msgstr "Vigtighed: Hvor vigtigt er dette projekt?"
 
-#: src/ctree.c:918
+#: ctree.c:916 ctree-gnome2.c:774
 msgid "Status"
 msgstr "Status"
 
-#: src/ctree.c:920
+#: ctree.c:918 ctree-gnome2.c:776
 msgid "The current status of this project."
 msgstr "Den aktuelle status for dette projekt"
 
-#: src/ctree.c:1272
+#: ctree.c:1270 ctree-gnome2.c:1102
 msgid "3"
 msgstr "3"
 
-#: src/ctree.c:1273
+#: ctree.c:1271 ctree-gnome2.c:1103
 msgid "2"
 msgstr "2"
 
-#: src/ctree.c:1274
+#: ctree.c:1272 ctree-gnome2.c:1104
 msgid "1"
 msgstr "1"
 
-#: src/ctree.c:1284 src/ghtml.c:906 src/ghtml.c:920
-#: glade/project_properties.glade.h:26
-msgid "Low"
-msgstr "Lav"
-
-#: src/ctree.c:1285
+#: ctree.c:1283 ctree-gnome2.c:1115
 msgid "Med"
 msgstr "Mellem"
 
-#: src/ctree.c:1286 glade/project_properties.glade.h:16
-msgid "High"
-msgstr "Høj"
-
-#: src/ctree.c:1295 src/ghtml.c:934 glade/project_properties.glade.h:30
-msgid "Not Started"
-msgstr "Ikke startet"
-
-#: src/ctree.c:1296 src/ghtml.c:935 glade/project_properties.glade.h:22
-msgid "In Progress"
-msgstr "I gang"
-
-#: src/ctree.c:1297 src/ghtml.c:936 glade/project_properties.glade.h:32
-msgid "On Hold"
-msgstr "Afventer"
-
-#: src/ctree.c:1298 src/ghtml.c:937 glade/project_properties.glade.h:10
-msgid "Cancelled"
-msgstr "Annulleret"
-
-#: src/ctree.c:1299 src/ghtml.c:938 glade/project_properties.glade.h:11
-msgid "Completed"
-msgstr "Færdiggjort"
-
-#: src/err-throw.c:61
+#: err-throw.c:61
 #, fuzzy
 msgid "No Error"
 msgstr "Fejl"
 
-#: src/err-throw.c:65
+#: err-throw.c:65
 #, c-format
 msgid ""
 "Cannot open the project data file\n"
 "\t%s\n"
 msgstr ""
 
-#: src/err-throw.c:70
+#: err-throw.c:70
 #, c-format
 msgid ""
 "Cannot write the project data file\n"
 "\t%s\n"
 msgstr ""
 
-#: src/err-throw.c:75
+#: err-throw.c:75
 #, c-format
 msgid ""
 "The file\n"
@@ -261,7 +1408,7 @@ msgid ""
 "doesn't seem to be a GnoTime project data file\n"
 msgstr ""
 
-#: src/err-throw.c:81
+#: err-throw.c:81
 #, c-format
 msgid ""
 "The file\n"
@@ -269,142 +1416,154 @@ msgid ""
 "seems to be corrupt\n"
 msgstr ""
 
-#: src/err-throw.c:87
+#: err-throw.c:87
 #, c-format
 msgid ""
 "An unknown token was found during the parsing of\n"
 "\t%s\n"
 msgstr ""
 
-#: src/err-throw.c:92
+#: err-throw.c:92
 #, c-format
 msgid ""
 "An unknown value was found during the parsing of\n"
 "\t%s\n"
 msgstr ""
 
-#: src/err-throw.c:97
+#: err-throw.c:97
 #, fuzzy, c-format
 msgid ""
 "Cannot write the config file\n"
 "\t%s\n"
 msgstr "Kan ikke oprette pid-fil!"
 
-#: src/export.c:88
+#: export.c:88
 #, fuzzy, c-format
 msgid "Error exporting data: %s"
 msgstr "Fejl ved formatering af spor %d"
 
-#: src/export.c:138 src/journal.c:211
+#: export.c:138
 #, c-format
 msgid "File %s exists, overwrite?"
 msgstr "Filen %s eksisterer allerede, overskriv den?"
 
-#: src/export.c:153
+#: export.c:153
 #, fuzzy, c-format
 msgid "File %s dould not be opened"
-msgstr "Kunne ikke åbne %s."
+msgstr "Kunne ikke Ã¥bne %s."
 
-#: src/export.c:163
+#: export.c:163
 msgid "Error occured during export"
 msgstr ""
 
-#: src/export.c:193
+#: export.c:193
 msgid "Tab-Delimited Export"
 msgstr ""
 
-#: src/file-io.c:405
+#: file-io.c:390 gconf-io.c:445
 msgid "project %t started"
 msgstr "projektet %t er startet"
 
-#: src/file-io.c:408
+#: file-io.c:393 gconf-io.c:446
 msgid "stopped project %t"
 msgstr "stoppede projektet %t"
 
-#: src/ghtml.c:355
+#: ghtml.c:360
 #, fuzzy
 msgid "False"
-msgstr "Værdi"
+msgstr "VÃ¦rdi"
 
-#: src/ghtml.c:356
+#: ghtml.c:361
 msgid "True"
 msgstr ""
 
-#: src/ghtml.c:907
+#: ghtml.c:912
 #, fuzzy
 msgid "Normal"
 msgstr "Journal"
 
-#: src/ghtml.c:908
+#: ghtml.c:913
 #, fuzzy
 msgid "Urgent"
 msgstr "Hastende:"
 
-#: src/ghtml.c:909 src/ghtml.c:911 src/ghtml.c:923 src/ghtml.c:925
-#: src/ghtml.c:940
+#: ghtml.c:914 ghtml.c:916 ghtml.c:928 ghtml.c:930 ghtml.c:946
 msgid "Undefined"
 msgstr ""
 
-#: src/ghtml.c:921 glade/project_properties.glade.h:27
-msgid "Medium"
-msgstr "Mellem"
-
-#: src/ghtml.c:922
+#: ghtml.c:927
 #, fuzzy
 msgid "Important"
 msgstr "Vigtighed:"
 
-#: src/ghtml.c:1039 glade/task_properties.glade.h:14
-msgid "Hold"
-msgstr "Afvent"
-
-#: src/ghtml.c:1040 glade/task_properties.glade.h:3
-msgid "Bill"
-msgstr "Fakturér"
-
-#: src/ghtml.c:1041 glade/task_properties.glade.h:22
-msgid "Paid"
-msgstr "Betalt"
-
-#: src/ghtml.c:1052 glade/task_properties.glade.h:4
-msgid "Billable"
-msgstr "Betalbart"
-
-#: src/ghtml.c:1053 glade/task_properties.glade.h:18
-msgid "Not Billable"
-msgstr "Ikke fakturerbart"
-
-#: src/ghtml.c:1054 glade/task_properties.glade.h:17
-msgid "No Charge"
-msgstr "Ingen regning"
-
-#: src/ghtml.c:1065 glade/task_properties.glade.h:23
-msgid "Regular"
-msgstr "Normal"
-
-#: src/ghtml.c:1066 glade/task_properties.glade.h:21
-msgid "Overtime"
-msgstr "Overarbejde"
-
-#: src/ghtml.c:1067
+#: ghtml.c:1073 ghtml-deprecated.c:453
 msgid "Double Overtime"
 msgstr "Dobbelt-overarbejde"
 
-#: src/ghtml.c:1068 glade/task_properties.glade.h:13
-msgid "Flat Fee"
-msgstr "Fast honorar"
+#: ghtml.c:1102 ghtml.c:1118
+msgid "No activity"
+msgstr ""
 
-#: src/idle-dialog.c:166
+#: ghtml-deprecated.c:89 ghtml-deprecated.c:294
+msgid "Elapsed"
+msgstr "PÃ¥lÃ¸bet"
+
+#: ghtml-deprecated.c:109 ghtml-deprecated.c:391 ghtml-deprecated.c:400
+msgid "(empty)"
+msgstr "<tom>"
+
+#: ghtml-deprecated.c:244
+msgid "Notes"
+msgstr "Noter"
+
+#: ghtml-deprecated.c:248
+msgid "Task Time"
+msgstr "Opgavetid"
+
+#: ghtml-deprecated.c:252
+msgid "Bill Status"
+msgstr "Status pÃ¥ fakturering"
+
+#: ghtml-deprecated.c:260
+msgid "Bill Rate"
+msgstr "Regningstarif"
+
+#: ghtml-deprecated.c:264
+#, fuzzy
+msgid "Value"
+msgstr "VÃ¦rdi"
+
+#: ghtml-deprecated.c:268
+msgid "Billable Value"
+msgstr "Fakturerbar vÃ¦rdi"
+
+#: ghtml-deprecated.c:272 ghtml-deprecated.c:300
+msgid "No Default Value"
+msgstr "Ingen standard-vÃ¦rdi"
+
+#: ghtml-deprecated.c:297
+msgid "Start Time Fuzziness"
+msgstr "Usikkerhed pÃ¥ starttid"
+
+#: ghtml-deprecated.c:476
+msgid "Error - Unknown"
+msgstr "Fejl - ukendt"
+
+#: ghtml-deprecated.c:707
+msgid "unknown token: >>>>"
+msgstr "ukendt enhed: >>>>"
+
+#: idle-dialog.c:178
 #, fuzzy, c-format
 msgid "%s minutes"
 msgstr "minutter"
 
-#: src/idle-dialog.c:171
+#: idle-dialog.c:183
 #, fuzzy, c-format
 msgid "%s hours"
 msgstr "3 timer"
 
-#: src/idle-dialog.c:181
+#: idle-dialog.c:193
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
@@ -412,7 +1571,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:191
+#: idle-dialog.c:203
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
@@ -420,7 +1579,7 @@ msgid ""
 "below to adjust the value."
 msgstr ""
 
-#: src/idle-dialog.c:211
+#: idle-dialog.c:223
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
@@ -428,141 +1587,124 @@ msgid ""
 "restart it?"
 msgstr ""
 "Tastaturet og musen har ligget stille\n"
-"i %d minutter. Det aktuelt kørende\n"
+"i %d minutter. Det aktuelt kÃ¸rende\n"
 "projekt (%s - %s)\n"
 "er blevet stoppet.\n"
 "Vil du genstarte det?"
 
-#: src/idle-dialog.c:221
+#: idle-dialog.c:233
 #, fuzzy, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
 "Tastaturet og musen har ligget stille\n"
-"i %d minutter. Det aktuelt kørende\n"
+"i %d minutter. Det aktuelt kÃ¸rende\n"
 "projekt (%s - %s)\n"
 "er blevet stoppet.\n"
 "Vil du genstarte det?"
 
-#: src/journal.c:140
+#: journal.c:138
 msgid "Error 404 Not Found"
 msgstr "Fejl 404 Ikke fundet"
 
-#: src/journal.c:142
+#: journal.c:140
 #, c-format
 msgid "The file %s was not found."
 msgstr "Filen %s blev ikke fundet"
 
-#: src/journal.c:143
+#: journal.c:141
 msgid "(null)"
 msgstr "<nul>"
 
-#: src/journal.c:152
+#: journal.c:150
 msgid "Unkown Error"
 msgstr "Ukendt fejl"
 
-#: src/journal.c:231
+#: journal.c:210
 #, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
 msgstr ""
-"Ude af stand til at åbne filen %s\n"
+"Ude af stand til at Ã¥bne filen %s\n"
 "%s"
 
-#: src/journal.c:430 src/proj.c:754 src/proj.c:1769 src/proj.c:1973
-#: glade/notes.glade.h:8
-msgid "New Diary Entry"
-msgstr "Ny indgang i kalender"
-
-#: src/journal.c:706
+#: journal.c:650
 msgid "mailto: URL is not supported at this time"
 msgstr ""
 
-#: src/journal.c:729
+#: journal.c:670
 msgid "Save HTML To File"
 msgstr "Gem HTML i fil"
 
-#: src/journal.c:912
+#: journal.c:877
 msgid "Left-click to bring up menu"
 msgstr ""
 
-#: src/log.c:61
+#: log.c:61
 #, fuzzy, c-format
 msgid "Cannot open logfile %s for append: %s"
-msgstr "Kan ikke åbne logfilen %s til tilføjelse"
+msgstr "Kan ikke Ã¥bne logfilen %s til tilfÃ¸jelse"
 
 #. Translators: Format to use in the gnotime logfile
-#: src/log.c:70
+#. Translators: Format to use in the gnotime logfile
+#. Translators: Format to use in the gnotime logfile
+#: log.c:70
 msgid "%b %d %H:%M:%S"
 msgstr "%d. %b %H:%M:%S"
 
-#: src/log.c:109
+#: log.c:109
 #, fuzzy
 msgid "no title"
 msgstr "Titel"
 
-#: src/log.c:118
+#: log.c:118
 msgid "no description"
 msgstr "ingen beskrivelse"
 
-#: src/log.c:183 src/log.c:276
+#: log.c:188 log.c:281
 msgid "program started"
 msgstr "program startet"
 
 #. log_if_equal
-#: src/log.c:268
+#. log_if_equal
+#. log_if_equal
+#: log.c:273
 msgid "program exited"
 msgstr "program afsluttet"
 
-#: src/main.c:122
+#: main.c:122
 #, fuzzy
 msgid ""
 "There seems to be another GnoTime running.\n"
 "Press OK to start GnoTime anyway, or press Cancel to quit."
 msgstr ""
-"Det er ud til at en anden GTimeTracker allerede kører.\n"
-"Tryk O.k. for at starte GTimeTracker alligevel eller Annullér for at "
+"Det er ud til at en anden GTimeTracker allerede kÃ¸rer.\n"
+"Tryk O.k. for at starte GTimeTracker alligevel eller AnnullÃ©r for at "
 "afslutte."
 
-#: src/main.c:134
+#: main.c:136
 msgid "Cannot create pid-file!"
 msgstr "Kan ikke oprette pid-fil!"
 
-#: src/main.c:347
+#: main.c:353
 msgid "Do you want to continue?"
-msgstr "Ønsker du at fortsætte?"
+msgstr "Ã˜nsker du at fortsÃ¦tte?"
 
-#: src/main.c:404
+#: main.c:411
 msgid "Shall I setup a new configuration?"
-msgstr "Skal jeg opsætte en ny konfiguration?"
+msgstr "Skal jeg opsÃ¦tte en ny konfiguration?"
 
-#: src/main.c:731
-msgid "Specify geometry"
-msgstr "Angiv geometri"
-
-#: src/main.c:731
-msgid "GEOMETRY"
-msgstr "GEOMETRI"
-
-#: src/main.c:733
-msgid "Select a project on startup"
-msgstr "Vælg projekt ved opstart"
-
-#: src/main.c:733
-msgid "PROJECT"
-msgstr "PROJEKT"
-
-#: src/main.c:791
+#: main.c:800
 msgid "Warning"
 msgstr "Advarsel"
 
-#: src/menucmd.c:50
+#: menucmd.c:51
 msgid "Bug-fixes from:"
 msgstr ""
 
-#: src/menucmd.c:186
+#: menucmd.c:187
 #, fuzzy
 msgid ""
 "GnoTime is a combination stop-watch, diary, consultant billing system and "
@@ -571,1128 +1713,234 @@ msgid ""
 "track the status of other projects."
 msgstr ""
 "GTimeTracker er en kombination af stopur, kalender, faktureringssystem for "
-"konsulenter og projektadministrator. Du kan måle mængden af tid du bruger på "
-"en opgave, tilknytte et notat til det, sætte en faktureringspris, udskrive "
-"en faktura, samt følge status for andre projekter."
+"konsulenter og projektadministrator. Du kan mÃ¥le mÃ¦ngden af tid du bruger pÃ¥ "
+"en opgave, tilknytte et notat til det, sÃ¦tte en faktureringspris, udskrive "
+"en faktura, samt fÃ¸lge status for andre projekter."
 
-#: src/menucmd.c:260
+#: menucmd.c:261
 msgid "New Project..."
 msgstr "Nyt projekt..."
 
-#: src/menucmd.c:523
+#: menucmd.c:537
 msgid ""
 "To edit the timer interval for this project,\n"
-"open the Journal window and click on a link.\n"
+"open the Activity window and click on a link.\n"
 "This will bring up a menu of time editing options.\n"
 msgstr ""
 
-#: src/menus.c:35
-msgid "_Export Tasks"
+#: plug-edit.c:140
+msgid ""
+"You must specify a complete filepath to the report, including a leading "
+"slash.  The file that you specify must exist."
 msgstr ""
 
-#: src/menus.c:39
+#: plug-edit.c:188
 #, fuzzy
-msgid "Export _Projects"
-msgstr "Indsæt projekt"
+msgid "New Item"
+msgstr "_Nyt notat"
 
-#: src/menus.c:54
-msgid "_New Project..."
-msgstr "_Nyt projekt..."
-
-#: src/menus.c:64 src/menus.c:173
-#, fuzzy
-msgid "Edit _Times"
-msgstr "Slet _tider"
-
-#: src/menus.c:65 src/menus.c:174
-#, fuzzy
-msgid "Edit the time interval associated with this project"
-msgstr "En titel til dette projekt"
-
-#: src/menus.c:80
-msgid "_Journal..."
-msgstr "_Journal..."
-
-#: src/menus.c:81
-#, fuzzy
-msgid "Show the journal for this project"
-msgstr "Vis journalen med tidspunkter for dette projekt"
-
-#: src/menus.c:84 src/menus.c:169
-msgid "_Activity..."
-msgstr ""
-
-#: src/menus.c:85
-#, fuzzy
-msgid "Show the journal together with the timestamps for this project"
-msgstr "Vis journalen med tidspunkter for dette projekt"
-
-#: src/menus.c:88
-#, fuzzy
-msgid "_Daily..."
-msgstr "_Journal..."
-
-#: src/menus.c:89
-#, fuzzy
-msgid "Show the total time spent on a project, day by day"
-msgstr "Total tid brugt på dette projekt"
-
-#: src/menus.c:92
-#, fuzzy
-msgid "_Status..."
-msgstr "Status"
-
-#: src/menus.c:93
-#, fuzzy
-msgid "Show the project descriptions and notes."
-msgstr "Vis projektbeskrivelse"
-
-#: src/menus.c:96
-msgid "_To Do..."
-msgstr ""
-
-#: src/menus.c:97
-#, fuzzy
-msgid "Show a sample to-do list"
-msgstr "Vis et eksempel på en faktura for dette projekt."
-
-#: src/menus.c:100
-msgid "_Invoice..."
-msgstr "_Fakturér..."
-
-#: src/menus.c:101
-msgid "Show a sample invoice for this project"
-msgstr "Vis et eksempel på en faktura for dette projekt."
-
-#: src/menus.c:104
-#, fuzzy
-msgid "_Query..."
-msgstr "_Introduktion..."
-
-#: src/menus.c:105
-msgid "Run a sample Query Generator"
-msgstr ""
-
-#: src/menus.c:108
-msgid "_Primer..."
-msgstr "_Introduktion..."
-
-#: src/menus.c:109
-msgid "Show a sample introductory primer for designing custom reports"
-msgstr "Viser et eksempel på en introduktion til at designe kunderapporter"
-
-#: src/menus.c:112
-msgid "_New Report..."
-msgstr "_Ny rapport..."
-
-#: src/menus.c:113
-#, fuzzy
-msgid "Define a path to a new GnoTime ghtml report file"
-msgstr "Angiv en sti til en ny GTT phtml rapportfil"
-
-#: src/menus.c:116
-#, fuzzy
-msgid "_Edit Reports..."
-msgstr "_Ny rapport..."
-
-#: src/menus.c:117
-msgid "Edit the entries in the Reports pulldown menu (this menu)"
-msgstr ""
-
-#: src/menus.c:128
-msgid "St_art"
-msgstr "St_art"
-
-#: src/menus.c:129
-msgid "Start the timer running"
-msgstr "Start med at lade tidstæller køre"
-
-#: src/menus.c:134
-msgid "Sto_p"
-msgstr "Sto_p"
-
-#: src/menus.c:135
-msgid "Stop the timer"
-msgstr "Stop med at lade tidstæller køre"
-
-#: src/menus.c:140
-msgid "_Timer Running"
-msgstr "_Tidstæller kører"
-
-#: src/menus.c:159
-msgid "_Reports"
-msgstr "_Rapporter"
-
-#: src/menus.c:160
-msgid "_Timer"
-msgstr "_Tidstæller"
-
-#: src/menus.c:170
-msgid "Show the timesheet journal for this project"
-msgstr "Vis journalen med tidspunkter for dette projekt"
-
-#: src/menus.c:177 glade/task_popup.glade.h:6
-msgid "_New Diary Entry"
-msgstr "_Ny kalenderindgang"
-
-#: src/menus.c:178
-msgid "Change the current task for this project"
-msgstr "Ændr den igangværende opgave for dette projekt"
-
-#: src/menus.c:181 glade/task_popup.glade.h:5
-msgid "_Edit Diary Entry"
-msgstr "_Redigér kalenderindgang"
-
-#: src/menus.c:182
-#, fuzzy
-msgid "Edit task header for this project"
-msgstr "Vis journalen med tidspunkter for dette projekt"
-
-#. Build the i18n menu path ...
-#. (is this right ??? or is this pre-i18n ???)
-#: src/menus.c:239
-msgid "Reports"
-msgstr "Rapporter"
-
-#: src/plug-in.c:114
+#: plug-in.c:114
 #, fuzzy, c-format
 msgid "Unable to open the report file %s\n"
 msgstr ""
-"Ude af stand til at åbne filen %s\n"
+"Ude af stand til at Ã¥bne filen %s\n"
 "%s"
 
-#: src/proj.c:735
+#: proj.c:738
 msgid "Old GTT Tasks"
 msgstr "Gammel GTT opgave"
 
-#: src/props-proj.c:95 src/props-proj.c:96 src/props-task.c:94
-#: src/props-task.c:95
+#: props-proj.c:95 props-proj.c:96
 msgid "empty"
 msgstr "tom"
 
-#: src/toolbar.c:150
+#: toolbar.c:153
 msgid "Create a New Project..."
 msgstr "Opret et nyt projekt..."
 
-#: src/toolbar.c:160
+#: toolbar.c:164
 msgid "Cut Selected Project"
 msgstr "Udklip valgt projekt"
 
-#: src/toolbar.c:165
+#: toolbar.c:169
 msgid "Copy Selected Project"
-msgstr "Kopiér valgt projekt"
+msgstr "KopiÃ©r valgt projekt"
 
-#: src/toolbar.c:170
+#: toolbar.c:174
 msgid "Paste Project"
-msgstr "Indsæt projekt"
+msgstr "IndsÃ¦t projekt"
 
-#: src/toolbar.c:182
+#: toolbar.c:188
 #, fuzzy
 msgid "Activity Journal"
 msgstr "Journal"
 
-#: src/toolbar.c:183
+#: toolbar.c:189
 msgid "View and Edit Timestamp Logs"
-msgstr "Se og redigér logger af tidsstempler"
+msgstr "Se og redigÃ©r logger af tidsstempler"
 
-#: src/toolbar.c:192
+#: toolbar.c:198
 msgid "Edit Project Properties..."
-msgstr "Redigér projekt-egenskaber..."
+msgstr "RedigÃ©r projekt-egenskaber..."
 
-#: src/toolbar.c:208
+#: toolbar.c:214
 msgid "Timer"
-msgstr "Tidstæller"
+msgstr "TidstÃ¦ller"
 
-#: src/toolbar.c:209
+#: toolbar.c:215
 msgid "Start/Stop Timer"
-msgstr "Start/stop tidstæller"
+msgstr "Start/stop tidstÃ¦ller"
 
-#: src/toolbar.c:218
+#: toolbar.c:224
 msgid "Calendar"
 msgstr "Kalender"
 
-#: src/toolbar.c:219
+#: toolbar.c:225
 msgid "View Calendar"
 msgstr "Vis kalender"
 
-#: src/toolbar.c:239
+#: toolbar.c:248
 msgid "Edit Preferences..."
-msgstr "Redigér opsætning..."
+msgstr "RedigÃ©r opsÃ¦tning..."
 
-#: src/toolbar.c:247
+#: toolbar.c:256
 msgid "User's Guide and Manual"
-msgstr "Brugervejledning og -håndbog"
+msgstr "Brugervejledning og -hÃ¥ndbog"
 
-#: src/toolbar.c:255
+#: toolbar.c:264
 #, fuzzy
 msgid "Quit GnoTime"
-msgstr "Afslut tidsforbrugværktøjet"
+msgstr "Afslut tidsforbrugvÃ¦rktÃ¸jet"
 
-#. ======================= END OF FILE =======================
-#: glade/idle.glade.h:1
-msgid "Do not restart the timer."
-msgstr ""
+#~ msgid "Specify geometry"
+#~ msgstr "Angiv geometri"
 
-#: glade/idle.glade.h:2
-msgid "Restart Idle Timer Dialog"
-msgstr ""
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRI"
 
-#: glade/idle.glade.h:3
-msgid "Restart the same project that used to be running."
-msgstr ""
+#~ msgid "Select a project on startup"
+#~ msgstr "VÃ¦lg projekt ved opstart"
 
-#: glade/interval_edit.glade.h:1
-msgid "1 Hour"
-msgstr "1 time"
+#~ msgid "PROJECT"
+#~ msgstr "PROJEKT"
 
-#: glade/interval_edit.glade.h:2
-msgid "10 Min"
-msgstr "10 min"
-
-#: glade/interval_edit.glade.h:3
-msgid "15 Min"
-msgstr "15 Min"
-
-#: glade/interval_edit.glade.h:4
-msgid "2 Hours"
-msgstr "2 timer"
-
-#: glade/interval_edit.glade.h:5
-msgid "20 Min"
-msgstr "20 min"
-
-#: glade/interval_edit.glade.h:6
-msgid "3 Hours"
-msgstr "3 timer"
-
-#: glade/interval_edit.glade.h:7
-msgid "30 Min"
-msgstr "30 min"
-
-#: glade/interval_edit.glade.h:8
-msgid "5 Min"
-msgstr "5 min"
-
-#: glade/interval_edit.glade.h:9
-msgid "Exact Time"
-msgstr "Præcis tid"
-
-#: glade/interval_edit.glade.h:10
-msgid "Set how Uncertain the Start Time Is"
-msgstr "Sæt hvor usikker starttiden er"
-
-#: glade/interval_edit.glade.h:12
-msgid "Start Fuzz"
-msgstr "Usikkerhed på start"
-
-#: glade/interval_edit.glade.h:13
-msgid "Stop"
-msgstr "Stop"
-
-#: glade/interval_popup.glade.h:1
-msgid "Delete Interval"
-msgstr "Slet interval"
-
-#: glade/interval_popup.glade.h:2
-msgid "Edit Interval"
-msgstr "Redigér intervaller"
-
-#: glade/interval_popup.glade.h:3
-msgid "Insert Diary Entry"
-msgstr "Indsæt kalenderindgang"
-
-#: glade/interval_popup.glade.h:4
-msgid "Merge Down"
-msgstr "Flet ned"
-
-#: glade/interval_popup.glade.h:5
-msgid "Merge Up"
-msgstr "Flet op"
-
-#: glade/interval_popup.glade.h:6
 #, fuzzy
-msgid "Move Down"
-msgstr "Flet ned"
+#~ msgid "Export _Projects"
+#~ msgstr "IndsÃ¦t projekt"
 
-#: glade/interval_popup.glade.h:7
+#~ msgid "_New Project..."
+#~ msgstr "_Nyt projekt..."
+
 #, fuzzy
-msgid "Move Up"
-msgstr "Flet op"
+#~ msgid "Edit _Times"
+#~ msgstr "Slet _tider"
 
-#: glade/interval_popup.glade.h:8
-msgid "New Interval"
-msgstr "Nyt interval"
-
-#: glade/interval_popup.glade.h:9
-msgid "Paste Diary Entry"
-msgstr "Indsæt indgang i kalender"
-
-#: glade/journal.glade.h:1 glade/notes.glade.h:1 glade/prefs.glade.h:1
-#: glade/project_properties.glade.h:6 glade/task_properties.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: glade/journal.glade.h:2
-msgid ""
-"<b>Publish This Report</b>\n"
-"Enter a URL such as one of the following:\n"
-"mailto:<i><username>@<hostname></i>\n"
-"ssh://<i>host.net/some/file/path</i>\n"
-"ftp://<i>username:passwd@host.net/path/to/file</i>\n"
-msgstr ""
-
-#: glade/journal.glade.h:8
-msgid "Close"
-msgstr "Luk"
-
-#: glade/journal.glade.h:9
 #, fuzzy
-msgid "GnoTime: Journal"
-msgstr "Journal"
+#~ msgid "Edit the time interval associated with this project"
+#~ msgstr "En titel til dette projekt"
 
-#: glade/journal.glade.h:10
-msgid "GnoTime: Publish Report"
-msgstr ""
+#~ msgid "_Journal..."
+#~ msgstr "_Journal..."
 
-#: glade/journal.glade.h:11
-msgid "New File"
-msgstr "Ny fil"
-
-#: glade/journal.glade.h:12
-msgid "Open File"
-msgstr "Åbn fil"
-
-#: glade/journal.glade.h:13
-msgid "Publish"
-msgstr ""
-
-#: glade/journal.glade.h:14
-msgid "Refresh"
-msgstr "Genopfrisk"
-
-#: glade/journal.glade.h:15
-msgid "Save"
-msgstr "Gem"
-
-#: glade/journal.glade.h:16
-msgid "Save File"
-msgstr "Gem fil"
-
-#: glade/journal.glade.h:17
-msgid "URL:"
-msgstr ""
-
-#: glade/not-implemented.glade.h:1
-msgid "Information"
-msgstr "Information"
-
-#: glade/not-implemented.glade.h:2
-msgid ""
-"This function is not yet implemented!\n"
-"Coming Soon, I hope!"
-msgstr ""
-"Denne funktion er ikke implementeret endnu!\n"
-"Jeg håber det kommer snart!"
-
-#: glade/notes.glade.h:2
-msgid "Close the project subwindow"
-msgstr ""
-
-#: glade/notes.glade.h:3
 #, fuzzy
-msgid "Create a new diary entry"
-msgstr "Indsæt en tidligere udklippet kalenderindgang."
+#~ msgid "Show the journal for this project"
+#~ msgstr "Vis journalen med tidspunkter for dette projekt"
 
-#: glade/notes.glade.h:4
-msgid "Desc:"
-msgstr ""
-
-#: glade/notes.glade.h:5 glade/task_properties.glade.h:10
-msgid "Diary Entry:"
-msgstr "Kalenderindgang:"
-
-#: glade/notes.glade.h:6
 #, fuzzy
-msgid "Edit the project description"
-msgstr "Vis projektbeskrivelse"
+#~ msgid "Show the journal together with the timestamps for this project"
+#~ msgstr "Vis journalen med tidspunkter for dette projekt"
 
-#: glade/notes.glade.h:7
-msgid "Edit the project title in this box"
-msgstr ""
-
-#: glade/notes.glade.h:9 glade/project_properties.glade.h:39
-msgid "Project Title:"
-msgstr "Projekttitel:"
-
-#: glade/prefs.glade.h:2
 #, fuzzy
-msgid "1 AM"
-msgstr "15 Min"
+#~ msgid "_Daily..."
+#~ msgstr "_Journal..."
 
-#: glade/prefs.glade.h:3
 #, fuzzy
-msgid "10 PM"
-msgstr "10 min"
+#~ msgid "Show the total time spent on a project, day by day"
+#~ msgstr "Total tid brugt pÃ¥ dette projekt"
 
-#: glade/prefs.glade.h:4
-msgid "11 PM"
-msgstr ""
-
-#: glade/prefs.glade.h:5
-msgid "12 Midnight"
-msgstr ""
-
-#: glade/prefs.glade.h:6
 #, fuzzy
-msgid "2 AM"
-msgstr "20 min"
+#~ msgid "_Status..."
+#~ msgstr "Status"
 
-#: glade/prefs.glade.h:7
 #, fuzzy
-msgid "3 AM"
-msgstr "30 min"
+#~ msgid "Show the project descriptions and notes."
+#~ msgstr "Vis projektbeskrivelse"
 
-#: glade/prefs.glade.h:8
-msgid "4 AM"
-msgstr ""
-
-#: glade/prefs.glade.h:9
 #, fuzzy
-msgid "5 AM"
-msgstr "5 min"
+#~ msgid "Show a sample to-do list"
+#~ msgstr "Vis et eksempel pÃ¥ en faktura for dette projekt."
 
-#: glade/prefs.glade.h:10
-msgid "6 AM"
-msgstr ""
+#~ msgid "_Invoice..."
+#~ msgstr "_FakturÃ©r..."
 
-#: glade/prefs.glade.h:11
-msgid "9 PM"
-msgstr ""
+#~ msgid "Show a sample invoice for this project"
+#~ msgstr "Vis et eksempel pÃ¥ en faktura for dette projekt."
 
-#: glade/prefs.glade.h:12
-msgid "Display"
-msgstr "Vis"
-
-#: glade/prefs.glade.h:13
-msgid "End of Day/Week"
-msgstr ""
-
-#: glade/prefs.glade.h:14
-msgid "Enter a shell command to be executed when no projects are active."
-msgstr ""
-"Indtast en skalkommando som skal udføres når ingen projekter er aktive."
-
-#: glade/prefs.glade.h:15
-msgid "Enter a shell command to be executed whenever projects are switched."
-msgstr ""
-"Indtast en skalkommando som skal udføres når der skiftes mellem projekter."
-
-#: glade/prefs.glade.h:16
-msgid "Entry Start:"
-msgstr "Elementbegyndelse:"
-
-#: glade/prefs.glade.h:17
-msgid "Entry Stop:"
-msgstr "Elementslutning:"
-
-#: glade/prefs.glade.h:19
-#, no-c-format
-msgid ""
-"Entry that will be logged when a project starts. Use %t for the project "
-"title, %d for the description, etc. See the manual for more options."
-msgstr ""
-"Indgang der vil blive logget når et projekt starter. Brug %t for "
-"projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
-
-#: glade/prefs.glade.h:21
-#, no-c-format
-msgid ""
-"Entry that will be logged when the project stops.  Use %t for the porject "
-"title, %d for the project description, etc. See the manual for more options."
-msgstr ""
-"Indgang der vil blive logget når et projekt stopper. Brug %t for "
-"projekttitlen %d for beskrivelsen osv. Se manualen for flere muligheder."
-
-#: glade/prefs.glade.h:22
-msgid "Fields"
-msgstr "Felter"
-
-#: glade/prefs.glade.h:23
-msgid "Filename:"
-msgstr "Filnavn:"
-
-#: glade/prefs.glade.h:24
-msgid "Friday"
-msgstr ""
-
-#: glade/prefs.glade.h:25
-msgid "Idle Seconds:"
-msgstr "Stille sekunder:"
-
-#: glade/prefs.glade.h:26
-msgid "Inactivity Timeout"
-msgstr "Tidsudløb for inaktivitet"
-
-#: glade/prefs.glade.h:27
-msgid "Logfile"
-msgstr "Logfil"
-
-#: glade/prefs.glade.h:28
-msgid "Min Recorded:"
-msgstr "Min nedskrevet:"
-
-#: glade/prefs.glade.h:29
-msgid "Misc"
-msgstr "Divs."
-
-#: glade/prefs.glade.h:30
 #, fuzzy
-msgid "Monday"
-msgstr "I dag"
+#~ msgid "_Query..."
+#~ msgstr "_Introduktion..."
 
-#: glade/prefs.glade.h:31
+#~ msgid "_Primer..."
+#~ msgstr "_Introduktion..."
+
+#~ msgid "Show a sample introductory primer for designing custom reports"
+#~ msgstr "Viser et eksempel pÃ¥ en introduktion til at designe kunderapporter"
+
+#~ msgid "_New Report..."
+#~ msgstr "_Ny rapport..."
+
 #, fuzzy
-msgid "New Day Starts At:"
-msgstr "Ny indgang i kalender"
+#~ msgid "Define a path to a new GnoTime ghtml report file"
+#~ msgstr "Angiv en sti til en ny GTT phtml rapportfil"
 
-#: glade/prefs.glade.h:32
-msgid "New Week Starts On:"
-msgstr ""
-
-#: glade/prefs.glade.h:33
-msgid "Project List Display"
-msgstr "Visning af projektliste"
-
-#: glade/prefs.glade.h:34
-msgid "Saturday"
-msgstr ""
-
-#: glade/prefs.glade.h:35
-msgid "Shell"
-msgstr "Skal"
-
-#: glade/prefs.glade.h:36
-msgid "Shell Commands"
-msgstr "Skalkommandoer"
-
-#: glade/prefs.glade.h:37
-msgid "Show Current Diary Entry"
-msgstr "Vis aktuelle kalenderindgang"
-
-#: glade/prefs.glade.h:38
-msgid "Show Estimated Effort"
-msgstr "Vis anslået indsats"
-
-#: glade/prefs.glade.h:39
-msgid "Show Percent Complete"
-msgstr "Vis procent færdiggjort"
-
-#: glade/prefs.glade.h:40
-msgid "Show Planned Project End Date"
-msgstr "Vis planlagt slutdato for projekt"
-
-#: glade/prefs.glade.h:41
-msgid "Show Planned Project Start Date"
-msgstr "Vis planlagt startdato for projekt"
-
-#: glade/prefs.glade.h:42
-msgid "Show Project Description"
-msgstr "Vis projektbeskrivelse"
-
-#: glade/prefs.glade.h:43
-msgid "Show Project Due Date"
-msgstr "Vis projektafleveringsdato"
-
-#: glade/prefs.glade.h:44
-msgid "Show Project Importance"
-msgstr "Vis projektvigtighed"
-
-#: glade/prefs.glade.h:45
-msgid "Show Project Status"
-msgstr "Vis projektstatus"
-
-#: glade/prefs.glade.h:46
-msgid "Show Project Urgency"
-msgstr "Vis projekthastende"
-
-#: glade/prefs.glade.h:47
-msgid "Show Seconds"
-msgstr "Vis sekunder"
-
-#: glade/prefs.glade.h:48
-msgid "Show Status Bar"
-msgstr "Vis statuslinje"
-
-#: glade/prefs.glade.h:49
-msgid "Show Sub-Projects"
-msgstr "Vis underprojekter"
-
-#: glade/prefs.glade.h:50
-msgid "Show Table Header"
-msgstr "Vis tabelhoved"
-
-#: glade/prefs.glade.h:51
-msgid "Show Time For The Current Diary Entry"
-msgstr "Vis tid for aktuelle kalenderindgang"
-
-#: glade/prefs.glade.h:52
 #, fuzzy
-msgid "Show Time Last Week"
-msgstr "Vis tid i denne uge"
+#~ msgid "_Edit Reports..."
+#~ msgstr "_Ny rapport..."
 
-#: glade/prefs.glade.h:53
-msgid "Show Time This Month"
-msgstr "Vis tid i denne måned"
+#~ msgid "St_art"
+#~ msgstr "St_art"
 
-#: glade/prefs.glade.h:54
-msgid "Show Time This Week"
-msgstr "Vis tid i denne uge"
+#~ msgid "Start the timer running"
+#~ msgstr "Start med at lade tidstÃ¦ller kÃ¸re"
 
-#: glade/prefs.glade.h:55
-msgid "Show Time This Year"
-msgstr "Vis tid i dette år"
+#~ msgid "Sto_p"
+#~ msgstr "Sto_p"
 
-#: glade/prefs.glade.h:56
-msgid "Show Time Today"
-msgstr "Vis tid i dag"
+#~ msgid "Stop the timer"
+#~ msgstr "Stop med at lade tidstÃ¦ller kÃ¸re"
 
-#: glade/prefs.glade.h:57
+#~ msgid "_Timer Running"
+#~ msgstr "_TidstÃ¦ller kÃ¸rer"
+
+#~ msgid "_Reports"
+#~ msgstr "_Rapporter"
+
+#~ msgid "_Timer"
+#~ msgstr "_TidstÃ¦ller"
+
+#~ msgid "Show the timesheet journal for this project"
+#~ msgstr "Vis journalen med tidspunkter for dette projekt"
+
+#~ msgid "Change the current task for this project"
+#~ msgstr "Ã†ndr den igangvÃ¦rende opgave for dette projekt"
+
 #, fuzzy
-msgid "Show Time Yesterday"
-msgstr "Vis tid i dag"
+#~ msgid "Edit task header for this project"
+#~ msgstr "Vis journalen med tidspunkter for dette projekt"
 
-#: glade/prefs.glade.h:58
-msgid "Show Toolbar Icons"
-msgstr "Vis ikoner på værktøjslinjen"
+#~ msgid "Show Toolbar Texts"
+#~ msgstr "Vis tekst pÃ¥ vÃ¦rktÃ¸jslinjen"
 
-#: glade/prefs.glade.h:59
-msgid "Show Toolbar Texts"
-msgstr "Vis tekst på værktøjslinjen"
-
-#: glade/prefs.glade.h:60
-msgid "Show Tooltips"
-msgstr "Vis hjælpetekster"
-
-#: glade/prefs.glade.h:61
-msgid "Show Total Time Ever"
-msgstr "Vis total tid ialt"
-
-#: glade/prefs.glade.h:62
-msgid "Show `Cut', `Copy', `Paste'"
-msgstr "Vis 'Klip', 'Kopiér', 'Indsæt'"
-
-#: glade/prefs.glade.h:63
-msgid "Show `Help'"
-msgstr "Vis 'Hjælp'"
-
-#: glade/prefs.glade.h:64
-msgid "Show `Journal'"
-msgstr "Vis 'Journal'"
-
-#: glade/prefs.glade.h:65
-msgid "Show `New'"
-msgstr "Vis 'Ny'"
-
-#: glade/prefs.glade.h:66
-msgid "Show `Preferences'"
-msgstr "Vis 'Opsætning'"
-
-#: glade/prefs.glade.h:67
-msgid "Show `Properties'"
-msgstr "Vis 'Egenskaber'"
-
-#: glade/prefs.glade.h:68
-msgid "Show `Quit'"
-msgstr "Vis 'Afslut'"
-
-#: glade/prefs.glade.h:69
-msgid "Show `Timer'"
-msgstr "Vis 'Tidstæller'"
-
-#: glade/prefs.glade.h:70
-msgid ""
-"Show the 'szing', that is, the estimated amount of work that it will take to "
-"perform this project."
-msgstr ""
-"Vis 'szing', dvs. den anslåede mængde arbejde, det vil tage at udføre dette "
-"projekt."
-
-#: glade/prefs.glade.h:71
 #, fuzzy
-msgid "Start Project Command:"
-msgstr "Skift projektkommando:"
-
-#: glade/prefs.glade.h:72
-#, fuzzy
-msgid "Stop Project Command:"
-msgstr "Ingen projektkommando:"
-
-#: glade/prefs.glade.h:73
-msgid "Sunday"
-msgstr ""
-
-#: glade/prefs.glade.h:74
-msgid ""
-"Switches between projects that happen faster than this will not be logged "
-"(enter the number of seconds)"
-msgstr ""
-"Skift mellem projekter som sker hurtigere end dette, vil ikke blive logget "
-"(indtast antal sekunder)"
-
-#: glade/prefs.glade.h:75
-msgid ""
-"The current active project will be made inactive after there has been no "
-"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
-msgstr ""
-"Det aktive projekt vil blive gjort inaktivt efter at der ikke har været "
-"nogen aktivitet på tastatur eller mus i dette antal sekunder. Sæt til -1 for "
-"at deaktivere."
-
-#: glade/prefs.glade.h:76
-msgid ""
-"The day of teh week with which a new week is considered to start. Normally, "
-"this is Sunday, but you can start a new week on any day."
-msgstr ""
-
-#: glade/prefs.glade.h:77
-msgid ""
-"The time of night at which one day ends and the next day begins.  By default "
-"midnight, you can set this to any value."
-msgstr ""
-
-#: glade/prefs.glade.h:78
-#, fuzzy
-msgid "Thursday"
-msgstr "I dag"
-
-#: glade/prefs.glade.h:79
-msgid "Toolbar"
-msgstr "Værktøjslinje"
-
-#: glade/prefs.glade.h:80
-msgid "Toolbar Segments"
-msgstr "Værktøjslinjesegmenter"
-
-#: glade/prefs.glade.h:81
-#, fuzzy
-msgid "Tuesday"
-msgstr "I dag"
-
-#: glade/prefs.glade.h:82
-msgid "Use Logfile"
-msgstr "Brug logfil"
-
-#: glade/prefs.glade.h:83
-msgid "View Project Fields"
-msgstr "Vis projektfelter"
-
-#: glade/prefs.glade.h:84
-msgid "Wednesday"
-msgstr ""
-
-#: glade/prefs.glade.h:86
-#, no-c-format
-msgid ""
-"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
-msgstr ""
-
-#: glade/prefs.glade.h:88
-#, no-c-format
-msgid ""
-"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
-msgstr ""
-
-#: glade/project_properties.glade.h:1
-msgid "        "
-msgstr "        "
-
-#: glade/project_properties.glade.h:2
-msgid "            "
-msgstr "            "
-
-#: glade/project_properties.glade.h:3
-msgid "                        "
-msgstr "                        "
-
-#: glade/project_properties.glade.h:5
-#, no-c-format
-msgid "% Complete"
-msgstr "% færdig"
-
-#: glade/project_properties.glade.h:7
-msgid "A title to assign to this project"
-msgstr "En titel til dette projekt"
-
-#: glade/project_properties.glade.h:8
-msgid "Auto-merge Gap:"
-msgstr "Flet automatisk hul:"
-
-#: glade/project_properties.glade.h:9
-msgid "Auto-merge Interval:"
-msgstr "Interval for automatisk indfleting:"
-
-#: glade/project_properties.glade.h:12
-msgid ""
-"Does this item need immediate attention? Note that some urgent tasks might "
-"not be important.  For example, Bill may want you to answer his email today, "
-"but you may have better things to do today."
-msgstr ""
-"Kræver dette punkt øjeblikkelig opmærksomhed? Bemærk at nogen hastende "
-"opgaver ikke behøver at være vigtige. Fx ønsker Peter at du svarer på hans e-"
-"post i dag, men du har måske bedre ting at foretage dig i dag."
-
-#: glade/project_properties.glade.h:13
-msgid "Double-Overtime Rate:"
-msgstr "Tarif for dobbelt-overarbejde:"
-
-#: glade/project_properties.glade.h:14
-msgid "Due Date:"
-msgstr "Afleveringsdato:"
-
-#: glade/project_properties.glade.h:15
-msgid "Flat Fee:"
-msgstr "Fast honorar:"
-
-#: glade/project_properties.glade.h:17
-msgid "Hours to Finish:"
-msgstr "Timer til afslutning:"
-
-#: glade/project_properties.glade.h:18
-msgid ""
-"How important is it to perform this task?  Not everything important is "
-"urgent.  For example, it is important to file a tax return every year, but "
-"you have a lot of time to get ready to do this."
-msgstr ""
-"Hvor vigtigt er det at udføre denne opgave? Ikke alt vigtigt er hastende. fx "
-"er det vigtigt at indsende selvangivelse hvert år, men du har masser af tid "
-"til at komme igang med dette."
-
-#: glade/project_properties.glade.h:19
-msgid ""
-"If the gap between intervals is smaller than this, the intervals will be "
-"merged together."
-msgstr ""
-"Hvis hullet mellem intervaller er mindre end dette, vil intervallerne blive "
-"flettet sammen."
-
-#: glade/project_properties.glade.h:20
-msgid ""
-"If this project is billed for one price no matter how long it takes, enter "
-"the fee here."
-msgstr ""
-"Hvis projektet bliver betalt med én pris, lige meget hvor lang tid det "
-"tager, så indtast honoraret her."
-
-#: glade/project_properties.glade.h:21
-msgid "Importance:"
-msgstr "Vigtighed:"
-
-#: glade/project_properties.glade.h:23
-msgid ""
-"Internal notes about the project that will not be printed on an invoice."
-msgstr "Interne noter om projektet, der ikke vil blive skrevet på en faktura."
-
-#: glade/project_properties.glade.h:24
-msgid "Intervals"
-msgstr "Intervaller"
-
-#: glade/project_properties.glade.h:25
-msgid "Intervals smaller than this will be discarded"
-msgstr "Intervaller mindre end dette vil ikke blive behandlet"
-
-#: glade/project_properties.glade.h:28
-msgid "Minimum Interval: "
-msgstr "Minimum interval: "
-
-#: glade/project_properties.glade.h:29
-msgid "Not Set"
-msgstr "Ikke sat"
-
-#: glade/project_properties.glade.h:31 glade/task_properties.glade.h:19
-msgid "Notes:"
-msgstr "Noter:"
-
-#: glade/project_properties.glade.h:33
-msgid "Overtime Rate:"
-msgstr "Tarif for overarbejde:"
-
-#: glade/project_properties.glade.h:34
-msgid "Planned Finish:"
-msgstr "Planlagt færdiggørelse:"
-
-#: glade/project_properties.glade.h:35
-msgid "Planned Start:"
-msgstr "Planlagt start:"
-
-#: glade/project_properties.glade.h:36
-msgid "Planning"
-msgstr "Planlægning"
-
-#: glade/project_properties.glade.h:37
-msgid "Project"
-msgstr "Projekt"
-
-#: glade/project_properties.glade.h:38
-msgid "Project Description:"
-msgstr "Projektbeskrivelse:"
-
-#: glade/project_properties.glade.h:40
-msgid "Rates"
-msgstr "Tariffer"
-
-#: glade/project_properties.glade.h:41
-msgid "Regular Rate:"
-msgstr "Normaltarif:"
-
-#: glade/project_properties.glade.h:42
-msgid "Status:"
-msgstr "Status:"
-
-#: glade/project_properties.glade.h:43
-msgid "The dollars per hour charged for overtime work on this project."
-msgstr "Kroner pr time for overarbejde på dette projekt."
-
-#: glade/project_properties.glade.h:44
-msgid "The dollars per hour normally charged for this project."
-msgstr "Kroner pr time for normalt arbejde på dette projekt."
-
-#: glade/project_properties.glade.h:45
-msgid "The over-overtime rate (overtime on Sundays, etc.)"
-msgstr "Tarif for ekstra overarbejde (overarbejde på søndage osv.)"
-
-#: glade/project_properties.glade.h:46
-msgid "Time below which an interval is merged with its neighbors"
-msgstr "Tidsrum under hvilet et interval flettes ind med sine naboer."
-
-#: glade/project_properties.glade.h:47
-msgid "Urgency:"
-msgstr "Hastende:"
-
-#: glade/project_properties.glade.h:48
-msgid "What is the status of this project?"
-msgstr "Hvad er status på dette projekt?"
-
-#: glade/project_properties.glade.h:49
-msgid "a short description that will be printed on the invoice."
-msgstr "en kort beskrivelse som vil blive skrevet på fakturaen."
-
-#: glade/project_properties.glade.h:50
-msgid "seconds"
-msgstr "sek."
-
-#: glade/task_popup.glade.h:1
-#, fuzzy
-msgid "Copy Diary Entry"
-msgstr "Indgang i kalender"
-
-#: glade/task_popup.glade.h:2
-msgid "Cut Entry & _Times"
-msgstr "Udklip indgang & _tider"
-
-#: glade/task_popup.glade.h:3
-msgid "New Time Interval"
-msgstr "Nyt opdateringsinterval"
-
-#: glade/task_popup.glade.h:4
-msgid "_Cut Diary Entry"
-msgstr "_Udklip kalenderindgangen"
-
-#: glade/task_popup.glade.h:7
-msgid "_Paste Diary Entry"
-msgstr "_Indsæt kalenderindgang"
-
-#: glade/task_properties.glade.h:2
-msgid "A short description to attach to this block of time."
-msgstr "En kort beskrivelse knyttet til denne tidsblok."
-
-#: glade/task_properties.glade.h:5
-msgid "Billable:"
-msgstr "Betalbart:"
-
-#: glade/task_properties.glade.h:6
-#, fuzzy
-msgid "Billing"
-msgstr "Fakturér"
-
-#: glade/task_properties.glade.h:7
-msgid "Billing Block:"
-msgstr "Regningsblok:"
-
-#: glade/task_properties.glade.h:8
-msgid "Billing Rate:"
-msgstr "Regningstarif:"
-
-#: glade/task_properties.glade.h:9
-msgid "Billing Status:"
-msgstr "Regningsstatus:"
-
-#: glade/task_properties.glade.h:11
-#, fuzzy
-msgid "Diary Notes"
-msgstr "Indgang i kalender"
-
-#: glade/task_properties.glade.h:12
-msgid "Fee rate to be charged for this task."
-msgstr "Honorartarif som skal tages for denne opgave."
-
-#: glade/task_properties.glade.h:15
-msgid ""
-"How should this task be billed?  \"Billable\" means bill to the customer in "
-"the normal fashion.   \"Not Billable\" means we can't ask for money for "
-"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
-"as 'free/no-charge'."
-msgstr ""
-"Hvordan skal denne opgave faktureres? 'Fakturerbar' betyder fakturér kunden "
-"på normal måde. 'ikke fakturerbar' betyder at vi ikke kan bede om betaling "
-"for dette, må ikke skrives på fakturaen. 'Ingen regning' betyder skriv på "
-"fakturaen som 'gratis'."
-
-#: glade/task_properties.glade.h:16
-msgid ""
-"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
-"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
-"\"Paid\" means that it should no longer be included on invoices."
-msgstr ""
-"Er denne opgave klar til at faktureres til kunden? 'Afvent' betyder måske, "
-"men ikke endnu, kræver eftersyn. 'Fakturér' betyder udskriv dette på den "
-"næste faktura. 'Betalt' betyder at det ikke længere bør inkluderes på "
-"fakturaer."
-
-#: glade/task_properties.glade.h:20
-msgid "OverOver"
-msgstr "EkstraOver"
-
-#: glade/task_properties.glade.h:24
-msgid ""
-"The billed unit of time will be rounded to an integer multiple of this time."
-msgstr ""
-"Den fakturerede tidsenhed vil blive rundet af til et helt antal gange denne "
-"tid."
-
-#: glade/task_properties.glade.h:25
-#, fuzzy
-msgid "Type detailed diary entry notes here."
-msgstr "Redigér kalenderindgangen og andre opgaveprioriteter."
-
-#: glade/task_properties.glade.h:26
-msgid "minutes"
-msgstr "minutter"
-
-#: gnotime.desktop.in.h:1
-#, fuzzy
-msgid "GnoTime Tracking Tool"
-msgstr "Tidsforbrugsværktøj"
-
-#: gnotime.desktop.in.h:2
-msgid "To-Do List Organizer, Diary and Billing System"
-msgstr ""
+#~ msgid "GnoTime Tracking Tool"
+#~ msgstr "TidsforbrugsvÃ¦rktÃ¸j"
 
 #, fuzzy
 #~ msgid "Time _Interval..."
 #~ msgstr "Nyt opdateringsinterval"
 
 #~ msgid "A set of private notes that will not be printed on an invoice."
-#~ msgstr "Et sæt af private noter der ikke vil blive skrevet på en faktura."
+#~ msgstr "Et sÃ¦t af private noter der ikke vil blive skrevet pÃ¥ en faktura."
 
 #~ msgid "Diary Entry Properties"
 #~ msgstr "Indstillinger for kalenderindgang"
@@ -1705,16 +1953,16 @@ msgstr ""
 #~ msgstr "_Journal..."
 
 #~ msgid "Show the verbose timesheet journal for this project"
-#~ msgstr "Vis den udførlige tidsjournal for dette projekt"
+#~ msgstr "Vis den udfÃ¸rlige tidsjournal for dette projekt"
 
 #~ msgid "Print"
 #~ msgstr "Udskriv"
 
 #~ msgid "Clear _Daily Counter"
-#~ msgstr "Nulstil _daglig tæller"
+#~ msgstr "Nulstil _daglig tÃ¦ller"
 
 #~ msgid "Zero out todays timer by deleting todays time logs"
-#~ msgstr "Nulstil tidstæller for i dag ved at slette dagens tidslogninger"
+#~ msgstr "Nulstil tidstÃ¦ller for i dag ved at slette dagens tidslogninger"
 
 #, fuzzy
 #~ msgid "New _Diary Entry"
@@ -1722,7 +1970,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Create new task header for this project"
-#~ msgstr "Ændr den igangværende opgave for dette projekt"
+#~ msgstr "Ã†ndr den igangvÃ¦rende opgave for dette projekt"
 
 #~ msgid "New Diary _Entry"
 #~ msgstr "Ny _indgang i kalender"
@@ -1734,48 +1982,18 @@ msgstr ""
 #~ msgstr "_Hele journalen..."
 
 #~ msgid "Time Tracker tool"
-#~ msgstr "Undersøg hvor meget tid du bruger på dine projekter"
+#~ msgstr "UndersÃ¸g hvor meget tid du bruger pÃ¥ dine projekter"
 
 #~ msgid "System Idle"
 #~ msgstr "Systemet stille"
 
-#~ msgid "Elapsed"
-#~ msgstr "Påløbet"
-
-#~ msgid "(empty)"
-#~ msgstr "<tom>"
-
-#~ msgid "Notes"
-#~ msgstr "Noter"
-
-#~ msgid "Task Time"
-#~ msgstr "Opgavetid"
-
-#~ msgid "Bill Status"
-#~ msgstr "Status på fakturering"
-
-#~ msgid "Bill Rate"
-#~ msgstr "Regningstarif"
-
-#~ msgid "Billable Value"
-#~ msgstr "Fakturerbar værdi"
-
-#~ msgid "No Default Value"
-#~ msgstr "Ingen standard-værdi"
-
-#~ msgid "Start Time Fuzziness"
-#~ msgstr "Usikkerhed på starttid"
-
-#~ msgid "Error - Unknown"
-#~ msgstr "Fejl - ukendt"
-
 #, fuzzy
 #~ msgid "Estimated Start Date"
-#~ msgstr "Anslået startdato for projekt"
+#~ msgstr "AnslÃ¥et startdato for projekt"
 
 #, fuzzy
 #~ msgid "Estimated End Date"
-#~ msgstr "Anslået startdato for projekt"
+#~ msgstr "AnslÃ¥et startdato for projekt"
 
 #, fuzzy
 #~ msgid "Due Date"
@@ -1783,11 +2001,11 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Sizing"
-#~ msgstr "Størrelse"
+#~ msgstr "StÃ¸rrelse"
 
 #, fuzzy
 #~ msgid "Percent Complete"
-#~ msgstr "Vis procent færdiggjort"
+#~ msgstr "Vis procent fÃ¦rdiggjort"
 
 #, fuzzy
 #~ msgid "Urgency"
@@ -1796,9 +2014,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Importance"
 #~ msgstr "Vigtighed:"
-
-#~ msgid "unknown token: >>>>"
-#~ msgstr "ukendt enhed: >>>>"
 
 #~ msgid "no project selected"
 #~ msgstr "intet projekt er valgt"
@@ -1817,40 +2032,40 @@ msgstr ""
 #~ msgstr "%d:%02d:%02d"
 
 #~ msgid "Reload Configuration File"
-#~ msgstr "Genindlæs konfigurationsfil"
+#~ msgstr "GenindlÃ¦s konfigurationsfil"
 
 #~ msgid "Do you really want to reload the configuration file?"
-#~ msgstr "Vil du virkelig genindlæse konfigurationsfilen?"
+#~ msgstr "Vil du virkelig genindlÃ¦se konfigurationsfilen?"
 
 #~ msgid "File cannot be written"
 #~ msgstr "Fil kan ikke skrives"
 
 #~ msgid "Export Current State"
-#~ msgstr "Eksportér nuværende tilstand"
+#~ msgstr "EksportÃ©r nuvÃ¦rende tilstand"
 
 #~ msgid "_Reload Configuration File"
-#~ msgstr "_Genindlæs konfigurationsfil"
+#~ msgstr "_GenindlÃ¦s konfigurationsfil"
 
 #~ msgid "_Save Configuration File"
 #~ msgstr "_Gem konfigurationsfil"
 
 #~ msgid "_Export Current State"
-#~ msgstr "_Eksportér nuværende tilstand"
+#~ msgstr "_EksportÃ©r nuvÃ¦rende tilstand"
 
 #~ msgid "Save Configuration File"
 #~ msgstr "Gem konfigurationsfil"
 
 #~ msgid "Add a new time interval."
-#~ msgstr "Indsæt et nyt tidsinterval."
+#~ msgstr "IndsÃ¦t et nyt tidsinterval."
 
 #~ msgid "Delete This Interval"
 #~ msgstr "Slet dette opdateringsinterval"
 
 #~ msgid "Edit the Start & Stop Times"
-#~ msgstr "Redigér Start/stop tider"
+#~ msgstr "RedigÃ©r Start/stop tider"
 
 #~ msgid "Insert a new diary entry above this time interval."
-#~ msgstr "Indsæt en ny kalenderindgang over dette tidsinterval."
+#~ msgstr "IndsÃ¦t en ny kalenderindgang over dette tidsinterval."
 
 #~ msgid "Merge Into Interval Above"
 #~ msgstr "Flet ind i interval ovenover"
@@ -1859,10 +2074,10 @@ msgstr ""
 #~ msgstr "Flet ind i interval nedenunder"
 
 #~ msgid "Show `Save', `Reload'"
-#~ msgstr "Vis 'Gem', 'Genindlæs'"
+#~ msgstr "Vis 'Gem', 'GenindlÃ¦s'"
 
 #~ msgid "Add a new time interval"
-#~ msgstr "Tilføj et nyt tidsinterval"
+#~ msgstr "TilfÃ¸j et nyt tidsinterval"
 
 #~ msgid "Delete the diary entry only, keep the time intervals"
 #~ msgstr "Slet kun kalenderindgangen, behold tidsintervallerne"
@@ -1871,7 +2086,7 @@ msgstr ""
 #~ msgstr "Slet kalenderindgangen, og tidsintervallerne under den."
 
 #~ msgid "Insert a new diary entry above this one."
-#~ msgstr "Indsæt en ny kalenderindgang over denne."
+#~ msgstr "IndsÃ¦t en ny kalenderindgang over denne."
 
 #~ msgid "This Memo"
 #~ msgstr "Dette notat"
@@ -1880,7 +2095,7 @@ msgstr ""
 #~ msgstr "Opgave"
 
 #~ msgid "The memo for the current task"
-#~ msgstr "Notatet for igangværende opgave"
+#~ msgstr "Notatet for igangvÃ¦rende opgave"
 
 #~ msgid "Memo"
 #~ msgstr "Notat"
@@ -1892,22 +2107,16 @@ msgstr ""
 #~ msgstr "Ny _opgave..."
 
 #~ msgid "Insert Memo"
-#~ msgstr "Indsæt notat"
+#~ msgstr "IndsÃ¦t notat"
 
 #~ msgid "Paste Memo"
-#~ msgstr "Indsæt notat"
-
-#~ msgid "Delete _Memo"
-#~ msgstr "Slet _notat"
+#~ msgstr "IndsÃ¦t notat"
 
 #~ msgid "_Edit Memo"
-#~ msgstr "_Redigér notat"
-
-#~ msgid "_New Memo"
-#~ msgstr "_Nyt notat"
+#~ msgstr "_RedigÃ©r notat"
 
 #~ msgid "_Paste Memo"
-#~ msgstr "_Indsæt notat"
+#~ msgstr "_IndsÃ¦t notat"
 
 #~ msgid "Memo:"
 #~ msgstr "Notat:"
@@ -1916,4 +2125,4 @@ msgstr ""
 #~ msgstr "Egenskaber for opgaver"
 
 #~ msgid "Time tracking tool for GNOME"
-#~ msgstr "Tidsforbrugsværktøj til Gnome"
+#~ msgstr "TidsforbrugsvÃ¦rktÃ¸j til Gnome"
