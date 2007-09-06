@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-utils 1.0.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-06 14:56-0300\n"
-"PO-Revision-Date: 2004-07-22 10:44-0300\n"
+"PO-Revision-Date: 2007-09-06 17:00-0300\n"
 "Last-Translator: Goedson Teixeira Paixão <goedson@debian.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: active.glade:7
-#, fuzzy
 msgid "Start Project Dialog"
-msgstr "Comando ao iniciar projeto:"
+msgstr "Iniciar projeto"
 
 #: active.glade:41 idle.glade:41
 msgid "Restart the same project that used to be running."
@@ -49,29 +48,27 @@ msgstr "*"
 
 #: column_menu.glade:12
 msgid "Sort the entries in this column in alphabetical order."
-msgstr ""
+msgstr "Ordena as entradas desta coluna em ordem alfabética."
 
 #: column_menu.glade:13
-#, fuzzy
 msgid "Sort"
-msgstr "Iniciar"
+msgstr "Ordenar"
 
 #: column_menu.glade:34
 msgid "Move this column to the left."
-msgstr ""
+msgstr "Move esta coluna para a esquerda."
 
 #: column_menu.glade:35
-#, fuzzy
 msgid "Move Left"
-msgstr "Mover para cima"
+msgstr "Mover para a esquerda"
 
 #: column_menu.glade:56
 msgid "Move this column to the right."
-msgstr ""
+msgstr "Mover esta coluna para a direita."
 
 #: column_menu.glade:57
 msgid "Move Right"
-msgstr ""
+msgstr "Mover para a direita"
 
 #: idle.glade:7
 msgid "Restart Idle Timer Dialog"
@@ -207,7 +204,6 @@ msgid "GnoTime: Publish Report"
 msgstr "Gnotime: Publicar Relatório"
 
 #: journal.glade:133
-#, fuzzy
 msgid ""
 "<b>Publish This Report</b>\n"
 "Enter a URL such as one of the following:\n"
@@ -217,7 +213,7 @@ msgid ""
 msgstr ""
 "<b>Publicar este relatório</b>\n"
 "Entre uma URL de um dos tipos abaixo:\n"
-"mailto:<i><usuario>@<servidor></i>\n"
+"mailto:<i>&lt;usuario&gt;@&lt;servidor&gt;</i>\n"
 "ssh://<i>servidor.net/caminho/para/arquivo</i>\n"
 "ftp://<i>usuario:senha@servidor.net/caminho/para/arquivo</i>\n"
 
@@ -275,93 +271,91 @@ msgstr "Informação"
 
 #: plugin_editor.glade:9
 msgid "GnoTime Report Menu Editor"
-msgstr ""
+msgstr "Editor de Menu de Relatório do GnoTime"
 
 #: plugin_editor.glade:43
 msgid "Abandon all changes and close this dialog window."
-msgstr ""
+msgstr "Abandona todas as alterações e fechar esta janela."
 
 #: plugin_editor.glade:57
 msgid "Apply the changes to the reports menu."
-msgstr ""
+msgstr "Aplica as mudanças ao menu de relatórios."
 
 #: plugin_editor.glade:71
 msgid "Apply the changes to the reports menu, and close this dialog window."
-msgstr ""
+msgstr "Aplica alterações ao menu de relatórios e fecha esta janela."
 
 #: plugin_editor.glade:138
 msgid "Move the selected menu item up by one entry."
-msgstr ""
+msgstr "Move o item de menu selecionado uma posição acima."
 
 #: plugin_editor.glade:151
 msgid "Move the selected menu item down by one entry."
-msgstr ""
+msgstr "Move o item de menu selecionado uma posição abaixo."
 
 #: plugin_editor.glade:217
 msgid "Enter the popup hint for the menu item here."
-msgstr ""
+msgstr "Digite a dica para este item de menu aqui."
 
 #: plugin_editor.glade:248
 msgid "Enter the file path to the report here."
-msgstr ""
+msgstr "Digite o caminho para o arquivo deste relatório aqui."
 
 #: plugin_editor.glade:272
 msgid "Enter the name for the menu item here."
-msgstr ""
+msgstr "Digite o nome para este item de menu aqui."
 
 #: plugin_editor.glade:295 plugin.glade:98
 msgid "Path:"
-msgstr ""
+msgstr "Caminho:"
 
 #: plugin_editor.glade:320 plugin.glade:122
-#, fuzzy
 msgid "Tooltip:"
-msgstr "Mostrar dicas flutuantes"
+msgstr "Dica:"
 
 #: plugin_editor.glade:345
 msgid "Label:"
-msgstr ""
+msgstr "Texto:"
 
 #: plugin_editor.glade:370
 msgid "Icon:"
-msgstr ""
+msgstr "Ícone:"
 
 #: plugin_editor.glade:402
 msgid "Pick an icon to decorate the menu entry."
-msgstr ""
+msgstr "Escolha um ícone para decorar o item de menu."
 
 #: plugin_editor.glade:442
 msgid "Add a new menu entry at the selected position."
-msgstr ""
+msgstr "Adiciona uma nova entrada de menu na posição selecionada."
 
 #: plugin_editor.glade:444
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: plugin_editor.glade:461
 msgid "Add a horizontal bar (separator) to the menu."
-msgstr ""
+msgstr "Adiciona uma barra horizontal (separador) ao menu.."
 
 #: plugin_editor.glade:463
 msgid "Add Separator"
-msgstr ""
+msgstr "Adicionar Separador"
 
 #: plugin_editor.glade:480
 msgid "Add Child"
-msgstr ""
+msgstr "Adicionar Submenu"
 
 #: plugin_editor.glade:496
 msgid "Delete the selected menu entry."
-msgstr ""
+msgstr "Remove o item de menu selecionado."
 
 #: plugin_editor.glade:498
-#, fuzzy
 msgid "Delete"
-msgstr "Remover _nota"
+msgstr "Remover"
 
 #: plugin_editor.glade:541
 msgid "Modifiers:"
-msgstr ""
+msgstr "Modificadores:"
 
 #: plugin_editor.glade:563
 msgid "Ctrl"
@@ -377,27 +371,27 @@ msgstr ""
 
 #: plugin_editor.glade:629
 msgid "Key:"
-msgstr ""
+msgstr "Tecla:"
 
 #: plugin_editor.glade:650
 msgid "Enter the keyboard shortcut for this menu item."
-msgstr ""
+msgstr "Forneça o atalho de teclado para este item de menu."
 
 #: plugin_editor.glade:679
 msgid "Accelerator"
-msgstr ""
+msgstr "Atalho"
 
 #: plugin.glade:74
 msgid "Name:"
-msgstr ""
+msgstr "Nome:"
 
 #: plugin.glade:146
 msgid "Title that will appear in the 'Reports' menu."
-msgstr ""
+msgstr "Título que aparecerá no menu 'Relatórios'."
 
 #: plugin.glade:168
 msgid "Tooltip that will show when the pointer hovers over this menu item."
-msgstr ""
+msgstr "Dica que será mostrada quando o apontador do mouse pairar sobre este item de menu."
 
 #: prefs.glade:52
 msgid "Show Project Importance"
@@ -600,9 +594,8 @@ msgid "Logfile"
 msgstr "Arquivo de logs"
 
 #: prefs.glade:1191
-#, fuzzy
 msgid "Show Toolbar"
-msgstr "Mostrar ícones na barra de ferramentas"
+msgstr "Mostrar a barra de ferramentas"
 
 #: prefs.glade:1210
 msgid "Show Tooltips"
@@ -665,9 +658,8 @@ msgid "Inactivity Timeout"
 msgstr "Tempo limite de inatividade"
 
 #: prefs.glade:1661
-#, fuzzy
 msgid "No Project Timeout"
-msgstr "Título do Projeto"
+msgstr "Limite de tempo sem projeto"
 
 #: prefs.glade:1707
 msgid "New Day Starts At:"
@@ -770,35 +762,32 @@ msgid "Misc"
 msgstr "Miscelânea"
 
 #: prefs.glade:2056
-#, fuzzy
 msgid "12 hours"
-msgstr "2 horas"
+msgstr "22 horas"
 
 #: prefs.glade:2070
-#, fuzzy
 msgid "24 hours"
-msgstr "2 horas"
+msgstr "24 horas"
 
 #: prefs.glade:2086 prefs.glade:2132
 msgid "Use my locale formating"
-msgstr ""
+msgstr "Use a formatação do meu locale"
 
 #: prefs.glade:2106
-#, fuzzy
 msgid "Time format"
-msgstr "Contador"
+msgstr "Formatação de tempo"
 
 #: prefs.glade:2145
 msgid "Place your local currency symbol for use in the reports"
-msgstr ""
+msgstr "Forneça o símbolo monetário desejado para uso em relatórios"
 
 #: prefs.glade:2162
 msgid "Currency Symbol"
-msgstr ""
+msgstr "Símbolo monetário"
 
 #: prefs.glade:2176
 msgid "Currency settings"
-msgstr ""
+msgstr "Configurações monetárias"
 
 #. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
@@ -996,9 +985,8 @@ msgid "What is the status of this project?"
 msgstr "Qual o status deste projeto?"
 
 #: project_properties.glade:1168 ghtml.c:939
-#, fuzzy
 msgid "No Status"
-msgstr "Status"
+msgstr "Sem estado"
 
 #: project_properties.glade:1176 ctree.c:1294 ctree-gnome2.c:1126 ghtml.c:940
 msgid "Not Started"
@@ -1171,14 +1159,14 @@ msgid ""
 "project timer running?  If so, you can select a project from the menu below, "
 "and click 'Start' to start the project running.  Otherwise, just click "
 "'Cancel' to do nothing."
-msgstr ""
+msgstr "Não há nenhum projeto com o marcador de tempo ativo no GnoTime. Você deseja iniciar o marcador de tempo para algum projeto? Se sim, você pode selecionar um projeto no menu abaixo e clicar 'Iniciar' para começar a contar o tempo para o projeto. Senão, apenas clique em 'Cancelar' para não fazer nada."
 
 #: active-dialog.c:122
 msgid ""
 "You can credit this project with the time that you worked on it but were "
 "away from the keyboard.  Enter a time below, the project will be credited "
 "when you click 'Start'"
-msgstr ""
+msgstr "Você pode creditar este projeto com o tempo que você trabalhou mas estava afastado do teclado. Informe o tempo abaixo e o projeto será creditado quando você clicar em 'Iniciar'"
 
 #. put project name into statusbar
 #. put project name into statusbar
@@ -1493,9 +1481,8 @@ msgid "Double Overtime"
 msgstr "Hora extra dupla"
 
 #: ghtml.c:1102 ghtml.c:1118
-#, fuzzy
 msgid "No activity"
-msgstr "_Atividade..."
+msgstr "Sem atividade"
 
 #: ghtml-deprecated.c:89 ghtml-deprecated.c:294
 msgid "Elapsed"
@@ -1506,9 +1493,8 @@ msgid "(empty)"
 msgstr "(vazio)"
 
 #: ghtml-deprecated.c:244
-#, fuzzy
 msgid "Notes"
-msgstr "Notas:"
+msgstr "Notas"
 
 #: ghtml-deprecated.c:248
 msgid "Task Time"
@@ -1523,9 +1509,8 @@ msgid "Bill Rate"
 msgstr "Taxa de cobrança"
 
 #: ghtml-deprecated.c:264
-#, fuzzy
 msgid "Value"
-msgstr "Falso"
+msgstr "Valor"
 
 #: ghtml-deprecated.c:268
 msgid "Billable Value"
@@ -1714,26 +1699,24 @@ msgid "New Project..."
 msgstr "Novo projeto..."
 
 #: menucmd.c:537
-#, fuzzy
 msgid ""
 "To edit the timer interval for this project,\n"
 "open the Activity window and click on a link.\n"
 "This will bring up a menu of time editing options.\n"
 msgstr ""
 "Para editar os intervalos de tempo para este projeto,\n"
-"abra a janela de Diário e clique em um atalho.\n"
+"abra o relatório de Atividade e clique em um atalho.\n"
 "Isto ativará um menu com as opções de edição de intervalos.\n"
 
 #: plug-edit.c:140
 msgid ""
 "You must specify a complete filepath to the report, including a leading "
 "slash.  The file that you specify must exist."
-msgstr ""
+msgstr "Você deve informar um caminho completo para o relatório, incluindo a barra inicial. O arquivo especificado deve existir."
 
 #: plug-edit.c:188
-#, fuzzy
 msgid "New Item"
-msgstr "_Nova nota"
+msgstr "Novo Item"
 
 #: plug-in.c:114
 #, c-format
