@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-06 14:14-0300\n"
+"POT-Creation-Date: 2007-09-06 14:56-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -267,11 +267,11 @@ msgid "GnoTime Report Menu Editor"
 msgstr ""
 
 #: plugin_editor.glade:43
-msgid "Abandom all changes and close this dialog window."
+msgid "Abandon all changes and close this dialog window."
 msgstr ""
 
 #: plugin_editor.glade:57
-msgid "Apply the changes the the reports menu."
+msgid "Apply the changes to the reports menu."
 msgstr ""
 
 #: plugin_editor.glade:71
@@ -764,6 +764,10 @@ msgstr ""
 
 #. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
+#. Build the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
+#. Build the i18n menu path ...
+#. (is this right ??? or is this pre-i18n ???)
 #: prefs.glade:2199 menus.c:301
 msgid "Reports"
 msgstr ""
@@ -1120,10 +1124,14 @@ msgid ""
 msgstr ""
 
 #. put project name into statusbar
+#. put project name into statusbar
+#. put project name into statusbar
 #: app.c:112 app.c:307
 msgid "Timer is not running"
 msgstr ""
 
+#. put elapsed time into statusbar
+#. put elapsed time into statusbar
 #. put elapsed time into statusbar
 #: app.c:300
 msgid "00:00"
@@ -1199,6 +1207,8 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#. Put stuff into the dialog box
+#. Put stuff into the dialog box
 #. Put stuff into the dialog box
 #: ctree.c:842 ctree-gnome2.c:700 menucmd.c:275
 msgid "Project Title"
@@ -1542,6 +1552,8 @@ msgid "Cannot open logfile %s for append: %s"
 msgstr ""
 
 #. Translators: Format to use in the gnotime logfile
+#. Translators: Format to use in the gnotime logfile
+#. Translators: Format to use in the gnotime logfile
 #: log.c:70
 msgid "%b %d %H:%M:%S"
 msgstr ""
@@ -1558,6 +1570,8 @@ msgstr ""
 msgid "program started"
 msgstr ""
 
+#. log_if_equal
+#. log_if_equal
 #. log_if_equal
 #: log.c:273
 msgid "program exited"
