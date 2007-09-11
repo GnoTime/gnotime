@@ -1,12 +1,12 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
-<!ENTITY version "1.4">
+<!ENTITY version "2.2.3">
 ]>
 
 <article id="index" lang="en"> <!-- please do not change the id-->
 
-  <articleinfo> 
+  <articleinfo>
     <title>GNOME Time Tracker Manual</title>
     <copyright>
       <year>1997-2000</year>
@@ -19,6 +19,10 @@
     <copyright>
       <year>2001</year>
       <holder>Linas Vepstas &lt;linas@linas.org&gt;</holder>
+    </copyright>
+    <copyright>
+      <year>2007</year>
+      <holder>Goedson Paixão &lt;goedson@debian.org&gt;</holder>
     </copyright>
 
     <legalnotice id="legalnotice">
@@ -39,7 +43,7 @@
     </legalnotice>
 
     <releaseinfo> 
-         This is version 2.0.1 of the GNOME Time Tracker manual.
+         This is version 2.2.3 of the GNOME Time Tracker manual.
      </releaseinfo> 
 <!-- this is version of manual, not application --> 
   </articleinfo>
@@ -58,7 +62,7 @@
       is a combination stop-watch, diary, to-do list tracker and 
       consultant billing system.  You can measure the amount of time you
       spend on a task, associate a memo with it, set a billing rate, print
-      an invoice, as well as track that status of other projects.
+      an invoice, as well as track the status of other projects.
 
 
       You do not need to learn or use every feature in
@@ -96,8 +100,8 @@
         <listitem>
           <para>
     <emphasis>Basic Billing/Invoicing Support</emphasis>
-    Infrastructure for storing price &amp; billing information has been
-     put into place.  This allows billing invoices to be generated.
+    GTT has the infrastructure necessary for storing price and
+    billing information.  This allows billing invoices to be generated.
      Tasks can be marked as billable, non-billable, on-hold, or
      free-of-charge. Billing rates for regular, overtime,
      double-overtime or flat-fee can be set per task.
@@ -108,21 +112,22 @@
         <listitem>
           <para>
     <emphasis>Sub-Project Support</emphasis>
-    New projects can be listed
-     as sub-projects of other projects.  The time totals will show
-     the total including sub-projects.  The Hierarchical tree can be
-     expanded / collapsed to simplify viewing.  The tree can be
-     re-arranged by dragging-n-dropping projects.
+    New projects can be listed as sub-projects of other projects.  
+	The time totals will show the total including sub-projects.  
+	The Hierarchical tree can be expanded / collapsed to simplify
+    viewing. The tree can be re-arranged by dragging-n-dropping
+    projects. 
           </para> 
         </listitem>
 
         <listitem>
           <para>
-    <emphasis>Simpler Navigation</emphasis>
-    Arrow keys and carriage return now work in the main window.
-     Up/down keys can be used to move up &amp; down.  The left/right arrow
-     keys expand/collapse a sub-project list.  Hitting return selects
-     the project.
+    <emphasis>Simple Navigation</emphasis>
+	
+     Up/down keys can be used to move up &amp; down on the project
+	list. The left/right arrow keys expand/collapse a sub-project
+	list. Hitting return starts/stops the timer for the selected
+	project.
           </para> 
         </listitem>
 
@@ -131,20 +136,18 @@
     <emphasis>Log Journal</emphasis>
     A journal showing explicit start and stop times is maintained.
      Blocks of time can be annotated with memos.  The journal can be
-     exported as an html page, or printed (OK, printer support not
-     yet finished).
+     exported as an html page.
           </para> 
         </listitem>
 
         <listitem>
           <para>
     <emphasis>Auto-merge/cleanup of Short Intervals Support</emphasis>
-    Extremely short
-     intervals (the length is configurable) are automatically removed
-     from the logs.  Slightly longer but still short intervals
-     are auto-merged into nearby neighbors. Short gaps between intervals
-     are coalesced as well.  You can specify a time period of 0 seconds
-     to turn these features off.
+    Extremely short intervals (the length is configurable) are
+    automatically removed from the logs.  Slightly longer but still
+    short intervals are auto-merged into nearby neighbors. Short gaps
+    between intervals are coalesced as well.  You can specify a time
+    period of 0 seconds to turn these features off.
           </para> 
         </listitem>
 
@@ -165,9 +168,12 @@
         <listitem>
           <para>
     <emphasis>Inactivity Timeout</emphasis>
-    An inactivity timeout has been implemented. If the keyboard
-     or mouse have been idle for more than some period of time, then
-     the clock is stopped.
+    GTT has an inactivity timeout, that will stop the timer after some
+    period of inactivity on both the mouse and keyboard. This period
+    can be configured (or disabled) and the user can decided what to
+    do with the inactivity period when he/she returns (credit all or
+    part of it to the active project or consider as if the timer was
+    inactive for the whole period).
           </para> 
         </listitem>
 
@@ -199,26 +205,39 @@
           <para>
     <emphasis>Multi-Language Support</emphasis>
     The basic GTT menus have been translated to dozens of languages.
-    Translations are need for the manual. (Actually, the manual needs
-    a re-write).
+    Translations are still needed for the manual.
           </para> 
         </listitem>
-
+		<listitem>
+		  <para>
+			<emphasis>
+			  DBus support
+			</emphasis>
+			GTT uses DBus to expose some of its functionality. It is
+			currently possible to start/stop the timer or save/reload
+			the data file by sending DBus messages. A shell script
+			named <filename>gnotime-remote</filename> is provided to
+			ease this remote controling of GTT.
+		  </para>
+		</listitem>
     </itemizedlist>
 
     </para>
     <para>
-     <application>GNOME Time Tracker</application> is included in the package 
-     <filename>gnome-utils</filename>, which is a
-      part of the GNOME desktop environment. This document describes
-      version &version; of <application>GNOME Time Tracker</application>
+     <application>GNOME Time Tracker</application> started as part of
+      the package <filename>gnome-utils</filename>, which is a
+      part of the GNOME desktop environment. Now it's maintained as a
+      separate application and is hosted
+      at <ulink url="https://sourceforge.net/projects/gttr/">Gnotime
+      Sourceforge Project</ulink>. This document describes version
+      &version; of <application>GNOME Time Tracker</application>.
     </para>
 
     <para><application>GNOME Time Tracker</application> can be started by
       selecting <guimenuitem>Time Tracking Tool</guimenuitem> from
-      the <guisubmenu>Applications</guisubmenu> submenu of the <guimenu>Main 
-      Menu</guimenu>, or by running the command
-      <command>gnotime</command> on the commandline.  
+      the <guisubmenu>Office</guisubmenu> submenu of
+      the <guimenu>Applications</guimenu>, or by running the command
+      <command>gnotime</command> on the command line.
     </para>
   </sect2>
 </sect1>
@@ -253,17 +272,18 @@ slightly differently in this new version.
       isn't particularly smart: it won't turn the timer off for you if you 
       take a break for a quick game of solitaire and it turns into several hours of distraction.
       The inactivity timer will notice that you are still using the keyboard and mouse;
-      it does not know that its just solitaire.
+      it does not know that it's just solitaire.
       When you stop work on a project, be sure to turn off
       the timer by clicking the <guibutton>Timer</guibutton> button or using <guimenuitem>
       Stop</guimenuitem> from the <guimenu>Timer</guimenu> menu.  As long as you remember to do 
       this, your work will be recorded effectively.  You can, however, alter the times from the
-      <interface>Properties</interface> dialog if they are incorrect.  See <xref linkend="properties" /> for more information.
+      <interface>Activity Report</interface> if they are incorrect.
+      See <xref linkend="activity_report" /> for more information. 
     </para>
  
 <para id="timer"><application>GNOME Time Tracker</application> can inform you about your
       project times in several ways.
-      For each project, it maintains a timer for the amount  
+      For each project, it maintains a timer for the amount 
       of time you have spent on the project today, this week, this month, this year, 
       and how much time you have spent on it total.
       In addition,<application>GNOME Time Tracker</application> counts how much time you have spent
@@ -286,16 +306,15 @@ slightly differently in this new version.
 <!-- ==============End of Figure=================================== -->
       
 
-
-
-The main window consists of four areas. There is a menu bar (see <xref linkend="menubar"/>) and
+The main window consists of five areas. There is a menu bar (see <xref linkend="menubar"/>) and
 a toolbar (see <xref linkend="toolbar"/>) at the top of the window, 
 a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
  and between the toolbar and the status bar,
- a scrollable project list (see <xref linkend="projlist"/>).
-      When you start<application>GNOME Time Tracker</application> for the first time, this area will
-      show just one project, which is titled "empty".
-   </para>                    
+ a scrollable project list (see <xref linkend="projlist"/>) and a
+resizable notes area (see <xref linked="notesarea"/>).
+      When you start<application>GNOME Time Tracker</application> for
+the first time, the project list area will show you an empty list.
+   </para>
 
 
    <tip>
@@ -311,8 +330,6 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
       <!-- =========Subsection=========================== -->   
     <sect2 id="menubar" xreflabel="Menus">
       <title>Menus</title>
-
-
    <para>
       Nearly all menu items in <application>GNOME Time Tracker</application> have a shortcut or
       accelerator key.  Shortcuts appear right after the
@@ -321,7 +338,7 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
 
    <para>
        The menu bar consists of four menus: <guimenu>File</guimenu>,
-       <guimenu>Edit</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
+       <guimenu>Edit</guimenu>, <guimenu>Settings</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
    </para>
 
       <!-- =========List=========================== -->
@@ -332,104 +349,91 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
               <para>
                  This menu contains the following commands:
               </para>
-            <para>  
-               <menuchoice>
-                    <shortcut>
-                      <keysym>
-                        Ctrl-N
-                      </keysym>
-                    </shortcut> 
-                
-                    <guimenuitem>
-                   &mdash; New Project
-                    </guimenuitem>
-                 </menuchoice>
-                 New Project brings up the <interface>New Project</interface> dialog so you
-                 can create a new project.
-            </para>
             <para>
                 <menuchoice>
                   <shortcut>
                     <keysym>
-                      Ctrl-L
+                      Ctrl-E
                     </keysym>
-                    </shortcut> 
-                    <guimenuitem> &mdash; Reload Configuration File</guimenuitem>
+                    </shortcut>
+                    <guimenuitem>Export Tasks</guimenuitem>
                   </menuchoice>
-              
-              This loads the last saved version of the configuration file, 
-        <filename>$HOME/.gnome2/gnotime</filename>.  This file is saved every time
-                <application>GNOME Time Tracker</application> quits, and it holds information about your
-                preferences and projects.
-                If you choose this menu item, your projects will revert
-                to their status at the time of the last configuration file save.
+               &mdash; Saves a file containing information about all the tasks
+              for the currently selected project.
               </para>
 
               <para>
               <menuchoice>
-                <shortcut><keysym>Ctrl-S</keysym>
+                <shortcut><keysym>Ctrl-P</keysym>
                 </shortcut>
-                <guimenuitem> &mdash; Save Configuration File</guimenuitem>
+                <guimenuitem>Export Projects</guimenuitem>
               </menuchoice>
-              This function saves information about your projects and preferences in 
-              the configuration file <filename>$HOME/.gnome/gnotime</filename>.
-              <application>GNOME Time Tracker</application> saves this information automatically every time you quit,
-              and tries to do so even when it crashes.  Still, it never hurts to save
-              your project information from time to time.
+               &mdash; Saves a file containing information about all top-level projects.
               </para>
 
               <para>
               <menuchoice>
                 <shortcut><keysym>Ctrl-Q</keysym>
                 </shortcut>
-                <guimenuitem> &mdash; Quit</guimenuitem>
+                <guimenuitem>Quit</guimenuitem>
               </menuchoice>
-              Quits <application>GNOME Time Tracker</application>.  Quitting automatically saves project data and updates the logfile.
+              &mdash; Closes <application>GNOME Time
+              Tracker</application>, saving projects data and updating
+              the logfile if a logfile is in use.
             </para>
           </listitem>
-        </varlistentry> 
-
+        </varlistentry>
         <varlistentry>
           <term><guimenu>Edit</guimenu></term>
           <listitem>
             <para>
               This menu contains the following commands:
+			</para>
+            <para>
+               <menuchoice>
+                    <shortcut>
+                      <keysym>
+                        Ctrl-N
+                      </keysym>
+                    </shortcut>
+                    <guimenuitem>
+                   New Project
+                    </guimenuitem>
+                 </menuchoice>
+                 &mdash; brings up the <interface>New Project</interface> dialog so you
+                 can create a new project.
+            </para>
+			<para>
               <menuchoice>
-                 <shortcut><keysym>Ctrl-X</keysym></shortcut>
+                 <shortcut><keysym>Ctrl-D</keysym></shortcut>
                 <guimenuitem>Cut</guimenuitem>
-                
               </menuchoice>
-              &mdash; Removes an item from the project list, saving it in 
+              &mdash; Removes an item from the project list, saving it in
               memory if you want to paste it back in somewhere else.
               </para>
 
               <para>
                  <menuchoice>
-                    <shortcut><keysym>Ctrl-C</keysym></shortcut>        
-                    <guimenuitem>Copy</guimenuitem>            
-                 </menuchoice>        
+                    <shortcut><keysym>Ctrl-F</keysym></shortcut>
+                    <guimenuitem>Copy</guimenuitem>
+                 </menuchoice>
                 &mdash; Duplicates a selected project, copying it to memory.
                 </para>
-
                 <para>
                    <menuchoice>
-                      <shortcut><keysym>Ctrl-V</keysym></shortcut>
+                      <shortcut><keysym>Ctrl-G</keysym></shortcut>
                       <guimenuitem>Paste</guimenuitem>
                    </menuchoice>
                      &mdash; Places the project in memory onto the task list.  Projects are inserted
                      before the selected item.  If no item is selected, they will appear at the bottom of the list.
                 </para>
-
                 <para>
-                    <menuchoice>  
-                       <guimenuitem>Clear Daily Counter</guimenuitem>
+                    <menuchoice>
+                       <guimenuitem>Edit Times</guimenuitem>
                     </menuchoice>
-                      &mdash; This function is a quick way to clear the daily counter for
-                      the currently selected project. You can use it if you 
-                      want to time a process more than once.  This is useful if you want to
-                      track how long a PPP connection to the Internet lasts, or for timing 
-                      compilation and other repeated tasks.
-                      This command does not affect the global timer.
+                      &mdash; Opens the <interface>Activity Report</interface> for the
+                      currently selected project so that you can edit
+                      the time intervals currently saved for it.
                  </para>
 
                  <para>
@@ -438,7 +442,7 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
                  </menuchoice>
                  &mdash; This selection opens the <interface>Properties</interface> dialog for
                  the currently selected project.  Here you can view and edit the name,
-                 description, and times for your project.  Note that this is the same action
+                 description, planning and billing data for your project.  Note that this is the same action
      as the <guibutton>Props</guibutton> button on the toolbar.  See <xref linkend="properties"/> for more information.
                  </para>
             </listitem>
@@ -461,16 +465,18 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
            <listitem>
              <para>
                This menu contains the following commands:
+			 </para>
+			 <para>
                <menuchoice>
-                 <shortcut><keysym>Ctrl-A</keysym></shortcut>
+                 <shortcut><keysym>Ctrl-S</keysym></shortcut>
                 <guimenuitem>Start</guimenuitem>
                </menuchoice>
-              &mdash; Starts the timer on the selected project.              
+              &mdash; Starts the timer on the selected project.
              </para>
 
              <para>
                <menuchoice>
-                <shortcut><keysym>Ctrl-Z</keysym></shortcut>
+                <shortcut><keysym>Ctrl-W</keysym></shortcut>
                 <guimenuitem>Stop Timer</guimenuitem>
                </menuchoice>
                &mdash; Stops the timer.
@@ -478,7 +484,7 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
   
               <para>
                 <menuchoice>
-                <shortcut><keysym>Ctrl-T</keysym></shortcut>   
+                <shortcut><keysym>Ctrl-T</keysym></shortcut>
                 <guimenuitem>Toggle Timer</guimenuitem>
               </menuchoice> 
                 &mdash; This item toggles the timer on or off.
@@ -491,40 +497,16 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
               <listitem>
                  <para>
                    This menu contains the commands:
+				 </para>
+				 <para>
                    <menuchoice><guimenuitem>Manual</guimenuitem></menuchoice>
                    &mdash; Shows this manual.
                  </para>
-
-                 <para>
-                     <menuchoice><guimenuitem>Introduction</guimenuitem></menuchoice>
-                     &mdash; Displays the introduction to this manual and to
-                     <application>GNOME Time Tracker</application> 
-                     generally.
-                 </para>
-
-                 <para>
-                    <menuchoice><guimenuitem>Working with GTT</guimenuitem></menuchoice>
-                    &mdash; Displays the section of the manual about working with
-                    <application>GNOME Time Tracker</application>.
-                 </para>
-
-                  <para>
-                     <menuchoice><guimenuitem>The Main Window</guimenuitem></menuchoice>
-                     &mdash; Help with the Main Window.
-                  </para>
-
-                  <para>
-                     <menuchoice><guimenuitem>Dialogs</guimenuitem></menuchoice>
-                     &mdash; Displays information about the various dialog boxes that <application>
-                     GNOME Time Tracker</application> will display.
-                  </para>
-
                   <para>
                     <menuchoice><guimenuitem>About</guimenuitem></menuchoice>
                     &mdash; Displays copyright and author information for
                     <application>GNOME Time Tracker</application>.
                   </para>
-
                 </listitem>
            </varlistentry>
         </variablelist>
@@ -557,10 +539,9 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
             <guibutton>Timer</guibutton>, which toggles the timer between on and off.
           </para>
         </listitem>
-        
         <listitem>
           <para>
-            <guibutton>Prefs</guibutton>, 
+            <guibutton>Prefs</guibutton>,
              which opens the <interface>Preference</interface> dialog.
           </para>
         </listitem>
@@ -576,11 +557,10 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
           </para>
         </listitem>
      </itemizedlist>
-
-You can choose which functions appear in the toolbar from the <interface>Preferences</interface> dialog.  
+You can choose which functions appear in the toolbar from the <interface>Preferences</interface> dialog.
 See <xref linkend="preferences"/> for more information.
         </para>
-        </sect2>   
+        </sect2>
 
 
     <sect2 id="projlist" xreflabel="Project List">
@@ -619,7 +599,6 @@ See <xref linkend="preferences"/> for more information.
         </itemizedlist>
         </para>
         </sect3>
-        
         <sect3>
         <title>The State of a Project</title>
 
@@ -630,13 +609,11 @@ See <xref linkend="preferences"/> for more information.
           <para>
           If a project is not selected, nothing happens.
           </para>
-          
           <para>
           If a project is selected, but the timer is not running,
           the select-project shell command has been run
           and not terminated.  No changes, however, are made to the log file.
-                 </para>
-          
+          </para>
           <para>
           If a project is selected and the timer is running,
           the shell command
@@ -651,40 +628,37 @@ See <xref linkend="preferences"/> for more information.
 <example id="projectstate-example">
           <title>Using Project States</title>
           <para>
-          I have set the 
+          I have set the
           <application>GNOME Time Tracker</application> shell commands to update my
           <filename>.project</filename> file when I switch or deselect a project.
-          I don't want to  
-          alter the file if I'm just taking a short break from a project.
+          I don't want to alter the file if I'm just taking a short break from a project.
           So, when I get up to get coffee, I stop the timer instead of deselecting the project.
           This leaves the <filename>.project</filename> file alone
-          without counting the time I spend away from the project.          
+          without counting the time I spend away from the project.
           </para>
-
-</example>          
+</example>
         </sect3>
         <sect3 id="working-with-projlist">
          <title>Working with the Project List</title>
             <para>
             The project list is located in the central area of the
-            main window. It shows the list of projects and
-            which project is currently selected. Each line corresponds to one
-            project, and displays the total and daily time logged for that project, as well as its title 
-            and description.
+            main window. It shows the list of projects and which
+            project is currently selected. Each line corresponds to
+            one project, and displays the total and daily time logged
+            for that project, as well as its title and description.
             </para>
 
             <para>
             You can select a project by clicking on it with the left
-            mouse button. Pressing the left mouse button again on a
-            selected project deselects it.  Note that you can only have one project selected
-            at any given time.
+            mouse button. Note that you can only have one project
+            selected at any given time.
             </para>
 
             <para>
-            To get a popup menu for a project, click
-            the right mouse button on it. If the project wasn't
-            selected, it will now receive the selection, and the 
-            <guimenu>Edit</guimenu> menu will be displayed.
+            To get a popup menu for a project, click the right mouse
+            button on it. If the project wasn't selected, it will now
+            receive the selection, and the <guimenu>Edit</guimenu>
+            menu will be displayed.
             </para>
             </sect3>
         
@@ -695,18 +669,20 @@ See <xref linkend="preferences"/> for more information.
 
         <para>
         The first field of the status bar displays the sum of all projects'
-        daily time. If  you didn't zero a daily counter, it reflects the total
-        time you have worked on your projects today.
+        daily time. It reflects the total time you have worked on your
+        projects today.
         </para>
 
         <para>
-        The second field holds the title of the currently selected project.  If no project is selected,
-        the display reads: <computeroutput>no project selected</computeroutput>.
+        The second field holds the title and description of the
+        currently active project.  If no project is active, the
+        display reads: <computeroutput>Timer is not
+        running</computeroutput>.
         </para>
 
         <para>
-        The far right corner of the status bar holds a small clock if the timer is running.
-        If the timer is off, the space is blank.
+        The far right corner of the status bar holds a small clock if
+        the timer is running. If the timer is off, the space is blank.
         </para>
 </sect2>
 </sect1>
@@ -726,54 +702,209 @@ slightly differently in this new version.
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
       <para>
       To change default settings, select the
-      <guimenuitem>Preferences</guimenuitem> command in
+      <guimenuitem>Preferences</guimenuitem> command in the
       <guimenu>Settings</guimenu> menu. This launches the
-      <interface>Preferences dialog</interface>, shown in <xref linkend="prefsfigure"/>.
-       There are two tabs of preferences in the window.
+      <interface>Preferences dialog</interface>. There are seven tabs
+      of preferences in the window.
      </para>
+ <sect2 id="fields-settings">
+   <title>The Fields Preferences Tab</title>
+   <para>
+	 Through this tab, shown in <xref linkend="prefs_fields_figure"/>,
+	 you can control which information is shown in the project
+	 list. The following fields may be enabled or disabled by toggling
+	 the buttons present in this tab:
+	 <simplelist>
+	   <member><guibutton>Project Importance</guibutton></member>
+	   <member><guibutton>Project Urgency</guibutton></member>
+	   <member><guibutton>Project Status</guibutton></member>
+	   <member><guibutton>Total Time</guibutton></member>
+	   <member><guibutton>Time this year</guibutton></member>
+	   <member><guibutton>Time this month</guibutton></member>
+	   <member><guibutton>Time this week</guibutton></member>
+	   <member><guibutton>Time last week</guibutton></member>
+	   <member><guibutton>Time today</guibutton></member>
+	   <member><guibutton>Time yesterday</guibutton></member>
+	   <member><guibutton>Time for the current diary entry</guibutton></member>
+	   <member><guibutton>Project description</guibutton></member>
+	   <member><guibutton>Current diary entry</guibutton></member>
+	   <member><guibutton>Planned project start date</guibutton></member>
+	   <member><guibutton>Planned project end date</guibutton></member>
+	   <member><guibutton>Project due date</guibutton></member>
+	   <member><guibutton>Estimated effort</guibutton></member>
+	   <member><guibutton>Percent complete</guibutton></member>
+	 </simplelist>
+   </para>
 <!-- ==============Figure=================================== -->
-        <figure id="prefsfigure" xreflabel="Preferences Dialog">
-          <title>Preferences Dialog</title>
+        <figure id="prefs_fields_figure" xreflabel="Preferences Dialog -
+												  Fields Tab">
+          <title>Preferences Dialog - Fields Tab</title>
           <screenshot>
-            <screeninfo>Preferences dialog</screeninfo>
-      <graphic fileref="figures/gtt_prefswin.png" />
+            <screeninfo>Preferences dialog - fields tab</screeninfo>
+      <graphic fileref="figures/gtt_prefs_fields.png" />
           </screenshot>
         </figure>
 <!-- ==============End of Figure=================================== -->
- 
+</sect2>
+ <sect2 id="display-prefs">
+   <title>The Display Preferences Tab</title>
+   <para>
+	 This tab, shown in <xref linkend="prefs_display_figure"/>,
+	 controls some aspects of the main window display. The following
+	 aspects may be controlled through the settings available in this
+	 tab:
+   </para>
+	 <simplelist>
+	   <member><guibutton>Show seconds</guibutton> &mdash; display
+	   seconds in the various time counters</member>
+	   <member><guibutton>Show statusbar</guibutton> &mdash; show the
+	   statusbar at the bottom of the window</member>
+	   <member><guibutton>Show Table Header</guibutton> &mdash; display
+	   the headers with names of the fields in the <interface>Project List</interface></member>
+	   <member><guibutton>Show Sub-projects</guibutton> &mdash;
+	   display the project tree structure through lines linking the
+	   projects to its sub-projects</member>
+	 </simplelist>
+
+<!-- ==============Figure=================================== -->
+        <figure id="prefs_display_figure" xreflabel="Preferences Dialog -
+												  Display Tab">
+          <title>Preferences Dialog - Display Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - display tab</screeninfo>
+      <graphic fileref="figures/gtt_prefs_display.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure=================================== -->
+ </sect2>
+<sect2 id="shell-prefs">
+<title>The Shell Preferences Tab</title>
+<para>
+This tab, shown in <xref linkend="prefs_shell_figure"/>, allows you to
+define the commands to be executed when starting or stopping the timer for
+a project. When composing your command line, you may use the following
+variables:
+<itemizedlist>
+  <listitem><para><literal>&percnt;t</literal> &mdash; The project's title.</para></listitem>
+  <listitem><para><literal>&percnt;d</literal> &mdash; The project's description.</para></listitem>
+  <listitem><para><literal>&percnt;T</literal> &mdash; The total time logged on the project, in the format Hours:Minutes:Seconds.</para></listitem>
+  <listitem><para><literal>&percnt;h</literal> &mdash; The number of hours logged on the project today.</para></listitem>
+  <listitem><para><literal>&percnt;H</literal> &mdash; The number of hours spent on the project today, in two digits.</para></listitem>
+  <listitem><para><literal>&percnt;m</literal> &mdash; The number of minutes spent on the project today.</para></listitem>
+  <listitem><para><literal>&percnt;M</literal> &mdash; The number of minutes spent on the project today (00-59).</para></listitem>
+  <listitem><para><literal>&percnt;s</literal> &mdash; The number of seconds spent on the project today.</para></listitem>
+  <listitem><para><literal>&percnt;S</literal> &mdash; The number of seconds spent on the project today (00-59).</para></listitem>
+</itemizedlist>
+</para>
+<!-- ==============Figure=================================== -->
+        <figure id="prefs_shell_figure" xreflabel="Preferences Dialog -
+												  Shell Tab">
+          <title>Preferences Dialog - Shell Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - shell tab</screeninfo>
+			<graphic fileref="figures/gtt_prefs_shell.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure=================================== -->
+</sect2>
+<sect2 id="logfile-prefs">
+<title>The Logfile Preferences Tab</title>
+<para>
+  This tab, shown in
+  <xref linkend="prefs_logfile_figure"/>, contains
+  a <guibutton>Use Logfile</guibutton> Checkbox, which
+  determines whether you use a logfile at all, and the
+  following text entry boxes, governing its behavior: 
+  <itemizedlist>
+    <listitem><para>
+        <guilabel>Filename</guilabel>
+        Determines the path and name of the log file.  This should be the complete
+        path and filename, without variables like $HOME or ~.
+    </para></listitem>
+	
+    <listitem><para>
+        <guilabel>Entry Start</guilabel>
+        This is the string which marks the start of a log entry.  It can include the same
+        variables as described in <xref linkend="shell-prefs"/>.
+    </para></listitem>
+	
+    <listitem><para>
+        <guilabel>Entry Stop</guilabel>
+        This string marks the end of a log entry.  It can include the same
+		variables as described in <xref linkend="shell-prefs"/>.
+	  </para>
+				</listitem>
+    <listitem><para>
+        <guilabel>Min Recorded</guilabel>
+        The minimum size of intervals that should be recorded in the logfile.
+	  </para>
+	</listitem>
+  </itemizedlist>
+  <!-- ==============Figure=================================== -->
+        <figure id="prefs_logfile_figure" xreflabel="Preferences Dialog -
+												  Logfile Tab">
+          <title>Preferences Dialog - Logfile Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - logfile tab</screeninfo>
+			<graphic fileref="figures/gtt_prefs_logfile.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure=================================== -->
+
+              <tip>
+                 <para>Note that a project will not get logged until you
+                 either quit <application>GNOME Time Tracker</application>, switch to another project, or
+                 deselect that project. Don't be confused when you look at
+                 your logfile and your current project still isn't listed,
+                 even if it has been running for two hours.</para>
+              </tip>
+  </para>
+</sect2>
  <sect2 id="toolbar-prefs">
       <title>The Toolbar Preferences Tab</title>
       <para>
-        This tab contains two sections of buttons: <guilabel>Toolbar</guilabel>
+        This tab, shown in <xref linkend="prefs_toolbar_figure"/>,
+        contains two sections of buttons: <guilabel>Toolbar</guilabel>
         and <guilabel>Toolbar Segments</guilabel>
+<!-- ==============Figure=================================== -->
+        <figure id="prefs_toolbar_figure" xreflabel="Preferences Dialog -
+												  Toolbar Tab">
+          <title>Preferences Dialog - Toolbar Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - toolbar tab</screeninfo>
+			<graphic fileref="figures/gtt_prefs_toolbar.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure============================ -->
         <itemizedlist>
           <listitem>
             <para> 
-              The <guilabel>Toolbar</guilabel> contains the following checkboxes: 
+              The <guilabel>Toolbar</guilabel> section contains the
+              following checkboxes:
               <simplelist>
                 <member>
-                  <guibutton> Show Toolbar Icons</guibutton>
+                  <guibutton> Show Toolbar</guibutton>
                 </member>
-                <member>
-                  <guibutton> Show Toolbar Texts</guibutton>
-                </member> 
                 <member>
                   <guibutton> Show Tooltips</guibutton>
                 </member>
               </simplelist>
-              They determine whether icons and their descriptions appear on the
-              toolbar, and whether tooltips describing the button appear when the mouse pointer hovers 
-              over a toolbar item.
+              They determine whether the toolbar buttons should be
+              displayed and whether tooltips describing the button
+              should appear when the mouse pointer hovers over a
+              toolbar item. The control of wheter text, icons or both
+              should be shown in the toolbar buttons is done throw the
+              global GNOME toolbar settings.
             </para>
           </listitem>
           <listitem>
               <para>
-                The <guilabel>Toolbar Segments</guilabel> checkboxes determine which shortcut 
+                The <guilabel>Toolbar Segments</guilabel> checkboxes determine which shortcut
                 buttons appear on the toolbar:
                 <simplelist>
                 <member><guilabel>  Show 'New' </guilabel></member>
-                <member><guilabel> Show 'Save', 'Reload'</guilabel></member>
                 <member><guilabel> Show 'Cut', 'Copy', 'Paste'</guilabel></member>
+                <member><guilabel> Show 'Journal' </guilabel></member>
                 <member><guilabel> Show 'Properties' </guilabel></member>
                 <member><guilabel> Show 'Timer' </guilabel></member>
                 <member><guilabel> Show 'Preferences' </guilabel></member>
@@ -786,137 +917,105 @@ slightly differently in this new version.
         </para>
     </sect2>
 
-   <sect2 id="other-settings">
-      <title>Other Settings</title>
+   <sect2 id="prefs-misc">
+      <title>The Misc Preferences Tab</title>
          <para>
-         There are three sections within the <guibutton>Misc</guibutton> tab.
+         This tab, shown in <xref linkend="prefs_msic_figure"/>,
+         contains three sections.
+
+<!-- ==============Figure=================================== -->
+        <figure id="prefs_misc_figure" xreflabel="Preferences Dialog -
+												  Misc Tab">
+          <title>Preferences Dialog - Misc Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - misc tab</screeninfo>
+			<graphic fileref="figures/gtt_prefs_misc.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure============================ -->
          <variablelist>
            
            <varlistentry> 
-              <term><guilabel>Display</guilabel></term>
+              <term><guilabel>Inactivity Timeout</guilabel></term>
               <listitem> 
                 <para>
-                  The Display box contains three check-boxes:
-                  <simplelist>
-                      <member><guilabel> Show Seconds </guilabel></member>
-                      <member><guilabel> Show Status Bar </guilabel> </member>
-                      <member><guilabel> Show Table Header </guilabel></member>
-                  </simplelist>
-                  They toggle whether seconds appear in the timer displays, and whether
-                  the status bar and table header appear in the <interface>Main Window</interface>
+                  The Inactivity timeout defines the number of seconds
+                  of inactivity after which GnoTime will stop the
+                  timer and alert the user if the timer was running
+                  and give her the opportunity to tune how much of
+                  that time should really be credited to the active
+                  project. 
                  </para>
               </listitem>
             </varlistentry>
 
             <varlistentry>
-                <term><guilabel>Shell Commands</guilabel></term>
+                <term><guilabel>No Project Timeout</guilabel></term>
                 <listitem>
                    <para>
-                     <anchor id="shellcmd" xreflabel="Shell Commands"/>
-                      There are two shell commands
-                      executed by <application>GNOME Time Tracker</application>.
-                      One is executed when you switch between projects, and the other when you deselect a project or
-                      quit the application.
-                      <itemizedlist>
-                        <listitem>
-                          <para>
-                            <guilabel>Switch Project Command</guilabel>:
-                            This shell command is executed every
-                            time you select a project which was previously
-                            unselected. If you use <literal>&percnt;s</literal> in this command,
-                            <application>GNOME Time Tracker</application> will replace that with the title of the
-                            selected project. I use the following entry to update
-                            my <filename>.project</filename> file:
-                            <userinput>echo '&percnt;s' &gt;~/.project</userinput>
-                           </para>
-                         </listitem>
-                         <listitem>
-                           <para>
-                             <guilabel>No Project Command</guilabel>
-                             This shell command is executed every
-                             time you deselect a project or exit
-                             <application>GNOME Time Tracker</application>. To complete the example above, I use
-                             this command:
-                             <userinput>rm -f ~/.project</userinput>
-                           </para>
-                         </listitem>
-                      </itemizedlist>
-                   </para>           
+					 The <guilabel>No Project Timeout</guilabel>
+					 defines the number of seconds after which GnoTime
+					 will alert the user if there is no active project
+					 and offer to start the timer running for some
+					 project and credit the elapsed time to it.
+                   </para>
                  </listitem>
              </varlistentry>
-
          <varlistentry>
-            <term><guilabel>Logfile Preferences</guilabel></term>
+            <term><guilabel>End of Day/Week</guilabel></term>
             <listitem>
               <para>
-                The Logfile Preferences area contains a <guibutton>Use Logfile</guibutton>
-                Checkbox, which determines whether you use a logfile at all,
-                and the following text entry boxes, governing its behavior:
-                <itemizedlist>
-             
-                <listitem><para>
-                     <guilabel>Filename</guilabel>
-                      Determines the path and name of the log file.  This should be the complete
-                      path and filename, without variables like $HOME or ~.
-                </para></listitem>
-
-                <listitem><para>
-                      <guilabel>Entry Start</guilabel>
-                      This is the string which marks the start of a log entry.  It can include the same
-                      variables the <guilabel>Entry Stop</guilabel> can.
-                </para></listitem>
-
-                <listitem><para>
-                      <guilabel>Entry Stop</guilabel>
-                      This string marks the end of a log entry.  Both this string and the <guilabel>Entry Start</guilabel>
-                      can contain the following variables:
-                      <itemizedlist>
- <listitem><para><literal>&percnt;t</literal> &mdash; The project's title.</para></listitem>
- <listitem><para><literal>&percnt;d</literal> &mdash; The project's description.</para></listitem>
- <listitem><para><literal>&percnt;T</literal> &mdash; The total time logged on the project, in the format Hours:Minutes:Seconds.</para></listitem>
- <listitem><para><literal>&percnt;h</literal> &mdash; The number of hours logged on the project today.</para></listitem>
- <listitem><para><literal>&percnt;H</literal> &mdash; The number of hours spent on the project today, in two digits.</para></listitem>
- <listitem><para><literal>&percnt;m</literal> &mdash; The number of minutes spent on the project today.</para></listitem>
- <listitem><para><literal>&percnt;M</literal> &mdash; The number of minutes spent on the project today (00-59).</para></listitem>
- <listitem><para><literal>&percnt;s</literal> &mdash; The number of seconds spent on the project today.</para></listitem>
- <listitem><para><literal>&percnt;S</literal> &mdash; The number of seconds spent on the project today (00-59).</para></listitem>
-</itemizedlist>
-                </para></listitem>
-                   
-                <listitem><para>
-                    <guilabel>Timeout in secs</guilabel> &mdash; 
-                    This value represents the minimum time a
-                    project must be selected before it will be logged.
-                    This is useful if you don't want to log very short tasks,
-                    or if you click on the wrong project
-                    first. For example, suppose you wanted to start working on
-                    a letter to your friend Joe, and so you selected the
-                    project <emphasis>Letter to Joe</emphasis>), but that reminds
-                    you that you have to prepare a list of Christmas
-                    presents first (Joe has asked you to give him some
-                    good ideas). So, you switch to the project
-                    <emphasis>Xmas presents</emphasis>.  You wouldn't want the
-                    project <emphasis>Letter to Joe</emphasis>to be in your
-                    logfile, because you didn't really start it yet. I
-                    would suggest you set this value at least to 10
-                    seconds.
-                </para></listitem>
-
-             </itemizedlist>
+                The <guilabel>End of Day/Week</guilabel> section
+                allows the user to define at which time of day
+                GnoTime should start counting as a different day and
+                which day of the week should be considered as the
+                start of a new week.
             
-              <tip>
-                 <para>Note that a project will not get logged until you
-                 either quit <application>GNOME Time Tracker</application>, switch to another project, or
-                 deselect that project. Don't be confused when you look at
-                 your logfile and your current project still isn't listed,
-                 even if it has been running for two hours.</para>
-              </tip>
-                 
         
         </para></listitem>
         </varlistentry>
         </variablelist></para>
   </sect2>
+<sect2 id="prefs-reports">
+<title>The Reports Preferences Tab</title>
+<para>
+This tab, shown in <xref linkend="prefs_reports_figure"/>, contains
+two sections that allow users to choose how some values are formated
+in reports.
+<!-- ==============Figure=================================== -->
+        <figure id="prefs_reports_figure" xreflabel="Preferences Dialog -
+												  Reports Tab">
+          <title>Preferences Dialog - Reports Tab</title>
+          <screenshot>
+            <screeninfo>Preferences dialog - reports tab</screeninfo>
+			<graphic fileref="figures/gtt_prefs_reports.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure============================ -->
+<variablelist>
+  <varlistentry>
+    <term><guilabel>Time format</guilabel></term>
+	<listitem>
+	  <para>
+		This option allows you to choose how times should be displayed in
+		reports. You may choose among a <guilabel>12 hours</guilabel>
+		format, <guilabel>24 hours</guilabel> or the default format based on
+		your current locale settings.
+	  </para>
+	</listitem>
+  </varlistentry>
+  <varlistentry>
+    <term><guilabel>Currency settings</guilabel></term>
+	<listitem>
+	  <para>
+		This option allows you to set a customized currency symbol to
+		be used in reports or choose to use the currency symbol
+		defined by your locale settings.
+	  </para>
+	</listitem>
+  </varlistentry>
+</variablelist></para>
+</sect2>
  
       <sect2 id="ok-apply-close">
           <title>OK, Apply and Close</title>
@@ -941,12 +1040,6 @@ slightly differently in this new version.
         </para>
       </sect2>
     </sect1>
-
-
-
-
-
-
 <sect1 id="dialogs">
        <title>Additional GNOME Time Tracker Dialogs</title>
          <sect2 id="properties" xreflabel="Properties Dialog">  
