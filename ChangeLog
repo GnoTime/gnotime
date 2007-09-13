@@ -4,6 +4,8 @@
 	instead of the deprecated gnome_error_dialog
 	(export_file_picker): Use GtkFileChooser instead of the deprecated
 	GtkFileSelection
+	(export_show_error_message): created utility function to display
+	error messages in the export module
 
 2007-09-11  Goedson Teixeira Paixao  <goedson@debian.org>
 
