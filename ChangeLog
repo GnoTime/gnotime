@@ -1,3 +1,10 @@
+2007-09-13  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/export.c (export_err, export_really): Use gtk_message_dialog
+	instead of the deprecated gnome_error_dialog
+	(export_file_picker): Use GtkFileChooser instead of the deprecated
+	GtkFileSelection
+
 2007-09-11  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* doc/C/gnotime.xml: Update the manual up to the Customization

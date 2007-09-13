@@ -37,7 +37,7 @@ typedef struct export_format_s export_format_t;
 
 struct export_format_s 
 {
-	GtkFileSelection *picker;    /* URI picker (file selection) */
+	GtkFileChooser *picker;    /* URI picker (file selection) */
 	const char       *uri;       /* aka filename */
 	GnomeVFSHandle   *handle;    /* file handle */
 	GttGhtml         *ghtml;     /* output device */
@@ -62,33 +62,39 @@ export_format_new (void)
  * printing infrastructure.
  */
 
-static void 
-export_write (GttGhtml *gxp, const char *str, size_t len, 
-					 export_format_t *xp)
+static void
+export_write (GttGhtml *gxp, const char *str, size_t len,
+			  export_format_t *xp)
 {
 	GnomeVFSFileSize buflen  = len;
 	GnomeVFSFileSize bytes_written = 0;
+	GnomeVFSResult result = GNOME_VFS_OK;
 	size_t off = 0;
-	while (1)
+
+	while ((buflen > 0) && (result == GNOME_VFS_OK))
 	{
-		GnomeVFSResult result = gnome_vfs_write (xp->handle,
-		                &str[off], buflen, &bytes_written);
+	    result = gnome_vfs_write (xp->handle,
+								  &str[off],
+								  buflen,
+								  &bytes_written);
 		off += bytes_written;
 		buflen -= bytes_written;
-		if (0>= buflen) break;
-		if (GNOME_VFS_OK != result) break;
 	}
 }
 
-static void 
+static void
 export_err (GttGhtml *gxp, int errcode, const char *msg,
-					 export_format_t *xp)
+			export_format_t *xp)
 {
-	GtkWidget *w;
-	char *s = g_strdup_printf (_("Error exporting data: %s"), msg);
-	w = gnome_error_dialog (s);
-	gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
-	g_free (s);
+	GtkWidget *w = gtk_message_dialog_new (GTK_WINDOW (xp->picker),
+										   GTK_DIALOG_MODAL,
+										   GTK_MESSAGE_ERROR,
+										   GTK_BUTTONS_OK,
+										   _("Error exporting data: %s"),
+										   msg);
+	gtk_window_set_title (GTK_WINDOW (w), _("Gnotime export error"));
+	gtk_dialog_run (GTK_DIALOG (w));
+	gtk_widget_destroy (GTK_WIDGET (w));
 }
 
 static gint
@@ -125,60 +131,41 @@ export_really (GtkWidget *widget, export_format_t *xp)
 {
 	gboolean rc;
 
-	xp->uri = gtk_file_selection_get_filename (xp->picker);
+	xp->uri = gtk_file_chooser_get_filename (xp->picker);
 
-	GnomeVFSURI *parsed_uri;
-	parsed_uri = gnome_vfs_uri_new (xp->uri);
-	gboolean exists = gnome_vfs_uri_exists (parsed_uri);
-	if (exists) 
-	{
-		GtkWidget *w;
-		char *s;
-
-		s = g_strdup_printf (_("File %s exists, overwrite?"),
-				     xp->uri);
-		w = gnome_question_dialog_parented (s, NULL, NULL,
-						    GTK_WINDOW (xp->picker));
-		g_free (s);
-
-		if (0 == gnome_dialog_run (GNOME_DIALOG (w))) goto done;
-	}
 
 	GnomeVFSResult result;
 	result = gnome_vfs_create (&xp->handle, xp->uri, GNOME_VFS_OPEN_WRITE,
-	                 FALSE, 0644);
+							   FALSE, 0644);
 	if (GNOME_VFS_OK != result)
 	{
-		char *s;
-		s = g_strdup_printf (_("File %s dould not be opened"), xp->uri);
-		GtkWidget *w = gnome_error_dialog (s);
-		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
-		g_free (s);
-		goto done;
+		GtkWidget *w  = gtk_message_dialog_new (GTK_WINDOW (xp->picker),
+												GTK_DIALOG_MODAL,
+												GTK_MESSAGE_ERROR,
+												GTK_BUTTONS_OK,
+												_("File %s could not be opened"),
+												xp->uri);
+		gtk_window_set_title (GTK_WINDOW (w), _("Gnotime export error"));
+		gtk_dialog_run (GTK_DIALOG (w));
+		gtk_widget_destroy (GTK_WIDGET (w));
+		return;
 	}
 	
 	rc = export_projects (xp);
 	if (rc)
-	{
-		GtkWidget *w = gnome_error_dialog (_("Error occured during export"));
-		gnome_dialog_set_parent (GNOME_DIALOG (w), GTK_WINDOW (xp->picker));
-		goto done;
+    {
+	  GtkWidget *w  = gtk_message_dialog_new (GTK_WINDOW (xp->picker),
+											  GTK_DIALOG_MODAL,
+											  GTK_MESSAGE_ERROR,
+											  GTK_BUTTONS_OK,
+											  _("Error occured during export"));
+	  gtk_window_set_title (GTK_WINDOW (w), _("Gnotime export error"));
+	  gtk_dialog_run (GTK_DIALOG (w));
+	  gtk_widget_destroy (GTK_WIDGET (w));
+		//GtkWidget *w = gnome_error_dialog_parented (_("Error occured during export"), GTK_WINDOW (xp->picker));
+	  return;
 	}
-
 	gnome_vfs_close (xp->handle);
-done:
-	gtk_widget_destroy (GTK_WIDGET (xp->picker));
-	g_free (xp);
-}
-
-/* ======================================================= */
-
-static void
-export_close (GtkWidget *widget, gint response_id, export_format_t *xp)
-{
-	if (GTK_RESPONSE_OK == response_id) return;
-	gtk_widget_destroy (GTK_WIDGET (xp->picker));
-	g_free (xp);
 }
 
 /* ======================================================= */
@@ -190,29 +177,25 @@ export_file_picker (GtkWidget *widget, gpointer data)
 	GtkWidget *dialog;
 	const char * template_filename = data;
 
-	dialog = gtk_file_selection_new (_("Tab-Delimited Export"));
-	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (app_window));
+	dialog = gtk_file_chooser_dialog_new (_("Tab-Delimited Export"),
+										  GTK_WINDOW(app_window),
+										  GTK_FILE_CHOOSER_ACTION_SAVE,
+										  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+										  GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+										  NULL);
 
-	xp = export_format_new ();
-	xp->picker = GTK_FILE_SELECTION (dialog);
-	xp->template = gtt_ghtml_resolve_path (template_filename, NULL);
+    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
 
-#if 0
-	g_signal_connect (G_OBJECT (dialog), "destroy",
-			    G_CALLBACK (export_close), xp);
+	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+	  xp = export_format_new ();
+	  xp->picker = GTK_FILE_CHOOSER (dialog);
+	  xp->template = gtt_ghtml_resolve_path (template_filename, NULL);
+	  export_really(dialog, xp);
+	  g_free (xp);
+	}
+    gtk_widget_destroy(GTK_WIDGET(dialog));
 
-	g_signal_connect (G_OBJECT (xp->picker->cancel_button), "clicked",
-			    G_CALLBACK (export_close), xp);
-#endif
 
-	g_signal_connect (G_OBJECT (xp->picker), "response",
-			    G_CALLBACK (export_close), xp);
-
-	g_signal_connect (G_OBJECT (xp->picker->ok_button), "clicked",
-			    G_CALLBACK (export_really),
-			    xp);
-
-	gtk_widget_show (dialog);
 }
 
 /* ======================= END OF FILE ======================= */
