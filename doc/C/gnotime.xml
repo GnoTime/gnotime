@@ -64,7 +64,6 @@
       spend on a task, associate a memo with it, set a billing rate, print
       an invoice, as well as track the status of other projects.
 
-
       You do not need to learn or use every feature in
       <application>GNOME Time Tracker</application>
       to be productive: it is meant to be quite usable
@@ -170,7 +169,7 @@
     <emphasis>Inactivity Timeout</emphasis>
     GTT has an inactivity timeout, that will stop the timer after some
     period of inactivity on both the mouse and keyboard. This period
-    can be configured (or disabled) and the user can decided what to
+    can be configured (or disabled) and the user can decide what to
     do with the inactivity period when he/she returns (credit all or
     part of it to the active project or consider as if the timer was
     inactive for the whole period).
@@ -217,7 +216,7 @@
 			currently possible to start/stop the timer or save/reload
 			the data file by sending DBus messages. A shell script
 			named <filename>gnotime-remote</filename> is provided to
-			ease this remote controling of GTT.
+			ease this remote controlling of GTT.
 		  </para>
 		</listitem>
     </itemizedlist>
@@ -312,7 +311,7 @@ a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
  and between the toolbar and the status bar,
  a scrollable project list (see <xref linkend="projlist"/>) and a
 resizable notes area (see <xref linked="notesarea"/>).
-      When you start<application>GNOME Time Tracker</application> for
+      When you start <application>GNOME Time Tracker</application> for
 the first time, the project list area will show you an empty list.
    </para>
 
@@ -337,8 +336,8 @@ the first time, the project list area will show you an empty list.
    </para>
 
    <para>
-       The menu bar consists of four menus: <guimenu>File</guimenu>,
-       <guimenu>Edit</guimenu>, <guimenu>Settings</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
+       The menu bar consists of six menus: <guimenu>File</guimenu>,
+       <guimenu>Edit</guimenu>, <guimenu>Settings</guimenu>, <guimenu>Reports</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
    </para>
 
       <!-- =========List=========================== -->
@@ -491,29 +490,37 @@ the first time, the project list area will show you an empty list.
               </para>
             </listitem>
         </varlistentry>
-
         <varlistentry>
-            <term><guimenu>Help</guimenu></term>
-              <listitem>
-                 <para>
-                   This menu contains the commands:
-				 </para>
-				 <para>
-                   <menuchoice><guimenuitem>Manual</guimenuitem></menuchoice>
+          <term><guimenu>Reports</guimenu></term>
+          <listitem>
+            <para>
+              This menu contains various predefined reports and
+              may have new items added by the user. See
+              <xref linkend="reports"/> for a list of the
+              predefined reports.
+			</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guimenu>Help</guimenu></term>
+          <listitem>
+            <para>
+              This menu contains the following commands:
+			</para>
+			<para>
+              <menuchoice><guimenuitem>Manual</guimenuitem></menuchoice>
                    &mdash; Shows this manual.
-                 </para>
-                  <para>
-                    <menuchoice><guimenuitem>About</guimenuitem></menuchoice>
-                    &mdash; Displays copyright and author information for
-                    <application>GNOME Time Tracker</application>.
-                  </para>
-                </listitem>
-           </varlistentry>
-        </variablelist>
+            </para>
+            <para>
+              <menuchoice><guimenuitem>About</guimenuitem></menuchoice>
+              &mdash; Displays copyright and author information for
+              <application>GNOME Time Tracker</application>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
       <!-- =========End of list=========================== -->
         </sect2>
-
-
 
         <sect2 id="toolbar" xreflabel="The Toolbar">
         <title>The Toolbar</title>
@@ -568,10 +575,17 @@ See <xref linkend="preferences"/> for more information.
       <para>
       The Project List contains a list of all your projects
       and indicates which project is active at any given time.  It also
-      shows the attributes of each project.  You can alter those attributes
-      from the <interface>Preferences</interface> dialog (see <xref linkend="preferences"/>).
+      shows the attributes of each project.  You can choose which
+      attributes are displayed from
+      the <interface>Preferences</interface> dialog (see
+      <xref linkend="preferences"/>).
       </para>
       
+<!-- All of this info seems to be outdated. Needs review or be
+   completely removed. I'm commenting it out for now in order to not
+  misguide users. -->
+<!--
+
       <sect3 id="projwhat">
       <title>What is a Project?</title>
       <para>
@@ -638,14 +652,17 @@ See <xref linkend="preferences"/> for more information.
           </para>
 </example>
         </sect3>
+-->
         <sect3 id="working-with-projlist">
          <title>Working with the Project List</title>
             <para>
             The project list is located in the central area of the
             main window. It shows the list of projects and which
             project is currently selected. Each line corresponds to
-            one project, and displays the total and daily time logged
-            for that project, as well as its title and description.
+            one project, and displays various attributes of that
+            project. You may choose which attributes are shown in the
+            project list from the <interface>Preferences</interface>
+            dialog (see <xref linkend="preferences"/>).
             </para>
 
             <para>
@@ -654,18 +671,27 @@ See <xref linkend="preferences"/> for more information.
             selected at any given time.
             </para>
 
+			<para>
+			  You toggle the timer for a project by double clicking it
+			  on the project list. You may, alternatively, select it
+			  and click on the <interface>Timer</interface> button in
+			  the toolbar or selecting the <guimenuitem>Timer
+			  Running</guimenuitem> item from
+			  the <guimenu>Timer</guimenu> menu.
+			  </para>
+
             <para>
             To get a popup menu for a project, click the right mouse
             button on it. If the project wasn't selected, it will now
-            receive the selection, and the <guimenu>Edit</guimenu>
+            receive the selection, and the <guimenu>Project popup</guimenu>
             menu will be displayed.
             </para>
-            </sect3>
+        </sect3>
         
-        </sect2>
+    </sect2>
 
-        <sect2 id="statusbar" xreflabel="The Status Bar">
-         <title>The Status Bar</title>
+    <sect2 id="statusbar" xreflabel="The Status Bar">
+      <title>The Status Bar</title>
 
         <para>
         The first field of the status bar displays the sum of all projects'
@@ -715,24 +741,43 @@ slightly differently in this new version.
 	 list. The following fields may be enabled or disabled by toggling
 	 the buttons present in this tab:
 	 <simplelist>
-	   <member><guibutton>Project Importance</guibutton></member>
-	   <member><guibutton>Project Urgency</guibutton></member>
-	   <member><guibutton>Project Status</guibutton></member>
-	   <member><guibutton>Total Time</guibutton></member>
-	   <member><guibutton>Time this year</guibutton></member>
-	   <member><guibutton>Time this month</guibutton></member>
-	   <member><guibutton>Time this week</guibutton></member>
-	   <member><guibutton>Time last week</guibutton></member>
-	   <member><guibutton>Time today</guibutton></member>
-	   <member><guibutton>Time yesterday</guibutton></member>
-	   <member><guibutton>Time for the current diary entry</guibutton></member>
-	   <member><guibutton>Project description</guibutton></member>
-	   <member><guibutton>Current diary entry</guibutton></member>
-	   <member><guibutton>Planned project start date</guibutton></member>
-	   <member><guibutton>Planned project end date</guibutton></member>
-	   <member><guibutton>Project due date</guibutton></member>
-	   <member><guibutton>Estimated effort</guibutton></member>
-	   <member><guibutton>Percent complete</guibutton></member>
+	   <member><guibutton>Project Importance</guibutton> &mdash;
+	   importance of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Project Urgency</guibutton> &mdash;
+	   urgency of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Project Status</guibutton> &mdash;
+	   status of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Total Time</guibutton> &mdash;
+	   total time worked on the project since its creation</member>
+	   <member><guibutton>Time this year</guibutton> &mdash;
+	   total time worked on the project this year</member>
+	   <member><guibutton>Time this month</guibutton> &mdash;
+	   total time worked on the project this month</member>
+	   <member><guibutton>Time this week</guibutton> &mdash;
+	   total time worked on the project this week</member>
+	   <member><guibutton>Time last week</guibutton> &mdash;
+	   total time worked on the project last week</member>
+	   <member><guibutton>Time today</guibutton> &mdash;
+	   total time worked on the project today</member>
+	   <member><guibutton>Time yesterday</guibutton> &mdash;
+	   total time worked on the project yesterday</member>
+	   <member><guibutton>Time for the current diary
+	   entry</guibutton> &mdash;
+	   total time worked on the project for the current diary entry</member>
+	   <member><guibutton>Project description</guibutton> &mdash;
+	   description of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Current diary entry</guibutton> &mdash;
+	   title of the current diary entry</member>
+	   <member><guibutton>Planned project start date</guibutton> &mdash;
+	   start date of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Planned project end date</guibutton> &mdash;
+	   end date of the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Project due date</guibutton> &mdash;
+	   due date for the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Estimated effort</guibutton> &mdash;
+	   estimated work time for the project as defined in the <xref linkend="properties"/></member>
+	   <member><guibutton>Percent complete</guibutton> &mdash;
+	   percent of the project already done as defined in the <xref linkend="properties"/></member>
 	 </simplelist>
    </para>
 <!-- ==============Figure=================================== -->
@@ -781,7 +826,7 @@ slightly differently in this new version.
 <title>The Shell Preferences Tab</title>
 <para>
 This tab, shown in <xref linkend="prefs_shell_figure"/>, allows you to
-define the commands to be executed when starting or stopping the timer for
+define commands to be executed when starting or stopping the timer for
 a project. When composing your command line, you may use the following
 variables:
 <itemizedlist>
@@ -893,7 +938,7 @@ variables:
               displayed and whether tooltips describing the button
               should appear when the mouse pointer hovers over a
               toolbar item. The control of wheter text, icons or both
-              should be shown in the toolbar buttons is done throw the
+              should be shown in the toolbar buttons is done through the
               global GNOME toolbar settings.
             </para>
           </listitem>
@@ -920,7 +965,7 @@ variables:
    <sect2 id="prefs-misc">
       <title>The Misc Preferences Tab</title>
          <para>
-         This tab, shown in <xref linkend="prefs_msic_figure"/>,
+         This tab, shown in <xref linkend="prefs_misc_figure"/>,
          contains three sections.
 
 <!-- ==============Figure=================================== -->
@@ -942,7 +987,7 @@ variables:
                   The Inactivity timeout defines the number of seconds
                   of inactivity after which GnoTime will stop the
                   timer and alert the user if the timer was running
-                  and give her the opportunity to tune how much of
+                  and give her/him the opportunity to tune how much of
                   that time should really be credited to the active
                   project. 
                  </para>
