@@ -309,7 +309,7 @@ The main window consists of five areas. There is a menu bar (see <xref linkend="
 a toolbar (see <xref linkend="toolbar"/>) at the top of the window, 
 a status bar (see <xref linkend="statusbar"/>) at the bottom of the window,
  and between the toolbar and the status bar,
- a scrollable project list (see <xref linkend="projlist"/>) and a
+ a scrollable project list (see <xref linkend="projects-navigating"/>) and a
 resizable notes area (see <xref linked="notesarea"/>).
       When you start <application>GNOME Time Tracker</application> for
 the first time, the project list area will show you an empty list.
@@ -442,7 +442,9 @@ the first time, the project list area will show you an empty list.
                  &mdash; This selection opens the <interface>Properties</interface> dialog for
                  the currently selected project.  Here you can view and edit the name,
                  description, planning and billing data for your project.  Note that this is the same action
-     as the <guibutton>Props</guibutton> button on the toolbar.  See <xref linkend="properties"/> for more information.
+     as the <guibutton>Props</guibutton> button on the toolbar.  See
+                 <xref linkend="projects-editing"/> for more
+                 information. 
                  </para>
             </listitem>
         </varlistentry>
@@ -570,17 +572,28 @@ See <xref linkend="preferences"/> for more information.
         </sect2>
 
 
-    <sect2 id="projlist" xreflabel="Project List">
-      <title>The Project List</title>
-      <para>
-      The Project List contains a list of all your projects
-      and indicates which project is active at any given time.  It also
-      shows the attributes of each project.  You can choose which
-      attributes are displayed from
-      the <interface>Preferences</interface> dialog (see
-      <xref linkend="preferences"/>).
-      </para>
-      
+	<sect2 id="projects" xreflabel="Working with projects">
+	  <title>Working with projects</title>
+	  <para>
+	  </para>
+
+	  <sect3 id="projects-creating" xreflabel="Creating new projects">
+		<title>Creating new projects</title>
+		<para>
+		</para>
+	  </sect3>
+
+      <sect3 id="projects-navigating" xreflabel="Navigating through your projects">
+		<title>Navigating through your projects</title>
+		<para>
+		  The Project List contains a list of all your projects
+		  and indicates which project is active at any given time.  It also
+		  shows the attributes of each project.  You can choose which
+		  attributes are displayed from
+		  the <interface>Preferences</interface> dialog (see
+		  <xref linkend="preferences"/>).
+		</para>
+		
 <!-- All of this info seems to be outdated. Needs review or be
    completely removed. I'm commenting it out for now in order to not
   misguide users. -->
@@ -653,8 +666,6 @@ See <xref linkend="preferences"/> for more information.
 </example>
         </sect3>
 -->
-        <sect3 id="working-with-projlist">
-         <title>Working with the Project List</title>
             <para>
             The project list is located in the central area of the
             main window. It shows the list of projects and which
@@ -687,6 +698,128 @@ See <xref linkend="preferences"/> for more information.
             menu will be displayed.
             </para>
         </sect3>
+	  <sect3 id="projects-editing" xreflabel="Editing Project Properties">
+		<title>Editing Project Properties</title>
+		<para>
+		  You may edit the properties of a project by invoking
+		  the <interface>Project Properties Dialog</interface> through
+		  the <guimenuitem>Properties</guimenuitem> menu item from
+		  the <guimenu>Edit</guimenu> menu. This dialog is formed by
+		  four tabs
+		  named <interface>Project</interface>, <interface>Rates</interface>,
+		  <interface>Intervals</interface> and <interface>Planning</interface>.
+		</para>
+		<para>
+		  The <interface>Project</interface> tab, which you see in
+		  <xref linkend="props_project_figure"/>, is where you edit
+		  the basic information about your project,
+		  like <interface>Project
+		  Title</interface>, <interface>Project
+		  Description</interface> and <interface>Notes</interface>.
+<!-- ==============Figure=================================== -->
+        <figure id="props_project_figure" xreflabel="Properties Dialog -
+												  Project Tab">
+          <title>Properties Dialog - Project Tab</title>
+          <screenshot>
+            <screeninfo>Properties dialog - project tab</screeninfo>
+			<graphic fileref="figures/gtt_props_project.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure=================================== -->
+		</para>
+		<para>
+		  The <interface>Rates</interface> tab, which you see in
+		  <xref linkend="props_rates_figure"/>, is where you inform
+		  the ammount you will be billing for the project. You may
+		  enter rates for <interface>Normal</interface>
+		  hours, <interface>Overtime</interface>
+		  hours, <interface>Double Overtime</interface> hours and
+		  a <interface>Flat Rate</interface>. Then, you can select for
+		  each task you do in the project which of these billing types
+		  should be used so that the invoices can be calculated
+		  correctly.
+<!-- ==============Figure=================================== -->
+        <figure id="props_rates_figure" xreflabel="Properties Dialog -
+												  Rates Tab">
+          <title>Properties Dialog - Rates Tab</title>
+          <screenshot>
+            <screeninfo>Properties dialog - rates tab</screeninfo>
+			<graphic fileref="figures/gtt_props_rates.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure=================================== -->
+		</para>
+		<para>
+		  The <interface>Intervals</interface> tab, which you see in
+		  <xref linkend="props_intervals_figure"/>, is where you set
+		  your preferences for interval recording and
+		  auto-merging for the project. The options presented in this
+		  tab are:
+		  <simplelist>
+			<member><interface>Minimum Interval</interface> &mdash; the
+			  minimum size of interval that will be recorded. Intervals that
+			  last less than this will be discarded.</member>
+			<member><interface>Auto-merge Interval</interface> &mdash; the
+			  maximum duration for intervals that should be auto-merged. If
+			  the duration of an interval is less than this value, it will be
+			  automatically merged to its neighbors.</member>
+			<member><interface>Auto-merge Gap</interface> &mdash; the
+			  minimum distance between two neighbor intervals that will keep
+			  them apart. If the time difference from the end of one
+			  interval and the start of the next interval is less than this
+			  value, they will be automatically merged.</member>
+		  </simplelist>
+		  
+		  <!-- ==============Figure=================================== -->
+        <figure id="props_intervals_figure" xreflabel="Properties Dialog -
+												  Intervals Tab">
+          <title>Properties Dialog - Intervals Tab</title>
+          <screenshot>
+            <screeninfo>Properties dialog - intervals tab</screeninfo>
+			<graphic fileref="figures/gtt_props_intervals.png" />
+          </screenshot>
+        </figure>
+		<!-- ==============End of Figure============================= -->
+		</para>
+		<para>
+		  If you want to disable any of these automatic interval
+		  cleanups, just set the corresponding value to 0.
+		</para>
+		<para>
+		  The <interface>Planning</interface> tab, which you see in
+		  <xref linkend="props_planning_figure"/>, is where you may
+		  enter data about your planning for the execution of the
+		  project. The following information may be set for the project:
+		  <simplelist>
+			<member><interface>Urgency</interface> &mdash; how urgent
+			this project is </member>
+			<member><interface>Importance</interface> &mdash; how
+			important this project is</member>
+			<member><interface>Planned Start</interface> &mdash; when
+			we plan to start working on this project</member>
+			<member><interface>Planned Finish</interface> &mdash;
+			when we plan to finish working in this project</member>
+			<member><interface>Due Date</interface> &mdash; when the
+			project must be finish</member>
+			<member><interface>Hours to Finish</interface> &mdash;
+			How many hours of work will be needed to finish this
+			project</member> 
+			<member><interface>&percnt; Complete</interface> &mdash;
+			How much of the project has already been done</member>
+		  </simplelist>
+		  
+		  <!-- ==============Figure=================================== -->
+        <figure id="props_planning_figure" xreflabel="Properties Dialog -
+												  Planning Tab">
+          <title>Properties Dialog - Planning Tab</title>
+          <screenshot>
+            <screeninfo>Properties dialog - planning tab</screeninfo>
+			<graphic fileref="figures/gtt_props_planning.png" />
+          </screenshot>
+        </figure>
+		<!-- ==============End of Figure============================= -->
+		</para>
+	  </sect3>
         
     </sect2>
 
@@ -1087,46 +1220,6 @@ in reports.
     </sect1>
 <sect1 id="dialogs">
        <title>Additional GNOME Time Tracker Dialogs</title>
-         <sect2 id="properties" xreflabel="Properties Dialog">  
-        <title>The Properties Dialog</title>
-<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
-<para>
-<emphasis>
-Notice:  The current version of GTT has many, many new features which are not
-documented in this manual.  A few of the features documented below might work 
-slightly differently in this new version.
-</emphasis>
-</para>
-<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
-        <para>In this dialog, you can view and edit all the properties of a project:
-
-        <itemizedlist>      
-         <listitem>
-              <para>
-              <guilabel>Project Title</guilabel>
-              You can change the title of a project here.</para>
-          </listitem>
-
-          <listitem><para>
-          <guilabel>Project Description</guilabel>
-            You can give the project a more detailed description if you like.</para>
-        </listitem>
-
-        <listitem><para>
-          <guilabel>Project Time Today</guilabel>
-            This is the <emphasis>daily</emphasis> time you worked on the project today. 
-            You can edit this time here.</para>
-        </listitem>
-
-        <listitem><para>
-          <guilabel>Project Time Total</guilabel>
-          This is the <emphasis>total</emphasis> time you
-          worked on a project. You can edit this time here.</para>
-        </listitem>
-      </itemizedlist>
-    </para>
-</sect2>
-
 <sect2 id="newproject">
       <title>The New Project Dialog</title>
       <para>This dialog is fairly small. It just wants to know what
