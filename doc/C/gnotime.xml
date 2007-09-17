@@ -1,4 +1,4 @@
-<?xml version="1.0" standalone="no"?>
+ <?xml version="1.0" standalone="no"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
 <!ENTITY version "2.2.3">
@@ -337,7 +337,7 @@ the first time, the project list area will show you an empty list.
 
    <para>
        The menu bar consists of six menus: <guimenu>File</guimenu>,
-       <guimenu>Edit</guimenu>, <guimenu>Settings</guimenu>, <guimenu>Reports</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
+       <guimenu>Projects</guimenu>, <guimenu>Settings</guimenu>, <guimenu>Reports</guimenu>, <guimenu>Timer</guimenu> and <guimenu>Help</guimenu>.
    </para>
 
       <!-- =========List=========================== -->
@@ -383,7 +383,7 @@ the first time, the project list area will show you an empty list.
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guimenu>Edit</guimenu></term>
+          <term><guimenu>Projects</guimenu></term>
           <listitem>
             <para>
               This menu contains the following commands:
@@ -396,7 +396,7 @@ the first time, the project list area will show you an empty list.
                       </keysym>
                     </shortcut>
                     <guimenuitem>
-                   New Project
+                   New ...
                     </guimenuitem>
                  </menuchoice>
                  &mdash; brings up the <interface>New Project</interface> dialog so you
@@ -572,139 +572,95 @@ See <xref linkend="preferences"/> for more information.
         </sect2>
 
 
-	<sect2 id="projects" xreflabel="Working with projects">
-	  <title>Working with projects</title>
+	<sect2 id="projects" xreflabel="Manipulating projects">
+	  <title>Manipulating projects</title>
 	  <para>
+		Projects are the central concept in working
+		with <application>GNOME Time Tracker</application>. In this
+		section we will learn what we can do with projects
+		in <application>GNOME Time Tracker</application> and how to do
+		it.
 	  </para>
 
 	  <sect3 id="projects-creating" xreflabel="Creating new projects">
 		<title>Creating new projects</title>
 		<para>
+		  You need to have projects to work with <application>GNOME
+		  Time Tracker</application>. So, the first thing you need to
+		  learn is how to create new projects.
 		</para>
+		<para>
+		  To create a new project, you must invoke the
+		  <xref linkend="new_project_figure"/> by selecting
+		  the <guimenuitem>New ...</guimenuitem> item from
+		  the <guimenu>Projects</guimenu> menu. Alternatively, you may
+		  type Ctrl-N or click on the <interface>New</interface>
+		  button in the toolbar.
+		</para>
+
+<!-- ==============Figure=================================== -->
+        <figure id="new_project_figure" xreflabel="New Project Dialog">
+          <title>New Project Dialog</title>
+          <screenshot>
+            <screeninfo>New Project Dialog</screeninfo>
+			<graphic fileref="figures/gtt_new_project.png" />
+          </screenshot>
+        </figure>
+<!-- ==============End of Figure============================= -->
+
+        <para>
+		  In the <interface>New Project Dialog</interface>, you just
+		  inform the <interface>Project Title</interface> and
+		  the <interface>Project Description</interface>. After
+		  clicking the <interface>OK</interface> button, the new
+		  project will be added to the <interface>Projects
+		  List</inerface> and you're ready to start working on your
+		  new project.
+		</para>
+
 	  </sect3>
 
       <sect3 id="projects-navigating" xreflabel="Navigating through your projects">
 		<title>Navigating through your projects</title>
-		<para>
-		  The Project List contains a list of all your projects
-		  and indicates which project is active at any given time.  It also
-		  shows the attributes of each project.  You can choose which
-		  attributes are displayed from
-		  the <interface>Preferences</interface> dialog (see
-		  <xref linkend="preferences"/>).
-		</para>
-		
-<!-- All of this info seems to be outdated. Needs review or be
-   completely removed. I'm commenting it out for now in order to not
-  misguide users. -->
-<!--
-
-      <sect3 id="projwhat">
-      <title>What is a Project?</title>
-      <para>
-        A project consists of the following:
-        <itemizedlist>
-
-          <listitem><para>
-          A title, which is displayed in the project list.
-          </para></listitem>
-
-          <listitem><para>
-              A <emphasis>daily</emphasis> timer, which
-              will be automatically reset each day, and which you
-              can zero as you please.
-          </para></listitem>
-
-          <listitem><para>
-              A <emphasis>total time</emphasis> timer, which holds the 
-              total amount of time spent on the project. 
-          </para></listitem>
-
-          <listitem><para>
-              A brief description of the project.
-          </para></listitem>
-        </itemizedlist>
+        <para>
+          The project list is located in the central area of the
+          main window. It shows the list of projects and which
+          project is currently selected. Each line corresponds to
+          one project, and displays various attributes of that
+          project. You may choose which attributes are shown in the
+          project list from the <interface>Preferences</interface>
+          dialog (see <xref linkend="preferences"/>).
         </para>
-        </sect3>
-        <sect3>
-        <title>The State of a Project</title>
 
-          <para>A project has two states, selected and
-          unselected. You can only select one project at a time.
-          </para>
+        <para>
+          You can select a project by clicking on it with the left
+          mouse button. Note that you can only have one project
+          selected at any given time.
+        </para>
 
-          <para>
-          If a project is not selected, nothing happens.
-          </para>
-          <para>
-          If a project is selected, but the timer is not running,
-          the select-project shell command has been run
-          and not terminated.  No changes, however, are made to the log file.
-          </para>
-          <para>
-          If a project is selected and the timer is running,
-          the shell command
-          is executed and the log file is updated.
-          </para>
+		<para>
+		  You toggle the timer for a project by double clicking it
+		  on the project list. You may, alternatively, select it
+		  and click on the <interface>Timer</interface> button in
+		  the toolbar or selecting the <guimenuitem>Timer
+			Running</guimenuitem> item from
+		  the <guimenu>Timer</guimenu> menu.
+		</para>
 
-          <para>This might be confusing at first, but in combination with 
-      the shell commands (see <xref linkend="shellcmd"/>) you can
-          use the variations in state to maintain more accurate and readable
-          project logs.
-          </para>
-<example id="projectstate-example">
-          <title>Using Project States</title>
-          <para>
-          I have set the
-          <application>GNOME Time Tracker</application> shell commands to update my
-          <filename>.project</filename> file when I switch or deselect a project.
-          I don't want to alter the file if I'm just taking a short break from a project.
-          So, when I get up to get coffee, I stop the timer instead of deselecting the project.
-          This leaves the <filename>.project</filename> file alone
-          without counting the time I spend away from the project.
-          </para>
-</example>
-        </sect3>
--->
-            <para>
-            The project list is located in the central area of the
-            main window. It shows the list of projects and which
-            project is currently selected. Each line corresponds to
-            one project, and displays various attributes of that
-            project. You may choose which attributes are shown in the
-            project list from the <interface>Preferences</interface>
-            dialog (see <xref linkend="preferences"/>).
-            </para>
-
-            <para>
-            You can select a project by clicking on it with the left
-            mouse button. Note that you can only have one project
-            selected at any given time.
-            </para>
-
-			<para>
-			  You toggle the timer for a project by double clicking it
-			  on the project list. You may, alternatively, select it
-			  and click on the <interface>Timer</interface> button in
-			  the toolbar or selecting the <guimenuitem>Timer
-			  Running</guimenuitem> item from
-			  the <guimenu>Timer</guimenu> menu.
-			  </para>
-
-            <para>
-            To get a popup menu for a project, click the right mouse
-            button on it. If the project wasn't selected, it will now
-            receive the selection, and the <guimenu>Project popup</guimenu>
-            menu will be displayed.
-            </para>
-        </sect3>
+        <para>
+          To get a popup menu for a project, click the right mouse
+          button on it. If the project wasn't selected, it will now
+          receive the selection, and the <guimenu>Project popup</guimenu>
+          menu will be displayed.
+        </para>
+      </sect3>
 	  <sect3 id="projects-editing" xreflabel="Editing Project Properties">
 		<title>Editing Project Properties</title>
 		<para>
 		  You may edit the properties of a project by invoking
 		  the <interface>Project Properties Dialog</interface> through
 		  the <guimenuitem>Properties</guimenuitem> menu item from
-		  the <guimenu>Edit</guimenu> menu. This dialog is formed by
+		  the <guimenu>Projects</guimenu> menu. This dialog is formed by
 		  four tabs
 		  named <interface>Project</interface>, <interface>Rates</interface>,
 		  <interface>Intervals</interface> and <interface>Planning</interface>.
