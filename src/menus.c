@@ -50,11 +50,11 @@ static GnomeUIInfo menu_main_file[] = {
    { GNOME_APP_UI_ITEM, label, tooltip, (gpointer)callback, user_data, NULL, \
      GNOME_APP_PIXMAP_STOCK, stock_id, 0, (GdkModifierType) 0, NULL }
 
-static GnomeUIInfo menu_main_edit[] = {
-  GNOMEUIINFO_MENU_NEW_ITEM(N_("_New Project..."), NULL,
+static GnomeUIInfo menu_main_projects[] = {
+  GNOMEUIINFO_MENU_NEW_ITEM(N_("_New ..."), NULL,
 				  new_project, NULL),
 	GNOMEUIINFO_SEPARATOR,
-#define MENU_EDIT_CUT_POS 2
+#define MENU_PROJECTS_CUT_POS 2
   {
     GNOME_APP_UI_ITEM,
     N_("Cu_t"),
@@ -68,7 +68,7 @@ static GnomeUIInfo menu_main_edit[] = {
     GDK_CONTROL_MASK,
     NULL
   },
-#define MENU_EDIT_COPY_POS 3
+#define MENU_PROJECTS_COPY_POS 3
   {
     GNOME_APP_UI_ITEM,
     N_("_Copy"),
@@ -82,7 +82,7 @@ static GnomeUIInfo menu_main_edit[] = {
     GDK_CONTROL_MASK,
     NULL
   },
-#define MENU_EDIT_PASTE_POS 4
+#define MENU_PROJECTS_PASTE_POS 4
   {
     GNOME_APP_UI_ITEM,
     N_("_Paste"),
@@ -101,7 +101,7 @@ static GnomeUIInfo menu_main_edit[] = {
 		N_("Edit the time interval associated with this project"),
 			       menu_howto_edit_times,
 			       GNOME_STOCK_BLANK),
-#define MENU_EDIT_PROP_POS 7
+#define MENU_PROJECTS_PROP_POS 7
 	GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties,NULL),
 	GNOMEUIINFO_END
 };
@@ -215,7 +215,7 @@ static GnomeUIInfo menu_main_help[] = {
 
 static GnomeUIInfo menu_main[] = {
 	GNOMEUIINFO_MENU_FILE_TREE(menu_main_file),
-	GNOMEUIINFO_MENU_EDIT_TREE(menu_main_edit),
+	GNOMEUIINFO_SUBTREE(N_("_Projects"), menu_main_projects),
 	GNOMEUIINFO_MENU_SETTINGS_TREE(menu_main_settings),
 	GNOMEUIINFO_SUBTREE(N_("_Reports"), menu_main_reports),
 	GNOMEUIINFO_SUBTREE(N_("_Timer"), menu_main_timer),
@@ -389,7 +389,7 @@ menu_set_states(void)
 				 (FALSE == timer_is_running()) );
 	gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_STOP_POS].widget,
 				 (timer_is_running()) );
-	gtk_widget_set_sensitive(menu_main_edit[MENU_EDIT_PASTE_POS].widget,
+	gtk_widget_set_sensitive(menu_main_projects[MENU_PROJECTS_PASTE_POS].widget,
 				 (have_cutted_project()) );
 
 	if (menu_popup[MENU_POPUP_CUT_POS].widget)
