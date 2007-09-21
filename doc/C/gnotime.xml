@@ -22,7 +22,7 @@
     </copyright>
     <copyright>
       <year>2007</year>
-      <holder>Goedson Paixão &lt;goedson@debian.org&gt;</holder>
+      <holder>Goedson PaixÃ£o &lt;goedson@debian.org&gt;</holder>
     </copyright>
 
     <legalnotice id="legalnotice">
@@ -199,7 +199,6 @@
     This should simplify future interoperability and data access concerns.
           </para> 
         </listitem>
-
         <listitem>
           <para>
     <emphasis>Multi-Language Support</emphasis>
@@ -215,8 +214,10 @@
 			GTT uses DBus to expose some of its functionality. It is
 			currently possible to start/stop the timer or save/reload
 			the data file by sending DBus messages. A shell script
-			named <filename>gnotime-remote</filename> is provided to
-			ease this remote controlling of GTT.
+			named <command>gnotime-remote</command> is provided to
+			ease this remote controlling of
+			GTT. See <xref linkend="gnotime_remote"> for details on
+			how to use <command>gnotime-remote</command>.
 		  </para>
 		</listitem>
     </itemizedlist>
@@ -614,7 +615,7 @@ See <xref linkend="preferences"/> for more information.
 		  the <interface>Project Description</interface>. After
 		  clicking the <interface>OK</interface> button, the new
 		  project will be added to the <interface>Projects
-		  List</inerface> and you're ready to start working on your
+		  List</interface> and you're ready to start working on your
 		  new project.
 		</para>
 
@@ -1078,7 +1079,8 @@ variables:
                   timer and alert the user if the timer was running
                   and give her/him the opportunity to tune how much of
                   that time should really be credited to the active
-                  project. 
+                  project. If you don't want this timeout to be
+                  active, set this value to zero or some negative value.
                  </para>
               </listitem>
             </varlistentry>
@@ -1091,7 +1093,9 @@ variables:
 					 defines the number of seconds after which GnoTime
 					 will alert the user if there is no active project
 					 and offer to start the timer running for some
-					 project and credit the elapsed time to it.
+					 project and credit the elapsed time to it. If you
+					 don't want this timeout to be active, set this
+					 value to zero or some negative value.
                    </para>
                  </listitem>
              </varlistentry>
@@ -1174,15 +1178,22 @@ in reports.
         </para>
       </sect2>
     </sect1>
-<sect1 id="dialogs">
-       <title>Additional GNOME Time Tracker Dialogs</title>
+<sect1 id="timeouts">
+       <title>The timeout dialogs</title>
+<para>
+As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
+	Time Tracker</application> allows you to define two timeouts for
+	conditions in which it will popup a dialog to warn about it and
+	let you take action to correct the situation. In this section, we
+	will learn how these dialogs work.
+</para>
 <sect2 id="idletimer">
-  <title>The Idle Timer Dialogs</title>
+  <title>The Restart Timer Dialog</title>
   <para>When <application>GNOME Time Tracker</application> detects that you
     have not entered anything into your computer for a period of time
     (configured under <xref linkend="preferences" />), it stops the timer
     and pops up a dialog asking if you want to restart the timer.</para>
-  <figure id="restarttimer" xreflabel="Restart Timer Dialog">
+  <figure id="restart_timer_dialog" xreflabel="Restart Timer Dialog">
     <title>Restart Timer Dialog</title>
     <screenshot>
       <screeninfo>Restart Timer Dialog</screeninfo>
@@ -1190,31 +1201,63 @@ in reports.
     </screenshot>
   </figure>
   <para>If you want the time credited to the project anyway (If you had to
-    make a call related to the project, for instance,) Gnotime provides a
+    make a call related to the project, for instance) Gnotime provides a
     slider which can be set to the time you want to credit the project with.
     Pressing <guibutton>Yes</guibutton> credits the project and restarts the
     timer.  Pressing <guibutton>No</guibutton> halts the timer.</para>
-  
+  </sect2>
+<sect2 id="start_project_dialog" xreflabel="Start Project Dialog">
+<title>Start Project Dialog</title>
   <para>Similarly, when there is no project running, <application>GNOME Timer
     Tracker</application> pops up a dialog asking if you want to start
     one.</para>
-  <figure id="starttimer" xreflabel="Start Timer Dialog">
-    <title>Start Project Timer Dialog</title>
+  <figure id="start_project_figure" xreflabel="Start Project Dialog">
+    <title>No Project Dialog</title>
     <screenshot>
-      <screeninfo>Restart Timer Dialog</screeninfo>
+      <screeninfo>Start Project Dialog</screeninfo>
       <graphic fileref="figures/gtt_startprojwin.png" />
     </screenshot>
   </figure>
   <para>It provides a drop-down list of your projects which you can choose to
     select as well as a place to enter any time you want credited to the
     timer.  If you choose to restart the timer with a project, press the
-    <guibutton>Execute</guibutton> button.  Otherwise,
-    <guibutton>Cancel</guibutton> is what you want.</para>
+    <guibutton>Execute</guibutton> button.  Otherwise, press
+    <guibutton>Cancel</guibutton>.</para>
 </sect2>
 </sect1>
 
+<sect1 id="reports" xreflabel="Reports">
+  <title>Reports</title>
+  <para>
+	TODO
+  </para>
+  <sect2 id="activity_report" xreflabel="The Activity Report">
+	<title>The Activity Report</title>
+	<para>
+	  TODO
+	</para>
+  </sect2>
+</sect1>
 
-
+<sect1 id="gnotime_remote" xreflabel="Sending commands to Gnotime">
+  <title>Sending commands to Gnotime</title>
+  <para>
+	<application>GNOME Time Tracker</application> exposes some of its
+	functionality through DBus. To ease the use of the exposed
+	functions, we provide a shell script named gnotime-remote that can
+	be used to send commands to Gnotime. Currently, the following
+	commands are supported:
+	<simplelist>
+	  <member><command>start-timer</command> &mdash; starts the timer
+	  for the currently selected project</member>
+	  <member><command>stop-timer</command> &mdash; stops the timer</member>
+	  <member><command>save-file</command> &mdash; saves project data
+	  to the data file</member>
+	  <member><command>reload-file</command> &mdash; reloads project
+	  data from the data file</member>
+	</simplelist>
+  </para>
+</sect1>
 
 <!-- =============New section============================= -->
   <sect1 id="bugs">
@@ -1258,14 +1301,13 @@ slightly differently in this new version.
            <firstname>Linas</firstname> 
            <surname>Vepstas</surname> 
        </author>.
-       It is currently maintained by Linas Vepstas <email>linas@linas.org</email>.
+       It is currently maintained by Goedson PaixÃ£o <email>goedson@debian.org</email>.
 
       Please submit all comments, suggestions, and bug reports 
       on the  
       <ulink url="https://sourceforge.net/projects/gttr/">Gnotime 
-      Sourceforge Project Site</ulink>; you may want to drop Linas 
+      Sourceforge Project Site</ulink>; you may want to drop Goedson
       an email as well.
- 
     </para>
     <para>
       There is a web page devoted to the latest GTT news at
@@ -1278,14 +1320,14 @@ slightly differently in this new version.
       This manual was written by 
       Aaron Weber (<email>aaron@helixcode.com</email>) 
       Eckehard Berns (<email>eb@berns.i-s-o.net</email>)
-      and 
       Linas Vepstas (<email>linas@linas.org</email>)
+	  and
+	  Goedson PaixÃ£o (<email>goedson@debian.org</email>)
       Please send all comments
-      and suggestions regarding the manual to the GNOME Documentation
-      Project at <email>docs@gnome.org</email>. You can also add your
-      comments online by using 
-      <ulink url="http://developer.gnome.org/projects/gdp/doctable/">GNOME Documentation
-      Status Table</ulink>. 
+      and suggestions regarding the manual
+      to our bug tracker at
+      the <ulink url="http://www.sourceforge.net/projects/gttr">SourceForge
+      project page</ulink>. 
       </para>
     <!-- For translations: uncomment this:
       <para> Latin translation was done by ME
@@ -1320,8 +1362,8 @@ slightly differently in this new version.
       url="http://www.fsf.org">their Web site</ulink> or by writing to
       <address>
         Free Software Foundation, Inc.
-        <street>59 Temple Place</street> - Suite 330
-        <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+        <street>51 Franklin Street</street> - Fifth Floor
+        <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>
         <country>USA</country>
    </address>
   </para>
