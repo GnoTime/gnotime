@@ -22,7 +22,7 @@
     </copyright>
     <copyright>
       <year>2007</year>
-      <holder>Goedson PaixÃ£o &lt;goedson@debian.org&gt;</holder>
+      <holder>Goedson Paixão &lt;goedson@debian.org&gt;</holder>
     </copyright>
 
     <legalnotice id="legalnotice">
@@ -216,7 +216,7 @@
 			the data file by sending DBus messages. A shell script
 			named <command>gnotime-remote</command> is provided to
 			ease this remote controlling of
-			GTT. See <xref linkend="gnotime_remote"> for details on
+			GTT. See <xref linkend="gnotime_remote"/> for details on
 			how to use <command>gnotime-remote</command>.
 		  </para>
 		</listitem>
@@ -228,7 +228,7 @@
       the package <filename>gnome-utils</filename>, which is a
       part of the GNOME desktop environment. Now it's maintained as a
       separate application and is hosted
-      at <ulink url="https://sourceforge.net/projects/gttr/">Gnotime
+      at <ulink url="https://sourceforge.net/projects/gttr/">GnoTime
       Sourceforge Project</ulink>. This document describes version
       &version; of <application>GNOME Time Tracker</application>.
     </para>
@@ -1108,8 +1108,6 @@ variables:
                 GnoTime should start counting as a different day and
                 which day of the week should be considered as the
                 start of a new week.
-            
-        
         </para></listitem>
         </varlistentry>
         </variablelist></para>
@@ -1154,7 +1152,6 @@ in reports.
   </varlistentry>
 </variablelist></para>
 </sect2>
- 
       <sect2 id="ok-apply-close">
           <title>OK, Apply and Close</title>
         <para>
@@ -1181,7 +1178,7 @@ in reports.
 <sect1 id="timeouts">
        <title>The timeout dialogs</title>
 <para>
-As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
+  As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
 	Time Tracker</application> allows you to define two timeouts for
 	conditions in which it will popup a dialog to warn about it and
 	let you take action to correct the situation. In this section, we
@@ -1201,7 +1198,7 @@ As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
     </screenshot>
   </figure>
   <para>If you want the time credited to the project anyway (If you had to
-    make a call related to the project, for instance) Gnotime provides a
+    make a call related to the project, for instance) GnoTime provides a
     slider which can be set to the time you want to credit the project with.
     Pressing <guibutton>Yes</guibutton> credits the project and restarts the
     timer.  Pressing <guibutton>No</guibutton> halts the timer.</para>
@@ -1229,23 +1226,182 @@ As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
 <sect1 id="reports" xreflabel="Reports">
   <title>Reports</title>
   <para>
-	TODO
+	GnoTime provides a set of default reports that can be used to take
+	different views to your project data ranging from a detailed listing of the
+	work done with all time interval data recorded  to an invoice
+	listing the each task and it's billing status and value. Some of
+	these reports may be used to edit data that you would not be
+	able to do otherwise (You're right, that's a bug in the
+	application and we should fix it in the future but, for now, it's
+	good to know how you can access these data while we don't fix
+	it). Some samples of the default reports can be seen below.
   </para>
+  <sect2 id="journal_report" xreflabel="The Journal Report">
+	<title>The Journal Report</title>
+	<para>
+	  The journal report displays a summary of the Diary Entries
+	  associated with a project containing its title, date and time of
+	  first activity, date and time of last activity, and the notes
+	  associated. An example of a Journal Report for a project
+	  containing only one Diary Entry can be seen in
+	  <xref linkend="journal_report_figure"/>.
+	</para>
+	<figure id="journal_report_figure" xreflabel="Journal Report">
+	  <title>Journal Report</title>
+	  <screenshot>
+		<screeninfo>Journal Report</screeninfo>
+		<graphic fileref="figures/gtt_report_journal.png" />
+	  </screenshot>
+	</figure>
+	<tip>
+	  <para>
+		By clicking the title of a Diary Entry in the report, you
+		activate the <interface>Diary Entry menu</interface>, from which
+		you can do various operations like creating a new diary entry, 
+		editing the properties of the diary entry,
+		deleting/copying/pasting the diary entry and creating a new time
+		interval for the diary entry.
+	  </para>
+	</tip>
+  </sect2>
   <sect2 id="activity_report" xreflabel="The Activity Report">
 	<title>The Activity Report</title>
 	<para>
-	  TODO
+	  The activity report displays a list of the diary entries for a
+	  project detailing the start and stop times for each of the
+	  recorded time intervals. An example of an Activity Report can be
+	  seen in <xref linkend="activity_report_figure"/>.
 	</para>
+	<figure id="activity_report_figure" xreflabel="Activity Report">
+	  <title>Activity Report</title>
+	  <screenshot>
+		<screeninfo>Activity Report</screeninfo>
+		<graphic fileref="figures/gtt_report_activity.png" />
+	  </screenshot>
+	</figure>
+	<tip>
+	  <para>
+		Clicking in a time interval's data, you will activate
+		the <interface>Time Interval menu</interface> which will allow
+		you to edit its data, cut, copy, paste, merge to its neighbors
+		and create new time intervals.
+	  </para>
+	</tip>
   </sect2>
+  <sect2 id="todo_report" xreflabel="The Todo Report">
+	<title>The Todo Report</title>
+	<para>
+	  The todo report lists all the sub-projects of a given project,
+	  displaying its importance, urgency, title, description and
+	  status. An example Todo Report is shown in <xref linkend="todo_report_figure"/>.
+	</para>
+	<figure id="todo_report_figure" xreflabel="Todo Report">
+	  <title>Todo Report</title>
+	  <screenshot>
+		<screeninfo>Todo Report</screeninfo>
+		<graphic fileref="figures/gtt_report_todo.png" />
+	  </screenshot>
+	</figure>
+	<tip>
+	  <para>
+		Clicking the title of a sub-project will take you to the Journal
+		Report for that sub-project.
+	  </para>
+	</tip>
+  </sect2>
+  <sect2 id="invoice_report" xreflabel="The Invoice Report">
+	<title>The Invoice Report</title>
+	<para>
+	  The Invoice Report displays the list of billable tasks for a
+	  project with its respective worked time and value. An example
+	  Invoice Report can be seen at <xref linkend="invoice_report_figure"/>.
+	</para>
+	<figure id="invoice_report_figure" xreflabel="Invoice Report">
+	  <title>Invoice Report</title>
+	  <screenshot>
+		<screeninfo>Invoice Report</screeninfo>
+		<graphic fileref="figures/gtt_report_invoice.png" />
+	  </screenshot>
+	</figure>
+  </sect2>
+  <sect2 id="daily" xreflabel="The Daily Report">
+	<title>The Daily Report</title>
+	<para>
+	  The Daily Report shows the total time worked each day for a
+	  given project with a list of the tasks worked on each day. An
+	  example Daily Report can be seen at <xref linkend="daily_report_figure"/>.
+	</para>
+	<figure id="daily_report_figure" xreflabel="Daily Report">
+	  <title>Daily Report</title>
+	  <screenshot>
+		<screeninfo>Daily Report</screeninfo>
+		<graphic fileref="figures/gtt_report_daily.png" />
+	  </screenshot>
+	</figure>
+  </sect2>
+  <sect2 id="customizing_reports" xreflabel="Customizing Reports">
+	<title>Customizing Reports</title>
+  <para>
+	We know GnoTime's default set of reports will not satisfy all the
+	reporting needs for everyone. They may be missing some data, or
+	may be showing data you don't want to be shown or may be pretty
+	ugly or simply we may have not envisioned some that particular way
+	you want to display your data.
+  </para>
+  <para>
+	Fortunately, the available reports are not set in stone. GnoTime's
+	reporting engine is based on HTML files with scheme scripting. So
+	you can edit them at will to change their formating, add or remove
+	data and even create whole new reports and add them to the set
+	of reports available from the Reports menu. If you do create some
+	new report you think could be useful for the community in general,
+	you may post it in our patch tracker and we will consider its
+	inclusion in future releases.
+  </para>
+  <para>
+	To add a new report to GnoTime, you
+	choose <menuchoice><guimenu>Reports</guimenu><guimenuitem>New
+	report</guimenuitem></menuchoice>, which will invoke the
+	<xref linkend="new_report_dialog_figure"/>. In this dialog, you
+	must enter the name that should be displayed in the Reports menu
+	for the new report you are creating, a tooltip to be displayed for
+	the menu item and the full path to the file with the code for the
+	new report.
+  </para>
+	<figure id="new_report_dialog_figure" xreflabel="New Report Dialog">
+	  <title>New Report Dialog</title>
+	  <screenshot>
+		<screeninfo>New Report Dialog</screeninfo>
+		<graphic fileref="figures/gtt_new_report_dialog.png" />
+	  </screenshot>
+	</figure>
+	<para>
+	  After adding new reports to GnoTime, you may want to organize
+	  the menu items in a different way, instead of keeping them in a
+	  flat list in the order the were added. To do this, you
+	  choose <menuchoice><guimenu>Reports</guimenu><guimenuitem>Edit
+	  Reports</guimenuitem></menuchoice>, which will open the
+	  <xref linkend="edit_reports_dialog_figure"/>. In this dialog,
+	  you will be able to reorder the menu items, create sub menus,
+	  create keyboard shortcuts for the reports, and change all the
+	  properties entered when creating the report.
+	</para>
+	<figure id="edit_reports_dialog_figure" xreflabel="Edit Reports Dialog">
+	  <title>Edit Reports Dialog</title>
+	  <screenshot>
+		<screeninfo>Edit Reports Dialog</screeninfo>
+		<graphic fileref="figures/gtt_edit_reports_dialog.png" />
+	  </screenshot>
+	</figure>  </sect2>
 </sect1>
 
-<sect1 id="gnotime_remote" xreflabel="Sending commands to Gnotime">
-  <title>Sending commands to Gnotime</title>
+<sect1 id="gnotime_remote" xreflabel="Sending commands to GnoTime">
+  <title>Sending commands to GnoTime</title>
   <para>
 	<application>GNOME Time Tracker</application> exposes some of its
 	functionality through DBus. To ease the use of the exposed
 	functions, we provide a shell script named gnotime-remote that can
-	be used to send commands to Gnotime. Currently, the following
+	be used to send commands to GnoTime. Currently, the following
 	commands are supported:
 	<simplelist>
 	  <member><command>start-timer</command> &mdash; starts the timer
@@ -1262,27 +1418,10 @@ As we have seen at <xref linkend="prefs-misc"/>, <application>GNOME
 <!-- =============New section============================= -->
   <sect1 id="bugs">
     <title>Known bugs and limitations</title>
-<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
-<para>
-<emphasis>
-Notice:  The current version of Gnotime has many, many new features which are not
-documented in this manual.  A few of the features documented below might work 
-slightly differently in this new version.
-</emphasis>
-</para>
-<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <para>
-      <itemizedlist>
-         <listitem>
-            <para>
-              Times are internally represented as an integer number of seconds.
-              On some machines, therefore, it is theoretically possible to 
-              exceed the maximum amount of time the program can
-              comprehend.  On most machines, a project would have to run 
-              for more than 68 years for this to happen.
-            </para>
-          </listitem>
-       </itemizedlist>
+	  You may refer to
+      the <ulink url="https://sourceforge.net/projects/gttr/">GnoTime
+      Sourceforge Project Site</ulink> for a list of known bugs.
     </para>
   </sect1>
 
@@ -1292,20 +1431,13 @@ slightly differently in this new version.
     <title>Authors</title>
     <para>
        <application>GNOME Time Tracker</application> was written by 
-       <author>
-           <firstname>Eckehard</firstname> 
-           <surname>Berns</surname> 
-       </author>
-       and
-       <author>
-           <firstname>Linas</firstname> 
-           <surname>Vepstas</surname> 
-       </author>.
-       It is currently maintained by Goedson PaixÃ£o <email>goedson@debian.org</email>.
+       Eckehard Berns <email>eb@berns.i-s-o.net</email> and Linas
+       Vepstas <email>linas@linas.org</email>.
+       It is currently maintained by Goedson Paixão <email>goedson@debian.org</email>.
 
       Please submit all comments, suggestions, and bug reports 
       on the  
-      <ulink url="https://sourceforge.net/projects/gttr/">Gnotime 
+      <ulink url="https://sourceforge.net/projects/gttr/">GnoTime 
       Sourceforge Project Site</ulink>; you may want to drop Goedson
       an email as well.
     </para>
@@ -1322,7 +1454,7 @@ slightly differently in this new version.
       Eckehard Berns (<email>eb@berns.i-s-o.net</email>)
       Linas Vepstas (<email>linas@linas.org</email>)
 	  and
-	  Goedson PaixÃ£o (<email>goedson@debian.org</email>)
+	  Goedson Paixão (<email>goedson@debian.org</email>)
       Please send all comments
       and suggestions regarding the manual
       to our bug tracker at
