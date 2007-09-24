@@ -29048,7 +29048,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile debian/Makefile doc/C/Makefile doc/C/man/Makefile doc/Makefile doc/es/Makefile doc/eu/Makefile gconf/Makefile ghtml/C/Makefile ghtml/Makefile glade/Makefile po/Makefile.in redhat/Makefile redhat/gnotime.spec fedora/Makefile fedora/gnotime.spec src/Makefile scripts/Makefile"
+ac_config_files="$ac_config_files Makefile debian/Makefile doc/C/Makefile doc/C/man/Makefile doc/Makefile gconf/Makefile ghtml/C/Makefile ghtml/Makefile glade/Makefile po/Makefile.in redhat/Makefile redhat/gnotime.spec fedora/Makefile fedora/gnotime.spec src/Makefile scripts/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -29679,8 +29679,6 @@ do
     "doc/C/Makefile") CONFIG_FILES="$CONFIG_FILES doc/C/Makefile" ;;
     "doc/C/man/Makefile") CONFIG_FILES="$CONFIG_FILES doc/C/man/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
-    "doc/es/Makefile") CONFIG_FILES="$CONFIG_FILES doc/es/Makefile" ;;
-    "doc/eu/Makefile") CONFIG_FILES="$CONFIG_FILES doc/eu/Makefile" ;;
     "gconf/Makefile") CONFIG_FILES="$CONFIG_FILES gconf/Makefile" ;;
     "ghtml/C/Makefile") CONFIG_FILES="$CONFIG_FILES ghtml/C/Makefile" ;;
     "ghtml/Makefile") CONFIG_FILES="$CONFIG_FILES ghtml/Makefile" ;;
