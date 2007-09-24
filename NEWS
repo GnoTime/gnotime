@@ -9,6 +9,23 @@ measure the time spent on to-do list items and generate invoices.
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
 
+New in the 2.2.3 Release:
+-------------------------
+This release brings better internationalization in reports with locale
+based formating of times and monetary values. The newly added support
+for DBus messages allows users to start/stop the timer and save/reload
+the data file from the command line using the gnotime-remote
+script. Also, an update user's manual covers most of the features
+available in this version. In addition, many bugs have been fixed,
+including:
+
+-- Crash when saving to full filesystem (#1548248)
+-- Day of century calculation error causing skipped day in reports
+-- Conflicting keybindings (#1639477)
+-- Invoice report doesn't work in locales other than C
+-- Hidden question dialog when overwriting file during report saving
+   (http://bugs.debian.org/422023)
+
 New in the 2.2.0 Release:
 -------------------------
 This release sports a brand-new look-n-feel for the reports,
