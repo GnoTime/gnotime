@@ -233,8 +233,8 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-man_MANS = gnotime.1
-EXTRA_DIST = gnotime.1
+man_MANS = gnotime.1 gnotime-remote.1
+EXTRA_DIST = gnotime.1 gnotime-remote.1
 all: all-am
 
 .SUFFIXES:
