@@ -1,5 +1,9 @@
 2007-09-26  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/toolbar.c: rebuild the toolbar each time config_show_toolbar
+	is changed so that the toolbar is really hidden when the don't
+	want it to be shown.
+
 	* gnotime.desktop: Updated desktop entry
 
 	* configure.in: Removed debian/Makefile from the list of output
