@@ -22,6 +22,7 @@
 #include <glib.h>
 #include <guile/gh.h>
 #include <libguile.h>
+#include <libguile/backtrace.h>
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -69,7 +70,7 @@ GttGhtml *ghtml_guile_global_hack = NULL;
 static SCM
 do_ret_did_query (GttGhtml *ghtml)
 {
-	return SCM_BOOL (ghtml->did_query);
+	return scm_from_bool (ghtml->did_query);
 }
 
 static SCM
@@ -88,7 +89,7 @@ reverse_list (SCM node_list)
 	SCM rc, node;
 	rc = SCM_EOL;
 
-	while (FALSE == SCM_NULLP(node_list))
+	while (!scm_is_null (node_list))
 	{
 		node = SCM_CAR (node_list);
 		rc = scm_cons (node, rc);
@@ -118,36 +119,33 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
              SCM (*ivl_func)(GttGhtml *, GttInterval *))
 {
 	/* Either a 'symbol or a "quoted string" */
-	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
+	if (scm_is_symbol(node) || scm_is_string (node))
 	{
 		SCM rc = SCM_EOL;
-		char *str = SCM_STRING_CHARS (node);
-		int len = SCM_STRING_LENGTH (node);
+		char *str = scm_to_locale_string (node);
+		int len = strlen (str);
 		if ((0<len) && str_func) rc = str_func (ghtml, str);
 		return rc;
 	}
 
 	/* If its a number, its in fact a pointer to the C struct. */
-	if (SCM_NUMBERP(node))
+	if (scm_is_number(node))
 	{
 		SCM rc = SCM_EOL;
 		switch (cur_type)
 		{
 			case GTT_PRJ: {
-				GttProject *prj = (GttProject *) scm_num2ulong (node,
-				             SCM_ARG1, "GnoTime::do-apply-based-on-type==project");
+				GttProject *prj = (GttProject *) scm_to_ulong (node);
 				if (prj_func) rc = prj_func (ghtml, prj);
 				break;
 			}
 			case GTT_TASK: {
-				GttTask *tsk = (GttTask *) scm_num2ulong (node,
-				             SCM_ARG1, "GnoTime::do-apply-based-on-type==task");
+				GttTask *tsk = (GttTask *) scm_to_ulong (node);
 				if (tsk_func) rc = tsk_func (ghtml, tsk);
 				break;
 			}
 			case GTT_IVL: {
-				GttInterval *ivl = (GttInterval *) scm_num2ulong (node,
-				             SCM_ARG1, "GnoTime::do-apply-based-on-type==interval");
+				GttInterval *ivl = (GttInterval *) scm_to_ulong (node);
 				if (ivl_func) rc = ivl_func (ghtml, ivl);
 				break;
 			}
@@ -159,7 +157,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 	}
 
 	/* If its a list, then process the list */
-	if (SCM_CONSP(node))
+	if (scm_is_pair(node))
 	{
 		SCM rc = SCM_EOL;
 		SCM node_list = node;
@@ -168,14 +166,14 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		 * type.  If so, then strip off the label, and pass back
 		 * car to ourselves, and passing the corrected type.
 		 */
-		if (FALSE == SCM_NULLP(node))
+		if (!scm_is_null (node))
 		{
 			SCM type;
 			type = SCM_CDR (node);
-			if (SCM_SYMBOLP(type) || SCM_STRINGP (type))
+			if (scm_is_symbol(type) || scm_is_string (type))
 			{
 				cur_type = GTT_NONE;
-				char *buff = SCM_STRING_CHARS (type);
+				char *buff = scm_to_locale_string (type);
 
 				if ((!strncmp (buff, "gtt-project-ptr",15)) ||
 				    (!strncmp (buff, "gtt-project-list",16)))
@@ -203,7 +201,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 		/* Otherwise, we have just a list. Walk that list,
 		 * apply recursively to it.
 		 */
-		while (FALSE == SCM_NULLP(node_list))
+		while (!scm_is_null (node_list))
 		{
 			SCM evl;
 			node = SCM_CAR (node_list);
@@ -211,7 +209,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 			evl = do_apply_based_on_type (ghtml, node, cur_type,
 				               str_func, prj_func, tsk_func, ivl_func);
 
-			if (FALSE == SCM_NULLP (evl))
+			if (!scm_is_null (evl))
 			{
 				rc = scm_cons (evl, rc);
 			}
@@ -226,7 +224,7 @@ do_apply_based_on_type (GttGhtml *ghtml, SCM node,
 	}
 
 	/* If its a null list, do nothing */
-	if (SCM_NULLP (node))
+	if (scm_is_null (node))
 	{
 		return node;
 	}
@@ -284,7 +282,7 @@ kvp_cb (GttGhtml *ghtml, const char *key)
 	if (!val) return SCM_EOL;
 	str = kvp_value_get_string (val);
 	if (!str) return SCM_EOL;
-	return scm_mem2string (str, strlen (str));
+	return scm_from_locale_string (str);
 }
 
 static SCM
@@ -308,13 +306,13 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 
 	/* Need to test for numbers first, since later tests
 	 * may core-dump guile-1.3.4 if the node was in fact a number. */
-	if (SCM_NUMBERP(node))
+	if (scm_is_number(node))
 	{
 		char buf[132];
 		double x;
 		long  ix;
 
-		x = scm_num2dbl (node, "GnoTime::do_show_scm");
+		x = scm_to_double (node);
 		ix = (long) x;
 
 		/* If the number is representable in 32 bits,
@@ -334,14 +332,14 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 	}
 	else
 	/* either a 'symbol or a "quoted string" */
-	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
+	if (scm_is_symbol(node) || scm_is_string (node))
 	{
-		str = SCM_STRING_CHARS (node);
-		len = SCM_STRING_LENGTH (node);
+		str = scm_to_locale_string (node);
+		len = strlen (str);
 		if (0<len) (ghtml->write_stream) (ghtml, str, len, ghtml->user_data);
 	}
 	else
-	if (SCM_CONSP(node))
+	if (scm_is_pair(node))
 	{
 		SCM node_list = node;
 		do
@@ -350,19 +348,19 @@ do_show_scm (GttGhtml *ghtml, SCM node)
 			do_show_scm (ghtml, node);
 			node_list = SCM_CDR (node_list);
 		}
-		while (SCM_CONSP(node_list));
+		while (scm_is_pair(node_list));
 		do_show_scm (ghtml, node_list);
 	}
 	else
-	if (SCM_BOOLP(node))
+	if (scm_is_bool(node))
 	{
 		const char *str;
-		if (SCM_FALSEP(node)) str = _("False");
+		if (scm_is_false (node)) str = _("False");
 		else str = _("True");
 		(ghtml->write_stream) (ghtml, str, strlen(str), ghtml->user_data);
 	}
 	else
-	if (SCM_NULLP(node))
+	if (scm_is_null (node))
 	{
 		/* No op; maybe this should be a warning? */
 	}
@@ -398,10 +396,10 @@ static SCM
 do_ret_project (GttGhtml *ghtml, GttProject *prj)
 {
 	SCM node,rc;
-	rc = scm_ulong2num ((unsigned long) prj);
+	rc = scm_from_ulong ((unsigned long) prj);
 
 	/* Label the pointer with a type identifier */
-	node = scm_mem2string ("gtt-project-ptr", 15);
+	node = scm_from_locale_string ("gtt-project-ptr");
 	rc = scm_cons (rc, node);
 
 	return rc;
@@ -478,14 +476,14 @@ static SCM
 do_include_file_scm (GttGhtml *ghtml, SCM node)
 {
 	/* either a 'symbol or a "quoted string" */
-	if (SCM_SYMBOLP(node) || SCM_STRINGP (node))
+	if (scm_is_symbol(node) || scm_is_string (node))
 	{
-		const char * filepath = SCM_STRING_CHARS (node);
+		const char * filepath = scm_to_locale_string (node);
 		filepath = gtt_ghtml_resolve_path(filepath, ghtml->ref_path);
 		gtt_ghtml_display (ghtml, filepath, NULL);
 	}
 	else
-	if (SCM_CONSP(node))
+	if (scm_is_pair(node))
 	{
 		SCM node_list = node;
 		do
@@ -494,11 +492,11 @@ do_include_file_scm (GttGhtml *ghtml, SCM node)
 			do_include_file_scm (ghtml, node);
 			node_list = SCM_CDR (node_list);
 		}
-		while (SCM_CONSP(node_list));
+		while (scm_is_pair(node_list));
 		do_include_file_scm (ghtml, node_list);
 	}
 	else
-	if (SCM_NULLP(node))
+	if (scm_is_null (node))
 	{
 		/* No op; maybe this should be a warning? */
 	}
@@ -541,13 +539,13 @@ g_list_to_scm (GList * gplist, const char * type)
 		/* Walk backwards, creating a scheme list */
 		for (n= gplist; n; n=n->prev)
 		{
-			node = scm_ulong2num ((unsigned long) n->data);
+			node = scm_from_ulong ((unsigned long) n->data);
 			rc = scm_cons (node, rc);
 		}
 	}
 
 	/* Prepend type label */
-	node = scm_mem2string (type, strlen (type));
+	node = scm_from_locale_string (type);
 	rc = scm_cons (rc, node);
 
 	return rc;
@@ -588,7 +586,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 			rc = scm_cons (node, rc);
 		}
 #endif
-		node = scm_ulong2num ((unsigned long) prj);
+		node = scm_from_ulong ((unsigned long) prj);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -674,9 +672,9 @@ do_ret_tasks (GttGhtml *ghtml, GttProject *prj)
 	for (n= task_list; n; n=n->prev)
 	{
 		GttTask *tsk = n->data;
-      SCM node;
+		SCM node;
 
-		node = scm_ulong2num ((unsigned long) tsk);
+		node = scm_from_ulong ((unsigned long) tsk);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -719,7 +717,7 @@ do_ret_intervals (GttGhtml *ghtml, GttTask *tsk)
 		GttInterval *ivl = n->data;
 		SCM node;
 
-		node = scm_ulong2num ((unsigned long) ivl);
+		node = scm_from_ulong ((unsigned long) ivl);
 		rc = scm_cons (node, rc);
 	}
 	return rc;
@@ -782,18 +780,18 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
 		qof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
-		node = scm_mem2string (buff, strlen (buff));
+		node = scm_from_locale_string (buff);
 		rpt = scm_cons (node, rpt);
 
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
 		qof_print_date_buff (buff, 100, rptdate);
-		node = scm_mem2string (buff, strlen (buff));
+		node = scm_from_locale_string (buff);
 		rpt = scm_cons (node, rpt);
 
 		/* Put a data type in the cdr slot */
-		node = scm_mem2string ("gtt-daily", 9);
+		node = scm_from_locale_string ("gtt-daily");
 		rpt = scm_cons (rpt, node);
 
 		rc = scm_cons (rpt, rc);
@@ -836,7 +834,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
 	if (NULL == str) return SCM_EOL;                                 \
-	return scm_mem2string (str, strlen (str));                       \
+	return scm_from_locale_string (str);                       \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -846,17 +844,17 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	long i = GTT_GETTER (prj);                                       \
-	return scm_long2num (i);                                         \
+	return scm_from_long (i);                                         \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
-                                                                    \
+                                                                    
 #define RET_PROJECT_ULONG(RET_FUNC,GTT_GETTER)                      \
 static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	unsigned long i = GTT_GETTER (prj);                              \
-	return scm_ulong2num (i);                                        \
+	return scm_from_ulong (i);                                        \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -889,12 +887,12 @@ get_project_title_link_scm (GttGhtml *ghtml, GttProject *prj)
 		g_string_append_printf (str, "<a href=\"gtt:proj:0x%lx\">", (long) prj);
 		g_string_append (str, gtt_project_get_title (prj));
 		g_string_append (str, "</a>");
-		return scm_mem2string (str->str, str->len);
+		return scm_from_locale_string (str->str);
 	}
 	else
 	{
 		const char * str = gtt_project_get_title (prj);
-		return scm_mem2string (str, strlen (str));
+		return scm_from_locale_string (str);
 	}
 }
 
@@ -973,7 +971,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
 {                                                                   \
 	const char * str = GTT_GETTER (tsk);                             \
-	return scm_mem2string (str, strlen (str));                       \
+	return scm_from_locale_string (str);		 \
 }                                                                   \
                                                                     \
 static SCM                                                          \
@@ -1001,12 +999,12 @@ get_task_memo_scm (GttGhtml *ghtml, GttTask *tsk)
 		g_string_append_printf (str, "<a href=\"gtt:task:0x%lx\">", (long)tsk);
 		g_string_append (str, gtt_task_get_memo (tsk));
 		g_string_append (str, "</a>");
-		return scm_mem2string (str->str, str->len);
+		return scm_from_locale_string (str->str);
 	}
 	else
 	{
 		const char * str = gtt_task_get_memo (tsk);
-		return scm_mem2string (str, strlen (str));
+		return scm_from_locale_string (str);
 	}
 }
 
@@ -1085,7 +1083,7 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 
 	task_secs = gtt_task_get_secs_ever(tsk);
 	qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
-	return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 
 static SCM
@@ -1101,7 +1099,7 @@ task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	} else {
         len = g_snprintf(buff, 100, "%s", _("No activity"));
 	}
-	return scm_mem2string (buff, len);
+	return scm_from_locale_string (buff);
 }
 
 static SCM
@@ -1117,7 +1115,7 @@ task_get_latest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	} else {
         len = g_snprintf(buff, 100, "%s", _("No activity"));
 	}
-	return scm_mem2string (buff, len);
+	return scm_from_locale_string (buff);
 }
 
 static SCM
@@ -1151,7 +1149,7 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
       strfmon(buff, 100, "%n", value);
     }
 
-	return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 
 RET_TASK_STR (ret_task_billstatus,      task_get_billstatus)
@@ -1178,7 +1176,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
 {                                                                   \
 	const char * str = GTT_GETTER (ivl);                             \
-	return scm_mem2string (str, strlen (str));                       \
+	return scm_from_locale_string (str);		 \
 }                                                                   \
 RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
 
@@ -1188,7 +1186,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttInterval *ivl)                \
 {                                                                   \
 	unsigned long i = GTT_GETTER (ivl);                              \
-	return scm_ulong2num (i);                                        \
+	return scm_from_ulong (i);                                       \
 }                                                                   \
 RET_IVL_SIMPLE(RET_FUNC,GTT_GETTER)
 
@@ -1205,7 +1203,7 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	elapsed = gtt_interval_get_stop (ivl);
 	elapsed -= gtt_interval_get_start (ivl);
 	qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
-	return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 
 RET_IVL_SIMPLE (ret_ivl_elapsed_str, get_ivl_elapsed_str);
@@ -1252,7 +1250,7 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 		g_string_append (str, "</a>");
 	}
 
-	return scm_mem2string (str->str, str->len);
+	return scm_from_locale_string (str->str);
 }
 
 static SCM
@@ -1272,7 +1270,7 @@ get_ivl_same_day_start_scm (GttGhtml *ghtml, GttInterval *ivl)
 	{
 		prt_date = qof_is_same_day(start, prev_stop);
 	}
-	return SCM_BOOL (prt_date);
+	return scm_from_bool (prt_date);
 }
 RET_IVL_SIMPLE (ret_ivl_same_day_start, get_ivl_same_day_start);
 
@@ -1292,7 +1290,7 @@ get_ivl_same_day_stop_scm (GttGhtml *ghtml, GttInterval *ivl)
 	{
 		prt_date = qof_is_same_day(prev_start, stop);
 	}
-	return SCM_BOOL (prt_date);
+	return scm_from_bool (prt_date);
 }
 RET_IVL_SIMPLE (ret_ivl_same_day_stop, get_ivl_same_day_stop);
 
@@ -1334,7 +1332,7 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	char buff[100];
 
 	qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
-	return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
@@ -1343,17 +1341,51 @@ RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 static SCM
 my_catch_handler (void *data, SCM tag, SCM throw_args)
 {
-	printf ("Error: GnoTime caught error during scheme parse\n");
-	if (SCM_SYMBOLP(tag))
-	{
-		char * str  = SCM_SYMBOL_CHARS (tag);
-		printf ("\tScheme error was: %s\n", str);
-	}
-	scm_backtrace();
 
-	SCM fmt = scm_makfrom0str ("~S");
-	SCM s_str = scm_simple_format (SCM_BOOL_F, fmt, SCM_LIST1(throw_args));
-	printf ("\tthrow_args=%s\n", SCM_STRING_CHARS (s_str));
+	printf ("Error: GnoTime caught an error during scheme parse\n");
+
+	SCM the_stack;
+	/* create string port into which we write the error message and
+	   stack. */
+	SCM port = scm_current_output_port();
+	/* throw args seem to be: (FN FORMAT ARGS #f). split the pieces into
+	   local vars. */
+	if (scm_list_p(throw_args) && scm_length(throw_args) >= 4)
+	{
+		SCM fn = scm_car(throw_args);
+		SCM format = scm_cadr(throw_args);
+		SCM args = scm_caddr(throw_args);
+		SCM other_data = scm_car(scm_cdddr(throw_args));
+		
+		if (fn != SCM_BOOL_F)
+		{ /* display the function name and tag */
+			scm_puts("Function: ", port);
+			scm_display(fn, port);
+			scm_puts(", ", port);
+			scm_display(tag, port);
+			scm_newline(port);
+		}
+
+		if (scm_string_p(format))
+		{ /* conditionally display the error message using format */
+			scm_puts("Error: ", port);
+			scm_display_error_message(format, args, port);
+		}
+		if (other_data != SCM_BOOL_F)
+		{
+			scm_puts("Other Data: ", port);
+			scm_display(other_data, port);
+			scm_newline(port);
+			scm_newline(port);
+		}
+    }
+
+	/* find the stack, and conditionally display it */
+	the_stack = scm_fluid_ref(SCM_CDR(scm_the_last_stack_fluid_var));
+	if (the_stack != SCM_BOOL_F)
+	{
+		scm_display_backtrace(the_stack, port, SCM_UNDEFINED, SCM_UNDEFINED);
+	}
 
 	return SCM_EOL;
 }
@@ -1524,8 +1556,9 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 
 			/* dispatch and handle */
 			scmstart +=5;
-			// scm_c_eval_string (scmstart);
-			gh_eval_str_with_catch (scmstart, my_catch_handler);
+			scm_internal_stack_catch (SCM_BOOL_T, (scm_t_catch_body) scm_c_eval_string,
+				scmstart, (scm_t_catch_handler) my_catch_handler, scmstart);
+
 			start = end;
 			continue;
 		}

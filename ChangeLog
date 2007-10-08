@@ -1,3 +1,13 @@
+2007-10-08  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ghtml-deprecated.c: Ported to guile-1.8.
+
+	* src/ghtml.c: Ported to guile-1.8.
+
+	* ghtml/C/basic-invoice.ghtml: Fixed some unquoted strings.
+
+	* ghtml/C/primer.ghtml: Fixed some unquoted strings.
+
 2007-09-26  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/toolbar.c: rebuild the toolbar each time config_show_toolbar

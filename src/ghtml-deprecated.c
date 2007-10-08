@@ -719,24 +719,23 @@ static SCM
 decode_scm_col_list (GttGhtml *ghtml, SCM col_list)
 {
 	SCM col_name;
-	int len;
 	char * tok = NULL;
 
 	/* reset the parser */
 	ghtml->ninvl_cols = 0;
 	ghtml->ntask_cols = 0;
 		
-	while (FALSE == SCM_NULLP(col_list))
+	while (!scm_is_null (col_list))
 	{
 		col_name = SCM_CAR (col_list);
 
 		/* either a 'symbol or a "quoted string" */
-		if (!SCM_SYMBOLP(col_name) && !SCM_STRINGP (col_name))
+		if (!scm_is_symbol(col_name) && !scm_is_string (col_name))
 		{
 			col_list = SCM_CDR (col_list);
 			continue;
 		}
-		tok = gh_scm2newstr (col_name, &len);
+		tok = scm_to_locale_string (col_name);
 		decode_column (ghtml, tok);
 
 		free (tok);
@@ -759,7 +758,7 @@ show_table (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
-	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-table");
+	SCM_ASSERT ( scm_is_pair (col_list), col_list, SCM_ARG1, "gtt-show-table");
 	rc = decode_scm_col_list (ghtml, col_list);
 	do_show_table (ghtml, ghtml->prj, FALSE);
 	return rc;
@@ -770,7 +769,7 @@ show_invoice (SCM col_list)
 {
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	SCM rc;
-	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-invoice");
+	SCM_ASSERT ( scm_is_pair (col_list), col_list, SCM_ARG1, "gtt-show-invoice");
 	rc = decode_scm_col_list (ghtml, col_list);
 	do_show_table (ghtml, ghtml->prj, TRUE);
 	return rc;
@@ -782,7 +781,7 @@ show_export (SCM col_list)
 	GttGhtml *ghtml = ghtml_guile_global_hack;
 	
 	SCM rc;
-	SCM_ASSERT ( SCM_CONSP (col_list), col_list, SCM_ARG1, "gtt-show-export");
+	SCM_ASSERT ( scm_is_pair (col_list), col_list, SCM_ARG1, "gtt-show-export");
 	rc = decode_scm_col_list (ghtml, col_list);
 	
 	ghtml->show_html = FALSE;
