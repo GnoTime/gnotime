@@ -29,14 +29,30 @@
 #include <gtk/gtk.h>
 #include <gnome.h>
 #include "status-icon.h"
+#include "timer.h"
 
 static GtkStatusIcon *status_icon;
+static gboolean timer_active;
+
+static void
+status_icon_activated(GtkStatusIcon *status_icon, gpointer data)
+{
+	if (timer_active)
+	{
+		gen_stop_timer();
+	}
+	else
+	{
+		gen_start_timer();
+	}
+}
 
 void
 gtt_status_icon_create()
 {
 	status_icon = gtk_status_icon_new_from_stock (GNOME_STOCK_TIMER_STOP);
 	gtk_status_icon_set_tooltip (status_icon, _("Timer is not running"));
+	g_signal_connect (G_OBJECT(status_icon), "activate", G_CALLBACK(status_icon_activated), NULL);
 }
 
 void
@@ -53,6 +69,7 @@ gtt_status_icon_start_timer(GttProject *prj)
 								  gtt_project_get_title(prj));
 	gtk_status_icon_set_tooltip(status_icon, text);
 	g_free (text);
+	timer_active = TRUE;
 }
 
 
@@ -61,4 +78,5 @@ gtt_status_icon_stop_timer(GttProject *prj)
 {
 	gtk_status_icon_set_tooltip (status_icon, _("Timer is not running"));
 	gtk_status_icon_set_from_stock (status_icon, GNOME_STOCK_TIMER_STOP);
+	timer_active = FALSE;
 }
