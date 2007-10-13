@@ -34,6 +34,7 @@
 #include "props-proj.h"
 #include "timer.h"
 #include "util.h"
+#include "status-icon.h"
 
 /* column types */
 typedef enum {
@@ -138,6 +139,8 @@ start_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 	cur_proj_set(prj);
 	gtt_project_timer_update (prj);
 
+	gtt_status_icon_start_timer (prj);
+
 	ctree_update_label (ptw, prj);
 
 	gtk_ctree_node_set_background (ctree, ptn->ctnode, &ptw->active_bgcolor);
@@ -158,6 +161,8 @@ stop_timer_for_row (ProjTreeWindow *ptw, ProjTreeNode *ptn)
 
 	if (prj != cur_proj) return;
 	cur_proj_set(NULL);
+
+	gtt_status_icon_stop_timer (prj);
 
 	gtt_project_timer_update (prj);
 	ctree_update_label (ptw, prj);

@@ -1,3 +1,17 @@
+2007-10-12  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/app.c (app_new): create the status icon.
+	(app_quit): destroy the status icon.
+
+	* src/Makefile.am: Added status-icon.c and status-icon.h to the
+	build process.
+
+	* src/ctree.c (start_timer_for_row, stop_timer_for_row): Update
+	the timer status indication in the status icon.
+
+	* src/status-icon.c, src/status-icon.h: Initial implementation of
+	a status icon.
+
 2007-10-08  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* glade/interval_edit.glade: show seconds in the interval edit

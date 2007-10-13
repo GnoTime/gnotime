@@ -65,9 +65,9 @@ am_gnotime_OBJECTS = active-dialog.$(OBJEXT) app.$(OBJEXT) \
 	myoaf.$(OBJEXT) notes-area.$(OBJEXT) plug-edit.$(OBJEXT) \
 	plug-in.$(OBJEXT) prefs.$(OBJEXT) proj.$(OBJEXT) \
 	proj-query.$(OBJEXT) props-invl.$(OBJEXT) props-proj.$(OBJEXT) \
-	props-task.$(OBJEXT) query.$(OBJEXT) timer.$(OBJEXT) \
-	toolbar.$(OBJEXT) util.$(OBJEXT) xml-read.$(OBJEXT) \
-	xml-write.$(OBJEXT)
+	props-task.$(OBJEXT) query.$(OBJEXT) status-icon.$(OBJEXT) \
+	timer.$(OBJEXT) toolbar.$(OBJEXT) util.$(OBJEXT) \
+	xml-read.$(OBJEXT) xml-write.$(OBJEXT)
 gnotime_OBJECTS = $(am_gnotime_OBJECTS)
 am__DEPENDENCIES_1 =
 gnotime_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -218,7 +218,6 @@ SK_CONFIG = @SK_CONFIG@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
-WARN_CFLAGS = @WARN_CFLAGS@
 XGETTEXT = @XGETTEXT@
 XMKMF = @XMKMF@
 X_CFLAGS = @X_CFLAGS@
@@ -312,6 +311,7 @@ gnotime_SOURCES = \
 	props-proj.c       \
 	props-task.c       \
 	query.c            \
+	status-icon.c      \
 	timer.c            \
 	toolbar.c          \
 	util.c             \
@@ -352,6 +352,7 @@ noinst_HEADERS = \
 	props-proj.h       \
 	props-task.h       \
 	query.h            \
+	status-icon.h      \
 	timer.h            \
 	toolbar.h          \
 	util.h             \
@@ -511,6 +512,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/props-proj.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/props-task.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/query.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/status-icon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/timer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/toolbar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util.Po@am__quote@

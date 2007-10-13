@@ -57,6 +57,7 @@ NotesArea *global_na = NULL;
 GtkWidget *app_window = NULL;
 GtkWidget *status_bar = NULL;
 
+
 static GtkLabel *status_project = NULL;
 static GtkLabel *status_day_time = NULL;
 static GtkWidget *status_timer = NULL;
@@ -342,11 +343,11 @@ app_new(int argc, char *argv[], const char *geometry_string)
 
 	notes_area_add_ctree (global_na, ctree);
 	
-	
 	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);
 	gnome_app_set_contents(GNOME_APP(app_window), vbox);
 
+	gtt_status_icon_create();
 	if (!geometry_string) return;
 	
 	if (gtk_window_parse_geometry(GTK_WINDOW(app_window),geometry_string))
@@ -377,7 +378,7 @@ app_quit(GtkWidget *w, gpointer data)
 {
 	save_properties ();
 	save_projects ();
-
+	gtt_status_icon_destroy ();
 	gtk_main_quit();
 }
 
