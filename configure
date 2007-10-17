@@ -27507,7 +27507,7 @@ fi
 
 
 
-ALL_LINGUAS="az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl nn no pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW"
+ALL_LINGUAS="az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl nn nb pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW"
 GETTEXT_PACKAGE=gnotime-2.0
 
 
@@ -29048,7 +29048,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile debian/Makefile doc/C/Makefile doc/C/man/Makefile doc/Makefile gconf/Makefile ghtml/C/Makefile ghtml/Makefile glade/Makefile po/Makefile.in redhat/Makefile redhat/gnotime.spec fedora/Makefile fedora/gnotime.spec src/Makefile scripts/Makefile"
+ac_config_files="$ac_config_files Makefile doc/C/Makefile doc/C/man/Makefile doc/Makefile gconf/Makefile ghtml/C/Makefile ghtml/Makefile glade/Makefile po/Makefile.in redhat/Makefile redhat/gnotime.spec fedora/Makefile fedora/gnotime.spec src/Makefile scripts/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -29675,7 +29675,6 @@ do
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "default-1") CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-    "debian/Makefile") CONFIG_FILES="$CONFIG_FILES debian/Makefile" ;;
     "doc/C/Makefile") CONFIG_FILES="$CONFIG_FILES doc/C/Makefile" ;;
     "doc/C/man/Makefile") CONFIG_FILES="$CONFIG_FILES doc/C/man/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
