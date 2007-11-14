@@ -1,7 +1,2 @@
-scriptsdir = $(prefix)/bin
-
-scripts_DATA = \
+dist_bin_SCRIPTS = \
 	gnotime-remote
-
-EXTRA_DIST = \
-	$(scripts_DATA)
