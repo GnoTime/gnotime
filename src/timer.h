@@ -42,12 +42,16 @@ extern int config_no_project_timeout;
  * periodic save-thyself. */
 extern int config_autosave_period;
 
-void zero_on_rollover (time_t now);
+gint zero_daily_counters (gpointer data);
 void set_last_reset (time_t last);
 
 void gen_start_timer(void);
 void gen_stop_timer(void);
 
+void start_no_project_timer ();
+void start_idle_timer ();
 
+void start_main_timer ();
+void stop_main_timer ();
 
 #endif /* __GTT_TIMER_H__ */

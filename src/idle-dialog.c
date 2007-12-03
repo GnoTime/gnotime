@@ -1,5 +1,6 @@
 /*   Keyboard inactivity timout dialog for GTimeTracker - a time tracker
  *   Copyright (C) 2001,2002,2003 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2007 Goedson Paixao <goedson@debian.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,9 +19,14 @@
 
 #include "config.h"
 
+#include <glib.h>
 #include <glade/glade.h>
+#include <gdk/gdkx.h>
 #include <gnome.h>
 #include <string.h>
+
+#include <X11/Xlib.h>
+#include <X11/extensions/scrnsaver.h>
 
 #include <qof.h>
 
@@ -29,9 +35,9 @@
 #include "cur-proj.h"
 #include "idle-dialog.h"
 #include "dialog.h"
-#include "idle-timer.h"
 #include "proj.h"
 #include "util.h"
+#include "app.h"
 
 
 int config_idle_timeout = -1;
@@ -47,12 +53,75 @@ struct GttIdleDialog_s
 	GtkLabel    *credit_label;
 	GtkLabel    *time_label;
 	GtkRange    *scale;
-	
+
+	Display     *display;
+	gboolean    xss_extension_supported;
+	XScreenSaverInfo *xss_info;
+	guint       timeout_event_source;
+
+	gboolean    visible;
+
 	GttProject  *prj;
-	IdleTimeout *idt;
 	time_t      last_activity;
 	time_t      previous_credit;
 };
+
+static gboolean idle_timeout_func (gpointer data);
+
+static void
+schedule_idle_timeout (gint timeout, GttIdleDialog *idle_dialog)
+{
+	if (idle_dialog->timeout_event_source != 0)
+	{
+		g_source_remove (idle_dialog->timeout_event_source);
+	}
+	if (timeout > 0 && idle_dialog->xss_extension_supported)
+	{
+		/* If we already have an idle timeout
+		 * sceduled, cancel it.
+		 */
+		idle_dialog->timeout_event_source = g_timeout_add_seconds (timeout, idle_timeout_func, idle_dialog);
+	}
+}
+
+static gboolean
+idle_timeout_func (gpointer data)
+{
+	GttIdleDialog *idle_dialog = (GttIdleDialog *) data;
+	GdkWindow *gdk_window = gtk_widget_get_root_window (app_window);
+	XID drawable = gdk_x11_drawable_get_xid (GDK_DRAWABLE(gdk_window));
+	Status xss_query_ok = XScreenSaverQueryInfo (idle_dialog->display,
+												 drawable,
+												 idle_dialog->xss_info);
+	if (xss_query_ok)
+	{
+		int idle_seconds = idle_dialog->xss_info->idle / 1000;
+		if (cur_proj != NULL &&
+			config_idle_timeout > 0 &&
+			idle_seconds >= config_idle_timeout)
+		{
+			time_t now = time(0);
+			idle_dialog->last_activity = now - idle_seconds;
+			show_idle_dialog (idle_dialog);
+			/* schedule a new timeout for one minute ahead to
+			   update the dialog. */
+			schedule_idle_timeout (60,  idle_dialog);
+		}
+		else
+		{
+			if (cur_proj != NULL)
+			{
+				schedule_idle_timeout (config_idle_timeout - idle_seconds, idle_dialog);
+			}
+			else if (idle_dialog->visible)
+			{
+				raise_idle_dialog (idle_dialog);
+				schedule_idle_timeout (60, idle_dialog);
+			}
+		}
+	}
+	return FALSE;
+}
 
 
 /* =========================================================== */
@@ -70,6 +139,7 @@ dialog_close (GObject *obj, GttIdleDialog *dlg)
 {
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
+	dlg->visible = FALSE;
 }
 
 /* =========================================================== */
@@ -80,6 +150,7 @@ dialog_kill (GObject *obj, GttIdleDialog *dlg)
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
+	dlg->visible = FALSE;
 }
 
 /* =========================================================== */
@@ -315,11 +386,36 @@ idle_dialog_new (void)
 	GttIdleDialog *id;
 
 	id = g_new0 (GttIdleDialog, 1);
-	id->idt = idle_timeout_new ();
 	id->prj = NULL;
 
 	id->gtxml = NULL;
 
+	gchar *display_name = gdk_get_display ();
+	id->display = XOpenDisplay (display_name);
+	if (id->display == NULL)
+	{
+		g_warning ("Could not open display %s", display_name);
+	}
+	else
+	{
+		int xss_events, xss_error;
+		id->xss_extension_supported = XScreenSaverQueryExtension (id->display, &xss_events, &xss_error);
+		if (id->xss_extension_supported)
+		{
+			id->xss_info = XScreenSaverAllocInfo ();
+			if (config_idle_timeout > 0)
+			{
+				schedule_idle_timeout (config_idle_timeout, id);
+			}
+		}
+		else
+		{
+			g_warning (_("The XScreenSaver is not supported on this display.\n"
+						 "The idle timeout functionality will not be available."));
+		}
+	}
+	g_free(display_name);
+	
 	return id;
 }
 
@@ -328,7 +424,7 @@ idle_dialog_new (void)
 void 
 show_idle_dialog (GttIdleDialog *id)
 {
-	time_t now, last;
+	time_t now;
 	time_t idle_time;
 	GttProject *prj = cur_proj;
 
@@ -337,11 +433,7 @@ show_idle_dialog (GttIdleDialog *id)
 	if (!prj) return;
 
 	now = time(0);
-	last = poll_last_activity (id->idt);
-	/* bug fix -- make up for lost events */
-	if (id->last_activity < last) id->last_activity = last; 
 	idle_time = now - id->last_activity;
-	if (idle_time <= config_idle_timeout) return;
 
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == id->gtxml)
@@ -365,10 +457,8 @@ show_idle_dialog (GttIdleDialog *id)
 	id->previous_credit = idle_time;
 	adjust_timer (id, config_idle_timeout);
 
-	/* Now, draw the messages in the GUI popup. */
-	display_value (id, config_idle_timeout);
 
-	gtk_widget_show (GTK_WIDGET(id->dlg));
+	raise_idle_dialog (id);
 }
 
 /* =========================================================== */
@@ -376,25 +466,42 @@ show_idle_dialog (GttIdleDialog *id)
 void 
 raise_idle_dialog (GttIdleDialog *id)
 {
-	time_t now;
-	time_t idle_time;
+	g_return_if_fail(id);
+	g_return_if_fail(id->gtxml);
 
-	if (!id) return;
-	if (NULL == id->gtxml) return;
+	/* Now, draw the messages in the GUI popup. */
+	display_value (id, config_idle_timeout);
 
-	/* If there has not been any activity recently, then leave things
-	 * alone. Otherwise, work real hard to put the dialog where the
-	 * user will see it.
-	 */
-	now = time(0);
-	idle_time = now - poll_last_activity (id->idt);
-	if (15 < idle_time) return;
 
 	/* The following will raise the window, and put it on the current
 	 * workspace, at least if the metacity WM is used. Haven't tried
 	 * other window managers.
 	 */
+
 	gtk_window_present (GTK_WINDOW (id->dlg));
+	id->visible = TRUE;
+}
+
+void
+idle_dialog_activate_timer (GttIdleDialog *idle_dialog)
+{
+	schedule_idle_timeout (config_idle_timeout, idle_dialog);
+}
+
+void
+idle_dialog_deactivate_timer (GttIdleDialog *idle_dialog)
+{
+	if (idle_dialog->timeout_event_source != 0)
+	{
+		g_source_remove (idle_dialog->timeout_event_source);
+		idle_dialog->timeout_event_source = 0;
+	}
+}
+
+gboolean
+idle_dialog_is_visible(GttIdleDialog *idle_dialog)
+{
+	return idle_dialog->visible;
 }
 
 /* =========================== END OF FILE ============================== */

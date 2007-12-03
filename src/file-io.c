@@ -600,7 +600,7 @@ gtt_post_data_config (void)
 	if (0 < last_timer)
 	{
 		set_last_reset (last_timer);
-		zero_on_rollover (time(0));
+		zero_daily_counters (NULL);
 	}
 
 	/* if a project is running, then set it running again,

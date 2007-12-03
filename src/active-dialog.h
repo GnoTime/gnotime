@@ -43,7 +43,7 @@ GttActiveDialog * active_dialog_new (void);
  *  if the keyboard/mouse has been idle for some amount of time.
  */
 void show_active_dialog (GttActiveDialog *id);
-		  
+
 /** This routine will raise the active dialog to the top of the
  *  current screen. But it will do this only if the active dialog
  *  is already being diplayed, and if some mouse/keyboard events have
@@ -54,15 +54,7 @@ void show_active_dialog (GttActiveDialog *id);
  */
 void raise_active_dialog (GttActiveDialog *id);
 
-/** The arm routine is used to indicate that there is neither
- *  an active, nor an expired project, which is a necessary 
- *  precondition for starting the activity timer.
- *
- *  The cancel routine is used to disarm the activity dialog
- *  (to prevent it from accidentally popping, in case there 
- *  is an expired project that needs to be started.)
- */
-void arm_active_dialog (GttActiveDialog *id);
-void cancel_active_dialog (GttActiveDialog *id);
+void active_dialog_activate_timer (GttActiveDialog *id);
+void active_dialog_deactivate_timer (GttActiveDialog *id);
 
 #endif /* GTT_ACTIVITY_DIALOG_H_ */

@@ -24,7 +24,6 @@ gnotime_SOURCES =     \
 	ghtml.c            \
 	ghtml-deprecated.c \
 	idle-dialog.c      \
-	idle-timer.c       \
 	journal.c          \
 	log.c              \
 	main.c             \
@@ -66,7 +65,6 @@ noinst_HEADERS =      \
 	ghtml-deprecated.h \
 	gtt.h              \
 	idle-dialog.h      \
-	idle-timer.h       \
 	journal.h          \
 	log.h              \
 	menucmd.h          \
@@ -106,6 +104,7 @@ AM_CFLAGS = -g -Wall     \
 INCLUDES =                                   \
 	$(LIBQOF_CFLAGS)                          \
 	$(LIBDBUS_CFLAGS)                         \
+	$(XSS_EXTENSION_CFLAGS)                          \
   -I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
@@ -119,7 +118,7 @@ INCLUDES =                                   \
 
 gnotime_LDADD =         \
 	$(GNOTIME_LIBS)      \
-	$(LIBQOF_LIBS)  $(LIBDBUS_LIBS)         \
+	$(LIBQOF_LIBS)  $(LIBDBUS_LIBS) $(XSS_EXTENSION_LIBS)        \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	${LIBGNOMEVFS_LIBS}  \

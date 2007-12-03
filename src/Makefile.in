@@ -60,8 +60,8 @@ am_gnotime_OBJECTS = active-dialog.$(OBJEXT) app.$(OBJEXT) \
 	dialog.$(OBJEXT) err.$(OBJEXT) err-throw.$(OBJEXT) \
 	export.$(OBJEXT) file-io.$(OBJEXT) gconf-gnomeui.$(OBJEXT) \
 	gconf-io.$(OBJEXT) ghtml.$(OBJEXT) ghtml-deprecated.$(OBJEXT) \
-	idle-dialog.$(OBJEXT) idle-timer.$(OBJEXT) journal.$(OBJEXT) \
-	log.$(OBJEXT) main.$(OBJEXT) menucmd.$(OBJEXT) menus.$(OBJEXT) \
+	idle-dialog.$(OBJEXT) journal.$(OBJEXT) log.$(OBJEXT) \
+	main.$(OBJEXT) menucmd.$(OBJEXT) menus.$(OBJEXT) \
 	myoaf.$(OBJEXT) notes-area.$(OBJEXT) plug-edit.$(OBJEXT) \
 	plug-in.$(OBJEXT) prefs.$(OBJEXT) proj.$(OBJEXT) \
 	proj-query.$(OBJEXT) props-invl.$(OBJEXT) props-proj.$(OBJEXT) \
@@ -74,7 +74,7 @@ gnotime_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -218,8 +218,11 @@ SK_CONFIG = @SK_CONFIG@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARN_CFLAGS = @WARN_CFLAGS@
 XGETTEXT = @XGETTEXT@
 XMKMF = @XMKMF@
+XSS_EXTENSION_CFLAGS = @XSS_EXTENSION_CFLAGS@
+XSS_EXTENSION_LIBS = @XSS_EXTENSION_LIBS@
 X_CFLAGS = @X_CFLAGS@
 X_EXTRA_LIBS = @X_EXTRA_LIBS@
 X_LIBS = @X_LIBS@
@@ -294,7 +297,6 @@ gnotime_SOURCES = \
 	ghtml.c            \
 	ghtml-deprecated.c \
 	idle-dialog.c      \
-	idle-timer.c       \
 	journal.c          \
 	log.c              \
 	main.c             \
@@ -336,7 +338,6 @@ noinst_HEADERS = \
 	ghtml-deprecated.h \
 	gtt.h              \
 	idle-dialog.h      \
-	idle-timer.h       \
 	journal.h          \
 	log.h              \
 	menucmd.h          \
@@ -376,6 +377,7 @@ AM_CFLAGS = -g -Wall     \
 INCLUDES = \
 	$(LIBQOF_CFLAGS)                          \
 	$(LIBDBUS_CFLAGS)                         \
+	$(XSS_EXTENSION_CFLAGS)                          \
   -I$(includedir)                           \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"  \
 	-DGTTGLADEDIR=\""$(datadir)/gnotime"\"    \
@@ -389,7 +391,7 @@ INCLUDES = \
 
 gnotime_LDADD = \
 	$(GNOTIME_LIBS)      \
-	$(LIBQOF_LIBS)  $(LIBDBUS_LIBS)         \
+	$(LIBQOF_LIBS)  $(LIBDBUS_LIBS) $(XSS_EXTENSION_LIBS)        \
 	$(LIBGLADE_LIBS)     \
 	$(LIBGTKHTML_LIBS)   \
 	${LIBGNOMEVFS_LIBS}  \
@@ -495,7 +497,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ghtml-deprecated.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ghtml.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/idle-dialog.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/idle-timer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/journal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@

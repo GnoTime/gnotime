@@ -1,8 +1,100 @@
+2007-11-26  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/prefs.c (prefs_set): reschedule the idle and no_project
+	timers when these configurations are changed.
+
+	* src/idle-dialog.c (raise_idle_dialog): Fixed check for validity
+	of the idle dialog.
+
+2007-11-18  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/active-dialog.c (schedule_active_timeout): Schedule timeout
+	only if it's greater than 0 seconds.
+
 2007-11-14  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* scripts/Makefile.am (dist_bin_SCRIPTS): Added list of
 	scripts to be installed.
 
+2007-11-08  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/timer.c: Created a separate hourly timer for the zeroing the
+	daily counters.
+
+2007-11-07  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/prefs.c (prefs_set): restart the main timer when needed.
+
+	* src/app.c (cur_proj_set): start/stop the main timer when needed.
+
+	* src/timer.c (start_main_timer, start_file_save_timer)
+	(start_config_save_timer): Added functions to start the main
+	timer, file save timer and configuration save timer independently
+	of each other.
+	(main_timer_func, config_save_timer_func, file_save_timer_func):
+	Separated the handling routines for each timer.
+	(start_idle_timer, start_no_project_timer): Renamed the
+	timer_arm_* functions for name consistency with the other
+	start_*_timer functions.
+	(stop_main_timer): Created function to stop the main timer when it
+	is not needed.
+
+2007-10-30  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/timer.c (timer_arm_idle_timeout, timer_arm_active_timeout):
+	Use the new active dialog timer activation and deactivation
+	functions.
+
+	* src/idle-dialog.c: Removed declaration of unused variables.
+
+	* src/active-dialog.c (struct GttActiveDialog_s): Remove unneded
+	fields (idt, armed, time_armed) and added the timeout_event_source
+	field.
+	(active_timeout_func): Added function to show the dialog when the
+	no project timeout expires.
+	(schedule_active_timeout): Added function to schedule the no
+	project timeout.
+	(dialog_close, dialog_kill): Use the new timeout scheduling
+	function instead of fiddling with the "armed" field.
+	
+
+	* src/active-dialog.h: Added declarations for functions
+	active_dialog_activate_timer and active_dialog_deactivate_timer
+
+	* src/idle-dialog.c: include gdk/gdkx.h for the declaration of
+	gdk_x11_drawable_get_xid.
+
+2007-10-29  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/app.c (cur_proj_set): Properly use the
+	timer_arm_active_timeout and timer_arm_idle_timeout to activate
+	the right timers.
+
+	* src/timer.h: Added the new functions timer_arm_active_timeout
+	and timer_arm_idle_timeout that should be used throughout the
+	application to activate the idle and active timers.
+
+	* src/timer.c: Schedule the main timer using g_timeout_add_seconds
+	instead of gtk_timeout_add, which should make it less power
+	hungry.
+	(timer_func): handle only the time counting task. Let the idle
+	dialog and active dialog to their respective timer functions.
+
+	* src/idle-dialog.h: Added the prototypes of the new public
+	funtions idle_dialog_activate_timer and
+	idle_dialog_deactivate_timer that should be used through the rest
+	of the program to activate/deactivate the idle timer.
+
+	* src/idle-dialog.c (idle_timeout_func): rewrite of the idle
+	timeout functionality using the XScreenSaver extension to query
+	the user idle time.
+	(schedule_idle_timeout): schedule the idle timeout using the
+	g_timeout_add_seconds function, which should make it less power
+	hungry.
+
+	* configure.in, Makefile.am: Added XScreenSaver extension support
+
+>>>>>>> .merge-right.r903
 2007-10-23  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* Makefile.am: Removed debian from SUBDIRS

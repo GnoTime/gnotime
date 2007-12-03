@@ -28,7 +28,6 @@
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "active-dialog.h"
-#include "idle-timer.h"
 #include "proj.h"
 #include "proj-query.h"
 #include "util.h"
@@ -39,7 +38,6 @@ int config_no_project_timeout;
 
 struct GttActiveDialog_s 
 {
-	gboolean    armed;
 	GladeXML    *gtxml;
 	GtkDialog   *dlg;
 	GtkButton   *yes_btn;
@@ -48,11 +46,39 @@ struct GttActiveDialog_s
 	GtkLabel    *active_label;
 	GtkLabel    *credit_label;
 	GtkOptionMenu  *project_menu;
-	
-	IdleTimeout *idt;
-	time_t      time_armed;
+	guint        timeout_event_source;
 };
 
+
+void show_active_dialog (GttActiveDialog *ad);
+
+static gboolean
+active_timeout_func (gpointer data)
+{
+	GttActiveDialog *active_dialog = (GttActiveDialog *) data;
+	show_active_dialog (active_dialog);
+
+	/* Mark the timer as inactive */
+	active_dialog->timeout_event_source = 0;
+
+	/* deactivate the timer */
+	return FALSE;
+}
+
+/* =========================================================== */
+
+static void
+schedule_active_timeout (gint timeout, GttActiveDialog *active_dialog)
+{
+	if (timeout > 0)
+	{
+		if (active_dialog->timeout_event_source)
+		{
+			g_source_remove (active_dialog->timeout_event_source);
+		}
+		active_dialog->timeout_event_source = g_timeout_add_seconds (timeout, active_timeout_func, active_dialog);
+	}
+}
 
 /* =========================================================== */
 
@@ -69,7 +95,12 @@ dialog_close (GObject *obj, GttActiveDialog *dlg)
 {
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
-	dlg->time_armed = time(0);
+
+	if (!cur_proj)
+	{
+		schedule_active_timeout (config_no_project_timeout, dlg);
+	}
+
 }
 
 /* =========================================================== */
@@ -80,7 +111,10 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
-	dlg->time_armed = time(0);
+	if (!cur_proj)
+	{
+		schedule_active_timeout (config_no_project_timeout, dlg);
+	}
 }
 
 /* =========================================================== */
@@ -98,7 +132,6 @@ start_proj (GObject *obj, GttActiveDialog *dlg)
 	prj = g_object_get_data (G_OBJECT (w), "prj");
 
 	ctree_start_timer (prj);
-	dlg->armed = FALSE;
 	dialog_kill (obj, dlg);
 }
 
@@ -189,9 +222,6 @@ active_dialog_new (void)
 	GttActiveDialog *ad;
 
 	ad = g_new0 (GttActiveDialog, 1);
-	ad->armed = TRUE;
-	ad->time_armed = time(0);
-	ad->idt = idle_timeout_new ();
 	ad->gtxml = NULL;
 
 	return ad;
@@ -202,22 +232,10 @@ active_dialog_new (void)
 void 
 show_active_dialog (GttActiveDialog *ad)
 {
-	time_t now, idle_time;
-	if (!ad) return;
+	g_return_if_fail(ad);
 
-	/* If there is a project currently running, or if the dialog
-	 * isn't armed, or the timeout isn't configured, then do nothing.
-	 */
-	if (cur_proj) return;
-	if (FALSE == ad->armed) return;
-	if (0 >= config_no_project_timeout) return;
+	g_return_if_fail(!cur_proj);
 
-	/* If there hasn't been a project running in a while, then pop. */
-	now = time(0);
-	idle_time = now - ad->time_armed;
-// printf ("duude armed, waiting %d %d\n", idle_time, config_idle_timeout);
-	if (idle_time <= config_no_project_timeout) return;
-					
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == ad->gtxml)
 	{
@@ -237,19 +255,9 @@ show_active_dialog (GttActiveDialog *ad)
 void 
 raise_active_dialog (GttActiveDialog *ad)
 {
-	time_t now;
-	time_t active_time;
 
-	if (!ad) return;
-	if (NULL == ad->gtxml) return;
-
-	/* If there has not been any activity recently, then leave things
-	 * alone. Otherwise, work real hard to put the dialog where the
-	 * user will see it.
-	 */
-	now = time(0);
-	active_time = now - poll_last_activity (ad->idt);
-	if (15 < active_time) return;
+	g_return_if_fail(ad);
+	g_return_if_fail(ad->gtxml);
 
 	/* The following will raise the window, and put it on the current
 	 * workspace, at least if the metacity WM is used. Haven't tried
@@ -260,21 +268,20 @@ raise_active_dialog (GttActiveDialog *ad)
 
 /* =========================================================== */
 
-void 
-arm_active_dialog (GttActiveDialog *ad)
+void
+active_dialog_activate_timer (GttActiveDialog *active_dialog)
 {
-	if (!ad) return;
-	ad->time_armed = time(0);
-	ad->armed = TRUE;
+	schedule_active_timeout (config_no_project_timeout, active_dialog);
 }
 
-/* =========================================================== */
-
-void 
-cancel_active_dialog (GttActiveDialog *ad)
+void
+active_dialog_deactivate_timer (GttActiveDialog *active_dialog)
 {
-	if (!ad) return;
-	ad->armed = FALSE;
+	if (active_dialog->timeout_event_source)
+	{
+		g_source_remove (active_dialog->timeout_event_source);
+		active_dialog->timeout_event_source = 0;
+	}
 }
 
 /* =========================== END OF FILE ============================== */

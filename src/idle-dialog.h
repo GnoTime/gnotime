@@ -58,4 +58,16 @@ void show_idle_dialog (GttIdleDialog *id);
  */
 void raise_idle_dialog (GttIdleDialog *id);
 
+/** This routine will activate the idle timer, so that the idle dialog
+ *  is raised when needed.
+ */
+void idle_dialog_activate_timer (GttIdleDialog *id);
+
+
+/** This routine will deactivate the idle timer.
+ */
+void idle_dialog_deactivate_timer (GttIdleDialog *id);
+
+gboolean idle_dialog_is_visible(GttIdleDialog *id);
+
 #endif /* GTT_IDLE_DIALOG_H_ */

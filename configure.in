@@ -146,8 +146,6 @@ AC_SUBST(LIBGLADE_LIBS)
 dnl *********************************************
 dnl for anything which calls gconftool-2 correctly
 dnl *********************************************
-
-
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
 
 if test x"$GCONFTOOL" = xno; then
@@ -161,11 +159,16 @@ AM_GCONF_SOURCE_2
 dnl **************************************************************
 dnl If QOF is found on the build system, then use it.
 dnl **************************************************************
-
 PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
-
 AC_SUBST(LIBQOF_CFLAGS)
 AC_SUBST(LIBQOF_LIBS)
+
+dnl **************************************************************
+dnl xscrnsaver
+dnl **************************************************************
+PKG_CHECK_MODULES(XSS_EXTENSION, xscrnsaver)
+AC_SUBST(XSS_EXTENSION_CFLAGS)
+AC_SUBST(XSS_EXTENSION_LIBS)
 
 
 dnl *************************************************************
@@ -173,7 +176,6 @@ dnl Check for DBUS
 dnl *************************************************************
 
 PKG_CHECK_MODULES(LIBDBUS, dbus-glib-1)
-
 AC_SUBST(LIBDBUS_CFLAGS)
 AC_SUBST(LIBDBUS_LIBS)
 
@@ -347,6 +349,8 @@ echo "LIBQOF_LIBS : $LIBQOF_LIBS"
 echo "LIBQOF_CFLAGS : $LIBQOF_CFLAGS"
 echo "LIBDBUS_LIBS : $LIBDBUS_LIBS"
 echo "LIBDBUS_CFLAGS : $LIBDBUS_CFLAGS"
+echo "XSS_EXTENSION_CFLAGS : $XSS_EXTENSION_CFLAGS"
+echo "XSS_EXTENSION_LIBS : $XSS_EXTENSION_LIBS"
 echo ""
 
 dnl <= Prefixes =>
