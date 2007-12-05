@@ -1,3 +1,11 @@
+2007-12-04  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ctree.c (drag_drop): call ctree_setup every time a
+	drag-and-drop completes to work around a bug in GtkCTree's drag
+	and drop.
+	(ctree_drag): record the source_node only the first time in a
+	drag-and-drop operation to work around a bug in GtkCTree.
+
 2007-11-26  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/prefs.c (prefs_set): reschedule the idle and no_project

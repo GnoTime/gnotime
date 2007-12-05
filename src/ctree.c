@@ -667,6 +667,8 @@ drag_drop (GtkWidget *widget, GdkDragContext *context,
 	 * from which we were cutted. */
 	ctree_update_label (ptw, old_parent);
 
+	ctree_setup (ptw, ptw->proj_list);
+
 	ptw->source_ctree_node = NULL;
 	ptw->parent_ctree_node = NULL;
 	ptw->sibling_ctree_node = NULL;
@@ -691,7 +693,15 @@ ctree_drag (GtkCTree *ctree, GtkCTreeNode *source_node,
 	}
 
 	/* Record the values. We don't actually reparent anything
-	 * until the drag has completed. */
+	 * until the drag has completed.
+	 * Record the source_node only if it was not recorded before
+	 * to work around a bug in GtkCTree */
+	
+	if (!ptw->source_ctree_node)
+	{
+		ptw->source_ctree_node = source_node;
+	}
+
 	ptw->source_ctree_node = source_node;
 	ptw->parent_ctree_node = new_parent;
 	ptw->sibling_ctree_node = new_sibling;
