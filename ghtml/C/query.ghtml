@@ -5,13 +5,25 @@
 <title>Custom Report Generator</title>
 </head>
 <body>
+<!-- Some date utilities, for specifying today's date -->
+<?scm
+(use-modules (srfi srfi-1) (srfi srfi-19))
+(define now-time (current-time))
+(define now-date (time-utc->date now-time))
+(define now-day-time (date->time-utc (string->date (date->string now-date "~Y ~m ~d") "~Y ~m ~d")))
+(define now-month-time (date->time-utc (string->date (string-append (date->string now-date "~Y ~m") " 01") "~Y ~m ~d")))
+(define one-day (time-difference (make-time time-utc 0 86400) (make-time time-utc 0 0)))
+(define one-short-month (time-difference (make-time time-utc 0 2332800) (make-time time-utc 0 0)))
+?>
 <center>
 <h1>Custom Report Generator</h1>
 
 Run report on
+<b>
 <?scm (gtt-show-project-title) ?>
  - 
 <?scm (gtt-show-project-desc) ?>
+</b>
 
 <p>
 <FORM METHOD="get" ACTION="status.ghtml">
@@ -27,14 +39,26 @@ Run the report
 </SELECT>
 &nbsp;
 on all projects that:
+<br><br>
 <table>
 <tr>
 <td>Showed activity more recently than:</td>
-<td><input name="earliest-end-date" size="12"> </td>
+<!-- The following scheme code snippet just inserts today's date,
+  -- for example; it generates:
+  -- <td><input type="text" name="earliest-end-date" size="12" value = "12 Dec 2007"></td> 
+  -->
+<?scm
+(gtt-show (string-append 
+	"<td><input type=\"text\" name=\"earliest-end-date\" size=\"12\" value = \""
+	(date->string (time-utc->date now-day-time) "~d ~b ~Y")
+	"\"></td>" ))
+?>
+
 </tr>
 <tr>
 <td>Showed activity no later than:</td>
-<td><input name="latest-start-date" size="12"> </td>
+<td><input type="text" name="latest-start-date" size="12"> </td>
+</tr>
 <tr>
 <td> </td>
 <td>
@@ -46,7 +70,7 @@ on all projects that:
   -->
 <input type="hidden" name="query" value="SELECT * FROM GttProjectId WHERE (GttProjectEarliet <= 'kvp://earliest-end-date') AND (GttProjectLatest >= 'kvp://latest-start-date');">
 
-<input type="submit" value="Find">
+<input type="submit" value="Generate Report">
 </td>
 </tr>
 </table>
