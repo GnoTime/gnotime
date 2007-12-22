@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Report</title>
+<?scm 
+(use-modules (srfi srfi-1) (srfi srfi-19))
+(if
+    (equal? (gtt-kvp-str "interval") "daily")
+    (begin
+        (if
+            (equal? (gtt-kvp-str "start_day") "custom")
+            (define 
+                report-start
+                (catch
+                    #t
+                    (lambda () (time-second (date->time-utc (string->date (gtt-kvp-str "custom_start") "~d ~b ~Y"))))
+                    (lambda (key . args) 0)
+                )
+            )
+            (define report-start (string->number (gtt-kvp-str "start_day")))
+        )
+        (define one-day (time-difference (make-time time-utc 0 86400) (make-time time-utc 0 0)))
+        (define report-end (time-second (add-duration (make-time time-utc 0 report-start) one-day)))
+    )
+    (begin
+        (if
+            (equal? (gtt-kvp-str "start_month") "custom")
+            (define
+                report-start
+                (catch
+                    #t
+                    (lambda () (time-second (date->time-utc (string->date (string-append "01 " (gtt-kvp-str "custom_start")) "~d ~b ~Y"))))
+                    (lambda (key . args) 0)
+                )
+            )
+            (define report-start (time-second (date->time-utc (string->date (string-append "01 " (gtt-kvp-str "start_month")) "~d ~b ~Y"))))
+        )
+        (define report-start-date (time-utc->date (make-time time-utc 0 report-start)))
+        (define str-next-month (string-append "01 " (number->string (+ (date-month report-start-date) 1)) " " (number->string (date-year report-start-date))))
+        (define report-end (time-second (date->time-utc (string->date str-next-month "~d ~m ~Y"))))
+    )
+)
+(define total-reported-time 0)
+?>
+</head>
+<body >
+<div id="gnotime-body">
+<center>
+<?scm
+(define 
+    (my-html-escape-newline str)
+    (define (tail-escape-newline accum str)
+        (let 
+            ((noff (string-index str #\newline)))
+            (if 
+                (equal? #f noff) 
+                (string-append accum str)
+                (tail-escape-newline  
+                        (string-append accum (substring str 0 noff) "<br>\n")
+                    (string-tail str (+ noff 1))
+                )
+                )
+        )
+    )
+    (tail-escape-newline "" str)
+)
+
+(define (seconds->human-readable sec type)
+    (let
+        (
+            (days (quotient sec 28800))
+            (hours-remain (quotient (remainder sec 28800) 3600))
+            (hours-total (quotient sec 3600))
+            (minutes (quotient (remainder sec 3600) 60))
+        )
+        (if
+            (equal? type "day")
+            (string-append (number->string days) "d " (number->string hours-remain) "h " (number->string minutes) "m: ")
+            (string-append (number->string hours-total) "h " (number->string minutes) "m: ")
+        )
+    )
+)
+
+(define (task-reported-time task)
+  (let
+    (
+        (intervals (filter (lambda (interval) (and (> (gtt-interval-start interval) report-start) (< (gtt-interval-start interval) report-end))) (gtt-intervals task)))
+    )
+    (apply +
+        (map -
+            (gtt-interval-stop intervals)
+            (gtt-interval-start intervals)
+        )
+    )
+  )
+)
+
+(define
+    (project-reported-time project)
+    (let 
+        (
+            (current-project-time
+                (apply
+                    +
+                    (map
+                        (lambda
+                            (task)
+                            (task-reported-time task)
+                        )
+                        (gtt-tasks project)
+                    )
+                )
+            )
+        )
+        (begin
+            (set! total-reported-time (+ total-reported-time current-project-time))
+            current-project-time
+        )
+    )
+)
+
+(define
+    (reported-tasks project)
+    (filter (lambda (task) (> (task-reported-time task) 300)) (gtt-tasks project))
+)
+
+;returns rows consisting of project's task-notes to be reported
+(define 
+    (show-reported-tasks project)
+    (map
+        (lambda
+            (task)
+            (if 
+                (not
+                    (or
+                        (equal? (gtt-task-notes task) "")
+                        (equal? (gtt-task-notes task) "\n")
+                    )
+                )
+                (gtt-show
+                    (string-append
+                        "<tr><td bgcolor=#f8f8f8 >\n"
+                        (my-html-escape-newline (gtt-task-notes task))
+                            "\n</td></tr>\n"
+                    )
+                )
+            )
+        )
+        (reported-tasks project)
+    )
+)
+
+
+(define
+    (show-reported-projects projects prefix)
+    (if
+        (not (null? projects))
+        (map
+            (lambda 
+                (project)
+                (list
+                    (if
+                        (not (null? (reported-tasks project)))
+                        (list
+                            (gtt-show 
+                                (string-append
+                                    "\n<tr><td bgcolor=#C8C8D3>\n"
+                                    "<b>"
+                                    (if 
+                                        (equal? (gtt-kvp-str "interval") "daily")
+                                        (seconds->human-readable (project-reported-time project) "min")
+                                        (seconds->human-readable (project-reported-time project) "day")
+                                    )
+                                    " " prefix "/" (gtt-project-title project) "</b> - " (gtt-project-desc project) "\n"
+                                    "<table width=100% border=0 cellspacing=4>\n"
+                                )
+                            )
+                            (show-reported-tasks project)
+                            (gtt-show "</table>\n")
+                            (gtt-show "</td></tr>\n")
+                        )
+                    )
+                    (show-reported-projects (gtt-project-subprojects project) (string-append prefix "/" (gtt-project-title project)))
+                )
+            )
+            projects
+        )
+        '()
+    )
+)
+?>
+<table bgcolor="#A7A7B9" border=0 cellspacing=4>
+<tr><td align=center>
+<h2><?scm
+(gtt-show 
+    (if
+        (equal? (gtt-kvp-str "interval") "daily")
+        (string-append
+            "Daily report for "
+            (date->string (time-utc->date (make-time time-utc 0 report-start)) "~d ~b ~Y (~A)")
+        )
+        (string-append
+            "Monthly report for "
+            (date->string (time-utc->date (make-time time-utc 0 report-start)) "~b ~Y")
+        )
+    )
+)
+?></h2>
+</td></tr>
+<?scm
+(if
+    (= report-start 0)
+    (gtt-show 
+        (string-append
+            "<tr><td>\n"
+            "<big>ERROR:</big> You have entered an invalid format for <b>"
+            (gtt-kvp-str "interval")
+            "</b> report: <b>\""
+            (gtt-kvp-str "custom_start")
+            "\"</b>.<br>\n"
+            "Please use format like <b>\"5 Jul 2006\"</b> for <b>daily</b> reports,<br>\n"
+            "and format like <b>\"Jul 2006\"</b> for <b>monthly</b> reports."
+            "</td></tr>\n"
+        )
+    )
+    (show-reported-projects (gtt-projects) "") 
+)
+?>
+<tr><td bgcolor=#C8C8D3><h3><?scm (gtt-show (seconds->human-readable total-reported-time "day")) ?> TOTAL</h3></td></tr>
+<tr><td align=right>* 1 day is equal to 8 hours</td></tr>
+</table>
+</center>
+</div>
+
+</body>
+</html>
