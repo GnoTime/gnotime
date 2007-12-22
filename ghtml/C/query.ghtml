@@ -82,7 +82,84 @@ on all projects that:
 </tr>
 </table>
 </FORM>
+<hr>
 
+<center>
+<form METHOD="get" ACTION="monthly-daily.ghtml">
+<table border=0 cellspacing=4>
+    <tr><td align=center colspan="3"><h2>Activity Report</h2></td></tr>
+    <tr>
+        <td><input type="radio" name="interval" value="daily"> Daily </td>
+        <td>
+            <select name="start_day" width="12">
+<?scm
+(let 
+    show-day 
+    (
+        (day now-day-time)
+        (i 0)
+    )
+    (if 
+        (= i 7)
+        (gtt-show "<option value=\"custom\">Custom\n")
+        (begin
+            (gtt-show
+                (string-append
+                    "<option value=\""
+                    (number->string (time-second day))
+                    "\">"
+                    (date->string (time-utc->date day) "~d ~b ~Y")
+                    "\n"
+                )
+            )
+            (show-day (subtract-duration day one-day) (+ i 1))
+        )
+    )
+)
+?>
+            </select>
+        </td>
+        <td rowspan=2> Custom date: <input type=text name=custom_start size="10"></td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="interval" value="monthly"> Monthly </td>
+        <td>
+            <select name="start_month" width="12"> 
+<?scm
+(let 
+    show-month 
+    (
+        (month now-month-time)
+        (i 0)
+    )
+    (if 
+        (= i 5)
+        (gtt-show "<option value=\"custom\">Custom\n")
+        (begin
+            (gtt-show
+                (string-append
+                    "<option value=\""
+                    (date->string (time-utc->date month) "~b ~Y")
+                    "\">"
+                    (date->string (time-utc->date month) "~b ~Y")
+                    "\n"
+                )
+            )
+            (show-month (subtract-duration month one-short-month) (+ i 1))
+        )
+    )
+)
+?>
+            
+        </td>
+    </tr>
+    <tr><td><br /><input type="submit" value="Generate Report"></td></tr>
+</table>
+<input type="hidden" name="debug" value="1">
+</form>
+
+
+<hr>
 Please note that this query generator is under development and is 
 subject to change.  
 
