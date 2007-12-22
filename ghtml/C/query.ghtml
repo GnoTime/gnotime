@@ -57,7 +57,14 @@ on all projects that:
 </tr>
 <tr>
 <td>Showed activity no later than:</td>
-<td><input type="text" name="latest-start-date" size="12"> </td>
+<!-- <td><input type="text" name="latest-start-date" size="12"> </td> -->
+<?scm
+(gtt-show (string-append 
+	"<td><input type=\"text\" name=\"latest-start-date\" size=\"12\" value = \""
+	(date->string (time-utc->date now-day-time) "~d ~b ~Y")
+	"\"></td>" ))
+?>
+
 </tr>
 <tr>
 <td> </td>
