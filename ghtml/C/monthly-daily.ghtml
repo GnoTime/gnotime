@@ -57,7 +57,7 @@
                 (equal? #f noff) 
                 (string-append accum str)
                 (tail-escape-newline  
-                        (string-append accum (substring str 0 noff) "<br>\n")
+                        (string-append accum (substring str 0 noff) "<br />\n")
                     (string-tail str (+ noff 1))
                 )
                 )
@@ -120,6 +120,7 @@
     )
 )
 
+; show only tasks with at least 5 minutes of logged time!
 (define
     (reported-tasks project)
     (filter (lambda (task) (> (task-reported-time task) 300)) (gtt-tasks project))
@@ -153,15 +154,17 @@
 
 
 (define
-    (show-reported-projects projects prefix)
+    (show-reported-projects prjs prefix)
     (if
-        (not (null? projects))
+        (null? prjs)
+        '()
         (map
             (lambda 
-                (project)
+                (proj)
                 (list
                     (if
-                        (not (null? (reported-tasks project)))
+                        ; show only those tasks that racked up 5+ minutes of time...
+                        (not (null? (reported-tasks proj)))
                         (list
                             (gtt-show 
                                 (string-append
@@ -169,26 +172,26 @@
                                     "<b>"
                                     (if 
                                         (equal? (gtt-kvp-str "interval") "daily")
-                                        (seconds->human-readable (project-reported-time project) "min")
-                                        (seconds->human-readable (project-reported-time project) "day")
+                                        (seconds->human-readable (project-reported-time proj) "min")
+                                        (seconds->human-readable (project-reported-time proj) "day")
                                     )
-                                    " " prefix "/" (gtt-project-title project) "</b> - " (gtt-project-desc project) "\n"
+                                    " " prefix "/" (gtt-project-title proj) "</b> - " (gtt-project-desc proj) "\n"
                                     "<table width=100% border=0 cellspacing=4>\n"
                                 )
                             )
-                            (show-reported-tasks project)
+                            (show-reported-tasks proj)
                             (gtt-show "</table>\n")
                             (gtt-show "</td></tr>\n")
                         )
                     )
-                    (show-reported-projects (gtt-project-subprojects project) (string-append prefix "/" (gtt-project-title project)))
+                    (show-reported-projects (gtt-project-subprojects proj) (string-append prefix "/" (gtt-project-title proj)))
                 )
             )
-            projects
+            prjs
         )
-        '()
     )
 )
+
 ?>
 <table bgcolor="#A7A7B9" border=0 cellspacing=4>
 <tr><td align=center>
@@ -218,13 +221,16 @@
             (gtt-kvp-str "interval")
             "</b> report: <b>\""
             (gtt-kvp-str "custom_start")
-            "\"</b>.<br>\n"
-            "Please use format like <b>\"5 Jul 2006\"</b> for <b>daily</b> reports,<br>\n"
+            "\"</b>.<br />\n"
+            "Please use format like <b>\"5 Jul 2006\"</b> for <b>daily</b> reports,<br />\n"
             "and format like <b>\"Jul 2006\"</b> for <b>monthly</b> reports."
             "</td></tr>\n"
         )
     )
-    (show-reported-projects (gtt-projects) "") 
+
+    ;no, not *all* projects, just the selected project ...
+    ; (show-reported-projects (gtt-projects) "")
+    (show-reported-projects (list (gtt-linked-project)) "") 
 )
 ?>
 <tr><td bgcolor=#C8C8D3><h3><?scm (gtt-show (seconds->human-readable total-reported-time "day")) ?> TOTAL</h3></td></tr>
