@@ -1,3 +1,8 @@
+2007-12-21 Linas Vepstas <linas@linas.org>
+
+	* query.ghtml: add today's date as the default to the form.
+	This uses code taken from sf patch 1595106
+
 2007-12-04  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/ctree.c (drag_drop): call ctree_setup every time a
@@ -64,7 +69,6 @@
 	project timeout.
 	(dialog_close, dialog_kill): Use the new timeout scheduling
 	function instead of fiddling with the "armed" field.
-	
 
 	* src/active-dialog.h: Added declarations for functions
 	active_dialog_activate_timer and active_dialog_deactivate_timer
@@ -102,7 +106,6 @@
 
 	* configure.in, Makefile.am: Added XScreenSaver extension support
 
->>>>>>> .merge-right.r903
 2007-10-23  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* Makefile.am: Removed debian from SUBDIRS
@@ -269,7 +272,7 @@
 	* Applied patch by Quentin Harley for currency symbol
 	  configuration with some changes to allow for locale based
 	  formating of currency values. Details about the changed files
-	  bellow.
+	  below.
 	
 	* glade/prefs.glade: Added GUI elements for the currency formating
 	options.
@@ -390,6 +393,7 @@
 	configuration for time format in reports
 
 Thu Oct 20, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* omf.make, xmldocs.make: Update to files from gnome-common-2.12.  This
 	cleans up some harmless warnings from scrollkeeper when installing
 	into a DESTDIR.
@@ -398,15 +402,21 @@ Thu Oct 20, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
 	required version exists.  At least, it works here with these changes.
 	If there are still problems, please include me on the bug so I can
 	take a look.
+
 Tue Sep 27, 2005 Linas Vepstas <linas@linas.org>
+
 	* Apply sourceforge patch 149570
 	from bug [ 1294149 ] Doesn't detect QOF 0.6.0
 	* cvs tag gnotime-2.2.2 in prep for the 2.2.2 release
+
 Sat Sep 17, 2005 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* doc/gnotime-C.omf, doc/gnotime-es.omf: Fix issue where yelp doesn't
 	  display an entry for gnotime when browsing because it doesn't
 	  recognize the <subject> entry.
+
 Wed Aug 31, 2005 Linas Vepstas <linas@linas.org>
+
 	* Bump to version number 2.2.2
 	* Add partial support for sourceforge feature request 
 	  [ 1171211 ] possibility to turn off the toolbar
@@ -458,9 +468,11 @@ Fri Aug 20, 2004 Linas Vepstas <linas@linas.org>
 	  in the edit interval dialog
 
 Sun May 23, 2004 Linas Vepstas <linas@linas.org>
+
 	* Prep for 2.2.1 release: tag gnotime-2-2-1
 
 Tue Apr 27, 2004 Linas Vepstas <linas@linas.org>
+
 	* props-task.c, task_properties.glade: convert dialog
 	  to GtkDialog, make dialog interactive (trash two buttons),
 	  enlarge the notes area, making it usable.
@@ -474,9 +486,11 @@ Tue Apr 27, 2004 Linas Vepstas <linas@linas.org>
 	* lib/qof: sync with latest qof sources
 
 Sun Apr 25 2004 Linas Vepstas <linas@linas.org>
+
 	* Prep for 2.2.0 release: tag gnotime-2-2-0
 
 Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
+
 	* prefs.c, props-proj.c props-task.c: Fix core dump 
 	  when user clicks on 'help' button.
 	* journal.c: Fix coredump/hang due to double-free
@@ -499,9 +513,11 @@ Wed Apr 21 2004 Linas Vepstas <linas@linas.org>
 	* journal.c: add 'copy' to the task popup menu
 
 Tues Apr 20 2004 Linas Vepstas <linas@linas.org>
+
 	* Prep for 2.1.9 release: tag gnotime-2-1-9
 
 Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
+
 	* lib/libqofsql/*: All new SQL expression parsing code.
 	* lib/qof/*: Sync with QOF source trees.
 	* src/journal.c. ghtml/C/query.ghtml: Start using SQL and 
@@ -533,6 +549,7 @@ Sat Apr 10 2004 Linas Vepstas <linas@linas.org>
 	  Egil Kvaleberg <egil@kvaleberg.no>
 
 Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
+
 	* Prep for 2.1.8 release: tag gnotime-2-1-8
 	* ghtml.c, main.c: port from deprecated guile gh_* interface to 
 	  new shiny scm_* interface.
@@ -544,6 +561,7 @@ Sat Apr 3 2004 Linas Vepstas <linas@linas.org>
 	  from Goedson Teixeira Paixao <goedson@debian.org>
 
 Tue Dec  23 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* src/main.c: using signal(SIGCHLD, SIG_IGN) to reap zombie processes
 	  is not portable and was causing yelp, the gnome help browser to
 	  crash when it was invoked to handle gnotime help.  Create two
@@ -553,12 +571,14 @@ Tue Dec  23 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
 	  standarc libc.
 
 Fri Dec  20 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* src/toolbar.c: Call to gnome_help_display was wrong for GNOME2.
 	  Changed it to follow the new syntax.
 	* src/menus.c: Change the GNOMEUIINFO_HELP to reference gnotime instead
 	  of gtt.
 
 Fri Dec  19 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* doc/C/gnotime.xml: The graphic tags were attempting to access the
 	  screenshots with filenames without extensions.  I added the .png
 	  extension and it all works now.
@@ -568,6 +588,7 @@ Fri Dec  19 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
 	  documentation creation installation via scrollkeeper.
 
 Thu Dec  18 2003 Toshio Kuratomi <toshio@tiki-lounge.com>
+
 	* doc: Major rewrite of the documentation building.  Uses a newer
 	  scrollkeeper omf format and uses and copies docbook XML rather than
 	  SGML=>HTML conversion. 
@@ -1055,6 +1076,7 @@ Tue Aug 28 20:11:34 CDT 2001  Linas Vepstas <linas@linas.org>
 	* proj.[ch] add routines to subtotal time spent in sub-projects.
 
 Fri Aug 24 23:05:16 CDT 2001  Linas Vepstas <linas@linas.org>
+
 	* app.c clist.c gtt.h main.c menucmd.c menus.c proj.c timer.c
 	  toolbar.c: add routine gboolean timer_is_running()
 
