@@ -1898,8 +1898,7 @@ prj_obj_foreach_helper (GList *prjlist, QofEntityForeachCB cb, gpointer data)
 	for (node=prjlist; node; node=node->next)
 	{
 		GttProject *prj = node->data;
-		void (*ncb) (GttProject *, void *) = (void (*) (GttProject *, void *)) cb;
-		ncb (prj, data);
+		cb ((QofEntity *) prj, data);
 		prj_obj_foreach_helper (prj->sub_projects, cb, data);
 	}
 }
@@ -1932,20 +1931,25 @@ printable:         NULL,
 
 /* =========================================================== */
 /* bogus wrappers */
-static Timespec
-prj_obj_get_earliest (GttProject *prj)
+static QofTime *
+prj_obj_get_earliest (GttProject *prj, QofParam *qpm)
 {
-	Timespec ts = {0,0};
-	ts.tv_sec = gtt_project_get_earliest_start (prj, TRUE);
-	return ts;
+	// static time return, not thread safe, but a hack that will do for now.
+	static QofTime *qt = NULL;
+	if (NULL == qt) qt = qof_time_new();
+	time_t gt = gtt_project_get_earliest_start (prj, TRUE);
+	qof_time_set_secs (qt, gt);
+	return qt;
 }
 
-static Timespec
-prj_obj_get_latest (GttProject *prj)
+static QofTime *
+prj_obj_get_latest (GttProject *prj, QofParam *qpm)
 {
-	Timespec ts = {0,0};
-	ts.tv_sec = gtt_project_get_latest_stop (prj, TRUE);
-	return ts;
+	static QofTime *qt = NULL;
+	if (NULL == qt) qt = qof_time_new();
+	time_t gt = gtt_project_get_latest_stop (prj, TRUE);
+	qof_time_set_secs (qt, gt);
+	return qt;
 }
 
 gboolean
@@ -1955,8 +1959,8 @@ gtt_project_obj_register (void)
 
 /* Associate an ASCII name to each getter, as well as the return type */
 static QofParam params[] = {
-		{ GTT_PROJECT_EARLIEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_earliest, NULL},
-		{ GTT_PROJECT_LATEST, QOF_TYPE_DATE, (QofAccessFunc)prj_obj_get_latest, NULL},
+		{ GTT_PROJECT_EARLIEST, QOF_TYPE_TIME, (QofAccessFunc)prj_obj_get_earliest, NULL},
+		{ GTT_PROJECT_LATEST, QOF_TYPE_TIME, (QofAccessFunc)prj_obj_get_latest, NULL},
 		{ NULL },
 	};
 

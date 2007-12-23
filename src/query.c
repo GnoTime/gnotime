@@ -260,7 +260,8 @@ gtt_project_foreach_interval (GttProject *proj, GttIntervalCB cb, gpointer data)
 	tnode = gtt_project_get_tasks (proj);
 	for (; tnode; tnode=tnode->next)
 	{
-		inode = gtt_task_get_intervals (tnode->data);
+		GttTask *tsk = tnode->data;
+		inode = gtt_task_get_intervals (tsk);
 		for (; inode; inode=inode->next)
 		{
 			GttInterval *iv = inode->data;
