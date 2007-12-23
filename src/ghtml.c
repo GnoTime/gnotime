@@ -786,7 +786,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 		/* XXX report date should be time_t in the middle of the interval */
 		/* Print date */
 		rptdate = mktime (&tday);
-		qof_print_date_buff (buff, 100, rptdate);
+		xxxqof_print_date_buff (buff, 100, rptdate);
 		node = scm_from_locale_string (buff);
 		rpt = scm_cons (node, rpt);
 
@@ -1095,7 +1095,7 @@ task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	size_t len;
 	
 	if (task_date > 0) {
-	    len = qof_print_date_time_buff (buff, 100, task_date);
+	    len = xxxqof_print_date_time_buff (buff, 100, task_date);
 	} else {
         len = g_snprintf(buff, 100, "%s", _("No activity"));
 	}
@@ -1111,7 +1111,7 @@ task_get_latest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	size_t len;
 
 	if (task_date > 0) {
-	    len = qof_print_date_time_buff (buff, 100, task_date);
+	    len = xxxqof_print_date_time_buff (buff, 100, task_date);
 	} else {
         len = g_snprintf(buff, 100, "%s", _("No activity"));
 	}
@@ -1215,7 +1215,7 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	char buff[100];
 
 	if (prt_date) {
-		qof_print_date_buff (buff, 100, starp);
+		xxxqof_print_date_buff (buff, 100, starp);
 	} else {
         switch (config_time_format) 
         {
@@ -1228,7 +1228,7 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
                 break;
             }
             case TIME_FORMAT_LOCALE: {
-                qof_print_time_buff (buff, 100, starp);
+                xxxqof_print_time_buff (buff, 100, starp);
                 break;
             }
 
@@ -1268,7 +1268,7 @@ get_ivl_same_day_start_scm (GttGhtml *ghtml, GttInterval *ivl)
 
 	if (0 != prev_stop)
 	{
-		prt_date = qof_is_same_day(start, prev_stop);
+		prt_date = xxxqof_is_same_day(start, prev_stop);
 	}
 	return scm_from_bool (prt_date);
 }
@@ -1288,7 +1288,7 @@ get_ivl_same_day_stop_scm (GttGhtml *ghtml, GttInterval *ivl)
 	ghtml->last_ivl_time = stop;
 	if (0 != prev_start)
 	{
-		prt_date = qof_is_same_day(prev_start, stop);
+		prt_date = xxxqof_is_same_day(prev_start, stop);
 	}
 	return scm_from_bool (prt_date);
 }
@@ -1350,7 +1350,7 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 	SCM port = scm_current_output_port();
 	/* throw args seem to be: (FN FORMAT ARGS #f). split the pieces into
 	   local vars. */
-	if (scm_list_p(throw_args) && scm_length(throw_args) >= 4)
+	if (scm_list_p(throw_args) && (scm_length(throw_args) >= 4))
 	{
 		SCM fn = scm_car(throw_args);
 		SCM format = scm_cadr(throw_args);

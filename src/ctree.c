@@ -1219,7 +1219,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				time_t secs;
 				secs = gtt_project_get_estimated_start(prj);
 				if (0 < secs) {
-					qof_print_date_buff (ptn->start_timestr, 24, secs);
+					xxxqof_print_date_buff (ptn->start_timestr, 24, secs);
 				} else {
 					ptn->start_timestr[0] = '-';
 					ptn->start_timestr[1] = 0x0;
@@ -1232,7 +1232,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				time_t secs;
 				secs = gtt_project_get_estimated_end(prj);
 				if (0 < secs) {
-					qof_print_date_buff (ptn->end_timestr, 24, secs);
+					xxxqof_print_date_buff (ptn->end_timestr, 24, secs);
 				} else {
 					ptn->end_timestr[0] = '-';
 					ptn->end_timestr[1] = 0x0;
@@ -1245,7 +1245,7 @@ stringify_col_values (ProjTreeNode *ptn, gboolean expand)
 				time_t secs;
 				secs = gtt_project_get_due_date(prj);
 				if (0 < secs) {
-					qof_print_date_buff (ptn->due_timestr, 24, secs);
+					xxxqof_print_date_buff (ptn->due_timestr, 24, secs);
 				} else {
 					ptn->due_timestr[0] = '-';
 					ptn->due_timestr[1] = 0x0;

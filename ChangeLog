@@ -5,6 +5,8 @@
 	* ghtml/C/monthly-daily.ghtml: merge in sf patch 1595106
 	* src/main.c: call qof_date_init(); this is needed for newer 
 	  libqof versions (version libqof.so.1.0.8 and newer)
+	* src/util.c: copy deprecated qof date/time functions here, 
+	  as they are still heavily used in gnotime.
 
 2007-12-04  Goedson Teixeira Paixao  <goedson@debian.org>
 

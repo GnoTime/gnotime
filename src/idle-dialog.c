@@ -30,6 +30,7 @@
 
 #include <qof.h>
 
+#include "app.h"
 #include "ctree.h"
 #include "ctree-gnome2.h"
 #include "cur-proj.h"
@@ -37,7 +38,6 @@
 #include "dialog.h"
 #include "proj.h"
 #include "util.h"
-#include "app.h"
 
 
 int config_idle_timeout = -1;
@@ -245,7 +245,7 @@ display_value (GttIdleDialog *dlg, time_t credit)
 	/* Set a value for the thingy under the slider */
 	if (3600 > credit)
 	{
-		qof_print_minutes_elapsed_buff (tbuff, 30, credit, TRUE);
+		xxxqof_print_minutes_elapsed_buff (tbuff, 30, credit, TRUE);
 		g_snprintf (mbuff, 130, _("%s minutes"), tbuff);
 	}
 	else 

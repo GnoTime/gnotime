@@ -133,18 +133,18 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 
 			/* print hour only or date too? */
 			if (0 != prev_stop) {
-				prt_date = qof_is_same_day(start, prev_stop);
+				prt_date = xxxqof_is_same_day(start, prev_stop);
 			}
 			if (prt_date) {
-				qof_print_date_time_buff (buff, 100, start);
+				xxxqof_print_date_time_buff (buff, 100, start);
 				p = g_string_append (p, buff);
 			} else {
-				qof_print_time_buff (buff, 100, start);
+				xxxqof_print_time_buff (buff, 100, start);
 				p = g_string_append (p, buff);
 			}
 
 			/* print hour only or date too? */
-			prt_date = qof_is_same_day(start, stop);
+			prt_date = xxxqof_is_same_day(start, stop);
 			if (show_links) p = g_string_append (p, "</a>");
 			p = g_string_append (p, 
 				" &nbsp; &nbsp; </td>\n"
@@ -154,10 +154,10 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 				g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 			}
 			if (prt_date) {
-				qof_print_date_time_buff (buff, 100, stop);
+				xxxqof_print_date_time_buff (buff, 100, stop);
 				p = g_string_append (p, buff);
 			} else {
-				qof_print_time_buff (buff, 100, stop);
+				xxxqof_print_time_buff (buff, 100, stop);
 				p = g_string_append (p, buff);
 			}
 
@@ -500,9 +500,9 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			elapsed = stop - start;
 
 			/* print hour only or date too? */
-			prt_stop_date = qof_is_same_day(start, stop);
+			prt_stop_date = xxxqof_is_same_day(start, stop);
 			if (0 != prev_stop) {
-				prt_start_date = qof_is_same_day(start, prev_stop);
+				prt_start_date = xxxqof_is_same_day(start, prev_stop);
 			}
 			prev_stop = stop;
 
@@ -523,10 +523,10 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 		}
 		if (prt_start_date) {
-			qof_print_date_time_buff (buff, 100, start);
+			xxxqof_print_date_time_buff (buff, 100, start);
 			p = g_string_append (p, buff);
 		} else {
-			qof_print_time_buff (buff, 100, start);
+			xxxqof_print_time_buff (buff, 100, start);
 			p = g_string_append (p, buff);
 		}
 		if (show_links) p = g_string_append (p, "</a>");
@@ -541,10 +541,10 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 			g_string_append_printf (p, "<a href=\"gtt:interval:0x%lx\">", (long)ivl);
 		}
 		if (prt_stop_date) {
-			qof_print_date_time_buff (buff, 100, stop);
+			xxxqof_print_date_time_buff (buff, 100, stop);
 			p = g_string_append (p, buff);
 		} else {
-			qof_print_time_buff (buff, 100, stop);
+			xxxqof_print_time_buff (buff, 100, stop);
 			p = g_string_append (p, buff);
 		}
 		if (show_links) p = g_string_append (p, "</a>");
