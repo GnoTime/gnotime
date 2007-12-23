@@ -107,7 +107,7 @@ on all projects that:
                     "\n")
             )
             (show-day (subtract-duration day one-day) (+ i 1))
-        )))
+)))
 ?>
             </select>
         </td>
@@ -130,7 +130,7 @@ on all projects that:
                     "\n")
             )
             (show-month (subtract-duration month one-short-month) (+ i 1))
-        )))
+)))
 ?>
         </td>
         <td></td>
@@ -144,13 +144,6 @@ on all projects that:
 </table>
 <input type="hidden" name="debug" value="1">
 </form>
-
-<!--
-        <td rowspan=2> Custom date: <input type=text name=custom_start size="10"></td>
--->
-
-<hr>
-
 
 </body>
 </html>

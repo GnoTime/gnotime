@@ -5,41 +5,32 @@
 <title>Report</title>
 <?scm 
 (use-modules (srfi srfi-1) (srfi srfi-19))
-(if
-    (equal? (gtt-kvp-str "interval") "daily")
+(if (equal? (gtt-kvp-str "interval") "daily")
     (begin
-        (if
-            (equal? (gtt-kvp-str "start_day") "custom")
-            (define 
-                report-start
-                (catch
-                    #t
-                    (lambda () (time-second (date->time-utc (string->date (gtt-kvp-str "custom_start") "~d ~b ~Y"))))
-                    (lambda (key . args) 0)
-                )
-            )
-            (define report-start (string->number (gtt-kvp-str "start_day")))
-        )
+        (define report-start (string->number (gtt-kvp-str "start_day")))
         (define one-day (time-difference (make-time time-utc 0 86400) (make-time time-utc 0 0)))
         (define report-end (time-second (add-duration (make-time time-utc 0 report-start) one-day)))
     )
+    (if (equal? (gtt-kvp-str "interval") "monthly")
     (begin
-        (if
-            (equal? (gtt-kvp-str "start_month") "custom")
-            (define
-                report-start
-                (catch
-                    #t
-                    (lambda () (time-second (date->time-utc (string->date (string-append "01 " (gtt-kvp-str "custom_start")) "~d ~b ~Y"))))
-                    (lambda (key . args) 0)
-                )
-            )
-            (define report-start (time-second (date->time-utc (string->date (string-append "01 " (gtt-kvp-str "start_month")) "~d ~b ~Y"))))
-        )
+        (define report-start (time-second (date->time-utc (string->date (string-append "01 " (gtt-kvp-str "start_month")) "~d ~b ~Y"))))
         (define report-start-date (time-utc->date (make-time time-utc 0 report-start)))
         (define str-next-month (string-append "01 " (number->string (+ (date-month report-start-date) 1)) " " (number->string (date-year report-start-date))))
         (define report-end (time-second (date->time-utc (string->date str-next-month "~d ~m ~Y"))))
     )
+    (if (equal? (gtt-kvp-str "interval") "custom")
+    (begin
+        (define report-start
+            (catch #t
+                (lambda () (time-second (date->time-utc (string->date (gtt-kvp-str "start-date") "~d ~b ~Y"))))
+                (lambda (key . args) 0)
+        ))
+        (define report-end
+            (catch #t
+                (lambda () (time-second (date->time-utc (string->date (gtt-kvp-str "end-date") "~d ~b ~Y"))))
+                (lambda (key . args) 0)
+        ))
+    )))
 )
 (define total-reported-time 0)
 ?>
@@ -132,35 +123,27 @@
     (map
         (lambda
             (task)
-            (if 
-                (not
-                    (or
+            (if (not (or
                         (equal? (gtt-task-notes task) "")
                         (equal? (gtt-task-notes task) "\n")
-                    )
-                )
+                ))
                 (gtt-show
                     (string-append
                         "<tr><td bgcolor=#f8f8f8 >\n"
                         (my-html-escape-newline (gtt-task-notes task))
                             "\n</td></tr>\n"
-                    )
-                )
+                ))
             )
         )
         (reported-tasks project)
-    )
-)
-
+))
 
 (define
     (show-reported-projects prjs prefix)
-    (if
-        (null? prjs)
+    (if (null? prjs)
         '()
         (map
-            (lambda 
-                (proj)
+            (lambda (proj)
                 (list
                     (if
                         ; show only those tasks that racked up 5+ minutes of time...
@@ -197,47 +180,60 @@
 <tr><td align=center>
 <h2><?scm
 (gtt-show 
-    (if
-        (equal? (gtt-kvp-str "interval") "daily")
+    (if (equal? (gtt-kvp-str "interval") "daily")
         (string-append
             "Daily report for "
             (date->string (time-utc->date (make-time time-utc 0 report-start)) "~d ~b ~Y (~A)")
-        )
+    )
+    (if (equal? (gtt-kvp-str "interval") "monthly")
         (string-append
             "Monthly report for "
             (date->string (time-utc->date (make-time time-utc 0 report-start)) "~b ~Y")
         )
-    )
+    (if (equal? (gtt-kvp-str "interval") "custom")
+        (string-append
+            "Report for "
+            (date->string (time-utc->date (make-time time-utc 0 report-start)) "~d ~b ~Y")
+            " - "
+            (date->string (time-utc->date (make-time time-utc 0 report-end)) "~d ~b ~Y")
+        )
+    )))
 )
 ?></h2>
 </td></tr>
 <?scm
-(if
-    (= report-start 0)
+(if (= report-start 0)
     (gtt-show 
         (string-append
             "<tr><td>\n"
-            "<big>ERROR:</big> You have entered an invalid format for <b>"
-            (gtt-kvp-str "interval")
-            "</b> report: <b>\""
-            (gtt-kvp-str "custom_start")
-            "\"</b>.<br />\n"
-            "Please use format like <b>\"5 Jul 2006\"</b> for <b>daily</b> reports,<br />\n"
-            "and format like <b>\"Jul 2006\"</b> for <b>monthly</b> reports."
+            "<big>ERROR:</big> You have entered an invalid format for the start date: "
+            (gtt-kvp-str "start-date")
+            ".<br />\n"
+            "Please use format like <b>\"5 Jul 2006\"</b>.\n"
+            "</td></tr>\n"
+        )
+    )
+    (if (= report-end 0)
+    (gtt-show 
+        (string-append
+            "<tr><td>\n"
+            "<big>ERROR:</big> You have entered an invalid format for the end date:"
+            (gtt-kvp-str "end-date")
+            ".<br />\n"
+            "Please use format like <b>\"5 Jul 2006\"</b>.\n"
             "</td></tr>\n"
         )
     )
 
-    ;no, not *all* projects, just the selected project ...
+    ; No, don't show *all* projects; just the selected project and its children ...
     ; (show-reported-projects (gtt-projects) "")
     (show-reported-projects (list (gtt-linked-project)) "") 
-)
+))
 ?>
 <tr><td bgcolor=#C8C8D3><h3><?scm (gtt-show (seconds->human-readable total-reported-time "day")) ?> TOTAL</h3></td></tr>
 <tr><td align=right>* 1 day is equal to 8 hours</td></tr>
 </table>
 </center>
 </div>
-
 </body>
 </html>
