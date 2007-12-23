@@ -128,6 +128,9 @@
                 (gtt-show
                     (string-append
                         "<tr><td bgcolor=#f8f8f8 >\n"
+                        "<b>"
+                        (gtt-task-memo task)
+                        "</b><br />\n"
                         (my-html-escape-newline (gtt-task-notes task))
                             "\n</td></tr>\n"
                 ))
