@@ -30,4 +30,9 @@ char * xxxgtk_textview_get_text (GtkTextView *text);
 /* Glade loader, it will look in the right directories */
 GladeXML *gtt_glade_xml_new (const char *filename, const char *widget);
 
+/* ------------------------------------------------------------------ */
+/* Functions that used to be in qof,m but are not there any longer. */
+size_t xxxqof_print_hours_elapsed_buff (char *buff, size_t len, int secs,
+                                        gboolean show_secs);
+
 #endif /* __GTT_UTIL_H__ */

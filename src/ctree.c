@@ -1143,8 +1143,8 @@ ctree_update_column_visibility (ProjTreeWindow *ptw)
          secs = gtt_project_total_secs_##SLOT(prj);             \
       }                                                         \
       if (0 < secs || ((0 == secs) && (prj == cur_proj))) {     \
-         qof_print_hours_elapsed_buff (ptn->SLOT##_timestr, 24, \
-                 secs, config_show_secs);                       \
+         xxxqof_print_hours_elapsed_buff (ptn->SLOT##_timestr,  \
+                 24, secs, config_show_secs);                   \
       } else {                                                  \
          ptn->SLOT##_timestr[0] = '-';                          \
          ptn->SLOT##_timestr[1] = 0x0;                          \

@@ -69,4 +69,45 @@ gtt_glade_xml_new (const char *filename, const char *widget)
 	return xml;
 }
 
+/* ============================================================== */
+/* Used to be in qof, but is now deprecated there. */
+
+size_t
+xxxqof_print_hours_elapsed_buff (char *buff, size_t len, int secs,
+	gboolean show_secs)
+{
+	size_t flen;
+	if (0 <= secs)
+	{
+		if (show_secs)
+		{
+			flen = g_snprintf (buff, len,
+				"%02d:%02d:%02d", (int) (secs / 3600),
+				(int) ((secs % 3600) / 60), (int) (secs % 60));
+		}
+		else
+		{
+			flen = g_snprintf (buff, len,
+				"%02d:%02d", (int) (secs / 3600),
+				(int) ((secs % 3600) / 60));
+		}
+	}
+	else
+	{
+		if (show_secs)
+		{
+			flen = g_snprintf (buff, len,
+				"-%02d:%02d:%02d", (int) (-secs / 3600),
+				(int) ((-secs % 3600) / 60), (int) (-secs % 60));
+		}
+		else
+		{
+			flen = g_snprintf (buff, len,
+				"-%02d:%02d", (int) (-secs / 3600),
+				(int) ((-secs % 3600) / 60));
+		}
+	}
+	return flen;
+}
+
 /* ===================== END OF FILE ============================ */

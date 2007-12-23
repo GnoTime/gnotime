@@ -250,7 +250,7 @@ display_value (GttIdleDialog *dlg, time_t credit)
 	}
 	else 
 	{
-		qof_print_hours_elapsed_buff (tbuff, 30, credit, FALSE);
+		xxxqof_print_hours_elapsed_buff (tbuff, 30, credit, FALSE);
 		g_snprintf (mbuff, 130, _("%s hours"), tbuff);
 	}
 	gtk_label_set_text (dlg->time_label, mbuff);

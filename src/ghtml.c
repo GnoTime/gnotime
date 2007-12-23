@@ -779,7 +779,7 @@ do_ret_daily_totals (GttGhtml *ghtml, GttProject *prj)
 
 		/* XXX should use time_t, and srfi-19 to print, and have a type label */
 		/* Print time spent on project this day */
-		qof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
+		xxxqof_print_hours_elapsed_buff (buff, 100, secs, TRUE);
 		node = scm_from_locale_string (buff);
 		rpt = scm_cons (node, rpt);
 
@@ -1082,7 +1082,7 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	char buff[100];
 
 	task_secs = gtt_task_get_secs_ever(tsk);
-	qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
+	xxxqof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
 	return scm_from_locale_string (buff);
 }
 
@@ -1202,7 +1202,7 @@ get_ivl_elapsed_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 	time_t elapsed;
 	elapsed = gtt_interval_get_stop (ivl);
 	elapsed -= gtt_interval_get_start (ivl);
-	qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
+	xxxqof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 	return scm_from_locale_string (buff);
 }
 
@@ -1331,7 +1331,7 @@ get_ivl_fuzz_str_scm (GttGhtml *ghtml, GttInterval *ivl)
 {
 	char buff[100];
 
-	qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
+	xxxqof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz (ivl), TRUE);
 	return scm_from_locale_string (buff);
 }
 RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);

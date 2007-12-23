@@ -165,7 +165,7 @@ do_show_journal (GttGhtml *ghtml, GttProject *prj)
 
 			if (show_links) p = g_string_append (p, "</a>");
 			p = g_string_append (p, " &nbsp; &nbsp; </td>\n<td> &nbsp; &nbsp; ");
-			qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
+			xxxqof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 			p = g_string_append (p, buff);
 			p = g_string_append (p, " &nbsp; &nbsp; </td></tr>\n");
 			(ghtml->write_stream) (ghtml, p->str, p->len, ghtml->user_data);
@@ -403,7 +403,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 
 				case TASK_TIME:
 					if (output_html) p = g_string_append (p, "<td align=right>");
-					qof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
+					xxxqof_print_hours_elapsed_buff (buff, 100, task_secs, TRUE);
 					p = g_string_append (p, buff); 
 					break;
 
@@ -554,7 +554,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	case ELAPSED:
 	{
 		if (output_html) p = g_string_append (p, "<td>&nbsp;&nbsp;");
-		qof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
+		xxxqof_print_hours_elapsed_buff (buff, 100, elapsed, TRUE);
 		p = g_string_append (p, buff);
 		if (output_html) p = g_string_append (p, "&nbsp;&nbsp;");
 		break;
@@ -562,7 +562,7 @@ do_show_table (GttGhtml *ghtml, GttProject *prj, int invoice)
 	case FUZZ:
 	{
 		if (output_html) p = g_string_append (p, "<td>&nbsp;&nbsp;");
-		qof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz(ivl), TRUE);
+		xxxqof_print_hours_elapsed_buff (buff, 100, gtt_interval_get_fuzz(ivl), TRUE);
 		p = g_string_append (p, buff);
 		if (output_html) p = g_string_append (p, "&nbsp;&nbsp;");
 		break;

@@ -593,7 +593,7 @@ options_dialog_set(PrefsDialog *odlg)
 	int secs = config_daystart_offset;
 	if (0 > secs) secs += 24*3600;
 	char buff[24];
-	qof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
 	gtk_entry_set_text (odlg->daystart_secs, buff);
 
 	/* Set the correct menu item based on current values */
@@ -645,7 +645,7 @@ daystart_menu_changed (gpointer data, GtkOptionMenu *w)
 	int secs = hour * 3600;
 	if (0 > secs) secs += 24*3600;
 	char buff[24];
-	qof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
 	gtk_entry_set_text (dlg->daystart_secs, buff);
 }
 
