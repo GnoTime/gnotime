@@ -92,7 +92,7 @@ typedef enum
 #define GTT_PROJECT_ID "GttProjectId"
 #define GTT_TASK_ID    "GttTaskId"
 
-#define GTT_PROJECT_EARLIEST "GttProjectEarliet"
+#define GTT_PROJECT_EARLIEST "GttProjectEarliest"
 #define GTT_PROJECT_LATEST   "GttProjectLatest"
 
 /* -------------------------------------------------------- */
