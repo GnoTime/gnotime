@@ -57,10 +57,10 @@ on all projects that:
 </tr>
 <tr>
 <td>Showed activity no later than:</td>
-<!-- <td><input type="text" name="latest-start-date" size="12"> </td> -->
+<!-- <td><input type="text" name="latest-end-date" size="12"> </td> -->
 <?scm
 (gtt-show (string-append 
-	"<td><input type=\"text\" name=\"latest-start-date\" size=\"12\" value = \""
+	"<td><input type=\"text\" name=\"latest-end-date\" size=\"12\" value = \""
 	(date->string (time-utc->date (add-duration now-day-time one-day)) "~d ~b ~Y")
 	"\"></td>" ))
 ?>
@@ -75,7 +75,8 @@ on all projects that:
 <!-- This hard-to-read mish-mash is the actual SQL query 
   -  to be performed to generate the report. 
   -->
-<input type="hidden" name="query" value="SELECT * FROM GttProjectId WHERE (GttProjectEarliet <= 'kvp://earliest-end-date') AND (GttProjectLatest >= 'kvp://latest-start-date');">
+<input type="hidden" name="query" value="SELECT * FROM GttProjectId WHERE (GttProjectLatest >= 'kvp://earliest-end-date')
+AND (GttProjectLatest <= 'kvp://latest-end-date');">
 
 <input type="submit" value="Generate Report">
 </td>
