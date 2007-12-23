@@ -3,7 +3,9 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <?scm (gtt-include "gtt-style.css") ?>
-<title>Report</title>
+<title>Report for
+<?scm (gtt-show (gtt-project-title (gtt-linked-project))) ?>
+</title>
 <?scm 
 (use-modules (srfi srfi-1) (srfi srfi-19))
 (if (equal? (gtt-kvp-str "interval") "daily")
