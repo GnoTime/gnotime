@@ -89,82 +89,68 @@ on all projects that:
 <table border=0 cellspacing=4>
     <tr><td align=center colspan="3"><h2>Activity Report</h2></td></tr>
     <tr>
+        <!-- The radio button is not really needed, but seems to be 
+          -- a reassuring clue to the user about what they're about to do !? 
+          -->
         <td><input type="radio" name="interval" value="daily"> Daily </td>
-        <td>
-            <select name="start_day" width="12">
+        <td><select name="start_day" width="12">
 <?scm
 (let 
-    show-day 
-    (
-        (day now-day-time)
-        (i 0)
-    )
-    (if 
-        (= i 7)
-        (gtt-show "<option value=\"custom\">Custom\n")
+    show-day ((day now-day-time) (i 0))
+    (if (< i 9)
         (begin
-            (gtt-show
-                (string-append
+            (gtt-show (string-append
                     "<option value=\""
                     (number->string (time-second day))
                     "\">"
                     (date->string (time-utc->date day) "~d ~b ~Y")
-                    "\n"
-                )
+                    "\n")
             )
             (show-day (subtract-duration day one-day) (+ i 1))
-        )
-    )
-)
+        )))
 ?>
             </select>
         </td>
-        <td rowspan=2> Custom date: <input type=text name=custom_start size="10"></td>
+        <td></td>
     </tr>
     <tr>
         <td><input type="radio" name="interval" value="monthly"> Monthly </td>
-        <td>
-            <select name="start_month" width="12"> 
+        <td><select name="start_month" width="12"> 
 <?scm
 (let 
-    show-month 
-    (
-        (month now-month-time)
-        (i 0)
-    )
+    show-month ((month now-month-time) (i 0))
     (if 
-        (= i 5)
-        (gtt-show "<option value=\"custom\">Custom\n")
-        (begin
-            (gtt-show
+        (< i 7)
+        (begin (gtt-show
                 (string-append
                     "<option value=\""
                     (date->string (time-utc->date month) "~b ~Y")
                     "\">"
                     (date->string (time-utc->date month) "~b ~Y")
-                    "\n"
-                )
+                    "\n")
             )
             (show-month (subtract-duration month one-short-month) (+ i 1))
-        )
-    )
-)
+        )))
 ?>
-            
         </td>
+        <td></td>
     </tr>
-    <tr><td></td><td><br /><input type="submit" value="Generate Report"></td></tr>
+    <tr>
+    <td><input type="radio" name="interval" value="custom">Custom</td>
+    <td><input type="text" name="start-date" size="12"></td> 
+    <td><input type="text" name="end-date" size="12"></td> 
+    </tr>
+    <tr><td></td><td></td><td><br /><input type="submit" value="Generate Report"></td></tr>
 </table>
 <input type="hidden" name="debug" value="1">
 </form>
 
+<!--
+        <td rowspan=2> Custom date: <input type=text name=custom_start size="10"></td>
+-->
 
 <hr>
-Please note that this query generator is under development and is 
-subject to change.  
 
 
-<br /><br />
-That's all Folks!
 </body>
 </html>
