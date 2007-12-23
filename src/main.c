@@ -157,7 +157,7 @@ unlock_gtt(void)
 
 	/* Perform a clean shutdown of QOF subsystem. */
 	qof_close();
-	qof_log_shutdown();
+	// qof_log_shutdown();
 
 	/* gnome shutdown */
 #if 0
@@ -785,8 +785,9 @@ main(int argc, char *argv[])
 
 	/* Perform QOF-specific initialization, including dates, objects, query, etc. */
 	qof_init();
-	qof_log_init();
-	qof_log_set_level(QOF_MOD_QUERY, QOF_LOG_TRACE);
+	// Debugging/trace info for the qof query is written to /tmp/qof.trace
+	// qof_log_init();
+	// qof_log_set_level(QOF_MOD_QUERY, QOF_LOG_TRACE);
 	gtt_project_obj_register();
 	master_list = gtt_project_list_new();
 
