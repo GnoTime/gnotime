@@ -156,11 +156,8 @@ unlock_gtt(void)
 #endif
 
 	/* Perform a clean shutdown of QOF subsystem. */
-	qof_query_shutdown ();
-	qof_object_shutdown ();
-	qof_date_close ();
-	guid_shutdown ();
-	gnc_engine_string_cache_destroy ();
+	qof_close();
+	qof_log_shutdown();
 
 	/* gnome shutdown */
 #if 0
@@ -644,8 +641,6 @@ save_projects (void)
 	g_free (xml_filepath);
 }
 
-
-
 /*
  * session management
  */
@@ -788,13 +783,10 @@ main(int argc, char *argv[])
 
 	gnotime_dbus_setup();
 
-	/* Perform QOF-specific initialization. */
-	gnc_engine_get_string_cache();
-	guid_init();
-	qof_date_init();
-	qof_object_initialize ();
-	qof_query_init ();
-	qof_book_register ();
+	/* Perform QOF-specific initialization, including dates, objects, query, etc. */
+	qof_init();
+	qof_log_init();
+	qof_log_set_level(QOF_MOD_QUERY, QOF_LOG_TRACE);
 	gtt_project_obj_register();
 	master_list = gtt_project_list_new();
 

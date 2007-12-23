@@ -1042,6 +1042,8 @@ perform_form_query (KvpFrame *kvpf)
 
 	if (user_debug)
 	{
+		printf ("earliest-end-date = %s\n", kvp_frame_get_string (kvpf, "earliest-end-date"));
+		printf ("latest-start-date = %s\n", kvp_frame_get_string (kvpf, "latest-start-date"));
 		printf ("Debug: Will run the query %s\n", query_string);
 	}
 
