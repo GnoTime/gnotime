@@ -158,6 +158,7 @@ unlock_gtt(void)
 	/* Perform a clean shutdown of QOF subsystem. */
 	qof_query_shutdown ();
 	qof_object_shutdown ();
+	qof_date_close ();
 	guid_shutdown ();
 	gnc_engine_string_cache_destroy ();
 
@@ -790,6 +791,7 @@ main(int argc, char *argv[])
 	/* Perform QOF-specific initialization. */
 	gnc_engine_get_string_cache();
 	guid_init();
+	qof_date_init();
 	qof_object_initialize ();
 	qof_query_init ();
 	qof_book_register ();
