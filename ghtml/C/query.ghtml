@@ -46,11 +46,16 @@ on all projects that:
 <!-- The following scheme code snippet just inserts today's date,
   -- for example; it generates:
   -- <td><input type="text" name="earliest-end-date" size="12" value = "12 Dec 2007"></td> 
+  -- XXX stupid $%^* QOF query will not parse dates like that.
+  -- It wants to have dates in YYYY-MM-DD format. Urgh. We have to fix this 
+  -- in the C code: we have to parse whatever the user input, and then,
+  -- convert it to a format that QOF likes. I.e. fetch the kvp keys,
+  -- and re-do them. That'll be ugly. Yuck.
   -->
 <?scm
 (gtt-show (string-append 
 	"<td><input type=\"text\" name=\"earliest-end-date\" size=\"12\" value = \""
-	(date->string (time-utc->date (subtract-duration now-day-time one-day)) "~d ~b ~Y")
+	(date->string (time-utc->date (subtract-duration now-day-time one-day)) "~Y-~m-~d")
 	"\"></td>" ))
 ?>
 
@@ -61,7 +66,7 @@ on all projects that:
 <?scm
 (gtt-show (string-append 
 	"<td><input type=\"text\" name=\"latest-end-date\" size=\"12\" value = \""
-	(date->string (time-utc->date (add-duration now-day-time one-day)) "~d ~b ~Y")
+	(date->string (time-utc->date (add-duration now-day-time one-day)) "~Y-~m-~d")
 	"\"></td>" ))
 ?>
 
