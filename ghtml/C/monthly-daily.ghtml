@@ -35,7 +35,7 @@
 (define total-reported-time 0)
 ?>
 </head>
-<body >
+<body bgcolor="#c8c8d3">
 <div id="gnotime-body">
 <center>
 <?scm
@@ -148,7 +148,7 @@
                         (list
                             (gtt-show 
                                 (string-append
-                                    "\n<tr><td bgcolor=#C8C8D3>\n"
+                                    "\n<tr><td bgcolor=#e0e0e0>\n"
                                     "<b>"
 (if (equal? (gtt-kvp-str "show-sum-time") "yes")
                                     (if (equal? (gtt-kvp-str "interval") "daily")
@@ -174,7 +174,7 @@
 )
 
 ?>
-<table bgcolor="#A7A7B9" border=0 cellspacing=4>
+<table bgcolor="#c8c8d3" border=0 cellspacing=4>
 <tr><td align=center>
 <h2><?scm
 (gtt-show 
@@ -231,7 +231,7 @@
 <?scm>
 (if (equal? (gtt-kvp-str "show-sum-time") "yes")
     (begin
-        (gtt-show "<tr><td bgcolor=#C8C8D3><h3>")
+        (gtt-show "<tr><td bgcolor=#e0e0e0><h3>")
         (gtt-show (seconds->human-readable total-reported-time "day"))
         (gtt-show "TOTAL</h3></td></tr><tr><td align=right>* 1 day is equal to 8 hours</td></tr>")
     )
