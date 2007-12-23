@@ -140,6 +140,9 @@ on all projects that:
     <td><input type="text" name="start-date" size="12"></td> 
     <td><input type="text" name="end-date" size="12"></td> 
     </tr>
+    <tr>
+    <td></td><td><input type="checkbox" name="show-sum-time" value="yes">Show time spent on projects</td>
+    </tr>
     <tr><td></td><td></td><td><br /><input type="submit" value="Generate Report"></td></tr>
 </table>
 <input type="hidden" name="debug" value="1">

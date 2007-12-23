@@ -51,15 +51,14 @@
                         (string-append accum (substring str 0 noff) "<br />\n")
                     (string-tail str (+ noff 1))
                 )
-                )
+            )
         )
     )
     (tail-escape-newline "" str)
 )
 
 (define (seconds->human-readable sec type)
-    (let
-        (
+    (let (
             (days (quotient sec 28800))
             (hours-remain (quotient (remainder sec 28800) 3600))
             (hours-total (quotient sec 3600))
@@ -74,9 +73,11 @@
 )
 
 (define (task-reported-time task)
-  (let
-    (
-        (intervals (filter (lambda (interval) (and (> (gtt-interval-start interval) report-start) (< (gtt-interval-start interval) report-end))) (gtt-intervals task)))
+  (let (
+        (intervals (filter (lambda (interval) 
+                                   (and (> (gtt-interval-start interval) report-start) 
+                                        (< (gtt-interval-start interval) report-end))) 
+                           (gtt-intervals task)))
     )
     (apply +
         (map -
@@ -89,14 +90,12 @@
 
 (define
     (project-reported-time project)
-    (let 
-        (
+    (let (
             (current-project-time
                 (apply
                     +
                     (map
-                        (lambda
-                            (task)
+                        (lambda (task)
                             (task-reported-time task)
                         )
                         (gtt-tasks project)
@@ -117,12 +116,11 @@
     (filter (lambda (task) (> (task-reported-time task) 300)) (gtt-tasks project))
 )
 
-;returns rows consisting of project's task-notes to be reported
+; Returns rows consisting of project's task-notes to be reported
 (define 
     (show-reported-tasks project)
     (map
-        (lambda
-            (task)
+        (lambda (task)
             (if (not (or
                         (equal? (gtt-task-notes task) "")
                         (equal? (gtt-task-notes task) "\n")
@@ -145,19 +143,19 @@
         (map
             (lambda (proj)
                 (list
-                    (if
-                        ; show only those tasks that racked up 5+ minutes of time...
-                        (not (null? (reported-tasks proj)))
+                    ; Show only those tasks that racked up 5+ minutes of time...
+                    (if (not (null? (reported-tasks proj)))
                         (list
                             (gtt-show 
                                 (string-append
                                     "\n<tr><td bgcolor=#C8C8D3>\n"
                                     "<b>"
-                                    (if 
-                                        (equal? (gtt-kvp-str "interval") "daily")
+(if (equal? (gtt-kvp-str "show-sum-time") "yes")
+                                    (if (equal? (gtt-kvp-str "interval") "daily")
                                         (seconds->human-readable (project-reported-time proj) "min")
                                         (seconds->human-readable (project-reported-time proj) "day")
                                     )
+" ")
                                     " " prefix "/" (gtt-project-title proj) "</b> - " (gtt-project-desc proj) "\n"
                                     "<table width=100% border=0 cellspacing=4>\n"
                                 )
@@ -230,8 +228,15 @@
     (show-reported-projects (list (gtt-linked-project)) "") 
 ))
 ?>
-<tr><td bgcolor=#C8C8D3><h3><?scm (gtt-show (seconds->human-readable total-reported-time "day")) ?> TOTAL</h3></td></tr>
-<tr><td align=right>* 1 day is equal to 8 hours</td></tr>
+<?scm>
+(if (equal? (gtt-kvp-str "show-sum-time") "yes")
+    (begin
+        (gtt-show "<tr><td bgcolor=#C8C8D3><h3>")
+        (gtt-show (seconds->human-readable total-reported-time "day"))
+        (gtt-show "TOTAL</h3></td></tr><tr><td align=right>* 1 day is equal to 8 hours</td></tr>")
+    )
+)
+?>
 </table>
 </center>
 </div>
