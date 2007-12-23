@@ -13,6 +13,7 @@ gttghtml_DATA =         \
 	invoice.ghtml        \
 	journal.ghtml        \
 	journal-rss.ghtml    \
+	monthly-daily.ghtml  \
 	noproject.ghtml      \
 	primer.ghtml         \
 	query.ghtml          \
