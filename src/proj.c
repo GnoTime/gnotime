@@ -20,13 +20,12 @@
 #include "config.h"
 
 #include <glib.h>
-/* #include <gnome.h>  */  /* only needed for definition of _() */
 #include <libintl.h> /*conflicts with <libgnome/gnome-i18n.h> on some systems */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#include <qof/qof.h>
+#include <qof.h>
 
 #include "err-throw.h"
 #include "log.h"

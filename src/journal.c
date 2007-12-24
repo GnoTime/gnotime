@@ -28,7 +28,7 @@
 #include <string.h>
 #include <sched.h>
 
-#include <qof/qof.h>
+#include <qof.h>
 
 #include "app.h"
 #include "ctree.h"

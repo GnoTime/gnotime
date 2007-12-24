@@ -28,7 +28,7 @@
 #include <string.h>
 #include <libgnomevfs/gnome-vfs.h>
 
-#include <qof/qof.h>
+#include <qof.h>
 
 #include <locale.h>
 #include <monetary.h>

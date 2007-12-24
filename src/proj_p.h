@@ -22,7 +22,7 @@
 #include "config.h"
 
 #include <glib.h>
-#include <qof/qof.h>
+#include <qof.h>
 
 #include "proj.h"
 #include "timer.h"

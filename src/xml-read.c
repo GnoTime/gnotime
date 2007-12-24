@@ -20,7 +20,7 @@
 
 #include <glib.h>
 #include <libxml/parser.h>
-#include <qof/qof.h>
+#include <qof.h>
 #include <stdio.h>
 #include <stdlib.h>
 

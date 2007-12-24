@@ -24,7 +24,7 @@
 #include <string.h>
 #include <glade/glade.h>
 #include <gnome.h>
-#include <qofdate.h>
+#include <qof.h>
 
 #ifdef HAVE_LANGINFO_H
 #define HAVE_LANGINFO_D_FMT 1
