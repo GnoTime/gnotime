@@ -23,8 +23,6 @@
 
 #include "active-dialog.h"
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "gtt.h"
 #include "idle-dialog.h"
@@ -117,6 +115,8 @@ main_timer_func(gpointer data)
 
 	/* Update the data in the data engine. */
 	gtt_project_timer_update (cur_proj);
+	gtt_projects_tree_update_project_data (projects_tree, cur_proj);
+	update_status_bar ();
 	return 1;
 }
 

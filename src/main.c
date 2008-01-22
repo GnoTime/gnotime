@@ -39,8 +39,6 @@
 #include <qof.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "err-throw.h"
 #include "file-io.h"

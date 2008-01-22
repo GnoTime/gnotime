@@ -1,5 +1,10 @@
 2008-01-22  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/main.c: removed references to ctree*.h
+
+	* src/timer.c (main_timer_func): fixed display update when timer
+	is running.
+
 	* Merged gtktreeview port into trunk
 
 	* src/app.c (column_clicked): handler for the GtkTreeViewColumn
