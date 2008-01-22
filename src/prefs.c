@@ -25,8 +25,6 @@
 #include <string.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "dialog.h"
 #include "gtt.h"
@@ -155,6 +153,123 @@ typedef struct _PrefsDialog
     GtkCheckButton *currency_use_locale;
 
 } PrefsDialog;
+
+
+
+/* Update the properties of the project view according to current settings */
+
+void
+prefs_update_projects_view (void)
+{
+	GList *columns = NULL;
+
+	if (config_show_title_importance)
+	{
+		columns = g_list_insert (columns, "importance", -1);
+	}
+
+	if (config_show_title_urgency)
+	{
+		columns = g_list_insert (columns, "urgency", -1);
+	}
+	
+	if (config_show_title_status)
+	{
+		columns = g_list_insert (columns, "status", -1);
+	}
+
+	if (config_show_title_ever)
+	{
+		columns = g_list_insert (columns, "time_ever", -1);
+	}
+
+	if (config_show_title_year)
+	{
+		columns = g_list_insert (columns, "time_year", -1);
+	}
+
+	if (config_show_title_month)
+	{
+		columns = g_list_insert (columns, "time_month", -1);
+	}
+
+	if (config_show_title_week)
+	{
+		columns = g_list_insert (columns, "time_week", -1);
+	}
+
+	if (config_show_title_lastweek)
+	{
+		columns = g_list_insert (columns, "time_lastweek", -1);
+	}
+
+	if (config_show_title_yesterday)
+	{
+		columns = g_list_insert (columns, "time_yesterday", -1);
+	}
+
+	if (config_show_title_day)
+	{
+		columns = g_list_insert (columns, "time_today", -1);
+	}
+
+	if (config_show_title_current)
+	{
+		columns = g_list_insert (columns, "time_task", -1);
+	}
+
+	/* The title column is mandatory */
+	columns = g_list_insert (columns, "title", -1);
+
+	if (config_show_title_desc)
+	{
+		columns = g_list_insert (columns, "description", -1);
+	}
+
+	if (config_show_title_task)
+	{
+		columns = g_list_insert (columns, "task", -1);
+	}
+
+	if (config_show_title_estimated_start)
+	{
+		columns = g_list_insert (columns, "estimated_start", -1);
+	}
+
+	if (config_show_title_estimated_end)
+	{
+		columns = g_list_insert (columns, "estimated_end", -1);
+	}
+
+	if (config_show_title_due_date)
+	{
+		columns = g_list_insert (columns, "due_date", -1);
+	}
+
+	if (config_show_title_sizing)
+	{
+		columns = g_list_insert (columns, "sizing", -1);
+	}
+
+	if (config_show_title_percent_complete)
+	{
+		columns = g_list_insert (columns, "percent_done", -1);
+	}
+
+	gtt_projects_tree_set_visible_columns (projects_tree, columns);
+	g_list_free (columns);
+
+	gtk_tree_view_set_enable_tree_lines (GTK_TREE_VIEW (projects_tree),
+										 config_show_subprojects);
+	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (projects_tree),
+									   config_show_clist_titles);
+}
+
+void
+prefs_set_show_secs ()
+{
+	gtt_projects_tree_set_show_seconds (projects_tree, config_show_secs);
+}
 
 
 /* ============================================================== */
@@ -318,7 +433,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 
 		if (change)
 		{
-			ctree_refresh (global_ptw);
+			prefs_update_projects_view ();
 		}
 	
 	}
@@ -329,7 +444,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		state = GTK_TOGGLE_BUTTON(odlg->show_secs)->active;
 		if (state != config_show_secs) {
 			config_show_secs = state;
-			ctree_setup (global_ptw, master_list);
+			prefs_set_show_secs ();
 			update_status_bar();
 			if (status_bar)
 			gtk_widget_queue_resize(status_bar);
@@ -344,20 +459,16 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		}
 		if (GTK_TOGGLE_BUTTON(odlg->show_clist_titles)->active) {
 			config_show_clist_titles = 1;
-			ctree_titles_show (global_ptw);
 		} else {
 			config_show_clist_titles = 0;
-			ctree_titles_hide (global_ptw);
 		}
 	
 		if (GTK_TOGGLE_BUTTON(odlg->show_subprojects)->active) {
 			config_show_subprojects = 1;
-			ctree_subproj_show (global_ptw);
 		} else {
 			config_show_subprojects = 0;
-			ctree_subproj_hide (global_ptw);
 		}
-
+		prefs_update_projects_view ();
 	}
 
 	if (2 == page)
@@ -430,7 +541,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		{
 			/* Need to recompute everything, including the bining */
 			gtt_project_list_compute_secs();
-			ctree_refresh (global_ptw);
+			gtt_projects_tree_update_all_rows (projects_tree);
 		}
 	}
 

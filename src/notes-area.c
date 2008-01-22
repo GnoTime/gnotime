@@ -29,7 +29,7 @@ struct NotesArea_s
 {
 	GladeXML *gtxml;
 	GtkPaned *vpane;   /* top level pane */
-	GtkContainer *ctree_holder;   /* scrolled widget that holds ctree */
+	GtkContainer *projects_tree_holder;   /* scrolled widget that holds the projects tree */
 
 	GtkPaned *hpane;   /* left-right divider */
 
@@ -281,7 +281,7 @@ notes_area_new (void)
 	dlg->gtxml = gtxml;
 	
 	dlg->vpane = GTK_PANED(glade_xml_get_widget (gtxml, "notes vpane"));
-	dlg->ctree_holder = GTK_CONTAINER(glade_xml_get_widget (gtxml, "ctree holder"));
+	dlg->projects_tree_holder = GTK_CONTAINER(glade_xml_get_widget (gtxml, "ctree holder"));
 	dlg->hpane = GTK_PANED(glade_xml_get_widget (gtxml, "leftright hpane"));
 	dlg->close_proj = GTK_BUTTON(glade_xml_get_widget (gtxml, "close proj button"));
 	dlg->close_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "close diary button"));
@@ -384,9 +384,10 @@ notes_area_set_project (NotesArea *na, GttProject *proj)
     na->proj = NULL;
   }
   if (proj != NULL) {
-    notes_area_do_set_project (na, proj);
     gtt_project_add_notifier (proj, redraw, na);
   }
+
+  notes_area_do_set_project (na, proj);
 }
 
 /* ============================================================== */
@@ -398,14 +399,30 @@ notes_area_get_widget (NotesArea *nadlg)
 	return GTK_WIDGET(nadlg->vpane);
 }
 
+static void
+projects_tree_selection_changed (GtkTreeSelection *selection, gpointer user_data)
+{
+	NotesArea *nadlg = (NotesArea *) user_data;
+	GttProjectsTree *gpt = GTT_PROJECTS_TREE (gtk_tree_selection_get_tree_view (selection));
+	GttProject *prj = gtt_projects_tree_get_selected_project (gpt);
+
+	notes_area_set_project (nadlg, prj);
+
+}
+
 void 
-notes_area_add_ctree (NotesArea *nadlg, GtkWidget *ctree)
+notes_area_add_projects_tree (NotesArea *nadlg, GttProjectsTree *ptree)
 {
 	if (!nadlg) return;
 
-	gtk_container_add (nadlg->ctree_holder, ctree);
-	gtk_widget_show_all (GTK_WIDGET(nadlg->ctree_holder));
+	GtkTreeSelection *tree_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ptree));
+	g_signal_connect (tree_selection, "changed", projects_tree_selection_changed, nadlg);
+
+	gtk_container_add (nadlg->projects_tree_holder, GTK_WIDGET(ptree));
+	gtk_widget_show_all (GTK_WIDGET(nadlg->projects_tree_holder));
+	
 }
+
 
 void
 notes_area_get_pane_sizes (NotesArea *na, int *vp, int *hp)

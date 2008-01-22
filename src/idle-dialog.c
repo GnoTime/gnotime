@@ -30,15 +30,12 @@
 
 #include <qof.h>
 
-#include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "idle-dialog.h"
 #include "dialog.h"
 #include "proj.h"
 #include "util.h"
-
+#include "app.h"
 
 int config_idle_timeout = -1;
 
@@ -159,7 +156,7 @@ static void
 restart_proj (GObject *obj, GttIdleDialog *dlg)
 {
 	dlg->last_activity = time(0);  /* bug fix, sometimes events are lost */
-	ctree_start_timer (dlg->prj);
+	cur_proj_set (dlg->prj);
 	dialog_kill (obj, dlg);
 }
 
@@ -442,7 +439,7 @@ show_idle_dialog (GttIdleDialog *id)
 	}
 
 	/* Stop the timer on the current project */
-	ctree_stop_timer (cur_proj);
+	cur_proj_set (NULL);
 	id->prj = prj;
 
 	/* The idle timer can trip because gtt was left running

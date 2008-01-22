@@ -1,3 +1,237 @@
+2008-01-22  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* Merged gtktreeview port into trunk
+
+	* src/app.c (column_clicked): handler for the GtkTreeViewColumn
+	clicked signal. Sorts the project list based on the clicked
+	column's field.
+	(projects_tree_columns_setup_done): handler for the
+	GttProjectsTree "columns-setup-done" signal. Connects all columns
+	to the clicked signal handler.
+	(app_new): connect to the "columns-setup-done" signal for the
+	projects_tree object so we can connect all columns to the their
+	respective sorting functions.
+
+	* src/proj.h: added reference to the global_project list
+	reference, so we can reference it in other parts of the program.
+
+	* src/projects-tree.c (struct _GttProjectsTreePrivate): added
+	GTree with references to the GtkTreeViewColumn objects to allow
+	retrieving the columns by the name of the displayed field
+	(gtt_projects_tree_class_init): create columns_setup_done signal,
+	that will be emited when all columns have been created.
+	(gtt_projects_tree_set_visible_columns): emit the
+	columns_setup_done signal after creating all the tree view
+	columns.
+	(gtt_projects_tree_add_column):
+	- make the column headers clickable;
+	- insert reference to the newly created column into the
+	column_references GTree.
+	(gtt_projects_tree_get_column_by_name): added function to retrieve
+	a reference to a column list based on its name.
+	(gtt_projects_tree_set_sorted_column): added function to mark a
+	column as being the column for which the project list was sorted.
+
+2007-12-19  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/timer.c (zero_on_rollover): refresh the GttProjectsTree
+	component data instead of ctree.
+
+	* src/idle-dialog.c (restart_proj): use cur_proj_set instead of
+	ctree_start_timer to start the project timer.
+	(show_idle_dialog): use cur_proj_set instead of ctree_stop_timer
+	to stop the project timer.
+
+	* src/active-dialog.c (start_proj): use cur_proj_set instead of
+	ctree_start_timer to start the project timer.
+
+	* src/gconf-io.c (gtt_gconf_save): get expander state from
+	GttProjectsTree instead of ctree.
+
+	* src/projects-tree.c (gtt_projects_tree_init): set default width
+	for all column types.
+	(count_rows, get_expander_state)
+	(gtt_projects_tree_get_expander_state, set_expander_state)
+	(gtt_projects_tree_set_expander_state): implemented saving and
+	restoring of expanders state.
+
+	* src/app.c: Removed all remaining references to the old ctree
+	code.
+
+	* src/projects-tree.c (gtt_projects_tree_get_col_width)
+	(gtt_projects_tree_set_col_width): implemented saving and
+	restoring of column widths.
+	(gtt_projects_tree_add_column): implemented setting the column
+	width to a default value so we don't have columns that are not
+	wide enough to be seen.
+
+2007-12-17  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/journal.c (invoke_report, new_task_ui, edit_task_ui): query
+	the GttProjectsTree component for the currently selected project.
+
+	* src/file-io.c (gtt_load_gnome_config): removed references to the
+	old ctree code.
+
+	* src/menucmd.c (cut_project): removed references to the old ctree
+	code.
+
+	* src/app.c (app_new): removed references to the old ctree.
+
+	* src/ghtml.c (do_ret_selected_project): query the GttProjectsTree
+	component for the currently selected project.
+
+	* src/menucmd.c (copy_project): query the GttProjectsTree
+	component for the currently selected project.
+	(cut_project): use gen_stop_timer instead of ctree_stop_timer to
+	stop running the timer.
+
+	* src/export.c (export_projects): query the GttProjectsTree
+	component for the currently selected project.
+
+2007-12-16  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c
+	(gtt_projects_tree_model_row_changed_callback): update project's
+	parent and row reference to reflect the result of a drag-and-drop
+	operation.
+	(gtt_projects_tree_set_project_times): display totals when row is
+	collapsed.
+	(gtt_projects_tree_row_expand_collapse_callback): update row data
+	when it is collapsed or expanded.
+	(gtt_projects_tree_init): connect the "row-collapsed" and
+	"row-expanded" signals so we can update the row displays
+	correctly. 
+
+2007-12-15  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/proj.c (gtt_project_reparent): added function to change the
+	parent of a project.
+
+2007-12-14  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/menucmd.c (paste_project): implemented pasting project to
+	the GttProjectsTree.
+
+	* src/projects-tree.c
+	(gtt_projects_tree_remove_project_recursively): removed reference
+	to undeclared variable "priv".
+	(gtt_projects_tree_insert_project): insert the new project as the
+	last child of the parent's sibling, to match the way it is
+	inserted in the project list.
+	(gtt_projects_tree_append_project): renamed function to be
+	consistent with what it does.
+	(gtt_projects_tree_append_projects_recursively): added function to
+	recursively append a project and its children to the projects
+	tree.
+	(gtt_projects_tree_insert_project_before): added function to
+	insert a project before its sibling.
+
+2007-12-13  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c
+	(gtt_projects_tree_remove_project_recursively): Remove all
+	children of the removed project from the tree of row references.
+	(gtt_projects_tree_insert_project): Insert project in bottom
+	instead of the top of the tree.
+
+	* src/menucmd.c (project_name_desc): insert projects into the
+	projects tree instead of ctree.
+
+	* src/projects-tree.c (gtt_projects_tree_remove_project): Added
+	function for removing projects from the tree.
+	(gtt_projects_tree_insert_project): Added function for inserting
+	projects into the tree.
+
+2007-12-12  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/menucmd.c (cut_project): query the GttProjectsTree component
+	instead of the ctree for the currently selected project.
+
+2007-12-10  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/prefs.c (prefs_update_projects_view): update tree lines and
+	header visibility on the projects tree according to current
+	settings.
+	(prefs_set): update the projects tree rows when there are changes
+	in the day start and week start settings.
+
+	* src/menucmd.c (menu_howto_edit_times): use gtk_dialog_run
+	to display the information dialog about editing time intervals.
+	(show_a): removed obsolete function.
+
+	* src/notes-area.h: removed declaration of notes_area_add_ctree.
+
+	* src/notes-area.c (notes_area_add_projects_tree): connect the
+	NotesArea to the selection change signal of the projects tree.
+	(projects_tree_selection_changed): track the selection changes in
+	the projects tree and update the NotesArea.
+	(notes_area_add_ctree): removed obsolete function.
+
+	* src/menucmd.c (menu_properties): query the GttProjectsTree
+	component instead of the ctree for the currently selected
+	project.
+
+	* src/timer.c (timer_func): Update the status bar
+
+	* src/journal.c (show_report): query the GttProjectsTree component
+	instead of the ctree for the currently selected project.
+
+	* src/app.c (cur_proj_set): Update the status icon when the timer
+	is started/stoped.
+
+2007-12-07  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c (gtt_projects_tree_set_style): Display the
+	running project in bold to make it easier to spot.
+
+2007-12-06  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/menucmd.c (menu_toggle_timer): get the selected project from
+	the tree view instead of ctree.
+	(gen_start_timer): get the selected project from the tree view
+	instead of ctree.
+	(gen_stop_timer): use cur_proj_set instead of ctree_stop_timer.
+
+	* src/projects-tree.c (gtt_projects_tree_get_selected_project):
+	added function to query what is the project currently selected in
+	the tree.
+
+	* src/app.c (cur_proj_set): update the rows for the project being
+	activated and/or deactivated
+	(projects_tree_row_activated): added function to handle double
+	click in the project tree.
+
+2007-12-03  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c: Added getters and setters for the
+	customization properties of GttProjectsTree.
+
+2007-12-02  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/gconf-io.c (gtt_gconf_load): call the
+	prefs_update_projects_view_columns function after loading current
+	configuration.
+
+	* src/prefs.h: Added prototype for the new
+	prefs_update_projects_view_columns function.
+
+	* src/prefs.c (prefs_update_projects_view_columns): Added function
+	to update the list of visible columns in the GttProjectsTree
+	component.
+	(prefs_set): call the new prefs_update_projects_view_columns
+	instead of the old ctree_refresh.
+
+	* src/app.c (app_new): fixed some warnings caused by missing casts.
+
+2007-11-24  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/app.[ch], src/main.c, src/timer.c src/notes-area.[ch]:
+	Initial integration of the GtkTreeView based component.
+
+	* src/projects-tree.[ch]: Initial implementation of a GtkTreeView
+	based projects tree component.
+
 2007-12-21 Linas Vepstas <linas@linas.org>
 
 	* ghtml/C/query.ghtml: add today's date as the default to the form.

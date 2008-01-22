@@ -31,8 +31,6 @@
 
 #include "active-dialog.h"
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "gtt.h"
 #include "log.h"
@@ -44,7 +42,8 @@
 #include "timer.h"
 #include "toolbar.h"
 #include "util.h"
-
+#include "projects-tree.h"
+#include "proj.h"
 
 /* XXX Most of the globals below should be placed into a single
  * application-wide top-level structure, rather than being allowed
@@ -52,7 +51,7 @@
  */
 GttProject *cur_proj = NULL;
 
-ProjTreeWindow *global_ptw = NULL;
+GttProjectsTree *projects_tree = NULL;
 NotesArea *global_na = NULL;
 GtkWidget *app_window = NULL;
 GtkWidget *status_bar = NULL;
@@ -70,6 +69,151 @@ gboolean geom_size_override = FALSE;
 
 
 extern GttActiveDialog *act;
+
+static void
+projects_tree_row_activated (GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
+{
+	GttProjectsTree *gpt = GTT_PROJECTS_TREE (tree_view);
+	GttProject *prj = gtt_projects_tree_get_selected_project (gpt);
+	if (cur_proj == prj)
+	{
+		cur_proj_set (NULL);
+	}
+	else
+	{
+		cur_proj_set (prj);
+	}
+}
+
+typedef void (*sort_function) (GttProjectList *);
+
+static void
+column_clicked (GtkTreeViewColumn *column, gpointer user_data)
+{
+	sort_function f = (sort_function) user_data;
+
+	f (global_plist);
+	gchar *expander_state = gtt_projects_tree_get_expander_state (projects_tree);
+	gtt_projects_tree_populate (projects_tree, gtt_project_list_get_list (global_plist), TRUE);
+	gtt_projects_tree_set_expander_state (projects_tree, expander_state);
+	gtt_projects_tree_set_sorted_column (projects_tree, column);
+
+}
+
+static void
+projects_tree_columns_setup_done (GttProjectsTree *projects_tree, gpointer user_data)
+{
+
+	GtkTreeViewColumn *column = NULL;
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_ever");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_ever);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_year");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_year);
+
+	}
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_month");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_month);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_week");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_week);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_lastweek");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_lastweek);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_yesterday");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_yesterday);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_today");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_day);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_task");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_current);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "title");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_title);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "description");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_desc);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "estimated_start");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_start);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "estimated_end");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_end);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "due_date");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_due);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "sizing");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_sizing);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "percent_done");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_percent);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "urgency");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_urgency);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "importance");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_importance);
+	}
+
+	column = gtt_projects_tree_get_column_by_name (projects_tree, "status");
+	if (column)
+	{
+		g_signal_connect (column, "clicked", column_clicked, project_list_sort_status);
+	}
+}
 
 /* ============================================================= */
 
@@ -203,9 +347,11 @@ cur_proj_set (GttProject *proj)
 
 	log_proj(NULL);
 	gtt_project_timer_stop (cur_proj);
+	gtt_status_icon_stop_timer (proj);
 	run_shell_command (cur_proj, FALSE);
 
-	if (proj)
+	GttProject *old_prj = cur_proj;
+	if (proj) 
 	{
 		if (timer_is_running ())
 		{
@@ -213,6 +359,7 @@ cur_proj_set (GttProject *proj)
 		}
 		cur_proj = proj;
 		gtt_project_timer_start (proj);
+		gtt_status_icon_start_timer (proj);
 		run_shell_command (cur_proj, TRUE);
 		start_idle_timer ();
 		start_main_timer ();
@@ -227,6 +374,16 @@ cur_proj_set (GttProject *proj)
 		start_no_project_timer ();
 	}
 	log_proj(proj);
+
+	if (old_prj)
+	{
+		gtt_projects_tree_update_project_data (projects_tree, old_prj);
+	}
+
+	if (cur_proj)
+	{
+		gtt_projects_tree_update_project_data (projects_tree, cur_proj);
+	}
 
 	/* update GUI elements */
 	menu_set_states();
@@ -257,7 +414,6 @@ focus_row_set (GttProject *proj)
 void
 app_new(int argc, char *argv[], const char *geometry_string)
 {
-	GtkWidget *ctree;
 	GtkWidget *vbox;
 	GtkWidget *widget;
 	GtkWidget *vpane;
@@ -299,8 +455,8 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	separator = gtk_hseparator_new();
 	gtk_widget_show(separator);
 	gtk_box_pack_start(GTK_BOX(status_vbox), separator, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(status_vbox), labels, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(status_bar), status_vbox, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(status_vbox), GTK_WIDGET (labels), TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET (status_vbox), TRUE, TRUE, 0);
 
 	grip = GTK_STATUSBAR(gtk_statusbar_new());
 	gtk_statusbar_set_has_resize_grip(grip, TRUE);
@@ -333,8 +489,13 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	                   FALSE, FALSE, 1);
 
 	/* create the main columned tree for showing projects */
-	global_ptw = ctree_new();
-	ctree = ctree_get_widget(global_ptw);
+	projects_tree = gtt_projects_tree_new ();
+
+	g_signal_connect (projects_tree, "columns-setup-done", projects_tree_columns_setup_done, NULL);
+
+	gtk_tree_view_set_reorderable (GTK_TREE_VIEW (projects_tree), TRUE);
+
+	g_signal_connect (projects_tree, "row-activated", projects_tree_row_activated, NULL);
 
 	/* create the notes area */
 	global_na = notes_area_new();
@@ -351,7 +512,7 @@ app_new(int argc, char *argv[], const char *geometry_string)
 
 	gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
 
-	notes_area_add_ctree (global_na, ctree);
+	notes_area_add_projects_tree (global_na, projects_tree);
 
 	/* we are done building it, make it visible */
 	gtk_widget_show(vbox);

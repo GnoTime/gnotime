@@ -21,15 +21,13 @@
 #define __GTT_APP_H__
 
 #include <gnome.h>
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "notes-area.h"
 #include "proj.h"
 #include "status-icon.h"
 
 
-extern ProjTreeWindow *global_ptw;  /* global ptr to tree GUI window */
 extern NotesArea *global_na;        /* global ptr to notes GUI area */
+extern GttProjectsTree *projects_tree;
 
 extern GtkWidget *app_window;  /* global top-level window */
 extern GtkWidget *status_bar;

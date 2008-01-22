@@ -29,10 +29,11 @@
 #endif /* TM_IN_SYS_TIME */
 #include <time.h>
 #endif /* TIME_WITH_SYS_TIME */
+#include "proj.h"
 
 void init_timer(void);
 gboolean timer_is_running (void);
-
+gboolean timer_project_is_running (GttProject *prj);
 /* The idle timeout is how long, in seconds, that the system seems idle
  * before the clock stops itself */
 extern int config_idle_timeout;

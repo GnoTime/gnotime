@@ -24,8 +24,6 @@
 
 #include <qof.h>
 
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "active-dialog.h"
 #include "proj.h"
@@ -131,7 +129,7 @@ start_proj (GObject *obj, GttActiveDialog *dlg)
 	w = gtk_menu_get_active (menu);
 	prj = g_object_get_data (G_OBJECT (w), "prj");
 
-	ctree_start_timer (prj);
+	cur_proj_set (prj);
 	dialog_kill (obj, dlg);
 }
 

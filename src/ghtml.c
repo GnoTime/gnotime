@@ -34,7 +34,6 @@
 #include <monetary.h>
 
 #include "app.h"
-#include "ctree.h"
 #include "cur-proj.h"
 #include "gtt.h"
 #include "ghtml.h"
@@ -412,7 +411,7 @@ do_ret_project (GttGhtml *ghtml, GttProject *prj)
 static SCM
 do_ret_selected_project (GttGhtml *ghtml)
 {
-	GttProject *prj = ctree_get_focus_project (global_ptw);
+	GttProject *prj = gtt_projects_tree_get_selected_project (projects_tree);
 	return do_ret_project (ghtml, prj);
 }
 

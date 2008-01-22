@@ -892,6 +892,35 @@ gtt_project_insert_after(GttProject *p, GttProject *after_me)
 	}
 }
 
+void
+gtt_project_reparent (GttProject *proj, GttProject *parent, int position)
+{
+	GList **new_list = NULL;
+	GList **old_list = NULL;
+	if (parent)
+	{
+		new_list = &parent->sub_projects;
+	}
+	else
+	{
+		new_list = &global_plist->prj_list;
+	}
+
+	if (proj->parent)
+	{
+		old_list = &proj->parent->sub_projects;
+	}
+	else
+	{
+		old_list = &global_plist->prj_list;
+	}
+
+	*old_list = g_list_remove (*old_list, proj);
+	*new_list = g_list_insert (*new_list, proj, position);
+	proj->parent = parent;
+
+}
+
 
 void
 gtt_project_append_task (GttProject *proj, GttTask *task)

@@ -22,8 +22,6 @@
 #include <string.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "err-throw.h"
 #include "file-io.h"
@@ -219,7 +217,7 @@ project_name_desc(GtkDialog *w, gint response_id, GtkEntry **entries)
 		return;
 	}
 
-	sib_prj = ctree_get_focus_project (global_ptw);
+	sib_prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	if (!(name = gtk_entry_get_text(entries[0]))) return;
 	if (!(desc = gtk_entry_get_text(entries[1]))) return;
@@ -230,7 +228,7 @@ project_name_desc(GtkDialog *w, gint response_id, GtkEntry **entries)
 	 */
 	proj = gtt_project_new_title_desc(name, desc);
 	gtt_project_insert_after (proj, sib_prj);
-	ctree_insert_after (global_ptw, proj, sib_prj);
+	gtt_projects_tree_append_project (projects_tree, proj, gtt_project_get_parent (sib_prj));
 
 	gtk_widget_destroy (GTK_WIDGET (w));
 }
@@ -345,12 +343,7 @@ cut_project(GtkWidget *w, gpointer data)
 {
 	GttProject *cut_prj;
 
-	/* Do NOT cut unless the ctree window actually has focus.
-	 * Otherwise, it will lead to cutting mayhem.
-	 * (We might have gotten the ctrl-x cut event by accident) */
-	if (0 == ctree_has_focus (global_ptw)) return;
-
-	cut_prj = ctree_get_focus_project (global_ptw);
+	cut_prj = gtt_projects_tree_get_selected_project (projects_tree);
 	if (!cut_prj) return;
 
 	cutted_project_list = g_list_prepend (cutted_project_list, cut_prj);
@@ -359,14 +352,9 @@ cut_project(GtkWidget *w, gpointer data)
 	/* Clear out relevent GUI elements. */
 	prop_dialog_set_project(NULL);
 
-	if (cut_prj == cur_proj) ctree_stop_timer (cur_proj);
+	if (cut_prj == cur_proj) gen_stop_timer ();
 	gtt_project_remove(cut_prj);
-	ctree_remove(global_ptw, cut_prj);
-
-	/* Update various subsystems */
-	/* Set the notes are to whatever the new focus project is. */
-	GttProject *prj = ctree_get_focus_project (global_ptw);
-	notes_area_set_project (global_na, prj);
+	gtt_projects_tree_remove_project (projects_tree, cut_prj);
 
 	menu_set_states();      /* To enable paste menu item */
 	toolbar_set_states();
@@ -380,7 +368,7 @@ paste_project(GtkWidget *w, gpointer data)
 	GttProject *sib_prj;
 	GttProject *p, *focus_prj;
 
-	sib_prj = ctree_get_focus_project (global_ptw);
+	sib_prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	debug_print_cutted_proj_list ("pre paste");
 
@@ -403,20 +391,7 @@ paste_project(GtkWidget *w, gpointer data)
 
 	/* Insert before the focus proj */
 	gtt_project_insert_before (p, sib_prj);
-
-	if (!sib_prj)
-	{
-		/* top-level insert */
-		ctree_add(global_ptw, p);
-		return;
-	}
-	ctree_insert_before(global_ptw, p, sib_prj);
-
-	/* Set the notes are to whatever the new focus project is.
-	 * (which should be 'p', bbut we play it safe to avoid
-	 * weird inconsistent state.) */
-	focus_prj = ctree_get_focus_project (global_ptw);
-	notes_area_set_project (global_na, focus_prj);
+	gtt_projects_tree_insert_project_before (projects_tree, p, sib_prj);
 }
 
 
@@ -425,7 +400,7 @@ void
 copy_project(GtkWidget *w, gpointer data)
 {
 	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	if (!prj) return;
 
@@ -459,15 +434,15 @@ void
 gen_start_timer(void)
 {
 	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
-	ctree_start_timer (prj);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
+	cur_proj_set (prj);
 }
 
 
 void
 gen_stop_timer(void)
 {
-	ctree_stop_timer (cur_proj);
+	cur_proj_set (NULL);
 }
 
 void
@@ -488,12 +463,12 @@ void
 menu_toggle_timer(GtkWidget *w, gpointer data)
 {
 	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	if (timer_is_running()) {
-		ctree_stop_timer (cur_proj);
+		cur_proj_set (NULL);
 	} else {
-		ctree_start_timer (prj);
+		cur_proj_set (prj);
 	}
 }
 
@@ -510,24 +485,27 @@ void
 menu_properties(GtkWidget *w, gpointer data)
 {
 	GttProject *prj;
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	if (prj) {
 		prop_dialog_show(prj);
+	}
+	else
+	{
+		GtkWidget *dlg = gtk_message_dialog_new (GTK_WINDOW (app_window),
+												 GTK_DIALOG_MODAL,
+												 GTK_MESSAGE_INFO,
+												 GTK_BUTTONS_OK,
+												 _("You must select the project of which you want to edit the properties"));
+		gtk_dialog_run (GTK_DIALOG (dlg));
+		gtk_widget_destroy (dlg);
 	}
 }
 
 
 /* Cheesey usability hack to tell the user how to edit the timer
  * intervals.  Replace with something intuitive at earliest convenience.
- * (Yes this generates compiler warnings ... thats the point !!!
  */
-
-static void show_a (GtkWidget *w)
-{
-	gtk_widget_destroy (w);
-	show_report (NULL, ACTIVITY_REPORT);
-}
 
 void
 menu_howto_edit_times (GtkWidget *w,gpointer data)
@@ -544,9 +522,10 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	         GTK_MESSAGE_INFO,
 	         GTK_BUTTONS_OK,
 		      msg);
-	g_signal_connect (G_OBJECT(mb), "response",
-	         G_CALLBACK (show_a), mb);
-	gtk_widget_show (mb);
+	gtk_dialog_run (GTK_DIALOG (mb));
+	gtk_widget_destroy (mb);
+	show_report (NULL, ACTIVITY_REPORT);
 }
+
 
 /* ============================ END OF FILE ======================= */

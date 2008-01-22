@@ -79,4 +79,10 @@ extern int  config_currency_use_locale;
 /* Pop up a dialog box for setting user preferences */
 void prefs_dialog_show (void);
 
+/* update the list of visible columns in the main projects tree based
+   on current user preference */
+void prefs_update_projects_view_columns (void);
+void prefs_update_projects_view (void);
+void prefs_set_show_secs (void);
+
 #endif /* __GLOBAL_PREFS_H__ */

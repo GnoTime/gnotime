@@ -27,8 +27,6 @@
 #include <string.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "cur-proj.h"
 #include "err-throw.h"
 #include "file-io.h"
@@ -364,7 +362,7 @@ gtt_load_gnome_config (const char *prefix)
 	config_show_title_urgency = GET_BOOL("/Display/ShowUrgency=true");
 	config_show_title_importance = GET_BOOL("/Display/ShowImportance=true");
 	config_show_title_status = GET_BOOL("/Display/ShowStatus=false");
-	ctree_update_column_visibility (global_ptw);
+	prefs_update_projects_view ();
 
 
 	/* ------------ */
@@ -408,7 +406,7 @@ gtt_load_gnome_config (const char *prefix)
 		num = gnome_config_get_int(s);
 		if (-1 < num)
 		{
-			ctree_set_col_width (global_ptw, i, num);
+//			ctree_set_col_width (global_ptw, i, num);
 		}
 	}
 
@@ -629,7 +627,7 @@ gtt_post_ctree_config (void)
 	{
 		xpn = gnome_config_get_string(GTT_CONF"/Display/ExpanderState");
 	}
-	ctree_set_expander_state (global_ptw, xpn);
+	gtt_projects_tree_set_expander_state (projects_tree, xpn);
 }
 
 /* ======================================================= */

@@ -98,6 +98,13 @@ typedef enum
 /* -------------------------------------------------------- */
 /* The four basic structures */
 typedef struct gtt_project_list_s GttProjectList;
+
+/* This is a temporary hack so we can get a handle
+to the project list in app.c
+   XXX should be fixed soon.
+*/
+extern GttProjectList *global_plist;
+
 typedef struct gtt_project_s GttProject;
 typedef struct gtt_task_s GttTask;
 typedef struct gtt_interval_s GttInterval;
@@ -410,6 +417,8 @@ void	gtt_project_append_project (GttProject *parent, GttProject *child);
  */
 void	gtt_project_insert_before (GttProject *proj, GttProject *before_me);
 void	gtt_project_insert_after (GttProject *proj, GttProject *after_me);
+
+void    gtt_project_reparent (GttProject *proj, GttProject *parent, int position);
 
 void	gtt_project_append_task (GttProject *, GttTask *);
 void	gtt_project_prepend_task (GttProject *, GttTask *);

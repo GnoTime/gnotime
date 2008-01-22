@@ -27,7 +27,6 @@
 #include <qof.h>
 
 #include "app.h"
-#include "ctree.h"
 #include "gtt.h"
 #include "ghtml.h"
 #include "ghtml-deprecated.h"

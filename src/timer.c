@@ -34,7 +34,7 @@
 #include "proj.h"
 #include "props-task.h"
 #include "timer.h"
-
+#include "projects-tree.h"
 
 int config_autosave_period = 60;
 int config_autosave_props_period = (4*3600);
@@ -75,7 +75,7 @@ zero_daily_counters (gpointer data)
 		(day_last_reset != t1->tm_yday))
 	{
 		gtt_project_list_compute_secs ();
-		ctree_refresh(global_ptw);
+		gtt_projects_tree_update_all_rows (projects_tree);
 		log_endofday();
 		year_last_reset = t1->tm_year;
 		day_last_reset = t1->tm_yday;
@@ -117,9 +117,6 @@ main_timer_func(gpointer data)
 
 	/* Update the data in the data engine. */
 	gtt_project_timer_update (cur_proj);
-
-	ctree_update_label(global_ptw, cur_proj);
-
 	return 1;
 }
 
@@ -170,8 +167,6 @@ stop_main_timer (void)
 	{
 		/* Update the data in the data engine. */
 		gtt_project_timer_update (cur_proj);
-		ctree_update_label(global_ptw, cur_proj);
-
 	}
 	g_return_if_fail (main_timer);
 	g_source_remove (main_timer);
@@ -234,4 +229,11 @@ schedule_zero_daily_counters_timer (void)
 	time_t timeout = 3600 - (now % 3600);
 	g_timeout_add_seconds (timeout, zero_daily_counters, NULL);
 }
+
+gboolean
+timer_project_is_running (GttProject *prj)
+{
+	return (prj == cur_proj);
+}
+
 /* ========================== END OF FILE ============================ */

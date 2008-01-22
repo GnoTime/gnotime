@@ -31,8 +31,6 @@
 #include <qof.h>
 
 #include "app.h"
-#include "ctree.h"
-#include "ctree-gnome2.h"
 #include "dialog.h"
 #include "journal.h"
 #include "ghtml.h"
@@ -465,7 +463,7 @@ new_task_ui(GtkWidget *w, gpointer data)
 	GttProject *prj;
 	GttTask *newtask;
 
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 	if (!prj) return;
 
 	newtask = gtt_task_new ();
@@ -481,7 +479,7 @@ edit_task_ui(GtkWidget *w, gpointer data)
 	GttProject *prj;
 	GttTask *task;
 
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 	if (!prj) return;
 
 	task = gtt_project_get_first_task(prj);
@@ -1079,7 +1077,7 @@ submit_clicked_cb(GtkHTML * doc,
 	KvpValue *val;
 	GList *qresults;
 
-	if (!wig->prj) wig->prj = ctree_get_focus_project (global_ptw);
+	if (!wig->prj) wig->prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	kvpf = kvp_frame_new ();
 	kvp_frame_add_url_encoding (kvpf, encoding);
@@ -1370,7 +1368,7 @@ show_report (GtkWidget *w, gpointer data)
 	GttProject *prj;
 	char * path;
 
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	path = gtt_ghtml_resolve_path (report_file, NULL);
 	do_show_report (path, NULL, NULL, prj, FALSE, NULL);
@@ -1382,7 +1380,7 @@ invoke_report(GtkWidget *widget, gpointer data)
 	GttProject *prj;
 	GttPlugin *plg = data;
 
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 
 	/* Do not gnome-filepath this, this is for user-defined reports */
 	do_show_report (plg->path, plg, NULL, prj, FALSE, NULL);

@@ -114,7 +114,7 @@ export_projects (export_format_t *xp)
 	GttProject *prj;
 
 	/* Get the currently selected project */
-	prj = ctree_get_focus_project (global_ptw);
+	prj = gtt_projects_tree_get_selected_project (projects_tree);
 	if (!prj) return 0;
 
 	xp->ghtml = gtt_ghtml_new();
