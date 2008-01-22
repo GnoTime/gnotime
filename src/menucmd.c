@@ -366,7 +366,7 @@ void
 paste_project(GtkWidget *w, gpointer data)
 {
 	GttProject *sib_prj;
-	GttProject *p, *focus_prj;
+	GttProject *p;
 
 	sib_prj = gtt_projects_tree_get_selected_project (projects_tree);
 

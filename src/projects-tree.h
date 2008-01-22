@@ -94,4 +94,6 @@ GtkTreeViewColumn *gtt_projects_tree_get_column_by_name (GttProjectsTree *gpt, g
 
 void gtt_projects_tree_set_sorted_column (GttProjectsTree *gpt, GtkTreeViewColumn *column);
 
+void gtt_projects_tree_set_expander_state (GttProjectsTree *gpt, gchar *states);
+
 #endif // __PROJECTS_TREE_H__

@@ -962,14 +962,13 @@ currency_options(PrefsDialog *dlg)
     w = GETWID ("currency_symbol");
     dlg->currency_symbol = GTK_ENTRY(w);
 
-	w = glade_xml_get_widget (gtxml, "currency_symbol_label");
-	dlg->currency_symbol_label = w;
-
+    w = glade_xml_get_widget (gtxml, "currency_symbol_label");
+    dlg->currency_symbol_label = w;
 
     w = GETCHWID ("currency_use_locale");
     dlg->currency_use_locale = GTK_ENTRY(w);
 
-	gtk_signal_connect(GTK_OBJECT(w), "clicked",
+    gtk_signal_connect(GTK_OBJECT(w), "clicked",
                        GTK_SIGNAL_FUNC(currency_sensitive_cb),
                        (gpointer *)dlg);
 

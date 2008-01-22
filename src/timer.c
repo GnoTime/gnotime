@@ -101,8 +101,6 @@ config_save_timer_func (gpointer data)
 static gint
 main_timer_func(gpointer data)
 {
-	time_t now = time(0);
-
 	/* Wake up the notes area GUI, if needed. */
 	gtt_notes_timer_callback (global_na);
 	gtt_diary_timer_callback (NULL);
