@@ -175,7 +175,7 @@ rerun:
 			{
 				if (sode->data == node->data)
 				{
-					g_list_delete_link (node, sode);
+					sode = g_list_delete_link (node, sode);
 					goto rerun;
 				}
 			}
