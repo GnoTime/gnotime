@@ -966,7 +966,7 @@ currency_options(PrefsDialog *dlg)
     dlg->currency_symbol_label = w;
 
     w = GETCHWID ("currency_use_locale");
-    dlg->currency_use_locale = GTK_ENTRY(w);
+    dlg->currency_use_locale = GTK_CHECK_BUTTON(w);
 
     gtk_signal_connect(GTK_OBJECT(w), "clicked",
                        GTK_SIGNAL_FUNC(currency_sensitive_cb),

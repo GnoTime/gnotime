@@ -416,7 +416,7 @@ notes_area_add_projects_tree (NotesArea *nadlg, GttProjectsTree *ptree)
 	if (!nadlg) return;
 
 	GtkTreeSelection *tree_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ptree));
-	g_signal_connect (tree_selection, "changed", projects_tree_selection_changed, nadlg);
+	g_signal_connect (tree_selection, "changed", G_CALLBACK (projects_tree_selection_changed), nadlg);
 
 	gtk_container_add (nadlg->projects_tree_holder, GTK_WIDGET(ptree));
 	gtk_widget_show_all (GTK_WIDGET(nadlg->projects_tree_holder));

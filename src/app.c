@@ -109,109 +109,110 @@ projects_tree_columns_setup_done (GttProjectsTree *projects_tree, gpointer user_
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_ever");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_ever);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_ever);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_year");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_year);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_year);
 
 	}
+
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_month");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_month);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_month);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_week");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_week);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_week);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_lastweek");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_lastweek);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_lastweek);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_yesterday");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_yesterday);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_yesterday);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_today");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_day);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_day);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "time_task");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_current);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_current);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "title");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_title);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_title);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "description");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_desc);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_desc);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "estimated_start");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_start);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_start);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "estimated_end");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_end);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_end);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "due_date");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_due);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_due);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "sizing");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_sizing);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_sizing);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "percent_done");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_percent);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_percent);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "urgency");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_urgency);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_urgency);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "importance");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_importance);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_importance);
 	}
 
 	column = gtt_projects_tree_get_column_by_name (projects_tree, "status");
 	if (column)
 	{
-		g_signal_connect (column, "clicked", column_clicked, project_list_sort_status);
+		g_signal_connect (column, "clicked", G_CALLBACK (column_clicked), project_list_sort_status);
 	}
 }
 
@@ -491,11 +492,11 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	/* create the main columned tree for showing projects */
 	projects_tree = gtt_projects_tree_new ();
 
-	g_signal_connect (projects_tree, "columns-setup-done", projects_tree_columns_setup_done, NULL);
+	g_signal_connect (projects_tree, "columns-setup-done", G_CALLBACK (projects_tree_columns_setup_done), NULL);
 
 	gtk_tree_view_set_reorderable (GTK_TREE_VIEW (projects_tree), TRUE);
 
-	g_signal_connect (projects_tree, "row-activated", projects_tree_row_activated, NULL);
+	g_signal_connect (projects_tree, "row-activated", G_CALLBACK (projects_tree_row_activated), NULL);
 
 	/* create the notes area */
 	global_na = notes_area_new();

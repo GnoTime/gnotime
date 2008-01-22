@@ -52,62 +52,62 @@
    if (!text) {                                              \
       gtt_err_set_code (GTT_FILE_CORRUPT);                   \
    }                                                         \
-   else if (strcmp ("text", text->name)) {                   \
+   else if (strcmp ("text", (char *) text->name)) {			 \
       gtt_err_set_code (GTT_FILE_CORRUPT);                   \
    }                                                         \
-   else sstr = text->content;                                \
+   else sstr = (char *)text->content;						 \
    sstr;                                                     \
 })
 
 #define GET_STR(SELF,FN,TOK)                                 \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);		 \
       FN (SELF, str);                                        \
    }                                                         \
    else
 
 
 #define GET_DBL(SELF,FN,TOK)                                 \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);	\
       double rate = atof (str);                              \
       FN (SELF, rate);                                       \
    }                                                         \
    else
 
 #define GET_INT(SELF,FN,TOK)                                 \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);		 \
       int ival = atoi (str);                                 \
       FN (SELF, ival);                                       \
    }                                                         \
    else
 
 #define GET_TIM(SELF,FN,TOK)                                 \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);		 \
       time_t tval = atol (str);                              \
       FN (SELF, tval);                                       \
    }                                                         \
    else
 
 #define GET_BOL(SELF,FN,TOK)                                 \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);	\
       gboolean bval = atol (str);                            \
       FN (SELF, bval);                                       \
    }                                                         \
    else
 
 #define GET_GUID(SELF,FN,TOK)                                \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);		 \
       GUID guid;                                             \
       string_to_guid (str, &guid);                           \
       FN (SELF, &guid);                                      \
@@ -115,9 +115,9 @@
    else
 
 #define GET_ENUM_3(SELF,FN,TOK,A,B,C)                        \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);	\
       int ival = GTT_##A;                                    \
       if (!strcmp (#A, str)) ival = GTT_##A;                 \
       else if (!strcmp (#B, str)) ival = GTT_##B;            \
@@ -128,9 +128,9 @@
    else
 
 #define GET_ENUM_4(SELF,FN,TOK,A,B,C,D)                      \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);		 \
       int ival = GTT_##A;                                    \
       if (!strcmp (#A, str)) ival = GTT_##A;                 \
       else if (!strcmp (#B, str)) ival = GTT_##B;            \
@@ -142,9 +142,9 @@
    else
 
 #define GET_ENUM_6(SELF,FN,TOK,A,B,C,D,E,F)                  \
-   if (0 == strcmp (TOK, node->name))                        \
+	if (0 == strcmp (TOK, (char *)node->name))				 \
    {                                                         \
-      const char *str = GET_TEXT (node);                     \
+	   const char *str = (const char *)GET_TEXT (node);	\
       int ival = GTT_##A;                                    \
       if (!strcmp (#A, str)) ival = GTT_##A;                 \
       else if (!strcmp (#B, str)) ival = GTT_##B;            \
@@ -167,7 +167,7 @@ parse_interval (xmlNodePtr interval)
 
 	if (!interval) { gtt_err_set_code (GTT_FILE_CORRUPT); return ivl; }
 
-	if (strcmp ("interval", interval->name)) {
+	if (strcmp ("interval", (char *)interval->name)) {
 		gtt_err_set_code (GTT_FILE_CORRUPT); return ivl; }
 
 	ivl = gtt_interval_new ();
@@ -196,7 +196,7 @@ parse_task (xmlNodePtr task)
 
 	if (!task) { gtt_err_set_code (GTT_FILE_CORRUPT); return tsk; }
 
-	if (strcmp ("task", task->name)) {
+	if (strcmp ("task", (char *)task->name)) {
 		gtt_err_set_code (GTT_FILE_CORRUPT); return tsk; }
 
 	tsk = gtt_task_new ();
@@ -215,7 +215,7 @@ parse_task (xmlNodePtr task)
 			HOLD, BILL, PAID)
 		GET_ENUM_4 (tsk, gtt_task_set_billrate, "billrate",
 			REGULAR, OVERTIME, OVEROVER, FLAT_FEE)
-		if (0 == strcmp ("interval-list", node->name))
+			if (0 == strcmp ("interval-list", (char *)node->name))
 		{
 			xmlNodePtr tn;
 			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
@@ -246,7 +246,7 @@ parse_project (xmlNodePtr project)
 
 	if (!project) { gtt_err_set_code (GTT_FILE_CORRUPT); return prj; }
 
-	if (strcmp ("project", project->name)) {
+	if (strcmp ("project", (char *)project->name)) {
 		gtt_err_set_code (GTT_FILE_CORRUPT); return prj; }
 
 	prj = gtt_project_new ();
@@ -285,7 +285,7 @@ parse_project (xmlNodePtr project)
 		GET_ENUM_6 (prj, gtt_project_set_status, "status",
 			NO_STATUS, NOT_STARTED, IN_PROGRESS, ON_HOLD, CANCELLED, COMPLETED)
 
-		if (0 == strcmp ("task-list", node->name))
+			if (0 == strcmp ("task-list", (char *)node->name))
 		{
 			xmlNodePtr tn;
 			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
@@ -296,7 +296,7 @@ parse_project (xmlNodePtr project)
 			}
 		}
 		else
-		if (0 == strcmp ("project-list", node->name))
+			if (0 == strcmp ("project-list", (char *)node->name))
 		{
 			xmlNodePtr tn;
 			for (tn=node->xmlChildrenNode; tn; tn=tn->next)
@@ -341,8 +341,8 @@ gtt_xml_read_projects (const char * filename)
 		return NULL;
 	}
 
-	version = xmlGetProp(root, "version");
-	if (!root->name || strcmp ("gtt", root->name))
+	version = xmlGetProp(root, (unsigned char *)"version");
+	if (!root->name || strcmp ("gtt", (char *)root->name))
 	{
 		xmlFreeDoc(doc);
 		gtt_err_set_code (GTT_NOT_A_GTT_FILE);
@@ -357,7 +357,7 @@ gtt_xml_read_projects (const char * filename)
 		return NULL;
 	}
 
-	if (strcmp ("project-list", project_list->name)) {
+	if (strcmp ("project-list", (char *)project_list->name)) {
 		xmlFreeDoc(doc);
 		gtt_err_set_code (GTT_FILE_CORRUPT); return NULL; }
 

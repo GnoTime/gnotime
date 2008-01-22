@@ -1,5 +1,7 @@
 2008-01-22  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/*.c: fixed many compiler warnings.
+	
 	* src/main.c: removed references to ctree*.h
 
 	* src/timer.c (main_timer_func): fixed display update when timer

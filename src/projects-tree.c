@@ -150,7 +150,7 @@ gtt_projects_tree_create_model (GttProjectsTree *gpt)
 
 	priv->row_changed_handler = g_signal_connect (GTK_TREE_MODEL(tree_model),
 												 "row-changed",
-												 gtt_projects_tree_model_row_changed_callback,
+												  G_CALLBACK (gtt_projects_tree_model_row_changed_callback),
 												 gpt);
 
 }
@@ -181,7 +181,7 @@ gtt_projects_tree_init (GttProjectsTree* gpt)
 	priv->highlight_active = TRUE;
 
 	/* references to the rows */
-	priv->row_references = g_tree_new_full (project_cmp, NULL, NULL, gtk_tree_row_reference_free);
+	priv->row_references = g_tree_new_full (project_cmp, NULL, NULL, (GDestroyNotify) gtk_tree_row_reference_free);
 
 	/* cell renderers used to render the tree */
 	priv->text_renderer = gtk_cell_renderer_text_new ();
@@ -344,11 +344,11 @@ gtt_projects_tree_init (GttProjectsTree* gpt)
 
 	g_signal_connect (GTK_TREE_VIEW (gpt),
 					  "row-expanded",
-					  gtt_projects_tree_row_expand_collapse_callback,
+					  G_CALLBACK (gtt_projects_tree_row_expand_collapse_callback),
 					  NULL);
 	g_signal_connect (GTK_TREE_VIEW (gpt),
 					  "row-collapsed",
-					  gtt_projects_tree_row_expand_collapse_callback,
+					  G_CALLBACK (gtt_projects_tree_row_expand_collapse_callback),
 					  NULL);
 
 }
@@ -381,7 +381,7 @@ gtt_projects_tree_class_init (GttProjectsTreeClass *klass)
 		g_signal_new ("columns_setup_done",
 					  G_TYPE_FROM_CLASS (object_class),
 					  G_SIGNAL_RUN_LAST,
-					  NULL, NULL, NULL,
+					  0, NULL, NULL,
 					  g_cclosure_marshal_VOID__VOID,
 					  G_TYPE_NONE, 0);
 }
@@ -499,6 +499,7 @@ gtt_projects_tree_set_project_urgency (GttProjectsTree *gpt, GtkTreeStore *tree_
 	case GTT_LOW:    value = _("Low"); break;
 	case GTT_MEDIUM: value = _("Med"); break;
 	case GTT_HIGH:   value = _("High"); break;
+	default: value = "-"; break;
 	}
 
 
@@ -517,6 +518,7 @@ gtt_projects_tree_set_project_importance (GttProjectsTree *gpt, GtkTreeStore *tr
 	case GTT_LOW:    value = _("Low"); break;
 	case GTT_MEDIUM: value = _("Med"); break;
 	case GTT_HIGH:   value = _("High"); break;
+	default: value = "-"; break;
 	}
 
 	gtk_tree_store_set (tree_model,
@@ -537,6 +539,7 @@ gtt_projects_tree_set_project_status (GttProjectsTree *gpt, GtkTreeStore *tree_m
 	case GTT_ON_HOLD:     value = _("On Hold"); break;
 	case GTT_CANCELLED:   value = _("Cancelled"); break;
 	case GTT_COMPLETED:   value = _("Completed"); break;
+	default: value = "-"; break;
 	}
 
 	gtk_tree_store_set (tree_model,
@@ -572,9 +575,9 @@ gtt_projects_tree_set_project_data (GttProjectsTree *gpt, GtkTreeStore *tree_mod
 	gtt_projects_tree_set_project_status (gpt, tree_model, prj, iter);
 
 	priv->row_changed_handler = g_signal_connect (GTK_TREE_MODEL(tree_model),
-												 "row-changed",
-												 gtt_projects_tree_model_row_changed_callback,
-												 gpt);
+												  "row-changed",
+												  G_CALLBACK (gtt_projects_tree_model_row_changed_callback),
+												  gpt);
 }
 
 static void
@@ -685,7 +688,7 @@ gtt_projects_tree_set_visible_columns (GttProjectsTree *project_tree,
 	GttProjectsTreePrivate *priv = GTT_PROJECTS_TREE_GET_PRIVATE (project_tree);
 
 	g_tree_destroy (priv->column_references);
-	priv->column_references = g_tree_new (strcmp);
+	priv->column_references = g_tree_new ((GCompareFunc) strcmp);
 
 
 	/* remove all columns */
@@ -698,7 +701,7 @@ gtt_projects_tree_set_visible_columns (GttProjectsTree *project_tree,
 	/* The title column is mandatory. If it's not on the list, 
 	   we add it as the first column. */
 
-	if (!g_list_find_custom (columns, "title", strcmp))
+	if (!g_list_find_custom (columns, "title", (GCompareFunc) strcmp))
 	{
 		gtt_projects_tree_add_column (project_tree, "title");
 	}
@@ -850,7 +853,7 @@ gtt_projects_tree_get_selected_project (GttProjectsTree *gpt)
 		{
 			gtk_tree_model_get (model, &iter, GTT_PROJECT_COLUMN, &prj, -1);
 		}
-		g_list_foreach (list, gtk_tree_path_free, NULL);
+		g_list_foreach (list, (GFunc) gtk_tree_path_free, NULL);
 		g_list_free (list);
 	}
 	return prj;
@@ -1106,10 +1109,9 @@ char *
 gtt_projects_tree_get_expander_state (GttProjectsTree *gpt)
 {
 	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (gpt));
-	GtkTreeIter iter;
 	int rows = 0;
 
-	gtk_tree_model_foreach (model, count_rows, &rows);
+	gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) count_rows, &rows);
 
 	ExpanderStateHelper esh;
 	esh.view = GTK_TREE_VIEW (gpt);

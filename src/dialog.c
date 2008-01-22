@@ -29,7 +29,7 @@ gtt_help_popup(GtkWidget *widget, gpointer data)
 {
 	GError *err = NULL;
 	char * section = data;
-	if ("" == section) section = NULL;
+	if ((section != NULL) && !strcmp ("", section)) section = NULL;
 	gnome_help_display ("gnotime", section, &err);
 	if (err)
 	{
