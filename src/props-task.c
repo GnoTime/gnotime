@@ -26,7 +26,8 @@
 #include "proj.h"
 #include "props-task.h"
 #include "util.h"
-
+#include "app.h"
+#include "projects-tree.h"
 
 typedef struct PropTaskDlg_s 
 {
@@ -100,6 +101,7 @@ save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 	g_free (str);
 
 	dlg->ignore_events = FALSE;
+	gtt_projects_tree_update_project_data (projects_tree, gtt_task_get_parent (dlg->task));
 }
 
 static void 

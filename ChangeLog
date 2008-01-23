@@ -1,3 +1,11 @@
+2008-01-23  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/props-task.c (save_task_notes): update the project view
+	after saving task properties.
+
+	* src/props-proj.c (prop_set): update the project view after
+	setting project properties.
+
 2008-01-22  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/*.c: fixed many compiler warnings.

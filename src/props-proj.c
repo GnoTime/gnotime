@@ -27,7 +27,8 @@
 #include "proj.h"
 #include "props-proj.h"
 #include "util.h"
-
+#include "app.h"
+#include "projects-tree.h"
 
 typedef struct _PropDlg 
 {
@@ -156,6 +157,8 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 
 		gtt_project_thaw (dlg->proj);
 	}
+	gtt_projects_tree_update_project_data (projects_tree, dlg->proj);
+
 }
 
 
