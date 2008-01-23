@@ -82,7 +82,6 @@ struct NotesArea_s
 		/* Try to avoid race condition if another task */  \
 		/* is created while this task is frozen. */        \
 		if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze); \
-		gtt_task_freeze (tsk);                    \
 		na->task_freeze = tsk;                    \
 	}                                            \
 
@@ -116,7 +115,6 @@ task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	                                      \
 	if (FALSE == na->proj_freeze)         \
 	{                                     \
-		gtt_project_freeze( na->proj);     \
 		na->proj_freeze = TRUE;            \
 	}                                     \
 	na->ignore_events = TRUE;             \

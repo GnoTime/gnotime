@@ -117,6 +117,8 @@ static void gtt_projects_tree_row_expand_collapse_callback (GtkTreeView *view, G
 
 static void gtt_projects_tree_model_row_changed_callback (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data);
 
+static void project_changed (GttProject *prj, gpointer user_data);
+
 static void
 gtt_projects_tree_create_model (GttProjectsTree *gpt)
 {
@@ -593,6 +595,7 @@ gtt_projects_tree_add_project (GttProjectsTree *gpt, GtkTreeStore *tree_model, G
 	gtt_projects_tree_set_project_data (gpt, tree_model, prj, &iter);
 	row_reference = gtk_tree_row_reference_new ( GTK_TREE_MODEL(tree_model), path);
 	g_tree_insert (priv->row_references, prj, row_reference);
+	gtt_project_add_notifier (prj, project_changed, gpt);
 	if (recursive)
 	{
 		child_path = gtk_tree_path_copy (path);
@@ -1221,4 +1224,10 @@ gtt_projects_tree_set_sorted_column (GttProjectsTree *gpt, GtkTreeViewColumn *co
 	}
 
 	g_list_free (columns);
+}
+
+static void project_changed (GttProject *prj, gpointer user_data)
+{
+	GttProjectsTree *gpt = GTT_PROJECTS_TREE (user_data);
+	gtt_projects_tree_update_project_data (gpt, prj);
 }
