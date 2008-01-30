@@ -1,4 +1,24 @@
+2008-01-30  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* configure.in: properly check for guile
+
 2008-01-23  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/props-proj.c (prop_set): removed the unnecessary call
+	to gtt_projects_tree_update_project_data
+
+	* src/props-task.c (save_task_notes): removed the unnecessary call
+	to gtt_projects_tree_update_project_data
+
+	* src/notes-area.c (PRJ_SETUP): removed the gtt_project_freeze
+	call so that the projects tree get notified of changes
+	(TSK_SETUP): removed the gtt_task_freeze call so that the projects
+	tree get notified of changes
+
+	* src/projects-tree.c (gtt_projects_tree_add_project): add the
+	projects tree component as a listener to project changes.
+	(project_changed): callback for project data change
+	notifications.
 
 	* src/props-task.c (save_task_notes): update the project view
 	after saving task properties.

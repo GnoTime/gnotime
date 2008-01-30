@@ -97,7 +97,8 @@ AM_CFLAGS = -g -Wall     \
 	${LIBGNOMEVFS_CFLAGS} \
 	${LIBGTKHTML_CFLAGS}  \
 	${LIBGLADE_CFLAGS}    \
-	${LIBXML2_CFLAGS}
+	${LIBXML2_CFLAGS} \
+	${GUILE_CFLAGS}
 
 INCLUDES =                                   \
 	$(LIBQOF_CFLAGS)                          \
@@ -124,7 +125,8 @@ gnotime_LDADD =          \
 	${LIBGNOMEVFS_LIBS}   \
 	$(LIBXML2_LIBS)       \
 	${GUILE_LIBS}         \
-	$(INTLLIBS)
+	$(INTLLIBS) \
+	${GUILE_LDFLAGS}
 
 #	$(LIBGNOMEXML_LIBS)
 #	$(GCONF_LIBS)
