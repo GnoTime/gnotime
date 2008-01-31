@@ -12,7 +12,6 @@ gnotime_SOURCES =     \
 	active-dialog.c    \
 	app.c              \
 	projects-tree.c    \
-	dbus.c             \
 	dialog.c           \
 	err.c              \
 	err-throw.c        \
@@ -44,7 +43,8 @@ gnotime_SOURCES =     \
 	toolbar.c          \
 	util.c             \
 	xml-read.c         \
-	xml-write.c
+	xml-write.c        \
+	dbus.c
 
 noinst_HEADERS =      \
 	active-dialog.h    \
@@ -112,8 +112,9 @@ INCLUDES =                                   \
 	-DGTTDATADIR=\""$(datadir)/gnotime"\"     \
 	-DDATADIR=\""$(datadir)"\"                \
 	-DLIBDIR=\""$(libdir)/gnotime"\"          \
+	-DWITH_DBUS=@WITH_DBUS@ \
 	${GNOME_INCLUDEDIR}                       \
-	${GUILE_INCS}
+	${GUILE_CFLAGS}
 
 gnotime_LDADD =          \
 	$(GNOTIME_LIBS)       \
@@ -137,11 +138,10 @@ EXTRA_DIST =         \
 	dbus.xml          \
 	design.txt
 
+LIBGTK_SRCS= dbus.c dbus.h
+BUILT_SOURCES=	dbus-glue.h
 dbus-glue.h : dbus.xml Makefile
 	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus dbus.xml
 dbus.o:	dbus-glue.h
-
-LIBGTK_SRCS=	dbus.c dbus.h
-BUILT_SOURCES=	dbus-glue.h
 
 

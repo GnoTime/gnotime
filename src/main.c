@@ -51,7 +51,10 @@
 #include "timer.h"
 #include "toolbar.h"
 #include "xml-gtt.h"
+
+#if WITH_DBUS
 #include "dbus.h"
+#endif
 
 char *first_proj_title = NULL;  /* command line over-ride */
 
@@ -782,7 +785,9 @@ main(int argc, char *argv[])
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			   G_CALLBACK(app_quit), NULL);
 
+#if WITH_DBUS
 	gnotime_dbus_setup();
+#endif
 
 	/* Perform QOF-specific initialization, including dates, objects, query, etc. */
 	qof_init();

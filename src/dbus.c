@@ -28,6 +28,7 @@
 /*
  *  D-Bus code derived from example-service.c in the dbus-glib bindings
  */
+#if WITH_DBUS
 
 #include <stdio.h>
 #include <string.h>
@@ -177,3 +178,4 @@ gnotime_dbus_setup ( void )
   return;
 }
 
+#endif //WITH_DBUS

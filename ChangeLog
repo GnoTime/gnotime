@@ -1,6 +1,17 @@
+2008-01-31  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c, src/dbus.c, src/dbus.h: Made the DBUS related code
+	optional based on the defined WITH_DBUS flag.
+
+	* src/Makefile.am (INCLUDES): Added -DWITH_DBUS to allow for
+	optional compilation of DBUS related code.
+
+	* configure.in: Added DBUS version checking and made DBUS support
+	optional. (Fixes: #1802501)
+
 2008-01-30  Goedson Teixeira Paixao  <goedson@debian.org>
 
-	* configure.in: properly check for guile
+	* configure.in: properly check for guile (Fixes #1027023)
 
 2008-01-23  Goedson Teixeira Paixao  <goedson@debian.org>
 

@@ -17,6 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
+#if WITH_DBUS
+
 #ifndef _DBUS_H_
 #define _DBUS_H_
 
@@ -26,3 +28,5 @@ void gnotime_dbus_setup();
 
 #endif /* !_DBUS_H */
 
+
+#endif // WITH_DBUS
