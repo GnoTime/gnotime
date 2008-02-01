@@ -44,7 +44,7 @@ struct PluginEditorDialog_s
 	gboolean do_redraw;
 	
 	GtkEntry  *plugin_name;    /* AKA 'Label' */
-	GnomeFileEntry  *plugin_path;
+	GtkFileChooser  *plugin_path;
 	GtkEntry  *plugin_tooltip;
 
 	GnomeApp  *app;
@@ -128,7 +128,7 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gnome_file_entry_get_full_path (dlg->plugin_path, FALSE);
+	path = gtk_file_chooser_get_uri (dlg->plugin_path);
 
 	if (!path)
 	{
@@ -178,7 +178,7 @@ edit_plugin_item_to_widgets (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	plg = gui->user_data;
 	
 	gtk_entry_set_text (dlg->plugin_name, plg->name);
-	gnome_file_entry_set_filename (dlg->plugin_path, plg->path);
+	gtk_file_chooser_set_uri (dlg->plugin_path, plg->path);
 	gtk_entry_set_text (dlg->plugin_tooltip, plg->tooltip);
 }
 
@@ -186,7 +186,7 @@ static void
 edit_plugin_clear_widgets (PluginEditorDialog *dlg)
 {
 	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
-	gnome_file_entry_set_filename (dlg->plugin_path, "");
+	gtk_file_chooser_unselect_all (dlg->plugin_path);
 	gtk_entry_set_text (dlg->plugin_tooltip, "");
 }
 
@@ -672,7 +672,7 @@ edit_plugin_dialog_new (void)
 	dlg->plugin_name = GTK_ENTRY(e);
 
 	e = glade_xml_get_widget (gtxml, "plugin path");
-	dlg->plugin_path = GNOME_FILE_ENTRY(e);
+	dlg->plugin_path = GTK_FILE_CHOOSER(e);
 
 	e = glade_xml_get_widget (gtxml, "plugin tooltip");
 	dlg->plugin_tooltip = GTK_ENTRY(e);

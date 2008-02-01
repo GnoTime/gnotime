@@ -1,3 +1,19 @@
+2008-02-01  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* glade/plugin_editor.glade: Use GtkFileChooserButton instead of
+	the deprecated GnomeFileEntry in the edit plugin dialog.
+
+	* src/plug-edit.c (edit_plugin_widgets_to_item)
+	(edit_plugin_item_to_widgets, edit_plugin_clear_widgets)
+	(edit_plugin_dialog_new): Use GtkFileChooserButton instead of the
+	deprecated GnomeFileEntry in the edit plugin dialog.
+
+	* glade/plugin.glade: Use GtkFileChooserButton instead of the
+	deprecated GnomeFileEntry in the new plugin dialog
+
+	* src/plug-in.c (new_plugin_create_cb): Use GtkFileChooserButton
+	instead of the deprecated GnomeFileEntry in the new plugin dialog
+
 2008-01-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/main.c, src/dbus.c, src/dbus.h: Made the DBUS related code
