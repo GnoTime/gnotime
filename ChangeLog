@@ -1,3 +1,15 @@
+2008-02-02  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* glade/prefs.glade: Use GtkComboBox instead of the deprecated
+	GtkOptionMenu
+	  - Use GtkFileChooserButton instead of the deprecated
+	  GnomeFileEntry
+
+	* src/prefs.c: Use GtkComboBox instead of the deprecated
+	  GtkOptionMenu
+	  - Use GtkFileChooserButton instead of the deprecated
+	  GnomeFileEntry
+
 2008-02-01  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* glade/plugin_editor.glade: Use GtkFileChooserButton instead of

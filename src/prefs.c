@@ -116,7 +116,7 @@ typedef struct _PrefsDialog
 
 	GtkCheckButton *logfileuse;
 	GtkWidget      *logfilename_l;
-	GtkEntry       *logfilename;
+	GtkFileChooser *logfilename;
 	GtkWidget      *logfilestart_l;
 	GtkEntry       *logfilestart;
 	GtkWidget      *logfilestop_l;
@@ -141,8 +141,8 @@ typedef struct _PrefsDialog
 	GtkEntry       *idle_secs;
 	GtkEntry       *no_project_secs;
 	GtkEntry       *daystart_secs;
-	GtkOptionMenu  *daystart_menu;
-	GtkOptionMenu  *weekstart_menu;
+	GtkComboBox  *daystart_menu;
+	GtkComboBox  *weekstart_menu;
 
     GtkRadioButton *time_format_am_pm;
     GtkRadioButton *time_format_24_hs;
@@ -482,7 +482,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 	{
 		/* log file options */
 		config_logfile_use = GTK_TOGGLE_BUTTON(odlg->logfileuse)->active;
-		ENTRY_TO_CHAR(odlg->logfilename, config_logfile_name);
+		config_logfile_name = gtk_file_chooser_get_filename (odlg->logfilename);
 		ENTRY_TO_CHAR(odlg->logfilestart, config_logfile_start);
 		ENTRY_TO_CHAR(odlg->logfilestop, config_logfile_stop);
 		config_logfile_min_secs = atoi (gtk_entry_get_text(odlg->logfileminsecs));
@@ -534,7 +534,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		int off = scan_time_string (buff);
 		SET_VAL (config_daystart_offset,off);
 
-		int day = get_optionmenu_item (odlg->weekstart_menu);
+		int day = gtk_combo_box_get_active (odlg->weekstart_menu);
 		SET_VAL (config_weekstart_offset, day);
 
 		if (change)
@@ -645,9 +645,9 @@ options_dialog_set(PrefsDialog *odlg)
 	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->logfileuse), config_logfile_use);
 	if (config_logfile_name)
-		gtk_entry_set_text(odlg->logfilename, config_logfile_name);
+		gtk_file_chooser_set_filename (odlg->logfilename, config_logfile_name);
 	else
-		gtk_entry_set_text(odlg->logfilename, "");
+		gtk_file_chooser_unselect_all (odlg->logfilename);
 	
 	if (config_logfile_start)
 		gtk_entry_set_text(odlg->logfilestart, config_logfile_start);
@@ -698,7 +698,7 @@ options_dialog_set(PrefsDialog *odlg)
 	if (-3 > hour) hour = -3; /* menu runs from 9pm */
 	if (6 < hour) hour = 6;   /* menu runs till 6am */
 	hour += 3;  /* menu starts at 9PM */
-	set_optionmenu_item (odlg->daystart_menu, hour);
+	gtk_combo_box_set_active (odlg->daystart_menu, hour);
 
 	/* Print the daystart offset as a string in 24 hour time */
 	int secs = config_daystart_offset;
@@ -709,7 +709,7 @@ options_dialog_set(PrefsDialog *odlg)
 
 	/* Set the correct menu item based on current values */
 	int day = config_weekstart_offset;
-	set_optionmenu_item (odlg->weekstart_menu, day);
+	gtk_combo_box_set_active (odlg->weekstart_menu, day);
 
     switch (config_time_format)
     {
@@ -746,11 +746,14 @@ options_dialog_set(PrefsDialog *odlg)
 /* ============================================================== */
 
 static void 
-daystart_menu_changed (gpointer data, GtkOptionMenu *w)
+daystart_menu_changed (gpointer data, GtkComboBox *w)
 {
 	PrefsDialog *dlg = data;
 
-	int hour = get_optionmenu_item (dlg->daystart_menu);
+	int hour = gtk_combo_box_get_active (dlg->daystart_menu);
+
+	g_return_if_fail (hour >= 0);
+
 	hour += -3;  /* menu starts at 9PM */
 
 	int secs = hour * 3600;
@@ -861,8 +864,12 @@ logfile_options(PrefsDialog *dlg)
 	w = glade_xml_get_widget (gtxml, "filename label");
 	dlg->logfilename_l = w;
 
-	w = GETWID ("filename combo");
-	dlg->logfilename = GTK_ENTRY(w);
+	w = glade_xml_get_widget (gtxml, "logfile path");
+	dlg->logfilename = GTK_FILE_CHOOSER(w);
+	gtk_signal_connect_object (GTK_OBJECT (dlg->logfilename),
+							   "file-set",
+							   GTK_SIGNAL_FUNC (gnome_property_box_changed),
+							   GTK_OBJECT (dlg->dlg));
 
 	w = glade_xml_get_widget (gtxml, "fstart label");
 	dlg->logfilestart_l = w;
@@ -926,15 +933,15 @@ misc_options(PrefsDialog *dlg)
 	w = GETWID ("daystart entry");
 	dlg->daystart_secs = GTK_ENTRY(w);
 
-	w = GETWID ("daystart optionmenu");
-	dlg->daystart_menu = GTK_OPTION_MENU(w);
+	w = GETWID ("daystart combobox");
+	dlg->daystart_menu = GTK_COMBO_BOX(w);
 
 	gtk_signal_connect_object(GTK_OBJECT(w), "changed",
 	                  GTK_SIGNAL_FUNC(daystart_menu_changed),
 	                  dlg);
 
-	w = GETWID ("weekstart optionmenu");
-	dlg->weekstart_menu = GTK_OPTION_MENU(w);
+	w = GETWID ("weekstart combobox");
+	dlg->weekstart_menu = GTK_COMBO_BOX(w);
 }
 
 static void
