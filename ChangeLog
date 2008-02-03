@@ -1,3 +1,11 @@
+2008-02-03  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/prefs.c: removed the unused functions get_optionmenu_item
+	and set_optionmenu_item
+
+	* glade/prefs.glade: Use GtkEntry instead of the deprecated
+	GnomeEntry.
+
 2008-02-02  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* glade/prefs.glade: Use GtkComboBox instead of the deprecated

@@ -273,53 +273,6 @@ prefs_set_show_secs ()
 
 
 /* ============================================================== */
-/** Get and set the nth menu item */
-
-static int
-get_optionmenu_item (GtkOptionMenu *opt_menu)
-{
-	GList *node;
-
-	/* Hunt for the selected item */
-	GtkWidget *menu = gtk_option_menu_get_menu (opt_menu);
-	int i=0;
-	GtkWidget *w = gtk_menu_get_active (GTK_MENU(menu));
-	for (node=GTK_MENU_SHELL(menu)->children; node; node=node->next)
-	{
-		if (w == node->data)
-		{
-			return i;
-		}
-		i++;
-	}
-	return 0;  /* can't possible reach this ... */
-}
-
-static void 
-set_optionmenu_item (GtkOptionMenu *opt_menu, int item)
-{
-	int i;
-	GList *node;
-	GtkWidget *w;
-	GtkMenuShell *menu;
-
-	/* Set the correct menu item based on current values */
-	w = gtk_option_menu_get_menu (opt_menu);
-	menu = GTK_MENU_SHELL(w);
-	i = 0;
-	for (node = menu->children; node; node=node->next)
-	{
-		if (item == i)
-		{
-			gtk_menu_shell_select_item (menu, node->data);
-			gtk_menu_shell_activate_item (menu, node->data, 1);
-			break;
-		}
-		i++;
-	}
-}
-
-/* ============================================================== */
 /** parse an HH:MM:SS string for the time returning seconds 
  * XXX should probably use getdate or fdate or something like that 
  */
@@ -874,19 +827,19 @@ logfile_options(PrefsDialog *dlg)
 	w = glade_xml_get_widget (gtxml, "fstart label");
 	dlg->logfilestart_l = w;
 
-	w = GETWID ("fstart combo");
+	w = GETWID ("fstart");
 	dlg->logfilestart = GTK_ENTRY(w);
 
 	w = glade_xml_get_widget (gtxml, "fstop label");
 	dlg->logfilestop_l = w;
 
-	w = GETWID ("fstop combo");
+	w = GETWID ("fstop");
 	dlg->logfilestop = GTK_ENTRY(w);
 
 	w = glade_xml_get_widget (gtxml, "fmin label");
 	dlg->logfileminsecs_l = w;
 
-	w = GETWID ("fmin combo");
+	w = GETWID ("fmin");
 	dlg->logfileminsecs = GTK_ENTRY(w);
 }
 
