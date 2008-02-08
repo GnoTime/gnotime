@@ -1,3 +1,9 @@
+2008-02-08  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/xml-write.c: Added BAD_CAST in the invocations to xml*
+	functions to avoid warnings about different "signedness" in
+	parameters.
+
 2008-02-03  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/prefs.c: removed the unused functions get_optionmenu_item

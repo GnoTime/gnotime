@@ -46,8 +46,8 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
    const char * str = (VAL);                         \
    if (str && 0 != str[0])                           \
    {                                                 \
-      node = xmlNewNode (NULL, TOK);                 \
-      xmlNodeAddContent(node, str);                  \
+      node = xmlNewNode (NULL, BAD_CAST TOK);                 \
+      xmlNodeAddContent(node, BAD_CAST str);                  \
       xmlAddChild (topnode, node);                   \
    }                                                 \
 }
@@ -55,16 +55,16 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 #define PUT_INT(TOK,VAL) {                           \
    char buff[80];                                    \
    g_snprintf (buff, sizeof(buff), "%d", (VAL));     \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, buff);                    \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST buff);                    \
    xmlAddChild (topnode, node);                      \
 }
 
 #define PUT_LONG(TOK,VAL) {                          \
    char buff[80];                                    \
    g_snprintf (buff, sizeof(buff), "%ld", (VAL));    \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, buff);                    \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST buff);                    \
    xmlAddChild (topnode, node);                      \
 }
 
@@ -72,26 +72,26 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 #define PUT_DBL(TOK,VAL) {                           \
    char buff[80];                                    \
    g_snprintf (buff, sizeof(buff), "%.18g", (VAL));  \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, buff);                    \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST buff);                    \
    xmlAddChild (topnode, node);                      \
 }
 
 #define PUT_GUID(TOK,VAL) {                          \
    char buff[80];                                    \
    guid_to_string_buff ((VAL), buff);                \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, buff);                    \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST buff);                    \
    xmlAddChild (topnode, node);                      \
 }
 
 #define PUT_BOOL(TOK,VAL) {                          \
    gboolean boll = (VAL);                            \
-   node = xmlNewNode (NULL, TOK);                    \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
    if (boll) {                                       \
-      xmlNodeAddContent(node, "T");                  \
+      xmlNodeAddContent(node, BAD_CAST "T");                  \
    } else {                                          \
-      xmlNodeAddContent(node, "F");                  \
+      xmlNodeAddContent(node, BAD_CAST "F");                  \
    }                                                 \
    xmlAddChild (topnode, node);                      \
 }
@@ -104,8 +104,8 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
       case GTT_##B: str = #B; break;                 \
       case GTT_##C: str = #C; break;                 \
    }                                                 \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, str);                     \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST str);                     \
    xmlAddChild (topnode, node);                      \
 }
 
@@ -118,8 +118,8 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
       case GTT_##C: str = #C; break;                 \
       case GTT_##D: str = #D; break;                 \
    }                                                 \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, str);                     \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST str);                     \
    xmlAddChild (topnode, node);                      \
 }
 
@@ -134,8 +134,8 @@ static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
       case GTT_##E: str = #E; break;                 \
       case GTT_##F: str = #F; break;                 \
    }                                                 \
-   node = xmlNewNode (NULL, TOK);                    \
-   xmlNodeAddContent(node, str);                     \
+   node = xmlNewNode (NULL, BAD_CAST TOK);                    \
+   xmlNodeAddContent(node, BAD_CAST str);                     \
    xmlAddChild (topnode, node);                      \
 }
 
@@ -150,7 +150,7 @@ gtt_xml_interval_to_dom_tree (GttInterval *ivl)
 
 	if (!ivl) return NULL;
 
-	topnode = xmlNewNode (NULL, "gtt:interval");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:interval");
 
 	PUT_LONG("start", gtt_interval_get_start(ivl));
 	PUT_LONG("stop", gtt_interval_get_stop(ivl));
@@ -170,7 +170,7 @@ gtt_interval_list_to_dom_tree (GList *list)
 
 	if (!list) return NULL;
 
-	topnode = xmlNewNode (NULL, "gtt:interval-list");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:interval-list");
 
 	for (p=list; p; p=p->next)
 	{
@@ -194,7 +194,7 @@ gtt_xml_task_to_dom_tree (GttTask *task)
 
 	if (!task) return NULL;
 
-	topnode = xmlNewNode (NULL, "gtt:task");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:task");
 
 	PUT_GUID ("guid", gtt_task_get_guid(task));
 	PUT_STR ("memo", gtt_task_get_memo(task));
@@ -227,7 +227,7 @@ gtt_task_list_to_dom_tree (GList *list)
 
 	if (!list) return NULL;
 
-	topnode = xmlNewNode (NULL, "gtt:task-list");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:task-list");
 
 	for (p=list; p; p=p->next)
 	{
@@ -250,10 +250,10 @@ gtt_xml_project_to_dom_tree (GttProject *prj)
 	xmlNodePtr node, topnode;
 
 	if (!prj) return NULL;
-	topnode = xmlNewNode (NULL, "gtt:project");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:project");
 
-	node = xmlNewNode (NULL, "title");
-	xmlNodeAddContent(node, gtt_project_get_title(prj));
+	node = xmlNewNode (NULL, BAD_CAST "title");
+	xmlNodeAddContent(node, BAD_CAST gtt_project_get_title(prj));
 	xmlAddChild (topnode, node);
 
 	PUT_GUID ("guid", gtt_project_get_guid(prj));
@@ -312,7 +312,7 @@ gtt_project_list_to_dom_tree (GList *list)
 
 	if (!list) return NULL;
 
-	topnode = xmlNewNode (NULL, "gtt:project-list");
+	topnode = xmlNewNode (NULL, BAD_CAST "gtt:project-list");
 
 	for (p=list; p; p=p->next)
 	{
@@ -334,10 +334,10 @@ gtt_to_dom_tree (void)
 	xmlNodePtr node;
 	xmlNsPtr   ns;
 
-	topnode = xmlNewNode(NULL, "gtt:gtt");
-	xmlSetProp(topnode, "version", "1.0.1");
+	topnode = xmlNewNode(NULL, BAD_CAST "gtt:gtt");
+	xmlSetProp(topnode, BAD_CAST "version", BAD_CAST "1.0.1");
 
-	ns = xmlNewNs (topnode, "file:" GTTDATADIR "/gtt.dtd", "gtt");
+	ns = xmlNewNs (topnode, BAD_CAST "file:" GTTDATADIR "/gtt.dtd", BAD_CAST "gtt");
 
 	node = gtt_project_list_to_dom_tree (gtt_project_list_get_list(master_list));
 	if (node) xmlAddChild (topnode, node);
