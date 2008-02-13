@@ -1,3 +1,15 @@
+2008-02-13  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/Makefile.am: Made changes according to changes in
+	configure.in.
+
+	* configure.in:
+	  - Separately check for glib, GTK+, libgnome and libgnomeui
+	  - Fix check for libgconf
+	  - Make minimum required versions of:
+	    - GTK+ = 2.10
+	    - GLIB = 2.14
+
 2008-02-08  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/xml-write.c: Added BAD_CAST in the invocations to xml*

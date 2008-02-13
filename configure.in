@@ -45,12 +45,13 @@ dnl *****************************************
 
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.3
+GLIB_REQUIRED=2.14
+GTK_REQUIRED=2.10
 LIBGNOMEVFS_REQUIRED=2.0.0
 LIBGLADE_REQUIRED=2.0.0
 LIBGTKHTML_REQUIRED=3.0.0
 LIBXML2_REQUIRED=2.0.0
 SCROLLKEEPER_BUILD_REQUIRED=0.3.5
-dnl Doesn't compile w/ qof-0.5.0
 LIBQOF_REQUIRED_MIN=0.6.0
 LIBDBUS_REQUIRED_MIN=0.74
 
@@ -59,15 +60,35 @@ dnl Check for guile
 dnl *****************************************
 GUILE_FLAGS
 
-dnl *****************************************
-dnl libgnome, libgnomeui needed for all utils
-dnl *****************************************
 
-PKG_CHECK_MODULES(GNOTIME, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
-AC_SUBST(GNOTIME_CFLAGS)
-AC_SUBST(GNOTIME_LIBS)
+dnl *****************************************
+dnl Check for glib
+dnl *****************************************
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
 
-AM_PATH_GLIB_2_0
+dnl *****************************************
+dnl Check for GTK+
+dnl *****************************************
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+AC_SUBST(GTK_FLAGS)
+AC_SUBST(GTK_LIBS)
+
+dnl *****************************************
+dnl Check for libgnome
+dnl *****************************************
+PKG_CHECK_MODULES(LIBGNOME, libgnome-2.0 >= $LIBGNOME_REQUIRED)
+AC_SUBST(LIBGNOME_CFLAGS)
+AC_SUBST(LIBGNOME_LIBS)
+
+dnl *****************************************
+dnl Check for libgnomeui
+dnl *****************************************
+PKG_CHECK_MODULES(GNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+AC_SUBST(LIBGNOMEUI_CFLAGS)
+AC_SUBST(LIBGNOMEUI_LIBS)
+
 
 dnl *****************************************
 dnl need libglade
@@ -85,9 +106,12 @@ if test x"$GCONFTOOL" = xno; then
   AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
 fi
 
-dnl --- grr, if libgconf-devel not installed, this macro will fail
-dnl --- but what should we check for?
-AM_GCONF_SOURCE_2
+dnl *****************************************
+dnl Check for gconf
+dnl *****************************************
+PKG_CHECK_MODULES(GCONF, gconf-2.0)
+AC_SUBST(GCONF_CFLAGS)
+AC_SUBST(GCONF_LIBS)
 
 dnl **************************************************************
 dnl If QOF is found on the build system, then use it.

@@ -92,7 +92,10 @@ noinst_HEADERS =      \
 
 AM_CFLAGS = -g -Wall     \
 	@CFLAGS@              \
-	${GNOTIME_CFLAGS}     \
+	${GLIB_CFLAGS}     \
+	${GTK_CFLAGS}     \
+	${LIBGNOME_CFLAGS}     \
+	${LIBGNOMEUI_CFLAGS}     \
 	${GCONF_CFLAGS}       \
 	${LIBGNOMEVFS_CFLAGS} \
 	${LIBGTKHTML_CFLAGS}  \
@@ -113,11 +116,19 @@ INCLUDES =                                   \
 	-DDATADIR=\""$(datadir)"\"                \
 	-DLIBDIR=\""$(libdir)/gnotime"\"          \
 	-DWITH_DBUS=@WITH_DBUS@ \
-	${GNOME_INCLUDEDIR}                       \
+	${GLIB_CFLAGS}     \
+	${GTK_CFLAGS}     \
+	${LIBGNOME_CFLAGS}     \
+	${LIBGNOMEUI_CFLAGS}     \
+	${GCONF_CFLAGS}       \
 	${GUILE_CFLAGS}
 
 gnotime_LDADD =          \
-	$(GNOTIME_LIBS)       \
+	${GLIB_LIBS}     \
+	${GTK_LIBS}     \
+	${LIBGNOME_LIBS}     \
+	${LIBGNOMEUI_LIBS}     \
+	${GCONF_LIBS}       \
 	$(LIBQOF_LIBS)        \
 	$(LIBDBUS_LIBS)       \
 	$(XSS_EXTENSION_LIBS) \
@@ -128,9 +139,6 @@ gnotime_LDADD =          \
 	${GUILE_LIBS}         \
 	$(INTLLIBS) \
 	${GUILE_LDFLAGS}
-
-#	$(LIBGNOMEXML_LIBS)
-#	$(GCONF_LIBS)
 
 EXTRA_DIST =         \
 	down.xpm          \
