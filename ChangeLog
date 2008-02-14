@@ -1,3 +1,11 @@
+2008-02-14  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/notes-area.c (projects_tree_clicked): Added callback
+	function for displaying the context menu when user right clicks on
+	projects tree.
+	(notes_area_add_projects_tree): Connect projects tree to the right
+	click callback function.
+
 2008-02-13  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/Makefile.am: Made changes according to changes in

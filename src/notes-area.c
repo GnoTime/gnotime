@@ -408,6 +408,25 @@ projects_tree_selection_changed (GtkTreeSelection *selection, gpointer user_data
 
 }
 
+static int
+projects_tree_clicked (GtkWidget *ptree, GdkEvent *event, gpointer data)
+{
+    GdkEventButton *bevent = (GdkEventButton *) event;
+	GttProjectsTree *projects_tree = GTT_PROJECTS_TREE (ptree);
+	GtkMenuShell *menu;
+
+    if (!(event->type == GDK_BUTTON_PRESS && bevent->button == 3))
+    {
+		return FALSE;
+    }
+
+	menu = menus_get_popup ();
+	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, 3, bevent->time);
+
+	return FALSE;
+
+}
+
 void 
 notes_area_add_projects_tree (NotesArea *nadlg, GttProjectsTree *ptree)
 {
@@ -418,7 +437,9 @@ notes_area_add_projects_tree (NotesArea *nadlg, GttProjectsTree *ptree)
 
 	gtk_container_add (nadlg->projects_tree_holder, GTK_WIDGET(ptree));
 	gtk_widget_show_all (GTK_WIDGET(nadlg->projects_tree_holder));
-	
+
+	g_signal_connect (GTK_WIDGET (ptree), "button_press_event",
+			  G_CALLBACK (projects_tree_clicked), NULL);
 }
 
 
