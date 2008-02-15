@@ -1,5 +1,5 @@
 %define name gnotime
-%define ver 2.2.3
+%define ver 2.3.0
 %define rel 1
 %define prefix /usr
 

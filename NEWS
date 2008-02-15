@@ -6,8 +6,33 @@
 GnoTime, The Gnome Time Tracker, allows you to organize ideas,
 measure the time spent on to-do list items and generate invoices.
 
-The latest releases continues to focus on usability and convenience 
+The latest releases continues to focus on usability and convenience
 features, making GnoTime easier to use and thus more powerful.
+
+New in the 2.3.0 Release:
+-------------------------
+The main changes in this release are:
+* a new implementation of the projects tree using the GtkTreeView
+  component which fixes a lot of the bugs regarding the projects
+  tree manipulation and prepares the way for many customizations
+  in future releases.
+* an initial implementation of a tray icon that displays timer status
+  and allows the user to toggle the timer by clicking on it.
+* a rewrite of the idle detection using the XScreenSaver extension and
+  of the timer system to make it more system power conservation
+  friendly.
+* port of the report system to use guile version 1.8.
+* many changes in the configure script, including porperly checking for
+  guile and gconf and version of available DBUS.
+* removal of some deprecated APIs usage.
+
+
+In addition, many bugs have been fixed, including:
+* broken behavior of drag-and-drop (#1856268)
+* compiles but crashes on startup in fedora core 5 (#1802501)
+* activity journal truncates seconds (#1706365)
+* green bar flickers when value changes (#1171204)
+* dragging project to make sub-project will not scroll (#831808)
 
 New in the 2.2.3 Release:
 -------------------------
