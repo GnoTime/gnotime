@@ -1,3 +1,8 @@
+2008-02-15  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ghtml.c: Added functions that make use of the billing block
+	(Patch #1872426)
+
 2008-02-14  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/notes-area.c (projects_tree_clicked): Added callback
@@ -501,7 +506,7 @@
 2007-09-26  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/toolbar.c: rebuild the toolbar each time config_show_toolbar
-	is changed so that the toolbar is really hidden when the don't
+	is changed so that the toolbar is really hidden when we don't
 	want it to be shown.
 
 	* gnotime.desktop: Updated desktop entry

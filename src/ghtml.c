@@ -1086,6 +1086,23 @@ task_get_time_str_scm (GttGhtml *ghtml, GttTask *tsk)
 }
 
 static SCM
+task_get_blocktime_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	time_t task_secs;
+	char buff[100];
+	int bill_unit;
+	time_t value;
+
+	task_secs = gtt_task_get_secs_ever(tsk);
+	bill_unit = gtt_task_get_bill_unit(tsk);
+
+	value = (time_t) (lround( ((double) task_secs) / bill_unit ) * bill_unit);
+
+	qof_print_hours_elapsed_buff (buff, 100, value, TRUE);
+	return scm_mem2string (buff, strlen (buff));
+}
+
+static SCM
 task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 {
 	char buff[100];
@@ -1151,13 +1168,52 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	return scm_from_locale_string (buff);
 }
 
+static SCM
+task_get_blockvalue_str_scm (GttGhtml *ghtml, GttTask *tsk)
+{
+	time_t task_secs;
+	char buff[100];
+	double value;
+	GttProject *prj;
+	int bill_unit;
+
+	task_secs = gtt_task_get_secs_ever(tsk);
+	bill_unit = gtt_task_get_bill_unit(tsk);
+
+	value = (round( ((double) task_secs) / bill_unit ) * bill_unit) / 3600.0;
+
+	prj = gtt_task_get_parent (tsk);
+	
+	switch (gtt_task_get_billrate (tsk))
+	{
+		case GTT_REGULAR: value *= gtt_project_get_billrate (prj); break;
+		case GTT_OVERTIME: value *= gtt_project_get_overtime_rate (prj); break;
+		case GTT_OVEROVER: value *= gtt_project_get_overover_rate (prj); break;
+		case GTT_FLAT_FEE: value = gtt_project_get_flat_fee (prj); break;
+		default: value = 0.0;
+	}
+
+    if (!config_currency_use_locale) {
+      setlocale(LC_MONETARY, "C");
+      setlocale(LC_NUMERIC, "C");
+      snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
+    } else {
+      setlocale(LC_ALL, "");
+      strfmon(buff, 100, "%n", value);
+    }
+
+	return scm_mem2string (buff, strlen (buff));
+}
+
 RET_TASK_STR (ret_task_billstatus,      task_get_billstatus)
 RET_TASK_STR (ret_task_billable,        task_get_billable)
 RET_TASK_STR (ret_task_billrate,        task_get_billrate)
 RET_TASK_SIMPLE (ret_task_time_str,     task_get_time_str)
+RET_TASK_SIMPLE (ret_task_blocktime_str,task_get_blocktime_str)
 RET_TASK_SIMPLE (ret_task_earliest_str, task_get_earliest_str)
 RET_TASK_SIMPLE (ret_task_latest_str,   task_get_latest_str)
 RET_TASK_SIMPLE (ret_task_value_str,    task_get_value_str)
+RET_TASK_SIMPLE (ret_task_blockvalue_str,task_get_blockvalue_str)
 
 /* ============================================================== */
 
@@ -1625,9 +1681,11 @@ register_procs (void)
 	scm_c_define_gsubr("gtt-task-billable",      1, 0, 0, ret_task_billable);
 	scm_c_define_gsubr("gtt-task-billrate",      1, 0, 0, ret_task_billrate);
 	scm_c_define_gsubr("gtt-task-time-str",      1, 0, 0, ret_task_time_str);
+	scm_c_define_gsubr("gtt-task-blocktime-str", 1, 0, 0, ret_task_blocktime_str);
 	scm_c_define_gsubr("gtt-task-earliest-str",  1, 0, 0, ret_task_earliest_str);
 	scm_c_define_gsubr("gtt-task-latest-str",    1, 0, 0, ret_task_latest_str);
 	scm_c_define_gsubr("gtt-task-value-str",     1, 0, 0, ret_task_value_str);
+	scm_c_define_gsubr("gtt-task-blockvalue-str",1, 0, 0, ret_task_blockvalue_str);
 	scm_c_define_gsubr("gtt-task-parent",        1, 0, 0, ret_task_parent);
 
 	scm_c_define_gsubr("gtt-interval-start",     1, 0, 0, ret_ivl_start);
