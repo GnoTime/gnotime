@@ -60,6 +60,11 @@ dnl Check for guile
 dnl *****************************************
 GUILE_FLAGS
 
+GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
+if test "$GUILE_VERSION" "<" "1.8"; then
+   AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
+fi
+
 
 dnl *****************************************
 dnl Check for glib
