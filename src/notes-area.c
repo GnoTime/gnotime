@@ -24,6 +24,7 @@
 #include "proj.h"
 #include "notes-area.h"
 #include "util.h"
+#include "menus.h"
 
 struct NotesArea_s
 {
