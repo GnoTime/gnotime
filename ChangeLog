@@ -1,5 +1,8 @@
 2008-02-27  Goedson Teixeira Paixao  <goedson@debian.org>
 
+	* src/menucmd.c (about_box): Use GtkAboutDialog instead of the
+	deprecated GnomeAbout.
+
 	* doc/C/man/gnotime.1: Fixed the manpage's text
 
 	* src/notes-area.c: include menus.h for prototype of the

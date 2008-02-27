@@ -40,161 +40,68 @@
 void
 about_box(GtkWidget *w, gpointer data)
 {
-	static GtkWidget *about = NULL;
 	const gchar *authors[] = {
-		  "Linas Vepstas <linas@linas.org>",
-		  "Eckehard Berns <eb@berns.i-s-o.net>",
-		  "George Lebl <jirka@5z.com>",
-		  " ",
-		  _("Bug-fixes from:"),
-		  "Eric Anderson <eric.anderson@cordata.net>",
-		  "Derek Atkins <warlord@mit.edu>",
-		  "Jonathan Blandford  <jrb@redhat.com>",
-		  "Miguel de Icaza  <miguel@nuclecu.unam.mx>",
-		  "John Fleck <jfleck@inkstain.net>",
-		  "Nat Friedman  <nat@nat.org>",
-		  "Mark Galassi  <rosalia@cygnus.com>",
-		  "Jeff Garzik  <jgarzik@pobox.com>",
-		  "Sven M. Hallberg <pesco@gmx.de>",
-		  "Raja R Harinath  <harinath@cs.umn.edu>",
-		  "Peter Hawkins <peterhawkins@ozemail.com.au>",
-	     "Toshio Kuratomi <toshio@tiki-lounge.com>",
-		  "Egil Kvaleberg <egil@kvaleberg.no>",
-		  "Chris Lahey  <clahey@umich.edu>",
-		  "Gregory McLean <gregm@comstar.net>",
-		  "Kjartan Maraas  <kmaraas@gnome.org>",
-		  "Federico Mena Quintero  <federico@nuclecu.unam.mx>",
-		  "Tomas Ogren  <stric@ing.umu.se>",
-	     "Goedson Teixeira Paixao <goedson@debian.org>",
-		  "Gediminas Paulauskas <menesis@delfi.lt>",
-		  "Havoc Pennington  <hp@pobox.com>",
-		  "Ettore Perazzoli  <ettore@comm2000.it>",
-		  "Changwoo Ryu  <cwryu@adam.kaist.ac.kr>",
-		  "Pablo Saratxaga <srtxg@chanae.alphanet.ch>",
-		  "Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>",
-		  "Mark Stosberg <mark@summersault.com>",
-		  "Tom Tromey  <tromey@cygnus.com>",
-		  "Sebastian Wilhelmi  <wilhelmi@ira.uka.de>",
-		  NULL
+		"Goedson Teixeira Paixão <goedson@debian.org>",
+		"Linas Vepstas <linas@linas.org>",
+		"Eckehard Berns <eb@berns.i-s-o.net>",
+		"George Lebl <jirka@5z.com>",
+		" ",
+		_("Bug-fixes from:"),
+		"Eric Anderson <eric.anderson@cordata.net>",
+		"Derek Atkins <warlord@mit.edu>",
+		"Jonathan Blandford  <jrb@redhat.com>",
+		"Miguel de Icaza  <miguel@nuclecu.unam.mx>",
+		"John Fleck <jfleck@inkstain.net>",
+		"Nat Friedman  <nat@nat.org>",
+		"Mark Galassi  <rosalia@cygnus.com>",
+		"Jeff Garzik  <jgarzik@pobox.com>",
+		"Sven M. Hallberg <pesco@gmx.de>",
+		"Raja R Harinath  <harinath@cs.umn.edu>",
+		"Peter Hawkins <peterhawkins@ozemail.com.au>",
+		"Toshio Kuratomi <toshio@tiki-lounge.com>",
+		"Egil Kvaleberg <egil@kvaleberg.no>",
+		"Chris Lahey  <clahey@umich.edu>",
+		"Gregory McLean <gregm@comstar.net>",
+		"Kjartan Maraas  <kmaraas@gnome.org>",
+		"Federico Mena Quintero  <federico@nuclecu.unam.mx>",
+		"Tomas Ogren  <stric@ing.umu.se>",
+		"Gediminas Paulauskas <menesis@delfi.lt>",
+		"Havoc Pennington  <hp@pobox.com>",
+		"Ettore Perazzoli  <ettore@comm2000.it>",
+		"Changwoo Ryu  <cwryu@adam.kaist.ac.kr>",
+		"Pablo Saratxaga <srtxg@chanae.alphanet.ch>",
+		"Carsten Schaar  <nhadcasc@fs-maphy.uni-hannover.de>",
+		"Mark Stosberg <mark@summersault.com>",
+		"Tom Tromey  <tromey@cygnus.com>",
+		"Sebastian Wilhelmi  <wilhelmi@ira.uka.de>",
+		NULL
 	};
 
 
-	const gchar *documentors[] = {
+	const gchar *documenters[] = {
 		  "Eckehard Berns <eb@berns.i-s-o.net>",
 		  "Linas Vepstas <linas@linas.org>",
+		  "Goedson Teixeira Paixão <goedson@debian.org>",
 		  NULL
 	};
 
-	const gchar *translators =
-		"Vasif Ismailoglu MD <azerb_linux@hotmail.com> - az\n"
-		"Borislav Aleksandrov <B.Aleksandrov@cnsys.bg> - bg\n"
-		"Ivan Vilata i Balaguer <al011097@alumail.uji.es> - ca\n"
-		"Softcatala <tradgnome@softcatala.org> - ca\n"
-		"David Sauer <davids@penguin.cz> - cz\n"
-		"George Lebl <jirka@5z.com> - cz\n"
-		"Kenneth Christiansen <kenneth@ripen.dk> - da\n"
-		"Kim Schulz <kim@schulz.dk> - da\n"
-		"Birger Langkjer <birger.langkjer@image.dk> - da\n"
-		"Keld Simonsen <keld@dkuug.dk> - da\n"
-		"Ole Laursen <olau@hardworking.dk> - da\n"
-		"Matthias Warkus <mawa@iname.com> - de\n"
-		"Keld Simonsen <keld@dkuug.dk> - da\n"
-		"Karl Eichwalder <ke@suse.de> - de\n"
-		"Benedikt Roth <Benedikt.Roth@gmx.net> - de\n"
-		"Christian Meyer <chrisime@gnome.org> - de\n"
-		"Spiros Papadimitriou <spapadim+@cs.cmu.edu> - el\n"
-		"Simos Xenitellis <simos@hellug.gr> - el\n"
-		"Robert Brady <rwb197@ecs.soton.ac.uk> - en_GB\n"
-	   "Pablo Saratxaga <srtxg@chanae.alphanet.ch> - es\n"
-		"Manuel de Vega Barreiro <mbarreiro@red.madritel.es> - es\n"
-		"Lauris Kaplinski <lauris@ariman.ee> - et\n"
-		"Josu Wali*o <josu@elhuyar.com> - eu\n"
-		"Antti Ahvensalmi <aahven@mbnet.fi> - fi\n"
-		"Tuomas Meril - fi\n"
-		"Vincent Renardias <vincent@ldsol.com> - fr\n"
-		"Thibaut Cousin <cousin@clermont.in2p3.fr> - fr\n"
-		"Christophe Merlet (RedFox) <redfox@eikonex.org> - fr\n"
-		"Bretin Didier <didier@bretin.net> - fr\n"
-		"Christophe Fergeau <teuf@users.sourceforge.net> - fr\n"
-		"Sean Ceallaigh <s_oceallaigh@yahoo.com> - ga\n"
-		"Jesus Bravo Alvarez <jba@pobox.com> - gl\n"
-		"Ruben Lopez Gomez <ryu@mundivia.es> - gl\n"
-		"Szabolcs BAN <shooby@gnome.hu> - hu\n"
-		"Gergely Nagy <greg@gnome.hu> - hu\n"
-		"Andras Timar <timar@gnome.hu> - hu\n"
-		"Giovanni Bortolozzo <borto@pluto.linux.it> - it\n"
-		"Eiichiro ITANI <emu@ceres.dti.ne.jp> - jp\n"
-		"Yuusuke Tahara <tahara@gnome.gr.jp> - jp\n"
-		"Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp> - jp\n"
-		"Changwoo Ryu <cwryu@adam.kaist.ac.kr> - ko\n"
-		"Young-Ho, Cha <ganadist@chollian.net> - ko\n"
-		"Gediminas Paulauskas <menesis@delfi.lt> - lt\n"
-		"Peteris Kriajlnis <peterisk@apollo.lv> - lv\n"
-		"Artis Trops <hornet@navigators.lv> - lv\n"
-		"Mohamad Afifi Omar (App) <mr_mohd_afifi@yahoo.com> - ms\n"
-		"Hasbullah BIn Pit <sebol@ikhlas.com> - ms\n"
-		"Mendel mobach <mendel@mobach.nl> - nl\n"
-		"Almer S. Tigelaar <almer@gnome.org> - nl\n"
-		"Marc Maurer <j.m.maurer@student.utwente.nl> - nl\n"
-		"Dennis Smit <synap@area101.penguin.nl> - nl\n"
-		"Kjartan Maraas  <kmaraas@gnome.org> - nn\n"
-		"Roy-Magne Mo <rmo@sunnmore.net> - nn\n"
-		"Kjartan Maraas <kmaraas@gnome.org> - no\n"
-		"Egil Kvaleberg <egil@kvaleberg.no> - no\n"
-		"GNOME PL Team <translators@gnome.pl> - pl\n"
-		"Nuno Ferreira  <nmrf@rnl.ist.utl.pt> - pt\n"
-		"Francisco Petrecio Cavalcante Junior <fpcj@impa.br> - pt\n"
-		"Duarte Loreto <happyguy_pt@hotmail.com> - pt\n"
-		"Alexandre Hautequest <hquest@fesppr.br> - pt_BR\n"
-		"Ariel Bressan da Silva <ariel@conectiva.com.br> - pt_BR\n"
-	   "Goedson Teixeira Paixao <goedson@debian.org> - pt_BR\n"
-		"Iustin Pop <iusty@geocities.com> - ro\n"
-		"Dan Damian <dand@dnttm.ro> - ro\n"
-		"Valek Filppov <frob@df.ru> - ru\n"
-		"Sergey Panov <sipan@mit.edu> - ru\n"
-		"Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz> - sk\n"
-		"Andraz Tori <andraz.tori1@guest.arnes.si> - sl\n"
-		"Martin Norbeck <d95mback@dtek.chalmers.se> - sv\n"
-		"Andreas Hyden <a.hyden@cyberpoint.se> - sv\n"
-		"Christian Rose <menthos@menthos.com> - sv\n"
-		"Dinesh Nadarajah <n_dinesh@yahoo.com> - ta\n"
-		"Fatih Demir <kabalak@gmx.net> - tr\n"
-		"Gorkem etin <gorkem@gelecek.com.tr> - tr\n"
-		"Yuri Syrota <rasta@renome.rovno.ua> - ua\n"
-		"pclouds <pclouds@gmx.net> - vi\n"
-		"Pablo Saratxaga <srtxg@chanae.alphanet.ch> - wa\n"
-		"Wang Li <charles@linux.net.cn> - zh_CN\n"
-		"Ming-Yen Hsu <myhsu@cyberdude.com> - zh_TW\n"
-		"Abel Cheung  <maddog@linux.org.hk> - zh_TW.Big5\n"
-	;
+	const gchar *copyright = 
+		"Copyright (C) 1997,98 Eckehard Berns\n"
+		"Copyright (C) 2001-2004 Linas Vepstas\n"
+		"Copyright (C) 2007-2008 Goedson Teixeira Paixão";
 
-
-	if (about != NULL)
-	{
-		gdk_window_show(about->window);
-		gdk_window_raise(about->window);
-		return;
-	}
-	about = gnome_about_new(GTT_APP_TITLE,
-				    VERSION,
-				    "Copyright (C) 1997,98 Eckehard Berns\n"
-				    "Copyright (C) 2001-2004 Linas Vepstas",
-#ifdef DEBUG
-				    __DATE__ ", " __TIME__,
-#else
- _("GnoTime is a combination stop-watch, diary, consultant billing "
-   "system and todo-list manager.  You can measure the amount of time you "
-   "spend on a task, associate a memo with it, set a billing rate, print "
-   "an invoice, as well as track the status of other projects."),
-
-#endif
-				    authors,
-				    documentors,
-				    translators,
-				    NULL);
-	g_signal_connect(G_OBJECT(about), "destroy",
-		         G_CALLBACK(gtk_widget_destroyed), &about);
-	gtk_widget_show(about);
+	const gchar *comments =  _("GnoTime is a combination of stop-watch, diary, "
+							   " consultant billing system and todo-list manager.") ;
+	gtk_show_about_dialog (w,
+						   "version", VERSION,
+						   "program-name", GTT_APP_TITLE,
+						   "authors", authors,
+						   "documenters", documenters,
+						   "website", "http://gnotime.sourceforge.net/",
+						   "translator-credits", _("translator-credits"),
+						   "copyright", copyright,
+						   "comments", comments, 
+						   NULL);
 }
 
 /* =============================================================================== */
