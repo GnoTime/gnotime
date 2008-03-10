@@ -266,7 +266,7 @@ gtt_projects_tree_init (GttProjectsTree* gpt)
 	priv->column_definitions[8].default_width = 72;
 
 	priv->column_definitions[9].name = "description";
-	priv->column_definitions[9].model_column = TITLE_COLUMN;
+	priv->column_definitions[9].model_column = DESCRIPTION_COLUMN;
 	priv->column_definitions[9].renderer = priv->text_renderer;
 	priv->column_definitions[9].value_property_name = "text";
 	priv->column_definitions[9].label = _("Description");
