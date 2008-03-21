@@ -3,7 +3,7 @@ AM_INIT_AUTOMAKE(gnotime, 2.3.0)
 
 AC_PROG_INTLTOOL
 
-AC_PROG_LIBTOOL
+IT_PROG_LIBTOOL([0.35.5])
 
 AM_CONFIG_HEADER(config.h)
 
@@ -267,7 +267,6 @@ dnl *******************************
 dnl Internationalization
 dnl ******************************* 
 
-ALL_LINGUAS="az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl nn nb pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW"
 GETTEXT_PACKAGE=gnotime-2.0
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
