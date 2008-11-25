@@ -1000,7 +1000,8 @@
                       <widget class="GtkEntry" id="no project secs">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip" translatable="yes">The current active project will be made inactive after there has been no keyboard/mouse activity after this number of seconds.  Set to -1 to disable.</property>
+                        <property name="tooltip"
+                        translatable="yes">A warning will be displayed after this number of seconds with no running project.  Set to -1 to disable.</property>
                         <property name="invisible_char">*</property>
                       </widget>
                       <packing>
