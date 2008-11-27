@@ -1,3 +1,8 @@
+2008-11-27  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/timer.c (start_no_project_timer): Fixed the condition in which
+	the "No project" timer is started.
+
 2008-11-25  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* glade/prefs.glade: Fixed tooltip for the "No Project Timeout" option.

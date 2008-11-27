@@ -213,7 +213,7 @@ start_no_project_timer (void)
 	{
 		init_timer();
 	}
-	if (!idle_dialog_is_visible (idle_dialog) && timer_is_running ())
+	if (!idle_dialog_is_visible (idle_dialog) && !timer_is_running ())
 	{
 		idle_dialog_deactivate_timer (idle_dialog);
 		active_dialog_activate_timer (active_dialog);
