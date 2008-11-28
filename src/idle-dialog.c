@@ -438,8 +438,14 @@ show_idle_dialog (GttIdleDialog *id)
 		idle_dialog_realize (id);
 	}
 
+	/* Mark the idle dialog as visible so we don't start the no
+	 * project timeout timer when it's not needed.
+	 */
+	id->visible = TRUE;
+
 	/* Stop the timer on the current project */
 	cur_proj_set (NULL);
+
 	id->prj = prj;
 
 	/* The idle timer can trip because gtt was left running
@@ -456,6 +462,7 @@ show_idle_dialog (GttIdleDialog *id)
 
 
 	raise_idle_dialog (id);
+
 }
 
 /* =========================================================== */
