@@ -191,7 +191,7 @@
 	  <child>
 	    <widget class="GnomeDateEdit" id="start_date">
 	      <property name="visible">True</property>
-	      <property name="dateedit_flags">GNOME_DATE_EDIT_SHOW_TIME|GNOME_DATE_EDIT_24_HR</property>
+	      <property name="dateedit_flags">GNOME_DATE_EDIT_SHOW_TIME|GNOME_DATE_EDIT_24_HR|GNOME_DATE_EDIT_DISPLAY_SECONDS</property>
 	      <property name="lower_hour">7</property>
 	      <property name="upper_hour">19</property>
 	    </widget>
