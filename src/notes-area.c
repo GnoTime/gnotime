@@ -37,12 +37,13 @@ struct NotesArea_s
 	GtkEntry *proj_title;
 	GtkEntry *proj_desc;
 	GtkTextView *proj_notes;
-	
+
 	GtkEntry *task_memo;
 	GtkTextView *task_notes;
 
 	GtkButton *close_proj;
 	GtkButton *close_task;
+	GtkButton *select_task;
 	GtkButton *new_task;
 
 	GttProject *proj;
@@ -72,7 +73,7 @@ struct NotesArea_s
 	if (na->ignore_events) return;               \
 	                                             \
 	na->ignore_events = TRUE;                    \
-	tsk = gtt_project_get_first_task (na->proj); \
+	tsk = gtt_project_get_current_task (na->proj); \
 	if (NULL == tsk)                             \
 	{                                            \
 		tsk = gtt_task_new();                     \
@@ -120,7 +121,7 @@ task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	}                                     \
 	na->ignore_events = TRUE;             \
 
-	
+
 static void
 proj_title_changed (GtkEntry *entry, NotesArea *na)
 {
@@ -157,7 +158,7 @@ proj_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 /* ============================================================== */
 /* This routine will cause pending events to get delivered. */
 
-void 
+void
 gtt_notes_timer_callback (NotesArea *na)
 {
 	if (!na) return;
@@ -188,10 +189,10 @@ close_proj_area (GtkButton *but, NotesArea *na)
 {
 	int hpane_width;
 	int hpane_div;
-	
+
 	hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
 	hpane_div = gtk_paned_get_position (na->hpane);
-	
+
 	if (hpane_div > hpane_width -CLOSED_MARGIN)
 	{
 		int vpane_height;
@@ -209,14 +210,14 @@ close_task_area (GtkButton *but, NotesArea *na)
 {
 	int hpane_width;
 	int hpane_div;
-	
+
 	hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
 	hpane_div = gtk_paned_get_position (na->hpane);
-	
-	/* XXX we really need only the first test, but the second 
-	 * one deals iwth a freaky gtk vpaned bug that makes this 
+
+	/* XXX we really need only the first test, but the second
+	 * one deals iwth a freaky gtk vpaned bug that makes this
 	 * hidden button active.  Whatever.
-	 */ 
+	 */
 	if ((hpane_div < CLOSED_MARGIN) ||
 	    (hpane_div > hpane_width -CLOSED_MARGIN))
 	{
@@ -238,15 +239,104 @@ new_task_cb (GtkButton *but, NotesArea *na)
 	GttTask *tsk;
 	if (NULL == na->proj) return;
 	// if (na->ignore_events) return;
-	
+
 	// na->ignore_events = TRUE;
 	tsk = gtt_task_new();
 	gtt_project_prepend_task (na->proj, tsk);
-	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze); 
+	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze);
 	gtt_task_freeze (tsk);
 	na->task_freeze = tsk;
 
 	// na->ignore_events = FALSE;
+}
+
+/* ============================================================== */
+
+enum {
+	COL_ID,
+	COL_TASK_MEMO,
+	COL_TASK_POINTER,
+	NUM_COLS
+};
+
+
+static void
+select_task_cancel_cb (GtkButton *but, GtkWidget *widget)
+{
+	gtk_widget_hide(GTK_WIDGET(widget));
+	gtk_widget_destroy(GTK_WIDGET(widget));
+}
+
+static void
+select_task_ok_cb (GtkButton *but, GtkTreeView *treeView)
+{
+	GtkTreeSelection *sel;
+	GtkTreeModel     *model;
+	GtkTreeIter       selected_row;
+
+	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeView));
+
+	g_assert(gtk_tree_selection_get_mode(sel) == GTK_SELECTION_SINGLE);
+
+	if (gtk_tree_selection_get_selected(sel, &model, &selected_row))
+	{
+		GValue tasklst;
+		GList *taskList;
+		GttProject *project;
+		gtk_tree_model_get_value(model, &selected_row, COL_TASK_POINTER, &tasklst);
+		taskList = (GList *)tasklst.data->v_pointer;
+		GttTask *task = (GttTask *)taskList->data;
+		project = gtt_task_get_parent(task);
+		gtt_project_set_current_task(project, task);
+	}
+	else
+	{
+		/* There should be at least one entry selected */
+		g_assert_not_reached();
+	}
+
+	select_task_cancel_cb(but, GTK_WIDGET(treeView)->parent->parent->parent);
+}
+
+
+static void
+select_task_cb (GtkButton *but, NotesArea *na)
+{
+	GladeXML     *gtxml     = gtt_glade_xml_new ("glade/task_select.glade", "Select Task");
+	GtkDialog    *dialog    = GTK_DIALOG (glade_xml_get_widget (gtxml,  "Select Task"));
+	GtkTreeView  *treeView  = GTK_TREE_VIEW(glade_xml_get_widget (gtxml,  "TaskList"));
+	GtkListStore *liststore = gtk_list_store_new(NUM_COLS, G_TYPE_INT, G_TYPE_STRING, G_TYPE_POINTER);
+	GttProject   *proj      = na->proj;
+	GList        *taskList  = gtt_project_get_tasks(proj);
+	GList        *currPos   = taskList;
+
+	GtkTreeIter iter;
+
+	int i;
+	for( i = 0; currPos != NULL; currPos = currPos->next, i++)
+	{
+	GttTask *currTask = (GttTask *)currPos->data;
+	gtk_list_store_append(liststore, &iter);
+	gtk_list_store_set(liststore, &iter,
+				COL_ID,           i,
+					   COL_TASK_MEMO,    gtt_task_get_memo(currTask),
+				COL_TASK_POINTER, currPos,
+				-1);
+	}
+
+	GtkCellRenderer *renderer = gtk_cell_renderer_text_new();
+	gtk_tree_view_insert_column_with_attributes(treeView, -1, _("Diary Entry"), renderer, "text", COL_TASK_MEMO, NULL);
+
+	gtk_tree_view_set_model(treeView, GTK_TREE_MODEL(liststore));
+	g_object_unref(liststore);
+
+	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
+		GTK_SIGNAL_FUNC (select_task_ok_cb), treeView);
+
+	glade_xml_signal_connect_data (gtxml, "on_cancel_button_clicked",
+		GTK_SIGNAL_FUNC (select_task_cancel_cb), dialog);
+
+	gtk_widget_show(GTK_WIDGET(dialog));
 }
 
 /* ============================================================== */
@@ -284,6 +374,7 @@ notes_area_new (void)
 	dlg->hpane = GTK_PANED(glade_xml_get_widget (gtxml, "leftright hpane"));
 	dlg->close_proj = GTK_BUTTON(glade_xml_get_widget (gtxml, "close proj button"));
 	dlg->close_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "close diary button"));
+	dlg->select_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "choose diary button"));
 	dlg->new_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "new diary button"));
 	
 	dlg->proj_title = CONNECT_ENTRY ("proj title entry", proj_title_changed);
@@ -303,6 +394,9 @@ notes_area_new (void)
 	g_signal_connect (G_OBJECT (dlg->new_task), "clicked",
 	                G_CALLBACK (new_task_cb), dlg);
 
+	g_signal_connect(G_OBJECT (dlg->select_task), "clicked",
+									G_CALLBACK (select_task_cb), dlg);
+
 	gtk_widget_show (GTK_WIDGET(dlg->vpane));
 
 	dlg->proj = NULL;
@@ -314,16 +408,16 @@ notes_area_new (void)
 }
 
 /* ============================================================== */
-/* This routine copies data from the data engine, and pushes it 
- * into the GUI.  
- */ 
+/* This routine copies data from the data engine, and pushes it
+ * into the GUI.
+ */
 
 static void
 notes_area_do_set_project (NotesArea *na, GttProject *proj)
 {
 	const char * str;
 	GttTask *tsk;
-	
+
 	if (!na) return;
 	if (na->ignore_events) return;
 
@@ -332,17 +426,17 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	 * bug.  So we work around the bug and save cpu time by ignoring
 	 * change events during a mass update. */
 	na->ignore_events = TRUE;
-	
+
 	/* Note Bene its OK to have the proj be null: this has the
 	 * effect of clearing all the fields out.
 	 */
 	na->proj = proj;
-	
+
 	/* Fetch data from the data engine, stuff it into the GUI. */
 	str = gtt_project_get_title (proj);
 	if (!str) str = "";
 	gtk_entry_set_text (na->proj_title, str);
-	
+
 	str = gtt_project_get_desc (proj);
 	if (!str) str = "";
 	gtk_entry_set_text (na->proj_desc, str);
@@ -351,11 +445,14 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	if (!str) str = "";
 	xxxgtk_textview_set_text (na->proj_notes, str);
 
-	tsk = gtt_project_get_first_task (proj);
+	tsk = gtt_project_get_current_task (proj);
+	if (tsk == NULL)
+		tsk = gtt_project_get_first_task (proj);
+
 	str = gtt_task_get_memo (tsk);
 	if (!str) str = "";
 	gtk_entry_set_text (na->task_memo, str);
-	
+
 	str = gtt_task_get_notes (tsk);
 	if (!str) str = "";
 	xxxgtk_textview_set_text (na->task_notes, str);

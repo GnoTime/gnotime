@@ -382,6 +382,8 @@ int      gtt_project_total (GttProject *);
 GList       * gtt_project_get_children (GttProject *);
 GList       * gtt_project_get_tasks (GttProject *);
 GttTask     * gtt_project_get_first_task (GttProject *);
+GttTask     * gtt_project_get_current_task (GttProject *);
+void          gtt_project_set_current_task (GttProject *proj, GttTask *tsk);
 GttInterval * gtt_project_get_first_interval (GttProject *);
 
 GttProject * 	gtt_project_get_parent (GttProject *);
