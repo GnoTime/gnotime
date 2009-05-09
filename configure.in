@@ -121,7 +121,7 @@ AC_SUBST(GCONF_LIBS)
 dnl **************************************************************
 dnl If QOF is found on the build system, then use it.
 dnl **************************************************************
-PKG_CHECK_MODULES(LIBQOF, qof-1 >= $LIBQOF_REQUIRED_MIN)
+PKG_CHECK_MODULES(LIBQOF, qof >= $LIBQOF_REQUIRED_MIN)
 AC_SUBST(LIBQOF_CFLAGS)
 AC_SUBST(LIBQOF_LIBS)
 
