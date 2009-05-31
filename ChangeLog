@@ -1,3 +1,8 @@
+2009-05-31  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ghtml.c (task_get_blocktime_str_scm): substitute the usage
+	of the deprecated qof_print_hors_elapsed_buff by our copy of it.
+
 2009-05-09  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* configure.in: Look for qof.pc (libqof2) instead of

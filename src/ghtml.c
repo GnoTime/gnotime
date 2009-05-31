@@ -1098,7 +1098,7 @@ task_get_blocktime_str_scm (GttGhtml *ghtml, GttTask *tsk)
 
 	value = (time_t) (lround( ((double) task_secs) / bill_unit ) * bill_unit);
 
-	qof_print_hours_elapsed_buff (buff, 100, value, TRUE);
+	xxxqof_print_hours_elapsed_buff (buff, 100, value, TRUE);
 	return scm_mem2string (buff, strlen (buff));
 }
 
