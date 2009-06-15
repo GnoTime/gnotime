@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2007,  Goedson Teixeira Paixao
+ * Copyright (C) 2007, 2009,  Goedson Teixeira Paixao
  *                
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Sat Dec  1 17:56:41 2007
+ * Modified at:   Mon Jun 15 00:15:07 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -564,7 +564,7 @@ gtt_projects_tree_set_project_data (GttProjectsTree *gpt, GtkTreeStore *tree_mod
 						iter,
 						TITLE_COLUMN, gtt_project_get_title (prj),
 						DESCRIPTION_COLUMN, gtt_project_get_desc (prj),
-						TASK_COLUMN, gtt_task_get_memo (gtt_project_get_first_task (prj)),
+						TASK_COLUMN, gtt_task_get_memo (gtt_project_get_current_task (prj)),
 						SIZING_COLUMN, gtt_project_get_sizing (prj),
 						PERCENT_COLUMN, gtt_project_get_percent_complete (prj),
 						GTT_PROJECT_COLUMN, prj,
