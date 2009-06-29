@@ -1,3 +1,10 @@
+2009-06-29  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* ghtml/C/gtt.scm: Set unlimited guile stack (Fixes #1402562)
+
+	* src/ghtml.c (gtt_ghtml_new): properly initialize guile
+	environment.
+
 2009-05-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/ghtml.c (task_get_blocktime_str_scm): substitute the usage

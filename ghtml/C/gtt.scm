@@ -21,6 +21,7 @@
 ; Various bits of syntactic sugar for showing the current (linked)
 ; project title and other stuff of that sort.
 ;
+(debug-set! stack 0)
 (define (gtt-show-project-title) 
         (gtt-show (gtt-project-title (gtt-linked-project))))
 

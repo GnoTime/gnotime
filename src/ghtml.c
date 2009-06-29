@@ -1715,9 +1715,8 @@ gtt_ghtml_new (void)
 		is_inited = 1;
 		register_procs();
 
-		/* I think I neeed to do this, not sure */
-		scm_init_debug();
-		scm_init_backtrace();
+		/* Initialize guile interpreter */
+		scm_init_guile();
 
 		/* Load predefined scheme forms */
 		scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
