@@ -627,7 +627,10 @@ gtt_post_ctree_config (void)
 	{
 		xpn = gnome_config_get_string(GTT_CONF"/Display/ExpanderState");
 	}
-	gtt_projects_tree_set_expander_state (projects_tree, xpn);
+	if (xpn)
+	{
+		gtt_projects_tree_set_expander_state (projects_tree, xpn);
+	}
 }
 
 /* ======================================================= */

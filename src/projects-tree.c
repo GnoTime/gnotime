@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2007,  Goedson Teixeira Paixao
+ * Copyright (C) 2007, 2009,  Goedson Teixeira Paixao
  *                
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Sat Dec  1 17:56:41 2007
+ * Modified at:   Mon Sep 14 22:12:17 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -1155,6 +1155,7 @@ set_expander_state (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, g
 void
 gtt_projects_tree_set_expander_state (GttProjectsTree *gpt, gchar *states)
 {
+	g_return_if_fail(states != NULL);
 	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (gpt));
 	ExpanderStateHelper esh;
 	int row = 0;

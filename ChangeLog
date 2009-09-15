@@ -1,3 +1,12 @@
+2009-09-14  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c (gtt_projects_tree_set_expander_state):
+	return without any further processing if states is NULL.
+
+	* src/file-io.c (gtt_post_ctree_config): don't call
+	gtt_projects_tree_set_expander_state when the expander state is
+	NULL.
+
 2009-06-29  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* ghtml/C/gtt.scm: Set unlimited guile stack (Fixes #1402562)
