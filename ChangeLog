@@ -1,3 +1,9 @@
+2009-09-17  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/projects-tree.c (gtt_projects_tree_set_visible_columns):
+	Check that the column_references tree is not NULL before calling
+	g_tree_destroy.
+
 2009-09-14  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/projects-tree.c (gtt_projects_tree_set_expander_state):

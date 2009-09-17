@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Mon Sep 14 22:12:17 2009
+ * Modified at:   Thu Sep 17 07:49:03 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -690,7 +690,10 @@ gtt_projects_tree_set_visible_columns (GttProjectsTree *project_tree,
 	GList *p;
 	GttProjectsTreePrivate *priv = GTT_PROJECTS_TREE_GET_PRIVATE (project_tree);
 
-	g_tree_destroy (priv->column_references);
+	if (priv->column_references)
+	{
+		g_tree_destroy (priv->column_references);
+	}
 	priv->column_references = g_tree_new ((GCompareFunc) strcmp);
 
 
