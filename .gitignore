@@ -5,8 +5,12 @@
 Makefile.in
 dbus-glue.h
 INSTALL
+missing
+mkinstalldirs
+po/Makefile.in.in
 Makefile
 config.h
+config.h.in
 config.log
 config.status
 configure
@@ -17,6 +21,8 @@ install-sh
 POTFILES
 stamp-it
 intltool-update.in
+intltool-extract.in
+intltool-merge.in
 stamp-h1
 gnotime.spec
 gnotime.schemas
