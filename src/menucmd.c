@@ -45,6 +45,7 @@ about_box(GtkWidget *w, gpointer data)
 		"Linas Vepstas <linas@linas.org>",
 		"Eckehard Berns <eb@berns.i-s-o.net>",
 		"George Lebl <jirka@5z.com>",
+		"Kip Warner <kip@thevertigo.com>",
 		" ",
 		_("Bug-fixes from:"),
 		"Eric Anderson <eric.anderson@cordata.net>",
