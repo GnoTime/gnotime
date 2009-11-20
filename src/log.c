@@ -16,6 +16,7 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include <glib.h>
 #include <config.h>
 #include <gnome.h>
 #include <stdio.h>
@@ -164,7 +165,14 @@ printf_project(const char *format, GttProject *proj)
 					   (sss / 60) % 60,
 					   sss % 60);
 				break;
-				
+            case 'r':
+			    {
+				GList *tasks = gtt_project_get_tasks(proj);
+				GttTask *tsk = tasks->data;
+				const char * memo = gtt_task_get_memo(tsk);
+				g_string_append(str, memo);
+			    }
+				break;
 			default:
 				g_string_append_c(str, *p);
 				break;
