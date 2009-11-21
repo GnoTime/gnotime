@@ -22,7 +22,7 @@
  * Description:   GnoTime's status icon implementation
  *                
  * Created at:    Fri Oct 12 11:45:39 2007
- * Modified at:   Sun Nov 15 12:25:41 2009
+ * Modified at:   Fri Nov 20 22:01:59 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -62,7 +62,7 @@ static void
 status_icon_popup_menu(GtkStatusIcon *status_icon, guint button, guint activate_time, gpointer user_data)
 {
     GtkWidget *menu = gtk_menu_new ();
-    GtkWidget *menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Hide to Notification Area"));
+    GtkWidget *menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Hide main window"));
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), !GTK_WIDGET_VISIBLE(app_window));
 	g_signal_connect (G_OBJECT (menuitem), "toggled", G_CALLBACK (status_icon_menuitem_visibility), NULL);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
