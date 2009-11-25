@@ -64,6 +64,7 @@ struct gtt_project_s
 	GttProjectStatus status; /* overall project status */
 
 	GList *task_list;      /* annotated chunks of time */
+	GttTask *current_task; /* a pointer to the currently active task */
 
 	/* hack alert -- the project heriarachy should probably be
 	 * reimplemented as a GNode rather than a GList */

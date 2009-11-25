@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Thu Sep 17 07:49:03 2009
+ * Modified at:   Tue Nov 24 23:11:33 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -564,7 +564,7 @@ gtt_projects_tree_set_project_data (GttProjectsTree *gpt, GtkTreeStore *tree_mod
 						iter,
 						TITLE_COLUMN, gtt_project_get_title (prj),
 						DESCRIPTION_COLUMN, gtt_project_get_desc (prj),
-						TASK_COLUMN, gtt_task_get_memo (gtt_project_get_first_task (prj)),
+						TASK_COLUMN, gtt_task_get_memo (gtt_project_get_current_task (prj)),
 						SIZING_COLUMN, gtt_project_get_sizing (prj),
 						PERCENT_COLUMN, gtt_project_get_percent_complete (prj),
 						GTT_PROJECT_COLUMN, prj,

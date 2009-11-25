@@ -39,6 +39,31 @@
 	* src/ghtml.c (gtt_ghtml_new): properly initialize guile
 	environment.
 
+2009-06-14  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* glade/Makefile.am: Removed task_select.glade from the data files
+	list.
+
+	* src/notes-area.c (struct NotesArea_s): Made the task entry a
+	combobox and added an "edit task" button.
+	(new_task_cb): show the task properties dialog when adding new
+	task, so user can edit the task memo.
+	(tasks_model_get_task): utility function to retrieve the task
+	corresponding to a given position in the combobox.
+	(edit_task_cb): added function to handle the Edit Task button
+	(task_selected_cb): added function to handle the selection of a
+	task through the task combobox
+	(notes_area_new): build the dialog structure with the new fields
+	and callbacks
+	(notes_area_choose_task): added function to mark a given task as
+	active in the combobox.
+	(build_task_combo_model): added function to build the combobox
+	model with the list of tasks of a project.
+	(notes_area_do_set_project): populate the combobox with the list
+	of task of the selected project.
+
+	* glade/notes.glade: Made the task entry a combobox.
+
 2009-05-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/ghtml.c (task_get_blocktime_str_scm): substitute the usage

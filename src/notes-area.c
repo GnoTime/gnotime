@@ -17,6 +17,7 @@
  */
 
 #include "config.h"
+#include <glib-object.h>
 
 #include <glade/glade.h>
 #include <gnome.h>
@@ -37,13 +38,14 @@ struct NotesArea_s
 	GtkEntry *proj_title;
 	GtkEntry *proj_desc;
 	GtkTextView *proj_notes;
-	
-	GtkEntry *task_memo;
+
+	GtkComboBox *task_combo;
 	GtkTextView *task_notes;
 
 	GtkButton *close_proj;
 	GtkButton *close_task;
 	GtkButton *new_task;
+	GtkButton *edit_task;
 
 	GttProject *proj;
 
@@ -72,7 +74,7 @@ struct NotesArea_s
 	if (na->ignore_events) return;               \
 	                                             \
 	na->ignore_events = TRUE;                    \
-	tsk = gtt_project_get_first_task (na->proj); \
+	tsk = gtt_project_get_current_task (na->proj); \
 	if (NULL == tsk)                             \
 	{                                            \
 		tsk = gtt_task_new();                     \
@@ -120,7 +122,7 @@ task_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 	}                                     \
 	na->ignore_events = TRUE;             \
 
-	
+
 static void
 proj_title_changed (GtkEntry *entry, NotesArea *na)
 {
@@ -142,6 +144,17 @@ proj_desc_changed (GtkEntry *entry, NotesArea *na)
 	na->ignore_events = FALSE;
 }
 
+/* ============================================================== */
+static GttTask *
+tasks_model_get_task (GtkTreeModel *model, GtkTreeIter *iter)
+{
+
+	GValue v = {G_TYPE_INVALID};
+	gtk_tree_model_get_value (model, iter, 1, &v);
+	GttTask *task = (GttTask *) g_value_get_pointer (&v);
+	g_value_unset (&v);
+	return task;
+}
 
 /* ============================================================== */
 
@@ -157,7 +170,7 @@ proj_notes_changed (GtkTextBuffer *entry, NotesArea *na)
 /* ============================================================== */
 /* This routine will cause pending events to get delivered. */
 
-void 
+void
 gtt_notes_timer_callback (NotesArea *na)
 {
 	if (!na) return;
@@ -188,10 +201,10 @@ close_proj_area (GtkButton *but, NotesArea *na)
 {
 	int hpane_width;
 	int hpane_div;
-	
+
 	hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
 	hpane_div = gtk_paned_get_position (na->hpane);
-	
+
 	if (hpane_div > hpane_width -CLOSED_MARGIN)
 	{
 		int vpane_height;
@@ -209,14 +222,14 @@ close_task_area (GtkButton *but, NotesArea *na)
 {
 	int hpane_width;
 	int hpane_div;
-	
+
 	hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
 	hpane_div = gtk_paned_get_position (na->hpane);
-	
-	/* XXX we really need only the first test, but the second 
-	 * one deals iwth a freaky gtk vpaned bug that makes this 
+
+	/* XXX we really need only the first test, but the second
+	 * one deals iwth a freaky gtk vpaned bug that makes this
 	 * hidden button active.  Whatever.
-	 */ 
+	 */
 	if ((hpane_div < CLOSED_MARGIN) ||
 	    (hpane_div > hpane_width -CLOSED_MARGIN))
 	{
@@ -238,16 +251,62 @@ new_task_cb (GtkButton *but, NotesArea *na)
 	GttTask *tsk;
 	if (NULL == na->proj) return;
 	// if (na->ignore_events) return;
-	
+
 	// na->ignore_events = TRUE;
 	tsk = gtt_task_new();
 	gtt_project_prepend_task (na->proj, tsk);
-	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze); 
+	prop_task_dialog_show (tsk);
+	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze);
 	gtt_task_freeze (tsk);
 	na->task_freeze = tsk;
 
 	// na->ignore_events = FALSE;
 }
+
+/* ============================================================== */
+static void
+edit_task_cb (GtkButton *but, NotesArea *na)
+{
+	if (NULL == na->proj) return;
+	GttTask *tsk = gtt_project_get_current_task (na->proj);
+	prop_task_dialog_show (tsk);
+	if (NULL != na->task_freeze) gtt_task_thaw (na->task_freeze);
+	gtt_task_freeze (tsk);
+	na->task_freeze = tsk;
+}
+
+/* ============================================================== */
+static void
+task_selected_cb (GtkComboBox *combo, gpointer dialog)
+{
+	GtkTreeIter iter;
+	GtkTreeModel *model = gtk_combo_box_get_model (combo);
+	NotesArea *na = (NotesArea *) dialog;
+
+	na->ignore_events = TRUE;
+
+	gtk_combo_box_get_active_iter (combo, &iter);
+	GttTask *task = tasks_model_get_task (model, &iter);
+	GttProject *project = gtt_task_get_parent (task);
+
+	gtt_project_set_current_task (project, task);
+
+	const char *str = gtt_task_get_notes (task);
+	if (!str) str = "";
+	xxxgtk_textview_set_text (na->task_notes, str);
+
+	na->ignore_events = FALSE;
+}
+
+/* ============================================================== */
+
+enum {
+	COL_ID,
+	COL_TASK_MEMO,
+	COL_TASK_POINTER,
+	NUM_COLS
+};
+
 
 /* ============================================================== */
 
@@ -284,24 +343,32 @@ notes_area_new (void)
 	dlg->hpane = GTK_PANED(glade_xml_get_widget (gtxml, "leftright hpane"));
 	dlg->close_proj = GTK_BUTTON(glade_xml_get_widget (gtxml, "close proj button"));
 	dlg->close_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "close diary button"));
-	dlg->new_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "new diary button"));
+	dlg->new_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "new_diary_entry_button"));
+	dlg->edit_task = GTK_BUTTON(glade_xml_get_widget (gtxml, "edit_diary_entry_button"));
 	
 	dlg->proj_title = CONNECT_ENTRY ("proj title entry", proj_title_changed);
 	dlg->proj_desc = CONNECT_ENTRY ("proj desc entry", proj_desc_changed);
-	dlg->task_memo = CONNECT_ENTRY ("diary entry", task_memo_changed);
+	dlg->task_combo = GTK_COMBO_BOX (glade_xml_get_widget (gtxml, "diary_entry_combo"));
+
+	gtk_combo_box_set_model (dlg->task_combo, NULL);
 
 	dlg->proj_notes = CONNECT_TEXT ("proj notes textview", proj_notes_changed);
 	dlg->task_notes = CONNECT_TEXT ("diary notes textview", task_notes_changed);
-	
 
 	g_signal_connect (G_OBJECT (dlg->close_proj), "clicked",
-	                G_CALLBACK (close_proj_area), dlg);
+					  G_CALLBACK (close_proj_area), dlg);
 
 	g_signal_connect (G_OBJECT (dlg->close_task), "clicked",
-	                G_CALLBACK (close_task_area), dlg);
+					  G_CALLBACK (close_task_area), dlg);
 
 	g_signal_connect (G_OBJECT (dlg->new_task), "clicked",
-	                G_CALLBACK (new_task_cb), dlg);
+					  G_CALLBACK (new_task_cb), dlg);
+
+	g_signal_connect (G_OBJECT (dlg->edit_task), "clicked",
+					  G_CALLBACK (edit_task_cb), dlg);
+
+	g_signal_connect (G_OBJECT (dlg->task_combo), "changed",
+					  G_CALLBACK(task_selected_cb), dlg);
 
 	gtk_widget_show (GTK_WIDGET(dlg->vpane));
 
@@ -313,17 +380,74 @@ notes_area_new (void)
 	return dlg;
 }
 
+
+static void
+notes_area_choose_task (NotesArea *na, GttTask *task)
+{
+
+	GtkTreeIter iter;
+	GtkTreeModel *model = gtk_combo_box_get_model (na->task_combo);
+
+	if (gtk_tree_model_get_iter_first (model, &iter))
+	{
+		do
+		{
+			GttTask *t = tasks_model_get_task (model, &iter);
+
+			if (task == t)
+			{
+				gtk_combo_box_set_active_iter (na->task_combo, &iter);
+				break;
+			}
+		} while (gtk_tree_model_iter_next (model, &iter));
+	}
+	else
+	{
+		g_warning ("Trying to select task with empty tree model\n");
+	}
+}
+
 /* ============================================================== */
-/* This routine copies data from the data engine, and pushes it 
- * into the GUI.  
- */ 
+void
+combo_model_add_task (gpointer task_p, gpointer model_p)
+{
+	GttTask *task = (GttTask *) task_p;
+	GtkListStore *model = GTK_LIST_STORE (model_p);
+	GtkTreeIter iter;
+
+	gtk_list_store_append (model, &iter);
+
+	gtk_list_store_set (model, &iter,
+						0, gtt_task_get_memo (task),
+						1, task,
+						-1);
+}
+
+/* ============================================================== */
+static GtkTreeModel *
+build_task_combo_model (GttProject *proj)
+{
+	GtkTreeModel *model = GTK_TREE_MODEL (gtk_list_store_new (2,
+															  G_TYPE_STRING,
+															  G_TYPE_POINTER));
+
+	g_list_foreach(gtt_project_get_tasks (proj),
+				   combo_model_add_task,
+				   model);
+	return model;
+}
+
+/* ============================================================== */
+/* This routine copies data from the data engine, and pushes it
+ * into the GUI.
+ */
 
 static void
 notes_area_do_set_project (NotesArea *na, GttProject *proj)
 {
 	const char * str;
 	GttTask *tsk;
-	
+
 	if (!na) return;
 	if (na->ignore_events) return;
 
@@ -332,17 +456,17 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	 * bug.  So we work around the bug and save cpu time by ignoring
 	 * change events during a mass update. */
 	na->ignore_events = TRUE;
-	
+
 	/* Note Bene its OK to have the proj be null: this has the
 	 * effect of clearing all the fields out.
 	 */
 	na->proj = proj;
-	
+
 	/* Fetch data from the data engine, stuff it into the GUI. */
 	str = gtt_project_get_title (proj);
 	if (!str) str = "";
 	gtk_entry_set_text (na->proj_title, str);
-	
+
 	str = gtt_project_get_desc (proj);
 	if (!str) str = "";
 	gtk_entry_set_text (na->proj_desc, str);
@@ -351,14 +475,15 @@ notes_area_do_set_project (NotesArea *na, GttProject *proj)
 	if (!str) str = "";
 	xxxgtk_textview_set_text (na->proj_notes, str);
 
-	tsk = gtt_project_get_first_task (proj);
-	str = gtt_task_get_memo (tsk);
-	if (!str) str = "";
-	gtk_entry_set_text (na->task_memo, str);
-	
-	str = gtt_task_get_notes (tsk);
-	if (!str) str = "";
-	xxxgtk_textview_set_text (na->task_notes, str);
+	GtkTreeModel *model = build_task_combo_model (proj);
+	gtk_combo_box_set_model (na->task_combo, model);
+	g_object_unref (model);
+
+	tsk = gtt_project_get_current_task (proj);
+	if (tsk == NULL)
+		tsk = gtt_project_get_first_task (proj);
+
+	notes_area_choose_task (na, tsk);
 
 	na->ignore_events = FALSE;
 }
