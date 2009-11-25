@@ -1,3 +1,9 @@
+2009-11-24  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/proj.c (gtt_project_get_secs_current): return the time for
+	the currently selected diary entry instead of the head of the task
+	list.
+
 2009-11-20  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/status-icon.c (status_icon_popup_menu): Change the hide

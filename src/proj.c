@@ -1244,7 +1244,7 @@ gtt_project_get_secs_current (GttProject *proj)
 	GttTask *tsk;
 	if (!proj) return 0;
 	if (!proj->task_list) return 0;
-	tsk = proj->task_list->data;
+	tsk = gtt_project_get_current_task (proj);
 
 	return gtt_task_get_secs_ever(tsk);
 }
