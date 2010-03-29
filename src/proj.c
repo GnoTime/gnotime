@@ -962,6 +962,7 @@ gtt_project_prepend_task (GttProject *proj, GttTask *task)
 	}
 
 	proj->task_list = g_list_prepend (proj->task_list, task);
+	proj->current_task = task;
 	task->parent = proj;
 
 	if (is_running) gtt_project_timer_start (proj);
@@ -997,6 +998,30 @@ gtt_project_get_first_task (GttProject *proj)
 	if (!proj) return NULL;
 	if (!proj->task_list) return NULL;
 	return (proj->task_list->data);
+}
+
+GttTask *
+gtt_project_get_current_task (GttProject *proj)
+{
+	if (!proj) return NULL;
+	if (!proj->current_task)
+		return gtt_project_get_first_task(proj);
+
+	return (proj->current_task);
+}
+
+void
+gtt_project_set_current_task (GttProject *proj, GttTask *newCurrentTask)
+{
+	int is_running = 0;
+
+	if (!proj || !newCurrentTask) return;
+
+	if (proj->current_task)
+		is_running = task_suspend(proj->current_task);
+	proj->current_task = newCurrentTask;
+	if (is_running) gtt_project_timer_start(proj);
+	proj_refresh_time(proj);
 }
 
 GttInterval *
@@ -1219,7 +1244,7 @@ gtt_project_get_secs_current (GttProject *proj)
 	GttTask *tsk;
 	if (!proj) return 0;
 	if (!proj->task_list) return 0;
-	tsk = proj->task_list->data;
+	tsk = gtt_project_get_current_task (proj);
 
 	return gtt_task_get_secs_ever(tsk);
 }
@@ -1791,17 +1816,28 @@ gtt_project_timer_start (GttProject *proj)
 
 	if (!proj) return;
 
-	/* By definition, the current task is the one at the head
-	 * of the list, and the current interval is  at the head
+	/* By definition, the current task is not anymore the one at the head
+	 * of the list, but rather the one denoted by GttProject->current_task
+	 * and the current interval is  at the head
 	 * of the task */
 	if (NULL == proj->task_list)
 	{
 		task = gtt_task_new();
 		gtt_task_set_memo (task, _("New Diary Entry"));
+		proj->current_task = task;
 	}
 	else
 	{
-		task = proj->task_list->data;
+        if(NULL == proj->current_task)
+        {
+        	task = proj->task_list->data;
+        	proj->current_task = task;
+        }
+        else
+        {
+        	task = proj->current_task;
+		}
+
 		g_return_if_fail (task);
 	}
 
@@ -1849,11 +1885,13 @@ gtt_project_timer_update (GttProject *proj)
 
 	if (!proj) return;
 	g_return_if_fail (proj->task_list);
+	g_return_if_fail (proj->current_task);
 
-	/* by definition, the current task is the one at the head
-	 * of the list, and the current interval is at the head
+	/* By definition, the current task is not anymore the one at the head
+	 * of the list, but rather the one denoted by GttProject->current_task
+	 * and the current interval is  at the head
 	 * of the task */
-	task = proj->task_list->data;
+	task = proj->current_task;
 	g_return_if_fail (task);
 
 	/* Its possible that there are no intervals (which implies
@@ -1890,12 +1928,12 @@ gtt_project_timer_stop (GttProject *proj)
 	GttInterval *ival;
 
 	if (!proj) return;
-	if (!proj->task_list) return;
+	if (!proj->current_task) return;
 
 	gtt_project_timer_update (proj);
 
 	/* Also note that the timer really has stopped. */
-	task = proj->task_list->data;
+	task = proj->current_task;
 	g_return_if_fail (task);
 
 	/* its 'legal' to have no intervals, which implies
@@ -2103,12 +2141,16 @@ gtt_task_remove (GttTask *task)
 
 	is_running = task_suspend (task);
 
-	if (task->parent)
+	GttProject *project = task->parent;
+
+	if (project)
 	{
-		task->parent->task_list =
-			g_list_remove (task->parent->task_list, task);
-		if (is_running) gtt_project_timer_start (task->parent);
-		proj_refresh_time (task->parent);
+		project->task_list =
+			g_list_remove (project->task_list, task);
+		gtt_project_set_current_task(project,
+				gtt_project_get_first_task(project));
+		if (is_running) gtt_project_timer_start (project);
+		proj_refresh_time (project);
 		task->parent = NULL;
 	}
 }
@@ -2166,6 +2208,7 @@ gtt_task_new_insert (GttTask *old)
 
 	idx = g_list_index (prj->task_list, old);
 	prj->task_list = g_list_insert (prj->task_list, task, idx);
+	prj->current_task = task;
 
 	if (is_running) gtt_project_timer_start (prj);
 	proj_refresh_time (prj);

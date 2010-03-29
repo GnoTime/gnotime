@@ -90,7 +90,7 @@ AC_SUBST(LIBGNOME_LIBS)
 dnl *****************************************
 dnl Check for libgnomeui
 dnl *****************************************
-PKG_CHECK_MODULES(GNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
 AC_SUBST(LIBGNOMEUI_CFLAGS)
 AC_SUBST(LIBGNOMEUI_LIBS)
 

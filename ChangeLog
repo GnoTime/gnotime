@@ -1,3 +1,38 @@
+2010-01-23  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* website/example-invoice.html: Applied patch #2937959, fixing a
+	typo in the report. Thanks Christos Kontas for the patch.
+
+2010-01-04  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/ghtml.c: Added missing include of math.h for functions
+	lround and round.
+
+2009-11-24  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/proj.c (gtt_project_get_secs_current): return the time for
+	the currently selected diary entry instead of the head of the task
+	list.
+
+2009-11-20  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/status-icon.c (status_icon_popup_menu): Change the hide
+	window menu text.
+
+	* src/log.c (printf_project): Added option to log the current
+	diary entry (Patch #1984744). Thanks Matt Simmons for the patch.
+
+2009-11-19  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* configure.in: Fix LIBGNOMEUI related variable substitution. Make
+	it buildable with recent versions of libgnomeui.
+
+2009-11-15  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/status-icon.c, src/menucmd.c: Add ability to hide main
+	window by right clicking the status icon. Thanks Kip Warner for
+	the patch.
+
 2009-09-17  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/projects-tree.c (gtt_projects_tree_set_visible_columns):
@@ -19,6 +54,31 @@
 
 	* src/ghtml.c (gtt_ghtml_new): properly initialize guile
 	environment.
+
+2009-06-14  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* glade/Makefile.am: Removed task_select.glade from the data files
+	list.
+
+	* src/notes-area.c (struct NotesArea_s): Made the task entry a
+	combobox and added an "edit task" button.
+	(new_task_cb): show the task properties dialog when adding new
+	task, so user can edit the task memo.
+	(tasks_model_get_task): utility function to retrieve the task
+	corresponding to a given position in the combobox.
+	(edit_task_cb): added function to handle the Edit Task button
+	(task_selected_cb): added function to handle the selection of a
+	task through the task combobox
+	(notes_area_new): build the dialog structure with the new fields
+	and callbacks
+	(notes_area_choose_task): added function to mark a given task as
+	active in the combobox.
+	(build_task_combo_model): added function to build the combobox
+	model with the list of tasks of a project.
+	(notes_area_do_set_project): populate the combobox with the list
+	of task of the selected project.
+
+	* glade/notes.glade: Made the task entry a combobox.
 
 2009-05-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
