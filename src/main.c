@@ -22,6 +22,7 @@
 #include <errno.h>
 #include <gconf/gconf.h>
 #include <glade/glade.h>
+#include <gio/gio.h>
 #include <gnome.h>
 #include <libgnomeui/gnome-window-icon.h>
 #include <libgnomevfs/gnome-vfs.h>
@@ -296,6 +297,37 @@ resolve_path (const char * pathfrag)
 	return fullpath;
 }
 
+
+static GFile *
+choose_backup_file (char *data_filepath) {
+	GFile *result = NULL;
+
+	GtkWidget * dialog = gtk_file_chooser_dialog_new ("Choose a backup file",
+											NULL,
+											GTK_FILE_CHOOSER_ACTION_OPEN,
+											GTK_STOCK_OPEN,
+											GTK_RESPONSE_ACCEPT,
+											GTK_STOCK_CANCEL,
+											GTK_RESPONSE_REJECT,
+											NULL);
+
+	GFile *data_file = g_file_new_for_path (data_filepath);
+	GFile *data_directory = g_file_get_parent (data_file);
+	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(dialog), g_file_get_path (data_directory));
+	g_object_unref (data_file);
+	g_object_unref (data_directory);
+	gint dialog_response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+	switch (dialog_response) {
+	case GTK_RESPONSE_ACCEPT:
+		result = gtk_file_chooser_get_file (GTK_FILE_CHOOSER(dialog));
+		break;
+	}
+	gtk_widget_destroy (dialog);
+	return result;
+}
+
+// TODO Refactor read_data so the user interaction is done outside the function
 void
 read_data(gboolean reloading) {
 	GttErrCode xml_errcode;
@@ -352,21 +384,58 @@ read_data(gboolean reloading) {
 	/* Else handle an error. */
 	errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
 	qmsg = g_strconcat (errmsg,
-			_("Do you want to continue?"),
+			_("What do you wnat to do?"),
 			NULL);
+
+// Try to list backup data files
 
 	GtkWidget *mb;
 	mb = gtk_message_dialog_new (NULL,
 	         GTK_DIALOG_MODAL,
 	         GTK_MESSAGE_ERROR,
-	         GTK_BUTTONS_YES_NO,
+	         GTK_BUTTONS_NONE,
 	         qmsg);
 	g_signal_connect (G_OBJECT(mb), "response",
 	         G_CALLBACK (read_data_err_run_or_abort),
 	         NULL);
-	gtk_widget_show (mb);
+	gtk_dialog_add_buttons (GTK_DIALOG(mb),
+							_("Create a new file"),
+							GTK_RESPONSE_YES,
+							_("Load a backup"),
+							GTK_RESPONSE_NO,
+							_("Quit"),
+							GTK_RESPONSE_CANCEL,
+							NULL);
+
+	gint response = gtk_dialog_run (GTK_DIALOG(mb));
+	gtk_widget_destroy (mb);
 	g_free (qmsg);
 	g_free (errmsg);
+	GFile *backup_file = NULL;
+	GError *error = NULL;
+	gboolean copy_success = FALSE;
+	switch (response) {
+	case GTK_RESPONSE_YES:
+		break;
+
+	case GTK_RESPONSE_NO:
+		backup_file = choose_backup_file (xml_filepath);
+		if (backup_file != NULL) {
+			copy_success = g_file_copy(backup_file, g_file_new_for_path(xml_filepath), G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &error);
+			if (copy_success) {
+				gtt_xml_read_file (xml_filepath);
+				post_read_data ();
+			} else {
+				// TODO Display error message 
+			}
+		} else {
+			exit(1);
+		}
+		break;
+	case GTK_RESPONSE_CANCEL:
+		exit(1);
+		break;
+	}
 }
 
 
