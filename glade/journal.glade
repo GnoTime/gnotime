@@ -40,7 +40,7 @@
 	      <child>
 		<widget class="button" id="publish">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">New File</property>
+		  <property name="tooltip" translatable="yes">Publish</property>
 		  <property name="label" translatable="yes">Publish</property>
 		  <property name="use_underline">True</property>
 		  <property name="stock_pixmap">gtk-print</property>
@@ -51,7 +51,7 @@
 	      <child>
 		<widget class="button" id="save">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Open File</property>
+		  <property name="tooltip" translatable="yes">Save</property>
 		  <property name="label" translatable="yes">Save</property>
 		  <property name="use_underline">True</property>
 		  <property name="stock_pixmap">gtk-save</property>
@@ -72,7 +72,7 @@
 	      <child>
 		<widget class="button" id="quit">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Save File</property>
+		  <property name="tooltip" translatable="yes">Close</property>
 		  <property name="label" translatable="yes">Close</property>
 		  <property name="use_underline">True</property>
 		  <property name="stock_pixmap">gtk-close</property>
