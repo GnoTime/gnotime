@@ -1,3 +1,15 @@
+2010-10-12  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (try_restoring_backup): do the interaction with the
+	user for backup restoring outside of the read_data function.
+
+2010-05-05  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (choose_backup_file): Added function to choose one of
+	the backups to load.
+	(read_data): Offer the user a chance to load a previous backup
+	when reading the data file fails.
+
 2010-01-04  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/ghtml.c: Added missing include of math.h for functions

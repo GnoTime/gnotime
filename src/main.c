@@ -1,6 +1,7 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2010 Goedson Teixeira Paixao <goedson@debian.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -327,13 +328,67 @@ choose_backup_file (char *data_filepath) {
 	return result;
 }
 
-// TODO Refactor read_data so the user interaction is done outside the function
+
+static gboolean
+try_restoring_backup (char *xml_filepath) {
+
+	GtkWidget *mb;
+
+	// TODO Create message to be presented to user
+
+	mb = gtk_message_dialog_new (NULL,
+								 GTK_DIALOG_MODAL,
+								 GTK_MESSAGE_ERROR,
+								 GTK_BUTTONS_NONE,
+								 qmsg);
+	g_signal_connect (G_OBJECT(mb), "response",
+					  G_CALLBACK (read_data_err_run_or_abort),
+					  NULL);
+	gtk_dialog_add_buttons (GTK_DIALOG(mb),
+							_("Create a new file"),
+							GTK_RESPONSE_YES,
+							_("Load a backup"),
+							GTK_RESPONSE_NO,
+							_("Quit"),
+							GTK_RESPONSE_CANCEL,
+							NULL);
+	
+	gint response = gtk_dialog_run (GTK_DIALOG(mb));
+	gtk_widget_destroy (mb);
+	g_free (qmsg);
+	g_free (errmsg);
+	GFile *backup_file = NULL;
+	GError *error = NULL;
+	gboolean copy_success = FALSE;
+	switch (response) {
+	case GTK_RESPONSE_YES:
+		return FALSE;
+
+	case GTK_RESPONSE_NO:
+		backup_file = choose_backup_file (xml_filepath);
+		if (backup_file != NULL) {
+			copy_success = g_file_copy(backup_file, g_file_new_for_path(xml_filepath), G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &error);
+			if (copy_success) {
+				return TRUE;
+			} else {
+				// TODO Display error message 
+			}
+		} else {
+			exit(1);
+		}
+		break;
+	case GTK_RESPONSE_CANCEL:
+		exit(1);
+		break;
+	}
+}
+
 void
 read_data(gboolean reloading) {
 	GttErrCode xml_errcode;
 	char * xml_filepath;
-	gboolean read_is_ok;
 	char *errmsg, *qmsg;
+	GError *error = NULL;
 
   if (reloading) {
       notes_area_set_project(global_na, NULL);
@@ -342,6 +397,27 @@ read_data(gboolean reloading) {
   }
 
 	xml_filepath = resolve_old_path (config_data_url);
+
+	while (!read_data_file (xml_filepath, &error)) {
+		if (error != NULL) {
+			if (!try_restoring_backup (xml_filepath)) {
+				break;
+			}
+		}
+	}
+
+	post_read_data ();
+	g_free (xml_filepath);
+	return;
+}
+
+// TODO Refactor read_data so the user interaction is done outside the function
+static gboolean
+read_data_file(char *xml_filepath, GError **error) {
+	GttErrCode xml_errcode;
+	gboolean read_is_ok;
+	char *errmsg, *qmsg;
+
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_read_file (xml_filepath);
@@ -378,64 +454,9 @@ read_data(gboolean reloading) {
 	{
 		post_read_data ();
 		g_free (xml_filepath);
-		return;
+		return TRUE;
 	}
-
-	/* Else handle an error. */
-	errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
-	qmsg = g_strconcat (errmsg,
-			_("What do you wnat to do?"),
-			NULL);
-
-// Try to list backup data files
-
-	GtkWidget *mb;
-	mb = gtk_message_dialog_new (NULL,
-	         GTK_DIALOG_MODAL,
-	         GTK_MESSAGE_ERROR,
-	         GTK_BUTTONS_NONE,
-	         qmsg);
-	g_signal_connect (G_OBJECT(mb), "response",
-	         G_CALLBACK (read_data_err_run_or_abort),
-	         NULL);
-	gtk_dialog_add_buttons (GTK_DIALOG(mb),
-							_("Create a new file"),
-							GTK_RESPONSE_YES,
-							_("Load a backup"),
-							GTK_RESPONSE_NO,
-							_("Quit"),
-							GTK_RESPONSE_CANCEL,
-							NULL);
-
-	gint response = gtk_dialog_run (GTK_DIALOG(mb));
-	gtk_widget_destroy (mb);
-	g_free (qmsg);
-	g_free (errmsg);
-	GFile *backup_file = NULL;
-	GError *error = NULL;
-	gboolean copy_success = FALSE;
-	switch (response) {
-	case GTK_RESPONSE_YES:
-		break;
-
-	case GTK_RESPONSE_NO:
-		backup_file = choose_backup_file (xml_filepath);
-		if (backup_file != NULL) {
-			copy_success = g_file_copy(backup_file, g_file_new_for_path(xml_filepath), G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &error);
-			if (copy_success) {
-				gtt_xml_read_file (xml_filepath);
-				post_read_data ();
-			} else {
-				// TODO Display error message 
-			}
-		} else {
-			exit(1);
-		}
-		break;
-	case GTK_RESPONSE_CANCEL:
-		exit(1);
-		break;
-	}
+	return FALSE;
 }
 
 
