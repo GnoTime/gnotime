@@ -381,34 +381,6 @@ try_restoring_backup (char *xml_filepath) {
 	return FALSE;
 }
 
-void
-read_data(gboolean reloading) {
-	GttErrCode xml_errcode;
-	char * xml_filepath;
-	char *errmsg, *qmsg;
-	GError *error = NULL;
-
-  if (reloading) {
-      notes_area_set_project(global_na, NULL);
-      gtt_project_list_destroy(master_list);
-      master_list = gtt_project_list_new();
-  }
-
-	xml_filepath = resolve_old_path (config_data_url);
-
-	while (!read_data_file (xml_filepath, &error)) {
-		if (error != NULL) {
-			if (!try_restoring_backup (xml_filepath)) {
-				break;
-			}
-		}
-	}
-
-	post_read_data ();
-	g_free (xml_filepath);
-	return;
-}
-
 // TODO Refactor read_data so the user interaction is done outside the function
 static gboolean
 read_data_file(char *xml_filepath, GError **error) {
@@ -452,10 +424,37 @@ read_data_file(char *xml_filepath, GError **error) {
 		post_read_data ();
 		g_free (xml_filepath);
 		return TRUE;
+	} else {
+		*error = g_error_new (g_quark_from_string ("gtt"), GTT_CANT_OPEN_FILE, "Could not read data file \"%s\"", xml_filepath);
 	}
 	return FALSE;
 }
 
+void
+read_data(gboolean reloading) {
+	char * xml_filepath;
+	GError *error = NULL;
+
+  if (reloading) {
+      notes_area_set_project(global_na, NULL);
+      gtt_project_list_destroy(master_list);
+      master_list = gtt_project_list_new();
+  }
+
+	xml_filepath = resolve_old_path (config_data_url);
+
+	while (!read_data_file (xml_filepath, &error)) {
+		if (error != NULL) {
+			if (!try_restoring_backup (xml_filepath)) {
+				break;
+			}
+		}
+	}
+
+	post_read_data ();
+	g_free (xml_filepath);
+	return;
+}
 
 static void
 post_read_config(void)
