@@ -334,16 +334,13 @@ try_restoring_backup (char *xml_filepath) {
 
 	GtkWidget *mb;
 
-	// TODO Create message to be presented to user
+	gchar * qmsg = g_strdup_printf("It was not possible to load the data file \"%s\". What do you want to do?", xml_filepath);
 
 	mb = gtk_message_dialog_new (NULL,
 								 GTK_DIALOG_MODAL,
 								 GTK_MESSAGE_ERROR,
 								 GTK_BUTTONS_NONE,
 								 qmsg);
-	g_signal_connect (G_OBJECT(mb), "response",
-					  G_CALLBACK (read_data_err_run_or_abort),
-					  NULL);
 	gtk_dialog_add_buttons (GTK_DIALOG(mb),
 							_("Create a new file"),
 							GTK_RESPONSE_YES,
@@ -356,7 +353,6 @@ try_restoring_backup (char *xml_filepath) {
 	gint response = gtk_dialog_run (GTK_DIALOG(mb));
 	gtk_widget_destroy (mb);
 	g_free (qmsg);
-	g_free (errmsg);
 	GFile *backup_file = NULL;
 	GError *error = NULL;
 	gboolean copy_success = FALSE;
@@ -376,11 +372,13 @@ try_restoring_backup (char *xml_filepath) {
 		} else {
 			exit(1);
 		}
+		return TRUE;
 		break;
 	case GTK_RESPONSE_CANCEL:
 		exit(1);
 		break;
 	}
+	return FALSE;
 }
 
 void
@@ -416,7 +414,6 @@ static gboolean
 read_data_file(char *xml_filepath, GError **error) {
 	GttErrCode xml_errcode;
 	gboolean read_is_ok;
-	char *errmsg, *qmsg;
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
