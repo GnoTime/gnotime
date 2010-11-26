@@ -1,3 +1,8 @@
+2010-11-25  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (try_restoring_backup): Display error message when
+	it's not possible to copy backup file.
+
 2010-10-12  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/main.c (try_restoring_backup): do the interaction with the

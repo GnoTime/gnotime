@@ -367,7 +367,13 @@ try_restoring_backup (char *xml_filepath) {
 			if (copy_success) {
 				return TRUE;
 			} else {
-				// TODO Display error message 
+                // TODO Display error message
+				mb = gtk_message_dialog_new (NULL,
+											 GTK_DIALOG_MODAL,
+											 GTK_MESSAGE_ERROR,
+											 GTK_BUTTONS_OK,
+											 _("Could not copy backup file."));
+				gtk_dialog_run (GTK_DIALOG(mb));
 			}
 		} else {
 			exit(1);
