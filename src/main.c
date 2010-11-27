@@ -330,9 +330,39 @@ choose_backup_file (char *data_filepath) {
 
 
 static gboolean
+backups_exist (const char *xml_filepath)
+{
+	GFile *data_file = g_file_new_for_path (xml_filepath);
+	GFile *data_dir_file = g_file_get_parent (data_file);
+	char *data_dir_path = g_file_get_path (data_dir_file);
+	char *data_file_name = g_file_get_basename (data_file);
+	GDir *data_dir = g_dir_open (data_dir_path, 0, NULL);
+	gboolean result = FALSE;
+
+	const gchar *file_name = NULL;
+	while ((file_name = g_dir_read_name (data_dir)) != NULL)
+	{
+		if (strcmp(data_file_name, file_name) != 0) {
+			result = TRUE;
+			break;
+		}
+	}
+
+	g_object_unref (data_file);
+	g_object_unref (data_dir_file);
+	g_object_unref (data_dir);
+	g_free (data_dir_path);
+	g_free (data_file_name);
+	return result;
+
+}
+
+
+static gboolean
 try_restoring_backup (char *xml_filepath) {
 
 	GtkWidget *mb;
+	gboolean have_backups = backups_exist (xml_filepath);
 
 	gchar * qmsg = g_strdup_printf("It was not possible to load the data file \"%s\". What do you want to do?", xml_filepath);
 
@@ -341,14 +371,20 @@ try_restoring_backup (char *xml_filepath) {
 								 GTK_MESSAGE_ERROR,
 								 GTK_BUTTONS_NONE,
 								 qmsg);
-	gtk_dialog_add_buttons (GTK_DIALOG(mb),
-							_("Create a new file"),
-							GTK_RESPONSE_YES,
-							_("Load a backup"),
-							GTK_RESPONSE_NO,
-							_("Quit"),
-							GTK_RESPONSE_CANCEL,
-							NULL);
+
+	gtk_dialog_add_button (GTK_DIALOG(mb),
+						   _("Create a new file"),
+						   GTK_RESPONSE_YES);
+
+	if (have_backups) {
+		gtk_dialog_add_button (GTK_DIALOG(mb),
+							   _("Load a backup"),
+							   GTK_RESPONSE_NO);
+	}
+
+	gtk_dialog_add_button (GTK_DIALOG(mb),
+						   _("Quit"),
+						   GTK_RESPONSE_CANCEL);
 	
 	gint response = gtk_dialog_run (GTK_DIALOG(mb));
 	gtk_widget_destroy (mb);
@@ -387,7 +423,6 @@ try_restoring_backup (char *xml_filepath) {
 	return FALSE;
 }
 
-// TODO Refactor read_data so the user interaction is done outside the function
 static gboolean
 read_data_file(char *xml_filepath, GError **error) {
 	GttErrCode xml_errcode;

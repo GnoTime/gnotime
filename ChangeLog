@@ -1,3 +1,10 @@
+2010-11-27  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/main.c (backups_exist): Added function to check if there are
+	backup files in the data directory.
+	(try_restoring_backup): check if there are backups in the data dir
+	before offering to load a backup file.
+
 2010-11-25  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/main.c (try_restoring_backup): Display error message when
