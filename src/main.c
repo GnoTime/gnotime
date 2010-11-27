@@ -1,6 +1,7 @@
 /*   GTimeTracker - a time tracker
  *   Copyright (C) 1997,98 Eckehard Berns
  *   Copyright (C) 2001 Linas Vepstas <linas@linas.org>
+ *   Copyright (C) 2010 Goedson Teixeira Paixao <goedson@debian.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,6 +23,7 @@
 #include <errno.h>
 #include <gconf/gconf.h>
 #include <glade/glade.h>
+#include <gio/gio.h>
 #include <gnome.h>
 #include <libgnomeui/gnome-window-icon.h>
 #include <libgnomevfs/gnome-vfs.h>
@@ -296,20 +298,136 @@ resolve_path (const char * pathfrag)
 	return fullpath;
 }
 
-void
-read_data(gboolean reloading) {
+
+static GFile *
+choose_backup_file (char *data_filepath) {
+	GFile *result = NULL;
+
+	GtkWidget * dialog = gtk_file_chooser_dialog_new ("Choose a backup file",
+											NULL,
+											GTK_FILE_CHOOSER_ACTION_OPEN,
+											GTK_STOCK_OPEN,
+											GTK_RESPONSE_ACCEPT,
+											GTK_STOCK_CANCEL,
+											GTK_RESPONSE_REJECT,
+											NULL);
+
+	GFile *data_file = g_file_new_for_path (data_filepath);
+	GFile *data_directory = g_file_get_parent (data_file);
+	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(dialog), g_file_get_path (data_directory));
+	g_object_unref (data_file);
+	g_object_unref (data_directory);
+	gint dialog_response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+	switch (dialog_response) {
+	case GTK_RESPONSE_ACCEPT:
+		result = gtk_file_chooser_get_file (GTK_FILE_CHOOSER(dialog));
+		break;
+	}
+	gtk_widget_destroy (dialog);
+	return result;
+}
+
+
+static gboolean
+backups_exist (const char *xml_filepath)
+{
+	GFile *data_file = g_file_new_for_path (xml_filepath);
+	GFile *data_dir_file = g_file_get_parent (data_file);
+	char *data_dir_path = g_file_get_path (data_dir_file);
+	char *data_file_name = g_file_get_basename (data_file);
+	GDir *data_dir = g_dir_open (data_dir_path, 0, NULL);
+	gboolean result = FALSE;
+
+	const gchar *file_name = NULL;
+	while ((file_name = g_dir_read_name (data_dir)) != NULL)
+	{
+		if (strcmp(data_file_name, file_name) != 0) {
+			result = TRUE;
+			break;
+		}
+	}
+
+	g_object_unref (data_file);
+	g_object_unref (data_dir_file);
+	g_object_unref (data_dir);
+	g_free (data_dir_path);
+	g_free (data_file_name);
+	return result;
+
+}
+
+
+static gboolean
+try_restoring_backup (char *xml_filepath) {
+
+	GtkWidget *mb;
+	gboolean have_backups = backups_exist (xml_filepath);
+
+	gchar * qmsg = g_strdup_printf("It was not possible to load the data file \"%s\". What do you want to do?", xml_filepath);
+
+	mb = gtk_message_dialog_new (NULL,
+								 GTK_DIALOG_MODAL,
+								 GTK_MESSAGE_ERROR,
+								 GTK_BUTTONS_NONE,
+								 qmsg);
+
+	gtk_dialog_add_button (GTK_DIALOG(mb),
+						   _("Create a new file"),
+						   GTK_RESPONSE_YES);
+
+	if (have_backups) {
+		gtk_dialog_add_button (GTK_DIALOG(mb),
+							   _("Load a backup"),
+							   GTK_RESPONSE_NO);
+	}
+
+	gtk_dialog_add_button (GTK_DIALOG(mb),
+						   _("Quit"),
+						   GTK_RESPONSE_CANCEL);
+	
+	gint response = gtk_dialog_run (GTK_DIALOG(mb));
+	gtk_widget_destroy (mb);
+	g_free (qmsg);
+	GFile *backup_file = NULL;
+	GError *error = NULL;
+	gboolean copy_success = FALSE;
+	switch (response) {
+	case GTK_RESPONSE_YES:
+		return FALSE;
+
+	case GTK_RESPONSE_NO:
+		backup_file = choose_backup_file (xml_filepath);
+		if (backup_file != NULL) {
+			copy_success = g_file_copy(backup_file, g_file_new_for_path(xml_filepath), G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &error);
+			if (copy_success) {
+				return TRUE;
+			} else {
+                // TODO Display error message
+				mb = gtk_message_dialog_new (NULL,
+											 GTK_DIALOG_MODAL,
+											 GTK_MESSAGE_ERROR,
+											 GTK_BUTTONS_OK,
+											 _("Could not copy backup file."));
+				gtk_dialog_run (GTK_DIALOG(mb));
+			}
+		} else {
+			exit(1);
+		}
+		return TRUE;
+		break;
+	case GTK_RESPONSE_CANCEL:
+		exit(1);
+		break;
+	}
+	return FALSE;
+}
+
+static gboolean
+read_data_file(char *xml_filepath, GError **error) {
 	GttErrCode xml_errcode;
-	char * xml_filepath;
 	gboolean read_is_ok;
-	char *errmsg, *qmsg;
 
-  if (reloading) {
-      notes_area_set_project(global_na, NULL);
-      gtt_project_list_destroy(master_list);
-      master_list = gtt_project_list_new();
-  }
-
-	xml_filepath = resolve_old_path (config_data_url);
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
 	gtt_xml_read_file (xml_filepath);
@@ -346,29 +464,38 @@ read_data(gboolean reloading) {
 	{
 		post_read_data ();
 		g_free (xml_filepath);
-		return;
+		return TRUE;
+	} else {
+		*error = g_error_new (g_quark_from_string ("gtt"), GTT_CANT_OPEN_FILE, "Could not read data file \"%s\"", xml_filepath);
 	}
-
-	/* Else handle an error. */
-	errmsg = gtt_err_to_string (xml_errcode, xml_filepath);
-	qmsg = g_strconcat (errmsg,
-			_("Do you want to continue?"),
-			NULL);
-
-	GtkWidget *mb;
-	mb = gtk_message_dialog_new (NULL,
-	         GTK_DIALOG_MODAL,
-	         GTK_MESSAGE_ERROR,
-	         GTK_BUTTONS_YES_NO,
-	         qmsg);
-	g_signal_connect (G_OBJECT(mb), "response",
-	         G_CALLBACK (read_data_err_run_or_abort),
-	         NULL);
-	gtk_widget_show (mb);
-	g_free (qmsg);
-	g_free (errmsg);
+	return FALSE;
 }
 
+void
+read_data(gboolean reloading) {
+	char * xml_filepath;
+	GError *error = NULL;
+
+  if (reloading) {
+      notes_area_set_project(global_na, NULL);
+      gtt_project_list_destroy(master_list);
+      master_list = gtt_project_list_new();
+  }
+
+	xml_filepath = resolve_old_path (config_data_url);
+
+	while (!read_data_file (xml_filepath, &error)) {
+		if (error != NULL) {
+			if (!try_restoring_backup (xml_filepath)) {
+				break;
+			}
+		}
+	}
+
+	post_read_data ();
+	g_free (xml_filepath);
+	return;
+}
 
 static void
 post_read_config(void)
