@@ -1,3 +1,8 @@
+2011-03-20  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/Makefile.am (gnotime_LDADD): Added -lX11, fixing build with
+	binutils-gold.
+
 2010-11-27  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/main.c (backups_exist): Added function to check if there are
