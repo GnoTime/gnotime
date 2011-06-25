@@ -1,3 +1,9 @@
+2011-06-25  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/notes-area.c (notes_area_new): added custom cell renderer in
+	order to ellipsize long entries (Fixes #3310918). Thanks Petr
+	Gajdusek for the patch.
+
 2011-03-20  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/Makefile.am (gnotime_LDADD): Added -lX11, fixing build with

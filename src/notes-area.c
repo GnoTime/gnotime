@@ -351,6 +351,11 @@ notes_area_new (void)
 	dlg->task_combo = GTK_COMBO_BOX (glade_xml_get_widget (gtxml, "diary_entry_combo"));
 
 	gtk_combo_box_set_model (dlg->task_combo, NULL);
+	GtkCellRenderer *cell;
+	cell = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(dlg->task_combo), cell, TRUE);
+	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT (dlg->task_combo), cell, "text", 0, NULL);
+	g_object_set (cell, "ellipsize", PANGO_ELLIPSIZE_END);
 
 	dlg->proj_notes = CONNECT_TEXT ("proj notes textview", proj_notes_changed);
 	dlg->task_notes = CONNECT_TEXT ("diary notes textview", task_notes_changed);
