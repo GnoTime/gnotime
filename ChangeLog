@@ -1,3 +1,17 @@
+2011-10-04  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/dialog.c (gtt_help_popup): Added format string to
+	call to gtk_message_dialog_new
+
+	* src/export.c (export_show_error_message): Added format string to
+	call to gtk_message_dialog_format_secondary_text
+
+	* src/main.c (try_restoring_backup): Added format string to
+	call to gtk_message_dialog_new
+
+	* src/menucmd.c (menu_howto_edit_times): Added format string to
+	call to gtk_message_dialog_new
+
 2011-06-28  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* configure.in: Updated GTK_REQUIRED to 2.12, which is the minimum

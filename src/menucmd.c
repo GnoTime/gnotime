@@ -446,6 +446,7 @@ menu_howto_edit_times (GtkWidget *w,gpointer data)
 	         GTK_DIALOG_MODAL,
 	         GTK_MESSAGE_INFO,
 	         GTK_BUTTONS_OK,
+             "%s",
 		      msg);
 	gtk_dialog_run (GTK_DIALOG (mb));
 	gtk_widget_destroy (mb);

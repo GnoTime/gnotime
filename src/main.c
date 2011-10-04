@@ -370,6 +370,7 @@ try_restoring_backup (char *xml_filepath) {
 								 GTK_DIALOG_MODAL,
 								 GTK_MESSAGE_ERROR,
 								 GTK_BUTTONS_NONE,
+								 "%s",
 								 qmsg);
 
 	gtk_dialog_add_button (GTK_DIALOG(mb),
@@ -545,6 +546,7 @@ read_config(void)
 		         GTK_DIALOG_MODAL,
 		         GTK_MESSAGE_ERROR,
 		         GTK_BUTTONS_YES_NO,
+                 "%s",
 		         qmsg);
 		g_signal_connect (G_OBJECT(mb), "response",
 		         G_CALLBACK (read_config_err_run_or_abort),
@@ -718,6 +720,7 @@ save_properties (void)
 		         GTK_DIALOG_MODAL,
 		         GTK_MESSAGE_WARNING,
 		         GTK_BUTTONS_CLOSE,
+                 "%s",
 		         errmsg);
 		g_signal_connect (G_OBJECT(mb), "response",
 		         G_CALLBACK (gtk_widget_destroy), mb);
@@ -762,6 +765,7 @@ save_projects (void)
 		         GTK_DIALOG_MODAL,
 		         GTK_MESSAGE_WARNING,
 		         GTK_BUTTONS_CLOSE,
+                 "%s",
 		         errmsg);
 		g_signal_connect (G_OBJECT(mb), "response",
 		         G_CALLBACK (gtk_widget_destroy), mb);

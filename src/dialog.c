@@ -39,6 +39,7 @@ gtt_help_popup(GtkWidget *widget, gpointer data)
 		         GTK_DIALOG_MODAL,
 		         GTK_MESSAGE_ERROR,
 		         GTK_BUTTONS_CLOSE,
+				 "%s",
 		         err->message);
 		g_signal_connect (G_OBJECT(mb), "response",
 		         G_CALLBACK (gtk_widget_destroy), mb);
