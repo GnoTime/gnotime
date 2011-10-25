@@ -262,4 +262,12 @@ edit_interval_dialog_destroy(EditIntervalDialog *dlg)
 	g_free (dlg);
 }
 
+void
+edit_interval_set_close_callback (EditIntervalDialog *dlg,
+								  GCallback f,
+								  gpointer data)
+{
+	g_signal_connect (dlg->interval_edit, "close", f, data);
+}
+
 /* ===================== END OF FILE ==============================  */

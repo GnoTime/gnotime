@@ -1,3 +1,15 @@
+2011-10-24  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* Fixed bug #3372762
+	
+	* src/props-invl.c (edit_interval_set_close_callback): Added
+	function to set the close dialog callback
+
+	* src/journal.c (edit_interval_close_cb): Added callback to handle
+	the destruction of interval editing dialog
+	(interval_new_clicked_cb,interval_edit_clicked_cb): set the close
+	callback in the edit interval dialog
+	
 2011-10-04  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/dialog.c (gtt_help_popup): Added format string to

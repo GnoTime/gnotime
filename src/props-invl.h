@@ -31,6 +31,10 @@ void edit_interval_set_interval (EditIntervalDialog *dlg, GttInterval *ivl);
 
 /* pop up a dialog box for editing an interval */
 void edit_interval_dialog_show(EditIntervalDialog *dlg);
+void edit_interval_set_close_callback (EditIntervalDialog *dlg,
+									   GCallback f,
+									   gpointer data);
+
 
 
 #endif /* __PROPS_INVL_H__ */

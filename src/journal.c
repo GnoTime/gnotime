@@ -288,12 +288,22 @@ static GList * cutted_task_list = NULL;
 /* ============================================================== */
 /* Interval Popup Menu actions */
 
+void
+edit_interval_close_cb (GtkWidget *edit_ivl, gpointer data)
+{
+	Wiggy *wig = (Wiggy *) data;
+	wig->edit_ivl = NULL;
+}
+
+
 static void
 interval_new_clicked_cb (GtkWidget * w, gpointer data)
 {
 	Wiggy *wig = (Wiggy *) data;
 
 	if (NULL == wig->edit_ivl) wig->edit_ivl = edit_interval_dialog_new();
+
+	edit_interval_set_close_callback (wig->edit_ivl, G_CALLBACK (edit_interval_close_cb), wig);
 
 	wig->interval = gtt_interval_new_insert_after(wig->interval);
 	edit_interval_set_interval (wig->edit_ivl, wig->interval);
@@ -306,6 +316,7 @@ interval_edit_clicked_cb(GtkWidget * dw, gpointer data)
 	Wiggy *wig = (Wiggy *) data;
 
 	if (NULL == wig->edit_ivl) wig->edit_ivl = edit_interval_dialog_new();
+	edit_interval_set_close_callback (wig->edit_ivl, G_CALLBACK (edit_interval_close_cb), wig);
 	edit_interval_set_interval (wig->edit_ivl, wig->interval);
 	edit_interval_dialog_show (wig->edit_ivl);
 }
