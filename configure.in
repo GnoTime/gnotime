@@ -80,6 +80,8 @@ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
 
+
+
 dnl *****************************************
 dnl Check for libgnome
 dnl *****************************************
@@ -94,6 +96,12 @@ PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
 AC_SUBST(LIBGNOMEUI_CFLAGS)
 AC_SUBST(LIBGNOMEUI_LIBS)
 
+dnl *****************************************
+dnl Check for X11
+dnl *****************************************
+PKG_CHECK_MODULES(X11, x11)
+AC_SUBST(X11_CFLAGS)
+AC_SUBST(X11_LIBS)
 
 dnl *****************************************
 dnl need libglade
