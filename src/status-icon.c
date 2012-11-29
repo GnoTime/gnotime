@@ -67,7 +67,7 @@ status_icon_popup_menu(GtkStatusIcon *status_icon, guint button, guint activate_
 	g_signal_connect (G_OBJECT (menuitem), "toggled", G_CALLBACK (status_icon_menuitem_visibility), NULL);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 	gtk_widget_show_all (menu);
-    gtk_menu_popup (menu, NULL, NULL, NULL, NULL, button, activate_time);
+	gtk_menu_popup (GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
 }
 
 void
