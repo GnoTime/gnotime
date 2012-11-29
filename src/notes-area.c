@@ -542,8 +542,8 @@ projects_tree_selection_changed (GtkTreeSelection *selection, gpointer user_data
 static int
 projects_tree_clicked (GtkWidget *ptree, GdkEvent *event, gpointer data)
 {
-    GdkEventButton *bevent = (GdkEventButton *) event;
-	GttProjectsTree *projects_tree = GTT_PROJECTS_TREE (ptree);
+	GdkEventButton *bevent = (GdkEventButton *) event;
+	// GttProjectsTree *projects_tree = GTT_PROJECTS_TREE (ptree);
 	GtkMenuShell *menu;
 
     if (!(event->type == GDK_BUTTON_PRESS && bevent->button == 3))

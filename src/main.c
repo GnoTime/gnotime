@@ -229,6 +229,7 @@ post_read_data(void)
 	app_show();
 }
 
+#ifdef THIS_IS_CURRENTLY_UNUSED
 static void
 read_data_err_run_or_abort (GtkDialog *w, gint response_id)
 {
@@ -243,6 +244,7 @@ read_data_err_run_or_abort (GtkDialog *w, gint response_id)
 		gtk_main_quit();
 	}
 }
+#endif /* THIS_IS_CURRENTLY_UNUSED */
 
 static char *
 resolve_old_path (const char * pathfrag)
@@ -786,13 +788,13 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	   gpointer data)
 {
 	char *errmsg;
-	const char *sess_id;
+	// const char *sess_id;
 	char *argv[5];
 	int argc;
 	int x, y, w, h;
 	int rc;
 
-	sess_id  = gnome_client_get_id(client);
+	// sess_id  = gnome_client_get_id(client);
 	if (!app_window) return FALSE;
 
 	gdk_window_get_origin (app_window->window, &x, &y);
