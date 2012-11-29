@@ -1,3 +1,10 @@
+2012-11-29  Linas Vepstas <linasvepstas@gmail.com>
+
+	* configure.in: Bump version number to 2.3.1
+	* configure.in: Enable non-verbose build by default.
+	* fix assorted compiler warnings.
+	* timer.c: fix crash because timer was not initialized!
+
 2011-11-30  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/Makefile.am: Use detected X11 configurations
