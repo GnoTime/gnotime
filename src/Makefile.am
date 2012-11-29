@@ -150,7 +150,7 @@ EXTRA_DIST =         \
 LIBGTK_SRCS= dbus.c dbus.h
 BUILT_SOURCES=	dbus-glue.h
 dbus-glue.h : dbus.xml Makefile
-	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus dbus.xml
+	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus $(srcdir)/dbus.xml
 dbus.o:	dbus-glue.h
 
 
