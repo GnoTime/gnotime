@@ -332,12 +332,15 @@ gtt_to_dom_tree (void)
 {
 	xmlNodePtr topnode;
 	xmlNodePtr node;
-	xmlNsPtr   ns;
+	// xmlNsPtr   ns;
 
 	topnode = xmlNewNode(NULL, BAD_CAST "gtt:gtt");
 	xmlSetProp(topnode, BAD_CAST "version", BAD_CAST "1.0.1");
 
-	ns = xmlNewNs (topnode, BAD_CAST "file:" GTTDATADIR "/gtt.dtd", BAD_CAST "gtt");
+
+	// XXX TODO do we even need to call this?
+	// ns = xmlNewNs (topnode, BAD_CAST "file:" GTTDATADIR "/gtt.dtd", BAD_CAST "gtt");
+	xmlNewNs (topnode, BAD_CAST "file:" GTTDATADIR "/gtt.dtd", BAD_CAST "gtt");
 
 	node = gtt_project_list_to_dom_tree (gtt_project_list_get_list(master_list));
 	if (node) xmlAddChild (topnode, node);

@@ -129,7 +129,7 @@ size_t
 xxxqof_print_date_time_buff (char *buff, size_t len, time_t secs)
 {
 	int flen;
-	int day, month, year, hour, min, sec;
+	int day, month, year, hour, min;
 	struct tm ltm, gtm;
 
 	if (!buff)
@@ -140,7 +140,7 @@ xxxqof_print_date_time_buff (char *buff, size_t len, time_t secs)
 	year = ltm.tm_year + 1900;
 	hour = ltm.tm_hour;
 	min = ltm.tm_min;
-	sec = ltm.tm_sec;
+	// sec = ltm.tm_sec;
 	switch (qof_date_format_get_current ())
 	{
 	case QOF_DATE_FORMAT_UK:

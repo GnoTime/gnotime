@@ -325,7 +325,7 @@ gtt_xml_read_projects (const char * filename)
 	GList *prjs = NULL;
 	xmlDocPtr doc;
 	xmlNodePtr root, project_list, project;
-	xmlChar *version;
+	// xmlChar *version;
 
 	LIBXML_TEST_VERSION;
 	xmlKeepBlanksDefault(0);
@@ -341,7 +341,7 @@ gtt_xml_read_projects (const char * filename)
 		return NULL;
 	}
 
-	version = xmlGetProp(root, (unsigned char *)"version");
+	// version = xmlGetProp(root, (unsigned char *)"version");
 	if (!root->name || strcmp ("gtt", (char *)root->name))
 	{
 		xmlFreeDoc(doc);
