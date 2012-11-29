@@ -174,7 +174,7 @@ stop_main_timer (void)
 void
 init_timer(void)
 {
-	g_return_if_fail (!timer_inited);
+	if (timer_inited) return;   // prevent multiple initialization
 	timer_inited = TRUE;
 
 	idle_dialog = idle_dialog_new();
