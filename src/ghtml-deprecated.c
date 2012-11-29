@@ -20,7 +20,7 @@
 
 #define _GNU_SOURCE
 #include <glib.h>
-#include <guile/gh.h>
+#include <libguile.h>
 #include <stdio.h>
 #include <string.h>
 

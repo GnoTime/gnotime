@@ -20,7 +20,6 @@
 
 #define _GNU_SOURCE
 #include <glib.h>
-#include <guile/gh.h>
 #include <libguile.h>
 #include <libguile/backtrace.h>
 #include <limits.h>
