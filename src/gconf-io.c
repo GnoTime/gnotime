@@ -92,7 +92,6 @@ void
 gtt_gconf_save (void)
 {
 	char s[120];
-	int i;
 	int x, y, w, h;
 	const char *xpn;
 	
@@ -199,6 +198,7 @@ gtt_gconf_save (void)
 
 	/* ------------- */
 	{
+		long i, w;
 		GSList *list= NULL;
 		for (i=0, w=0; -1< w; i++) 
 		{
@@ -464,7 +464,7 @@ gtt_gconf_load (void)
 		GSList *node, *list = GETINTLIST ("/CList/ColumnWidths");
 		for (i=0,node=list; node != NULL; node=node->next, i++) 
 		{
-			num = (int)(node->data);
+			num = (long)(node->data);
 			if (-1 < num)
 			{
 				gtt_projects_tree_set_col_width (projects_tree, i, num);
