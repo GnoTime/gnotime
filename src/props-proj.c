@@ -73,7 +73,7 @@ typedef struct _PropDlg
 static void 
 prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 {
-	int ivl;
+	long ivl;
 	const gchar *cstr;
 	gchar *str;
 	double rate;
@@ -131,12 +131,12 @@ prop_set(GnomePropertyBox * pb, gint page, PropDlg *dlg)
 	{
 		gtt_project_freeze (dlg->proj);
 		
-		ivl = (int) GET_MENU (dlg->urgency, "urgency");
+		ivl = (long) GET_MENU (dlg->urgency, "urgency");
 		gtt_project_set_urgency (dlg->proj, (GttRank) ivl);
-		ivl = (int) GET_MENU (dlg->importance, "importance");
+		ivl = (long) GET_MENU (dlg->importance, "importance");
 		gtt_project_set_importance (dlg->proj, (GttRank) ivl);
 
-		ivl = (int) GET_MENU (dlg->status, "status");
+		ivl = (long) GET_MENU (dlg->status, "status");
 		gtt_project_set_status (dlg->proj, (GttProjectStatus) ivl);
 
 		tval = gnome_date_edit_get_time (dlg->start);
