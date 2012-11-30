@@ -352,7 +352,7 @@ cur_proj_set (GttProject *proj)
 	run_shell_command (cur_proj, FALSE);
 
 	GttProject *old_prj = cur_proj;
-	if (proj) 
+	if (proj)
 	{
 		if (timer_is_running ())
 		{

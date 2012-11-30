@@ -24,13 +24,13 @@
 #include "proj.h"
 
 /* GHTML == guile-parsed html.  These routines will read in html
- * files with embedded scheme code, evaluate the scheme, and output 
+ * files with embedded scheme code, evaluate the scheme, and output
  * plain-old html to the indicated stream.
  *
  * By appropriately supplying the stream structure, gtt HTML data
  * can be sent anywhere desired. For example, this could, in theory
  * be used inside a cgi-bin script.  (This is a plannned, multi-user,
- * web-based version that we hope to code up someday).  Currently, 
+ * web-based version that we hope to code up someday).  Currently,
  * the stream is used to push data into GtkHTML, and also to fwrite()
  * for the save-to-file function.
  *
@@ -49,7 +49,7 @@ struct gtt_ghtml_s
 	gpointer user_data;
 
 	/* open_count and ref_path used for recursive file includes */
-	int open_count;  
+	int open_count;
 	const char * ref_path;
 
 	/* Key-Value Pair data; includes HTML form GET/POST results. */
@@ -101,12 +101,12 @@ typedef void (*GttGhtmlCloseStream) (GttGhtml *, gpointer);
 typedef void (*GttGhtmlError) (GttGhtml *, int errcode, const char * msg, gpointer);
 
 void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
-                                       GttGhtmlOpenStream, 
+                                       GttGhtmlOpenStream,
                                        GttGhtmlWriteStream,
-                                       GttGhtmlCloseStream, 
+                                       GttGhtmlCloseStream,
                                        GttGhtmlError);
 
-/** The gtt_ghtml_display() routine will parse the indicated gtt file, 
+/** The gtt_ghtml_display() routine will parse the indicated gtt file,
  *     and output standard HTML to the indicated stream.
  */
 void gtt_ghtml_display (GttGhtml *, const char *path_frag, GttProject *prj);
@@ -120,10 +120,10 @@ void gtt_ghtml_show_links (GttGhtml *, gboolean);
 
 /** The gtt_ghtml_resolve_path() routine helps find the fully-qualified
  *     path name to the indicated filename, so that the file can be opened.
- *     The 'reference path', if not null, is checked first.  It is checked 
+ *     The 'reference path', if not null, is checked first.  It is checked
  *     by finding its trailing slash, and appending the path_frag to it,
  *     and checking for existance.  If the reference is NULL, or the file
- *     is not found, then the standard gnotime data dirs are checked. 
+ *     is not found, then the standard gnotime data dirs are checked.
  *     The checked data dirs are locale-dependent.
  */
 char * gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path);

@@ -36,7 +36,7 @@ typedef struct DayArray_s
 	struct tm start_tm;      /* start time struct */
 } DayArray;
 
-static inline int 
+static inline int
 yearday_to_centuryday (int yday, int year)
 {
 	int cd;
@@ -114,7 +114,7 @@ day_bin (GttInterval *ivl, gpointer data)
 		start = end_of_day;
 	}
 	
-	return 1;	  
+	return 1;
 }
 
 /* ========================================================== */
@@ -193,7 +193,7 @@ init_bins (DayArray *da)
 	struct tm stm;
 	int i;
 
-	/* Use system routines to get things like day-light savings 
+	/* Use system routines to get things like day-light savings
 	 * correct.  Otherwise, we could just have += 24*3600 */
 	stm = da->start_tm;
 	stm.tm_sec = 0;
@@ -248,14 +248,14 @@ gtt_project_get_daily_buckets (GttProject *proj, gboolean include_subprojects)
 
 /* ========================================================== */
 
-int   
+int
 gtt_project_foreach_interval (GttProject *proj, GttIntervalCB cb, gpointer data)
 {
 	int rc = 1;
 	GList *tnode, *inode;
 	
 	/* Get the list of tasks, and walk the list.  We are not
-	 * going to assume that the list is ordered in any way. 
+	 * going to assume that the list is ordered in any way.
 	 */
 	tnode = gtt_project_get_tasks (proj);
 	for (; tnode; tnode=tnode->next)
@@ -272,8 +272,8 @@ gtt_project_foreach_interval (GttProject *proj, GttIntervalCB cb, gpointer data)
 	return rc;
 }
 
-int   
-gtt_project_foreach_subproject_interval (GttProject *proj, 
+int
+gtt_project_foreach_subproject_interval (GttProject *proj,
 					 GttIntervalCB cb, gpointer data)
 {
 	int rc = 0;
@@ -311,7 +311,7 @@ static int cmp_latest (GttInterval *ivl, gpointer data)
 	return 1;
 }
 
-time_t   
+time_t
 gtt_project_get_earliest_start (GttProject *proj, gboolean include_subprojects)
 {
 	time_t earliest;
@@ -331,7 +331,7 @@ gtt_project_get_earliest_start (GttProject *proj, gboolean include_subprojects)
 }
 
 
-time_t   
+time_t
 gtt_project_get_latest_stop (GttProject *proj, gboolean include_subprojects)
 {
 	time_t latest;

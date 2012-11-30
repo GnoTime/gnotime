@@ -403,17 +403,17 @@ interval_paste_memo_cb(GtkWidget * w, gpointer data)
 	if (!cutted_task_list || !wig->interval) return;
 
 	/* Pop one off the stack, if stack has any depth to it */
-    if (NULL == cutted_task_list->next)
-    {
-    	newtask = gtt_task_copy (cutted_task_list->data);
-    }
-    else
-    {
-      newtask = cutted_task_list->data;
-      cutted_task_list->data = NULL;
-      cutted_task_list =
-        g_list_delete_link (cutted_task_list, cutted_task_list);
-    }
+	if (NULL == cutted_task_list->next)
+	{
+		newtask = gtt_task_copy (cutted_task_list->data);
+	}
+	else
+	{
+		newtask = cutted_task_list->data;
+		cutted_task_list->data = NULL;
+		cutted_task_list =
+		     g_list_delete_link (cutted_task_list, cutted_task_list);
+	}
 
 	gtt_interval_split (wig->interval, newtask);
 }
@@ -560,11 +560,11 @@ task_paste_clicked_cb(GtkWidget * w, gpointer data)
 	if (!cutted_task_list || !wig->task) return;
 
 	/* Pop one off the stack, if stack has any depth to it */
-    newtask = cutted_task_list->data;
-    cutted_task_list->data = NULL;
-    cutted_task_list =
-      g_list_delete_link (cutted_task_list, cutted_task_list);
-    
+	newtask = cutted_task_list->data;
+	cutted_task_list->data = NULL;
+	cutted_task_list =
+	    g_list_delete_link (cutted_task_list, cutted_task_list);
+	
 	gtt_task_insert (wig->task, newtask);
 }
 
@@ -676,29 +676,27 @@ on_save_clicked_cb (GtkWidget *w, gpointer data)
 	GtkWidget *dialog;
 	Wiggy *wig = (Wiggy *) data;
 
-    dialog = gtk_file_chooser_dialog_new(_("Save HTML To File"),
-                                         GTK_WINDOW(wig->top),
-                                         GTK_FILE_CHOOSER_ACTION_SAVE,
-                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                         GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
-                                         NULL);
+	dialog = gtk_file_chooser_dialog_new(_("Save HTML To File"),
+	                                     GTK_WINDOW(wig->top),
+	                                     GTK_FILE_CHOOSER_ACTION_SAVE,
+	                                     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+	                                     GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+	                                     NULL);
 
-    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
 
-
-
-    /* Manually set a per-report history thingy */
-    if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
-    {
-      gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dialog), wig->plg->last_url);
-    }
-    if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
-        char *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
-        remember_uri (wig, filename);
-        save_to_file (wig, filename);
-        g_free(filename);
-    }
-    gtk_widget_destroy(GTK_WIDGET(dialog));
+	/* Manually set a per-report history thingy */
+	if (wig->plg && wig->plg->last_url && (0==strncmp("file:/", wig->plg->last_url, 6)))
+	{
+		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dialog), wig->plg->last_url);
+	}
+	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+		  char *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+		  remember_uri (wig, filename);
+		  save_to_file (wig, filename);
+		  g_free(filename);
+	}
+	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 static void

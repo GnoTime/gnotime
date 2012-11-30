@@ -19,7 +19,7 @@
 #ifndef GTT_ACTIVITY_DIALOG_H_
 #define GTT_ACTIVITY_DIALOG_H_
 
-/* The Activity Dialog is poped up when no project is 
+/* The Activity Dialog is poped up when no project is
  * running, but keyboard/mouse activity has been detected
  * (after a long period of idleness).  It nags the user
  * to pick a project, and start a timer.

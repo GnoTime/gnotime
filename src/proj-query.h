@@ -27,15 +27,15 @@
  * be replaced by a generic query mechanism; but for right now,
  * these are some hard-coded routines that return what we need.
  *
- * (The port to a fancier query system is in progress, but far 
- * from complete.  Some of the routines here may go away in the 
+ * (The port to a fancier query system is in progress, but far
+ * from complete.  Some of the routines here may go away in the
  * future.)
  */
 
 
 /* The gtt_project_get_unfinished() routine returns a list
- *    of projects that are not marked as 'completed' or 
- *    'cancelled'.  The returned list is a flat list, not 
+ *    of projects that are not marked as 'completed' or
+ *    'cancelled'.  The returned list is a flat list, not
  *    a heirarchical list.
  */
 

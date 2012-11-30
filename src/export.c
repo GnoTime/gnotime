@@ -35,7 +35,7 @@
 
 typedef struct export_format_s export_format_t;
 
-struct export_format_s 
+struct export_format_s
 {
 	GtkFileChooser *picker;    /* URI picker (file selection) */
 	const char       *uri;       /* aka filename */
@@ -74,7 +74,7 @@ export_show_error_message(GtkWindow *parent, char *msg)
 }
 
 /* ======================================================= */
-/* 
+/*
  * Print out the projects using the standard guile-based
  * printing infrastructure.
  */

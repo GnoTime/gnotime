@@ -2,7 +2,7 @@
 /* NOTE: hack alert XXX FIXME  this code is junk, some attempted
    fun and games to conect to the evolution calendear server.
    it didn't wrk the way its supposed to. It shuld probably be
-   eliminated. 
+   eliminated.
 */
 
 
@@ -51,8 +51,8 @@ printf ("duude oaf is init=%d\n", oaf_is_initialized());
 	/* this is the evolution calandar but it crashes */
 	idl = "IDL:BonoboControl/calendar-control:1.0";
 
-	/* the gnome-pim calendar, but I can't find a server here */ 
-	/* Am I supposed to be using gnorba/goad for this? 
+	/* the gnome-pim calendar, but I can't find a server here */
+	/* Am I supposed to be using gnorba/goad for this?
 	 * I guess so...  */
 	idl = "IDL:GNOME/Calendar/RepositoryLocator:1.0";
 
@@ -62,10 +62,10 @@ printf ("duude oaf is init=%d\n", oaf_is_initialized());
 	q = g_strconcat ("repo_ids.has ('", idl, "')", NULL);
 	CORBA_exception_init (&ev);
 	sl = oaf_query (q, NULL, &ev);
-	if (ev._major != CORBA_NO_EXCEPTION) 
+	if (ev._major != CORBA_NO_EXCEPTION)
 	{
 		printf (
-		 "Error: can't get list: %s\n", 
+		 "Error: can't get list: %s\n",
 		 CORBA_exception_id (&ev));
 		CORBA_exception_free (&ev);
 	}
@@ -83,10 +83,10 @@ srv->location_info, srv->hostname);
 	CORBA_exception_init (&ev);
 
 	cal = oaf_activate (q, NULL, 0, NULL, &ev);
-	if (ev._major != CORBA_NO_EXCEPTION) 
+	if (ev._major != CORBA_NO_EXCEPTION)
 	{
 	printf (
-		 "Error: can't activate: %s\n", 
+		 "Error: can't activate: %s\n",
 		 CORBA_exception_id (&ev));
 		CORBA_exception_free (&ev);
 	}

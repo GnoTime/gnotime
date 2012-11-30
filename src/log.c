@@ -31,7 +31,7 @@
 #define CAN_LOG ((config_logfile_name!=NULL)&&(config_logfile_use))
 
 
-static gboolean 
+static gboolean
 log_write(time_t t, const char *logstr)
 {
 	char date[256];
@@ -45,15 +45,15 @@ log_write(time_t t, const char *logstr)
 
 	if ((config_logfile_name[0] == '~') &&
 	    (config_logfile_name[1] == '/') &&
-	    (config_logfile_name[2] != 0)) 
+	    (config_logfile_name[2] != 0))
 	{
 		filename = gnome_util_prepend_user_home(&config_logfile_name[2]);
 
-		result = gnome_vfs_create (&handle, filename, 
+		result = gnome_vfs_create (&handle, filename,
 		                          GNOME_VFS_OPEN_WRITE, FALSE, 0644);
 		g_free (filename);
 	} else {
-		result = gnome_vfs_create (&handle, config_logfile_name, 
+		result = gnome_vfs_create (&handle, config_logfile_name,
 		                          GNOME_VFS_OPEN_WRITE, FALSE, 0644);
 	}
 
@@ -110,7 +110,7 @@ printf_project(const char *format, GttProject *proj)
 					g_string_append(str, _("no title"));
 				break;
 			}
-			case 'd': 
+			case 'd':
 			{
 				const char * desc = gtt_project_get_desc(proj);
 				if (desc && desc[0])
@@ -119,7 +119,7 @@ printf_project(const char *format, GttProject *proj)
 					g_string_append(str, _("no description"));
 				break;
 			}
-			case 'D': 
+			case 'D':
 			   sss = gtt_project_get_id (proj);
 				g_string_append_printf (str, "%d", sss);
 				break;
@@ -159,7 +159,7 @@ printf_project(const char *format, GttProject *proj)
 				g_string_append_printf (str, "%02d", sss % 60);
 				break;
 
-			case 'T': 
+			case 'T':
 				sss = gtt_project_get_secs_ever(proj);
 				g_string_append_printf(str, "%d:%02d:%02d", sss / 3600,
 					   (sss / 60) % 60,
@@ -180,7 +180,7 @@ printf_project(const char *format, GttProject *proj)
 		}
 	}
 	ret = str->str;
-	/* Uhh, I'm not sure, but I think 'FALSE' means don't free 
+	/* Uhh, I'm not sure, but I think 'FALSE' means don't free
 	 * the char * array  */
 	g_string_free (str, FALSE);
 	return ret;
@@ -227,7 +227,7 @@ log_proj_intern (GttProject *proj, gboolean log_if_equal)
 	/* used for flushing, forcing a start entry, used at end of day */
 	if (log_if_equal &&
 	    last_proj == proj &&
-	    logged_last) 
+	    logged_last)
 	{
 		do_log_proj (-1, proj, TRUE /*start*/);
 		return;

@@ -19,15 +19,15 @@
 #ifndef __GTT_TOOLBAR_H__
 #define __GTT_TOOLBAR_H__
 
-/* The build_toolbar() routine assembles the buttons in the toolbar.  
- * The toolbar appearence (i.e. which buttons are visible) is 
+/* The build_toolbar() routine assembles the buttons in the toolbar.
+ * The toolbar appearence (i.e. which buttons are visible) is
  * dynamically determined by the configuration settings.
  * Returns a pointer to the GtkToolbar widget.
  */
 GtkWidget *build_toolbar(void);
 
-/* The toolbar_set_states() routine updates the appearence/behaviour 
- * of the toolbar.  In particular, the 'paste' button becomes active 
+/* The toolbar_set_states() routine updates the appearence/behaviour
+ * of the toolbar.  In particular, the 'paste' button becomes active
  * when there is something to paste, and the timer button toggles it's
  * image when a project timer is started/stopped.
  */

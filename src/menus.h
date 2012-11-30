@@ -46,9 +46,9 @@ GnomeUIInfo * gtt_get_reports_menu (void);
 /** Install the indicate user reports menu */
 void gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus);
 
-/** Prepend the indicated user-defined report entry into the 
+/** Prepend the indicated user-defined report entry into the
  *   user-defined reports menu.
  */
 void gtt_reports_menu_prepend_entry (GnomeApp *app, GnomeUIInfo *new_entry);
-		  
+
 #endif /* __GTT_MENUS_H__ */

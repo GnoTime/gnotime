@@ -27,8 +27,8 @@
  * be replaced by a generic query mechanism; but for right now,
  * these are some hard-coded routines that return what we need.
  *
- * (The port to a fancier query system is in progress, but far 
- * from complete.  Some of the routines here may go away in the 
+ * (The port to a fancier query system is in progress, but far
+ * from complete.  Some of the routines here may go away in the
  * future.)
  */
 
@@ -49,8 +49,8 @@ struct GttBucket_s
 };
 
 
-/* The following routines are needed to implement a 
- *    calendar report in GTT.  
+/* The following routines are needed to implement a
+ *    calendar report in GTT.
  *
  * The gtt_project_get_earliest_start() routine returns
  *    the earliest start time for this project.  In other words,
@@ -64,13 +64,13 @@ struct GttBucket_s
  *    If 'include_subprojects' is TRUE, then subprojects are
  *    included in the search for the latest stop.
  *
- * The gtt_project_get_daily_buckets() routine returns 
+ * The gtt_project_get_daily_buckets() routine returns
  *    a GArray of GttBucket.  Each bucket will record a start
- *    and stop time for the bucket, the total number of seconds 
+ *    and stop time for the bucket, the total number of seconds
  *    spent on the project, in that bucket, and a list of the tasks
  *    and intervals in that bucket.  The buckets are ordered
  *    one per day, day by day; that is, each element
- *    of the array corresponds to one day.  Day 0 
+ *    of the array corresponds to one day.  Day 0
  *    corresponds to the earliest day for which there
  *    is data for this project.  The length of the array
  *    is sufficient to hold data for all non-zero days.
@@ -81,10 +81,10 @@ struct GttBucket_s
  *    included in the day totals.
  */
 
-GArray * gtt_project_get_daily_buckets (GttProject *proj, 
+GArray * gtt_project_get_daily_buckets (GttProject *proj,
 					      gboolean include_subprojects);
 
-time_t   gtt_project_get_earliest_start (GttProject *proj, 
+time_t   gtt_project_get_earliest_start (GttProject *proj,
 					      gboolean include_subprojects);
 
 time_t   gtt_project_get_latest_stop (GttProject *proj,

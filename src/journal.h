@@ -22,17 +22,17 @@
 /* Menu callback, will show the report passed as filename */
 void show_report   (GtkWidget *, gpointer filename);
 
-/* Menu callback, will show the report set up as a dynamically 
+/* Menu callback, will show the report set up as a dynamically
  * configured menu item. */
 void invoke_report (GtkWidget *, gpointer);
 
-/* The new_task_ui() routine will create a new task at the head 
- *    of the project, and pop up a dialog to edit it.  This 
+/* The new_task_ui() routine will create a new task at the head
+ *    of the project, and pop up a dialog to edit it.  This
  *    routine is a callback.
  */
 void new_task_ui (GtkWidget *, gpointer);
 
-/* The edit_task_ui() routine will pop up a dialog to edit the task 
+/* The edit_task_ui() routine will pop up a dialog to edit the task
  *    currently at the head of the project.
  */
 void edit_task_ui (GtkWidget *, gpointer);

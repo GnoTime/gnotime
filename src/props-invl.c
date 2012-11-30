@@ -42,7 +42,7 @@ struct EditIntervalDialog_s
 /* interval dialog edits */
 
 static void
-interval_edit_apply_cb(GtkWidget * w, gpointer data) 
+interval_edit_apply_cb(GtkWidget * w, gpointer data)
 {
 	EditIntervalDialog *dlg = (EditIntervalDialog *) data;
 	GtkWidget *menu, *menu_item;
@@ -86,7 +86,7 @@ interval_edit_apply_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_edit_ok_cb(GtkWidget * w, gpointer data) 
+interval_edit_ok_cb(GtkWidget * w, gpointer data)
 {
 	EditIntervalDialog *dlg = (EditIntervalDialog *) data;
 	interval_edit_apply_cb(w, data);
@@ -95,7 +95,7 @@ interval_edit_ok_cb(GtkWidget * w, gpointer data)
 }
 
 static void
-interval_edit_cancel_cb(GtkWidget * w, gpointer data) 
+interval_edit_cancel_cb(GtkWidget * w, gpointer data)
 {
 	EditIntervalDialog *dlg = (EditIntervalDialog *) data;
 	gtk_widget_hide (dlg->interval_edit);
@@ -105,7 +105,7 @@ interval_edit_cancel_cb(GtkWidget * w, gpointer data)
 /* ============================================================== */
 /* Set values into interval editor widgets */
 
-void 
+void
 edit_interval_set_interval (EditIntervalDialog *dlg, GttInterval *ivl)
 {
 	GtkWidget *w;
@@ -116,7 +116,7 @@ edit_interval_set_interval (EditIntervalDialog *dlg, GttInterval *ivl)
 	if (!dlg) return;
 	dlg->interval = ivl;
 
-	if (!ivl) 
+	if (!ivl)
 	{
 		w = dlg->start_widget;
 		gnome_date_edit_set_time (GNOME_DATE_EDIT(w), 0);
@@ -173,71 +173,71 @@ edit_interval_dialog_new (void)
 
 	glade_xml_signal_connect_data (glxml, "on_ok_button_clicked",
 	        GTK_SIGNAL_FUNC (interval_edit_ok_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (glxml, "on_apply_button_clicked",
 	        GTK_SIGNAL_FUNC (interval_edit_apply_cb), dlg);
 
 	glade_xml_signal_connect_data (glxml, "on_cancel_button_clicked",
 	        GTK_SIGNAL_FUNC (interval_edit_cancel_cb), dlg);
-	  
+
 	dlg->start_widget = glade_xml_get_widget (glxml, "start_date");
 	dlg->stop_widget = glade_xml_get_widget (glxml, "stop_date");
 	dlg->fuzz_widget = glade_xml_get_widget (glxml, "fuzz_menu");
 
 	/* ----------------------------------------------- */
-	/* install option data by hand ... ugh 
+	/* install option data by hand ... ugh
 	 * wish glade did this for us .. */
 	w = dlg->fuzz_widget;
 	menu = gtk_option_menu_get_menu (GTK_OPTION_MENU(w));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 0);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(0));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 1);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(300));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 2);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 3);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(900));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 4);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(1200));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 5);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(1800));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 6);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(3600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 7);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(7200));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 8);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(3*3600));
 
 	gtk_option_menu_set_history(GTK_OPTION_MENU(w), 9);
 	menu_item =  gtk_menu_get_active(GTK_MENU(menu));
-	g_object_set_data(G_OBJECT(menu_item), 
+	g_object_set_data(G_OBJECT(menu_item),
 		"fuzz_factor", GINT_TO_POINTER(12*3600));
 
 	/* gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE); */
@@ -247,14 +247,14 @@ edit_interval_dialog_new (void)
 
 /* ============================================================== */
 
-void 
+void
 edit_interval_dialog_show(EditIntervalDialog *dlg)
 {
 	if (!dlg) return;
 	gtk_widget_show(GTK_WIDGET(dlg->interval_edit));
 }
 
-void 
+void
 edit_interval_dialog_destroy(EditIntervalDialog *dlg)
 {
 	if (!dlg) return;

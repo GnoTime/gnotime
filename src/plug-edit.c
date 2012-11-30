@@ -57,7 +57,7 @@ struct PluginEditorDialog_s
 /* Redraw one row of the tree widget */
 
 static void
-edit_plugin_redraw_row (struct PluginEditorDialog_s *ped, 
+edit_plugin_redraw_row (struct PluginEditorDialog_s *ped,
 					 GtkTreeIter *iter, GnomeUIInfo *uientry)
 {
 	GttPlugin *plg;
@@ -118,7 +118,7 @@ edit_plugin_redraw_tree (struct PluginEditorDialog_s *ped)
 
 /* ============================================================ */
 
-static void 
+static void
 edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 {
 	const char *title, *path, *tip;
@@ -169,7 +169,7 @@ edit_plugin_widgets_to_item (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	gui->ac_mods = (GdkModifierType) 0;
 }
 
-static void 
+static void
 edit_plugin_item_to_widgets (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 {
 	GttPlugin *plg;
@@ -182,7 +182,7 @@ edit_plugin_item_to_widgets (PluginEditorDialog *dlg, GnomeUIInfo *gui)
 	gtk_entry_set_text (dlg->plugin_tooltip, plg->tooltip);
 }
 
-static void 
+static void
 edit_plugin_clear_widgets (PluginEditorDialog *dlg)
 {
 	gtk_entry_set_text (dlg->plugin_name, _("New Item"));
@@ -236,12 +236,12 @@ edit_plugin_tree_selection_changed_cb (GtkTreeSelection *selection, gpointer dat
 }
 
 /* ============================================================ */
-/*  This callback is called whenever a user types into the 
+/*  This callback is called whenever a user types into the
  *  name or tooltip widgets, and causes the affected
  *  ctree row to be redrawn.
  */
 
-static void 
+static void
 edit_plugin_changed_cb (GtkWidget * w, gpointer data)
 {
 	GnomeUIInfo *curr_item;
@@ -251,7 +251,7 @@ edit_plugin_changed_cb (GtkWidget * w, gpointer data)
 	if (!dlg->do_redraw) return;
 	if (FALSE == dlg->have_selection) return;
 	
-	gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore), 
+	gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore),
 	                &dlg->curr_selection, PTRCOL, &val);
 	curr_item = g_value_get_pointer(&val);
 
@@ -261,7 +261,7 @@ edit_plugin_changed_cb (GtkWidget * w, gpointer data)
 }
 
 /* ============================================================ */
-/* These routines make and delete a private, dialog-local copy 
+/* These routines make and delete a private, dialog-local copy
  * of menu system to be edited. They also do misc widget initialization
  * that needs to be done on a per-edit frequency.
  */
@@ -329,7 +329,7 @@ edit_plugin_cleanup (PluginEditorDialog *dlg)
 /* Copy the user's changes back to the system.
  */
 
-static void 
+static void
 edit_plugin_apply_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
@@ -356,7 +356,7 @@ edit_plugin_apply_cb (GtkWidget * w, gpointer data)
 	gtt_set_reports_menu (dlg->app, sysmenu);
 }
 
-static void 
+static void
 edit_plugin_commit_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
@@ -365,7 +365,7 @@ edit_plugin_commit_cb (GtkWidget * w, gpointer data)
 	edit_plugin_cleanup (dlg);
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
 
-	/* Save to file, too.  That way, if system core dumps later, 
+	/* Save to file, too.  That way, if system core dumps later,
 	 * at least we managed to get this set of changes saved. */
 	gtt_save_reports_menu();
 }
@@ -375,7 +375,7 @@ edit_plugin_commit_cb (GtkWidget * w, gpointer data)
  * and that's it.
  */
 
-static void 
+static void
 edit_plugin_cancel_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
@@ -387,7 +387,7 @@ edit_plugin_cancel_cb (GtkWidget * w, gpointer data)
 /* ============================================================ */
 /* Get numeric index of the selected row */
 
-static int 
+static int
 edit_plugin_get_index_of_selected_item (PluginEditorDialog *dlg)
 {
 	int i;
@@ -399,7 +399,7 @@ edit_plugin_get_index_of_selected_item (PluginEditorDialog *dlg)
 	if (! dlg->menus) return -1;
 
 	/* Get selected item */
-	gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore), 
+	gtk_tree_model_get_value (GTK_TREE_MODEL(dlg->treestore),
 	                &dlg->curr_selection, PTRCOL, &val);
 	curr_item = g_value_get_pointer(&val);
 
@@ -413,8 +413,8 @@ edit_plugin_get_index_of_selected_item (PluginEditorDialog *dlg)
 
 /* ============================================================ */
 /* Get the Iter, in the tree, of the indicated item */
-static void 
-edit_plugin_get_iter_of_item (PluginEditorDialog *dlg, 
+static void
+edit_plugin_get_iter_of_item (PluginEditorDialog *dlg,
                 GnomeUIInfo *item,
                 GtkTreeIter *iter)
 {
@@ -442,7 +442,7 @@ edit_plugin_get_iter_of_item (PluginEditorDialog *dlg,
 /* ============================================================ */
 /* Add and delete menu items callbacks */
 
-static void 
+static void
 edit_plugin_add_cb (GtkWidget * w, gpointer data)
 {
 	PluginEditorDialog *dlg = data;
@@ -468,14 +468,14 @@ edit_plugin_add_cb (GtkWidget * w, gpointer data)
 	edit_plugin_redraw_tree (dlg);
 	
 	/* Select the new row. Not strictly needed, unless there
-	 * had not been any selection previously.  
+	 * had not been any selection previously.
 	 */
 	uientry = (GnomeUIInfo *) dlg->menus->data;
 	edit_plugin_get_iter_of_item (dlg, &uientry[index], &iter);
 	gtk_tree_selection_select_iter (dlg->selection, &iter);
 }
 
-static void 
+static void
 edit_plugin_delete_cb (GtkWidget * w, gpointer data)
 {
 	int row;
@@ -544,7 +544,7 @@ edit_plugin_set_selection (PluginEditorDialog *dlg, int offset)
 
 	if (0 < offset)
 	{
-		while (offset) 
+		while (offset)
 		{
 			rc = gtk_tree_model_iter_next (model, &iter);
 			if (0 == rc) return;
@@ -554,7 +554,7 @@ edit_plugin_set_selection (PluginEditorDialog *dlg, int offset)
 	}
 	else
 	{
-		while (offset) 
+		while (offset)
 		{
 			rc = gtk_tree_model_iter_prev (model, &iter);
 			if (0 == rc) return;
@@ -567,7 +567,7 @@ edit_plugin_set_selection (PluginEditorDialog *dlg, int offset)
 /* ============================================================ */
 /* Swap current selection with menu item at offset */
 
-static void 
+static void
 edit_plugin_move_menu_item (PluginEditorDialog *dlg, int offset)
 {
 	int row, rowb;
@@ -598,13 +598,13 @@ edit_plugin_move_menu_item (PluginEditorDialog *dlg, int offset)
 	edit_plugin_set_selection (dlg, offset);
 }
 
-static void 
+static void
 edit_plugin_up_button_cb (GtkWidget * w, gpointer data)
 {
 	edit_plugin_move_menu_item (data, -1);
 }
 
-static void 
+static void
 edit_plugin_down_button_cb (GtkWidget * w, gpointer data)
 {
 	edit_plugin_move_menu_item (data, 1);
@@ -612,7 +612,7 @@ edit_plugin_down_button_cb (GtkWidget * w, gpointer data)
 
 /* ============================================================ */
 
-static void 
+static void
 edit_plugin_left_button_cb (GtkWidget * w, gpointer data)
 {
 	printf ("left button clicked\n");
@@ -620,7 +620,7 @@ edit_plugin_left_button_cb (GtkWidget * w, gpointer data)
 
 /* ============================================================ */
 
-static void 
+static void
 edit_plugin_right_button_cb (GtkWidget * w, gpointer data)
 {
 	printf ("right button clicked\n");
@@ -651,7 +651,7 @@ edit_plugin_dialog_new (void)
 	
 	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_commit_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_apply_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_apply_cb), dlg);
 
@@ -662,10 +662,10 @@ edit_plugin_dialog_new (void)
 	/* Menu item add/delete buttons */
 	glade_xml_signal_connect_data (gtxml, "on_add_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_add_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_delete_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_delete_cb), dlg);
-	  
+
 	/* ------------------------------------------------------ */
 	/* Grab the various entry boxes and hook them up */
 	e = glade_xml_get_widget (gtxml, "plugin name");
@@ -681,28 +681,28 @@ edit_plugin_dialog_new (void)
 	/* Inpout widget changed events */
 	glade_xml_signal_connect_data (gtxml, "on_plugin_name_changed",
 		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_plugin_path_changed",
 		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_plugin_tooltip_changed",
 		GTK_SIGNAL_FUNC (edit_plugin_changed_cb), dlg);
-	  
+
 	/* ------------------------------------------------------ */
 	/* Menu order change buttons */
 	
 	glade_xml_signal_connect_data (gtxml, "on_up_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_up_button_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_down_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_down_button_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_left_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_left_button_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_right_button_clicked",
 		GTK_SIGNAL_FUNC (edit_plugin_right_button_cb), dlg);
-	  
+
 	/* ------------------------------------------------------ */
 	/* Set up the Treeview Widget */
 	e = glade_xml_get_widget (gtxml, "editor treeview");
@@ -751,14 +751,14 @@ edit_plugin_dialog_new (void)
 
 /* ============================================================ */
 
-void 
+void
 edit_plugin_dialog_show(PluginEditorDialog *dlg)
 {
 	if (!dlg) return;
 	gtk_widget_show(GTK_WIDGET(dlg->dialog));
 }
 
-void 
+void
 edit_plugin_dialog_destroy(PluginEditorDialog *dlg)
 {
 	if (!dlg) return;

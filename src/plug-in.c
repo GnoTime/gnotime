@@ -79,7 +79,7 @@ gtt_plugin_copy (GttPlugin *orig)
 	return plg;
 }
 
-void 
+void
 gtt_plugin_free (GttPlugin *plg)
 {
 	if (!plg) return;
@@ -91,7 +91,7 @@ gtt_plugin_free (GttPlugin *plg)
 
 /* ============================================================ */
 
-static void 
+static void
 new_plugin_create_cb (GtkWidget * w, gpointer data)
 {
 	const char *title, *tip;
@@ -111,9 +111,9 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	{
 		gchar *msg;
 		GtkWidget *mb;
-		msg = g_strdup_printf (_("Unable to open the report file %s\n"), path); 
+		msg = g_strdup_printf (_("Unable to open the report file %s\n"), path);
 		mb = gnome_message_box_new (msg,
-			GNOME_MESSAGE_BOX_ERROR, 
+			GNOME_MESSAGE_BOX_ERROR,
 			GTK_STOCK_CLOSE,
 			NULL);
 		gtk_widget_show (mb);
@@ -161,7 +161,7 @@ new_plugin_create_cb (GtkWidget * w, gpointer data)
 	gtk_widget_hide (GTK_WIDGET(dlg->dialog));
 }
 
-static void 
+static void
 new_plugin_cancel_cb (GtkWidget * w, gpointer data)
 {
 	NewPluginDialog *dlg = data;
@@ -188,7 +188,7 @@ new_plugin_dialog_new (void)
 
 	glade_xml_signal_connect_data (gtxml, "on_ok_button_clicked",
 		GTK_SIGNAL_FUNC (new_plugin_create_cb), dlg);
-	  
+
 	glade_xml_signal_connect_data (gtxml, "on_cancel_button_clicked",
 		GTK_SIGNAL_FUNC (new_plugin_cancel_cb), dlg);
 
@@ -210,14 +210,14 @@ new_plugin_dialog_new (void)
 
 /* ============================================================ */
 
-void 
+void
 new_plugin_dialog_show(NewPluginDialog *dlg)
 {
 	if (!dlg) return;
 	gtk_widget_show(GTK_WIDGET(dlg->dialog));
 }
 
-void 
+void
 new_plugin_dialog_destroy(NewPluginDialog *dlg)
 {
 	if (!dlg) return;

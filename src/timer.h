@@ -1,4 +1,4 @@
-/*   Low-level timer callbacks and timeouts for GTimeTracker 
+/*   Low-level timer callbacks and timeouts for GTimeTracker
  *   Copyright (C) 2001, 2002, 2003 Linas Vepstas <linas@linas.org>
  *   Copyright (C) 1997,98 Eckehard Berns
  *
@@ -39,7 +39,7 @@ gboolean timer_project_is_running (GttProject *prj);
 extern int config_idle_timeout;
 extern int config_no_project_timeout;
 
-/* The autosave period is how long, in seconds, we wait before doing a 
+/* The autosave period is how long, in seconds, we wait before doing a
  * periodic save-thyself. */
 extern int config_autosave_period;
 

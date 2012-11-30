@@ -86,7 +86,7 @@ about_box(GtkWindow *w, gpointer data)
 		  NULL
 	};
 
-	const gchar *copyright = 
+	const gchar *copyright =
 		"Copyright (C) 1997,98 Eckehard Berns\n"
 		"Copyright (C) 2001-2004 Linas Vepstas\n"
 		"Copyright (C) 2007-2008 Goedson Teixeira Paixão";

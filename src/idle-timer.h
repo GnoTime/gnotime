@@ -1,4 +1,4 @@
-/* idle-timer.h -- detect user inactivity 
+/* idle-timer.h -- detect user inactivity
  * Originally taken from:
  * xscreensaver, Copyright (c) 1993-2001 Jamie Zawinski <jwz@jwz.org>
  * hacked for use with gtt, Copyright (c) 2001 Linas Vepstas <linas@linas.org>
@@ -8,7 +8,7 @@
  * the above copyright notice appear in all copies and that both that
  * copyright notice and this permission notice appear in supporting
  * documentation.  No representations are made about the suitability of this
- * software for any purpose.  It is provided "as is" without express or 
+ * software for any purpose.  It is provided "as is" without express or
  * implied warranty.
  */
 

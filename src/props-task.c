@@ -27,7 +27,7 @@
 #include "props-task.h"
 #include "util.h"
 
-typedef struct PropTaskDlg_s 
+typedef struct PropTaskDlg_s
 {
 	GladeXML *gtxml;
 	GtkDialog *dlg;
@@ -75,7 +75,7 @@ typedef struct PropTaskDlg_s
 	(g_object_get_data(G_OBJECT(menu_item), NAME));        \
 })
 
-static void 
+static void
 save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 {
 	const gchar *cstr;
@@ -84,11 +84,11 @@ save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 	TSK_SETUP(dlg);
 
 	cstr = gtk_entry_get_text(dlg->memo);
-	if (cstr && cstr[0]) 
+	if (cstr && cstr[0])
 	{
 		gtt_task_set_memo(dlg->task, cstr);
-	} 
-	else 
+	}
+	else
 	{
 		gtt_task_set_memo(dlg->task, "");
 		gtk_entry_set_text(dlg->memo, "");
@@ -101,7 +101,7 @@ save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 	dlg->ignore_events = FALSE;
 }
 
-static void 
+static void
 save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
 {
 	GttBillStatus status;
@@ -130,7 +130,7 @@ save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
 /* ============================================================== */
 /* Copy values from gnotime object to widget */
 
-static void 
+static void
 do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 {
 	GttBillStatus status;
@@ -138,7 +138,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 	GttBillRate rate;
 	char buff[132];
 
-	if (!tsk) 
+	if (!tsk)
 	{
 		dlg->task = NULL;
 		gtk_entry_set_text(dlg->memo, "");
@@ -179,7 +179,7 @@ do_set_task(GttTask *tsk, PropTaskDlg *dlg)
 
 /* ============================================================== */
 
-static void 
+static void
 redraw (GttProject *prj, gpointer data)
 {
 	PropTaskDlg *dlg = data;
@@ -317,7 +317,7 @@ prop_task_dialog_new (void)
 void
 gtt_diary_timer_callback (gpointer nuts)
 {
-	/* If there was a more elegant timer add func, 
+	/* If there was a more elegant timer add func,
 	 * we wouldn't need this global */
 	PropTaskDlg *dlg = global_dlog;
 	if (!dlg) return;
@@ -330,7 +330,7 @@ gtt_diary_timer_callback (gpointer nuts)
 	dlg->ignore_events = FALSE;
 }
 
-void 
+void
 prop_task_dialog_show (GttTask *task)
 {
 	GttProject *prj;

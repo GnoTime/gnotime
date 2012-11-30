@@ -26,7 +26,7 @@ typedef struct NotesArea_s NotesArea;
 
 NotesArea * notes_area_new (void);
 
-/* The notes_area_set_project() routine binds a project to the 
+/* The notes_area_set_project() routine binds a project to the
  *    notes area.  That is, the notes area will display (and edit)
  *    the indicated project.
  */
@@ -45,7 +45,7 @@ void notes_area_add_projects_tree (NotesArea *na, GttProjectsTree *projects_tree
 void notes_area_get_pane_sizes (NotesArea *na, int *vp, int *hp);
 void notes_area_set_pane_sizes (NotesArea *na, int vp, int hp);
 
-/* The gtt_notes_timer_callback() routine is a 'private' routine, 
+/* The gtt_notes_timer_callback() routine is a 'private' routine,
  * a timeout callback that is called by the timer.
  */
 void gtt_notes_timer_callback (NotesArea *na);

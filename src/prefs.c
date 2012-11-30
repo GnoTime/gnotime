@@ -86,7 +86,7 @@ int  config_currency_use_locale = 1;
 
 char * config_data_url = NULL;
 
-typedef struct _PrefsDialog 
+typedef struct _PrefsDialog
 {
 	GladeXML *gtxml;
 	GnomePropertyBox *dlg;
@@ -144,13 +144,13 @@ typedef struct _PrefsDialog
 	GtkComboBox  *daystart_menu;
 	GtkComboBox  *weekstart_menu;
 
-    GtkRadioButton *time_format_am_pm;
-    GtkRadioButton *time_format_24_hs;
-    GtkRadioButton *time_format_locale;
+	GtkRadioButton *time_format_am_pm;
+	GtkRadioButton *time_format_24_hs;
+	GtkRadioButton *time_format_locale;
 
-    GtkEntry       *currency_symbol;
-    GtkWidget      *currency_symbol_label;
-    GtkCheckButton *currency_use_locale;
+	GtkEntry       *currency_symbol;
+	GtkWidget      *currency_symbol_label;
+	GtkCheckButton *currency_use_locale;
 
 } PrefsDialog;
 
@@ -273,8 +273,8 @@ prefs_set_show_secs ()
 
 
 /* ============================================================== */
-/** parse an HH:MM:SS string for the time returning seconds 
- * XXX should probably use getdate or fdate or something like that 
+/** parse an HH:MM:SS string for the time returning seconds
+ * XXX should probably use getdate or fdate or something like that
  */
 
 static int
@@ -309,7 +309,7 @@ scan_time_string (const char *str)
 
 /* ============================================================== */
 
-static void 
+static void
 toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
 	int state;
@@ -356,7 +356,7 @@ toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 }
 
 
-static void 
+static void
 prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 {
 	int state;
@@ -459,7 +459,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		SHOW_CHECK (tb_help);
 		SHOW_CHECK (tb_exit);
 
-		if (change) 
+		if (change)
 		{
 			update_toolbar_sections();
 		}
@@ -498,27 +498,27 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 		}
 	}
 
-    if (6 == page)
-    {
-        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm)))
-        {
-            config_time_format = TIME_FORMAT_AM_PM;
-        }
-        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs)))
-        {
-            config_time_format = TIME_FORMAT_24_HS;
-        }
-        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale)))
-        {
-            config_time_format = TIME_FORMAT_LOCALE;
-        }
+	if (6 == page)
+	{
+		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm)))
+		{
+			config_time_format = TIME_FORMAT_AM_PM;
+		}
+		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs)))
+		{
+			config_time_format = TIME_FORMAT_24_HS;
+		}
+		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale)))
+		{
+			config_time_format = TIME_FORMAT_LOCALE;
+		}
 
-		  ENTRY_TO_CHAR(odlg->currency_symbol, config_currency_symbol);
-          int state = GTK_TOGGLE_BUTTON(odlg->currency_use_locale)->active;
-          if (config_currency_use_locale != state) {
-              config_currency_use_locale = state;
-          }
-    }
+		ENTRY_TO_CHAR(odlg->currency_symbol, config_currency_symbol);
+		int state = GTK_TOGGLE_BUTTON(odlg->currency_use_locale)->active;
+		if (config_currency_use_locale != state) {
+			 config_currency_use_locale = state;
+		}
+	}
 
 	/* Also save them the to file at this point */
 	save_properties();
@@ -526,7 +526,7 @@ prefs_set(GnomePropertyBox * pb, gint page, PrefsDialog *odlg)
 
 /* ============================================================== */
 
-static void 
+static void
 logfile_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
 	int state;
@@ -542,7 +542,7 @@ logfile_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 	gtk_widget_set_sensitive(odlg->logfileminsecs_l, state);
 }
 
-static void 
+static void
 currency_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
 	int state;
@@ -557,7 +557,7 @@ currency_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->show_##TOK), \
 		config_show_##TOK);
 
-static void 
+static void
 options_dialog_set(PrefsDialog *odlg)
 {
 	char s[30];
@@ -657,39 +657,39 @@ options_dialog_set(PrefsDialog *odlg)
 	int secs = config_daystart_offset;
 	if (0 > secs) secs += 24*3600;
 	char buff[24];
-	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);
 	gtk_entry_set_text (odlg->daystart_secs, buff);
 
 	/* Set the correct menu item based on current values */
 	int day = config_weekstart_offset;
 	gtk_combo_box_set_active (odlg->weekstart_menu, day);
 
-    switch (config_time_format)
-    {
-    case TIME_FORMAT_AM_PM:
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), TRUE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
-        break;
-    case TIME_FORMAT_24_HS:
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), TRUE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
-        break;
-    
-    case TIME_FORMAT_LOCALE:
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), TRUE);
-        break;
-    
-    
-    }
+	switch (config_time_format)
+	{
+	case TIME_FORMAT_AM_PM:
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), TRUE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
+		break;
+	case TIME_FORMAT_24_HS:
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), TRUE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), FALSE);
+		break;
+	
+	case TIME_FORMAT_LOCALE:
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm), FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_24_hs), FALSE);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->time_format_locale), TRUE);
+		break;
+	
+	
+	}
 
 	g_snprintf(s, sizeof (s), "%s", config_currency_symbol);
 	gtk_entry_set_text(GTK_ENTRY(odlg->currency_symbol), s);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->currency_use_locale),
-                                 config_currency_use_locale);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(odlg->currency_use_locale),
+	                             config_currency_use_locale);
 
 
 	/* set to unmodified as it reflects the current state of the app */
@@ -698,7 +698,7 @@ options_dialog_set(PrefsDialog *odlg)
 
 /* ============================================================== */
 
-static void 
+static void
 daystart_menu_changed (gpointer data, GtkComboBox *w)
 {
 	PrefsDialog *dlg = data;
@@ -712,7 +712,7 @@ daystart_menu_changed (gpointer data, GtkComboBox *w)
 	int secs = hour * 3600;
 	if (0 > secs) secs += 24*3600;
 	char buff[24];
-	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);   
+	xxxqof_print_hours_elapsed_buff (buff, 24, secs, config_show_secs);
 	gtk_entry_set_text (dlg->daystart_secs, buff);
 }
 
@@ -738,7 +738,7 @@ daystart_menu_changed (gpointer data, GtkComboBox *w)
 	e;                                                              \
 })
 
-static void 
+static void
 display_options(PrefsDialog *dlg)
 {
 	GtkWidget *w;
@@ -762,7 +762,7 @@ display_options(PrefsDialog *dlg)
 	dlg->show_title_##strname = GTK_CHECK_BUTTON(w);
 
 
-static void 
+static void
 field_options(PrefsDialog *dlg)
 {
 	GtkWidget *w;
@@ -789,7 +789,7 @@ field_options(PrefsDialog *dlg)
 }
 
 
-static void 
+static void
 shell_command_options (PrefsDialog *dlg)
 {
 	GtkWidget *e;
@@ -802,7 +802,7 @@ shell_command_options (PrefsDialog *dlg)
 	dlg->shell_stop = GTK_ENTRY(e);
 }
 
-static void 
+static void
 logfile_options(PrefsDialog *dlg)
 {
 	GtkWidget *w;
@@ -847,7 +847,7 @@ logfile_options(PrefsDialog *dlg)
 	w = GETCHWID ("show " #strname);		\
 	dlg->show_tb_##strname = GTK_CHECK_BUTTON(w);
 
-static void 
+static void
 toolbar_options(PrefsDialog *dlg)
 {
 	GtkWidget *w;
@@ -871,7 +871,7 @@ toolbar_options(PrefsDialog *dlg)
 	TBWID (exit);
 }
 
-static void 
+static void
 misc_options(PrefsDialog *dlg)
 {
 	GtkWidget *w;
@@ -900,44 +900,42 @@ misc_options(PrefsDialog *dlg)
 static void
 time_format_options(PrefsDialog *dlg)
 {
-    GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+	GtkWidget *w;
+	GladeXML *gtxml = dlg->gtxml;
 
-    w = GETCHWID("time_format_am_pm");
-    dlg->time_format_am_pm = GTK_RADIO_BUTTON(w);
+	w = GETCHWID("time_format_am_pm");
+	dlg->time_format_am_pm = GTK_RADIO_BUTTON(w);
 
-    w = GETCHWID("time_format_24_hs");
-    dlg->time_format_24_hs = GTK_RADIO_BUTTON(w);
+	w = GETCHWID("time_format_24_hs");
+	dlg->time_format_24_hs = GTK_RADIO_BUTTON(w);
 
-    w = GETCHWID("time_format_locale");
-    dlg->time_format_locale = GTK_RADIO_BUTTON(w);
+	w = GETCHWID("time_format_locale");
+	dlg->time_format_locale = GTK_RADIO_BUTTON(w);
 }
 
 static void
 currency_options(PrefsDialog *dlg)
 {
-    GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+	GtkWidget *w;
+	GladeXML *gtxml = dlg->gtxml;
 
-    w = GETWID ("currency_symbol");
-    dlg->currency_symbol = GTK_ENTRY(w);
+	w = GETWID ("currency_symbol");
+	dlg->currency_symbol = GTK_ENTRY(w);
 
-    w = glade_xml_get_widget (gtxml, "currency_symbol_label");
-    dlg->currency_symbol_label = w;
+	w = glade_xml_get_widget (gtxml, "currency_symbol_label");
+	dlg->currency_symbol_label = w;
 
-    w = GETCHWID ("currency_use_locale");
-    dlg->currency_use_locale = GTK_CHECK_BUTTON(w);
+	w = GETCHWID ("currency_use_locale");
+	dlg->currency_use_locale = GTK_CHECK_BUTTON(w);
 
-    gtk_signal_connect(GTK_OBJECT(w), "clicked",
-                       GTK_SIGNAL_FUNC(currency_sensitive_cb),
-                       (gpointer *)dlg);
-
-
+	gtk_signal_connect(GTK_OBJECT(w), "clicked",
+	                   GTK_SIGNAL_FUNC(currency_sensitive_cb),
+	                   (gpointer *)dlg);
 }
 
 /* ============================================================== */
 
-static void 
+static void
 help_cb (GnomePropertyBox *propertybox, gint page_num, gpointer data)
 {
 	gtt_help_popup (GTK_WIDGET(propertybox), data);
@@ -971,8 +969,8 @@ prefs_dialog_new (void)
 	logfile_options (dlg);
 	toolbar_options (dlg);
 	misc_options (dlg);
-    time_format_options (dlg);
-    currency_options (dlg);
+	time_format_options (dlg);
+	currency_options (dlg);
 
 	gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 	return dlg;
@@ -983,11 +981,11 @@ prefs_dialog_new (void)
 
 static PrefsDialog *dlog = NULL;
 
-void 
+void
 prefs_dialog_show(void)
 {
 	if (!dlog) dlog = prefs_dialog_new();
- 
+
 	options_dialog_set (dlog);
 	gtk_widget_show(GTK_WIDGET(dlog->dlg));
 }

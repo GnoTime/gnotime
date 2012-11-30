@@ -24,7 +24,7 @@
 
 /* pop up a dialog box for editing a task */
 /* currently, this uses the same dailog over & over, we should probably
- * change this to use gnome MDI ?? 
+ * change this to use gnome MDI ??
  */
 void prop_task_dialog_show(GttTask *task);
 

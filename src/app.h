@@ -42,7 +42,7 @@ void app_new(int argc, char *argv[], const char *geometry_string);
 
 void app_show(void);
 void app_quit(GtkWidget *w, gpointer data);
-		  
+
 /* The ctree will call 'focus_row_set' whenever the focus row changes.
  * This is used in turn as a cheesey way  to re-distribute this event
  * to other subsystems.  Should be replaced ultimately by g_signals.

@@ -1,26 +1,26 @@
 /*********************************************************************
- *                
+ *
  * Copyright (C) 2007, 2009,  Goedson Teixeira Paixao
- *                
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
- *                
+ *
  * Filename:      status-icon.c
  * Author:        Goedson Teixeira Paixao <goedson@debian.org>
  * Description:   GnoTime's status icon implementation
- *                
+ *
  * Created at:    Fri Oct 12 11:45:39 2007
  * Modified at:   Fri Nov 20 22:01:59 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
@@ -52,17 +52,17 @@ status_icon_activated(GtkStatusIcon *status_icon, gpointer data)
 static void
 status_icon_menuitem_visibility(GtkWidget *toggle, gpointer *user_data)
 {
-    if (GTK_WIDGET_VISIBLE(app_window))
-        gtk_widget_hide(app_window);
-    else
-        gtk_widget_show(app_window);
+	if (GTK_WIDGET_VISIBLE(app_window))
+		gtk_widget_hide(app_window);
+	else
+		gtk_widget_show(app_window);
 }
 
 static void
 status_icon_popup_menu(GtkStatusIcon *status_icon, guint button, guint activate_time, gpointer user_data)
 {
-    GtkWidget *menu = gtk_menu_new ();
-    GtkWidget *menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Hide main window"));
+	GtkWidget *menu = gtk_menu_new ();
+	GtkWidget *menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Hide main window"));
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), !GTK_WIDGET_VISIBLE(app_window));
 	g_signal_connect (G_OBJECT (menuitem), "toggled", G_CALLBACK (status_icon_menuitem_visibility), NULL);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);

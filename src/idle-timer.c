@@ -1,4 +1,4 @@
-/* 
+/*
  * idle-timer.c -- detect that the user is idle, and other timer-related tasks.
  * This code is originally comes from xscreensaver:
  * xscreensaver, Copyright (c) 1991-1997, 1998 Jamie Zawinski <jwz@jwz.org>
@@ -9,7 +9,7 @@
  * the above copyright notice appear in all copies and that both that
  * copyright notice and this permission notice appear in supporting
  * documentation.  No representations are made about the suitability of this
- * software for any purpose.  It is provided "as is" without express or 
+ * software for any purpose.  It is provided "as is" without express or
  * implied warranty.
  *
  * This version is a major restructuring of Zawiski's code, for two reasons:
@@ -18,15 +18,15 @@
  * 2) the gdk event loop gobbles up events, so we had to tap in to get
  *    them before gdk made them disappear.
  *
- * Note Bene: The XIDLE code is currently dead, but is being saved for 
- * resurection on some rainy day.  
+ * Note Bene: The XIDLE code is currently dead, but is being saved for
+ * resurection on some rainy day.
  */
 
 /* methods of detecting idleness:
 
       explicitly informed by SGI SCREEN_SAVER server event;
       explicitly informed by MIT-SCREEN-SAVER server event;
-      (but we can't use these here ... since we just want 
+      (but we can't use these here ... since we just want
       arbitrary timeout, not a screen-saving event)
       poll server idle time with XIDLE extension;
       select events on all windows, and note absence of recent events;
@@ -88,13 +88,13 @@ typedef struct IdleTimeoutScreen_s IdleTimeoutScreen;
 /* This structure holds all the data that applies to the program as a whole,
    or to the non-screen-specific parts of the display connection.
  */
-struct IdleTimeout_s 
+struct IdleTimeout_s
 {
-  /* pointer_timeout is how often we check for pinter 
+  /* pointer_timeout is how often we check for pinter
    * movements (in seconds) */
   int pointer_timeout;
 
-  /* notice_events_timeout is how long we wait before we 
+  /* notice_events_timeout is how long we wait before we
    * walk the the window tree, selecting events on new windows */
   int notice_events_timeout;
 
@@ -129,7 +129,7 @@ struct IdleTimeout_s
    of the display connection; if the display has multiple screens, there will
    be one of these for each screen.
  */
-struct IdleTimeoutScreen_s 
+struct IdleTimeoutScreen_s
 {
   IdleTimeout *global;
 
@@ -152,8 +152,8 @@ static Bool proc_interrupts_activity_p (IdleTimeout *si);
 static void check_for_clock_skew (IdleTimeout *si);
 
 /* ===================================================================== */
-/* This routine will install event masks on the indicated window, 
- * and its children.  These masks are designed to trigger if there's 
+/* This routine will install event masks on the indicated window,
+ * and its children.  These masks are designed to trigger if there's
  * keyboard/strcuture activity in that window.
  */
 
@@ -290,12 +290,12 @@ start_notice_events_timer (IdleTimeout *si, Window w)
 {
   struct notice_events_timer_arg *arg;
 
-  /* we want to create a fresh one of these for every 
+  /* we want to create a fresh one of these for every
    * new window. */
   arg = g_new(struct notice_events_timer_arg, 1);
   arg->si = si;
   arg->w = w;
-  gtk_timeout_add ( si->notice_events_timeout *1000, 
+  gtk_timeout_add ( si->notice_events_timeout *1000,
                    notice_events_timer, (gpointer) arg);
 }
 
@@ -353,7 +353,7 @@ check_pointer_timer (gpointer closure)
     }
 #endif /* HAVE_PROC_INTERRUPTS */
 
-  if (active_p) 
+  if (active_p)
   {
     si->last_activity_time = time ((time_t *) 0);
   }
@@ -370,7 +370,7 @@ check_pointer_timer (gpointer closure)
    lid.  At this point, timers will fire, and etc.
 
    So far so good -- well, not really, but it's the best that we can do,
-   since the OS doesn't send us a signal *before* shutdown 
+   since the OS doesn't send us a signal *before* shutdown
 
    We only do this when we'd be polling the mouse position anyway.
    This amounts to an assumption that machines with APM support also
@@ -384,7 +384,7 @@ check_for_clock_skew (IdleTimeout *si)
 #ifdef DEBUG_TIMERS
   long shift = now - si->last_wall_clock_time;
 
-  fprintf (stderr, "checking wall clock (%d).\n", 
+  fprintf (stderr, "checking wall clock (%d).\n",
              (si->last_wall_clock_time == 0 ? 0 : shift));
 
   if (si->last_wall_clock_time != 0 &&
@@ -477,7 +477,7 @@ poll_last_activity (IdleTimeout *si)
 
           0:  309453991   timer
           1:    4771729   keyboard
-   
+
        but on later kernels with MP machines, it looks like this:
 
                    CPU0       CPU1
@@ -502,17 +502,17 @@ poll_last_activity (IdleTimeout *si)
 
 #define PROC_INTERRUPTS "/proc/interrupts"
 
-static Bool 
+static Bool
 display_is_on_console_p (IdleTimeout *si)
 {
   char * dpy_name = XDisplayName (NULL);
-  
+
   if (!dpy_name) return True;
 
   /* If no hostname or IP address, assume its a local server,
    * and that polling /proc/interrupts is possible.  */
   if (':' == dpy_name[0]) return True;
-  
+
   /* If IP address is 127.0.0.1 or 127.x.x.x then its local */
   if (!strncmp (dpy_name, "127.", 4)) return True;
 
@@ -599,7 +599,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
         perror (buf);
         goto FAIL;
       }
-    } 
+    }
   else
     {
       f1 = f0;
@@ -703,7 +703,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
               strcpy (last_ptr_line, new_line);
               got_ptr = True;
             }
-    
+
           if (got_kbd && got_ptr)
             break;
         }
@@ -732,7 +732,7 @@ proc_interrupts_activity_p (IdleTimeout *si)
 #endif /* HAVE_PROC_INTERRUPTS */
 
 /* ===================================================================== */
-/* This routine gets called whenever there's an event sitting on the 
+/* This routine gets called whenever there's an event sitting on the
  * X input queue.  In principle, we should remove any event we asked
  * for that gdk wasn't expecting.  In practice, this is hard, cpu-consuming
  * and dangerous. So we let gdk weed hem out itself.
@@ -745,7 +745,7 @@ if_event_predicate (Display *dpy, XEvent *ev, XPointer arg)
 #ifdef DEBUG
   printf ("duude event type %d\n", ev->xany.type);
 #endif
-  switch (ev->xany.type) 
+  switch (ev->xany.type)
   {
     case KeyPress:
     case KeyRelease:
@@ -782,7 +782,7 @@ if_event_predicate (Display *dpy, XEvent *ev, XPointer arg)
 
 /* ===================================================================== */
 /* We need to take over the main loop, in order to be able to capture
- * X Events before gdk eats them.   So we select on the X socket to 
+ * X Events before gdk eats them.   So we select on the X socket to
  * make sure we get them first.  We dispatch gtk at least once a second,
  * so that other timers & etc. get properly handled.
  */
@@ -849,10 +849,10 @@ idle_timeout_new (void)
   si->screens->global = si;
   si->screens->screen = DefaultScreenOfDisplay (si->dpy);
 
-  /* We use /proc/interrupts because we are not otherwise getting 
-   * keyboard events for some reason.  Note that Mac OSX won't have 
+  /* We use /proc/interrupts because we are not otherwise getting
+   * keyboard events for some reason.  Note that Mac OSX won't have
    * the /proc filesystem, and so won't have this ability; they'll
-   * be screwed.  XXX Need to fix root cause of missing keybd events ... 
+   * be screwed.  XXX Need to fix root cause of missing keybd events ...
    */
   si->using_proc_interrupts = query_proc_interrupts_available (si, NULL);
 
@@ -883,7 +883,7 @@ idle_timeout_new (void)
   {
     /* Check to see if the mouse has moved, and set up a repeating timer
        to do so periodically (typically, every 5 seconds.) */
-    si->check_pointer_timer_id = gtk_timeout_add (si->pointer_timeout *1000, 
+    si->check_pointer_timer_id = gtk_timeout_add (si->pointer_timeout *1000,
                   check_pointer_timer, (gpointer) si);
 
     /* run it once, to initialze stuff */
@@ -893,10 +893,10 @@ idle_timeout_new (void)
   /* ------------------------------------------------------------- */
 
   if (si->scanning_all_windows)
-  { 
+  {
     /* get events from every window */
     notice_events (si, DefaultRootWindow(si->dpy), True);
-  
+
     /* hijack the main loop; this is the only way to get events */
     gtk_timeout_add (900, idle_timeout_main_loop, (gpointer)si);
   }

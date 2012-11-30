@@ -19,9 +19,9 @@
 #ifndef GTT_IDLE_DIALOG_H_
 #define GTT_IDLE_DIALOG_H_
 
-/* The Idle Dialog is popped up when a project is active (a project 
+/* The Idle Dialog is popped up when a project is active (a project
  * timer is running), but the keyboard/mouse have been idle for some
- * set amount of time.  
+ * set amount of time.
  *
  * Do not confuse this with the "Activity Dialog", which pops up
  * when NO project is running, but the keyboard/mouse IS active.
@@ -42,12 +42,12 @@ GttIdleDialog * idle_dialog_new (void);
 
 /** This routine will display the idle dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
- *  It will cause the timer for the currently active project to 
+ *  It will cause the timer for the currently active project to
  *  be stopped (and the ctree display to be updated to reflect the
- *  stopped project).  
+ *  stopped project).
  */
 void show_idle_dialog (GttIdleDialog *id);
-		  
+
 /** This routine will raise the idle dialog to the top of the
  *  current screen. But it will do this only if the idle dialog
  *  is already being displayed, and if some mouse/keyboard events have

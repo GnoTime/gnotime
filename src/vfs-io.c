@@ -25,7 +25,7 @@ gtt_save_buffer (const gchar *uri, const char * buf)
 {
 	GnomeVFSHandle   *handle;
 	GnomeVFSResult    result;
-	  
+
 	GnomeVFSURI *parsed_uri;
 	parsed_uri = gnome_vfs_uri_new (uri);
 
@@ -45,13 +45,13 @@ gtt_save_buffer (const gchar *uri, const char * buf)
 printf ("duuude pen error=%s\n", errmsg);
 		return;
 	}
-	 
+
 	GnomeVFSFileSize buflen = strlen (buf);
 	GnomeVFSFileSize bytes_written = 0;
 	size_t off = 0;
 	while (GNOME_VFS_OK == result)
 	{
-		result = gnome_vfs_write (handle, &buf[off], 
+		result = gnome_vfs_write (handle, &buf[off],
 		                         buflen, &bytes_written);
 		off += bytes_written;
 		buflen -= bytes_written;
@@ -77,13 +77,13 @@ load_gorp (const gchar *uri)
 	GnomeVFSResult    result;
 	gchar             buffer[BUF_SIZE];
 	GnomeVFSFileSize  bytes_read;  /* actually a long long */
-	  
+
 	result = gnome_vfs_open (&handle, uri, GNOME_VFS_OPEN_READ);
-	 
+
 printf ("duude attempt to read %s\n", uri);
 	while (GNOME_VFS_OK == result)
 	{
-		result = gnome_vfs_read (handle, buffer, 
+		result = gnome_vfs_read (handle, buffer,
 		                         BUF_SIZE, &bytes_read);
 
 		printf ("duude got %lld %s\n", bytes_read, buffer);
@@ -91,14 +91,14 @@ printf ("duude attempt to read %s\n", uri);
 	gnome_vfs_close (handle);
 }
 
-int 
+int
 main (int argc, char **argv)
 {
 	if (argc < 2) {
 	         g_print ("Run with %s <uri>\n", argv[0]);
 	          exit (1);
 	}
-	  
+
 	 gnome_vfs_init ();
 
 	 // load_gorp (argv[1]);
@@ -108,11 +108,11 @@ main (int argc, char **argv)
 	  return 0;
 }
 /* ------------------------------------------------------------------ */
-	  
+
 
 /*
- To compile the example: 
+ To compile the example:
 
-# gcc `pkg-config --libs --cflags gtk+-2.0 gnome-vfs-2.0` j.c 
-	 
+# gcc `pkg-config --libs --cflags gtk+-2.0 gnome-vfs-2.0` j.c
+
 */

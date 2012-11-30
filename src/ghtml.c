@@ -240,24 +240,24 @@ static SCM
 do_apply_on_string (GttGhtml *ghtml, SCM strs,
              SCM (*func)(GttGhtml *, const char *))
 {
-   return do_apply_based_on_type (ghtml, strs,
-             GTT_NONE, func, NULL, NULL, NULL);
+	return do_apply_based_on_type (ghtml, strs,
+	             GTT_NONE, func, NULL, NULL, NULL);
 }
 
 static SCM
 do_apply_on_project (GttGhtml *ghtml, SCM project,
              SCM (*func)(GttGhtml *, GttProject *))
 {
-   return do_apply_based_on_type (ghtml, project,
-             GTT_PRJ, NULL, func, NULL, NULL);
+	return do_apply_based_on_type (ghtml, project,
+	             GTT_PRJ, NULL, func, NULL, NULL);
 }
 
 static SCM
 do_apply_on_task (GttGhtml *ghtml, SCM task,
              SCM (*func)(GttGhtml *, GttTask *))
 {
-   return do_apply_based_on_type (ghtml, task,
-             GTT_TASK, NULL, NULL, func, NULL);
+	return do_apply_based_on_type (ghtml, task,
+	             GTT_TASK, NULL, NULL, func, NULL);
 }
 
 
@@ -265,8 +265,8 @@ static SCM
 do_apply_on_interval (GttGhtml *ghtml, SCM invl,
              SCM (*func)(GttGhtml *, GttInterval *))
 {
-   return do_apply_based_on_type (ghtml, invl,
-             GTT_IVL, NULL, NULL, NULL, func);
+	return do_apply_based_on_type (ghtml, invl,
+	             GTT_IVL, NULL, NULL, NULL, func);
 }
 
 /* ============================================================== */
@@ -573,7 +573,7 @@ do_ret_project_list (GttGhtml *ghtml, GList *proj_list)
 	for (n= proj_list; n; n=n->prev)
 	{
 		GttProject *prj = n->data;
-      SCM node;
+		SCM node;
 #if 0
 		GList *subprjs;
 
@@ -847,7 +847,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
-                                                                    
+
 #define RET_PROJECT_ULONG(RET_FUNC,GTT_GETTER)                      \
 static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
@@ -970,7 +970,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttTask *tsk)                    \
 {                                                                   \
 	const char * str = GTT_GETTER (tsk);                             \
-	return scm_from_locale_string (str);		 \
+	return scm_from_locale_string (str);                             \
 }                                                                   \
                                                                     \
 static SCM                                                          \
@@ -1114,8 +1114,8 @@ task_get_earliest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		// len = xxxqof_print_date_time_buff (buff, 100, task_date);
 		xxxqof_print_date_time_buff (buff, 100, task_date);
 	} else {
-   	// len = g_snprintf(buff, 100, "%s", _("No activity"));
-   	g_snprintf(buff, 100, "%s", _("No activity"));
+		// len = g_snprintf(buff, 100, "%s", _("No activity"));
+		g_snprintf(buff, 100, "%s", _("No activity"));
 	}
 	return scm_from_locale_string (buff);
 }
@@ -1132,8 +1132,8 @@ task_get_latest_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		// len = xxxqof_print_date_time_buff (buff, 100, task_date);
 		xxxqof_print_date_time_buff (buff, 100, task_date);
 	} else {
-   	// len = g_snprintf(buff, 100, "%s", _("No activity"));
-   	g_snprintf(buff, 100, "%s", _("No activity"));
+		// len = g_snprintf(buff, 100, "%s", _("No activity"));
+		g_snprintf(buff, 100, "%s", _("No activity"));
 	}
 	return scm_from_locale_string (buff);
 }
@@ -1160,14 +1160,14 @@ task_get_value_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		default: value = 0.0;
 	}
 
-    if (!config_currency_use_locale) {
-      setlocale(LC_MONETARY, "C");
-      setlocale(LC_NUMERIC, "C");
-      snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
-    } else {
-      setlocale(LC_ALL, "");
-      strfmon(buff, 100, "%n", value);
-    }
+	if (!config_currency_use_locale) {
+		setlocale(LC_MONETARY, "C");
+		setlocale(LC_NUMERIC, "C");
+		snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
+	} else {
+		setlocale(LC_ALL, "");
+		strfmon(buff, 100, "%n", value);
+	}
 
 	return scm_from_locale_string (buff);
 }
@@ -1197,14 +1197,14 @@ task_get_blockvalue_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		default: value = 0.0;
 	}
 
-    if (!config_currency_use_locale) {
-      setlocale(LC_MONETARY, "C");
-      setlocale(LC_NUMERIC, "C");
-      snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
-    } else {
-      setlocale(LC_ALL, "");
-      strfmon(buff, 100, "%n", value);
-    }
+	if (!config_currency_use_locale) {
+		setlocale(LC_MONETARY, "C");
+		setlocale(LC_NUMERIC, "C");
+		snprintf (buff, 100, "%s %.2f", config_currency_symbol, value+0.0049);
+	} else {
+		setlocale(LC_ALL, "");
+		strfmon(buff, 100, "%n", value);
+	}
 
 	return scm_mem2string (buff, strlen (buff));
 }
@@ -1276,22 +1276,21 @@ get_ivl_start_stop_common_str_scm (GttGhtml *ghtml, GttInterval *ivl,
 	if (prt_date) {
 		xxxqof_print_date_buff (buff, 100, starp);
 	} else {
-        switch (config_time_format) 
-        {
-            case TIME_FORMAT_AM_PM: {
-                strftime (buff, 100, "%r", localtime (&starp));
-                break;
-            }
-            case TIME_FORMAT_24_HS: {
-                strftime (buff, 100, "%T", localtime (&starp));
-                break;
-            }
-            case TIME_FORMAT_LOCALE: {
-                xxxqof_print_time_buff (buff, 100, starp);
-                break;
-            }
-
-        }
+		switch (config_time_format)
+		{
+			case TIME_FORMAT_AM_PM: {
+				strftime (buff, 100, "%r", localtime (&starp));
+				break;
+			}
+			case TIME_FORMAT_24_HS: {
+				strftime (buff, 100, "%T", localtime (&starp));
+				break;
+			}
+			case TIME_FORMAT_LOCALE: {
+				xxxqof_print_time_buff (buff, 100, starp);
+				break;
+			}
+		}
 	}
 
 	GString *str;
@@ -1437,7 +1436,7 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 			scm_newline(port);
 			scm_newline(port);
 		}
-    }
+	}
 
 	/* find the stack, and conditionally display it */
 	the_stack = scm_fluid_ref(SCM_CDR(scm_the_last_stack_fluid_var));

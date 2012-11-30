@@ -39,7 +39,7 @@
 
 int config_idle_timeout = -1;
 
-struct GttIdleDialog_s 
+struct GttIdleDialog_s
 {
 	GladeXML    *gtxml;
 	GtkDialog   *dlg;
@@ -180,7 +180,7 @@ adjust_timer (GttIdleDialog *dlg, time_t adjustment)
 /* =========================================================== */
 /* Gnome Pango is picky about having bare ampersands in text.
  * Escape the ampersands into proper html.
- * Basically, replace & by &amp; unless its already &amp; 
+ * Basically, replace & by &amp; unless its already &amp;
  * free the returned string when done.
  */
 
@@ -190,7 +190,7 @@ util_escape_html_markup (const char *str)
 	char * p;
 	char * ret;
 
-    if (str == NULL) return g_strdup("");
+	if (str == NULL) return g_strdup("");
 
 	p = strchr (str, '&');
 	if (!p) return g_strdup (str);
@@ -245,7 +245,7 @@ display_value (GttIdleDialog *dlg, time_t credit)
 		xxxqof_print_minutes_elapsed_buff (tbuff, 30, credit, TRUE);
 		g_snprintf (mbuff, 130, _("%s minutes"), tbuff);
 	}
-	else 
+	else
 	{
 		xxxqof_print_hours_elapsed_buff (tbuff, 30, credit, FALSE);
 		g_snprintf (mbuff, 130, _("%s hours"), tbuff);
@@ -418,7 +418,7 @@ idle_dialog_new (void)
 
 /* =========================================================== */
 
-void 
+void
 show_idle_dialog (GttIdleDialog *id)
 {
 	time_t now;
@@ -453,7 +453,7 @@ show_idle_dialog (GttIdleDialog *id)
 	 * by closing the cover).  When the laptop is resumed,
 	 * the poll_last_activity will return the many hours/days
 	 * that the laptop has been shut down, and merely stoping
-	 * the timer (as above) will credit hours/days to the 
+	 * the timer (as above) will credit hours/days to the
 	 * current active project.  We don't want this, we need
 	 * to undo this damage.
 	 */
@@ -467,7 +467,7 @@ show_idle_dialog (GttIdleDialog *id)
 
 /* =========================================================== */
 
-void 
+void
 raise_idle_dialog (GttIdleDialog *id)
 {
 	g_return_if_fail(id);

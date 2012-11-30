@@ -34,7 +34,7 @@ void err_init(void);
 
 /* main.c */
 
-/* The save_all() routine will write out all state to files.  
+/* The save_all() routine will write out all state to files.
  *    If an error occurs, it returns an error message.
  */
 char * save_all (void);
@@ -51,7 +51,7 @@ void save_properties (void);
  */
 void save_projects (void);
 
-/* The read_data() routine will load the project data file 
+/* The read_data() routine will load the project data file
    and setup the interface with the new data
  */
 void read_data (gboolean);

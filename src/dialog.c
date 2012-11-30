@@ -19,7 +19,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <libgnome/gnome-help.h>
- 
+
 #include "dialog.h"
 
 /* ================================================================= */

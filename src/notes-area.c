@@ -318,7 +318,7 @@ enum {
 	entry = GTK_ENTRY(glade_xml_get_widget (gtxml, GLADE_NAME));    \
 	g_signal_connect (G_OBJECT (entry), "changed",                  \
 	                G_CALLBACK (CB), dlg);                          \
-   entry; })
+	entry; })
 
 #define CONNECT_TEXT(GLADE_NAME,CB)  ({                            \
 	GtkTextView *tv;                                                \
@@ -327,7 +327,7 @@ enum {
 	buff = gtk_text_view_get_buffer (tv);                           \
 	g_signal_connect (G_OBJECT (buff), "changed",                   \
 	                G_CALLBACK (CB), dlg);                          \
-   tv; })
+	tv; })
 
 
 NotesArea *
@@ -511,15 +511,15 @@ redraw (GttProject *prj, gpointer data)
 void
 notes_area_set_project (NotesArea *na, GttProject *proj)
 {
-  if (na->proj != NULL) {
-    gtt_project_remove_notifier (na->proj, redraw, na);
-    na->proj = NULL;
-  }
-  if (proj != NULL) {
-    gtt_project_add_notifier (proj, redraw, na);
-  }
+	if (na->proj != NULL) {
+		gtt_project_remove_notifier (na->proj, redraw, na);
+		na->proj = NULL;
+	}
+	if (proj != NULL) {
+		gtt_project_add_notifier (proj, redraw, na);
+	}
 
-  notes_area_do_set_project (na, proj);
+	notes_area_do_set_project (na, proj);
 }
 
 /* ============================================================== */
@@ -549,10 +549,10 @@ projects_tree_clicked (GtkWidget *ptree, GdkEvent *event, gpointer data)
 	// GttProjectsTree *projects_tree = GTT_PROJECTS_TREE (ptree);
 	GtkMenuShell *menu;
 
-    if (!(event->type == GDK_BUTTON_PRESS && bevent->button == 3))
-    {
+	if (!(event->type == GDK_BUTTON_PRESS && bevent->button == 3))
+	{
 		return FALSE;
-    }
+	}
 
 	menu = menus_get_popup ();
 	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, 3, bevent->time);
@@ -561,7 +561,7 @@ projects_tree_clicked (GtkWidget *ptree, GdkEvent *event, gpointer data)
 
 }
 
-void 
+void
 notes_area_add_projects_tree (NotesArea *nadlg, GttProjectsTree *ptree)
 {
 	if (!nadlg) return;

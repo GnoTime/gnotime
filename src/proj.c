@@ -1828,14 +1828,14 @@ gtt_project_timer_start (GttProject *proj)
 	}
 	else
 	{
-        if(NULL == proj->current_task)
-        {
-        	task = proj->task_list->data;
-        	proj->current_task = task;
-        }
-        else
-        {
-        	task = proj->current_task;
+		if (NULL == proj->current_task)
+		{
+			task = proj->task_list->data;
+			proj->current_task = task;
+		}
+		else
+		{
+			task = proj->current_task;
 		}
 
 		g_return_if_fail (task);
