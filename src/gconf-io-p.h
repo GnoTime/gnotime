@@ -143,7 +143,7 @@
    l = GETLIST(dir, NULL);                                             \
    for (n=l; n; n=n->next) {                                           \
       /* XXX mem leak?? do we need to free gconf value  ?? */          \
-      n->data = (gpointer) gconf_value_get_int (n->data);              \
+      n->data = (gpointer) (long) gconf_value_get_int (n->data);       \
    }                                                                   \
    l;                                                                  \
 })
