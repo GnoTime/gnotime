@@ -1409,7 +1409,7 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 	SCM port = scm_current_output_port();
 	/* throw args seem to be: (FN FORMAT ARGS #f). split the pieces into
 	   local vars. */
-	if (scm_list_p(throw_args) && (scm_length(throw_args) >= 4))
+	if (scm_list_p(throw_args) && (scm_ilength(throw_args) >= 4))
 	{
 		SCM fn = scm_car(throw_args);
 		SCM format = scm_cadr(throw_args);
