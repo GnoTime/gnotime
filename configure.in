@@ -60,13 +60,19 @@ LIBDBUS_REQUIRED_MIN=0.74
 dnl *****************************************
 dnl Check for guile
 dnl *****************************************
-GUILE_FLAGS
 
-GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
-if test "$GUILE_VERSION" "<" "1.8"; then
-   AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
-fi
+# The below checks for guile-1.8. It works, the code compile, works.
+# GUILE_FLAGS
+#
+# GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
+# if test "$GUILE_VERSION" "<" "1.8"; then
+#    AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
+# fi
 
+# http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
+PKG_CHECK_MODULES([GUILE], [guile-2.0])
+AC_SUBST(GUILE_CFLAGS)
+AC_SUBST(GUILE_LIBS)
 
 dnl *****************************************
 dnl Check for glib
@@ -81,8 +87,6 @@ dnl *****************************************
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
-
-
 
 dnl *****************************************
 dnl Check for libgnome
