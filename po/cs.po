@@ -1,32 +1,35 @@
 # Czech message catalog for gnome-utils.
 # Copyright (C) 2001 Free Software Foundation, Inc.
+#
 # David Sauer <davids@penguin.cz>, 1999.
 # George Lebl <jirka@5z.com>, 2000-2001.
-#
+# Petr Gajdůšek <gajdusek.petr@centrum.cz>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-utils 1.0.50\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-08 12:48-0300\n"
-"PO-Revision-Date: 2001-08-21 19:22+0200\n"
-"Last-Translator: David Sauer <davids@penguin.cz>\n"
-"Language-Team: czech <cs@li.org>\n"
+"POT-Creation-Date: 2011-06-04 07:12+0200\n"
+"PO-Revision-Date: 2011-06-04 07:34+0200\n"
+"Last-Translator: \n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: ../glade/active.glade:7
-#, fuzzy
 msgid "Start Project Dialog"
-msgstr "Příkaz při změně projektu:"
+msgstr "Spustit projekt"
 
 #: ../glade/active.glade:41 ../glade/idle.glade:41
 msgid "Restart the same project that used to be running."
-msgstr ""
+msgstr "Znovu spustit projekt, který byl pozastaven."
 
 #: ../glade/active.glade:54 ../glade/idle.glade:54
 msgid "Do not restart the timer."
-msgstr ""
+msgstr "Znovu nespouštět."
 
 #: ../glade/active.glade:118 ../glade/active.glade:172
 msgid "Dummy Text Do Not Translate"
@@ -51,180 +54,165 @@ msgstr "*"
 
 #: ../glade/column_menu.glade:12
 msgid "Sort the entries in this column in alphabetical order."
-msgstr ""
+msgstr "Abecedně seřadit položky ve sloupci."
 
 #: ../glade/column_menu.glade:13
-#, fuzzy
 msgid "Sort"
-msgstr "Začít"
+msgstr "Seřadit"
 
 #: ../glade/column_menu.glade:34
 msgid "Move this column to the left."
-msgstr ""
+msgstr "Přesunout tento sloupec doleva"
 
 #: ../glade/column_menu.glade:35
 msgid "Move Left"
-msgstr ""
+msgstr "Přesunout doleva"
 
 #: ../glade/column_menu.glade:56
 msgid "Move this column to the right."
-msgstr ""
+msgstr "Přesunout tento sloupec doprava"
 
 #: ../glade/column_menu.glade:57
 msgid "Move Right"
-msgstr ""
+msgstr "Přesunout doprava"
 
 #: ../glade/idle.glade:7
 msgid "Restart Idle Timer Dialog"
-msgstr ""
+msgstr "Znovuspuštění projektu při detekci nečinnosti"
 
 #: ../glade/interval_edit.glade:99
-#, fuzzy
 msgid "Start Fuzz"
-msgstr "Začít"
+msgstr "Nepřesnost začátku"
 
 #: ../glade/interval_edit.glade:125 ../src/ghtml-deprecated.c:89
-#: ../src/ghtml-deprecated.c:291
+#: ../src/ghtml-deprecated.c:291 ../src/ghtml-deprecated.c:88
+#: ../src/ghtml-deprecated.c:290
 msgid "Stop"
 msgstr "Zastavit"
 
 #: ../glade/interval_edit.glade:151 ../src/ctree.c:860
 #: ../src/ctree-gnome2.c:718 ../src/ghtml-deprecated.c:89
-#: ../src/ghtml-deprecated.c:288
+#: ../src/ghtml-deprecated.c:288 ../src/ghtml-deprecated.c:88
+#: ../src/ghtml-deprecated.c:287 ../src/projects-tree.c:286
 msgid "Start"
 msgstr "Začít"
 
 #: ../glade/interval_edit.glade:211
 msgid "Set how Uncertain the Start Time Is"
-msgstr ""
+msgstr "Nastavit, jak moc je počáteční čas nepřesný"
 
 #: ../glade/interval_edit.glade:222
 msgid "Exact Time"
-msgstr ""
+msgstr "Přesný čas"
 
 #: ../glade/interval_edit.glade:230
-#, fuzzy
 msgid "5 Min"
-msgstr "Min"
+msgstr "5 minut"
 
 #: ../glade/interval_edit.glade:238
-#, fuzzy
 msgid "10 Min"
-msgstr "Min"
+msgstr "10 minut"
 
 #: ../glade/interval_edit.glade:246
-#, fuzzy
 msgid "15 Min"
-msgstr "Min"
+msgstr "15 minut"
 
 #: ../glade/interval_edit.glade:254
-#, fuzzy
 msgid "20 Min"
-msgstr "Min"
+msgstr "20 minut"
 
 #: ../glade/interval_edit.glade:262
-#, fuzzy
 msgid "30 Min"
-msgstr "Min"
+msgstr "30 minut"
 
 #: ../glade/interval_edit.glade:270
 msgid "1 Hour"
-msgstr ""
+msgstr "1 hodina"
 
 #: ../glade/interval_edit.glade:278
-#, fuzzy
 msgid "2 Hours"
-msgstr "hodin"
+msgstr "2 hodiny"
 
 #: ../glade/interval_edit.glade:286
-#, fuzzy
 msgid "3 Hours"
-msgstr "hodin"
+msgstr "3 hodiny"
 
 #: ../glade/interval_edit.glade:294 ../src/ctree.c:806
-#: ../src/ctree-gnome2.c:668
+#: ../src/ctree-gnome2.c:668 ../src/projects-tree.c:251
 msgid "Today"
 msgstr "Dnes"
 
 #: ../glade/interval_popup.glade:13
-#, fuzzy
 msgid "New Interval"
-msgstr "Interval obnovení zobrazení"
+msgstr "Nový interval"
 
 #: ../glade/interval_popup.glade:34
-#, fuzzy
 msgid "Edit Interval"
-msgstr "Obecné"
+msgstr "Upravit interval"
 
 #: ../glade/interval_popup.glade:43
-#, fuzzy
 msgid "Delete Interval"
-msgstr "Interval obnovení zobrazení"
+msgstr "Odstranit interval"
 
 #: ../glade/interval_popup.glade:70
 msgid "Merge Up"
-msgstr ""
+msgstr "Sloučit nahoru"
 
 #: ../glade/interval_popup.glade:79
 msgid "Merge Down"
-msgstr ""
+msgstr "Sloučit dolů"
 
 #: ../glade/interval_popup.glade:94
 msgid "Move Up"
-msgstr ""
+msgstr "Přesunout nahoru"
 
 #: ../glade/interval_popup.glade:115
 msgid "Move Down"
-msgstr ""
+msgstr "Přesunout dolů"
 
 #: ../glade/interval_popup.glade:142
-#, fuzzy
 msgid "Insert Diary Entry"
-msgstr "Vložit znak"
+msgstr "Vložit novou položku deníku"
 
 #: ../glade/interval_popup.glade:163
 msgid "Paste Diary Entry"
-msgstr ""
+msgstr "Vložit položku deníku"
 
 #: ../glade/journal.glade:10
-#, fuzzy
 msgid "GnoTime: Journal"
-msgstr "Ukazovat 'Nápověda'"
+msgstr "GnoTime: Žurnál"
 
 #: ../glade/journal.glade:43
-#, fuzzy
 msgid "New File"
-msgstr "Nový pohled"
+msgstr "Nový soubor"
 
-#: ../glade/journal.glade:44
+#: ../glade/journal.glade:44 ../glade/journal.glade:43
 msgid "Publish"
-msgstr ""
+msgstr "Zveřejnit"
 
 #: ../glade/journal.glade:54
-#, fuzzy
 msgid "Open File"
-msgstr "Otevřít soubor záznamů"
+msgstr "Otevřít soubor"
 
-#: ../glade/journal.glade:55
+#: ../glade/journal.glade:55 ../glade/journal.glade:54
 msgid "Save"
 msgstr "Uložit"
 
 #: ../glade/journal.glade:65
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovit"
 
 #: ../glade/journal.glade:75
-#, fuzzy
 msgid "Save File"
-msgstr "Uložit text jako ..."
+msgstr "Uložit soubor"
 
-#: ../glade/journal.glade:76
+#: ../glade/journal.glade:76 ../glade/journal.glade:75
 msgid "Close"
 msgstr "Zavřít"
 
 #: ../glade/journal.glade:117
 msgid "GnoTime: Publish Report"
-msgstr ""
+msgstr "GnoTime: Zveřejnění výstupní sestavy"
 
 #: ../glade/journal.glade:133
 msgid ""
@@ -234,614 +222,613 @@ msgid ""
 "ssh://<i>host.net/some/file/path</i>\n"
 "ftp://<i>username:passwd@host.net/path/to/file</i>\n"
 msgstr ""
+"<b>Zveřejnění výstupní sestavy</b>\n"
+"Zadejte URL, např.:\n"
+"mailto:<i>&lt;uživatel&gt;@&lt;server&gt;</i>\n"
+"ssh://<i>server.cz/cesta/k/souboru</i>\n"
+"ftp://<i>uživatel:heslo@server.cz/cesta/k/souboru</i>\n"
 
 #: ../glade/journal.glade:165
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
-#: ../glade/notes.glade:7
+#: ../glade/notes.glade:7 ../glade/notes.glade:6
 msgid "window1"
 msgstr ""
 
 #: ../glade/notes.glade:59 ../glade/project_properties.glade:96
+#: ../glade/notes.glade:39
 msgid "Project Title:"
-msgstr "Název projektu"
+msgstr "Název projektu:"
 
-#: ../glade/notes.glade:80
+#: ../glade/notes.glade:80 ../glade/notes.glade:63
 msgid "Close the project subwindow"
-msgstr ""
+msgstr "Uzavřít podokno"
 
-#: ../glade/notes.glade:107
+#: ../glade/notes.glade:107 ../glade/notes.glade:51
 msgid "Edit the project title in this box"
-msgstr ""
+msgstr "Upravte název projektu"
 
-#: ../glade/notes.glade:140
+#: ../glade/notes.glade:140 ../glade/notes.glade:92
 msgid "Desc:"
-msgstr ""
+msgstr "Popis:"
 
-#: ../glade/notes.glade:161
-#, fuzzy
+#: ../glade/notes.glade:161 ../glade/notes.glade:104
 msgid "Edit the project description"
-msgstr "Popis projektu:"
+msgstr "Upravte popis projektu"
 
 #: ../glade/notes.glade:240 ../glade/task_properties.glade:85
-#, fuzzy
+#: ../glade/notes.glade:153
 msgid "Diary Entry:"
-msgstr "Začít v adresáři:"
+msgstr "Položka deníku:"
 
-#: ../glade/notes.glade:280
-#, fuzzy
+#: ../glade/notes.glade:280 ../glade/notes.glade:190
 msgid "Create a new diary entry"
-msgstr "Nový projekt..."
+msgstr "Vytvořit novou položku deníku"
 
 #: ../glade/notes.glade:282 ../src/journal.c:381 ../src/proj.c:757
-#: ../src/proj.c:1772 ../src/proj.c:1976
+#: ../src/proj.c:1772 ../src/proj.c:1976 ../src/journal.c:379
+#: ../src/proj.c:756 ../src/proj.c:1826 ../src/proj.c:2046
 msgid "New Diary Entry"
-msgstr ""
+msgstr "Nová položka deníku"
 
 #: ../glade/not-implemented.glade:10
-#, fuzzy
 msgid ""
 "This function is not yet implemented!\n"
 "Coming Soon, I hope!"
-msgstr "Ještě není implementováno"
+msgstr ""
+"Tato funkce ještě není implementována!\n"
+"Snad bude co nejdříve!"
 
 #: ../glade/not-implemented.glade:12
-#, fuzzy
 msgid "Information"
-msgstr "Informace o procesoru"
+msgstr "Informace"
 
-#: ../glade/plugin_editor.glade:9
+#: ../glade/plugin_editor.glade:9 ../glade/plugin_editor.glade:7
 msgid "GnoTime Report Menu Editor"
-msgstr ""
+msgstr "Editor nabídky sestav GnoTime"
 
-#: ../glade/plugin_editor.glade:43
+#: ../glade/plugin_editor.glade:43 ../glade/plugin_editor.glade:435
 msgid "Abandon all changes and close this dialog window."
-msgstr ""
+msgstr "Zapomene všechny změny a zavře dialog."
 
-#: ../glade/plugin_editor.glade:57
+#: ../glade/plugin_editor.glade:57 ../glade/plugin_editor.glade:450
 msgid "Apply the changes to the reports menu."
-msgstr ""
+msgstr "Provede změny v nabídce sestav."
 
-#: ../glade/plugin_editor.glade:71
+#: ../glade/plugin_editor.glade:71 ../glade/plugin_editor.glade:465
 msgid "Apply the changes to the reports menu, and close this dialog window."
-msgstr ""
+msgstr "Provede změny v nabídce sestav a zavře dialog."
 
-#: ../glade/plugin_editor.glade:138
+#: ../glade/plugin_editor.glade:138 ../glade/plugin_editor.glade:40
 msgid "Move the selected menu item up by one entry."
-msgstr ""
+msgstr "Přesune vybranou položku nabídky o jedno místo nahoru"
 
-#: ../glade/plugin_editor.glade:151
+#: ../glade/plugin_editor.glade:151 ../glade/plugin_editor.glade:52
 msgid "Move the selected menu item down by one entry."
-msgstr ""
+msgstr "Přesune vybranou položku nabídky o jedno místo dolů"
 
-#: ../glade/plugin_editor.glade:217
+#: ../glade/plugin_editor.glade:217 ../glade/plugin_editor.glade:204
 msgid "Enter the popup hint for the menu item here."
-msgstr ""
+msgstr "Zadejte text vyskakovací nápovědy pro položku nabídky."
 
 #: ../glade/plugin_editor.glade:248
 msgid "Enter the file path to the report here."
-msgstr ""
+msgstr "Zadejte cestu k souboru obsahujícího sestavu."
 
-#: ../glade/plugin_editor.glade:272
+#: ../glade/plugin_editor.glade:272 ../glade/plugin_editor.glade:190
 msgid "Enter the name for the menu item here."
-msgstr ""
+msgstr "Zadejte název pro položku nabídky."
 
 #: ../glade/plugin_editor.glade:295 ../glade/plugin.glade:98
+#: ../glade/plugin_editor.glade:176 ../glade/plugin.glade:75
 msgid "Path:"
-msgstr ""
+msgstr "Cesta:"
 
 #: ../glade/plugin_editor.glade:320 ../glade/plugin.glade:122
-#, fuzzy
+#: ../glade/plugin_editor.glade:162 ../glade/plugin.glade:61
 msgid "Tooltip:"
-msgstr "Ukazovat tipy"
+msgstr "Bublinová nápověda:"
 
-#: ../glade/plugin_editor.glade:345
+#: ../glade/plugin_editor.glade:345 ../glade/plugin_editor.glade:150
 msgid "Label:"
-msgstr ""
+msgstr "Návěští:"
 
-#: ../glade/plugin_editor.glade:370
+#: ../glade/plugin_editor.glade:370 ../glade/plugin_editor.glade:136
 msgid "Icon:"
-msgstr ""
+msgstr "Ikona:"
 
 #: ../glade/plugin_editor.glade:402
 msgid "Pick an icon to decorate the menu entry."
-msgstr ""
+msgstr "Vyberte ikonu pro položku nápovědy."
 
-#: ../glade/plugin_editor.glade:442
+#: ../glade/plugin_editor.glade:442 ../glade/plugin_editor.glade:277
 msgid "Add a new menu entry at the selected position."
-msgstr ""
+msgstr "Na označené místo přidá novou položku nabídky."
 
-#: ../glade/plugin_editor.glade:444
+#: ../glade/plugin_editor.glade:444 ../glade/plugin_editor.glade:278
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
-#: ../glade/plugin_editor.glade:461
+#: ../glade/plugin_editor.glade:461 ../glade/plugin_editor.glade:262
 msgid "Add a horizontal bar (separator) to the menu."
-msgstr ""
+msgstr "Do nabídky přidá vodorovný oddělovač."
 
-#: ../glade/plugin_editor.glade:463
+#: ../glade/plugin_editor.glade:463 ../glade/plugin_editor.glade:263
 msgid "Add Separator"
-msgstr ""
+msgstr "Přidat oddělovač"
 
-#: ../glade/plugin_editor.glade:480
+#: ../glade/plugin_editor.glade:480 ../glade/plugin_editor.glade:248
 msgid "Add Child"
-msgstr ""
+msgstr "Přidat podpoložku"
 
-#: ../glade/plugin_editor.glade:496
+#: ../glade/plugin_editor.glade:496 ../glade/plugin_editor.glade:230
 msgid "Delete the selected menu entry."
-msgstr ""
+msgstr "Odstraní vybranou položku nabídky."
 
-#: ../glade/plugin_editor.glade:498
+#: ../glade/plugin_editor.glade:498 ../glade/plugin_editor.glade:231
 msgid "Delete"
-msgstr ""
+msgstr "Odstranit"
 
-#: ../glade/plugin_editor.glade:541
+#: ../glade/plugin_editor.glade:541 ../glade/plugin_editor.glade:305
 msgid "Modifiers:"
-msgstr ""
+msgstr "Modifikátory:"
 
-#: ../glade/plugin_editor.glade:563
+#: ../glade/plugin_editor.glade:563 ../glade/plugin_editor.glade:317
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
-#: ../glade/plugin_editor.glade:581
+#: ../glade/plugin_editor.glade:581 ../glade/plugin_editor.glade:332
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
-#: ../glade/plugin_editor.glade:599
+#: ../glade/plugin_editor.glade:599 ../glade/plugin_editor.glade:347
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
-#: ../glade/plugin_editor.glade:629
+#: ../glade/plugin_editor.glade:629 ../glade/plugin_editor.glade:366
 msgid "Key:"
-msgstr ""
+msgstr "Klávesa:"
 
-#: ../glade/plugin_editor.glade:650
+#: ../glade/plugin_editor.glade:650 ../glade/plugin_editor.glade:378
 msgid "Enter the keyboard shortcut for this menu item."
-msgstr ""
+msgstr "Vložte klávesovou zkratku pro položku nabídky."
 
-#: ../glade/plugin_editor.glade:679
+#: ../glade/plugin_editor.glade:679 ../glade/plugin_editor.glade:395
 msgid "Accelerator"
-msgstr ""
+msgstr "Klávesová zkratka"
 
-#: ../glade/plugin.glade:74
+#: ../glade/plugin.glade:74 ../glade/plugin.glade:89
 msgid "Name:"
-msgstr ""
+msgstr "Název:"
 
-#: ../glade/plugin.glade:146
+#: ../glade/plugin.glade:146 ../glade/plugin.glade:48
 msgid "Title that will appear in the 'Reports' menu."
-msgstr ""
+msgstr "Název, který bude zobrazen v nabídce „Výstupní sestavy“."
 
-#: ../glade/plugin.glade:168
+#: ../glade/plugin.glade:168 ../glade/plugin.glade:33
 msgid "Tooltip that will show when the pointer hovers over this menu item."
 msgstr ""
+"Bublinová nápověda, která bude zobrazena, když uživatel umístí ukazatel myši "
+"na tuto položku v nabídce."
 
-#: ../glade/prefs.glade:52
-#, fuzzy
+#: ../glade/prefs.glade:52 ../glade/prefs.glade:27
 msgid "Show Project Importance"
-msgstr "Příkaz při změně projektu:"
+msgstr "Důležitost projektu"
 
-#: ../glade/prefs.glade:74
-#, fuzzy
+#: ../glade/prefs.glade:74 ../glade/prefs.glade:41
 msgid "Show Project Urgency"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Naléhavost projektu"
 
-#: ../glade/prefs.glade:96
-#, fuzzy
+#: ../glade/prefs.glade:96 ../glade/prefs.glade:57
 msgid "Show Project Status"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Stav projektu"
 
-#: ../glade/prefs.glade:118
-#, fuzzy
+#: ../glade/prefs.glade:118 ../glade/prefs.glade:73
 msgid "Show Total Time Ever"
-msgstr "Zobrazit hlavičku tabulek"
+msgstr "Celkový odpracovaný čas"
 
-#: ../glade/prefs.glade:140
-#, fuzzy
+#: ../glade/prefs.glade:140 ../glade/prefs.glade:89
 msgid "Show Time This Year"
-msgstr "Ukazovat 'Časovač'"
+msgstr "Odpracováno tento rok"
 
-#: ../glade/prefs.glade:162
+#: ../glade/prefs.glade:162 ../glade/prefs.glade:105
 msgid "Show Time This Month"
-msgstr ""
+msgstr "Odpracováno tento měsíc"
 
-#: ../glade/prefs.glade:184
+#: ../glade/prefs.glade:184 ../glade/prefs.glade:121
 msgid "Show Time This Week"
-msgstr ""
+msgstr "Odpracováno tento týden"
 
-#: ../glade/prefs.glade:206
-#, fuzzy
+#: ../glade/prefs.glade:206 ../glade/prefs.glade:137
 msgid "Show Percent Complete"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Dokončeno procent"
 
-#: ../glade/prefs.glade:227
+#: ../glade/prefs.glade:227 ../glade/prefs.glade:153
 msgid ""
 "Show the 'szing', that is, the estimated amount of work that it will take to "
 "perform this project."
-msgstr ""
+msgstr "Zobrazovat předpokládané množství práce potřebné k dokončení projektu."
 
-#: ../glade/prefs.glade:229
+#: ../glade/prefs.glade:229 ../glade/prefs.glade:154
 msgid "Show Estimated Effort"
-msgstr ""
+msgstr "Předpokládaná náročnost"
 
-#: ../glade/prefs.glade:251
-#, fuzzy
+#: ../glade/prefs.glade:251 ../glade/prefs.glade:170
 msgid "Show Project Due Date"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Termín dokončení projektu"
 
-#: ../glade/prefs.glade:273
+#: ../glade/prefs.glade:273 ../glade/prefs.glade:186
 msgid "Show Planned Project End Date"
-msgstr ""
+msgstr "Naplánované datum dokončení projektu"
 
-#: ../glade/prefs.glade:295
+#: ../glade/prefs.glade:295 ../glade/prefs.glade:202
 msgid "Show Planned Project Start Date"
-msgstr ""
+msgstr "Naplánované datum začátku projektu"
 
-#: ../glade/prefs.glade:317
+#: ../glade/prefs.glade:317 ../glade/prefs.glade:218
 msgid "Show Current Diary Entry"
-msgstr ""
+msgstr "Aktuální položka deníku"
 
-#: ../glade/prefs.glade:339
-#, fuzzy
+#: ../glade/prefs.glade:339 ../glade/prefs.glade:234
 msgid "Show Project Description"
-msgstr "Popis projektu:"
+msgstr "Popis projektu"
 
-#: ../glade/prefs.glade:361
+#: ../glade/prefs.glade:361 ../glade/prefs.glade:250
 msgid "Show Time For The Current Diary Entry"
-msgstr ""
+msgstr "Odpracovaný čas pro aktuální položku deníku"
 
-#: ../glade/prefs.glade:383
-#, fuzzy
+#: ../glade/prefs.glade:383 ../glade/prefs.glade:266
 msgid "Show Time Yesterday"
-msgstr "Ukazovat 'Časovač'"
+msgstr "Odpracováno včera"
 
-#: ../glade/prefs.glade:405
-#, fuzzy
+#: ../glade/prefs.glade:405 ../glade/prefs.glade:282
 msgid "Show Time Today"
-msgstr "Ukazovat 'Časovač'"
+msgstr "Odpracováno dnes"
 
-#: ../glade/prefs.glade:427
-#, fuzzy
+#: ../glade/prefs.glade:427 ../glade/prefs.glade:298
 msgid "Show Time Last Week"
-msgstr "Ukazovat 'Časovač'"
+msgstr "Odpracováno předchozí týden"
 
-#: ../glade/prefs.glade:450
-#, fuzzy
+#: ../glade/prefs.glade:450 ../glade/prefs.glade:315
 msgid "View Project Fields"
-msgstr "Prohlížet vlastnosti"
+msgstr "Zobrazované sloupce projektů"
 
-#: ../glade/prefs.glade:479
-#, fuzzy
+#: ../glade/prefs.glade:479 ../glade/prefs.glade:326
 msgid "Fields"
-msgstr "Najít"
+msgstr "Sloupce"
 
-#: ../glade/prefs.glade:520
+#: ../glade/prefs.glade:520 ../glade/prefs.glade:348
 msgid "Show Seconds"
-msgstr "Zobrazit vteřiny"
+msgstr "Zobrazovat vteřiny"
 
-#: ../glade/prefs.glade:542
+#: ../glade/prefs.glade:542 ../glade/prefs.glade:362
 msgid "Show Status Bar"
-msgstr "Zobrazit statusbar"
+msgstr "Zobrazovat stavový řádek"
 
-#: ../glade/prefs.glade:564
+#: ../glade/prefs.glade:564 ../glade/prefs.glade:378
 msgid "Show Table Header"
-msgstr "Zobrazit hlavičku tabulek"
+msgstr "Zobrazovat hlavičku tabulky"
 
-#: ../glade/prefs.glade:586
-#, fuzzy
+#: ../glade/prefs.glade:586 ../glade/prefs.glade:394
 msgid "Show Sub-Projects"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Zobrazovat podprojekty"
 
-#: ../glade/prefs.glade:609
-#, fuzzy
+#: ../glade/prefs.glade:609 ../glade/prefs.glade:411
 msgid "Project List Display"
-msgstr "Název projektu"
+msgstr "Upřesnit zobrazení projektů"
 
-#: ../glade/prefs.glade:638
+#: ../glade/prefs.glade:638 ../glade/prefs.glade:425
 msgid "Display"
 msgstr "Zobrazit"
 
-#: ../glade/prefs.glade:678
-#, fuzzy
+#: ../glade/prefs.glade:678 ../glade/prefs.glade:480
 msgid "Start Project Command:"
-msgstr "Příkaz při změně projektu:"
+msgstr "Příkaz při započetí práce na projektu:"
 
-#: ../glade/prefs.glade:706
-#, fuzzy
+#: ../glade/prefs.glade:706 ../glade/prefs.glade:492
 msgid "Stop Project Command:"
-msgstr "Příkaz při změně projektu:"
+msgstr "Příkaz při ukončení práce na projektu:"
 
-#: ../glade/prefs.glade:739
+#: ../glade/prefs.glade:739 ../glade/prefs.glade:467
 msgid "Enter a shell command to be executed whenever projects are switched."
-msgstr ""
+msgstr "Zadejte příkaz shellu, který se vykoná, kdykoliv přepnete projekt."
 
-#: ../glade/prefs.glade:744
+#: ../glade/prefs.glade:744 ../glade/prefs.glade:468
 msgid ""
 "echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
 msgstr ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hodiny=%h minuty=%m "
+"sekundy=%s"
 
-#: ../glade/prefs.glade:768
+#: ../glade/prefs.glade:768 ../glade/prefs.glade:451
 msgid "Enter a shell command to be executed when no projects are active."
 msgstr ""
+"Zadejte příkaz shellu, který se vykoná, když přestane být aktivní jakýkoliv "
+"projekt (zastavíte časovač)."
 
-#: ../glade/prefs.glade:773
+#: ../glade/prefs.glade:773 ../glade/prefs.glade:452
 msgid ""
 "echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
 msgstr ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hodiny=%h minuty=%m "
+"sekundy=%"
 
-#: ../glade/prefs.glade:794
+#: ../glade/prefs.glade:794 ../glade/prefs.glade:507
 msgid "Shell Commands"
 msgstr "Příkazy shellu"
 
-#: ../glade/prefs.glade:823
-#, fuzzy
+#: ../glade/prefs.glade:823 ../glade/prefs.glade:521
 msgid "Shell"
-msgstr "Kontrola"
+msgstr "Shell"
 
-#: ../glade/prefs.glade:864
+#: ../glade/prefs.glade:864 ../glade/prefs.glade:594
 msgid "Use Logfile"
-msgstr ""
+msgstr "Protokolovat do souboru"
 
-#: ../glade/prefs.glade:885
+#: ../glade/prefs.glade:885 ../glade/prefs.glade:608
 msgid "Filename:"
 msgstr "Jméno souboru:"
 
-#: ../glade/prefs.glade:913
+#: ../glade/prefs.glade:913 ../glade/prefs.glade:622
 msgid "Entry Start:"
 msgstr "Položka Start:"
 
-#: ../glade/prefs.glade:941
+#: ../glade/prefs.glade:941 ../glade/prefs.glade:636
 msgid "Entry Stop:"
 msgstr "Položka Stop:"
 
-#: ../glade/prefs.glade:969
-#, fuzzy
+#: ../glade/prefs.glade:969 ../glade/prefs.glade:650
 msgid "Min Recorded:"
-msgstr "Hlavní tělo:"
+msgstr "Citlivost v sekundách:"
 
-#: ../glade/prefs.glade:1002
+#: ../glade/prefs.glade:1002 ../glade/prefs.glade:547
 msgid ""
 "Switches between projects that happen faster than this will not be logged "
 "(enter the number of seconds)"
 msgstr ""
+"Aktivita trvající méně vteřin než zadaná hodnota, nebude do souboru s "
+"protokolem zaznamenána."
 
-#: ../glade/prefs.glade:1031
+#: ../glade/prefs.glade:1031 ../glade/prefs.glade:580
 msgid ""
 "Entry that will be logged when a project starts. Use %t for the project "
 "title, %d for the description, etc. See the manual for more options."
 msgstr ""
+"Položka zaprotokolována při započetí práce na projektu. Zástupný symbol %t "
+"bude nahrazen názvem (titulkem) projektu, symbol %d popisem projektu. Další "
+"možnosti jsou popsány v nápovědě."
 
-#: ../glade/prefs.glade:1060
+#: ../glade/prefs.glade:1060 ../glade/prefs.glade:565
 msgid ""
 "Entry that will be logged when the project stops.  Use %t for the porject "
 "title, %d for the project description, etc. See the manual for more options."
 msgstr ""
+"Položka zaprotokolována při ukončení práce na projektu. Zástupný symbol %t "
+"bude nahrazen názvem (titulkem) projektu, symbol %d popisem projektu. Další "
+"možnosti jsou popsány v nápovědě."
 
 #: ../glade/prefs.glade:1118 ../glade/prefs.glade:1147
+#: ../glade/prefs.glade:678 ../glade/prefs.glade:692
 msgid "Logfile"
-msgstr ""
+msgstr "Soubor s protokolem"
 
-#: ../glade/prefs.glade:1191
-#, fuzzy
+#: ../glade/prefs.glade:1191 ../glade/prefs.glade:716
 msgid "Show Toolbar"
-msgstr "Ikony nástrojové lišty"
+msgstr "Zobrazovat lištu nástrojů"
 
-#: ../glade/prefs.glade:1210
+#: ../glade/prefs.glade:1210 ../glade/prefs.glade:731
 msgid "Show Tooltips"
-msgstr "Ukazovat tipy"
+msgstr "Zobrazovat tipy"
 
 #: ../glade/prefs.glade:1230 ../glade/prefs.glade:1464
+#: ../glade/prefs.glade:748 ../glade/prefs.glade:913
 msgid "Toolbar"
-msgstr "Nástojová lišta"
+msgstr "Nástrojová lišta"
 
-#: ../glade/prefs.glade:1275
+#: ../glade/prefs.glade:1275 ../glade/prefs.glade:768
 msgid "Show `New'"
-msgstr "Ukazovat 'Nový'"
+msgstr "Nový"
 
-#: ../glade/prefs.glade:1294
+#: ../glade/prefs.glade:1294 ../glade/prefs.glade:783
 msgid "Show `Cut', `Copy', `Paste'"
-msgstr ""
+msgstr "Vyjmout, Kopírovat, Vložit"
 
-#: ../glade/prefs.glade:1313
-#, fuzzy
+#: ../glade/prefs.glade:1313 ../glade/prefs.glade:798
 msgid "Show `Journal'"
-msgstr "Ukazovat 'Nápověda'"
+msgstr "Žurnál"
 
-#: ../glade/prefs.glade:1332
+#: ../glade/prefs.glade:1332 ../glade/prefs.glade:814
 msgid "Show `Properties'"
-msgstr "Ukazovat 'Vlastnosti'"
+msgstr "Vlastnosti"
 
-#: ../glade/prefs.glade:1351
+#: ../glade/prefs.glade:1351 ../glade/prefs.glade:830
 msgid "Show `Timer'"
-msgstr "Ukazovat 'Časovač'"
+msgstr "Časovač"
 
-#: ../glade/prefs.glade:1370
+#: ../glade/prefs.glade:1370 ../glade/prefs.glade:846
 msgid "Show `Preferences'"
-msgstr "Ukazaovat 'Natsavení'"
+msgstr "Nastavení"
 
-#: ../glade/prefs.glade:1389
+#: ../glade/prefs.glade:1389 ../glade/prefs.glade:861
 msgid "Show `Help'"
-msgstr "Ukazovat 'Nápověda'"
+msgstr "Nápověda"
 
-#: ../glade/prefs.glade:1408
+#: ../glade/prefs.glade:1408 ../glade/prefs.glade:877
 msgid "Show `Quit'"
-msgstr "Ukozovat 'Konec'"
+msgstr "Ukončit"
 
-#: ../glade/prefs.glade:1428
+#: ../glade/prefs.glade:1428 ../glade/prefs.glade:894
 msgid "Toolbar Segments"
 msgstr "Segmenty nástrojové lišty"
 
 #: ../glade/prefs.glade:1510 ../glade/prefs.glade:1609
-#, fuzzy
+#: ../glade/prefs.glade:941 ../glade/prefs.glade:991
 msgid "Idle Seconds:"
-msgstr "Zobrazit vteřiny"
+msgstr "Doba nečinnosti (v sekundách):"
 
 #: ../glade/prefs.glade:1538 ../glade/prefs.glade:1637
+#: ../glade/prefs.glade:953
 msgid ""
 "The current active project will be made inactive after there has been no "
 "keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
 msgstr ""
+"Po této době nečinnosti bude aktivní projekt zastaven. Hodnota -1 zakáže "
+"detekci nečinnosti."
 
-#: ../glade/prefs.glade:1562
+#: ../glade/prefs.glade:1562 ../glade/prefs.glade:967
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "Detekce nečinnosti"
 
-#: ../glade/prefs.glade:1661
-#, fuzzy
+#: ../glade/prefs.glade:1661 ../glade/prefs.glade:1018
 msgid "No Project Timeout"
-msgstr "Název projektu"
+msgstr "Upozornit, pokud"
 
-#: ../glade/prefs.glade:1707
+#: ../glade/prefs.glade:1707 ../glade/prefs.glade:1064
 msgid "New Day Starts At:"
-msgstr ""
+msgstr "Začátek dne:"
 
-#: ../glade/prefs.glade:1735
+#: ../glade/prefs.glade:1735 ../glade/prefs.glade:1075
 msgid "New Week Starts On:"
-msgstr ""
+msgstr "Začátek týdne:"
 
 #: ../glade/prefs.glade:1763
 msgid ""
 "The day of teh week with which a new week is considered to start. Normally, "
 "this is Sunday, but you can start a new week on any day."
 msgstr ""
+"První den v týdnu. Výchozí hodnota je neděle, ale můžete nastavit jakýkoliv "
+"jiný den."
 
 #: ../glade/prefs.glade:1773
 msgid "Sunday"
-msgstr ""
+msgstr "Neděle"
 
 #: ../glade/prefs.glade:1781
-#, fuzzy
 msgid "Monday"
-msgstr "Dnes"
+msgstr "Pondělí"
 
 #: ../glade/prefs.glade:1789
-#, fuzzy
 msgid "Tuesday"
-msgstr "Dnes"
+msgstr "Úterý"
 
 #: ../glade/prefs.glade:1797
 msgid "Wednesday"
-msgstr ""
+msgstr "Středa"
 
 #: ../glade/prefs.glade:1805
-#, fuzzy
 msgid "Thursday"
-msgstr "Dnes"
+msgstr "Čtvrtek"
 
 #: ../glade/prefs.glade:1813
 msgid "Friday"
-msgstr ""
+msgstr "Pátek"
 
 #: ../glade/prefs.glade:1821
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 #: ../glade/prefs.glade:1847 ../glade/prefs.glade:1867
+#: ../glade/prefs.glade:1091
 msgid ""
 "The time of night at which one day ends and the next day begins.  By default "
 "midnight, you can set this to any value."
 msgstr ""
+"Kdy končí den a začíná nový. Výchozí je půlnoc, ale můžete nastavit "
+"jakýkoliv čas."
 
 #: ../glade/prefs.glade:1877
 msgid "9 PM"
-msgstr ""
+msgstr "21:00"
 
 #: ../glade/prefs.glade:1885
-#, fuzzy
 msgid "10 PM"
-msgstr "Min"
+msgstr "22:00"
 
 #: ../glade/prefs.glade:1893
 msgid "11 PM"
-msgstr ""
+msgstr "23:00"
 
 #: ../glade/prefs.glade:1901
 msgid "12 Midnight"
-msgstr ""
+msgstr "00:00 (půlnoc)"
 
 #: ../glade/prefs.glade:1909
-#, fuzzy
 msgid "1 AM"
-msgstr "Min"
+msgstr "01:00"
 
 #: ../glade/prefs.glade:1917
-#, fuzzy
 msgid "2 AM"
-msgstr "Min"
+msgstr "02:00"
 
 #: ../glade/prefs.glade:1925
-#, fuzzy
 msgid "3 AM"
-msgstr "Min"
+msgstr "03:00"
 
 #: ../glade/prefs.glade:1933
 msgid "4 AM"
-msgstr ""
+msgstr "04:00"
 
 #: ../glade/prefs.glade:1941
-#, fuzzy
 msgid "5 AM"
-msgstr "Min"
+msgstr "05:00"
 
 #: ../glade/prefs.glade:1949
 msgid "6 AM"
-msgstr ""
+msgstr "06:00"
 
-#: ../glade/prefs.glade:1978
+#: ../glade/prefs.glade:1978 ../glade/prefs.glade:1127
 msgid "End of Day/Week"
-msgstr ""
+msgstr "Konec dne/týdne"
 
-#: ../glade/prefs.glade:2014
+#: ../glade/prefs.glade:2014 ../glade/prefs.glade:1146
 msgid "Misc"
 msgstr "Různé"
 
-#: ../glade/prefs.glade:2056
-#, fuzzy
+#: ../glade/prefs.glade:2056 ../glade/prefs.glade:1177
 msgid "12 hours"
-msgstr "hodin"
+msgstr "12 hodin"
 
-#: ../glade/prefs.glade:2070
-#, fuzzy
+#: ../glade/prefs.glade:2070 ../glade/prefs.glade:1191
 msgid "24 hours"
-msgstr "hodin"
+msgstr "24 hodin"
 
 #: ../glade/prefs.glade:2086 ../glade/prefs.glade:2132
+#: ../glade/prefs.glade:1207 ../glade/prefs.glade:1253
 msgid "Use my locale formating"
-msgstr ""
+msgstr "Použít formát podle locale"
 
-#: ../glade/prefs.glade:2106
-#, fuzzy
+#: ../glade/prefs.glade:2106 ../glade/prefs.glade:1227
 msgid "Time format"
-msgstr "Časovač"
+msgstr "Formát času:"
 
-#: ../glade/prefs.glade:2145
+#: ../glade/prefs.glade:2145 ../glade/prefs.glade:1266
 msgid "Place your local currency symbol for use in the reports"
-msgstr ""
+msgstr "Zadejte symbol měny, který bude použit ve výstupních sestavách."
 
-#: ../glade/prefs.glade:2162
+#: ../glade/prefs.glade:2162 ../glade/prefs.glade:1283
 msgid "Currency Symbol"
-msgstr ""
+msgstr "Symbol měny"
 
-#: ../glade/prefs.glade:2176
+#: ../glade/prefs.glade:2176 ../glade/prefs.glade:1297
 msgid "Currency settings"
-msgstr ""
+msgstr "Nastavení měny"
 
 #. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
 #. Build the i18n menu path ...
 #. (is this right ??? or is this pre-i18n ???)
-#: ../glade/prefs.glade:2199 ../src/menus.c:301
-#, fuzzy
+#: ../glade/prefs.glade:2199 ../src/menus.c:301 ../glade/prefs.glade:1318
 msgid "Reports"
-msgstr "Restart"
+msgstr "Výstupní sestavy"
 
 #: ../glade/project_properties.glade:42
 msgid "A title to assign to this project"
-msgstr ""
+msgstr "Název tohoto projektu"
 
 #: ../glade/project_properties.glade:72
 msgid "a short description that will be printed on the invoice."
-msgstr ""
+msgstr "krátký popis, bude vytisknutý na faktuře"
 
 #: ../glade/project_properties.glade:120
 msgid "Project Description:"
@@ -850,12 +837,12 @@ msgstr "Popis projektu:"
 #: ../glade/project_properties.glade:152
 msgid ""
 "Internal notes about the project that will not be printed on an invoice."
-msgstr ""
+msgstr "Vnitřní poznámky o projektu, které nebudou vytisknuty na faktuře."
 
 #: ../glade/project_properties.glade:180 ../glade/project_properties.glade:191
 #: ../glade/task_properties.glade:139
 msgid "Notes:"
-msgstr ""
+msgstr "Poznámky:"
 
 #: ../glade/project_properties.glade:212
 msgid "Project"
@@ -863,123 +850,122 @@ msgstr "Projekt"
 
 #: ../glade/project_properties.glade:240
 msgid "Regular Rate:"
-msgstr ""
+msgstr "Běžná sazba:"
 
 #: ../glade/project_properties.glade:264
 msgid "Overtime Rate:"
-msgstr ""
+msgstr "Sazba přesčasu:"
 
 #: ../glade/project_properties.glade:288
 msgid "Double-Overtime Rate:"
-msgstr ""
+msgstr "Zvýšená sazba přesčasu:"
 
 #: ../glade/project_properties.glade:312
 msgid "Flat Fee:"
-msgstr ""
+msgstr "Paušální plat:"
 
 #: ../glade/project_properties.glade:336
 msgid "        "
 msgstr ""
 
 #: ../glade/project_properties.glade:408
-#, fuzzy
 msgid "                        "
-msgstr "Zoom                    "
+msgstr ""
 
 #: ../glade/project_properties.glade:438
 msgid "The dollars per hour normally charged for this project."
-msgstr ""
+msgstr "Běžná sazba účtovaná za hodinu práce na projektu."
 
 #: ../glade/project_properties.glade:468
 msgid "The dollars per hour charged for overtime work on this project."
-msgstr ""
+msgstr "Sazba účtovaná za práci přesčas."
 
 #: ../glade/project_properties.glade:498
 msgid "The over-overtime rate (overtime on Sundays, etc.)"
-msgstr ""
+msgstr "Zvýšená sazba účtovaná za práci přesčas (např. neděle, apod.)"
 
 #: ../glade/project_properties.glade:528
 msgid ""
 "If this project is billed for one price no matter how long it takes, enter "
 "the fee here."
 msgstr ""
+"Pokud je za dokončení projektu účtována určená cena, bez ohledu na "
+"odpracovaném času, zadejte ji do tohoto pole."
 
 #: ../glade/project_properties.glade:558
 msgid "Rates"
-msgstr ""
+msgstr "Sazby"
 
 #: ../glade/project_properties.glade:586
 msgid "Minimum Interval: "
-msgstr ""
+msgstr "Nejkratší aktivita:"
 
 #: ../glade/project_properties.glade:610
 msgid "Auto-merge Interval:"
-msgstr ""
+msgstr "Automaticky sloučit aktivity kratší než:"
 
 #: ../glade/project_properties.glade:634
 msgid "Auto-merge Gap:"
-msgstr ""
+msgstr "Automaticky sloučit mezery kratší než:"
 
 #: ../glade/project_properties.glade:658 ../glade/project_properties.glade:682
 #: ../glade/project_properties.glade:706
-#, fuzzy
 msgid "seconds"
 msgstr "sek."
 
 #: ../glade/project_properties.glade:736
 msgid "Intervals smaller than this will be discarded"
-msgstr ""
+msgstr "Aktivity kratší než zadaná hodnota budou zahozeny."
 
 #: ../glade/project_properties.glade:766
 msgid "Time below which an interval is merged with its neighbors"
 msgstr ""
+"Záznam aktivity kratší než zadaná hodnota bude sloučena se sousedními "
+"záznamy."
 
 #: ../glade/project_properties.glade:796
 msgid ""
 "If the gap between intervals is smaller than this, the intervals will be "
 "merged together."
 msgstr ""
+"Pokud je mezera mezi aktivitami kratší než tato hodnota, budou záznamy "
+"aktivit sloučeny."
 
 #: ../glade/project_properties.glade:826
-#, fuzzy
 msgid "Intervals"
-msgstr "Obecné"
+msgstr "Intervaly"
 
 #: ../glade/project_properties.glade:855
 msgid "Urgency:"
-msgstr ""
+msgstr "Naléhavost:"
 
 #: ../glade/project_properties.glade:879
-#, fuzzy
 msgid "Importance:"
-msgstr "Tolerance :"
+msgstr "Důležitost:"
 
 #: ../glade/project_properties.glade:903
-#, fuzzy
 msgid "Status:"
-msgstr "Stav"
+msgstr "Stav:"
 
 #: ../glade/project_properties.glade:927
-#, fuzzy
 msgid "Planned Start:"
-msgstr "Položka Start:"
+msgstr "Plánovaný začátek:"
 
 #: ../glade/project_properties.glade:951
 msgid "Planned Finish:"
-msgstr ""
+msgstr "Plánované dokončení:"
 
 #: ../glade/project_properties.glade:975
-#, fuzzy
 msgid "Due Date:"
-msgstr "Datum:"
+msgstr "Termín dokončení:"
 
 #: ../glade/project_properties.glade:999
 msgid "Hours to Finish:"
-msgstr ""
+msgstr "Zbývá hodin:"
 
 #: ../glade/project_properties.glade:1023
 msgid "% Complete"
-msgstr ""
+msgstr "% hotovo"
 
 #: ../glade/project_properties.glade:1047
 msgid ""
@@ -987,30 +973,35 @@ msgid ""
 "not be important.  For example, Bill may want you to answer his email today, "
 "but you may have better things to do today."
 msgstr ""
+"Vyžaduje tato položka okamžitou pozornost? Naléhavé úkoly nemusí být zároveň "
+"důležité. Například: Josef chce, abyste mu dnes odpověděli na e-mail, dnes "
+"již ale můžete mít v plánu důležitější věci."
 
 #: ../glade/project_properties.glade:1058
 #: ../glade/project_properties.glade:1113
-#, fuzzy
 msgid "Not Set"
-msgstr "Výběr fontu"
+msgstr "Nenastaveno"
 
 #: ../glade/project_properties.glade:1066
 #: ../glade/project_properties.glade:1121 ../src/ctree.c:1282
 #: ../src/ctree-gnome2.c:1114 ../src/ghtml.c:911 ../src/ghtml.c:925
-#, fuzzy
+#: ../src/ghtml.c:909 ../src/ghtml.c:923 ../src/projects-tree.c:501
+#: ../src/projects-tree.c:520
 msgid "Low"
-msgstr "Logview"
+msgstr "Nízká"
 
 #: ../glade/project_properties.glade:1074
 #: ../glade/project_properties.glade:1129 ../src/ghtml.c:926
+#: ../src/ghtml.c:924
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 #: ../glade/project_properties.glade:1082
 #: ../glade/project_properties.glade:1137 ../src/ctree.c:1284
-#: ../src/ctree-gnome2.c:1116
+#: ../src/ctree-gnome2.c:1116 ../src/projects-tree.c:503
+#: ../src/projects-tree.c:522
 msgid "High"
-msgstr ""
+msgstr "Vysoká"
 
 #: ../glade/project_properties.glade:1102
 msgid ""
@@ -1018,120 +1009,117 @@ msgid ""
 "urgent.  For example, it is important to file a tax return every year, but "
 "you have a lot of time to get ready to do this."
 msgstr ""
+"Jak důležité je dokončit tento úkol? Ne každý důležitý úkol je zároveň "
+"naléhavý. Například je důležité vyplnit každým rokem daňovém přiznání, ale "
+"máte na to dostatek času."
 
 #: ../glade/project_properties.glade:1157
 msgid "What is the status of this project?"
-msgstr ""
+msgstr "Jaký je stav projektu?"
 
 #: ../glade/project_properties.glade:1168 ../src/ghtml.c:939
-#, fuzzy
+#: ../src/ghtml.c:937
 msgid "No Status"
-msgstr "Stav"
+msgstr "Nenastaveno"
 
 #: ../glade/project_properties.glade:1176 ../src/ctree.c:1294
-#: ../src/ctree-gnome2.c:1126 ../src/ghtml.c:940
-#, fuzzy
+#: ../src/ctree-gnome2.c:1126 ../src/ghtml.c:940 ../src/ghtml.c:938
+#: ../src/projects-tree.c:539
 msgid "Not Started"
-msgstr "Začít"
+msgstr "Nezačato"
 
 #: ../glade/project_properties.glade:1184 ../src/ctree.c:1295
-#: ../src/ctree-gnome2.c:1127 ../src/ghtml.c:941
-#, fuzzy
+#: ../src/ctree-gnome2.c:1127 ../src/ghtml.c:941 ../src/ghtml.c:939
+#: ../src/projects-tree.c:540
 msgid "In Progress"
-msgstr "Spustit program"
+msgstr "Probíhá"
 
 #: ../glade/project_properties.glade:1192 ../src/ctree.c:1296
-#: ../src/ctree-gnome2.c:1128 ../src/ghtml.c:942
-#, fuzzy
+#: ../src/ctree-gnome2.c:1128 ../src/ghtml.c:942 ../src/ghtml.c:940
+#: ../src/projects-tree.c:541
 msgid "On Hold"
-msgstr "Plné"
+msgstr "Pozastaveno"
 
 #: ../glade/project_properties.glade:1200 ../src/ctree.c:1297
-#: ../src/ctree-gnome2.c:1129 ../src/ghtml.c:943
-#, fuzzy
+#: ../src/ctree-gnome2.c:1129 ../src/ghtml.c:943 ../src/ghtml.c:941
+#: ../src/projects-tree.c:542
 msgid "Cancelled"
-msgstr "Zrušit"
+msgstr "Zrušeno"
 
 #: ../glade/project_properties.glade:1208 ../src/ctree.c:1298
-#: ../src/ctree-gnome2.c:1130 ../src/ghtml.c:944
+#: ../src/ctree-gnome2.c:1130 ../src/ghtml.c:944 ../src/ghtml.c:942
+#: ../src/projects-tree.c:543
 msgid "Completed"
-msgstr ""
+msgstr "Dokončeno"
 
 #: ../glade/project_properties.glade:1228
 #: ../glade/project_properties.glade:1300
-#, fuzzy
 msgid "            "
-msgstr "Konec                  "
+msgstr "            "
 
 #: ../glade/project_properties.glade:1372
-#, fuzzy
 msgid "Planning"
-msgstr "Varování"
+msgstr "Plánování"
 
 #: ../glade/task_popup.glade:13 ../src/menus.c:238
 msgid "_New Diary Entry"
-msgstr ""
+msgstr "_Nová položka deníku"
 
 #: ../glade/task_popup.glade:34 ../src/menus.c:242
 msgid "_Edit Diary Entry"
-msgstr ""
+msgstr "_Upravit položku deníku"
 
 #: ../glade/task_popup.glade:55
-#, fuzzy
 msgid "_Cut Diary Entry"
-msgstr "Parametry"
+msgstr "_Vyjmout položku deníku"
 
 #: ../glade/task_popup.glade:76
 msgid "Cut Entry & _Times"
-msgstr ""
+msgstr "Vyjmou_t položku a časy"
 
 #: ../glade/task_popup.glade:97
-#, fuzzy
 msgid "Copy Diary Entry"
-msgstr "Parametry"
+msgstr "_Kopírovat položku deníku"
 
 #: ../glade/task_popup.glade:118
 msgid "_Paste Diary Entry"
-msgstr ""
+msgstr "V_ložit položku deníku"
 
 #: ../glade/task_popup.glade:145
-#, fuzzy
 msgid "New Time Interval"
-msgstr "Interval obnovení zobrazení"
+msgstr "Nový časový interval"
 
 #: ../glade/task_properties.glade:9 ../glade/task_properties.glade:204
-#, fuzzy
 msgid "Diary Notes"
-msgstr "Žádný"
+msgstr "Poznámky deníku"
 
 #: ../glade/task_properties.glade:115
 msgid "A short description to attach to this block of time."
-msgstr ""
+msgstr "Krátky popis připojený k tomuto časovému období."
 
 #: ../glade/task_properties.glade:171
 msgid "Type detailed diary entry notes here."
-msgstr ""
+msgstr "Podrobné poznámky k položce v deníku."
 
 #: ../glade/task_properties.glade:233
 msgid "Billing Status:"
-msgstr ""
+msgstr "Stav fakturace:"
 
 #: ../glade/task_properties.glade:257
 msgid "Billable:"
-msgstr ""
+msgstr "Fakturovatelný:"
 
 #: ../glade/task_properties.glade:281
 msgid "Billing Rate:"
-msgstr ""
+msgstr "Účtovaná sazba:"
 
 #: ../glade/task_properties.glade:305
 msgid "Billing Block:"
-msgstr ""
+msgstr "Nejkratší účtovatelný interval:"
 
 #: ../glade/task_properties.glade:329
-#, fuzzy
 msgid "minutes"
-msgstr "min"
+msgstr "minut"
 
 #: ../glade/task_properties.glade:353
 msgid ""
@@ -1139,23 +1127,28 @@ msgid ""
 "not yet, needs review.   \"Bill\" means print this on the next invoice.   "
 "\"Paid\" means that it should no longer be included on invoices."
 msgstr ""
+"Může být tento úkol vyúčtován zákazníkovi? „Pozdrženo“ znamená, že možná, "
+"ale ještě ne nyní, protože potřebuje zkontrolovat.   „Fakturovat“ znamená, že "
+"položka bude zahrnuta v příští faktuře.   \"Vyfakturováno\" znamená, že se "
+"položka nebude zahrnuta do dalších faktur."
 
 #: ../glade/task_properties.glade:364 ../src/ghtml.c:1045
-#: ../src/ghtml-deprecated.c:415
-#, fuzzy
+#: ../src/ghtml-deprecated.c:415 ../src/ghtml.c:1043
+#: ../src/ghtml-deprecated.c:414
 msgid "Hold"
-msgstr "Plné"
+msgstr "Pozdrženo"
 
 #: ../glade/task_properties.glade:372 ../src/ghtml.c:1046
-#: ../src/ghtml-deprecated.c:418
-#, fuzzy
+#: ../src/ghtml-deprecated.c:418 ../src/ghtml.c:1044
+#: ../src/ghtml-deprecated.c:417
 msgid "Bill"
-msgstr "Neaktivní"
+msgstr "Fakturovat"
 
 #: ../glade/task_properties.glade:380 ../src/ghtml.c:1047
-#: ../src/ghtml-deprecated.c:421
+#: ../src/ghtml-deprecated.c:421 ../src/ghtml.c:1045
+#: ../src/ghtml-deprecated.c:420
 msgid "Paid"
-msgstr ""
+msgstr "Vyfakturováno"
 
 #: ../glade/task_properties.glade:400
 msgid ""
@@ -1164,244 +1157,251 @@ msgid ""
 "this, don't print on the invoice.   \"No Charge\" means print on the invoice "
 "as 'free/no-charge'."
 msgstr ""
+"Jak má být položka fakturovaná?   „Fakturovatelná“ znamená naúčtovat "
+"zákazníkovi.   „Nefakturovatelná“ znamená, že položku nemůžeme účtovat a "
+"nebude přítomná ani na faktuře.   „Bezplatná“ znamená že položka bude na "
+"faktuře uvedena jako „zadarmo“."
 
 #: ../glade/task_properties.glade:411 ../src/ghtml.c:1058
 #: ../src/ghtml-deprecated.c:256 ../src/ghtml-deprecated.c:431
-#, fuzzy
+#: ../src/ghtml.c:1056 ../src/ghtml-deprecated.c:255
+#: ../src/ghtml-deprecated.c:430
 msgid "Billable"
-msgstr "Neaktivní"
+msgstr "Fakturovatelná"
 
 #: ../glade/task_properties.glade:419 ../src/ghtml.c:1059
-#: ../src/ghtml-deprecated.c:434
+#: ../src/ghtml-deprecated.c:434 ../src/ghtml.c:1057
+#: ../src/ghtml-deprecated.c:433
 msgid "Not Billable"
-msgstr ""
+msgstr "Nefakturovatelná"
 
 #: ../glade/task_properties.glade:427 ../src/ghtml.c:1060
-#: ../src/ghtml-deprecated.c:437
-#, fuzzy
+#: ../src/ghtml-deprecated.c:437 ../src/ghtml.c:1058
+#: ../src/ghtml-deprecated.c:436
 msgid "No Charge"
-msgstr "Jméno"
+msgstr "Bezplatná"
 
 #: ../glade/task_properties.glade:447
 msgid "Fee rate to be charged for this task."
-msgstr ""
+msgstr "Paušální plat účtovaný za tuto položku."
 
 #: ../glade/task_properties.glade:458 ../src/ghtml.c:1071
-#: ../src/ghtml-deprecated.c:447
-#, fuzzy
+#: ../src/ghtml-deprecated.c:447 ../src/ghtml.c:1069
+#: ../src/ghtml-deprecated.c:446
 msgid "Regular"
-msgstr "Načíst"
+msgstr "Běžná"
 
 #: ../glade/task_properties.glade:466 ../src/ghtml.c:1072
-#: ../src/ghtml-deprecated.c:450
+#: ../src/ghtml-deprecated.c:450 ../src/ghtml.c:1070
+#: ../src/ghtml-deprecated.c:449
 msgid "Overtime"
-msgstr ""
+msgstr "Přesčas"
 
 #: ../glade/task_properties.glade:474
-#, fuzzy
 msgid "OverOver"
-msgstr "Server"
+msgstr "Zvýšený přesčas"
 
 #: ../glade/task_properties.glade:482 ../src/ghtml.c:1074
-#: ../src/ghtml-deprecated.c:456
+#: ../src/ghtml-deprecated.c:456 ../src/ghtml.c:1072
+#: ../src/ghtml-deprecated.c:455
 msgid "Flat Fee"
-msgstr ""
+msgstr "Paušální plat"
 
 #: ../glade/task_properties.glade:508
 msgid ""
 "The billed unit of time will be rounded to an integer multiple of this time."
-msgstr ""
+msgstr "Účtovaný čas bude zaokrouhlen na celočíselný násobek tohoto času."
 
 #: ../glade/task_properties.glade:538
-#, fuzzy
 msgid "Billing"
-msgstr "Neaktivní"
+msgstr "Účtování"
 
-#: ../src/active-dialog.c:114
+#: ../src/active-dialog.c:114 ../src/active-dialog.c:145
 msgid ""
 "No project timer is currently running in GnoTime.  Do you want to start a "
 "project timer running?  If so, you can select a project from the menu below, "
 "and click 'Start' to start the project running.  Otherwise, just click "
 "'Cancel' to do nothing."
 msgstr ""
+"V GnoTime není spuštěn žádný projekt. Pokud chcete nějaký spustit, vyberte "
+"projekt v zobrazené nabídce a stiskněte tlačítko „Spustit“."
 
-#: ../src/active-dialog.c:122
+#: ../src/active-dialog.c:122 ../src/active-dialog.c:153
 msgid ""
 "You can credit this project with the time that you worked on it but were "
 "away from the keyboard.  Enter a time below, the project will be credited "
 "when you click 'Start'"
 msgstr ""
+"Do projektu můžete započíst čas, po který jste pracoval jsa vzdálen od "
+"klávesnice. Zadaný čas bude k projektu přičten po stisku tlačítka „Spustit“."
 
 #. put project name into statusbar
 #. put project name into statusbar
-#: ../src/app.c:112 ../src/app.c:307
-#, fuzzy
+#: ../src/app.c:112 ../src/app.c:307 ../src/app.c:258 ../src/app.c:475
+#: ../src/status-icon.c:77 ../src/status-icon.c:103
 msgid "Timer is not running"
-msgstr "Časovač _běží"
+msgstr "Časovač neběží"
 
 #. put elapsed time into statusbar
 #. put elapsed time into statusbar
-#: ../src/app.c:300
+#: ../src/app.c:300 ../src/app.c:468
 msgid "00:00"
 msgstr "00:00"
 
-#: ../src/app.c:359
+#: ../src/app.c:359 ../src/app.c:532
 msgid ""
 "Couldn't understand geometry (position and size)\n"
 " specified on command line"
 msgstr ""
+"Chybná syntax geometrie (umístění a velikost) zadané na příkazovém řádku."
 
-#: ../src/ctree.c:785 ../src/ctree-gnome2.c:653
+#: ../src/ctree.c:785 ../src/ctree-gnome2.c:653 ../src/projects-tree.c:209
 msgid "Total"
 msgstr "Celkem"
 
 #: ../src/ctree.c:787 ../src/ctree-gnome2.c:655
 msgid "Total time spent on this project."
-msgstr ""
+msgstr "Celkový odpracovaný čas na tomto projektu."
 
-#: ../src/ctree.c:792 ../src/ctree-gnome2.c:660
-#, fuzzy
+#: ../src/ctree.c:792 ../src/ctree-gnome2.c:660 ../src/projects-tree.c:258
 msgid "Entry"
-msgstr "Položka Stop:"
+msgstr "Položka"
 
 #: ../src/ctree.c:794 ../src/ctree-gnome2.c:662
 msgid "Time spent under the current diary entry."
-msgstr ""
+msgstr "Odpracovaný čas pro aktuální položkou deníku."
 
-#: ../src/ctree.c:799
+#: ../src/ctree.c:799 ../src/projects-tree.c:244
 msgid "Yesterday"
-msgstr ""
+msgstr "Včera"
 
 #: ../src/ctree.c:801
 msgid "Time spent on this project yesterday."
-msgstr ""
+msgstr "Včera odpracovaný čas na tomto projektu."
 
 #: ../src/ctree.c:808 ../src/ctree-gnome2.c:670
 msgid "Time spent on this project today."
-msgstr ""
+msgstr "Dnes odpracovaný čas na tomto projektu."
 
-#: ../src/ctree.c:813 ../src/ctree-gnome2.c:675
+#: ../src/ctree.c:813 ../src/ctree-gnome2.c:675 ../src/projects-tree.c:230
 msgid "Week"
-msgstr ""
+msgstr "Týden"
 
 #: ../src/ctree.c:815 ../src/ctree-gnome2.c:677
 msgid "Time spent on this project this week."
-msgstr ""
+msgstr "Čas odpracovaný na projektu tento týden."
 
-#: ../src/ctree.c:820
+#: ../src/ctree.c:820 ../src/projects-tree.c:237
 msgid "Last Week"
-msgstr ""
+msgstr "Předchozí týden"
 
 #: ../src/ctree.c:822
 msgid "Time spent on this project last week."
-msgstr ""
+msgstr "Čas odpracovaný na tomto projektu předchozí týden."
 
-#: ../src/ctree.c:827 ../src/ctree-gnome2.c:683
-#, fuzzy
+#: ../src/ctree.c:827 ../src/ctree-gnome2.c:683 ../src/projects-tree.c:223
 msgid "Month"
-msgstr "Bod"
+msgstr "Měsíc"
 
 #: ../src/ctree.c:829 ../src/ctree-gnome2.c:685
 msgid "Time spent on this project this month."
-msgstr ""
+msgstr "Čas odpracovaný na projektu tento měsíc."
 
-#: ../src/ctree.c:834 ../src/ctree-gnome2.c:691
-#, fuzzy
+#: ../src/ctree.c:834 ../src/ctree-gnome2.c:691 ../src/projects-tree.c:216
 msgid "Year"
-msgstr "Lineární"
+msgstr "Rok"
 
 #: ../src/ctree.c:836 ../src/ctree-gnome2.c:693
 msgid "Time spent on this project this year."
-msgstr ""
+msgstr "Letos odpracovaný čas na tomto projektu."
 
-#: ../src/ctree.c:841 ../src/ctree-gnome2.c:699
-#, fuzzy
+#: ../src/ctree.c:841 ../src/ctree-gnome2.c:699 ../src/projects-tree.c:265
 msgid "Title"
-msgstr "Soubor"
+msgstr "Název"
 
 #. Put stuff into the dialog box
 #. Put stuff into the dialog box
 #: ../src/ctree.c:842 ../src/ctree-gnome2.c:700 ../src/menucmd.c:275
+#: ../src/menucmd.c:198
 msgid "Project Title"
 msgstr "Název projektu"
 
 #: ../src/ctree.c:847 ../src/ctree.c:848 ../src/ctree-gnome2.c:705
-#: ../src/ctree-gnome2.c:706 ../src/menucmd.c:276
+#: ../src/ctree-gnome2.c:706 ../src/menucmd.c:276 ../src/menucmd.c:199
+#: ../src/projects-tree.c:272
 msgid "Description"
 msgstr "Popis"
 
 #: ../src/ctree.c:853 ../src/ctree-gnome2.c:711 ../src/ghtml-deprecated.c:89
-#: ../src/ghtml-deprecated.c:239
+#: ../src/ghtml-deprecated.c:239 ../src/ghtml-deprecated.c:88
+#: ../src/ghtml-deprecated.c:238 ../src/projects-tree.c:279
 msgid "Diary Entry"
-msgstr ""
+msgstr "Položka deníku"
 
 #: ../src/ctree.c:855 ../src/ctree-gnome2.c:713
 msgid "The current diary entry"
-msgstr ""
+msgstr "Aktuální položka deníku"
 
 #: ../src/ctree.c:862 ../src/ctree-gnome2.c:720
 msgid "Estimated Project Start Date"
-msgstr ""
+msgstr "Předpokládané datum začátku projektu"
 
-#: ../src/ctree.c:867 ../src/ctree-gnome2.c:725
-#, fuzzy
+#: ../src/ctree.c:867 ../src/ctree-gnome2.c:725 ../src/projects-tree.c:293
 msgid "End"
-msgstr "Aktivní"
+msgstr "Konec"
 
 #: ../src/ctree.c:869 ../src/ctree-gnome2.c:727
-#, fuzzy
 msgid "Estimated Project Completion Date"
-msgstr "Úprava vlastností..."
+msgstr "Předpokládané datum dokončení projektu"
 
-#: ../src/ctree.c:874 ../src/ctree-gnome2.c:732
+#: ../src/ctree.c:874 ../src/ctree-gnome2.c:732 ../src/projects-tree.c:300
 msgid "Due"
-msgstr ""
+msgstr "Termín dokončení"
 
 #: ../src/ctree.c:876 ../src/ctree-gnome2.c:734
 msgid ""
 "Due Date: the date by which the project absolutely must be completed by."
-msgstr ""
+msgstr "Termín dokončení: Den, do kterého musí projekt dokončen."
 
-#: ../src/ctree.c:883 ../src/ctree-gnome2.c:741
+#: ../src/ctree.c:883 ../src/ctree-gnome2.c:741 ../src/projects-tree.c:307
 msgid "Size"
-msgstr "Velikost"
+msgstr "Náročnost"
 
 #: ../src/ctree.c:885 ../src/ctree-gnome2.c:743
 msgid "Sizing: How much work it will take to finish this project."
-msgstr ""
+msgstr "Náročnost: Množství práce potřebné k dokončení projektu."
 
-#: ../src/ctree.c:891 ../src/ctree-gnome2.c:749
-#, fuzzy
+#: ../src/ctree.c:891 ../src/ctree-gnome2.c:749 ../src/projects-tree.c:314
 msgid "Done"
-msgstr "Žádný"
+msgstr "Hotovo"
 
 #: ../src/ctree.c:893 ../src/ctree-gnome2.c:751
 msgid "Percent Complete: How much of this project has been finished till now."
-msgstr ""
+msgstr "Dokončeno procent: Procentuální vyjádření hotové části projektu."
 
 #: ../src/ctree.c:900 ../src/ctree-gnome2.c:758
 msgid "U"
-msgstr ""
+msgstr "N"
 
 #: ../src/ctree.c:902 ../src/ctree-gnome2.c:760
 msgid "Urgency: Does this project need to be done soon, done quickly?"
-msgstr ""
+msgstr "Naléhavost: Měl by být tento projekt dokončen brzy a rychle?"
 
 #: ../src/ctree.c:908 ../src/ctree-gnome2.c:766
 msgid "Imp"
-msgstr ""
+msgstr "Důl"
 
 #: ../src/ctree.c:910 ../src/ctree-gnome2.c:768
 msgid "Importance: How important is this project?"
-msgstr ""
+msgstr "Důležitost: Jak důležitý je tento projekt."
 
-#: ../src/ctree.c:916 ../src/ctree-gnome2.c:774
+#: ../src/ctree.c:916 ../src/ctree-gnome2.c:774 ../src/projects-tree.c:335
 msgid "Status"
 msgstr "Stav"
 
 #: ../src/ctree.c:918 ../src/ctree-gnome2.c:776
 msgid "The current status of this project."
-msgstr ""
+msgstr "Současný stav tohoto projektu."
 
 #: ../src/ctree.c:1270 ../src/ctree-gnome2.c:1102
 msgid "3"
@@ -1415,15 +1415,14 @@ msgstr "2"
 msgid "1"
 msgstr "1"
 
-#: ../src/ctree.c:1283 ../src/ctree-gnome2.c:1115
-#, fuzzy
+#: ../src/ctree.c:1283 ../src/ctree-gnome2.c:1115 ../src/projects-tree.c:502
+#: ../src/projects-tree.c:521
 msgid "Med"
-msgstr "červená"
+msgstr "Stř"
 
 #: ../src/err-throw.c:61
-#, fuzzy
 msgid "No Error"
-msgstr "Chyba"
+msgstr "Žádný chyba"
 
 #: ../src/err-throw.c:65
 #, c-format
@@ -1431,6 +1430,8 @@ msgid ""
 "Cannot open the project data file\n"
 "\t%s\n"
 msgstr ""
+"Nelze otevřít soubor s projektem\n"
+"\t%s\n"
 
 #: ../src/err-throw.c:70
 #, c-format
@@ -1438,6 +1439,8 @@ msgid ""
 "Cannot write the project data file\n"
 "\t%s\n"
 msgstr ""
+"Nelze uložit zapisovat do souboru s projektem\n"
+"\t%s\n"
 
 #: ../src/err-throw.c:75
 #, c-format
@@ -1446,6 +1449,9 @@ msgid ""
 "\t%s\n"
 "doesn't seem to be a GnoTime project data file\n"
 msgstr ""
+"Soubor\n"
+"\t%s\n"
+"není datovým souborem projektu GnoTime\n"
 
 #: ../src/err-throw.c:81
 #, c-format
@@ -1454,6 +1460,9 @@ msgid ""
 "\t%s\n"
 "seems to be corrupt\n"
 msgstr ""
+"Soubor\n"
+"\t%s\n"
+"je poškozený\n"
 
 #: ../src/err-throw.c:87
 #, c-format
@@ -1461,6 +1470,9 @@ msgid ""
 "An unknown token was found during the parsing of\n"
 "\t%s\n"
 msgstr ""
+"Soubor \n"
+"\t%s\n"
+"obsahuje neznámý token\n"
 
 #: ../src/err-throw.c:92
 #, c-format
@@ -1468,18 +1480,23 @@ msgid ""
 "An unknown value was found during the parsing of\n"
 "\t%s\n"
 msgstr ""
+"Soubor\n"
+"\t%s\n"
+"obsahuje neznámou hodnotu\n"
 
 #: ../src/err-throw.c:97
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot write the config file\n"
 "\t%s\n"
-msgstr "Nelze zapsat konfigurační soubor!"
+msgstr ""
+"Nelze zapsat konfigurační soubor\n"
+"\t%s\n"
 
-#: ../src/export.c:88
-#, fuzzy, c-format
+#: ../src/export.c:88 ../src/export.c:106
+#, c-format
 msgid "Error exporting data: %s"
-msgstr "Chyba při zpracování databáze akcí"
+msgstr "Chyba při exportování dat: %s"
 
 #: ../src/export.c:138
 #, c-format
@@ -1487,273 +1504,274 @@ msgid "File %s exists, overwrite?"
 msgstr "Soubor %s již existuje, přepsat?"
 
 #: ../src/export.c:153
-#, fuzzy, c-format
+#, c-format
 msgid "File %s dould not be opened"
-msgstr "%s nelze otevřít."
+msgstr "Soubor %s nelze otevřít"
 
 #: ../src/export.c:163
 msgid "Error occured during export"
-msgstr ""
+msgstr "Během exportování došlo k chybě"
 
-#: ../src/export.c:193
+#: ../src/export.c:193 ../src/export.c:178
 msgid "Tab-Delimited Export"
-msgstr ""
+msgstr "Export do souboru s hodnotami oddělenými tabulátory"
 
-#: ../src/file-io.c:390 ../src/gconf-io.c:445
+#: ../src/file-io.c:390 ../src/gconf-io.c:445 ../src/file-io.c:388
+#: ../src/gconf-io.c:449
 msgid "project %t started"
-msgstr "projekt %t odstartován"
+msgstr "spuštěn projekt %t"
 
-#: ../src/file-io.c:393 ../src/gconf-io.c:446
+#: ../src/file-io.c:393 ../src/gconf-io.c:446 ../src/file-io.c:391
+#: ../src/gconf-io.c:450
 msgid "stopped project %t"
-msgstr "zastaven prjekt %t"
+msgstr "zastaven projekt %t"
 
-#: ../src/ghtml.c:360
-#, fuzzy
+#: ../src/ghtml.c:360 ../src/ghtml.c:358
 msgid "False"
-msgstr "Hodnota"
+msgstr "Nepravda"
 
-#: ../src/ghtml.c:361
+#: ../src/ghtml.c:361 ../src/ghtml.c:359
 msgid "True"
-msgstr ""
+msgstr "Pravda"
 
-#: ../src/ghtml.c:912
+#: ../src/ghtml.c:912 ../src/ghtml.c:910
 msgid "Normal"
-msgstr ""
+msgstr "Běžná"
 
-#: ../src/ghtml.c:913
+#: ../src/ghtml.c:913 ../src/ghtml.c:911
 msgid "Urgent"
-msgstr ""
+msgstr "Naléhavá"
 
 #: ../src/ghtml.c:914 ../src/ghtml.c:916 ../src/ghtml.c:928 ../src/ghtml.c:930
-#: ../src/ghtml.c:946
+#: ../src/ghtml.c:946 ../src/ghtml.c:912 ../src/ghtml.c:926 ../src/ghtml.c:944
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinováno"
 
-#: ../src/ghtml.c:927
-#, fuzzy
+#: ../src/ghtml.c:927 ../src/ghtml.c:925
 msgid "Important"
-msgstr "Tolerance :"
+msgstr "Důležitá"
 
-#: ../src/ghtml.c:1073 ../src/ghtml-deprecated.c:453
+#: ../src/ghtml.c:1073 ../src/ghtml-deprecated.c:453 ../src/ghtml.c:1071
+#: ../src/ghtml-deprecated.c:452
 msgid "Double Overtime"
-msgstr ""
+msgstr "Zvýšený přesčas"
 
-#: ../src/ghtml.c:1102 ../src/ghtml.c:1118
+#: ../src/ghtml.c:1102 ../src/ghtml.c:1118 ../src/ghtml.c:1117
+#: ../src/ghtml.c:1133
 msgid "No activity"
-msgstr ""
+msgstr "Žádná činnost"
 
 #: ../src/ghtml-deprecated.c:89 ../src/ghtml-deprecated.c:294
+#: ../src/ghtml-deprecated.c:88 ../src/ghtml-deprecated.c:293
 msgid "Elapsed"
-msgstr ""
+msgstr "Uběhlo"
 
 #: ../src/ghtml-deprecated.c:109 ../src/ghtml-deprecated.c:391
-#: ../src/ghtml-deprecated.c:400
-#, fuzzy
+#: ../src/ghtml-deprecated.c:400 ../src/ghtml-deprecated.c:108
+#: ../src/ghtml-deprecated.c:390 ../src/ghtml-deprecated.c:399
 msgid "(empty)"
-msgstr "prázdný"
+msgstr "(prázdné)"
 
-#: ../src/ghtml-deprecated.c:244
-#, fuzzy
+#: ../src/ghtml-deprecated.c:244 ../src/ghtml-deprecated.c:243
 msgid "Notes"
-msgstr "Výběr fontu"
+msgstr "Poznámky"
 
-#: ../src/ghtml-deprecated.c:248
+#: ../src/ghtml-deprecated.c:248 ../src/ghtml-deprecated.c:247
 msgid "Task Time"
-msgstr ""
+msgstr "Čas úkolu"
 
-#: ../src/ghtml-deprecated.c:252
-#, fuzzy
+#: ../src/ghtml-deprecated.c:252 ../src/ghtml-deprecated.c:251
 msgid "Bill Status"
-msgstr "Stav"
+msgstr "Stav fakturace"
 
-#: ../src/ghtml-deprecated.c:260
-#, fuzzy
+#: ../src/ghtml-deprecated.c:260 ../src/ghtml-deprecated.c:259
 msgid "Bill Rate"
-msgstr "Neaktivní"
+msgstr "Sazba"
 
-#: ../src/ghtml-deprecated.c:264
-#, fuzzy
+#: ../src/ghtml-deprecated.c:264 ../src/ghtml-deprecated.c:263
 msgid "Value"
 msgstr "Hodnota"
 
-#: ../src/ghtml-deprecated.c:268
-#, fuzzy
+#: ../src/ghtml-deprecated.c:268 ../src/ghtml-deprecated.c:267
 msgid "Billable Value"
-msgstr "Neaktivní"
+msgstr "Fakturovatelná hodnota"
 
 #: ../src/ghtml-deprecated.c:272 ../src/ghtml-deprecated.c:300
-#, fuzzy
+#: ../src/ghtml-deprecated.c:271 ../src/ghtml-deprecated.c:299
 msgid "No Default Value"
-msgstr "Standardní"
+msgstr "Žádná výchozí hodnota"
 
-#: ../src/ghtml-deprecated.c:297
-#, fuzzy
+#: ../src/ghtml-deprecated.c:297 ../src/ghtml-deprecated.c:296
 msgid "Start Time Fuzziness"
-msgstr "Začít"
+msgstr "Nepřesnost začátku"
 
-#: ../src/ghtml-deprecated.c:476
-#, fuzzy
+#: ../src/ghtml-deprecated.c:476 ../src/ghtml-deprecated.c:475
 msgid "Error - Unknown"
-msgstr "Neznámo"
+msgstr "Chyba - Neznámé"
 
-#: ../src/ghtml-deprecated.c:707
+#: ../src/ghtml-deprecated.c:707 ../src/ghtml-deprecated.c:706
 msgid "unknown token: >>>>"
-msgstr ""
+msgstr "neznámý token: >>>>"
 
-#: ../src/idle-dialog.c:178
-#, fuzzy, c-format
+#: ../src/idle-dialog.c:178 ../src/idle-dialog.c:246
+#, c-format
 msgid "%s minutes"
-msgstr "min"
+msgstr "%s minut"
 
-#: ../src/idle-dialog.c:183
-#, fuzzy, c-format
+#: ../src/idle-dialog.c:183 ../src/idle-dialog.c:251
+#, c-format
 msgid "%s hours"
-msgstr "hodin"
+msgstr "%s hodin"
 
-#: ../src/idle-dialog.c:193
+#: ../src/idle-dialog.c:193 ../src/idle-dialog.c:261
 #, c-format
 msgid ""
 "The timer will be credited with %ld minutes since the last keyboard/mouse "
 "activity.  If you want to change the amount of time credited, use the slider "
 "below to adjust the value."
 msgstr ""
+"K časovači bude od poslední Vaší aktivity připočteno %ld minut. Posuvníkem "
+"můžete množství připočteného času upravit."
 
-#: ../src/idle-dialog.c:203
+#: ../src/idle-dialog.c:203 ../src/idle-dialog.c:271
 #, c-format
 msgid ""
 "The timer will be credited with %s hours since the last keyboard/mouse "
 "activity.  If you want to change the amount of time credited, use the slider "
 "below to adjust the value."
 msgstr ""
+"K časovači bude od poslední Vaší aktivity připočteno %s hodin. Posuvníkem "
+"můžete množství připočteného času upravit."
 
-#: ../src/idle-dialog.c:223
+#: ../src/idle-dialog.c:223 ../src/idle-dialog.c:291
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld minutes.  The currently "
 "running project, <b><i>%s - %s</i></b>, has been stopped. Do you want to "
 "restart it?"
 msgstr ""
+"Posledních %ld minut nebyla použitá klávesnice ani myš. Běžící projekt <b><i>"
+"%s - %s</i></b> byl zastaven. Chcete ho znovu spustit?"
 
-#: ../src/idle-dialog.c:233
+#: ../src/idle-dialog.c:233 ../src/idle-dialog.c:301
 #, c-format
 msgid ""
 "The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
 "running project (%s - %s) has been stopped. Do you want to restart it?"
 msgstr ""
+"Posledních %ld:%02ld hodin nebyla použitá klávesnice ani myš. Běžící projekt "
+"<b><i>%s - %s</i></b> byl zastaven. Chcete ho znovu spustit?"
 
-#: ../src/journal.c:138
+#: ../src/journal.c:138 ../src/journal.c:136
 msgid "Error 404 Not Found"
-msgstr ""
+msgstr "Chyba 404: Stránka nebyla nalezena"
 
-#: ../src/journal.c:140
-#, fuzzy, c-format
+#: ../src/journal.c:140 ../src/journal.c:138
+#, c-format
 msgid "The file %s was not found."
-msgstr "Soubor s logem nebyl nalezen"
+msgstr "Soubor %s nebyl nalezen."
 
-#: ../src/journal.c:141
+#: ../src/journal.c:141 ../src/journal.c:139
 msgid "(null)"
 msgstr ""
 
-#: ../src/journal.c:150
-#, fuzzy
+#: ../src/journal.c:150 ../src/journal.c:148
 msgid "Unkown Error"
-msgstr "Neznámo"
+msgstr "Neznámá chyba"
 
-#: ../src/journal.c:210
-#, fuzzy, c-format
+#: ../src/journal.c:210 ../src/journal.c:208
+#, c-format
 msgid ""
 "Unable to open the file %s\n"
 "%s"
-msgstr "Soubor záznamů nelze otevřít!\n"
+msgstr ""
+"Nelze otevřít soubor %s\n"
+"%s"
 
-#: ../src/journal.c:650
+#: ../src/journal.c:650 ../src/journal.c:648
 msgid "mailto: URL is not supported at this time"
-msgstr ""
+msgstr "mailto: URL není v současné době podporováno"
 
-#: ../src/journal.c:670
-#, fuzzy
+#: ../src/journal.c:670 ../src/journal.c:668
 msgid "Save HTML To File"
-msgstr "Uložit text jako ..."
+msgstr "Uložit HTML do souboru"
 
-#: ../src/journal.c:877
+#: ../src/journal.c:877 ../src/journal.c:875
 msgid "Left-click to bring up menu"
-msgstr ""
+msgstr "Kliknutím levým tlačítkem myši zobrazíte nabídku"
 
-#: ../src/log.c:61
-#, fuzzy, c-format
+#: ../src/log.c:61 ../src/log.c:62
+#, c-format
 msgid "Cannot open logfile %s for append: %s"
-msgstr "Soubor nelze otevřít pro zápis!"
+msgstr "Soubor protokolu %s nelze otevřít pro přidání záznamu: %s"
 
 #. Translators: Format to use in the gnotime logfile
 #. Translators: Format to use in the gnotime logfile
-#: ../src/log.c:70
+#: ../src/log.c:70 ../src/log.c:71
 msgid "%b %d %H:%M:%S"
 msgstr ""
 
-#: ../src/log.c:109
-#, fuzzy
+#: ../src/log.c:109 ../src/log.c:110
 msgid "no title"
-msgstr "Soubor"
+msgstr "bez názvu"
 
-#: ../src/log.c:118
+#: ../src/log.c:118 ../src/log.c:119
 msgid "no description"
 msgstr "bez popisu"
 
-#: ../src/log.c:188 ../src/log.c:281
+#: ../src/log.c:188 ../src/log.c:281 ../src/log.c:196 ../src/log.c:289
 msgid "program started"
 msgstr "program odstartován"
 
 #. log_if_equal
 #. log_if_equal
-#: ../src/log.c:273
+#: ../src/log.c:273 ../src/log.c:281
 msgid "program exited"
 msgstr "program ukončen"
 
-#: ../src/main.c:122
-#, fuzzy
+#: ../src/main.c:122 ../src/main.c:125
 msgid ""
 "There seems to be another GnoTime running.\n"
 "Press OK to start GnoTime anyway, or press Cancel to quit."
 msgstr ""
-"Pravděpodobně již běží jiný expamplář tohoto programu.\n"
-"Stiskněte OK pro start program nebo Zrušit k ukončení."
+"Pravděpodobně již běží jiná instance GnoTime.\n"
+"Pokud přesto chcete spustit GnoTime, stiskněte tlačítko „Budiž“."
 
-#: ../src/main.c:136
-#, fuzzy
+#: ../src/main.c:136 ../src/main.c:139
 msgid "Cannot create pid-file!"
-msgstr "Nelze vytvořit aplet!\n"
+msgstr "Nelze vytvořit zámek!"
 
 #: ../src/main.c:353
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Chcete pokračovat?"
 
-#: ../src/main.c:411
+#: ../src/main.c:411 ../src/main.c:540
 msgid "Shall I setup a new configuration?"
-msgstr ""
+msgstr "Má se vytvořit nová konfigurace?"
 
-#: ../src/main.c:737
+#: ../src/main.c:737 ../src/main.c:864
 msgid "Specify geometry"
 msgstr "Specifikovat geometrii"
 
-#: ../src/main.c:737
+#: ../src/main.c:737 ../src/main.c:864
 msgid "GEOMETRY"
 msgstr "GEOMETRIE"
 
-#: ../src/main.c:739
+#: ../src/main.c:739 ../src/main.c:866
 msgid "Select a project on startup"
 msgstr "Vybrat projekt při startu"
 
-#: ../src/main.c:739
+#: ../src/main.c:739 ../src/main.c:866
 msgid "PROJECT"
 msgstr "PROJEKT"
 
-#: ../src/main.c:800
+#: ../src/main.c:800 ../src/main.c:928
 msgid "Warning"
 msgstr "Varování"
 
-#: ../src/menucmd.c:51
+#: ../src/menucmd.c:51 ../src/menucmd.c:50
 msgid "Bug-fixes from:"
-msgstr ""
+msgstr "Opravy chyb:"
 
 #: ../src/menucmd.c:187
 msgid ""
@@ -1762,26 +1780,32 @@ msgid ""
 "associate a memo with it, set a billing rate, print an invoice, as well as "
 "track the status of other projects."
 msgstr ""
+"GnoTime je kombinace stopek, deníku, účetního systému pro konzultanty a "
+"organizátoru TO-DO položek. Umožňuje měřit čas, který strávíte prací na "
+"nějakém úkolu, přiřadit k němu poznámky, určit účtovací sazbu a vytisknout "
+"fakturu. Stejně tak umožňuje sledovat stav ostatních projektů."
 
-#: ../src/menucmd.c:261
+#: ../src/menucmd.c:261 ../src/menucmd.c:184
 msgid "New Project..."
 msgstr "Nový projekt..."
 
-#: ../src/menucmd.c:537
+#: ../src/menucmd.c:537 ../src/menucmd.c:440
 msgid ""
 "To edit the timer interval for this project,\n"
 "open the Activity window and click on a link.\n"
 "This will bring up a menu of time editing options.\n"
 msgstr ""
+"Pokud v tomto projektu chcete změnit nějaký časový interval, otevřete žurnál "
+"činností a klikněte na odkaz.\n"
+"Zobrazí se nabídka s možnostmi úprav.\n"
 
 #: ../src/menus.c:35
 msgid "_Export Tasks"
-msgstr ""
+msgstr "_Exportovat úkoly"
 
 #: ../src/menus.c:39
-#, fuzzy
 msgid "Export _Projects"
-msgstr "Vložit projekt"
+msgstr "Exportovat _projekty"
 
 #: ../src/menus.c:54
 msgid "_New Project..."
@@ -1789,153 +1813,139 @@ msgstr "_Nový projekt..."
 
 #: ../src/menus.c:60
 msgid "Cu_t"
-msgstr ""
+msgstr "_Vyjmout"
 
 #: ../src/menus.c:61
-#, fuzzy
 msgid "Delete the selected project"
-msgstr "Vyjmout vybraný projekt"
+msgstr "Smazat vybraný projekt"
 
 #: ../src/menus.c:74
 msgid "_Copy"
-msgstr ""
+msgstr "_Kopírovat"
 
 #: ../src/menus.c:75
-#, fuzzy
 msgid "Copy the selected project"
 msgstr "Zkopírovat vybraný projekt"
 
 #: ../src/menus.c:88
 msgid "_Paste"
-msgstr ""
+msgstr "V_ložit"
 
 #: ../src/menus.c:89
 msgid "Paste the previously copied project"
-msgstr ""
+msgstr "Vložit zkopírovaný projekt"
 
 #: ../src/menus.c:100 ../src/menus.c:234
-#, fuzzy
 msgid "Edit _Times"
-msgstr "Ukončit GTimeTracker"
+msgstr "Upravit č_asy"
 
 #: ../src/menus.c:101 ../src/menus.c:235
 msgid "Edit the time interval associated with this project"
-msgstr ""
+msgstr "Upravení časového intervalu v tomto projektu"
 
 #: ../src/menus.c:116
-#, fuzzy
 msgid "_Journal..."
-msgstr "Nastavení..."
+msgstr "Ž_urnál..."
 
 #: ../src/menus.c:117
 msgid "Show the journal for this project"
-msgstr ""
+msgstr "Zobrazit žurnál tohoto projektu"
 
 #: ../src/menus.c:120 ../src/menus.c:230
 msgid "_Activity..."
-msgstr ""
+msgstr "Žurnál č_inností..."
 
 #: ../src/menus.c:121
 msgid "Show the journal together with the timestamps for this project"
-msgstr ""
+msgstr "Zobrazit žurnál tohoto projektu včetně časových intervalů"
 
 #: ../src/menus.c:124
 msgid "_Daily..."
-msgstr ""
+msgstr "_Denně..."
 
 #: ../src/menus.c:125
 msgid "Show the total time spent on a project, day by day"
-msgstr ""
+msgstr "Pro každý den zobrazit celkový čas odpracovaný na projektu"
 
 #: ../src/menus.c:128
-#, fuzzy
 msgid "_Status..."
-msgstr "Stav"
+msgstr "_Stav..."
 
 #: ../src/menus.c:129
-#, fuzzy
 msgid "Show the project descriptions and notes."
-msgstr "Popis projektu:"
+msgstr "Zobrazit popis a poznámky projektu."
 
 #: ../src/menus.c:132
 msgid "_To Do..."
-msgstr ""
+msgstr "_To Do..."
 
 #: ../src/menus.c:133
 msgid "Show a sample to-do list"
-msgstr ""
+msgstr "Zobrazí seznam TO-DO položek"
 
 #: ../src/menus.c:136
-#, fuzzy
 msgid "_Invoice..."
-msgstr "_Uložit ..."
+msgstr "_Faktura..."
 
 #: ../src/menus.c:137
 msgid "Show a sample invoice for this project"
-msgstr ""
+msgstr "Zobrazí fakturu pro tento projekt"
 
 #: ../src/menus.c:140
-#, fuzzy
 msgid "_Query..."
-msgstr "Nastavení..."
+msgstr "Vytvořit dota_z..."
 
 #: ../src/menus.c:141
 msgid "Run a sample Query Generator"
-msgstr ""
+msgstr "Vygenerovat dotaz"
 
 #: ../src/menus.c:144
-#, fuzzy
 msgid "_Primer..."
-msgstr "Nastavení..."
+msgstr "Náv_od..."
 
 #: ../src/menus.c:145
 msgid "Show a sample introductory primer for designing custom reports"
-msgstr ""
+msgstr "Zobrazit jednoduchý návod pro vytváření vlastních sestav"
 
 #: ../src/menus.c:148
-#, fuzzy
 msgid "_New Report..."
-msgstr "_Nový projekt..."
+msgstr "_Nová sestava..."
 
 #: ../src/menus.c:149
 msgid "Define a path to a new GnoTime ghtml report file"
-msgstr ""
+msgstr "Zadejte cestu k souboru typu ghtml obsahujícímu sestavu GnoTime"
 
 #: ../src/menus.c:152
-#, fuzzy
 msgid "_Edit Reports..."
-msgstr "_Nový projekt..."
+msgstr "Upr_avit sestavy..."
 
 #: ../src/menus.c:153
 msgid "Edit the entries in the Reports pulldown menu (this menu)"
-msgstr ""
+msgstr "Upravit položky v nabídce sestav (tato nabídka)"
 
 #: ../src/menus.c:166
 msgid "St_art"
-msgstr "St_art"
+msgstr "_Spustit"
 
 #: ../src/menus.c:167
-#, fuzzy
 msgid "Start the timer running"
-msgstr "Září"
+msgstr "Spustit časovač"
 
 #: ../src/menus.c:180
 msgid "Sto_p"
-msgstr "Sto_p"
+msgstr "_Zastavit"
 
 #: ../src/menus.c:181
-#, fuzzy
 msgid "Stop the timer"
-msgstr "Září"
+msgstr "Zastavit časovač"
 
 #: ../src/menus.c:194
 msgid "_Timer Running"
 msgstr "Časovač _běží"
 
 #: ../src/menus.c:220
-#, fuzzy
 msgid "_Reports"
-msgstr "Restart"
+msgstr "Ses_tavy"
 
 #: ../src/menus.c:221
 msgid "_Timer"
@@ -1943,99 +1953,275 @@ msgstr "Ča_sovač"
 
 #: ../src/menus.c:231
 msgid "Show the timesheet journal for this project"
-msgstr ""
+msgstr "Zobrazit časový žurnál tohoto projektu"
 
 #: ../src/menus.c:239
 msgid "Change the current task for this project"
-msgstr ""
+msgstr "Změnit aktuální úkol tohoto projektu"
 
 #: ../src/menus.c:243
 msgid "Edit task header for this project"
-msgstr ""
+msgstr "Upravit hlavičku tohoto projektu"
 
 #: ../src/plug-edit.c:140
 msgid ""
 "You must specify a complete filepath to the report, including a leading "
 "slash.  The file that you specify must exist."
 msgstr ""
+"Musíte zadat úplnou cestu k sestavě, včetně počátečního lomítka. Zadaný "
+"soubor musí existovat."
 
 #: ../src/plug-edit.c:188
-#, fuzzy
 msgid "New Item"
-msgstr "Interval obnovení zobrazení"
+msgstr "Nová položka"
 
 #: ../src/plug-in.c:114
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open the report file %s\n"
-msgstr "Soubor záznamů nelze otevřít!\n"
+msgstr "Soubor záznamů %s nelze otevřít\n"
 
-#: ../src/proj.c:738
+#: ../src/proj.c:738 ../src/proj.c:737
 msgid "Old GTT Tasks"
-msgstr ""
+msgstr "Staré GTT úkoly"
 
-#: ../src/props-proj.c:95 ../src/props-proj.c:96
+#: ../src/props-proj.c:95 ../src/props-proj.c:96 ../src/props-proj.c:94
 msgid "empty"
 msgstr "prázdný"
 
-#: ../src/toolbar.c:153
-#, fuzzy
+#: ../src/toolbar.c:153 ../src/toolbar.c:154
 msgid "Create a New Project..."
-msgstr "Nový projekt..."
+msgstr "Vytvořit nový projekt..."
 
-#: ../src/toolbar.c:164
+#: ../src/toolbar.c:164 ../src/toolbar.c:165
 msgid "Cut Selected Project"
 msgstr "Vyjmout vybraný projekt"
 
-#: ../src/toolbar.c:169
+#: ../src/toolbar.c:169 ../src/toolbar.c:170
 msgid "Copy Selected Project"
 msgstr "Zkopírovat vybraný projekt"
 
-#: ../src/toolbar.c:174
+#: ../src/toolbar.c:174 ../src/toolbar.c:175
 msgid "Paste Project"
 msgstr "Vložit projekt"
 
-#: ../src/toolbar.c:188
+#: ../src/toolbar.c:188 ../src/toolbar.c:189
 msgid "Activity Journal"
-msgstr ""
+msgstr "Žurnál činností"
 
-#: ../src/toolbar.c:189
+#: ../src/toolbar.c:189 ../src/toolbar.c:190
 msgid "View and Edit Timestamp Logs"
-msgstr ""
+msgstr "Zobrazit nebo upravit časové záznamy"
 
-#: ../src/toolbar.c:198
-#, fuzzy
+#: ../src/toolbar.c:198 ../src/toolbar.c:199
 msgid "Edit Project Properties..."
-msgstr "Úprava vlastností..."
+msgstr "Upravit vlastnosti projektu..."
 
-#: ../src/toolbar.c:214
+#: ../src/toolbar.c:214 ../src/toolbar.c:215
 msgid "Timer"
 msgstr "Časovač"
 
-#: ../src/toolbar.c:215
+#: ../src/toolbar.c:215 ../src/toolbar.c:216
 msgid "Start/Stop Timer"
 msgstr "Spustit/Zastavit časovač"
 
-#: ../src/toolbar.c:224
+#: ../src/toolbar.c:224 ../src/toolbar.c:225
 msgid "Calendar"
 msgstr "Kalendář"
 
-#: ../src/toolbar.c:225
-#, fuzzy
+#: ../src/toolbar.c:225 ../src/toolbar.c:226
 msgid "View Calendar"
-msgstr "Schovat kalendář"
+msgstr "Zobrazit kalendář"
 
-#: ../src/toolbar.c:248
+#: ../src/toolbar.c:248 ../src/toolbar.c:249
 msgid "Edit Preferences..."
 msgstr "Úprava nastavení..."
 
-#: ../src/toolbar.c:256
+#: ../src/toolbar.c:256 ../src/toolbar.c:257
 msgid "User's Guide and Manual"
+msgstr "Uživatelská příručka a průvodce"
+
+#: ../src/toolbar.c:264 ../src/toolbar.c:265
+msgid "Quit GnoTime"
+msgstr "Ukončit GnoTime"
+
+#: ../glade/notes.glade:171
+msgid "gtk-edit"
 msgstr ""
 
-#: ../src/toolbar.c:264
-#, fuzzy
-msgid "Quit GnoTime"
-msgstr "Ukončit GTimeTracker"
+#: ../glade/notes.glade:186
+msgid "gtk-new"
+msgstr ""
+
+#: ../glade/prefs.glade:1003
+msgid ""
+"A warning will be displayed after this number of seconds with no running "
+"project.  Set to -1 to disable."
+msgstr ""
+"Pokud po zadaný čas neběží žádný projekt, zobrazí se varování. Hodnota -1 "
+"tuto funkci zakáže."
+
+#: ../glade/prefs.glade:1044
+msgid ""
+"Sunday\n"
+"Monday\n"
+"Tuesday\n"
+"Wednesday\n"
+"Thursday\n"
+"Friday\n"
+"Saturday"
+msgstr ""
+"Neděle\n"
+"Pondělí\n"
+"Úterý\n"
+"Středa\n"
+"Čtvrtek\n"
+"Pátek\n"
+"Sobota"
+
+#: ../glade/prefs.glade:1099
+msgid ""
+"9 PM\n"
+"10 PM\n"
+"11 PM\n"
+"12 Midnight\n"
+"01 AM\n"
+"02 AM\n"
+"03 AM\n"
+"04 AM\n"
+"05 AM\n"
+"06 AM"
+msgstr ""
+"21:00\n"
+"22:00\n"
+"23:00\n"
+"00:00 (půlnoc)\n"
+"01:00\n"
+"02:00\n"
+"03:00\n"
+"04:00\n"
+"05:00\n"
+"06:00"
+
+#: ../src/export.c:70
+msgid "<b>Gnotime export error</b>"
+msgstr "<b>Chyba GnoTime při exportu</b>"
+
+#: ../src/export.c:153
+#, c-format
+msgid "File %s could not be opened"
+msgstr "Soubor %s nelze otevřít"
+
+#: ../src/idle-dialog.c:410
+msgid ""
+"The XScreenSaver is not supported on this display.\n"
+"The idle timeout functionality will not be available."
+msgstr ""
+"Na tomto displeji není podporováno rozšíření XScreenSaver.\n"
+"Nebude dostupná detekce nečinnosti."
+
+#: ../src/main.c:376
+msgid "Create a new file"
+msgstr "Vytvořit nový soubor"
+
+#: ../src/main.c:381
+msgid "Load a backup"
+msgstr "Obnovit zálohu"
+
+#: ../src/main.c:386
+msgid "Quit"
+msgstr "Ukončit"
+
+#: ../src/main.c:411
+msgid "Could not copy backup file."
+msgstr "Nelze zkopírovat soubor se zálohou."
+
+#: ../src/menucmd.c:94
+msgid ""
+"GnoTime is a combination of stop-watch, diary,  consultant billing system "
+"and todo-list manager."
+msgstr ""
+"GnoTime je kombinace stopek, deníku, účetního systému pro konzultanty a "
+"organizátoru TO-DO položek."
+
+#: ../src/menucmd.c:118
+msgid "translator-credits"
+msgstr ""
+"Český překlad:\n"
+"David Sauer <davids@penguin.cz>, 1999\n"
+"George Lebl <jirka@5z.com>, 2000-2001\n"
+"Petr Gajdůšek <gajdusek.petr@centrum.cz>, 2011"
+
+#: ../src/menucmd.c:424
+msgid "You must select the project of which you want to edit the properties"
+msgstr "Musíte označit projekt, jehož vlastnosti si přejete upravit"
+
+#: ../src/projects-tree.c:321
+msgid "Urgency"
+msgstr "Naléhavost"
+
+#: ../src/projects-tree.c:328
+msgid "Importance"
+msgstr "Důležitost"
+
+#: ../src/status-icon.c:65
+msgid "_Hide main window"
+msgstr "_Schovat hlavní okno"
+
+#: ../src/status-icon.c:92
+#, c-format
+msgid "Timer running for %s"
+msgstr "Běží projekt %s"
+
+#: ../src/menucmd.c:97
+msgid ""
+"This program is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 3\n"
+"of the License, or (at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA.\n"
+msgstr ""
+"Tento program je svobodný software: můžete jej šířit a upravovat podle "
+"ustanovení Obecné veřejné licence GNU (GNU General Public Licence), vydávané "
+"Free Software Foundation a to buď podle 3. verze této Licence, nebo (podle "
+"vašeho uvážení) kterékoli pozdější verze.\n"
+"\n"
+"Tento program je rozšiřován v naději, že bude užitečný, avšak BEZ JAKÉKOLIV "
+"ZÁRUKY. Neposkytují se ani odvozené záruky PRODEJNOSTI anebo VHODNOSTI PRO "
+"URČITÝ ÚČEL. Další podrobnosti hledejte v Obecné veřejné licenci GNU.\n"
+"\n"
+"Kopii Obecné veřejné licence GNU jste měli obdržet spolu s tímto programem. "
+"Pokud se tak nestalo, najdete ji zde: <http://www.gnu.org/licenses/>. Český "
+"neoficiální překlad je dostupný na: <http://www.gnugpl.cz/>.\n"
+
+#: ../src/menus.c:54
+msgid "_New ..."
+msgstr "_Nový ..."
+
+#: ../src/menus.c:218
+msgid "_Projects"
+msgstr "_Projekty"
+
+#. Set up the columns in the treeview widget
+#: ../src/plug-edit.c:720
+msgid "Name"
+msgstr "Název"
+
+#: ../src/plug-edit.c:721
+msgid "Path"
+msgstr "Cesta"
+
+#: ../src/plug-edit.c:722
+msgid "Tooltip"
+msgstr "Bublinová nápověda"
 
 #~ msgid "Show Toolbar Texts"
 #~ msgstr "Ukazovat text na nástrojové liště"
@@ -2093,10 +2279,6 @@ msgstr "Ukončit GTimeTracker"
 #, fuzzy
 #~ msgid "Percent Complete"
 #~ msgstr "Ukazovat 'Vlastnosti'"
-
-#, fuzzy
-#~ msgid "Importance"
-#~ msgstr "Tolerance :"
 
 #~ msgid "no project selected"
 #~ msgstr "žádný projekt nebyl vybrán"
