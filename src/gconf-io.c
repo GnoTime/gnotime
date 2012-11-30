@@ -64,22 +64,22 @@ gtt_save_reports_menu (void)
 	for (i=0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
 	{
 		GttPlugin *plg = reports_menu[i].user_data;
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
+		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
 		p = s + strlen(s);
-	   strcpy (p, "Name");
+		strcpy (p, "Name");
 		F_SETSTR (s, plg->name);
 		
-	   strcpy (p, "Path");
+		strcpy (p, "Path");
 		F_SETSTR (s, plg->path);
 
-	   strcpy (p, "Tooltip");
+		strcpy (p, "Tooltip");
 		F_SETSTR (s, plg->tooltip);
 
-	   strcpy (p, "LastSaveURL");
+		strcpy (p, "LastSaveURL");
 		F_SETSTR (s, plg->last_url);
 
-	   *p = 0;
-		gtt_save_gnomeui_to_gconf (client, s, &reports_menu[i]); 
+		*p = 0;
+		gtt_save_gnomeui_to_gconf (client, s, &reports_menu[i]);
 	}
 	SETINT ("/Misc/NumReports", i);
 }
@@ -200,7 +200,7 @@ gtt_gconf_save (void)
 	{
 		long i, w;
 		GSList *list= NULL;
-		for (i=0, w=0; -1< w; i++) 
+		for (i=0, w=0; -1< w; i++)
 		{
 			w = gtt_projects_tree_get_col_width (projects_tree, i);
 			if (0 > w) break;
@@ -225,7 +225,7 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/DayStartOffset", config_daystart_offset);
 	SETINT ("/Misc/WeekStartOffset", config_weekstart_offset);
 
-    SETINT ("/time_format", config_time_format);
+	SETINT ("/time_format", config_time_format);
 
 	SETSTR ("/Report/CurrencySymbol", config_currency_symbol);
 	SETBOOL ("/Report/CurrencyUseLocale", config_currency_use_locale);
@@ -233,11 +233,11 @@ gtt_gconf_save (void)
 	/* Write out the user's report menu structure */
 	gtt_save_reports_menu ();
 
-   /* Sync to file.
-	 * XXX if this fails, the error is serious, and there should be a 
+	/* Sync to file.
+	 * XXX if this fails, the error is serious, and there should be a
 	 * graphical popup.
 	 */
-   {
+	{
 		GError *err_ret= NULL;
 		gconf_client_suggest_sync (client, &err_ret);
 		if (NULL != err_ret)
@@ -254,21 +254,21 @@ gtt_gconf_exists (void)
 {
 	GError *err_ret= NULL;
 	GConfClient *client;
-   GConfValue *gcv;
+	GConfValue *gcv;
 
 
 	/* Calling gconf_engine_dir_exists() on a non-existant directory
 	 * completely hoses that directory for future use. Its Badddd.
 	 * rc = gconf_engine_dir_exists (gengine, GTT_GCONF, &err_ret);
 	 * gconf_client_dir_exists() is no better.
-	 * Actually, the bug is that the dirs are unusable only while 
+	 * Actually, the bug is that the dirs are unusable only while
 	 * gconf is still running. Upon reboot, its starts working OK.
 	 * Hack around it by trying to fetch a key.
 	 */
 
 	client = gconf_client_get_default ();
-   gcv = gconf_client_get (client, GTT_GCONF "/dir_exists", &err_ret);
-   if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) 
+	gcv = gconf_client_get (client, GTT_GCONF "/dir_exists", &err_ret);
+	if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type)))
 	{
 		if (err_ret) printf ("GTT: Error: gconf_exists XXX err %s\n", err_ret->message);
 		return FALSE;
@@ -293,32 +293,32 @@ gtt_restore_reports_menu (GnomeApp *app)
 	num = GETINT ("/Misc/NumReports", 0);
 	reports_menu =  g_new0 (GnomeUIInfo, num+1);
 	
-	for (i = 0; i < num; i++) 
+	for (i = 0; i < num; i++)
 	{
 		GttPlugin *plg;
 		const char * name, *path, *tip, *url;
 
-	   g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
+		g_snprintf(s, sizeof (s), GTT_GCONF"/Reports/%d/", i);
 		p = s + strlen(s);
 		
-	   strcpy (p, "Name");
+		strcpy (p, "Name");
 		name = F_GETSTR (s, "");
 		
-	   strcpy (p, "Path");
+		strcpy (p, "Path");
 		path = F_GETSTR(s, "");
 		
-	   strcpy (p, "Tooltip");
+		strcpy (p, "Tooltip");
 		tip = F_GETSTR(s, "");
 
-	   strcpy (p, "LastSaveURL");
+		strcpy (p, "LastSaveURL");
 		url = F_GETSTR(s, "");
 
 		plg = gtt_plugin_new (name, path);
 		plg->tooltip = g_strdup (tip);
 		plg->last_url = g_strdup (url);
 
-	   *p = 0;
-		gtt_restore_gnomeui_from_gconf (client, s, &reports_menu[i]); 
+		*p = 0;
+		gtt_restore_gnomeui_from_gconf (client, s, &reports_menu[i]);
 
 		/* fixup */
 		reports_menu[i].user_data = plg;
@@ -338,15 +338,15 @@ gtt_gconf_load (void)
 	GConfClient *client;
 
 	client = gconf_client_get_default ();
-	gconf_client_add_dir (client, GTT_GCONF, 
+	gconf_client_add_dir (client, GTT_GCONF,
 	                GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
 
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
 	 * running again ... */
-	if (gtt_project_get_title(cur_proj) && (!first_proj_title)) 
+	if (gtt_project_get_title(cur_proj) && (!first_proj_title))
 	{
-		/* We need to strdup because title is freed when 
+		/* We need to strdup because title is freed when
 		 * the project list is destroyed ... */
 		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
 	}
@@ -361,19 +361,19 @@ gtt_gconf_load (void)
 	_e = config_show_tb_exit;
 
 	/* Get last running project */
-   cur_proj_id = GETINT("/Misc/CurrProject", -1);
+	cur_proj_id = GETINT("/Misc/CurrProject", -1);
 
-   config_idle_timeout = GETINT ("/Misc/IdleTimeout", 300);
-   config_no_project_timeout = GETINT ("/Misc/NoProjectTimeout", 300);
-   config_autosave_period = GETINT ("/Misc/AutosavePeriod", 60);
-   config_daystart_offset = GETINT ("/Misc/DayStartOffset", 0);
-   config_weekstart_offset = GETINT ("/Misc/WeekStartOffset", 0);
+	config_idle_timeout = GETINT ("/Misc/IdleTimeout", 300);
+	config_no_project_timeout = GETINT ("/Misc/NoProjectTimeout", 300);
+	config_autosave_period = GETINT ("/Misc/AutosavePeriod", 60);
+	config_daystart_offset = GETINT ("/Misc/DayStartOffset", 0);
+	config_weekstart_offset = GETINT ("/Misc/WeekStartOffset", 0);
 
-	/* Reset the main window width and height to the values 
-	 * last stored in the config file.  Note that if the user 
-	 * specified command-line flags, then the command line 
+	/* Reset the main window width and height to the values
+	 * last stored in the config file.  Note that if the user
+	 * specified command-line flags, then the command line
 	 * over-rides the config file. */
-	if (!geom_place_override) 
+	if (!geom_place_override)
 	{
 		int x, y;
 		x = GETINT ("/Geometry/X", 10);
@@ -438,23 +438,23 @@ gtt_gconf_load (void)
 	config_show_tb_exit    = GETBOOL ("/Toolbar/ShowExit", TRUE);
 
 	/* ------------ */
-	config_shell_start = GETSTR ("/Actions/StartCommand", 
+	config_shell_start = GETSTR ("/Actions/StartCommand",
 	      "echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
-	config_shell_stop = GETSTR ("/Actions/StopCommand", 
+	config_shell_stop = GETSTR ("/Actions/StopCommand",
 	      "echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s");
 
 	/* ------------ */
 	config_logfile_use   = GETBOOL ("/LogFile/Use", FALSE);
 	config_logfile_name  = GETSTR ("/LogFile/Filename", NULL);
-	config_logfile_start = GETSTR ("/LogFile/EntryStart", _("project %t started")); 
+	config_logfile_start = GETSTR ("/LogFile/EntryStart", _("project %t started"));
 	config_logfile_stop  = GETSTR ("/LogFile/EntryStop", _("stopped project %t"));
 	config_logfile_min_secs = GETINT ("/LogFile/MinSecs", 3);
 
-    /* ------------ */
-    config_time_format = GETINT("/time_format", 3);
-    
-    config_currency_symbol = GETSTR ("/Report/CurrencySymbol","$");
-    config_currency_use_locale = GETBOOL ("/Report/CurrencyUseLocale",TRUE);
+	/* ------------ */
+	config_time_format = GETINT("/time_format", 3);
+
+	config_currency_symbol = GETSTR ("/Report/CurrencySymbol","$");
+	config_currency_use_locale = GETBOOL ("/Report/CurrencyUseLocale",TRUE);
 	/* ------------ */
 	save_count = GETINT ("/Data/SaveCount", 0);
 	config_data_url = GETSTR ("/Data/URL", XML_DATA_FILENAME);
@@ -462,7 +462,7 @@ gtt_gconf_load (void)
 	/* ------------ */
 	{
 		GSList *node, *list = GETINTLIST ("/CList/ColumnWidths");
-		for (i=0,node=list; node != NULL; node=node->next, i++) 
+		for (i=0,node=list; node != NULL; node=node->next, i++)
 		{
 			num = (long)(node->data);
 			if (-1 < num)
@@ -478,7 +478,7 @@ gtt_gconf_load (void)
 	run_timer = GETINT ("/Misc/TimerRunning", 0);
 	/* Use string for time, to avoid unsigned-long problems */
 	last_timer = (time_t) atol (GETSTR ("/Misc/LastTimer", "-1"));
-    
+
 	/* redraw the GUI */
 	if (config_show_statusbar)
 	{
@@ -497,7 +497,7 @@ gtt_gconf_load (void)
 	    (_t != config_show_tb_timer) ||
 	    (_o != config_show_tb_pref) ||
 	    (_h != config_show_tb_help) ||
-	    (_e != config_show_tb_exit)) 
+	    (_e != config_show_tb_exit))
 	{
 		update_toolbar_sections();
 	}

@@ -1,27 +1,27 @@
 /*********************************************************************
- *                
+ *
  * Copyright (C) 2007, 2009,  Goedson Teixeira Paixao
- *                
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
- *                
+ *
  * Filename:      projects-tree.c
  * Author:        Goedson Teixeira Paixao <goedson@debian.org>
  * Description:   Implementation of the ProjectsTree component for
  *                Gnotime
- *                
+ *
  * Created at:    Thu Nov 22 18:23:49 2007
  * Modified at:   Tue Nov 24 23:11:33 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
@@ -379,7 +379,7 @@ gtt_projects_tree_class_init (GttProjectsTreeClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	object_class->finalize = gtt_projects_tree_finalize;
 	g_type_class_add_private (object_class, sizeof (GttProjectsTreePrivate));
-	projects_tree_signals[COLUMNS_SETUP_DONE] = 
+	projects_tree_signals[COLUMNS_SETUP_DONE] =
 		g_signal_new ("columns_setup_done",
 					  G_TYPE_FROM_CLASS (object_class),
 					  G_SIGNAL_RUN_LAST,
@@ -704,7 +704,7 @@ gtt_projects_tree_set_visible_columns (GttProjectsTree *project_tree,
 	}
 
 
-	/* The title column is mandatory. If it's not on the list, 
+	/* The title column is mandatory. If it's not on the list,
 	   we add it as the first column. */
 
 	if (!g_list_find_custom (columns, "title", (GCompareFunc) strcmp))
@@ -1072,7 +1072,7 @@ gtt_projects_tree_model_row_changed_callback (GtkTreeModel *model,
 		{
 			GtkTreePath *ref_path = gtk_tree_row_reference_get_path (row_ref);
 
-			/* If the row has been moved around we reparent it and 
+			/* If the row has been moved around we reparent it and
 			   update its row reference */
 			if (gtk_tree_path_compare (path, ref_path))
 			{
@@ -1219,7 +1219,7 @@ gtt_projects_tree_set_sorted_column (GttProjectsTree *gpt, GtkTreeViewColumn *co
 		{
 			gtk_tree_view_column_set_sort_indicator (GTK_TREE_VIEW_COLUMN(p->data), TRUE);
 			gtk_tree_view_column_set_sort_order (GTK_TREE_VIEW_COLUMN(p->data), GTK_SORT_ASCENDING);
-		} 
+		}
 		else
 		{
 			gtk_tree_view_column_set_sort_indicator (GTK_TREE_VIEW_COLUMN(p->data), FALSE);

@@ -22,19 +22,19 @@
 
 #include <glib.h>
 
-/** 
+/**
  * The gtt_gconf_save() routine will save all of the GTT attributes
  * into the Gnome2 Gconf attribute system.
  */
 void gtt_gconf_save (void);
 
-/** 
+/**
  * The gtt_gconf_load() routine will fetch all of the GTT attributes
  * from the Gnome2 Gconf attribute system.
  */
 void gtt_gconf_load (void);
 
-/** 
+/**
  * The gtt_gconf_exists() routine returns TRUE if the Gnome2 GConf system
  * is being used.  Typically, this routine will return FALSE only once,
  * the very first time this version of GTT is run.  This gives the code
@@ -51,6 +51,6 @@ void gtt_save_reports_menu (void);
 
 /* quick hack */
 char *gtt_gconf_get_expander (void);
-		  
+
 #endif /* GTT_GCONF_IO_H_ */
 

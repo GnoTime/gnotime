@@ -1,4 +1,4 @@
-/* Low-level timer callbacks & timeout handlers for GTimeTracker 
+/* Low-level timer callbacks & timeout handlers for GTimeTracker
  * Copyright (C) 1997,98 Eckehard Berns
  * Copyright (C) 2001,2002, 2003 Linas Vepstas <linas@linas.org>
  *

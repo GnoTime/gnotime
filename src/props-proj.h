@@ -24,7 +24,7 @@
 
 /* pop up a dialog box for editing a project */
 /* currently, this uses the same dailog over & over, we should probably
- * change this to use gnome MDI ?? 
+ * change this to use gnome MDI ??
  */
 void prop_dialog_set_project(GttProject *proj);
 void prop_dialog_show(GttProject *proj);

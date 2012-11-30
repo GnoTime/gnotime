@@ -307,10 +307,10 @@ gtt_load_gnome_config (const char *prefix)
 	_e = config_show_tb_exit;
 
 	/* get last running project */
-   cur_proj_id = GET_INT("/Misc/CurrProject=-1");
+	cur_proj_id = GET_INT("/Misc/CurrProject=-1");
 
-   config_idle_timeout = GET_INT("/Misc/IdleTimeout=300");
-   config_autosave_period = GET_INT("/Misc/AutosavePeriod=60");
+	config_idle_timeout = GET_INT("/Misc/IdleTimeout=300");
+	config_autosave_period = GET_INT("/Misc/AutosavePeriod=60");
 
 	/* Reset the main window width and height to the values
 	 * last stored in the config file.  Note that if the user
@@ -639,7 +639,7 @@ gtt_post_ctree_config (void)
 void
 gtt_save_config(void)
 {
-   gtt_gconf_save();
+	gtt_gconf_save();
 }
 
 /* ======================================================= */
