@@ -94,12 +94,12 @@ gtt_plugin_free (GttPlugin *plg)
 static void 
 new_plugin_create_cb (GtkWidget * w, gpointer data)
 {
-	const char *title, *path, *tip;
+	const char *title, *tip;
 	NewPluginDialog *dlg = data;
 
 	/* Get the dialog contents */
 	title = gtk_entry_get_text (dlg->plugin_name);
-	path = gtk_file_chooser_get_uri (dlg->plugin_path);
+	char* path = gtk_file_chooser_get_uri (dlg->plugin_path);
 	tip = gtk_entry_get_text (dlg->plugin_tooltip);
 
 	/* Do a basic sanity check */
