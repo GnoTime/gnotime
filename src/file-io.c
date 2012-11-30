@@ -612,7 +612,7 @@ gtt_post_data_config (void)
 void
 gtt_post_ctree_config (void)
 {
-	const char * xpn = NULL;
+	gchar * xpn = NULL;
 
 	/* Assume the ctree has been set up.  Now punch in the final
 	 * bit of ctree state.

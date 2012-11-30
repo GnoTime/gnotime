@@ -1167,7 +1167,6 @@ gtt_projects_tree_set_expander_state (GttProjectsTree *gpt, gchar *states)
 	esh.row = &row;
 	esh.view = GTK_TREE_VIEW (gpt);
 
-
 	gtk_tree_model_foreach (model, set_expander_state, &esh);
 }
 

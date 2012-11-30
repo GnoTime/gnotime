@@ -503,15 +503,11 @@ gtt_gconf_load (void)
 	}
 }
 
-const char *
+gchar *
 gtt_gconf_get_expander (void)
 {
-	GConfClient *client;
-	const char *xpn;
-
-	client = gconf_client_get_default ();
-	xpn = GETSTR ("/Display/ExpanderState", NULL);
-	return xpn;
+	GConfClient * client = gconf_client_get_default ();
+	return GETSTR ("/Display/ExpanderState", NULL);
 }
 
 /* =========================== END OF FILE ========================= */
