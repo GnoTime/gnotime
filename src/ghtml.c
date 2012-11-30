@@ -833,7 +833,7 @@ GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	const char * str = GTT_GETTER (prj);                             \
 	if (NULL == str) return SCM_EOL;                                 \
-	return scm_from_locale_string (str);                       \
+	return scm_from_locale_string (str);                             \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -843,7 +843,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	long i = GTT_GETTER (prj);                                       \
-	return scm_from_long (i);                                         \
+	return scm_from_long (i);                                        \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -853,7 +853,7 @@ static SCM                                                          \
 GTT_GETTER##_scm (GttGhtml *ghtml, GttProject *prj)                 \
 {                                                                   \
 	unsigned long i = GTT_GETTER (prj);                              \
-	return scm_from_ulong (i);                                        \
+	return scm_from_ulong (i);                                       \
 }                                                                   \
 RET_PROJECT_SIMPLE(RET_FUNC,GTT_GETTER##_scm)
 
@@ -1099,7 +1099,8 @@ task_get_blocktime_str_scm (GttGhtml *ghtml, GttTask *tsk)
 	value = (time_t) (lround( ((double) task_secs) / bill_unit ) * bill_unit);
 
 	xxxqof_print_hours_elapsed_buff (buff, 100, value, TRUE);
-	return scm_mem2string (buff, strlen (buff));
+	// return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 
 static SCM
@@ -1206,7 +1207,8 @@ task_get_blockvalue_str_scm (GttGhtml *ghtml, GttTask *tsk)
 		strfmon(buff, 100, "%n", value);
 	}
 
-	return scm_mem2string (buff, strlen (buff));
+	// return scm_mem2string (buff, strlen (buff));
+	return scm_from_locale_string (buff);
 }
 
 RET_TASK_STR (ret_task_billstatus,      task_get_billstatus)
@@ -1396,25 +1398,50 @@ RET_IVL_SIMPLE (ret_ivl_fuzz_str, get_ivl_fuzz_str);
 
 /* ============================================================== */
 
+SCM captured_stack = SCM_BOOL_F;
+
+static SCM
+my_preunwind_handler (void *data, SCM tag, SCM throw_args)
+{
+	// We can only record the stack before it is unwound.
+	// The normal catch handler body runs only *after* the stack
+	// has been unwound.
+	captured_stack = scm_make_stack (SCM_BOOL_T, SCM_EOL);
+	return SCM_EOL;
+}
+
 static SCM
 my_catch_handler (void *data, SCM tag, SCM throw_args)
 {
 
 	printf ("Error: GnoTime caught an error during scheme parse\n");
 
-	SCM the_stack;
 	/* create string port into which we write the error message and
 	   stack. */
 	SCM port = scm_current_output_port();
 	/* throw args seem to be: (FN FORMAT ARGS #f). split the pieces into
 	   local vars. */
-	if (scm_list_p(throw_args) && (scm_ilength(throw_args) >= 4))
+	if (scm_is_true(scm_list_p(throw_args))
+	    && (scm_ilength(throw_args) >= 1))
 	{
+		long nargs = scm_ilength(throw_args);
 		SCM fn = scm_car(throw_args);
-		SCM format = scm_cadr(throw_args);
-		SCM args = scm_caddr(throw_args);
-		SCM other_data = scm_car(scm_cdddr(throw_args));
+		SCM format = SCM_EOL;
+		if (nargs >= 2)
+			 format = scm_cadr(throw_args);
+
+		SCM parts = SCM_EOL;
+		if (nargs >= 3)
+			parts = scm_caddr(throw_args);
+
+		SCM rest = SCM_EOL;
+		if (nargs >= 4)
+			rest = scm_car(scm_cdddr(throw_args));
 		
+#if OLD_GUILE_18_STUFF
+		/* This is some old code that mostly(?) worked under guile-1.8,
+		 * but uses a deprecated API's.  The new guile code below is
+		 * better, and it works with guile-2.0 */
 		if (fn != SCM_BOOL_F)
 		{ /* display the function name and tag */
 			scm_puts("Function: ", port);
@@ -1427,25 +1454,56 @@ my_catch_handler (void *data, SCM tag, SCM throw_args)
 		if (scm_string_p(format))
 		{ /* conditionally display the error message using format */
 			scm_puts("Error: ", port);
-			scm_display_error_message(format, args, port);
+			scm_display_error_message(format, parts, port);
 		}
-		if (other_data != SCM_BOOL_F)
+		if (rest != SCM_EOL)
 		{
 			scm_puts("Other Data: ", port);
-			scm_display(other_data, port);
+			scm_display(rest, port);
 			scm_newline(port);
 			scm_newline(port);
 		}
 	}
 
 	/* find the stack, and conditionally display it */
-	the_stack = scm_fluid_ref(SCM_CDR(scm_the_last_stack_fluid_var));
+	SCM the_stack = scm_fluid_ref(SCM_CDR(scm_the_last_stack_fluid_var));
 	if (the_stack != SCM_BOOL_F)
 	{
 		scm_display_backtrace(the_stack, port, SCM_UNDEFINED, SCM_UNDEFINED);
 	}
 
 	return SCM_EOL;
+#else /* OLD_GUILE_18_STUFF */
+		if (scm_is_true (captured_stack))
+		{
+			SCM highlights;
+
+			if (scm_is_eq (tag, scm_arg_type_key) ||
+				scm_is_eq (tag, scm_out_of_range_key))
+				highlights = rest;
+			else
+				highlights = SCM_EOL;
+
+			scm_puts ("Backtrace:\n", port);
+			scm_display_backtrace_with_highlights (captured_stack, port,
+													SCM_BOOL_F, SCM_BOOL_F,
+													highlights);
+			scm_newline (port);
+		}
+		scm_display_error (captured_stack, port, fn, format, parts, rest);
+	}
+	else
+	{
+		scm_puts ("ERROR: throw args are unexpectedly short!\n", port);
+	}
+	scm_puts("ABORT: ", port);
+	SCM re = scm_symbol_to_string(tag);
+	char * restr = scm_to_locale_string(re);
+	scm_puts(restr, port);
+	free(restr);
+
+	return SCM_BOOL_F;
+#endif
 }
 
 /* ============================================================== */
@@ -1613,9 +1671,13 @@ gtt_ghtml_display (GttGhtml *ghtml, const char *filepath,
 			}
 
 			/* dispatch and handle */
-			scmstart +=5;
-			scm_internal_stack_catch (SCM_BOOL_T, (scm_t_catch_body) scm_c_eval_string,
-				scmstart, (scm_t_catch_handler) my_catch_handler, scmstart);
+			scmstart += 5;
+			captured_stack = SCM_BOOL_F;
+			scm_c_catch (SCM_BOOL_T,
+			             (scm_t_catch_body) scm_c_eval_string,
+			             scmstart,
+			             my_catch_handler, NULL,
+			             my_preunwind_handler, NULL);
 
 			start = end;
 			continue;
