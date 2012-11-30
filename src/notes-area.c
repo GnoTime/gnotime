@@ -23,6 +23,7 @@
 #include <gnome.h>
 
 #include "proj.h"
+#include "props-task.h"
 #include "notes-area.h"
 #include "util.h"
 #include "menus.h"
@@ -89,6 +90,7 @@ struct NotesArea_s
 	}                                            \
 
 
+#ifdef UNUSED_CODE_RIGHT_NOW
 static void
 task_memo_changed (GtkEntry *entry, NotesArea *na)
 {
@@ -97,6 +99,7 @@ task_memo_changed (GtkEntry *entry, NotesArea *na)
 	gtt_task_set_memo (tsk, str);
 	na->ignore_events = FALSE;
 }
+#endif /* UNUSED_CODE_RIGHT_NOW */
 
 /* ============================================================== */
 
@@ -355,7 +358,7 @@ notes_area_new (void)
 	cell = gtk_cell_renderer_text_new();
 	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(dlg->task_combo), cell, TRUE);
 	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT (dlg->task_combo), cell, "text", 0, NULL);
-	g_object_set (cell, "ellipsize", PANGO_ELLIPSIZE_END);
+	g_object_set (cell, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
 
 	dlg->proj_notes = CONNECT_TEXT ("proj notes textview", proj_notes_changed);
 	dlg->task_notes = CONNECT_TEXT ("diary notes textview", task_notes_changed);
