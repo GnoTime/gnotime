@@ -21,7 +21,7 @@
 
 #include "proj.h"
 
-void about_box(GtkWidget *, gpointer);
+void about_box(GtkWindow *, gpointer);
 
 void new_project(GtkWidget *, gpointer);
 void save_project_list(GtkWidget *, gpointer);

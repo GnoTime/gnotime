@@ -38,7 +38,7 @@
 
 
 void
-about_box(GtkWidget *w, gpointer data)
+about_box(GtkWindow *w, gpointer data)
 {
 	const gchar *authors[] = {
 		"Goedson Teixeira Paixão <goedson@debian.org>",
