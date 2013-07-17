@@ -1,6 +1,7 @@
 2013-07-17  Linas Vepstas <linasvepstas@gmail.com>
 
-	* Fix double-free during initialization.
+	* main.c: Fix double-free during initialization.
+	* gconf/Makefile.am: Fix incorrect install path to schemas file.
 
 2013-07-17  Linas Vepstas <linasvepstas@gmail.com>
 
