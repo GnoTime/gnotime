@@ -1,0 +1,32 @@
+# valgrind suppression file for gnotime
+{
+	xmlcrash
+	Memcheck:Cond
+   fun:inflateReset2
+}
+{
+	pango
+	Memcheck:Addr4
+	fun:FcInit
+}
+
+{
+	pango
+	Memcheck:Addr4
+	fun:FcConfigParseAndLoad
+}
+{
+	cairo
+	Memcheck:Cond
+	fun:cairo_fill
+}
+{
+	gdk
+	Memcheck:Cond
+	fun:gtk_widget_render_icon
+}
+{
+	cairo
+	Memcheck:Cond
+	fun:cairo_stroke
+}

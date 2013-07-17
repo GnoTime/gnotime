@@ -2,6 +2,10 @@
 
 	* main.c: Fix double-free during initialization.
 	* gconf/Makefile.am: Fix incorrect install path to schemas file.
+	* valgrind-gnotime.supp: New debugging file.
+	* configure.in: Bump version number to 2.4.1
+	* git tag for release; publish 2.4.1 tarball to sourceforge.
+
 
 2013-07-17  Linas Vepstas <linasvepstas@gmail.com>
 
