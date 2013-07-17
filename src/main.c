@@ -466,7 +466,6 @@ read_data_file(char *xml_filepath, GError **error) {
 	if (read_is_ok)
 	{
 		post_read_data ();
-		g_free (xml_filepath);
 		return TRUE;
 	} else {
 		*error = g_error_new (g_quark_from_string ("gtt"), GTT_CANT_OPEN_FILE, "Could not read data file \"%s\"", xml_filepath);
