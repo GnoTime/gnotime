@@ -7,6 +7,7 @@ AC_CONFIG_MACRO_DIRS([m4])
 
 AC_CONFIG_SRCDIR(src)
 
+dnl This INTLTOOL stuff no longer seems to work
 dnl AC_PROG_INTLTOOL
 
 dnl IT_PROG_INTLTOOL([0.35.5])
@@ -99,16 +100,16 @@ AC_SUBST(GTK_LIBS)
 dnl *****************************************
 dnl Check for libgnome
 dnl *****************************************
-PKG_CHECK_MODULES(LIBGNOME, libgnome-2.0 >= $LIBGNOME_REQUIRED)
-AC_SUBST(LIBGNOME_CFLAGS)
-AC_SUBST(LIBGNOME_LIBS)
+# PKG_CHECK_MODULES(LIBGNOME, libgnome-2.0 >= $LIBGNOME_REQUIRED)
+# AC_SUBST(LIBGNOME_CFLAGS)
+# AC_SUBST(LIBGNOME_LIBS)
 
 dnl *****************************************
 dnl Check for libgnomeui
 dnl *****************************************
-PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
-AC_SUBST(LIBGNOMEUI_CFLAGS)
-AC_SUBST(LIBGNOMEUI_LIBS)
+# PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+# AC_SUBST(LIBGNOMEUI_CFLAGS)
+# AC_SUBST(LIBGNOMEUI_LIBS)
 
 dnl *****************************************
 dnl Check for X11
@@ -178,9 +179,9 @@ dnl *******************************
 dnl Gnome VFS
 dnl *******************************
 
-PKG_CHECK_MODULES(LIBGNOMEVFS, gnome-vfs-2.0 >= $LIBGNOMEVFS_REQUIRED)
-AC_SUBST(LIBGNOMEVFS_CFLAGS)
-AC_SUBST(LIBGNOMEVFS_LIBS)
+# PKG_CHECK_MODULES(LIBGNOMEVFS, gnome-vfs-2.0 >= $LIBGNOMEVFS_REQUIRED)
+# AC_SUBST(LIBGNOMEVFS_CFLAGS)
+# AC_SUBST(LIBGNOMEVFS_LIBS)
 
 
 dnl *******************************
@@ -195,9 +196,9 @@ for GTKHTMLVER in 3.14 3.13 3.12 3.11 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.2 3.1 3.0 ;
 	break
   fi
 done
-if test x$GTKHTMLPRESENT = x'no'; then
-	AC_ERROR([gtkhtml3 is needed in order to compile this program.])
-fi
+#if test x$GTKHTMLPRESENT = x'no'; then
+#	AC_ERROR([gtkhtml3 is needed in order to compile this program.])
+#fi
 
 AC_SUBST(LIBGTKHTML_CFLAGS)
 AC_SUBST(LIBGTKHTML_LIBS)

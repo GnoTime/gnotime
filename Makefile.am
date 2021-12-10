@@ -11,7 +11,7 @@ Productivitydir = $(datadir)/applications
 Productivity_in_files = gnotime.desktop.in
 Productivity_DATA = $(Productivity_in_files:.desktop.in=.desktop)
 
-@INTLTOOL_DESKTOP_RULE@
+# @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST =                   \
 	AUTHORS                     \
