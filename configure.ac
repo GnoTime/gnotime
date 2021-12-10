@@ -1,13 +1,20 @@
-AC_INIT(src)
-AM_INIT_AUTOMAKE(gnotime, 2.4.1)
+AC_INIT([gnotime],[2.5.0],[https://github.com/linas/gnotime],[],
+        [http://gttr.sourceforge.net/])
+
+AM_INIT_AUTOMAKE([foreign subdir-objects])
+
+AC_CONFIG_MACRO_DIRS([m4])
+
+AC_CONFIG_SRCDIR(src)
 
 dnl AC_PROG_INTLTOOL
 
-IT_PROG_INTLTOOL([0.35.5])
+dnl IT_PROG_INTLTOOL([0.35.5])
 
 AM_CONFIG_HEADER(config.h)
 
-AM_MAINTAINER_MODE
+# AM_MAINTAINER_MODE([disable])
+AM_MAINTAINER_MODE([enable])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])], [AC_SUBST([AM_DEFAULT_VERBOSITY],1)])
 
@@ -20,10 +27,19 @@ AC_PROG_YACC
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
+LT_INIT
 
 GNOME_COMPILE_WARNINGS
 
 AC_PATH_XTRA
+
+# The below says "use the C compiler for all remaining tests".
+# That way, if g++ is not installed, configure won't crap out
+# (with a mystery error about not finding regex.h)
+AC_LANG([C])
+
+AC_C_CONST
+
 
 dnl *****************************************
 dnl Look for a portable way to reap zombie processes
@@ -61,16 +77,8 @@ dnl *****************************************
 dnl Check for guile
 dnl *****************************************
 
-# The below checks for guile-1.8. It works, the code compile, works.
-# GUILE_FLAGS
-#
-# GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
-# if test "$GUILE_VERSION" "<" "1.8"; then
-#    AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
-# fi
-
 # http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
-PKG_CHECK_MODULES([GUILE], [guile-2.0])
+PKG_CHECK_MODULES([GUILE], [guile-3.0])
 AC_SUBST(GUILE_CFLAGS)
 AC_SUBST(GUILE_LIBS)
 
