@@ -7,17 +7,27 @@ lists, organize ideas, track bug reports, keep a diary of activities,
 provide weekly status reports to management, and even as a consultant
 billing system.
 
-Features
---------
-Please see the GnoTime web page for a list of features.
-
 HomePage
 --------
-http://gttr.sourceforge.net
-http://www.linas.org/linux/gtt/gtt.html
+ * http://gttr.sourceforge.net
+ * http://www.linas.org/linux/gtt/gtt.html
+
+Features
+--------
+
+ * TODO Lists
+ * Diary/Journal
+ * Running timer
+ * Billing status
+ * HTML Reports
+
+Please see the [GnoTime web page](http://gttr.sourceforge.net) for a
+detailed description of these features.
 
 Status
 ------
+Gnotime last saw significant updates in 2013. Maintenance is needed!
+
 GnoTime has been ported to use Gnome2.  Note, however, that it still
 uses some of the older, deprecated widgets; most notably gtkctree.
 The new gnome2 treeview widget lacks many of the features needed to
@@ -30,7 +40,7 @@ submit pull reqs to github that polish up those things that irk you the most.
 
 
 Authors
-=======
+-------
 This program was originally written by Eckehard Berns <eb@berns.prima.de>,
 but has been greatly expanded by Linas Vepstas ~~<linas@linas.org>~~
 <linasvepstas@gmail.com>.
