@@ -2,9 +2,9 @@ What is GnoTime?
 ================
 The Gnome Time Tracker is a to-do list/diary/journal tool that can track
 the amount of time spent on projects, and, among other things, generate
-reports and invoices based on that time. I've used it to keep shopping
+reports and invoices based on that time. It can be used to keep shopping
 lists, organize ideas, track bug reports, keep a diary of activities,
-provide weekly status reports to management, and even as a consultant
+provide weekly status reports to management, and even works as a consultant
 billing system.
 
 HomePage
@@ -14,29 +14,32 @@ HomePage
 
 Features
 --------
-
  * TODO Lists
  * Diary/Journal
- * Running timer
- * Billing status
- * HTML Reports
+ * Multiple task timers
+ * Billing subsystem
+ * (Configurable) HTML Reports
 
 Please see the [GnoTime web page](http://gttr.sourceforge.net) for a
 detailed description of these features.
 
 Status
 ------
-Gnotime last saw significant updates in 2013. Maintenance is needed!
+Gnotime is written for Gnome-1/Gnome-2. It needs to be ported to
+Gnome3 to be buildable on present-day systems.
 
-GnoTime has been ported to use Gnome2.  Note, however, that it still
-uses some of the older, deprecated widgets; most notably gtkctree.
-The new gnome2 treeview widget lacks many of the features needed to
-support the keyboard/mouse mannerisms of GnoTime, thereby making
-a full port impossible (although one is attempted in src/ctree-gnome2.c).
-(The notes at the top of that file describe what's wrong.)
+Porting to gnome3 is probably not that hard(?) There is one sticky
+point: the main display panel uses the very old gnome-1 `gtkctree`
+widget. The gnome2 `treeview` widget was a horrible, terrible
+replacement for `gtkctree`, and was never used (was unusable).
+It's not clear if gnome3 has any suitable replacement.  See the
+notes in `src/ctree-gnome2.c` for details. Basically, the main
+window depends heavily on keyboard/mouse navigation, which the
+`treeview` widget completely failed to support.
 
-There are still numerous areas of gtt that lack polish.  Please
-submit pull reqs to github that polish up those things that irk you the most.
+Put it differently: if the main window isn't nice and pleasant to
+use, then nothing else matters.  Having a good user experience
+working with the main window is more important than anything else.
 
 Building
 --------
@@ -56,7 +59,7 @@ Developers and maintainers also need:
 glade-gnome
 ```
 
-???
+Where have these wandered off to ???
 ```
 libgnome2-dev
 libgnomevfs2-dev
@@ -65,7 +68,7 @@ libgtkhtml-dev
 ```
 
 ### QOF Query Object Framework
-One trick pre-req to building this is the `qof` package.
+One pre-requiste to building this is the `qof` package.
 It is not distributed by distros, by default.
 
 QOF on github:
@@ -91,7 +94,6 @@ mkdir build; cd build
 ../configure
 ```
 
-
 Authors
 -------
 This program was originally written by Eckehard Berns <eb@berns.prima.de>,
@@ -100,19 +102,6 @@ but has been greatly expanded by Linas Vepstas ~~<linas@linas.org>~~
 
 Thanks go out to many people who e-mailed me with suggestions and
 bug fixes.  See the "about" window in the app for more details.
-
-
-Required Packages for Building GnoTime
---------------------------------------
-These instructions are out-of-date.
-
-Besides the 'usual' Gnome2 development packages, the following are
-some of the packages required to build GnoTime:
-
- * guile-1.6-dev
- * guile-1.6-slib
- * libgtkhtml3-dev
- * docbook-utils  (to build the documents subdirectory)
 
 
 Copyright
