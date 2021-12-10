@@ -41,6 +41,10 @@ Put it differently: if the main window isn't nice and pleasant to
 use, then nothing else matters.  Having a good user experience
 working with the main window is more important than anything else.
 
+If you want to see how it works, install an LXC/LXD container
+(or even docker) with a circa 2012 or 2014 Ubuntu or Debian system.
+It should build cleanly, and run bug-free w/o issues.
+
 Building
 --------
 
