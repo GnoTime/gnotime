@@ -40,9 +40,51 @@ submit pull reqs to github that polish up those things that irk you the most.
 
 Building
 --------
-Required packages:
 
-Steps:
+### Required packages:
+```
+guile-3.0-dev
+libgtk2.0-dev
+libglade2-dev
+libgconf2-dev
+libxss-dev
+libxml2-dev
+```
+
+Developers and maintainers also need:
+```
+glade-gnome
+```
+
+???
+```
+libgnome2-dev
+libgnomevfs2-dev
+libgnomeui2-dev
+libgtkhtml-dev
+```
+
+### QOF Query Object Framework
+One trick pre-req to building this is the `qof` package.
+It is not distributed by distros, by default.
+
+QOF on github:
+ * https://github.com/codehelp/qof
+
+QOF Documentation:
+ * http://qof.sourceforge.net/doxy/main.html
+
+It's not hard to build:
+```
+git clone https://github.com/codehelp/qof
+./autogen.sh
+./configure
+make
+sudo make install
+```
+
+
+### Build steps:
 ```
 ./autogen.sh --no-configure
 mkdir build; cd build
