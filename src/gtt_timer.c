@@ -21,7 +21,7 @@
 #include <gnome.h>
 #include <string.h>
 
-#include "active-dialog.h"
+#include "gtt_activation_dialog.h"
 #include "app.h"
 #include "cur-proj.h"
 #include "gtt.h"

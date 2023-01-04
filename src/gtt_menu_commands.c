@@ -23,8 +23,8 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "err-throw.h"
-#include "file-io.h"
+#include "gtt_err_throw.h"
+#include "gtt_file_io.h"
 #include "gtt.h"
 #include "gtt_journal.h"
 #include "menucmd.h"

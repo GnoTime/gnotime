@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_activation_dialog.h"
+
 #include <glade/glade.h>
 #include <gnome.h>
 #include <string.h>
@@ -25,7 +27,6 @@
 #include <qof.h>
 
 #include "cur-proj.h"
-#include "active-dialog.h"
 #include "gtt_help_popup.h"
 #include "proj.h"
 #include "proj-query.h"

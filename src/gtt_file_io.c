@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt_file_io.h"
+
 #include <errno.h>
 #include <glib.h>
 #include <gnome.h>
@@ -28,8 +30,7 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "err-throw.h"
-#include "file-io.h"
+#include "gtt_err_throw.h"
 #include "gconf-io.h"
 #include "gtt.h"
 #include "menus.h"

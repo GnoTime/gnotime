@@ -48,15 +48,15 @@ gnotime_SOURCES =                \
 	main.c
 
 noinst_HEADERS =      \
-	active-dialog.h    \
+	gtt_activation_dialog.h    \
 	app.h              \
 	projects-tree.h    \
-	dbus.h             \
+	gtt_dbus.h             \
 	cur-proj.h         \
 	gtt_help_popup.h           \
-	err-throw.h        \
+	gtt_err_throw.h        \
 	gtt_export.h           \
-	file-io.h          \
+	gtt_file_io.h          \
 	gconf-gnomeui.h    \
 	gconf-io.h         \
 	gconf-io-p.h       \
@@ -150,7 +150,7 @@ EXTRA_DIST =         \
 	dbus.xml          \
 	design.txt
 
-LIBGTK_SRCS= gtt_dbus.c dbus.h
+LIBGTK_SRCS= gtt_dbus.c gtt_dbus.h
 BUILT_SOURCES=	dbus-glue.h
 dbus-glue.h : dbus.xml Makefile
 	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus $(srcdir)/dbus.xml

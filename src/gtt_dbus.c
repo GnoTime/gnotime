@@ -30,9 +30,10 @@
  */
 #if WITH_DBUS
 
+#include "gtt_dbus.h"
+
 #include <stdio.h>
 #include <string.h>
-#include "dbus.h"
 
 #include <dbus/dbus-glib.h>
 

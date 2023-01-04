@@ -42,8 +42,8 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "err-throw.h"
-#include "file-io.h"
+#include "gtt_err_throw.h"
+#include "gtt_file_io.h"
 #include "gtt.h"
 #include "log.h"
 #include "menus.h"
@@ -55,7 +55,7 @@
 #include "xml-gtt.h"
 
 #if WITH_DBUS
-#include "dbus.h"
+#include "gtt_dbus.h"
 #endif
 
 char *first_proj_title = NULL;  /* command line over-ride */

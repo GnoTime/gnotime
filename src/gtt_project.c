@@ -27,7 +27,7 @@
 
 #include <qof.h>
 
-#include "err-throw.h"
+#include "gtt_err_throw.h"
 #include "log.h"
 #include "gtt_preferences.h"  /* XXX tmp hack for config_* */
 #include "proj.h"

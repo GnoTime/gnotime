@@ -23,7 +23,7 @@
 #include <stdio.h>
 
 #include "cur-proj.h"
-#include "err-throw.h"
+#include "gtt_err_throw.h"
 #include "gtt.h"
 #include "proj.h"
 #include "xml-gtt.h"
