@@ -19,6 +19,8 @@
 #ifndef GTT_IDLE_DIALOG_H_
 #define GTT_IDLE_DIALOG_H_
 
+#include <glib.h>
+
 /* The Idle Dialog is popped up when a project is active (a project
  * timer is running), but the keyboard/mouse have been idle for some
  * set amount of time.
