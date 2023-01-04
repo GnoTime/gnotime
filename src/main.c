@@ -48,7 +48,7 @@
 #include "log.h"
 #include "menus.h"
 #include "menucmd.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "proj.h"
 #include "timer.h"
 #include "toolbar.h"

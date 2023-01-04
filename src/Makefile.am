@@ -64,6 +64,7 @@ noinst_HEADERS =      \
 	ghtml-deprecated.h \
 	gtt.h              \
 	gtt_idle_dialog.h      \
+	gtt_idle_timer.h         \
 	gtt_journal.h          \
 	log.h              \
 	menucmd.h          \
@@ -71,7 +72,7 @@ noinst_HEADERS =      \
 	myoaf.h            \
 	notes-area.h       \
 	plug-in.h          \
-	prefs.h            \
+	gtt_preferences.h            \
 	proj.h             \
 	proj_p.h           \
 	proj-query.h       \
@@ -82,7 +83,7 @@ noinst_HEADERS =      \
 	status-icon.h      \
 	timer.h            \
 	toolbar.h          \
-	util.h             \
+	gtt_util.h             \
 	xml-gtt.h
 
 # disable depricated when we find work-around for ctree, property box.

@@ -25,7 +25,7 @@
 #include "gtt_help_popup.h"
 #include "proj.h"
 #include "props-task.h"
-#include "util.h"
+#include "gtt_util.h"
 
 typedef struct PropTaskDlg_s
 {

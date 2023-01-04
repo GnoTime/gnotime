@@ -28,7 +28,7 @@
 #include "menucmd.h"
 #include "menus.h"
 #include "myoaf.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "timer.h"
 #include "toolbar.h"
 

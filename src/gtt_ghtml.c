@@ -38,10 +38,10 @@
 #include "gtt.h"
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "proj.h"
 #include "query.h"
-#include "util.h"
+#include "gtt_util.h"
 
 
 /* Design problems:

@@ -26,7 +26,7 @@
 #include "gtt_help_popup.h"
 #include "proj.h"
 #include "props-proj.h"
-#include "util.h"
+#include "gtt_util.h"
 
 typedef struct _PropDlg
 {

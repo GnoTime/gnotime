@@ -29,7 +29,7 @@
 #include "gtt_journal.h"
 #include "menucmd.h"
 #include "menus.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "proj.h"
 #include "props-proj.h"
 #include "timer.h"

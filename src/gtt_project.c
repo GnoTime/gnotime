@@ -29,7 +29,7 @@
 
 #include "err-throw.h"
 #include "log.h"
-#include "prefs.h"  /* XXX tmp hack for config_* */
+#include "gtt_preferences.h"  /* XXX tmp hack for config_* */
 #include "proj.h"
 #include "proj_p.h"
 #include "query.h"  /* temp hack for query */

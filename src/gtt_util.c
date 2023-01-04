@@ -40,7 +40,7 @@
 #  define QOF_T_FMT   "%r"
 #endif
 
-#include "util.h"
+#include "gtt_util.h"
 
 /* ============================================================== */
 

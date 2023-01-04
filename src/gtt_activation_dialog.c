@@ -29,7 +29,7 @@
 #include "gtt_help_popup.h"
 #include "proj.h"
 #include "proj-query.h"
-#include "util.h"
+#include "gtt_util.h"
 
 
 int config_no_project_timeout;

@@ -40,7 +40,7 @@
 #include "proj.h"
 #include "props-invl.h"
 #include "props-task.h"
-#include "util.h"
+#include "gtt_util.h"
 
 
 /* This struct is a mish-mash of stuff relating to the

@@ -37,11 +37,11 @@
 #include "menucmd.h"
 #include "menus.h"
 #include "notes-area.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "props-proj.h"
 #include "timer.h"
 #include "toolbar.h"
-#include "util.h"
+#include "gtt_util.h"
 #include "projects-tree.h"
 #include "proj.h"
 

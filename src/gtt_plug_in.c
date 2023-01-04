@@ -27,7 +27,7 @@
 #include "gtt_journal.h"
 #include "menus.h"
 #include "plug-in.h"
-#include "util.h"
+#include "gtt_util.h"
 
 struct NewPluginDialog_s
 {

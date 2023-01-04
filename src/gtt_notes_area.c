@@ -25,7 +25,7 @@
 #include "proj.h"
 #include "props-task.h"
 #include "notes-area.h"
-#include "util.h"
+#include "gtt_util.h"
 #include "menus.h"
 
 struct NotesArea_s

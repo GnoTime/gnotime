@@ -35,7 +35,7 @@
 #include "cur-proj.h"
 #include "gtt_help_popup.h"
 #include "proj.h"
-#include "util.h"
+#include "gtt_util.h"
 #include "app.h"
 
 int config_idle_timeout = -1;

@@ -81,7 +81,7 @@
 #include <X11/extensions/xidle.h>
 #endif /* HAVE_XIDLE_EXTENSION */
 
-#include "idle-timer.h"
+#include "gtt_idle_timer.h"
 
 typedef struct IdleTimeoutScreen_s IdleTimeoutScreen;
 

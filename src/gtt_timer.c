@@ -28,7 +28,7 @@
 #include "gtt_idle_dialog.h"
 #include "log.h"
 #include "notes-area.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "proj.h"
 #include "props-task.h"
 #include "timer.h"

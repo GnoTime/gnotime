@@ -28,10 +28,10 @@
 #include "cur-proj.h"
 #include "gtt_help_popup.h"
 #include "gtt.h"
-#include "prefs.h"
+#include "gtt_preferences.h"
 #include "timer.h"
 #include "toolbar.h"
-#include "util.h"
+#include "gtt_util.h"
 
 
 /* globals */

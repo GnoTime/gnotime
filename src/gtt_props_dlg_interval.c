@@ -26,7 +26,7 @@
 
 #include "proj.h"
 #include "props-invl.h"
-#include "util.h"
+#include "gtt_util.h"
 
 struct EditIntervalDialog_s
 {
