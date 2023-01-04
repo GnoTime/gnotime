@@ -8,43 +8,44 @@
 
 bin_PROGRAMS = gnotime
 
-gnotime_SOURCES =     \
-	active-dialog.c    \
-	app.c              \
-	projects-tree.c    \
-	dialog.c           \
-	err.c              \
-	err-throw.c        \
-	export.c           \
-	file-io.c          \
-	gconf-gnomeui.c    \
-	gconf-io.c         \
-	ghtml.c            \
-	ghtml-deprecated.c \
-	idle-dialog.c      \
-	journal.c          \
-	log.c              \
-	main.c             \
-	menucmd.c          \
-	menus.c            \
-	myoaf.c            \
-	notes-area.c       \
-	plug-edit.c        \
-	plug-in.c          \
-	prefs.c            \
-	proj.c             \
-	proj-query.c       \
-	props-invl.c       \
-	props-proj.c       \
-	props-task.c       \
-	query.c            \
-	status-icon.c      \
-	timer.c            \
-	toolbar.c          \
-	util.c             \
-	xml-read.c         \
-	xml-write.c        \
-	dbus.c
+gnotime_SOURCES =                \
+	gtt_activation_dialog.c  \
+	gtt_application_window.c \
+	gtt_dbus.c               \
+	gtt_err_throw.c          \
+	gtt_export.c             \
+	gtt_file_io.c            \
+	gtt_ghtml.c              \
+	gtt_ghtml_deprecated.c   \
+	gtt_gsettings_gnomeui.c  \
+	gtt_gsettings_io.c       \
+	gtt_help_popup.c         \
+	gtt_idle_dialog.c        \
+	gtt_idle_timer.c         \
+	gtt_journal.c            \
+	gtt_log.c                \
+	gtt_menu_commands.c      \
+	gtt_menus.c              \
+	gtt_myoaf.c              \
+	gtt_notes_area.c         \
+	gtt_plug_in.c            \
+	gtt_plug_in_edit.c       \
+	gtt_preferences.c        \
+	gtt_project.c            \
+	gtt_project_queries.c    \
+	gtt_projects_tree.c      \
+	gtt_props_dlg_interval.c \
+	gtt_props_dlg_project.c  \
+	gtt_props_dlg_task.c     \
+	gtt_queries.c            \
+	gtt_signal_handlers.c    \
+	gtt_status_icon.c        \
+	gtt_timer.c              \
+	gtt_toolbar.c            \
+	gtt_util.c               \
+	gtt_xml_read.c           \
+	gtt_xml_write.c          \
+	main.c
 
 noinst_HEADERS =      \
 	active-dialog.h    \
@@ -148,7 +149,7 @@ EXTRA_DIST =         \
 	dbus.xml          \
 	design.txt
 
-LIBGTK_SRCS= dbus.c dbus.h
+LIBGTK_SRCS= gtt_dbus.c dbus.h
 BUILT_SOURCES=	dbus-glue.h
 dbus-glue.h : dbus.xml Makefile
 	dbus-binding-tool --mode=glib-server --output=$@ --prefix=gnotime_dbus $(srcdir)/dbus.xml
