@@ -22,9 +22,9 @@
 #include <string.h>
 
 #include "app.h"
-#include "export.h"
+#include "gtt_export.h"
 #include "gtt.h"
-#include "journal.h"
+#include "gtt_journal.h"
 #include "menucmd.h"
 #include "menus.h"
 #include "plug-in.h"

@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt_idle_dialog.h"
+
 #include <glib.h>
 #include <glade/glade.h>
 #include <gdk/gdkx.h>
@@ -31,8 +33,7 @@
 #include <qof.h>
 
 #include "cur-proj.h"
-#include "idle-dialog.h"
-#include "dialog.h"
+#include "gtt_help_popup.h"
 #include "proj.h"
 #include "util.h"
 #include "app.h"

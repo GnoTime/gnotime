@@ -24,7 +24,7 @@
 
 #include "app.h"
 #include "gconf-io.h"
-#include "journal.h"
+#include "gtt_journal.h"
 #include "menus.h"
 #include "plug-in.h"
 #include "util.h"

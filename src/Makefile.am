@@ -53,9 +53,9 @@ noinst_HEADERS =      \
 	projects-tree.h    \
 	dbus.h             \
 	cur-proj.h         \
-	dialog.h           \
+	gtt_help_popup.h           \
 	err-throw.h        \
-	export.h           \
+	gtt_export.h           \
 	file-io.h          \
 	gconf-gnomeui.h    \
 	gconf-io.h         \
@@ -63,8 +63,8 @@ noinst_HEADERS =      \
 	ghtml.h            \
 	ghtml-deprecated.h \
 	gtt.h              \
-	idle-dialog.h      \
-	journal.h          \
+	gtt_idle_dialog.h      \
+	gtt_journal.h          \
 	log.h              \
 	menucmd.h          \
 	menus.h            \

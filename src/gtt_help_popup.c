@@ -17,10 +17,11 @@
  */
 
 #include <config.h>
+
+#include "gtt_help_popup.h"
+
 #include <gnome.h>
 #include <libgnome/gnome-help.h>
-
-#include "dialog.h"
 
 /* ================================================================= */
 

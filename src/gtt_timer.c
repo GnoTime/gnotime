@@ -25,7 +25,7 @@
 #include "app.h"
 #include "cur-proj.h"
 #include "gtt.h"
-#include "idle-dialog.h"
+#include "gtt_idle_dialog.h"
 #include "log.h"
 #include "notes-area.h"
 #include "prefs.h"

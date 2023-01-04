@@ -22,8 +22,8 @@
 #include <gnome.h>
 
 #include "app.h"
-#include "dialog.h"
-#include "journal.h"
+#include "gtt_help_popup.h"
+#include "gtt_journal.h"
 #include "gconf-io.h"
 #include "menus.h"
 #include "plug-in.h"

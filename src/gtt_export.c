@@ -18,12 +18,14 @@
  */
 
 #include <config.h>
+
+#include "gtt_export.h"
+
 #include <gnome.h>
 #include <string.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "app.h"
-#include "export.h"
 #include "ghtml.h"
 #include "proj.h"
 

@@ -22,7 +22,7 @@
 #include <gnome.h>
 #include <string.h>
 
-#include "dialog.h"
+#include "gtt_help_popup.h"
 #include "proj.h"
 #include "props-task.h"
 #include "util.h"

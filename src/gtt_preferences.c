@@ -26,7 +26,7 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "dialog.h"
+#include "gtt_help_popup.h"
 #include "gtt.h"
 #include "prefs.h"
 #include "timer.h"

@@ -20,6 +20,8 @@
 
 #include "config.h"
 
+#include "gtt_journal.h"
+
 #include <glade/glade.h>
 #include <gnome.h>
 #include <gtkhtml/gtkhtml.h>
@@ -31,9 +33,8 @@
 #include <qof.h>
 
 #include "app.h"
-#include "dialog.h"
-#include "journal.h"
 #include "ghtml.h"
+#include "gtt_help_popup.h"
 #include "menus.h"
 #include "plug-in.h"
 #include "proj.h"

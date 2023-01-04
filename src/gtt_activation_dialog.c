@@ -26,10 +26,10 @@
 
 #include "cur-proj.h"
 #include "active-dialog.h"
+#include "gtt_help_popup.h"
 #include "proj.h"
 #include "proj-query.h"
 #include "util.h"
-#include "dialog.h"
 
 
 int config_no_project_timeout;

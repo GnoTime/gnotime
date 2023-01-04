@@ -22,9 +22,9 @@
 #include <string.h>
 
 #include "app.h"
-#include "dialog.h"
+#include "gtt_help_popup.h"
 #include "gtt.h"
-#include "journal.h"
+#include "gtt_journal.h"
 #include "menucmd.h"
 #include "menus.h"
 #include "myoaf.h"
