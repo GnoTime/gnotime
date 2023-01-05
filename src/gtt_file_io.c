@@ -31,7 +31,7 @@
 #include "app.h"
 #include "cur-proj.h"
 #include "gtt_err_throw.h"
-#include "gconf-io.h"
+#include "gtt_gsettings_io.h"
 #include "gtt.h"
 #include "menus.h"
 #include "plug-in.h"

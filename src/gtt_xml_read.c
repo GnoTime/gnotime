@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_xml.h"
+
 #include <glib.h>
 #include <libxml/parser.h>
 #include <qof.h>
@@ -29,7 +31,6 @@
 #include "gtt.h"
 #include "proj.h"
 #include "proj_p.h"
-#include "xml-gtt.h"
 
 
 /* Note: most of this code is a tediously boring cut-n-paste

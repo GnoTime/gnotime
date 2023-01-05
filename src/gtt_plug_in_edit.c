@@ -24,7 +24,7 @@
 #include "app.h"
 #include "gtt_help_popup.h"
 #include "gtt_journal.h"
-#include "gconf-io.h"
+#include "gtt_gsettings_io.h"
 #include "menus.h"
 #include "plug-in.h"
 #include "gtt_util.h"

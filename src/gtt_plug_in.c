@@ -23,7 +23,7 @@
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "app.h"
-#include "gconf-io.h"
+#include "gtt_gsettings_io.h"
 #include "gtt_journal.h"
 #include "menus.h"
 #include "plug-in.h"

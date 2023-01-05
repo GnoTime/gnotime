@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_gsettings_io.h"
+
 #include <gconf/gconf-client.h>
 #include <gconf/gconf.h>
 #include <glib.h>
@@ -25,9 +27,8 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "gconf-gnomeui.h"
-#include "gconf-io.h"
-#include "gconf-io-p.h"
+#include "gtt_gsettings_gnomeui.h"
+#include "gtt_gsettings_io_p.h"
 #include "gtt.h"
 #include "menus.h"
 #include "plug-in.h"

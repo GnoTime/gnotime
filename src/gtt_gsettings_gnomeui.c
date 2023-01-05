@@ -18,11 +18,12 @@
 
 #include "config.h"
 
+#include "gtt_gsettings_gnomeui.h"
+
 #include <gconf/gconf-client.h>
 #include <gnome.h>
 
-#include "gconf-gnomeui.h"
-#include "gconf-io-p.h"
+#include "gtt_gsettings_io_p.h"
 
 /* ======================================================= */
 /* Convert gnome enums to strings */

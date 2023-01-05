@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_xml.h"
+
 #include <libxml/tree.h>
 #include <qof.h>
 #include <stdio.h>
@@ -26,7 +28,6 @@
 #include "gtt_err_throw.h"
 #include "gtt.h"
 #include "proj.h"
-#include "xml-gtt.h"
 
 static xmlNodePtr gtt_project_list_to_dom_tree (GList *list);
 

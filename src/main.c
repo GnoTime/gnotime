@@ -52,7 +52,7 @@
 #include "proj.h"
 #include "timer.h"
 #include "toolbar.h"
-#include "xml-gtt.h"
+#include "gtt_xml.h"
 
 #if WITH_DBUS
 #include "gtt_dbus.h"

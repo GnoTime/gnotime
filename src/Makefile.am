@@ -57,9 +57,9 @@ noinst_HEADERS =      \
 	gtt_err_throw.h        \
 	gtt_export.h           \
 	gtt_file_io.h          \
-	gconf-gnomeui.h    \
-	gconf-io.h         \
-	gconf-io-p.h       \
+	gtt_gsettings_gnomeui.h    \
+	gtt_gsettings_io.h         \
+	gtt_gsettings_io_p.h       \
 	ghtml.h            \
 	ghtml-deprecated.h \
 	gtt.h              \
@@ -84,7 +84,7 @@ noinst_HEADERS =      \
 	timer.h            \
 	toolbar.h          \
 	gtt_util.h             \
-	xml-gtt.h
+	gtt_xml.h
 
 # disable depricated when we find work-around for ctree, property box.
 #
