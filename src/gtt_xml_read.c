@@ -29,7 +29,7 @@
 #include "cur-proj.h"
 #include "gtt_err_throw.h"
 #include "gtt.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "proj_p.h"
 
 

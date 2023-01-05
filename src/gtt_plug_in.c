@@ -25,7 +25,7 @@
 #include "app.h"
 #include "gtt_gsettings_io.h"
 #include "gtt_journal.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "plug-in.h"
 #include "gtt_util.h"
 

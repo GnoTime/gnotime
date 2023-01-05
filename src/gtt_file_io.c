@@ -33,13 +33,13 @@
 #include "gtt_err_throw.h"
 #include "gtt_gsettings_io.h"
 #include "gtt.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "plug-in.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "proj_p.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 
 #ifdef USE_GTT_DEBUG_FILE
 #define GTT_CONF "/gtt-DEBUG"

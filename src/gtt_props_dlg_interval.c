@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "proj.h"
+#include "gtt_project.h"
 #include "props-invl.h"
 #include "gtt_util.h"
 

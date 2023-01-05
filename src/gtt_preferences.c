@@ -30,7 +30,7 @@
 #include "gtt.h"
 #include "gtt_preferences.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 #include "gtt_util.h"
 
 

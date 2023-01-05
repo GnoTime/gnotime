@@ -29,7 +29,7 @@
 #endif /* TM_IN_SYS_TIME */
 #include <time.h>
 #endif /* TIME_WITH_SYS_TIME */
-#include "proj.h"
+#include "gtt_project.h"
 
 void init_timer(void);
 gboolean timer_is_running (void);

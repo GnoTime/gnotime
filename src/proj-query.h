@@ -20,7 +20,7 @@
 #define __GTT_PROJ_QUERY_H__
 
 #include <glib.h>
-#include "proj.h"
+#include "gtt_project.h"
 
 /* This file contains routines that return various info about
  * the data in the system.  In some fancier world, these would

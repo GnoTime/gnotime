@@ -21,7 +21,7 @@
 
 #include <qof.h>
 
-#include "proj.h"
+#include "gtt_project.h"
 
 /* GHTML == guile-parsed html.  These routines will read in html
  * files with embedded scheme code, evaluate the scheme, and output

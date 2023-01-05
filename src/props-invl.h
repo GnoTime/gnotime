@@ -20,7 +20,7 @@
 #ifndef __PROPS_INVL_H__
 #define __PROPS_INVL_H__
 
-#include "proj.h"
+#include "gtt_project.h"
 
 #include <glib-object.h>
 

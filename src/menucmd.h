@@ -19,7 +19,7 @@
 #ifndef __MENUCMD_H__
 #define __MENUCMD_H__
 
-#include "proj.h"
+#include "gtt_project.h"
 
 #include <gtk/gtk.h>
 

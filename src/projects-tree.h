@@ -31,7 +31,7 @@
 
 #include <gtk/gtk.h>
 
-#include "proj.h"
+#include "gtt_project.h"
 
 
 #define GTT_TYPE_PROJECTS_TREE		(gtt_projects_tree_get_type ())

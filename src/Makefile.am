@@ -68,12 +68,12 @@ noinst_HEADERS =      \
 	gtt_journal.h          \
 	log.h              \
 	menucmd.h          \
-	menus.h            \
+	gtt_menus.h            \
 	myoaf.h            \
 	notes-area.h       \
 	plug-in.h          \
 	gtt_preferences.h            \
-	proj.h             \
+	gtt_project.h             \
 	proj_p.h           \
 	proj-query.h       \
 	props-invl.h       \
@@ -82,7 +82,7 @@ noinst_HEADERS =      \
 	query.h            \
 	status-icon.h      \
 	timer.h            \
-	toolbar.h          \
+	gtt_toolbar.h          \
 	gtt_util.h             \
 	gtt_xml.h
 

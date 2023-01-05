@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <qof.h>
 
-#include "proj.h"
+#include "gtt_project.h"
 #include "timer.h"
 
 struct gtt_project_list_s

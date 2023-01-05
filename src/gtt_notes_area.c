@@ -22,11 +22,11 @@
 #include <glade/glade.h>
 #include <gnome.h>
 
-#include "proj.h"
+#include "gtt_project.h"
 #include "props-task.h"
 #include "notes-area.h"
 #include "gtt_util.h"
-#include "menus.h"
+#include "gtt_menus.h"
 
 struct NotesArea_s
 {

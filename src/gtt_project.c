@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt_project.h"
+
 #include <glib.h>
 #include <libintl.h> /*conflicts with <libgnome/gnome-i18n.h> on some systems */
 #include <stdlib.h>
@@ -30,7 +32,6 @@
 #include "gtt_err_throw.h"
 #include "log.h"
 #include "gtt_preferences.h"  /* XXX tmp hack for config_* */
-#include "proj.h"
 #include "proj_p.h"
 #include "query.h"  /* temp hack for query */
 

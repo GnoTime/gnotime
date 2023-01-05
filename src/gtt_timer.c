@@ -29,7 +29,7 @@
 #include "log.h"
 #include "notes-area.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "props-task.h"
 #include "timer.h"
 #include "projects-tree.h"

@@ -35,15 +35,15 @@
 #include "gtt.h"
 #include "log.h"
 #include "menucmd.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "notes-area.h"
 #include "gtt_preferences.h"
 #include "props-proj.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 #include "gtt_util.h"
 #include "projects-tree.h"
-#include "proj.h"
+#include "gtt_project.h"
 
 /* XXX Most of the globals below should be placed into a single
  * application-wide top-level structure, rather than being allowed

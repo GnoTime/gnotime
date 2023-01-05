@@ -27,7 +27,7 @@
  ********************************************************************/
 
 #include <glib.h>
-#include "proj.h"
+#include "gtt_project.h"
 
 void gtt_status_icon_create();
 void gtt_status_icon_destroy();

@@ -26,7 +26,7 @@
 #include "cur-proj.h"
 #include "log.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 
 #define CAN_LOG ((config_logfile_name!=NULL)&&(config_logfile_use))
 

@@ -39,7 +39,7 @@
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "query.h"
 #include "gtt_util.h"
 

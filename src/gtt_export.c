@@ -27,7 +27,7 @@
 
 #include "app.h"
 #include "ghtml.h"
-#include "proj.h"
+#include "gtt_project.h"
 
 /* Project data export */
 

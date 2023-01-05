@@ -22,7 +22,7 @@
 
 #include <gnome.h>
 #include "notes-area.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "status-icon.h"
 
 

@@ -46,12 +46,12 @@
 #include "gtt_file_io.h"
 #include "gtt.h"
 #include "log.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "menucmd.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 #include "gtt_xml.h"
 
 #if WITH_DBUS

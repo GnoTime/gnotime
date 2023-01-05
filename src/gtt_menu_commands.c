@@ -28,12 +28,12 @@
 #include "gtt.h"
 #include "gtt_journal.h"
 #include "menucmd.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "gtt_preferences.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "props-proj.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 #include "gtt_xml.h"
 
 

@@ -24,7 +24,7 @@
 #include <string.h>
 
 #include "gtt_help_popup.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "props-proj.h"
 #include "gtt_util.h"
 

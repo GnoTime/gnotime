@@ -20,7 +20,7 @@
 #ifndef __PROPS_PROJ_H__
 #define __PROPS_PROJ_H__
 
-#include "proj.h"
+#include "gtt_project.h"
 
 /* pop up a dialog box for editing a project */
 /* currently, this uses the same dailog over & over, we should probably

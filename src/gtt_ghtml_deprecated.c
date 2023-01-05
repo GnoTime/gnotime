@@ -30,7 +30,7 @@
 #include "gtt.h"
 #include "ghtml.h"
 #include "ghtml-deprecated.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "gtt_util.h"
 
 /* This file contains deprecated routines, which should go away

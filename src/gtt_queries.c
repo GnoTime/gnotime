@@ -22,7 +22,7 @@
 #include <limits.h>
 
 #include "gtt_preferences.h"  /* XXX tmp hack for global config_daystart */
-#include "proj.h"
+#include "gtt_project.h"
 #include "proj_p.h"
 #include "query.h"
 

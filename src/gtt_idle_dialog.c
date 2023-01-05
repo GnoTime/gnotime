@@ -34,7 +34,7 @@
 
 #include "cur-proj.h"
 #include "gtt_help_popup.h"
-#include "proj.h"
+#include "gtt_project.h"
 #include "gtt_util.h"
 #include "app.h"
 

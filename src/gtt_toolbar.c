@@ -18,6 +18,9 @@
  */
 
 #include <config.h>
+
+#include "gtt_toolbar.h"
+
 #include <gnome.h>
 #include <string.h>
 
@@ -26,11 +29,10 @@
 #include "gtt.h"
 #include "gtt_journal.h"
 #include "menucmd.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "myoaf.h"
 #include "gtt_preferences.h"
 #include "timer.h"
-#include "toolbar.h"
 
 typedef struct _MyToolbar MyToolbar;
 

@@ -30,11 +30,11 @@
 #include "gtt_gsettings_gnomeui.h"
 #include "gtt_gsettings_io_p.h"
 #include "gtt.h"
-#include "menus.h"
+#include "gtt_menus.h"
 #include "plug-in.h"
 #include "gtt_preferences.h"
 #include "timer.h"
-#include "toolbar.h"
+#include "gtt_toolbar.h"
 
 /* XXX these should not be externs, they should be part of
  * some app-global structure.
