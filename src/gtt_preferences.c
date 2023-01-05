@@ -25,11 +25,11 @@
 #include <string.h>
 
 #include "app.h"
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "gtt_help_popup.h"
 #include "gtt.h"
 #include "gtt_preferences.h"
-#include "timer.h"
+#include "gtt_timer.h"
 #include "gtt_toolbar.h"
 #include "gtt_util.h"
 

@@ -33,7 +33,7 @@
 #include <qof.h>
 
 #include "app.h"
-#include "ghtml.h"
+#include "gtt_ghtml.h"
 #include "gtt_help_popup.h"
 #include "gtt_menus.h"
 #include "plug-in.h"

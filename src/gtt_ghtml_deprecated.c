@@ -28,7 +28,7 @@
 
 #include "app.h"
 #include "gtt.h"
-#include "ghtml.h"
+#include "gtt_ghtml.h"
 #include "ghtml-deprecated.h"
 #include "gtt_project.h"
 #include "gtt_util.h"

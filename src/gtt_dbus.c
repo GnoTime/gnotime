@@ -37,7 +37,7 @@
 
 #include <dbus/dbus-glib.h>
 
-#include "timer.h"
+#include "gtt_timer.h"
 #include "gtt.h"
 
 typedef struct GnotimeDbus  GnotimeDbus;

@@ -52,7 +52,7 @@ noinst_HEADERS =      \
 	app.h              \
 	projects-tree.h    \
 	gtt_dbus.h             \
-	cur-proj.h         \
+	gtt_current_project.h         \
 	gtt_help_popup.h           \
 	gtt_err_throw.h        \
 	gtt_export.h           \
@@ -60,7 +60,7 @@ noinst_HEADERS =      \
 	gtt_gsettings_gnomeui.h    \
 	gtt_gsettings_io.h         \
 	gtt_gsettings_io_p.h       \
-	ghtml.h            \
+	gtt_ghtml.h            \
 	ghtml-deprecated.h \
 	gtt.h              \
 	gtt_idle_dialog.h      \
@@ -79,9 +79,9 @@ noinst_HEADERS =      \
 	props-invl.h       \
 	props-proj.h       \
 	props-task.h       \
-	query.h            \
+	gtt_queries.h            \
 	status-icon.h      \
-	timer.h            \
+	gtt_timer.h            \
 	gtt_toolbar.h          \
 	gtt_util.h             \
 	gtt_xml.h

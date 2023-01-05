@@ -32,7 +32,7 @@
 #include "gtt_menus.h"
 #include "myoaf.h"
 #include "gtt_preferences.h"
-#include "timer.h"
+#include "gtt_timer.h"
 
 typedef struct _MyToolbar MyToolbar;
 

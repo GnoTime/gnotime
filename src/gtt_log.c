@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <libgnomevfs/gnome-vfs.h>
 
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "log.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"

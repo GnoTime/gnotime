@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_ghtml.h"
+
 #define _GNU_SOURCE
 #include <glib.h>
 #include <libguile.h>
@@ -34,13 +36,12 @@
 #include <monetary.h>
 
 #include "app.h"
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "gtt.h"
-#include "ghtml.h"
 #include "ghtml-deprecated.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
-#include "query.h"
+#include "gtt_queries.h"
 #include "gtt_util.h"
 
 

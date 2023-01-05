@@ -20,7 +20,7 @@
 #define __GTT_GHTML_DEPRECATED_H__
 
 #include "gtt_project.h"
-#include "ghtml.h"
+#include "gtt_ghtml.h"
 
 void gtt_ghtml_deprecated_init (GttGhtml *);
 

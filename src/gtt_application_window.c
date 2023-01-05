@@ -31,7 +31,7 @@
 
 #include "gtt_activation_dialog.h"
 #include "app.h"
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "gtt.h"
 #include "log.h"
 #include "menucmd.h"
@@ -39,7 +39,7 @@
 #include "notes-area.h"
 #include "gtt_preferences.h"
 #include "props-proj.h"
-#include "timer.h"
+#include "gtt_timer.h"
 #include "gtt_toolbar.h"
 #include "gtt_util.h"
 #include "projects-tree.h"

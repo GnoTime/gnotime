@@ -30,7 +30,7 @@
 #include "gtt_journal.h"
 #include "menucmd.h"
 #include "plug-in.h"
-#include "timer.h"
+#include "gtt_timer.h"
 
 
 static GnomeUIInfo menu_main_file[] = {

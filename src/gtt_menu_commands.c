@@ -22,7 +22,7 @@
 #include <string.h>
 
 #include "app.h"
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "gtt_err_throw.h"
 #include "gtt_file_io.h"
 #include "gtt.h"
@@ -32,7 +32,7 @@
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 #include "props-proj.h"
-#include "timer.h"
+#include "gtt_timer.h"
 #include "gtt_toolbar.h"
 #include "gtt_xml.h"
 

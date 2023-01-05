@@ -33,7 +33,7 @@
 #include "log.h"
 #include "gtt_preferences.h"  /* XXX tmp hack for config_* */
 #include "proj_p.h"
-#include "query.h"  /* temp hack for query */
+#include "gtt_queries.h"  /* temp hack for query */
 
 #define _(X) gettext(X)
 

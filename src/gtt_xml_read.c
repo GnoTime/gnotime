@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cur-proj.h"
+#include "gtt_current_project.h"
 #include "gtt_err_throw.h"
 #include "gtt.h"
 #include "gtt_project.h"
