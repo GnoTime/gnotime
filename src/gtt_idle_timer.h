@@ -12,8 +12,8 @@
  * implied warranty.
  */
 
-#ifndef __IDLE_TIMER_H__
-#define __IDLE_TIMER_H__
+#ifndef GTT_IDLE_TIMER_H
+#define GTT_IDLE_TIMER_H
 
 #include <glib.h>
 #include <sys/time.h>
@@ -30,4 +30,4 @@ time_t poll_last_activity (IdleTimeout *);
 
 /* XXX There should be an idle_timeout_destroy() func, but there isn't. */
 
-#endif /* __IDLE_TIMER_H__ */
+#endif // GTT_IDLE_TIMER_H

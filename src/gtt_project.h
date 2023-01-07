@@ -17,8 +17,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_PROJ_H__
-#define __GTT_PROJ_H__
+#ifndef GTT_PROJECT_H
+#define GTT_PROJECT_H
 
 #include <glib.h>
 #include <qof.h>
@@ -627,4 +627,4 @@ GttTask *gtt_interval_get_parent (GttInterval *);
 gboolean gtt_interval_is_first_interval (GttInterval *);
 gboolean gtt_interval_is_last_interval (GttInterval *);
 
-#endif /* __GTT_PROJ_H__ */
+#endif // GTT_PROJECT_H

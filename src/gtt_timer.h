@@ -17,8 +17,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_TIMER_H__
-#define __GTT_TIMER_H__
+#ifndef GTT_TIMER_H
+#define GTT_TIMER_H
 
 #ifdef TIME_WITH_SYS_TIME
 #include <sys/time.h>
@@ -55,4 +55,4 @@ void start_idle_timer ();
 void start_main_timer ();
 void stop_main_timer ();
 
-#endif /* __GTT_TIMER_H__ */
+#endif // GTT_TIMER_H

@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GTT_ACTIVITY_DIALOG_H_
-#define GTT_ACTIVITY_DIALOG_H_
+#ifndef GTT_ACTIVATION_DIALOG_H
+#define GTT_ACTIVATION_DIALOG_H
 
 /* The Activity Dialog is poped up when no project is
  * running, but keyboard/mouse activity has been detected
@@ -57,4 +57,4 @@ void raise_active_dialog (GttActiveDialog *id);
 void active_dialog_activate_timer (GttActiveDialog *id);
 void active_dialog_deactivate_timer (GttActiveDialog *id);
 
-#endif /* GTT_ACTIVITY_DIALOG_H_ */
+#endif // GTT_ACTIVATION_DIALOG_H

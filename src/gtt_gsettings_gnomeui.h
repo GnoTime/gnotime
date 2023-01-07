@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GTT_GCONF_GNOMEUI_H_
-#define GTT_GCONF_GNOMEUI_H_
+#ifndef GTT_GSETTINGS_GNOMEUI_H
+#define GTT_GSETTINGS_GNOMEUI_H
 
 #include <gconf/gconf-client.h>
 #include <gnome.h>
@@ -39,4 +39,4 @@ void gtt_save_gnomeui_to_gconf (GConfClient *client, const char *path,
 void gtt_restore_gnomeui_from_gconf (GConfClient *client, const char *path,
                                      GnomeUIInfo *gui);
 
-#endif
+#endif // GTT_GSETTINGS_GNOMEUI_H

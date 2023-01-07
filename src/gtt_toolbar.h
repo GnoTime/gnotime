@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_TOOLBAR_H__
-#define __GTT_TOOLBAR_H__
+#ifndef GTT_TOOLBAR_H
+#define GTT_TOOLBAR_H
 
 #include <gtk/gtk.h>
 
@@ -41,4 +41,4 @@ void toolbar_set_states (void);
  */
 void update_toolbar_sections (void);
 
-#endif
+#endif // GTT_TOOLBAR_H

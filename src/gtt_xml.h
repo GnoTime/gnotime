@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __XML_GTT_H__
-#define __XML_GTT_H__
+#ifndef GTT_XML_H
+#define GTT_XML_H
 
 #include <glib.h>
 
@@ -40,4 +40,4 @@ void gtt_xml_write_file (const char *filename);
 
 GList *gtt_xml_read_projects (const char *filename);
 
-#endif /* __XML_GTT_H__ */
+#endif // GTT_XML_H

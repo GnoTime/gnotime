@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_UTIL_H__
-#define __GTT_UTIL_H__
+#ifndef GTT_UTIL_H
+#define GTT_UTIL_H
 
 #include <glade/glade.h>
 #include <gtk/gtktext.h>
@@ -46,4 +46,4 @@ size_t xxxqof_print_minutes_elapsed_buff (char *buff, size_t len, int secs,
 size_t xxxqof_print_date_dmy_buff (char *buff, size_t len, int day, int month,
                                    int year);
 
-#endif /* __GTT_UTIL_H__ */
+#endif // GTT_UTIL_H

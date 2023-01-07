@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_PROJ_P_H__
-#define __GTT_PROJ_P_H__
+#ifndef GTT_PROJECT_P_H
+#define GTT_PROJECT_P_H
 
 #include "config.h"
 
@@ -133,4 +133,4 @@ struct gtt_interval_s
 void gtt_project_set_guid (GttProject *, const GUID *);
 void gtt_task_set_guid (GttTask *, const GUID *);
 
-#endif /* __GTT_PROJ_P_H__ */
+#endif // GTT_PROJECT_P_H

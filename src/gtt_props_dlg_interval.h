@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __PROPS_INVL_H__
-#define __PROPS_INVL_H__
+#ifndef GTT_PROPS_DLG_INTERVAL_H
+#define GTT_PROPS_DLG_INTERVAL_H
 
 #include "gtt_project.h"
 
@@ -35,4 +35,4 @@ void edit_interval_dialog_show (EditIntervalDialog *dlg);
 void edit_interval_set_close_callback (EditIntervalDialog *dlg, GCallback f,
                                        gpointer data);
 
-#endif /* __PROPS_INVL_H__ */
+#endif // GTT_PROPS_DLG_INTERVAL_H

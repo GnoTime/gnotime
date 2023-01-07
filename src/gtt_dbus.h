@@ -19,12 +19,12 @@
  */
 #if WITH_DBUS
 
-#ifndef _DBUS_H_
-#define _DBUS_H_
+#ifndef GTT_DBUS_H
+#define GTT_DBUS_H
 
 /* Carry out all actions to setup the D-Bus and register signal handlers */
 void gnotime_dbus_setup ();
 
-#endif /* !_DBUS_H */
+#endif // GTT_DBUS_H
 
 #endif // WITH_DBUS

@@ -17,12 +17,12 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_EXPORT_H__
-#define __GTT_EXPORT_H__
+#ifndef GTT_EXPORT_H
+#define GTT_EXPORT_H
 
 #include <gtk/gtk.h>
 
 /* bring up dialog for picking the export format, file, etc. */
 void export_file_picker (GtkWidget *widget, gpointer data);
 
-#endif /* __GTT_EXPORT_H__ */
+#endif // GTT_EXPORT_H

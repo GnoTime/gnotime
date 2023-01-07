@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_PLUG_IN_H__
-#define __GTT_PLUG_IN_H__
+#ifndef GTT_PLUG_IN_H
+#define GTT_PLUG_IN_H
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -70,4 +70,4 @@ void edit_plugin_dialog_destroy (PluginEditorDialog *dlg);
 
 void report_menu_edit (GtkWidget *widget, gpointer data);
 
-#endif /* __GTT_PLUG_IN_H__ */
+#endif // GTT_PLUG_IN_H

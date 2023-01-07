@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __MENUCMD_H__
-#define __MENUCMD_H__
+#ifndef GTT_MENU_COMMANDS_H
+#define GTT_MENU_COMMANDS_H
 
 #include "gtt_project.h"
 
@@ -52,4 +52,4 @@ void menu_howto_edit_times (GtkWidget *w, gpointer data);
 void menu_test (GtkWidget *w, gpointer data);
 #endif
 
-#endif
+#endif // GTT_MENU_COMMANDS_H

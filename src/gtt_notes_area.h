@@ -51,4 +51,4 @@ void notes_area_set_pane_sizes (NotesArea *na, int vp, int hp);
  */
 void gtt_notes_timer_callback (NotesArea *na);
 
-#endif /* GTT_NOTES_AREA_H */
+#endif // GTT_NOTES_AREA_H

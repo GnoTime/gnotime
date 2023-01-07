@@ -18,8 +18,8 @@
 
 /* This is a PRIVATE header file for GConf users only! Do not use! */
 
-#ifndef GTT_GCONF_IO_P_H_
-#define GTT_GCONF_IO_P_H_
+#ifndef GTT_GSETTINGS_IO_P_H
+#define GTT_GSETTINGS_IO_P_H
 
 #include <gconf/gconf-client.h>
 #include <glib.h>
@@ -165,4 +165,4 @@
     l;                                                                        \
   })
 
-#endif /* GTT_GCONF_IO_P_H_ */
+#endif // GTT_GSETTINGS_IO_P_H

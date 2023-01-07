@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GLOBAL_PREFS_H__
-#define __GLOBAL_PREFS_H__
+#ifndef GTT_PREFERENCES_H
+#define GTT_PREFERENCES_H
 
 extern int config_show_secs;
 extern int config_show_statusbar;
@@ -83,4 +83,4 @@ void prefs_update_projects_view_columns (void);
 void prefs_update_projects_view (void);
 void prefs_set_show_secs (void);
 
-#endif /* __GLOBAL_PREFS_H__ */
+#endif // GTT_PREFERENCES_H

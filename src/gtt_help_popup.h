@@ -15,12 +15,12 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-#ifndef __DIALOG_H__
-#define __DIALOG_H__
+#ifndef GTT_HELP_POPUP
+#define GTT_HELP_POPUP
 
 #include <gtk/gtk.h>
 
 /* Popup the appropriate help/documentaiton subsystem */
 void gtt_help_popup (GtkWidget *widget, gpointer data);
 
-#endif
+#endif // GTT_HELP_POPUP

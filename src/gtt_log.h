@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_LOG_H__
-#define __GTT_LOG_H__
+#ifndef GTT_LOG_H
+#define GTT_LOG_H
 
 #include "gtt_project.h"
 
@@ -28,4 +28,4 @@ void log_endofday (void);
 
 char *printf_project (const char *format, GttProject *);
 
-#endif /* __GTT_LOG_H__ */
+#endif // GTT_LOG_H

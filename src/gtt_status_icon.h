@@ -26,6 +26,9 @@
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
+#ifndef GTT_STATUS_ICON_H
+#define GTT_STATUS_ICON_H
+
 #include "gtt_project.h"
 #include <glib.h>
 
@@ -33,3 +36,5 @@ void gtt_status_icon_create ();
 void gtt_status_icon_destroy ();
 void gtt_status_icon_start_timer (GttProject *prj);
 void gtt_status_icon_stop_timer (GttProject *prj);
+
+#endif // GTT_STATUS_ICON_H

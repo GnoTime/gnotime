@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_PROJ_QUERY_H__
-#define __GTT_PROJ_QUERY_H__
+#ifndef GTT_PROJECT_QUERIES_H
+#define GTT_PROJECT_QUERIES_H
 
 #include "gtt_project.h"
 #include <glib.h>
@@ -40,4 +40,4 @@
 
 GList *gtt_project_get_unfinished (void);
 
-#endif /* __GTT_PROJ_QUERY_H__ */
+#endif // GTT_PROJECT_QUERIES_H

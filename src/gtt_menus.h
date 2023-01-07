@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_MENUS_H__
-#define __GTT_MENUS_H__
+#ifndef GTT_MENUS_H
+#define GTT_MENUS_H
 
 #include <gnome.h>
 
@@ -51,4 +51,4 @@ void gtt_set_reports_menu (GnomeApp *app, GnomeUIInfo *new_menus);
  */
 void gtt_reports_menu_prepend_entry (GnomeApp *app, GnomeUIInfo *new_entry);
 
-#endif /* __GTT_MENUS_H__ */
+#endif // GTT_MENUS_H
