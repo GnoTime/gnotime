@@ -66,7 +66,7 @@ noinst_HEADERS =      \
 	gtt_idle_dialog.h      \
 	gtt_idle_timer.h         \
 	gtt_journal.h          \
-	log.h              \
+	gtt_log.h              \
 	menucmd.h          \
 	gtt_menus.h            \
 	gtt_myoaf.h            \
@@ -76,9 +76,9 @@ noinst_HEADERS =      \
 	gtt_project.h             \
 	proj_p.h           \
 	proj-query.h       \
-	props-invl.h       \
-	props-proj.h       \
-	props-task.h       \
+	gtt_props_dlg_interval.h       \
+	gtt_props_dlg_project.h       \
+	gtt_props_dlg_task.h       \
 	gtt_queries.h            \
 	gtt_status_icon.h      \
 	gtt_timer.h            \

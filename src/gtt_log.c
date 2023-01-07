@@ -16,15 +16,17 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include <glib.h>
 #include <config.h>
+
+#include "gtt_log.h"
+
+#include <glib.h>
 #include <gnome.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "gtt_current_project.h"
-#include "log.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 

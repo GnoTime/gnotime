@@ -38,8 +38,8 @@
 #include "gtt_menus.h"
 #include "gtt_plug_in.h"
 #include "gtt_project.h"
-#include "props-invl.h"
-#include "props-task.h"
+#include "gtt_props_dlg_interval.h"
+#include "gtt_props_dlg_task.h"
 #include "gtt_util.h"
 
 

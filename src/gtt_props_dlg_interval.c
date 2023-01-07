@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_props_dlg_interval.h"
+
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
@@ -25,7 +27,6 @@
 #include <string.h>
 
 #include "gtt_project.h"
-#include "props-invl.h"
 #include "gtt_util.h"
 
 struct EditIntervalDialog_s

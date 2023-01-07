@@ -45,7 +45,7 @@
 #include "gtt_err_throw.h"
 #include "gtt_file_io.h"
 #include "gtt.h"
-#include "log.h"
+#include "gtt_log.h"
 #include "gtt_menus.h"
 #include "menucmd.h"
 #include "gtt_preferences.h"

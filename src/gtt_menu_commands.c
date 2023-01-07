@@ -31,7 +31,7 @@
 #include "gtt_menus.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
-#include "props-proj.h"
+#include "gtt_props_dlg_project.h"
 #include "gtt_timer.h"
 #include "gtt_toolbar.h"
 #include "gtt_xml.h"

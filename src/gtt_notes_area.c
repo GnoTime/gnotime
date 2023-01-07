@@ -23,7 +23,7 @@
 #include <gnome.h>
 
 #include "gtt_project.h"
-#include "props-task.h"
+#include "gtt_props_dlg_task.h"
 #include "notes-area.h"
 #include "gtt_util.h"
 #include "gtt_menus.h"

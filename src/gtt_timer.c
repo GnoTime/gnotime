@@ -29,11 +29,11 @@
 #include "gtt_current_project.h"
 #include "gtt.h"
 #include "gtt_idle_dialog.h"
-#include "log.h"
+#include "gtt_log.h"
 #include "notes-area.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
-#include "props-task.h"
+#include "gtt_props_dlg_task.h"
 #include "gtt_projects_tree.h"
 
 int config_autosave_period = 60;

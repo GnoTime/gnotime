@@ -30,7 +30,7 @@
 #include <qof.h>
 
 #include "gtt_err_throw.h"
-#include "log.h"
+#include "gtt_log.h"
 #include "gtt_preferences.h"  /* XXX tmp hack for config_* */
 #include "proj_p.h"
 #include "gtt_queries.h"  /* temp hack for query */
