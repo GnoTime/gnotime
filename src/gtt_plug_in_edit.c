@@ -17,6 +17,9 @@
  */
 
 #include "config.h"
+
+#include "gtt_plug_in.h"
+
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
@@ -26,7 +29,6 @@
 #include "gtt_journal.h"
 #include "gtt_gsettings_io.h"
 #include "gtt_menus.h"
-#include "plug-in.h"
 #include "gtt_util.h"
 
 struct PluginEditorDialog_s

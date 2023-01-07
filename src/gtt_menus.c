@@ -29,7 +29,7 @@
 #include "gtt.h"
 #include "gtt_journal.h"
 #include "menucmd.h"
-#include "plug-in.h"
+#include "gtt_plug_in.h"
 #include "gtt_timer.h"
 
 

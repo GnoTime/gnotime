@@ -42,7 +42,7 @@
 #include "gtt_timer.h"
 #include "gtt_toolbar.h"
 #include "gtt_util.h"
-#include "projects-tree.h"
+#include "gtt_projects_tree.h"
 #include "gtt_project.h"
 
 /* XXX Most of the globals below should be placed into a single

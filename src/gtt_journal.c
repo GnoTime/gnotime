@@ -36,7 +36,7 @@
 #include "gtt_ghtml.h"
 #include "gtt_help_popup.h"
 #include "gtt_menus.h"
-#include "plug-in.h"
+#include "gtt_plug_in.h"
 #include "gtt_project.h"
 #include "props-invl.h"
 #include "props-task.h"

@@ -31,7 +31,7 @@
 #include "gtt_gsettings_io_p.h"
 #include "gtt.h"
 #include "gtt_menus.h"
-#include "plug-in.h"
+#include "gtt_plug_in.h"
 #include "gtt_preferences.h"
 #include "gtt_timer.h"
 #include "gtt_toolbar.h"

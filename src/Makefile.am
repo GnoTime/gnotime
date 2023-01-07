@@ -50,7 +50,7 @@ gnotime_SOURCES =                \
 noinst_HEADERS =      \
 	gtt_activation_dialog.h    \
 	app.h              \
-	projects-tree.h    \
+	gtt_projects_tree.h    \
 	gtt_dbus.h             \
 	gtt_current_project.h         \
 	gtt_help_popup.h           \
@@ -69,9 +69,9 @@ noinst_HEADERS =      \
 	log.h              \
 	menucmd.h          \
 	gtt_menus.h            \
-	myoaf.h            \
+	gtt_myoaf.h            \
 	notes-area.h       \
-	plug-in.h          \
+	gtt_plug_in.h          \
 	gtt_preferences.h            \
 	gtt_project.h             \
 	proj_p.h           \
@@ -80,7 +80,7 @@ noinst_HEADERS =      \
 	props-proj.h       \
 	props-task.h       \
 	gtt_queries.h            \
-	status-icon.h      \
+	gtt_status_icon.h      \
 	gtt_timer.h            \
 	gtt_toolbar.h          \
 	gtt_util.h             \

@@ -27,10 +27,11 @@
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
+#include "gtt_projects_tree.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "projects-tree.h"
 #include "gtt_timer.h"
 
 #define GTT_PROJECTS_TREE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTT_TYPE_PROJECTS_TREE, GttProjectsTreePrivate))

@@ -30,7 +30,7 @@
 #include "gtt_journal.h"
 #include "menucmd.h"
 #include "gtt_menus.h"
-#include "myoaf.h"
+#include "gtt_myoaf.h"
 #include "gtt_preferences.h"
 #include "gtt_timer.h"
 

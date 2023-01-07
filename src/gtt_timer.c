@@ -34,7 +34,7 @@
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 #include "props-task.h"
-#include "projects-tree.h"
+#include "gtt_projects_tree.h"
 
 int config_autosave_period = 60;
 int config_autosave_props_period = (4*3600);
