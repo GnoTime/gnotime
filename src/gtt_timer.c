@@ -30,7 +30,7 @@
 #include "gtt.h"
 #include "gtt_idle_dialog.h"
 #include "gtt_log.h"
-#include "notes-area.h"
+#include "gtt_notes_area.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 #include "gtt_props_dlg_task.h"

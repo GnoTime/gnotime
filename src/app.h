@@ -21,7 +21,7 @@
 #define __GTT_APP_H__
 
 #include <gnome.h>
-#include "notes-area.h"
+#include "gtt_notes_area.h"
 #include "gtt_project.h"
 #include "gtt_status_icon.h"
 

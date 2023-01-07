@@ -25,7 +25,7 @@
 
 #include "gtt_preferences.h"  /* XXX tmp hack for global config_daystart */
 #include "gtt_project.h"
-#include "proj_p.h"
+#include "gtt_project_p.h"
 
 /* ========================================================== */
 

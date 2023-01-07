@@ -15,7 +15,7 @@ GTT four basic parts:
    project, task and time interval data with a set of 
    GUI-independent programming API's.  The API is in gtt_project.h,
    the code in proj.c and the private data structs in 
-   proj_p.h.  The goal of splitting out the data this way is
+   gtt_project_p.h.  The goal of splitting out the data this way is
    to make it easier to write an SQL back-end for storage,
    and/or to interface to the web via cgi-bins.
    

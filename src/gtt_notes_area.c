@@ -17,6 +17,9 @@
  */
 
 #include "config.h"
+
+#include "gtt_notes_area.h"
+
 #include <glib-object.h>
 
 #include <glade/glade.h>
@@ -24,7 +27,6 @@
 
 #include "gtt_project.h"
 #include "gtt_props_dlg_task.h"
-#include "notes-area.h"
 #include "gtt_util.h"
 #include "gtt_menus.h"
 

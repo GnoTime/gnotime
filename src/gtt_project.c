@@ -32,7 +32,7 @@
 #include "gtt_err_throw.h"
 #include "gtt_log.h"
 #include "gtt_preferences.h"  /* XXX tmp hack for config_* */
-#include "proj_p.h"
+#include "gtt_project_p.h"
 #include "gtt_queries.h"  /* temp hack for query */
 
 #define _(X) gettext(X)

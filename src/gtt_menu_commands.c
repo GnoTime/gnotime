@@ -18,6 +18,9 @@
  */
 
 #include <config.h>
+
+#include "gtt_menu_commands.h"
+
 #include <gnome.h>
 #include <string.h>
 
@@ -27,7 +30,6 @@
 #include "gtt_file_io.h"
 #include "gtt.h"
 #include "gtt_journal.h"
-#include "menucmd.h"
 #include "gtt_menus.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"

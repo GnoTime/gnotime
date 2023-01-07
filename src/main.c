@@ -47,7 +47,7 @@
 #include "gtt.h"
 #include "gtt_log.h"
 #include "gtt_menus.h"
-#include "menucmd.h"
+#include "gtt_menu_commands.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 #include "gtt_timer.h"

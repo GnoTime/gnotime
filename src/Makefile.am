@@ -67,15 +67,15 @@ noinst_HEADERS =      \
 	gtt_idle_timer.h         \
 	gtt_journal.h          \
 	gtt_log.h              \
-	menucmd.h          \
+	gtt_menu_commands.h          \
 	gtt_menus.h            \
 	gtt_myoaf.h            \
-	notes-area.h       \
+	gtt_notes_area.h       \
 	gtt_plug_in.h          \
 	gtt_preferences.h            \
 	gtt_project.h             \
-	proj_p.h           \
-	proj-query.h       \
+	gtt_project_p.h           \
+	gtt_project_queries.h       \
 	gtt_props_dlg_interval.h       \
 	gtt_props_dlg_project.h       \
 	gtt_props_dlg_task.h       \

@@ -37,7 +37,7 @@
 #include "gtt_plug_in.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
-#include "proj_p.h"
+#include "gtt_project_p.h"
 #include "gtt_timer.h"
 #include "gtt_toolbar.h"
 

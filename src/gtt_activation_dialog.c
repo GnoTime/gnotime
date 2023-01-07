@@ -29,7 +29,7 @@
 #include "gtt_current_project.h"
 #include "gtt_help_popup.h"
 #include "gtt_project.h"
-#include "proj-query.h"
+#include "gtt_project_queries.h"
 #include "gtt_util.h"
 
 

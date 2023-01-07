@@ -30,7 +30,7 @@
 #include "gtt_err_throw.h"
 #include "gtt.h"
 #include "gtt_project.h"
-#include "proj_p.h"
+#include "gtt_project_p.h"
 
 
 /* Note: most of this code is a tediously boring cut-n-paste
