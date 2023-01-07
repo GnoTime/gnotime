@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include "gtt_ghtml_deprecated.h"
+
 #define _GNU_SOURCE
 #include <glib.h>
 #include <libguile.h>
@@ -26,10 +28,9 @@
 
 #include <qof.h>
 
-#include "app.h"
+#include "gtt_application_window.h"
 #include "gtt.h"
 #include "gtt_ghtml.h"
-#include "ghtml-deprecated.h"
 #include "gtt_project.h"
 #include "gtt_util.h"
 

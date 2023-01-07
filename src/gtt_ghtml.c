@@ -35,10 +35,10 @@
 #include <locale.h>
 #include <monetary.h>
 
-#include "app.h"
+#include "gtt_application_window.h"
 #include "gtt_current_project.h"
 #include "gtt.h"
-#include "ghtml-deprecated.h"
+#include "gtt_ghtml_deprecated.h"
 #include "gtt_preferences.h"
 #include "gtt_project.h"
 #include "gtt_queries.h"

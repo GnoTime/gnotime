@@ -49,7 +49,7 @@ gnotime_SOURCES =                \
 
 noinst_HEADERS =      \
 	gtt_activation_dialog.h    \
-	app.h              \
+	gtt_application_window.h              \
 	gtt_projects_tree.h    \
 	gtt_dbus.h             \
 	gtt_current_project.h         \
@@ -61,7 +61,7 @@ noinst_HEADERS =      \
 	gtt_gsettings_io.h         \
 	gtt_gsettings_io_p.h       \
 	gtt_ghtml.h            \
-	ghtml-deprecated.h \
+	gtt_ghtml_deprecated.h \
 	gtt.h              \
 	gtt_idle_dialog.h      \
 	gtt_idle_timer.h         \

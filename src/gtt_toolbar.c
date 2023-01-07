@@ -24,7 +24,7 @@
 #include <gnome.h>
 #include <string.h>
 
-#include "app.h"
+#include "gtt_application_window.h"
 #include "gtt_help_popup.h"
 #include "gtt.h"
 #include "gtt_journal.h"

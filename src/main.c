@@ -40,7 +40,7 @@
 
 #include <qof.h>
 
-#include "app.h"
+#include "gtt_application_window.h"
 #include "gtt_current_project.h"
 #include "gtt_err_throw.h"
 #include "gtt_file_io.h"

@@ -18,6 +18,8 @@
  */
 #include "config.h"
 
+#include "gtt_application_window.h"
+
 #include <gnome.h>
 #include <sched.h>
 #include <stdio.h>
@@ -30,7 +32,6 @@
 #include <qof.h>
 
 #include "gtt_activation_dialog.h"
-#include "app.h"
 #include "gtt_current_project.h"
 #include "gtt.h"
 #include "gtt_log.h"

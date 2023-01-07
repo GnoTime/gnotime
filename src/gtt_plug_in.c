@@ -25,7 +25,7 @@
 #include <gnome.h>
 #include <libgnomevfs/gnome-vfs.h>
 
-#include "app.h"
+#include "gtt_application_window.h"
 #include "gtt_gsettings_io.h"
 #include "gtt_journal.h"
 #include "gtt_menus.h"
