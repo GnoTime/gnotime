@@ -7,6 +7,12 @@ lists, organize ideas, track bug reports, keep a diary of activities,
 provide weekly status reports to management, and even works as a consultant
 billing system.
 
+***IMPORTANT*** *Get the latest code from here:*
+https://github.com/markuspg/gnotime/tree/modernize3
+It will compile & run on modern (2023-era) Linux systems!
+
+Everything below is stale and has not been updated since 2013.
+
 HomePage
 --------
  * http://gttr.sourceforge.net
@@ -25,6 +31,21 @@ detailed description of these features.
 
 Status
 ------
+The newest and latest version can be found in the "modernize3" branch of
+the @markuspg fork:
+
+https://github.com/markuspg/gnotime/tree/modernize3
+
+The above will compile and run on present-era (2023) Linux systems.
+
+Note that the aove is NOT forked from this repo! It is forked from
+@goedson 's repo. Note that @goedson's repo is missing my version
+2.4.1 changes, which are in this repo (the last one being
+https://github.com/linas/gnotime/commit/5f7319931c2676c0a7d7a58ca93f33cbde769dee)
+
+
+Obsolete commentary from 2013
+-----------------------------
 Gnotime is written for Gnome-1/Gnome-2. It needs to be ported to
 Gnome3 to be buildable on present-day systems.
 
