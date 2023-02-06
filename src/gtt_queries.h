@@ -19,8 +19,8 @@
 #ifndef __GTT_QUERY_H__
 #define __GTT_QUERY_H__
 
-#include <glib.h>
 #include "gtt_project.h"
+#include <glib.h>
 
 /* This file contains routines that return various info about
  * the data in the system.  In some fancier world, these would
@@ -41,13 +41,12 @@ typedef struct GttBucket_s GttBucket;
 
 struct GttBucket_s
 {
-	time_t start;     /* Start time that defines this bucket */
-	time_t end;       /* End time that defines this bucket */
-	time_t total;     /* Total amount of time in the bucket */
-	GList *tasks;     /* List of GttTasks in the bucket */
-	GList *intervals; /* List of GttIntervals in the bucket */
+  time_t start;     /* Start time that defines this bucket */
+  time_t end;       /* End time that defines this bucket */
+  time_t total;     /* Total amount of time in the bucket */
+  GList *tasks;     /* List of GttTasks in the bucket */
+  GList *intervals; /* List of GttIntervals in the bucket */
 };
-
 
 /* The following routines are needed to implement a
  *    calendar report in GTT.
@@ -81,13 +80,13 @@ struct GttBucket_s
  *    included in the day totals.
  */
 
-GArray * gtt_project_get_daily_buckets (GttProject *proj,
-					      gboolean include_subprojects);
+GArray *gtt_project_get_daily_buckets (GttProject *proj,
+                                       gboolean include_subprojects);
 
-time_t   gtt_project_get_earliest_start (GttProject *proj,
-					      gboolean include_subprojects);
+time_t gtt_project_get_earliest_start (GttProject *proj,
+                                       gboolean include_subprojects);
 
-time_t   gtt_project_get_latest_stop (GttProject *proj,
-					      gboolean include_subprojects);
+time_t gtt_project_get_latest_stop (GttProject *proj,
+                                    gboolean include_subprojects);
 
 #endif /* __GTT_QUERY_H__ */

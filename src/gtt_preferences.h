@@ -16,10 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #ifndef __GLOBAL_PREFS_H__
 #define __GLOBAL_PREFS_H__
-
 
 extern int config_show_secs;
 extern int config_show_statusbar;
@@ -71,9 +69,9 @@ extern int config_weekstart_offset;
 extern int config_time_format;
 
 extern char *config_currency_symbol;
-extern int  config_currency_use_locale;
-#define TIME_FORMAT_AM_PM  1
-#define TIME_FORMAT_24_HS  2
+extern int config_currency_use_locale;
+#define TIME_FORMAT_AM_PM 1
+#define TIME_FORMAT_24_HS 2
 #define TIME_FORMAT_LOCALE 3
 
 /* Pop up a dialog box for setting user preferences */

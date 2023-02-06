@@ -26,28 +26,26 @@
 /* ================================================================= */
 
 void
-gtt_help_popup(GtkWidget *widget, gpointer data)
+gtt_help_popup (GtkWidget *widget, gpointer data)
 {
-	GError *err = NULL;
-	char * section = data;
-	if ((section != NULL) && !strcmp ("", section)) section = NULL;
-	gnome_help_display ("gnotime", section, &err);
-	if (err)
-	{
-		GtkWidget *mb;
-		mb = gtk_message_dialog_new (
-		         GTK_IS_WINDOW(widget) ? GTK_WINDOW (widget) : NULL,
-		         GTK_DIALOG_MODAL,
-		         GTK_MESSAGE_ERROR,
-		         GTK_BUTTONS_CLOSE,
-				 "%s",
-		         err->message);
-		g_signal_connect (G_OBJECT(mb), "response",
-		         G_CALLBACK (gtk_widget_destroy), mb);
-		gtk_widget_show (mb);
+  GError *err = NULL;
+  char *section = data;
+  if ((section != NULL) && !strcmp ("", section))
+    section = NULL;
+  gnome_help_display ("gnotime", section, &err);
+  if (err)
+    {
+      GtkWidget *mb;
+      mb = gtk_message_dialog_new (GTK_IS_WINDOW (widget) ? GTK_WINDOW (widget)
+                                                          : NULL,
+                                   GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
+                                   GTK_BUTTONS_CLOSE, "%s", err->message);
+      g_signal_connect (G_OBJECT (mb), "response",
+                        G_CALLBACK (gtk_widget_destroy), mb);
+      gtk_widget_show (mb);
 
-		printf ("duude gnome help err msg: %s\n", err->message);
-	}
+      printf ("duude gnome help err msg: %s\n", err->message);
+    }
 }
 
 /* ==================== END OF FILE ================================ */

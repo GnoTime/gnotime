@@ -13,10 +13,8 @@
 #include <orb/orbit.h>
 #endif
 
-
-
 void
-edit_calendar(GtkWidget *w, gpointer data)
+edit_calendar (GtkWidget *w, gpointer data)
 {
 
 #if 0
@@ -91,5 +89,3 @@ srv->location_info, srv->hostname);
 printf ("duude query = %p item=%p\n", sl, cal);
 #endif
 }
-
-

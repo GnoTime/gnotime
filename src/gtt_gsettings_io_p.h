@@ -27,125 +27,142 @@
 /* ======================================================= */
 /* XXX Should use GConfChangesets */
 /* XXX warnings should be graphical */
-#define CHKERR(rc,err_ret,dir) {                                       \
-   if (FALSE == rc) {                                                  \
-      printf ("GTT: GConf: Warning: set %s failed: ", dir);            \
-      if (err_ret) printf ("%s", err_ret->message);                    \
-      printf ("\n");                                                   \
-   }                                                                   \
-}
+#define CHKERR(rc, err_ret, dir)                                              \
+  {                                                                           \
+    if (FALSE == rc)                                                          \
+      {                                                                       \
+        printf ("GTT: GConf: Warning: set %s failed: ", dir);                 \
+        if (err_ret)                                                          \
+          printf ("%s", err_ret->message);                                    \
+        printf ("\n");                                                        \
+      }                                                                       \
+  }
 
-#define SETBOOL(dir,val) {                                             \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_bool (client, GTT_GCONF dir, val, &err_ret);  \
-   CHKERR (rc,err_ret,dir);                                            \
-}
+#define SETBOOL(dir, val)                                                     \
+  {                                                                           \
+    gboolean rc;                                                              \
+    GError *err_ret = NULL;                                                   \
+                                                                              \
+    rc = gconf_client_set_bool (client, GTT_GCONF dir, val, &err_ret);        \
+    CHKERR (rc, err_ret, dir);                                                \
+  }
 
-#define F_SETINT(dir,val) {                                            \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_int (client, dir, val, &err_ret);             \
-   CHKERR (rc,err_ret,dir);                                            \
-}
+#define F_SETINT(dir, val)                                                    \
+  {                                                                           \
+    gboolean rc;                                                              \
+    GError *err_ret = NULL;                                                   \
+                                                                              \
+    rc = gconf_client_set_int (client, dir, val, &err_ret);                   \
+    CHKERR (rc, err_ret, dir);                                                \
+  }
 
-#define SETINT(dir,val) F_SETINT (GTT_GCONF dir, val)
+#define SETINT(dir, val) F_SETINT (GTT_GCONF dir, val)
 
-#define F_SETSTR(dir,val) {                                            \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   const gchar *sval = val;                                            \
-   if (!sval) sval = "";                                               \
-   rc = gconf_client_set_string (client, dir, sval, &err_ret);         \
-   CHKERR (rc,err_ret,dir);                                            \
-}
+#define F_SETSTR(dir, val)                                                    \
+  {                                                                           \
+    gboolean rc;                                                              \
+    GError *err_ret = NULL;                                                   \
+                                                                              \
+    const gchar *sval = val;                                                  \
+    if (!sval)                                                                \
+      sval = "";                                                              \
+    rc = gconf_client_set_string (client, dir, sval, &err_ret);               \
+    CHKERR (rc, err_ret, dir);                                                \
+  }
 
-#define SETSTR(dir,val) F_SETSTR (GTT_GCONF dir, val)
+#define SETSTR(dir, val) F_SETSTR (GTT_GCONF dir, val)
 
-#define SETLIST(dir,tipe,val) {                                        \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_set_list (client, GTT_GCONF dir, tipe, val, &err_ret);  \
-   CHKERR (rc,err_ret,dir);                                            \
-}
+#define SETLIST(dir, tipe, val)                                               \
+  {                                                                           \
+    gboolean rc;                                                              \
+    GError *err_ret = NULL;                                                   \
+                                                                              \
+    rc = gconf_client_set_list (client, GTT_GCONF dir, tipe, val, &err_ret);  \
+    CHKERR (rc, err_ret, dir);                                                \
+  }
 
-#define UNSET(dir) {                                                   \
-   gboolean rc;                                                        \
-   GError *err_ret= NULL;                                              \
-                                                                       \
-   rc = gconf_client_unset (client, GTT_GCONF dir, &err_ret);          \
-   CHKERR (rc,err_ret,dir);                                            \
-}
+#define UNSET(dir)                                                            \
+  {                                                                           \
+    gboolean rc;                                                              \
+    GError *err_ret = NULL;                                                   \
+                                                                              \
+    rc = gconf_client_unset (client, GTT_GCONF dir, &err_ret);                \
+    CHKERR (rc, err_ret, dir);                                                \
+  }
 
 /* ======================================================= */
 
-#define CHKGET(gcv,err_ret,dir,default_val)                            \
-   if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID(gcv->type))) {\
-      retval = default_val;                                            \
-      printf ("GTT: GConf: Warning: get %s failed: ", dir);            \
-      if (err_ret) printf ("%s\n\t", err_ret->message);                \
-      printf ("Using default value\n");                                \
-   }
+#define CHKGET(gcv, err_ret, dir, default_val)                                \
+  if ((NULL == gcv) || (FALSE == GCONF_VALUE_TYPE_VALID (gcv->type)))         \
+    {                                                                         \
+      retval = default_val;                                                   \
+      printf ("GTT: GConf: Warning: get %s failed: ", dir);                   \
+      if (err_ret)                                                            \
+        printf ("%s\n\t", err_ret->message);                                  \
+      printf ("Using default value\n");                                       \
+    }
 
-#define GETBOOL(dir,default_val) ({                                    \
-   gboolean retval;                                                    \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);           \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_bool (gcv);                           \
-   retval;                                                             \
-})
+#define GETBOOL(dir, default_val)                                             \
+  ({                                                                          \
+    gboolean retval;                                                          \
+    GError *err_ret = NULL;                                                   \
+    GConfValue *gcv;                                                          \
+    gcv = gconf_client_get (client, GTT_GCONF dir, &err_ret);                 \
+    CHKGET (gcv, err_ret, dir, default_val)                                   \
+    else retval = gconf_value_get_bool (gcv);                                 \
+    retval;                                                                   \
+  })
 
-#define F_GETINT(dir,default_val) ({                                   \
-   int retval;                                                         \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_int (gcv);                            \
-   retval;                                                             \
-})
+#define F_GETINT(dir, default_val)                                            \
+  ({                                                                          \
+    int retval;                                                               \
+    GError *err_ret = NULL;                                                   \
+    GConfValue *gcv;                                                          \
+    gcv = gconf_client_get (client, dir, &err_ret);                           \
+    CHKGET (gcv, err_ret, dir, default_val)                                   \
+    else retval = gconf_value_get_int (gcv);                                  \
+    retval;                                                                   \
+  })
 
-#define GETINT(dir,default_val) F_GETINT (GTT_GCONF dir, default_val)
+#define GETINT(dir, default_val) F_GETINT (GTT_GCONF dir, default_val)
 
-#define F_GETLIST(dir,default_val) ({                                  \
-   GSList *retval;                                                     \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_list (gcv);                           \
-   retval;                                                             \
-})
+#define F_GETLIST(dir, default_val)                                           \
+  ({                                                                          \
+    GSList *retval;                                                           \
+    GError *err_ret = NULL;                                                   \
+    GConfValue *gcv;                                                          \
+    gcv = gconf_client_get (client, dir, &err_ret);                           \
+    CHKGET (gcv, err_ret, dir, default_val)                                   \
+    else retval = gconf_value_get_list (gcv);                                 \
+    retval;                                                                   \
+  })
 
-#define GETLIST(dir,default_val) F_GETLIST (GTT_GCONF dir,  default_val)
+#define GETLIST(dir, default_val) F_GETLIST (GTT_GCONF dir, default_val)
 
-#define F_GETSTR(dir,default_val) ({                                   \
-   const char *retval;                                                 \
-   GError *err_ret= NULL;                                              \
-   GConfValue *gcv;                                                    \
-   gcv = gconf_client_get (client, dir, &err_ret);                     \
-   CHKGET (gcv,err_ret, dir, default_val)                              \
-   else retval = gconf_value_get_string (gcv);                         \
-   g_strdup (retval);                                                  \
-})
+#define F_GETSTR(dir, default_val)                                            \
+  ({                                                                          \
+    const char *retval;                                                       \
+    GError *err_ret = NULL;                                                   \
+    GConfValue *gcv;                                                          \
+    gcv = gconf_client_get (client, dir, &err_ret);                           \
+    CHKGET (gcv, err_ret, dir, default_val)                                   \
+    else retval = gconf_value_get_string (gcv);                               \
+    g_strdup (retval);                                                        \
+  })
 
-#define GETSTR(dir,default_val) F_GETSTR (GTT_GCONF dir, default_val)
+#define GETSTR(dir, default_val) F_GETSTR (GTT_GCONF dir, default_val)
 
 /* Convert list of GConfValue to list of the actual values */
-#define GETINTLIST(dir) ({                                             \
-   GSList *l,*n;                                                       \
-   l = GETLIST(dir, NULL);                                             \
-   for (n=l; n; n=n->next) {                                           \
-      /* XXX mem leak?? do we need to free gconf value  ?? */          \
-      n->data = (gpointer) (long) gconf_value_get_int (n->data);       \
-   }                                                                   \
-   l;                                                                  \
-})
+#define GETINTLIST(dir)                                                       \
+  ({                                                                          \
+    GSList *l, *n;                                                            \
+    l = GETLIST (dir, NULL);                                                  \
+    for (n = l; n; n = n->next)                                               \
+      {                                                                       \
+        /* XXX mem leak?? do we need to free gconf value  ?? */               \
+        n->data = (gpointer) (long)gconf_value_get_int (n->data);             \
+      }                                                                       \
+    l;                                                                        \
+  })
 
 #endif /* GTT_GCONF_IO_P_H_ */

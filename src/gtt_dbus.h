@@ -23,10 +23,8 @@
 #define _DBUS_H_
 
 /* Carry out all actions to setup the D-Bus and register signal handlers */
-void gnotime_dbus_setup();
-
+void gnotime_dbus_setup ();
 
 #endif /* !_DBUS_H */
-
 
 #endif // WITH_DBUS

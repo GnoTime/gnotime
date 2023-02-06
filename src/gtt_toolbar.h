@@ -26,19 +26,19 @@
  * dynamically determined by the configuration settings.
  * Returns a pointer to the GtkToolbar widget.
  */
-GtkWidget *build_toolbar(void);
+GtkWidget *build_toolbar (void);
 
 /* The toolbar_set_states() routine updates the appearence/behaviour
  * of the toolbar.  In particular, the 'paste' button becomes active
  * when there is something to paste, and the timer button toggles it's
  * image when a project timer is started/stopped.
  */
-void toolbar_set_states(void);
+void toolbar_set_states (void);
 
 /* The update_toolbar_sections() routine rebuilds the toolbar.
  * This routine needs to be called whenever the configuration settings
  * have changed, in order for them to take effect.
  */
-void update_toolbar_sections(void);
+void update_toolbar_sections (void);
 
 #endif

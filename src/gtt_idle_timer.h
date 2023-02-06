@@ -20,7 +20,7 @@
 
 typedef struct IdleTimeout_s IdleTimeout;
 
-IdleTimeout * idle_timeout_new (void);
+IdleTimeout *idle_timeout_new (void);
 
 /* The poll_last_activity() routine returns the wall-clock-time of the last
  * user activity on this X server.  i.e. the number of seconds since
@@ -29,6 +29,5 @@ IdleTimeout * idle_timeout_new (void);
 time_t poll_last_activity (IdleTimeout *);
 
 /* XXX There should be an idle_timeout_destroy() func, but there isn't. */
-
 
 #endif /* __IDLE_TIMER_H__ */

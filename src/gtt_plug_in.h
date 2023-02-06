@@ -30,16 +30,16 @@
 
 typedef struct GttPlugin_s
 {
-	char * name;      /* Name of report, shows up in menu */
-	char * tooltip;
-	char * path;      /* Path to report in file system */
-	char * last_url;  /* Place where user last saved this report */
+  char *name; /* Name of report, shows up in menu */
+  char *tooltip;
+  char *path;     /* Path to report in file system */
+  char *last_url; /* Place where user last saved this report */
 
 } GttPlugin;
 
 /* Simple allocator */
-GttPlugin * gtt_plugin_new (const char * name, const char * path);
-GttPlugin * gtt_plugin_copy (GttPlugin *orig);
+GttPlugin *gtt_plugin_new (const char *name, const char *path);
+GttPlugin *gtt_plugin_copy (GttPlugin *orig);
 void gtt_plugin_free (GttPlugin *plg);
 
 /*-------------------------------------------- */
@@ -51,11 +51,11 @@ void gtt_plugin_free (GttPlugin *plg);
 
 typedef struct NewPluginDialog_s NewPluginDialog;
 
-NewPluginDialog * new_plugin_dialog_new (void);
-void new_plugin_dialog_show(NewPluginDialog *dlg);
-void new_plugin_dialog_destroy(NewPluginDialog *dlg);
+NewPluginDialog *new_plugin_dialog_new (void);
+void new_plugin_dialog_show (NewPluginDialog *dlg);
+void new_plugin_dialog_destroy (NewPluginDialog *dlg);
 
-void new_report(GtkWidget *widget, gpointer data);
+void new_report (GtkWidget *widget, gpointer data);
 
 /*-------------------------------------------- */
 /* A fairly complex GUI allowing the user to edit the Reports menu,
@@ -64,11 +64,10 @@ void new_report(GtkWidget *widget, gpointer data);
 
 typedef struct PluginEditorDialog_s PluginEditorDialog;
 
-PluginEditorDialog * edit_plugin_dialog_new (void);
-void edit_plugin_dialog_show(PluginEditorDialog *dlg);
-void edit_plugin_dialog_destroy(PluginEditorDialog *dlg);
+PluginEditorDialog *edit_plugin_dialog_new (void);
+void edit_plugin_dialog_show (PluginEditorDialog *dlg);
+void edit_plugin_dialog_destroy (PluginEditorDialog *dlg);
 
-void report_menu_edit(GtkWidget *widget, gpointer data);
-
+void report_menu_edit (GtkWidget *widget, gpointer data);
 
 #endif /* __GTT_PLUG_IN_H__ */

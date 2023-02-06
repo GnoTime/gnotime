@@ -19,13 +19,13 @@
 #ifndef __GTT_UTIL_H__
 #define __GTT_UTIL_H__
 
-#include <gtk/gtktext.h>
 #include <glade/glade.h>
+#include <gtk/gtktext.h>
 
 /* ------------------------------------------------------------------ */
 /* some gtk-like utilities */
 void xxxgtk_textview_set_text (GtkTextView *text, const char *str);
-char * xxxgtk_textview_get_text (GtkTextView *text);
+char *xxxgtk_textview_get_text (GtkTextView *text);
 
 /* Glade loader, it will look in the right directories */
 GladeXML *gtt_glade_xml_new (const char *filename, const char *widget);
@@ -37,13 +37,13 @@ size_t xxxqof_print_hours_elapsed_buff (char *buff, size_t len, int secs,
 
 size_t xxxqof_print_date_time_buff (char *buff, size_t len, time_t secs);
 size_t xxxqof_print_date_buff (char *buff, size_t len, time_t t);
-size_t xxxqof_print_time_buff (gchar * buff, size_t len, time_t secs);
+size_t xxxqof_print_time_buff (gchar *buff, size_t len, time_t secs);
 gboolean xxxqof_is_same_day (time_t ta, time_t tb);
 
 size_t xxxqof_print_minutes_elapsed_buff (char *buff, size_t len, int secs,
-	                                       gboolean show_secs);
+                                          gboolean show_secs);
 
 size_t xxxqof_print_date_dmy_buff (char *buff, size_t len, int day, int month,
-	                                int year);
+                                   int year);
 
 #endif /* __GTT_UTIL_H__ */

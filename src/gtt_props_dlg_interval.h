@@ -16,7 +16,6 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #ifndef __PROPS_INVL_H__
 #define __PROPS_INVL_H__
 
@@ -26,17 +25,14 @@
 
 typedef struct EditIntervalDialog_s EditIntervalDialog;
 
-EditIntervalDialog * edit_interval_dialog_new (void);
-void edit_interval_dialog_destroy(EditIntervalDialog *dlg);
+EditIntervalDialog *edit_interval_dialog_new (void);
+void edit_interval_dialog_destroy (EditIntervalDialog *dlg);
 
 void edit_interval_set_interval (EditIntervalDialog *dlg, GttInterval *ivl);
 
 /* pop up a dialog box for editing an interval */
-void edit_interval_dialog_show(EditIntervalDialog *dlg);
-void edit_interval_set_close_callback (EditIntervalDialog *dlg,
-									   GCallback f,
-									   gpointer data);
-
-
+void edit_interval_dialog_show (EditIntervalDialog *dlg);
+void edit_interval_set_close_callback (EditIntervalDialog *dlg, GCallback f,
+                                       gpointer data);
 
 #endif /* __PROPS_INVL_H__ */

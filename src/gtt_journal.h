@@ -22,7 +22,7 @@
 #include <gtk/gtk.h>
 
 /* Menu callback, will show the report passed as filename */
-void show_report   (GtkWidget *, gpointer filename);
+void show_report (GtkWidget *, gpointer filename);
 
 /* Menu callback, will show the report set up as a dynamically
  * configured menu item. */

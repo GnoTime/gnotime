@@ -21,84 +21,80 @@
 #include "gtt_err_throw.h"
 
 #include <glib.h>
-#include <gnome.h>  /* needed only to define the _() macro */
-
+#include <gnome.h> /* needed only to define the _() macro */
 
 static GttErrCode err = GTT_NO_ERR;
 
 void
 gtt_err_set_code (GttErrCode code)
 {
-	/* clear the error if requested. */
-	if (GTT_NO_ERR == code)
-	{
-		err = GTT_NO_ERR;
-		return;
-	}
+  /* clear the error if requested. */
+  if (GTT_NO_ERR == code)
+    {
+      err = GTT_NO_ERR;
+      return;
+    }
 
-	/* if the error code is already set, don't over-write it */
-	if (GTT_NO_ERR != err) return;
+  /* if the error code is already set, don't over-write it */
+  if (GTT_NO_ERR != err)
+    return;
 
-	/* Otherwise set it. */
-	err = code;
+  /* Otherwise set it. */
+  err = code;
 }
 
 GttErrCode
 gtt_err_get_code (void)
 {
-	return err;
+  return err;
 }
 
 /* ================================================================ */
 
 char *
-gtt_err_to_string (GttErrCode code, const char * filename)
+gtt_err_to_string (GttErrCode code, const char *filename)
 {
-	char * ret = NULL;
-	switch (code)
-	{
-		case GTT_NO_ERR:
-			ret = g_strdup (_("No Error"));
-			break;
-		case GTT_CANT_OPEN_FILE:
-			ret = g_strdup_printf (
-				_("Cannot open the project data file\n\t%s\n"),
-				filename);
-			break;
-		case GTT_CANT_WRITE_FILE:
-			ret = g_strdup_printf (
-				_("Cannot write the project data file\n\t%s\n"),
-				filename);
-			break;
-		case GTT_NOT_A_GTT_FILE:
-			ret = g_strdup_printf (
-				_("The file\n\t%s\n"
-				  "doesn't seem to be a GnoTime project data file\n"),
-				filename);
-			break;
-		case GTT_FILE_CORRUPT:
-			ret = g_strdup_printf (
-				_("The file\n\t%s\n"
-				  "seems to be corrupt\n"),
-				filename);
-			break;
-		case GTT_UNKNOWN_TOKEN:
-			ret = g_strdup_printf (
-				_("An unknown token was found during the parsing of\n\t%s\n"),
-				filename);
-			break;
-		case GTT_UNKNOWN_VALUE:
-			ret = g_strdup_printf (
-				_("An unknown value was found during the parsing of\n\t%s\n"),
-				filename);
-			break;
-		case GTT_CANT_WRITE_CONFIG:
-			ret = g_strdup_printf (
-				_("Cannot write the config file\n\t%s\n"),
-				filename);
-			break;
-	}
-	return ret;
+  char *ret = NULL;
+  switch (code)
+    {
+    case GTT_NO_ERR:
+      ret = g_strdup (_ ("No Error"));
+      break;
+    case GTT_CANT_OPEN_FILE:
+      ret = g_strdup_printf (_ ("Cannot open the project data file\n\t%s\n"),
+                             filename);
+      break;
+    case GTT_CANT_WRITE_FILE:
+      ret = g_strdup_printf (_ ("Cannot write the project data file\n\t%s\n"),
+                             filename);
+      break;
+    case GTT_NOT_A_GTT_FILE:
+      ret = g_strdup_printf (
+          _ ("The file\n\t%s\n"
+             "doesn't seem to be a GnoTime project data file\n"),
+          filename);
+      break;
+    case GTT_FILE_CORRUPT:
+      ret = g_strdup_printf (_ ("The file\n\t%s\n"
+                                "seems to be corrupt\n"),
+                             filename);
+      break;
+    case GTT_UNKNOWN_TOKEN:
+      ret = g_strdup_printf (
+          _ ("An unknown token was found during the parsing of\n\t%s\n"),
+          filename);
+      break;
+    case GTT_UNKNOWN_VALUE:
+      ret = g_strdup_printf (
+          _ ("An unknown value was found during the parsing of\n\t%s\n"),
+          filename);
+      break;
+    case GTT_CANT_WRITE_CONFIG:
+      ret = g_strdup_printf (_ ("Cannot write the config file\n\t%s\n"),
+                             filename);
+      break;
+    }
+  return ret;
 }
 
 /* =========================== END OF FILE ======================== */

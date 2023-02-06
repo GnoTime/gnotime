@@ -40,7 +40,7 @@
 
 typedef struct GttIdleDialog_s GttIdleDialog;
 
-GttIdleDialog * idle_dialog_new (void);
+GttIdleDialog *idle_dialog_new (void);
 
 /** This routine will display the idle dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
@@ -65,11 +65,10 @@ void raise_idle_dialog (GttIdleDialog *id);
  */
 void idle_dialog_activate_timer (GttIdleDialog *id);
 
-
 /** This routine will deactivate the idle timer.
  */
 void idle_dialog_deactivate_timer (GttIdleDialog *id);
 
-gboolean idle_dialog_is_visible(GttIdleDialog *id);
+gboolean idle_dialog_is_visible (GttIdleDialog *id);
 
 #endif /* GTT_IDLE_DIALOG_H_ */

@@ -21,11 +21,11 @@
 
 #include "gtt_project.h"
 
-void log_proj(GttProject *proj);
-void log_start(void);
-void log_exit(void);
-void log_endofday(void);
+void log_proj (GttProject *proj);
+void log_start (void);
+void log_exit (void);
+void log_endofday (void);
 
-char * printf_project (const char *format, GttProject *);
+char *printf_project (const char *format, GttProject *);
 
 #endif /* __GTT_LOG_H__ */

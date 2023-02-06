@@ -32,11 +32,11 @@
 
 /* Save the contents of a GnomeUIInfo structure with GConf
  * to the indicated path. */
-void gtt_save_gnomeui_to_gconf (GConfClient *client,
-                const char * path, GnomeUIInfo *gui);
+void gtt_save_gnomeui_to_gconf (GConfClient *client, const char *path,
+                                GnomeUIInfo *gui);
 
 /* Restore from GConf path into the designated GnomeUIInfo struct */
-void gtt_restore_gnomeui_from_gconf (GConfClient *client,
-                const char * path, GnomeUIInfo *gui);
+void gtt_restore_gnomeui_from_gconf (GConfClient *client, const char *path,
+                                     GnomeUIInfo *gui);
 
 #endif

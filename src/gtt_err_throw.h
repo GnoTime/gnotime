@@ -16,18 +16,17 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
-typedef enum {
-	GTT_NO_ERR = 0,
-	GTT_CANT_OPEN_FILE,
-	GTT_CANT_WRITE_FILE,
-	GTT_NOT_A_GTT_FILE,
-	GTT_FILE_CORRUPT,
-	GTT_UNKNOWN_TOKEN,
-	GTT_UNKNOWN_VALUE,
-	GTT_CANT_WRITE_CONFIG
+typedef enum
+{
+  GTT_NO_ERR = 0,
+  GTT_CANT_OPEN_FILE,
+  GTT_CANT_WRITE_FILE,
+  GTT_NOT_A_GTT_FILE,
+  GTT_FILE_CORRUPT,
+  GTT_UNKNOWN_TOKEN,
+  GTT_UNKNOWN_VALUE,
+  GTT_CANT_WRITE_CONFIG
 } GttErrCode;
-
 
 /*
  * These two routines can be used to implement a poor-man's
@@ -45,13 +44,11 @@ GttErrCode gtt_err_get_code (void);
 
 void gtt_err_set_code (GttErrCode);
 
-
 /* The gtt_err_to_string() routine returns a handy-dandy human-readable
  *    error message, suitable for framing.  Be sure to free the returned
  *    string using g_free when done.
  */
 
-char * gtt_err_to_string (GttErrCode code, const char * filename);
-
+char *gtt_err_to_string (GttErrCode code, const char *filename);
 
 /* =========================== END OF FILE ======================== */

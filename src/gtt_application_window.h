@@ -20,28 +20,27 @@
 #ifndef __GTT_APP_H__
 #define __GTT_APP_H__
 
-#include <gnome.h>
 #include "gtt_notes_area.h"
 #include "gtt_project.h"
 #include "gtt_status_icon.h"
+#include <gnome.h>
 
-
-extern NotesArea *global_na;        /* global ptr to notes GUI area */
+extern NotesArea *global_na; /* global ptr to notes GUI area */
 extern GttProjectsTree *projects_tree;
 
-extern GtkWidget *app_window;  /* global top-level window */
+extern GtkWidget *app_window; /* global top-level window */
 extern GtkWidget *status_bar;
 
 /* true if command line over-rides geometry */
 extern gboolean geom_size_override;
 extern gboolean geom_place_override;
 
-void update_status_bar(void);
+void update_status_bar (void);
 
-void app_new(int argc, char *argv[], const char *geometry_string);
+void app_new (int argc, char *argv[], const char *geometry_string);
 
-void app_show(void);
-void app_quit(GtkWidget *w, gpointer data);
+void app_show (void);
+void app_quit (GtkWidget *w, gpointer data);
 
 /* The ctree will call 'focus_row_set' whenever the focus row changes.
  * This is used in turn as a cheesey way  to re-distribute this event
@@ -57,6 +56,6 @@ void focus_row_set (GttProject *);
 void run_shell_command (GttProject *, gboolean do_start);
 
 /** Run the shell command. */
-void do_run_shell_command (const char * str);
+void do_run_shell_command (const char *str);
 
 #endif /* __GTT_APP_H__ */

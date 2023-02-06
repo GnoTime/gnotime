@@ -41,70 +41,69 @@ typedef struct gtt_ghtml_s GttGhtml;
 
 struct gtt_ghtml_s
 {
-	/* stream interface for writing */
-	void (*open_stream) (GttGhtml *, gpointer);
-	void (*write_stream) (GttGhtml *, const char *, size_t len, gpointer);
-	void (*close_stream) (GttGhtml *, gpointer);
-	void (*error) (GttGhtml *, int errcode, const char * msg, gpointer);
-	gpointer user_data;
+  /* stream interface for writing */
+  void (*open_stream) (GttGhtml *, gpointer);
+  void (*write_stream) (GttGhtml *, const char *, size_t len, gpointer);
+  void (*close_stream) (GttGhtml *, gpointer);
+  void (*error) (GttGhtml *, int errcode, const char *msg, gpointer);
+  gpointer user_data;
 
-	/* open_count and ref_path used for recursive file includes */
-	int open_count;
-	const char * ref_path;
+  /* open_count and ref_path used for recursive file includes */
+  int open_count;
+  const char *ref_path;
 
-	/* Key-Value Pair data; includes HTML form GET/POST results. */
-	KvpFrame *kvp;
-	
-	/* The 'linked' project */
-	GttProject *prj;
-	
-	/* List of projects, returned as query result */
-	GList *query_result;
-	gboolean did_query; /* TRUE if query was run */
-	
-	gboolean show_links; /* Flag -- show internal <a href> links */
-	gboolean really_hide_links; /* Flag -- show internal <a href> links */
+  /* Key-Value Pair data; includes HTML form GET/POST results. */
+  KvpFrame *kvp;
 
-	time_t last_ivl_time;  /* hack for pretty-printing interval dates */
+  /* The 'linked' project */
+  GttProject *prj;
 
-	/* ------------------------------------------------------ */
-	/* Deprecated portion of this struct -- will go away someday. */
-	/* Used only by ghtml-deprecated.c */
-	/* Table layout info */
+  /* List of projects, returned as query result */
+  GList *query_result;
+  gboolean did_query; /* TRUE if query was run */
 
-	gboolean show_html;  /* Flag -- add html markup, or not */
+  gboolean show_links;        /* Flag -- show internal <a href> links */
+  gboolean really_hide_links; /* Flag -- show internal <a href> links */
 
-	/* field delimiter, for tab/comma delim */
-	char * delim;
+  time_t last_ivl_time; /* hack for pretty-printing interval dates */
+
+  /* ------------------------------------------------------ */
+  /* Deprecated portion of this struct -- will go away someday. */
+  /* Used only by ghtml-deprecated.c */
+  /* Table layout info */
+
+  gboolean show_html; /* Flag -- add html markup, or not */
+
+  /* field delimiter, for tab/comma delim */
+  char *delim;
 
 #define NCOL 30
-	int ntask_cols;
-	int task_cols[NCOL];
-	char * task_titles[NCOL];
+  int ntask_cols;
+  int task_cols[NCOL];
+  char *task_titles[NCOL];
 
-	int ninvl_cols;
-	int invl_cols[NCOL];
-	char * invl_titles[NCOL];
+  int ninvl_cols;
+  int invl_cols[NCOL];
+  char *invl_titles[NCOL];
 
-	char **tp;
+  char **tp;
 };
 
 extern GttGhtml *ghtml_guile_global_hack;
 
-
-GttGhtml * gtt_ghtml_new (void);
+GttGhtml *gtt_ghtml_new (void);
 void gtt_ghtml_destroy (GttGhtml *p);
 
 typedef void (*GttGhtmlOpenStream) (GttGhtml *, gpointer);
-typedef void (*GttGhtmlWriteStream) (GttGhtml *, const char *, size_t len, gpointer);
+typedef void (*GttGhtmlWriteStream) (GttGhtml *, const char *, size_t len,
+                                     gpointer);
 typedef void (*GttGhtmlCloseStream) (GttGhtml *, gpointer);
-typedef void (*GttGhtmlError) (GttGhtml *, int errcode, const char * msg, gpointer);
+typedef void (*GttGhtmlError) (GttGhtml *, int errcode, const char *msg,
+                               gpointer);
 
-void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data,
-                                       GttGhtmlOpenStream,
-                                       GttGhtmlWriteStream,
-                                       GttGhtmlCloseStream,
-                                       GttGhtmlError);
+void gtt_ghtml_set_stream (GttGhtml *, gpointer user_data, GttGhtmlOpenStream,
+                           GttGhtmlWriteStream, GttGhtmlCloseStream,
+                           GttGhtmlError);
 
 /** The gtt_ghtml_display() routine will parse the indicated gtt file,
  *     and output standard HTML to the indicated stream.
@@ -126,7 +125,7 @@ void gtt_ghtml_show_links (GttGhtml *, gboolean);
  *     is not found, then the standard gnotime data dirs are checked.
  *     The checked data dirs are locale-dependent.
  */
-char * gtt_ghtml_resolve_path (const char *path_frag, const char *reference_path);
+char *gtt_ghtml_resolve_path (const char *path_frag,
+                              const char *reference_path);
 
 #endif /* __GTT_GHTML_H__ */
-

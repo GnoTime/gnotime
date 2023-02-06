@@ -19,12 +19,12 @@
 #ifndef GTT_NOTES_AREA_H
 #define GTT_NOTES_AREA_H
 
-#include <gnome.h>
 #include "gtt_projects_tree.h"
+#include <gnome.h>
 
 typedef struct NotesArea_s NotesArea;
 
-NotesArea * notes_area_new (void);
+NotesArea *notes_area_new (void);
 
 /* The notes_area_set_project() routine binds a project to the
  *    notes area.  That is, the notes area will display (and edit)
@@ -33,10 +33,11 @@ NotesArea * notes_area_new (void);
 void notes_area_set_project (NotesArea *na, GttProject *proj);
 
 /* returns the vpaned widget at the top of the notes area heirarchy */
-GtkWidget * notes_area_get_widget (NotesArea *na);
+GtkWidget *notes_area_get_widget (NotesArea *na);
 
 /* add the GttProjectsTree widget to the appropriate location */
-void notes_area_add_projects_tree (NotesArea *na, GttProjectsTree *projects_tree);
+void notes_area_add_projects_tree (NotesArea *na,
+                                   GttProjectsTree *projects_tree);
 
 /* Set the position of the two divideders in the notes area:
  * the vertical divider between the ctree and the notes,

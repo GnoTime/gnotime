@@ -37,7 +37,7 @@
 
 typedef struct GttActiveDialog_s GttActiveDialog;
 
-GttActiveDialog * active_dialog_new (void);
+GttActiveDialog *active_dialog_new (void);
 
 /** This routine will display the active dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.

@@ -31,7 +31,7 @@
 #endif /* TIME_WITH_SYS_TIME */
 #include "gtt_project.h"
 
-void init_timer(void);
+void init_timer (void);
 gboolean timer_is_running (void);
 gboolean timer_project_is_running (GttProject *prj);
 /* The idle timeout is how long, in seconds, that the system seems idle
@@ -46,8 +46,8 @@ extern int config_autosave_period;
 gint zero_daily_counters (gpointer data);
 void set_last_reset (time_t last);
 
-void gen_start_timer(void);
-void gen_stop_timer(void);
+void gen_start_timer (void);
+void gen_stop_timer (void);
 
 void start_no_project_timer ();
 void start_idle_timer ();

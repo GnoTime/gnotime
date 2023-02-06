@@ -26,10 +26,10 @@
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
-#include <glib.h>
 #include "gtt_project.h"
+#include <glib.h>
 
-void gtt_status_icon_create();
-void gtt_status_icon_destroy();
-void gtt_status_icon_start_timer(GttProject *prj);
-void gtt_status_icon_stop_timer(GttProject *prj);
+void gtt_status_icon_create ();
+void gtt_status_icon_destroy ();
+void gtt_status_icon_start_timer (GttProject *prj);
+void gtt_status_icon_stop_timer (GttProject *prj);

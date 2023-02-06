@@ -23,33 +23,33 @@
 
 #include <gtk/gtk.h>
 
-void about_box(GtkWindow *, gpointer);
+void about_box (GtkWindow *, gpointer);
 
-void new_project(GtkWidget *, gpointer);
-void save_project_list(GtkWidget *, gpointer);
-void export_current_state(GtkWidget *, gpointer);
+void new_project (GtkWidget *, gpointer);
+void save_project_list (GtkWidget *, gpointer);
+void export_current_state (GtkWidget *, gpointer);
 
-void cut_project(GtkWidget *w, gpointer data);
-void paste_project(GtkWidget *w, gpointer data);
-void copy_project(GtkWidget *w, gpointer data);
+void cut_project (GtkWidget *w, gpointer data);
+void paste_project (GtkWidget *w, gpointer data);
+void copy_project (GtkWidget *w, gpointer data);
 gboolean have_cutted_project (void);
 
-void menu_start_timer(GtkWidget *w, gpointer data);
-void menu_stop_timer(GtkWidget *w, gpointer data);
-void menu_toggle_timer(GtkWidget *w, gpointer data);
+void menu_start_timer (GtkWidget *w, gpointer data);
+void menu_stop_timer (GtkWidget *w, gpointer data);
+void menu_toggle_timer (GtkWidget *w, gpointer data);
 
-void menu_set_states(void);
+void menu_set_states (void);
 
-void menu_options(GtkWidget *w, gpointer data);
+void menu_options (GtkWidget *w, gpointer data);
 
-void menu_properties(GtkWidget *w, gpointer data);
+void menu_properties (GtkWidget *w, gpointer data);
 
-void menu_clear_daily_counter(GtkWidget *w, gpointer data);
+void menu_clear_daily_counter (GtkWidget *w, gpointer data);
 
-void menu_howto_edit_times (GtkWidget *w,gpointer data);
+void menu_howto_edit_times (GtkWidget *w, gpointer data);
 
 #ifdef DEBUG
-void menu_test(GtkWidget *w, gpointer data);
+void menu_test (GtkWidget *w, gpointer data);
 #endif
 
 #endif

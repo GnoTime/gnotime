@@ -16,7 +16,6 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #ifndef GTT_GCONF_IO_H_
 #define GTT_GCONF_IO_H_
 
@@ -48,9 +47,7 @@ gboolean gtt_gconf_exists (void);
  */
 void gtt_save_reports_menu (void);
 
-
 /* quick hack */
 char *gtt_gconf_get_expander (void);
 
 #endif /* GTT_GCONF_IO_H_ */
-

@@ -16,7 +16,6 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #ifndef __PROPS_PROJ_H__
 #define __PROPS_PROJ_H__
 
@@ -26,8 +25,7 @@
 /* currently, this uses the same dailog over & over, we should probably
  * change this to use gnome MDI ??
  */
-void prop_dialog_set_project(GttProject *proj);
-void prop_dialog_show(GttProject *proj);
-
+void prop_dialog_set_project (GttProject *proj);
+void prop_dialog_show (GttProject *proj);
 
 #endif /* __PROPS_PROJ_H__ */

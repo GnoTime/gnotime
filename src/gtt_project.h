@@ -28,7 +28,6 @@
  * only through the setters and getters defined in this file.
  */
 
-
 #ifdef TIME_WITH_SYS_TIME
 #include <sys/time.h>
 #include <time.h>
@@ -39,61 +38,59 @@
 #include <time.h>
 #endif /* TIME_WITH_SYS_TIME */
 
-
 /* hack alert -- these are hard-coded enums; they should
  * probably be replaced by a system of user-defined
  * enumerated values, especially for GttProjectStatus
  */
 
-
 typedef enum
 {
-	GTT_BILLABLE = 1,   /* billable time */
-	GTT_NOT_BILLABLE,   /* not billable to customer, internal only */
-	GTT_NO_CHARGE       /* shows on invoice as 'no charge/free' */
+  GTT_BILLABLE = 1, /* billable time */
+  GTT_NOT_BILLABLE, /* not billable to customer, internal only */
+  GTT_NO_CHARGE     /* shows on invoice as 'no charge/free' */
 } GttBillable;
 
 typedef enum
 {
-	GTT_REGULAR = 0,
-	GTT_OVERTIME,
-	GTT_OVEROVER,
-	GTT_FLAT_FEE
+  GTT_REGULAR = 0,
+  GTT_OVERTIME,
+  GTT_OVEROVER,
+  GTT_FLAT_FEE
 } GttBillRate;
 
 typedef enum
 {
-	GTT_HOLD = 0,	 /* needs review, will not appear on invoice */
-	GTT_BILL = 1,    /* print this on invoice, its done, ready */
-	GTT_PAID         /* its been paid; do not print on invoice any more */
+  GTT_HOLD = 0, /* needs review, will not appear on invoice */
+  GTT_BILL = 1, /* print this on invoice, its done, ready */
+  GTT_PAID      /* its been paid; do not print on invoice any more */
 } GttBillStatus;
 
 typedef enum
 {
-	GTT_UNDEFINED = 0,
-	GTT_LOW = 1,
-	GTT_MEDIUM,
-	GTT_HIGH
+  GTT_UNDEFINED = 0,
+  GTT_LOW = 1,
+  GTT_MEDIUM,
+  GTT_HIGH
 } GttRank;
 
 typedef enum
 {
-	GTT_NO_STATUS = 0,
-	GTT_NOT_STARTED = 1,  /* hack alert-- we should allow */
-	GTT_IN_PROGRESS,      /* user-defined status states */
-	GTT_ON_HOLD,          /* wating for something */
-	GTT_CANCELLED,
-	GTT_COMPLETED
+  GTT_NO_STATUS = 0,
+  GTT_NOT_STARTED = 1, /* hack alert-- we should allow */
+  GTT_IN_PROGRESS,     /* user-defined status states */
+  GTT_ON_HOLD,         /* wating for something */
+  GTT_CANCELLED,
+  GTT_COMPLETED
 } GttProjectStatus;
 
 /* -------------------------------------------------------- */
 /* Query related things -- under construction */
 
 #define GTT_PROJECT_ID "GttProjectId"
-#define GTT_TASK_ID    "GttTaskId"
+#define GTT_TASK_ID "GttTaskId"
 
 #define GTT_PROJECT_EARLIEST "GttProjectEarliest"
-#define GTT_PROJECT_LATEST   "GttProjectLatest"
+#define GTT_PROJECT_LATEST "GttProjectLatest"
 
 /* -------------------------------------------------------- */
 /* The four basic structures */
@@ -121,38 +118,38 @@ gboolean gtt_project_obj_register (void);
 /* project data */
 
 /* create, destroy a new project */
-GttProject *	gtt_project_new(void);
-GttProject *	gtt_project_new_title_desc(const char *, const char *);
-void 		gtt_project_destroy(GttProject *);
+GttProject *gtt_project_new (void);
+GttProject *gtt_project_new_title_desc (const char *, const char *);
+void gtt_project_destroy (GttProject *);
 
 /* The gtt_project_dup() routine will make a copy of the indicated
  *    project. Note, it will copy the sub-projects, but it will *not*
  *    copy the tasks (I dunno, this is probably a bug, I think it should
  *    copy the tasks as well ....)
  */
-GttProject *	gtt_project_dup(GttProject *);
+GttProject *gtt_project_dup (GttProject *);
 
 /* The gtt_project_remove() routine will take the project out of
  *    either the master list, or out of any parents' list of
  *    sub-projects that it might below to.  As a result, this
  *    project will dangle there -- don't loose it
  */
-void 		gtt_project_remove(GttProject *p);
+void gtt_project_remove (GttProject *p);
 
-const GUID * gtt_project_get_guid (GttProject *);
+const GUID *gtt_project_get_guid (GttProject *);
 
-void 		gtt_project_set_title(GttProject *, const char *);
-void 		gtt_project_set_desc(GttProject *, const char *);
-void 		gtt_project_set_notes(GttProject *, const char *);
-void 		gtt_project_set_custid(GttProject *, const char *);
+void gtt_project_set_title (GttProject *, const char *);
+void gtt_project_set_desc (GttProject *, const char *);
+void gtt_project_set_notes (GttProject *, const char *);
+void gtt_project_set_custid (GttProject *, const char *);
 
 /* These two routines return the title & desc strings.
  * Do *not* free these strings when done.  Note that
  * are freed when project is deleted. */
-const char * 	gtt_project_get_title (GttProject *);
-const char * 	gtt_project_get_desc (GttProject *);
-const char * 	gtt_project_get_notes (GttProject *);
-const char * 	gtt_project_get_custid (GttProject *);
+const char *gtt_project_get_title (GttProject *);
+const char *gtt_project_get_desc (GttProject *);
+const char *gtt_project_get_notes (GttProject *);
+const char *gtt_project_get_custid (GttProject *);
 
 /* The gtt_project_compat_set_secs() routine provides a
  *    backwards-compatible routine for setting the total amount of
@@ -160,23 +157,22 @@ const char * 	gtt_project_get_custid (GttProject *);
  *    labelling it as 'old gtt data', and putting the time info
  *    into that task.  Depricated. Don't use in new code.
  */
-void		gtt_project_compat_set_secs (GttProject *proj,
-			int secs_ever, int secs_day, time_t last_update);
-
+void gtt_project_compat_set_secs (GttProject *proj, int secs_ever,
+                                  int secs_day, time_t last_update);
 
 /* The billrate is the currency amount to charge for an hour's work.
  *     overtime_rate is the over-time rate (usually 1.5x billrate)
  *     overover_rate is the double over-time rate (usually 2x billrate)
  *     flat_fee is charged, independent of the length of time.
  */
-void 		gtt_project_set_billrate (GttProject *, double);
-double 		gtt_project_get_billrate (GttProject *);
-void 		gtt_project_set_overtime_rate (GttProject *, double);
-double 		gtt_project_get_overtime_rate (GttProject *);
-void 		gtt_project_set_overover_rate (GttProject *, double);
-double 		gtt_project_get_overover_rate (GttProject *);
-void 		gtt_project_set_flat_fee (GttProject *, double);
-double 		gtt_project_get_flat_fee (GttProject *);
+void gtt_project_set_billrate (GttProject *, double);
+double gtt_project_get_billrate (GttProject *);
+void gtt_project_set_overtime_rate (GttProject *, double);
+double gtt_project_get_overtime_rate (GttProject *);
+void gtt_project_set_overover_rate (GttProject *, double);
+double gtt_project_get_overover_rate (GttProject *);
+void gtt_project_set_flat_fee (GttProject *, double);
+double gtt_project_get_flat_fee (GttProject *);
 
 /* The gtt_project_set_min_interval() routine sets the smallest
  *    time unit, below which work intervals will not be recorded
@@ -188,12 +184,12 @@ double 		gtt_project_get_flat_fee (GttProject *);
  *    prior work intervals rather than being counted as seperate.
  *    Default is 1 minute, but should be 5 minutes.
  */
-void		gtt_project_set_min_interval (GttProject *, int);
-int		gtt_project_get_min_interval (GttProject *);
-void		gtt_project_set_auto_merge_interval (GttProject *, int);
-int		gtt_project_get_auto_merge_interval (GttProject *);
-void		gtt_project_set_auto_merge_gap (GttProject *, int);
-int		gtt_project_get_auto_merge_gap (GttProject *);
+void gtt_project_set_min_interval (GttProject *, int);
+int gtt_project_get_min_interval (GttProject *);
+void gtt_project_set_auto_merge_interval (GttProject *, int);
+int gtt_project_get_auto_merge_interval (GttProject *);
+void gtt_project_set_auto_merge_gap (GttProject *, int);
+int gtt_project_get_auto_merge_gap (GttProject *);
 
 /* Todo-list management stuff.
  * The estimated start date is when we expect to first start working
@@ -218,30 +214,29 @@ int		gtt_project_get_auto_merge_gap (GttProject *);
  * could define multiple stages: e.g. 'testing', 'designing',
  * 'on-hold', 'waiting for response', etc.
  */
-void     gtt_project_set_estimated_start (GttProject *, time_t);
-time_t   gtt_project_get_estimated_start (GttProject *);
-void     gtt_project_set_estimated_end (GttProject *, time_t);
-time_t   gtt_project_get_estimated_end (GttProject *);
-void     gtt_project_set_due_date (GttProject *, time_t);
-time_t   gtt_project_get_due_date (GttProject *);
-void     gtt_project_set_sizing (GttProject *, int);
-int      gtt_project_get_sizing (GttProject *);
-void     gtt_project_set_percent_complete (GttProject *, int);
-int      gtt_project_get_percent_complete (GttProject *);
-void     gtt_project_set_urgency (GttProject *, GttRank);
-GttRank  gtt_project_get_urgency (GttProject *);
-void     gtt_project_set_importance (GttProject *, GttRank);
-GttRank  gtt_project_get_importance (GttProject *);
-void     gtt_project_set_status (GttProject *, GttProjectStatus);
-GttProjectStatus      gtt_project_get_status (GttProject *);
-
+void gtt_project_set_estimated_start (GttProject *, time_t);
+time_t gtt_project_get_estimated_start (GttProject *);
+void gtt_project_set_estimated_end (GttProject *, time_t);
+time_t gtt_project_get_estimated_end (GttProject *);
+void gtt_project_set_due_date (GttProject *, time_t);
+time_t gtt_project_get_due_date (GttProject *);
+void gtt_project_set_sizing (GttProject *, int);
+int gtt_project_get_sizing (GttProject *);
+void gtt_project_set_percent_complete (GttProject *, int);
+int gtt_project_get_percent_complete (GttProject *);
+void gtt_project_set_urgency (GttProject *, GttRank);
+GttRank gtt_project_get_urgency (GttProject *);
+void gtt_project_set_importance (GttProject *, GttRank);
+GttRank gtt_project_get_importance (GttProject *);
+void gtt_project_set_status (GttProject *, GttProjectStatus);
+GttProjectStatus gtt_project_get_status (GttProject *);
 
 /* The id is a simple id, handy for .. stuff */
-void 		gtt_project_set_id (GttProject *, int id);
-int  		gtt_project_get_id (GttProject *);
+void gtt_project_set_id (GttProject *, int id);
+int gtt_project_get_id (GttProject *);
 
 /* return a project, given only its id; NULL if not found */
-GttProject * 	gtt_project_locate_from_id (int prj_id);
+GttProject *gtt_project_locate_from_id (int prj_id);
 
 /* The gtt_project_add_notifier() routine allows anoter component
  *    (e.g. a GUI) to add a signal that will be called whenever the
@@ -263,23 +258,21 @@ GttProject * 	gtt_project_locate_from_id (int prj_id);
  *    interval.
  */
 
-void		gtt_project_freeze (GttProject *prj);
-void		gtt_project_thaw (GttProject *prj);
-void		gtt_task_freeze (GttTask *tsk);
-void		gtt_task_thaw (GttTask *tsk);
-void		gtt_interval_freeze (GttInterval *ivl);
-GttInterval * gtt_interval_thaw (GttInterval *ivl);
+void gtt_project_freeze (GttProject *prj);
+void gtt_project_thaw (GttProject *prj);
+void gtt_task_freeze (GttTask *tsk);
+void gtt_task_thaw (GttTask *tsk);
+void gtt_interval_freeze (GttInterval *ivl);
+GttInterval *gtt_interval_thaw (GttInterval *ivl);
 
-void		gtt_project_add_notifier (GttProject *,
-			GttProjectChanged, gpointer);
-void		gtt_project_remove_notifier (GttProject *,
-			GttProjectChanged, gpointer);
+void gtt_project_add_notifier (GttProject *, GttProjectChanged, gpointer);
+void gtt_project_remove_notifier (GttProject *, GttProjectChanged, gpointer);
 
 /* These functions provide a generic place to hang arbitrary data
  *     on the project (used by the GUI).
  */
 gpointer gtt_project_get_private_data (GttProject *);
-void     gtt_project_set_private_data (GttProject *, gpointer);
+void gtt_project_set_private_data (GttProject *, gpointer);
 
 /* The gtt_project_foreach() routine calls the indicated function
  *    on the project and each of the sub-projects.  The recursion is
@@ -299,10 +292,10 @@ void     gtt_project_set_private_data (GttProject *, gpointer);
  *    visits the subprojects of the project.
  *
  */
-int      gtt_project_foreach (GttProject *,  GttProjectCB, gpointer);
-int      gtt_project_foreach_interval (GttProject *, GttIntervalCB, gpointer);
-int      gtt_project_foreach_subproject_interval (GttProject *, GttIntervalCB, gpointer);
-
+int gtt_project_foreach (GttProject *, GttProjectCB, gpointer);
+int gtt_project_foreach_interval (GttProject *, GttIntervalCB, gpointer);
+int gtt_project_foreach_subproject_interval (GttProject *, GttIntervalCB,
+                                             gpointer);
 
 /* -------------------------------------------------------- */
 /* Project Manipulation */
@@ -312,10 +305,9 @@ int      gtt_project_foreach_subproject_interval (GttProject *, GttIntervalCB, g
  * The project_timer_update() routine updates the end-time
  *    for a task interval.
  */
-void 		gtt_project_timer_start (GttProject *);
-void 		gtt_project_timer_update (GttProject *);
-void 		gtt_project_timer_stop (GttProject *);
-
+void gtt_project_timer_start (GttProject *);
+void gtt_project_timer_update (GttProject *);
+void gtt_project_timer_stop (GttProject *);
 
 /* The gtt_project_get_secs_day() routine returns the
  *    number of seconds spent on this project today,
@@ -337,32 +329,30 @@ void 		gtt_project_timer_stop (GttProject *);
  * by a generic query mechanism at some point.
  */
 
-int 		gtt_project_get_secs_current (GttProject *proj);
-int 		gtt_project_get_secs_day (GttProject *proj);
-int 		gtt_project_get_secs_yesterday (GttProject *proj);
-int 		gtt_project_get_secs_week (GttProject *proj);
-int 		gtt_project_get_secs_lastweek (GttProject *proj);
-int 		gtt_project_get_secs_month (GttProject *proj);
-int 		gtt_project_get_secs_year (GttProject *proj);
-int 		gtt_project_get_secs_ever (GttProject *proj);
+int gtt_project_get_secs_current (GttProject *proj);
+int gtt_project_get_secs_day (GttProject *proj);
+int gtt_project_get_secs_yesterday (GttProject *proj);
+int gtt_project_get_secs_week (GttProject *proj);
+int gtt_project_get_secs_lastweek (GttProject *proj);
+int gtt_project_get_secs_month (GttProject *proj);
+int gtt_project_get_secs_year (GttProject *proj);
+int gtt_project_get_secs_ever (GttProject *proj);
 
-int 		gtt_project_total_secs_current (GttProject *proj);
-int 		gtt_project_total_secs_day (GttProject *proj);
-int 		gtt_project_total_secs_yesterday (GttProject *proj);
-int 		gtt_project_total_secs_week (GttProject *proj);
-int 		gtt_project_total_secs_lastweek (GttProject *proj);
-int 		gtt_project_total_secs_month (GttProject *proj);
-int 		gtt_project_total_secs_year (GttProject *proj);
-int 		gtt_project_total_secs_ever (GttProject *proj);
-
+int gtt_project_total_secs_current (GttProject *proj);
+int gtt_project_total_secs_day (GttProject *proj);
+int gtt_project_total_secs_yesterday (GttProject *proj);
+int gtt_project_total_secs_week (GttProject *proj);
+int gtt_project_total_secs_lastweek (GttProject *proj);
+int gtt_project_total_secs_month (GttProject *proj);
+int gtt_project_total_secs_year (GttProject *proj);
+int gtt_project_total_secs_ever (GttProject *proj);
 
 void gtt_project_list_compute_secs (void);
 
 /* The gtt_project_total() routine returns the total
  *   number of projects, including subprojects.
  */
-int      gtt_project_total (GttProject *);
-
+int gtt_project_total (GttProject *);
 
 /* The gtt_project_get_children() returns a list of the
  *    subprojects of this project
@@ -379,14 +369,14 @@ int      gtt_project_total (GttProject *);
  *    interval at the head of the active task (i.e. the currenly
  *    ticking interval, or the last interval to tick).
  */
-GList       * gtt_project_get_children (GttProject *);
-GList       * gtt_project_get_tasks (GttProject *);
-GttTask     * gtt_project_get_first_task (GttProject *);
-GttTask     * gtt_project_get_current_task (GttProject *);
-void          gtt_project_set_current_task (GttProject *proj, GttTask *tsk);
-GttInterval * gtt_project_get_first_interval (GttProject *);
+GList *gtt_project_get_children (GttProject *);
+GList *gtt_project_get_tasks (GttProject *);
+GttTask *gtt_project_get_first_task (GttProject *);
+GttTask *gtt_project_get_current_task (GttProject *);
+void gtt_project_set_current_task (GttProject *proj, GttTask *tsk);
+GttInterval *gtt_project_get_first_interval (GttProject *);
 
-GttProject * 	gtt_project_get_parent (GttProject *);
+GttProject *gtt_project_get_parent (GttProject *);
 
 /*
  * The following routines maintain a heirarchical tree of projects.
@@ -402,7 +392,7 @@ GttProject * 	gtt_project_get_parent (GttProject *);
  *    If 'parent' is NULL, then the child is appended to the
  *    top-level project list.
  */
-void	gtt_project_append_project (GttProject *parent, GttProject *child);
+void gtt_project_append_project (GttProject *parent, GttProject *child);
 
 /*
  * The gtt_project_insert_before() routine will insert 'proj' on the
@@ -417,13 +407,13 @@ void	gtt_project_append_project (GttProject *parent, GttProject *child);
  *     if 'after_me' is null, then the proj is prepended to the
  *     master list.
  */
-void	gtt_project_insert_before (GttProject *proj, GttProject *before_me);
-void	gtt_project_insert_after (GttProject *proj, GttProject *after_me);
+void gtt_project_insert_before (GttProject *proj, GttProject *before_me);
+void gtt_project_insert_after (GttProject *proj, GttProject *after_me);
 
-void    gtt_project_reparent (GttProject *proj, GttProject *parent, int position);
+void gtt_project_reparent (GttProject *proj, GttProject *parent, int position);
 
-void	gtt_project_append_task (GttProject *, GttTask *);
-void	gtt_project_prepend_task (GttProject *, GttTask *);
+void gtt_project_append_task (GttProject *, GttTask *);
+void gtt_project_prepend_task (GttProject *, GttTask *);
 
 /* The gtt_clear_daily_counter() will delete all intervals from
  *    the project that started after midnight.  Typically, this
@@ -444,10 +434,10 @@ GttProjectList *gtt_project_list_new (void);
 void gtt_project_list_destroy (GttProjectList *);
 
 /* Return a list of all top-level projects */
-GList * 	gtt_project_list_get_list (GttProjectList *);
+GList *gtt_project_list_get_list (GttProjectList *);
 
 /* Append project to the project list */
-void 		gtt_project_list_append(GttProjectList *, GttProject *p);
+void gtt_project_list_append (GttProjectList *, GttProject *p);
 
 /* The 'sort' functions have a sort-of wacky interface.
  * They will sort the list of projects passed as an argument,
@@ -456,24 +446,24 @@ void 		gtt_project_list_append(GttProjectList *, GttProject *p);
  * it should be done in the display ("presentation") layer.
  * But this works for now.
  */
-void project_list_sort_current    (GttProjectList *);
-void project_list_sort_day        (GttProjectList *);
-void project_list_sort_yesterday  (GttProjectList *);
-void project_list_sort_week       (GttProjectList *);
-void project_list_sort_lastweek   (GttProjectList *);
-void project_list_sort_month      (GttProjectList *);
-void project_list_sort_year       (GttProjectList *);
-void project_list_sort_ever       (GttProjectList *);
-void project_list_sort_title      (GttProjectList *);
-void project_list_sort_desc       (GttProjectList *);
-void project_list_sort_start      (GttProjectList *);
-void project_list_sort_end        (GttProjectList *);
-void project_list_sort_due        (GttProjectList *);
-void project_list_sort_sizing     (GttProjectList *);
-void project_list_sort_percent    (GttProjectList *);
-void project_list_sort_urgency    (GttProjectList *);
+void project_list_sort_current (GttProjectList *);
+void project_list_sort_day (GttProjectList *);
+void project_list_sort_yesterday (GttProjectList *);
+void project_list_sort_week (GttProjectList *);
+void project_list_sort_lastweek (GttProjectList *);
+void project_list_sort_month (GttProjectList *);
+void project_list_sort_year (GttProjectList *);
+void project_list_sort_ever (GttProjectList *);
+void project_list_sort_title (GttProjectList *);
+void project_list_sort_desc (GttProjectList *);
+void project_list_sort_start (GttProjectList *);
+void project_list_sort_end (GttProjectList *);
+void project_list_sort_due (GttProjectList *);
+void project_list_sort_sizing (GttProjectList *);
+void project_list_sort_percent (GttProjectList *);
+void project_list_sort_urgency (GttProjectList *);
 void project_list_sort_importance (GttProjectList *);
-void project_list_sort_status     (GttProjectList *);
+void project_list_sort_status (GttProjectList *);
 
 /* The gtt_project_list_total_secs_day() routine returns the
  *    total number of seconds spent on all projects today,
@@ -484,13 +474,13 @@ void project_list_sort_status     (GttProjectList *);
  *    including a total of all sub-projects.
  */
 
-int 		gtt_project_list_total_secs_day (void);
-int 		gtt_project_list_total_secs_ever (void);
+int gtt_project_list_total_secs_day (void);
+int gtt_project_list_total_secs_ever (void);
 
 /* The gtt_project_list_total() routine returns the total
  *   number of projects, including subprojects.
  */
-int      gtt_project_list_total (void);
+int gtt_project_list_total (void);
 
 /* -------------------------------------------------------- */
 /* Tasks */
@@ -503,30 +493,30 @@ int      gtt_project_list_total (void);
  *    intervals, nor the parent.
  */
 
-GttTask *	gtt_task_new (void);
-GttTask *	gtt_task_copy (GttTask *);
-void 		gtt_task_destroy (GttTask *);
+GttTask *gtt_task_new (void);
+GttTask *gtt_task_copy (GttTask *);
+void gtt_task_destroy (GttTask *);
 
-const GUID * gtt_task_get_guid (GttTask *);
+const GUID *gtt_task_get_guid (GttTask *);
 
-void		gtt_task_set_memo (GttTask *, const char *);
-const char *	gtt_task_get_memo (GttTask *);
-void		gtt_task_set_notes (GttTask *, const char *);
-const char *	gtt_task_get_notes (GttTask *);
+void gtt_task_set_memo (GttTask *, const char *);
+const char *gtt_task_get_memo (GttTask *);
+void gtt_task_set_notes (GttTask *, const char *);
+const char *gtt_task_get_notes (GttTask *);
 
-void		gtt_task_set_billable (GttTask *, GttBillable);
-GttBillable	gtt_task_get_billable (GttTask *);
-void		gtt_task_set_billrate (GttTask *, GttBillRate);
-GttBillRate	gtt_task_get_billrate (GttTask *);
-void		gtt_task_set_billstatus (GttTask *, GttBillStatus);
-GttBillStatus	gtt_task_get_billstatus (GttTask *);
+void gtt_task_set_billable (GttTask *, GttBillable);
+GttBillable gtt_task_get_billable (GttTask *);
+void gtt_task_set_billrate (GttTask *, GttBillRate);
+GttBillRate gtt_task_get_billrate (GttTask *);
+void gtt_task_set_billstatus (GttTask *, GttBillStatus);
+GttBillStatus gtt_task_get_billstatus (GttTask *);
 
 /* The bill_unit is the minimum billable unit of time.
  * Typically 15 minutes or an hour, it represents the smallest unit
  * of time that will appear on the invoice.
  */
-void		gtt_task_set_bill_unit (GttTask *, int);
-int		gtt_task_get_bill_unit (GttTask *);
+void gtt_task_set_bill_unit (GttTask *, int);
+int gtt_task_get_bill_unit (GttTask *);
 
 /* The gtt_task_remove() routine will remove the task from its parent
  *    project (presumably in preparation for reparenting).
@@ -548,29 +538,28 @@ int		gtt_task_get_bill_unit (GttTask *);
  * The gtt_task_is_last_task() routine returns True if this task
  *    is the last task of the project.
  */
-void         gtt_task_remove (GttTask *);
-GttTask *    gtt_task_new_insert (GttTask *);
-void         gtt_task_insert (GttTask *where, GttTask *insertee);
-void         gtt_task_merge_up (GttTask *);
-gboolean     gtt_task_is_first_task (GttTask *);
-gboolean     gtt_task_is_last_task (GttTask *);
-GttProject * gtt_task_get_parent (GttTask *);
+void gtt_task_remove (GttTask *);
+GttTask *gtt_task_new_insert (GttTask *);
+void gtt_task_insert (GttTask *where, GttTask *insertee);
+void gtt_task_merge_up (GttTask *);
+gboolean gtt_task_is_first_task (GttTask *);
+gboolean gtt_task_is_last_task (GttTask *);
+GttProject *gtt_task_get_parent (GttTask *);
 
-
-GList *  gtt_task_get_intervals (GttTask *);
-void		gtt_task_add_interval (GttTask *, GttInterval *);
-void		gtt_task_append_interval (GttTask *, GttInterval *);
+GList *gtt_task_get_intervals (GttTask *);
+void gtt_task_add_interval (GttTask *, GttInterval *);
+void gtt_task_append_interval (GttTask *, GttInterval *);
 
 /* gtt_task_get_secs_ever() adds up and returns the total number of
  * seconds in the intervals in this task. */
-int     gtt_task_get_secs_ever (GttTask *tsk);
+int gtt_task_get_secs_ever (GttTask *tsk);
 
 /* Get the earliest and the latest timestamps to occur in any
  * intervals associated with this task.  Return 0 if there
  * are  o intervals on this task.
  */
-time_t   gtt_task_get_secs_earliest (GttTask *tsk);
-time_t   gtt_task_get_secs_latest (GttTask *tsk);
+time_t gtt_task_get_secs_earliest (GttTask *tsk);
+time_t gtt_task_get_secs_latest (GttTask *tsk);
 
 /* intervals */
 /* The gtt_interval_set_start() and gtt_interval_set_stop() set the
@@ -601,17 +590,17 @@ time_t   gtt_task_get_secs_latest (GttTask *tsk);
  * The is_running flag indicates whether the timer is running on this
  * interval.
  */
-GttInterval *   gtt_interval_new (void);
-void      gtt_interval_destroy (GttInterval *);
+GttInterval *gtt_interval_new (void);
+void gtt_interval_destroy (GttInterval *);
 
-void      gtt_interval_set_start (GttInterval *, time_t);
-void      gtt_interval_set_stop (GttInterval *, time_t);
-void      gtt_interval_set_running (GttInterval *, gboolean);
-void      gtt_interval_set_fuzz (GttInterval *, int);
-time_t    gtt_interval_get_start (GttInterval *);
-time_t    gtt_interval_get_stop (GttInterval *);
-gboolean  gtt_interval_is_running (GttInterval *);
-int       gtt_interval_get_fuzz (GttInterval *);
+void gtt_interval_set_start (GttInterval *, time_t);
+void gtt_interval_set_stop (GttInterval *, time_t);
+void gtt_interval_set_running (GttInterval *, gboolean);
+void gtt_interval_set_fuzz (GttInterval *, int);
+time_t gtt_interval_get_start (GttInterval *);
+time_t gtt_interval_get_stop (GttInterval *);
+gboolean gtt_interval_is_running (GttInterval *);
+int gtt_interval_get_fuzz (GttInterval *);
 
 /* The gtt_interval_new_insert_after() routine creates a new interval
  *    and inserts it after the interval "where".  It returns the new
@@ -630,12 +619,12 @@ int       gtt_interval_get_fuzz (GttInterval *);
  *    into two pieces, with the indicated interval and everything
  *    following it going after the specified.
  */
-GttInterval *   gtt_interval_new_insert_after (GttInterval *where);
-GttInterval *   gtt_interval_merge_up (GttInterval *);
-GttInterval *   gtt_interval_merge_down (GttInterval *);
-void            gtt_interval_split (GttInterval *, GttTask *);
-GttTask *       gtt_interval_get_parent (GttInterval *);
-gboolean        gtt_interval_is_first_interval (GttInterval *);
-gboolean        gtt_interval_is_last_interval (GttInterval *);
+GttInterval *gtt_interval_new_insert_after (GttInterval *where);
+GttInterval *gtt_interval_merge_up (GttInterval *);
+GttInterval *gtt_interval_merge_down (GttInterval *);
+void gtt_interval_split (GttInterval *, GttTask *);
+GttTask *gtt_interval_get_parent (GttInterval *);
+gboolean gtt_interval_is_first_interval (GttInterval *);
+gboolean gtt_interval_is_last_interval (GttInterval *);
 
 #endif /* __GTT_PROJ_H__ */

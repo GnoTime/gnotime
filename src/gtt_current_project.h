@@ -22,7 +22,7 @@
 #include "gtt_project.h"
 
 extern GttProject *cur_proj;
-void cur_proj_set(GttProject *p);
+void cur_proj_set (GttProject *p);
 
 extern GttProjectList *master_list;
 
