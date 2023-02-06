@@ -38,6 +38,17 @@ a full port impossible (although one is attempted in src/ctree-gnome2.c).
 There are still numerous areas of gtt that lack polish.  Please
 submit pull reqs to github that polish up those things that irk you the most.
 
+Building
+--------
+Required packages:
+
+Steps:
+```
+./autogen.sh --no-configure
+mkdir build; cd build
+../configure
+```
+
 
 Authors
 -------
