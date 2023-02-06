@@ -11,6 +11,10 @@ billing system.
 https://github.com/markuspg/gnotime/tree/modernize3
 It will compile & run on modern (2023-era) Linux systems!
 
+That code will be soon be merged into
+https://github.com/GnoTime/gnotime
+so be sure to check that, too.
+
 Everything below is stale and has not been updated since 2013.
 
 HomePage
@@ -38,10 +42,12 @@ https://github.com/markuspg/gnotime/tree/modernize3
 
 The above will compile and run on present-era (2023) Linux systems.
 
-Note that the aove is NOT forked from this repo! It is forked from
-@goedson 's repo. Note that @goedson's repo is missing my version
-2.4.1 changes, which are in this repo (the last one being
-https://github.com/linas/gnotime/commit/5f7319931c2676c0a7d7a58ca93f33cbde769dee)
+That code will soon be merged into
+https://github.com/GnoTime/gnotime
+and so be sure to check that repo, too.
+
+Note that the above repos are NOT forked from this repo! So if you are
+just looking at forks, you won't find them.
 
 
 Obsolete commentary from 2013
