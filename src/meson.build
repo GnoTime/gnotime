@@ -9,7 +9,7 @@ gnotime_cfg_data.set_quoted('LIBDIR', get_option('prefix') / get_option('libdir'
 gnotime_cfg_data.set_quoted('PACKAGE', 'gnotime')
 gnotime_cfg_data.set_quoted('PREFIX', get_option('prefix'))
 gnotime_cfg_data.set_quoted('SYSCONFDIR', get_option('sysconfdir'))
-gnotime_cfg_data.set_quoted('VERSION', meson.project_version())
+gnotime_cfg_data.set_quoted('VERSION', meson.project_version() + gtt_version_suffix)
 configure_file(
   configuration: gnotime_cfg_data,
   output: 'config.h',

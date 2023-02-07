@@ -10,7 +10,7 @@ set(LIBDIR "/usr/local/lib/x86_64-linux-gnu")
 set(PACKAGE "gnotime")
 set(PREFIX "/usr/local")
 set(SYSCONFDIR "etc")
-set(VERSION "2.4.1")
+set(VERSION "${PROJECT_VERSION}${GTT_VERSION_SUFFIX}")
 configure_file(cmake_config.h.in config.h
 )
 

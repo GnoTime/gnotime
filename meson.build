@@ -12,6 +12,7 @@ project(
   meson_version: '>= 0.49.2',
   version: '2.4.1',
 )
+gtt_version_suffix = '_dev'
 
 add_project_link_arguments(
   '-lm',
