@@ -7,16 +7,6 @@ lists, organize ideas, track bug reports, keep a diary of activities,
 provide weekly status reports to management, and even works as a consultant
 billing system.
 
-***IMPORTANT*** *Get the latest code from here:*
-https://github.com/markuspg/gnotime/tree/modernize3
-It will compile & run on modern (2023-era) Linux systems!
-
-That code will be soon be merged into
-https://github.com/GnoTime/gnotime
-so be sure to check that, too.
-
-Everything below is stale and has not been updated since 2013.
-
 HomePage
 --------
  * http://gttr.sourceforge.net
@@ -35,20 +25,13 @@ detailed description of these features.
 
 Status
 ------
-The newest and latest version can be found in the "modernize3" branch of
-the @markuspg fork:
+After having been stale for the most part since 2013 there is renewed
+development effort which is being managed by the
+[GnoTime](https://github.com/GnoTime) organization on GitHub.
 
-https://github.com/markuspg/gnotime/tree/modernize3
-
-The above will compile and run on present-era (2023) Linux systems.
-
-That code will soon be merged into
-https://github.com/GnoTime/gnotime
-and so be sure to check that repo, too.
-
-Note that the above repos are NOT forked from this repo! So if you are
-just looking at forks, you won't find them.
-
+Due to the dependency on many deprecated libraries which are not available in
+up-to-date Linux distributions the development baseline will be Ubuntu Trusty
+Tahr for the time being.
 
 Obsolete commentary from 2013
 -----------------------------
@@ -77,7 +60,7 @@ Building
 
 ### Required packages:
 ```
-guile-3.0-dev
+guile-2.0-dev
 libgtk2.0-dev
 libglade2-dev
 libgconf2-dev
