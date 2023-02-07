@@ -124,6 +124,7 @@ INCLUDES =                                   \
 	${GUILE_CFLAGS}
 
 gnotime_LDADD =          \
+	-lm \
 	${GLIB_LIBS}     \
 	${GTK_LIBS}     \
 	${LIBGNOME_LIBS}     \
