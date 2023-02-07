@@ -8,7 +8,7 @@
 cmake_minimum_required(VERSION 3.13.4)
 
 project(gnotime
-    VERSION 2.4.1
+    VERSION 2.5.0
     DESCRIPTION "A to-do list organizer, diary and billing system"
     HOMEPAGE_URL "https://gttr.sourceforge.net"
     LANGUAGES C)

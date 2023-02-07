@@ -10,7 +10,7 @@ project(
   'c',
   license: 'GPL-2.0-or-later',
   meson_version: '>= 0.49.2',
-  version: '2.4.1',
+  version: '2.5.0',
 )
 gtt_version_suffix = '_dev'
 
