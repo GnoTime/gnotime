@@ -139,7 +139,8 @@ gnotime_LDADD =          \
 	${GUILE_LIBS}         \
 	$(INTLLIBS) \
 	${GUILE_LDFLAGS} \
-    ${X11_LIBS}
+	${X11_LIBS} \
+	-lm
 
 EXTRA_DIST =         \
 	down.xpm          \
