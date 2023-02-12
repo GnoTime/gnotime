@@ -77,7 +77,7 @@ Building
 
 ### Required packages:
 ```
-guile-3.0-dev
+guile-2.0-dev
 libgtk2.0-dev
 libglade2-dev
 libgconf2-dev
@@ -120,7 +120,7 @@ sudo make install
 
 ### Build steps:
 ```
-./autogen.sh --no-configure
+NOCONFIGURE=true ./autogen.sh
 mkdir build; cd build
 ../configure
 ```
