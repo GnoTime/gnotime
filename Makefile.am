@@ -28,4 +28,13 @@ EXTRA_DIST =                   \
 	$(Productivity_DATA)        \
 	$(top_srcdir)/omf.make      \
 	$(top_srcdir)/xmldocs.make
-	
+
+
+# Satisfy automake strictness check (README must be present).
+# The existance of rule (line 1) is enough to satisfy the strictness
+# check, but `make dist` actually needs the file, so we just copy it.
+# Note that automake 1.16.4 (from 2021) natively allows .md extension
+# for README and a few others.
+README: README.md
+	cp $< $@
+
