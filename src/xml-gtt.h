@@ -35,9 +35,9 @@
  *    that gtt maintains.
  */
 
-void gtt_xml_read_file (const char * filename);
-void gtt_xml_write_file (const char * filename);
+void gtt_xml_read_file(const char *filename);
+void gtt_xml_write_file(const char *filename);
 
-GList * gtt_xml_read_projects (const char * filename);
+GList *gtt_xml_read_projects(const char *filename);
 
 #endif /* __XML_GTT_H__ */

@@ -19,35 +19,35 @@
 #ifndef GTT_NOTES_AREA_H
 #define GTT_NOTES_AREA_H
 
-#include <gnome.h>
 #include "projects-tree.h"
+#include <gnome.h>
 
 typedef struct NotesArea_s NotesArea;
 
-NotesArea * notes_area_new (void);
+NotesArea *notes_area_new(void);
 
 /* The notes_area_set_project() routine binds a project to the
  *    notes area.  That is, the notes area will display (and edit)
  *    the indicated project.
  */
-void notes_area_set_project (NotesArea *na, GttProject *proj);
+void notes_area_set_project(NotesArea *na, GttProject *proj);
 
 /* returns the vpaned widget at the top of the notes area heirarchy */
-GtkWidget * notes_area_get_widget (NotesArea *na);
+GtkWidget *notes_area_get_widget(NotesArea *na);
 
 /* add the GttProjectsTree widget to the appropriate location */
-void notes_area_add_projects_tree (NotesArea *na, GttProjectsTree *projects_tree);
+void notes_area_add_projects_tree(NotesArea *na, GttProjectsTree *projects_tree);
 
 /* Set the position of the two divideders in the notes area:
  * the vertical divider between the ctree and the notes,
  * and the horiz divider between the proj on left and diary on right
  */
-void notes_area_get_pane_sizes (NotesArea *na, int *vp, int *hp);
-void notes_area_set_pane_sizes (NotesArea *na, int vp, int hp);
+void notes_area_get_pane_sizes(NotesArea *na, int *vp, int *hp);
+void notes_area_set_pane_sizes(NotesArea *na, int vp, int hp);
 
 /* The gtt_notes_timer_callback() routine is a 'private' routine,
  * a timeout callback that is called by the timer.
  */
-void gtt_notes_timer_callback (NotesArea *na);
+void gtt_notes_timer_callback(NotesArea *na);
 
 #endif /* GTT_NOTES_AREA_H */

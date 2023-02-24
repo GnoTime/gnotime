@@ -32,8 +32,8 @@
 #include "proj.h"
 
 void init_timer(void);
-gboolean timer_is_running (void);
-gboolean timer_project_is_running (GttProject *prj);
+gboolean timer_is_running(void);
+gboolean timer_project_is_running(GttProject *prj);
 /* The idle timeout is how long, in seconds, that the system seems idle
  * before the clock stops itself */
 extern int config_idle_timeout;
@@ -43,16 +43,16 @@ extern int config_no_project_timeout;
  * periodic save-thyself. */
 extern int config_autosave_period;
 
-gint zero_daily_counters (gpointer data);
-void set_last_reset (time_t last);
+gint zero_daily_counters(gpointer data);
+void set_last_reset(time_t last);
 
 void gen_start_timer(void);
 void gen_stop_timer(void);
 
-void start_no_project_timer ();
-void start_idle_timer ();
+void start_no_project_timer();
+void start_idle_timer();
 
-void start_main_timer ();
-void stop_main_timer ();
+void start_main_timer();
+void stop_main_timer();
 
 #endif /* __GTT_TIMER_H__ */

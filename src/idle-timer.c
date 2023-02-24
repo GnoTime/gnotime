@@ -46,7 +46,7 @@
 
  */
 
-# include "config.h"
+#include "config.h"
 
 /* #define DEBUG_TIMERS */
 
@@ -58,22 +58,22 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xos.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <X11/X.h>
-#include <X11/Xlib.h>
-#include <X11/Xos.h>
 
 #ifdef HAVE_XMU
-# ifndef VMS
-#  include <X11/Xmu/Error.h>
-# else /* VMS */
-#  include <Xmu/Error.h>
-# endif /* VMS */
-# else /* !HAVE_XMU */
+#ifndef VMS
+#include <X11/Xmu/Error.h>
+#else /* VMS */
+#include <Xmu/Error.h>
+#endif /* VMS */
+#else  /* !HAVE_XMU */
 /* # include "xmu.h" */
 #endif /* !HAVE_XMU */
 
@@ -90,40 +90,38 @@ typedef struct IdleTimeoutScreen_s IdleTimeoutScreen;
  */
 struct IdleTimeout_s
 {
-  /* pointer_timeout is how often we check for pinter
-   * movements (in seconds) */
-  int pointer_timeout;
+    /* pointer_timeout is how often we check for pinter
+     * movements (in seconds) */
+    int pointer_timeout;
 
-  /* notice_events_timeout is how long we wait before we
-   * walk the the window tree, selecting events on new windows */
-  int notice_events_timeout;
+    /* notice_events_timeout is how long we wait before we
+     * walk the the window tree, selecting events on new windows */
+    int notice_events_timeout;
 
-  int nscreens;
-  IdleTimeoutScreen *screens;
-  IdleTimeoutScreen *default_screen;        /* ...on which dialogs will appear. */
+    int nscreens;
+    IdleTimeoutScreen *screens;
+    IdleTimeoutScreen *default_screen; /* ...on which dialogs will appear. */
 
-  Display *dpy;
+    Display *dpy;
 
-  Bool using_xidle_extension;           /* which extension is being used.         */
-  Bool using_proc_interrupts;
+    Bool using_xidle_extension; /* which extension is being used.         */
+    Bool using_proc_interrupts;
 
-  Bool scanning_all_windows;
-  Bool polling_mouse_position;
+    Bool scanning_all_windows;
+    Bool polling_mouse_position;
 
-  guint check_pointer_timer_id;        /* `prefs.pointer_timeout' */
+    guint check_pointer_timer_id; /* `prefs.pointer_timeout' */
 
-  time_t dispatch_time;                   /* Time of event dispatch. */
-  time_t last_activity_time;           /* Time of last user activity. */
-  time_t last_wall_clock_time;     /* Used to detect laptop suspend. */
-  IdleTimeoutScreen *last_activity_screen;
+    time_t dispatch_time;        /* Time of event dispatch. */
+    time_t last_activity_time;   /* Time of last user activity. */
+    time_t last_wall_clock_time; /* Used to detect laptop suspend. */
+    IdleTimeoutScreen *last_activity_screen;
 
-  Bool emergency_lock_p;        /* Set when the wall clock has jumped
-                                   (presumably due to laptop suspend) and we
-                                   need to lock down right away instead of
-                                   waiting for the lock timer to go off. */
-
+    Bool emergency_lock_p; /* Set when the wall clock has jumped
+                              (presumably due to laptop suspend) and we
+                              need to lock down right away instead of
+                              waiting for the lock timer to go off. */
 };
-
 
 /* This structure holds all the data that applies to the screen-specific parts
    of the display connection; if the display has multiple screens, there will
@@ -131,25 +129,24 @@ struct IdleTimeout_s
  */
 struct IdleTimeoutScreen_s
 {
-  IdleTimeout *global;
+    IdleTimeout *global;
 
-  Screen *screen;
-  // Widget toplevel_shell;
+    Screen *screen;
+    // Widget toplevel_shell;
 
-  int poll_mouse_last_root_x;                /* Used only when no server exts. */
-  int poll_mouse_last_root_y;
-  Window poll_mouse_last_child;
-  unsigned int poll_mouse_last_mask;
+    int poll_mouse_last_root_x; /* Used only when no server exts. */
+    int poll_mouse_last_root_y;
+    Window poll_mouse_last_child;
+    unsigned int poll_mouse_last_mask;
 };
-
 
 /* ===================================================================== */
 
 #ifdef HAVE_PROC_INTERRUPTS
-static Bool proc_interrupts_activity_p (IdleTimeout *si);
+static Bool proc_interrupts_activity_p(IdleTimeout *si);
 #endif /* HAVE_PROC_INTERRUPTS */
 
-static void check_for_clock_skew (IdleTimeout *si);
+static void check_for_clock_skew(IdleTimeout *si);
 
 /* ===================================================================== */
 /* This routine will install event masks on the indicated window,
@@ -157,146 +154,140 @@ static void check_for_clock_skew (IdleTimeout *si);
  * keyboard/strcuture activity in that window.
  */
 
-static void
-notice_events (IdleTimeout *si, Window window, Bool top_p)
+static void notice_events(IdleTimeout *si, Window window, Bool top_p)
 {
-  XWindowAttributes attrs;
-  unsigned long events;
-  Window root, parent, *kids;
-  unsigned int nkids;
-  GdkWindow *gwin;
+    XWindowAttributes attrs;
+    unsigned long events;
+    Window root, parent, *kids;
+    unsigned int nkids;
+    GdkWindow *gwin;
 
-  gwin = gdk_window_lookup (window);
-  if (gwin && (window != DefaultRootWindow (si->dpy)))
-  {
-    /* If it's one of ours, don't mess up its event mask. */
-    return;
-  }
-
-  if (!XQueryTree (si->dpy, window, &root, &parent, &kids, &nkids))
-  {
-    return;
-  }
-  if (window == root) top_p = False;
-
-  XGetWindowAttributes (si->dpy, window, &attrs);
-  events = ((attrs.all_event_masks | attrs.do_not_propagate_mask)
-            & KeyPressMask );
-
-  /* Select for SubstructureNotify on all windows.
-     Select for KeyPress on all windows that already have it selected.
-
-     Note that we can't select for ButtonPress, because of X braindamage:
-     only one client at a time may select for ButtonPress on a given
-     window, though any number can select for KeyPress.  Someone explain
-     *that* to me.
-
-     So, if the user spends a while clicking the mouse without ever moving
-     the mouse or touching the keyboard, we won't know that they've been
-     active, and the screensaver will come on.  That sucks, but I don't
-     know how to get around it.
-   */
-  XSelectInput (si->dpy, window, SubstructureNotifyMask | events);
-
-  if (top_p && (events & KeyPressMask))
+    gwin = gdk_window_lookup(window);
+    if (gwin && (window != DefaultRootWindow(si->dpy)))
     {
-      /* Only mention one window per tree  */
-#ifdef DEBUG
-      /* hack alert -- why does this print statment almost never go ???? */
-      /* key-press events certainly *do* seem to get delivered, so they
-       * must have been selected for ??? */
-       printf ("duude selected KeyPress on 0x%lX\n", (unsigned long) window);
-#endif
-      top_p = False;
+        /* If it's one of ours, don't mess up its event mask. */
+        return;
     }
 
-  if (kids)
+    if (!XQueryTree(si->dpy, window, &root, &parent, &kids, &nkids))
     {
-      while (nkids)
-      {
-         notice_events (si, kids [--nkids], top_p);
-      }
-      XFree ((char *) kids);
+        return;
+    }
+    if (window == root)
+        top_p = False;
+
+    XGetWindowAttributes(si->dpy, window, &attrs);
+    events = ((attrs.all_event_masks | attrs.do_not_propagate_mask) & KeyPressMask);
+
+    /* Select for SubstructureNotify on all windows.
+       Select for KeyPress on all windows that already have it selected.
+
+       Note that we can't select for ButtonPress, because of X braindamage:
+       only one client at a time may select for ButtonPress on a given
+       window, though any number can select for KeyPress.  Someone explain
+       *that* to me.
+
+       So, if the user spends a while clicking the mouse without ever moving
+       the mouse or touching the keyboard, we won't know that they've been
+       active, and the screensaver will come on.  That sucks, but I don't
+       know how to get around it.
+     */
+    XSelectInput(si->dpy, window, SubstructureNotifyMask | events);
+
+    if (top_p && (events & KeyPressMask))
+    {
+        /* Only mention one window per tree  */
+#ifdef DEBUG
+        /* hack alert -- why does this print statment almost never go ???? */
+        /* key-press events certainly *do* seem to get delivered, so they
+         * must have been selected for ??? */
+        printf("duude selected KeyPress on 0x%lX\n", (unsigned long) window);
+#endif
+        top_p = False;
+    }
+
+    if (kids)
+    {
+        while (nkids)
+        {
+            notice_events(si, kids[--nkids], top_p);
+        }
+        XFree((char *) kids);
     }
 }
 
 /* ===================================================================== */
 /* stuff realted to the notice-events timer */
 
-static int
-saver_ehandler (Display *dpy, XErrorEvent *error)
+static int saver_ehandler(Display *dpy, XErrorEvent *error)
 {
 
-  fprintf (stderr, "\n"
-           "#######################################"
-           "#######################################\n\n"
-           "X Error!  PLEASE REPORT THIS BUG.\n");
+    fprintf(
+        stderr, "\n"
+                "#######################################"
+                "#######################################\n\n"
+                "X Error!  PLEASE REPORT THIS BUG.\n"
+    );
 
-  // if (XmuPrintDefaultErrorMessage (dpy, error, stderr))
+    // if (XmuPrintDefaultErrorMessage (dpy, error, stderr))
     {
-      fprintf (stderr, "\n");
-      exit (1);
+        fprintf(stderr, "\n");
+        exit(1);
     }
-  // else
-    fprintf (stderr, " (nonfatal.)\n");
-  return 0;
-}
-
-static int
-BadWindow_ehandler (Display *dpy, XErrorEvent *error)
-{
-  if (error->error_code == BadWindow ||
-      error->error_code == BadMatch ||
-      error->error_code == BadDrawable)
+    // else
+    fprintf(stderr, " (nonfatal.)\n");
     return 0;
-  else
-    return saver_ehandler (dpy, error);
 }
 
-struct notice_events_timer_arg {
-  IdleTimeout *si;
-  Window w;
+static int BadWindow_ehandler(Display *dpy, XErrorEvent *error)
+{
+    if (error->error_code == BadWindow || error->error_code == BadMatch
+        || error->error_code == BadDrawable)
+        return 0;
+    else
+        return saver_ehandler(dpy, error);
+}
+
+struct notice_events_timer_arg
+{
+    IdleTimeout *si;
+    Window w;
 };
 
-static gint
-notice_events_timer (gpointer closure)
+static gint notice_events_timer(gpointer closure)
 {
-  struct notice_events_timer_arg *arg =
-    (struct notice_events_timer_arg *) closure;
-  XErrorHandler old_handler;
-  IdleTimeout *si = arg->si;
-  Window window = arg->w;
+    struct notice_events_timer_arg *arg = (struct notice_events_timer_arg *) closure;
+    XErrorHandler old_handler;
+    IdleTimeout *si = arg->si;
+    Window window = arg->w;
 
-  g_free(arg);
+    g_free(arg);
 
-  /* When we notice a window being created, we spawn a timer that waits
-     30 seconds or so, and then selects events on that window.  This error
-     handler is used so that we can cope with the fact that the window
-     may have been destroyed <30 seconds after it was created.
-   */
-  old_handler = XSetErrorHandler (BadWindow_ehandler);
+    /* When we notice a window being created, we spawn a timer that waits
+       30 seconds or so, and then selects events on that window.  This error
+       handler is used so that we can cope with the fact that the window
+       may have been destroyed <30 seconds after it was created.
+     */
+    old_handler = XSetErrorHandler(BadWindow_ehandler);
 
-  notice_events (si, window, True);
-  XSync (si->dpy, False);
-  XSetErrorHandler (old_handler);
+    notice_events(si, window, True);
+    XSync(si->dpy, False);
+    XSetErrorHandler(old_handler);
 
-  /* we pop once, and we don't pop again */
-  return 0;
+    /* we pop once, and we don't pop again */
+    return 0;
 }
 
-
-static void
-start_notice_events_timer (IdleTimeout *si, Window w)
+static void start_notice_events_timer(IdleTimeout *si, Window w)
 {
-  struct notice_events_timer_arg *arg;
+    struct notice_events_timer_arg *arg;
 
-  /* we want to create a fresh one of these for every
-   * new window. */
-  arg = g_new(struct notice_events_timer_arg, 1);
-  arg->si = si;
-  arg->w = w;
-  gtk_timeout_add ( si->notice_events_timeout *1000,
-                   notice_events_timer, (gpointer) arg);
+    /* we want to create a fresh one of these for every
+     * new window. */
+    arg = g_new(struct notice_events_timer_arg, 1);
+    arg->si = si;
+    arg->w = w;
+    gtk_timeout_add(si->notice_events_timeout * 1000, notice_events_timer, (gpointer) arg);
 }
 
 /* ===================================================================== */
@@ -305,63 +296,58 @@ start_notice_events_timer (IdleTimeout *si, Window w)
    wake up and poll the mouse position, which is possibly more reliable than
    selecting motion events on every window.
  */
-static gint
-check_pointer_timer (gpointer closure)
+static gint check_pointer_timer(gpointer closure)
 {
-  int i;
-  IdleTimeout *si = (IdleTimeout *) closure;
-  Bool active_p = False;
+    int i;
+    IdleTimeout *si = (IdleTimeout *) closure;
+    Bool active_p = False;
 
-  if (!si->using_proc_interrupts &&
-      (si->using_xidle_extension))
-    /* If an extension is in use, we should not be polling the mouse.
-       Unless we're also checking /proc/interrupts, in which case, we should.
-     */
-    abort ();
+    if (!si->using_proc_interrupts && (si->using_xidle_extension))
+        /* If an extension is in use, we should not be polling the mouse.
+           Unless we're also checking /proc/interrupts, in which case, we should.
+         */
+        abort();
 
-  for (i = 0; i < si->nscreens; i++)
+    for (i = 0; i < si->nscreens; i++)
     {
-      IdleTimeoutScreen *ssi = &si->screens[i];
-      Window root, child;
-      int root_x, root_y, x, y;
-      unsigned int mask;
+        IdleTimeoutScreen *ssi = &si->screens[i];
+        Window root, child;
+        int root_x, root_y, x, y;
+        unsigned int mask;
 
-      XQueryPointer (si->dpy, RootWindowOfScreen (ssi->screen), &root, &child,
-                     &root_x, &root_y, &x, &y, &mask);
+        XQueryPointer(
+            si->dpy, RootWindowOfScreen(ssi->screen), &root, &child, &root_x, &root_y, &x, &y,
+            &mask
+        );
 
-      if (root_x == ssi->poll_mouse_last_root_x &&
-          root_y == ssi->poll_mouse_last_root_y &&
-          child  == ssi->poll_mouse_last_child &&
-          mask   == ssi->poll_mouse_last_mask)
-        continue;
+        if (root_x == ssi->poll_mouse_last_root_x && root_y == ssi->poll_mouse_last_root_y
+            && child == ssi->poll_mouse_last_child && mask == ssi->poll_mouse_last_mask)
+            continue;
 
-      active_p = True;
+        active_p = True;
 
-      si->last_activity_screen    = ssi;
-      ssi->poll_mouse_last_root_x = root_x;
-      ssi->poll_mouse_last_root_y = root_y;
-      ssi->poll_mouse_last_child  = child;
-      ssi->poll_mouse_last_mask   = mask;
+        si->last_activity_screen = ssi;
+        ssi->poll_mouse_last_root_x = root_x;
+        ssi->poll_mouse_last_root_y = root_y;
+        ssi->poll_mouse_last_child = child;
+        ssi->poll_mouse_last_mask = mask;
     }
 
 #ifdef HAVE_PROC_INTERRUPTS
-  if (!active_p &&
-      si->using_proc_interrupts &&
-      proc_interrupts_activity_p (si))
+    if (!active_p && si->using_proc_interrupts && proc_interrupts_activity_p(si))
     {
-      active_p = True;
+        active_p = True;
     }
 #endif /* HAVE_PROC_INTERRUPTS */
 
-  if (active_p)
-  {
-    si->last_activity_time = time ((time_t *) 0);
-  }
+    if (active_p)
+    {
+        si->last_activity_time = time((time_t *) 0);
+    }
 
-  check_for_clock_skew (si);
-  return 1;
+    check_for_clock_skew(si);
+    return 1;
 }
-
 
 /* ===================================================================== */
 /* An unfortunate situation is this: the
@@ -376,55 +362,51 @@ check_pointer_timer (gpointer closure)
    This amounts to an assumption that machines with APM support also
    have /proc/interrupts.
  */
-static void
-check_for_clock_skew (IdleTimeout *si)
+static void check_for_clock_skew(IdleTimeout *si)
 {
-  time_t now = time ((time_t *) 0);
+    time_t now = time((time_t *) 0);
 
 #ifdef DEBUG_TIMERS
-  long shift = now - si->last_wall_clock_time;
+    long shift = now - si->last_wall_clock_time;
 
-  fprintf (stderr, "checking wall clock (%d).\n",
-             (si->last_wall_clock_time == 0 ? 0 : shift));
+    fprintf(stderr, "checking wall clock (%d).\n", (si->last_wall_clock_time == 0 ? 0 : shift));
 
-  if (si->last_wall_clock_time != 0 &&
-      shift > (p->timeout / 1000))
+    if (si->last_wall_clock_time != 0 && shift > (p->timeout / 1000))
     {
-      fprintf (stderr, "wall clock has jumped by %ld:%02ld:%02ld!\n",
-                 (shift / (60 * 60)), ((shift / 60) % 60), (shift % 60));
+        fprintf(
+            stderr, "wall clock has jumped by %ld:%02ld:%02ld!\n", (shift / (60 * 60)),
+            ((shift / 60) % 60), (shift % 60)
+        );
     }
 #endif /* DEBUG_TIMERS */
 
-  si->last_wall_clock_time = now;
+    si->last_wall_clock_time = now;
 }
-
 
 /* ===================================================================== */
 
-time_t
-poll_last_activity (IdleTimeout *si)
+time_t poll_last_activity(IdleTimeout *si)
 {
-  if (!si) return 0;
+    if (!si)
+        return 0;
 
 #ifdef HAVE_XIDLE_EXTENSION
     if (si->using_xidle_extension)
     {
-      Time idle;
-      /* The XIDLE extension uses ...
-         ask the server how long the user has been idle. */
-      if (! XGetIdleTime (si->dpy, &idle))
-      {
-         fprintf (stderr, "XGetIdleTime() failed.\n");
-      }
-/* hack alert fixme set the last activity time */
-   }
+        Time idle;
+        /* The XIDLE extension uses ...
+           ask the server how long the user has been idle. */
+        if (!XGetIdleTime(si->dpy, &idle))
+        {
+            fprintf(stderr, "XGetIdleTime() failed.\n");
+        }
+        /* hack alert fixme set the last activity time */
+    }
 #endif /* HAVE_XIDLE_EXTENSION */
 
-  return si->last_activity_time;
+    return si->last_activity_time;
 }
 
-
-
 /* ===================================================================== */
 /* Some crap for dealing with /proc/interrupts.
 
@@ -497,236 +479,241 @@ poll_last_activity (IdleTimeout *si)
    unfortunate to have the screensaver turn off when the modem on COM1 burped.
  */
 
-
 #ifdef HAVE_PROC_INTERRUPTS
 
 #define PROC_INTERRUPTS "/proc/interrupts"
 
-static Bool
-display_is_on_console_p (IdleTimeout *si)
+static Bool display_is_on_console_p(IdleTimeout *si)
 {
-  char * dpy_name = XDisplayName (NULL);
+    char *dpy_name = XDisplayName(NULL);
 
-  if (!dpy_name) return True;
+    if (!dpy_name)
+        return True;
 
-  /* If no hostname or IP address, assume its a local server,
-   * and that polling /proc/interrupts is possible.  */
-  if (':' == dpy_name[0]) return True;
+    /* If no hostname or IP address, assume its a local server,
+     * and that polling /proc/interrupts is possible.  */
+    if (':' == dpy_name[0])
+        return True;
 
-  /* If IP address is 127.0.0.1 or 127.x.x.x then its local */
-  if (!strncmp (dpy_name, "127.", 4)) return True;
+    /* If IP address is 127.0.0.1 or 127.x.x.x then its local */
+    if (!strncmp(dpy_name, "127.", 4))
+        return True;
 
-  /* If its the Unix-standard localhost, then its local */
-  if (!strncmp (dpy_name, "localhost", 9)) return True;
+    /* If its the Unix-standard localhost, then its local */
+    if (!strncmp(dpy_name, "localhost", 9))
+        return True;
 
-  return False;
+    return False;
 }
 
 /* ===================================================================== */
 
-static Bool
-query_proc_interrupts_available (IdleTimeout *si, const char **why)
+static Bool query_proc_interrupts_available(IdleTimeout *si, const char **why)
 {
-  /* We can use /proc/interrupts if $DISPLAY points to :0, and if the
-     "/proc/interrupts" file exists and is readable.
-   */
-  FILE *f;
-  if (why) *why = 0;
-  if (!display_is_on_console_p (si))
+    /* We can use /proc/interrupts if $DISPLAY points to :0, and if the
+       "/proc/interrupts" file exists and is readable.
+     */
+    FILE *f;
+    if (why)
+        *why = 0;
+    if (!display_is_on_console_p(si))
     {
-      if (why) *why = "not on primary console";
-      return False;
+        if (why)
+            *why = "not on primary console";
+        return False;
     }
 
-  f = fopen (PROC_INTERRUPTS, "r");
-  if (!f)
-    return False;
+    f = fopen(PROC_INTERRUPTS, "r");
+    if (!f)
+        return False;
 
-  fclose (f);
-  return True;
+    fclose(f);
+    return True;
 }
-
 
 /* ===================================================================== */
 
-static Bool
-proc_interrupts_activity_p (IdleTimeout *si)
+static Bool proc_interrupts_activity_p(IdleTimeout *si)
 {
-  static FILE *f0 = 0;
-  static Bool need_dup = True;
-  static char *kbd_str = NULL;
-  static char *ptr_str = NULL;
-  FILE *f1 = 0;
-  int fd;
-  static char last_kbd_line[255] = { 0, };
-  static char last_ptr_line[255] = { 0, };
-  char new_line[sizeof(last_kbd_line)];
-  Bool got_kbd = False, kbd_diff = False;
-  Bool got_ptr = False, ptr_diff = False;
+    static FILE *f0 = 0;
+    static Bool need_dup = True;
+    static char *kbd_str = NULL;
+    static char *ptr_str = NULL;
+    FILE *f1 = 0;
+    int fd;
+    static char last_kbd_line[255] = {
+        0,
+    };
+    static char last_ptr_line[255] = {
+        0,
+    };
+    char new_line[sizeof(last_kbd_line)];
+    Bool got_kbd = False, kbd_diff = False;
+    Bool got_ptr = False, ptr_diff = False;
 
-  if (!f0)
+    if (!f0)
     {
-      /* First time -- open the file. */
-      f0 = fopen (PROC_INTERRUPTS, "r");
-      if (!f0)
+        /* First time -- open the file. */
+        f0 = fopen(PROC_INTERRUPTS, "r");
+        if (!f0)
         {
-          char buf[255];
-          sprintf(buf, "%s: error opening %s", PACKAGE, PROC_INTERRUPTS);
-          perror (buf);
-          goto FAIL;
+            char buf[255];
+            sprintf(buf, "%s: error opening %s", PACKAGE, PROC_INTERRUPTS);
+            perror(buf);
+            goto FAIL;
         }
     }
 
-  if (f0 == (FILE *) -1)      /* means we got an error initializing. */
-    return False;
+    if (f0 == (FILE *) -1) /* means we got an error initializing. */
+        return False;
 
-  if (need_dup)
+    if (need_dup)
     {
-      fd = dup (fileno (f0));
-      if (fd < 0)
+        fd = dup(fileno(f0));
+        if (fd < 0)
         {
-          char buf[255];
-          sprintf(buf, "%s: could not dup() the %s fd", PACKAGE, PROC_INTERRUPTS);
-          perror (buf);
-          goto FAIL;
+            char buf[255];
+            sprintf(buf, "%s: could not dup() the %s fd", PACKAGE, PROC_INTERRUPTS);
+            perror(buf);
+            goto FAIL;
         }
-    f1 = fdopen (fd, "r");
-    if (!f1)
-      {
+        f1 = fdopen(fd, "r");
+        if (!f1)
+        {
+            char buf[255];
+            sprintf(buf, "%s: could not fdopen() the %s fd", PACKAGE, PROC_INTERRUPTS);
+            perror(buf);
+            goto FAIL;
+        }
+    }
+    else
+    {
+        f1 = f0;
+    }
+    /* fseek() to the beginning of the file even if we did the above dup.
+       I'm unclear on why it's necessary in the dup case, but it is. */
+    if (fseek(f1, 0, SEEK_SET) != 0)
+    {
         char buf[255];
-        sprintf(buf, "%s: could not fdopen() the %s fd", PACKAGE,
-                PROC_INTERRUPTS);
-        perror (buf);
+        sprintf(buf, "%s: error rewinding %s", PACKAGE, PROC_INTERRUPTS);
+        perror(buf);
         goto FAIL;
-      }
-    }
-  else
-    {
-      f1 = f0;
-    }
-  /* fseek() to the beginning of the file even if we did the above dup.
-     I'm unclear on why it's necessary in the dup case, but it is. */
-  if (fseek (f1, 0, SEEK_SET) != 0)
-    {
-      char buf[255];
-      sprintf(buf, "%s: error rewinding %s", PACKAGE, PROC_INTERRUPTS);
-      perror (buf);
-      goto FAIL;
     }
 
-  if (kbd_str == NULL)
+    if (kbd_str == NULL)
     {
-      /* Initial run through */
-      /* Determine what our search string will be. */
-      while (fgets (new_line, sizeof(new_line)-1, f1))
+        /* Initial run through */
+        /* Determine what our search string will be. */
+        while (fgets(new_line, sizeof(new_line) - 1, f1))
         {
-          if (strchr (new_line, ','))
+            if (strchr(new_line, ','))
             {
-              /* Ignore any line that has a comma on it: this is because
-               * a setup like this:
-               *
-               *      12:      930935        XT-PIC  usb-uhci, PS/2 Mouse
-               *
-               * is really bad news.  It *looks* like we can note mouse
-               * activity from that line, but really the interrupt gets
-               * fired any time a USB device has activity!  So we have to
-               * ignore any shared IRQs.
-               */
+                /* Ignore any line that has a comma on it: this is because
+                 * a setup like this:
+                 *
+                 *      12:      930935        XT-PIC  usb-uhci, PS/2 Mouse
+                 *
+                 * is really bad news.  It *looks* like we can note mouse
+                 * activity from that line, but really the interrupt gets
+                 * fired any time a USB device has activity!  So we have to
+                 * ignore any shared IRQs.
+                 */
             }
-          else if (!got_kbd && strstr(new_line, "keyboard"))
+            else if (!got_kbd && strstr(new_line, "keyboard"))
             {
-              kbd_str = "keyboard";
-              need_dup = True;
-              got_kbd = True;
-              strcpy (last_kbd_line, new_line);
+                kbd_str = "keyboard";
+                need_dup = True;
+                got_kbd = True;
+                strcpy(last_kbd_line, new_line);
             }
-          else if (!got_kbd && strstr(new_line, "PS/2 Mouse"))
+            else if (!got_kbd && strstr(new_line, "PS/2 Mouse"))
             {
-              ptr_str = "PS/2 Mouse";
-              need_dup = True;
-              got_ptr = True;
-              strcpy (last_ptr_line, new_line);
+                ptr_str = "PS/2 Mouse";
+                need_dup = True;
+                got_ptr = True;
+                strcpy(last_ptr_line, new_line);
             }
-          else if (!got_kbd && strstr(new_line, "i8042"))
+            else if (!got_kbd && strstr(new_line, "i8042"))
             {
-              if (strstr(new_line, " 1:"))
+                if (strstr(new_line, " 1:"))
                 {
-                  kbd_str = " 1:";
-                  need_dup = False;
-                  got_kbd = True;
-                  strcpy (last_kbd_line, new_line);
+                    kbd_str = " 1:";
+                    need_dup = False;
+                    got_kbd = True;
+                    strcpy(last_kbd_line, new_line);
                 }
-              else if (strstr(new_line, " 12:"))
+                else if (strstr(new_line, " 12:"))
                 {
-                  ptr_str = " 12:";
-                  need_dup = False;
-                  got_ptr = True;
-                  strcpy (last_ptr_line, new_line);
+                    ptr_str = " 12:";
+                    need_dup = False;
+                    got_ptr = True;
+                    strcpy(last_ptr_line, new_line);
                 }
             }
-          if (got_kbd && got_ptr)
-              break;
+            if (got_kbd && got_ptr)
+                break;
         }
-      if (kbd_str == NULL && ptr_str == NULL)
+        if (kbd_str == NULL && ptr_str == NULL)
         {
-          /* If we got here, we didn't find either an entry for keyboards or
-             mice in the file at all. */
-          fprintf (stderr, "%s: no keyboard or mouse data in %s?\n",
-                   PACKAGE, PROC_INTERRUPTS);
-          goto FAIL;
+            /* If we got here, we didn't find either an entry for keyboards or
+               mice in the file at all. */
+            fprintf(stderr, "%s: no keyboard or mouse data in %s?\n", PACKAGE, PROC_INTERRUPTS);
+            goto FAIL;
         }
-      if (kbd_str == NULL) {
-          kbd_str = "NoneNoneNone";
-      }
-      if (ptr_str == NULL) {
-          ptr_str = "NoneNoneNone";
-      }
-      if (need_dup == False) {
-          fclose(f1);
-          f1 = NULL;
-      }
-    }
-  else
-    {
-      /* Regular */
-      while (fgets (new_line, sizeof(new_line)-1, f1))
+        if (kbd_str == NULL)
         {
-          if (!got_kbd && strstr (new_line, kbd_str))
+            kbd_str = "NoneNoneNone";
+        }
+        if (ptr_str == NULL)
+        {
+            ptr_str = "NoneNoneNone";
+        }
+        if (need_dup == False)
+        {
+            fclose(f1);
+            f1 = NULL;
+        }
+    }
+    else
+    {
+        /* Regular */
+        while (fgets(new_line, sizeof(new_line) - 1, f1))
+        {
+            if (!got_kbd && strstr(new_line, kbd_str))
             {
-              kbd_diff = (*last_kbd_line && !!strcmp (new_line, last_kbd_line));
-              strcpy (last_kbd_line, new_line);
-              got_kbd = True;
+                kbd_diff = (*last_kbd_line && !!strcmp(new_line, last_kbd_line));
+                strcpy(last_kbd_line, new_line);
+                got_kbd = True;
             }
-          else if (!got_ptr && strstr (new_line, ptr_str))
+            else if (!got_ptr && strstr(new_line, ptr_str))
             {
-              ptr_diff = (*last_ptr_line && !!strcmp (new_line, last_ptr_line));
-              strcpy (last_ptr_line, new_line);
-              got_ptr = True;
+                ptr_diff = (*last_ptr_line && !!strcmp(new_line, last_ptr_line));
+                strcpy(last_ptr_line, new_line);
+                got_ptr = True;
             }
 
-          if (got_kbd && got_ptr)
-            break;
+            if (got_kbd && got_ptr)
+                break;
         }
     }
 
-  if (got_kbd || got_ptr)
+    if (got_kbd || got_ptr)
     {
-      if (need_dup)
-          fclose (f1);
-      return (kbd_diff || ptr_diff);
+        if (need_dup)
+            fclose(f1);
+        return (kbd_diff || ptr_diff);
     }
 
+FAIL:
+    if (f1 && (f1 != f0))
+        fclose(f1);
+    f1 = NULL;
 
- FAIL:
-  if (f1 && (f1 != f0))
-    fclose (f1);
-  f1 = NULL;
+    if (f0 && f0 != (FILE *) -1)
+        fclose(f0);
 
-  if (f0 && f0 != (FILE *) -1)
-    fclose (f0);
-
-  f0 = (FILE *) -1;
-  return False;
+    f0 = (FILE *) -1;
+    return False;
 }
 
 #endif /* HAVE_PROC_INTERRUPTS */
@@ -738,15 +725,14 @@ proc_interrupts_activity_p (IdleTimeout *si)
  * and dangerous. So we let gdk weed hem out itself.
  */
 
-static Bool
-if_event_predicate (Display *dpy, XEvent *ev, XPointer arg)
+static Bool if_event_predicate(Display *dpy, XEvent *ev, XPointer arg)
 {
-  IdleTimeout *si = (IdleTimeout *) arg;
+    IdleTimeout *si = (IdleTimeout *) arg;
 #ifdef DEBUG
-  printf ("duude event type %d\n", ev->xany.type);
+    printf("duude event type %d\n", ev->xany.type);
 #endif
-  switch (ev->xany.type)
-  {
+    switch (ev->xany.type)
+    {
     case KeyPress:
     case KeyRelease:
     case ButtonPress:
@@ -754,30 +740,30 @@ if_event_predicate (Display *dpy, XEvent *ev, XPointer arg)
     case MotionNotify:
     case EnterNotify:
     case LeaveNotify:
-      si->last_activity_time = si->dispatch_time;
-      break;
+        si->last_activity_time = si->dispatch_time;
+        break;
 
     case CreateNotify:
-      /* A window has been created on the screen somewhere.  If we're
-         supposed to scan all windows for events, prepare this window.
-         Don't reset the timer on this event. The xscreensaver typically
-         generates one of these every 10 minutes ('phosphor' mode), so
-         we shouldn't mistake this for user activity.
-       */
-      if (si->scanning_all_windows)
-      {
-        Window w = ev->xcreatewindow.window;
-        start_notice_events_timer (si, w);
-      }
-      break;
+        /* A window has been created on the screen somewhere.  If we're
+           supposed to scan all windows for events, prepare this window.
+           Don't reset the timer on this event. The xscreensaver typically
+           generates one of these every 10 minutes ('phosphor' mode), so
+           we shouldn't mistake this for user activity.
+         */
+        if (si->scanning_all_windows)
+        {
+            Window w = ev->xcreatewindow.window;
+            start_notice_events_timer(si, w);
+        }
+        break;
 
     default:
-      /* We assume all other messages might occur 'spontaneously', without
-       * the activity of a user, and therefore, we ignore them. */
-      break;
-  }
+        /* We assume all other messages might occur 'spontaneously', without
+         * the activity of a user, and therefore, we ignore them. */
+        break;
+    }
 
-  return False;
+    return False;
 }
 
 /* ===================================================================== */
@@ -787,121 +773,118 @@ if_event_predicate (Display *dpy, XEvent *ev, XPointer arg)
  * so that other timers & etc. get properly handled.
  */
 
-static int
-idle_timeout_main_loop (gpointer data)
+static int idle_timeout_main_loop(gpointer data)
 {
-  IdleTimeout *si = data;
-  int quit_now = 0;
-  fd_set rfds;
-  struct timeval tv;
-  int fd;
-  int retval;
+    IdleTimeout *si = data;
+    int quit_now = 0;
+    fd_set rfds;
+    struct timeval tv;
+    int fd;
+    int retval;
 
-  FD_ZERO (&rfds);
-  fd = ConnectionNumber (si->dpy);
+    FD_ZERO(&rfds);
+    fd = ConnectionNumber(si->dpy);
 
-  while (!quit_now)
-  {
-     FD_SET (fd, &rfds);
+    while (!quit_now)
+    {
+        FD_SET(fd, &rfds);
 
-     /* block and wait one sec at most */
-     tv.tv_sec = 1;
-     tv.tv_usec = 0;
-     retval = select(fd+1, &rfds, NULL, NULL, &tv);
-     if ((0 > retval) && (EAGAIN != errno) && (EINTR != errno))
-     {
-        printf ("GTT: fatal error in select %d, %s\n", errno, strerror(errno));
-        gtk_main_quit();
-        return 0;
-     }
+        /* block and wait one sec at most */
+        tv.tv_sec = 1;
+        tv.tv_usec = 0;
+        retval = select(fd + 1, &rfds, NULL, NULL, &tv);
+        if ((0 > retval) && (EAGAIN != errno) && (EINTR != errno))
+        {
+            printf("GTT: fatal error in select %d, %s\n", errno, strerror(errno));
+            gtk_main_quit();
+            return 0;
+        }
 
-     /* Monitor X input queue */
-     {
-        XEvent event;
-        si->dispatch_time = time (0);
-        XCheckIfEvent (si->dpy, &event, if_event_predicate, (XPointer) si);
-     }
+        /* Monitor X input queue */
+        {
+            XEvent event;
+            si->dispatch_time = time(0);
+            XCheckIfEvent(si->dpy, &event, if_event_predicate, (XPointer) si);
+        }
 
-     /* Clear out pending gtk events before we got back to sleep */
-     while (gtk_events_pending())
-     {
-        quit_now = gtk_main_iteration_do (FALSE);
-        if (quit_now) return 0;
-     }
-  }
-  return 0;
+        /* Clear out pending gtk events before we got back to sleep */
+        while (gtk_events_pending())
+        {
+            quit_now = gtk_main_iteration_do(FALSE);
+            if (quit_now)
+                return 0;
+        }
+    }
+    return 0;
 }
-
 
 /* ===================================================================== */
 
-IdleTimeout *
-idle_timeout_new (void)
+IdleTimeout *idle_timeout_new(void)
 {
-  IdleTimeout *si;
+    IdleTimeout *si;
 
-  si = g_new0 (IdleTimeout, 1);
-  si->dpy = GDK_DISPLAY();
+    si = g_new0(IdleTimeout, 1);
+    si->dpy = GDK_DISPLAY();
 
-  /* hack alert XXXX we should grep all screens */
-  si->nscreens = 1;
-  si->screens = g_new0 (IdleTimeoutScreen, 1);
-  si->screens->global = si;
-  si->screens->screen = DefaultScreenOfDisplay (si->dpy);
+    /* hack alert XXXX we should grep all screens */
+    si->nscreens = 1;
+    si->screens = g_new0(IdleTimeoutScreen, 1);
+    si->screens->global = si;
+    si->screens->screen = DefaultScreenOfDisplay(si->dpy);
 
-  /* We use /proc/interrupts because we are not otherwise getting
-   * keyboard events for some reason.  Note that Mac OSX won't have
-   * the /proc filesystem, and so won't have this ability; they'll
-   * be screwed.  XXX Need to fix root cause of missing keybd events ...
-   */
-  si->using_proc_interrupts = query_proc_interrupts_available (si, NULL);
+    /* We use /proc/interrupts because we are not otherwise getting
+     * keyboard events for some reason.  Note that Mac OSX won't have
+     * the /proc filesystem, and so won't have this ability; they'll
+     * be screwed.  XXX Need to fix root cause of missing keybd events ...
+     */
+    si->using_proc_interrupts = query_proc_interrupts_available(si, NULL);
 
-  /* how often we observe mouse  */
-  si->pointer_timeout = 5;
+    /* how often we observe mouse  */
+    si->pointer_timeout = 5;
 
-  /* how soon we select the window tree after a new windows created */
-  si->notice_events_timeout = 30;
+    /* how soon we select the window tree after a new windows created */
+    si->notice_events_timeout = 30;
 
-  /* ------------------------------------------------------------- */
-  /* We need to select events on all windows if we're not using any extensions.
-     Otherwise, we don't need to. */
-  si->scanning_all_windows = !(si->using_xidle_extension);
+    /* ------------------------------------------------------------- */
+    /* We need to select events on all windows if we're not using any extensions.
+       Otherwise, we don't need to. */
+    si->scanning_all_windows = !(si->using_xidle_extension);
 
-  /* Whether we need to periodically wake up and check to see if the mouse has
-     moved.  We only need to do this when not using any extensions.  The reason
-     this isn't the same as `polling_for_idleness' is that the "idleness" poll
-     can happen (for example) 5 minutes from now, whereas the mouse-position
-     poll should happen with low periodicity.  We don't need to poll the mouse
-     position with the XIDLE extension, but we do need to periodically wake up
-     and query the server with that extension.  For our purposes, polling
-     /proc/interrupts is just like polling the mouse position.  It has to
-     happen on the same kind of schedule. */
-  si->polling_mouse_position = (si->using_proc_interrupts ||
-                              !(si->using_xidle_extension));
+    /* Whether we need to periodically wake up and check to see if the mouse has
+       moved.  We only need to do this when not using any extensions.  The reason
+       this isn't the same as `polling_for_idleness' is that the "idleness" poll
+       can happen (for example) 5 minutes from now, whereas the mouse-position
+       poll should happen with low periodicity.  We don't need to poll the mouse
+       position with the XIDLE extension, but we do need to periodically wake up
+       and query the server with that extension.  For our purposes, polling
+       /proc/interrupts is just like polling the mouse position.  It has to
+       happen on the same kind of schedule. */
+    si->polling_mouse_position = (si->using_proc_interrupts || !(si->using_xidle_extension));
 
-  if (si->polling_mouse_position)
-  {
-    /* Check to see if the mouse has moved, and set up a repeating timer
-       to do so periodically (typically, every 5 seconds.) */
-    si->check_pointer_timer_id = gtk_timeout_add (si->pointer_timeout *1000,
-                  check_pointer_timer, (gpointer) si);
+    if (si->polling_mouse_position)
+    {
+        /* Check to see if the mouse has moved, and set up a repeating timer
+           to do so periodically (typically, every 5 seconds.) */
+        si->check_pointer_timer_id
+            = gtk_timeout_add(si->pointer_timeout * 1000, check_pointer_timer, (gpointer) si);
 
-    /* run it once, to initialze stuff */
-    check_pointer_timer ((gpointer) si);
-  }
+        /* run it once, to initialze stuff */
+        check_pointer_timer((gpointer) si);
+    }
 
-  /* ------------------------------------------------------------- */
+    /* ------------------------------------------------------------- */
 
-  if (si->scanning_all_windows)
-  {
-    /* get events from every window */
-    notice_events (si, DefaultRootWindow(si->dpy), True);
+    if (si->scanning_all_windows)
+    {
+        /* get events from every window */
+        notice_events(si, DefaultRootWindow(si->dpy), True);
 
-    /* hijack the main loop; this is the only way to get events */
-    gtk_timeout_add (900, idle_timeout_main_loop, (gpointer)si);
-  }
+        /* hijack the main loop; this is the only way to get events */
+        gtk_timeout_add(900, idle_timeout_main_loop, (gpointer) si);
+    }
 
-  return si;
+    return si;
 }
 
 /* =================== END OF FILE ===================================== */

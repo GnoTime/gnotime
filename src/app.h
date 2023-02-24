@@ -20,16 +20,15 @@
 #ifndef __GTT_APP_H__
 #define __GTT_APP_H__
 
-#include <gnome.h>
 #include "notes-area.h"
 #include "proj.h"
 #include "status-icon.h"
+#include <gnome.h>
 
-
-extern NotesArea *global_na;        /* global ptr to notes GUI area */
+extern NotesArea *global_na; /* global ptr to notes GUI area */
 extern GttProjectsTree *projects_tree;
 
-extern GtkWidget *app_window;  /* global top-level window */
+extern GtkWidget *app_window; /* global top-level window */
 extern GtkWidget *status_bar;
 
 /* true if command line over-rides geometry */
@@ -48,15 +47,15 @@ void app_quit(GtkWidget *w, gpointer data);
  * to other subsystems.  Should be replaced ultimately by g_signals.
  */
 
-void focus_row_set (GttProject *);
+void focus_row_set(GttProject *);
 
 /** Run the start/stop shell command for the indicated project.
  *  boolean is true for start, false for stop.  We export this
  *  function only to handle application shutdown when getting signal.
  */
-void run_shell_command (GttProject *, gboolean do_start);
+void run_shell_command(GttProject *, gboolean do_start);
 
 /** Run the shell command. */
-void do_run_shell_command (const char * str);
+void do_run_shell_command(const char *str);
 
 #endif /* __GTT_APP_H__ */

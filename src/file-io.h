@@ -25,8 +25,6 @@
  * user preference data to the default user config file (in .gnome2/gnotime)
  */
 
-
-
 /* The routine gtt_save_config() will save configuration/user-preference
  *    data using gconf2. If an error occurs, a GttErrCode is set.
  *
@@ -38,8 +36,8 @@
  *    it can't find the newer ones first.
  *    If an error occurs, a GttErrCode is set.
  */
-void gtt_save_config (void);
-void gtt_load_config (void);
+void gtt_save_config(void);
+void gtt_load_config(void);
 
 /* The gtt_post_data_config() routine should be called *after* the
  *    project data has been loaded. It performs some final configuration
@@ -51,10 +49,10 @@ void gtt_load_config (void);
  *    viz. restoring expander state.
  */
 
-void gtt_post_data_config (void);
-void gtt_post_ctree_config (void);
+void gtt_post_data_config(void);
+void gtt_post_ctree_config(void);
 
 /* Returns the 'real path' to the config file that was/would be used */
-const char * gtt_get_config_filepath (void);
+const char *gtt_get_config_filepath(void);
 
 #endif /* __GTT_FILEIO_H__ */
