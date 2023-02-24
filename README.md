@@ -7,16 +7,6 @@ lists, organize ideas, track bug reports, keep a diary of activities,
 provide weekly status reports to management, and even works as a consultant
 billing system.
 
-***IMPORTANT*** *Get the latest code from here:*
-https://github.com/markuspg/gnotime/tree/modernize3
-It will compile & run on modern (2023-era) Linux systems!
-
-That code will be soon be merged into
-https://github.com/GnoTime/gnotime
-so be sure to check that, too.
-
-Everything below is stale and has not been updated since 2013.
-
 HomePage
 --------
  * http://gttr.sourceforge.net
@@ -35,19 +25,8 @@ detailed description of these features.
 
 Status
 ------
-The newest and latest version can be found in the "modernize3" branch of
-the @markuspg fork:
-
-https://github.com/markuspg/gnotime/tree/modernize3
-
-The above will compile and run on present-era (2023) Linux systems.
-
-That code will soon be merged into
-https://github.com/GnoTime/gnotime
-and so be sure to check that repo, too.
-
-Note that the above repos are NOT forked from this repo! So if you are
-just looking at forks, you won't find them.
+After being stale since about 2013 there is renewed development of GnoTime.
+This is being managed on [GitHub](https://github.com/GnoTime/gnotime).
 
 
 Obsolete commentary from 2013
@@ -74,28 +53,36 @@ It should build cleanly, and run bug-free w/o issues.
 
 Building
 --------
+The current dependencies of GnoTime are heavily outdated. The current aim is to
+update them to the state of current Debian oldstable (i.e. _Debian Buster_).
+Until this is achieved _Ubuntu 14.04 "Trusty Tahr"_ is being utilized as
+reference platform to verify and test any changes. The below listed packages are
+valid in the realm of this reference platform and should allow an issue-less
+compilation.
 
 ### Required packages:
 ```
+gnome-common
 guile-2.0-dev
-libgtk2.0-dev
-libglade2-dev
+libdbus-glib-1-dev
 libgconf2-dev
+libglade2-dev
+libglib2.0-dev
+libgnome2-dev
+libgnomeui-dev
+libgnomevfs2-dev
+libgtk2.0-dev
+libgtkhtml3.14-dev
+libqof-dev
 libxss-dev
 libxml2-dev
+scrollkeeper
 ```
 
 Developers and maintainers also need:
 ```
 glade-gnome
-```
-
-Where have these wandered off to ???
-```
-libgnome2-dev
-libgnomevfs2-dev
-libgnomeui2-dev
-libgtkhtml-dev
+glade-gtk2
 ```
 
 ### QOF Query Object Framework
