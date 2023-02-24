@@ -1,0 +1,22 @@
+# Set the default behaviour, in case people don't have core.autocrlf set.
+# This is to ensure platform-specific native line endings are used in
+# the working directory, normalized to LF-only inside the repository.
+# It will avoid accidental mixed line endings.
+* text=auto
+
+# Be explicit about some common text files.
+*.h       text
+*.c       text
+*.cpp     text
+*.txt     text
+*.tt      text
+*.md      text
+*.sh      text
+*.xml      text
+*.xpm      text
+
+# Some common binary files, just in case.
+*.png binary
+*.jpg binary
+*.jpeg binary
+
