@@ -81,6 +81,41 @@ GladeXML *gtt_glade_xml_new(const char *filename, const char *widget)
     return xml;
 }
 
+static GtkBuilder *gtt_builder_new_from_exact_file(const char *filename)
+{
+    GtkBuilder *builder = NULL;
+    GError *error = NULL;
+
+    builder = gtk_builder_new();
+    if (!gtk_builder_add_from_file(builder, filename, &error))
+    {
+        g_error ("failed to add UI from file %s: %s", filename, error->message);
+    }
+
+    return builder;
+}
+
+/* GtkBuilder loader, it will look in the right directories */
+GtkBuilder *gtt_builder_new_from_file(const char *filename)
+{
+    GtkBuilder *builder = NULL;
+
+    g_return_val_if_fail(filename != NULL, NULL);
+
+    if (g_file_test(filename, G_FILE_TEST_EXISTS))
+    {
+        builder = gtt_builder_new_from_exact_file(filename);
+    }
+    else
+    {
+        char *file = g_concat_dir_and_file(GTTGLADEDIR, filename);
+        builder = gtt_builder_new_from_exact_file(file);
+        g_free(file);
+    }
+
+    return builder;
+}
+
 /* ============================================================== */
 /* Used to be in qof, but is now deprecated there. */
 
