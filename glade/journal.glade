@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glade-interface>
-  <!-- interface-requires gtk+ 2.24 -->
+<interface>
+  <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
-  <widget class="GtkWindow" id="Journal Window">
+  <object class="GtkWindow" id="Journal Window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">GnoTime: Journal</property>
     <property name="default_width">550</property>
     <property name="default_height">550</property>
     <signal name="destroy" handler="on_close_clicked" swapped="no"/>
     <child>
-      <widget class="GtkVBox" id="vbox1">
+      <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <widget class="GtkToolbar" id="toolbar2">
+          <object class="GtkToolbar" id="toolbar2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">1</property>
             <property name="toolbar_style">both</property>
             <child>
-              <widget class="GtkToolButton" id="publish">
+              <object class="GtkToolButton" id="publish">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
@@ -27,14 +27,14 @@
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-print</property>
                 <signal name="clicked" handler="on_publish_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkToolButton" id="save">
+              <object class="GtkToolButton" id="save">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
@@ -42,14 +42,14 @@
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-save</property>
                 <signal name="clicked" handler="on_save_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkToolButton" id="refresh">
+              <object class="GtkToolButton" id="refresh">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
@@ -57,14 +57,14 @@
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-refresh</property>
                 <signal name="clicked" handler="on_refresh_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkToolButton" id="quit">
+              <object class="GtkToolButton" id="quit">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
@@ -72,13 +72,13 @@
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-close</property>
                 <signal name="clicked" handler="on_close_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
@@ -86,7 +86,7 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkScrolledWindow" id="Journal ScrollWin">
+          <object class="GtkScrolledWindow" id="Journal ScrollWin">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hscrollbar_policy">automatic</property>
@@ -94,25 +94,25 @@
             <child>
               <placeholder/>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-  <widget class="GtkWindow" id="Publish Dialog">
+  </object>
+  <object class="GtkWindow" id="Publish Dialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">GnoTime: Publish Report</property>
     <child>
-      <widget class="GtkVBox" id="vbox2">
+      <object class="GtkVBox" id="vbox2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <widget class="GtkLabel" id="label2">
+          <object class="GtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="xpad">2</property>
@@ -124,7 +124,7 @@ ssh://&lt;i&gt;host.net/some/file/path&lt;/i&gt;
 ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
 </property>
             <property name="use_markup">True</property>
-          </widget>
+          </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
@@ -132,15 +132,15 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox1">
+          <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <widget class="GtkLabel" id="label1">
+              <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">URL:</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -149,14 +149,14 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
               </packing>
             </child>
             <child>
-              <widget class="GtkEntry" id="url entry">
+              <object class="GtkEntry" id="url entry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>
                 <property name="secondary_icon_sensitive">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
@@ -164,7 +164,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
@@ -172,13 +172,13 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
           </packing>
         </child>
         <child>
-          <widget class="GtkHButtonBox" id="hbuttonbox1">
+          <object class="GtkHButtonBox" id="hbuttonbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">4</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="pub help button">
+              <object class="GtkButton" id="pub help button">
                 <property name="label">gtk-help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -187,7 +187,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_help_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -195,7 +195,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="pub cancel button">
+              <object class="GtkButton" id="pub cancel button">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -204,7 +204,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_cancel_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -212,7 +212,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="pub ok button">
+              <object class="GtkButton" id="pub ok button">
                 <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -221,14 +221,14 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_ok_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">2</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
@@ -236,7 +236,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
             <property name="position">2</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-</glade-interface>
+  </object>
+</interface>
