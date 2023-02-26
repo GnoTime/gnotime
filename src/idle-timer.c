@@ -254,7 +254,7 @@ struct notice_events_timer_arg
     Window w;
 };
 
-static gint notice_events_timer(gpointer closure)
+static gboolean notice_events_timer(gpointer closure)
 {
     struct notice_events_timer_arg *arg = (struct notice_events_timer_arg *) closure;
     XErrorHandler old_handler;
@@ -275,7 +275,7 @@ static gint notice_events_timer(gpointer closure)
     XSetErrorHandler(old_handler);
 
     /* we pop once, and we don't pop again */
-    return 0;
+    return G_SOURCE_REMOVE;
 }
 
 static void start_notice_events_timer(IdleTimeout *si, Window w)
@@ -287,7 +287,7 @@ static void start_notice_events_timer(IdleTimeout *si, Window w)
     arg = g_new(struct notice_events_timer_arg, 1);
     arg->si = si;
     arg->w = w;
-    gtk_timeout_add(si->notice_events_timeout * 1000, notice_events_timer, (gpointer) arg);
+    g_timeout_add(si->notice_events_timeout * 1000, notice_events_timer, (gpointer) arg);
 }
 
 /* ===================================================================== */
@@ -773,7 +773,7 @@ static Bool if_event_predicate(Display *dpy, XEvent *ev, XPointer arg)
  * so that other timers & etc. get properly handled.
  */
 
-static int idle_timeout_main_loop(gpointer data)
+static gboolean idle_timeout_main_loop(gpointer data)
 {
     IdleTimeout *si = data;
     int quit_now = 0;
@@ -815,7 +815,8 @@ static int idle_timeout_main_loop(gpointer data)
                 return 0;
         }
     }
-    return 0;
+
+    return G_SOURCE_REMOVE;
 }
 
 /* ===================================================================== */
@@ -867,7 +868,7 @@ IdleTimeout *idle_timeout_new(void)
         /* Check to see if the mouse has moved, and set up a repeating timer
            to do so periodically (typically, every 5 seconds.) */
         si->check_pointer_timer_id
-            = gtk_timeout_add(si->pointer_timeout * 1000, check_pointer_timer, (gpointer) si);
+            = g_timeout_add(si->pointer_timeout * 1000, check_pointer_timer, (gpointer) si);
 
         /* run it once, to initialze stuff */
         check_pointer_timer((gpointer) si);
@@ -881,7 +882,7 @@ IdleTimeout *idle_timeout_new(void)
         notice_events(si, DefaultRootWindow(si->dpy), True);
 
         /* hijack the main loop; this is the only way to get events */
-        gtk_timeout_add(900, idle_timeout_main_loop, (gpointer) si);
+        g_timeout_add(900, idle_timeout_main_loop, (gpointer) si);
     }
 
     return si;
