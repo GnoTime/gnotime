@@ -19,12 +19,11 @@
 #ifndef __GTT_H__
 #define __GTT_H__
 
-
 #include <gnome.h>
 
-#define GTT_APP_TITLE        "Gnome Time Tracker"
-#define GTT_APP_PROPER_NAME  "GnoTime"
-#define GTT_APP_NAME         "gnotime"
+#define GTT_APP_TITLE "Gnome Time Tracker"
+#define GTT_APP_PROPER_NAME "GnoTime"
+#define GTT_APP_NAME "gnotime"
 
 #define XML_DATA_FILENAME "gnotime.d/gnotime-data.xml"
 
@@ -37,27 +36,26 @@ void err_init(void);
 /* The save_all() routine will write out all state to files.
  *    If an error occurs, it returns an error message.
  */
-char * save_all (void);
+char *save_all(void);
 
 /* The save_properties() routine will write out the application
  * properties to the application file.  It will pop up a warning
  * gui window if the save fails for some reason.
  */
-void save_properties (void);
+void save_properties(void);
 
 /* The save_projects() routine will write out the project data
  * to the data file.  It will pop up a warning
  * gui window if the save fails for some reason.
  */
-void save_projects (void);
+void save_projects(void);
 
 /* The read_data() routine will load the project data file
    and setup the interface with the new data
  */
-void read_data (gboolean);
+void read_data(gboolean);
 
 void unlock_gtt(void);
 const char *gtt_gettext(const char *s);
-
 
 #endif /* __GTT_H__ */

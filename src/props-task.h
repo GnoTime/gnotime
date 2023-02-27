@@ -16,7 +16,6 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #ifndef __PROPS_TASK_H__
 #define __PROPS_TASK_H__
 
@@ -29,7 +28,6 @@
 void prop_task_dialog_show(GttTask *task);
 
 /* priavte timer func for dealing with fast typeists */
-void gtt_diary_timer_callback (gpointer);
-
+void gtt_diary_timer_callback(gpointer);
 
 #endif /* __PROPS_TASK_H__ */

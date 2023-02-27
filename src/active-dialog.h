@@ -37,12 +37,12 @@
 
 typedef struct GttActiveDialog_s GttActiveDialog;
 
-GttActiveDialog * active_dialog_new (void);
+GttActiveDialog *active_dialog_new(void);
 
 /** This routine will display the active dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
  */
-void show_active_dialog (GttActiveDialog *id);
+void show_active_dialog(GttActiveDialog *id);
 
 /** This routine will raise the active dialog to the top of the
  *  current screen. But it will do this only if the active dialog
@@ -52,9 +52,9 @@ void show_active_dialog (GttActiveDialog *id);
  *  another window, or it ends up on a different workspace than the
  *  current workspace, and so the user can't see it, can't find it.
  */
-void raise_active_dialog (GttActiveDialog *id);
+void raise_active_dialog(GttActiveDialog *id);
 
-void active_dialog_activate_timer (GttActiveDialog *id);
-void active_dialog_deactivate_timer (GttActiveDialog *id);
+void active_dialog_activate_timer(GttActiveDialog *id);
+void active_dialog_deactivate_timer(GttActiveDialog *id);
 
 #endif /* GTT_ACTIVITY_DIALOG_H_ */

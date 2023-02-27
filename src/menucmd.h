@@ -30,7 +30,7 @@ void export_current_state(GtkWidget *, gpointer);
 void cut_project(GtkWidget *w, gpointer data);
 void paste_project(GtkWidget *w, gpointer data);
 void copy_project(GtkWidget *w, gpointer data);
-gboolean have_cutted_project (void);
+gboolean have_cutted_project(void);
 
 void menu_start_timer(GtkWidget *w, gpointer data);
 void menu_stop_timer(GtkWidget *w, gpointer data);
@@ -44,7 +44,7 @@ void menu_properties(GtkWidget *w, gpointer data);
 
 void menu_clear_daily_counter(GtkWidget *w, gpointer data);
 
-void menu_howto_edit_times (GtkWidget *w,gpointer data);
+void menu_howto_edit_times(GtkWidget *w, gpointer data);
 
 #ifdef DEBUG
 void menu_test(GtkWidget *w, gpointer data);

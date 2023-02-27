@@ -26,8 +26,8 @@
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
-#include <glib.h>
 #include "proj.h"
+#include <glib.h>
 
 void gtt_status_icon_create();
 void gtt_status_icon_destroy();

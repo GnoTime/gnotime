@@ -38,7 +38,7 @@
 
 typedef struct GttIdleDialog_s GttIdleDialog;
 
-GttIdleDialog * idle_dialog_new (void);
+GttIdleDialog *idle_dialog_new(void);
 
 /** This routine will display the idle dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.
@@ -46,7 +46,7 @@ GttIdleDialog * idle_dialog_new (void);
  *  be stopped (and the ctree display to be updated to reflect the
  *  stopped project).
  */
-void show_idle_dialog (GttIdleDialog *id);
+void show_idle_dialog(GttIdleDialog *id);
 
 /** This routine will raise the idle dialog to the top of the
  *  current screen. But it will do this only if the idle dialog
@@ -56,17 +56,16 @@ void show_idle_dialog (GttIdleDialog *id);
  *  another window, or it ends up on a different workspace than the
  *  current workspace, and so the user can't see it, can't find it.
  */
-void raise_idle_dialog (GttIdleDialog *id);
+void raise_idle_dialog(GttIdleDialog *id);
 
 /** This routine will activate the idle timer, so that the idle dialog
  *  is raised when needed.
  */
-void idle_dialog_activate_timer (GttIdleDialog *id);
-
+void idle_dialog_activate_timer(GttIdleDialog *id);
 
 /** This routine will deactivate the idle timer.
  */
-void idle_dialog_deactivate_timer (GttIdleDialog *id);
+void idle_dialog_deactivate_timer(GttIdleDialog *id);
 
 gboolean idle_dialog_is_visible(GttIdleDialog *id);
 

@@ -21,20 +21,19 @@
 #include <glib.h>
 
 #include "cur-proj.h"
-#include "proj.h"
 #include "proj-query.h"
+#include "proj.h"
 
 /* =========================================================== */
 
-GList *
-gtt_project_get_unfinished (void)
+GList *gtt_project_get_unfinished(void)
 {
-	GList *prjlist;
+    GList *prjlist;
 
-	/* XXX under construction */
-	prjlist = gtt_project_list_get_list (master_list);
+    /* XXX under construction */
+    prjlist = gtt_project_list_get_list(master_list);
 
-	return prjlist;
+    return prjlist;
 }
 
 /* =========================== END OF FILE ========================= */

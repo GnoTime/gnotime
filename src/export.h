@@ -21,6 +21,6 @@
 #define __GTT_EXPORT_H__
 
 /* bring up dialog for picking the export format, file, etc. */
-void export_file_picker (GtkWidget *widget, gpointer data);
+void export_file_picker(GtkWidget *widget, gpointer data);
 
 #endif /* __GTT_EXPORT_H__ */
