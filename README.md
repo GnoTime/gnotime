@@ -70,7 +70,6 @@ libglade2-dev
 libglib2.0-dev
 libgnome2-dev
 libgnomeui-dev
-libgnomevfs2-dev
 libgtk2.0-dev
 libgtkhtml3.14-dev
 libqof-dev
