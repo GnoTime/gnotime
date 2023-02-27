@@ -17,21 +17,34 @@
  */
 
 #include <config.h>
-#include <gnome.h>
-#include <libgnome/gnome-help.h>
 
 #include "dialog.h"
+
+#include <string.h>
 
 /* ================================================================= */
 
 void gtt_help_popup(GtkWidget *widget, gpointer data)
 {
+    const gchar *const section = data;
+
+    gchar *uri = NULL;
+    if ((NULL != section) && (0 != strcmp("", section)))
+    {
+        uri = g_strdup_printf("ghelp:gnotime#%s", section);
+    }
+    else
+    {
+        uri = g_strdup("ghelp:gnotime");
+    }
+
     GError *err = NULL;
-    char *section = data;
-    if ((section != NULL) && !strcmp("", section))
-        section = NULL;
-    gnome_help_display("gnotime", section, &err);
-    if (err)
+    const gboolean ret = gtk_show_uri(NULL, uri, GDK_CURRENT_TIME, &err);
+
+    g_free(uri);
+    uri = NULL;
+
+    if (FALSE == ret)
     {
         GtkWidget *mb;
         mb = gtk_message_dialog_new(
@@ -41,7 +54,10 @@ void gtt_help_popup(GtkWidget *widget, gpointer data)
         g_signal_connect(G_OBJECT(mb), "response", G_CALLBACK(gtk_widget_destroy), mb);
         gtk_widget_show(mb);
 
-        printf("duude gnome help err msg: %s\n", err->message);
+        g_warning("Failed to open documentation: %s", err->message);
+
+        g_error_free(err);
+        err = NULL;
     }
 }
 
