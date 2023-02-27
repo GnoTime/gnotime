@@ -19,7 +19,6 @@
 #include <config.h>
 #include <glib.h>
 #include <gnome.h>
-#include <libgnomevfs/gnome-vfs.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,40 +27,49 @@
 #include "prefs.h"
 #include "proj.h"
 
+#include <gio/gio.h>
+
 #define CAN_LOG ((config_logfile_name != NULL) && (config_logfile_use))
 
 static gboolean log_write(time_t t, const char *logstr)
 {
     char date[256];
     char *filename;
-    GnomeVFSHandle *handle;
-    GnomeVFSResult result;
 
     g_return_val_if_fail(logstr != NULL, FALSE);
 
     if (!CAN_LOG)
         return TRUE;
 
+    GFile *log_file = NULL;
     if ((config_logfile_name[0] == '~') && (config_logfile_name[1] == '/')
         && (config_logfile_name[2] != 0))
     {
         filename = gnome_util_prepend_user_home(&config_logfile_name[2]);
 
-        result = gnome_vfs_create(&handle, filename, GNOME_VFS_OPEN_WRITE, FALSE, 0644);
+        log_file = g_file_new_for_path(filename);
         g_free(filename);
     }
     else
     {
-        result
-            = gnome_vfs_create(&handle, config_logfile_name, GNOME_VFS_OPEN_WRITE, FALSE, 0644);
+        log_file = g_file_new_for_path(config_logfile_name);
     }
 
-    if (GNOME_VFS_OK != result)
+    GError *error = NULL;
+    GFileOutputStream *log_ostream
+        = g_file_append_to(log_file, G_FILE_CREATE_NONE, NULL, &error);
+    if (NULL == log_ostream)
     {
         g_warning(
-            _("Cannot open logfile %s for append: %s"), config_logfile_name,
-            gnome_vfs_result_to_string(result)
+            _("Cannot open logfile %s for append: %s"), config_logfile_name, error->message
         );
+
+        g_error_free(error);
+        error = NULL;
+
+        g_object_unref(log_file);
+        log_file = NULL;
+
         return FALSE;
     }
 
@@ -74,13 +82,31 @@ static gboolean log_write(time_t t, const char *logstr)
         strcpy(date, "???");
 
     /* Append to end of file */
-    gnome_vfs_seek(handle, GNOME_VFS_SEEK_END, 0);
-    GnomeVFSFileSize bytes_written;
-    gnome_vfs_write(handle, date, strlen(date), &bytes_written);
-    gnome_vfs_write(handle, logstr, strlen(logstr), &bytes_written);
-    gnome_vfs_write(handle, "\n", 1, &bytes_written);
+    // TODO: Improve error handling
+    gsize bytes_written;
+    g_output_stream_write_all(
+        G_OUTPUT_STREAM(log_ostream), date, strlen(date), &bytes_written, NULL, &error
+    );
+    g_output_stream_write_all(
+        G_OUTPUT_STREAM(log_ostream), logstr, strlen(logstr), &bytes_written, NULL, &error
+    );
+    g_output_stream_write_all(
+        G_OUTPUT_STREAM(log_ostream), "\n", 1, &bytes_written, NULL, &error
+    );
 
-    gnome_vfs_close(handle);
+    if (FALSE == g_output_stream_close(G_OUTPUT_STREAM(log_ostream), NULL, &error))
+    {
+        g_warning("Failed to close log file: %s", error->message);
+
+        g_error_free(error);
+        error = NULL;
+    }
+
+    g_object_unref(log_ostream);
+    log_ostream = NULL;
+    g_object_unref(log_file);
+    log_file = NULL;
+
     return TRUE;
 }
 
