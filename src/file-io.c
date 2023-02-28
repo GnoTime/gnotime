@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt-gsettings-io.h"
+
 #include <errno.h>
 #include <glib.h>
 #include <gnome.h>
@@ -564,6 +566,8 @@ void gtt_load_config(void)
     const char *h;
     char *s;
 
+    gtt_gsettings_load();
+
     /* Check for gconf2, and use that if it exists */
     if (gtt_gconf_exists())
     {
@@ -689,6 +693,8 @@ void gtt_post_ctree_config(void)
 void gtt_save_config(void)
 {
     gtt_gconf_save();
+
+    gtt_gsettings_save();
 }
 
 /* ======================================================= */

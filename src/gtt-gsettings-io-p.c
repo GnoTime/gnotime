@@ -14,15 +14,18 @@
  * 02111-1307  USA
  */
 
-#ifndef GTT_GSETTINGS_IO_H
-#define GTT_GSETTINGS_IO_H
+#include "gtt-gsettings-io-p.h"
 
-void gtt_gsettings_init(void);
-
-void gtt_gsettings_deinit(void);
-
-void gtt_gsettings_load(void);
-
-void gtt_gsettings_save(void);
-
-#endif // GTT_GSETTINGS_IO_H
+/**
+ * @brief Set an integer GSettings option and log a message on error
+ * @param settings The GSettings object to set the value on
+ * @param key The key of the value to be set
+ * @param value The actual value to be set
+ */
+void gtt_gsettings_set_int(GSettings *const settings, const gchar *const key, const gint value)
+{
+    if (FALSE == g_settings_set_int(settings, key, value))
+    {
+        g_warning("Failed to set integer option \"%s\" to value: %d", key, value);
+    }
+}

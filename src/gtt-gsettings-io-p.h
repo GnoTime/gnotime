@@ -14,15 +14,11 @@
  * 02111-1307  USA
  */
 
-#ifndef GTT_GSETTINGS_IO_H
-#define GTT_GSETTINGS_IO_H
+#ifndef GTT_GSETTINGS_IO_P_H
+#define GTT_GSETTINGS_IO_P_H
 
-void gtt_gsettings_init(void);
+#include <gio/gio.h>
 
-void gtt_gsettings_deinit(void);
+void gtt_gsettings_set_int(GSettings *settings, const gchar *key, gint value);
 
-void gtt_gsettings_load(void);
-
-void gtt_gsettings_save(void);
-
-#endif // GTT_GSETTINGS_IO_H
+#endif // GTT_GSETTINGS_IO_P_H
