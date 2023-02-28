@@ -18,6 +18,8 @@
  */
 #include "config.h"
 
+#include "gtt-gsettings-io.h"
+
 #include <gnome.h>
 #include <sched.h>
 #include <stdio.h>
@@ -559,6 +561,7 @@ void app_quit(GtkWidget *w, gpointer data)
 {
     save_properties();
     save_projects();
+    gtt_gsettings_deinit();
     gtt_status_icon_destroy();
     gtk_main_quit();
 }
