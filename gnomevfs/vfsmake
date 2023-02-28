@@ -1,7 +1,0 @@
-
-all:
-	cc vfs-module.c -c -fPIC  \
-	`pkg-config --cflags glib-2.0 gnome-vfs-module-2.0` 
-	cc vfs-module.o -shared -Wl,-soname,-libgtt.so -o libgtt.so \
-		`pkg-config --libs glib-2.0 gnome-vfs-module-2.0` 
-
