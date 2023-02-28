@@ -34,7 +34,6 @@ add_executable(${PROJECT_NAME}
     main.c
     menucmd.c
     menus.c
-    myoaf.c
     notes-area.c
     plug-edit.c
     plug-in.c
