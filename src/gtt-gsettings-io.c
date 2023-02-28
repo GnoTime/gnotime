@@ -18,6 +18,8 @@
 
 #include "app.h"
 #include "gtt-gsettings-io-p.h"
+#include "prefs.h"
+#include "toolbar.h"
 
 #include <gio/gio.h>
 
@@ -87,6 +89,42 @@ void gtt_gsettings_load(void)
         g_object_unref(geometry);
         geometry = NULL;
     }
+
+    const gboolean _c = config_show_tb_ccp;
+    const gboolean _e = config_show_tb_exit;
+    const gboolean _h = config_show_tb_help;
+    const gboolean _j = config_show_tb_journal;
+    const gboolean _n = config_show_tb_new;
+    const gboolean _o = config_show_tb_pref;
+    const gboolean _p = config_show_tb_prop;
+    const gboolean _t = config_show_tb_timer;
+
+    // Toolbar -----------------------------------------------------------------
+    {
+        GSettings *toolbar = g_settings_get_child(settings_obj, "toolbar");
+
+        config_show_tb_ccp = g_settings_get_boolean(toolbar, "show-ccp");
+        config_show_tb_exit = g_settings_get_boolean(toolbar, "show-exit");
+        config_show_tb_help = g_settings_get_boolean(toolbar, "show-help");
+        config_show_tb_journal = g_settings_get_boolean(toolbar, "show-journal");
+        config_show_tb_new = g_settings_get_boolean(toolbar, "show-new");
+        config_show_tb_pref = g_settings_get_boolean(toolbar, "show-pref");
+        config_show_tb_prop = g_settings_get_boolean(toolbar, "show-prop");
+        config_show_tb_tips = g_settings_get_boolean(toolbar, "show-tips");
+        config_show_tb_timer = g_settings_get_boolean(toolbar, "show-timer");
+        config_show_toolbar = g_settings_get_boolean(toolbar, "show-toolbar");
+
+        g_object_unref(toolbar);
+        toolbar = NULL;
+    }
+
+    if ((_n != config_show_tb_new) || (_c != config_show_tb_ccp)
+        || (_j != config_show_tb_journal) || (_p != config_show_tb_prop)
+        || (_t != config_show_tb_timer) || (_o != config_show_tb_pref)
+        || (_h != config_show_tb_help) || (_e != config_show_tb_exit))
+    {
+        update_toolbar_sections();
+    }
 }
 
 void gtt_gsettings_save(void)
@@ -114,5 +152,24 @@ void gtt_gsettings_save(void)
 
         g_object_unref(geometry);
         geometry = NULL;
+    }
+
+    // Toolbar -----------------------------------------------------------------
+    {
+        GSettings *toolbar = g_settings_get_child(settings_obj, "toolbar");
+
+        gtt_gsettings_set_bool(toolbar, "show-ccp", config_show_tb_ccp);
+        gtt_gsettings_set_bool(toolbar, "show-exit", config_show_tb_exit);
+        gtt_gsettings_set_bool(toolbar, "show-help", config_show_tb_help);
+        gtt_gsettings_set_bool(toolbar, "show-journal", config_show_tb_journal);
+        gtt_gsettings_set_bool(toolbar, "show-new", config_show_tb_new);
+        gtt_gsettings_set_bool(toolbar, "show-pref", config_show_tb_pref);
+        gtt_gsettings_set_bool(toolbar, "show-prop", config_show_tb_prop);
+        gtt_gsettings_set_bool(toolbar, "show-timer", config_show_tb_timer);
+        gtt_gsettings_set_bool(toolbar, "show-tips", config_show_tb_tips);
+        gtt_gsettings_set_bool(toolbar, "show-toolbar", config_show_toolbar);
+
+        g_object_unref(toolbar);
+        toolbar = NULL;
     }
 }

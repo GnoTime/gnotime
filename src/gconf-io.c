@@ -127,18 +127,6 @@ void gtt_gconf_save(void)
     SETSTR("/Display/ExpanderState", xpn);
 
     /* ------------- */
-    SETBOOL("/Toolbar/ShowToolbar", config_show_toolbar);
-    SETBOOL("/Toolbar/ShowTips", config_show_tb_tips);
-    SETBOOL("/Toolbar/ShowNew", config_show_tb_new);
-    SETBOOL("/Toolbar/ShowCCP", config_show_tb_ccp);
-    SETBOOL("/Toolbar/ShowJournal", config_show_tb_journal);
-    SETBOOL("/Toolbar/ShowProp", config_show_tb_prop);
-    SETBOOL("/Toolbar/ShowTimer", config_show_tb_timer);
-    SETBOOL("/Toolbar/ShowPref", config_show_tb_pref);
-    SETBOOL("/Toolbar/ShowHelp", config_show_tb_help);
-    SETBOOL("/Toolbar/ShowExit", config_show_tb_exit);
-
-    /* ------------- */
     if (config_shell_start)
     {
         SETSTR("/Actions/StartCommand", config_shell_start);
@@ -328,7 +316,6 @@ void gtt_restore_reports_menu(GnomeApp *app)
 void gtt_gconf_load(void)
 {
     int i, num;
-    int _n, _c, _j, _p, _t, _o, _h, _e;
     GConfClient *client;
 
     client = gconf_client_get_default();
@@ -343,15 +330,6 @@ void gtt_gconf_load(void)
          * the project list is destroyed ... */
         first_proj_title = g_strdup(gtt_project_get_title(cur_proj));
     }
-
-    _n = config_show_tb_new;
-    _c = config_show_tb_ccp;
-    _j = config_show_tb_journal;
-    _p = config_show_tb_prop;
-    _t = config_show_tb_timer;
-    _o = config_show_tb_pref;
-    _h = config_show_tb_help;
-    _e = config_show_tb_exit;
 
     /* Get last running project */
     cur_proj_id = GETINT("/Misc/CurrProject", -1);
@@ -390,18 +368,6 @@ void gtt_gconf_load(void)
     config_show_title_status = GETBOOL("/Display/ShowStatus", FALSE);
 
     prefs_update_projects_view();
-
-    /* ------------ */
-    config_show_toolbar = GETBOOL("/Toolbar/ShowToolbar", TRUE);
-    config_show_tb_tips = GETBOOL("/Toolbar/ShowTips", TRUE);
-    config_show_tb_new = GETBOOL("/Toolbar/ShowNew", TRUE);
-    config_show_tb_ccp = GETBOOL("/Toolbar/ShowCCP", FALSE);
-    config_show_tb_journal = GETBOOL("/Toolbar/ShowJournal", TRUE);
-    config_show_tb_prop = GETBOOL("/Toolbar/ShowProp", TRUE);
-    config_show_tb_timer = GETBOOL("/Toolbar/ShowTimer", TRUE);
-    config_show_tb_pref = GETBOOL("/Toolbar/ShowPref", FALSE);
-    config_show_tb_help = GETBOOL("/Toolbar/ShowHelp", TRUE);
-    config_show_tb_exit = GETBOOL("/Toolbar/ShowExit", TRUE);
 
     /* ------------ */
     config_shell_start = GETSTR(
@@ -460,13 +426,6 @@ void gtt_gconf_load(void)
     }
 
     update_status_bar();
-    if ((_n != config_show_tb_new) || (_c != config_show_tb_ccp)
-        || (_j != config_show_tb_journal) || (_p != config_show_tb_prop)
-        || (_t != config_show_tb_timer) || (_o != config_show_tb_pref)
-        || (_h != config_show_tb_help) || (_e != config_show_tb_exit))
-    {
-        update_toolbar_sections();
-    }
 }
 
 gchar *gtt_gconf_get_expander(void)

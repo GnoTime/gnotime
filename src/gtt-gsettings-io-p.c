@@ -17,6 +17,25 @@
 #include "gtt-gsettings-io-p.h"
 
 /**
+ * @brief Set a boolean GSettings option and log a message on error
+ * @param settings The GSettings object to set the value on
+ * @param key The key of the value to be set
+ * @param value The actual value to be set
+ */
+void gtt_gsettings_set_bool(
+    GSettings *const settings, const gchar *const key, const gboolean value
+)
+{
+    if (FALSE == g_settings_set_boolean(settings, key, value))
+    {
+        g_warning(
+            "Failed to set boolean option \"%s\" to value: %s", key,
+            (TRUE == value) ? "true" : "false"
+        );
+    }
+}
+
+/**
  * @brief Set an integer GSettings option and log a message on error
  * @param settings The GSettings object to set the value on
  * @param key The key of the value to be set
