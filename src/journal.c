@@ -677,13 +677,13 @@ static void on_close_clicked_cb(GtkWidget *w, gpointer data)
      * pop after the destroy has happened. */
     if (wig->hover_timeout_id)
     {
-        gtk_timeout_remove(wig->hover_timeout_id);
+        g_source_remove(wig->hover_timeout_id);
         wig->hover_timeout_id = 0;
         gtk_widget_hide(wig->hover_help_window);
     }
     if (wig->hover_kill_id)
     {
-        gtk_timeout_remove(wig->hover_kill_id);
+        g_source_remove(wig->hover_kill_id);
         wig->hover_kill_id = 0;
         gtk_widget_hide(wig->hover_help_window);
     }
@@ -851,15 +851,19 @@ static char *get_hover_msg(const gchar *url)
     return g_strdup(msg);
 }
 
-static gint hover_kill_func(gpointer data)
+static gboolean hover_kill_func(gpointer data)
 {
     Wiggy *wig = data;
 
     gtk_widget_hide(wig->hover_help_window);
-    return 0;
+
+    // Auto-destroyed - don't let anything else try to destroy the source again.
+    wig->hover_kill_id = 0;
+
+    return G_SOURCE_REMOVE;
 }
 
-static gint hover_timer_func(gpointer data)
+static gboolean hover_timer_func(gpointer data)
 {
     Wiggy *wig = data;
 
@@ -878,8 +882,12 @@ static gint hover_timer_func(gpointer data)
      * screen indefinitely.  So, in case of turds, hide the hover help
      * after 8 seconds.
      */
-    wig->hover_kill_id = gtk_timeout_add(8000, hover_kill_func, wig);
-    return 0;
+    wig->hover_kill_id = g_timeout_add(8000, hover_kill_func, wig);
+
+    // Auto-destroyed - don't let anything else try to destroy the source again.
+    wig->hover_timeout_id = 0;
+
+    return G_SOURCE_REMOVE;
 }
 
 /* If the html window looses focus, we've got to hide the flyover help;
@@ -891,7 +899,7 @@ static gboolean hover_loose_focus(GtkWidget *w, GdkEventFocus *ev, gpointer data
 
     if (wig->hover_timeout_id)
     {
-        gtk_timeout_remove(wig->hover_timeout_id);
+        g_source_remove(wig->hover_timeout_id);
         wig->hover_timeout_id = 0;
         gtk_widget_hide(wig->hover_help_window);
     }
@@ -956,13 +964,13 @@ static void html_on_url_cb(GtkHTML *doc, const gchar *url, gpointer data)
     if (url)
     {
         /* 600 milliseconds == 0.6 second */
-        wig->hover_timeout_id = gtk_timeout_add(600, hover_timer_func, wig);
+        wig->hover_timeout_id = g_timeout_add(600, hover_timer_func, wig);
     }
     else
     {
         if (wig->hover_timeout_id)
         {
-            gtk_timeout_remove(wig->hover_timeout_id);
+            g_source_remove(wig->hover_timeout_id);
             wig->hover_timeout_id = 0;
             gtk_widget_hide(wig->hover_help_window);
         }
