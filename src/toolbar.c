@@ -27,7 +27,6 @@
 #include "journal.h"
 #include "menucmd.h"
 #include "menus.h"
-#include "myoaf.h"
 #include "prefs.h"
 #include "timer.h"
 #include "toolbar.h"
@@ -44,7 +43,6 @@ struct _MyToolbar
     GtkWidget *prop_w;
     GtkWidget *timer_button;
     GtkImage *timer_button_image;
-    GtkWidget *calendar_w;
     GtkWidget *pref;
     GtkWidget *help;
     GtkWidget *exit;
@@ -204,16 +202,7 @@ GtkWidget *build_toolbar(void)
             );
             position++;
         }
-        if (config_show_tb_calendar)
-        {
-            mytbar->calendar_w = toolbar_append_stock_button(
-                mytbar->tbar, _("Calendar"), _("View Calendar"), GNOME_STOCK_TEXT_BULLETED_LIST,
-                (GtkSignalFunc) edit_calendar, NULL
-            );
-            position++;
-        }
-        if (((config_show_tb_timer) || (config_show_tb_journal) || (config_show_tb_calendar)
-             || (config_show_tb_prop))
+        if (((config_show_tb_timer) || (config_show_tb_journal) || (config_show_tb_prop))
             && ((config_show_tb_pref) || (config_show_tb_help) || (config_show_tb_exit)))
         {
             gtk_toolbar_append_space(mytbar->tbar);
@@ -289,7 +278,6 @@ void update_toolbar_sections(void)
     ZAP(mytbar->journal_button);
     ZAP(mytbar->prop_w);
     ZAP(mytbar->timer_button);
-    ZAP(mytbar->calendar_w);
     ZAP(mytbar->pref);
     ZAP(mytbar->help);
     ZAP(mytbar->exit);
