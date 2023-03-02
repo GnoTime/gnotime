@@ -118,6 +118,17 @@ void gtt_gsettings_load(void)
         toolbar = NULL;
     }
 
+    // Report ------------------------------------------------------------------
+    {
+        GSettings *report = g_settings_get_child(settings_obj, "report");
+
+        gtt_gsettings_get_str(report, "currency-symbol", &config_currency_symbol);
+        config_currency_use_locale = g_settings_get_boolean(report, "currency-use-locale");
+
+        g_object_unref(report);
+        report = NULL;
+    }
+
     if ((_n != config_show_tb_new) || (_c != config_show_tb_ccp)
         || (_j != config_show_tb_journal) || (_p != config_show_tb_prop)
         || (_t != config_show_tb_timer) || (_o != config_show_tb_pref)
@@ -171,5 +182,16 @@ void gtt_gsettings_save(void)
 
         g_object_unref(toolbar);
         toolbar = NULL;
+    }
+
+    // Report ------------------------------------------------------------------
+    {
+        GSettings *report = g_settings_get_child(settings_obj, "report");
+
+        gtt_gsettings_set_str(report, "currency-symbol", config_currency_symbol);
+        gtt_gsettings_set_bool(report, "currency-use-locale", config_currency_use_locale);
+
+        g_object_unref(report);
+        report = NULL;
     }
 }

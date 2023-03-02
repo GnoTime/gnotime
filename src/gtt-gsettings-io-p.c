@@ -17,6 +17,26 @@
 #include "gtt-gsettings-io-p.h"
 
 /**
+ * @brief Retrieve a string GSettings option
+ * @param settings The GSettings object to  retrieve the value from
+ * @param key The key of the value to be retrieved
+ * @param[in,out] value Pointer to hold the string value, will be `g_free`'d in case it already
+ *   holds a value
+ */
+void gtt_gsettings_get_str(
+    GSettings *const settings, const gchar *const key, gchar **const value
+)
+{
+    if (NULL != *value)
+    {
+        g_free(*value);
+        *value = NULL;
+    }
+
+    *value = g_settings_get_string(settings, key);
+}
+
+/**
  * @brief Set a boolean GSettings option and log a message on error
  * @param settings The GSettings object to set the value on
  * @param key The key of the value to be set
@@ -46,5 +66,21 @@ void gtt_gsettings_set_int(GSettings *const settings, const gchar *const key, co
     if (FALSE == g_settings_set_int(settings, key, value))
     {
         g_warning("Failed to set integer option \"%s\" to value: %d", key, value);
+    }
+}
+
+/**
+ * @brief Set a string GSettings option and log a message on error
+ * @param settings The GSettings object to set the value on
+ * @param key The key of the value to be set
+ * @param value The actual value to be set
+ */
+void gtt_gsettings_set_str(
+    GSettings *const settings, const gchar *const key, const gchar *const value
+)
+{
+    if (FALSE == g_settings_set_string(settings, key, value))
+    {
+        g_warning("Failed to set string option \"%s\" to value: \"%s\"", key, value);
     }
 }

@@ -2,6 +2,7 @@
 <schemalist gettext-domain="gnotime-2.0">
   <schema id="org.gnotime.app" path="/org/gnotime/app/">
     <child name="geometry" schema="org.gnotime.app.geometry"/>
+    <child name="report" schema="org.gnotime.app.report"/>
     <child name="toolbar" schema="org.gnotime.app.toolbar"/>
   </schema>
 
@@ -33,6 +34,19 @@
     </key>
     <key name="y" type="i">
       <default>10</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.report" path="/org/gnotime/app/report/">
+    <key name="currency-symbol" type="s">
+      <default>'$'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="currency-use-locale" type="b">
+      <default>true</default>
       <summary>TODO</summary>
       <description>TODO</description>
     </key>
