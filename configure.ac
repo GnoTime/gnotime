@@ -1,4 +1,6 @@
-AC_INIT(src)
+AC_INIT
+dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c.
+AC_CONFIG_SRCDIR([src/gtt.h])
 AM_INIT_AUTOMAKE(gnotime, 2.99.0)
 
 dnl AC_PROG_INTLTOOL
