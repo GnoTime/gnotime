@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gnotime-2.0">
   <schema id="org.gnotime.app" path="/org/gnotime/app/">
+    <child name="actions" schema="org.gnotime.app.actions"/>
     <child name="display" schema="org.gnotime.app.display"/>
     <child name="geometry" schema="org.gnotime.app.geometry"/>
     <child name="log-file" schema="org.gnotime.app.log-file"/>
     <child name="report" schema="org.gnotime.app.report"/>
     <child name="toolbar" schema="org.gnotime.app.toolbar"/>
+  </schema>
+
+  <schema id="org.gnotime.app.actions" path="/org/gnotime/app/actions/">
+    <key name="start-command" type="ms">
+      <default>'echo start id=%D \\&quot;%t\\&quot;-\\&quot;%d\\&quot; %T  %H-%M-%S hours=%h min=%m secs=%s'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="stop-command" type="ms">
+      <default>'echo stop id=%D \\&quot;%t\\&quot;-\\&quot;%d\\&quot; %T  %H-%M-%S hours=%h min=%m secs=%s'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
   </schema>
 
   <schema id="org.gnotime.app.display" path="/org/gnotime/app/display/">

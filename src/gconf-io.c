@@ -98,25 +98,6 @@ void gtt_gconf_save(void)
     SETINT("/dir_exists", 1);
 
     /* ------------- */
-    if (config_shell_start)
-    {
-        SETSTR("/Actions/StartCommand", config_shell_start);
-    }
-    else
-    {
-        UNSET("/Actions/StartCommand");
-    }
-
-    if (config_shell_stop)
-    {
-        SETSTR("/Actions/StopCommand", config_shell_stop);
-    }
-    else
-    {
-        UNSET("/Actions/StopCommand");
-    }
-
-    /* ------------- */
     SETSTR("/Data/URL", config_data_url);
     SETINT("/Data/SaveCount", save_count);
 
@@ -278,16 +259,6 @@ void gtt_gconf_load(void)
     config_weekstart_offset = GETINT("/Misc/WeekStartOffset", 0);
 
     prefs_update_projects_view();
-
-    /* ------------ */
-    config_shell_start = GETSTR(
-        "/Actions/StartCommand",
-        "echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s"
-    );
-    config_shell_stop = GETSTR(
-        "/Actions/StopCommand",
-        "echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s"
-    );
 
     /* ------------ */
     config_time_format = GETINT("/time_format", 3);

@@ -169,6 +169,17 @@ void gtt_gsettings_load(void)
         toolbar = NULL;
     }
 
+    // Actions -----------------------------------------------------------------
+    {
+        GSettings *actions = g_settings_get_child(settings_obj, "actions");
+
+        gtt_gsettings_get_maybe_str(actions, "start-command", &config_shell_start);
+        gtt_gsettings_get_maybe_str(actions, "stop-command", &config_shell_stop);
+
+        g_object_unref(actions);
+        actions = NULL;
+    }
+
     // Log-File ----------------------------------------------------------------
     {
         GSettings *log_file = g_settings_get_child(settings_obj, "log-file");
@@ -297,6 +308,17 @@ void gtt_gsettings_save(void)
 
         g_object_unref(toolbar);
         toolbar = NULL;
+    }
+
+    // Actions -----------------------------------------------------------------
+    {
+        GSettings *actions = g_settings_get_child(settings_obj, "actions");
+
+        gtt_gsettings_set_maybe_str(actions, "start-command", config_shell_start);
+        gtt_gsettings_set_maybe_str(actions, "stop-command", config_shell_stop);
+
+        g_object_unref(actions);
+        actions = NULL;
     }
 
     // Log-File ----------------------------------------------------------------
