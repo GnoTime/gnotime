@@ -169,6 +169,20 @@ void gtt_gsettings_load(void)
         toolbar = NULL;
     }
 
+    // Log-File ----------------------------------------------------------------
+    {
+        GSettings *log_file = g_settings_get_child(settings_obj, "log-file");
+
+        config_logfile_use = g_settings_get_boolean(log_file, "use");
+        gtt_gsettings_get_maybe_str(log_file, "filename", &config_logfile_name);
+        gtt_gsettings_get_str(log_file, "entry-start", &config_logfile_start);
+        gtt_gsettings_get_str(log_file, "entry-stop", &config_logfile_stop);
+        config_logfile_min_secs = g_settings_get_int(log_file, "min-secs");
+
+        g_object_unref(log_file);
+        log_file = NULL;
+    }
+
     // Report ------------------------------------------------------------------
     {
         GSettings *report = g_settings_get_child(settings_obj, "report");
@@ -283,6 +297,24 @@ void gtt_gsettings_save(void)
 
         g_object_unref(toolbar);
         toolbar = NULL;
+    }
+
+    // Log-File ----------------------------------------------------------------
+    {
+        GSettings *log_file = g_settings_get_child(settings_obj, "log-file");
+
+        gtt_gsettings_set_bool(log_file, "use", config_logfile_use);
+        gtt_gsettings_set_maybe_str(log_file, "filename", config_logfile_name);
+        gtt_gsettings_set_str(
+            log_file, "entry-start", (NULL != config_logfile_start) ? config_logfile_start : ""
+        );
+        gtt_gsettings_set_str(
+            log_file, "entry-stop", (NULL != config_logfile_stop) ? config_logfile_stop : ""
+        );
+        gtt_gsettings_set_int(log_file, "min-secs", config_logfile_min_secs);
+
+        g_object_unref(log_file);
+        log_file = NULL;
     }
 
     // Report ------------------------------------------------------------------

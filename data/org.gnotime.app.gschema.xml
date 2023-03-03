@@ -3,6 +3,7 @@
   <schema id="org.gnotime.app" path="/org/gnotime/app/">
     <child name="display" schema="org.gnotime.app.display"/>
     <child name="geometry" schema="org.gnotime.app.geometry"/>
+    <child name="log-file" schema="org.gnotime.app.log-file"/>
     <child name="report" schema="org.gnotime.app.report"/>
     <child name="toolbar" schema="org.gnotime.app.toolbar"/>
   </schema>
@@ -153,6 +154,34 @@
     </key>
     <key name="y" type="i">
       <default>10</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.log-file" path="/org/gnotime/app/log-file/">
+    <key name="entry-start" type="s">
+      <default l10n="messages">'project %t started'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="entry-stop" type="s">
+      <default l10n="messages">'stopped project %t'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="filename" type="ms">
+      <default>nothing</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="min-secs" type="i">
+      <default>3</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="use" type="b">
+      <default>false</default>
       <summary>TODO</summary>
       <description>TODO</description>
     </key>
