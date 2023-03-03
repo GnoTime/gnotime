@@ -3,8 +3,6 @@ dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c
 AC_CONFIG_SRCDIR([src/gtt.h])
 AM_INIT_AUTOMAKE(gnotime, 2.99.0)
 
-dnl AC_PROG_INTLTOOL
-
 IT_PROG_INTLTOOL([0.35.5])
 
 AM_CONFIG_HEADER(config.h)
