@@ -34,9 +34,6 @@ AC_CHECK_HEADERS([sys/wait.h])
 if test x$ac_cv_header_wait_h != "x"; then
 	AC_CHECK_FUNCS(waitpid)
 	AC_CHECK_DECLS(WNOHANG,,,[#include<sys/wait.h>])
-
-	dnl This causes RETSIGTYPE to contain a signal handler's return type.
-	AC_TYPE_SIGNAL()
 fi
 AC_CHECK_DECLS(SA_NOCLDWAIT,,,[#include<signal.h>])
 
