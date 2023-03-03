@@ -19,11 +19,15 @@
 
 #include <gio/gio.h>
 
+void gtt_gsettings_get_maybe_str(GSettings *settings, const gchar *key, gchar **value);
+
 void gtt_gsettings_get_str(GSettings *settings, const gchar *key, gchar **value);
 
 void gtt_gsettings_set_bool(GSettings *settings, const gchar *key, gboolean value);
 
 void gtt_gsettings_set_int(GSettings *settings, const gchar *key, gint value);
+
+void gtt_gsettings_set_maybe_str(GSettings *settings, const gchar *key, const gchar *value);
 
 void gtt_gsettings_set_str(GSettings *settings, const gchar *key, const gchar *value);
 

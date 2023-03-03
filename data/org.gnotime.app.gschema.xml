@@ -1,9 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gnotime-2.0">
   <schema id="org.gnotime.app" path="/org/gnotime/app/">
+    <child name="display" schema="org.gnotime.app.display"/>
     <child name="geometry" schema="org.gnotime.app.geometry"/>
     <child name="report" schema="org.gnotime.app.report"/>
     <child name="toolbar" schema="org.gnotime.app.toolbar"/>
+  </schema>
+
+  <schema id="org.gnotime.app.display" path="/org/gnotime/app/display/">
+    <key name="expander-state" type="ms">
+      <default>nothing</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-desc" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-due-date" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-estimated-end" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-estimated-start" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-importance" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-percent-complete" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-secs" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-sizing" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-status" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-statusbar" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-sub-projects" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-table-header" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-task" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-current" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-day" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-ever" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-last-week" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-month" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-week" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-year" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-yesterday" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-urgency" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
   </schema>
 
   <schema id="org.gnotime.app.geometry" path="/org/gnotime/app/geometry/">
