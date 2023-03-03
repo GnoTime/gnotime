@@ -21,6 +21,7 @@
 #include <glade/glade.h>
 #include <glib.h>
 #include <gnome.h>
+#include <gtk/gtk.h>
 #include <qof.h>
 #include <stdio.h>
 #include <string.h>
@@ -79,6 +80,44 @@ GladeXML *gtt_glade_xml_new(const char *filename, const char *widget)
         g_free(file);
     }
     return xml;
+}
+
+static GtkBuilder *gtt_builder_new_from_exact_file(const char *filename)
+{
+    GtkBuilder *builder = NULL;
+    GError *err = NULL;
+
+    builder = gtk_builder_new();
+
+    gtk_builder_add_from_file(builder, filename, &err);
+
+    // For now, let's just die. Don't forget g_error_free()
+    // in case this is changed.
+    if (err != NULL)
+        g_error("Error loading UI: %s", err->message);
+
+    return builder;
+}
+
+/* GtkBuilder loader, it will look in the right directories */
+GtkBuilder *gtt_builder_new_from_file(const char *filename)
+{
+    GtkBuilder *builder = NULL;
+
+    g_return_val_if_fail(filename != NULL, NULL);
+
+    if (g_file_test(filename, G_FILE_TEST_EXISTS))
+    {
+        builder = gtt_builder_new_from_exact_file(filename);
+    }
+    else
+    {
+        char *file = g_concat_dir_and_file(GTTGLADEDIR, filename);
+        builder = gtt_builder_new_from_exact_file(file);
+        g_free(file);
+    }
+
+    return builder;
 }
 
 /* ============================================================== */
