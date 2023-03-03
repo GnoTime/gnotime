@@ -291,7 +291,7 @@ AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 doc/C/Makefile
@@ -309,6 +309,7 @@ fedora/gnotime.spec
 src/Makefile
 scripts/Makefile
 ])
+AC_OUTPUT
 
 dnl <= Configuration summary =>
 
