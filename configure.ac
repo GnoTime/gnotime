@@ -30,7 +30,7 @@ dnl *****************************************
 dnl Look for a portable way to reap zombie processes
 dnl *****************************************
 AC_CHECK_HEADER([signal.h], AC_DEFINE([HAVE_SIGNAL_H], [1], [Define to 1 if we have signal.h on our system.]),
-	AC_ERROR([signal.h is needed to compile this program.]))
+	AC_MSG_ERROR([signal.h is needed to compile this program.]))
 
 AC_CHECK_HEADERS([sys/wait.h])
 if test x$ac_cv_header_wait_h != "x"; then
@@ -66,7 +66,7 @@ dnl *****************************************
 #
 # GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
 # if test "$GUILE_VERSION" "<" "1.8"; then
-#    AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
+#    AC_MSG_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
 # fi
 
 # http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
@@ -179,7 +179,7 @@ for GTKHTMLVER in 3.14 3.13 3.12 3.11 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.2 3.1 3.0 ;
   fi
 done
 if test x$GTKHTMLPRESENT = x'no'; then
-	AC_ERROR([gtkhtml3 is needed in order to compile this program.])
+	AC_MSG_ERROR([gtkhtml3 is needed in order to compile this program.])
 fi
 
 AC_SUBST(LIBGTKHTML_CFLAGS)
