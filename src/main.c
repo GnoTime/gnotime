@@ -811,7 +811,7 @@ static void guile_inner_main(void *closure, int argc, char **argv)
 }
 
 #if defined(HAVE_DECL_WNOHANG) && defined(HAVE_WAITPID)
-inline RETSIGTYPE sigchld_handler(int unused)
+inline void sigchld_handler(int unused)
 {
     while (waitpid(-1, NULL, WNOHANG) > 0)
     {

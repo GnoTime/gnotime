@@ -1,7 +1,7 @@
-AC_INIT(src)
-AM_INIT_AUTOMAKE(gnotime, 2.99.0)
-
-dnl AC_PROG_INTLTOOL
+AC_INIT([gnotime], [2.99.0])
+dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c.
+AC_CONFIG_SRCDIR([src/gtt.h])
+AM_INIT_AUTOMAKE
 
 IT_PROG_INTLTOOL([0.35.5])
 
@@ -11,11 +11,9 @@ AM_MAINTAINER_MODE
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])], [AC_SUBST([AM_DEFAULT_VERBOSITY],1)])
 
-AC_ISC_POSIX
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_CPP
-AC_STDC_HEADERS
 AC_PROG_YACC
 AC_PROG_INSTALL
 AC_PROG_LN_S
@@ -30,15 +28,12 @@ dnl *****************************************
 dnl Look for a portable way to reap zombie processes
 dnl *****************************************
 AC_CHECK_HEADER([signal.h], AC_DEFINE([HAVE_SIGNAL_H], [1], [Define to 1 if we have signal.h on our system.]),
-	AC_ERROR([signal.h is needed to compile this program.]))
+	AC_MSG_ERROR([signal.h is needed to compile this program.]))
 
 AC_CHECK_HEADERS([sys/wait.h])
 if test x$ac_cv_header_wait_h != "x"; then
 	AC_CHECK_FUNCS(waitpid)
 	AC_CHECK_DECLS(WNOHANG,,,[#include<sys/wait.h>])
-
-	dnl This causes RETSIGTYPE to contain a signal handler's return type.
-	AC_TYPE_SIGNAL()
 fi
 AC_CHECK_DECLS(SA_NOCLDWAIT,,,[#include<signal.h>])
 
@@ -66,7 +61,7 @@ dnl *****************************************
 #
 # GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
 # if test "$GUILE_VERSION" "<" "1.8"; then
-#    AC_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
+#    AC_MSG_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
 # fi
 
 # http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
@@ -179,7 +174,7 @@ for GTKHTMLVER in 3.14 3.13 3.12 3.11 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.2 3.1 3.0 ;
   fi
 done
 if test x$GTKHTMLPRESENT = x'no'; then
-	AC_ERROR([gtkhtml3 is needed in order to compile this program.])
+	AC_MSG_ERROR([gtkhtml3 is needed in order to compile this program.])
 fi
 
 AC_SUBST(LIBGTKHTML_CFLAGS)
@@ -226,7 +221,7 @@ AC_C_INLINE
 AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIZE_T
-AC_STRUCT_ST_RDEV
+AC_CHECK_MEMBERS([struct stat.st_rdev])
 AC_HEADER_TIME
 AC_STRUCT_TM
 AC_TYPE_UID_T
@@ -291,7 +286,7 @@ AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 doc/C/Makefile
@@ -309,6 +304,7 @@ fedora/gnotime.spec
 src/Makefile
 scripts/Makefile
 ])
+AC_OUTPUT
 
 dnl <= Configuration summary =>
 

@@ -104,7 +104,7 @@ AM_CFLAGS = -g -Wall     \
 	${LIBXML2_CFLAGS} \
 	${GUILE_CFLAGS} ${X11_CFLAGS}
 
-INCLUDES =                                   \
+AM_CPPFLAGS =                                   \
 	$(LIBQOF_CFLAGS)                          \
 	$(LIBDBUS_CFLAGS)                         \
 	$(XSS_EXTENSION_CFLAGS)                   \
