@@ -25,4 +25,7 @@ void gtt_gsettings_load(void);
 
 void gtt_gsettings_save(void);
 
+/* quick hack */
+char *gtt_gsettings_get_expander(void);
+
 #endif // GTT_GSETTINGS_IO_H

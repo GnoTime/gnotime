@@ -42,6 +42,20 @@ void gtt_gsettings_deinit(void)
     g_clear_object(&settings_obj);
 }
 
+gchar *gtt_gsettings_get_expander(void)
+{
+    GSettings *display = g_settings_get_child(settings_obj, "display");
+
+    gchar *ret = NULL;
+
+    gtt_gsettings_get_maybe_str(display, "expander-state", &ret);
+
+    g_object_unref(display);
+    display = NULL;
+
+    return ret;
+}
+
 /**
  * @brief Initialize the primary GSettings object of GnoTime
  *
@@ -90,6 +104,43 @@ void gtt_gsettings_load(void)
         geometry = NULL;
     }
 
+    // Display -----------------------------------------------------------------
+    {
+        GSettings *display = g_settings_get_child(settings_obj, "display");
+
+        config_show_secs = g_settings_get_boolean(display, "show-secs");
+
+        prefs_set_show_secs();
+
+        config_show_clist_titles = g_settings_get_boolean(display, "show-table-header");
+        config_show_subprojects = g_settings_get_boolean(display, "show-sub-projects");
+        config_show_statusbar = g_settings_get_boolean(display, "show-statusbar");
+
+        config_show_title_ever = g_settings_get_boolean(display, "show-time-ever");
+        config_show_title_day = g_settings_get_boolean(display, "show-time-day");
+        config_show_title_yesterday = g_settings_get_boolean(display, "show-time-yesterday");
+        config_show_title_week = g_settings_get_boolean(display, "show-time-week");
+        config_show_title_lastweek = g_settings_get_boolean(display, "show-time-last-week");
+        config_show_title_month = g_settings_get_boolean(display, "show-time-month");
+        config_show_title_year = g_settings_get_boolean(display, "show-time-year");
+        config_show_title_current = g_settings_get_boolean(display, "show-time-current");
+        config_show_title_desc = g_settings_get_boolean(display, "show-desc");
+        config_show_title_task = g_settings_get_boolean(display, "show-task");
+        config_show_title_estimated_start
+            = g_settings_get_boolean(display, "show-estimated-start");
+        config_show_title_estimated_end = g_settings_get_boolean(display, "show-estimated-end");
+        config_show_title_due_date = g_settings_get_boolean(display, "show-due-date");
+        config_show_title_sizing = g_settings_get_boolean(display, "show-sizing");
+        config_show_title_percent_complete
+            = g_settings_get_boolean(display, "show-percent-complete");
+        config_show_title_urgency = g_settings_get_boolean(display, "show-urgency");
+        config_show_title_importance = g_settings_get_boolean(display, "show-importance");
+        config_show_title_status = g_settings_get_boolean(display, "show-status");
+
+        g_object_unref(display);
+        display = NULL;
+    }
+
     const gboolean _c = config_show_tb_ccp;
     const gboolean _e = config_show_tb_exit;
     const gboolean _h = config_show_tb_help;
@@ -117,6 +168,54 @@ void gtt_gsettings_load(void)
         g_object_unref(toolbar);
         toolbar = NULL;
     }
+
+    // Actions -----------------------------------------------------------------
+    {
+        GSettings *actions = g_settings_get_child(settings_obj, "actions");
+
+        gtt_gsettings_get_maybe_str(actions, "start-command", &config_shell_start);
+        gtt_gsettings_get_maybe_str(actions, "stop-command", &config_shell_stop);
+
+        g_object_unref(actions);
+        actions = NULL;
+    }
+
+    // Log-File ----------------------------------------------------------------
+    {
+        GSettings *log_file = g_settings_get_child(settings_obj, "log-file");
+
+        config_logfile_use = g_settings_get_boolean(log_file, "use");
+        gtt_gsettings_get_maybe_str(log_file, "filename", &config_logfile_name);
+        gtt_gsettings_get_str(log_file, "entry-start", &config_logfile_start);
+        gtt_gsettings_get_str(log_file, "entry-stop", &config_logfile_stop);
+        config_logfile_min_secs = g_settings_get_int(log_file, "min-secs");
+
+        g_object_unref(log_file);
+        log_file = NULL;
+    }
+
+    // Report ------------------------------------------------------------------
+    {
+        GSettings *report = g_settings_get_child(settings_obj, "report");
+
+        gtt_gsettings_get_str(report, "currency-symbol", &config_currency_symbol);
+        config_currency_use_locale = g_settings_get_boolean(report, "currency-use-locale");
+
+        g_object_unref(report);
+        report = NULL;
+    }
+
+    // Redraw the GUI
+    if (config_show_statusbar)
+    {
+        gtk_widget_show(status_bar);
+    }
+    else
+    {
+        gtk_widget_hide(status_bar);
+    }
+
+    update_status_bar();
 
     if ((_n != config_show_tb_new) || (_c != config_show_tb_ccp)
         || (_j != config_show_tb_journal) || (_p != config_show_tb_prop)
@@ -154,6 +253,44 @@ void gtt_gsettings_save(void)
         geometry = NULL;
     }
 
+    // Display -----------------------------------------------------------------
+    {
+        GSettings *display = g_settings_get_child(settings_obj, "display");
+
+        gtt_gsettings_set_bool(display, "show-secs", config_show_secs);
+        gtt_gsettings_set_bool(display, "show-statusbar", config_show_statusbar);
+        gtt_gsettings_set_bool(display, "show-sub-projects", config_show_subprojects);
+        gtt_gsettings_set_bool(display, "show-table-header", config_show_clist_titles);
+        gtt_gsettings_set_bool(display, "show-time-current", config_show_title_current);
+        gtt_gsettings_set_bool(display, "show-time-day", config_show_title_day);
+        gtt_gsettings_set_bool(display, "show-time-yesterday", config_show_title_yesterday);
+        gtt_gsettings_set_bool(display, "show-time-week", config_show_title_week);
+        gtt_gsettings_set_bool(display, "show-time-last-week", config_show_title_lastweek);
+        gtt_gsettings_set_bool(display, "show-time-month", config_show_title_month);
+        gtt_gsettings_set_bool(display, "show-time-year", config_show_title_year);
+        gtt_gsettings_set_bool(display, "show-time-ever", config_show_title_ever);
+        gtt_gsettings_set_bool(display, "show-desc", config_show_title_desc);
+        gtt_gsettings_set_bool(display, "show-task", config_show_title_task);
+        gtt_gsettings_set_bool(
+            display, "show-estimated-start", config_show_title_estimated_start
+        );
+        gtt_gsettings_set_bool(display, "show-estimated-end", config_show_title_estimated_end);
+        gtt_gsettings_set_bool(display, "show-due-date", config_show_title_due_date);
+        gtt_gsettings_set_bool(display, "show-sizing", config_show_title_sizing);
+        gtt_gsettings_set_bool(
+            display, "show-percent-complete", config_show_title_percent_complete
+        );
+        gtt_gsettings_set_bool(display, "show-urgency", config_show_title_urgency);
+        gtt_gsettings_set_bool(display, "show-importance", config_show_title_importance);
+        gtt_gsettings_set_bool(display, "show-status", config_show_title_status);
+
+        const gchar *xpn = gtt_projects_tree_get_expander_state(projects_tree);
+        gtt_gsettings_set_maybe_str(display, "expander-state", xpn);
+
+        g_object_unref(display);
+        display = NULL;
+    }
+
     // Toolbar -----------------------------------------------------------------
     {
         GSettings *toolbar = g_settings_get_child(settings_obj, "toolbar");
@@ -171,5 +308,45 @@ void gtt_gsettings_save(void)
 
         g_object_unref(toolbar);
         toolbar = NULL;
+    }
+
+    // Actions -----------------------------------------------------------------
+    {
+        GSettings *actions = g_settings_get_child(settings_obj, "actions");
+
+        gtt_gsettings_set_maybe_str(actions, "start-command", config_shell_start);
+        gtt_gsettings_set_maybe_str(actions, "stop-command", config_shell_stop);
+
+        g_object_unref(actions);
+        actions = NULL;
+    }
+
+    // Log-File ----------------------------------------------------------------
+    {
+        GSettings *log_file = g_settings_get_child(settings_obj, "log-file");
+
+        gtt_gsettings_set_bool(log_file, "use", config_logfile_use);
+        gtt_gsettings_set_maybe_str(log_file, "filename", config_logfile_name);
+        gtt_gsettings_set_str(
+            log_file, "entry-start", (NULL != config_logfile_start) ? config_logfile_start : ""
+        );
+        gtt_gsettings_set_str(
+            log_file, "entry-stop", (NULL != config_logfile_stop) ? config_logfile_stop : ""
+        );
+        gtt_gsettings_set_int(log_file, "min-secs", config_logfile_min_secs);
+
+        g_object_unref(log_file);
+        log_file = NULL;
+    }
+
+    // Report ------------------------------------------------------------------
+    {
+        GSettings *report = g_settings_get_child(settings_obj, "report");
+
+        gtt_gsettings_set_str(report, "currency-symbol", config_currency_symbol);
+        gtt_gsettings_set_bool(report, "currency-use-locale", config_currency_use_locale);
+
+        g_object_unref(report);
+        report = NULL;
     }
 }

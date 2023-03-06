@@ -47,7 +47,4 @@ gboolean gtt_gconf_exists(void);
  */
 void gtt_save_reports_menu(void);
 
-/* quick hack */
-char *gtt_gconf_get_expander(void);
-
 #endif /* GTT_GCONF_IO_H_ */

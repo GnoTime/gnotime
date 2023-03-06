@@ -89,7 +89,6 @@ void gtt_save_reports_menu(void)
 void gtt_gconf_save(void)
 {
     char s[120];
-    const char *xpn;
 
     GConfEngine *gengine;
     GConfClient *client;
@@ -97,84 +96,6 @@ void gtt_gconf_save(void)
     gengine = gconf_engine_get_default();
     client = gconf_client_get_for_engine(gengine);
     SETINT("/dir_exists", 1);
-
-    /* ------------- */
-    /* save the configure dialog values */
-    SETBOOL("/Display/ShowSecs", config_show_secs);
-    SETBOOL("/Display/ShowStatusbar", config_show_statusbar);
-    SETBOOL("/Display/ShowSubProjects", config_show_subprojects);
-    SETBOOL("/Display/ShowTableHeader", config_show_clist_titles);
-    SETBOOL("/Display/ShowTimeCurrent", config_show_title_current);
-    SETBOOL("/Display/ShowTimeDay", config_show_title_day);
-    SETBOOL("/Display/ShowTimeYesterday", config_show_title_yesterday);
-    SETBOOL("/Display/ShowTimeWeek", config_show_title_week);
-    SETBOOL("/Display/ShowTimeLastWeek", config_show_title_lastweek);
-    SETBOOL("/Display/ShowTimeMonth", config_show_title_month);
-    SETBOOL("/Display/ShowTimeYear", config_show_title_year);
-    SETBOOL("/Display/ShowTimeEver", config_show_title_ever);
-    SETBOOL("/Display/ShowDesc", config_show_title_desc);
-    SETBOOL("/Display/ShowTask", config_show_title_task);
-    SETBOOL("/Display/ShowEstimatedStart", config_show_title_estimated_start);
-    SETBOOL("/Display/ShowEstimatedEnd", config_show_title_estimated_end);
-    SETBOOL("/Display/ShowDueDate", config_show_title_due_date);
-    SETBOOL("/Display/ShowSizing", config_show_title_sizing);
-    SETBOOL("/Display/ShowPercentComplete", config_show_title_percent_complete);
-    SETBOOL("/Display/ShowUrgency", config_show_title_urgency);
-    SETBOOL("/Display/ShowImportance", config_show_title_importance);
-    SETBOOL("/Display/ShowStatus", config_show_title_status);
-
-    xpn = gtt_projects_tree_get_expander_state(projects_tree);
-    SETSTR("/Display/ExpanderState", xpn);
-
-    /* ------------- */
-    if (config_shell_start)
-    {
-        SETSTR("/Actions/StartCommand", config_shell_start);
-    }
-    else
-    {
-        UNSET("/Actions/StartCommand");
-    }
-
-    if (config_shell_stop)
-    {
-        SETSTR("/Actions/StopCommand", config_shell_stop);
-    }
-    else
-    {
-        UNSET("/Actions/StopCommand");
-    }
-
-    /* ------------- */
-    SETBOOL("/LogFile/Use", config_logfile_use);
-    if (config_logfile_name)
-    {
-        SETSTR("/LogFile/Filename", config_logfile_name);
-    }
-    else
-    {
-        UNSET("/LogFile/Filename");
-    }
-
-    if (config_logfile_start)
-    {
-        SETSTR("/LogFile/EntryStart", config_logfile_start);
-    }
-    else
-    {
-        SETSTR("/LogFile/EntryStart", "");
-    }
-
-    if (config_logfile_stop)
-    {
-        SETSTR("/LogFile/EntryStop", config_logfile_stop);
-    }
-    else
-    {
-        SETSTR("/LogFile/EntryStop", "");
-    }
-
-    SETINT("/LogFile/MinSecs", config_logfile_min_secs);
 
     /* ------------- */
     SETSTR("/Data/URL", config_data_url);
@@ -211,9 +132,6 @@ void gtt_gconf_save(void)
     SETINT("/Misc/WeekStartOffset", config_weekstart_offset);
 
     SETINT("/time_format", config_time_format);
-
-    SETSTR("/Report/CurrencySymbol", config_currency_symbol);
-    SETBOOL("/Report/CurrencyUseLocale", config_currency_use_locale);
 
     /* Write out the user's report menu structure */
     gtt_save_reports_menu();
@@ -340,57 +258,11 @@ void gtt_gconf_load(void)
     config_daystart_offset = GETINT("/Misc/DayStartOffset", 0);
     config_weekstart_offset = GETINT("/Misc/WeekStartOffset", 0);
 
-    config_show_secs = GETBOOL("/Display/ShowSecs", FALSE);
-
-    prefs_set_show_secs();
-
-    config_show_clist_titles = GETBOOL("/Display/ShowTableHeader", FALSE);
-    config_show_subprojects = GETBOOL("/Display/ShowSubProjects", TRUE);
-    config_show_statusbar = GETBOOL("/Display/ShowStatusbar", TRUE);
-
-    config_show_title_ever = GETBOOL("/Display/ShowTimeEver", TRUE);
-    config_show_title_day = GETBOOL("/Display/ShowTimeDay", TRUE);
-    config_show_title_yesterday = GETBOOL("/Display/ShowTimeYesterday", FALSE);
-    config_show_title_week = GETBOOL("/Display/ShowTimeWeek", FALSE);
-    config_show_title_lastweek = GETBOOL("/Display/ShowTimeLastWeek", FALSE);
-    config_show_title_month = GETBOOL("/Display/ShowTimeMonth", FALSE);
-    config_show_title_year = GETBOOL("/Display/ShowTimeYear", FALSE);
-    config_show_title_current = GETBOOL("/Display/ShowTimeCurrent", FALSE);
-    config_show_title_desc = GETBOOL("/Display/ShowDesc", TRUE);
-    config_show_title_task = GETBOOL("/Display/ShowTask", TRUE);
-    config_show_title_estimated_start = GETBOOL("/Display/ShowEstimatedStart", FALSE);
-    config_show_title_estimated_end = GETBOOL("/Display/ShowEstimatedEnd", FALSE);
-    config_show_title_due_date = GETBOOL("/Display/ShowDueDate", FALSE);
-    config_show_title_sizing = GETBOOL("/Display/ShowSizing", FALSE);
-    config_show_title_percent_complete = GETBOOL("/Display/ShowPercentComplete", FALSE);
-    config_show_title_urgency = GETBOOL("/Display/ShowUrgency", TRUE);
-    config_show_title_importance = GETBOOL("/Display/ShowImportance", TRUE);
-    config_show_title_status = GETBOOL("/Display/ShowStatus", FALSE);
-
     prefs_update_projects_view();
-
-    /* ------------ */
-    config_shell_start = GETSTR(
-        "/Actions/StartCommand",
-        "echo start id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s"
-    );
-    config_shell_stop = GETSTR(
-        "/Actions/StopCommand",
-        "echo stop id=%D \\\"%t\\\"-\\\"%d\\\" %T  %H-%M-%S hours=%h min=%m secs=%s"
-    );
-
-    /* ------------ */
-    config_logfile_use = GETBOOL("/LogFile/Use", FALSE);
-    config_logfile_name = GETSTR("/LogFile/Filename", NULL);
-    config_logfile_start = GETSTR("/LogFile/EntryStart", _("project %t started"));
-    config_logfile_stop = GETSTR("/LogFile/EntryStop", _("stopped project %t"));
-    config_logfile_min_secs = GETINT("/LogFile/MinSecs", 3);
 
     /* ------------ */
     config_time_format = GETINT("/time_format", 3);
 
-    config_currency_symbol = GETSTR("/Report/CurrencySymbol", "$");
-    config_currency_use_locale = GETBOOL("/Report/CurrencyUseLocale", TRUE);
     /* ------------ */
     save_count = GETINT("/Data/SaveCount", 0);
     config_data_url = GETSTR("/Data/URL", XML_DATA_FILENAME);
@@ -414,24 +286,6 @@ void gtt_gconf_load(void)
     run_timer = GETINT("/Misc/TimerRunning", 0);
     /* Use string for time, to avoid unsigned-long problems */
     last_timer = (time_t) atol(GETSTR("/Misc/LastTimer", "-1"));
-
-    /* redraw the GUI */
-    if (config_show_statusbar)
-    {
-        gtk_widget_show(status_bar);
-    }
-    else
-    {
-        gtk_widget_hide(status_bar);
-    }
-
-    update_status_bar();
-}
-
-gchar *gtt_gconf_get_expander(void)
-{
-    GConfClient *client = gconf_client_get_default();
-    return GETSTR("/Display/ExpanderState", NULL);
 }
 
 /* =========================== END OF FILE ========================= */

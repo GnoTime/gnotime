@@ -675,7 +675,7 @@ void gtt_post_ctree_config(void)
     /* Restore the expander state */
     if (gtt_gconf_exists())
     {
-        xpn = gtt_gconf_get_expander();
+        xpn = gtt_gsettings_get_expander();
     }
     else
     {
