@@ -288,54 +288,28 @@ static PropTaskDlg *prop_task_dialog_new(void)
 
     GtkWidget *const task_table = glade_xml_get_widget(gtxml, "task table");
 
-    GtkWidget *const entry3 = gnome_entry_new("task_memo");
-    gnome_entry_set_max_saved(GNOME_ENTRY(entry3), 10);
-    gtk_widget_set_name(entry3, "entry3");
+    GtkWidget *tmp_outer_entry = NULL;
+    GtkWidget *tmp_inner_entry = NULL;
 
-    GtkWidget *const memo_box = gnome_entry_gtk_entry(GNOME_ENTRY(entry3));
-    dlg->memo = GTK_ENTRY(NTAGGED(memo_box));
-    gtk_entry_set_activates_default(GTK_ENTRY(memo_box), FALSE);
-    gtk_entry_set_editable(GTK_ENTRY(memo_box), TRUE);
-    gtk_entry_set_has_frame(GTK_ENTRY(memo_box), TRUE);
-    gtk_entry_set_invisible_char(GTK_ENTRY(memo_box), '*');
-    gtk_entry_set_max_length(GTK_ENTRY(memo_box), 0);
-    gtk_entry_set_visibility(GTK_ENTRY(memo_box), TRUE);
-    gtk_widget_set_can_focus(memo_box, TRUE);
-    gtk_widget_set_name(memo_box, "memo box");
-    gtk_widget_set_tooltip_text(
-        memo_box, _("A short description to attach to this block of time.")
+    gtt_create_gnome_entry(
+        &tmp_outer_entry, &tmp_inner_entry, "task_memo", "entry3", "memo box",
+        _("A short description to attach to this block of time.")
     );
-    gtk_widget_show(memo_box);
-
-    gtk_widget_show(entry3);
-
-    gtk_table_attach(GTK_TABLE(task_table), entry3, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, 0, 0, 0);
+    dlg->memo = GTK_ENTRY(NTAGGED(tmp_inner_entry));
+    gtk_table_attach(
+        GTK_TABLE(task_table), tmp_outer_entry, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, 0, 0, 0
+    );
 
     GtkWidget *const table1 = glade_xml_get_widget(gtxml, "table1");
 
-    GtkWidget *const entry4 = gnome_entry_new("bill_unit");
-    gnome_entry_set_max_saved(GNOME_ENTRY(entry4), 10);
-    gtk_widget_set_name(entry4, "entry4");
-
-    GtkWidget *const unit_box = gnome_entry_gtk_entry(GNOME_ENTRY(entry4));
-    dlg->unit = GTK_ENTRY(BTAGGED(unit_box));
-    gtk_entry_set_activates_default(GTK_ENTRY(unit_box), FALSE);
-    gtk_entry_set_editable(GTK_ENTRY(unit_box), TRUE);
-    gtk_entry_set_has_frame(GTK_ENTRY(unit_box), TRUE);
-    gtk_entry_set_invisible_char(GTK_ENTRY(unit_box), '*');
-    gtk_entry_set_max_length(GTK_ENTRY(unit_box), 0);
-    gtk_entry_set_visibility(GTK_ENTRY(unit_box), TRUE);
-    gtk_widget_set_can_focus(unit_box, TRUE);
-    gtk_widget_set_name(unit_box, "unit box");
-    gtk_widget_set_tooltip_text(
-        unit_box,
+    gtt_create_gnome_entry(
+        &tmp_outer_entry, &tmp_inner_entry, "bill_unit", "entry4", "unit box",
         _("The billed unit of time will be rounded to an integer multiple of this time.")
     );
-    gtk_widget_show(unit_box);
-
-    gtk_widget_show(entry4);
-
-    gtk_table_attach(GTK_TABLE(table1), entry4, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, 0, 0, 0);
+    dlg->unit = GTK_ENTRY(BTAGGED(tmp_inner_entry));
+    gtk_table_attach(
+        GTK_TABLE(table1), tmp_outer_entry, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, 0, 0, 0
+    );
 
     dlg->notes = GTK_TEXT_VIEW(TEXTED("notes box"));
 

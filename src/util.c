@@ -60,6 +60,43 @@ char *xxxgtk_textview_get_text(GtkTextView *text)
     return gtk_text_buffer_get_text(buff, &start, &end, TRUE);
 }
 
+/**
+ * @brief Create a new GnomeEntry instance
+ * @param[out] outer_gnome_entry The new enclosing GnomeEntry instance
+ * @param[out] inner_gtk_entry The new enclosed GtkEntry instance
+ * @param[in] history_id The history id for the GnomeEntry
+ * @param[in] widget_name The name the enclosing GnomeEntry widget shall have
+ * @param[in] entry_name The name the enclosed GtkEntry widget shall have
+ * @param[in] tooltip An optional (can be `NULL`) tooltip text for the GtkEntry
+ */
+void gtt_create_gnome_entry(
+    GtkWidget **const outer_gnome_entry, GtkWidget **const inner_gtk_entry,
+    const gchar *const history_id, const gchar *const widget_name,
+    const gchar *const entry_name, const gchar *const tooltip
+)
+{
+    *outer_gnome_entry = gnome_entry_new(history_id);
+    gnome_entry_set_max_saved(GNOME_ENTRY(*outer_gnome_entry), 10);
+    gtk_widget_set_name(*outer_gnome_entry, widget_name);
+
+    *inner_gtk_entry = gnome_entry_gtk_entry(GNOME_ENTRY(*outer_gnome_entry));
+    gtk_entry_set_activates_default(GTK_ENTRY(*inner_gtk_entry), FALSE);
+    gtk_entry_set_editable(GTK_ENTRY(*inner_gtk_entry), TRUE);
+    gtk_entry_set_has_frame(GTK_ENTRY(*inner_gtk_entry), TRUE);
+    gtk_entry_set_invisible_char(GTK_ENTRY(*inner_gtk_entry), '*');
+    gtk_entry_set_max_length(GTK_ENTRY(*inner_gtk_entry), 0);
+    gtk_entry_set_visibility(GTK_ENTRY(*inner_gtk_entry), TRUE);
+    gtk_widget_set_can_focus(*inner_gtk_entry, TRUE);
+    gtk_widget_set_name(*inner_gtk_entry, entry_name);
+    if (NULL != tooltip)
+    {
+        gtk_widget_set_tooltip_text(*inner_gtk_entry, tooltip);
+    }
+    gtk_widget_show(*inner_gtk_entry);
+
+    gtk_widget_show(*outer_gnome_entry);
+}
+
 /* ============================================================== */
 
 /* Glade loader, it will look in the right directories */
@@ -89,7 +126,7 @@ static GtkBuilder *gtt_builder_new_from_exact_file(const char *filename)
     builder = gtk_builder_new();
     if (!gtk_builder_add_from_file(builder, filename, &error))
     {
-        g_error ("failed to add UI from file %s: %s", filename, error->message);
+        g_error("failed to add UI from file %s: %s", filename, error->message);
     }
 
     return builder;

@@ -46,4 +46,9 @@ size_t xxxqof_print_minutes_elapsed_buff(char *buff, size_t len, int secs, gbool
 
 size_t xxxqof_print_date_dmy_buff(char *buff, size_t len, int day, int month, int year);
 
+void gtt_create_gnome_entry(
+    GtkWidget **outer_gnome_entry, GtkWidget **inner_gtk_entry, const gchar *history_id,
+    const gchar *widget_name, const gchar *entry_name, const gchar *tooltip
+);
+
 #endif /* __GTT_UTIL_H__ */
