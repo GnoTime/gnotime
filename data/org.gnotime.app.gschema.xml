@@ -1,39 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gnotime-2.0">
   <schema id="org.gnotime.app" path="/org/gnotime/app/">
-    <child name="geometry" schema="org.gnotime.app.geometry"/>
-  </schema>
-
-  <schema id="org.gnotime.app.geometry" path="/org/gnotime/app/geometry/">
-    <key name="h-paned" type="i">
-      <default>220</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
-    <key name="height" type="i">
-      <default>272</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
-    <key name="v-paned" type="i">
-      <default>250</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
-    <key name="width" type="i">
-      <default>442</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
-    <key name="x" type="i">
-      <default>10</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
-    <key name="y" type="i">
-      <default>10</default>
-      <summary>TODO</summary>
-      <description>TODO</description>
-    </key>
   </schema>
 </schemalist>

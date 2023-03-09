@@ -89,6 +89,7 @@ void gtt_save_reports_menu(void)
 void gtt_gconf_save(void)
 {
     char s[120];
+    int x, y, w, h;
     const char *xpn;
 
     GConfEngine *gengine;
@@ -98,6 +99,21 @@ void gtt_gconf_save(void)
     client = gconf_client_get_for_engine(gengine);
     SETINT("/dir_exists", 1);
 
+    /* ------------- */
+    /* save the window location and size */
+    gdk_window_get_origin(app_window->window, &x, &y);
+    gdk_window_get_size(app_window->window, &w, &h);
+    SETINT("/Geometry/Width", w);
+    SETINT("/Geometry/Height", h);
+    SETINT("/Geometry/X", x);
+    SETINT("/Geometry/Y", y);
+
+    {
+        int vp, hp;
+        notes_area_get_pane_sizes(global_na, &vp, &hp);
+        SETINT("/Geometry/VPaned", vp);
+        SETINT("/Geometry/HPaned", hp);
+    }
     /* ------------- */
     /* save the configure dialog values */
     SETBOOL("/Display/ShowSecs", config_show_secs);
@@ -361,6 +377,33 @@ void gtt_gconf_load(void)
     config_autosave_period = GETINT("/Misc/AutosavePeriod", 60);
     config_daystart_offset = GETINT("/Misc/DayStartOffset", 0);
     config_weekstart_offset = GETINT("/Misc/WeekStartOffset", 0);
+
+    /* Reset the main window width and height to the values
+     * last stored in the config file.  Note that if the user
+     * specified command-line flags, then the command line
+     * over-rides the config file. */
+    if (!geom_place_override)
+    {
+        int x, y;
+        x = GETINT("/Geometry/X", 10);
+        y = GETINT("/Geometry/Y", 10);
+        gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
+    }
+    if (!geom_size_override)
+    {
+        int w, h;
+        w = GETINT("/Geometry/Width", 442);
+        h = GETINT("/Geometry/Height", 272);
+
+        gtk_window_set_default_size(GTK_WINDOW(app_window), w, h);
+    }
+
+    {
+        int vp, hp;
+        vp = GETINT("/Geometry/VPaned", 250);
+        hp = GETINT("/Geometry/HPaned", 220);
+        notes_area_set_pane_sizes(global_na, vp, hp);
+    }
 
     config_show_secs = GETBOOL("/Display/ShowSecs", FALSE);
 

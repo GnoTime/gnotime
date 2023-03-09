@@ -21,8 +21,4 @@ void gtt_gsettings_init(void);
 
 void gtt_gsettings_deinit(void);
 
-void gtt_gsettings_load(void);
-
-void gtt_gsettings_save(void);
-
 #endif // GTT_GSETTINGS_IO_H

@@ -16,9 +16,6 @@
 
 #include "gtt-gsettings-io.h"
 
-#include "app.h"
-#include "gtt-gsettings-io-p.h"
-
 #include <gio/gio.h>
 
 static GSettings *settings_obj = NULL;
@@ -55,64 +52,4 @@ void gtt_gsettings_init(void)
     }
 
     settings_obj = g_settings_new("org.gnotime.app");
-}
-
-void gtt_gsettings_load(void)
-{
-    // Geometry ----------------------------------------------------------------
-    {
-        GSettings *geometry = g_settings_get_child(settings_obj, "geometry");
-
-        // Reset the main window width and height to the values last stored in the config file.
-        // Note that if the user specified commandline flags, then the command line over-rides
-        // the config file.
-        if (FALSE == geom_place_override)
-        {
-            const gint x = g_settings_get_int(geometry, "x");
-            const gint y = g_settings_get_int(geometry, "y");
-            gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
-        }
-
-        if (FALSE == geom_size_override)
-        {
-            const gint w = g_settings_get_int(geometry, "width");
-            const gint h = g_settings_get_int(geometry, "height");
-            gtk_window_set_default_size(GTK_WINDOW(app_window), w, h);
-        }
-
-        const gint vp = g_settings_get_int(geometry, "v-paned");
-        const gint hp = g_settings_get_int(geometry, "h-paned");
-        notes_area_set_pane_sizes(global_na, vp, hp);
-
-        g_object_unref(geometry);
-        geometry = NULL;
-    }
-}
-
-void gtt_gsettings_save(void)
-{
-    // Geometry ----------------------------------------------------------------
-    {
-        GSettings *geometry = g_settings_get_child(settings_obj, "geometry");
-
-        // Save the window location and size
-        gint x, y;
-        gdk_window_get_origin(app_window->window, &x, &y);
-        gint w, h;
-        gdk_window_get_size(app_window->window, &w, &h);
-        gtt_gsettings_set_int(geometry, "width", w);
-        gtt_gsettings_set_int(geometry, "height", h);
-        gtt_gsettings_set_int(geometry, "x", x);
-        gtt_gsettings_set_int(geometry, "y", y);
-
-        {
-            int vp, hp;
-            notes_area_get_pane_sizes(global_na, &vp, &hp);
-            gtt_gsettings_set_int(geometry, "v-paned", vp);
-            gtt_gsettings_set_int(geometry, "h-paned", hp);
-        }
-
-        g_object_unref(geometry);
-        geometry = NULL;
-    }
 }
