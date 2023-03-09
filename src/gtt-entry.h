@@ -83,16 +83,7 @@ GtkWidget *gnome_entry_new(const gchar *history_id);
 
 GtkWidget *gnome_entry_gtk_entry(GnomeEntry *gentry);
 
-const gchar *gnome_entry_get_history_id(GnomeEntry *gentry);
-
-void gnome_entry_set_history_id(GnomeEntry *gentry, const gchar *history_id);
-
 void gnome_entry_set_max_saved(GnomeEntry *gentry, guint max_saved);
-guint gnome_entry_get_max_saved(GnomeEntry *gentry);
-
-void gnome_entry_prepend_history(GnomeEntry *gentry, gboolean save, const gchar *text);
-void gnome_entry_append_history(GnomeEntry *gentry, gboolean save, const gchar *text);
-void gnome_entry_clear_history(GnomeEntry *gentry);
 
 G_END_DECLS
 
