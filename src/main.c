@@ -20,8 +20,6 @@
 
 #include "config.h"
 
-#include "gtt-gsettings-io.h"
-
 #include <errno.h>
 #include <gconf/gconf.h>
 #include <gio/gio.h>
@@ -505,8 +503,6 @@ static void read_config_err_run_or_abort(GtkDialog *w, gint response_id)
 static void read_config(void)
 {
     GttErrCode conf_errcode;
-
-    gtt_gsettings_init();
 
     /* Try ... */
     gtt_err_set_code(GTT_NO_ERR);
