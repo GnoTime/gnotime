@@ -39,67 +39,63 @@
 
 G_BEGIN_DECLS
 
-#define GNOME_TYPE_ENTRY            (gnome_entry_get_type ())
-#define GNOME_ENTRY(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GNOME_TYPE_ENTRY, GnomeEntry))
-#define GNOME_ENTRY_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GNOME_TYPE_ENTRY, GnomeEntryClass))
-#define GNOME_IS_ENTRY(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GNOME_TYPE_ENTRY))
-#define GNOME_IS_ENTRY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GNOME_TYPE_ENTRY))
-#define GNOME_ENTRY_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GNOME_TYPE_ENTRY, GnomeEntryClass))
+#define GNOME_TYPE_ENTRY (gnome_entry_get_type())
+#define GNOME_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), GNOME_TYPE_ENTRY, GnomeEntry))
+#define GNOME_ENTRY_CLASS(klass) \
+    (G_TYPE_CHECK_CLASS_CAST((klass), GNOME_TYPE_ENTRY, GnomeEntryClass))
+#define GNOME_IS_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GNOME_TYPE_ENTRY))
+#define GNOME_IS_ENTRY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GNOME_TYPE_ENTRY))
+#define GNOME_ENTRY_GET_CLASS(obj) \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), GNOME_TYPE_ENTRY, GnomeEntryClass))
 
 /* This also supports the GtkEditable interface so
  * to get text use the gtk_editable_get_chars method
  * on this object */
 
-typedef struct _GnomeEntry        GnomeEntry;
+typedef struct _GnomeEntry GnomeEntry;
 typedef struct _GnomeEntryPrivate GnomeEntryPrivate;
-typedef struct _GnomeEntryClass   GnomeEntryClass;
+typedef struct _GnomeEntryClass GnomeEntryClass;
 
-struct _GnomeEntry {
-	GtkCombo combo;
+struct _GnomeEntry
+{
+    GtkCombo combo;
 
-	/*< private >*/
-	GnomeEntryPrivate *_priv;
+    /*< private >*/
+    GnomeEntryPrivate *_priv;
 };
 
-struct _GnomeEntryClass {
-	GtkComboClass parent_class;
+struct _GnomeEntryClass
+{
+    GtkComboClass parent_class;
 
-	/* Like the GtkEntry signals */
-	void (* activate) (GnomeEntry *entry);
+    /* Like the GtkEntry signals */
+    void (*activate)(GnomeEntry *entry);
 
-	gpointer reserved1, reserved2; /* Reserved for future use,
-					  we'll need to proxy insert_text
-					  and delete_text signals */
+    gpointer reserved1, reserved2; /* Reserved for future use,
+                      we'll need to proxy insert_text
+                      and delete_text signals */
 };
 
-
-GType        gnome_entry_get_type         (void) G_GNUC_CONST;
-GtkWidget   *gnome_entry_new              (const gchar *history_id);
+GType gnome_entry_get_type(void) G_GNUC_CONST;
+GtkWidget *gnome_entry_new(const gchar *history_id);
 
 /* for language bindings and subclassing, use gnome_entry_new */
 
-GtkWidget   *gnome_entry_gtk_entry        (GnomeEntry  *gentry);
+GtkWidget *gnome_entry_gtk_entry(GnomeEntry *gentry);
 
-const gchar *gnome_entry_get_history_id   (GnomeEntry  *gentry);
+const gchar *gnome_entry_get_history_id(GnomeEntry *gentry);
 
-void         gnome_entry_set_history_id   (GnomeEntry  *gentry,
-					   const gchar *history_id);
+void gnome_entry_set_history_id(GnomeEntry *gentry, const gchar *history_id);
 
-void         gnome_entry_set_max_saved    (GnomeEntry  *gentry,
-					   guint        max_saved);
-guint        gnome_entry_get_max_saved    (GnomeEntry  *gentry);
+void gnome_entry_set_max_saved(GnomeEntry *gentry, guint max_saved);
+guint gnome_entry_get_max_saved(GnomeEntry *gentry);
 
-void         gnome_entry_prepend_history  (GnomeEntry  *gentry,
-					   gboolean    save,
-					   const gchar *text);
-void         gnome_entry_append_history   (GnomeEntry  *gentry,
-					   gboolean     save,
-					   const gchar *text);
-void         gnome_entry_clear_history    (GnomeEntry  *gentry);
+void gnome_entry_prepend_history(GnomeEntry *gentry, gboolean save, const gchar *text);
+void gnome_entry_append_history(GnomeEntry *gentry, gboolean save, const gchar *text);
+void gnome_entry_clear_history(GnomeEntry *gentry);
 
 G_END_DECLS
 
 #endif /* GNOME_DISABLE_DEPRECATED */
 
 #endif /* GNOME_ENTRY_H */
-
