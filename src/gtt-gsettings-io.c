@@ -27,14 +27,6 @@ static GSettings *settings_obj = NULL;
  */
 void gtt_gsettings_deinit(void)
 {
-    if (G_UNLIKELY(NULL == settings_obj))
-    {
-        g_warning("GSettings object is not initialized unexpectedly");
-
-        return;
-    }
-
-    g_clear_object(&settings_obj);
 }
 
 /**
@@ -44,12 +36,4 @@ void gtt_gsettings_deinit(void)
  */
 void gtt_gsettings_init(void)
 {
-    if (G_UNLIKELY(NULL != settings_obj))
-    {
-        g_warning("GSettings object is initialized unexpectedly");
-
-        return;
-    }
-
-    settings_obj = g_settings_new("org.gnotime.app");
 }
