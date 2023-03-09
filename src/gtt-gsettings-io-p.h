@@ -19,8 +19,6 @@
 
 #include <gio/gio.h>
 
-void gtt_gsettings_set_bool(GSettings *settings, const gchar *key, gboolean value);
-
 void gtt_gsettings_set_int(GSettings *settings, const gchar *key, gint value);
 
 #endif // GTT_GSETTINGS_IO_P_H
