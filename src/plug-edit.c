@@ -17,13 +17,14 @@
  */
 
 #include "config.h"
+
+#include "gtt-gsettings-io.h"
+
 #include <glade/glade.h>
-#include <glib.h>
 #include <gnome.h>
 
 #include "app.h"
 #include "dialog.h"
-#include "gconf-io.h"
 #include "journal.h"
 #include "menus.h"
 #include "plug-in.h"
@@ -370,7 +371,7 @@ static void edit_plugin_commit_cb(GtkWidget *w, gpointer data)
 
     /* Save to file, too.  That way, if system core dumps later,
      * at least we managed to get this set of changes saved. */
-    gtt_save_reports_menu();
+    gtt_gsettings_save_reports_menu();
 }
 
 /* ============================================================ */

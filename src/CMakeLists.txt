@@ -28,6 +28,9 @@ add_executable(${PROJECT_NAME}
     ghtml.c
     ghtml-deprecated.c
     gtt-date-edit.c
+    gtt-gsettings-gnomeui.c
+    gtt-gsettings-io-p.c
+    gtt-gsettings-io.c
     idle-dialog.c
     idle-timer.c
     journal.c

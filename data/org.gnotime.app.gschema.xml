@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnotime-2.0">
+  <schema id="org.gnotime.app" path="/org/gnotime/app/">
+    <child name="actions" schema="org.gnotime.app.actions"/>
+    <child name="c-list" schema="org.gnotime.app.c-list"/>
+    <child name="data" schema="org.gnotime.app.data"/>
+    <child name="display" schema="org.gnotime.app.display"/>
+    <child name="geometry" schema="org.gnotime.app.geometry"/>
+    <child name="log-file" schema="org.gnotime.app.log-file"/>
+    <child name="misc" schema="org.gnotime.app.misc"/>
+    <child name="report" schema="org.gnotime.app.report"/>
+    <child name="reports" schema="org.gnotime.app.reports"/>
+    <child name="toolbar" schema="org.gnotime.app.toolbar"/>
+
+    <key name="initialized" type="b">
+      <default>false</default>
+      <summary>Indicator if settings have been stored in GSettings</summary>
+      <description>This flag shall signal if GSettings has been written to already or if it's the very first time.</description>
+    </key>
+    <key name="time-format" type="i">
+      <default>3</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.actions" path="/org/gnotime/app/actions/">
+    <key name="start-command" type="ms">
+      <default>'echo start id=%D \\&quot;%t\\&quot;-\\&quot;%d\\&quot; %T  %H-%M-%S hours=%h min=%m secs=%s'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="stop-command" type="ms">
+      <default>'echo stop id=%D \\&quot;%t\\&quot;-\\&quot;%d\\&quot; %T  %H-%M-%S hours=%h min=%m secs=%s'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.c-list" path="/org/gnotime/app/c-list/">
+    <key name="column-widths" type="ai">
+      <default>[]</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.data" path="/org/gnotime/app/data/">
+    <key name="save-count" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="url" type="s">
+      <default>'gnotime.d/gnotime-data.xml'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.display" path="/org/gnotime/app/display/">
+    <key name="expander-state" type="ms">
+      <default>nothing</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-desc" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-due-date" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-estimated-end" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-estimated-start" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-importance" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-percent-complete" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-secs" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-sizing" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-status" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-statusbar" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-sub-projects" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-table-header" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-task" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-current" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-day" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-ever" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-last-week" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-month" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-week" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-year" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-time-yesterday" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-urgency" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.geometry" path="/org/gnotime/app/geometry/">
+    <key name="h-paned" type="i">
+      <default>220</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="height" type="i">
+      <default>272</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="v-paned" type="i">
+      <default>250</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="width" type="i">
+      <default>442</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="x" type="i">
+      <default>10</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="y" type="i">
+      <default>10</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.log-file" path="/org/gnotime/app/log-file/">
+    <key name="entry-start" type="s">
+      <default l10n="messages">'project %t started'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="entry-stop" type="s">
+      <default l10n="messages">'stopped project %t'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="filename" type="ms">
+      <default>nothing</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="min-secs" type="i">
+      <default>3</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="use" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.misc" path="/org/gnotime/app/misc/">
+    <key name="autosave-period" type="i">
+      <default>60</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="curr-project" type="i">
+      <default>-1</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="day-start-offset" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="idle-timeout" type="i">
+      <default>300</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="last-timer" type="s">
+      <default>'-1'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="no-project-timeout" type="i">
+      <default>300</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="num-projects" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="num-reports" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="timer-running" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="week-start-offset" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.report" path="/org/gnotime/app/report/">
+    <key name="currency-symbol" type="s">
+      <default>'$'</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="currency-use-locale" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.reports">
+    <key name="ac-mods" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="accelerator-key" type="i">
+      <default>0</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="hint" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="label" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="last-save-url" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="name" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="path" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="pixmap-info" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="pixmap-type" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="tooltip" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="type" type="s">
+      <default>''</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.toolbar" path="/org/gnotime/app/toolbar/">
+    <key name="show-ccp" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-exit" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-help" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-journal" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-new" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-pref" type="b">
+      <default>false</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-prop" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-timer" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-tips" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+    <key name="show-toolbar" type="b">
+      <default>true</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+</schemalist>

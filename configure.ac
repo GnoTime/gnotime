@@ -20,6 +20,7 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
 GNOME_COMPILE_WARNINGS
+GLIB_GSETTINGS
 
 AC_PATH_XTRA
 
@@ -287,6 +288,7 @@ AC_SUBST(LDFLAGS)
 
 AC_CONFIG_FILES([
 Makefile
+data/Makefile
 doc/C/Makefile
 doc/C/man/Makefile
 doc/Makefile
