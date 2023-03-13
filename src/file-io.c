@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt-gsettings-io.h"
+
 #include <errno.h>
 #include <glib.h>
 #include <gnome.h>
@@ -60,13 +62,14 @@ int save_count = 0;
  * config file formats taht GTT has used over the years.  We support
  * these reads so that users do not get left out in the cold when
  * upgrading from old versions of GTT.  All 'saves' are in the new
- * file format (currently, GConf-2).
+ * file format (currently, GSettings).
  *
  * 1) Oldest format is data stuck into a ~/.gtimetrackerrc file
  *    and is handled by the project_list_load_old() routine.
  * 2) Next is Gnome-1 Gnome-Config files in ~/.gnome/gtt
  * 3) Next is Gnome-2 Gnome-Config files in ~/.gnome2/GnoTime
- * 4) Current is GConf2 system.
+ * 4) Next is the GConf2 system.
+ * 5) The current system is the GSettings system.
  *
  * Note that some of the older config files also contained project
  * data in them.  The newer versions stored project data seperately
@@ -564,6 +567,15 @@ void gtt_load_config(void)
     const char *h;
     char *s;
 
+    // Check if GSettings has been written to at least once and use it if so (this check is
+    // conducted to allow the loading of attributes from previous configuration systems)
+    if (FALSE == gtt_gsettings_initial_access())
+    {
+        gtt_gsettings_load();
+        gtt_config_filepath = NULL;
+        return;
+    }
+
     /* Check for gconf2, and use that if it exists */
     if (gtt_gconf_exists())
     {
@@ -669,7 +681,11 @@ void gtt_post_ctree_config(void)
      */
 
     /* Restore the expander state */
-    if (gtt_gconf_exists())
+    if (FALSE == gtt_gsettings_initial_access())
+    {
+        xpn = gtt_gsettings_get_expander();
+    }
+    else if (gtt_gconf_exists())
     {
         xpn = gtt_gconf_get_expander();
     }
@@ -688,7 +704,7 @@ void gtt_post_ctree_config(void)
 
 void gtt_save_config(void)
 {
-    gtt_gconf_save();
+    gtt_gsettings_save();
 }
 
 /* ======================================================= */

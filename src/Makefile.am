@@ -21,6 +21,9 @@ gnotime_SOURCES =     \
 	gconf-io.c         \
 	ghtml.c            \
 	ghtml-deprecated.c \
+	gtt-gsettings-gnomeui.c \
+	gtt-gsettings-io-p.c \
+	gtt-gsettings-io.c \
 	idle-dialog.c      \
 	journal.c          \
 	log.c              \
@@ -60,6 +63,9 @@ noinst_HEADERS =      \
 	gconf-io-p.h       \
 	ghtml.h            \
 	ghtml-deprecated.h \
+	gtt-gsettings-gnomeui.h \
+	gtt-gsettings-io-p.h \
+	gtt-gsettings-io.h \
 	gtt.h              \
 	idle-dialog.h      \
 	journal.h          \
