@@ -18,9 +18,10 @@
 
 #include "config.h"
 
+#include "gtt-date-edit.h"
+
 #include <glade/glade.h>
 #include <glib.h>
-#include <gnome.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -50,8 +51,8 @@ static void interval_edit_apply_cb(GtkWidget *w, gpointer data)
     time_t start, stop, tmp;
     int fuzz, min_invl;
 
-    start = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->start_widget));
-    stop = gnome_date_edit_get_time(GNOME_DATE_EDIT(dlg->stop_widget));
+    start = gtt_date_edit_get_time(GTT_DATE_EDIT(dlg->start_widget));
+    stop = gtt_date_edit_get_time(GTT_DATE_EDIT(dlg->stop_widget));
 
     /* If user reversed start and stop, flip them back */
     if (start > stop)
@@ -121,9 +122,9 @@ void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
     if (!ivl)
     {
         w = dlg->start_widget;
-        gnome_date_edit_set_time(GNOME_DATE_EDIT(w), 0);
+        gtt_date_edit_set_time(GTT_DATE_EDIT(w), 0);
         w = dlg->stop_widget;
-        gnome_date_edit_set_time(GNOME_DATE_EDIT(w), 0);
+        gtt_date_edit_set_time(GTT_DATE_EDIT(w), 0);
 
         fw = GTK_OPTION_MENU(dlg->fuzz_widget);
         gtk_option_menu_set_history(fw, 0);
@@ -132,11 +133,11 @@ void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
 
     w = dlg->start_widget;
     start = gtt_interval_get_start(ivl);
-    gnome_date_edit_set_time(GNOME_DATE_EDIT(w), start);
+    gtt_date_edit_set_time(GTT_DATE_EDIT(w), start);
 
     w = dlg->stop_widget;
     stop = gtt_interval_get_stop(ivl);
-    gnome_date_edit_set_time(GNOME_DATE_EDIT(w), stop);
+    gtt_date_edit_set_time(GTT_DATE_EDIT(w), stop);
 
     fuzz = gtt_interval_get_fuzz(dlg->interval);
     fw = GTK_OPTION_MENU(dlg->fuzz_widget);
@@ -192,8 +193,28 @@ EditIntervalDialog *edit_interval_dialog_new(void)
         glxml, "on_cancel_button_clicked", GTK_SIGNAL_FUNC(interval_edit_cancel_cb), dlg
     );
 
-    dlg->start_widget = glade_xml_get_widget(glxml, "start_date");
-    dlg->stop_widget = glade_xml_get_widget(glxml, "stop_date");
+    GtkWidget *const table1 = glade_xml_get_widget(glxml, "table1");
+
+    GtkWidget *const start_date = gtt_date_edit_new_flags(
+        0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_DISPLAY_SECONDS | GTT_DATE_EDIT_SHOW_TIME
+    );
+    dlg->start_widget = start_date;
+    gtt_date_edit_set_popup_range(GTT_DATE_EDIT(start_date), 7, 19);
+    gtk_widget_set_name(start_date, "start_date");
+    gtk_widget_show(start_date);
+
+    gtk_table_attach(GTK_TABLE(table1), start_date, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, 0, 4, 0);
+
+    GtkWidget *const stop_date = gtt_date_edit_new_flags(
+        0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_DISPLAY_SECONDS | GTT_DATE_EDIT_SHOW_TIME
+    );
+    dlg->stop_widget = stop_date;
+    gtt_date_edit_set_popup_range(GTT_DATE_EDIT(stop_date), 7, 19);
+    gtk_widget_set_name(stop_date, "stop_date");
+    gtk_widget_show(stop_date);
+
+    gtk_table_attach(GTK_TABLE(table1), stop_date, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, 0, 4, 0);
+
     dlg->fuzz_widget = glade_xml_get_widget(glxml, "fuzz_menu");
 
     /* ----------------------------------------------- */
