@@ -119,13 +119,17 @@ static void lock_gtt(void)
 
     if (warn)
     {
-        GtkWidget *warning;
-        warning = gnome_message_box_new(
-            _("There seems to be another GnoTime running.\n"
-              "Press OK to start GnoTime anyway, or press Cancel to quit."),
-            GNOME_MESSAGE_BOX_WARNING, GTK_STOCK_OK, GTK_STOCK_CANCEL, NULL
+        GtkWidget *warning = gtk_message_dialog_new(
+            NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK_CANCEL,
+            _("There seems to be another GnoTime running.\nPress OK to start GnoTime anyway, "
+              "or press Cancel to quit.")
         );
-        if (gnome_dialog_run_and_close(GNOME_DIALOG(warning)) != 0)
+        const gint response = gtk_dialog_run(GTK_DIALOG(warning));
+
+        gtk_widget_destroy(warning);
+        warning = NULL;
+
+        if (GTK_RESPONSE_OK != response)
         {
             exit(0);
         }
