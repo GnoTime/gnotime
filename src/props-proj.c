@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include "gtt-date-edit.h"
+
 #include <glade/glade.h>
 #include <gnome.h>
 #include <string.h>
@@ -49,9 +51,9 @@ typedef struct _PropDlg
     GtkOptionMenu *importance;
     GtkOptionMenu *status;
 
-    GnomeDateEdit *start;
-    GnomeDateEdit *end;
-    GnomeDateEdit *due;
+    GttDateEdit *start;
+    GttDateEdit *end;
+    GttDateEdit *due;
 
     GtkEntry *sizing;
     GtkEntry *percent;
@@ -138,11 +140,11 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
         ivl = (long) GET_MENU(dlg->status, "status");
         gtt_project_set_status(dlg->proj, (GttProjectStatus) ivl);
 
-        tval = gnome_date_edit_get_time(dlg->start);
+        tval = gtt_date_edit_get_time(dlg->start);
         gtt_project_set_estimated_start(dlg->proj, tval);
-        tval = gnome_date_edit_get_time(dlg->end);
+        tval = gtt_date_edit_get_time(dlg->end);
         gtt_project_set_estimated_end(dlg->proj, tval);
-        tval = gnome_date_edit_get_time(dlg->due);
+        tval = gtt_date_edit_get_time(dlg->due);
         gtt_project_set_due_date(dlg->proj, tval);
 
         rate = atof(gtk_entry_get_text(dlg->sizing));
@@ -185,9 +187,9 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
         gtk_entry_set_text(dlg->interval, "0");
         gtk_entry_set_text(dlg->gap, "0");
 
-        gnome_date_edit_set_time(dlg->start, now);
-        gnome_date_edit_set_time(dlg->end, now);
-        gnome_date_edit_set_time(dlg->due, now + 86400);
+        gtt_date_edit_set_time(dlg->start, now);
+        gtt_date_edit_set_time(dlg->end, now);
+        gtt_date_edit_set_time(dlg->due, now + 86400);
         gtk_entry_set_text(dlg->sizing, "0.0");
         gtk_entry_set_text(dlg->percent, "0");
         return;
@@ -255,15 +257,15 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     tval = gtt_project_get_estimated_start(proj);
     if (-1 == tval)
         tval = now;
-    gnome_date_edit_set_time(dlg->start, tval);
+    gtt_date_edit_set_time(dlg->start, tval);
     tval = gtt_project_get_estimated_end(proj);
     if (-1 == tval)
         tval = now + 3600;
-    gnome_date_edit_set_time(dlg->end, tval);
+    gtt_date_edit_set_time(dlg->end, tval);
     tval = gtt_project_get_due_date(proj);
     if (-1 == tval)
         tval = now + 86400;
-    gnome_date_edit_set_time(dlg->due, tval);
+    gtt_date_edit_set_time(dlg->due, tval);
 
     g_snprintf(buff, 132, "%.2f", ((double) gtt_project_get_sizing(proj)) / 3600.0);
     gtk_entry_set_text(dlg->sizing, buff);
@@ -287,19 +289,17 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
         widget;                                                                         \
     })
 
-#define DATED(NAME)                                                                          \
-    ({                                                                                       \
-        GtkWidget *widget;                                                                   \
-        widget = glade_xml_get_widget(gtxml, NAME);                                          \
-        gtk_signal_connect_object(                                                           \
-            GTK_OBJECT(widget), "date_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                             \
-        );                                                                                   \
-        gtk_signal_connect_object(                                                           \
-            GTK_OBJECT(widget), "time_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                             \
-        );                                                                                   \
-        GNOME_DATE_EDIT(widget);                                                             \
+#define DATED(WDGT)                                                                        \
+    ({                                                                                     \
+        gtk_signal_connect_object(                                                         \
+            GTK_OBJECT(WDGT), "date_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
+            GTK_OBJECT(dlg->dlg)                                                           \
+        );                                                                                 \
+        gtk_signal_connect_object(                                                         \
+            GTK_OBJECT(WDGT), "time_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
+            GTK_OBJECT(dlg->dlg)                                                           \
+        );                                                                                 \
+        GTT_DATE_EDIT(WDGT);                                                               \
     })
 
 static void wrapper(void *gobj, void *data)
@@ -385,9 +385,40 @@ static PropDlg *prop_dialog_new(void)
     dlg->importance = MUGGED("importance menu");
     dlg->status = MUGGED("status menu");
 
-    dlg->start = DATED("start date");
-    dlg->end = DATED("end date");
-    dlg->due = DATED("due date");
+    GtkWidget *const sizing_table = glade_xml_get_widget(gtxml, "sizing table");
+
+    GtkWidget *const start_date
+        = gtt_date_edit_new_flags(0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_SHOW_TIME);
+    dlg->start = DATED(start_date);
+    gtt_date_edit_set_popup_range(GTT_DATE_EDIT(start_date), 7, 19);
+    gtk_widget_set_name(start_date, "start date");
+    gtk_widget_show(start_date);
+
+    gtk_table_attach(
+        GTK_TABLE(sizing_table), start_date, 1, 4, 3, 4, GTK_EXPAND | GTK_FILL, 0, 0, 0
+    );
+
+    GtkWidget *const end_date
+        = gtt_date_edit_new_flags(0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_SHOW_TIME);
+    dlg->end = DATED(end_date);
+    gtt_date_edit_set_popup_range(GTT_DATE_EDIT(end_date), 7, 19);
+    gtk_widget_set_name(end_date, "end date");
+    gtk_widget_show(end_date);
+
+    gtk_table_attach(
+        GTK_TABLE(sizing_table), end_date, 1, 4, 4, 5, GTK_EXPAND | GTK_FILL, 0, 0, 0
+    );
+
+    GtkWidget *const due_date
+        = gtt_date_edit_new_flags(0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_SHOW_TIME);
+    dlg->due = DATED(due_date);
+    gtt_date_edit_set_popup_range(GTT_DATE_EDIT(due_date), 7, 19);
+    gtk_widget_set_name(due_date, "due date");
+    gtk_widget_show(due_date);
+
+    gtk_table_attach(
+        GTK_TABLE(sizing_table), due_date, 1, 4, 5, 6, GTK_EXPAND | GTK_FILL, 0, 0, 0
+    );
 
     dlg->sizing = GTK_ENTRY(TAGGED("sizing box"));
     dlg->percent = GTK_ENTRY(TAGGED("percent box"));

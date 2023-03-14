@@ -1247,54 +1247,6 @@
 	  </child>
 
 	  <child>
-	    <widget class="GnomeDateEdit" id="start date">
-	      <property name="visible">True</property>
-	      <property name="dateedit_flags">GNOME_DATE_EDIT_SHOW_TIME|GNOME_DATE_EDIT_24_HR</property>
-	      <property name="lower_hour">7</property>
-	      <property name="upper_hour">19</property>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GnomeDateEdit" id="end date">
-	      <property name="visible">True</property>
-	      <property name="dateedit_flags">GNOME_DATE_EDIT_SHOW_TIME|GNOME_DATE_EDIT_24_HR</property>
-	      <property name="lower_hour">7</property>
-	      <property name="upper_hour">19</property>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">4</property>
-	      <property name="bottom_attach">5</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GnomeDateEdit" id="due date">
-	      <property name="visible">True</property>
-	      <property name="dateedit_flags">GNOME_DATE_EDIT_SHOW_TIME|GNOME_DATE_EDIT_24_HR</property>
-	      <property name="lower_hour">7</property>
-	      <property name="upper_hour">19</property>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">5</property>
-	      <property name="bottom_attach">6</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkLabel" id="label47">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">            </property>

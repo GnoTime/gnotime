@@ -27,6 +27,7 @@ add_executable(${PROJECT_NAME}
     gconf-io.c
     ghtml.c
     ghtml-deprecated.c
+    gtt-date-edit.c
     gtt-gsettings-io.c
     gtt-gsettings-io-p.c
     idle-dialog.c
