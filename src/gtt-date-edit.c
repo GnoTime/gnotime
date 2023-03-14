@@ -19,28 +19,19 @@
  * 02111-1307  USA
  */
 
-#undef GTK_DISABLE_DEPRECATED
-
-#include <config.h>
+#include "config.h"
 
 #include "gtt-date-edit.h"
 
 #include <stdio.h>
-#include <stdlib.h> /* atoi */
+#include <stdlib.h> // atoi
 #include <string.h>
 #include <time.h>
 
-#include <glib/gi18n-lib.h>
+#include <glib/gi18n.h>
 
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-
-#include <libgnome/gnome-i18n.h>
-#include <libgnome/gnome-macros.h>
-
-#include "gnometypebuiltins.h"
-
-#include "libgnomeui-access.h"
 
 #ifdef G_OS_WIN32
 /* The use of strtok_r() in this file doesn't require us to use a real
@@ -103,16 +94,10 @@ gtt_date_edit_get_property(GObject *object, guint param_id, GValue *value, GPara
 
 static void create_children(GttDateEdit *gde);
 
-/* to get around warnings */
+// to get around warnings
 static const char *strftime_date_format = "%x";
 
-/**
- * gtt_date_edit_get_type:
- *
- * Returns the GType for the GttDateEdit widget
- */
-/* The following macro defines the get_type */
-GNOME_CLASS_BOILERPLATE(GttDateEdit, gtt_date_edit, GtkHBox, GTK_TYPE_HBOX)
+G_DEFINE_TYPE(GttDateEdit, gtt_date_edit, GTK_TYPE_HBOX)
 
 static void hide_popup(GttDateEdit *gde)
 {
@@ -140,7 +125,7 @@ static void day_selected(GtkCalendar *calendar, GttDateEdit *gde)
         strcpy(buffer, "???");
     buffer[sizeof(buffer) - 1] = '\0';
 
-    /* FIXME: what about set time */
+    // FIXME: what about set time
 
     str_utf8 = g_locale_to_utf8(buffer, -1, NULL, NULL, NULL);
     gtk_entry_set_text(GTK_ENTRY(gde->_priv->date_entry), str_utf8 ? str_utf8 : "");
@@ -274,7 +259,7 @@ static void select_clicked(GtkWidget *widget, GttDateEdit *gde)
 
     date = g_date_new();
     g_date_set_parse(date, str);
-    /* GtkCalendar expects month to be in 0-11 range (inclusive) */
+    // GtkCalendar expects month to be in 0-11 range (inclusive)
     month = g_date_get_month(date) - 1;
 
     gtk_calendar_select_month(
@@ -315,9 +300,7 @@ static void select_clicked(GtkWidget *widget, GttDateEdit *gde)
     gtk_widget_show(gde->_priv->cal_popup);
     gtk_widget_grab_focus(gde->_priv->calendar);
 
-    /* Now transfer our grabs to the popup window; this
-     * should always succeed.
-     */
+    // Now transfer our grabs to the popup window; this should always succeed.
     popup_grab_on_window(gde->_priv->cal_popup->window, gtk_get_current_event_time());
 }
 
@@ -428,7 +411,7 @@ static void fill_time_popup(GtkWidget *widget, GttDateEdit *gde)
             gtk_widget_show(mins);
         }
     }
-    /* work around a GtkOptionMenu bug #66969 */
+    // work around a GtkOptionMenu bug #66969
     gtk_option_menu_set_menu(GTK_OPTION_MENU(gde->_priv->time_popup), menu);
 }
 
@@ -476,8 +459,11 @@ static void gtt_date_edit_class_init(GttDateEditClass *class)
         )
     );
 
-    /* FIXME: Not sure G_TYPE_FLAGS is right here, perhaps we
-     * need a new type, Also think of a better name then "dateedit_flags" */
+    // FIXME: Not sure G_TYPE_FLAGS is right here, perhaps we need a new type, Also think of a
+    // better name then "dateedit_flags"
+#ifdef GTT_TODO
+    // TODO: Re-enable when Meson can be used with glib-mkenums (Autotools from Ubuntu 14.04
+    // does not support this yet)
     g_object_class_install_property(
         gobject_class, PROP_DATEEDIT_FLAGS,
         g_param_spec_flags(
@@ -488,6 +474,7 @@ static void gtt_date_edit_class_init(GttDateEditClass *class)
             (G_PARAM_READABLE | G_PARAM_WRITABLE)
         )
     );
+#endif // GTT_TODO
     g_object_class_install_property(
         gobject_class, PROP_LOWER_HOUR,
         g_param_spec_int(
@@ -532,7 +519,7 @@ static void gtt_date_edit_class_init(GttDateEditClass *class)
     class->time_changed = NULL;
 }
 
-static void gtt_date_edit_instance_init(GttDateEdit *gde)
+static void gtt_date_edit_init(GttDateEdit *gde)
 {
     gde->_priv = g_new0(GttDateEditPrivate, 1);
     gde->_priv->lower_hour = 7;
@@ -545,7 +532,7 @@ static void gtt_date_edit_destroy(GtkObject *object)
 {
     GttDateEdit *gde;
 
-    /* remember, destroy can be run multiple times! */
+    // remember, destroy can be run multiple times!
 
     g_return_if_fail(object != NULL);
     g_return_if_fail(GTT_IS_DATE_EDIT(object));
@@ -556,7 +543,7 @@ static void gtt_date_edit_destroy(GtkObject *object)
         gtk_widget_destroy(gde->_priv->cal_popup);
     gde->_priv->cal_popup = NULL;
 
-    GNOME_CALL_PARENT(GTK_OBJECT_CLASS, destroy, (object));
+    GTK_OBJECT_CLASS(gtt_date_edit_parent_class)->destroy(object);
 }
 
 static void gtt_date_edit_finalize(GObject *object)
@@ -571,7 +558,7 @@ static void gtt_date_edit_finalize(GObject *object)
     g_free(gde->_priv);
     gde->_priv = NULL;
 
-    GNOME_CALL_PARENT(G_OBJECT_CLASS, finalize, (object));
+    G_OBJECT_CLASS(gtt_date_edit_parent_class)->finalize(object);
 }
 
 static void gtt_date_edit_set_property(
@@ -654,7 +641,7 @@ void gtt_date_edit_set_time(GttDateEdit *gde, time_t the_time)
 
     mytm = localtime(&the_time);
 
-    /* Set the date */
+    // Set the date
     if (strftime(buffer, sizeof(buffer), strftime_date_format, mytm) == 0)
         strcpy(buffer, "???");
     buffer[sizeof(buffer) - 1] = '\0';
@@ -725,7 +712,6 @@ static void create_children(GttDateEdit *gde)
     GtkWidget *arrow;
 
     gde->_priv->date_entry = gtk_entry_new();
-    _add_atk_name_desc(GTK_WIDGET(gde->_priv->date_entry), _("Date"), NULL);
 
     gtk_widget_set_size_request(gde->_priv->date_entry, 90, -1);
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->date_entry, TRUE, TRUE, 0);
@@ -734,16 +720,6 @@ static void create_children(GttDateEdit *gde)
     gde->_priv->date_button = gtk_button_new();
     g_signal_connect(gde->_priv->date_button, "clicked", G_CALLBACK(select_clicked), gde);
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->date_button, FALSE, FALSE, 0);
-
-    _add_atk_name_desc(
-        GTK_WIDGET(gde->_priv->date_button), _("Select Date"),
-        _("Select the date from a calendar")
-    );
-
-    _add_atk_relation(
-        gde->_priv->date_button, gde->_priv->date_entry, ATK_RELATION_CONTROLLER_FOR,
-        ATK_RELATION_CONTROLLED_BY
-    );
 
     hbox = gtk_hbox_new(FALSE, 3);
     gtk_container_add(GTK_CONTAINER(gde->_priv->date_button), hbox);
@@ -764,21 +740,12 @@ static void create_children(GttDateEdit *gde)
     gtk_widget_show(gde->_priv->date_button);
 
     gde->_priv->time_entry = gtk_entry_new();
-    _add_atk_name_desc(GTK_WIDGET(gde->_priv->time_entry), _("Time"), NULL);
 
     gtk_entry_set_max_length(GTK_ENTRY(gde->_priv->time_entry), 12);
     gtk_widget_set_size_request(gde->_priv->time_entry, 88, -1);
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->time_entry, TRUE, TRUE, 0);
 
     gde->_priv->time_popup = gtk_option_menu_new();
-    _add_atk_name_desc(
-        GTK_WIDGET(gde->_priv->time_popup), _("Select Time"), _("Select the time from a list")
-    );
-
-    _add_atk_relation(
-        GTK_WIDGET(gde->_priv->time_popup), GTK_WIDGET(gde->_priv->time_entry),
-        ATK_RELATION_CONTROLLED_BY, ATK_RELATION_CONTROLLER_FOR
-    );
 
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->time_popup, FALSE, FALSE, 0);
 
@@ -964,16 +931,15 @@ time_t gtt_date_edit_get_time(GttDateEdit *gde)
             char *str_utf8;
             struct tm pmtm = { 0 };
 
-            /* Get locale specific "PM", note that it
-             * may not exist */
-            pmtm.tm_hour = 17; /* around tea time is always PM */
+            // Get locale specific "PM", note that it may not exist
+            pmtm.tm_hour = 17; // around tea time is always PM
             if (strftime(buf, sizeof(buf), "%p", &pmtm) == 0)
                 strcpy(buf, "");
             buf[sizeof(buf) - 1] = '\0';
 
             str_utf8 = g_locale_to_utf8(buf, -1, NULL, NULL, NULL);
 
-            /* eek, this may be evil, we are sort of fuzzy here */
+            // eek, this may be evil, we are sort of fuzzy here
             if ((str_utf8 != NULL && strcmp(flags, str_utf8) == 0)
                 || g_ascii_strcasecmp(flags, buf) == 0)
                 tm.tm_hour += 12;
@@ -984,7 +950,7 @@ time_t gtt_date_edit_get_time(GttDateEdit *gde)
         g_free(string);
     }
 
-    /* FIXME: Eeeeeeeeek! */
+    // FIXME: Eeeeeeeeek!
     tm.tm_isdst = -1;
 
     return mktime(&tm);
@@ -1042,7 +1008,7 @@ void gtt_date_edit_set_flags(GttDateEdit *gde, GttDateEditFlags flags)
     }
 
     if ((flags & GTT_DATE_EDIT_24_HR) != (old_flags & GTT_DATE_EDIT_24_HR))
-        fill_time_popup(GTK_WIDGET(gde), gde); /* This will destroy the old menu properly */
+        fill_time_popup(GTK_WIDGET(gde), gde); // This will destroy the old menu properly
 
     if ((flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
         != (old_flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY))
