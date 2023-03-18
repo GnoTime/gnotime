@@ -604,15 +604,6 @@ static void task_popup_cb(Wiggy *wig)
     }
 }
 
-/* ============================================================== */
-
-#if LATER
-static void on_print_clicked_cb(GtkWidget *w, gpointer data)
-{
-    GladeXML *glxml;
-    glxml = gtt_glade_xml_new("glade/not-implemented.glade", "Not Implemented");
-}
-#endif
 
 /* ============================================================== */
 /* Publish Button handlers */
@@ -1179,12 +1170,6 @@ static void do_show_report(
     glade_xml_signal_connect_data(
         glxml, "on_save_clicked", GTK_SIGNAL_FUNC(on_save_clicked_cb), wig
     );
-
-#if LATER
-    glade_xml_signal_connect_data(
-        glxml, "on_print_clicked", GTK_SIGNAL_FUNC(on_print_clicked_cb), wig
-    );
-#endif
 
     glade_xml_signal_connect_data(
         glxml, "on_publish_clicked", GTK_SIGNAL_FUNC(on_publish_clicked_cb), wig
