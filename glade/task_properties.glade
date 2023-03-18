@@ -348,41 +348,11 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkOptionMenu" id="billstatus menu">
+		<widget class="GtkComboBox" id="billstatus menu">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Is this task ready to be billed to the customer? &quot;Hold&quot; means maybe, but not yet, needs review.   &quot;Bill&quot; means print this on the next invoice.   &quot;Paid&quot; means that it should no longer be included on invoices.</property>
-		  <property name="can_focus">True</property>
-		  <property name="history">0</property>
-
-		  <child internal-child="menu">
-		    <widget class="GtkMenu" id="convertwidget12">
-		      <property name="visible">True</property>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget13">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Hold</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget14">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Bill</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget15">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Paid</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-		    </widget>
-		  </child>
+		  <property name="can_focus">False</property>
+		  <property name="items" translatable="yes"/>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
@@ -395,41 +365,11 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkOptionMenu" id="billable menu">
+		<widget class="GtkComboBox" id="billable menu">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">How should this task be billed?  &quot;Billable&quot; means bill to the customer in the normal fashion.   &quot;Not Billable&quot; means we can't ask for money for this, don't print on the invoice.   &quot;No Charge&quot; means print on the invoice as 'free/no-charge'.</property>
-		  <property name="can_focus">True</property>
-		  <property name="history">0</property>
-
-		  <child internal-child="menu">
-		    <widget class="GtkMenu" id="convertwidget8">
-		      <property name="visible">True</property>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget9">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Billable</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget10">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Not Billable</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget11">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">No Charge</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-		    </widget>
-		  </child>
+		  <property name="can_focus">False</property>
+		  <property name="items" translatable="yes"/>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
@@ -442,49 +382,11 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkOptionMenu" id="billrate menu">
+		<widget class="GtkComboBox" id="billrate menu">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Fee rate to be charged for this task.</property>
-		  <property name="can_focus">True</property>
-		  <property name="history">0</property>
-
-		  <child internal-child="menu">
-		    <widget class="GtkMenu" id="convertwidget3">
-		      <property name="visible">True</property>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget4">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Regular</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget5">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Overtime</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget6">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">OverOver</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkMenuItem" id="convertwidget7">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Flat Fee</property>
-			  <property name="use_underline">True</property>
-			</widget>
-		      </child>
-		    </widget>
-		  </child>
+		  <property name="can_focus">False</property>
+		  <property name="items" translatable="yes"/>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
@@ -562,3 +464,4 @@
 </widget>
 
 </glade-interface>
+

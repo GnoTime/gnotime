@@ -26,6 +26,7 @@
 #include "proj.h"
 #include "props-task.h"
 #include "util.h"
+#include "gtt-select-list.h"
 
 typedef struct PropTaskDlg_s
 {
@@ -33,9 +34,9 @@ typedef struct PropTaskDlg_s
     GtkDialog *dlg;
     GtkEntry *memo;
     GtkTextView *notes;
-    GtkOptionMenu *billstatus;
-    GtkOptionMenu *billable;
-    GtkOptionMenu *billrate;
+    GtkComboBox *billstatus;
+    GtkComboBox *billable;
+    GtkComboBox *billrate;
     GtkEntry *unit;
 
     GttTask *task;
@@ -67,16 +68,6 @@ typedef struct PropTaskDlg_s
     dlg->task_freeze = TRUE;   \
     gtt_task_freeze(dlg->task);
 
-/* ============================================================== */
-/* Copy from widget to gtt objects */
-
-#define GET_MENU(WIDGET, NAME)                           \
-    ({                                                   \
-        GtkWidget *menu, *menu_item;                     \
-        menu = gtk_option_menu_get_menu(WIDGET);         \
-        menu_item = gtk_menu_get_active(GTK_MENU(menu)); \
-        (g_object_get_data(G_OBJECT(menu_item), NAME));  \
-    })
 
 static void save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 {
@@ -115,13 +106,13 @@ static void save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
     ivl = (int) (60.0 * atof(gtk_entry_get_text(dlg->unit)));
     gtt_task_set_bill_unit(dlg->task, ivl);
 
-    status = (GttBillStatus) GET_MENU(dlg->billstatus, "billstatus");
+    status = (GttBillStatus) gtt_combo_select_list_get_value(dlg->billstatus);
     gtt_task_set_billstatus(dlg->task, status);
 
-    able = (GttBillable) GET_MENU(dlg->billable, "billable");
+    able = (GttBillable) gtt_combo_select_list_get_value(dlg->billable);
     gtt_task_set_billable(dlg->task, able);
 
-    rate = (GttBillRate) GET_MENU(dlg->billrate, "billrate");
+    rate = (GttBillRate) gtt_combo_select_list_get_value(dlg->billrate);
     gtt_task_set_billrate(dlg->task, rate);
 
     dlg->ignore_events = FALSE;
@@ -158,30 +149,13 @@ static void do_set_task(GttTask *tsk, PropTaskDlg *dlg)
     gtk_entry_set_text(dlg->unit, buff);
 
     status = gtt_task_get_billstatus(tsk);
-    if (GTT_HOLD == status)
-        gtk_option_menu_set_history(dlg->billstatus, 0);
-    else if (GTT_BILL == status)
-        gtk_option_menu_set_history(dlg->billstatus, 1);
-    else if (GTT_PAID == status)
-        gtk_option_menu_set_history(dlg->billstatus, 2);
+    gtt_combo_select_list_set_active_by_value(dlg->billstatus, status);
 
     able = gtt_task_get_billable(tsk);
-    if (GTT_BILLABLE == able)
-        gtk_option_menu_set_history(dlg->billable, 0);
-    else if (GTT_NOT_BILLABLE == able)
-        gtk_option_menu_set_history(dlg->billable, 1);
-    else if (GTT_NO_CHARGE == able)
-        gtk_option_menu_set_history(dlg->billable, 2);
+    gtt_combo_select_list_set_active_by_value(dlg->billable, able);
 
     rate = gtt_task_get_billrate(tsk);
-    if (GTT_REGULAR == rate)
-        gtk_option_menu_set_history(dlg->billrate, 0);
-    else if (GTT_OVERTIME == rate)
-        gtk_option_menu_set_history(dlg->billrate, 1);
-    else if (GTT_OVEROVER == rate)
-        gtk_option_menu_set_history(dlg->billrate, 2);
-    else if (GTT_FLAT_FEE == rate)
-        gtk_option_menu_set_history(dlg->billrate, 3);
+    gtt_combo_select_list_set_active_by_value(dlg->billrate, rate);
 
     dlg->ignore_events = FALSE;
 }
@@ -214,7 +188,11 @@ static PropTaskDlg *global_dlog = NULL;
 static void destroy_cb(GtkWidget *w, PropTaskDlg *dlg)
 {
     close_cb(w, dlg);
+
+    // FIXME: Poor design that we are asked to destroy parameter dlg and also clear some global...
     global_dlog = NULL;
+
+    // FIXME: Are we supposed to destroy some widgets and list models here?
     g_free(dlg);
 }
 
@@ -246,23 +224,21 @@ static void destroy_cb(GtkWidget *w, PropTaskDlg *dlg)
         widget;                                                                        \
     })
 
-#define MUGGED(NAME)                                                                           \
-    ({                                                                                         \
-        GtkWidget *widget, *mw;                                                                \
-        widget = glade_xml_get_widget(gtxml, NAME);                                            \
-        mw = gtk_option_menu_get_menu(GTK_OPTION_MENU(widget));                                \
-        g_signal_connect(G_OBJECT(mw), "selection_done", G_CALLBACK(save_task_billinfo), dlg); \
-        GTK_OPTION_MENU(widget);                                                               \
-    })
+static GtkComboBox* init_combo(GladeXML *gtxml, const char *name,
+    GCallback changed_callback, void *callback_data)
+{
+    GtkComboBox *combo_box;
 
-#define MENTRY(WIDGET, NAME, ORDER, VAL)                              \
-    {                                                                 \
-        GtkWidget *menu_item;                                         \
-        GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu(WIDGET));   \
-        gtk_option_menu_set_history(WIDGET, ORDER);                   \
-        menu_item = gtk_menu_get_active(menu);                        \
-        g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL); \
+    combo_box = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, name));
+    gtt_combo_select_list_init(combo_box);
+
+    if (changed_callback != NULL)
+    {
+        g_signal_connect(G_OBJECT(combo_box), "changed", changed_callback, callback_data);
     }
+
+    return combo_box;
+}
 
 static PropTaskDlg *prop_task_dialog_new(void)
 {
@@ -293,26 +269,32 @@ static PropTaskDlg *prop_task_dialog_new(void)
     dlg->memo = GTK_ENTRY(NTAGGED("memo box"));
     dlg->notes = GTK_TEXT_VIEW(TEXTED("notes box"));
 
-    dlg->billstatus = MUGGED("billstatus menu");
-    dlg->billable = MUGGED("billable menu");
-    dlg->billrate = MUGGED("billrate menu");
+    dlg->billstatus =
+        init_combo(gtxml, "billstatus menu", G_CALLBACK(save_task_billinfo), dlg);
+
+    dlg->billable =
+        init_combo(gtxml, "billable menu", G_CALLBACK(save_task_billinfo), dlg);
+
+    dlg->billrate =
+        init_combo(gtxml, "billrate menu", G_CALLBACK(save_task_billinfo), dlg);
+
     dlg->unit = GTK_ENTRY(BTAGGED("unit box"));
 
     /* ------------------------------------------------------ */
     /* associate values with the three option menus */
 
-    MENTRY(dlg->billstatus, "billstatus", 0, GTT_HOLD);
-    MENTRY(dlg->billstatus, "billstatus", 1, GTT_BILL);
-    MENTRY(dlg->billstatus, "billstatus", 2, GTT_PAID);
+    gtt_combo_select_list_append(dlg->billstatus, _("Hold"), GTT_HOLD);
+    gtt_combo_select_list_append(dlg->billstatus, _("Bill"), GTT_BILL);
+    gtt_combo_select_list_append(dlg->billstatus, _("Paid"), GTT_PAID);
 
-    MENTRY(dlg->billable, "billable", 0, GTT_BILLABLE);
-    MENTRY(dlg->billable, "billable", 1, GTT_NOT_BILLABLE);
-    MENTRY(dlg->billable, "billable", 2, GTT_NO_CHARGE);
+    gtt_combo_select_list_append(dlg->billable, _("Billable"), GTT_BILLABLE);
+    gtt_combo_select_list_append(dlg->billable, _("Not Billable"), GTT_NOT_BILLABLE);
+    gtt_combo_select_list_append(dlg->billable, _("No Charge"), GTT_NO_CHARGE);
 
-    MENTRY(dlg->billrate, "billrate", 0, GTT_REGULAR);
-    MENTRY(dlg->billrate, "billrate", 1, GTT_OVERTIME);
-    MENTRY(dlg->billrate, "billrate", 2, GTT_OVEROVER);
-    MENTRY(dlg->billrate, "billrate", 3, GTT_FLAT_FEE);
+    gtt_combo_select_list_append(dlg->billrate, _("Regular"), GTT_REGULAR);
+    gtt_combo_select_list_append(dlg->billrate, _("Overtime"), GTT_OVERTIME);
+    gtt_combo_select_list_append(dlg->billrate, _("OverOver"), GTT_OVEROVER);
+    gtt_combo_select_list_append(dlg->billrate, _("Flat Fee"), GTT_FLAT_FEE);
 
     dlg->ignore_events = FALSE;
     dlg->task_freeze = FALSE;
