@@ -46,6 +46,7 @@ add_executable(${PROJECT_NAME}
     props-proj.c
     props-task.c
     query.c
+    gtt-select-list.c
     status-icon.c
     timer.c
     toolbar.c
