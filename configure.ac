@@ -303,6 +303,7 @@ fedora/Makefile
 fedora/gnotime.spec
 src/Makefile
 scripts/Makefile
+ui/Makefile
 ])
 AC_OUTPUT
 

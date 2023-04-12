@@ -1196,7 +1196,7 @@ static void do_show_report(
     GtkBuilder *builder;
     Wiggy *wig;
 
-    builder = gtt_builder_new_from_file("glade/journal.glade");
+    builder = gtt_builder_new_from_file("ui/journal.ui");
     jnl_top = GTK_WIDGET(gtk_builder_get_object(builder, "Journal Window"));
     jnl_viewport = GTK_WIDGET(gtk_builder_get_object(builder, "Journal ScrollWin"));
 
