@@ -19,6 +19,8 @@
 #ifndef GTT_TOOLBAR_H
 #define GTT_TOOLBAR_H
 
+#include <gtk/gtk.h>
+
 /* The build_toolbar() routine assembles the buttons in the toolbar.
  * The toolbar appearence (i.e. which buttons are visible) is
  * dynamically determined by the configuration settings.

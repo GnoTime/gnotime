@@ -21,6 +21,8 @@
 
 #include "proj.h"
 
+#include <glib-object.h>
+
 typedef struct EditIntervalDialog_s EditIntervalDialog;
 
 EditIntervalDialog *edit_interval_dialog_new(void);

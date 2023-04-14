@@ -36,6 +36,8 @@
  * dialog allows the user to restart expired projects.
  */
 
+#include <glib.h>
+
 typedef struct GttIdleDialog_s GttIdleDialog;
 
 GttIdleDialog *idle_dialog_new(void);

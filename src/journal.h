@@ -19,6 +19,8 @@
 #ifndef GTT_JOURNAL_H
 #define GTT_JOURNAL_H
 
+#include <gtk/gtk.h>
+
 /* Menu callback, will show the report passed as filename */
 void show_report(GtkWidget *, gpointer filename);
 
