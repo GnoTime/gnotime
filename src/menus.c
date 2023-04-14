@@ -120,10 +120,10 @@ static GnomeUIInfo menu_main_reports[] = {
 static GnomeUIInfo menu_main_timer[] = {
 #define MENU_TIMER_START_POS 0
     { GNOME_APP_UI_ITEM, N_("St_art"), N_("Start the timer running"), menu_start_timer, NULL,
-      NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER, 'S', GDK_CONTROL_MASK, NULL },
+      NULL, GNOME_APP_PIXMAP_STOCK, GTK_STOCK_MEDIA_RECORD, 'S', GDK_CONTROL_MASK, NULL },
 #define MENU_TIMER_STOP_POS 1
     { GNOME_APP_UI_ITEM, N_("Sto_p"), N_("Stop the timer"), menu_stop_timer, NULL, NULL,
-      GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_TIMER_STOP, 'W', GDK_CONTROL_MASK, NULL },
+      GNOME_APP_PIXMAP_STOCK, GTK_STOCK_MEDIA_STOP, 'W', GDK_CONTROL_MASK, NULL },
 #define MENU_TIMER_TOGGLE_POS 2
     { GNOME_APP_UI_TOGGLEITEM, N_("_Timer Running"), NULL, menu_toggle_timer, NULL, NULL,
       GNOME_APP_PIXMAP_NONE, NULL, 'T', GDK_CONTROL_MASK, NULL },

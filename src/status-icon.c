@@ -75,7 +75,7 @@ static void status_icon_popup_menu(
 
 void gtt_status_icon_create()
 {
-    status_icon = gtk_status_icon_new_from_stock(GNOME_STOCK_TIMER_STOP);
+    status_icon = gtk_status_icon_new_from_stock(GTK_STOCK_MEDIA_STOP);
     gtk_status_icon_set_tooltip(status_icon, _("Timer is not running"));
     g_signal_connect(
         G_OBJECT(status_icon), "activate", G_CALLBACK(status_icon_activated), NULL
@@ -92,7 +92,7 @@ void gtt_status_icon_destroy()
 
 void gtt_status_icon_start_timer(GttProject *prj)
 {
-    gtk_status_icon_set_from_stock(status_icon, GNOME_STOCK_TIMER);
+    gtk_status_icon_set_from_stock(status_icon, GTK_STOCK_MEDIA_RECORD);
     gchar *text = g_strdup_printf(_("Timer running for %s"), gtt_project_get_title(prj));
     gtk_status_icon_set_tooltip(status_icon, text);
     g_free(text);
@@ -102,6 +102,6 @@ void gtt_status_icon_start_timer(GttProject *prj)
 void gtt_status_icon_stop_timer(GttProject *prj)
 {
     gtk_status_icon_set_tooltip(status_icon, _("Timer is not running"));
-    gtk_status_icon_set_from_stock(status_icon, GNOME_STOCK_TIMER_STOP);
+    gtk_status_icon_set_from_stock(status_icon, GTK_STOCK_MEDIA_STOP);
     timer_active = FALSE;
 }

@@ -492,7 +492,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     gtk_box_pack_start(GTK_BOX(labels), GTK_WIDGET(filler), TRUE, TRUE, 1);
 
     /* put timer icon into statusbar */
-    status_timer = gtk_image_new_from_stock(GNOME_STOCK_TIMER, GTK_ICON_SIZE_MENU);
+    status_timer = gtk_image_new_from_stock(GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_MENU);
     gtk_widget_show(status_timer);
     gtk_box_pack_end(GTK_BOX(status_bar), GTK_WIDGET(status_timer), FALSE, FALSE, 1);
 
