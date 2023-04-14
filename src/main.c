@@ -761,8 +761,10 @@ static int save_state(
     if (!app_window)
         return FALSE;
 
-    gdk_window_get_origin(app_window->window, &x, &y);
-    gdk_window_get_size(app_window->window, &w, &h);
+    GdkWindow *const win = gtk_widget_get_window(app_window);
+
+    gdk_window_get_origin(win, &x, &y);
+    gdk_window_get_size(win, &w, &h);
     argv[0] = (char *) data;
     argv[1] = "--geometry";
     argv[2] = g_strdup_printf("%dx%d+%d+%d", w, h, x, y);

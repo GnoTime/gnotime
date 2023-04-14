@@ -50,7 +50,7 @@ static void status_icon_activated(GtkStatusIcon *status_icon, gpointer data)
 
 static void status_icon_menuitem_visibility(GtkWidget *toggle, gpointer *user_data)
 {
-    if (GTK_WIDGET_VISIBLE(app_window))
+    if (gtk_widget_get_visible(app_window))
         gtk_widget_hide(app_window);
     else
         gtk_widget_show(app_window);
@@ -63,7 +63,7 @@ static void status_icon_popup_menu(
     GtkWidget *menu = gtk_menu_new();
     GtkWidget *menuitem = gtk_check_menu_item_new_with_mnemonic(_("_Hide main window"));
     gtk_check_menu_item_set_active(
-        GTK_CHECK_MENU_ITEM(menuitem), !GTK_WIDGET_VISIBLE(app_window)
+        GTK_CHECK_MENU_ITEM(menuitem), !gtk_widget_get_visible(app_window)
     );
     g_signal_connect(
         G_OBJECT(menuitem), "toggled", G_CALLBACK(status_icon_menuitem_visibility), NULL

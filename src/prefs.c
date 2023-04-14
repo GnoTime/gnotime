@@ -306,7 +306,7 @@ static void toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
     int state;
 
-    state = GTK_TOGGLE_BUTTON(odlg->show_toolbar)->active;
+    state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_toolbar));
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_new), state);
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_ccp), state);
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->show_tb_journal), state);
@@ -338,14 +338,14 @@ static void toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
         }                                      \
     }
 
-#define SHOW_CHECK(TOK)                                          \
-    {                                                            \
-        int state = GTK_TOGGLE_BUTTON(odlg->show_##TOK)->active; \
-        if (config_show_##TOK != state)                          \
-        {                                                        \
-            change = 1;                                          \
-            config_show_##TOK = state;                           \
-        }                                                        \
+#define SHOW_CHECK(TOK)                                                                \
+    {                                                                                  \
+        int state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_##TOK)); \
+        if (config_show_##TOK != state)                                                \
+        {                                                                              \
+            change = 1;                                                                \
+            config_show_##TOK = state;                                                 \
+        }                                                                              \
     }
 
 #define SET_VAL(to, from) \
@@ -393,7 +393,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
     {
 
         /* display options */
-        state = GTK_TOGGLE_BUTTON(odlg->show_secs)->active;
+        state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_secs));
         if (state != config_show_secs)
         {
             config_show_secs = state;
@@ -403,7 +403,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
                 gtk_widget_queue_resize(status_bar);
             start_main_timer();
         }
-        if (GTK_TOGGLE_BUTTON(odlg->show_statusbar)->active)
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_statusbar)))
         {
             gtk_widget_show(GTK_WIDGET(status_bar));
             config_show_statusbar = 1;
@@ -413,7 +413,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
             gtk_widget_hide(GTK_WIDGET(status_bar));
             config_show_statusbar = 0;
         }
-        if (GTK_TOGGLE_BUTTON(odlg->show_clist_titles)->active)
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_clist_titles)))
         {
             config_show_clist_titles = 1;
         }
@@ -422,7 +422,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
             config_show_clist_titles = 0;
         }
 
-        if (GTK_TOGGLE_BUTTON(odlg->show_subprojects)->active)
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_subprojects)))
         {
             config_show_subprojects = 1;
         }
@@ -443,7 +443,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
     if (3 == page)
     {
         /* log file options */
-        config_logfile_use = GTK_TOGGLE_BUTTON(odlg->logfileuse)->active;
+        config_logfile_use = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->logfileuse));
         config_logfile_name = gtk_file_chooser_get_filename(odlg->logfilename);
         ENTRY_TO_CHAR(odlg->logfilestart, config_logfile_start);
         ENTRY_TO_CHAR(odlg->logfilestop, config_logfile_stop);
@@ -455,8 +455,10 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         int change = 0;
 
         /* toolbar */
-        config_show_toolbar = GTK_TOGGLE_BUTTON(odlg->show_toolbar)->active;
-        config_show_tb_tips = GTK_TOGGLE_BUTTON(odlg->show_tb_tips)->active;
+        config_show_toolbar
+            = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_toolbar));
+        config_show_tb_tips
+            = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_tb_tips));
 
         /* toolbar sections */
         SHOW_CHECK(tb_new);
@@ -523,7 +525,7 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         }
 
         ENTRY_TO_CHAR(odlg->currency_symbol, config_currency_symbol);
-        int state = GTK_TOGGLE_BUTTON(odlg->currency_use_locale)->active;
+        int state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->currency_use_locale));
         if (config_currency_use_locale != state)
         {
             config_currency_use_locale = state;
@@ -540,7 +542,7 @@ static void logfile_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
     int state;
 
-    state = GTK_TOGGLE_BUTTON(odlg->logfileuse)->active;
+    state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->logfileuse));
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->logfilename), state);
     gtk_widget_set_sensitive(odlg->logfilename_l, state);
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->logfilestart), state);
@@ -555,7 +557,7 @@ static void currency_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 {
     int state;
 
-    state = GTK_TOGGLE_BUTTON(w)->active;
+    state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->currency_symbol), !state);
     gtk_widget_set_sensitive(GTK_WIDGET(odlg->currency_symbol_label), !state);
 }

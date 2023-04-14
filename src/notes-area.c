@@ -199,13 +199,16 @@ static void close_proj_area(GtkButton *but, NotesArea *na)
     int hpane_width;
     int hpane_div;
 
-    hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation(GTK_WIDGET(na->hpane), &alloc);
+    hpane_width = alloc.width;
     hpane_div = gtk_paned_get_position(na->hpane);
 
     if (hpane_div > hpane_width - CLOSED_MARGIN)
     {
         int vpane_height;
-        vpane_height = GTK_WIDGET(na->vpane)->allocation.height;
+        gtk_widget_get_allocation(GTK_WIDGET(na->vpane), &alloc);
+        vpane_height = alloc.height;
         gtk_paned_set_position(na->vpane, vpane_height);
     }
     else
@@ -219,7 +222,9 @@ static void close_task_area(GtkButton *but, NotesArea *na)
     int hpane_width;
     int hpane_div;
 
-    hpane_width = GTK_WIDGET(na->hpane)->allocation.width;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation(GTK_WIDGET(na->hpane), &alloc);
+    hpane_width = alloc.width;
     hpane_div = gtk_paned_get_position(na->hpane);
 
     /* XXX we really need only the first test, but the second
@@ -229,7 +234,8 @@ static void close_task_area(GtkButton *but, NotesArea *na)
     if ((hpane_div < CLOSED_MARGIN) || (hpane_div > hpane_width - CLOSED_MARGIN))
     {
         int vpane_height;
-        vpane_height = GTK_WIDGET(na->vpane)->allocation.height;
+        gtk_widget_get_allocation(GTK_WIDGET(na->vpane), &alloc);
+        vpane_height = alloc.height;
         gtk_paned_set_position(na->vpane, vpane_height);
     }
     else

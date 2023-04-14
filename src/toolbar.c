@@ -80,6 +80,7 @@ void toolbar_set_states(void)
         return;
     }
 
+    /* TODO: Investigate if GTK>=3 offers a way to selectively en-/disable tooltips
     if (mytbar->tbar && mytbar->tbar->tooltips)
     {
         if (config_show_tb_tips)
@@ -87,6 +88,7 @@ void toolbar_set_states(void)
         else
             gtk_tooltips_disable(mytbar->tbar->tooltips);
     }
+    */
 
     if (mytbar->paste)
     {

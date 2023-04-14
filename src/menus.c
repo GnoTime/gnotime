@@ -287,7 +287,7 @@ void menu_set_states(void)
      * just set the value.
      * gtk_check_menu_item_set_active (mi, timer_is_running());
      */
-    mi->active = timer_is_running();
+    gtk_check_menu_item_set_active(mi, timer_is_running());
 
     /* XXX would be nice to change this menu entry to say
      * 'timer stopped' when the timer is stopped.  But don't
