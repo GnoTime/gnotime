@@ -19,9 +19,11 @@
 #include "config.h"
 
 #include "gtt-date-edit.h"
+#include "gtt-select-list.h"
 
 #include <glade/glade.h>
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -36,7 +38,7 @@ struct EditIntervalDialog_s
     GtkWidget *interval_edit;
     GtkWidget *start_widget;
     GtkWidget *stop_widget;
-    GtkWidget *fuzz_widget;
+    GtkComboBox *fuzz_widget;
 };
 
 /* ============================================================== */
@@ -45,7 +47,6 @@ struct EditIntervalDialog_s
 static void interval_edit_apply_cb(GtkWidget *w, gpointer data)
 {
     EditIntervalDialog *dlg = (EditIntervalDialog *) data;
-    GtkWidget *menu, *menu_item;
     GttTask *task;
     GttProject *prj;
     time_t start, stop, tmp;
@@ -79,9 +80,7 @@ static void interval_edit_apply_cb(GtkWidget *w, gpointer data)
     gtt_interval_set_start(dlg->interval, start);
     gtt_interval_set_stop(dlg->interval, stop);
 
-    menu = gtk_option_menu_get_menu(GTK_OPTION_MENU(dlg->fuzz_widget));
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    fuzz = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu_item), "fuzz_factor"));
+    fuzz = gtt_combo_select_list_get_value(dlg->fuzz_widget);
 
     gtt_interval_set_fuzz(dlg->interval, fuzz);
 
@@ -111,7 +110,6 @@ static void interval_edit_cancel_cb(GtkWidget *w, gpointer data)
 void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
 {
     GtkWidget *w;
-    GtkOptionMenu *fw;
     time_t start, stop;
     int fuzz;
 
@@ -126,8 +124,7 @@ void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
         w = dlg->stop_widget;
         gtt_date_edit_set_time(GTT_DATE_EDIT(w), 0);
 
-        fw = GTK_OPTION_MENU(dlg->fuzz_widget);
-        gtk_option_menu_set_history(fw, 0);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 0);
         return;
     }
 
@@ -140,28 +137,27 @@ void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
     gtt_date_edit_set_time(GTT_DATE_EDIT(w), stop);
 
     fuzz = gtt_interval_get_fuzz(dlg->interval);
-    fw = GTK_OPTION_MENU(dlg->fuzz_widget);
 
     /* OK, now set the initial value */
-    gtk_option_menu_set_history(fw, 0);
+    gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 0);
     if (90 < fuzz)
-        gtk_option_menu_set_history(fw, 1);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 300);
     if (450 < fuzz)
-        gtk_option_menu_set_history(fw, 2);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 600);
     if (750 < fuzz)
-        gtk_option_menu_set_history(fw, 3);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 900);
     if (1050 < fuzz)
-        gtk_option_menu_set_history(fw, 4);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 1200);
     if (1500 < fuzz)
-        gtk_option_menu_set_history(fw, 5);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 1800);
     if (2700 < fuzz)
-        gtk_option_menu_set_history(fw, 6);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 3600);
     if (5400 < fuzz)
-        gtk_option_menu_set_history(fw, 7);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 7200);
     if (9000 < fuzz)
-        gtk_option_menu_set_history(fw, 8);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 3 * 3600);
     if (6 * 3600 < fuzz)
-        gtk_option_menu_set_history(fw, 9);
+        gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 12 * 3600);
 }
 
 /* ============================================================== */
@@ -171,7 +167,6 @@ EditIntervalDialog *edit_interval_dialog_new(void)
 {
     EditIntervalDialog *dlg;
     GladeXML *glxml;
-    GtkWidget *w, *menu, *menu_item;
 
     dlg = g_malloc(sizeof(EditIntervalDialog));
     dlg->interval = NULL;
@@ -215,53 +210,21 @@ EditIntervalDialog *edit_interval_dialog_new(void)
 
     gtk_table_attach(GTK_TABLE(table1), stop_date, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, 0, 4, 0);
 
-    dlg->fuzz_widget = glade_xml_get_widget(glxml, "fuzz_menu");
-
     /* ----------------------------------------------- */
-    /* install option data by hand ... ugh
-     * wish glade did this for us .. */
-    w = dlg->fuzz_widget;
-    menu = gtk_option_menu_get_menu(GTK_OPTION_MENU(w));
+    /* initialize fuzz combo box                       */
+    dlg->fuzz_widget = GTK_COMBO_BOX(glade_xml_get_widget(glxml, "fuzz_menu"));
+    gtt_combo_select_list_init(dlg->fuzz_widget);
 
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 0);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(0));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 1);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(300));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 2);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(600));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 3);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(900));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 4);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(1200));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 5);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(1800));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 6);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(3600));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 7);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(7200));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 8);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(3 * 3600));
-
-    gtk_option_menu_set_history(GTK_OPTION_MENU(w), 9);
-    menu_item = gtk_menu_get_active(GTK_MENU(menu));
-    g_object_set_data(G_OBJECT(menu_item), "fuzz_factor", GINT_TO_POINTER(12 * 3600));
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("Exact Time"), 0);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("5 Min"), 300);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("10 Min"), 600);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("15 Min"), 900);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("20 Min"), 1200);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("30 Min"), 1800);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("1 Hour"), 3600);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("2 Hours"), 2 * 3600);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("3 Hours"), 3 * 3600);
+    gtt_combo_select_list_append(dlg->fuzz_widget, _("Today"), 12 * 3600);
 
     /* gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE); */
     gtk_widget_hide_on_delete(dlg->interval_edit);
