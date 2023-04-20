@@ -100,14 +100,16 @@ void gtt_gsettings_save(void)
     {
         GSettings *geometry = g_settings_get_child(settings_obj, "geometry");
 
+        GdkWindow *const win = gtk_widget_get_window(app_window);
+
         // Save the window location and size
         gint w, h;
-        gdk_window_get_size(app_window->window, &w, &h);
+        gdk_window_get_size(win, &w, &h);
         gtt_gsettings_set_int(geometry, "width", w);
         gtt_gsettings_set_int(geometry, "height", h);
 
         gint x, y;
-        gdk_window_get_origin(app_window->window, &x, &y);
+        gdk_window_get_origin(win, &x, &y);
         gtt_gsettings_set_int(geometry, "x", x);
         gtt_gsettings_set_int(geometry, "y", y);
 

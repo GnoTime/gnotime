@@ -492,7 +492,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     gtk_box_pack_start(GTK_BOX(labels), GTK_WIDGET(filler), TRUE, TRUE, 1);
 
     /* put timer icon into statusbar */
-    status_timer = gtk_image_new_from_stock(GNOME_STOCK_TIMER, GTK_ICON_SIZE_MENU);
+    status_timer = gtk_image_new_from_stock(GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_MENU);
     gtk_widget_show(status_timer);
     gtk_box_pack_end(GTK_BOX(status_bar), GTK_WIDGET(status_timer), FALSE, FALSE, 1);
 
@@ -518,7 +518,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
      * to occur.  So we need a fancier move.
      */
     gtk_widget_ref(vpane);
-    gtk_container_remove(GTK_CONTAINER(vpane->parent), vpane);
+    gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(vpane)), vpane);
     gtk_box_pack_start(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
     gtk_widget_unref(vpane);
 
@@ -549,7 +549,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 
 void app_show(void)
 {
-    if (!GTK_WIDGET_MAPPED(app_window))
+    if (!gtk_widget_get_mapped(app_window))
     {
         gtk_widget_show(app_window);
     }

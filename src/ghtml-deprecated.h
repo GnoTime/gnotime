@@ -16,12 +16,12 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef __GTT_GHTML_DEPRECATED_H__
-#define __GTT_GHTML_DEPRECATED_H__
+#ifndef GTT_GHTML_DEPRECATED_H
+#define GTT_GHTML_DEPRECATED_H
 
 #include "ghtml.h"
 #include "proj.h"
 
 void gtt_ghtml_deprecated_init(GttGhtml *);
 
-#endif /* __GTT_GHTML_DEPRECATED_H__ */
+#endif // GTT_GHTML_DEPRECATED_H

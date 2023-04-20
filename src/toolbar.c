@@ -80,6 +80,7 @@ void toolbar_set_states(void)
         return;
     }
 
+    /* TODO: Investigate if GTK>=3 offers a way to selectively en-/disable tooltips
     if (mytbar->tbar && mytbar->tbar->tooltips)
     {
         if (config_show_tb_tips)
@@ -87,6 +88,7 @@ void toolbar_set_states(void)
         else
             gtk_tooltips_disable(mytbar->tbar->tooltips);
     }
+    */
 
     if (mytbar->paste)
     {
@@ -97,7 +99,7 @@ void toolbar_set_states(void)
     {
         gtk_image_set_from_stock(
             mytbar->timer_button_image,
-            ((timer_is_running()) ? GNOME_STOCK_TIMER_STOP : GNOME_STOCK_TIMER),
+            ((timer_is_running()) ? GTK_STOCK_MEDIA_STOP : GTK_STOCK_MEDIA_RECORD),
             GTK_ICON_SIZE_LARGE_TOOLBAR
         );
     }
@@ -193,7 +195,7 @@ GtkWidget *build_toolbar(void)
              */
             mytbar->timer_button_image = GTK_IMAGE(gtk_image_new());
             gtk_image_set_from_stock(
-                mytbar->timer_button_image, GNOME_STOCK_TIMER, GTK_ICON_SIZE_LARGE_TOOLBAR
+                mytbar->timer_button_image, GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_LARGE_TOOLBAR
             );
 
             mytbar->timer_button = gtk_toolbar_append_item(

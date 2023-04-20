@@ -12,6 +12,7 @@ project(gnotime
     DESCRIPTION "A to-do list organizer, diary and billing system"
     HOMEPAGE_URL "https://gttr.sourceforge.net"
     LANGUAGES C)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGSEAL_ENABLE")
 set(GTT_VERSION_SUFFIX "_dev")
 
 find_package(PkgConfig)

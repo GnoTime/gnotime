@@ -16,8 +16,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GTT_IDLE_DIALOG_H_
-#define GTT_IDLE_DIALOG_H_
+#ifndef GTT_IDLE_DIALOG_H
+#define GTT_IDLE_DIALOG_H
 
 /* The Idle Dialog is popped up when a project is active (a project
  * timer is running), but the keyboard/mouse have been idle for some
@@ -35,6 +35,8 @@
  * due to keyboard inactivity, is called an 'expired' project.  This
  * dialog allows the user to restart expired projects.
  */
+
+#include <glib.h>
 
 typedef struct GttIdleDialog_s GttIdleDialog;
 
@@ -69,4 +71,4 @@ void idle_dialog_deactivate_timer(GttIdleDialog *id);
 
 gboolean idle_dialog_is_visible(GttIdleDialog *id);
 
-#endif /* GTT_IDLE_DIALOG_H_ */
+#endif // GTT_IDLE_DIALOG_H

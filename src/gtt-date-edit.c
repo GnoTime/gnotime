@@ -185,7 +185,7 @@ static gint button_press_popup(GtkWidget *widget, GdkEventButton *event, gpointe
         {
             if (child == widget)
                 return FALSE;
-            child = child->parent;
+            child = gtk_widget_get_parent(child);
         }
     }
 
@@ -202,12 +202,14 @@ static void position_popup(GttDateEdit *gde)
 
     gtk_widget_size_request(gde->_priv->cal_popup, &req);
 
-    gdk_window_get_origin(gde->_priv->date_button->window, &x, &y);
+    gdk_window_get_origin(gtk_widget_get_window(gde->_priv->date_button), &x, &y);
 
-    x += gde->_priv->date_button->allocation.x;
-    y += gde->_priv->date_button->allocation.y;
-    bwidth = gde->_priv->date_button->allocation.width;
-    bheight = gde->_priv->date_button->allocation.height;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation(gde->_priv->date_button, &alloc);
+    x += alloc.x;
+    y += alloc.y;
+    bwidth = alloc.width;
+    bheight = alloc.height;
 
     x += bwidth - req.width;
     y += bheight;
@@ -252,7 +254,7 @@ static void select_clicked(GtkWidget *widget, GttDateEdit *gde)
        + * events generated when the window is mapped, such as enter
        + * notify events on subwidgets. If the grab fails, bail out.
        + */
-    if (!popup_grab_on_window(widget->window, gtk_get_current_event_time()))
+    if (!popup_grab_on_window(gtk_widget_get_window(widget), gtk_get_current_event_time()))
         return;
 
     str = gtk_entry_get_text(GTK_ENTRY(gde->_priv->date_entry));
@@ -301,7 +303,9 @@ static void select_clicked(GtkWidget *widget, GttDateEdit *gde)
     gtk_widget_grab_focus(gde->_priv->calendar);
 
     // Now transfer our grabs to the popup window; this should always succeed.
-    popup_grab_on_window(gde->_priv->cal_popup->window, gtk_get_current_event_time());
+    popup_grab_on_window(
+        gtk_widget_get_window(gde->_priv->cal_popup), gtk_get_current_event_time()
+    );
 }
 
 typedef struct
@@ -424,7 +428,7 @@ static gboolean gtt_date_edit_mnemonic_activate(GtkWidget *widget, gboolean grou
 
     group_cycling = group_cycling != FALSE;
 
-    if (!GTK_WIDGET_IS_SENSITIVE(gde->_priv->date_entry))
+    if (!gtk_widget_is_sensitive(gde->_priv->date_entry))
         handled = TRUE;
     else
         g_signal_emit_by_name(
@@ -1013,18 +1017,20 @@ void gtt_date_edit_set_flags(GttDateEdit *gde, GttDateEditFlags flags)
     if ((flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
         != (old_flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY))
     {
+        const GtkCalendarDisplayOptions opts
+            = gtk_calendar_get_display_options(GTK_CALENDAR(gde->_priv->calendar));
         if (flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
-            gtk_calendar_display_options(
-                GTK_CALENDAR(gde->_priv->calendar),
-                (GTK_CALENDAR(gde->_priv->calendar)->display_flags
-                 | GTK_CALENDAR_WEEK_START_MONDAY)
+        {
+            gtk_calendar_set_display_options(
+                GTK_CALENDAR(gde->_priv->calendar), opts | GTK_CALENDAR_WEEK_START_MONDAY
             );
+        }
         else
-            gtk_calendar_display_options(
-                GTK_CALENDAR(gde->_priv->calendar),
-                (GTK_CALENDAR(gde->_priv->calendar)->display_flags
-                 & ~GTK_CALENDAR_WEEK_START_MONDAY)
+        {
+            gtk_calendar_set_display_options(
+                GTK_CALENDAR(gde->_priv->calendar), opts & ~GTK_CALENDAR_WEEK_START_MONDAY
             );
+        }
     }
 }
 
