@@ -1042,49 +1042,11 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkOptionMenu" id="urgency menu">
+	    <widget class="GtkComboBox" id="urgency menu">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Does this item need immediate attention? Note that some urgent tasks might not be important.  For example, Bill may want you to answer his email today, but you may have better things to do today.</property>
-	      <property name="can_focus">True</property>
-	      <property name="history">0</property>
-
-	      <child internal-child="menu">
-		<widget class="GtkMenu" id="convertwidget3">
-		  <property name="visible">True</property>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget4">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Not Set</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget5">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Low</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget6">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Medium</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget7">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">High</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-		</widget>
-	      </child>
+	      <property name="can_focus">False</property>
+	      <property name="items" translatable="yes"/>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -1097,49 +1059,11 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkOptionMenu" id="importance menu">
+	    <widget class="GtkComboBox" id="importance menu">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">How important is it to perform this task?  Not everything important is urgent.  For example, it is important to file a tax return every year, but you have a lot of time to get ready to do this.</property>
-	      <property name="can_focus">True</property>
-	      <property name="history">0</property>
-
-	      <child internal-child="menu">
-		<widget class="GtkMenu" id="convertwidget8">
-		  <property name="visible">True</property>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget9">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Not Set</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget10">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Low</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget11">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Medium</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget12">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">High</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-		</widget>
-	      </child>
+	      <property name="can_focus">False</property>
+	      <property name="items" translatable="yes"/>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -1152,65 +1076,11 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkOptionMenu" id="status menu">
+	    <widget class="GtkComboBox" id="status menu">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">What is the status of this project?</property>
-	      <property name="can_focus">True</property>
-	      <property name="history">0</property>
-
-	      <child internal-child="menu">
-		<widget class="GtkMenu" id="convertwidget13">
-		  <property name="visible">True</property>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget14">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">No Status</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget15">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Not Started</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget16">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">In Progress</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget17">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">On Hold</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget18">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Cancelled</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="convertwidget19">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Completed</property>
-		      <property name="use_underline">True</property>
-		    </widget>
-		  </child>
-		</widget>
-	      </child>
+	      <property name="can_focus">False</property>
+	      <property name="items" translatable="yes"/>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>

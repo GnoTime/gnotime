@@ -26,6 +26,7 @@
 #include <string.h>
 
 #include "dialog.h"
+#include "gtt-select-list.h"
 #include "proj.h"
 #include "props-proj.h"
 #include "util.h"
@@ -47,9 +48,9 @@ typedef struct _PropDlg
     GtkEntry *interval;
     GtkEntry *gap;
 
-    GtkOptionMenu *urgency;
-    GtkOptionMenu *importance;
-    GtkOptionMenu *status;
+    GtkComboBox *urgency;
+    GtkComboBox *importance;
+    GtkComboBox *status;
 
     GttDateEdit *start;
     GttDateEdit *end;
@@ -60,16 +61,6 @@ typedef struct _PropDlg
 
     GttProject *proj;
 } PropDlg;
-
-/* ============================================================== */
-
-#define GET_MENU(WIDGET, NAME)                           \
-    ({                                                   \
-        GtkWidget *menu, *menu_item;                     \
-        menu = gtk_option_menu_get_menu(WIDGET);         \
-        menu_item = gtk_menu_get_active(GTK_MENU(menu)); \
-        (g_object_get_data(G_OBJECT(menu_item), NAME));  \
-    })
 
 static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
 {
@@ -132,12 +123,12 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
     {
         gtt_project_freeze(dlg->proj);
 
-        ivl = (long) GET_MENU(dlg->urgency, "urgency");
+        ivl = (long) gtt_combo_select_list_get_value(dlg->urgency);
         gtt_project_set_urgency(dlg->proj, (GttRank) ivl);
-        ivl = (long) GET_MENU(dlg->importance, "importance");
+        ivl = (long) gtt_combo_select_list_get_value(dlg->importance);
         gtt_project_set_importance(dlg->proj, (GttRank) ivl);
 
-        ivl = (long) GET_MENU(dlg->status, "status");
+        ivl = (long) gtt_combo_select_list_get_value(dlg->status);
         gtt_project_set_status(dlg->proj, (GttProjectStatus) ivl);
 
         tval = gtt_date_edit_get_time(dlg->start);
@@ -221,38 +212,13 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     gtk_entry_set_text(dlg->gap, buff);
 
     rank = gtt_project_get_urgency(proj);
-    if (GTT_UNDEFINED == rank)
-        gtk_option_menu_set_history(dlg->urgency, 0);
-    else if (GTT_LOW == rank)
-        gtk_option_menu_set_history(dlg->urgency, 1);
-    else if (GTT_MEDIUM == rank)
-        gtk_option_menu_set_history(dlg->urgency, 2);
-    else if (GTT_HIGH == rank)
-        gtk_option_menu_set_history(dlg->urgency, 3);
+    gtt_combo_select_list_set_active_by_value(dlg->urgency, rank);
 
     rank = gtt_project_get_importance(proj);
-    if (GTT_UNDEFINED == rank)
-        gtk_option_menu_set_history(dlg->importance, 0);
-    else if (GTT_LOW == rank)
-        gtk_option_menu_set_history(dlg->importance, 1);
-    else if (GTT_MEDIUM == rank)
-        gtk_option_menu_set_history(dlg->importance, 2);
-    else if (GTT_HIGH == rank)
-        gtk_option_menu_set_history(dlg->importance, 3);
+    gtt_combo_select_list_set_active_by_value(dlg->importance, rank);
 
     status = gtt_project_get_status(proj);
-    if (GTT_NO_STATUS == status)
-        gtk_option_menu_set_history(dlg->status, 0);
-    else if (GTT_NOT_STARTED == status)
-        gtk_option_menu_set_history(dlg->status, 1);
-    else if (GTT_IN_PROGRESS == status)
-        gtk_option_menu_set_history(dlg->status, 2);
-    else if (GTT_ON_HOLD == status)
-        gtk_option_menu_set_history(dlg->status, 3);
-    else if (GTT_CANCELLED == status)
-        gtk_option_menu_set_history(dlg->status, 4);
-    else if (GTT_COMPLETED == status)
-        gtk_option_menu_set_history(dlg->status, 5);
+    gtt_combo_select_list_set_active_by_value(dlg->status, status);
 
     tval = gtt_project_get_estimated_start(proj);
     if (-1 == tval)
@@ -319,26 +285,31 @@ static void wrapper(void *gobj, void *data)
         widget;                                                                   \
     })
 
-#define MUGGED(NAME)                                                                       \
-    ({                                                                                     \
-        GtkWidget *widget, *mw;                                                            \
-        widget = glade_xml_get_widget(gtxml, NAME);                                        \
-        mw = gtk_option_menu_get_menu(GTK_OPTION_MENU(widget));                            \
-        gtk_signal_connect_object(                                                         \
-            GTK_OBJECT(mw), "selection_done", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                           \
-        );                                                                                 \
-        GTK_OPTION_MENU(widget);                                                           \
-    })
+static GtkComboBox *init_combo(
+    GladeXML *gtxml, const char *name, GtkSignalFunc changed_callback,
+    GnomePropertyBox *property_box
+)
+{
+    /* Note: Some uglyness, in taking GnomePropertyBox as data parameter,
+     * callback is expected to be gnome_property_box_changed. Except that
+     * to be cleaner and match props-task.c structure later. */
 
-#define MENTRY(WIDGET, NAME, ORDER, VAL)                              \
-    {                                                                 \
-        GtkWidget *menu_item;                                         \
-        GtkMenu *menu = GTK_MENU(gtk_option_menu_get_menu(WIDGET));   \
-        gtk_option_menu_set_history(WIDGET, ORDER);                   \
-        menu_item = gtk_menu_get_active(menu);                        \
-        g_object_set_data(G_OBJECT(menu_item), NAME, (gpointer) VAL); \
+    GtkComboBox *combo_box;
+
+    combo_box = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, name));
+    gtt_combo_select_list_init(combo_box);
+
+    if (changed_callback != NULL)
+    {
+        // Note: gtk_signal_connect_object is deprecated, should later be replaced with
+        // g_signal_connect_object or something.
+        gtk_signal_connect_object(
+            GTK_OBJECT(combo_box), "changed", changed_callback, GTK_OBJECT(property_box)
+        );
     }
+
+    return combo_box;
+}
 
 /* ================================================================= */
 
@@ -381,9 +352,13 @@ static PropDlg *prop_dialog_new(void)
     dlg->interval = GTK_ENTRY(TAGGED("interval box"));
     dlg->gap = GTK_ENTRY(TAGGED("gap box"));
 
-    dlg->urgency = MUGGED("urgency menu");
-    dlg->importance = MUGGED("importance menu");
-    dlg->status = MUGGED("status menu");
+    dlg->urgency
+        = init_combo(gtxml, "urgency menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg);
+    dlg->importance = init_combo(
+        gtxml, "importance menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg
+    );
+    dlg->status
+        = init_combo(gtxml, "status menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg);
 
     GtkWidget *const sizing_table = glade_xml_get_widget(gtxml, "sizing table");
 
@@ -426,22 +401,22 @@ static PropDlg *prop_dialog_new(void)
     /* ------------------------------------------------------ */
     /* initialize menu values */
 
-    MENTRY(dlg->urgency, "urgency", 0, GTT_UNDEFINED);
-    MENTRY(dlg->urgency, "urgency", 1, GTT_LOW);
-    MENTRY(dlg->urgency, "urgency", 2, GTT_MEDIUM);
-    MENTRY(dlg->urgency, "urgency", 3, GTT_HIGH);
+    gtt_combo_select_list_append(dlg->urgency, _("Not Set"), GTT_UNDEFINED);
+    gtt_combo_select_list_append(dlg->urgency, _("Low"), GTT_LOW);
+    gtt_combo_select_list_append(dlg->urgency, _("Medium"), GTT_MEDIUM);
+    gtt_combo_select_list_append(dlg->urgency, _("High"), GTT_HIGH);
 
-    MENTRY(dlg->importance, "importance", 0, GTT_UNDEFINED);
-    MENTRY(dlg->importance, "importance", 1, GTT_LOW);
-    MENTRY(dlg->importance, "importance", 2, GTT_MEDIUM);
-    MENTRY(dlg->importance, "importance", 3, GTT_HIGH);
+    gtt_combo_select_list_append(dlg->importance, _("Not Set"), GTT_UNDEFINED);
+    gtt_combo_select_list_append(dlg->importance, _("Low"), GTT_LOW);
+    gtt_combo_select_list_append(dlg->importance, _("Medium"), GTT_MEDIUM);
+    gtt_combo_select_list_append(dlg->importance, _("High"), GTT_HIGH);
 
-    MENTRY(dlg->status, "status", 0, GTT_NO_STATUS);
-    MENTRY(dlg->status, "status", 1, GTT_NOT_STARTED);
-    MENTRY(dlg->status, "status", 2, GTT_IN_PROGRESS);
-    MENTRY(dlg->status, "status", 3, GTT_ON_HOLD);
-    MENTRY(dlg->status, "status", 4, GTT_CANCELLED);
-    MENTRY(dlg->status, "status", 5, GTT_COMPLETED);
+    gtt_combo_select_list_append(dlg->status, _("No Status"), GTT_NO_STATUS);
+    gtt_combo_select_list_append(dlg->status, _("Not Started"), GTT_NOT_STARTED);
+    gtt_combo_select_list_append(dlg->status, _("In Progress"), GTT_IN_PROGRESS);
+    gtt_combo_select_list_append(dlg->status, _("On Hold"), GTT_ON_HOLD);
+    gtt_combo_select_list_append(dlg->status, _("Cancelled"), GTT_CANCELLED);
+    gtt_combo_select_list_append(dlg->status, _("Completed"), GTT_COMPLETED);
 
     gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 
