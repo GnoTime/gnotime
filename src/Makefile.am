@@ -26,6 +26,7 @@ gnotime_SOURCES =     \
 	gtt-gsettings-io-p.c \
 	gtt-gsettings-io.c \
 	idle-dialog.c      \
+	idle-timer.c       \
 	journal.c          \
 	log.c              \
 	main.c             \
@@ -71,6 +72,7 @@ noinst_HEADERS =      \
 	gtt-gsettings-io.h \
 	gtt.h              \
 	idle-dialog.h      \
+	idle-timer.h       \
 	journal.h          \
 	log.h              \
 	menucmd.h          \
