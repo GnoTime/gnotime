@@ -58,251 +58,20 @@ int save_count = 0;
 
 /* ============================================================= */
 /* Configuration file I/O routines:
- * Note that this file supports reading from several old, 'obsolete'
- * config file formats taht GTT has used over the years.  We support
- * these reads so that users do not get left out in the cold when
- * upgrading from old versions of GTT.  All 'saves' are in the new
- * file format (currently, GSettings).
+ * Note that this file supports reading from several old, 'obsolete' config file formats that
+ * GTT has used over the years. It supports these reads so that users are not left out in the
+ * cold when upgrading from old versions of GTT.  All 'saves' are in the new file format
+ * (currently GSettings).
  *
- * 1) Oldest format is data stuck into a ~/.gtimetrackerrc file
- *    and is handled by the project_list_load_old() routine.
- * 2) Next is Gnome-1 Gnome-Config files in ~/.gnome/gtt
- * 3) Next is Gnome-2 Gnome-Config files in ~/.gnome2/GnoTime
- * 4) Next is the GConf2 system.
- * 5) The current system is the GSettings system.
+ * 1) First try reading settings from GSettings
+ * 2) Next try GConf
+ * 3) Next try Gnome 2 Gnome-Config files in ~/.gnome2/GnoTime
+ * 4) Last try Gnome 1 Gnome-Config files in ~/.gnome/gtt
  *
  * Note that some of the older config files also contained project
  * data in them.  The newer versions stored project data seperately
  * from the app config data.
  */
-
-/* RC_NAME is old, depricated; stays here for backwards compat. */
-#define RC_NAME ".gtimetrackerrc"
-
-static const char *build_rc_name_old(void)
-{
-    static char *buf = NULL;
-
-    if (g_getenv("HOME") != NULL)
-    {
-        buf = g_concat_dir_and_file(g_getenv("HOME"), RC_NAME);
-    }
-    else
-    {
-        buf = g_strdup(RC_NAME);
-    }
-    return buf;
-}
-
-static void read_tb_sects_old(char *s)
-{
-    if (s[2] == 'n')
-    {
-        config_show_tb_new = (s[5] == 'n');
-    }
-    else if (s[2] == 'c')
-    {
-        config_show_tb_ccp = (s[5] == 'n');
-    }
-    else if (s[2] == 'p')
-    {
-        config_show_tb_prop = (s[5] == 'n');
-    }
-    else if (s[2] == 't')
-    {
-        config_show_tb_timer = (s[5] == 'n');
-    }
-    else if (s[2] == 'o')
-    {
-        config_show_tb_pref = (s[5] == 'n');
-    }
-    else if (s[2] == 'h')
-    {
-        config_show_tb_help = (s[5] == 'n');
-    }
-    else if (s[2] == 'e')
-    {
-        config_show_tb_exit = (s[5] == 'n');
-    }
-}
-
-static void project_list_load_old(void)
-{
-    FILE *f;
-    const char *realname;
-    GttProject *proj = NULL;
-    char s[1024];
-    int i;
-    int _n, _c, _p, _t, _o, _h, _e;
-
-    realname = build_rc_name_old();
-    gtt_config_filepath = realname;
-
-    if (NULL == (f = fopen(realname, "rt")))
-    {
-        gtt_err_set_code(GTT_CANT_OPEN_FILE);
-        gtt_config_filepath = ""; /* Don't spew obsolete filename to new users */
-#ifdef ENOENT
-        if (errno == ENOENT)
-            return;
-#endif
-        g_warning("could not open %s\n", realname);
-        return;
-    }
-    printf("GTT: Info: Importing .gtimetrackerrc config file\n");
-
-    _n = config_show_tb_new;
-    _c = config_show_tb_ccp;
-    _p = config_show_tb_prop;
-    _t = config_show_tb_timer;
-    _o = config_show_tb_pref;
-    _h = config_show_tb_help;
-    _e = config_show_tb_exit;
-    errno = 0;
-    while ((!feof(f)) && (!errno))
-    {
-        if (!fgets(s, 1023, f))
-            continue;
-        if (s[0] == '#')
-            continue;
-        if (s[0] == '\n')
-            continue;
-        if (s[0] == ' ')
-        {
-            /* desc for last project */
-            while (s[strlen(s) - 1] == '\n')
-                s[strlen(s) - 1] = 0;
-            gtt_project_set_desc(proj, &s[1]);
-        }
-        else if (s[0] == 't')
-        {
-            /* last_timer */
-            last_timer = (time_t) atol(&s[1]);
-        }
-        else if (s[0] == 's')
-        {
-            /* show seconds? */
-            config_show_secs = (s[3] == 'n');
-        }
-        else if (s[0] == 'b')
-        {
-            if (s[1] == 'p')
-            {
-                /* show tooltips */
-                config_show_tb_tips = (s[4] == 'n');
-            }
-            else if (s[1] == 'h')
-            {
-                /* show clist titles */
-                config_show_clist_titles = (s[4] == 'n');
-            }
-            else if (s[1] == 's')
-            {
-                /* show status bar */
-                if (s[4] == 'n')
-                {
-                    config_show_statusbar = 1;
-                }
-                else
-                {
-                    config_show_statusbar = 0;
-                }
-            }
-            else if (s[1] == '_')
-            {
-                read_tb_sects_old(s);
-            }
-        }
-        else if (s[0] == 'c')
-        {
-            /* start project command */
-            while (s[strlen(s) - 1] == '\n')
-                s[strlen(s) - 1] = 0;
-            if (config_shell_start)
-                g_free(config_shell_start);
-            config_shell_start = g_strdup(&s[2]);
-        }
-        else if (s[0] == 'n')
-        {
-            /* stop project command */
-            while (s[strlen(s) - 1] == '\n')
-                s[strlen(s) - 1] = 0;
-            if (config_shell_stop)
-                g_free(config_shell_stop);
-            config_shell_stop = g_strdup(&s[2]);
-        }
-        else if (s[0] == 'l')
-        {
-            if (s[1] == 'u')
-            {
-                /* use logfile? */
-                config_logfile_use = (s[4] == 'n');
-            }
-            else if (s[1] == 'n')
-            {
-                /* logfile name */
-                while (s[strlen(s) - 1] == '\n')
-                    s[strlen(s) - 1] = 0;
-                if (config_logfile_name)
-                    g_free(config_logfile_name);
-                config_logfile_name = g_strdup(&s[3]);
-            }
-            else if (s[1] == 's')
-            {
-                /* minimum time for a project to get logged */
-                config_logfile_min_secs = atoi(&s[3]);
-            }
-        }
-        else if ((s[0] >= '0') && (s[0] <= '9'))
-        {
-            time_t day_secs, ever_secs;
-
-            /* new project */
-            proj = gtt_project_new();
-            gtt_project_list_append(master_list, proj);
-            ever_secs = atol(s);
-            for (i = 0; s[i] != ' '; i++)
-                ;
-            i++;
-            day_secs = atol(&s[i]);
-            gtt_project_compat_set_secs(proj, ever_secs, day_secs, last_timer);
-            for (; s[i] != ' '; i++)
-                ;
-            i++;
-            while (s[strlen(s) - 1] == '\n')
-                s[strlen(s) - 1] = 0;
-            gtt_project_set_title(proj, &s[i]);
-        }
-    }
-    if ((errno) && (!feof(f)))
-        goto err;
-    fclose(f);
-
-    gtt_project_list_compute_secs();
-
-    if (config_show_statusbar)
-    {
-        gtk_widget_show(status_bar);
-    }
-    else
-    {
-        gtk_widget_hide(status_bar);
-    }
-
-    update_status_bar();
-    if ((_n != config_show_tb_new) || (_c != config_show_tb_ccp) || (_p != config_show_tb_prop)
-        || (_t != config_show_tb_timer) || (_o != config_show_tb_pref)
-        || (_h != config_show_tb_help) || (_e != config_show_tb_exit))
-    {
-        update_toolbar_sections();
-    }
-    return;
-
-err:
-    fclose(f);
-    gtt_err_set_code(GTT_FILE_CORRUPT);
-    g_warning("error reading %s\n", realname);
-}
 
 /* ======================================================= */
 
@@ -619,10 +388,7 @@ void gtt_load_config(void)
     }
     g_free(s);
 
-    /* OK, try to load the oldest file format */
-    project_list_load_old();
     config_data_url = XML_DATA_FILENAME;
-    return;
 }
 
 /* ======================================================= */
