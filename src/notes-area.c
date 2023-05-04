@@ -20,7 +20,6 @@
 #include <glib-object.h>
 
 #include <glade/glade.h>
-#include <gnome.h>
 
 #include "menus.h"
 #include "notes-area.h"

@@ -19,7 +19,7 @@
 #include "config.h"
 
 #include <glade/glade.h>
-#include <gnome.h>
+
 #include <string.h>
 
 #include <qof.h>
@@ -30,6 +30,8 @@
 #include "proj-query.h"
 #include "proj.h"
 #include "util.h"
+
+#include <glib/gi18n.h>
 
 int config_no_project_timeout;
 

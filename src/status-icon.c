@@ -28,8 +28,10 @@
 
 #include "status-icon.h"
 #include "timer.h"
-#include <gnome.h>
+
 #include <gtk/gtk.h>
+
+#include <glib/gi18n.h>
 
 extern GtkWidget *app_window; /* global top-level window */
 

@@ -21,7 +21,6 @@
 #include <gconf/gconf-client.h>
 #include <gconf/gconf.h>
 #include <glib.h>
-#include <gnome.h>
 
 #include "app.h"
 #include "cur-proj.h"

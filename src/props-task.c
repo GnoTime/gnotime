@@ -19,14 +19,18 @@
 #include "config.h"
 
 #include <glade/glade.h>
-#include <gnome.h>
+
 #include <string.h>
 
 #include "dialog.h"
+#include "gtt-select-list.h"
 #include "proj.h"
 #include "props-task.h"
 #include "util.h"
-#include "gtt-select-list.h"
+
+#include <glib/gi18n.h>
+
+#include <stdlib.h>
 
 typedef struct PropTaskDlg_s
 {
