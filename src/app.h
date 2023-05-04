@@ -23,7 +23,6 @@
 #include "notes-area.h"
 #include "proj.h"
 #include "status-icon.h"
-#include <gnome.h>
 
 extern NotesArea *global_na; /* global ptr to notes GUI area */
 extern GttProjectsTree *projects_tree;

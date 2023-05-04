@@ -19,7 +19,6 @@
 #include "config.h"
 
 #define _GNU_SOURCE
-#include <glib.h>
 #include <libguile.h>
 #include <stdio.h>
 #include <string.h>
@@ -32,6 +31,8 @@
 #include "gtt.h"
 #include "proj.h"
 #include "util.h"
+
+#include <glib/gi18n.h>
 
 /* This file contains deprecated routines, which should go away
  * sometime in 2004 or 2005, around gnotime version 3.0 or so
