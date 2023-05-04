@@ -41,16 +41,19 @@ dnl *****************************************
 dnl pkg-config check time
 dnl *****************************************
 
-LIBGNOME_REQUIRED=2.0.0
-LIBGNOMEUI_REQUIRED=2.0.3
-GLIB_REQUIRED=2.40
-GTK_REQUIRED=2.24
-LIBGLADE_REQUIRED=2.0.0
-LIBGTKHTML_REQUIRED=3.0.0
-LIBXML2_REQUIRED=2.0.0
-SCROLLKEEPER_BUILD_REQUIRED=0.3.5
-LIBQOF_REQUIRED_MIN=0.6.0
-LIBDBUS_REQUIRED_MIN=0.74
+GCONF_REQUIRED=3.2.6
+LIBGNOME_REQUIRED=2.32.1
+LIBGNOMEUI_REQUIRED=2.24.5
+GLIB_REQUIRED=2.40.2
+GTK_REQUIRED=2.24.23
+LIBGLADE_REQUIRED=2.6.4
+LIBGTKHTML_REQUIRED=3.32.2
+LIBXML2_REQUIRED=2.9.1
+SCROLLKEEPER_BUILD_REQUIRED=0.8.1
+LIBQOF_REQUIRED_MIN=0.8.6
+LIBDBUS_REQUIRED_MIN=0.100.2
+X11_REQUIRED=1.6.2
+XSCRNSAVER_REQUIRED=1.2.2
 
 dnl *****************************************
 dnl Check for guile
@@ -100,7 +103,7 @@ AC_SUBST(LIBGNOMEUI_LIBS)
 dnl *****************************************
 dnl Check for X11
 dnl *****************************************
-PKG_CHECK_MODULES(X11, x11)
+PKG_CHECK_MODULES(X11, x11 >= $X11_REQUIRED)
 AC_SUBST(X11_CFLAGS)
 AC_SUBST(X11_LIBS)
 
@@ -123,7 +126,7 @@ fi
 dnl *****************************************
 dnl Check for gconf
 dnl *****************************************
-PKG_CHECK_MODULES(GCONF, gconf-2.0)
+PKG_CHECK_MODULES(GCONF, gconf-2.0 >= $GCONF_REQUIRED)
 AC_SUBST(GCONF_CFLAGS)
 AC_SUBST(GCONF_LIBS)
 
@@ -140,7 +143,7 @@ dnl packaged in unexpected ways for different OS'es:
 dnl called xscrnsaver in RedHat/SuSE
 dnl called libxss, libxss-dev in Debian/Ubuntu
 dnl **************************************************************
-PKG_CHECK_MODULES(XSS_EXTENSION, xscrnsaver)
+PKG_CHECK_MODULES(XSS_EXTENSION, xscrnsaver >= $XSCRNSAVER_REQUIRED)
 AC_SUBST(XSS_EXTENSION_CFLAGS)
 AC_SUBST(XSS_EXTENSION_LIBS)
 
