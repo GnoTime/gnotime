@@ -1,29 +1,27 @@
 /*
  * Copyright (C) 1997, 1998, 1999, 2000 Free Software Foundation
+ * Copyright (C) 2023      Markus Prasser
  * All rights reserved.
  *
- * This file is part of the Gnome Library.
+ * This file is part of GnoTime (originally the Gnome Library).
  *
- * The Gnome Library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
+ * The GnoTime is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU Library General Public License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
  *
- * The Gnome Library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
+ * The GnoTime is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+ * the GNU Library General Public License for more details.
  *
- * You should have received a copy of the GNU Library General Public
- * License along with the Gnome Library; see the file COPYING.LIB.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU Library General Public License along with the
+ * GnoTime; see the file COPYING.LIB.  If not, write to the Free Software Foundation, Inc., 59
+ * Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 /*
   @NOTATION@
  */
 
-/* GnomeEntry widget - combo box with auto-saved history
+/* GttEntry widget - combo box with auto-saved history
  *
  * Author: Federico Mena <federico@nuclecu.unam.mx>
  */
@@ -45,7 +43,7 @@
 
 #include "gnome-gconf-ui.h"
 
-#include "gnome-entry.h"
+#include "gtt-entry.h"
 
 enum
 {
@@ -56,7 +54,7 @@ enum
 
 #define DEFAULT_MAX_HISTORY_SAVED 10 /* This seems to make more sense then 60*/
 
-struct _GnomeEntryPrivate
+struct _GttEntryPrivate
 {
     gchar *history_id;
 
@@ -75,51 +73,50 @@ struct item
     gchar *text;
 };
 
-static void gnome_entry_class_init(GnomeEntryClass *class);
-static void gnome_entry_init(GnomeEntry *gentry);
-static void gnome_entry_finalize(GObject *object);
-static void gnome_entry_destroy(GtkObject *object);
+static void gtt_entry_class_init(GttEntryClass *class);
+static void gtt_entry_init(GttEntry *gentry);
+static void gtt_entry_finalize(GObject *object);
+static void gtt_entry_destroy(GtkObject *object);
 
 static void
-gnome_entry_get_property(GObject *object, guint param_id, GValue *value, GParamSpec *pspec);
-static void gnome_entry_set_property(
-    GObject *object, guint param_id, const GValue *value, GParamSpec *pspec
-);
-static void gnome_entry_editable_init(GtkEditableClass *iface);
-static void gnome_entry_load_history(GnomeEntry *gentry);
-static void gnome_entry_save_history(GnomeEntry *gentry);
+gtt_entry_get_property(GObject *object, guint param_id, GValue *value, GParamSpec *pspec);
+static void
+gtt_entry_set_property(GObject *object, guint param_id, const GValue *value, GParamSpec *pspec);
+static void gtt_entry_editable_init(GtkEditableClass *iface);
+static void gtt_entry_load_history(GttEntry *gentry);
+static void gtt_entry_save_history(GttEntry *gentry);
 
-static char *build_gconf_key(GnomeEntry *gentry);
+static char *build_gconf_key(GttEntry *gentry);
 
 /* Note, can't use boilerplate with interfaces yet,
  * should get sorted out */
 static GtkComboClass *parent_class = NULL;
-GType gnome_entry_get_type(void)
+GType gtt_entry_get_type(void)
 {
     static GType object_type = 0;
 
     if (object_type == 0)
     {
         const GTypeInfo object_info = {
-            sizeof(GnomeEntryClass),
+            sizeof(GttEntryClass),
             (GBaseInitFunc) NULL,
             (GBaseFinalizeFunc) NULL,
-            (GClassInitFunc) gnome_entry_class_init,
+            (GClassInitFunc) gtt_entry_class_init,
             (GClassFinalizeFunc) NULL,
             NULL, /* class_data */
-            sizeof(GnomeEntry),
+            sizeof(GttEntry),
             0, /* n_preallocs */
-            (GInstanceInitFunc) gnome_entry_init,
+            (GInstanceInitFunc) gtt_entry_init,
             NULL /* value_table */
         };
 
         const GInterfaceInfo editable_info = {
-            (GInterfaceInitFunc) gnome_entry_editable_init, /* interface_init */
-            NULL,                                           /* interface_finalize */
-            NULL                                            /* interface_data */
+            (GInterfaceInitFunc) gtt_entry_editable_init, /* interface_init */
+            NULL,                                         /* interface_finalize */
+            NULL                                          /* interface_data */
         };
 
-        object_type = g_type_register_static(GTK_TYPE_COMBO, "GnomeEntry", &object_info, 0);
+        object_type = g_type_register_static(GTK_TYPE_COMBO, "GttEntry", &object_info, 0);
 
         g_type_add_interface_static(object_type, GTK_TYPE_EDITABLE, &editable_info);
     }
@@ -131,14 +128,14 @@ enum
     ACTIVATE_SIGNAL,
     LAST_SIGNAL
 };
-static int gnome_entry_signals[LAST_SIGNAL] = { 0 };
+static int gtt_entry_signals[LAST_SIGNAL] = { 0 };
 
-static gboolean gnome_entry_mnemonic_activate(GtkWidget *widget, gboolean group_cycling)
+static gboolean gtt_entry_mnemonic_activate(GtkWidget *widget, gboolean group_cycling)
 {
     gboolean handled;
-    GnomeEntry *entry;
+    GttEntry *entry;
 
-    entry = GNOME_ENTRY(widget);
+    entry = GTT_ENTRY(widget);
 
     group_cycling = group_cycling != FALSE;
 
@@ -152,7 +149,7 @@ static gboolean gnome_entry_mnemonic_activate(GtkWidget *widget, gboolean group_
     return handled;
 }
 
-static void gnome_entry_class_init(GnomeEntryClass *class)
+static void gtt_entry_class_init(GttEntryClass *class)
 {
     GtkObjectClass *object_class;
     GtkWidgetClass *widget_class;
@@ -164,19 +161,19 @@ static void gnome_entry_class_init(GnomeEntryClass *class)
     gobject_class = (GObjectClass *) class;
     widget_class = (GtkWidgetClass *) class;
 
-    gnome_entry_signals[ACTIVATE_SIGNAL] = g_signal_new(
+    gtt_entry_signals[ACTIVATE_SIGNAL] = g_signal_new(
         "activate", G_TYPE_FROM_CLASS(gobject_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(GnomeEntryClass, activate), NULL, NULL, g_cclosure_marshal_VOID__VOID,
+        G_STRUCT_OFFSET(GttEntryClass, activate), NULL, NULL, g_cclosure_marshal_VOID__VOID,
         G_TYPE_NONE, 0
     );
 
     class->activate = NULL;
 
-    object_class->destroy = gnome_entry_destroy;
-    gobject_class->finalize = gnome_entry_finalize;
-    gobject_class->set_property = gnome_entry_set_property;
-    gobject_class->get_property = gnome_entry_get_property;
-    widget_class->mnemonic_activate = gnome_entry_mnemonic_activate;
+    object_class->destroy = gtt_entry_destroy;
+    gobject_class->finalize = gtt_entry_finalize;
+    gobject_class->set_property = gtt_entry_set_property;
+    gobject_class->get_property = gtt_entry_get_property;
+    widget_class->mnemonic_activate = gtt_entry_mnemonic_activate;
 
     g_object_class_install_property(
         gobject_class, PROP_HISTORY_ID,
@@ -193,9 +190,9 @@ static void gnome_entry_class_init(GnomeEntryClass *class)
 }
 
 static void
-gnome_entry_get_property(GObject *object, guint param_id, GValue *value, GParamSpec *pspec)
+gtt_entry_get_property(GObject *object, guint param_id, GValue *value, GParamSpec *pspec)
 {
-    GnomeEntry *entry = GNOME_ENTRY(object);
+    GttEntry *entry = GTT_ENTRY(object);
 
     switch (param_id)
     {
@@ -203,7 +200,7 @@ gnome_entry_get_property(GObject *object, guint param_id, GValue *value, GParamS
         g_value_set_string(value, entry->_priv->history_id);
         break;
     case PROP_GTK_ENTRY:
-        g_value_set_object(value, gnome_entry_gtk_entry(entry));
+        g_value_set_object(value, gtt_entry_gtk_entry(entry));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, param_id, pspec);
@@ -211,17 +208,16 @@ gnome_entry_get_property(GObject *object, guint param_id, GValue *value, GParamS
     }
 }
 
-static void gnome_entry_set_property(
-    GObject *object, guint param_id, const GValue *value, GParamSpec *pspec
-)
+static void
+gtt_entry_set_property(GObject *object, guint param_id, const GValue *value, GParamSpec *pspec)
 {
-    GnomeEntry *entry = GNOME_ENTRY(object);
+    GttEntry *entry = GTT_ENTRY(object);
 
     switch (param_id)
     {
     case PROP_HISTORY_ID:
-        gnome_entry_set_history_id(entry, g_value_get_string(value));
-        gnome_entry_load_history(entry);
+        gtt_entry_set_history_id(entry, g_value_get_string(value));
+        gtt_entry_load_history(entry);
         break;
 
     default:
@@ -232,7 +228,7 @@ static void gnome_entry_set_property(
 
 static void entry_changed(GtkWidget *widget, gpointer data)
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
 
     gentry = data;
     gentry->_priv->changed = TRUE;
@@ -242,7 +238,7 @@ static void entry_changed(GtkWidget *widget, gpointer data)
 
 static void entry_activated(GtkWidget *widget, gpointer data)
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
     const gchar *text;
 
     gentry = data;
@@ -255,46 +251,44 @@ static void entry_activated(GtkWidget *widget, gpointer data)
     }
     else
     {
-        gnome_entry_prepend_history(gentry, TRUE, gtk_entry_get_text(GTK_ENTRY(widget)));
+        gtt_entry_prepend_history(gentry, TRUE, gtk_entry_get_text(GTK_ENTRY(widget)));
     }
 
-    g_signal_emit(gentry, gnome_entry_signals[ACTIVATE_SIGNAL], 0);
+    g_signal_emit(gentry, gtt_entry_signals[ACTIVATE_SIGNAL], 0);
 }
 
-static void gnome_entry_init(GnomeEntry *gentry)
+static void gtt_entry_init(GttEntry *gentry)
 {
-    gentry->_priv = g_new0(GnomeEntryPrivate, 1);
+    gentry->_priv = g_new0(GttEntryPrivate, 1);
 
     gentry->_priv->changed = FALSE;
     gentry->_priv->history_id = NULL;
     gentry->_priv->items = NULL;
     gentry->_priv->max_saved = DEFAULT_MAX_HISTORY_SAVED;
 
+    g_signal_connect(gtt_entry_gtk_entry(gentry), "changed", G_CALLBACK(entry_changed), gentry);
     g_signal_connect(
-        gnome_entry_gtk_entry(gentry), "changed", G_CALLBACK(entry_changed), gentry
-    );
-    g_signal_connect(
-        gnome_entry_gtk_entry(gentry), "activate", G_CALLBACK(entry_activated), gentry
+        gtt_entry_gtk_entry(gentry), "activate", G_CALLBACK(entry_activated), gentry
     );
     gtk_combo_disable_activate(GTK_COMBO(gentry));
     gtk_combo_set_case_sensitive(GTK_COMBO(gentry), TRUE);
 }
 
 /**
- * gnome_entry_new
+ * gtt_entry_new
  * @history_id: If not %NULL, the text id under which history data is stored
  *
- * Description: Creates a new GnomeEntry widget.  If  @history_id is
+ * Description: Creates a new GttEntry widget.  If  @history_id is
  * not %NULL, then the history list will be saved and restored between
  * uses under the given id.
  *
- * Returns: Newly-created GnomeEntry widget.
+ * Returns: Newly-created GttEntry widget.
  */
-GtkWidget *gnome_entry_new(const gchar *history_id)
+GtkWidget *gtt_entry_new(const gchar *history_id)
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
 
-    gentry = g_object_new(GNOME_TYPE_ENTRY, "history_id", history_id, NULL);
+    gentry = g_object_new(GTT_TYPE_ENTRY, "history_id", history_id, NULL);
 
     return GTK_WIDGET(gentry);
 }
@@ -308,23 +302,23 @@ static void free_item(gpointer data, gpointer user_data)
     g_free(item);
 }
 
-static void free_items(GnomeEntry *gentry)
+static void free_items(GttEntry *gentry)
 {
     g_list_foreach(gentry->_priv->items, free_item, NULL);
     g_list_free(gentry->_priv->items);
     gentry->_priv->items = NULL;
 }
 
-static void gnome_entry_destroy(GtkObject *object)
+static void gtt_entry_destroy(GtkObject *object)
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
 
     /* Note: destroy can run multiple times */
 
     g_return_if_fail(object != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(object));
+    g_return_if_fail(GTT_IS_ENTRY(object));
 
-    gentry = GNOME_ENTRY(object);
+    gentry = GTT_ENTRY(object);
 
     if (gentry->_priv->gconf_client != NULL)
     {
@@ -350,14 +344,14 @@ static void gnome_entry_destroy(GtkObject *object)
     GNOME_CALL_PARENT(GTK_OBJECT_CLASS, destroy, (object));
 }
 
-static void gnome_entry_finalize(GObject *object)
+static void gtt_entry_finalize(GObject *object)
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
 
     g_return_if_fail(object != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(object));
+    g_return_if_fail(GTT_IS_ENTRY(object));
 
-    gentry = GNOME_ENTRY(object);
+    gentry = GTT_ENTRY(object);
 
     g_free(gentry->_priv->history_id);
     gentry->_priv->history_id = NULL;
@@ -371,30 +365,30 @@ static void gnome_entry_finalize(GObject *object)
 }
 
 /**
- * gnome_entry_gtk_entry
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_gtk_entry
+ * @gentry: Pointer to GttEntry object.
  *
- * Description: Obtain pointer to GnomeEntry's internal text entry
+ * Description: Obtain pointer to GttEntry's internal text entry
  *
  * Returns: Pointer to GtkEntry widget.
  */
-GtkWidget *gnome_entry_gtk_entry(GnomeEntry *gentry)
+GtkWidget *gtt_entry_gtk_entry(GttEntry *gentry)
 {
     g_return_val_if_fail(gentry != NULL, NULL);
-    g_return_val_if_fail(GNOME_IS_ENTRY(gentry), NULL);
+    g_return_val_if_fail(GTT_IS_ENTRY(gentry), NULL);
 
     return GTK_COMBO(gentry)->entry;
 }
 
-static void gnome_entry_history_changed(
+static void gtt_entry_history_changed(
     GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer user_data
 )
 {
-    GnomeEntry *gentry;
+    GttEntry *gentry;
 
     GDK_THREADS_ENTER();
 
-    gentry = GNOME_ENTRY(user_data);
+    gentry = GTT_ENTRY(user_data);
 
     /* If we're getting a notification from saving our own
      * history, don't reload it.
@@ -406,7 +400,7 @@ static void gnome_entry_history_changed(
         goto end;
     }
 
-    gnome_entry_load_history(gentry);
+    gtt_entry_load_history(gentry);
 
 end:
     GDK_THREADS_LEAVE();
@@ -415,24 +409,24 @@ end:
 /* FIXME: Make this static */
 
 /**
- * gnome_entry_set_history_id
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_set_history_id
+ * @gentry: Pointer to GttEntry object.
  * @history_id: the text id under which history data is stored
  *
  * Description: Set the id of the history list. This function cannot be
  * used to change and already existing id.
  */
-void gnome_entry_set_history_id(GnomeEntry *gentry, const gchar *history_id)
+void gtt_entry_set_history_id(GttEntry *gentry, const gchar *history_id)
 {
     gchar *key;
 
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
 
     if (gentry->_priv->history_id != NULL)
     {
         g_warning("The program is trying to change an existing "
-                  "GnomeEntry history id. This operation is "
+                  "GttEntry history id. This operation is "
                   "not allowed.");
 
         return;
@@ -452,31 +446,31 @@ void gnome_entry_set_history_id(GnomeEntry *gentry, const gchar *history_id)
     gconf_client_add_dir(gentry->_priv->gconf_client, key, GCONF_CLIENT_PRELOAD_NONE, NULL);
 
     gentry->_priv->gconf_notify_id = gconf_client_notify_add(
-        gentry->_priv->gconf_client, key, gnome_entry_history_changed, gentry, NULL, NULL
+        gentry->_priv->gconf_client, key, gtt_entry_history_changed, gentry, NULL, NULL
     );
 
     g_free(key);
 }
 
 /**
- * gnome_entry_get_history_id
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_get_history_id
+ * @gentry: Pointer to GttEntry object.
  *
- * Description: Returns the current history id of the GnomeEntry widget.
+ * Description: Returns the current history id of the GttEntry widget.
  *
  * Returns: The current history id.
  */
-const gchar *gnome_entry_get_history_id(GnomeEntry *gentry)
+const gchar *gtt_entry_get_history_id(GttEntry *gentry)
 {
     g_return_val_if_fail(gentry != NULL, NULL);
-    g_return_val_if_fail(GNOME_IS_ENTRY(gentry), NULL);
+    g_return_val_if_fail(GTT_IS_ENTRY(gentry), NULL);
 
     return gentry->_priv->history_id;
 }
 
 /**
- * gnome_entry_set_max_saved
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_set_max_saved
+ * @gentry: Pointer to GttEntry object.
  * @max_saved: Maximum number of history items to save
  *
  * Description: Set internal limit on number of history items saved
@@ -484,33 +478,33 @@ const gchar *gnome_entry_get_history_id(GnomeEntry *gentry)
  * Zero is an acceptable value for @max_saved, but the same thing is
  * accomplished by setting the history id of @gentry to %NULL.
  */
-void gnome_entry_set_max_saved(GnomeEntry *gentry, guint max_saved)
+void gtt_entry_set_max_saved(GttEntry *gentry, guint max_saved)
 {
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
 
     gentry->_priv->max_saved = max_saved;
 }
 
 /**
- * gnome_entry_get_max_saved
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_get_max_saved
+ * @gentry: Pointer to GttEntry object.
  *
  * Description: Get internal limit on number of history items saved
  * to the config file
- * See #gnome_entry_set_max_saved().
+ * See #gtt_entry_set_max_saved().
  *
  * Returns: An unsigned integer
  */
-guint gnome_entry_get_max_saved(GnomeEntry *gentry)
+guint gtt_entry_get_max_saved(GttEntry *gentry)
 {
     g_return_val_if_fail(gentry != NULL, 0);
-    g_return_val_if_fail(GNOME_IS_ENTRY(gentry), 0);
+    g_return_val_if_fail(GTT_IS_ENTRY(gentry), 0);
 
     return gentry->_priv->max_saved;
 }
 
-static char *build_gconf_key(GnomeEntry *gentry)
+static char *build_gconf_key(GttEntry *gentry)
 {
     gchar *retval;
     gchar *app_id;
@@ -527,9 +521,9 @@ static char *build_gconf_key(GnomeEntry *gentry)
     return retval;
 }
 
-static void set_combo_items(GnomeEntry *gentry)
+static void set_combo_items(GttEntry *gentry)
 {
-    GnomeEntryPrivate *priv;
+    GttEntryPrivate *priv;
     GList *l;
     char *text;
 
@@ -574,15 +568,15 @@ static void set_combo_items(GnomeEntry *gentry)
 }
 
 static void
-gnome_entry_add_history(GnomeEntry *gentry, gboolean save, const gchar *text, gboolean append)
+gtt_entry_add_history(GttEntry *gentry, gboolean save, const gchar *text, gboolean append)
 {
-    GnomeEntryPrivate *priv;
+    GttEntryPrivate *priv;
     struct item *item;
     GList *list;
     gboolean changed;
 
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
     g_return_if_fail(text != NULL); /* FIXME: should we just return without warning? */
 
     priv = gentry->_priv;
@@ -622,12 +616,12 @@ gnome_entry_add_history(GnomeEntry *gentry, gboolean save, const gchar *text, gb
 
     /* Save the history if needed */
     if (changed || save)
-        gnome_entry_save_history(gentry);
+        gtt_entry_save_history(gentry);
 }
 
 /**
- * gnome_entry_prepend_history
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_prepend_history
+ * @gentry: Pointer to GttEntry object.
  * @save: If %TRUE, history entry will be saved to config file
  * @text: Text to add
  *
@@ -638,18 +632,18 @@ gnome_entry_add_history(GnomeEntry *gentry, gboolean save, const gchar *text, gb
  * Duplicates are automatically removed from the history list.
  * The history list is automatically saved if needed.
  */
-void gnome_entry_prepend_history(GnomeEntry *gentry, gboolean save, const gchar *text)
+void gtt_entry_prepend_history(GttEntry *gentry, gboolean save, const gchar *text)
 {
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
     g_return_if_fail(text != NULL); /* FIXME: should we just return without warning? */
 
-    gnome_entry_add_history(gentry, save, text, FALSE);
+    gtt_entry_add_history(gentry, save, text, FALSE);
 }
 
 /**
- * gnome_entry_append_history
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_append_history
+ * @gentry: Pointer to GttEntry object.
  * @save: If %TRUE, history entry will be saved to config file
  * @text: Text to add
  *
@@ -660,23 +654,23 @@ void gnome_entry_prepend_history(GnomeEntry *gentry, gboolean save, const gchar 
  * Duplicates are automatically removed from the history list.
  * The history list is automatically saved if needed.
  */
-void gnome_entry_append_history(GnomeEntry *gentry, gboolean save, const gchar *text)
+void gtt_entry_append_history(GttEntry *gentry, gboolean save, const gchar *text)
 {
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
     g_return_if_fail(text != NULL); /* FIXME: should we just return without warning? */
 
-    gnome_entry_add_history(gentry, save, text, TRUE);
+    gtt_entry_add_history(gentry, save, text, TRUE);
 }
 
-static void gnome_entry_load_history(GnomeEntry *gentry)
+static void gtt_entry_load_history(GttEntry *gentry)
 {
     struct item *item;
     gchar *key;
     GSList *gconf_items, *items;
 
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
 
     if (gnome_program_get_app_id(gnome_program_get()) == NULL
         || gentry->_priv->history_id == NULL)
@@ -708,21 +702,21 @@ static void gnome_entry_load_history(GnomeEntry *gentry)
 }
 
 /**
- * gnome_entry_clear_history
- * @gentry: Pointer to GnomeEntry object.
+ * gtt_entry_clear_history
+ * @gentry: Pointer to GttEntry object.
  *
  * Description:  Clears the history.
  */
-void gnome_entry_clear_history(GnomeEntry *gentry)
+void gtt_entry_clear_history(GttEntry *gentry)
 {
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
 
     free_items(gentry);
 
     set_combo_items(gentry);
 
-    gnome_entry_save_history(gentry);
+    gtt_entry_save_history(gentry);
 }
 
 static gboolean check_for_duplicates(GSList *gconf_items, const struct item *item)
@@ -740,7 +734,7 @@ static gboolean check_for_duplicates(GSList *gconf_items, const struct item *ite
     return TRUE;
 }
 
-static void gnome_entry_save_history(GnomeEntry *gentry)
+static void gtt_entry_save_history(GttEntry *gentry)
 {
     GList *items;
     GSList *gconf_items;
@@ -749,7 +743,7 @@ static void gnome_entry_save_history(GnomeEntry *gentry)
     gint n;
 
     g_return_if_fail(gentry != NULL);
-    g_return_if_fail(GNOME_IS_ENTRY(gentry));
+    g_return_if_fail(GTT_IS_ENTRY(gentry));
 
     if (gnome_program_get_app_id(gnome_program_get()) == NULL
         || gentry->_priv->history_id == NULL)
@@ -785,43 +779,43 @@ static void gnome_entry_save_history(GnomeEntry *gentry)
 
 static void insert_text(GtkEditable *editable, const gchar *text, gint length, gint *position)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     gtk_editable_insert_text(GTK_EDITABLE(entry), text, length, position);
 }
 
 static void delete_text(GtkEditable *editable, gint start_pos, gint end_pos)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     gtk_editable_delete_text(GTK_EDITABLE(entry), start_pos, end_pos);
 }
 
 static gchar *get_chars(GtkEditable *editable, gint start_pos, gint end_pos)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     return gtk_editable_get_chars(GTK_EDITABLE(entry), start_pos, end_pos);
 }
 
 static void set_selection_bounds(GtkEditable *editable, gint start_pos, gint end_pos)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     gtk_editable_select_region(GTK_EDITABLE(entry), start_pos, end_pos);
 }
 
 static gboolean get_selection_bounds(GtkEditable *editable, gint *start_pos, gint *end_pos)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     return gtk_editable_get_selection_bounds(GTK_EDITABLE(entry), start_pos, end_pos);
 }
 
 static void set_position(GtkEditable *editable, gint position)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     gtk_editable_set_position(GTK_EDITABLE(entry), position);
 }
 
 static gint get_position(GtkEditable *editable)
 {
-    GtkWidget *entry = gnome_entry_gtk_entry(GNOME_ENTRY(editable));
+    GtkWidget *entry = gtt_entry_gtk_entry(GTT_ENTRY(editable));
     return gtk_editable_get_position(GTK_EDITABLE(entry));
 }
 
@@ -830,7 +824,7 @@ static void do_insert_text(
     GtkEditable *editable, const gchar *new_text, gint new_text_length, gint *position
 )
 {
-    GtkEntry *entry = GTK_ENTRY(gnome_entry_gtk_entry(GNOME_ENTRY(editable)));
+    GtkEntry *entry = GTK_ENTRY(gtt_entry_gtk_entry(GTT_ENTRY(editable)));
     gchar buf[64];
     gchar *text;
 
@@ -858,7 +852,7 @@ static void do_insert_text(
 /* Copied from gtkentry */
 static void do_delete_text(GtkEditable *editable, gint start_pos, gint end_pos)
 {
-    GtkEntry *entry = GTK_ENTRY(gnome_entry_gtk_entry(GNOME_ENTRY(editable)));
+    GtkEntry *entry = GTK_ENTRY(gtt_entry_gtk_entry(GTT_ENTRY(editable)));
 
     if (end_pos < 0 || end_pos > entry->text_length)
         end_pos = entry->text_length;
@@ -874,7 +868,7 @@ static void do_delete_text(GtkEditable *editable, gint start_pos, gint end_pos)
     g_object_unref(G_OBJECT(editable));
 }
 
-static void gnome_entry_editable_init(GtkEditableClass *iface)
+static void gtt_entry_editable_init(GtkEditableClass *iface)
 {
     /* Just proxy to the GtkEntry */
     iface->do_insert_text = do_insert_text;
