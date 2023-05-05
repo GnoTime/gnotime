@@ -6,6 +6,7 @@
     <child name="data" schema="org.gnotime.app.data"/>
     <child name="display" schema="org.gnotime.app.display"/>
     <child name="geometry" schema="org.gnotime.app.geometry"/>
+    <child name="gtt-entry-histories" schema="org.gnotime.app.gtt-entry-histories"/>
     <child name="log-file" schema="org.gnotime.app.log-file"/>
     <child name="misc" schema="org.gnotime.app.misc"/>
     <child name="report" schema="org.gnotime.app.report"/>
@@ -204,6 +205,14 @@
     </key>
     <key name="y" type="i">
       <default>10</default>
+      <summary>TODO</summary>
+      <description>TODO</description>
+    </key>
+  </schema>
+
+  <schema id="org.gnotime.app.gtt-entry-histories">
+    <key name="history" type="as">
+      <default>[]</default>
       <summary>TODO</summary>
       <description>TODO</description>
     </key>
