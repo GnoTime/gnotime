@@ -18,7 +18,9 @@
  */
 
 #include <config.h>
-#include <gnome.h>
+
+#include "gtt-entry.h"
+
 #include <string.h>
 
 #include "app.h"
@@ -159,10 +161,10 @@ void new_project(GtkWidget *widget, gpointer data)
     GtkWidget **entries = g_new0(GtkWidget *, 2);
     GtkWidget *table;
 
-    title = gnome_entry_new("project_title");
-    desc = gnome_entry_new("project_description");
-    entries[0] = gnome_entry_gtk_entry(GNOME_ENTRY(title));
-    entries[1] = gnome_entry_gtk_entry(GNOME_ENTRY(desc));
+    title = gtt_entry_new("project_title");
+    desc = gtt_entry_new("project_description");
+    entries[0] = gtt_entry_gtk_entry(GTT_ENTRY(title));
+    entries[1] = gtt_entry_gtk_entry(GTT_ENTRY(desc));
 
     /* Create new dialog box */
     w = gtk_dialog_new_with_buttons(

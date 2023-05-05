@@ -104,36 +104,6 @@
 	      </child>
 
 	      <child>
-		<widget class="GnomeEntry" id="entry3">
-		  <property name="visible">True</property>
-		  <property name="history_id">task_memo</property>
-		  <property name="max_saved">10</property>
-
-		  <child internal-child="entry">
-		    <widget class="GtkEntry" id="memo box">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">A short description to attach to this block of time.</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char" translatable="yes">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		  </child>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
 		<widget class="GtkLabel" id="label2">
 		  <property name="visible">True</property>
 		  <property name="label" translatable="yes">Notes:</property>
@@ -394,36 +364,6 @@
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
 		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GnomeEntry" id="entry4">
-		  <property name="visible">True</property>
-		  <property name="history_id">bill_unit</property>
-		  <property name="max_saved">10</property>
-
-		  <child internal-child="entry">
-		    <widget class="GtkEntry" id="unit box">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">The billed unit of time will be rounded to an integer multiple of this time.</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char" translatable="yes">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		  </child>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
