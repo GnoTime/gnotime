@@ -50,6 +50,7 @@ gnotime_srcs = files(
   'ghtml.c',
   'ghtml-deprecated.c',
   'gtt-date-edit.c',
+  'gtt-entry.c',
   'gtt-gsettings-gnomeui.c',
   'gtt-gsettings-io.c',
   'gtt-gsettings-io-p.c',

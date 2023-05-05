@@ -28,20 +28,16 @@
 
 #undef GTK_DISABLE_DEPRECATED
 
-#include <config.h>
-#include <libgnome/gnome-macros.h>
+#include "config.h"
 
-/* Must be before all other gnome includes!! */
-#include <glib/gi18n-lib.h>
+#include "gtt-gsettings-io-p.h"
 
 #include <gtk/gtk.h>
+
+#include <glib/gi18n.h>
+
 #include <stdio.h>
 #include <string.h>
-
-#include <gconf/gconf-client.h>
-#include <libgnome/gnome-program.h>
-
-#include "gnome-gconf-ui.h"
 
 #include "gtt-entry.h"
 
@@ -63,8 +59,7 @@ struct _GttEntryPrivate
     guint16 max_saved;
     guint changed : 1;
     guint saving_history : 1;
-    GConfClient *gconf_client;
-    guint gconf_notify_id;
+    GSettings *settings;
 };
 
 struct item
@@ -86,42 +81,9 @@ static void gtt_entry_editable_init(GtkEditableClass *iface);
 static void gtt_entry_load_history(GttEntry *gentry);
 static void gtt_entry_save_history(GttEntry *gentry);
 
-static char *build_gconf_key(GttEntry *gentry);
+static char *build_gsettings_path(const gchar *history_id);
 
-/* Note, can't use boilerplate with interfaces yet,
- * should get sorted out */
-static GtkComboClass *parent_class = NULL;
-GType gtt_entry_get_type(void)
-{
-    static GType object_type = 0;
-
-    if (object_type == 0)
-    {
-        const GTypeInfo object_info = {
-            sizeof(GttEntryClass),
-            (GBaseInitFunc) NULL,
-            (GBaseFinalizeFunc) NULL,
-            (GClassInitFunc) gtt_entry_class_init,
-            (GClassFinalizeFunc) NULL,
-            NULL, /* class_data */
-            sizeof(GttEntry),
-            0, /* n_preallocs */
-            (GInstanceInitFunc) gtt_entry_init,
-            NULL /* value_table */
-        };
-
-        const GInterfaceInfo editable_info = {
-            (GInterfaceInitFunc) gtt_entry_editable_init, /* interface_init */
-            NULL,                                         /* interface_finalize */
-            NULL                                          /* interface_data */
-        };
-
-        object_type = g_type_register_static(GTK_TYPE_COMBO, "GttEntry", &object_info, 0);
-
-        g_type_add_interface_static(object_type, GTK_TYPE_EDITABLE, &editable_info);
-    }
-    return object_type;
-}
+G_DEFINE_TYPE(GttEntry, gtt_entry, GTK_TYPE_COMBO)
 
 enum
 {
@@ -139,7 +101,7 @@ static gboolean gtt_entry_mnemonic_activate(GtkWidget *widget, gboolean group_cy
 
     group_cycling = group_cycling != FALSE;
 
-    if (!GTK_WIDGET_IS_SENSITIVE(GTK_COMBO(entry)->entry))
+    if (!gtk_widget_get_sensitive(GTK_COMBO(entry)->entry))
         handled = TRUE;
     else
         g_signal_emit_by_name(
@@ -154,8 +116,6 @@ static void gtt_entry_class_init(GttEntryClass *class)
     GtkObjectClass *object_class;
     GtkWidgetClass *widget_class;
     GObjectClass *gobject_class;
-
-    parent_class = g_type_class_peek_parent(class);
 
     object_class = (GtkObjectClass *) class;
     gobject_class = (GObjectClass *) class;
@@ -320,28 +280,12 @@ static void gtt_entry_destroy(GtkObject *object)
 
     gentry = GTT_ENTRY(object);
 
-    if (gentry->_priv->gconf_client != NULL)
+    if (gentry->_priv->settings != NULL)
     {
-        gchar *key;
-
-        if (gentry->_priv->gconf_notify_id != 0)
-        {
-            gconf_client_notify_remove(
-                gentry->_priv->gconf_client, gentry->_priv->gconf_notify_id
-            );
-            gentry->_priv->gconf_notify_id = 0;
-        }
-
-        key = build_gconf_key(gentry);
-        gconf_client_remove_dir(gentry->_priv->gconf_client, key, NULL);
-        g_free(key);
-
-        g_object_unref(G_OBJECT(gentry->_priv->gconf_client));
-
-        gentry->_priv->gconf_client = NULL;
+        g_clear_object(&gentry->_priv->settings);
     }
 
-    GNOME_CALL_PARENT(GTK_OBJECT_CLASS, destroy, (object));
+    GTK_OBJECT_CLASS(gtt_entry_parent_class)->destroy(object);
 }
 
 static void gtt_entry_finalize(GObject *object)
@@ -361,7 +305,7 @@ static void gtt_entry_finalize(GObject *object)
     g_free(gentry->_priv);
     gentry->_priv = NULL;
 
-    GNOME_CALL_PARENT(G_OBJECT_CLASS, finalize, (object));
+    G_OBJECT_CLASS(gtt_entry_parent_class)->finalize(object);
 }
 
 /**
@@ -380,9 +324,7 @@ GtkWidget *gtt_entry_gtk_entry(GttEntry *gentry)
     return GTK_COMBO(gentry)->entry;
 }
 
-static void gtt_entry_history_changed(
-    GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer user_data
-)
+static void gtt_entry_history_changed(GSettings *settings, char *const key, gpointer user_data)
 {
     GttEntry *gentry;
 
@@ -418,8 +360,6 @@ end:
  */
 void gtt_entry_set_history_id(GttEntry *gentry, const gchar *history_id)
 {
-    gchar *key;
-
     g_return_if_fail(gentry != NULL);
     g_return_if_fail(GTT_IS_ENTRY(gentry));
 
@@ -437,19 +377,18 @@ void gtt_entry_set_history_id(GttEntry *gentry, const gchar *history_id)
 
     gentry->_priv->history_id = g_strdup(history_id);
 
-    /* Register with gconf */
-    key = build_gconf_key(gentry);
+    // Register with GSettings
+    gchar *path = build_gsettings_path(gentry->_priv->history_id);
 
-    gnomeui_gconf_lazy_init();
-    gentry->_priv->gconf_client = gconf_client_get_default();
+    gentry->_priv->settings
+        = g_settings_new_with_path("org.gnotime.app.gtt-entry-histories", path);
 
-    gconf_client_add_dir(gentry->_priv->gconf_client, key, GCONF_CLIENT_PRELOAD_NONE, NULL);
-
-    gentry->_priv->gconf_notify_id = gconf_client_notify_add(
-        gentry->_priv->gconf_client, key, gtt_entry_history_changed, gentry, NULL, NULL
+    g_signal_connect(
+        gentry->_priv->settings, "changed", G_CALLBACK(gtt_entry_history_changed), gentry
     );
 
-    g_free(key);
+    g_free(path);
+    path = NULL;
 }
 
 /**
@@ -504,21 +443,9 @@ guint gtt_entry_get_max_saved(GttEntry *gentry)
     return gentry->_priv->max_saved;
 }
 
-static char *build_gconf_key(GttEntry *gentry)
+static char *build_gsettings_path(const gchar *const history_id)
 {
-    gchar *retval;
-    gchar *app_id;
-
-    app_id = gconf_escape_key(gnome_program_get_app_id(gnome_program_get()), -1);
-
-    retval = g_strconcat(
-        "/apps/gnome-settings/", gnome_program_get_app_id(gnome_program_get()), "/history-",
-        gentry->_priv->history_id, NULL
-    );
-
-    g_free(app_id);
-
-    return retval;
+    return g_strdup_printf("/org/gnotime/app/gtt-entry-histories/history-%s/", history_id);
 }
 
 static void set_combo_items(GttEntry *gentry)
@@ -666,39 +593,30 @@ void gtt_entry_append_history(GttEntry *gentry, gboolean save, const gchar *text
 static void gtt_entry_load_history(GttEntry *gentry)
 {
     struct item *item;
-    gchar *key;
-    GSList *gconf_items, *items;
 
     g_return_if_fail(gentry != NULL);
     g_return_if_fail(GTT_IS_ENTRY(gentry));
 
-    if (gnome_program_get_app_id(gnome_program_get()) == NULL
-        || gentry->_priv->history_id == NULL)
+    if (gentry->_priv->history_id == NULL)
         return;
 
-    g_return_if_fail(gentry->_priv->gconf_client != NULL);
+    g_return_if_fail(gentry->_priv->settings != NULL);
 
     free_items(gentry);
 
-    key = build_gconf_key(gentry);
-
-    gconf_items
-        = gconf_client_get_list(gentry->_priv->gconf_client, key, GCONF_VALUE_STRING, NULL);
-    g_free(key);
-
-    for (items = gconf_items; items; items = items->next)
+    GSList *items = gtt_gsettings_get_array_string(gentry->_priv->settings, "history");
+    GSList *node = NULL;
+    for (node = items; NULL != node; node = node->next)
     {
 
         item = g_new(struct item, 1);
         item->save = TRUE;
-        item->text = items->data;
+        item->text = node->data;
 
         gentry->_priv->items = g_list_append(gentry->_priv->items, item);
     }
 
     set_combo_items(gentry);
-
-    g_slist_free(gconf_items);
 }
 
 /**
@@ -719,13 +637,13 @@ void gtt_entry_clear_history(GttEntry *gentry)
     gtt_entry_save_history(gentry);
 }
 
-static gboolean check_for_duplicates(GSList *gconf_items, const struct item *item)
+static gboolean check_for_duplicates(GSList *gsettings_items, const struct item *item)
 {
 
-    for (; gconf_items; gconf_items = gconf_items->next)
+    for (; gsettings_items; gsettings_items = gsettings_items->next)
     {
 
-        if (strcmp((gchar *) gconf_items->data, item->text) == 0)
+        if (strcmp((gchar *) gsettings_items->data, item->text) == 0)
         {
             return FALSE;
         }
@@ -737,44 +655,39 @@ static gboolean check_for_duplicates(GSList *gconf_items, const struct item *ite
 static void gtt_entry_save_history(GttEntry *gentry)
 {
     GList *items;
-    GSList *gconf_items;
+    GSList *gsettings_items;
     struct item *item;
-    gchar *key;
     gint n;
 
     g_return_if_fail(gentry != NULL);
     g_return_if_fail(GTT_IS_ENTRY(gentry));
 
-    if (gnome_program_get_app_id(gnome_program_get()) == NULL
-        || gentry->_priv->history_id == NULL)
+    if (NULL == gentry->_priv->history_id)
         return;
 
-    g_return_if_fail(gentry->_priv->gconf_client != NULL);
+    g_return_if_fail(NULL != gentry->_priv->settings);
 
-    key = build_gconf_key(gentry);
-    gconf_items = NULL;
+    gsettings_items = NULL;
 
     for (n = 0, items = gentry->_priv->items; items && n < gentry->_priv->max_saved;
          items = items->next, n++)
     {
         item = items->data;
 
-        if (item->save && check_for_duplicates(gconf_items, item))
+        if (item->save && check_for_duplicates(gsettings_items, item))
         {
-            gconf_items = g_slist_prepend(gconf_items, item->text);
+            gsettings_items = g_slist_prepend(gsettings_items, item->text);
         }
     }
 
-    gconf_items = g_slist_reverse(gconf_items);
+    gsettings_items = g_slist_reverse(gsettings_items);
 
     /* Save the list */
     gentry->_priv->saving_history = TRUE;
-    gconf_client_set_list(
-        gentry->_priv->gconf_client, key, GCONF_VALUE_STRING, gconf_items, NULL
-    );
 
-    g_slist_free(gconf_items);
-    g_free(key);
+    gtt_gsettings_set_array_string(gentry->_priv->settings, "history", gsettings_items);
+
+    g_slist_free(gsettings_items);
 }
 
 static void insert_text(GtkEditable *editable, const gchar *text, gint length, gint *position)
@@ -828,8 +741,8 @@ static void do_insert_text(
     gchar buf[64];
     gchar *text;
 
-    if (*position < 0 || *position > entry->text_length)
-        *position = entry->text_length;
+    if (*position < 0 || *position > gtk_entry_get_text_length(entry))
+        *position = gtk_entry_get_text_length(entry);
 
     g_object_ref(G_OBJECT(editable));
 
@@ -854,8 +767,8 @@ static void do_delete_text(GtkEditable *editable, gint start_pos, gint end_pos)
 {
     GtkEntry *entry = GTK_ENTRY(gtt_entry_gtk_entry(GTT_ENTRY(editable)));
 
-    if (end_pos < 0 || end_pos > entry->text_length)
-        end_pos = entry->text_length;
+    if (end_pos < 0 || end_pos > gtk_entry_get_text_length(entry))
+        end_pos = gtk_entry_get_text_length(entry);
     if (start_pos < 0)
         start_pos = 0;
     if (start_pos > end_pos)

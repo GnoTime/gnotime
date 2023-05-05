@@ -22,6 +22,7 @@ gnotime_SOURCES =     \
 	ghtml.c            \
 	ghtml-deprecated.c \
 	gtt-date-edit.c    \
+	gtt-entry.c        \
 	gtt-gsettings-gnomeui.c \
 	gtt-gsettings-io-p.c \
 	gtt-gsettings-io.c \
@@ -67,6 +68,7 @@ noinst_HEADERS =      \
 	ghtml.h            \
 	ghtml-deprecated.h \
 	gtt-date-edit.h    \
+	gtt-entry.h        \
 	gtt-gsettings-gnomeui.h \
 	gtt-gsettings-io-p.h \
 	gtt-gsettings-io.h \

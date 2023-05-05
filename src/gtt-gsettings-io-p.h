@@ -23,10 +23,12 @@
 #include <glib.h>
 
 GSList *gtt_gsettings_get_array_int(GSettings *settings, const gchar *key);
+GSList *gtt_gsettings_get_array_string(GSettings *settings, const gchar *key);
 void gtt_gsettings_get_maybe_string(GSettings *settings, const gchar *key, gchar **value);
 void gtt_gsettings_get_string(GSettings *settings, const gchar *key, gchar **value);
 
 void gtt_gsettings_set_array_int(GSettings *settings, const gchar *key, GSList *value);
+void gtt_gsettings_set_array_string(GSettings *settings, const gchar *key, GSList *value);
 void gtt_gsettings_set_bool(GSettings *settings, const gchar *key, gboolean value);
 void gtt_gsettings_set_int(GSettings *settings, const gchar *key, gint value);
 void gtt_gsettings_set_maybe_string(GSettings *settings, const gchar *key, const gchar *value);
