@@ -65,8 +65,7 @@ int save_count = 0;
  *
  * 1) First try reading settings from GSettings
  * 2) Next try GConf
- * 3) Next try Gnome 2 Gnome-Config files in ~/.gnome2/GnoTime
- * 4) Last try Gnome 1 Gnome-Config files in ~/.gnome/gtt
+ * 3) Last try Gnome 2 Gnome-Config files in ~/.gnome2/GnoTime
  *
  * Note that some of the older config files also contained project
  * data in them.  The newer versions stored project data seperately
@@ -333,9 +332,6 @@ static void gtt_load_gnome_config(const char *prefix)
 
 void gtt_load_config(void)
 {
-    const char *h;
-    char *s;
-
     // Check if GSettings has been written to at least once and use it if so (this check is
     // conducted to allow the loading of attributes from previous configuration systems)
     if (FALSE == gtt_gsettings_initial_access())
@@ -367,26 +363,6 @@ void gtt_load_config(void)
             *p = 0x0;
         return;
     }
-
-    /* Look for a gnome-1.4 era gnome_config file */
-    h = g_get_home_dir();
-    s = g_new(char, strlen(h) + 120);
-    strcpy(s, "=");
-    strcat(s, h);
-    strcat(s, "/.gnome/gtt=/Misc");
-    if (gnome_config_has_section(s))
-    {
-        strcpy(s, "=");
-        strcat(s, h);
-        strcat(s, "/.gnome/gtt=");
-        printf("GTT: Info: Importing ~/.gnome/gtt file\n");
-        gtt_load_gnome_config(s);
-        strcpy(s, h);
-        strcat(s, "/.gnome");
-        gtt_config_filepath = s;
-        return;
-    }
-    g_free(s);
 
     config_data_url = XML_DATA_FILENAME;
 }
