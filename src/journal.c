@@ -604,6 +604,13 @@ static void task_popup_cb(Wiggy *wig)
     }
 }
 
+/* ============================================================== */
+
+#if LATER
+static void on_print_clicked_cb(GtkWidget *w, gpointer data)
+{
+}
+#endif
 
 /* ============================================================== */
 /* Publish Button handlers */
@@ -1129,6 +1136,56 @@ static void submit_clicked_cb(
 
 /* ============================================================== */
 
+static void connect_signals_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer user_data
+)
+{
+    // Open help - special case cause not passing user_data (wig).
+    if (g_strcmp0(handler_name, "on_pub_help_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(gtt_help_popup), NULL);
+
+    // Use a lookup table for other signals.
+    // Naturally, we should either have some utility helpers for this,
+    // or switch to using gtk_builder_connect_signals, so it locates
+    // the callbacks by itself.
+
+    typedef struct
+    {
+        const gchar *handler_name;
+        GCallback callback;
+    } HandlerData;
+
+    HandlerData handlers[] = {
+        // Main journal window.
+        { "on_close_clicked", G_CALLBACK(on_close_clicked_cb) },
+        { "on_save_clicked", G_CALLBACK(on_save_clicked_cb) },
+#if LATER
+        { "on_print_clicked", G_CALLBACK(on_print_clicked_cb) },
+#endif
+        { "on_publish_clicked", G_CALLBACK(on_publish_clicked_cb) },
+        { "on_refresh_clicked", G_CALLBACK(on_refresh_clicked_cb) },
+
+        // Publish dialog.
+        { "on_pub_cancel_clicked", G_CALLBACK(on_pub_cancel_clicked_cb) },
+        { "on_pub_ok_clicked", G_CALLBACK(on_pub_ok_clicked_cb) },
+
+        { NULL, NULL }
+    };
+
+    HandlerData *handler_data;
+    for (handler_data = handlers; handler_data->handler_name != NULL; handler_data++)
+    {
+        if (g_strcmp0(handler_name, handler_data->handler_name) == 0)
+        {
+            g_signal_connect(object, signal_name, handler_data->callback, user_data);
+            break;
+        }
+    }
+}
+
+/* ============================================================== */
+
 static void do_show_report(
     const char *report, GttPlugin *plg, KvpFrame *kvpf, GttProject *prj, gboolean did_query,
     GList *prjlist
@@ -1136,12 +1193,12 @@ static void do_show_report(
 {
     GtkWidget *jnl_top, *jnl_viewport;
     GladeXML *glxml;
+    GtkBuilder *builder;
     Wiggy *wig;
 
-    glxml = gtt_glade_xml_new("glade/journal.glade", "Journal Window");
-
-    jnl_top = glade_xml_get_widget(glxml, "Journal Window");
-    jnl_viewport = glade_xml_get_widget(glxml, "Journal ScrollWin");
+    builder = gtt_builder_new_from_file("ui/journal.ui");
+    jnl_top = GTK_WIDGET(gtk_builder_get_object(builder, "Journal Window"));
+    jnl_viewport = GTK_WIDGET(gtk_builder_get_object(builder, "Journal ScrollWin"));
 
     wig = g_new0(Wiggy, 1);
     wig->edit_ivl = NULL;
@@ -1163,21 +1220,7 @@ static void do_show_report(
     /* ---------------------------------------------------- */
     /* Signals for the browser, and the Journal window */
 
-    glade_xml_signal_connect_data(
-        glxml, "on_close_clicked", GTK_SIGNAL_FUNC(on_close_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_save_clicked", GTK_SIGNAL_FUNC(on_save_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_publish_clicked", GTK_SIGNAL_FUNC(on_publish_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_refresh_clicked", GTK_SIGNAL_FUNC(on_refresh_clicked_cb), wig
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_cb, wig);
 
     g_signal_connect(G_OBJECT(wig->top), "destroy", G_CALLBACK(destroy_cb), wig);
 
@@ -1203,21 +1246,9 @@ static void do_show_report(
     /* ---------------------------------------------------- */
     /* This is the popup for asking for the user to input an URL. */
 
-    glxml = gtt_glade_xml_new("glade/journal.glade", "Publish Dialog");
-    wig->publish_popup = glade_xml_get_widget(glxml, "Publish Dialog");
-    wig->publish_entry = GTK_ENTRY(glade_xml_get_widget(glxml, "url entry"));
-
-    glade_xml_signal_connect_data(
-        glxml, "on_pub_help_clicked", GTK_SIGNAL_FUNC(gtt_help_popup), NULL
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_pub_cancel_clicked", GTK_SIGNAL_FUNC(on_pub_cancel_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_pub_ok_clicked", GTK_SIGNAL_FUNC(on_pub_ok_clicked_cb), wig
-    );
+    wig->publish_popup = GTK_WIDGET(gtk_builder_get_object(builder, "Publish Dialog"));
+    wig->publish_entry = GTK_ENTRY(gtk_builder_get_object(builder, "url entry"));
+    // Signals have already been handled by the call to gtk_builder_connect_signals_full().
 
     /* ---------------------------------------------------- */
     /* This is the popup menu that says 'edit/delete/merge' */
