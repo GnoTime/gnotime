@@ -64,8 +64,7 @@ int save_count = 0;
  * (currently GSettings).
  *
  * 1) First try reading settings from GSettings
- * 2) Next try GConf
- * 3) Last try Gnome 2 Gnome-Config files in ~/.gnome2/GnoTime
+ * 2) Last try GConf
  *
  * Note that some of the older config files also contained project
  * data in them.  The newer versions stored project data seperately
@@ -349,21 +348,6 @@ void gtt_load_config(void)
         return;
     }
 
-    /* gnotime breifly used the gnome2 gnome_config file */
-    if (gnome_config_has_section(GTT_CONF "/Misc"))
-    {
-        printf("GTT: Info: Importing ~/.gnome2/" GTT_CONF " file\n");
-        gtt_load_gnome_config(GTT_CONF);
-        gtt_config_filepath = gnome_config_get_real_path(GTT_CONF);
-
-        /* The data file will be in the same directory ...
-         * so prune filename to get the directory */
-        char *p = strrchr(gtt_config_filepath, '/');
-        if (p)
-            *p = 0x0;
-        return;
-    }
-
     config_data_url = XML_DATA_FILENAME;
 }
 
@@ -431,10 +415,7 @@ void gtt_post_ctree_config(void)
     {
         xpn = gtt_gconf_get_expander();
     }
-    else
-    {
-        xpn = gnome_config_get_string(GTT_CONF "/Display/ExpanderState");
-    }
+
     if (xpn)
     {
         gtt_projects_tree_set_expander_state(projects_tree, xpn);
