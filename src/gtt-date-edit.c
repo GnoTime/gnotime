@@ -52,6 +52,7 @@ struct _GttDateEditPrivate
 
     GtkWidget *time_entry;
     GtkWidget *time_popup;
+    GtkWidget *time_menu;
 
     GtkWidget *cal_label;
     GtkWidget *cal_popup;
@@ -329,6 +330,13 @@ static void free_resources(gpointer data)
     g_free(hit);
 }
 
+static void open_time_popup(GtkWidget *widget, GttDateEdit *gde)
+{
+    GtkMenu *menu = GTK_MENU(gde->_priv->time_menu);
+
+    gtk_menu_popup(menu, NULL, NULL, NULL, NULL, 0, gtk_get_current_event_time());
+}
+
 static void fill_time_popup(GtkWidget *widget, GttDateEdit *gde)
 {
     GtkWidget *menu;
@@ -415,8 +423,8 @@ static void fill_time_popup(GtkWidget *widget, GttDateEdit *gde)
             gtk_widget_show(mins);
         }
     }
-    // work around a GtkOptionMenu bug #66969
-    gtk_option_menu_set_menu(GTK_OPTION_MENU(gde->_priv->time_popup), menu);
+
+    gde->_priv->time_menu = menu;
 }
 
 static gboolean gtt_date_edit_mnemonic_activate(GtkWidget *widget, gboolean group_cycling)
@@ -714,6 +722,7 @@ static void create_children(GttDateEdit *gde)
     GtkWidget *frame;
     GtkWidget *hbox;
     GtkWidget *arrow;
+    GtkWidget *image;
 
     gde->_priv->date_entry = gtk_entry_new();
 
@@ -749,9 +758,18 @@ static void create_children(GttDateEdit *gde)
     gtk_widget_set_size_request(gde->_priv->time_entry, 88, -1);
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->time_entry, TRUE, TRUE, 0);
 
-    gde->_priv->time_popup = gtk_option_menu_new();
+    /* Time quick select popup button.
+     * Avoid gtk_button_new_from_stock() - we use a different way, to force
+     * use of the image.
+     */
+    image = gtk_image_new_from_stock(GTK_STOCK_INDEX, GTK_ICON_SIZE_BUTTON);
+    gde->_priv->time_popup = gtk_button_new();
+    gtk_button_set_image(GTK_BUTTON(gde->_priv->time_popup), image);
 
     gtk_box_pack_start(GTK_BOX(gde), gde->_priv->time_popup, FALSE, FALSE, 0);
+
+    g_signal_connect(
+        gde->_priv->time_popup, "clicked", G_CALLBACK(open_time_popup), gde);
 
     /* We do not create the popup menu with the hour range until we are
      * realized, so that it uses the values that the user might supply in a
