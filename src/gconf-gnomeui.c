@@ -19,7 +19,6 @@
 #include "config.h"
 
 #include <gconf/gconf-client.h>
-#include <gnome.h>
 
 #include "gconf-gnomeui.h"
 #include "gconf-io-p.h"

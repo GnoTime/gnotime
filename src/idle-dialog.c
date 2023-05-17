@@ -21,8 +21,7 @@
 
 #include <gdk/gdkx.h>
 #include <glade/glade.h>
-#include <glib.h>
-#include <gnome.h>
+
 #include <string.h>
 
 #include <X11/Xlib.h>
@@ -36,6 +35,8 @@
 #include "idle-dialog.h"
 #include "proj.h"
 #include "util.h"
+
+#include <glib/gi18n.h>
 
 int config_idle_timeout = -1;
 

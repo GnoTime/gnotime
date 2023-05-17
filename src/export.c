@@ -18,7 +18,7 @@
  */
 
 #include <config.h>
-#include <gnome.h>
+
 #include <string.h>
 
 #include "app.h"
@@ -27,6 +27,7 @@
 #include "proj.h"
 
 #include <gio/gio.h>
+#include <glib/gi18n.h>
 
 /* Project data export */
 

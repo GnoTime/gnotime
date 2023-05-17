@@ -21,7 +21,6 @@
 #include "gtt-gsettings-io.h"
 
 #include <glade/glade.h>
-#include <gnome.h>
 
 #include "app.h"
 #include "dialog.h"
