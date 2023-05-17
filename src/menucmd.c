@@ -361,13 +361,22 @@ void menu_toggle_timer(GtkWidget *w, gpointer data)
     GttProject *prj;
     prj = gtt_projects_tree_get_selected_project(projects_tree);
 
-    if (timer_is_running())
+    gboolean run_currently = timer_is_running();
+
+    if (GTK_IS_CHECK_MENU_ITEM(w))
     {
-        cur_proj_set(NULL);
+        // Only attempt to change the timer state if it's not already in the desired state.
+        // Necessary to prevent infinite recursion since this handler is also called
+        // in response to code updating menu state.
+
+        gboolean run_desired = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(w));
+
+        if (run_desired != run_currently)
+            cur_proj_set(run_desired ? prj : NULL);
     }
-    else
+    else  // toggled from (stateless) toolbar button
     {
-        cur_proj_set(prj);
+        cur_proj_set(run_currently ? NULL : prj);
     }
 }
 

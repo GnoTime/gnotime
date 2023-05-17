@@ -282,16 +282,21 @@ void menu_set_states(void)
         return;
     gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget, 1);
     mi = GTK_CHECK_MENU_ITEM(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget);
-    /* Can't call the 'set_active' directly, as that issues an
-     * event which puts us in an infinite loop.  Instead,
-     * just set the value.
-     * gtk_check_menu_item_set_active (mi, timer_is_running());
-     */
     gtk_check_menu_item_set_active(mi, timer_is_running());
 
     /* XXX would be nice to change this menu entry to say
      * 'timer stopped' when the timer is stopped.  But don't
      * know how to change the menu label in gtk */
+    /* Note (Oskar): The proposed "timer stopped" is not ideal.
+     * The common pattern for a check menu item is that the label describes the state
+     * that would apply if the item is active. "timer running" is not good either,
+     * as the label makes it sound like the timer is running even if it isn't. Especially
+     * if the theme designer didn't feel the need to visualize a non-active check mark.
+     * The label "Run timer" would work better and match common patterns such
+     * as e.g. "Show toolbar".
+     *
+     * But also - why do we have Start, Stop, and a toogle as three separate menu items?
+     * Probably at least one too many. */
 
     gtk_widget_set_sensitive(
         menu_main_timer[MENU_TIMER_START_POS].widget, (FALSE == timer_is_running())
