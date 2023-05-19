@@ -754,7 +754,7 @@ static int save_state(
     // const char *sess_id;
     char *argv[5];
     int argc;
-    int x, y, w, h;
+    int x, y;
     int rc;
 
     // sess_id  = gnome_client_get_id(client);
@@ -764,10 +764,11 @@ static int save_state(
     GdkWindow *const win = gtk_widget_get_window(app_window);
 
     gdk_window_get_origin(win, &x, &y);
-    gdk_window_get_size(win, &w, &h);
     argv[0] = (char *) data;
     argv[1] = "--geometry";
-    argv[2] = g_strdup_printf("%dx%d+%d+%d", w, h, x, y);
+    argv[2] = g_strdup_printf(
+        "%dx%d+%d+%d", gdk_window_get_width(win), gdk_window_get_height(win), x, y
+    );
     if ((cur_proj) && (gtt_project_get_title(cur_proj)))
     {
         argc = 5;
