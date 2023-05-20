@@ -162,7 +162,7 @@ static void notice_events(IdleTimeout *si, Window window, Bool top_p)
     unsigned int nkids;
     GdkWindow *gwin;
 
-    gwin = gdk_window_lookup(window);
+    gwin = gdk_x11_window_lookup_for_display(gdk_display_get_default(), (window));
     if (gwin && (window != DefaultRootWindow(si->dpy)))
     {
         /* If it's one of ours, don't mess up its event mask. */
@@ -826,7 +826,7 @@ IdleTimeout *idle_timeout_new(void)
     IdleTimeout *si;
 
     si = g_new0(IdleTimeout, 1);
-    si->dpy = GDK_DISPLAY();
+    si->dpy = gdk_x11_display_get_xdisplay(gdk_display_get_default());
 
     /* hack alert XXXX we should grep all screens */
     si->nscreens = 1;

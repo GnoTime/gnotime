@@ -112,7 +112,8 @@ AM_CFLAGS = -g -Wall     \
 	${LIBXML2_CFLAGS} \
 	${GUILE_CFLAGS} \
 	${X11_CFLAGS} \
-	-DGSEAL_ENABLE
+	-DGSEAL_ENABLE \
+	-DGDK_DISABLE_DEPRECATED
 
 AM_CPPFLAGS =                                   \
 	$(LIBQOF_CFLAGS)                          \
