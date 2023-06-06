@@ -44,7 +44,7 @@ struct GttActiveDialog_s
     GtkButton *help_btn;
     GtkLabel *active_label;
     GtkLabel *credit_label;
-    GtkOptionMenu *project_menu;
+    GtkComboBox *project_menu;
     guint timeout_event_source;
 };
 
@@ -114,25 +114,45 @@ static void dialog_kill(GObject *obj, GttActiveDialog *dlg)
 
 static void start_proj(GObject *obj, GttActiveDialog *dlg)
 {
-    GtkMenu *menu;
-    GtkWidget *w;
+    GtkListStore *store;
+    GtkTreeIter iter;
     GttProject *prj;
 
     /* Start the project that the user has selected from the menu */
-    menu = GTK_MENU(gtk_option_menu_get_menu(dlg->project_menu));
-    w = gtk_menu_get_active(menu);
-    prj = g_object_get_data(G_OBJECT(w), "prj");
+    store = GTK_LIST_STORE(gtk_combo_box_get_model(dlg->project_menu));
+    if (gtk_combo_box_get_active_iter(dlg->project_menu, &iter))
+    {
+        gtk_tree_model_get(GTK_TREE_MODEL(store), &iter, 1, &prj, -1);
+        cur_proj_set(prj);
+    }
 
-    cur_proj_set(prj);
     dialog_kill(obj, dlg);
+}
+
+/* =========================================================== */
+
+static GtkListStore* create_project_list()
+{
+    GList *prjlist, *node;
+
+    GtkListStore *store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_POINTER);
+
+    prjlist = gtt_project_get_unfinished();
+
+    for (node = prjlist; node; node = node->next)
+    {
+        GttProject *prj = node->data;
+        gtk_list_store_insert_with_values(
+            store, NULL, G_MAXINT, 0, gtt_project_get_title(prj), 1, prj, -1);
+    }
+
+    return store;
 }
 
 /* =========================================================== */
 
 static void setup_menus(GttActiveDialog *dlg)
 {
-    GtkMenuShell *menushell;
-    GList *prjlist, *node;
     char *msg;
 
     msg = _("No project timer is currently running in GnoTime.  "
@@ -149,22 +169,12 @@ static void setup_menus(GttActiveDialog *dlg)
 
     gtk_label_set_text(dlg->credit_label, msg);
 
-    menushell = GTK_MENU_SHELL(gtk_menu_new());
-
     /* Give user a list only of the unfinished projects,
      * so that there isn't too much clutter ... */
-    prjlist = gtt_project_get_unfinished();
-    for (node = prjlist; node; node = node->next)
-    {
-        GttProject *prj = node->data;
-        GtkWidget *item;
-        item = gtk_menu_item_new_with_label(gtt_project_get_title(prj));
-        g_object_set_data(G_OBJECT(item), "prj", prj);
-        gtk_menu_shell_append(menushell, item);
-        gtk_widget_show(item);
-    }
-    gtk_option_menu_set_menu(dlg->project_menu, GTK_WIDGET(menushell));
+    GtkListStore *projstore = create_project_list();
+    gtk_combo_box_set_model(dlg->project_menu, GTK_TREE_MODEL(projstore));
 }
+
 
 /* =========================================================== */
 /* XXX the new GtkDialog is broken; it can't hide-on-close,
@@ -188,7 +198,7 @@ static void active_dialog_realize(GttActiveDialog *id)
     id->active_label = GTK_LABEL(glade_xml_get_widget(gtxml, "active label"));
     id->credit_label = GTK_LABEL(glade_xml_get_widget(gtxml, "credit label"));
     w = glade_xml_get_widget(gtxml, "project option menu");
-    id->project_menu = GTK_OPTION_MENU(w);
+    id->project_menu = GTK_COMBO_BOX(w);
 
     g_signal_connect(G_OBJECT(id->dlg), "destroy", G_CALLBACK(dialog_close), id);
 
