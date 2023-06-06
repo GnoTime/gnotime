@@ -54,6 +54,7 @@ gnotime_srcs = files(
   'gtt-gsettings-io.c',
   'gtt-gsettings-io-p.c',
   'gtt-select-list.c',
+  'gtt-history-list.c',
   'idle-dialog.c',
   'idle-timer.c',
   'journal.c',

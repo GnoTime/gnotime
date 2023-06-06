@@ -43,6 +43,7 @@ gnotime_SOURCES =     \
 	props-task.c       \
 	query.c            \
 	gtt-select-list.c  \
+	gtt-history-list.c  \
 	status-icon.c      \
 	timer.c            \
 	toolbar.c          \
@@ -88,6 +89,7 @@ noinst_HEADERS =      \
 	props-task.h       \
 	query.h            \
 	gtt-select-list.h  \
+	gtt-history-list.h  \
 	status-icon.h      \
 	timer.h            \
 	toolbar.h          \
