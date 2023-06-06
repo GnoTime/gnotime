@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glade-interface>
-  <!-- interface-requires gtk+ 2.24 -->
+<interface>
+  <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy toplevel-contextual -->
-  <widget class="GtkDialog" id="Task Properties">
+  <object class="GtkDialog" id="Task Properties">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Diary Notes</property>
     <property name="type_hint">normal</property>
     <property name="has_separator">True</property>
     <child internal-child="vbox">
-      <widget class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child internal-child="action_area">
-          <widget class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="help button">
+              <object class="GtkButton" id="help button">
                 <property name="label">gtk-help</property>
-                <property name="response_id">-11</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -28,7 +27,7 @@
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_help_button_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -36,9 +35,8 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="okbutton1">
+              <object class="GtkButton" id="okbutton1">
                 <property name="label">gtk-ok</property>
-                <property name="response_id">-5</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -46,14 +44,14 @@
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_ok_button_clicked" swapped="no"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
@@ -62,11 +60,11 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkNotebook" id="notebook">
+          <object class="GtkNotebook" id="notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
-              <widget class="GtkTable" id="task table">
+              <object class="GtkTable" id="task table">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">7</property>
@@ -75,26 +73,26 @@
                 <property name="column_spacing">7</property>
                 <property name="row_spacing">7</property>
                 <child>
-                  <widget class="GtkLabel" id="label1">
+                  <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Diary Entry:</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"/>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkComboBox" id="task_memo">
+                  <object class="GtkComboBox" id="task_memo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip" translatable="yes">A short description to attach to this block of time.</property>
+                    <property name="tooltip_text" translatable="yes">A short description to attach to this block of time.</property>
                     <property name="has_entry">True</property>
                     <property name="entry_text_column">0</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -102,13 +100,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label2">
+                  <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="yalign">0</property>
                     <property name="label" translatable="yes">Notes:</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
@@ -117,21 +115,21 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkScrolledWindow" id="scrolledwindow1">
+                  <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hscrollbar_policy">never</property>
                     <property name="vscrollbar_policy">automatic</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <widget class="GtkTextView" id="notes box">
+                      <object class="GtkTextView" id="notes box">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip" translatable="yes">Type detailed diary entry notes here.</property>
+                        <property name="tooltip_text" translatable="yes">Type detailed diary entry notes here.</property>
                         <property name="wrap_mode">word</property>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -139,22 +137,21 @@
                     <property name="bottom_attach">2</property>
                   </packing>
                 </child>
-              </widget>
+              </object>
             </child>
-            <child>
-              <widget class="GtkLabel" id="label5">
+            <child type="tab">
+              <object class="GtkLabel" id="label5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Diary Notes</property>
                 <property name="justify">center</property>
-              </widget>
+              </object>
               <packing>
                 <property name="tab_fill">False</property>
-                <property name="type">tab</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkTable" id="table1">
+              <object class="GtkTable" id="table1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">7</property>
@@ -163,26 +160,26 @@
                 <property name="column_spacing">7</property>
                 <property name="row_spacing">7</property>
                 <child>
-                  <widget class="GtkLabel" id="label16">
+                  <object class="GtkLabel" id="label16">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Status:</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"/>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label15">
+                  <object class="GtkLabel" id="label15">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billable:</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
@@ -191,13 +188,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label14">
+                  <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Rate:</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">2</property>
                     <property name="bottom_attach">3</property>
@@ -206,13 +203,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label12">
+                  <object class="GtkLabel" id="label12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Block:</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">3</property>
                     <property name="bottom_attach">4</property>
@@ -221,13 +218,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label13">
+                  <object class="GtkLabel" id="label13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">minutes</property>
                     <property name="justify">center</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
@@ -238,12 +235,17 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkComboBox" id="billstatus menu">
+                  <object class="GtkComboBox" id="billstatus menu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip" translatable="yes">Is this task ready to be billed to the customer? "Hold" means maybe, but not yet, needs review.   "Bill" means print this on the next invoice.   "Paid" means that it should no longer be included on invoices.</property>
-                    <property name="items" translatable="yes"/>
-                  </widget>
+                    <property name="tooltip_text" translatable="yes">Is this task ready to be billed to the customer? "Hold" means maybe, but not yet, needs review.   "Bill" means print this on the next invoice.   "Paid" means that it should no longer be included on invoices.</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -252,12 +254,17 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkComboBox" id="billable menu">
+                  <object class="GtkComboBox" id="billable menu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip" translatable="yes">How should this task be billed?  "Billable" means bill to the customer in the normal fashion.   "Not Billable" means we can't ask for money for this, don't print on the invoice.   "No Charge" means print on the invoice as 'free/no-charge'.</property>
-                    <property name="items" translatable="yes"/>
-                  </widget>
+                    <property name="tooltip_text" translatable="yes">How should this task be billed?  "Billable" means bill to the customer in the normal fashion.   "Not Billable" means we can't ask for money for this, don't print on the invoice.   "No Charge" means print on the invoice as 'free/no-charge'.</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -268,12 +275,17 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkComboBox" id="billrate menu">
+                  <object class="GtkComboBox" id="billrate menu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip" translatable="yes">Fee rate to be charged for this task.</property>
-                    <property name="items" translatable="yes"/>
-                  </widget>
+                    <property name="tooltip_text" translatable="yes">Fee rate to be charged for this task.</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -284,13 +296,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkComboBox" id="bill_unit">
+                  <object class="GtkComboBox" id="bill_unit">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip" translatable="yes">The billed unit of time will be rounded to an integer multiple of this time.</property>
+                    <property name="tooltip_text" translatable="yes">The billed unit of time will be rounded to an integer multiple of this time.</property>
                     <property name="has_entry">True</property>
                     <property name="entry_text_column">0</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -308,31 +320,34 @@
                 <child>
                   <placeholder/>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">1</property>
               </packing>
             </child>
-            <child>
-              <widget class="GtkLabel" id="label9">
+            <child type="tab">
+              <object class="GtkLabel" id="label9">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Billing</property>
-              </widget>
+              </object>
               <packing>
                 <property name="position">1</property>
                 <property name="tab_fill">False</property>
-                <property name="type">tab</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">2</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-</glade-interface>
+    <action-widgets>
+      <action-widget response="-11">help button</action-widget>
+      <action-widget response="-5">okbutton1</action-widget>
+    </action-widgets>
+  </object>
+</interface>
