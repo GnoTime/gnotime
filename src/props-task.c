@@ -36,16 +36,16 @@ typedef struct PropTaskDlg_s
 {
     GladeXML *gtxml;
     GtkDialog *dlg;
-    GtkEntry *memo;
+    GtkComboBox *memo;
     GtkTextView *notes;
     GtkComboBox *billstatus;
     GtkComboBox *billable;
     GtkComboBox *billrate;
-    GtkEntry *unit;
+    GtkComboBox *unit;
 
     GttTask *task;
 
-    /* The goal of 'ignore events' is to prevent an inifinite
+    /* The goal of 'ignore events' is to prevent an infinite
      * loop of cascading events as we modify the project and the GUI.
      */
     gboolean ignore_events;
@@ -80,7 +80,7 @@ static void save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 
     TSK_SETUP(dlg);
 
-    cstr = gtk_entry_get_text(dlg->memo);
+    cstr = gtk_entry_get_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))));
     if (cstr && cstr[0])
     {
         gtt_task_set_memo(dlg->task, cstr);
@@ -88,7 +88,7 @@ static void save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
     else
     {
         gtt_task_set_memo(dlg->task, "");
-        gtk_entry_set_text(dlg->memo, "");
+        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), "");
     }
 
     str = xxxgtk_textview_get_text(dlg->notes);
@@ -107,7 +107,7 @@ static void save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
 
     TSK_SETUP(dlg);
 
-    ivl = (int) (60.0 * atof(gtk_entry_get_text(dlg->unit)));
+    ivl = (int) (60.0 * atof(gtk_entry_get_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))))));
     gtt_task_set_bill_unit(dlg->task, ivl);
 
     status = (GttBillStatus) gtt_combo_select_list_get_value(dlg->billstatus);
@@ -135,9 +135,9 @@ static void do_set_task(GttTask *tsk, PropTaskDlg *dlg)
     if (!tsk)
     {
         dlg->task = NULL;
-        gtk_entry_set_text(dlg->memo, "");
+        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), "");
         xxxgtk_textview_set_text(dlg->notes, "");
-        gtk_entry_set_text(dlg->unit, "0.0");
+        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))), "0.0");
         return;
     }
 
@@ -146,11 +146,11 @@ static void do_set_task(GttTask *tsk, PropTaskDlg *dlg)
     dlg->task = tsk;
     TSK_SETUP(dlg);
 
-    gtk_entry_set_text(dlg->memo, gtt_task_get_memo(tsk));
+    gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), gtt_task_get_memo(tsk));
     xxxgtk_textview_set_text(dlg->notes, gtt_task_get_notes(tsk));
 
     g_snprintf(buff, 132, "%g", ((double) gtt_task_get_bill_unit(tsk)) / 60.0);
-    gtk_entry_set_text(dlg->unit, buff);
+    gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))), buff);
 
     status = gtt_task_get_billstatus(tsk);
     gtt_combo_select_list_set_active_by_value(dlg->billstatus, status);
@@ -201,22 +201,6 @@ static void destroy_cb(GtkWidget *w, PropTaskDlg *dlg)
 }
 
 /* ============================================================== */
-
-#define NTAGGED(NAME)                                                                    \
-    ({                                                                                   \
-        GtkWidget *widget;                                                               \
-        widget = glade_xml_get_widget(gtxml, NAME);                                      \
-        g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(save_task_notes), dlg); \
-        widget;                                                                          \
-    })
-
-#define BTAGGED(NAME)                                                                       \
-    ({                                                                                      \
-        GtkWidget *widget;                                                                  \
-        widget = glade_xml_get_widget(gtxml, NAME);                                         \
-        g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(save_task_billinfo), dlg); \
-        widget;                                                                             \
-    })
 
 #define TEXTED(NAME)                                                                   \
     ({                                                                                 \
@@ -270,7 +254,9 @@ static PropTaskDlg *prop_task_dialog_new(void)
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
 
-    dlg->memo = GTK_ENTRY(NTAGGED("memo box"));
+    dlg->memo = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, "task_memo"));
+    g_signal_connect(G_OBJECT(dlg->memo), "changed", G_CALLBACK(save_task_notes), dlg);
+
     dlg->notes = GTK_TEXT_VIEW(TEXTED("notes box"));
 
     dlg->billstatus =
@@ -282,7 +268,8 @@ static PropTaskDlg *prop_task_dialog_new(void)
     dlg->billrate =
         init_combo(gtxml, "billrate menu", G_CALLBACK(save_task_billinfo), dlg);
 
-    dlg->unit = GTK_ENTRY(BTAGGED("unit box"));
+    dlg->unit = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, "bill_unit"));
+    g_signal_connect(G_OBJECT(dlg->unit), "changed", G_CALLBACK(save_task_billinfo), dlg);
 
     /* ------------------------------------------------------ */
     /* associate values with the three option menus */
