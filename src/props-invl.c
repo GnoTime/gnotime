@@ -21,7 +21,6 @@
 #include "gtt-date-edit.h"
 #include "gtt-select-list.h"
 
-#include <glade/glade.h>
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <stdio.h>
@@ -34,7 +33,7 @@
 struct EditIntervalDialog_s
 {
     GttInterval *interval;
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkWidget *interval_edit;
     GtkWidget *start_widget;
     GtkWidget *stop_widget;
@@ -160,35 +159,40 @@ void edit_interval_set_interval(EditIntervalDialog *dlg, GttInterval *ivl)
         gtt_combo_select_list_set_active_by_value(dlg->fuzz_widget, 12 * 3600);
 }
 
+static void connect_signals_popup_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer user_data
+)
+{
+    if (g_strcmp0(handler_name, "on_ok_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(interval_edit_ok_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_apply_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(interval_edit_apply_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_cancel_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(interval_edit_cancel_cb), user_data);
+}
+
 /* ============================================================== */
 /* interval popup actions */
 
 EditIntervalDialog *edit_interval_dialog_new(void)
 {
     EditIntervalDialog *dlg;
-    GladeXML *glxml;
+    GtkBuilder *builder;
 
     dlg = g_malloc(sizeof(EditIntervalDialog));
     dlg->interval = NULL;
 
-    glxml = gtt_glade_xml_new("glade/interval_edit.glade", "Interval Edit");
-    dlg->gtxml = glxml;
+    builder = gtt_builder_new_from_file("ui/interval_edit.ui");
+    dlg->gtkbuilder = builder;
 
-    dlg->interval_edit = glade_xml_get_widget(glxml, "Interval Edit");
+    dlg->interval_edit = GTK_WIDGET(gtk_builder_get_object(builder, "Interval Edit"));
 
-    glade_xml_signal_connect_data(
-        glxml, "on_ok_button_clicked", GTK_SIGNAL_FUNC(interval_edit_ok_cb), dlg
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_popup_cb, dlg);
 
-    glade_xml_signal_connect_data(
-        glxml, "on_apply_button_clicked", GTK_SIGNAL_FUNC(interval_edit_apply_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_cancel_button_clicked", GTK_SIGNAL_FUNC(interval_edit_cancel_cb), dlg
-    );
-
-    GtkWidget *const table1 = glade_xml_get_widget(glxml, "table1");
+    GtkWidget *const table1 = GTK_WIDGET(gtk_builder_get_object(builder, "table1"));
 
     GtkWidget *const start_date = gtt_date_edit_new_flags(
         0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_DISPLAY_SECONDS | GTT_DATE_EDIT_SHOW_TIME
@@ -212,7 +216,7 @@ EditIntervalDialog *edit_interval_dialog_new(void)
 
     /* ----------------------------------------------- */
     /* initialize fuzz combo box                       */
-    dlg->fuzz_widget = GTK_COMBO_BOX(glade_xml_get_widget(glxml, "fuzz_menu"));
+    dlg->fuzz_widget = GTK_COMBO_BOX(gtk_builder_get_object(builder, "fuzz_menu"));
     gtt_combo_select_list_init(dlg->fuzz_widget);
 
     gtt_combo_select_list_append(dlg->fuzz_widget, _("Exact Time"), 0);
