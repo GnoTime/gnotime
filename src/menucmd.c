@@ -159,10 +159,12 @@ void new_project(GtkWidget *widget, gpointer data)
     GtkWidget **entries = g_new0(GtkWidget *, 2);
     GtkWidget *table;
 
-    title = gnome_entry_new("project_title");
-    desc = gnome_entry_new("project_description");
-    entries[0] = gnome_entry_gtk_entry(GNOME_ENTRY(title));
-    entries[1] = gnome_entry_gtk_entry(GNOME_ENTRY(desc));
+    title = gtk_combo_box_new_with_entry();
+    gtk_widget_set_name(title, "project_title");
+    desc = gtk_combo_box_new_with_entry();
+    gtk_widget_set_name(desc, "project_description");
+    entries[0] = gtk_bin_get_child(GTK_BIN(title));
+    entries[1] = gtk_bin_get_child(GTK_BIN(desc));
 
     /* Create new dialog box */
     w = gtk_dialog_new_with_buttons(
