@@ -98,7 +98,7 @@ void gtt_combo_history_list_init(GtkComboBox *combo_box, const gchar *history_id
 
     /* Load up items from GSettings into our list model.*/
     if (history_id == NULL)
-        history_id = gtk_widget_get_name(combo_box);
+        history_id = gtk_widget_get_name(GTK_WIDGET(combo_box));
     GSettings *settings = settings_open_history(history_id);
 
     GSList *items = gtt_gsettings_get_array_string(settings, "history");
@@ -142,7 +142,7 @@ void gtt_combo_history_list_save(GtkComboBox *combo_box, const gchar *history_id
 
     /* Save as array in GSettings. */
     if (history_id == NULL)
-        history_id = gtk_widget_get_name(combo_box);
+        history_id = gtk_widget_get_name(GTK_WIDGET(combo_box));
     GSettings *settings = settings_open_history(history_id);
     gtt_gsettings_set_array_string(settings, "history", gsettings_items);
 
