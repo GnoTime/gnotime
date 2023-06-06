@@ -6,7 +6,6 @@ gttglade_DATA =              \
   column_menu.glade          \
   idle.glade                 \
   interval_edit.glade        \
-  interval_popup.glade       \
   notes.glade                \
   plugin.glade               \
   plugin_editor.glade        \
