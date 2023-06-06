@@ -24,6 +24,7 @@
 
 #include "dialog.h"
 #include "gtt-select-list.h"
+#include "gtt-history-list.h"
 #include "proj.h"
 #include "props-task.h"
 #include "util.h"
@@ -31,6 +32,9 @@
 #include <glib/gi18n.h>
 
 #include <stdlib.h>
+
+#define MEMO_HISTORY_ID "task_memo"
+#define UNIT_HISTORY_ID "bill_unit"
 
 typedef struct PropTaskDlg_s
 {
@@ -80,7 +84,7 @@ static void save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
 
     TSK_SETUP(dlg);
 
-    cstr = gtk_entry_get_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))));
+    cstr = gtt_combo_entry_get_text(dlg->memo);
     if (cstr && cstr[0])
     {
         gtt_task_set_memo(dlg->task, cstr);
@@ -88,8 +92,10 @@ static void save_task_notes(GtkWidget *w, PropTaskDlg *dlg)
     else
     {
         gtt_task_set_memo(dlg->task, "");
-        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), "");
+        gtt_combo_entry_set_text(dlg->memo, "");
     }
+
+    gtt_combo_history_list_save(dlg->memo, MEMO_HISTORY_ID, -1);
 
     str = xxxgtk_textview_get_text(dlg->notes);
     gtt_task_set_notes(dlg->task, str);
@@ -107,8 +113,10 @@ static void save_task_billinfo(GtkWidget *w, PropTaskDlg *dlg)
 
     TSK_SETUP(dlg);
 
-    ivl = (int) (60.0 * atof(gtk_entry_get_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))))));
+    ivl = (int) (60.0 * atof(gtt_combo_entry_get_text(dlg->unit)));
     gtt_task_set_bill_unit(dlg->task, ivl);
+
+    gtt_combo_history_list_save(dlg->unit, UNIT_HISTORY_ID, -1);
 
     status = (GttBillStatus) gtt_combo_select_list_get_value(dlg->billstatus);
     gtt_task_set_billstatus(dlg->task, status);
@@ -132,12 +140,15 @@ static void do_set_task(GttTask *tsk, PropTaskDlg *dlg)
     GttBillRate rate;
     char buff[132];
 
+    gtt_combo_history_list_init(dlg->memo, MEMO_HISTORY_ID);
+    gtt_combo_history_list_init(dlg->unit, UNIT_HISTORY_ID);
+
     if (!tsk)
     {
         dlg->task = NULL;
-        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), "");
+        gtt_combo_entry_set_text(dlg->memo, "");
         xxxgtk_textview_set_text(dlg->notes, "");
-        gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))), "0.0");
+        gtt_combo_entry_set_text(dlg->unit, "0.0");
         return;
     }
 
@@ -146,11 +157,11 @@ static void do_set_task(GttTask *tsk, PropTaskDlg *dlg)
     dlg->task = tsk;
     TSK_SETUP(dlg);
 
-    gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->memo))), gtt_task_get_memo(tsk));
+    gtt_combo_entry_set_text(dlg->memo, gtt_task_get_memo(tsk));
     xxxgtk_textview_set_text(dlg->notes, gtt_task_get_notes(tsk));
 
     g_snprintf(buff, 132, "%g", ((double) gtt_task_get_bill_unit(tsk)) / 60.0);
-    gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(dlg->unit))), buff);
+    gtt_combo_entry_set_text(dlg->unit, buff);
 
     status = gtt_task_get_billstatus(tsk);
     gtt_combo_select_list_set_active_by_value(dlg->billstatus, status);
