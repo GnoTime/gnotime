@@ -27,6 +27,7 @@
 
 #include "dialog.h"
 #include "gtt-select-list.h"
+#include "gtt-history-list.h"
 #include "proj.h"
 #include "props-proj.h"
 #include "util.h"
@@ -35,18 +36,18 @@ typedef struct _PropDlg
 {
     GladeXML *gtxml;
     GnomePropertyBox *dlg;
-    GtkEntry *title;
-    GtkEntry *desc;
+    GtkComboBox *title;
+    GtkComboBox *desc;
     GtkTextView *notes;
 
-    GtkEntry *regular;
-    GtkEntry *overtime;
-    GtkEntry *overover;
-    GtkEntry *flatfee;
+    GtkComboBox *regular;
+    GtkComboBox *overtime;
+    GtkComboBox *overover;
+    GtkComboBox *flatfee;
 
-    GtkEntry *minimum;
-    GtkEntry *interval;
-    GtkEntry *gap;
+    GtkComboBox *minimum;
+    GtkComboBox *interval;
+    GtkComboBox *gap;
 
     GtkComboBox *urgency;
     GtkComboBox *importance;
@@ -76,7 +77,7 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
     if (0 == page)
     {
         gtt_project_freeze(dlg->proj);
-        cstr = gtk_entry_get_text(dlg->title);
+        cstr = gtt_combo_entry_get_text(dlg->title);
         if (cstr && cstr[0])
         {
             gtt_project_set_title(dlg->proj, cstr);
@@ -84,41 +85,54 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
         else
         {
             gtt_project_set_title(dlg->proj, _("empty"));
-            gtk_entry_set_text(dlg->title, _("empty"));
+            gtt_combo_entry_set_text(dlg->title, _("empty"));
         }
 
-        gtt_project_set_desc(dlg->proj, gtk_entry_get_text(dlg->desc));
+        gtt_project_set_desc(dlg->proj, gtt_combo_entry_get_text(dlg->desc));
         str = xxxgtk_textview_get_text(dlg->notes);
         gtt_project_set_notes(dlg->proj, str);
         g_free(str);
         gtt_project_thaw(dlg->proj);
+
+        gtt_combo_history_list_save(dlg->title, NULL, -1);
+        gtt_combo_history_list_save(dlg->desc, NULL, -1);
     }
 
     if (1 == page)
     {
         gtt_project_freeze(dlg->proj);
-        rate = atof(gtk_entry_get_text(dlg->regular));
+        rate = atof(gtt_combo_entry_get_text(dlg->regular));
         gtt_project_set_billrate(dlg->proj, rate);
-        rate = atof(gtk_entry_get_text(dlg->overtime));
+        rate = atof(gtt_combo_entry_get_text(dlg->overtime));
         gtt_project_set_overtime_rate(dlg->proj, rate);
-        rate = atof(gtk_entry_get_text(dlg->overover));
+        rate = atof(gtt_combo_entry_get_text(dlg->overover));
         gtt_project_set_overover_rate(dlg->proj, rate);
-        rate = atof(gtk_entry_get_text(dlg->flatfee));
+        rate = atof(gtt_combo_entry_get_text(dlg->flatfee));
         gtt_project_set_flat_fee(dlg->proj, rate);
         gtt_project_thaw(dlg->proj);
+
+        gtt_combo_history_list_save(dlg->regular, NULL, -1);
+        gtt_combo_history_list_save(dlg->overtime, NULL, -1);
+        gtt_combo_history_list_save(dlg->overover, NULL, -1);
+        gtt_combo_history_list_save(dlg->flatfee, NULL, -1);
     }
 
     if (2 == page)
     {
         gtt_project_freeze(dlg->proj);
-        ivl = atoi(gtk_entry_get_text(dlg->minimum));
+        ivl = atoi(gtt_combo_entry_get_text(dlg->minimum));
         gtt_project_set_min_interval(dlg->proj, ivl);
-        ivl = atoi(gtk_entry_get_text(dlg->interval));
+        ivl = atoi(gtt_combo_entry_get_text(dlg->interval));
         gtt_project_set_auto_merge_interval(dlg->proj, ivl);
-        ivl = atoi(gtk_entry_get_text(dlg->gap));
+        ivl = atoi(gtt_combo_entry_get_text(dlg->gap));
         gtt_project_set_auto_merge_gap(dlg->proj, ivl);
         gtt_project_thaw(dlg->proj);
+
+        gtt_combo_history_list_save(dlg->minimum, NULL, -1);
+        gtt_combo_history_list_save(dlg->interval, NULL, -1);
+        gtt_combo_history_list_save(dlg->gap, NULL, -1);
     }
+
     if (3 == page)
     {
         gtt_project_freeze(dlg->proj);
@@ -162,21 +176,31 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     if (!dlg)
         return;
 
+    gtt_combo_history_list_init(dlg->title, NULL);
+    gtt_combo_history_list_init(dlg->desc, NULL);
+    gtt_combo_history_list_init(dlg->regular, NULL);
+    gtt_combo_history_list_init(dlg->overtime, NULL);
+    gtt_combo_history_list_init(dlg->overover, NULL);
+    gtt_combo_history_list_init(dlg->flatfee, NULL);
+    gtt_combo_history_list_init(dlg->minimum, NULL);
+    gtt_combo_history_list_init(dlg->interval, NULL);
+    gtt_combo_history_list_init(dlg->gap, NULL);
+
     if (!proj)
     {
         /* We null these out, because old values may be left
          * over from an earlier project */
         dlg->proj = NULL;
-        gtk_entry_set_text(dlg->title, "");
-        gtk_entry_set_text(dlg->desc, "");
+        gtt_combo_entry_set_text(dlg->title, "");
+        gtt_combo_entry_set_text(dlg->desc, "");
         xxxgtk_textview_set_text(dlg->notes, "");
-        gtk_entry_set_text(dlg->regular, "0.0");
-        gtk_entry_set_text(dlg->overtime, "0.0");
-        gtk_entry_set_text(dlg->overover, "0.0");
-        gtk_entry_set_text(dlg->flatfee, "0.0");
-        gtk_entry_set_text(dlg->minimum, "0");
-        gtk_entry_set_text(dlg->interval, "0");
-        gtk_entry_set_text(dlg->gap, "0");
+        gtt_combo_entry_set_text(dlg->regular, "0.0");
+        gtt_combo_entry_set_text(dlg->overtime, "0.0");
+        gtt_combo_entry_set_text(dlg->overover, "0.0");
+        gtt_combo_entry_set_text(dlg->flatfee, "0.0");
+        gtt_combo_entry_set_text(dlg->minimum, "0");
+        gtt_combo_entry_set_text(dlg->interval, "0");
+        gtt_combo_entry_set_text(dlg->gap, "0");
 
         gtt_date_edit_set_time(dlg->start, now);
         gtt_date_edit_set_time(dlg->end, now);
@@ -190,26 +214,26 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
      * project, since widget may be holding rejected changes. */
     dlg->proj = proj;
 
-    gtk_entry_set_text(dlg->title, gtt_project_get_title(proj));
-    gtk_entry_set_text(dlg->desc, gtt_project_get_desc(proj));
+    gtt_combo_entry_set_text(dlg->title, gtt_project_get_title(proj));
+    gtt_combo_entry_set_text(dlg->desc, gtt_project_get_desc(proj));
     xxxgtk_textview_set_text(dlg->notes, gtt_project_get_notes(proj));
 
     /* hack alert should use local currencies for this */
     g_snprintf(buff, 132, "%.2f", gtt_project_get_billrate(proj));
-    gtk_entry_set_text(dlg->regular, buff);
+    gtt_combo_entry_set_text(dlg->regular, buff);
     g_snprintf(buff, 132, "%.2f", gtt_project_get_overtime_rate(proj));
-    gtk_entry_set_text(dlg->overtime, buff);
+    gtt_combo_entry_set_text(dlg->overtime, buff);
     g_snprintf(buff, 132, "%.2f", gtt_project_get_overover_rate(proj));
-    gtk_entry_set_text(dlg->overover, buff);
+    gtt_combo_entry_set_text(dlg->overover, buff);
     g_snprintf(buff, 132, "%.2f", gtt_project_get_flat_fee(proj));
-    gtk_entry_set_text(dlg->flatfee, buff);
+    gtt_combo_entry_set_text(dlg->flatfee, buff);
 
     g_snprintf(buff, 132, "%d", gtt_project_get_min_interval(proj));
-    gtk_entry_set_text(dlg->minimum, buff);
+    gtt_combo_entry_set_text(dlg->minimum, buff);
     g_snprintf(buff, 132, "%d", gtt_project_get_auto_merge_interval(proj));
-    gtk_entry_set_text(dlg->interval, buff);
+    gtt_combo_entry_set_text(dlg->interval, buff);
     g_snprintf(buff, 132, "%d", gtt_project_get_auto_merge_gap(proj));
-    gtk_entry_set_text(dlg->gap, buff);
+    gtt_combo_entry_set_text(dlg->gap, buff);
 
     rank = gtt_project_get_urgency(proj);
     gtt_combo_select_list_set_active_by_value(dlg->urgency, rank);
@@ -339,18 +363,18 @@ static PropDlg *prop_dialog_new(void)
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
 
-    dlg->title = GTK_ENTRY(TAGGED("title box"));
-    dlg->desc = GTK_ENTRY(TAGGED("desc box"));
+    dlg->title = GTK_COMBO_BOX(TAGGED("project_title"));
+    dlg->desc = GTK_COMBO_BOX(TAGGED("project_description"));
     dlg->notes = GTK_TEXT_VIEW(TEXTED("notes box"));
 
-    dlg->regular = GTK_ENTRY(TAGGED("regular box"));
-    dlg->overtime = GTK_ENTRY(TAGGED("overtime box"));
-    dlg->overover = GTK_ENTRY(TAGGED("overover box"));
-    dlg->flatfee = GTK_ENTRY(TAGGED("flatfee box"));
+    dlg->regular = GTK_COMBO_BOX(TAGGED("regular_rate"));
+    dlg->overtime = GTK_COMBO_BOX(TAGGED("overtime_rate"));
+    dlg->overover = GTK_COMBO_BOX(TAGGED("overover_rate"));
+    dlg->flatfee = GTK_COMBO_BOX(TAGGED("flat_fee"));
 
-    dlg->minimum = GTK_ENTRY(TAGGED("minimum box"));
-    dlg->interval = GTK_ENTRY(TAGGED("interval box"));
-    dlg->gap = GTK_ENTRY(TAGGED("gap box"));
+    dlg->minimum = GTK_COMBO_BOX(TAGGED("min_interval"));
+    dlg->interval = GTK_COMBO_BOX(TAGGED("merge_interval"));
+    dlg->gap = GTK_COMBO_BOX(TAGGED("merge_gap"));
 
     dlg->urgency
         = init_combo(gtxml, "urgency menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg);
