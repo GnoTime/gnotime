@@ -1,149 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glade-interface>
-  <!-- interface-requires gtk+ 2.24 -->
+<interface>
+  <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy toplevel-contextual -->
-  <widget class="GtkMenu" id="Task Popup">
+  <object class="GtkMenu" id="Task Popup">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <widget class="GtkImageMenuItem" id="new_task">
+      <object class="GtkImageMenuItem" id="new_task">
         <property name="label" translatable="yes">_New Diary Entry</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image17</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_new_task_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image17">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-new</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="edit_task">
+      <object class="GtkImageMenuItem" id="edit_task">
         <property name="label" translatable="yes">_Edit Diary Entry</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image18</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_edit_task_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image18">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-add</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="delete_memo">
+      <object class="GtkImageMenuItem" id="delete_memo">
         <property name="label" translatable="yes">_Cut Diary Entry</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image19</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_delete_memo_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image19">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-cut</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="delete_times">
+      <object class="GtkImageMenuItem" id="delete_times">
         <property name="label" translatable="yes">Cut Entry &amp; _Times</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image20</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_delete_times_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image20">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-cut</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="copy">
+      <object class="GtkImageMenuItem" id="copy">
         <property name="label" translatable="yes">Copy Diary Entry</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image21</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_copy_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image21">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-copy</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="paste">
+      <object class="GtkImageMenuItem" id="paste">
         <property name="label" translatable="yes">_Paste Diary Entry</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image22</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_paste_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image22">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-paste</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkMenuItem" id="separator1">
+      <object class="GtkMenuItem" id="separator1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-      </widget>
+      </object>
     </child>
     <child>
-      <widget class="GtkImageMenuItem" id="new_interval">
+      <object class="GtkImageMenuItem" id="new_interval">
         <property name="label" translatable="yes">New Time Interval</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
+        <property name="image">image23</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_new_interval_activate" swapped="no"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="image23">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-new</property>
-            <property name="icon-size">1</property>
-          </widget>
-        </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-</glade-interface>
+  </object>
+  <object class="GtkImage" id="image17">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-new</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image18">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-add</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image19">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-cut</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image20">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-cut</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image21">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-copy</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image22">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-paste</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image23">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-new</property>
+    <property name="icon-size">1</property>
+  </object>
+</interface>

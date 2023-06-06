@@ -1184,6 +1184,39 @@ static void connect_signals_cb(
     }
 }
 
+static void connect_signals_task_popup_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer user_data
+)
+{
+    // Alternatives to this structure is to export callbacks as global symbols (GModule),
+    // or, from Gtk 3.10, it's possible to register the callback using
+    // gtk_builder_add_callback_symbol() before calling gtk_builder_connect_signals().
+    // The latter approach would be more concise. Sticking with simplistic brute-force
+    // approach for now.
+
+    if (g_strcmp0(handler_name, "on_new_task_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_new_task_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_edit_task_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_edit_task_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_delete_memo_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_delete_memo_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_delete_times_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_delete_times_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_copy_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_copy_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_paste_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_paste_clicked_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_new_interval_activate") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(task_new_interval_cb), user_data);
+}
+
 /* ============================================================== */
 
 static void do_show_report(
@@ -1303,39 +1336,13 @@ static void do_show_report(
     /* This is the popup menu that says 'edit/delete/merge' */
     /* for tasks */
 
-    glxml = gtt_glade_xml_new("glade/task_popup.glade", "Task Popup");
-    wig->task_popup = glade_xml_get_widget(glxml, "Task Popup");
-    wig->task_delete_memo = glade_xml_get_widget(glxml, "delete_memo");
-    wig->task_paste = glade_xml_get_widget(glxml, "paste");
+    builder = gtt_builder_new_from_file("ui/task_popup.ui");
+    wig->task_popup = GTK_WIDGET(gtk_builder_get_object(builder, "Task Popup"));
+    wig->task_delete_memo = GTK_WIDGET(gtk_builder_get_object(builder, "delete_memo"));
+    wig->task_paste = GTK_WIDGET(gtk_builder_get_object(builder, "paste"));
     wig->task = NULL;
 
-    glade_xml_signal_connect_data(
-        glxml, "on_new_task_activate", GTK_SIGNAL_FUNC(task_new_task_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_edit_task_activate", GTK_SIGNAL_FUNC(task_edit_task_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_delete_memo_activate", GTK_SIGNAL_FUNC(task_delete_memo_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_delete_times_activate", GTK_SIGNAL_FUNC(task_delete_times_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_copy_activate", GTK_SIGNAL_FUNC(task_copy_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_paste_activate", GTK_SIGNAL_FUNC(task_paste_clicked_cb), wig
-    );
-
-    glade_xml_signal_connect_data(
-        glxml, "on_new_interval_activate", GTK_SIGNAL_FUNC(task_new_interval_cb), wig
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_task_popup_cb, wig);
 
     /* ---------------------------------------------------- */
     wig->hover_help_window = NULL;

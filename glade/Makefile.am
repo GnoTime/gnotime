@@ -12,7 +12,6 @@ gttglade_DATA =              \
   plugin_editor.glade        \
   prefs.glade                \
   project_properties.glade   \
-  task_popup.glade           \
   task_properties.glade
 
 EXTRA_DIST =          \
