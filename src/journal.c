@@ -20,7 +20,6 @@
 
 #include "config.h"
 
-#include <glade/glade.h>
 #include <gnome.h>
 #include <gtkhtml/gtkhtml.h>
 #include <sched.h>
