@@ -46,6 +46,38 @@ GSList *gtt_gsettings_get_array_int(GSettings *settings, const gchar *key)
 }
 
 /**
+ * @brief Retrieve an array of string GSettings option
+ * @param settings The GSettings object to  retrieve the value from
+ * @param key The key of the value to be retrieved
+ * @return A newly-allocated single-linked list representing the array of strings
+ */
+GSList *gtt_gsettings_get_array_string(GSettings *const settings, const gchar *const key)
+{
+    GSList *ret = NULL;
+
+    GVariant *var = g_settings_get_value(settings, key);
+
+    const gsize n_items = g_variant_n_children(var);
+    gsize i;
+    for (i = 0; i < n_items; ++i)
+    {
+        GVariant *child_val = g_variant_get_child_value(var, i);
+
+        ret = g_slist_prepend(ret, g_strdup(g_variant_get_string(child_val, NULL)));
+
+        g_variant_unref(child_val);
+        child_val = NULL;
+    }
+
+    g_variant_unref(var);
+    var = NULL;
+
+    ret = g_slist_reverse(ret);
+
+    return ret;
+}
+
+/**
  * @brief Retrieve a maybe string GSettings option
  * @param settings The GSettings object to  retrieve the value from
  * @param key The key of the value to be retrieved
@@ -117,6 +149,37 @@ void gtt_gsettings_set_array_int(GSettings *settings, const gchar *key, GSList *
     if (G_UNLIKELY(FALSE == g_settings_set_value(settings, key, val)))
     {
         g_warning("Failed to set integer array option \"%s\"", key);
+    }
+
+    g_variant_type_free(variant_type);
+    variant_type = NULL;
+}
+
+/**
+ * @brief Set an array of string GSettings option and log a message on error
+ * @param settings The GSettings object to set the value on
+ * @param key The key of the value to be set
+ * @param value The actual value to be set
+ */
+void gtt_gsettings_set_array_string(
+    GSettings *const settings, const gchar *const key, GSList *const value
+)
+{
+    GVariantType *variant_type = g_variant_type_new("as");
+
+    GVariantBuilder bldr;
+    g_variant_builder_init(&bldr, variant_type);
+
+    GSList *node;
+    for (node = value; node != NULL; node = node->next)
+    {
+        g_variant_builder_add(&bldr, "s", node->data);
+    }
+
+    GVariant *val = g_variant_builder_end(&bldr);
+    if (G_UNLIKELY(FALSE == g_settings_set_value(settings, key, val)))
+    {
+        g_warning("Failed to set string array option \"%s\"", key);
     }
 
     g_variant_type_free(variant_type);

@@ -27,6 +27,9 @@
 void xxxgtk_textview_set_text(GtkTextView *text, const char *str);
 char *xxxgtk_textview_get_text(GtkTextView *text);
 
+const gchar *gtt_combo_entry_get_text(GtkComboBox *combo_box);
+void gtt_combo_entry_set_text(GtkComboBox *combo_box, const gchar *str);
+
 /* Glade loader, it will look in the right directories */
 GladeXML *gtt_glade_xml_new(const char *filename, const char *widget);
 

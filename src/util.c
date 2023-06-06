@@ -59,6 +59,20 @@ char *xxxgtk_textview_get_text(GtkTextView *text)
     return gtk_text_buffer_get_text(buff, &start, &end, TRUE);
 }
 
+const gchar *gtt_combo_entry_get_text(GtkComboBox *combo_box)
+{
+    GtkEntry *entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo_box)));
+
+    return gtk_entry_get_text(entry);
+}
+
+void gtt_combo_entry_set_text(GtkComboBox *combo_box, const gchar *str)
+{
+    GtkEntry *entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo_box)));
+
+    gtk_entry_set_text(entry, str);
+}
+
 /* ============================================================== */
 
 /* Glade loader, it will look in the right directories */
