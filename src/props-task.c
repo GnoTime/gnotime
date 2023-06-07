@@ -18,8 +18,6 @@
 
 #include "config.h"
 
-#include <glade/glade.h>
-
 #include <string.h>
 
 #include "dialog.h"
@@ -38,7 +36,7 @@
 
 typedef struct PropTaskDlg_s
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkDialog *dlg;
     GtkComboBox *memo;
     GtkTextView *notes;
@@ -217,18 +215,18 @@ static void destroy_cb(GtkWidget *w, PropTaskDlg *dlg)
     ({                                                                                 \
         GtkWidget *widget;                                                             \
         GtkTextBuffer *buff;                                                           \
-        widget = glade_xml_get_widget(gtxml, NAME);                                    \
+        widget = GTK_WIDGET(gtk_builder_get_object(builder, NAME));                    \
         buff = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));                        \
         g_signal_connect(G_OBJECT(buff), "changed", G_CALLBACK(save_task_notes), dlg); \
         widget;                                                                        \
     })
 
-static GtkComboBox* init_combo(GladeXML *gtxml, const char *name,
+static GtkComboBox* init_combo(GtkBuilder *builder, const char *name,
     GCallback changed_callback, void *callback_data)
 {
     GtkComboBox *combo_box;
 
-    combo_box = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, name));
+    combo_box = GTK_COMBO_BOX(gtk_builder_get_object(builder, name));
     gtt_combo_select_list_init(combo_box);
 
     if (changed_callback != NULL)
@@ -239,25 +237,31 @@ static GtkComboBox* init_combo(GladeXML *gtxml, const char *name,
     return combo_box;
 }
 
+static void connect_signals_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer user_data
+)
+{
+    if (g_strcmp0(handler_name, "on_help_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(gtt_help_popup), "properties");
+
+    if (g_strcmp0(handler_name, "on_ok_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(close_cb), user_data);
+}
+
 static PropTaskDlg *prop_task_dialog_new(void)
 {
     PropTaskDlg *dlg = NULL;
-    GladeXML *gtxml;
+    GtkBuilder *builder;
 
     dlg = g_new0(PropTaskDlg, 1);
 
-    gtxml = gtt_glade_xml_new("glade/task_properties.glade", "Task Properties");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/task_properties.ui");
+    dlg->gtkbuilder = builder;
 
-    dlg->dlg = GTK_DIALOG(glade_xml_get_widget(gtxml, "Task Properties"));
+    dlg->dlg = GTK_DIALOG(gtk_builder_get_object(builder, "Task Properties"));
 
-    glade_xml_signal_connect_data(
-        gtxml, "on_help_button_clicked", GTK_SIGNAL_FUNC(gtt_help_popup), "properties"
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_ok_button_clicked", GTK_SIGNAL_FUNC(close_cb), dlg
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_cb, dlg);
 
     g_signal_connect(G_OBJECT(dlg->dlg), "close", G_CALLBACK(close_cb), dlg);
     g_signal_connect(G_OBJECT(dlg->dlg), "destroy", G_CALLBACK(destroy_cb), dlg);
@@ -265,21 +269,21 @@ static PropTaskDlg *prop_task_dialog_new(void)
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
 
-    dlg->memo = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, "task_memo"));
+    dlg->memo = GTK_COMBO_BOX(gtk_builder_get_object(builder, "task_memo"));
     g_signal_connect(G_OBJECT(dlg->memo), "changed", G_CALLBACK(save_task_notes), dlg);
 
     dlg->notes = GTK_TEXT_VIEW(TEXTED("notes box"));
 
     dlg->billstatus =
-        init_combo(gtxml, "billstatus menu", G_CALLBACK(save_task_billinfo), dlg);
+        init_combo(builder, "billstatus menu", G_CALLBACK(save_task_billinfo), dlg);
 
     dlg->billable =
-        init_combo(gtxml, "billable menu", G_CALLBACK(save_task_billinfo), dlg);
+        init_combo(builder, "billable menu", G_CALLBACK(save_task_billinfo), dlg);
 
     dlg->billrate =
-        init_combo(gtxml, "billrate menu", G_CALLBACK(save_task_billinfo), dlg);
+        init_combo(builder, "billrate menu", G_CALLBACK(save_task_billinfo), dlg);
 
-    dlg->unit = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, "bill_unit"));
+    dlg->unit = GTK_COMBO_BOX(gtk_builder_get_object(builder, "bill_unit"));
     g_signal_connect(G_OBJECT(dlg->unit), "changed", G_CALLBACK(save_task_billinfo), dlg);
 
     /* ------------------------------------------------------ */

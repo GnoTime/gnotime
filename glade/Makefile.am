@@ -9,8 +9,7 @@ gttglade_DATA =              \
   plugin.glade               \
   plugin_editor.glade        \
   prefs.glade                \
-  project_properties.glade   \
-  task_properties.glade
+  project_properties.glade
 
 EXTRA_DIST =          \
    $(gttglade_DATA)
