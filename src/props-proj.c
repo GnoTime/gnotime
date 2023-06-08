@@ -22,8 +22,9 @@
 #include "gtt-date-edit.h"
 
 #include <glade/glade.h>
-#include <gnome.h>
 #include <string.h>
+#include <stdlib.h>
+#include <glib/gi18n.h>
 
 #include "dialog.h"
 #include "gtt-select-list.h"
@@ -35,7 +36,7 @@
 typedef struct _PropDlg
 {
     GladeXML *gtxml;
-    GnomePropertyBox *dlg;
+    GtkWidget *dlg;
     GtkComboBox *title;
     GtkComboBox *desc;
     GtkTextView *notes;
@@ -63,7 +64,18 @@ typedef struct _PropDlg
     GttProject *proj;
 } PropDlg;
 
-static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
+static void set_modified(PropDlg *dlg, gboolean modified)
+{
+    gtk_dialog_set_response_sensitive(GTK_DIALOG(dlg->dlg), GTK_RESPONSE_OK, modified);
+    gtk_dialog_set_response_sensitive(GTK_DIALOG(dlg->dlg), GTK_RESPONSE_APPLY, modified);
+}
+
+static void set_changed_cb(void *gobj, PropDlg *dlg)
+{
+    set_modified(dlg, TRUE);
+}
+
+static void prop_set(PropDlg *dlg)
 {
     long ivl;
     const gchar *cstr;
@@ -74,9 +86,9 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
     if (!dlg->proj)
         return;
 
-    if (0 == page)
+    gtt_project_freeze(dlg->proj);
+
     {
-        gtt_project_freeze(dlg->proj);
         cstr = gtt_combo_entry_get_text(dlg->title);
         if (cstr && cstr[0])
         {
@@ -92,15 +104,12 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
         str = xxxgtk_textview_get_text(dlg->notes);
         gtt_project_set_notes(dlg->proj, str);
         g_free(str);
-        gtt_project_thaw(dlg->proj);
 
         gtt_combo_history_list_save(dlg->title, NULL, -1);
         gtt_combo_history_list_save(dlg->desc, NULL, -1);
     }
 
-    if (1 == page)
     {
-        gtt_project_freeze(dlg->proj);
         rate = atof(gtt_combo_entry_get_text(dlg->regular));
         gtt_project_set_billrate(dlg->proj, rate);
         rate = atof(gtt_combo_entry_get_text(dlg->overtime));
@@ -109,7 +118,6 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
         gtt_project_set_overover_rate(dlg->proj, rate);
         rate = atof(gtt_combo_entry_get_text(dlg->flatfee));
         gtt_project_set_flat_fee(dlg->proj, rate);
-        gtt_project_thaw(dlg->proj);
 
         gtt_combo_history_list_save(dlg->regular, NULL, -1);
         gtt_combo_history_list_save(dlg->overtime, NULL, -1);
@@ -117,26 +125,20 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
         gtt_combo_history_list_save(dlg->flatfee, NULL, -1);
     }
 
-    if (2 == page)
     {
-        gtt_project_freeze(dlg->proj);
         ivl = atoi(gtt_combo_entry_get_text(dlg->minimum));
         gtt_project_set_min_interval(dlg->proj, ivl);
         ivl = atoi(gtt_combo_entry_get_text(dlg->interval));
         gtt_project_set_auto_merge_interval(dlg->proj, ivl);
         ivl = atoi(gtt_combo_entry_get_text(dlg->gap));
         gtt_project_set_auto_merge_gap(dlg->proj, ivl);
-        gtt_project_thaw(dlg->proj);
 
         gtt_combo_history_list_save(dlg->minimum, NULL, -1);
         gtt_combo_history_list_save(dlg->interval, NULL, -1);
         gtt_combo_history_list_save(dlg->gap, NULL, -1);
     }
 
-    if (3 == page)
     {
-        gtt_project_freeze(dlg->proj);
-
         ivl = (long) gtt_combo_select_list_get_value(dlg->urgency);
         gtt_project_set_urgency(dlg->proj, (GttRank) ivl);
         ivl = (long) gtt_combo_select_list_get_value(dlg->importance);
@@ -158,9 +160,9 @@ static void prop_set(GnomePropertyBox *pb, gint page, PropDlg *dlg)
 
         ivl = atoi(gtk_entry_get_text(dlg->percent));
         gtt_project_set_percent_complete(dlg->proj, ivl);
-
-        gtt_project_thaw(dlg->proj);
     }
+
+    gtt_project_thaw(dlg->proj);
 }
 
 /* ============================================================== */
@@ -263,7 +265,7 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     gtk_entry_set_text(dlg->percent, buff);
 
     /* set to unmodified as it reflects the current state of the project */
-    gnome_property_box_set_modified(GNOME_PROPERTY_BOX(dlg->dlg), FALSE);
+    set_modified(dlg, FALSE);
 }
 
 /* ============================================================== */
@@ -272,30 +274,24 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     ({                                                                                  \
         GtkWidget *widget;                                                              \
         widget = glade_xml_get_widget(gtxml, NAME);                                     \
-        gtk_signal_connect_object(                                                      \
-            GTK_OBJECT(widget), "changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                        \
+        g_signal_connect(                                                               \
+            GTK_OBJECT(widget), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                              \
         widget;                                                                         \
     })
 
 #define DATED(WDGT)                                                                        \
     ({                                                                                     \
-        gtk_signal_connect_object(                                                         \
-            GTK_OBJECT(WDGT), "date_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                           \
+        g_signal_connect(                                                                  \
+            GTK_OBJECT(WDGT), "date_changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                                 \
-        gtk_signal_connect_object(                                                         \
-            GTK_OBJECT(WDGT), "time_changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                           \
+        g_signal_connect(                                                                  \
+            GTK_OBJECT(WDGT), "time_changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                                 \
         GTT_DATE_EDIT(WDGT);                                                               \
     })
 
-static void wrapper(void *gobj, void *data)
-{
-    gnome_property_box_changed(GNOME_PROPERTY_BOX(data));
-}
+
 
 #define TEXTED(NAME)                                                              \
     ({                                                                            \
@@ -303,43 +299,46 @@ static void wrapper(void *gobj, void *data)
         GtkTextBuffer *buff;                                                      \
         widget = glade_xml_get_widget(gtxml, NAME);                               \
         buff = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));                   \
-        g_signal_connect_object(                                                  \
-            G_OBJECT(buff), "changed", G_CALLBACK(wrapper), G_OBJECT(dlg->dlg), 0 \
+        g_signal_connect(                                                         \
+            G_OBJECT(buff), "changed", G_CALLBACK(set_changed_cb), dlg            \
         );                                                                        \
         widget;                                                                   \
     })
 
 static GtkComboBox *init_combo(
-    GladeXML *gtxml, const char *name, GtkSignalFunc changed_callback,
-    GnomePropertyBox *property_box
+    GladeXML *gtxml, const char *name, PropDlg *dlg
 )
 {
-    /* Note: Some uglyness, in taking GnomePropertyBox as data parameter,
-     * callback is expected to be gnome_property_box_changed. Except that
-     * to be cleaner and match props-task.c structure later. */
-
     GtkComboBox *combo_box;
 
     combo_box = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, name));
     gtt_combo_select_list_init(combo_box);
 
-    if (changed_callback != NULL)
-    {
-        // Note: gtk_signal_connect_object is deprecated, should later be replaced with
-        // g_signal_connect_object or something.
-        gtk_signal_connect_object(
-            GTK_OBJECT(combo_box), "changed", changed_callback, GTK_OBJECT(property_box)
-        );
-    }
+    g_signal_connect(GTK_OBJECT(combo_box), "changed", G_CALLBACK(set_changed_cb), dlg);
 
     return combo_box;
 }
 
 /* ================================================================= */
 
-static void help_cb(GnomePropertyBox *propertybox, gint page_num, gpointer data)
+static void response_cb(GtkDialog *gtk_dialog, gint response_id, PropDlg *dlg)
 {
-    gtt_help_popup(GTK_WIDGET(propertybox), data);
+    switch (response_id)
+    {    
+        case GTK_RESPONSE_OK:
+            prop_set(dlg);
+            gtk_widget_hide(GTK_WIDGET(dlg->dlg));
+            break;
+        case GTK_RESPONSE_APPLY:
+            prop_set(dlg);
+            break;
+        case GTK_RESPONSE_CLOSE:
+            gtk_widget_hide(GTK_WIDGET(dlg->dlg));
+            break;
+        case GTK_RESPONSE_HELP:
+            gtt_help_popup(GTK_WIDGET(dlg->dlg), "projects-editing");
+            break;
+    }
 }
 
 static PropDlg *prop_dialog_new(void)
@@ -352,13 +351,27 @@ static PropDlg *prop_dialog_new(void)
     gtxml = gtt_glade_xml_new("glade/project_properties.glade", "Project Properties");
     dlg->gtxml = gtxml;
 
-    dlg->dlg = GNOME_PROPERTY_BOX(glade_xml_get_widget(gtxml, "Project Properties"));
+    GtkWidget *notebook = glade_xml_get_widget(gtxml, "Project Properties");
 
-    gtk_signal_connect(
-        GTK_OBJECT(dlg->dlg), "help", GTK_SIGNAL_FUNC(help_cb), "projects-editing"
+    dlg->dlg = gtk_dialog_new_with_buttons("Project Properties",
+                                           NULL,
+                                           0,
+                                           GTK_STOCK_OK, GTK_RESPONSE_OK,
+                                           GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                           GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
+                                           GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+                                           NULL);
+
+    GtkWidget *dlg_content = gtk_dialog_get_content_area(GTK_DIALOG(dlg->dlg));
+    gtk_container_add(GTK_CONTAINER(dlg_content), notebook);
+
+    g_signal_connect(
+        GTK_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
     );
 
-    gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply", GTK_SIGNAL_FUNC(prop_set), dlg);
+    g_signal_connect(
+        GTK_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
+    );
 
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
@@ -376,13 +389,9 @@ static PropDlg *prop_dialog_new(void)
     dlg->interval = GTK_COMBO_BOX(TAGGED("merge_interval"));
     dlg->gap = GTK_COMBO_BOX(TAGGED("merge_gap"));
 
-    dlg->urgency
-        = init_combo(gtxml, "urgency menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg);
-    dlg->importance = init_combo(
-        gtxml, "importance menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg
-    );
-    dlg->status
-        = init_combo(gtxml, "status menu", G_CALLBACK(gnome_property_box_changed), dlg->dlg);
+    dlg->urgency = init_combo(gtxml, "urgency menu", dlg);
+    dlg->importance = init_combo(gtxml, "importance menu", dlg);
+    dlg->status = init_combo(gtxml, "status menu", dlg);
 
     GtkWidget *const sizing_table = glade_xml_get_widget(gtxml, "sizing table");
 
@@ -441,8 +450,6 @@ static PropDlg *prop_dialog_new(void)
     gtt_combo_select_list_append(dlg->status, _("On Hold"), GTT_ON_HOLD);
     gtt_combo_select_list_append(dlg->status, _("Cancelled"), GTT_CANCELLED);
     gtt_combo_select_list_append(dlg->status, _("Completed"), GTT_COMPLETED);
-
-    gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
 
     return dlg;
 }

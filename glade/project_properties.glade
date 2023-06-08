@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glade-interface>
   <!-- interface-requires gtk+ 2.24 -->
-  <!-- interface-requires gnome 0.0 -->
-  <!-- interface-requires gnome 0.0 -->
   <!-- interface-naming-policy toplevel-contextual -->
-  <widget class="GnomePropertyBox" id="Project Properties">
-    <property name="visible">True</property>
+  <widget class="GtkWindow" id="unusedContainer">
     <property name="can_focus">False</property>
-    <property name="resizable">False</property>
-    <child internal-child="notebook">
-      <widget class="GtkNotebook" id="notebook1">
+    <child>
+      <widget class="GtkNotebook" id="Project Properties">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
