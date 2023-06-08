@@ -394,7 +394,7 @@ static PropDlg *prop_dialog_new(void)
     gtk_widget_show(start_date);
 
     gtk_table_attach(
-        GTK_TABLE(sizing_table), start_date, 1, 4, 3, 4, GTK_EXPAND | GTK_FILL, 0, 0, 0
+        GTK_TABLE(sizing_table), start_date, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, 0, 0, 0
     );
 
     GtkWidget *const end_date
@@ -405,7 +405,7 @@ static PropDlg *prop_dialog_new(void)
     gtk_widget_show(end_date);
 
     gtk_table_attach(
-        GTK_TABLE(sizing_table), end_date, 1, 4, 4, 5, GTK_EXPAND | GTK_FILL, 0, 0, 0
+        GTK_TABLE(sizing_table), end_date, 1, 2, 4, 5, GTK_EXPAND | GTK_FILL, 0, 0, 0
     );
 
     GtkWidget *const due_date
@@ -416,7 +416,7 @@ static PropDlg *prop_dialog_new(void)
     gtk_widget_show(due_date);
 
     gtk_table_attach(
-        GTK_TABLE(sizing_table), due_date, 1, 4, 5, 6, GTK_EXPAND | GTK_FILL, 0, 0, 0
+        GTK_TABLE(sizing_table), due_date, 1, 2, 5, 6, GTK_EXPAND | GTK_FILL, 0, 0, 0
     );
 
     dlg->sizing = GTK_ENTRY(TAGGED("sizing box"));
