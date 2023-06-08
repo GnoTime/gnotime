@@ -7,8 +7,7 @@ gttglade_DATA =              \
   idle.glade                 \
   notes.glade                \
   plugin.glade               \
-  plugin_editor.glade        \
-  project_properties.glade
+  plugin_editor.glade
 
 EXTRA_DIST =          \
    $(gttglade_DATA)
