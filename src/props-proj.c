@@ -21,7 +21,6 @@
 
 #include "gtt-date-edit.h"
 
-#include <glade/glade.h>
 #include <string.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
@@ -35,7 +34,7 @@
 
 typedef struct _PropDlg
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkWidget *dlg;
     GtkComboBox *title;
     GtkComboBox *desc;
@@ -273,7 +272,7 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
 #define TAGGED(NAME)                                                                    \
     ({                                                                                  \
         GtkWidget *widget;                                                              \
-        widget = glade_xml_get_widget(gtxml, NAME);                                     \
+        widget = GTK_WIDGET(gtk_builder_get_object(builder, NAME));                     \
         g_signal_connect(                                                               \
             GTK_OBJECT(widget), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                              \
@@ -297,7 +296,7 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     ({                                                                            \
         GtkWidget *widget;                                                        \
         GtkTextBuffer *buff;                                                      \
-        widget = glade_xml_get_widget(gtxml, NAME);                               \
+        widget = GTK_WIDGET(gtk_builder_get_object(builder, NAME));               \
         buff = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));                   \
         g_signal_connect(                                                         \
             G_OBJECT(buff), "changed", G_CALLBACK(set_changed_cb), dlg            \
@@ -306,12 +305,12 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
     })
 
 static GtkComboBox *init_combo(
-    GladeXML *gtxml, const char *name, PropDlg *dlg
+    GtkBuilder *builder, const char *name, PropDlg *dlg
 )
 {
     GtkComboBox *combo_box;
 
-    combo_box = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, name));
+    combo_box = GTK_COMBO_BOX(gtk_builder_get_object(builder, name));
     gtt_combo_select_list_init(combo_box);
 
     g_signal_connect(GTK_OBJECT(combo_box), "changed", G_CALLBACK(set_changed_cb), dlg);
@@ -344,14 +343,14 @@ static void response_cb(GtkDialog *gtk_dialog, gint response_id, PropDlg *dlg)
 static PropDlg *prop_dialog_new(void)
 {
     PropDlg *dlg;
-    GladeXML *gtxml;
+    GtkBuilder *builder;
 
     dlg = g_new0(PropDlg, 1);
 
-    gtxml = gtt_glade_xml_new("glade/project_properties.glade", "Project Properties");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/project_properties.ui");
+    dlg->gtkbuilder = builder;
 
-    GtkWidget *notebook = glade_xml_get_widget(gtxml, "Project Properties");
+    GtkWidget *notebook = GTK_WIDGET(gtk_builder_get_object(builder, "Project Properties"));
 
     dlg->dlg = gtk_dialog_new_with_buttons("Project Properties",
                                            NULL,
@@ -389,11 +388,11 @@ static PropDlg *prop_dialog_new(void)
     dlg->interval = GTK_COMBO_BOX(TAGGED("merge_interval"));
     dlg->gap = GTK_COMBO_BOX(TAGGED("merge_gap"));
 
-    dlg->urgency = init_combo(gtxml, "urgency menu", dlg);
-    dlg->importance = init_combo(gtxml, "importance menu", dlg);
-    dlg->status = init_combo(gtxml, "status menu", dlg);
+    dlg->urgency = init_combo(builder, "urgency menu", dlg);
+    dlg->importance = init_combo(builder, "importance menu", dlg);
+    dlg->status = init_combo(builder, "status menu", dlg);
 
-    GtkWidget *const sizing_table = glade_xml_get_widget(gtxml, "sizing table");
+    GtkWidget *const sizing_table = GTK_WIDGET(gtk_builder_get_object(builder, "sizing table"));
 
     GtkWidget *const start_date
         = gtt_date_edit_new_flags(0, GTT_DATE_EDIT_24_HR | GTT_DATE_EDIT_SHOW_TIME);
