@@ -20,9 +20,9 @@
 #include "config.h"
 
 #include <glade/glade.h>
-#include <gnome.h>
 #include <qof.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "app.h"
 #include "cur-proj.h"
@@ -87,7 +87,7 @@ char *config_data_url = NULL;
 typedef struct _PrefsDialog
 {
     GladeXML *gtxml;
-    GnomePropertyBox *dlg;
+    GtkWidget *dlg;
     GtkCheckButton *show_secs;
     GtkCheckButton *show_statusbar;
     GtkCheckButton *show_clist_titles;
@@ -151,6 +151,18 @@ typedef struct _PrefsDialog
     GtkCheckButton *currency_use_locale;
 
 } PrefsDialog;
+
+
+static void set_modified(PrefsDialog *dlg, gboolean modified)
+{
+    gtk_dialog_set_response_sensitive(GTK_DIALOG(dlg->dlg), GTK_RESPONSE_OK, modified);
+    gtk_dialog_set_response_sensitive(GTK_DIALOG(dlg->dlg), GTK_RESPONSE_APPLY, modified);
+}
+
+static void set_changed_cb(void *gobj, PrefsDialog *dlg)
+{
+    set_modified(dlg, TRUE);
+}
 
 /* Update the properties of the project view according to current settings */
 
@@ -357,11 +369,10 @@ static void toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
         }                 \
     }
 
-static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
+static void prefs_set(PrefsDialog *odlg)
 {
     int state;
 
-    if (0 == page)
     {
         int change = 0;
 
@@ -389,9 +400,8 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
             prefs_update_projects_view();
         }
     }
-    if (1 == page)
-    {
 
+    {
         /* display options */
         state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->show_secs));
         if (state != config_show_secs)
@@ -433,14 +443,12 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         prefs_update_projects_view();
     }
 
-    if (2 == page)
     {
         /* shell command options */
         ENTRY_TO_CHAR(odlg->shell_start, config_shell_start);
         ENTRY_TO_CHAR(odlg->shell_stop, config_shell_stop);
     }
 
-    if (3 == page)
     {
         /* log file options */
         config_logfile_use = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->logfileuse));
@@ -450,7 +458,6 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         config_logfile_min_secs = atoi(gtk_entry_get_text(odlg->logfileminsecs));
     }
 
-    if (4 == page)
     {
         int change = 0;
 
@@ -478,7 +485,6 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         toolbar_set_states();
     }
 
-    if (5 == page)
     {
         int change = 0;
         config_idle_timeout = atoi(gtk_entry_get_text(GTK_ENTRY(odlg->idle_secs)));
@@ -509,7 +515,6 @@ static void prefs_set(GnomePropertyBox *pb, gint page, PrefsDialog *odlg)
         }
     }
 
-    if (6 == page)
     {
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(odlg->time_format_am_pm)))
         {
@@ -701,7 +706,7 @@ static void options_dialog_set(PrefsDialog *odlg)
     );
 
     /* set to unmodified as it reflects the current state of the app */
-    gnome_property_box_set_modified(GNOME_PROPERTY_BOX(odlg->dlg), FALSE);
+    set_modified(odlg, FALSE);
 }
 
 /* ============================================================== */
@@ -730,9 +735,8 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
     ({                                                                             \
         GtkWidget *e;                                                              \
         e = glade_xml_get_widget(gtxml, strname);                                  \
-        gtk_signal_connect_object(                                                 \
-            GTK_OBJECT(e), "changed", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                   \
+        g_signal_connect(                                                          \
+            GTK_OBJECT(e), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
         e;                                                                         \
     })
@@ -741,9 +745,8 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
     ({                                                                             \
         GtkWidget *e;                                                              \
         e = glade_xml_get_widget(gtxml, strname);                                  \
-        gtk_signal_connect_object(                                                 \
-            GTK_OBJECT(e), "toggled", GTK_SIGNAL_FUNC(gnome_property_box_changed), \
-            GTK_OBJECT(dlg->dlg)                                                   \
+        g_signal_connect(                                                          \
+            GTK_OBJECT(e), "toggled", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
         e;                                                                         \
     })
@@ -823,9 +826,8 @@ static void logfile_options(PrefsDialog *dlg)
 
     w = glade_xml_get_widget(gtxml, "logfile path");
     dlg->logfilename = GTK_FILE_CHOOSER(w);
-    gtk_signal_connect_object(
-        GTK_OBJECT(dlg->logfilename), "file-set", GTK_SIGNAL_FUNC(gnome_property_box_changed),
-        GTK_OBJECT(dlg->dlg)
+    g_signal_connect(
+        GTK_OBJECT(dlg->logfilename), "file-set", G_CALLBACK(set_changed_cb), dlg
     );
 
     w = glade_xml_get_widget(gtxml, "fstart label");
@@ -935,9 +937,24 @@ static void currency_options(PrefsDialog *dlg)
 
 /* ============================================================== */
 
-static void help_cb(GnomePropertyBox *propertybox, gint page_num, gpointer data)
+static void response_cb(GtkDialog *gtk_dialog, gint response_id, PrefsDialog *dlg)
 {
-    gtt_help_popup(GTK_WIDGET(propertybox), data);
+    switch (response_id)
+    {    
+        case GTK_RESPONSE_OK:
+            prefs_set(dlg);
+            gtk_widget_hide(GTK_WIDGET(dlg->dlg));
+            break;
+        case GTK_RESPONSE_APPLY:
+            prefs_set(dlg);
+            break;
+        case GTK_RESPONSE_CLOSE:
+            gtk_widget_hide(GTK_WIDGET(dlg->dlg));
+            break;
+        case GTK_RESPONSE_HELP:
+            gtt_help_popup(GTK_WIDGET(dlg->dlg), "preferences");
+            break;
+    }
 }
 
 static PrefsDialog *prefs_dialog_new(void)
@@ -950,11 +967,27 @@ static PrefsDialog *prefs_dialog_new(void)
     gtxml = gtt_glade_xml_new("glade/prefs.glade", "Global Preferences");
     dlg->gtxml = gtxml;
 
-    dlg->dlg = GNOME_PROPERTY_BOX(glade_xml_get_widget(gtxml, "Global Preferences"));
+    GtkWidget *notebook = glade_xml_get_widget(gtxml, "Global Preferences");
 
-    gtk_signal_connect(GTK_OBJECT(dlg->dlg), "help", GTK_SIGNAL_FUNC(help_cb), "preferences");
+    dlg->dlg = gtk_dialog_new_with_buttons("Global Preferences",
+                                           NULL,
+                                           0,
+                                           GTK_STOCK_OK, GTK_RESPONSE_OK,
+                                           GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                           GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
+                                           GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+                                           NULL);
 
-    gtk_signal_connect(GTK_OBJECT(dlg->dlg), "apply", GTK_SIGNAL_FUNC(prefs_set), dlg);
+    GtkWidget *dlg_content = gtk_dialog_get_content_area(GTK_DIALOG(dlg->dlg));
+    gtk_container_add(GTK_CONTAINER(dlg_content), notebook);
+
+    g_signal_connect(
+        GTK_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
+    );
+
+    g_signal_connect(
+        GTK_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
+    );
 
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
@@ -967,7 +1000,6 @@ static PrefsDialog *prefs_dialog_new(void)
     time_format_options(dlg);
     currency_options(dlg);
 
-    gnome_dialog_close_hides(GNOME_DIALOG(dlg->dlg), TRUE);
     return dlg;
 }
 
