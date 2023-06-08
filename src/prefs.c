@@ -19,7 +19,6 @@
 
 #include "config.h"
 
-#include <glade/glade.h>
 #include <qof.h>
 #include <string.h>
 #include <stdlib.h>
@@ -86,7 +85,7 @@ char *config_data_url = NULL;
 
 typedef struct _PrefsDialog
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkWidget *dlg;
     GtkCheckButton *show_secs;
     GtkCheckButton *show_statusbar;
@@ -734,7 +733,7 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
 #define GETWID(strname)                                                            \
     ({                                                                             \
         GtkWidget *e;                                                              \
-        e = glade_xml_get_widget(gtxml, strname);                                  \
+        e = GTK_WIDGET(gtk_builder_get_object(builder, strname));                  \
         g_signal_connect(                                                          \
             GTK_OBJECT(e), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
@@ -744,7 +743,7 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
 #define GETCHWID(strname)                                                          \
     ({                                                                             \
         GtkWidget *e;                                                              \
-        e = glade_xml_get_widget(gtxml, strname);                                  \
+        e = GTK_WIDGET(gtk_builder_get_object(builder, strname));                  \
         g_signal_connect(                                                          \
             GTK_OBJECT(e), "toggled", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
@@ -754,7 +753,7 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
 static void display_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETCHWID("show secs");
     dlg->show_secs = GTK_CHECK_BUTTON(w);
@@ -776,7 +775,7 @@ static void display_options(PrefsDialog *dlg)
 static void field_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     DLGWID(importance);
     DLGWID(urgency);
@@ -801,7 +800,7 @@ static void field_options(PrefsDialog *dlg)
 static void shell_command_options(PrefsDialog *dlg)
 {
     GtkWidget *e;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     e = GETWID("start project");
     dlg->shell_start = GTK_ENTRY(e);
@@ -813,7 +812,7 @@ static void shell_command_options(PrefsDialog *dlg)
 static void logfile_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETCHWID("use logfile");
     dlg->logfileuse = GTK_CHECK_BUTTON(w);
@@ -821,28 +820,28 @@ static void logfile_options(PrefsDialog *dlg)
         GTK_OBJECT(w), "clicked", GTK_SIGNAL_FUNC(logfile_sensitive_cb), (gpointer *) dlg
     );
 
-    w = glade_xml_get_widget(gtxml, "filename label");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "filename label"));
     dlg->logfilename_l = w;
 
-    w = glade_xml_get_widget(gtxml, "logfile path");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "logfile path"));
     dlg->logfilename = GTK_FILE_CHOOSER(w);
     g_signal_connect(
         GTK_OBJECT(dlg->logfilename), "file-set", G_CALLBACK(set_changed_cb), dlg
     );
 
-    w = glade_xml_get_widget(gtxml, "fstart label");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "fstart label"));
     dlg->logfilestart_l = w;
 
     w = GETWID("fstart");
     dlg->logfilestart = GTK_ENTRY(w);
 
-    w = glade_xml_get_widget(gtxml, "fstop label");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "fstop label"));
     dlg->logfilestop_l = w;
 
     w = GETWID("fstop");
     dlg->logfilestop = GTK_ENTRY(w);
 
-    w = glade_xml_get_widget(gtxml, "fmin label");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "fmin label"));
     dlg->logfileminsecs_l = w;
 
     w = GETWID("fmin");
@@ -856,7 +855,7 @@ static void logfile_options(PrefsDialog *dlg)
 static void toolbar_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETCHWID("show toolbar");
     dlg->show_toolbar = GTK_CHECK_BUTTON(w);
@@ -879,7 +878,7 @@ static void toolbar_options(PrefsDialog *dlg)
 static void misc_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETWID("idle secs");
     dlg->idle_secs = GTK_ENTRY(w);
@@ -904,7 +903,7 @@ static void misc_options(PrefsDialog *dlg)
 static void time_format_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETCHWID("time_format_am_pm");
     dlg->time_format_am_pm = GTK_RADIO_BUTTON(w);
@@ -919,12 +918,12 @@ static void time_format_options(PrefsDialog *dlg)
 static void currency_options(PrefsDialog *dlg)
 {
     GtkWidget *w;
-    GladeXML *gtxml = dlg->gtxml;
+    GtkBuilder *builder = dlg->gtkbuilder;
 
     w = GETWID("currency_symbol");
     dlg->currency_symbol = GTK_ENTRY(w);
 
-    w = glade_xml_get_widget(gtxml, "currency_symbol_label");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "currency_symbol_label"));
     dlg->currency_symbol_label = w;
 
     w = GETCHWID("currency_use_locale");
@@ -960,14 +959,14 @@ static void response_cb(GtkDialog *gtk_dialog, gint response_id, PrefsDialog *dl
 static PrefsDialog *prefs_dialog_new(void)
 {
     PrefsDialog *dlg;
-    GladeXML *gtxml;
+    GtkBuilder *builder;
 
     dlg = g_malloc(sizeof(PrefsDialog));
 
-    gtxml = gtt_glade_xml_new("glade/prefs.glade", "Global Preferences");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/prefs.ui");
+    dlg->gtkbuilder = builder;
 
-    GtkWidget *notebook = glade_xml_get_widget(gtxml, "Global Preferences");
+    GtkWidget *notebook = GTK_WIDGET(gtk_builder_get_object(builder, "Global Preferences"));
 
     dlg->dlg = gtk_dialog_new_with_buttons("Global Preferences",
                                            NULL,
