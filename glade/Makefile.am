@@ -1,8 +1,7 @@
 
 gttgladedir = $(datadir)/gnotime/glade
 
-gttglade_DATA =              \
-  idle.glade
+gttglade_DATA =
 
 
 EXTRA_DIST =          \
