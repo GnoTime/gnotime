@@ -23,7 +23,6 @@
 #include <errno.h>
 #include <gconf/gconf.h>
 #include <gio/gio.h>
-#include <glade/glade.h>
 #include <gnome.h>
 #include <libgnomeui/gnome-window-icon.h>
 #include <libguile.h>
@@ -852,8 +851,6 @@ int main(int argc, char *argv[])
         G_OBJECT(client), "save_yourself", G_CALLBACK(save_state), (gpointer) argv[0]
     );
     g_signal_connect(G_OBJECT(client), "die", G_CALLBACK(session_die), NULL);
-
-    glade_init();
 
     /* gconf init is needed by gtkhtml */
     gconf_init(argc, argv, NULL);

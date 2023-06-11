@@ -46,7 +46,6 @@ LIBGNOME_REQUIRED=2.32.1
 LIBGNOMEUI_REQUIRED=2.24.5
 GLIB_REQUIRED=2.40.2
 GTK_REQUIRED=2.24.23
-LIBGLADE_REQUIRED=2.6.4
 LIBGTKHTML_REQUIRED=3.32.2
 LIBXML2_REQUIRED=2.9.1
 SCROLLKEEPER_BUILD_REQUIRED=0.8.1
@@ -106,13 +105,6 @@ dnl *****************************************
 PKG_CHECK_MODULES(X11, x11 >= $X11_REQUIRED)
 AC_SUBST(X11_CFLAGS)
 AC_SUBST(X11_LIBS)
-
-dnl *****************************************
-dnl need libglade
-dnl *****************************************
-PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
-AC_SUBST(LIBGLADE_CFLAGS)
-AC_SUBST(LIBGLADE_LIBS)
 
 dnl *********************************************
 dnl for anything which calls gconftool-2 correctly
@@ -298,7 +290,6 @@ doc/Makefile
 gconf/Makefile
 ghtml/C/Makefile
 ghtml/Makefile
-glade/Makefile
 po/Makefile.in
 redhat/Makefile
 redhat/gnotime.spec

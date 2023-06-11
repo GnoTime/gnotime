@@ -19,7 +19,6 @@
 #ifndef GTT_UTIL_H
 #define GTT_UTIL_H
 
-#include <glade/glade.h>
 #include <gtk/gtk.h>
 
 /* ------------------------------------------------------------------ */
@@ -29,9 +28,6 @@ char *xxxgtk_textview_get_text(GtkTextView *text);
 
 const gchar *gtt_combo_entry_get_text(GtkComboBox *combo_box);
 void gtt_combo_entry_set_text(GtkComboBox *combo_box, const gchar *str);
-
-/* Glade loader, it will look in the right directories */
-GladeXML *gtt_glade_xml_new(const char *filename, const char *widget);
 
 /* GtkBuilder loader, it will look in the right directories */
 GtkBuilder *gtt_builder_new_from_file(const char *filename);

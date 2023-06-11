@@ -100,8 +100,7 @@ void gtt_combo_select_list_init(GtkComboBox *combo_box)
     gtk_combo_box_set_model(combo_box, GTK_TREE_MODEL(store));
 
     // Currently, we assume that the combo box is already set up
-    // with a text cell rendered for column 0. It would appear
-    // that Gtk (or glade?) does this by default.
+    // with a text cell rendered for column 0.
 }
 
 /**

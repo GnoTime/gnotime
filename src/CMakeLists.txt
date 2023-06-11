@@ -5,7 +5,7 @@ set(GETTEXT_PACKAGE "gnotime-2.0")
 set(GNOMELOCALEDIR "/usr/local/share/locale")
 set(GNOME_ICONDIR "NONE/share/pixmaps")
 set(GTTDATADIR "/usr/local/share/gnotime")
-set(GTTGLADEDIR "/usr/local/share/gnotime")
+set(GTTUIDIR "/usr/local/share/gnotime")
 set(LIBDIR "/usr/local/lib/x86_64-linux-gnu")
 set(PACKAGE "gnotime")
 set(PREFIX "/usr/local")
@@ -65,7 +65,6 @@ target_include_directories(${PROJECT_NAME} SYSTEM
     PRIVATE ${GTK_INCLUDE_DIRS}
     PRIVATE ${GTK_HTML_INCLUDE_DIRS}
     PRIVATE ${GUILE_INCLUDE_DIRS}
-    PRIVATE ${LIBGLADE_INCLUDE_DIRS}
     PRIVATE ${LIBGNOME_INCLUDE_DIRS}
     PRIVATE ${LIBGNOMEUI_INCLUDE_DIRS}
     PRIVATE ${LIBXML_INCLUDE_DIRS}
@@ -80,7 +79,6 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE ${GTK_LINK_LIBRARIES}
     PRIVATE ${GTK_HTML_LINK_LIBRARIES}
     PRIVATE ${GUILE_LINK_LIBRARIES}
-    PRIVATE ${LIBGLADE_LINK_LIBRARIES}
     PRIVATE ${LIBGNOME_LINK_LIBRARIES}
     PRIVATE ${LIBGNOMEUI_LINK_LIBRARIES}
     PRIVATE ${LIBXML_LINK_LIBRARIES}
