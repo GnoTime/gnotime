@@ -8,6 +8,8 @@ gttui_DATA =                 \
   interval_popup.ui          \
   journal.ui                 \
   notes.ui                   \
+  plugin.ui                  \
+  plugin_editor.ui           \
   prefs.ui                   \
   project_properties.ui      \
   task_popup.ui              \

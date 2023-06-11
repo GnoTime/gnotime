@@ -20,8 +20,6 @@
 
 #include "gtt-gsettings-io.h"
 
-#include <glade/glade.h>
-
 #include "app.h"
 #include "journal.h"
 #include "menus.h"
@@ -32,7 +30,7 @@
 
 struct NewPluginDialog_s
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkDialog *dialog;
     GtkEntry *plugin_name;
     GtkFileChooser *plugin_path;
@@ -172,39 +170,45 @@ static void new_plugin_cancel_cb(GtkWidget *w, gpointer data)
     gtk_widget_hide(GTK_WIDGET(dlg->dialog));
 }
 
+static void connect_signals_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer user_data
+)
+{
+    if (g_strcmp0(handler_name, "on_ok_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(new_plugin_create_cb), user_data);
+
+    if (g_strcmp0(handler_name, "on_cancel_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(new_plugin_cancel_cb), user_data);
+}
+
 /* ============================================================ */
 
 NewPluginDialog *new_plugin_dialog_new(void)
 {
     NewPluginDialog *dlg;
-    GladeXML *gtxml;
-    GtkWidget *e;
+    GtkBuilder *builder;
+    GObject *e;
 
     dlg = g_malloc(sizeof(NewPluginDialog));
     dlg->app = GNOME_APP(app_window);
 
-    gtxml = gtt_glade_xml_new("glade/plugin.glade", "Plugin New");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/plugin.ui");
+    dlg->gtkbuilder = builder;
 
-    dlg->dialog = GTK_DIALOG(glade_xml_get_widget(gtxml, "Plugin New"));
+    dlg->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "Plugin New"));
 
-    glade_xml_signal_connect_data(
-        gtxml, "on_ok_button_clicked", GTK_SIGNAL_FUNC(new_plugin_create_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_cancel_button_clicked", GTK_SIGNAL_FUNC(new_plugin_cancel_cb), dlg
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_cb, dlg);
 
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
-    e = glade_xml_get_widget(gtxml, "plugin name");
+    e = gtk_builder_get_object(builder, "plugin name");
     dlg->plugin_name = GTK_ENTRY(e);
 
-    e = glade_xml_get_widget(gtxml, "plugin path");
+    e = gtk_builder_get_object(builder, "plugin path");
     dlg->plugin_path = GTK_FILE_CHOOSER(e);
 
-    e = glade_xml_get_widget(gtxml, "plugin tooltip");
+    e = gtk_builder_get_object(builder, "plugin tooltip");
     dlg->plugin_tooltip = GTK_ENTRY(e);
 
     gtk_widget_hide_on_delete(GTK_WIDGET(dlg->dialog));

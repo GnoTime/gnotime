@@ -20,8 +20,6 @@
 
 #include "gtt-gsettings-io.h"
 
-#include <glade/glade.h>
-
 #include "app.h"
 #include "dialog.h"
 #include "journal.h"
@@ -31,7 +29,7 @@
 
 struct PluginEditorDialog_s
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkDialog *dialog;
 
     GtkTreeView *treeview;
@@ -637,97 +635,97 @@ static void edit_plugin_right_button_cb(GtkWidget *w, gpointer data)
     printf("right button clicked\n");
 }
 
+static void connect_signals_cb(
+    GtkBuilder *builder, GObject *object, const gchar *signal_name, const gchar *handler_name,
+    GObject *connect_object, GConnectFlags flags, gpointer dlg
+)
+{
+    /* ------------------------------------------------------ */
+    /* Dialog dismissal buttons */
+
+    if (g_strcmp0(handler_name, "on_ok_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_commit_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_apply_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_apply_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_cancel_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_cancel_cb), dlg);
+
+    /* ------------------------------------------------------ */
+    /* Menu item add/delete buttons */
+
+    if (g_strcmp0(handler_name, "on_add_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_add_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_delete_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_delete_cb), dlg);
+
+    /* ------------------------------------------------------ */
+    /* Input widget changed events */
+
+    if (g_strcmp0(handler_name, "on_plugin_name_changed") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_changed_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_plugin_path_changed") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_changed_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_plugin_tooltip_changed") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_changed_cb), dlg);
+
+
+    /* ------------------------------------------------------ */
+    /* Menu order change buttons */
+
+    if (g_strcmp0(handler_name, "on_up_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_up_button_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_down_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_down_button_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_left_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_left_button_cb), dlg);
+
+    if (g_strcmp0(handler_name, "on_right_button_clicked") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(edit_plugin_right_button_cb), dlg);
+}
+
 /* ============================================================ */
 /* Create a new copy of the edit dialog; intialize all widgets, etc. */
 
 PluginEditorDialog *edit_plugin_dialog_new(void)
 {
     PluginEditorDialog *dlg;
-    GladeXML *gtxml;
-    GtkWidget *e;
+    GtkBuilder *builder;
+    GObject *e;
     int i;
     const char *col_titles[NCOLUMNS];
 
     dlg = g_malloc(sizeof(PluginEditorDialog));
     dlg->app = GNOME_APP(app_window);
 
-    gtxml = gtt_glade_xml_new("glade/plugin_editor.glade", "Plugin Editor");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/plugin_editor.ui");
+    dlg->gtkbuilder = builder;
 
-    dlg->dialog = GTK_DIALOG(glade_xml_get_widget(gtxml, "Plugin Editor"));
+    dlg->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "Plugin Editor"));
 
-    /* ------------------------------------------------------ */
-    /* Dialog dismissal buttons */
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_ok_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_commit_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_apply_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_apply_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_cancel_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_cancel_cb), dlg
-    );
-
-    /* ------------------------------------------------------ */
-    /* Menu item add/delete buttons */
-    glade_xml_signal_connect_data(
-        gtxml, "on_add_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_add_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_delete_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_delete_cb), dlg
-    );
+    gtk_builder_connect_signals_full(builder, connect_signals_cb, dlg);
 
     /* ------------------------------------------------------ */
     /* Grab the various entry boxes and hook them up */
-    e = glade_xml_get_widget(gtxml, "plugin name");
+    e = gtk_builder_get_object(builder, "plugin name");
     dlg->plugin_name = GTK_ENTRY(e);
 
-    e = glade_xml_get_widget(gtxml, "plugin path");
+    e = gtk_builder_get_object(builder, "plugin path");
     dlg->plugin_path = GTK_FILE_CHOOSER(e);
 
-    e = glade_xml_get_widget(gtxml, "plugin tooltip");
+    e = gtk_builder_get_object(builder, "plugin tooltip");
     dlg->plugin_tooltip = GTK_ENTRY(e);
 
-    /* ------------------------------------------------------ */
-    /* Inpout widget changed events */
-    glade_xml_signal_connect_data(
-        gtxml, "on_plugin_name_changed", GTK_SIGNAL_FUNC(edit_plugin_changed_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_plugin_path_changed", GTK_SIGNAL_FUNC(edit_plugin_changed_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_plugin_tooltip_changed", GTK_SIGNAL_FUNC(edit_plugin_changed_cb), dlg
-    );
-
-    /* ------------------------------------------------------ */
-    /* Menu order change buttons */
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_up_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_up_button_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_down_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_down_button_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_left_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_left_button_cb), dlg
-    );
-
-    glade_xml_signal_connect_data(
-        gtxml, "on_right_button_clicked", GTK_SIGNAL_FUNC(edit_plugin_right_button_cb), dlg
-    );
 
     /* ------------------------------------------------------ */
     /* Set up the Treeview Widget */
-    e = glade_xml_get_widget(gtxml, "editor treeview");
+    e = gtk_builder_get_object(builder, "editor treeview");
     dlg->treeview = GTK_TREE_VIEW(e);
 
     {
