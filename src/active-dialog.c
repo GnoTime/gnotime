@@ -195,7 +195,7 @@ static void active_dialog_realize(GttActiveDialog *id)
     id->help_btn = GTK_BUTTON(gtk_builder_get_object(builder, "helpbutton1"));
     id->active_label = GTK_LABEL(gtk_builder_get_object(builder, "active label"));
     id->credit_label = GTK_LABEL(gtk_builder_get_object(builder, "credit label"));
-    w = gtk_builder_get_object(builder, "project option menu");
+    w = GTK_WIDGET(gtk_builder_get_object(builder, "project option menu"));
     id->project_menu = GTK_COMBO_BOX(w);
 
     g_signal_connect(G_OBJECT(id->dlg), "destroy", G_CALLBACK(dialog_close), id);
