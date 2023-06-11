@@ -66,7 +66,6 @@ gnome-common
 guile-2.0-dev
 libdbus-glib-1-dev
 libgconf2-dev
-libglade2-dev
 libglib2.0-dev
 libgnome2-dev
 libgnomeui-dev
@@ -80,7 +79,6 @@ scrollkeeper
 
 Developers and maintainers also need:
 ```
-glade-gnome
 glade-gtk2
 ```
 

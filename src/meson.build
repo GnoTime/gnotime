@@ -4,7 +4,7 @@ gnotime_cfg_data.set_quoted('GETTEXT_PACKAGE', 'gnotime-2.0')
 gnotime_cfg_data.set_quoted('GNOME_ICONDIR', 'NONE' / get_option('datadir') / 'pixmaps')
 gnotime_cfg_data.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
 gnotime_cfg_data.set_quoted('GTTDATADIR', get_option('prefix') / get_option('datadir') / 'gnotime')
-gnotime_cfg_data.set_quoted('GTTGLADEDIR', get_option('prefix') / get_option('datadir') / 'gnotime')
+gnotime_cfg_data.set_quoted('GTTUIDIR', get_option('prefix') / get_option('datadir') / 'gnotime')
 gnotime_cfg_data.set_quoted('LIBDIR', get_option('prefix') / get_option('libdir'))
 gnotime_cfg_data.set_quoted('PACKAGE', 'gnotime')
 gnotime_cfg_data.set_quoted('PREFIX', get_option('prefix'))
@@ -21,7 +21,6 @@ gnotime_deps = [
   gtk_dep,
   gtk_html_dep,
   guile_dep,
-  libglade_dep,
   libgnome_dep,
   libgnomeui_dep,
   libxml_dep,

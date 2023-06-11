@@ -18,7 +18,6 @@
 
 #include "config.h"
 
-#include <glade/glade.h>
 #include <glib.h>
 #include <qof.h>
 #include <stdio.h>
@@ -75,25 +74,7 @@ void gtt_combo_entry_set_text(GtkComboBox *combo_box, const gchar *str)
 
 /* ============================================================== */
 
-/* Glade loader, it will look in the right directories */
-GladeXML *gtt_glade_xml_new(const char *filename, const char *widget)
-{
-    GladeXML *xml = NULL;
-
-    g_return_val_if_fail(filename != NULL, NULL);
-
-    if (g_file_test(filename, G_FILE_TEST_EXISTS))
-        xml = glade_xml_new(filename, widget, NULL);
-
-    if (xml == NULL)
-    {
-        char *file = g_build_filename(GTTGLADEDIR, filename, NULL);
-        xml = glade_xml_new(file, widget, NULL);
-        g_free(file);
-    }
-    return xml;
-}
-
+/* GtkBuilder loader, it will look in the right directories */
 static GtkBuilder *gtt_builder_new_from_exact_file(const char *filename)
 {
     GtkBuilder *builder = NULL;
@@ -121,7 +102,7 @@ GtkBuilder *gtt_builder_new_from_file(const char *filename)
     }
     else
     {
-        char *file = g_build_filename(GTTGLADEDIR, filename, NULL);
+        char *file = g_build_filename(GTTUIDIR, filename, NULL);
         builder = gtt_builder_new_from_exact_file(file);
         g_free(file);
     }
