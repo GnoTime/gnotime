@@ -6,6 +6,7 @@ gttui_DATA =                 \
   interval_edit.ui           \
   interval_popup.ui          \
   journal.ui                 \
+  notes.ui                   \
   prefs.ui                   \
   project_properties.ui      \
   task_popup.ui              \

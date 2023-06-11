@@ -19,8 +19,6 @@
 #include "config.h"
 #include <glib-object.h>
 
-#include <glade/glade.h>
-
 #include "menus.h"
 #include "notes-area.h"
 #include "proj.h"
@@ -29,7 +27,7 @@
 
 struct NotesArea_s
 {
-    GladeXML *gtxml;
+    GtkBuilder *gtkbuilder;
     GtkPaned *vpane;                    /* top level pane */
     GtkContainer *projects_tree_holder; /* scrolled widget that holds the projects tree */
 
@@ -312,19 +310,19 @@ enum
 
 /* ============================================================== */
 
-#define CONNECT_ENTRY(GLADE_NAME, CB)                                      \
+#define CONNECT_ENTRY(WIDGET_NAME, CB)                                      \
     ({                                                                     \
         GtkEntry *entry;                                                   \
-        entry = GTK_ENTRY(glade_xml_get_widget(gtxml, GLADE_NAME));        \
+        entry = GTK_ENTRY(gtk_builder_get_object(builder, WIDGET_NAME));        \
         g_signal_connect(G_OBJECT(entry), "changed", G_CALLBACK(CB), dlg); \
         entry;                                                             \
     })
 
-#define CONNECT_TEXT(GLADE_NAME, CB)                                      \
+#define CONNECT_TEXT(WIDGET_NAME, CB)                                      \
     ({                                                                    \
         GtkTextView *tv;                                                  \
         GtkTextBuffer *buff;                                              \
-        tv = GTK_TEXT_VIEW(glade_xml_get_widget(gtxml, GLADE_NAME));      \
+        tv = GTK_TEXT_VIEW(gtk_builder_get_object(builder, WIDGET_NAME));      \
         buff = gtk_text_view_get_buffer(tv);                              \
         g_signal_connect(G_OBJECT(buff), "changed", G_CALLBACK(CB), dlg); \
         tv;                                                               \
@@ -333,24 +331,24 @@ enum
 NotesArea *notes_area_new(void)
 {
     NotesArea *dlg;
-    GladeXML *gtxml;
+    GtkBuilder *builder;
 
     dlg = g_new0(NotesArea, 1);
 
-    gtxml = gtt_glade_xml_new("glade/notes.glade", "top window");
-    dlg->gtxml = gtxml;
+    builder = gtt_builder_new_from_file("ui/notes.ui");
+    dlg->gtkbuilder = builder;
 
-    dlg->vpane = GTK_PANED(glade_xml_get_widget(gtxml, "notes vpane"));
-    dlg->projects_tree_holder = GTK_CONTAINER(glade_xml_get_widget(gtxml, "ctree holder"));
-    dlg->hpane = GTK_PANED(glade_xml_get_widget(gtxml, "leftright hpane"));
-    dlg->close_proj = GTK_BUTTON(glade_xml_get_widget(gtxml, "close proj button"));
-    dlg->close_task = GTK_BUTTON(glade_xml_get_widget(gtxml, "close diary button"));
-    dlg->new_task = GTK_BUTTON(glade_xml_get_widget(gtxml, "new_diary_entry_button"));
-    dlg->edit_task = GTK_BUTTON(glade_xml_get_widget(gtxml, "edit_diary_entry_button"));
+    dlg->vpane = GTK_PANED(gtk_builder_get_object(builder, "notes vpane"));
+    dlg->projects_tree_holder = GTK_CONTAINER(gtk_builder_get_object(builder, "ctree holder"));
+    dlg->hpane = GTK_PANED(gtk_builder_get_object(builder, "leftright hpane"));
+    dlg->close_proj = GTK_BUTTON(gtk_builder_get_object(builder, "close proj button"));
+    dlg->close_task = GTK_BUTTON(gtk_builder_get_object(builder, "close diary button"));
+    dlg->new_task = GTK_BUTTON(gtk_builder_get_object(builder, "new_diary_entry_button"));
+    dlg->edit_task = GTK_BUTTON(gtk_builder_get_object(builder, "edit_diary_entry_button"));
 
     dlg->proj_title = CONNECT_ENTRY("proj title entry", proj_title_changed);
     dlg->proj_desc = CONNECT_ENTRY("proj desc entry", proj_desc_changed);
-    dlg->task_combo = GTK_COMBO_BOX(glade_xml_get_widget(gtxml, "diary_entry_combo"));
+    dlg->task_combo = GTK_COMBO_BOX(gtk_builder_get_object(builder, "diary_entry_combo"));
 
     gtk_combo_box_set_model(dlg->task_combo, NULL);
     GtkCellRenderer *cell;
