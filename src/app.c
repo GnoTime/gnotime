@@ -517,10 +517,10 @@ void app_new(int argc, char *argv[], const char *geometry_string)
      * But gtk_widget_reparent (vpane); causes  a "Gtk-CRITICAL"
      * to occur.  So we need a fancier move.
      */
-    gtk_widget_ref(vpane);
+    g_object_ref(G_OBJECT(vpane));
     gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(vpane)), vpane);
     gtk_box_pack_start(GTK_BOX(vbox), vpane, TRUE, TRUE, 0);
-    gtk_widget_unref(vpane);
+    g_object_unref(G_OBJECT(vpane));
 
     gtk_box_pack_end(GTK_BOX(vbox), status_bar, FALSE, FALSE, 2);
 
