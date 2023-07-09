@@ -20,7 +20,6 @@
 
 #include "config.h"
 
-#include <gnome.h>
 #include <gtkhtml/gtkhtml.h>
 #include <sched.h>
 #include <stdio.h>
@@ -1370,6 +1369,26 @@ static void do_show_report(
 
 /* ============================================================== */
 
+static char * gtt_locate_system_data_file(const char *fragment)
+{
+    int i;
+    const gchar * const* locations;
+    char buff[PATH_MAX];
+
+    locations = g_get_system_data_dirs();
+
+    for (i = 0; locations[i] != NULL; i++)
+    {
+        snprintf(buff, PATH_MAX, "%s/%s", locations[i], fragment);
+        g_warning("gtt_locate_system_data_file testing: %s", buff);
+        if (g_file_test((buff), G_FILE_TEST_EXISTS))
+            return g_strdup(buff);
+    }
+
+    return NULL;
+}
+
+
 char *gtt_ghtml_resolve_path(const char *path_frag, const char *reference_path)
 {
     int i;
@@ -1404,18 +1423,12 @@ char *gtt_ghtml_resolve_path(const char *path_frag, const char *reference_path)
         /* Look in the local build dir first (for testing) */
 
         snprintf(buff, PATH_MAX, "ghtml/%s/%s", lang, path_frag);
-        path = gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_DATADIR, buff, TRUE, NULL);
+        path = gtt_locate_system_data_file(buff);
         if (path)
             return path;
 
         snprintf(buff, PATH_MAX, "gnotime/ghtml/%s/%s", lang, path_frag);
-        path = gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_DATADIR, buff, TRUE, NULL);
-        if (path)
-            return path;
-
-        /* Backwards compat, check the gtt dir, not just the gnotime dir */
-        snprintf(buff, PATH_MAX, "gtt/ghtml/%s/%s", lang, path_frag);
-        path = gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_DATADIR, buff, TRUE, NULL);
+        path = gtt_locate_system_data_file(buff);
         if (path)
             return path;
 
