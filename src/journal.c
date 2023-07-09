@@ -1372,7 +1372,8 @@ static void do_show_report(
 
 char *gtt_ghtml_resolve_path(const char *path_frag, const char *reference_path)
 {
-    const GList *list;
+    int i;
+    const gchar * const* lang_names;
     char buff[PATH_MAX], *path;
 
     if (!path_frag)
@@ -1394,10 +1395,10 @@ char *gtt_ghtml_resolve_path(const char *path_frag, const char *reference_path)
     }
 
     /* Next, check each language that the user is willing to look at. */
-    list = gnome_i18n_get_language_list("LC_MESSAGES");
-    for (; list; list = list->next)
+    lang_names = g_get_language_names();
+    for (i = 0; lang_names[i] != NULL; i++)
     {
-        const char *lang = list->data;
+        const char *lang = lang_names[i];
 
         /* See if gnotime/ghtml/<lang>/<path_frag> exists. */
         /* Look in the local build dir first (for testing) */
