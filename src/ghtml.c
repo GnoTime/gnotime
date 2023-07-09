@@ -1858,4 +1858,83 @@ void gtt_ghtml_show_links(GttGhtml *p, gboolean sl)
     p->show_links = sl;
 }
 
+
+/* ============================================================== */
+
+static char * gtt_locate_system_data_file(const char *fragment)
+{
+    int i;
+    const gchar * const* locations;
+    char buff[PATH_MAX];
+
+    locations = g_get_system_data_dirs();
+
+    for (i = 0; locations[i] != NULL; i++)
+    {
+        snprintf(buff, PATH_MAX, "%s/%s", locations[i], fragment);
+        if (g_file_test((buff), G_FILE_TEST_EXISTS))
+            return g_strdup(buff);
+    }
+
+    return NULL;
+}
+
+
+char *gtt_ghtml_resolve_path(const char *path_frag, const char *reference_path)
+{
+    int i;
+    const gchar * const* lang_names;
+    char buff[PATH_MAX], *path;
+
+    if (!path_frag)
+        return NULL;
+
+    /* First, look for path_frag in the reference path. */
+    if (reference_path)
+    {
+        char *p;
+        strncpy(buff, reference_path, PATH_MAX);
+        p = strrchr(buff, '/');
+        if (p)
+        {
+            p++;
+            strncpy(p, path_frag, PATH_MAX - (p - buff));
+            if (g_file_test((buff), G_FILE_TEST_EXISTS))
+                return g_strdup(buff);
+        }
+    }
+
+    /* Next, check each language that the user is willing to look at. */
+    lang_names = g_get_language_names();
+    for (i = 0; lang_names[i] != NULL; i++)
+    {
+        const char *lang = lang_names[i];
+
+        /* See if gnotime/ghtml/<lang>/<path_frag> exists. */
+        /* Look in the local build dir first (for testing) */
+
+        snprintf(buff, PATH_MAX, "ghtml/%s/%s", lang, path_frag);
+        path = gtt_locate_system_data_file(buff);
+        if (path)
+            return path;
+
+        snprintf(buff, PATH_MAX, "gnotime/ghtml/%s/%s", lang, path_frag);
+        path = gtt_locate_system_data_file(buff);
+        if (path)
+            return path;
+
+        /* some users compile with path settings that gnome
+         * cannot find.  In that case we have to supply a full
+         * path and check it's existance directly -- we CANNOT
+         * use gnome_datadir_file() because it wont work!
+         *
+         * -warlord 2001-11-29
+         */
+        snprintf(buff, PATH_MAX, GTTDATADIR "/ghtml/%s/%s", lang, path_frag);
+        if (g_file_test((buff), G_FILE_TEST_EXISTS))
+            return g_strdup(buff);
+    }
+    return g_strdup(path_frag);
+}
+
 /* ===================== END OF FILE ==============================  */
