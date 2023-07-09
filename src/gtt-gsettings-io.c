@@ -358,7 +358,7 @@ void gtt_gsettings_load(void)
         {
             const gint x = g_settings_get_int(geometry, "x");
             const gint y = g_settings_get_int(geometry, "y");
-            gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
+            gtk_window_move(GTK_WINDOW(app_window), x, y);
         }
         if (!geom_size_override)
         {

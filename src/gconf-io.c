@@ -172,7 +172,7 @@ void gtt_gconf_load(void)
         int x, y;
         x = GETINT("/Geometry/X", 10);
         y = GETINT("/Geometry/Y", 10);
-        gtk_widget_set_uposition(GTK_WIDGET(app_window), x, y);
+        gtk_window_move(GTK_WINDOW(app_window), x, y);
     }
     if (!geom_size_override)
     {
