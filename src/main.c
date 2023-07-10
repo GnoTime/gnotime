@@ -23,8 +23,6 @@
 #include <errno.h>
 #include <gconf/gconf.h>
 #include <gio/gio.h>
-#include <gnome.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <libguile.h>
 #include <signal.h>
 #include <string.h>
