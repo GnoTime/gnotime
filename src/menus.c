@@ -32,6 +32,8 @@
 #include "util.h"
 #include "dialog.h"
 
+static const char * gtt_is_custom_report = "gtt_is_custom_report";
+
 
 static GtkBuilder * menu_builder;
 
@@ -131,28 +133,62 @@ GnomeUIInfo *gtt_get_reports_menu(void)
     return (reports_menu);
 }
 
+static void gtt_append_custom_reports(GnomeApp *app, GnomeUIInfo *report_menu_items)
+{
+    GtkMenuShell * reports_menu = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
+    int i;
+
+    for (i = 0; GNOME_APP_UI_ENDOFINFO != report_menu_items[i].type; i++)
+    {
+        GnomeUIInfo * current = & (report_menu_items[i]);
+
+        // It seems our UI to create these custom reports (menu items) does
+        // not actually allow setting anything other than name and tooltip,
+        // using the default item type. So it's enough to support that. (Even though
+        // the plugin editor UI seems to contain widgetry that implies more, it doesn't
+        // actually work.
+        if (current->type == GNOME_APP_UI_ITEM)
+        {
+            GtkWidget * item = gtk_menu_item_new_with_mnemonic(current->label);
+            gtk_widget_set_tooltip_text(item, current->hint);
+
+            g_signal_connect(item, "activate", G_CALLBACK(invoke_report), current->user_data);
+            
+            g_object_set_data(G_OBJECT(item), gtt_is_custom_report, (gpointer)gtt_is_custom_report);
+
+            gtk_widget_show(item);
+            gtk_menu_shell_append(reports_menu, item);
+        }
+    }
+}
+
+
 void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
 {
     int i;
-    char *path;
 
-    /* Build the i18n menu path ... */
-    /* (is this right ??? or is this pre-i18n ???) */
-    path = g_strdup_printf("%s/<Separator>", _("Reports"));
-
-    /* If there are old menu items, remove them and free them. */
+    // If there are old menu items, remove them and free them.
     if (reports_menu)
     {
-        int nreports;
-        for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+        // Iterate over items in the report menu, and destroy those that are
+        // marked as custom entries.
+        GtkMenuShell * reports_menu_widget;
+        reports_menu_widget = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
+        GList * reports_menu_items = gtk_container_get_children(GTK_CONTAINER(reports_menu_widget));
+        GList * elem;
+        for (elem = reports_menu_items; elem; elem = elem->next)
         {
-        }
-        nreports = i;
-        gnome_app_remove_menu_range(app, path, 1, nreports);
+            GtkWidget * item = elem->data;
 
+            if (g_object_get_data(G_OBJECT(item), gtt_is_custom_report) == gtt_is_custom_report)
+                gtk_widget_destroy(item);
+        }
+        g_list_free(reports_menu_items);
+
+        // Free the old item meta data array.
         if (new_menus != reports_menu)
         {
-            for (i = 0; i < nreports; i++)
+            for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
             {
                 // XXX can't free this, since 'append' recycles old pointers !!
                 // there's probably a minor memory leak here ...
@@ -162,7 +198,7 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
         }
     }
 
-    /* Now install the new menu items. */
+    // Replace NULL with a single end-of-array record if needed.
     reports_menu = new_menus;
     if (!reports_menu)
     {
@@ -170,12 +206,8 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
         reports_menu[0].type = GNOME_APP_UI_ENDOFINFO;
     }
 
-    /* fixup */
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
-    {
-        reports_menu[i].moreinfo = invoke_report;
-    }
-    gnome_app_insert_menus(app, path, reports_menu);
+    // Now install the new menu items.
+    gtt_append_custom_reports(app, reports_menu);
 }
 
 /* ============================================================ */
