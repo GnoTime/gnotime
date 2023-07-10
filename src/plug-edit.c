@@ -310,7 +310,16 @@ static void edit_plugin_cleanup(PluginEditorDialog *dlg)
     GnomeUIInfo *sysmenus;
     int i;
 
-    /* Free our local copy of menu structure */
+    /* Unselect row in tree widget. */
+    gtk_tree_selection_unselect_all(dlg->selection);
+    dlg->have_selection = FALSE;
+
+    /* Empty the tree widget too */
+    gtk_tree_store_clear(dlg->treestore);
+
+    /* Free our local copy of menu structure.
+       Done last, because the tree structures above contain references
+       to these, that may be accessed from callbacks triggered above. */
     sysmenus = (GnomeUIInfo *) dlg->menus->data;
     for (i = 0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++)
     {
@@ -320,13 +329,6 @@ static void edit_plugin_cleanup(PluginEditorDialog *dlg)
     }
     g_array_free(dlg->menus, TRUE);
     dlg->menus = NULL;
-
-    /* Unselect row in tree widget. */
-    gtk_tree_selection_unselect_all(dlg->selection);
-    dlg->have_selection = FALSE;
-
-    /* Empty the tree widget too */
-    gtk_tree_store_clear(dlg->treestore);
 }
 
 /* ============================================================ */
