@@ -125,45 +125,42 @@ void menus_create(GnomeApp *app)
     attach_menu_action(builder, "mi_help_about", G_CALLBACK(about_box), NULL);
 }
 
-/* Global: the user-defined reports pull-down menu */
-static GnomeUIInfo *reports_menu = NULL;
+/* Global: the user-defined reports pull-down menu (array) */
+static GttPlugin *reports_menu = NULL;
 
-GnomeUIInfo *gtt_get_reports_menu(void)
+GttPlugin *gtt_get_reports_menu(void)
 {
     return (reports_menu);
 }
 
-static void gtt_append_custom_reports(GnomeApp *app, GnomeUIInfo *report_menu_items)
+static void gtt_append_custom_reports(GnomeApp *app, GttPlugin *report_menu_items)
 {
     GtkMenuShell * reports_menu = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
     int i;
 
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != report_menu_items[i].type; i++)
+    for (i = 0; NULL != report_menu_items[i].name; i++)
     {
-        GnomeUIInfo * current = & (report_menu_items[i]);
+        GttPlugin * current = & (report_menu_items[i]);
 
         // It seems our UI to create these custom reports (menu items) does
         // not actually allow setting anything other than name and tooltip,
         // using the default item type. So it's enough to support that. (Even though
         // the plugin editor UI seems to contain widgetry that implies more, it doesn't
         // actually work.
-        if (current->type == GNOME_APP_UI_ITEM)
-        {
-            GtkWidget * item = gtk_menu_item_new_with_mnemonic(current->label);
-            gtk_widget_set_tooltip_text(item, current->hint);
+        GtkWidget * item = gtk_menu_item_new_with_mnemonic(current->name);
+        gtk_widget_set_tooltip_text(item, current->tooltip);
 
-            g_signal_connect(item, "activate", G_CALLBACK(invoke_report), current->user_data);
+        g_signal_connect(item, "activate", G_CALLBACK(invoke_report), current);
             
-            g_object_set_data(G_OBJECT(item), gtt_is_custom_report, (gpointer)gtt_is_custom_report);
+        g_object_set_data(G_OBJECT(item), gtt_is_custom_report, (gpointer)gtt_is_custom_report);
 
-            gtk_widget_show(item);
-            gtk_menu_shell_append(reports_menu, item);
-        }
+        gtk_widget_show(item);
+        gtk_menu_shell_append(reports_menu, item);
     }
 }
 
 
-void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
+void gtt_set_reports_menu(GnomeApp *app, GttPlugin *new_menus)
 {
     int i;
 
@@ -188,7 +185,7 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
         // Free the old item meta data array.
         if (new_menus != reports_menu)
         {
-            for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+            for (i = 0; NULL != reports_menu[i].name; i++)
             {
                 // XXX can't free this, since 'append' recycles old pointers !!
                 // there's probably a minor memory leak here ...
@@ -202,8 +199,7 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
     reports_menu = new_menus;
     if (!reports_menu)
     {
-        reports_menu = g_new0(GnomeUIInfo, 1);
-        reports_menu[0].type = GNOME_APP_UI_ENDOFINFO;
+        reports_menu = g_new0(GttPlugin, 1);
     }
 
     // Now install the new menu items.
@@ -213,21 +209,21 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
 /* ============================================================ */
 /* Slide a new menu entry into first place */
 
-void gtt_reports_menu_prepend_entry(GnomeApp *app, GnomeUIInfo *new_entry)
+void gtt_reports_menu_prepend_entry(GnomeApp *app, GttPlugin *new_entry)
 {
     int i, nitems;
-    GnomeUIInfo *current_sysmenu, *new_sysmenu;
+    GttPlugin *current_sysmenu, *new_sysmenu;
 
     current_sysmenu = gtt_get_reports_menu();
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != current_sysmenu[i].type; i++)
+    for (i = 0; NULL != current_sysmenu[i].name; i++)
     {
     }
     nitems = i + 1;
 
-    new_sysmenu = g_new0(GnomeUIInfo, nitems + 1);
+    new_sysmenu = g_new0(GttPlugin, nitems + 1);
     new_sysmenu[0] = *new_entry;
 
-    memcpy(&new_sysmenu[1], current_sysmenu, nitems * sizeof(GnomeUIInfo));
+    memcpy(&new_sysmenu[1], current_sysmenu, nitems * sizeof(GttPlugin));
     gtt_set_reports_menu(app, new_sysmenu);
 }
 

@@ -17,12 +17,10 @@ gnotime_SOURCES =     \
 	err-throw.c        \
 	export.c           \
 	file-io.c          \
-	gconf-gnomeui.c    \
 	gconf-io.c         \
 	ghtml.c            \
 	ghtml-deprecated.c \
 	gtt-date-edit.c    \
-	gtt-gsettings-gnomeui.c \
 	gtt-gsettings-io-p.c \
 	gtt-gsettings-io.c \
 	idle-dialog.c      \
@@ -62,13 +60,11 @@ noinst_HEADERS =      \
 	err-throw.h        \
 	export.h           \
 	file-io.h          \
-	gconf-gnomeui.h    \
 	gconf-io.h         \
 	gconf-io-p.h       \
 	ghtml.h            \
 	ghtml-deprecated.h \
 	gtt-date-edit.h    \
-	gtt-gsettings-gnomeui.h \
 	gtt-gsettings-io-p.h \
 	gtt-gsettings-io.h \
 	gtt.h              \

@@ -63,23 +63,34 @@ GttPlugin *gtt_plugin_copy(GttPlugin *orig)
         return NULL;
 
     plg = g_new0(GttPlugin, 1);
-    plg->name = NULL;
-    if (orig->name)
-        plg->name = g_strdup(orig->name);
-
-    plg->path = NULL;
-    if (orig->path)
-        plg->path = g_strdup(orig->path);
-
-    plg->tooltip = NULL;
-    if (orig->tooltip)
-        plg->tooltip = g_strdup(orig->tooltip);
-
-    plg->last_url = NULL;
-    if (orig->last_url)
-        plg->last_url = g_strdup(orig->last_url);
+    gtt_plugin_copy_to(orig, plg);
 
     return plg;
+}
+
+void gtt_plugin_copy_to(GttPlugin *orig, GttPlugin *target)
+{
+    if (!orig)
+        return;
+
+    // This will only free the contained strings, not the struct itself.
+    gtt_plugin_free(target);
+
+    target->name = NULL;
+    if (orig->name)
+        target->name = g_strdup(orig->name);
+
+    target->path = NULL;
+    if (orig->path)
+        target->path = g_strdup(orig->path);
+
+    target->tooltip = NULL;
+    if (orig->tooltip)
+        target->tooltip = g_strdup(orig->tooltip);
+
+    target->last_url = NULL;
+    if (orig->last_url)
+        target->last_url = g_strdup(orig->last_url);
 }
 
 void gtt_plugin_free(GttPlugin *plg)
@@ -125,29 +136,13 @@ static void new_plugin_create_cb(GtkWidget *w, gpointer data)
     else
     {
         GttPlugin *plg;
-        GnomeUIInfo entry[2];
 
         /* Create the plugin */
         plg = gtt_plugin_new(title, path);
         plg->tooltip = g_strdup(tip);
 
         /* Add the thing to the Reports menu */
-        entry[0].type = GNOME_APP_UI_ITEM;
-        entry[0].label = plg->name;
-        entry[0].hint = plg->tooltip;
-        entry[0].moreinfo = invoke_report;
-        entry[0].user_data = plg;
-        entry[0].unused_data = NULL;
-        entry[0].pixmap_type = GNOME_APP_PIXMAP_STOCK;
-        entry[0].pixmap_info = GNOME_STOCK_MENU_BLANK;
-        entry[0].accelerator_key = 0;
-        entry[0].ac_mods = (GdkModifierType) 0;
-
-        entry[1].type = GNOME_APP_UI_ENDOFINFO;
-
-        // gnome_app_insert_menus (dlg->app,  N_("Reports/<Separator>"), entry);
-
-        gtt_reports_menu_prepend_entry(dlg->app, entry);
+        gtt_reports_menu_prepend_entry(dlg->app, plg);
 
         /* Save to file, too.  That way, if system core dumps later,
          * at least we managed to get this set of changes saved. */

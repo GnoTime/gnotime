@@ -23,12 +23,10 @@ add_executable(${PROJECT_NAME}
     err-throw.c
     export.c
     file-io.c
-    gconf-gnomeui.c
     gconf-io.c
     ghtml.c
     ghtml-deprecated.c
     gtt-date-edit.c
-    gtt-gsettings-gnomeui.c
     gtt-gsettings-io-p.c
     gtt-gsettings-io.c
     idle-dialog.c
