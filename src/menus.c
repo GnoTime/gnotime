@@ -36,56 +36,6 @@
 static GtkBuilder * menu_builder;
 
 
-/* Insert an item with a stock icon and a user data pointer */
-#define GNOMEUIINFO_ITEM_STOCK_DATA(label, tooltip, callback, user_data, stock_id) \
-    {                                                                              \
-        GNOME_APP_UI_ITEM, label, tooltip, (gpointer) callback, user_data, NULL,   \
-            GNOME_APP_PIXMAP_STOCK, stock_id, 0, (GdkModifierType) 0, NULL         \
-    }
-
-static GnomeUIInfo menu_popup[] = {
-#define MENU_POPUP_JNL_POS 0
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Activity..."), N_("Show the timesheet journal for this project"), show_report,
-        ACTIVITY_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("Edit _Times"), N_("Edit the time interval associated with this project"),
-        menu_howto_edit_times, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_New Diary Entry"), N_("Change the current task for this project"), new_task_ui,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_Edit Diary Entry"), N_("Edit task header for this project"), edit_task_ui,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_CUT_POS 5
-    GNOMEUIINFO_MENU_CUT_ITEM(cut_project, NULL),
-#define MENU_POPUP_COPY_POS 6
-    GNOMEUIINFO_MENU_COPY_ITEM(copy_project, NULL),
-#define MENU_POPUP_PASTE_POS 7
-    GNOMEUIINFO_MENU_PASTE_ITEM(paste_project, NULL),
-    GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_PROP_POS 9
-    GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties, NULL),
-    GNOMEUIINFO_END
-};
-
-GtkMenuShell *menus_get_popup(void)
-{
-    static GtkMenuShell *menu = NULL;
-
-    if (menu)
-        return menu;
-
-    menu = (GtkMenuShell *) gtk_menu_new();
-    gnome_app_fill_menu(menu, menu_popup, NULL, TRUE, 0);
-    return menu;
-}
-
 static void attach_menu_action(GtkBuilder * builder, const char * item_name,
                                GCallback callback, void * user_data)
 {
@@ -94,17 +44,40 @@ static void attach_menu_action(GtkBuilder * builder, const char * item_name,
     g_signal_connect(item, "activate", callback, user_data);
 }
 
+
+GtkMenuShell *menus_get_popup(void)
+{
+    GtkBuilder *builder = menu_builder;
+
+    static GtkMenuShell * menu = NULL;
+
+    if (menu)
+        return menu;
+
+    menu = GTK_MENU_SHELL(gtk_builder_get_object(builder, "menu_popup_project_list"));
+
+    attach_menu_action(builder, "mi_projpopup_activity", G_CALLBACK(show_report), ACTIVITY_REPORT);
+    attach_menu_action(builder, "mi_projpopup_edittimes", G_CALLBACK(menu_howto_edit_times), NULL);
+    attach_menu_action(builder, "mi_projpopup_newentry", G_CALLBACK(new_task_ui), NULL);
+    attach_menu_action(builder, "mi_projpopup_editentry", G_CALLBACK(edit_task_ui), NULL);
+    attach_menu_action(builder, "mi_projpopup_cut", G_CALLBACK(cut_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_copy", G_CALLBACK(copy_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_paste", G_CALLBACK(paste_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_props", G_CALLBACK(menu_properties), NULL);
+
+    return menu;
+}
+
 void menus_create(GnomeApp *app)
 {
-    menus_get_popup(); /* initialize it */
-
     GtkBuilder *builder;
     builder = gtt_builder_new_from_file("ui/mainmenu.ui");
-    GtkMenuBar * menubar = GTK_MENU_BAR(gtk_builder_get_object(builder, "mainmenu"));
-
-    gnome_app_set_menus(app, menubar);
-
     menu_builder = builder;
+
+    menus_get_popup(); /* initialize it */
+
+    GtkMenuBar * menubar = GTK_MENU_BAR(gtk_builder_get_object(builder, "mainmenu"));
+    gnome_app_set_menus(app, menubar);
 
     // Cannot get accelerators to work. Ignore for now, as I expect this way to
     // build the menus will not last very long. /OB 2023-07-10
@@ -238,7 +211,7 @@ void menu_set_states(void)
     if (menu_builder == NULL)
         return;
 
-    GtkWidget * mi_paste_project;
+    GtkWidget * mi_paste_project, * mi_projpopup_paste;
     GtkWidget * mi_timer_start, * mi_timer_stop, * mi_timer_toggle;
 
     mi_timer_start = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_timer_start"));
@@ -268,12 +241,8 @@ void menu_set_states(void)
     mi_paste_project = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_paste_project"));
     gtk_widget_set_sensitive(mi_paste_project, (have_cutted_project()));
 
-    if (menu_popup[MENU_POPUP_CUT_POS].widget)
-    {
-        gtk_widget_set_sensitive(
-            menu_popup[MENU_POPUP_PASTE_POS].widget, (have_cutted_project())
-        );
-    }
+    mi_projpopup_paste = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_projpopup_paste"));
+    gtk_widget_set_sensitive(mi_projpopup_paste, (have_cutted_project()));
 }
 
 /* ======================= END OF FILE ===================== */
