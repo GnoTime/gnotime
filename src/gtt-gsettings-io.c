@@ -31,7 +31,7 @@
 #include "toolbar.h"
 
 static void gtt_gsettings_ensure_initialized(void);
-static void gtt_gsettings_restore_reports_menu(GnomeApp *app);
+static void gtt_gsettings_restore_reports_menu();
 
 // XXX these should not be externs, they should be part of some app-global structure.
 extern int save_count;         // XXX
@@ -506,7 +506,7 @@ void gtt_gsettings_load(void)
     }
 
     // Read in the user-defined report locations
-    gtt_gsettings_restore_reports_menu(GNOME_APP(app_window));
+    gtt_gsettings_restore_reports_menu();
 
     // Misc ------------------------------------------------------------------------------------
     {
@@ -568,7 +568,7 @@ static void gtt_gsettings_ensure_initialized(void)
     settings_obj = g_settings_new("org.gnotime.app");
 }
 
-static void gtt_gsettings_restore_reports_menu(GnomeApp *const app)
+static void gtt_gsettings_restore_reports_menu()
 {
     gtt_gsettings_ensure_initialized();
 
@@ -601,5 +601,5 @@ static void gtt_gsettings_restore_reports_menu(GnomeApp *const app)
         settings_path = NULL;
     }
 
-    gtt_set_reports_menu(app, reports_menu);
+    gtt_set_reports_menu(reports_menu);
 }

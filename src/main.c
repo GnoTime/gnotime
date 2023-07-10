@@ -211,7 +211,7 @@ static void post_read_data(void)
 
     /* Plugins need to be added to the main menus dynamically,
      * after the config file has been read */
-    menus_add_plugins(GNOME_APP(app_window));
+    menus_add_plugins();
     log_start();
     app_show();
 }

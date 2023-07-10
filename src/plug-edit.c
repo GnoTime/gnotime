@@ -44,8 +44,6 @@ struct PluginEditorDialog_s
     GtkEntry *plugin_name; /* AKA 'Label' */
     GtkFileChooser *plugin_path;
     GtkEntry *plugin_tooltip;
-
-    GnomeApp *app;
 };
 
 #define NCOLUMNS 4
@@ -319,7 +317,7 @@ static void edit_plugin_apply_cb(GtkWidget *w, gpointer data)
     {
         gtt_plugin_copy_to(&dlgmenu[i], &sysmenu[i]);
     }
-    gtt_set_reports_menu(dlg->app, sysmenu);
+    gtt_set_reports_menu(sysmenu);
 }
 
 static void edit_plugin_commit_cb(GtkWidget *w, gpointer data)
@@ -664,7 +662,6 @@ PluginEditorDialog *edit_plugin_dialog_new(void)
     const char *col_titles[NCOLUMNS];
 
     dlg = g_malloc(sizeof(PluginEditorDialog));
-    dlg->app = GNOME_APP(app_window);
 
     builder = gtt_builder_new_from_file("ui/plugin_editor.ui");
     dlg->gtkbuilder = builder;

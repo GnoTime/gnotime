@@ -133,7 +133,7 @@ GttPlugin *gtt_get_reports_menu(void)
     return (reports_menu);
 }
 
-static void gtt_append_custom_reports(GnomeApp *app, GttPlugin *report_menu_items)
+static void gtt_append_custom_reports(GttPlugin *report_menu_items)
 {
     GtkMenuShell * reports_menu = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
     int i;
@@ -160,7 +160,7 @@ static void gtt_append_custom_reports(GnomeApp *app, GttPlugin *report_menu_item
 }
 
 
-void gtt_set_reports_menu(GnomeApp *app, GttPlugin *new_menus)
+void gtt_set_reports_menu(GttPlugin *new_menus)
 {
     int i;
 
@@ -203,13 +203,13 @@ void gtt_set_reports_menu(GnomeApp *app, GttPlugin *new_menus)
     }
 
     // Now install the new menu items.
-    gtt_append_custom_reports(app, reports_menu);
+    gtt_append_custom_reports(reports_menu);
 }
 
 /* ============================================================ */
 /* Slide a new menu entry into first place */
 
-void gtt_reports_menu_prepend_entry(GnomeApp *app, GttPlugin *new_entry)
+void gtt_reports_menu_prepend_entry(GttPlugin *new_entry)
 {
     int i, nitems;
     GttPlugin *current_sysmenu, *new_sysmenu;
@@ -224,14 +224,14 @@ void gtt_reports_menu_prepend_entry(GnomeApp *app, GttPlugin *new_entry)
     new_sysmenu[0] = *new_entry;
 
     memcpy(&new_sysmenu[1], current_sysmenu, nitems * sizeof(GttPlugin));
-    gtt_set_reports_menu(app, new_sysmenu);
+    gtt_set_reports_menu(new_sysmenu);
 }
 
 /* ============================================================ */
 
-void menus_add_plugins(GnomeApp *app)
+void menus_add_plugins()
 {
-    gtt_set_reports_menu(app, reports_menu);
+    gtt_set_reports_menu(reports_menu);
 }
 
 void menu_set_states(void)

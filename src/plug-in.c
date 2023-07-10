@@ -35,7 +35,6 @@ struct NewPluginDialog_s
     GtkEntry *plugin_name;
     GtkFileChooser *plugin_path;
     GtkEntry *plugin_tooltip;
-    GnomeApp *app;
 };
 
 /* ============================================================ */
@@ -142,7 +141,7 @@ static void new_plugin_create_cb(GtkWidget *w, gpointer data)
         plg->tooltip = g_strdup(tip);
 
         /* Add the thing to the Reports menu */
-        gtt_reports_menu_prepend_entry(dlg->app, plg);
+        gtt_reports_menu_prepend_entry(plg);
 
         /* Save to file, too.  That way, if system core dumps later,
          * at least we managed to get this set of changes saved. */
@@ -186,7 +185,6 @@ NewPluginDialog *new_plugin_dialog_new(void)
     GObject *e;
 
     dlg = g_malloc(sizeof(NewPluginDialog));
-    dlg->app = GNOME_APP(app_window);
 
     builder = gtt_builder_new_from_file("ui/plugin.ui");
     dlg->gtkbuilder = builder;

@@ -75,7 +75,7 @@ gboolean gtt_gconf_exists(void)
 
 /* ======================================================= */
 
-void gtt_restore_reports_menu(GnomeApp *app)
+void gtt_restore_reports_menu()
 {
     int i, num;
     char s[120], *p;
@@ -117,7 +117,7 @@ void gtt_restore_reports_menu(GnomeApp *app)
         *p = 0;
     }
 
-    gtt_set_reports_menu(app, reports_menu);
+    gtt_set_reports_menu(reports_menu);
 }
 
 /* ======================================================= */
@@ -267,7 +267,7 @@ void gtt_gconf_load(void)
     }
 
     /* Read in the user-defined report locations */
-    gtt_restore_reports_menu(GNOME_APP(app_window));
+    gtt_restore_reports_menu();
 
     run_timer = GETINT("/Misc/TimerRunning", 0);
     /* Use string for time, to avoid unsigned-long problems */
