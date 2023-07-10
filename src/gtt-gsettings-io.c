@@ -20,7 +20,6 @@
 
 #include "gtt-gsettings-io.h"
 
-#include "gtt-gsettings-gnomeui.h"
 #include "gtt-gsettings-io-p.h"
 
 #include "app.h"
@@ -50,11 +49,11 @@ void gtt_gsettings_save_reports_menu(void)
 {
     gtt_gsettings_ensure_initialized();
 
-    GnomeUIInfo *const reports_menu = gtt_get_reports_menu();
+    GttPlugin *const reports_menu = gtt_get_reports_menu();
 
     // Write out the customer report info
     int i = 0;
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+    for (i = 0; NULL != reports_menu[i].name; i++)
     {
         gchar *settings_path = g_strdup_printf("/org/gnotime/app/reports/report-%d/", i);
 
@@ -63,14 +62,12 @@ void gtt_gsettings_save_reports_menu(void)
 
         g_settings_delay(settings);
 
-        GttPlugin *plg = reports_menu[i].user_data;
+        GttPlugin *plg = &reports_menu[i];
 
         gtt_gsettings_set_string(settings, "name", plg->name);
         gtt_gsettings_set_string(settings, "path", plg->path);
         gtt_gsettings_set_string(settings, "tooltip", plg->tooltip);
         gtt_gsettings_set_string(settings, "last-save-url", plg->last_url);
-
-        gtt_save_gnomeui_to_gsettings(settings, &reports_menu[i]);
 
         g_settings_apply(settings);
 
@@ -581,7 +578,7 @@ static void gtt_gsettings_restore_reports_menu(GnomeApp *const app)
     g_object_unref(misc);
     misc = NULL;
 
-    GnomeUIInfo *reports_menu = g_new0(GnomeUIInfo, num + 1);
+    GttPlugin *reports_menu = g_new0(GttPlugin, num + 1);
 
     int i = 0;
     for (i = 0; i < num; i++)
@@ -591,23 +588,11 @@ static void gtt_gsettings_restore_reports_menu(GnomeApp *const app)
         GSettings *settings
             = g_settings_new_with_path("org.gnotime.app.reports", settings_path);
 
-        gchar *name = g_settings_get_string(settings, "name");
-        gchar *path = g_settings_get_string(settings, "path");
-
-        GttPlugin *plg = gtt_plugin_new(name, path);
-
-        g_free(path);
-        path = NULL;
-        g_free(name);
-        name = NULL;
-
+        GttPlugin *plg = &reports_menu[i];
+        plg->name = g_settings_get_string(settings, "name");
+        plg->path = g_settings_get_string(settings, "path");
         plg->tooltip = g_settings_get_string(settings, "tooltip");
         plg->last_url = g_settings_get_string(settings, "last-save-url");
-
-        gtt_restore_gnomeui_from_gsettings(settings, &reports_menu[i]);
-
-        // Fixup
-        reports_menu[i].user_data = plg;
 
         g_object_unref(settings);
         settings = NULL;
@@ -615,7 +600,6 @@ static void gtt_gsettings_restore_reports_menu(GnomeApp *const app)
         g_free(settings_path);
         settings_path = NULL;
     }
-    reports_menu[i].type = GNOME_APP_UI_ENDOFINFO;
 
     gtt_set_reports_menu(app, reports_menu);
 }

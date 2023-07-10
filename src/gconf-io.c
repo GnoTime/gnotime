@@ -24,7 +24,6 @@
 
 #include "app.h"
 #include "cur-proj.h"
-#include "gconf-gnomeui.h"
 #include "gconf-io-p.h"
 #include "gconf-io.h"
 #include "gtt.h"
@@ -80,14 +79,14 @@ void gtt_restore_reports_menu(GnomeApp *app)
 {
     int i, num;
     char s[120], *p;
-    GnomeUIInfo *reports_menu;
+    GttPlugin *reports_menu;
     GConfClient *client;
 
     client = gconf_client_get_default();
 
     /* Read in the user-defined report locations */
     num = GETINT("/Misc/NumReports", 0);
-    reports_menu = g_new0(GnomeUIInfo, num + 1);
+    reports_menu = g_new0(GttPlugin, num + 1);
 
     for (i = 0; i < num; i++)
     {
@@ -109,17 +108,14 @@ void gtt_restore_reports_menu(GnomeApp *app)
         strcpy(p, "LastSaveURL");
         url = F_GETSTR(s, "");
 
-        plg = gtt_plugin_new(name, path);
+        plg = &reports_menu[i];
+        plg->name = g_strdup(name);
+        plg->path = g_strdup(path);
         plg->tooltip = g_strdup(tip);
         plg->last_url = g_strdup(url);
 
         *p = 0;
-        gtt_restore_gnomeui_from_gconf(client, s, &reports_menu[i]);
-
-        /* fixup */
-        reports_menu[i].user_data = plg;
     }
-    reports_menu[i].type = GNOME_APP_UI_ENDOFINFO;
 
     gtt_set_reports_menu(app, reports_menu);
 }

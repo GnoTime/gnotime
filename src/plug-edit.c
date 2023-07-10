@@ -34,7 +34,7 @@ struct PluginEditorDialog_s
 
     GtkTreeView *treeview;
     GtkTreeStore *treestore;
-    GArray *menus; /* array of GnomeUIInfo */
+    GArray *menus; /* array of GttPlugin */
 
     GtkTreeSelection *selection;
     gboolean have_selection;
@@ -55,16 +55,14 @@ struct PluginEditorDialog_s
 /* Redraw one row of the tree widget */
 
 static void edit_plugin_redraw_row(
-    struct PluginEditorDialog_s *ped, GtkTreeIter *iter, GnomeUIInfo *uientry
+    struct PluginEditorDialog_s *ped, GtkTreeIter *iter, GttPlugin *plg
 )
 {
-    GttPlugin *plg;
     GValue val = { G_TYPE_INVALID };
     GValue pval = { G_TYPE_INVALID };
 
-    if (!uientry || !uientry->user_data)
+    if (!plg)
         return;
-    plg = uientry->user_data;
 
     g_value_init(&val, G_TYPE_STRING);
     g_value_set_string(&val, plg->name);
@@ -77,7 +75,7 @@ static void edit_plugin_redraw_row(
     gtk_tree_store_set_value(ped->treestore, iter, 2, &val);
 
     g_value_init(&pval, G_TYPE_POINTER);
-    g_value_set_pointer(&pval, uientry);
+    g_value_set_pointer(&pval, plg);
     gtk_tree_store_set_value(ped->treestore, iter, PTRCOL, &pval);
 }
 
@@ -86,16 +84,16 @@ static void edit_plugin_redraw_tree(struct PluginEditorDialog_s *ped)
     int i, rc;
     GtkTreeIter iter;
     GtkTreeModel *model;
-    GnomeUIInfo *uientry;
+    GttPlugin *uientry;
 
     /* Walk the current menu list */
     model = GTK_TREE_MODEL(ped->treestore);
-    uientry = (GnomeUIInfo *) ped->menus->data;
+    uientry = (GttPlugin *) ped->menus->data;
 
     rc = gtk_tree_model_get_iter_first(model, &iter);
     for (i = 0; i < ped->menus->len; i++)
     {
-        if (GNOME_APP_UI_ENDOFINFO == uientry[i].type)
+        if (NULL == uientry[i].name)
             break;
         if (0 == rc)
         {
@@ -117,12 +115,11 @@ static void edit_plugin_redraw_tree(struct PluginEditorDialog_s *ped)
 
 /* ============================================================ */
 
-static void edit_plugin_widgets_to_item(PluginEditorDialog *dlg, GnomeUIInfo *gui)
+static void edit_plugin_widgets_to_item(PluginEditorDialog *dlg, GttPlugin *plg)
 {
     const char *title, *path, *tip;
-    GttPlugin *plg;
 
-    if (!gui)
+    if (!plg)
         return;
 
     /* Get the dialog contents */
@@ -149,7 +146,6 @@ static void edit_plugin_widgets_to_item(PluginEditorDialog *dlg, GnomeUIInfo *gu
         path = "";
 
     /* set the values into the item */
-    plg = gui->user_data;
     if (plg->name)
         g_free(plg->name);
     plg->name = g_strdup(title);
@@ -159,25 +155,12 @@ static void edit_plugin_widgets_to_item(PluginEditorDialog *dlg, GnomeUIInfo *gu
     if (plg->tooltip)
         g_free(plg->tooltip);
     plg->tooltip = g_strdup(tip);
-
-    gui->type = GNOME_APP_UI_ITEM;
-    gui->label = plg->name;
-    gui->hint = plg->tooltip;
-    gui->moreinfo = invoke_report;
-    gui->unused_data = NULL;
-    gui->pixmap_type = GNOME_APP_PIXMAP_STOCK;
-    gui->pixmap_info = GNOME_STOCK_BLANK;
-    gui->accelerator_key = 0;
-    gui->ac_mods = (GdkModifierType) 0;
 }
 
-static void edit_plugin_item_to_widgets(PluginEditorDialog *dlg, GnomeUIInfo *gui)
+static void edit_plugin_item_to_widgets(PluginEditorDialog *dlg, GttPlugin *plg)
 {
-    GttPlugin *plg;
-
-    if (!gui)
+    if (!plg)
         return;
-    plg = gui->user_data;
 
     gtk_entry_set_text(dlg->plugin_name, plg->name);
     gtk_file_chooser_set_uri(dlg->plugin_path, plg->path);
@@ -207,7 +190,7 @@ static void edit_plugin_tree_selection_changed_cb(GtkTreeSelection *selection, g
     dlg->do_redraw = FALSE;
     if (dlg->have_selection)
     {
-        GnomeUIInfo *curr_item;
+        GttPlugin *curr_item;
         GValue val = { G_TYPE_INVALID };
         gtk_tree_model_get_value(model, &dlg->curr_selection, PTRCOL, &val);
         curr_item = g_value_get_pointer(&val);
@@ -218,7 +201,7 @@ static void edit_plugin_tree_selection_changed_cb(GtkTreeSelection *selection, g
 
     if (have_selection)
     {
-        GnomeUIInfo *curr_item;
+        GttPlugin *curr_item;
         GValue val = { G_TYPE_INVALID };
         gtk_tree_model_get_value(model, &iter, PTRCOL, &val);
         curr_item = g_value_get_pointer(&val);
@@ -243,7 +226,7 @@ static void edit_plugin_tree_selection_changed_cb(GtkTreeSelection *selection, g
 
 static void edit_plugin_changed_cb(GtkWidget *w, gpointer data)
 {
-    GnomeUIInfo *curr_item;
+    GttPlugin *curr_item;
     GValue val = { G_TYPE_INVALID };
     PluginEditorDialog *dlg = data;
 
@@ -270,29 +253,18 @@ static void edit_plugin_changed_cb(GtkWidget *w, gpointer data)
 
 static void edit_plugin_setup(PluginEditorDialog *dlg)
 {
-    int i, nitems;
-    GnomeUIInfo *sysmenus;
+    int i;
+    GttPlugin *sysmenus;
 
     /* Copy-in existing menus from the system */
     sysmenus = gtt_get_reports_menu();
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++)
-    {
-    }
-    nitems = i + 1;
 
-    dlg->menus = g_array_new(TRUE, FALSE, sizeof(GnomeUIInfo));
-    dlg->menus = g_array_append_vals(dlg->menus, sysmenus, nitems);
-    sysmenus = (GnomeUIInfo *) dlg->menus->data;
-    for (i = 0; i < nitems; i++)
+    dlg->menus = g_array_new(TRUE, FALSE, sizeof(GttPlugin));
+    for (i = 0; NULL != sysmenus[i].name; i++)
     {
-        GttPlugin *plg = sysmenus[i].user_data;
+        GttPlugin *plg = &sysmenus[i];
         plg = gtt_plugin_copy(plg);
-        sysmenus[i].user_data = plg;
-        if (plg)
-        {
-            sysmenus[i].label = plg->name;
-            sysmenus[i].hint = plg->tooltip;
-        }
+        g_array_append_vals(dlg->menus, plg, 1);
     }
 
     /* Redraw the tree */
@@ -307,7 +279,7 @@ static void edit_plugin_setup(PluginEditorDialog *dlg)
 
 static void edit_plugin_cleanup(PluginEditorDialog *dlg)
 {
-    GnomeUIInfo *sysmenus;
+    GttPlugin *sysmenus;
     int i;
 
     /* Unselect row in tree widget. */
@@ -320,12 +292,10 @@ static void edit_plugin_cleanup(PluginEditorDialog *dlg)
     /* Free our local copy of menu structure.
        Done last, because the tree structures above contain references
        to these, that may be accessed from callbacks triggered above. */
-    sysmenus = (GnomeUIInfo *) dlg->menus->data;
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++)
+    sysmenus = (GttPlugin *) dlg->menus->data;
+    for (i = 0; NULL != sysmenus[i].name; i++)
     {
-    }
-    {
-        gtt_plugin_free(sysmenus[i].user_data);
+        gtt_plugin_free(&sysmenus[i]);
     }
     g_array_free(dlg->menus, TRUE);
     dlg->menus = NULL;
@@ -338,24 +308,16 @@ static void edit_plugin_cleanup(PluginEditorDialog *dlg)
 static void edit_plugin_apply_cb(GtkWidget *w, gpointer data)
 {
     PluginEditorDialog *dlg = data;
-    GnomeUIInfo *dlgmenu, *sysmenu;
+    GttPlugin *dlgmenu, *sysmenu;
     int i, nitems;
 
     /* Copy from local copy to system menus */
-    dlgmenu = (GnomeUIInfo *) dlg->menus->data;
-    nitems = dlg->menus->len;
-    sysmenu = g_new0(GnomeUIInfo, nitems);
-    memcpy(sysmenu, dlgmenu, nitems * sizeof(GnomeUIInfo));
-    for (i = 0; i < nitems - 1; i++)
+    dlgmenu = (GttPlugin *) dlg->menus->data;
+    nitems = dlg->menus->len; /* length without terminating element */
+    sysmenu = g_new0(GttPlugin, nitems + 1);
+    for (i = 0; i < nitems; i++)
     {
-        GttPlugin *plg = dlgmenu[i].user_data;
-        plg = gtt_plugin_copy(plg);
-        sysmenu[i].user_data = plg;
-        if (plg)
-        {
-            sysmenu[i].label = plg->name;
-            sysmenu[i].hint = plg->tooltip;
-        }
+        gtt_plugin_copy_to(&dlgmenu[i], &sysmenu[i]);
     }
     gtt_set_reports_menu(dlg->app, sysmenu);
 }
@@ -392,8 +354,8 @@ static void edit_plugin_cancel_cb(GtkWidget *w, gpointer data)
 static int edit_plugin_get_index_of_selected_item(PluginEditorDialog *dlg)
 {
     int i;
-    GnomeUIInfo *curr_item;
-    GnomeUIInfo *sysmenus;
+    GttPlugin *curr_item;
+    GttPlugin *sysmenus;
     GValue val = { G_TYPE_INVALID };
 
     if (FALSE == dlg->have_selection)
@@ -407,8 +369,8 @@ static int edit_plugin_get_index_of_selected_item(PluginEditorDialog *dlg)
     );
     curr_item = g_value_get_pointer(&val);
 
-    sysmenus = (GnomeUIInfo *) dlg->menus->data;
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != sysmenus[i].type; i++)
+    sysmenus = (GttPlugin *) dlg->menus->data;
+    for (i = 0; NULL != sysmenus[i].name; i++)
     {
         if (curr_item == &sysmenus[i])
             return i;
@@ -419,10 +381,10 @@ static int edit_plugin_get_index_of_selected_item(PluginEditorDialog *dlg)
 /* ============================================================ */
 /* Get the Iter, in the tree, of the indicated item */
 static void
-edit_plugin_get_iter_of_item(PluginEditorDialog *dlg, GnomeUIInfo *item, GtkTreeIter *iter)
+edit_plugin_get_iter_of_item(PluginEditorDialog *dlg, GttPlugin *item, GtkTreeIter *iter)
 {
     int i, rc;
-    GnomeUIInfo *uientry;
+    GttPlugin *uientry;
     GtkTreeModel *model;
 
     model = GTK_TREE_MODEL(dlg->treestore);
@@ -430,11 +392,11 @@ edit_plugin_get_iter_of_item(PluginEditorDialog *dlg, GnomeUIInfo *item, GtkTree
 
     if (!dlg->menus)
         return;
-    uientry = (GnomeUIInfo *) dlg->menus->data;
+    uientry = (GttPlugin *) dlg->menus->data;
 
     for (i = 0; i < dlg->menus->len; i++)
     {
-        if (GNOME_APP_UI_ENDOFINFO == uientry[i].type)
+        if (NULL == uientry[i].name)
             break;
 
         if (0 == rc)
@@ -452,7 +414,6 @@ edit_plugin_get_iter_of_item(PluginEditorDialog *dlg, GnomeUIInfo *item, GtkTree
 static void edit_plugin_add_cb(GtkWidget *w, gpointer data)
 {
     PluginEditorDialog *dlg = data;
-    GnomeUIInfo item, *uientry;
     GtkTreeIter iter;
     int index;
     GttPlugin *plg;
@@ -462,15 +423,14 @@ static void edit_plugin_add_cb(GtkWidget *w, gpointer data)
     if (!plg)
         return;
 
-    item.user_data = plg;
-    edit_plugin_widgets_to_item(dlg, &item);
+    edit_plugin_widgets_to_item(dlg, plg);
 
     /* Insert item into list, or, if no selection, append */
     index = edit_plugin_get_index_of_selected_item(dlg);
     if (0 > index)
         index = dlg->menus->len - 1;
 
-    g_array_insert_val(dlg->menus, index, item);
+    g_array_insert_val(dlg->menus, index, *plg);
 
     /* Redraw the tree */
     edit_plugin_redraw_tree(dlg);
@@ -478,15 +438,15 @@ static void edit_plugin_add_cb(GtkWidget *w, gpointer data)
     /* Select the new row. Not strictly needed, unless there
      * had not been any selection previously.
      */
-    uientry = (GnomeUIInfo *) dlg->menus->data;
-    edit_plugin_get_iter_of_item(dlg, &uientry[index], &iter);
+    plg = (GttPlugin *) dlg->menus->data;
+    edit_plugin_get_iter_of_item(dlg, &plg[index], &iter);
     gtk_tree_selection_select_iter(dlg->selection, &iter);
 }
 
 static void edit_plugin_delete_cb(GtkWidget *w, gpointer data)
 {
     int row;
-    GnomeUIInfo *sysmenus;
+    GttPlugin *sysmenus;
     PluginEditorDialog *dlg = data;
 
     if (FALSE == dlg->have_selection)
@@ -498,8 +458,8 @@ static void edit_plugin_delete_cb(GtkWidget *w, gpointer data)
         return;
 
     /* DO NOT delete the end-of-array marker */
-    sysmenus = (GnomeUIInfo *) dlg->menus->data;
-    if (GNOME_APP_UI_ENDOFINFO == sysmenus[row].type)
+    sysmenus = (GttPlugin *) dlg->menus->data;
+    if (NULL == sysmenus[row].name)
         return;
 
     dlg->menus = g_array_remove_index(dlg->menus, row);
@@ -582,7 +542,7 @@ static void edit_plugin_set_selection(PluginEditorDialog *dlg, int offset)
 static void edit_plugin_move_menu_item(PluginEditorDialog *dlg, int offset)
 {
     int row, rowb;
-    GnomeUIInfo *sysmenus, itema, itemb;
+    GttPlugin *sysmenus, itema, itemb;
 
     if (FALSE == dlg->have_selection)
         return;
@@ -593,19 +553,19 @@ static void edit_plugin_move_menu_item(PluginEditorDialog *dlg, int offset)
         return;
 
     /* DO NOT move the end-of-array marker */
-    sysmenus = (GnomeUIInfo *) dlg->menus->data;
-    if (GNOME_APP_UI_ENDOFINFO == sysmenus[row].type)
+    sysmenus = (GttPlugin *) dlg->menus->data;
+    if (NULL == sysmenus[row].name)
         return;
 
     rowb = row + offset;
     if ((0 > rowb) || (rowb >= dlg->menus->len))
         return;
 
-    itema = g_array_index(dlg->menus, GnomeUIInfo, row);
-    itemb = g_array_index(dlg->menus, GnomeUIInfo, rowb);
+    itema = g_array_index(dlg->menus, GttPlugin, row);
+    itemb = g_array_index(dlg->menus, GttPlugin, rowb);
 
-    g_array_index(dlg->menus, GnomeUIInfo, row) = itemb;
-    g_array_index(dlg->menus, GnomeUIInfo, rowb) = itema;
+    g_array_index(dlg->menus, GttPlugin, row) = itemb;
+    g_array_index(dlg->menus, GttPlugin, rowb) = itema;
 
     /* Redraw the tree */
     dlg->have_selection = FALSE;

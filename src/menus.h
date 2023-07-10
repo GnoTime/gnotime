@@ -21,6 +21,8 @@
 
 #include <gnome.h>
 
+#include "plug-in.h"
+
 /* names of reports */
 #define ACTIVITY_REPORT "activity.ghtml"
 #define DAILY_REPORT "daily.ghtml"
@@ -41,14 +43,14 @@ void menus_set_states(void);
 void menus_add_plugins(GnomeApp *app);
 
 /** Return pointer to user-defined reports menu */
-GnomeUIInfo *gtt_get_reports_menu(void);
+GttPlugin *gtt_get_reports_menu(void);
 
 /** Install the indicate user reports menu */
-void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus);
+void gtt_set_reports_menu(GnomeApp *app, GttPlugin *new_menus);
 
 /** Prepend the indicated user-defined report entry into the
  *   user-defined reports menu.
  */
-void gtt_reports_menu_prepend_entry(GnomeApp *app, GnomeUIInfo *new_entry);
+void gtt_reports_menu_prepend_entry(GnomeApp *app, GttPlugin *new_entry);
 
 #endif // GTT_MENUS_H

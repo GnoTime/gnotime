@@ -29,198 +29,163 @@
 #include "menus.h"
 #include "plug-in.h"
 #include "timer.h"
+#include "util.h"
+#include "dialog.h"
 
-static GnomeUIInfo menu_main_file[]
-    = { { GNOME_APP_UI_ITEM, N_("_Export Tasks"), NULL, export_file_picker, TAB_DELIM_EXPORT,
-          NULL, GNOME_APP_PIXMAP_STOCK, GTK_STOCK_SAVE, 'E', GDK_CONTROL_MASK, NULL },
-        { GNOME_APP_UI_ITEM, N_("Export _Projects"), NULL, export_file_picker, TODO_EXPORT,
-          NULL, GNOME_APP_PIXMAP_STOCK, GTK_STOCK_SAVE, 'P', GDK_CONTROL_MASK, NULL },
-        GNOMEUIINFO_SEPARATOR,
-        GNOMEUIINFO_MENU_EXIT_ITEM(app_quit, NULL),
-        GNOMEUIINFO_END };
+static const char * gtt_is_custom_report = "gtt_is_custom_report";
 
-/* Insert an item with a stock icon and a user data pointer */
-#define GNOMEUIINFO_ITEM_STOCK_DATA(label, tooltip, callback, user_data, stock_id) \
-    {                                                                              \
-        GNOME_APP_UI_ITEM, label, tooltip, (gpointer) callback, user_data, NULL,   \
-            GNOME_APP_PIXMAP_STOCK, stock_id, 0, (GdkModifierType) 0, NULL         \
-    }
 
-static GnomeUIInfo menu_main_projects[]
-    = { GNOMEUIINFO_MENU_NEW_ITEM(N_("_New ..."), NULL, new_project, NULL),
-        GNOMEUIINFO_SEPARATOR,
-#define MENU_PROJECTS_CUT_POS 2
-        { GNOME_APP_UI_ITEM, N_("Cu_t"), N_("Delete the selected project"), cut_project, NULL,
-          NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_PIXMAP_CUT, 'D', GDK_CONTROL_MASK, NULL },
-#define MENU_PROJECTS_COPY_POS 3
-        { GNOME_APP_UI_ITEM, N_("_Copy"), N_("Copy the selected project"), copy_project, NULL,
-          NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_PIXMAP_COPY, 'F', GDK_CONTROL_MASK, NULL },
-#define MENU_PROJECTS_PASTE_POS 4
-        { GNOME_APP_UI_ITEM, N_("_Paste"), N_("Paste the previously copied project"),
-          paste_project, NULL, NULL, GNOME_APP_PIXMAP_STOCK, GNOME_STOCK_PIXMAP_PASTE, 'G',
-          GDK_CONTROL_MASK, NULL },
-        GNOMEUIINFO_SEPARATOR,
-        GNOMEUIINFO_ITEM_STOCK(
-            N_("Edit _Times"), N_("Edit the time interval associated with this project"),
-            menu_howto_edit_times, GNOME_STOCK_BLANK
-        ),
-#define MENU_PROJECTS_PROP_POS 7
-        GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties, NULL),
-        GNOMEUIINFO_END };
+static GtkBuilder * menu_builder;
 
-static GnomeUIInfo menu_main_settings[]
-    = { GNOMEUIINFO_MENU_PREFERENCES_ITEM(menu_options, NULL), GNOMEUIINFO_END };
 
-static GnomeUIInfo menu_main_reports[] = {
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Journal..."), N_("Show the journal for this project"), show_report, JOURNAL_REPORT,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Activity..."),
-        N_("Show the journal together with the timestamps for this project"), show_report,
-        ACTIVITY_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Daily..."), N_("Show the total time spent on a project, day by day"), show_report,
-        DAILY_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Status..."), N_("Show the project descriptions and notes."), show_report,
-        STATUS_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_To Do..."), N_("Show a sample to-do list"), show_report, TODO_REPORT,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Invoice..."), N_("Show a sample invoice for this project"), show_report,
-        INVOICE_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Query..."), N_("Run a sample Query Generator"), show_report, QUERY_REPORT,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Primer..."), N_("Show a sample introductory primer for designing custom reports"),
-        show_report, PRIMER_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_New Report..."), N_("Define a path to a new GnoTime ghtml report file"),
-        new_report, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_Edit Reports..."), N_("Edit the entries in the Reports pulldown menu (this menu)"),
-        report_menu_edit, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_SEPARATOR,
-    GNOMEUIINFO_END
-};
+static void attach_menu_action(GtkBuilder * builder, const char * item_name,
+                               GCallback callback, void * user_data)
+{
+    GtkWidget *item = GTK_WIDGET(gtk_builder_get_object(builder, item_name));
 
-static GnomeUIInfo menu_main_timer[] = {
-#define MENU_TIMER_START_POS 0
-    { GNOME_APP_UI_ITEM, N_("St_art"), N_("Start the timer running"), menu_start_timer, NULL,
-      NULL, GNOME_APP_PIXMAP_STOCK, GTK_STOCK_MEDIA_RECORD, 'S', GDK_CONTROL_MASK, NULL },
-#define MENU_TIMER_STOP_POS 1
-    { GNOME_APP_UI_ITEM, N_("Sto_p"), N_("Stop the timer"), menu_stop_timer, NULL, NULL,
-      GNOME_APP_PIXMAP_STOCK, GTK_STOCK_MEDIA_STOP, 'W', GDK_CONTROL_MASK, NULL },
-#define MENU_TIMER_TOGGLE_POS 2
-    { GNOME_APP_UI_TOGGLEITEM, N_("_Timer Running"), NULL, menu_toggle_timer, NULL, NULL,
-      GNOME_APP_PIXMAP_NONE, NULL, 'T', GDK_CONTROL_MASK, NULL },
-    GNOMEUIINFO_END
-};
+    g_signal_connect(item, "activate", callback, user_data);
+}
 
-static GnomeUIInfo menu_main_help[]
-    = { GNOMEUIINFO_HELP("gnotime"), GNOMEUIINFO_MENU_ABOUT_ITEM(about_box, NULL),
-        GNOMEUIINFO_END };
-
-static GnomeUIInfo menu_main[] = { GNOMEUIINFO_MENU_FILE_TREE(menu_main_file),
-                                   GNOMEUIINFO_SUBTREE(N_("_Projects"), menu_main_projects),
-                                   GNOMEUIINFO_MENU_SETTINGS_TREE(menu_main_settings),
-                                   GNOMEUIINFO_SUBTREE(N_("_Reports"), menu_main_reports),
-                                   GNOMEUIINFO_SUBTREE(N_("_Timer"), menu_main_timer),
-                                   GNOMEUIINFO_MENU_HELP_TREE(menu_main_help),
-                                   GNOMEUIINFO_END };
-
-static GnomeUIInfo menu_popup[] = {
-#define MENU_POPUP_JNL_POS 0
-    GNOMEUIINFO_ITEM_STOCK_DATA(
-        N_("_Activity..."), N_("Show the timesheet journal for this project"), show_report,
-        ACTIVITY_REPORT, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("Edit _Times"), N_("Edit the time interval associated with this project"),
-        menu_howto_edit_times, GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_New Diary Entry"), N_("Change the current task for this project"), new_task_ui,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_ITEM_STOCK(
-        N_("_Edit Diary Entry"), N_("Edit task header for this project"), edit_task_ui,
-        GNOME_STOCK_BLANK
-    ),
-    GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_CUT_POS 5
-    GNOMEUIINFO_MENU_CUT_ITEM(cut_project, NULL),
-#define MENU_POPUP_COPY_POS 6
-    GNOMEUIINFO_MENU_COPY_ITEM(copy_project, NULL),
-#define MENU_POPUP_PASTE_POS 7
-    GNOMEUIINFO_MENU_PASTE_ITEM(paste_project, NULL),
-    GNOMEUIINFO_SEPARATOR,
-#define MENU_POPUP_PROP_POS 9
-    GNOMEUIINFO_MENU_PROPERTIES_ITEM(menu_properties, NULL),
-    GNOMEUIINFO_END
-};
 
 GtkMenuShell *menus_get_popup(void)
 {
-    static GtkMenuShell *menu = NULL;
+    GtkBuilder *builder = menu_builder;
+
+    static GtkMenuShell * menu = NULL;
 
     if (menu)
         return menu;
 
-    menu = (GtkMenuShell *) gtk_menu_new();
-    gnome_app_fill_menu(menu, menu_popup, NULL, TRUE, 0);
+    menu = GTK_MENU_SHELL(gtk_builder_get_object(builder, "menu_popup_project_list"));
+
+    attach_menu_action(builder, "mi_projpopup_activity", G_CALLBACK(show_report), ACTIVITY_REPORT);
+    attach_menu_action(builder, "mi_projpopup_edittimes", G_CALLBACK(menu_howto_edit_times), NULL);
+    attach_menu_action(builder, "mi_projpopup_newentry", G_CALLBACK(new_task_ui), NULL);
+    attach_menu_action(builder, "mi_projpopup_editentry", G_CALLBACK(edit_task_ui), NULL);
+    attach_menu_action(builder, "mi_projpopup_cut", G_CALLBACK(cut_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_copy", G_CALLBACK(copy_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_paste", G_CALLBACK(paste_project), NULL);
+    attach_menu_action(builder, "mi_projpopup_props", G_CALLBACK(menu_properties), NULL);
+
     return menu;
 }
 
 void menus_create(GnomeApp *app)
 {
+    GtkBuilder *builder;
+    builder = gtt_builder_new_from_file("ui/mainmenu.ui");
+    menu_builder = builder;
+
     menus_get_popup(); /* initialize it */
-    gnome_app_create_menus(app, menu_main);
+
+    GtkMenuBar * menubar = GTK_MENU_BAR(gtk_builder_get_object(builder, "mainmenu"));
+    gnome_app_set_menus(app, menubar);
+
+    // Cannot get accelerators to work. Ignore for now, as I expect this way to
+    // build the menus will not last very long. /OB 2023-07-10
+    // gtk_window_add_accel_group(GTK_WINDOW(app), gtk_builder_get_object(builder, "accelgroup1"));
+    // gtk_menu_set_accel_group(gtk_builder_get_object(builder, "menu_file"),
+    //                          app->accel_group);
+
+    // File menu actions.
+    attach_menu_action(builder, "mi_export_tasks", G_CALLBACK(export_file_picker), TAB_DELIM_EXPORT);
+    attach_menu_action(builder, "mi_export_projects", G_CALLBACK(export_file_picker), TODO_EXPORT);
+    attach_menu_action(builder, "mi_quit", G_CALLBACK(app_quit), NULL);
+
+    // Project menu actions.
+    attach_menu_action(builder, "mi_new_project", G_CALLBACK(new_project), NULL);
+    attach_menu_action(builder, "mi_cut_project", G_CALLBACK(cut_project), NULL);
+    attach_menu_action(builder, "mi_copy_project", G_CALLBACK(copy_project), NULL);
+    attach_menu_action(builder, "mi_paste_project", G_CALLBACK(paste_project), NULL);
+    attach_menu_action(builder, "mi_edit_times", G_CALLBACK(menu_howto_edit_times), NULL);
+    attach_menu_action(builder, "mi_edit_project", G_CALLBACK(menu_properties), NULL);
+
+    // Settings menu actions.
+    attach_menu_action(builder, "mi_preferences", G_CALLBACK(menu_options), NULL);
+
+    // Reports menu actions.
+    attach_menu_action(builder, "mi_report_journal", G_CALLBACK(show_report), JOURNAL_REPORT);
+    attach_menu_action(builder, "mi_report_activty", G_CALLBACK(show_report), ACTIVITY_REPORT);
+    attach_menu_action(builder, "mi_report_daily", G_CALLBACK(show_report), DAILY_REPORT);
+    attach_menu_action(builder, "mi_report_status", G_CALLBACK(show_report), STATUS_REPORT);
+    attach_menu_action(builder, "mi_report_todo", G_CALLBACK(show_report), TODO_REPORT);
+    attach_menu_action(builder, "mi_report_invoice", G_CALLBACK(show_report), INVOICE_REPORT);
+    attach_menu_action(builder, "mi_report_query", G_CALLBACK(show_report), QUERY_REPORT);
+    attach_menu_action(builder, "mi_report_primer", G_CALLBACK(show_report), PRIMER_REPORT);
+    attach_menu_action(builder, "mi_report_new", G_CALLBACK(new_report), NULL);
+    attach_menu_action(builder, "mi_report_edit", G_CALLBACK(report_menu_edit), NULL);
+
+    // Timer menu actions.
+    attach_menu_action(builder, "mi_timer_start", G_CALLBACK(menu_start_timer), NULL);
+    attach_menu_action(builder, "mi_timer_stop", G_CALLBACK(menu_stop_timer), NULL);
+    attach_menu_action(builder, "mi_timer_toggle", G_CALLBACK(menu_toggle_timer), NULL);
+
+    // Help menu actions.
+    attach_menu_action(builder, "mi_help_contents", G_CALLBACK(gtt_help_popup), NULL);
+    attach_menu_action(builder, "mi_help_about", G_CALLBACK(about_box), NULL);
 }
 
-/* Global: the user-defined reports pull-down menu */
-static GnomeUIInfo *reports_menu = NULL;
+/* Global: the user-defined reports pull-down menu (array) */
+static GttPlugin *reports_menu = NULL;
 
-GnomeUIInfo *gtt_get_reports_menu(void)
+GttPlugin *gtt_get_reports_menu(void)
 {
     return (reports_menu);
 }
 
-void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
+static void gtt_append_custom_reports(GnomeApp *app, GttPlugin *report_menu_items)
+{
+    GtkMenuShell * reports_menu = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
+    int i;
+
+    for (i = 0; NULL != report_menu_items[i].name; i++)
+    {
+        GttPlugin * current = & (report_menu_items[i]);
+
+        // It seems our UI to create these custom reports (menu items) does
+        // not actually allow setting anything other than name and tooltip,
+        // using the default item type. So it's enough to support that. (Even though
+        // the plugin editor UI seems to contain widgetry that implies more, it doesn't
+        // actually work.
+        GtkWidget * item = gtk_menu_item_new_with_mnemonic(current->name);
+        gtk_widget_set_tooltip_text(item, current->tooltip);
+
+        g_signal_connect(item, "activate", G_CALLBACK(invoke_report), current);
+            
+        g_object_set_data(G_OBJECT(item), gtt_is_custom_report, (gpointer)gtt_is_custom_report);
+
+        gtk_widget_show(item);
+        gtk_menu_shell_append(reports_menu, item);
+    }
+}
+
+
+void gtt_set_reports_menu(GnomeApp *app, GttPlugin *new_menus)
 {
     int i;
-    char *path;
 
-    /* Build the i18n menu path ... */
-    /* (is this right ??? or is this pre-i18n ???) */
-    path = g_strdup_printf("%s/<Separator>", _("Reports"));
-
-    /* If there are old menu items, remove them and free them. */
+    // If there are old menu items, remove them and free them.
     if (reports_menu)
     {
-        int nreports;
-        for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
+        // Iterate over items in the report menu, and destroy those that are
+        // marked as custom entries.
+        GtkMenuShell * reports_menu_widget;
+        reports_menu_widget = GTK_MENU_SHELL(gtk_builder_get_object(menu_builder, "menu_report"));
+        GList * reports_menu_items = gtk_container_get_children(GTK_CONTAINER(reports_menu_widget));
+        GList * elem;
+        for (elem = reports_menu_items; elem; elem = elem->next)
         {
-        }
-        nreports = i;
-        gnome_app_remove_menu_range(app, path, 1, nreports);
+            GtkWidget * item = elem->data;
 
+            if (g_object_get_data(G_OBJECT(item), gtt_is_custom_report) == gtt_is_custom_report)
+                gtk_widget_destroy(item);
+        }
+        g_list_free(reports_menu_items);
+
+        // Free the old item meta data array.
         if (new_menus != reports_menu)
         {
-            for (i = 0; i < nreports; i++)
+            for (i = 0; NULL != reports_menu[i].name; i++)
             {
                 // XXX can't free this, since 'append' recycles old pointers !!
                 // there's probably a minor memory leak here ...
@@ -230,40 +195,35 @@ void gtt_set_reports_menu(GnomeApp *app, GnomeUIInfo *new_menus)
         }
     }
 
-    /* Now install the new menu items. */
+    // Replace NULL with a single end-of-array record if needed.
     reports_menu = new_menus;
     if (!reports_menu)
     {
-        reports_menu = g_new0(GnomeUIInfo, 1);
-        reports_menu[0].type = GNOME_APP_UI_ENDOFINFO;
+        reports_menu = g_new0(GttPlugin, 1);
     }
 
-    /* fixup */
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != reports_menu[i].type; i++)
-    {
-        reports_menu[i].moreinfo = invoke_report;
-    }
-    gnome_app_insert_menus(app, path, reports_menu);
+    // Now install the new menu items.
+    gtt_append_custom_reports(app, reports_menu);
 }
 
 /* ============================================================ */
 /* Slide a new menu entry into first place */
 
-void gtt_reports_menu_prepend_entry(GnomeApp *app, GnomeUIInfo *new_entry)
+void gtt_reports_menu_prepend_entry(GnomeApp *app, GttPlugin *new_entry)
 {
     int i, nitems;
-    GnomeUIInfo *current_sysmenu, *new_sysmenu;
+    GttPlugin *current_sysmenu, *new_sysmenu;
 
     current_sysmenu = gtt_get_reports_menu();
-    for (i = 0; GNOME_APP_UI_ENDOFINFO != current_sysmenu[i].type; i++)
+    for (i = 0; NULL != current_sysmenu[i].name; i++)
     {
     }
     nitems = i + 1;
 
-    new_sysmenu = g_new0(GnomeUIInfo, nitems + 1);
+    new_sysmenu = g_new0(GttPlugin, nitems + 1);
     new_sysmenu[0] = *new_entry;
 
-    memcpy(&new_sysmenu[1], current_sysmenu, nitems * sizeof(GnomeUIInfo));
+    memcpy(&new_sysmenu[1], current_sysmenu, nitems * sizeof(GttPlugin));
     gtt_set_reports_menu(app, new_sysmenu);
 }
 
@@ -276,13 +236,18 @@ void menus_add_plugins(GnomeApp *app)
 
 void menu_set_states(void)
 {
-    GtkCheckMenuItem *mi;
-
-    if (!menu_main_timer[MENU_TIMER_START_POS].widget)
+    if (menu_builder == NULL)
         return;
-    gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget, 1);
-    mi = GTK_CHECK_MENU_ITEM(menu_main_timer[MENU_TIMER_TOGGLE_POS].widget);
-    gtk_check_menu_item_set_active(mi, timer_is_running());
+
+    GtkWidget * mi_paste_project, * mi_projpopup_paste;
+    GtkWidget * mi_timer_start, * mi_timer_stop, * mi_timer_toggle;
+
+    mi_timer_start = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_timer_start"));
+    mi_timer_stop = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_timer_stop"));
+    mi_timer_toggle = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_timer_toggle"));
+
+    gtk_widget_set_sensitive(mi_timer_toggle, 1);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi_timer_toggle), timer_is_running());
 
     /* XXX would be nice to change this menu entry to say
      * 'timer stopped' when the timer is stopped.  But don't
@@ -298,20 +263,14 @@ void menu_set_states(void)
      * But also - why do we have Start, Stop, and a toogle as three separate menu items?
      * Probably at least one too many. */
 
-    gtk_widget_set_sensitive(
-        menu_main_timer[MENU_TIMER_START_POS].widget, (FALSE == timer_is_running())
-    );
-    gtk_widget_set_sensitive(menu_main_timer[MENU_TIMER_STOP_POS].widget, (timer_is_running()));
-    gtk_widget_set_sensitive(
-        menu_main_projects[MENU_PROJECTS_PASTE_POS].widget, (have_cutted_project())
-    );
+    gtk_widget_set_sensitive(mi_timer_start, (FALSE == timer_is_running()));
+    gtk_widget_set_sensitive(mi_timer_stop, (timer_is_running()));
 
-    if (menu_popup[MENU_POPUP_CUT_POS].widget)
-    {
-        gtk_widget_set_sensitive(
-            menu_popup[MENU_POPUP_PASTE_POS].widget, (have_cutted_project())
-        );
-    }
+    mi_paste_project = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_paste_project"));
+    gtk_widget_set_sensitive(mi_paste_project, (have_cutted_project()));
+
+    mi_projpopup_paste = GTK_WIDGET(gtk_builder_get_object(menu_builder, "mi_projpopup_paste"));
+    gtk_widget_set_sensitive(mi_projpopup_paste, (have_cutted_project()));
 }
 
 /* ======================= END OF FILE ===================== */
