@@ -18,6 +18,8 @@
 
 #include "config.h"
 
+#include <stdlib.h>
+
 #include "gtt-gsettings-io.h"
 
 #include "gtt-gsettings-io-p.h"
