@@ -232,21 +232,11 @@ static void read_data_err_run_or_abort(GtkDialog *w, gint response_id)
 static char *resolve_old_path(const char *pathfrag)
 {
     char *fullpath;
-    const char *confpath;
 
     if (('~' != pathfrag[0]) && ('/' != pathfrag[0]))
     {
-        /* If not an absolute filepath, look for the file in the same dir
-         * where the gtt config file was found. */
-        confpath = gtt_get_config_filepath();
-        if (NULL == confpath || 0 == confpath[0])
-        {
-            fullpath = gnome_config_get_real_path(pathfrag);
-        }
-        else
-        {
-            fullpath = g_strconcat(confpath, "/", pathfrag, NULL);
-        }
+        // Legacy...
+        fullpath = gnome_config_get_real_path(pathfrag);
     }
     else
     {
@@ -513,10 +503,8 @@ static void read_config(void)
     conf_errcode = gtt_err_get_code();
     if (GTT_NO_ERR != conf_errcode)
     {
-        const char *fp;
         char *errmsg, *qmsg;
-        fp = gtt_get_config_filepath();
-        errmsg = gtt_err_to_string(conf_errcode, fp);
+        errmsg = gtt_err_to_string(conf_errcode, NULL);
         qmsg = g_strconcat(errmsg, _("Shall I setup a new configuration?"), NULL);
 
         GtkWidget *mb;

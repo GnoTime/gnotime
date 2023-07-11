@@ -52,7 +52,4 @@ void gtt_load_config(void);
 void gtt_post_data_config(void);
 void gtt_post_ctree_config(void);
 
-/* Returns the 'real path' to the config file that was/would be used */
-const char *gtt_get_config_filepath(void);
-
 #endif // GTT_FILE_IO_H
