@@ -106,19 +106,74 @@ void toolbar_set_states(void)
     }
 }
 
+static GtkWidget *toolbar_insert_item(
+    GtkToolbar *toolbar, const gchar *text, const gchar *tooltip_text,
+    GtkWidget *icon, GCallback callback, gpointer user_data, gint pos)
+{
+    GtkToolItem *item;
+
+    item = gtk_tool_button_new(icon, text);
+    gtk_tool_item_set_tooltip_text(item, tooltip_text);
+
+    // Show both text and label to match existing behaviour.
+    gtk_tool_item_set_is_important(item, TRUE);
+
+    g_signal_connect(G_OBJECT(item), "clicked", callback, user_data);
+
+    gtk_widget_show(GTK_WIDGET(item));
+    gtk_widget_show(GTK_WIDGET(icon));
+
+    gtk_toolbar_insert(toolbar, item, pos);
+
+    return GTK_WIDGET(item);
+}
+
+static GtkWidget *toolbar_insert_item_stock(
+    GtkToolbar *toolbar, const gchar *stock_id, const gchar *tooltip_text,
+    GCallback callback, gpointer user_data, gint pos)
+{
+    GtkToolItem *item;
+
+    item = gtk_tool_button_new_from_stock(stock_id);
+    gtk_tool_item_set_tooltip_text(item, tooltip_text);
+
+    // Show both text and label to match existing behaviour.
+    gtk_tool_item_set_is_important(item, TRUE);
+
+    g_signal_connect(G_OBJECT(item), "clicked", callback, user_data);
+
+    gtk_widget_show(GTK_WIDGET(item));
+    gtk_toolbar_insert(toolbar, item, pos);
+
+    return GTK_WIDGET(item);
+}
+
+static GtkWidget *toolbar_append_separator(GtkToolbar *toolbar)
+{
+    GtkToolItem *item;
+
+    item = gtk_separator_tool_item_new();
+
+    gtk_widget_show(GTK_WIDGET(item));
+    gtk_toolbar_insert(toolbar, item, -1);
+
+    return GTK_WIDGET(item);
+}
+
 /* ================================================================= */
 /* A small utility routine to use a stock image with custom text,
  * and put the whole thing into the toolbar
  */
 static GtkWidget *toolbar_append_stock_button(
     GtkToolbar *toolbar, const gchar *text, const gchar *tooltip_text,
-    const gchar *stock_icon_id, GtkSignalFunc callback, gpointer user_data
+    const gchar *stock_icon_id, GCallback callback, gpointer user_data, gint pos
 )
 {
     GtkWidget *w, *image;
 
     image = gtk_image_new_from_stock(stock_icon_id, GTK_ICON_SIZE_LARGE_TOOLBAR);
-    w = gtk_toolbar_append_item(toolbar, text, tooltip_text, NULL, image, callback, user_data);
+
+    w = toolbar_insert_item(toolbar, text, tooltip_text, image, callback, user_data, pos);
     return w;
 }
 
@@ -136,35 +191,36 @@ GtkWidget *build_toolbar(void)
         mytbar = g_malloc0(sizeof(MyToolbar));
         mytbar->tbar = GTK_TOOLBAR(gtk_toolbar_new());
         mytbar->null_tbar = GTK_TOOLBAR(gtk_toolbar_new());
+        gtk_toolbar_set_style(mytbar->tbar, GTK_TOOLBAR_BOTH_HORIZ);
     }
 
     if (config_show_toolbar)
     {
         if (config_show_tb_new)
         {
-            mytbar->new_w = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_NEW, _("Create a New Project..."), NULL,
-                (GtkSignalFunc) new_project, NULL, position++
+            mytbar->new_w = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_NEW, _("Create a New Project..."),
+                G_CALLBACK(new_project), NULL, position++
             );
-            gtk_toolbar_append_space(mytbar->tbar);
+            toolbar_append_separator(mytbar->tbar);
             mytbar->spa = position;
             position++;
         }
         if (config_show_tb_ccp)
         {
-            mytbar->cut = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_CUT, _("Cut Selected Project"), NULL,
-                (GtkSignalFunc) cut_project, NULL, position++
+            mytbar->cut = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_CUT, _("Cut Selected Project"),
+                G_CALLBACK(cut_project), NULL, position++
             );
-            mytbar->copy = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_COPY, _("Copy Selected Project"), NULL,
-                (GtkSignalFunc) copy_project, NULL, position++
+            mytbar->copy = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_COPY, _("Copy Selected Project"),
+                G_CALLBACK(copy_project), NULL, position++
             );
-            mytbar->paste = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_PASTE, _("Paste Project"), NULL,
-                (GtkSignalFunc) paste_project, NULL, position++
+            mytbar->paste = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_PASTE, _("Paste Project"),
+                G_CALLBACK(paste_project), NULL, position++
             );
-            gtk_toolbar_append_space(mytbar->tbar);
+            toolbar_append_separator(mytbar->tbar);
             mytbar->spb = position;
             if (mytbar->spa)
                 mytbar->spb--;
@@ -177,15 +233,15 @@ GtkWidget *build_toolbar(void)
              * image. */
             mytbar->journal_button = toolbar_append_stock_button(
                 mytbar->tbar, _("Activity Journal"), _("View and Edit Timestamp Logs"),
-                GTK_STOCK_INDEX, (GtkSignalFunc) show_report, ACTIVITY_REPORT
+                GTK_STOCK_INDEX, G_CALLBACK(show_report), ACTIVITY_REPORT, position
             );
             position++;
         }
         if (config_show_tb_prop)
         {
-            mytbar->prop_w = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_PROPERTIES, _("Edit Project Properties..."), NULL,
-                (GtkSignalFunc) menu_properties, NULL, position++
+            mytbar->prop_w = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_PROPERTIES, _("Edit Project Properties..."),
+                G_CALLBACK(menu_properties), NULL, position++
             );
         }
         if (config_show_tb_timer)
@@ -199,16 +255,16 @@ GtkWidget *build_toolbar(void)
                 mytbar->timer_button_image, GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_LARGE_TOOLBAR
             );
 
-            mytbar->timer_button = gtk_toolbar_append_item(
-                mytbar->tbar, _("Timer"), _("Start/Stop Timer"), NULL,
-                GTK_WIDGET(mytbar->timer_button_image), (GtkSignalFunc) menu_toggle_timer, NULL
+            mytbar->timer_button = toolbar_insert_item(
+                mytbar->tbar, _("Timer"), _("Start/Stop Timer"),
+                GTK_WIDGET(mytbar->timer_button_image), G_CALLBACK(menu_toggle_timer), NULL, position
             );
             position++;
         }
         if (((config_show_tb_timer) || (config_show_tb_journal) || (config_show_tb_prop))
             && ((config_show_tb_pref) || (config_show_tb_help) || (config_show_tb_exit)))
         {
-            gtk_toolbar_append_space(mytbar->tbar);
+            toolbar_append_separator(mytbar->tbar);
             mytbar->spc = position;
             if (mytbar->spa)
                 mytbar->spc--;
@@ -218,22 +274,22 @@ GtkWidget *build_toolbar(void)
         }
         if (config_show_tb_pref)
         {
-            mytbar->pref = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_PREFERENCES, _("Edit Preferences..."), NULL,
-                (GtkSignalFunc) menu_options, NULL, position++
+            mytbar->pref = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_PREFERENCES, _("Edit Preferences..."),
+                G_CALLBACK(menu_options), NULL, position++
             );
         }
         if (config_show_tb_help)
         {
-            mytbar->help = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_HELP, _("User's Guide and Manual"), NULL,
-                (GtkSignalFunc) gtt_help_popup, NULL, position++
+            mytbar->help = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_HELP, _("User's Guide and Manual"),
+                G_CALLBACK(gtt_help_popup), NULL, position++
             );
         }
         if (config_show_tb_exit)
         {
-            mytbar->exit = gtk_toolbar_insert_stock(
-                mytbar->tbar, GTK_STOCK_QUIT, _("Quit GnoTime"), NULL, (GtkSignalFunc) app_quit,
+            mytbar->exit = toolbar_insert_item_stock(
+                mytbar->tbar, GTK_STOCK_QUIT, _("Quit GnoTime"), G_CALLBACK(app_quit),
                 NULL, position++
             );
         }
@@ -248,14 +304,12 @@ GtkWidget *build_toolbar(void)
 #define ZAP(w)                          \
     if (w)                              \
     {                                   \
-        gtk_container_remove(tbc, (w)); \
         (w) = NULL;                     \
     }
 
 #define ZING(pos)                                      \
     if (pos)                                           \
     {                                                  \
-        gtk_toolbar_remove_space(mytbar->tbar, (pos)); \
         (pos) = 0;                                     \
     }
 
@@ -270,6 +324,9 @@ void update_toolbar_sections(void)
         return;
 
     tbc = GTK_CONTAINER(mytbar->tbar);
+
+    gtk_container_foreach(tbc, (void*) gtk_widget_destroy, NULL);
+
     ZING(mytbar->spa);
     ZING(mytbar->spb);
     ZING(mytbar->spc);
