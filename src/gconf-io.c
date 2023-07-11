@@ -18,6 +18,7 @@
 
 #include "config.h"
 
+#include <stdlib.h>
 #include <gconf/gconf-client.h>
 #include <gconf/gconf.h>
 #include <glib.h>
