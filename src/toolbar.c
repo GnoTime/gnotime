@@ -20,6 +20,7 @@
 #include <config.h>
 
 #include <string.h>
+#include <glib/gi18n.h>
 
 #include "app.h"
 #include "dialog.h"
@@ -176,7 +177,7 @@ GtkWidget *build_toolbar(void)
              * image. */
             mytbar->journal_button = toolbar_append_stock_button(
                 mytbar->tbar, _("Activity Journal"), _("View and Edit Timestamp Logs"),
-                GNOME_STOCK_BOOK_OPEN, (GtkSignalFunc) show_report, ACTIVITY_REPORT
+                GTK_STOCK_INDEX, (GtkSignalFunc) show_report, ACTIVITY_REPORT
             );
             position++;
         }
