@@ -27,6 +27,7 @@
 #include "util.h"
 
 #include <gio/gio.h>
+#include <glib/gi18n.h>
 
 struct NewPluginDialog_s
 {

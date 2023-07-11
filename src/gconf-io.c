@@ -22,6 +22,7 @@
 #include <gconf/gconf-client.h>
 #include <gconf/gconf.h>
 #include <glib.h>
+#include <glib/gi18n.h>
 
 #include "app.h"
 #include "cur-proj.h"

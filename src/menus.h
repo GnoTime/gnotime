@@ -19,8 +19,6 @@
 #ifndef GTT_MENUS_H
 #define GTT_MENUS_H
 
-#include <gnome.h>
-
 #include "plug-in.h"
 
 /* names of reports */

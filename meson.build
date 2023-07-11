@@ -22,8 +22,6 @@ glib_req = '>= 2.40.2'
 gtk_req = '>= 2.24.23'
 gtk_html_req = '>= 3.32.2'
 guile_req = '>= 2.0.9'
-libgnome_req = '>= 2.32.1'
-libgnomeui_req = '>= 2.24.5'
 libxml_req = '>= 2.9.1'
 qof_req = '>= 0.8.7'
 x11_req = '>= 1.6.2'
@@ -35,8 +33,6 @@ glib_dep = dependency('glib-2.0', version: glib_req)
 gtk_dep = dependency('gtk+-2.0', version: gtk_req)
 gtk_html_dep = dependency('libgtkhtml-3.14', version: gtk_html_req)
 guile_dep = dependency('guile-2.0', version: guile_req)
-libgnome_dep = dependency('libgnome-2.0', version: libgnome_req)
-libgnomeui_dep = dependency('libgnomeui-2.0', version: libgnomeui_req)
 libxml_dep = dependency('libxml-2.0', version: libxml_req)
 qof_dep = dependency('qof', version: qof_req)
 x11_dep = dependency('x11', version: x11_req)

@@ -20,6 +20,8 @@
 
 #include "gtt-gsettings-io.h"
 
+#include <glib/gi18n.h>
+
 #include "app.h"
 #include "dialog.h"
 #include "journal.h"

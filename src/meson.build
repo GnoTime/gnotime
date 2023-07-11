@@ -21,8 +21,6 @@ gnotime_deps = [
   gtk_dep,
   gtk_html_dep,
   guile_dep,
-  libgnome_dep,
-  libgnomeui_dep,
   libxml_dep,
   qof_dep,
   x11_dep,

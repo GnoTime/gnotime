@@ -42,8 +42,6 @@ dnl pkg-config check time
 dnl *****************************************
 
 GCONF_REQUIRED=3.2.6
-LIBGNOME_REQUIRED=2.32.1
-LIBGNOMEUI_REQUIRED=2.24.5
 GLIB_REQUIRED=2.40.2
 GTK_REQUIRED=2.24.23
 LIBGTKHTML_REQUIRED=3.32.2
@@ -84,20 +82,6 @@ dnl *****************************************
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
-
-dnl *****************************************
-dnl Check for libgnome
-dnl *****************************************
-PKG_CHECK_MODULES(LIBGNOME, libgnome-2.0 >= $LIBGNOME_REQUIRED)
-AC_SUBST(LIBGNOME_CFLAGS)
-AC_SUBST(LIBGNOME_LIBS)
-
-dnl *****************************************
-dnl Check for libgnomeui
-dnl *****************************************
-PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
-AC_SUBST(LIBGNOMEUI_CFLAGS)
-AC_SUBST(LIBGNOMEUI_LIBS)
 
 dnl *****************************************
 dnl Check for X11

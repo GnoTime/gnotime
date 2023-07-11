@@ -23,6 +23,7 @@
 #include <gtkhtml/gtkhtml.h>
 #include <sched.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <qof.h>
@@ -39,6 +40,7 @@
 #include "util.h"
 
 #include <gio/gio.h>
+#include <glib/gi18n.h>
 
 /* This struct is a mish-mash of stuff relating to the
  * HTML display window, and the various actions and etc.

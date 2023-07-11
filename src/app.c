@@ -18,7 +18,6 @@
  */
 #include "config.h"
 
-#include <gnome.h>
 #include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +25,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <glib/gi18n.h>
 
 #include <qof.h>
 

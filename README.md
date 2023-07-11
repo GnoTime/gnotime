@@ -67,8 +67,6 @@ guile-2.0-dev
 libdbus-glib-1-dev
 libgconf2-dev
 libglib2.0-dev
-libgnome2-dev
-libgnomeui-dev
 libgtk2.0-dev
 libgtkhtml3.14-dev
 libqof-dev

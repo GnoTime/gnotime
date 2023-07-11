@@ -34,6 +34,7 @@
 #include <sys/wait.h>
 #endif
 
+#include <glib/gi18n.h>
 #include <qof.h>
 
 #include "app.h"
@@ -804,6 +805,7 @@ int main(int argc, char *argv[])
 #endif /*  WNOHANG/SA_NOCLDWAIT */
 
     static char *geometry_string = NULL;
+    /*
     static const struct poptOption geo_options[]
         = { { "geometry", 'g', POPT_ARG_STRING, &geometry_string, 0, N_("Specify geometry"),
               N_("GEOMETRY") },
@@ -812,10 +814,14 @@ int main(int argc, char *argv[])
             { NULL, '\0', 0, NULL, 0 } };
 
     gnome_program_init(
-        PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv, GNOME_PARAM_POPT_TABLE, geo_options,
+        PACKAGE, VERSION, LIBGNOME_MODULE, argc, argv, GNOME_PARAM_POPT_TABLE, geo_options,
         GNOME_PROGRAM_STANDARD_PROPERTIES, NULL
     );
-    gnome_window_icon_set_default_from_file(GNOME_ICONDIR "/gnome-cromagnon.png");
+    */
+
+    gtk_init(&argc, &argv);
+
+    // TODO: restore icon gnome_window_icon_set_default_from_file(GNOME_ICONDIR "/gnome-cromagnon.png");
 
     bindtextdomain(GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
