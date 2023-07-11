@@ -235,9 +235,11 @@ static char *resolve_path(const char *pathfrag)
 
     if (('~' != pathfrag[0]) && ('/' != pathfrag[0]))
     {
-        /* If not an absolute filepath, look for the file in the current
-         * gnome config dir ...*/
-        fullpath = gnome_config_get_real_path(pathfrag);
+        // Legacy...
+        // This ends up doing what the ancient gnome_config_get_real_path(),
+        // except it assumes that the .gnome2 directory has not been overriden.
+        // TODO: Move data files to follow XDG spec.
+        fullpath = g_build_filename(g_get_home_dir(), ".gnome2", pathfrag, NULL);
     }
     else
     {
