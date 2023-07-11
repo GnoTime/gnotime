@@ -37,7 +37,7 @@
 #define TODO_EXPORT "todo-export.ghtml"
 
 GtkMenuShell *menus_get_popup(void);
-void menus_create(GnomeApp *app);
+GtkMenuBar *menus_create();
 void menus_set_states(void);
 
 void menus_add_plugins();

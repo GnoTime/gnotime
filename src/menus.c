@@ -70,7 +70,7 @@ GtkMenuShell *menus_get_popup(void)
     return menu;
 }
 
-void menus_create(GnomeApp *app)
+GtkMenuBar *menus_create()
 {
     GtkBuilder *builder;
     builder = gtt_builder_new_from_file("ui/mainmenu.ui");
@@ -79,7 +79,6 @@ void menus_create(GnomeApp *app)
     menus_get_popup(); /* initialize it */
 
     GtkMenuBar * menubar = GTK_MENU_BAR(gtk_builder_get_object(builder, "mainmenu"));
-    gnome_app_set_menus(app, menubar);
 
     // Cannot get accelerators to work. Ignore for now, as I expect this way to
     // build the menus will not last very long. /OB 2023-07-10
@@ -123,6 +122,8 @@ void menus_create(GnomeApp *app)
     // Help menu actions.
     attach_menu_action(builder, "mi_help_contents", G_CALLBACK(gtt_help_popup), NULL);
     attach_menu_action(builder, "mi_help_about", G_CALLBACK(about_box), NULL);
+
+    return menubar;
 }
 
 /* Global: the user-defined reports pull-down menu (array) */

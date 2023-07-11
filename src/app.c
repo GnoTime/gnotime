@@ -425,6 +425,30 @@ void focus_row_set(GttProject *proj)
 
 /* ============================================================= */
 
+static GtkWidget * app_mainwindow_new(gchar *appname, char *title)
+{
+    GtkWidget *window;
+
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), title);
+
+    GtkWidget *vbox;
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_container_add(GTK_CONTAINER(window), vbox);
+
+    gtk_widget_show(vbox);
+
+    return GTK_WIDGET(window);
+}
+
+
+static void app_mainwindow_add_part(GtkWidget *window, GtkWidget *part,
+                                    gboolean expand, gboolean fill, guint padding)
+{
+    GtkWidget *vbox = gtk_bin_get_child(GTK_BIN(window));
+    gtk_box_pack_start(GTK_BOX(vbox), part, expand, fill, padding);
+}
+
 void app_new(int argc, char *argv[], const char *geometry_string)
 {
     GtkWidget *vbox;
@@ -436,7 +460,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     GtkVBox *status_vbox;
     GtkStatusbar *grip;
 
-    app_window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
+    app_window = app_mainwindow_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
     gtk_window_set_wmclass(GTK_WINDOW(app_window), GTT_APP_NAME, GTT_APP_PROPER_NAME);
 
     /* 485 x 272 seems to be a good size to default to */
@@ -444,12 +468,12 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     gtk_window_set_resizable(GTK_WINDOW(app_window), TRUE);
 
     /* build menus */
-    menus_create(GNOME_APP(app_window));
+    app_mainwindow_add_part(app_window, GTK_WIDGET(menus_create(NULL)), FALSE, FALSE, 0);
 
     /* build toolbar */
     widget = build_toolbar();
     gtk_widget_show(widget);
-    gnome_app_set_toolbar(GNOME_APP(app_window), GTK_TOOLBAR(widget));
+    app_mainwindow_add_part(app_window, widget, FALSE, FALSE, 0);
 
     /* container holds status bar, main ctree widget */
     vbox = gtk_vbox_new(FALSE, 0);
@@ -528,7 +552,7 @@ void app_new(int argc, char *argv[], const char *geometry_string)
 
     /* we are done building it, make it visible */
     gtk_widget_show(vbox);
-    gnome_app_set_contents(GNOME_APP(app_window), vbox);
+    app_mainwindow_add_part(app_window, vbox, TRUE, TRUE, 0);
 
     gtt_status_icon_create();
     if (!geometry_string)
@@ -540,10 +564,13 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     }
     else
     {
-        gnome_app_error(
-            GNOME_APP(app_window), _("Couldn't understand geometry (position and size)\n"
-                                     " specified on command line")
-        );
+        GtkWidget *mb;
+        mb = gtk_message_dialog_new(GTK_WINDOW(app_window), GTK_DIALOG_MODAL,
+                                    GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                                    ("Couldn't understand geometry (position and size)\n"
+                                     "specified on command line"));
+        gtk_dialog_run(GTK_DIALOG(mb));
+        gtk_widget_destroy(mb);
     }
 }
 
