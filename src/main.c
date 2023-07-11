@@ -742,6 +742,7 @@ void save_projects(void)
  * session management
  */
 
+/*
 static int save_state(
     GnomeClient *client, gint phase, GnomeRestartStyle save_style, gint shutdown,
     GnomeInteractStyle interact_styyle, gint fast, gpointer data
@@ -776,11 +777,12 @@ static int save_state(
     {
         argc = 3;
     }
+    
     gnome_client_set_clone_command(client, argc, argv);
     gnome_client_set_restart_command(client, argc, argv);
     g_free(argv[2]);
 
-    /* save both the user preferences/config and the project lists */
+    // save both the user preferences/config and the project lists
     errmsg = save_all();
     rc = 0;
     if (NULL == errmsg)
@@ -789,11 +791,14 @@ static int save_state(
 
     return rc;
 }
+*/
 
+/*
 static void session_die(GnomeClient *client)
 {
     app_quit(NULL, NULL);
 }
+*/
 
 static void got_signal(int sig)
 {
@@ -844,11 +849,12 @@ int main(int argc, char *argv[])
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-    GnomeClient *client = gnome_master_client();
-    g_signal_connect(
-        G_OBJECT(client), "save_yourself", G_CALLBACK(save_state), (gpointer) argv[0]
-    );
-    g_signal_connect(G_OBJECT(client), "die", G_CALLBACK(session_die), NULL);
+    // TODO: Restore listening for session shutdown notification and state saving.
+    //GnomeClient *client = gnome_master_client();
+    //g_signal_connect(
+    //    G_OBJECT(client), "save_yourself", G_CALLBACK(save_state), (gpointer) argv[0]
+    //);
+    //g_signal_connect(G_OBJECT(client), "die", G_CALLBACK(session_die), NULL);
 
     /* gconf init is needed by gtkhtml */
     gconf_init(argc, argv, NULL);
