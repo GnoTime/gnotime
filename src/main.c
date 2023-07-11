@@ -229,24 +229,6 @@ static void read_data_err_run_or_abort(GtkDialog *w, gint response_id)
 }
 #endif /* THIS_IS_CURRENTLY_UNUSED */
 
-static char *resolve_old_path(const char *pathfrag)
-{
-    char *fullpath;
-
-    if (('~' != pathfrag[0]) && ('/' != pathfrag[0]))
-    {
-        // Legacy...
-        fullpath = gnome_config_get_real_path(pathfrag);
-    }
-    else
-    {
-        /* I suppose we should look up $HOME if ~ */
-        fullpath = g_strdup(pathfrag);
-    }
-
-    return fullpath;
-}
-
 static char *resolve_path(const char *pathfrag)
 {
     char *fullpath;
@@ -454,7 +436,7 @@ void read_data(gboolean reloading)
         master_list = gtt_project_list_new();
     }
 
-    xml_filepath = resolve_old_path(config_data_url);
+    xml_filepath = resolve_path(config_data_url);
 
     while (!read_data_file(xml_filepath, &error))
     {
