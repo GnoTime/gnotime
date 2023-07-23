@@ -85,7 +85,7 @@ static gboolean idle_timeout_func(gpointer data)
 {
     GttIdleDialog *idle_dialog = (GttIdleDialog *) data;
     GdkWindow *gdk_window = gtk_widget_get_root_window(app_window);
-    XID drawable = gdk_x11_drawable_get_xid(GDK_DRAWABLE(gdk_window));
+    XID drawable = GDK_WINDOW_XID(gdk_window);
     Status xss_query_ok
         = XScreenSaverQueryInfo(idle_dialog->display, drawable, idle_dialog->xss_info);
     if (xss_query_ok)
