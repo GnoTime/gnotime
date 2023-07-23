@@ -332,6 +332,17 @@ static void toolbar_sensitive_cb(GtkWidget *w, PrefsDialog *odlg)
 
 /* ============================================================== */
 
+static gboolean save_on_idle_cb()
+{
+    save_properties();
+
+    // Return FALSE for call-once semantics.
+    return FALSE;
+}
+
+
+/* ============================================================== */
+
 #define ENTRY_TO_CHAR(a, b)                    \
     {                                          \
         const char *s = gtk_entry_get_text(a); \
@@ -536,9 +547,12 @@ static void prefs_set(PrefsDialog *odlg)
         }
     }
 
-    /* Also save them the to file at this point */
-    save_properties();
+    // Schedule a save-to-file to be called from the main loop promptly.
+    // Doing it this way instead of a direct call gives Gtk a chance to
+    // first react to any changes, e.g. recalculate columns widths.
+    g_idle_add(save_on_idle_cb, NULL);
 }
+
 
 /* ============================================================== */
 
