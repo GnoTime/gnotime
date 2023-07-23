@@ -804,10 +804,7 @@ static void create_children(GttDateEdit *gde)
     gde->_priv->calendar = gtk_calendar_new();
     gtk_calendar_set_display_options(
         GTK_CALENDAR(gde->_priv->calendar),
-        (GTK_CALENDAR_SHOW_DAY_NAMES | GTK_CALENDAR_SHOW_HEADING
-         | ((gde->_priv->flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
-                ? GTK_CALENDAR_WEEK_START_MONDAY
-                : 0))
+        GTK_CALENDAR_SHOW_DAY_NAMES | GTK_CALENDAR_SHOW_HEADING
     );
     g_signal_connect(gde->_priv->calendar, "day_selected", G_CALLBACK(day_selected), gde);
     g_signal_connect(
@@ -1031,25 +1028,6 @@ void gtt_date_edit_set_flags(GttDateEdit *gde, GttDateEditFlags flags)
 
     if ((flags & GTT_DATE_EDIT_24_HR) != (old_flags & GTT_DATE_EDIT_24_HR))
         fill_time_popup(GTK_WIDGET(gde), gde); // This will destroy the old menu properly
-
-    if ((flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
-        != (old_flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY))
-    {
-        const GtkCalendarDisplayOptions opts
-            = gtk_calendar_get_display_options(GTK_CALENDAR(gde->_priv->calendar));
-        if (flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
-        {
-            gtk_calendar_set_display_options(
-                GTK_CALENDAR(gde->_priv->calendar), opts | GTK_CALENDAR_WEEK_START_MONDAY
-            );
-        }
-        else
-        {
-            gtk_calendar_set_display_options(
-                GTK_CALENDAR(gde->_priv->calendar), opts & ~GTK_CALENDAR_WEEK_START_MONDAY
-            );
-        }
-    }
 }
 
 /**

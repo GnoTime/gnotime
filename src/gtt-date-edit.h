@@ -30,7 +30,7 @@ typedef enum
 {
     GTT_DATE_EDIT_SHOW_TIME = 1 << 0,
     GTT_DATE_EDIT_24_HR = 1 << 1,
-    GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY = 1 << 2,
+    // OBSOLETE: GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY = 1 << 2,
     GTT_DATE_EDIT_DISPLAY_SECONDS = 1 << 3
 } GttDateEditFlags;
 
