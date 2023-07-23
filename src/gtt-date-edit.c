@@ -802,7 +802,7 @@ static void create_children(GttDateEdit *gde)
     gtk_widget_show(frame);
 
     gde->_priv->calendar = gtk_calendar_new();
-    gtk_calendar_display_options(
+    gtk_calendar_set_display_options(
         GTK_CALENDAR(gde->_priv->calendar),
         (GTK_CALENDAR_SHOW_DAY_NAMES | GTK_CALENDAR_SHOW_HEADING
          | ((gde->_priv->flags & GTT_DATE_EDIT_WEEK_STARTS_ON_MONDAY)
