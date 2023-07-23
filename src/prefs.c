@@ -735,7 +735,7 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
         GtkWidget *e;                                                              \
         e = GTK_WIDGET(gtk_builder_get_object(builder, strname));                  \
         g_signal_connect(                                                          \
-            GTK_OBJECT(e), "changed", G_CALLBACK(set_changed_cb), dlg              \
+            G_OBJECT(e), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
         e;                                                                         \
     })
@@ -745,7 +745,7 @@ static void daystart_menu_changed(gpointer data, GtkComboBox *w)
         GtkWidget *e;                                                              \
         e = GTK_WIDGET(gtk_builder_get_object(builder, strname));                  \
         g_signal_connect(                                                          \
-            GTK_OBJECT(e), "toggled", G_CALLBACK(set_changed_cb), dlg              \
+            G_OBJECT(e), "toggled", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                         \
         e;                                                                         \
     })
@@ -817,7 +817,7 @@ static void logfile_options(PrefsDialog *dlg)
     w = GETCHWID("use logfile");
     dlg->logfileuse = GTK_CHECK_BUTTON(w);
     g_signal_connect(
-        GTK_OBJECT(w), "clicked", G_CALLBACK(logfile_sensitive_cb), (gpointer *) dlg
+        G_OBJECT(w), "clicked", G_CALLBACK(logfile_sensitive_cb), (gpointer *) dlg
     );
 
     w = GTK_WIDGET(gtk_builder_get_object(builder, "filename label"));
@@ -826,7 +826,7 @@ static void logfile_options(PrefsDialog *dlg)
     w = GTK_WIDGET(gtk_builder_get_object(builder, "logfile path"));
     dlg->logfilename = GTK_FILE_CHOOSER(w);
     g_signal_connect(
-        GTK_OBJECT(dlg->logfilename), "file-set", G_CALLBACK(set_changed_cb), dlg
+        G_OBJECT(dlg->logfilename), "file-set", G_CALLBACK(set_changed_cb), dlg
     );
 
     w = GTK_WIDGET(gtk_builder_get_object(builder, "fstart label"));
@@ -861,7 +861,7 @@ static void toolbar_options(PrefsDialog *dlg)
     dlg->show_toolbar = GTK_CHECK_BUTTON(w);
 
     g_signal_connect(
-        GTK_OBJECT(w), "clicked", G_CALLBACK(toolbar_sensitive_cb), (gpointer *) dlg
+        G_OBJECT(w), "clicked", G_CALLBACK(toolbar_sensitive_cb), (gpointer *) dlg
     );
 
     TBWID(tips);
@@ -893,7 +893,7 @@ static void misc_options(PrefsDialog *dlg)
     dlg->daystart_menu = GTK_COMBO_BOX(w);
 
     g_signal_connect_object(
-        GTK_OBJECT(w), "changed", G_CALLBACK(daystart_menu_changed), dlg, 0
+        G_OBJECT(w), "changed", G_CALLBACK(daystart_menu_changed), dlg, 0
     );
 
     w = GETWID("weekstart combobox");
@@ -930,7 +930,7 @@ static void currency_options(PrefsDialog *dlg)
     dlg->currency_use_locale = GTK_CHECK_BUTTON(w);
 
     g_signal_connect(
-        GTK_OBJECT(w), "clicked", G_CALLBACK(currency_sensitive_cb), (gpointer *) dlg
+        G_OBJECT(w), "clicked", G_CALLBACK(currency_sensitive_cb), (gpointer *) dlg
     );
 }
 
@@ -981,11 +981,11 @@ static PrefsDialog *prefs_dialog_new(void)
     gtk_container_add(GTK_CONTAINER(dlg_content), notebook);
 
     g_signal_connect(
-        GTK_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
+        G_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
     );
 
     g_signal_connect(
-        GTK_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
+        G_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
     );
 
     /* ------------------------------------------------------ */
