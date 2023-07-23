@@ -274,7 +274,7 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
         GtkWidget *widget;                                                              \
         widget = GTK_WIDGET(gtk_builder_get_object(builder, NAME));                     \
         g_signal_connect(                                                               \
-            GTK_OBJECT(widget), "changed", G_CALLBACK(set_changed_cb), dlg              \
+            G_OBJECT(widget), "changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                              \
         widget;                                                                         \
     })
@@ -282,10 +282,10 @@ static void do_set_project(GttProject *proj, PropDlg *dlg)
 #define DATED(WDGT)                                                                        \
     ({                                                                                     \
         g_signal_connect(                                                                  \
-            GTK_OBJECT(WDGT), "date_changed", G_CALLBACK(set_changed_cb), dlg              \
+            G_OBJECT(WDGT), "date_changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                                 \
         g_signal_connect(                                                                  \
-            GTK_OBJECT(WDGT), "time_changed", G_CALLBACK(set_changed_cb), dlg              \
+            G_OBJECT(WDGT), "time_changed", G_CALLBACK(set_changed_cb), dlg              \
         );                                                                                 \
         GTT_DATE_EDIT(WDGT);                                                               \
     })
@@ -313,7 +313,7 @@ static GtkComboBox *init_combo(
     combo_box = GTK_COMBO_BOX(gtk_builder_get_object(builder, name));
     gtt_combo_select_list_init(combo_box);
 
-    g_signal_connect(GTK_OBJECT(combo_box), "changed", G_CALLBACK(set_changed_cb), dlg);
+    g_signal_connect(G_OBJECT(combo_box), "changed", G_CALLBACK(set_changed_cb), dlg);
 
     return combo_box;
 }
@@ -365,11 +365,11 @@ static PropDlg *prop_dialog_new(void)
     gtk_container_add(GTK_CONTAINER(dlg_content), notebook);
 
     g_signal_connect(
-        GTK_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
+        G_OBJECT(dlg->dlg), "response", G_CALLBACK(response_cb), dlg
     );
 
     g_signal_connect(
-        GTK_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
+        G_OBJECT(dlg->dlg), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL
     );
 
     /* ------------------------------------------------------ */
