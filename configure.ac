@@ -46,7 +46,7 @@ dnl *****************************************
 
 GCONF_REQUIRED=3.2.6
 GLIB_REQUIRED=2.40.2
-GTK_REQUIRED=2.24.23
+GTK_REQUIRED=3.10.0
 LIBGTKHTML_REQUIRED=3.32.2
 LIBXML2_REQUIRED=2.9.1
 SCROLLKEEPER_BUILD_REQUIRED=0.8.1
@@ -74,7 +74,7 @@ AC_SUBST(GLIB_LIBS)
 dnl *****************************************
 dnl Check for GTK+
 dnl *****************************************
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
 
