@@ -85,7 +85,7 @@ enum
 
 static gint date_edit_signals[LAST_SIGNAL] = { 0 };
 
-static void gtt_date_edit_destroy(GtkObject *object);
+static void gtt_date_edit_destroy(GtkWidget *object);
 static void gtt_date_edit_finalize(GObject *object);
 static void gtt_date_edit_set_property(
     GObject *object, guint param_id, const GValue *value, GParamSpec *pspec
@@ -448,13 +448,10 @@ static gboolean gtt_date_edit_mnemonic_activate(GtkWidget *widget, gboolean grou
 
 static void gtt_date_edit_class_init(GttDateEditClass *class)
 {
-    GtkWidgetClass *widget_class = (GtkWidgetClass *) class;
-    GtkObjectClass *object_class = (GtkObjectClass *) class;
+    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(class);
     GObjectClass *gobject_class = (GObjectClass *) class;
 
-    object_class = (GtkObjectClass *) class;
-
-    object_class->destroy = gtt_date_edit_destroy;
+    widget_class->destroy = gtt_date_edit_destroy;
 
     gobject_class->finalize = gtt_date_edit_finalize;
     gobject_class->get_property = gtt_date_edit_get_property;
@@ -540,7 +537,7 @@ static void gtt_date_edit_init(GttDateEdit *gde)
     create_children(gde);
 }
 
-static void gtt_date_edit_destroy(GtkObject *object)
+static void gtt_date_edit_destroy(GtkWidget *object)
 {
     GttDateEdit *gde;
 
@@ -555,7 +552,7 @@ static void gtt_date_edit_destroy(GtkObject *object)
         gtk_widget_destroy(gde->_priv->cal_popup);
     gde->_priv->cal_popup = NULL;
 
-    GTK_OBJECT_CLASS(gtt_date_edit_parent_class)->destroy(object);
+    GTK_WIDGET_CLASS(gtt_date_edit_parent_class)->destroy(object);
 }
 
 static void gtt_date_edit_finalize(GObject *object)
