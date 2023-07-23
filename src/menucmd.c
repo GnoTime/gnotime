@@ -38,7 +38,9 @@
 
 void about_box(GtkWindow *w, gpointer data)
 {
-    const gchar *authors[] = { "Goedson Teixeira Paixão <goedson@debian.org>",
+    const gchar *authors[] = { "Oskar Berggren <oskar.berggren@gmail.com>",
+                               "Markus Prasser",
+                               "Goedson Teixeira Paixão <goedson@debian.org>",
                                "Linas Vepstas <linas@linas.org>",
                                "Eckehard Berns <eb@berns.i-s-o.net>",
                                "George Lebl <jirka@5z.com>",
@@ -80,7 +82,9 @@ void about_box(GtkWindow *w, gpointer data)
 
     const gchar *copyright = "Copyright (C) 1997,98 Eckehard Berns\n"
                              "Copyright (C) 2001-2004 Linas Vepstas\n"
-                             "Copyright (C) 2007-2008 Goedson Teixeira Paixão";
+                             "Copyright (C) 2007-2008 Goedson Teixeira Paixão\n"
+                             "Copyright (C) 2023 Markus Prasser\n"
+                             "Copyright (C) 2023 Oskar Berggren";
 
     const gchar *comments = _("GnoTime is a combination of stop-watch, diary, "
                               " consultant billing system and todo-list manager.");
@@ -102,7 +106,7 @@ void about_box(GtkWindow *w, gpointer data)
 
     gtk_show_about_dialog(
         w, "version", VERSION, "program-name", GTT_APP_TITLE, "authors", authors, "documenters",
-        documenters, "website", "http://gnotime.sourceforge.net/", "translator-credits",
+        documenters, "website", "http://www.gnotime.org/", "translator-credits",
         _("translator-credits"), "copyright", copyright, "comments", comments, "license",
         license, NULL
     );

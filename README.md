@@ -111,7 +111,8 @@ Authors
 -------
 This program was originally written by Eckehard Berns <eb@berns.prima.de>,
 but has been greatly expanded by Linas Vepstas ~~<linas@linas.org>~~
-<linasvepstas@gmail.com>.
+<linasvepstas@gmail.com>. Modernized in 2023 by Markus Prasser and Oskar
+Berggren.
 
 Thanks go out to many people who e-mailed me with suggestions and
 bug fixes.  See the "about" window in the app for more details.
@@ -122,6 +123,8 @@ Copyright
  * GnoTime - the Gnome Time Tracker
  * Copyright (C) 1997,98 Eckehard Berns
  * Copyright (C) 2001,2002,2003,2004 Linas Vepstas <linas@linas.org>
+ * Copyright (C) 2023 Markus Prasser
+ * Copyright (C) 2023 Oskar Berggren <oskar.berggren@gmail.com>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
