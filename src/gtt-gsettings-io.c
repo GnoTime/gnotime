@@ -286,6 +286,10 @@ void gtt_gsettings_save(void)
     gtt_gsettings_set_bool(settings_obj, "initialized", TRUE);
 
     g_settings_apply(settings_obj);
+
+    // Writes are async - important to wait for saving to complete, at least if we have
+    // been called during application shutdown.
+    g_settings_sync();
 }
 
 /**
