@@ -209,7 +209,7 @@ void new_project(GtkWidget *widget, gpointer data)
     /* enter in first entry goes to next */
     g_signal_connect_object(
         G_OBJECT(entries[0]), "activate", G_CALLBACK(gtk_widget_grab_focus),
-        GTK_OBJECT(entries[1]), 0
+        G_OBJECT(entries[1]), 0
     );
     // gnome_dialog_editable_enters(GNOME_DIALOG(dlg),
     // 			     GTK_EDITABLE(entries[1]));
