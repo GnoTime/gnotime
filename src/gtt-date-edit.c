@@ -153,7 +153,7 @@ static gint key_press_popup(GtkWidget *widget, GdkEventKey *event, gpointer data
 {
     GttDateEdit *gde;
 
-    if (event->keyval != GDK_Escape)
+    if (event->keyval != GDK_KEY_Escape)
         return FALSE;
 
     gde = data;
