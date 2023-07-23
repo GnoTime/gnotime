@@ -816,8 +816,8 @@ static void logfile_options(PrefsDialog *dlg)
 
     w = GETCHWID("use logfile");
     dlg->logfileuse = GTK_CHECK_BUTTON(w);
-    gtk_signal_connect(
-        GTK_OBJECT(w), "clicked", GTK_SIGNAL_FUNC(logfile_sensitive_cb), (gpointer *) dlg
+    g_signal_connect(
+        GTK_OBJECT(w), "clicked", G_CALLBACK(logfile_sensitive_cb), (gpointer *) dlg
     );
 
     w = GTK_WIDGET(gtk_builder_get_object(builder, "filename label"));
@@ -860,8 +860,8 @@ static void toolbar_options(PrefsDialog *dlg)
     w = GETCHWID("show toolbar");
     dlg->show_toolbar = GTK_CHECK_BUTTON(w);
 
-    gtk_signal_connect(
-        GTK_OBJECT(w), "clicked", GTK_SIGNAL_FUNC(toolbar_sensitive_cb), (gpointer *) dlg
+    g_signal_connect(
+        GTK_OBJECT(w), "clicked", G_CALLBACK(toolbar_sensitive_cb), (gpointer *) dlg
     );
 
     TBWID(tips);
@@ -892,8 +892,8 @@ static void misc_options(PrefsDialog *dlg)
     w = GETWID("daystart combobox");
     dlg->daystart_menu = GTK_COMBO_BOX(w);
 
-    gtk_signal_connect_object(
-        GTK_OBJECT(w), "changed", GTK_SIGNAL_FUNC(daystart_menu_changed), dlg
+    g_signal_connect_object(
+        GTK_OBJECT(w), "changed", G_CALLBACK(daystart_menu_changed), dlg, 0
     );
 
     w = GETWID("weekstart combobox");
@@ -929,8 +929,8 @@ static void currency_options(PrefsDialog *dlg)
     w = GETCHWID("currency_use_locale");
     dlg->currency_use_locale = GTK_CHECK_BUTTON(w);
 
-    gtk_signal_connect(
-        GTK_OBJECT(w), "clicked", GTK_SIGNAL_FUNC(currency_sensitive_cb), (gpointer *) dlg
+    g_signal_connect(
+        GTK_OBJECT(w), "clicked", G_CALLBACK(currency_sensitive_cb), (gpointer *) dlg
     );
 }
 
