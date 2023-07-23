@@ -728,7 +728,7 @@ static void on_close_clicked_cb(GtkWidget *w, gpointer data)
     g_free(wig);
 }
 
-static void destroy_cb(GtkObject *ob, gpointer data)
+static void destroy_cb(GtkWidget *ob, gpointer data)
 {
 }
 
@@ -1287,7 +1287,7 @@ static void do_show_report(
 
     gtk_builder_connect_signals_full(builder, connect_signals_cb, wig);
 
-    g_signal_connect(G_OBJECT(wig->top), "destroy", G_CALLBACK(destroy_cb), wig);
+    g_signal_connect(GTK_WIDGET(wig->top), "destroy", G_CALLBACK(destroy_cb), wig);
 
     g_signal_connect(
         G_OBJECT(wig->html), "link_clicked", G_CALLBACK(html_link_clicked_cb), wig
