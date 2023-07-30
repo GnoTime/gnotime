@@ -100,6 +100,7 @@ noinst_HEADERS =      \
 
 AM_CFLAGS = -g -Wall     \
 	@CFLAGS@              \
+	${WARN_CFLAGS}     \
 	${GLIB_CFLAGS}     \
 	${GTK_CFLAGS}     \
 	${GCONF_CFLAGS}       \

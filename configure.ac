@@ -1,4 +1,6 @@
 AC_INIT([gnotime], [2.99.0])
+AX_IS_RELEASE([git-directory])
+
 dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c.
 AC_CONFIG_SRCDIR([src/gtt.h])
 AM_INIT_AUTOMAKE
@@ -17,7 +19,8 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
-GNOME_COMPILE_WARNINGS
+dnl TODO: Enable this when we have fixed the issues...
+dnl AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])
 GLIB_GSETTINGS
 
 AC_PATH_XTRA
@@ -294,6 +297,8 @@ echo ""
 dnl <= CFLAGS and LDFLAGS =>
 echo "CFLAGS : $CFLAGS"
 echo "LDFLAGS : $LDFLAGS"
+echo "WARN_CFLAGS : $WARN_CFLAGS"
+echo "WARN_LDFLAGS : $WARN_LDFLAGS"
 echo "X_LIBS : $X_LIBS"
 echo "GUILE_LIBS : $GUILE_LDFLAGS"
 echo "LIBQOF_LIBS : $LIBQOF_LIBS"
