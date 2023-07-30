@@ -33,5 +33,3 @@ EXTRA_DIST =                   \
 README: README.md
 	cp $< $@
 
-
-ACLOCAL_AMFLAGS = -I m4
