@@ -59,18 +59,10 @@ dnl *****************************************
 dnl Check for guile
 dnl *****************************************
 
-# The below checks for guile-1.8. It works, the code compile, works.
-# GUILE_FLAGS
-#
-# GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
-# if test "$GUILE_VERSION" "<" "1.8"; then
-#    AC_MSG_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
-# fi
-
 # http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
-PKG_CHECK_MODULES([GUILE], [guile-2.0])
-AC_SUBST(GUILE_CFLAGS)
-AC_SUBST(GUILE_LIBS)
+GUILE_PKG
+GUILE_FLAGS
+
 
 dnl *****************************************
 dnl Check for glib
@@ -302,7 +294,10 @@ echo "LDFLAGS : $LDFLAGS"
 echo "WARN_CFLAGS : $WARN_CFLAGS"
 echo "WARN_LDFLAGS : $WARN_LDFLAGS"
 echo "X_LIBS : $X_LIBS"
-echo "GUILE_LIBS : $GUILE_LDFLAGS"
+echo "Guile version : $GUILE_EFFECTIVE_VERSION"
+echo "GUILE_CFLAGS : $GUILE_CFLAGS"
+echo "GUILE_LDFLAGS : $GUILE_LDFLAGS"
+echo "GUILE_LIBS : $GUILE_LIBS"
 echo "LIBQOF_LIBS : $LIBQOF_LIBS"
 echo "LIBQOF_CFLAGS : $LIBQOF_CFLAGS"
 echo "LIBDBUS_LIBS : $LIBDBUS_LIBS"
