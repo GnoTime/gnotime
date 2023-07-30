@@ -3,8 +3,6 @@ dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c
 AC_CONFIG_SRCDIR([src/gtt.h])
 AM_INIT_AUTOMAKE
 
-IT_PROG_INTLTOOL([0.50.2])
-
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
@@ -246,9 +244,10 @@ dnl *******************************
 dnl Internationalization
 dnl ******************************* 
 
-GETTEXT_PACKAGE=gnotime-2.0
+GETTEXT_PACKAGE=gnotime
 AC_SUBST(GETTEXT_PACKAGE)
-AM_GLIB_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 # AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
 # this is the directory where the *.{mo,gmo} files are installed
