@@ -1,4 +1,4 @@
-AC_INIT([gnotime], [2.99.0])
+AC_INIT([GnoTime],[2.99.0],[https://github.com/GnoTime/gnotime/issues],[gnotime],[gnotime.org])
 AX_IS_RELEASE([git-directory])
 
 dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c.
