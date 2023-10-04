@@ -28,42 +28,21 @@ Status
 After being stale since about 2013 there is renewed development of GnoTime.
 This is being managed on [GitHub](https://github.com/GnoTime/gnotime).
 
-
-Obsolete commentary from 2013
------------------------------
-Gnotime is written for Gnome-1/Gnome-2. It needs to be ported to
-Gnome3 to be buildable on present-day systems.
-
-Porting to gnome3 is probably not that hard(?) There is one sticky
-point: the main display panel uses the very old gnome-1 `gtkctree`
-widget. The gnome2 `treeview` widget was a horrible, terrible
-replacement for `gtkctree`, and was never used (was unusable).
-It's not clear if gnome3 has any suitable replacement.  See the
-notes in `src/ctree-gnome2.c` for details. Basically, the main
-window depends heavily on keyboard/mouse navigation, which the
-`treeview` widget completely failed to support.
-
-Put it differently: if the main window isn't nice and pleasant to
-use, then nothing else matters.  Having a good user experience
-working with the main window is more important than anything else.
-
-If you want to see how it works, install an LXC/LXD container
-(or even docker) with a circa 2012 or 2014 Ubuntu or Debian system.
-It should build cleanly, and run bug-free w/o issues.
+The dev branch is currently known to build on Ubuntu 18.04.
 
 Building
 --------
 The current dependencies of GnoTime are heavily outdated. The current aim is to
 update them to the state of current Debian oldstable (i.e. _Debian Buster_).
-Until this is achieved _Ubuntu 14.04 "Trusty Tahr"_ is being utilized as
-reference platform to verify and test any changes. The below listed packages are
+As of October 2023, the dev branch has been updated to build on Ubuntu 18.04
+as the oldest platform known to work. (It no longer builds on the previous
+reference platform Ubuntu 14.04.) The below listed packages are
 valid in the realm of this reference platform and should allow an issue-less
 compilation.
 
-### Required packages:
+### Required packages
 ```
-gnome-common
-guile-2.0-dev
+guile-2.0-dev (or 2.2)
 libdbus-glib-1-dev
 libgconf2-dev
 libglib2.0-dev

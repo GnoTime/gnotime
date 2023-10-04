@@ -14,15 +14,13 @@ To avoid ending up with a dysfunctional "zombie system" it is intended to stay
 with GTK+ 2.0 while replacing most of the outdated dependencies (GConf,
 GnomeVFS, etc.) and upgrading to GTK 3 and WebKitGTK afterwards. This should
 allow to continually have a fully functional GnoTime build for testing.
+During this time, Ubuntu 14.04 is the most recent version which allows
+compiling and running GnoTime with its dependencies out of the box.
 
-Development can be conducted with any modern system but compatibility with
-Ubuntu 14.04 as a baseline should be kept. Ubuntu 14.04 is the most recent
-version which allows compiling and running GnoTime with its dependencies out of
-the box.
-
-Sidenote: My personal approach is to develop GnoTime utilizing the modern
-tooling of _Fedora 37_ and having a _Ubuntu 14.04_ VM in which I track my
-development efforts utilizing the current HEAD of this repository.
+As of October 2023, the Gnome dependencies have been removed and more
+modern alternatives have been used, while still on Gtk2. The autotools
+build system has been updated and it no longer builds on Ubuntu 14.04.
+The new baseline is Ubuntu 18.04.
 
 ## Coding Style
 
