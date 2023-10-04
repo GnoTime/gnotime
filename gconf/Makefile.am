@@ -6,13 +6,11 @@
 # gconftool --install-schema-file=FILENAME
 
 EXTRA_DIST = \
-	gnotime.schemas.in
+	gnotime.schemas
 
 schemasdir = $(sysconfdir)/gconf/schemas
-schemas_in_files = gnotime.schemas.in
+#schemas_in_files = gnotime.schemas.in
 schemas_DATA = gnotime.schemas
 
-@INTLTOOL_SCHEMAS_RULE@
-
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(builddir)/$(schemas_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;

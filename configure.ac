@@ -1,11 +1,13 @@
-AC_INIT([gnotime], [2.99.0])
+AC_INIT([GnoTime],[2.99.0],[https://github.com/GnoTime/gnotime/issues],[gnotime],[gnotime.org])
+AX_IS_RELEASE([git-directory])
+
 dnl For AC_CONFIG_SRCDIR I picked gtt.h because it's more unique than our main.c.
 AC_CONFIG_SRCDIR([src/gtt.h])
 AM_INIT_AUTOMAKE
 
-IT_PROG_INTLTOOL([0.35.5])
-
 AM_CONFIG_HEADER(config.h)
+
+AC_CONFIG_MACRO_DIR([m4])
 
 AM_MAINTAINER_MODE
 
@@ -19,7 +21,8 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
-GNOME_COMPILE_WARNINGS
+dnl TODO: Enable this when we have fixed the issues...
+dnl AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])
 GLIB_GSETTINGS
 
 AC_PATH_XTRA
@@ -56,18 +59,10 @@ dnl *****************************************
 dnl Check for guile
 dnl *****************************************
 
-# The below checks for guile-1.8. It works, the code compile, works.
-# GUILE_FLAGS
-#
-# GUILE_VERSION=`$GUILE_CONFIG --version 2>&1 |/usr/bin/tr -d 'a-zA-Z -'`
-# if test "$GUILE_VERSION" "<" "1.8"; then
-#    AC_MSG_ERROR([We need guile version 1.8 or higher but found version $GUILE_VERSION])
-# fi
-
 # http://www.gnu.org/software/guile/manual/html_node/Autoconf-Macros.html
-PKG_CHECK_MODULES([GUILE], [guile-2.0])
-AC_SUBST(GUILE_CFLAGS)
-AC_SUBST(GUILE_LIBS)
+GUILE_PKG
+GUILE_FLAGS
+
 
 dnl *****************************************
 dnl Check for glib
@@ -246,9 +241,10 @@ dnl *******************************
 dnl Internationalization
 dnl ******************************* 
 
-GETTEXT_PACKAGE=gnotime-2.0
+GETTEXT_PACKAGE=gnotime
 AC_SUBST(GETTEXT_PACKAGE)
-AM_GLIB_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 # AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
 # this is the directory where the *.{mo,gmo} files are installed
@@ -295,8 +291,13 @@ echo ""
 dnl <= CFLAGS and LDFLAGS =>
 echo "CFLAGS : $CFLAGS"
 echo "LDFLAGS : $LDFLAGS"
+echo "WARN_CFLAGS : $WARN_CFLAGS"
+echo "WARN_LDFLAGS : $WARN_LDFLAGS"
 echo "X_LIBS : $X_LIBS"
-echo "GUILE_LIBS : $GUILE_LDFLAGS"
+echo "Guile version : $GUILE_EFFECTIVE_VERSION"
+echo "GUILE_CFLAGS : $GUILE_CFLAGS"
+echo "GUILE_LDFLAGS : $GUILE_LDFLAGS"
+echo "GUILE_LIBS : $GUILE_LIBS"
 echo "LIBQOF_LIBS : $LIBQOF_LIBS"
 echo "LIBQOF_CFLAGS : $LIBQOF_CFLAGS"
 echo "LIBDBUS_LIBS : $LIBDBUS_LIBS"

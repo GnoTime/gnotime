@@ -1,0 +1,1731 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Various GnoTime authors
+# This file is distributed under the same license as the gnotime package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gnotime 2.99.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-30 23:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/active-dialog.c:156
+msgid ""
+"No project timer is currently running in GnoTime.  Do you want to start a "
+"project timer running?  If so, you can select a project from the menu below, "
+"and click 'Start' to start the project running.  Otherwise, just click "
+"'Cancel' to do nothing."
+msgstr ""
+
+#: src/active-dialog.c:164
+msgid ""
+"You can credit this project with the time that you worked on it but were "
+"away from the keyboard.  Enter a time below, the project will be credited "
+"when you click 'Start'"
+msgstr ""
+
+#: src/app.c:275 src/app.c:509 src/status-icon.c:81 src/status-icon.c:106
+msgid "Timer is not running"
+msgstr ""
+
+#: src/app.c:503
+msgid "00:00"
+msgstr ""
+
+#: src/err-throw.c:57
+msgid "No Error"
+msgstr ""
+
+#: src/err-throw.c:60
+#, c-format
+msgid ""
+"Cannot open the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:63
+#, c-format
+msgid ""
+"Cannot write the project data file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:67
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"doesn't seem to be a GnoTime project data file\n"
+msgstr ""
+
+#: src/err-throw.c:74
+#, c-format
+msgid ""
+"The file\n"
+"\t%s\n"
+"seems to be corrupt\n"
+msgstr ""
+
+#: src/err-throw.c:81
+#, c-format
+msgid ""
+"An unknown token was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:86
+#, c-format
+msgid ""
+"An unknown value was found during the parsing of\n"
+"\t%s\n"
+msgstr ""
+
+#: src/err-throw.c:90
+#, c-format
+msgid ""
+"Cannot write the config file\n"
+"\t%s\n"
+msgstr ""
+
+#: src/export.c:69
+msgid "<b>Gnotime export error</b>"
+msgstr ""
+
+#: src/export.c:111
+#, c-format
+msgid "Error exporting data: %s"
+msgstr ""
+
+#: src/export.c:157
+#, c-format
+msgid "File \"%s\" could not be opened for export: %s"
+msgstr ""
+
+#: src/export.c:173
+msgid "Error occured during export"
+msgstr ""
+
+#: src/export.c:197
+msgid "Tab-Delimited Export"
+msgstr ""
+
+#: src/gconf-io.c:245
+msgid "project %t started"
+msgstr ""
+
+#: src/gconf-io.c:246
+msgid "stopped project %t"
+msgstr ""
+
+#: src/ghtml.c:350
+msgid "False"
+msgstr ""
+
+#: src/ghtml.c:352
+msgid "True"
+msgstr ""
+
+#: src/ghtml.c:878 src/ghtml.c:895 src/projects-tree.c:536
+#: src/projects-tree.c:563 src/props-proj.c:437 src/props-proj.c:442
+msgid "Low"
+msgstr ""
+
+#: src/ghtml.c:880
+msgid "Normal"
+msgstr ""
+
+#: src/ghtml.c:882
+msgid "Urgent"
+msgstr ""
+
+#: src/ghtml.c:884 src/ghtml.c:886 src/ghtml.c:901 src/ghtml.c:903
+#: src/ghtml.c:924
+msgid "Undefined"
+msgstr ""
+
+#: src/ghtml.c:897 src/props-proj.c:438 src/props-proj.c:443
+msgid "Medium"
+msgstr ""
+
+#: src/ghtml.c:899
+msgid "Important"
+msgstr ""
+
+#: src/ghtml.c:912 src/props-proj.c:446
+msgid "No Status"
+msgstr ""
+
+#: src/ghtml.c:914 src/projects-tree.c:591 src/props-proj.c:447
+msgid "Not Started"
+msgstr ""
+
+#: src/ghtml.c:916 src/projects-tree.c:594 src/props-proj.c:448
+msgid "In Progress"
+msgstr ""
+
+#: src/ghtml.c:918 src/projects-tree.c:597 src/props-proj.c:449
+msgid "On Hold"
+msgstr ""
+
+#: src/ghtml.c:920 src/projects-tree.c:600 src/props-proj.c:450
+msgid "Cancelled"
+msgstr ""
+
+#: src/ghtml.c:922 src/projects-tree.c:603 src/props-proj.c:451
+msgid "Completed"
+msgstr ""
+
+#: src/ghtml.c:1016 src/ghtml-deprecated.c:456 src/props-task.c:292
+msgid "Hold"
+msgstr ""
+
+#: src/ghtml.c:1018 src/ghtml-deprecated.c:459 src/props-task.c:293
+msgid "Bill"
+msgstr ""
+
+#: src/ghtml.c:1020 src/ghtml-deprecated.c:462 src/props-task.c:294
+msgid "Paid"
+msgstr ""
+
+#: src/ghtml.c:1032 src/ghtml-deprecated.c:282 src/ghtml-deprecated.c:473
+#: src/props-task.c:296
+msgid "Billable"
+msgstr ""
+
+#: src/ghtml.c:1034 src/ghtml-deprecated.c:476 src/props-task.c:297
+msgid "Not Billable"
+msgstr ""
+
+#: src/ghtml.c:1036 src/ghtml-deprecated.c:479 src/props-task.c:298
+msgid "No Charge"
+msgstr ""
+
+#: src/ghtml.c:1048 src/ghtml-deprecated.c:490 src/props-task.c:300
+msgid "Regular"
+msgstr ""
+
+#: src/ghtml.c:1050 src/ghtml-deprecated.c:493 src/props-task.c:301
+msgid "Overtime"
+msgstr ""
+
+#: src/ghtml.c:1052 src/ghtml-deprecated.c:496
+msgid "Double Overtime"
+msgstr ""
+
+#: src/ghtml.c:1054 src/ghtml-deprecated.c:499 src/props-task.c:303
+msgid "Flat Fee"
+msgstr ""
+
+#: src/ghtml.c:1103 src/ghtml.c:1123
+msgid "No activity"
+msgstr ""
+
+#: src/ghtml-deprecated.c:90 src/ghtml-deprecated.c:261 src/projects-tree.c:278
+msgid "Diary Entry"
+msgstr ""
+
+#: src/ghtml-deprecated.c:90 src/ghtml-deprecated.c:320 src/projects-tree.c:285
+#: ui/interval_edit.ui:138
+msgid "Start"
+msgstr ""
+
+#: src/ghtml-deprecated.c:90 src/ghtml-deprecated.c:323 ui/interval_edit.ui:122
+msgid "Stop"
+msgstr ""
+
+#: src/ghtml-deprecated.c:90 src/ghtml-deprecated.c:326
+msgid "Elapsed"
+msgstr ""
+
+#: src/ghtml-deprecated.c:112 src/ghtml-deprecated.c:427
+#: src/ghtml-deprecated.c:439
+msgid "(empty)"
+msgstr ""
+
+#: src/ghtml-deprecated.c:267
+msgid "Notes"
+msgstr ""
+
+#: src/ghtml-deprecated.c:272
+msgid "Task Time"
+msgstr ""
+
+#: src/ghtml-deprecated.c:277
+msgid "Bill Status"
+msgstr ""
+
+#: src/ghtml-deprecated.c:287
+msgid "Bill Rate"
+msgstr ""
+
+#: src/ghtml-deprecated.c:292
+msgid "Value"
+msgstr ""
+
+#: src/ghtml-deprecated.c:297
+msgid "Billable Value"
+msgstr ""
+
+#: src/ghtml-deprecated.c:302 src/ghtml-deprecated.c:332
+msgid "No Default Value"
+msgstr ""
+
+#: src/ghtml-deprecated.c:329
+msgid "Start Time Fuzziness"
+msgstr ""
+
+#: src/ghtml-deprecated.c:522
+msgid "Error - Unknown"
+msgstr ""
+
+#: src/ghtml-deprecated.c:772
+msgid "unknown token: >>>>"
+msgstr ""
+
+#: src/gtt-date-edit.c:467
+msgid "Time"
+msgstr ""
+
+#: src/gtt-date-edit.c:468
+msgid "The time currently selected"
+msgstr ""
+
+#: src/gtt-date-edit.c:482
+msgid "DateEdit Flags"
+msgstr ""
+
+#: src/gtt-date-edit.c:483
+msgid "Flags for how DateEdit looks"
+msgstr ""
+
+#: src/gtt-date-edit.c:493
+msgid "Lower Hour"
+msgstr ""
+
+#: src/gtt-date-edit.c:494
+msgid "Lower hour in the time popup selector"
+msgstr ""
+
+#: src/gtt-date-edit.c:503
+msgid "Upper Hour"
+msgstr ""
+
+#: src/gtt-date-edit.c:504
+msgid "Upper hour in the time popup selector"
+msgstr ""
+
+#: src/gtt-date-edit.c:513
+msgid "Initial Time"
+msgstr ""
+
+#: src/gtt-date-edit.c:513
+msgid "The initial time"
+msgstr ""
+
+#: src/gtt-date-edit.c:743
+msgid "Calendar"
+msgstr ""
+
+#: src/gtt-date-edit.c:990
+msgid "gtt_date_edit_get_date deprecated, use gtt_date_edit_get_time"
+msgstr ""
+
+#: src/idle-dialog.c:236
+#, c-format
+msgid "%s minutes"
+msgstr ""
+
+#: src/idle-dialog.c:241
+#, c-format
+msgid "%s hours"
+msgstr ""
+
+#: src/idle-dialog.c:251
+#, c-format
+msgid ""
+"The timer will be credited with %ld minutes since the last keyboard/mouse "
+"activity.  If you want to change the amount of time credited, use the slider "
+"below to adjust the value."
+msgstr ""
+
+#: src/idle-dialog.c:262
+#, c-format
+msgid ""
+"The timer will be credited with %s hours since the last keyboard/mouse "
+"activity.  If you want to change the amount of time credited, use the slider "
+"below to adjust the value."
+msgstr ""
+
+#: src/idle-dialog.c:281
+#, c-format
+msgid ""
+"The keyboard and mouse have been idle for %ld minutes.  The currently "
+"running project, <b><i>%s - %s</i></b>, has been stopped. Do you want to "
+"restart it?"
+msgstr ""
+
+#: src/idle-dialog.c:292
+#, c-format
+msgid ""
+"The keyboard and mouse have been idle for %ld:%02ld hours.  The currently "
+"running project (%s - %s) has been stopped. Do you want to restart it?"
+msgstr ""
+
+#: src/idle-dialog.c:393
+msgid ""
+"The XScreenSaver is not supported on this display.\n"
+"The idle timeout functionality will not be available."
+msgstr ""
+
+#: src/journal.c:132
+msgid "Error 404 Not Found"
+msgstr ""
+
+#: src/journal.c:134
+#, c-format
+msgid "The file %s was not found."
+msgstr ""
+
+#: src/journal.c:134
+msgid "(null)"
+msgstr ""
+
+#: src/journal.c:143
+msgid "Unkown Error"
+msgstr ""
+
+#: src/journal.c:209
+#, c-format
+msgid ""
+"Unable to open the file %s\n"
+"%s"
+msgstr ""
+
+#: src/journal.c:398 src/proj.c:759 src/proj.c:1831 src/proj.c:2048
+msgid "New Diary Entry"
+msgstr ""
+
+#: src/journal.c:649
+msgid "mailto: URL is not supported at this time"
+msgstr ""
+
+#: src/journal.c:669
+msgid "Save HTML To File"
+msgstr ""
+
+#: src/journal.c:895
+msgid "Left-click to bring up menu"
+msgstr ""
+
+#: src/log.c:64
+#, c-format
+msgid "Cannot open logfile %s for append: %s"
+msgstr ""
+
+#: src/log.c:80
+msgid "%b %d %H:%M:%S"
+msgstr ""
+
+#: src/log.c:142
+msgid "no title"
+msgstr ""
+
+#: src/log.c:151
+msgid "no description"
+msgstr ""
+
+#: src/log.c:226 src/log.c:319
+msgid "program started"
+msgstr ""
+
+#: src/log.c:312
+msgid "program exited"
+msgstr ""
+
+#: src/main.c:120
+msgid ""
+"There seems to be another GnoTime running.\n"
+"Press OK to start GnoTime anyway, or press Cancel to quit."
+msgstr ""
+
+#: src/main.c:136
+msgid "Cannot create pid-file!"
+msgstr ""
+
+#: src/main.c:324
+msgid "Create a new file"
+msgstr ""
+
+#: src/main.c:328
+msgid "Load a backup"
+msgstr ""
+
+#: src/main.c:331
+msgid "Quit"
+msgstr ""
+
+#: src/main.c:361
+msgid "Could not copy backup file."
+msgstr ""
+
+#: src/main.c:493
+msgid "Shall I setup a new configuration?"
+msgstr ""
+
+#: src/main.c:876
+msgid "Warning"
+msgstr ""
+
+#: src/menucmd.c:49
+msgid "Bug-fixes from:"
+msgstr ""
+
+#: src/menucmd.c:89
+msgid ""
+"GnoTime is a combination of stop-watch, diary,  consultant billing system "
+"and todo-list manager."
+msgstr ""
+
+#: src/menucmd.c:110
+msgid "translator-credits"
+msgstr ""
+
+#: src/menucmd.c:175
+msgid "New Project..."
+msgstr ""
+
+#: src/menucmd.c:187
+msgid "Project Title"
+msgstr ""
+
+#: src/menucmd.c:188 src/projects-tree.c:271
+msgid "Description"
+msgstr ""
+
+#: src/menucmd.c:407
+msgid "You must select the project of which you want to edit the properties"
+msgstr ""
+
+#: src/menucmd.c:422
+msgid ""
+"To edit the timer interval for this project,\n"
+"open the Activity window and click on a link.\n"
+"This will bring up a menu of time editing options.\n"
+msgstr ""
+
+#: src/plug-edit.c:134
+msgid ""
+"You must specify a complete filepath to the report, including a leading "
+"slash.  The file that you specify must exist."
+msgstr ""
+
+#: src/plug-edit.c:172
+msgid "New Item"
+msgstr ""
+
+#: src/plug-in.c:131
+#, c-format
+msgid "Unable to open the report file %s\n"
+msgstr ""
+
+#: src/proj.c:740
+msgid "Old GTT Tasks"
+msgstr ""
+
+#: src/projects-tree.c:208
+msgid "Total"
+msgstr ""
+
+#: src/projects-tree.c:215
+msgid "Year"
+msgstr ""
+
+#: src/projects-tree.c:222
+msgid "Month"
+msgstr ""
+
+#: src/projects-tree.c:229
+msgid "Week"
+msgstr ""
+
+#: src/projects-tree.c:236
+msgid "Last Week"
+msgstr ""
+
+#: src/projects-tree.c:243
+msgid "Yesterday"
+msgstr ""
+
+#: src/projects-tree.c:250 src/props-invl.c:231
+msgid "Today"
+msgstr ""
+
+#: src/projects-tree.c:257
+msgid "Entry"
+msgstr ""
+
+#: src/projects-tree.c:264
+msgid "Title"
+msgstr ""
+
+#: src/projects-tree.c:292
+msgid "End"
+msgstr ""
+
+#: src/projects-tree.c:299
+msgid "Due"
+msgstr ""
+
+#: src/projects-tree.c:306
+msgid "Size"
+msgstr ""
+
+#: src/projects-tree.c:313
+msgid "Done"
+msgstr ""
+
+#: src/projects-tree.c:320
+msgid "Urgency"
+msgstr ""
+
+#: src/projects-tree.c:327
+msgid "Importance"
+msgstr ""
+
+#: src/projects-tree.c:334
+msgid "Status"
+msgstr ""
+
+#: src/projects-tree.c:539 src/projects-tree.c:566
+msgid "Med"
+msgstr ""
+
+#: src/projects-tree.c:542 src/projects-tree.c:569 src/props-proj.c:439
+#: src/props-proj.c:444
+msgid "High"
+msgstr ""
+
+#: src/props-invl.c:222
+msgid "Exact Time"
+msgstr ""
+
+#: src/props-invl.c:223
+msgid "5 Min"
+msgstr ""
+
+#: src/props-invl.c:224
+msgid "10 Min"
+msgstr ""
+
+#: src/props-invl.c:225
+msgid "15 Min"
+msgstr ""
+
+#: src/props-invl.c:226
+msgid "20 Min"
+msgstr ""
+
+#: src/props-invl.c:227
+msgid "30 Min"
+msgstr ""
+
+#: src/props-invl.c:228
+msgid "1 Hour"
+msgstr ""
+
+#: src/props-invl.c:229
+msgid "2 Hours"
+msgstr ""
+
+#: src/props-invl.c:230
+msgid "3 Hours"
+msgstr ""
+
+#: src/props-proj.c:98 src/props-proj.c:99
+msgid "empty"
+msgstr ""
+
+#: src/props-proj.c:436 src/props-proj.c:441
+msgid "Not Set"
+msgstr ""
+
+#: src/props-task.c:302
+msgid "OverOver"
+msgstr ""
+
+#: src/status-icon.c:66
+msgid "_Hide main window"
+msgstr ""
+
+#: src/status-icon.c:98
+#, c-format
+msgid "Timer running for %s"
+msgstr ""
+
+#: src/toolbar.c:202
+msgid "Create a New Project..."
+msgstr ""
+
+#: src/toolbar.c:212
+msgid "Cut Selected Project"
+msgstr ""
+
+#: src/toolbar.c:216
+msgid "Copy Selected Project"
+msgstr ""
+
+#: src/toolbar.c:220
+msgid "Paste Project"
+msgstr ""
+
+#: src/toolbar.c:235
+msgid "Activity Journal"
+msgstr ""
+
+#: src/toolbar.c:235
+msgid "View and Edit Timestamp Logs"
+msgstr ""
+
+#: src/toolbar.c:243
+msgid "Edit Project Properties..."
+msgstr ""
+
+#: src/toolbar.c:259
+msgid "Timer"
+msgstr ""
+
+#: src/toolbar.c:259
+msgid "Start/Stop Timer"
+msgstr ""
+
+#: src/toolbar.c:278
+msgid "Edit Preferences..."
+msgstr ""
+
+#: src/toolbar.c:285
+msgid "User's Guide and Manual"
+msgstr ""
+
+#: src/toolbar.c:292
+msgid "Quit GnoTime"
+msgstr ""
+
+#: gnotime.desktop.in:7
+msgid "gnome-cromagnon.png"
+msgstr ""
+
+#: ui/active.ui:7
+msgid "Start Project Dialog"
+msgstr ""
+
+#: ui/active.ui:44 ui/idle.ui:44
+msgid "Restart the same project that used to be running."
+msgstr ""
+
+#: ui/active.ui:61 ui/idle.ui:61
+msgid "Do not restart the timer."
+msgstr ""
+
+#: ui/active.ui:116 ui/active.ui:164
+msgid "Dummy Text Do Not Translate"
+msgstr ""
+
+#: ui/column_menu.ui:9
+msgid "Sort"
+msgstr ""
+
+#: ui/column_menu.ui:12
+msgid "Sort the entries in this column in alphabetical order."
+msgstr ""
+
+#: ui/column_menu.ui:22
+msgid "Move Left"
+msgstr ""
+
+#: ui/column_menu.ui:25
+msgid "Move this column to the left."
+msgstr ""
+
+#: ui/column_menu.ui:35
+msgid "Move Right"
+msgstr ""
+
+#: ui/column_menu.ui:38
+msgid "Move this column to the right."
+msgstr ""
+
+#: ui/idle.ui:7
+msgid "Restart Idle Timer Dialog"
+msgstr ""
+
+#: ui/interval_edit.ui:106
+msgid "Start Fuzz"
+msgstr ""
+
+#: ui/interval_edit.ui:151
+msgid "Set how Uncertain the Start Time Is"
+msgstr ""
+
+#: ui/interval_popup.ui:10
+msgid "New Interval"
+msgstr ""
+
+#: ui/interval_popup.ui:25
+msgid "Edit Interval"
+msgstr ""
+
+#: ui/interval_popup.ui:32
+msgid "Delete Interval"
+msgstr ""
+
+#: ui/interval_popup.ui:54
+msgid "Merge Up"
+msgstr ""
+
+#: ui/interval_popup.ui:64
+msgid "Merge Down"
+msgstr ""
+
+#: ui/interval_popup.ui:78
+msgid "Move Up"
+msgstr ""
+
+#: ui/interval_popup.ui:90
+msgid "Move Down"
+msgstr ""
+
+#: ui/interval_popup.ui:109
+msgid "Insert Diary Entry"
+msgstr ""
+
+#: ui/interval_popup.ui:121
+msgid "Paste Diary Entry"
+msgstr ""
+
+#: ui/journal.ui:7
+msgid "GnoTime: Journal"
+msgstr ""
+
+#: ui/journal.ui:26
+msgid "Publish"
+msgstr ""
+
+#: ui/journal.ui:41
+msgid "Save"
+msgstr ""
+
+#: ui/journal.ui:56
+msgid "Refresh"
+msgstr ""
+
+#: ui/journal.ui:71
+msgid "Close"
+msgstr ""
+
+#: ui/journal.ui:109
+msgid "GnoTime: Publish Report"
+msgstr ""
+
+#: ui/journal.ui:120
+msgid ""
+"<b>Publish This Report</b>\n"
+"Enter a URL such as one of the following:\n"
+"mailto:<i>&lt;username&gt;@&lt;hostname&gt;</i>\n"
+"ssh://<i>host.net/some/file/path</i>\n"
+"ftp://<i>username:passwd@host.net/path/to/file</i>\n"
+msgstr ""
+
+#: ui/journal.ui:142
+msgid "URL:"
+msgstr ""
+
+#: ui/mainmenu.ui:39
+msgid "_File"
+msgstr ""
+
+#: ui/mainmenu.ui:48
+msgid "_Export Tasks"
+msgstr ""
+
+#: ui/mainmenu.ui:60
+msgid "Export _Projects"
+msgstr ""
+
+#: ui/mainmenu.ui:97
+msgid "_Projects"
+msgstr ""
+
+#: ui/mainmenu.ui:119
+msgid "Delete the selected project"
+msgstr ""
+
+#: ui/mainmenu.ui:131
+msgid "Copy the selected project"
+msgstr ""
+
+#: ui/mainmenu.ui:143
+msgid "Paste the previously copied project"
+msgstr ""
+
+#: ui/mainmenu.ui:159 ui/mainmenu.ui:436
+msgid "Edit _Times"
+msgstr ""
+
+#: ui/mainmenu.ui:162 ui/mainmenu.ui:434
+msgid "Edit the time interval associated with this project"
+msgstr ""
+
+#: ui/mainmenu.ui:174
+msgid "Properties"
+msgstr ""
+
+#: ui/mainmenu.ui:187
+msgid "_Settings"
+msgstr ""
+
+#: ui/mainmenu.ui:212
+msgid "_Reports"
+msgstr ""
+
+#: ui/mainmenu.ui:222
+msgid "Show the journal for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:224
+msgid "_Journal..."
+msgstr ""
+
+#: ui/mainmenu.ui:232
+msgid "Show the journal together with the timestamps for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:234 ui/mainmenu.ui:426
+msgid "_Activity..."
+msgstr ""
+
+#: ui/mainmenu.ui:242
+msgid "Show the total time spent on a project, day by day"
+msgstr ""
+
+#: ui/mainmenu.ui:244
+msgid "_Daily..."
+msgstr ""
+
+#: ui/mainmenu.ui:252
+msgid "Show the project descriptions and notes."
+msgstr ""
+
+#: ui/mainmenu.ui:254
+msgid "_Status"
+msgstr ""
+
+#: ui/mainmenu.ui:262
+msgid "Show a sample to-do list"
+msgstr ""
+
+#: ui/mainmenu.ui:264
+msgid "_To Do..."
+msgstr ""
+
+#: ui/mainmenu.ui:272
+msgid "Show a sample invoice for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:274
+msgid "_Invoice..."
+msgstr ""
+
+#: ui/mainmenu.ui:282
+msgid "Run a sample Query Generator"
+msgstr ""
+
+#: ui/mainmenu.ui:284
+msgid "_Query..."
+msgstr ""
+
+#: ui/mainmenu.ui:292
+msgid "Show a sample introductory primer for designing custom reports"
+msgstr ""
+
+#: ui/mainmenu.ui:294
+msgid "_Primer..."
+msgstr ""
+
+#: ui/mainmenu.ui:302
+msgid "Define a path to a new GnoTime ghtml report file"
+msgstr ""
+
+#: ui/mainmenu.ui:304
+msgid "_New Report..."
+msgstr ""
+
+#: ui/mainmenu.ui:312
+msgid "Edit the entries in the Reports pulldown menu (this menu)"
+msgstr ""
+
+#: ui/mainmenu.ui:314
+msgid "_Edit Reports..."
+msgstr ""
+
+#: ui/mainmenu.ui:334
+msgid "_Timer"
+msgstr ""
+
+#: ui/mainmenu.ui:342
+msgid "St_art"
+msgstr ""
+
+#: ui/mainmenu.ui:345
+msgid "Start the timer running"
+msgstr ""
+
+#: ui/mainmenu.ui:355
+msgid "Sto_p"
+msgstr ""
+
+#: ui/mainmenu.ui:358
+msgid "Stop the timer"
+msgstr ""
+
+#: ui/mainmenu.ui:371
+msgid "_Timer Running"
+msgstr ""
+
+#: ui/mainmenu.ui:385
+msgid "_Help"
+msgstr ""
+
+#: ui/mainmenu.ui:424
+msgid "Show the timesheet journal for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:444
+msgid "Change the current task for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:446 ui/task_popup.ui:10
+msgid "_New Diary Entry"
+msgstr ""
+
+#: ui/mainmenu.ui:454
+msgid "Edit task header for this project"
+msgstr ""
+
+#: ui/mainmenu.ui:456 ui/task_popup.ui:22
+msgid "_Edit Diary Entry"
+msgstr ""
+
+#: ui/notes.ui:7
+msgid "window1"
+msgstr ""
+
+#: ui/notes.ui:43 ui/project_properties.ui:49
+msgid "Project Title:"
+msgstr ""
+
+#: ui/notes.ui:56
+msgid "Close the project subwindow"
+msgstr ""
+
+#: ui/notes.ui:78
+msgid "Edit the project title in this box"
+msgstr ""
+
+#: ui/notes.ui:106
+msgid "Desc:"
+msgstr ""
+
+#: ui/notes.ui:118
+msgid "Edit the project description"
+msgstr ""
+
+#: ui/notes.ui:178 ui/task_properties.ui:80
+msgid "Diary Entry:"
+msgstr ""
+
+#: ui/notes.ui:219
+msgid "Create a new diary entry"
+msgstr ""
+
+#: ui/plugin.ui:84
+msgid "Tooltip that will show when the pointer hovers over this menu item."
+msgstr ""
+
+#: ui/plugin.ui:102
+msgid "Title that will appear in the 'Reports' menu."
+msgstr ""
+
+#: ui/plugin.ui:119 ui/plugin_editor.ui:283
+msgid "Tooltip:"
+msgstr ""
+
+#: ui/plugin.ui:134 ui/plugin_editor.ui:298
+msgid "Path:"
+msgstr ""
+
+#: ui/plugin.ui:149
+msgid "Name:"
+msgstr ""
+
+#: ui/plugin_editor.ui:8
+msgid "GnoTime Report Menu Editor"
+msgstr ""
+
+#: ui/plugin_editor.ui:42
+msgid "Abandon all changes and close this dialog window."
+msgstr ""
+
+#: ui/plugin_editor.ui:60
+msgid "Apply the changes to the reports menu."
+msgstr ""
+
+#: ui/plugin_editor.ui:78
+msgid "Apply the changes to the reports menu, and close this dialog window."
+msgstr ""
+
+#: ui/plugin_editor.ui:135
+msgid "Move the selected menu item up by one entry."
+msgstr ""
+
+#: ui/plugin_editor.ui:153
+msgid "Move the selected menu item down by one entry."
+msgstr ""
+
+#: ui/plugin_editor.ui:255
+msgid "Icon:"
+msgstr ""
+
+#: ui/plugin_editor.ui:270
+msgid "Label:"
+msgstr ""
+
+#: ui/plugin_editor.ui:312
+msgid "Enter the name for the menu item here."
+msgstr ""
+
+#: ui/plugin_editor.ui:329
+msgid "Enter the popup hint for the menu item here."
+msgstr ""
+
+#: ui/plugin_editor.ui:362
+msgid "Delete"
+msgstr ""
+
+#: ui/plugin_editor.ui:366
+msgid "Delete the selected menu entry."
+msgstr ""
+
+#: ui/plugin_editor.ui:381
+msgid "Add Child"
+msgstr ""
+
+#: ui/plugin_editor.ui:396
+msgid "Add Separator"
+msgstr ""
+
+#: ui/plugin_editor.ui:400
+msgid "Add a horizontal bar (separator) to the menu."
+msgstr ""
+
+#: ui/plugin_editor.ui:412
+msgid "Add"
+msgstr ""
+
+#: ui/plugin_editor.ui:416
+msgid "Add a new menu entry at the selected position."
+msgstr ""
+
+#: ui/plugin_editor.ui:449
+msgid "Modifiers:"
+msgstr ""
+
+#: ui/plugin_editor.ui:460
+msgid "Ctrl"
+msgstr ""
+
+#: ui/plugin_editor.ui:476
+msgid "Shift"
+msgstr ""
+
+#: ui/plugin_editor.ui:492
+msgid "Alt"
+msgstr ""
+
+#: ui/plugin_editor.ui:521
+msgid "Key:"
+msgstr ""
+
+#: ui/plugin_editor.ui:534
+msgid "Enter the keyboard shortcut for this menu item."
+msgstr ""
+
+#: ui/plugin_editor.ui:559
+msgid "Accelerator"
+msgstr ""
+
+#: ui/prefs.ui:21
+msgid "Show Project Importance"
+msgstr ""
+
+#: ui/prefs.ui:36
+msgid "Show Project Urgency"
+msgstr ""
+
+#: ui/prefs.ui:53
+msgid "Show Project Status"
+msgstr ""
+
+#: ui/prefs.ui:70
+msgid "Show Total Time Ever"
+msgstr ""
+
+#: ui/prefs.ui:87
+msgid "Show Time This Year"
+msgstr ""
+
+#: ui/prefs.ui:104
+msgid "Show Time This Month"
+msgstr ""
+
+#: ui/prefs.ui:121
+msgid "Show Time This Week"
+msgstr ""
+
+#: ui/prefs.ui:138
+msgid "Show Percent Complete"
+msgstr ""
+
+#: ui/prefs.ui:155
+msgid "Show Estimated Effort"
+msgstr ""
+
+#: ui/prefs.ui:159
+msgid ""
+"Show the 'szing', that is, the estimated amount of work that it will take to "
+"perform this project."
+msgstr ""
+
+#: ui/prefs.ui:173
+msgid "Show Project Due Date"
+msgstr ""
+
+#: ui/prefs.ui:190
+msgid "Show Planned Project End Date"
+msgstr ""
+
+#: ui/prefs.ui:207
+msgid "Show Planned Project Start Date"
+msgstr ""
+
+#: ui/prefs.ui:224
+msgid "Show Current Diary Entry"
+msgstr ""
+
+#: ui/prefs.ui:241
+msgid "Show Project Description"
+msgstr ""
+
+#: ui/prefs.ui:258
+msgid "Show Time For The Current Diary Entry"
+msgstr ""
+
+#: ui/prefs.ui:275
+msgid "Show Time Yesterday"
+msgstr ""
+
+#: ui/prefs.ui:292
+msgid "Show Time Today"
+msgstr ""
+
+#: ui/prefs.ui:309
+msgid "Show Time Last Week"
+msgstr ""
+
+#: ui/prefs.ui:330
+msgid "View Project Fields"
+msgstr ""
+
+#: ui/prefs.ui:339
+msgid "Fields"
+msgstr ""
+
+#: ui/prefs.ui:359
+msgid "Show Seconds"
+msgstr ""
+
+#: ui/prefs.ui:374
+msgid "Show Status Bar"
+msgstr ""
+
+#: ui/prefs.ui:391
+msgid "Show Table Header"
+msgstr ""
+
+#: ui/prefs.ui:408
+msgid "Show Sub-Projects"
+msgstr ""
+
+#: ui/prefs.ui:429
+msgid "Project List Display"
+msgstr ""
+
+#: ui/prefs.ui:441
+msgid "Display"
+msgstr ""
+
+#: ui/prefs.ui:468
+msgid "Enter a shell command to be executed when no projects are active."
+msgstr ""
+
+#: ui/prefs.ui:469
+msgid ""
+"echo shell stop id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: ui/prefs.ui:488
+msgid "Enter a shell command to be executed whenever projects are switched."
+msgstr ""
+
+#: ui/prefs.ui:489
+msgid ""
+"echo shell start id=%D \"%t\" xx\"%d\" %T  %Hxx%Mxx%S hours=%h min=%m secs=%s"
+msgstr ""
+
+#: ui/prefs.ui:506
+msgid "Start Project Command:"
+msgstr ""
+
+#: ui/prefs.ui:519
+msgid "Stop Project Command:"
+msgstr ""
+
+#: ui/prefs.ui:535
+msgid "Shell Commands"
+msgstr ""
+
+#: ui/prefs.ui:547
+msgid "Shell"
+msgstr ""
+
+#: ui/prefs.ui:574
+msgid ""
+"Switches between projects that happen faster than this will not be logged "
+"(enter the number of seconds)"
+msgstr ""
+
+#: ui/prefs.ui:593
+msgid ""
+"Entry that will be logged when the project stops.  Use %t for the porject "
+"title, %d for the project description, etc. See the manual for more options."
+msgstr ""
+
+#: ui/prefs.ui:612
+msgid ""
+"Entry that will be logged when a project starts. Use %t for the project "
+"title, %d for the description, etc. See the manual for more options."
+msgstr ""
+
+#: ui/prefs.ui:628
+msgid "Use Logfile"
+msgstr ""
+
+#: ui/prefs.ui:646
+msgid "Filename:"
+msgstr ""
+
+#: ui/prefs.ui:661
+msgid "Entry Start:"
+msgstr ""
+
+#: ui/prefs.ui:676
+msgid "Entry Stop:"
+msgstr ""
+
+#: ui/prefs.ui:691
+msgid "Min Recorded:"
+msgstr ""
+
+#: ui/prefs.ui:724 ui/prefs.ui:736
+msgid "Logfile"
+msgstr ""
+
+#: ui/prefs.ui:760
+msgid "Show Toolbar"
+msgstr ""
+
+#: ui/prefs.ui:777
+msgid "Show Tooltips"
+msgstr ""
+
+#: ui/prefs.ui:798 ui/prefs.ui:977
+msgid "Toolbar"
+msgstr ""
+
+#: ui/prefs.ui:820
+msgid "Show `New'"
+msgstr ""
+
+#: ui/prefs.ui:837
+msgid "Show `Cut', `Copy', `Paste'"
+msgstr ""
+
+#: ui/prefs.ui:853
+msgid "Show `Journal'"
+msgstr ""
+
+#: ui/prefs.ui:870
+msgid "Show `Properties'"
+msgstr ""
+
+#: ui/prefs.ui:887
+msgid "Show `Timer'"
+msgstr ""
+
+#: ui/prefs.ui:904
+msgid "Show `Preferences'"
+msgstr ""
+
+#: ui/prefs.ui:920
+msgid "Show `Help'"
+msgstr ""
+
+#: ui/prefs.ui:937
+msgid "Show `Quit'"
+msgstr ""
+
+#: ui/prefs.ui:958
+msgid "Toolbar Segments"
+msgstr ""
+
+#: ui/prefs.ui:1007 ui/prefs.ui:1065
+msgid "Idle Seconds:"
+msgstr ""
+
+#: ui/prefs.ui:1019
+msgid ""
+"The current active project will be made inactive after there has been no "
+"keyboard/mouse activity after this number of seconds.  Set to -1 to disable."
+msgstr ""
+
+#: ui/prefs.ui:1037
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: ui/prefs.ui:1077
+msgid ""
+"A warning will be displayed after this number of seconds with no running "
+"project.  Set to -1 to disable."
+msgstr ""
+
+#: ui/prefs.ui:1095
+msgid "No Project Timeout"
+msgstr ""
+
+#: ui/prefs.ui:1144
+msgid "New Day Starts At:"
+msgstr ""
+
+#: ui/prefs.ui:1156
+msgid "New Week Starts On:"
+msgstr ""
+
+#: ui/prefs.ui:1173
+msgid ""
+"The time of night at which one day ends and the next day begins.  By default "
+"midnight, you can set this to any value."
+msgstr ""
+
+#: ui/prefs.ui:1218
+msgid "End of Day/Week"
+msgstr ""
+
+#: ui/prefs.ui:1237
+msgid "Misc"
+msgstr ""
+
+#: ui/prefs.ui:1270
+msgid "12 hours"
+msgstr ""
+
+#: ui/prefs.ui:1286
+msgid "24 hours"
+msgstr ""
+
+#: ui/prefs.ui:1303 ui/prefs.ui:1354
+msgid "Use my locale formating"
+msgstr ""
+
+#: ui/prefs.ui:1327
+msgid "Time format"
+msgstr ""
+
+#: ui/prefs.ui:1371
+msgid "Place your local currency symbol for use in the reports"
+msgstr ""
+
+#: ui/prefs.ui:1392
+msgid "Currency Symbol"
+msgstr ""
+
+#: ui/prefs.ui:1407
+msgid "Currency settings"
+msgstr ""
+
+#: ui/prefs.ui:1433
+msgid "Reports"
+msgstr ""
+
+#: ui/prefs.ui:1448
+msgid "9 PM"
+msgstr ""
+
+#: ui/prefs.ui:1451
+msgid "10 PM"
+msgstr ""
+
+#: ui/prefs.ui:1454
+msgid "11 PM"
+msgstr ""
+
+#: ui/prefs.ui:1457
+msgid "12 Midnight"
+msgstr ""
+
+#: ui/prefs.ui:1460
+msgid "01 AM"
+msgstr ""
+
+#: ui/prefs.ui:1463
+msgid "02 AM"
+msgstr ""
+
+#: ui/prefs.ui:1466
+msgid "03 AM"
+msgstr ""
+
+#: ui/prefs.ui:1469
+msgid "04 AM"
+msgstr ""
+
+#: ui/prefs.ui:1472
+msgid "05 AM"
+msgstr ""
+
+#: ui/prefs.ui:1475
+msgid "06 AM"
+msgstr ""
+
+#: ui/prefs.ui:1486
+msgid "Sunday"
+msgstr ""
+
+#: ui/prefs.ui:1489
+msgid "Monday"
+msgstr ""
+
+#: ui/prefs.ui:1492
+msgid "Tuesday"
+msgstr ""
+
+#: ui/prefs.ui:1495
+msgid "Wednesday"
+msgstr ""
+
+#: ui/prefs.ui:1498
+msgid "Thursday"
+msgstr ""
+
+#: ui/prefs.ui:1501
+msgid "Friday"
+msgstr ""
+
+#: ui/prefs.ui:1504
+msgid "Saturday"
+msgstr ""
+
+#: ui/project_properties.ui:62
+msgid "Project Description:"
+msgstr ""
+
+#: ui/project_properties.ui:101 ui/project_properties.ui:105
+#: ui/task_properties.ui:108
+msgid "Notes:"
+msgstr ""
+
+#: ui/project_properties.ui:121
+msgid "Project"
+msgstr ""
+
+#: ui/project_properties.ui:141
+msgid "Regular Rate:"
+msgstr ""
+
+#: ui/project_properties.ui:154
+msgid "Overtime Rate:"
+msgstr ""
+
+#: ui/project_properties.ui:169
+msgid "Double-Overtime Rate:"
+msgstr ""
+
+#: ui/project_properties.ui:184
+msgid "Flat Fee:"
+msgstr ""
+
+#: ui/project_properties.ui:199
+msgid "        "
+msgstr ""
+
+#: ui/project_properties.ui:246
+msgid "                        "
+msgstr ""
+
+#: ui/project_properties.ui:325
+msgid "Rates"
+msgstr ""
+
+#: ui/project_properties.ui:346
+msgid "Minimum Interval: "
+msgstr ""
+
+#: ui/project_properties.ui:359
+msgid "Auto-merge Interval:"
+msgstr ""
+
+#: ui/project_properties.ui:374
+msgid "Auto-merge Gap:"
+msgstr ""
+
+#: ui/project_properties.ui:389 ui/project_properties.ui:405
+#: ui/project_properties.ui:420
+msgid "seconds"
+msgstr ""
+
+#: ui/project_properties.ui:484
+msgid "Intervals"
+msgstr ""
+
+#: ui/project_properties.ui:506
+msgid "Urgency:"
+msgstr ""
+
+#: ui/project_properties.ui:519
+msgid "Importance:"
+msgstr ""
+
+#: ui/project_properties.ui:534
+msgid "Status:"
+msgstr ""
+
+#: ui/project_properties.ui:549
+msgid "Planned Start:"
+msgstr ""
+
+#: ui/project_properties.ui:564
+msgid "Planned Finish:"
+msgstr ""
+
+#: ui/project_properties.ui:579
+msgid "Due Date:"
+msgstr ""
+
+#: ui/project_properties.ui:594
+msgid "Hours to Finish:"
+msgstr ""
+
+#: ui/project_properties.ui:609
+#, c-format
+msgid "% Complete"
+msgstr ""
+
+#: ui/project_properties.ui:731
+msgid "Planning"
+msgstr ""
+
+#: ui/task_popup.ui:34
+msgid "_Cut Diary Entry"
+msgstr ""
+
+#: ui/task_popup.ui:46
+msgid "Cut Entry & _Times"
+msgstr ""
+
+#: ui/task_popup.ui:58
+msgid "Copy Diary Entry"
+msgstr ""
+
+#: ui/task_popup.ui:70
+msgid "_Paste Diary Entry"
+msgstr ""
+
+#: ui/task_popup.ui:89
+msgid "New Time Interval"
+msgstr ""
+
+#: ui/task_properties.ui:8 ui/task_properties.ui:146
+msgid "Diary Notes"
+msgstr ""
+
+#: ui/task_properties.ui:92
+msgid "A short description to attach to this block of time."
+msgstr ""
+
+#: ui/task_properties.ui:128
+msgid "Type detailed diary entry notes here."
+msgstr ""
+
+#: ui/task_properties.ui:167
+msgid "Billing Status:"
+msgstr ""
+
+#: ui/task_properties.ui:180
+msgid "Billable:"
+msgstr ""
+
+#: ui/task_properties.ui:195
+msgid "Billing Rate:"
+msgstr ""
+
+#: ui/task_properties.ui:210
+msgid "Billing Block:"
+msgstr ""
+
+#: ui/task_properties.ui:225
+msgid "minutes"
+msgstr ""
+
+#: ui/task_properties.ui:241
+msgid ""
+"Is this task ready to be billed to the customer? \"Hold\" means maybe, but "
+"not yet, needs review.   \"Bill\" means print this on the next invoice.   "
+"\"Paid\" means that it should no longer be included on invoices."
+msgstr ""
+
+#: ui/task_properties.ui:260
+msgid ""
+"How should this task be billed?  \"Billable\" means bill to the customer in "
+"the normal fashion.   \"Not Billable\" means we can't ask for money for "
+"this, don't print on the invoice.   \"No Charge\" means print on the invoice "
+"as 'free/no-charge'."
+msgstr ""
+
+#: ui/task_properties.ui:281
+msgid "Fee rate to be charged for this task."
+msgstr ""
+
+#: ui/task_properties.ui:302
+msgid ""
+"The billed unit of time will be rounded to an integer multiple of this time."
+msgstr ""
+
+#: ui/task_properties.ui:332
+msgid "Billing"
+msgstr ""
