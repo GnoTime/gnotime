@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkDialog" id="Task Properties">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Diary Notes</property>
     <property name="type_hint">normal</property>
-    <property name="has_separator">True</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -24,7 +27,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_help_button_clicked" swapped="no"/>
               </object>
@@ -41,7 +43,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_ok_button_clicked" swapped="no"/>
               </object>
@@ -76,9 +77,9 @@
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Diary Entry:</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
@@ -92,6 +93,11 @@
                     <property name="tooltip_text" translatable="yes">A short description to attach to this block of time.</property>
                     <property name="has_entry">True</property>
                     <property name="entry_text_column">0</property>
+                    <child internal-child="entry">
+                      <object class="GtkEntry">
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -103,9 +109,9 @@
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Notes:</property>
                     <property name="xalign">0</property>
                     <property name="yalign">0</property>
-                    <property name="label" translatable="yes">Notes:</property>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -119,7 +125,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hscrollbar_policy">never</property>
-                    <property name="vscrollbar_policy">automatic</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTextView" id="notes box">
@@ -160,12 +165,18 @@
                 <property name="column_spacing">7</property>
                 <property name="row_spacing">7</property>
                 <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
                   <object class="GtkLabel" id="label16">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Status:</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
@@ -176,9 +187,9 @@
                   <object class="GtkLabel" id="label15">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billable:</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -191,9 +202,9 @@
                   <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Rate:</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="top_attach">2</property>
@@ -206,9 +217,9 @@
                   <object class="GtkLabel" id="label12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Billing Block:</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="top_attach">3</property>
@@ -221,9 +232,9 @@
                   <object class="GtkLabel" id="label13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">minutes</property>
                     <property name="justify">center</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -233,6 +244,9 @@
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"/>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <object class="GtkComboBox" id="billstatus menu">
@@ -302,6 +316,11 @@
                     <property name="tooltip_text" translatable="yes">The billed unit of time will be rounded to an integer multiple of this time.</property>
                     <property name="has_entry">True</property>
                     <property name="entry_text_column">0</property>
+                    <child internal-child="entry">
+                      <object class="GtkEntry">
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -310,15 +329,6 @@
                     <property name="bottom_attach">4</property>
                     <property name="y_options"/>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
