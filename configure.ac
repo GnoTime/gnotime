@@ -46,14 +46,14 @@ dnl *****************************************
 
 GCONF_REQUIRED=3.2.6
 GLIB_REQUIRED=2.40.2
-GTK_REQUIRED=2.24.23
-LIBGTKHTML_REQUIRED=3.32.2
+GTK_REQUIRED=3.10.0
 LIBXML2_REQUIRED=2.9.1
 SCROLLKEEPER_BUILD_REQUIRED=0.8.1
 LIBQOF_REQUIRED_MIN=0.8.6
 LIBDBUS_REQUIRED_MIN=0.100.2
 X11_REQUIRED=1.6.2
 XSCRNSAVER_REQUIRED=1.2.2
+WEBKITGTK_REQUIRED=2.32.0
 
 dnl *****************************************
 dnl Check for guile
@@ -74,7 +74,7 @@ AC_SUBST(GLIB_LIBS)
 dnl *****************************************
 dnl Check for GTK+
 dnl *****************************************
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
 
@@ -136,23 +136,12 @@ AC_SUBST(WITH_DBUS)
 
 
 dnl *******************************
-dnl gtkhtml -- ask pkgconfig for some variant of gtkhtml3
+dnl WebKitGTK
 dnl *******************************
 
-GTKHTMLPRESENT=no
-for GTKHTMLVER in 3.14 3.13 3.12 3.11 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.2 3.1 3.0 ; do
-  if $PKG_CONFIG --exists libgtkhtml-$GTKHTMLVER ; then
-	PKG_CHECK_MODULES(LIBGTKHTML, libgtkhtml-$GTKHTMLVER >= $LIBGTKHTML_REQUIRED)
-	GTKHTMLPRESENT=yes
-	break
-  fi
-done
-if test x$GTKHTMLPRESENT = x'no'; then
-	AC_MSG_ERROR([gtkhtml3 is needed in order to compile this program.])
-fi
-
-AC_SUBST(LIBGTKHTML_CFLAGS)
-AC_SUBST(LIBGTKHTML_LIBS)
+PKG_CHECK_MODULES(WEBKITGTK, webkit2gtk-4.0 >= $WEBKITGTK_REQUIRED)
+AC_SUBST(WEBKITGTK_CFLAGS)
+AC_SUBST(WEBKITGTK_LIBS)
 
 
 dnl ********************
@@ -304,6 +293,8 @@ echo "LIBDBUS_LIBS : $LIBDBUS_LIBS"
 echo "LIBDBUS_CFLAGS : $LIBDBUS_CFLAGS"
 echo "XSS_EXTENSION_CFLAGS : $XSS_EXTENSION_CFLAGS"
 echo "XSS_EXTENSION_LIBS : $XSS_EXTENSION_LIBS"
+echo "WEBKITGTK_CFLAGS : $WEBKITGTK_CFLAGS"
+echo "WEBKITGTK_LIBS: $WEBKITGTK_LIBS"
 echo ""
 
 dnl <= Prefixes =>

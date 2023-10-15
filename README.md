@@ -46,8 +46,8 @@ guile-2.0-dev (or 2.2)
 libdbus-glib-1-dev
 libgconf2-dev
 libglib2.0-dev
-libgtk2.0-dev
-libgtkhtml3.14-dev
+libgtk-3-dev
+libwebkit2gtk-4.0-de
 libqof-dev
 libxss-dev
 libxml2-dev
@@ -56,7 +56,7 @@ scrollkeeper
 
 Developers and maintainers also need:
 ```
-glade-gtk2
+glade (e.g. v3.22)
 ```
 
 ### QOF Query Object Framework

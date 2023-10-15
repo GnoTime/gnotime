@@ -495,7 +495,6 @@ void app_new(int argc, char *argv[], const char *geometry_string)
     gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(status_vbox), TRUE, TRUE, 0);
 
     grip = GTK_STATUSBAR(gtk_statusbar_new());
-    gtk_statusbar_set_has_resize_grip(grip, TRUE);
     gtk_widget_show(GTK_WIDGET(grip));
     gtk_box_pack_start(GTK_BOX(status_bar), GTK_WIDGET(grip), FALSE, FALSE, 0);
 

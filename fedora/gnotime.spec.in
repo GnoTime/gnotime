@@ -10,7 +10,7 @@ URL:            http://gttr.sourceforge.net/
 Source0:        http://dl.sf.net/gttr/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  gtkhtml3-devel
+BuildRequires:  libwebkitgtk-dev
 BuildRequires:  libgnome-devel >= 0:2.0
 BuildRequires:  libgnomeui-devel >= 0:2.0.3
 BuildRequires:  libglade2-devel >= 0:2.0
