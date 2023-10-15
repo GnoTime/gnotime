@@ -172,6 +172,9 @@ static void connect_signals_popup_cb(
 
     if (g_strcmp0(handler_name, "on_cancel_button_clicked") == 0)
         g_signal_connect(object, signal_name, G_CALLBACK(interval_edit_cancel_cb), user_data);
+
+    if (g_strcmp0(handler_name, "gtk_widget_hide_on_delete") == 0)
+        g_signal_connect(object, signal_name, G_CALLBACK(gtk_widget_hide_on_delete), user_data);
 }
 
 /* ============================================================== */
@@ -230,8 +233,6 @@ EditIntervalDialog *edit_interval_dialog_new(void)
     gtt_combo_select_list_append(dlg->fuzz_widget, _("3 Hours"), 3 * 3600);
     gtt_combo_select_list_append(dlg->fuzz_widget, _("Today"), 12 * 3600);
 
-    /* gnome_dialog_close_hides(GNOME_DIALOG(dlg->interval_edit), TRUE); */
-    gtk_widget_hide_on_delete(dlg->interval_edit);
     return dlg;
 }
 

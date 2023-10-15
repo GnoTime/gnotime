@@ -304,7 +304,6 @@ static PropTaskDlg *prop_task_dialog_new(void)
 
     dlg->ignore_events = FALSE;
     dlg->task_freeze = FALSE;
-    gtk_widget_hide_on_delete(GTK_WIDGET(dlg->dlg));
 
     return dlg;
 }

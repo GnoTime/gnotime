@@ -194,6 +194,8 @@ NewPluginDialog *new_plugin_dialog_new(void)
 
     gtk_builder_connect_signals_full(builder, connect_signals_cb, dlg);
 
+    g_signal_connect(dlg->dialog, "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL);
+
     /* ------------------------------------------------------ */
     /* grab the various entry boxes and hook them up */
     e = gtk_builder_get_object(builder, "plugin name");
@@ -204,8 +206,6 @@ NewPluginDialog *new_plugin_dialog_new(void)
 
     e = gtk_builder_get_object(builder, "plugin tooltip");
     dlg->plugin_tooltip = GTK_ENTRY(e);
-
-    gtk_widget_hide_on_delete(GTK_WIDGET(dlg->dialog));
 
     return dlg;
 }
