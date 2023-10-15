@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="value">33.991399999999999</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">5</property>
+    <property name="page_size">10</property>
+  </object>
   <object class="GtkDialog" id="Idle Dialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Restart Idle Timer Dialog</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="type_hint">normal</property>
-    <property name="has_separator">True</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog box">
+      <object class="GtkBox" id="dialog box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -25,7 +35,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -42,7 +51,6 @@
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
                 <property name="tooltip_text" translatable="yes">Restart the same project that used to be running.</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -59,7 +67,6 @@
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
                 <property name="tooltip_text" translatable="yes">Do not restart the timer.</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -77,7 +84,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHBox" id="hbox4">
+          <object class="GtkBox" id="hbox4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -85,7 +92,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="stock">gtk-dialog-question</property>
-                <property name="icon-size">6</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -94,9 +101,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox4">
+              <object class="GtkBox" id="vbox4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="visible">True</property>
@@ -129,7 +137,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHSeparator" id="hseparator1">
+                  <object class="GtkSeparator" id="hseparator1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -170,7 +178,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHScale" id="scale">
+                  <object class="GtkScale" id="scale">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">adjustment1</property>
@@ -219,12 +227,5 @@
       <action-widget response="-8">yes button</action-widget>
       <action-widget response="-9">no button</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">100</property>
-    <property name="value">33.991399999999999</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">5</property>
-    <property name="page_size">10</property>
   </object>
 </interface>

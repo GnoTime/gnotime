@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="image7">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-sort-ascending</property>
+    <property name="icon_size">1</property>
+  </object>
+  <object class="GtkImage" id="image8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-go-back</property>
+    <property name="icon_size">1</property>
+  </object>
+  <object class="GtkImage" id="image9">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-media-forward</property>
+    <property name="icon_size">1</property>
+  </object>
   <object class="GtkMenu" id="column_menu">
     <property name="can_focus">False</property>
     <child>
@@ -10,7 +28,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="tooltip_text" translatable="yes">Sort the entries in this column in alphabetical order.</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="image">image7</property>
         <property name="use_stock">False</property>
@@ -23,7 +40,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="tooltip_text" translatable="yes">Move this column to the left.</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="image">image8</property>
         <property name="use_stock">False</property>
@@ -36,30 +52,11 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="tooltip_text" translatable="yes">Move this column to the right.</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="image">image9</property>
         <property name="use_stock">False</property>
         <signal name="activate" handler="on_move_right_activate" swapped="no"/>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="image7">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-sort-ascending</property>
-    <property name="icon-size">1</property>
-  </object>
-  <object class="GtkImage" id="image8">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-go-back</property>
-    <property name="icon-size">1</property>
-  </object>
-  <object class="GtkImage" id="image9">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-media-forward</property>
-    <property name="icon-size">1</property>
   </object>
 </interface>

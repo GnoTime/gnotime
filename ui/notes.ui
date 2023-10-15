@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="top window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">window1</property>
     <child>
-      <object class="GtkVPaned" id="notes vpane">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkPaned" id="notes vpane">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkScrolledWindow" id="ctree holder">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="hscrollbar_policy">automatic</property>
-            <property name="vscrollbar_policy">automatic</property>
             <child>
               <placeholder/>
             </child>
@@ -25,15 +27,16 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHPaned" id="leftright hpane">
+          <object class="GtkPaned" id="leftright hpane">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
-              <object class="GtkVBox" id="vbox1">
+              <object class="GtkBox" id="vbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkHBox" id="hbox1">
+                  <object class="GtkBox" id="hbox1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -54,7 +57,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="tooltip_text" translatable="yes">Close the project subwindow</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <child>
                           <object class="GtkImage" id="image1">
@@ -78,8 +80,6 @@
                         <property name="tooltip_text" translatable="yes">Edit the project title in this box</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -96,7 +96,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="hbox3">
+                  <object class="GtkBox" id="hbox3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -118,8 +118,6 @@
                         <property name="tooltip_text" translatable="yes">Edit the project description</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -140,8 +138,6 @@
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTextView" id="proj notes textview">
@@ -164,11 +160,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox2">
+              <object class="GtkBox" id="vbox2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkHBox" id="hbox2">
+                  <object class="GtkBox" id="hbox2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -201,7 +198,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_stock">True</property>
                       </object>
                       <packing>
@@ -217,7 +213,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="tooltip_text" translatable="yes">Create a new diary entry</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
@@ -232,7 +227,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <child>
                           <object class="GtkImage" id="image2">
@@ -259,8 +253,6 @@
                   <object class="GtkScrolledWindow" id="scrolledwindow2">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTextView" id="diary notes textview">

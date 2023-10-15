@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy project-wide -->
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="Journal Window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">GnoTime: Journal</property>
@@ -9,9 +9,13 @@
     <property name="default_height">550</property>
     <signal name="destroy" handler="on_close_clicked" swapped="no"/>
     <child>
-      <object class="GtkVBox" id="vbox1">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkToolbar" id="toolbar2">
             <property name="visible">True</property>
@@ -22,7 +26,6 @@
               <object class="GtkToolButton" id="publish">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Publish</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-print</property>
@@ -37,7 +40,6 @@
               <object class="GtkToolButton" id="save">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Save</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-save</property>
@@ -52,7 +54,6 @@
               <object class="GtkToolButton" id="refresh">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Refresh</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-refresh</property>
@@ -67,7 +68,6 @@
               <object class="GtkToolButton" id="quit">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Close</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-close</property>
@@ -89,8 +89,6 @@
           <object class="GtkScrolledWindow" id="Journal ScrollWin">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="hscrollbar_policy">automatic</property>
-            <property name="vscrollbar_policy">automatic</property>
             <child>
               <placeholder/>
             </child>
@@ -108,15 +106,21 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">GnoTime: Publish Report</property>
     <child>
-      <object class="GtkVBox" id="vbox2">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="vbox2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="xpad">2</property>
-            <property name="ypad">6</property>
+            <property name="margin_left">2</property>
+            <property name="margin_right">2</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">6</property>
             <property name="label" translatable="yes">&lt;b&gt;Publish This Report&lt;/b&gt;
 Enter a URL such as one of the following:
 mailto:&lt;i&gt;&amp;lt;username&amp;gt;@&amp;lt;hostname&amp;gt;&lt;/i&gt;
@@ -132,7 +136,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
           </packing>
         </child>
         <child>
-          <object class="GtkHBox" id="hbox1">
+          <object class="GtkBox" id="hbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -154,8 +158,6 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="can_focus">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -172,7 +174,7 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
           </packing>
         </child>
         <child>
-          <object class="GtkHButtonBox" id="hbuttonbox1">
+          <object class="GtkButtonBox" id="hbuttonbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">4</property>
@@ -184,7 +186,6 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_help_clicked" swapped="no"/>
               </object>
@@ -201,7 +202,6 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_cancel_clicked" swapped="no"/>
               </object>
@@ -218,7 +218,6 @@ ftp://&lt;i&gt;username:passwd@host.net/path/to/file&lt;/i&gt;
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_pub_ok_clicked" swapped="no"/>
               </object>
