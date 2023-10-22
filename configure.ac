@@ -264,6 +264,7 @@ redhat/Makefile
 redhat/gnotime.spec
 fedora/Makefile
 fedora/gnotime.spec
+debian/Makefile
 src/Makefile
 scripts/Makefile
 ui/Makefile
