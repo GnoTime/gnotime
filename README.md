@@ -28,17 +28,16 @@ Status
 After being stale since about 2013 there is renewed development of GnoTime.
 This is being managed on [GitHub](https://github.com/GnoTime/gnotime).
 
-The dev branch is currently known to build on Ubuntu 18.04.
+As of October 2023, the dev branch has been updated to build on Ubuntu 18.04
+as the oldest platform known to work. It is also known to build on Fedora 37.
+
+The program has been updated to use GTK 3, WebkitGTK, and to no longer depend on
+obsolete Gnome libraries. 
 
 Building
 --------
-The current dependencies of GnoTime are heavily outdated. The current aim is to
-update them to the state of current Debian oldstable (i.e. _Debian Buster_).
-As of October 2023, the dev branch has been updated to build on Ubuntu 18.04
-as the oldest platform known to work. (It no longer builds on the previous
-reference platform Ubuntu 14.04.) The below listed packages are
-valid in the realm of this reference platform and should allow an issue-less
-compilation.
+The below listed packages are valid in the realm of the Ubuntu 18.04 reference
+platform and should allow a successful compilation.
 
 ### Required packages
 ```
