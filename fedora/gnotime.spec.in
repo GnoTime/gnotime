@@ -25,9 +25,8 @@ BuildRequires:  guile22-devel >= 0:2.2.0
 BuildRequires:  scrollkeeper
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
-#BuildConflicts: qof-devel
+BuildRequires:  qof-devel
 
-#Conflicts: qof
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 Requires(post): GConf2
