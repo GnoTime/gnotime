@@ -99,6 +99,7 @@ scrollkeeper-update -q || :
 %{_mandir}/man[^3]/*
 %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/glib-2.0/schemas/org.gnotime.app.gschema.xml
+%{_datadir}/pixmaps/gnotime_128x128.png
 
 %changelog
 * Sun Oct 22 2023 Oskar Berggren <oskar.berggren@gmail.com> - 0:2.99.0-0.fdr.1

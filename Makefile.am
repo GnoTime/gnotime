@@ -11,6 +11,9 @@ Productivitydir = $(datadir)/applications
 Productivity_in_files = gnotime.desktop.in
 Productivity_DATA = $(Productivity_in_files:.desktop.in=.desktop)
 
+icon_DATA = gnotime_128x128.png
+icondir = $(datadir)/pixmaps
+
 EXTRA_DIST =                   \
 	AUTHORS                     \
 	COPYING                     \
@@ -21,8 +24,10 @@ EXTRA_DIST =                   \
 	autogen.sh                  \
 	$(Productivity_in_files)    \
 	$(Productivity_DATA)        \
+	$(icon_DATA)                \
 	$(top_srcdir)/omf.make      \
 	$(top_srcdir)/xmldocs.make
+
 
 
 # Satisfy automake strictness check (README must be present).
