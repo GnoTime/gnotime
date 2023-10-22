@@ -19,7 +19,7 @@ gnotime_deps = [
   gconf_dep,
   glib_dep,
   gtk_dep,
-  gtk_html_dep,
+  webkit_gtk_req,
   guile_dep,
   libxml_dep,
   qof_dep,

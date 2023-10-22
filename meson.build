@@ -19,8 +19,8 @@ add_project_link_arguments(
 dbus_glib_req = '>= 0.100.2'
 gconf_req = '>= 3.2.6'
 glib_req = '>= 2.40.2'
-gtk_req = '>= 2.24.23'
-gtk_html_req = '>= 3.32.2'
+gtk_req = '>= 3.20.0'
+webkit_gtk_req = '>= 2.32.0'
 guile_req = '>= 2.0.9'
 libxml_req = '>= 2.9.1'
 qof_req = '>= 0.8.7'
@@ -31,7 +31,7 @@ dbus_glib_dep = dependency('dbus-glib-1', required: false, version: dbus_glib_re
 gconf_dep = dependency('gconf-2.0', version: gconf_req)
 glib_dep = dependency('glib-2.0', version: glib_req)
 gtk_dep = dependency('gtk+-2.0', version: gtk_req)
-gtk_html_dep = dependency('libgtkhtml-3.14', version: gtk_html_req)
+webkit_gtk_dep = dependency('webkit2gtk-4.0', version: gtk_html_req)
 guile_dep = dependency('guile-2.0', version: guile_req)
 libxml_dep = dependency('libxml-2.0', version: libxml_req)
 qof_dep = dependency('qof', version: qof_req)
